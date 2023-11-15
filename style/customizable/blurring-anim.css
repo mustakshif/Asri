@@ -1,0 +1,14 @@
+/* ctrlP动画 */
+:is([data-key="⌘P"], [data-key="⌘R"], [data-key="⌘F"], [data-key="⌘E"]) .b3-dialog__container {
+    filter: blur(20px);
+}
+:is([data-key="⌘P"], [data-key="⌘R"], [data-key="⌘F"], [data-key="⌘E"]).b3-dialog--open .b3-dialog__container {
+    filter: none; /*只能none，否则会导致内容块标头位置偏移*/
+}
+/*集市卡片动画*/
+.config-bazaar__readme {
+    filter: blur(20px);
+}
+.config-bazaar__readme--show {
+    filter: none;
+}

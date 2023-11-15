@@ -1,0 +1,48 @@
+.fn__flex-shrink+.layout__resize::after,
+.layout__resize:has(+.layout__dockr)::after {
+	background-color: transparent;
+}
+.fn__flex-shrink+.layout__resize:hover::after,
+.layout__resize:has(+.layout__dockr):hover::after {
+    background-color: var(--b3-layout-resize-hover);
+}
+
+.block__icons, 
+.protyle-breadcrumb,
+.layout__center:has(~.layout__dockr.layout--float[style*="right"]) .protyle-breadcrumb, 
+.layout__dockl.layout--float[style*="left"]~.layout__center .protyle-breadcrumb,
+.search__header,
+.toolbar,
+.history__panel>.b3-list, 
+.history__panel>.history__diff,
+.history__repo>div:first-child,
+.protyle-icons, .b3-dialog__container, #status,
+.block__popover .protyle-breadcrumb {
+	border-color: transparent !important;
+}
+.layout__dockr.layout--float .layout-tab-container > div > *,
+.layout__dockl.layout--float .layout-tab-container > div > *,
+.dock#dockLeft, .dock#dockRight,
+.layout__dockr.layout--float, .layout__dockl.layout--float,
+.b3-dialog--open .layout-tab-bar .item--focus {
+	box-shadow: 1px 0 inset transparent !important;
+}
+
+.protyle-wysiwyg [data-node-id].li:before {
+    border-left: 0.5px solid transparent;
+}
+.protyle-wysiwyg [data-node-id].list:hover [data-node-id].li:before {
+    border-left: 0.5px solid var(--b3-border-color);
+}
+.protyle-wysiwyg [data-node-id].list:hover [data-node-id].li:hover:before {
+    border-left-color: var(--b3-scroll-color);
+}
+
+.layout-tab-container .protyle:has(>.protyle-breadcrumb:first-child)::before {
+    -webkit-mask-image: linear-gradient( to bottom, black 0, black calc(var(--blur-block-height) - 0.5px), transparent calc(var(--blur-block-height) + 1px));
+}
+
+.layout__resize:after,
+.layout__resize--lr::after {
+    opacity: 0.5;
+}

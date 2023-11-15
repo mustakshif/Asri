@@ -1,16 +1,15 @@
 {
-  "name": "theme-sample",
-  "author": "Vanessa",
-  "url": "https://github.com/siyuan-note/theme-sample",
-  "version": "0.0.3",
-  "minAppVersion": "2.8.8",
+  "name": "Formless",
+  "author": "mustakshif",
+  "url": "https://github.com/mustakshif/Formless",
+  "version": "0.0.9",
   "displayName": {
-    "default": "Theme Sample",
-    "zh_CN": "主题示例"
+    "default": "Formless",
+    "zh_CN": "无形"
   },
   "description": {
-    "default": "This is a theme sample",
-    "zh_CN": "这是一个主题示例"
+    "default": "Like silent water, blending form with spirit, quietly adding a touch of elegance and efficiency to your notes",
+    "zh_CN": "似水无声，形融于神，默默为你的笔记增添一份优雅和效率"
   },
   "readme": {
     "default": "README.md",
@@ -21,13 +20,14 @@
     "patreon": "",
     "github": "",
     "custom": [
-      "https://ld246.com/sponsor"
+      ""
     ]
   },
   "modes": [
-    "light"
+    "light",
+    "dark"
   ],
   "keywords": [
-    "sample", "示例"
+    "Formless", "无形"
   ]
 }

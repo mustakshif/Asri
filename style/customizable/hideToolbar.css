@@ -1,0 +1,193 @@
+:root {
+	--toolbar-height: 48px;
+}
+
+.toolbar, .toolbar:has(#drag:hover) {
+	height: var(--toolbar-height);
+    opacity: 0;
+	transform: translateY(calc(var(--toolbar-height) * -1 + 10px));
+	transition: opacity 300ms, transform 300ms;
+	transition-delay: 300ms;
+    /* z-index: 10; */
+    position: fixed;
+    width: 100%;
+}
+.toolbar:hover {
+    opacity: 1;
+    transition: opacity 200ms 100ms, transform 300ms 100ms;
+	transform: none;
+}
+
+.toolbar:has(#drag:hover) {
+	transition-delay: 0s;
+}
+.toolbar #drag{
+    height: 0px;
+    padding: 0;
+    transition: all 200s 0ms; /*delay设为0可防止在页签上方呼出顶栏*/
+}
+.toolbar:hover #drag{
+	height: var(--toolbar-height);
+	padding: calc(var(--toolbar-height) - 40px) 0 0 0;
+    transition: all 0s 600ms; /*delay设大一点，超过所有动画时长，可防止在页签上方呼出顶栏*/
+}
+
+.fn__flex-column.fn__flex-shrink>.fn__flex:first-child:not(.fn__none),
+.layout__center~.fn__flex-column>.fn__flex:first-child,
+.fn__flex-column.fn__flex-shrink>.fn__flex.fn__none+.layout__resize+.fn__flex,
+.layout__center~.fn__flex-column>.fn__flex.fn__none+.layout__resize+.fn__flex{
+	padding-top:0px;
+}
+
+
+.layout-tab-bar {
+	padding: 0;
+    margin-bottom: 10px;
+}
+
+.layout__center .layout-tab-bar:not(.layout-tab-bar--readonly){
+	margin-left: 8px !important;
+    margin-right: 8px !important;
+    margin-top: 0;
+}
+
+.layout__center .layout-tab-bar--readonly {
+    padding-top: 0;
+}
+
+/*避让 macOS 红绿灯*/
+body:not(.body--win32):not(:has(#toolbar[style="padding-left: 0px;"], #toolbar.toolbar--browser)) .dock--vertical.fn__none ~ #layouts .layout__dockl[style *= "width: 0px"] ~ .layout__resize--lr.layout__resize ~ .layout__center *:not(.layout__resize+.fn__flex-1)>.fn__flex:first-child>div[data-type="wnd"]:first-child>.fn__flex>.layout-tab-bar:not(.layout-tab-bar--readonly), 
+body:not(.body--win32):not(:has(#toolbar[style="padding-left: 0px;"], #toolbar.toolbar--browser)) .dock--vertical.fn__none ~ #layouts .layout__dockl.layout--float ~ .layout__resize--lr.layout__resize ~ .layout__center *:not(.layout__resize+.fn__flex-1)>.fn__flex:first-child>div[data-type="wnd"]:first-child>.fn__flex>.layout-tab-bar:not(.layout-tab-bar--readonly){
+	margin-left: var(--b3-toolbar-left-mac) !important;
+    margin-right: 8px !important;
+}/*隐藏停靠栏时*//* 不在应用全屏、在浏览器中使用时 */
+body:not(.body--win32):not(:has(#toolbar[style="padding-left: 0px;"], #toolbar.toolbar--browser)) #layouts .layout__dockl[style *= "width: 0px"] ~ .layout__resize--lr.layout__resize ~ .layout__center *:not(.layout__resize+.fn__flex-1)>.fn__flex:first-child>div[data-type="wnd"]:first-child>.fn__flex>.layout-tab-bar:not(.layout-tab-bar--readonly), 
+body:not(.body--win32):not(:has(#toolbar[style="padding-left: 0px;"], #toolbar.toolbar--browser)) #layouts .layout__dockl.layout--float ~ .layout__resize--lr.layout__resize ~ .layout__center *:not(.layout__resize+.fn__flex-1)>.fn__flex:first-child>div[data-type="wnd"]:first-child>.fn__flex>.layout-tab-bar:not(.layout-tab-bar--readonly){
+	margin-left:  calc(var(--b3-toolbar-left-mac) - 42px) !important;
+    margin-right: 8px !important;
+}/*显示停靠栏、关闭/取消钉住侧栏时*//* 不在应用全屏、在浏览器中使用时 */
+
+/* 左右侧栏坞 */
+/* .dock#dockLeft,
+.dock#dockRight{
+    box-shadow: none;
+} */
+body:not(.body--win32):not(:has(#toolbar[style="padding-left: 0px;"], #toolbar.toolbar--browser)) .dock#dockLeft {
+    box-shadow: 1px calc(var(--toolbar-height) + 0px) 0 0 var(--b3-border-color);
+}
+.dock#dockLeft{
+	padding-top: 53px;
+}
+.dock#dockRight, 
+body.body--win32 .dock#dockLeft, 
+body:has(#toolbar[style="padding-left: 0px;"], 
+#toolbar.toolbar--browser) .dock#dockLeft {
+	padding-top: 12px;
+}
+body:not(.body--win32):not(:has(#toolbar[style="padding-left: 0px;"], #toolbar.toolbar--browser)) .fn__flex-column.fn__flex-shrink.layout__dockl:not(.layout--float)::before {
+    content: "";
+    display: inline-block;
+    width: auto;
+    height: 36px;
+    margin-top: 10px;
+    background-color: var(--b3-theme-surface-glass);
+    box-shadow: 0 -10px var(--b3-theme-surface-glass);
+}
+body:is(.body--win32, :has(#toolbar[style="padding-left: 0px;"], #toolbar.toolbar--browser)) .fn__flex-column.fn__flex-shrink.layout__dockl:not(.layout--float)::before {
+    content: "";
+    display: inline-block;
+    width: auto;
+    height: 4px;
+    background-color: var(--b3-theme-surface-glass);
+}
+body .layout__dockr:not(.layout--float)::before {
+    content: "";
+    display: inline-block;
+    width: auto;
+    height: 4px;
+    background-color: var(--b3-theme-surface-glass);
+}
+
+.graph.fullscreen > div.block__icons {
+	padding-top: 0;
+	padding-left: var(--b3-toolbar-left-mac);
+    height: var(--toolbar-height);
+    padding-right: 14px;
+}
+
+.fn__flex-column.layout__dockr:not(.layout--float) {
+    /* margin: 4px 0 0 0; */
+    margin: 0;
+}
+
+.layout__dockl.layout--float {
+    top: 87px;
+}
+.layout__dockr.layout--float {
+    top: 87px !important;
+	bottom: 0 !important;
+}
+
+/*tab-bar空白区域窗口拖移功能*/
+#layouts .layout__center .fn__flex:has(>.layout-tab-bar) {
+    margin-top: 10px;
+}
+.layout-tab-bar:not(.layout-tab-bar--readonly), 
+.protyle-breadcrumb__item,  
+.block__icon--show[data-type="more"], 
+.block__icon--show[data-type="new"] {
+    app-region: no-drag;
+}
+.block__popover, .b3-dialog__body {
+    app-region: no-drag;
+}
+.toolbar:has(#notionToolbar:hover, #notionToolplus:hover) + .fn__flex #layouts .layout__center .fn__flex:has(>.layout-tab-bar)  {
+    app-region: unset !important;
+}
+
+body:has(.b3-menu.fn__none) #layouts .layout__center .fn__flex:has(>.layout-tab-bar), 
+body:has(.b3-menu.fn__none)>.fn__flex .layout__center .layout-tab-container *:not(.protyle.fullscreen)>.protyle-breadcrumb .protyle-breadcrumb__space{
+    app-region: drag;
+}
+body:has(.fullscreen.layout__tab--active) .layout__center .layout-tab-container .protyle-breadcrumb .protyle-breadcrumb__space,
+body:has(.b3-dialog--open)>.fn__flex .layout__center .layout-tab-container .protyle-breadcrumb .protyle-breadcrumb__space,
+body:has(.block__popover--open)>.fn__flex .layout__center .layout-tab-container .protyle-breadcrumb .protyle-breadcrumb__space,
+.toolbar:has(#notionToolbar:hover, #notionToolplus:hover) + .fn__flex #layouts .layout__center .protyle-breadcrumb__space,
+.layout-tab-container:not(:has(.protyle-hint.fn__none)) .protyle-breadcrumb .protyle-breadcrumb__space, .protyle-breadcrumb:not(:has(~.protyle-hint.fn__none)) .protyle-breadcrumb__space,
+.layout-tab-container:not(:has(.protyle-util.fn__none)) .protyle-breadcrumb .protyle-breadcrumb__space, .protyle-breadcrumb:not(:has(~.protyle-util.fn__none)) .protyle-breadcrumb__space,
+.layout-tab-container:not(:has(.protyle-toolbar.fn__none)) .protyle-breadcrumb .protyle-breadcrumb__space, .protyle-breadcrumb:not(:has(~.protyle-toolbar.fn__none)) .protyle-breadcrumb__space{
+    app-region: unset !important;
+}
+
+body:has(.b3-menu.fn__none) .fn__flex-column.fn__flex-shrink.layout__dockl:not(.layout--float)::before {
+    app-region:drag;
+}
+body:has(.b3-dialog--open) .fn__flex-column.fn__flex-shrink.layout__dockl:not(.layout--float)::before, 
+body:has(.block__popover--open) .fn__flex-column.fn__flex-shrink.layout__dockl:not(.layout--float)::before, 
+.toolbar:hover + .fn__flex #layouts .layout__dockl:not(.layout--float)::before {
+    app-region:unset;
+}
+
+body:has(.fullscreen.layout__tab--active, .layout-tab-container>.layout-tab-container__drag+.fullscreen) div:not(.layout__wnd--active) .layout-tab-bar /*.item*/, 
+body:has(.fullscreen.layout__tab--active, .layout-tab-container>.fullscreen) div[data-type="wnd"]:not(.layout__wnd--active) .layout-tab-bar .block__icon--show[data-type="more"],
+body:has(.fullscreen.layout__tab--active, .layout-tab-container>.fullscreen) div[data-type="wnd"]:not(.layout__wnd--active) .layout-tab-bar .block__icon--show[data-type="new"] {
+	transform: scale(0);
+}
+/* .fullscreen.layout__tab--active是右侧面板关系图全屏情况；.layout-tab-container>.layout-tab-container__drag+.fullscreen是关系图页签全屏的情况； */
+.layout-tab-bar /*.item*/, .layout-tab-bar .block__icon--show[data-type="more"], .layout-tab-bar .block__icon--show[data-type="new"]{
+    transition: width 0.15s cubic-bezier(0, 0, .2, 1), max-width 0.15s cubic-bezier(0, 0, .2, 1);
+}
+
+.toolbar:hover + .fn__flex #layouts .layout__center .fn__flex:has(>.layout-tab-bar),
+.toolbar:hover + .fn__flex #layouts .layout__center .layout-tab-bar--readonly {
+    app-region: unset;
+}
+
+/*全屏关系图*/
+.graph.fullscreen>.block__icons>.block__icon, .graph.fullscreen>.block__icons>.search__label {
+    app-region: no-drag;
+}
+
+.search__header {
+    app-region:no-drag;
+}

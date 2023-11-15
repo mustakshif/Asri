@@ -1,0 +1,13 @@
+.protyle-breadcrumb[class*="svelte"] .address-field[class*="svelte"] {
+    margin: 0 4px !important;
+}
+.protyle-breadcrumb[class*="svelte"][class*="svelte"] {
+    height: 38px;
+    box-shadow: 0 1px 0 0 var(--b3-border-color);
+}
+.protyle-breadcrumb[class*="svelte"] + .protyle-preview {
+	padding-top: 0;
+}
+body:has(.layout__center .fn__flex-1:not(.fn__none)>.fn__flex-column>.protyle-preview>.content>.webview) #status{
+	display: none;
+}
