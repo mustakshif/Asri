@@ -1,9 +1,9 @@
-
-/* 菜单 *//* 来自 @Crowds21 的 Cliff-Dark 主题，解决了子菜单定位不准的问题 */
-body:not(.body--blur) .b3-menu:not(#searchHistoryList, .b3-menu--fullscreen){
+/* 菜单 */ /* 参考自 @Crowds21 的 Cliff-Dark 主题，解决了子菜单定位不准的问题 */
+body:not(.body--blur) .b3-menu:not(#searchHistoryList, .b3-menu--fullscreen) {
     background-color: transparent;
 }
-body:not(.body--blur) .b3-menu:not(#searchHistoryList):before, body:not(.body--blur) .b3-menu .b3-menu__submenu::before {
+body:not(.body--blur) .b3-menu:not(#searchHistoryList):before,
+body:not(.body--blur) .b3-menu .b3-menu__submenu::before {
     content: "";
     position: absolute !important;
     top: 0;
@@ -34,45 +34,48 @@ html[data-theme-mode="dark"] .b3-menu .b3-menu__submenu::before{
 } */
 
 .search__header #searchHistoryList.b3-menu {
-	background-color: var(--b3-theme-surface-glass);
+    background-color: var(--b3-theme-surface-glass);
     backdrop-filter: blur(40px) saturate(3);
     -webkit-backdrop-filter: blur(40px) saturate(3);
 }
 
 /*提示条*/
-.protyle-toolbar>.b3-tooltips::after, .protyle-background__iconw .b3-tooltips::after {
+.protyle-toolbar > .b3-tooltips::after,
+.protyle-background__iconw .b3-tooltips::after {
     background-color: var(--b3-theme-background) !important;
 }
-*:not(#notionToolbar, #notionToolplus)>.tooltip, *:not(.protyle-background__iconw)>*:not(#notionToolbar, #notionToolplus, .protyle-toolbar, .protyle-attr)>.b3-tooltips:not(.b3-tooltips__nw, 
-.b3-tooltips__n)::after {
-	background-color: var(--b3-theme-background-glass) !important;
-	backdrop-filter: blur(20px) saturate(3);
-	-webkit-backdrop-filter:blur(20px) saturate(3);
+*:not(#notionToolbar, #notionToolplus) > .tooltip,
+*:not(.protyle-background__iconw)
+    > *:not(#notionToolbar, #notionToolplus, .protyle-toolbar, .protyle-attr)
+    > .b3-tooltips:not(.b3-tooltips__nw, .b3-tooltips__n)::after {
+    background-color: var(--b3-theme-background-glass) !important;
+    backdrop-filter: blur(20px) saturate(3);
+    -webkit-backdrop-filter: blur(20px) saturate(3);
 }
 
 /* 图片浏览器 */
 .viewer-backdrop {
     background-color: var(--b3-theme-surface-glass);
     backdrop-filter: blur(40px);
-	-webkit-backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     transform: translateZ(0);
 }
 .viewer-navbar {
     background-color: var(--b3-theme-background-glass) !important;
     backdrop-filter: blur(40px);
-	-webkit-backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     transform: translateZ(0);
 }
 .viewer-title {
     background-color: var(--b3-theme-background-glass) !important;
     backdrop-filter: blur(20px) saturate(3);
-	-webkit-backdrop-filter: blur(20px) saturate(3);
+    -webkit-backdrop-filter: blur(20px) saturate(3);
     transform: translateZ(0);
 }
-.viewer-toolbar>ul {
+.viewer-toolbar > ul {
     background-color: var(--b3-theme-background-glass) !important;
     backdrop-filter: blur(20px) saturate(3);
-	-webkit-backdrop-filter: blur(20px) saturate(3);
+    -webkit-backdrop-filter: blur(20px) saturate(3);
     transform: translateZ(0);
 }
 
@@ -81,38 +84,38 @@ html[data-theme-mode="dark"] .b3-menu .b3-menu__submenu::before{
     background-color: var(--b3-theme-surface-glass) !important;
     border-radius: 99px;
     backdrop-filter: blur(12px) saturate(3);
-	-webkit-backdrop-filter: blur(12px) saturate(3);
+    -webkit-backdrop-filter: blur(12px) saturate(3);
     transform: translateZ(0);
 }
 
 /*题头工具条*/
 .protyle-background__img .protyle-icons {
-    background-color:var(--b3-theme-surface-glass) !important;
+    background-color: var(--b3-theme-surface-glass) !important;
     backdrop-filter: blur(20px) saturate(3);
-	-webkit-backdrop-filter: blur(20px) saturate(3);
+    -webkit-backdrop-filter: blur(20px) saturate(3);
     transform: translateZ(0);
 }
 
 /* 文字选中弹出工具条 */
-.protyle-toolbar{
+.protyle-toolbar {
     background-color: var(--b3-theme-surface-glass) !important;
     backdrop-filter: blur(20px) saturate(3);
-	-webkit-backdrop-filter: blur(20px) saturate(3);
+    -webkit-backdrop-filter: blur(20px) saturate(3);
     transform: translateZ(0);
 }
 
-.protyle-util{
-	background-color: rgba(var(--b3-theme-background-rgb), .86) !important;
+.protyle-util {
+    background-color: rgba(var(--b3-theme-background-rgb), 0.86) !important;
     backdrop-filter: blur(40px) saturate(3);
-	-webkit-backdrop-filter: blur(40px) saturate(3);
+    -webkit-backdrop-filter: blur(40px) saturate(3);
     transform: translateZ(0);
 }
 
 /* 备注 */
-.tooltip--memo{
-	background: color var(--b3-theme-background-glass) !important;
-	backdrop-filter: blur(20px) saturate(3);
-	-webkit-backdrop-filter: blur(20px) saturate(3);
+.tooltip--memo {
+    background: color var(--b3-theme-background-glass) !important;
+    backdrop-filter: blur(20px) saturate(3);
+    -webkit-backdrop-filter: blur(20px) saturate(3);
     transform: translateZ(0);
 }
 
@@ -126,7 +129,7 @@ html[data-theme-mode="dark"] .b3-menu .b3-menu__submenu::before{
     bottom: 0;
     right: 0;
     backdrop-filter: blur(4px);
-	-webkit-backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     -webkit-mask-image: linear-gradient(to top, black 50%, transparent);
     transform: translateZ(0);
     pointer-events: none;
@@ -136,27 +139,27 @@ html[data-theme-mode="dark"] .b3-menu .b3-menu__submenu::before{
 body #status {
     background-color: var(--b3-theme-surface-glass);
     backdrop-filter: blur(40px) saturate(3);
-	-webkit-backdrop-filter: blur(40px) saturate(3);
+    -webkit-backdrop-filter: blur(40px) saturate(3);
     transform: translateZ(0);
 }
 
 /* focus页签 */
-.layout-tab-bar .item--focus{
-	background-color: transparent !important;
-	backdrop-filter: brightness(0.88) saturate(1.5);
-	-webkit-backdrop-filter: brightness(0.88) saturate(1.5);
+.layout-tab-bar .item--focus {
+    background-color: transparent !important;
+    backdrop-filter: brightness(0.88) saturate(1.5);
+    -webkit-backdrop-filter: brightness(0.88) saturate(1.5);
     transform: translateZ(0);
 }
-html[data-theme-mode="dark"] .layout-tab-bar .item--focus{
+html[data-theme-mode="dark"] .layout-tab-bar .item--focus {
     backdrop-filter: brightness(1.8) saturate(0.8);
     -webkit-backdrop-filter: brightness(1.8) saturate(0.8);
 }
 
 /* '/'弹出菜单 */
-.hint--menu{
-	background-color: var(--b3-theme-surface-glass) !important;
+.hint--menu {
+    background-color: var(--b3-theme-surface-glass) !important;
     backdrop-filter: blur(40px) saturate(3);
-	-webkit-backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     transform: translateZ(0);
 }
 
@@ -164,21 +167,20 @@ html[data-theme-mode="dark"] .layout-tab-bar .item--focus{
 .graph.fullscreen {
     background: var(--b3-theme-surface-glass) !important;
     backdrop-filter: blur(40px);
-	-webkit-backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     transform: translateZ(0);
 }
 
 /* emoji面板 */
-.b3-dialog__container:has(>.b3-dialog__body>.emojis) {
+.b3-dialog__container:has(> .b3-dialog__body > .emojis) {
     background-color: var(--b3-theme-surface-glass);
     backdrop-filter: blur(40px) saturate(3);
     transform: translateZ(0);
 }
 
-
 /*引用弹出菜单*/
 .protyle-hint {
     background-color: var(--b3-theme-surface-glass) !important;
     backdrop-filter: blur(40px) saturate(3);
-    -webkit-backdrop-filter: blur(40px) saturate(3);    
+    -webkit-backdrop-filter: blur(40px) saturate(3);
 }
