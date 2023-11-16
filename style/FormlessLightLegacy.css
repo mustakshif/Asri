@@ -1,0 +1,222 @@
+:root {
+    /* 主色 */
+    --b3-theme-primary: rgb(52, 120, 246);
+    --b3-theme-primary-light: rgba(52, 120, 246, 0.54);
+    --b3-theme-primary-lighter: rgba(52, 120, 246, 0.38);
+    --b3-theme-primary-lightest: rgba(52, 120, 246, 0.2);
+    --b3-theme-primary-glass: rgba(52, 120, 246, 0.7);
+    --b3-theme-secondary: rgb(241, 154, 55);
+    --b3-theme-secondary-glass: rgba(241, 154, 55, 0.7);
+    --b3-theme-background: rgb(255, 255, 255);
+    --b3-theme-background-rgb: 255, 255, 255;
+    --b3-theme-background-light: rgb(255, 255, 255, 0.1);
+    --b3-theme-background-glass: rgba(255, 255, 255, 0.8);
+    --b3-theme-surface: rgba(246, 246, 246);
+    --b3-theme-surface-light: rgba(246, 246, 246, 0.5);
+    --b3-theme-surface-glass: rgba(246, 246, 246, 0.8);
+    --b3-theme-error: rgb(234, 77, 60);
+
+    /* 文字颜色 */
+    --b3-theme-on-primary: #fff;
+    --b3-theme-on-secondary: #fff;
+    --b3-theme-on-background: rgb(38, 38, 38);
+    --b3-theme-on-surface: rgb(0, 0, 0, 0.56);
+    --b3-theme-on-surface-light: rgba(127, 127, 127, 0.68);
+    --b3-theme-on-surface-glass: rgba(127, 127, 127, 0.7);
+    --b3-theme-on-error: #fff;
+
+    /* 线条 */
+    --b3-border-color: rgba(0, 0, 0, 0.1);
+    --b3-border-shrink: rgba(0, 0, 0, 0.4);
+
+    /* 滚动条 */
+    --b3-scroll-color: rgba(0, 0, 0, 0.2);
+    --b3-scroll-color-hover: rgba(0, 0, 0, 0.4);
+    --b3-scroll-bgcolor: transparent;
+    --b3-border-scroll: rgba(255, 255, 255, 0.2);
+    --webkit-scrollbar: 6px;
+    --webkit-scrollbar-thumb: 4px;
+
+    /* 列表 */
+    --b3-list-hover: rgba(0, 0, 0, 0.06);
+
+    /* 菜单 */
+    --b3-menu-background: rgb(236, 236, 236);
+    --b3-menu-background-glass: rgba(236, 236, 236, 0.8);
+    --b3-menu-item-background-hover: rgb(41, 98, 217);
+    --b3-menu-item-background-hover-glass: rgba(41, 98, 217, 0.8);
+    --b3-menu-item-background-hover-text: #fff;
+    --b3-menu-item-background-hover-text-glass: rgba(255, 255, 255, 0.8);
+
+    /* 提示 */
+    --b3-tooltips-color: var(--b3-theme-background);
+    --b3-tooltips-background: var(--b3-theme-on-background);
+
+    /* 遮罩 */
+    --b3-mask-background: rgba(0, 0, 0, 0.78);
+
+    /* 卡片背景 */
+    --b3-card-error-color: rgb(233, 49, 71);
+    --b3-card-error-background: rgb(233, 49, 71, 0.1);
+    --b3-card-warning-color: rgb(224, 172, 0);
+    --b3-card-warning-background: rgb(224, 172, 0, 0.1);
+    --b3-card-info-color: rgb(8, 109, 221);
+    --b3-card-info-background: rgb(8, 109, 221, 0.1);
+    --b3-card-success-color: rgb(8, 185, 78);
+    --b3-card-success-background: rgb(8, 185, 78, 0.1);
+
+    /* 自定义文字 */
+    --b3-font-color1: #000;
+    --b3-font-color2: rgba(142, 142, 147);
+    --b3-font-color3: rgb(162, 132, 94);
+    --b3-font-color4: rgb(255, 149, 0);
+    --b3-font-color5: rgb(255, 204, 0);
+    --b3-font-color6: rgb(8, 185, 78);
+    --b3-font-color7: rgb(0, 199, 190);
+    --b3-font-color8: rgb(85, 190, 240);
+    --b3-font-color9: rgb(0, 122, 255);
+    --b3-font-color10: rgb(88, 86, 214);
+    --b3-font-color11: rgb(175, 82, 222);
+    --b3-font-color12: rgb(255, 45, 85);
+    --b3-font-color13: rgb(255, 59, 48);
+
+    --b3-font-background1: rgb(0, 0, 0, 0.1);
+    --b3-font-background2: rgb(142, 142, 147, 0.1);
+    --b3-font-background3: rgb(162, 132, 94, 0.1);
+    --b3-font-background4: rgb(255, 149, 0, 0.1);
+    --b3-font-background4-rgb: 255, 149, 0;
+    --b3-font-background5: rgb(255, 204, 0, 0.1);
+    --b3-font-background5-rgb: 255, 204, 0;
+    --b3-font-background6: rgb(40, 205, 65, 0.1);
+    --b3-font-background6-rgb: 40, 205, 65;
+    --b3-font-background7: rgb(0, 199, 190, 0.1);
+    --b3-font-background8: rgba(85, 190, 240, 0.1);
+    --b3-font-background8-rgb: 85, 190, 240;
+    --b3-font-background9: rgb(0, 122, 255, 0.1);
+    --b3-font-background10: rgb(88, 86, 214, 0.1);
+    --b3-font-background10-rgb: 88, 86, 214;
+    --b3-font-background11: rgb(175, 82, 222, 0.1);
+    --b3-font-background11-rgb: 175, 82, 222;
+    --b3-font-background12: rgb(255, 45, 85, 0.1);
+    --b3-font-background13: rgb(255, 59, 48, 0.1);
+    --b3-font-background13-rgb: 255, 59, 48;
+
+    /* 动画效果 */
+    --b3-transition: all 0.15s cubic-bezier(0, 0, 0.2, 1) 0ms;
+    --b3-width-transition: width 0.15s cubic-bezier(0, 0, 0.2, 1) 0ms;
+
+    /* 阴影 */
+    --b3-point-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    --b3-dialog-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 3px 6px,
+        rgba(15, 15, 15, 0.2) 0px 9px 24px;
+    --b3-menu-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 3px 6px,
+        rgba(15, 15, 15, 0.2) 0px 9px 24px;
+
+    /* 图表颜色 */
+    --b3-graph-p-point: #076f7e;
+    --b3-graph-heading-point: #660e7a;
+    --b3-graph-math-point: #80ffa5;
+    --b3-graph-code-point: #00ddff;
+    --b3-graph-table-point: #37a2ff;
+    --b3-graph-list-point: #ff0087;
+    --b3-graph-todo-point: #ffbf00;
+    --b3-graph-olist-point: #b3005f;
+    --b3-graph-listitem-point: #f65b00;
+    --b3-graph-bq-point: #8d48e3;
+    --b3-graph-super-point: #dd79ff;
+    --b3-graph-doc-point: #202124;
+    --b3-graph-tag-point: #dbf32f;
+    --b3-graph-asset-point: #05c091;
+    --b3-graph-line: #5f6368;
+    --b3-graph-ref-line: #d23f31;
+    --b3-graph-tag-line: #5f6b06;
+    --b3-graph-tag-tag-line: #dbf32f;
+    --b3-graph-asset-line: #037457;
+    --b3-graph-hl-point: #f3a92f;
+    --b3-graph-hl-line: #4285f4;
+
+    /* 编辑器搜索颜色 */
+    --b3-protyle-search-background: #ffe955;
+    --b3-protyle-search-border-color: #f2e680;
+    --b3-protyle-search-current-background: #a5d3fe;
+
+    /* 代码片段背景 */
+    --b3-protyle-code-background: rgba(0, 0, 0, 0.05);
+    --b3-protyle-code-linenumber-hl: #b9d1f4;
+
+    /* 所见即所得行内元素颜色 */
+    --b3-protyle-inline-strong-color: #202124;
+    --b3-protyle-inline-em-color: #202124;
+    --b3-protyle-inline-s-color: #202124;
+    --b3-protyle-inline-link-color: #4285f4;
+    --b3-protyle-inline-mark-background: rgb(168, 251, 172);
+    --b3-protyle-inline-mark-color: #202124;
+    --b3-protyle-inline-tag-color: #5f6368;
+    --b3-protyle-inline-blockref-color: #660e7a;
+
+    /* PDF */
+    --b3-pdf-selection: #d0e9c8;
+    --b3-pdf-sidebar-width: 200px;
+    --b3-pdf-offset: 0;
+    --b3-pdf-background1: rgba(var(--b3-font-background4-rgb), 0.25);
+    --b3-pdf-background2: rgba(var(--b3-font-background5-rgb), 0.25);
+    --b3-pdf-background3: rgba(var(--b3-font-background6-rgb), 0.25);
+    --b3-pdf-background4: rgba(var(--b3-font-background8-rgb), 0.25);
+    --b3-pdf-background5: rgba(var(--b3-font-background10-rgb), 0.25);
+    --b3-pdf-background6: rgba(var(--b3-font-background11-rgb), 0.25);
+    --b3-pdf-background7: rgba(var(--b3-font-background13-rgb), 0.25);
+
+    /*Mac红绿灯*/
+    --b3-toolbar-left-mac: 80px;
+    /*顶栏高度*/
+    --toolbar-height: 48px; /*默认为32px*/
+
+    /* 字体 */
+    --b3-font-family: ui-sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text",
+        "SF Pro Icons", Helvetica, Arial, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI",
+        "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol",
+        "Android Emoji", "EmojiSymbols";
+    --b3-font-family-code: SF Mono, SFMono-Regular, ui-monospace, Menlo, "JetBrainsMono-Regular", mononoki, Consolas,
+        "Liberation Mono", Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji",
+        "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+    --b3-font-family-graph: mononoki;
+    --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla",
+        "Noto Color Emoji", "Android Emoji";
+    --b3-font-family-math: KaTeX_Math;
+}
+
+body {
+    border: 0px !important;
+    -webkit-font-smoothing: auto; /*浅色背景下选择auto，深色背景下选择antialiased*/
+}
+
+/*菜单选项高亮*/
+.b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom),
+.b3-menu__item--current:not(.b3-menu__item--readonly) {
+    background-color: var(--b3-menu-item-background-hover-glass);
+    color: var(--b3-menu-item-background-hover-text);
+}
+
+.b3-menu__item--current > .b3-menu__accelerator {
+    color: var(--b3-menu-item-background-hover-text-glass);
+}
+.b3-menu__accelerator {
+    color: var(--b3-scroll-color-hover);
+} /*快捷键提示*/
+.b3-menu .b3-menu__submenu > .b3-menu__item:hover > .b3-menu__icon,
+.b3-menu__item:hover > .b3-menu__icon {
+    color: var(--b3-theme-background);
+}
+.b3-menu .b3-menu__submenu > .b3-menu__item:hover > .b3-menu__accelerator,
+.b3-menu__item:hover > .b3-menu__accelerator {
+    color: var(--b3-menu-item-background-hover-text-glass);
+}
+.b3-menu__item--current > .b3-menu__label > .b3-text-field {
+    color: var(--b3-theme-on-background);
+    background-color: var(--b3-theme-background-glass) !important;
+}
+
+.protyle-wysiwyg [data-node-id].iframe .protyle-action__drag {
+    filter: brightness(0.4);
+}

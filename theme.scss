@@ -1,0 +1,30 @@
+@use 'style/base' as *;
+
+@import 'style/root-template-colors';
+
+
+
+
+:root {
+    --b3-font-family: ui-sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", Helvetica, Arial, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+
+    --b3-font-family-code: SF Mono, SFMono-Regular, ui-monospace, Menlo, "JetBrainsMono-Regular", mononoki, Consolas, "Liberation Mono", Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+
+    --b3-font-family-graph: mononoki;
+
+    --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
+
+    --b3-font-family-math: KaTeX_Math;
+}
+
+
+body {
+    border: 0px !important;
+    -webkit-font-smoothing: auto;
+
+    /*浅色背景下选择auto，深色背景下选择antialiased*/
+    html[data-theme-mode="dark"] & {
+        -webkit-font-smoothing: antialiased;
+    }
+}
+

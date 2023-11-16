@@ -1,6 +1,169 @@
+@charset "UTF-8";
+:root {
+  /* 主色 */
+  --b3-theme-primary: rgb(52, 120, 246);
+  --b3-theme-primary-light: rgba(52, 120, 246, 0.56);
+  --b3-theme-primary-lighter: rgba(52, 120, 246, 0.38);
+  --b3-theme-primary-lightest: rgba(52, 120, 246, 0.2);
+  --b3-theme-secondary: rgb(241, 154, 55);
+  --b3-theme-background: #fff;
+  --b3-theme-background-light: rgba(255, 255, 255, 0.1);
+  --b3-theme-surface: rgb(246, 246, 246);
+  --b3-theme-surface-light: rgba(246, 246, 246, 0.5);
+  --b3-theme-error: rgb(234, 77, 60);
+  /* 文字颜色 */
+  --b3-theme-on-primary: #fff;
+  --b3-theme-on-secondary: #fff;
+  --b3-theme-on-background: rgb(38, 38, 38);
+  --b3-theme-on-surface:rgba(38, 38, 38, 0.56);
+  --b3-theme-on-surface-light: rgba(127, 127, 127, 0.68);
+  --b3-theme-on-error: #fff;
+  /* 线条 */
+  --b3-border-color: rgba(0, 0, 0, 0.1);
+  /* 滚动条 */
+  --b3-scroll-color: rgba(0, 0, 0, 0.2);
+  --b3-scroll-color-hover: rgba(0, 0, 0, 0.4);
+  /* 列表 */
+  --b3-list-hover: rgba(0, 0, 0, 0.06);
+  /* 菜单 */
+  --b3-menu-background: rgb(236, 236, 236);
+  --b3-menu-item-background-hover: rgb(41, 98, 217);
+  --b3-menu-item-background-hover-text:#fff;
+  /* 提示 */
+  --b3-tooltips-color: var(--b3-theme-background);
+  --b3-tooltips-background: var(--b3-theme-on-background);
+  /* 遮罩 */
+  --b3-mask-background: #($clr-mask-background);
+  /* 卡片背景 */
+  --b3-card-error-color: rgb(233, 49, 71);
+  --b3-card-error-background: rgba(233, 49, 71, 0.1);
+  --b3-card-warning-color: rgb(224, 172, 0);
+  --b3-card-warning-background:rgba(224, 172, 0, 0.1);
+  --b3-card-info-color: rgb(8, 109, 221);
+  --b3-card-info-background: rgba(8, 109, 221, 0.1);
+  --b3-card-success-color: rgb(8, 185, 78);
+  --b3-card-success-background: rgba(8, 185, 78, 0.1);
+  /* 自定义文字 */
+  --b3-font-color1: #000;
+  --b3-font-color2: rgb(142, 142, 147);
+  --b3-font-color3: rgb(162, 132, 94);
+  --b3-font-color4: rgb(255, 149, 0);
+  --b3-font-color5: rgb(255, 204, 0);
+  --b3-font-color6: rgb(8, 185, 78);
+  --b3-font-color7: rgb(0, 199, 190);
+  --b3-font-color8: rgb(85, 190, 240);
+  --b3-font-color9: rgb(0, 122, 255);
+  --b3-font-color10:rgb(88, 86, 214);
+  --b3-font-color11:rgb(175, 82, 222);
+  --b3-font-color12:rgb(255, 45, 85);
+  --b3-font-color13:rgb(255, 59, 48);
+  --b3-font-background1: rgba(0, 0, 0, 0.1);
+  --b3-font-background2: rgba(142, 142, 147, 0.1);
+  --b3-font-background3: rgba(162, 132, 94, 0.1);
+  --b3-font-background4: rgba(255, 149, 0, 0.1);
+  --b3-font-background5: rgba(255, 204, 0, 0.1);
+  --b3-font-background6: rgba(8, 185, 78, 0.1);
+  --b3-font-background7: rgba(0, 199, 190, 0.1);
+  --b3-font-background8: rgba(85, 190, 240, 0.1);
+  --b3-font-background9: rgba(0, 122, 255, 0.1);
+  --b3-font-background10: rgba(88, 86, 214, 0.1);
+  --b3-font-background11: rgba(175, 82, 222, 0.1);
+  --b3-font-background12: rgba(255, 45, 85, 0.1);
+  --b3-font-background13: rgba(255, 59, 48, 0.1);
+  /* 所见即所得行内元素颜色 */
+  --b3-protyle-inline-link-color: #4285f4;
+  --b3-protyle-inline-mark-background: rgb(168, 251, 172);
+}
 
-@import url(style/FormlessDark.css);
+html[data-theme-mode=dark]:root {
+  /* 主色 */
+  --b3-theme-primary: rgb(17, 139, 255);
+  --b3-theme-primary-light: rgba(17, 139, 255, 0.56);
+  --b3-theme-primary-lighter: rgba(17, 139, 255, 0.38);
+  --b3-theme-primary-lightest: rgba(17, 139, 255, 0.2);
+  --b3-theme-secondary: rgb(198, 126, 44);
+  --b3-theme-background: rgb(30, 30, 30);
+  --b3-theme-background-light: rgba(30, 30, 30, 0.1);
+  --b3-theme-surface: rgb(56, 56, 56);
+  --b3-theme-surface-light: rgba(56, 56, 56, 0.5);
+  --b3-theme-error: rgb(255, 59, 48);
+  /* 文字颜色 */
+  --b3-theme-on-primary: #fff;
+  --b3-theme-on-secondary: #fff;
+  --b3-theme-on-background: rgb(222, 222, 222);
+  --b3-theme-on-surface:rgba(222, 222, 222, 0.56);
+  --b3-theme-on-surface-light: rgba(127, 127, 127, 0.68);
+  --b3-theme-on-error: #fff;
+  /* 线条 */
+  --b3-border-color: rgba(255, 255, 255, 0.1);
+  /* 滚动条 */
+  --b3-scroll-color: rgba(255, 255, 255, 0.2);
+  --b3-scroll-color-hover: rgba(255, 255, 255, 0.4);
+  /* 列表 */
+  --b3-list-hover: rgba(255, 255, 255, 0.05);
+  /* 菜单 */
+  --b3-menu-background: rgb(50, 50, 50);
+  --b3-menu-item-background-hover: rgb(32, 80, 202);
+  --b3-menu-item-background-hover-text:#fff;
+  /* 提示 */
+  --b3-tooltips-color: var(--b3-theme-background);
+  --b3-tooltips-background: var(--b3-theme-on-background);
+  /* 遮罩 */
+  --b3-mask-background: #($clr-mask-background);
+  /* 卡片背景 */
+  --b3-card-error-color: rgb(233, 49, 71);
+  --b3-card-error-background: rgba(233, 49, 71, 0.1);
+  --b3-card-warning-color: rgb(224, 172, 0);
+  --b3-card-warning-background:rgba(224, 172, 0, 0.1);
+  --b3-card-info-color: rgb(8, 109, 221);
+  --b3-card-info-background: rgba(8, 109, 221, 0.1);
+  --b3-card-success-color: rgb(8, 185, 78);
+  --b3-card-success-background: rgba(8, 185, 78, 0.1);
+  /* 自定义文字 */
+  --b3-font-color1: #FFF;
+  --b3-font-color2: rgb(152, 152, 157);
+  --b3-font-color3: rgb(172, 142, 104);
+  --b3-font-color4: rgb(255, 159, 10);
+  --b3-font-color5: rgb(255, 214, 10);
+  --b3-font-color6: rgb(50, 215, 75);
+  --b3-font-color7: rgb(102, 212, 207);
+  --b3-font-color8: rgb(90, 200, 245);
+  --b3-font-color9: rgb(10, 132, 255);
+  --b3-font-color10:rgb(94, 92, 230);
+  --b3-font-color11:rgb(191, 90, 242);
+  --b3-font-color12:rgb(255, 55, 95);
+  --b3-font-color13:rgb(255, 69, 58);
+  --b3-font-background1: rgba(255, 255, 255, 0.1);
+  --b3-font-background2: rgba(152, 152, 157, 0.1);
+  --b3-font-background3: rgba(172, 142, 104, 0.1);
+  --b3-font-background4: rgba(255, 159, 10, 0.1);
+  --b3-font-background5: rgba(255, 214, 10, 0.1);
+  --b3-font-background6: rgba(50, 215, 75, 0.1);
+  --b3-font-background7: rgba(102, 212, 207, 0.1);
+  --b3-font-background8: rgba(90, 200, 245, 0.1);
+  --b3-font-background9: rgba(10, 132, 255, 0.1);
+  --b3-font-background10: rgba(94, 92, 230, 0.1);
+  --b3-font-background11: rgba(191, 90, 242, 0.1);
+  --b3-font-background12: rgba(255, 55, 95, 0.1);
+  --b3-font-background13: rgba(255, 69, 58, 0.1);
+  /* 所见即所得行内元素颜色 */
+  --b3-protyle-inline-link-color: #8ab4f8;
+  --b3-protyle-inline-mark-background: rgba(0, 217, 89, 0.3921568627);
+}
 
 :root {
-    --b3-theme-primary: #d23f31;
+  --b3-font-family: ui-sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", Helvetica, Arial, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+  --b3-font-family-code: SF Mono, SFMono-Regular, ui-monospace, Menlo, "JetBrainsMono-Regular", mononoki, Consolas, "Liberation Mono", Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+  --b3-font-family-graph: mononoki;
+  --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
+  --b3-font-family-math: KaTeX_Math;
+}
+
+body {
+  border: 0px !important;
+  -webkit-font-smoothing: auto;
+  /*浅色背景下选择auto，深色背景下选择antialiased*/
+}
+html[data-theme-mode=dark] body {
+  -webkit-font-smoothing: antialiased;
 }

@@ -1,0 +1,100 @@
+.dock {
+    background-color: var(--b3-dock-background);
+}
+
+.dock#dockLeft,
+.dock#dockRight {
+    width: 42px;
+    border: none;
+    padding: 8px 0;
+    background-color: transparent;
+    z-index: 4;
+    /* 高于页签栏，不然图标的tooltip会被遮挡 */
+}
+
+.dock#dockLeft {
+    box-shadow: -1px 0 0 0 inset var(--b3-border-color);
+}
+
+.dock#dockRight {
+    box-shadow: 1px 0 0 0 inset var(--b3-border-color);
+}
+
+.dock#dockLeft:has(~#layouts .layout__dockl:not(.layout--float)>.fn__flex-1:not(.fn__none)) {
+    box-shadow: none;
+}
+
+#layouts:has(.layout__dockr:not(.layout--float)>.fn__flex-1:not(.fn__none))~.dock#dockRight {
+    box-shadow: none;
+}
+
+.dock#dockLeft .dock__item {
+    color: var(--b3-dockleft-color);
+    margin: 7px 8px;
+}
+
+.dock#dockRight .dock__item {
+    color: var(--b3-dockright-color);
+    margin: 7px 8px;
+}
+
+.dock#dockLeft .dock__item--active {
+    color: var(--b3-theme-primary);
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.dock#dockRight {
+    background-color: transparent;
+}
+
+.dock#dockRight .dock__item--active {
+    color: var(--b3-theme-primary);
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.dock#dockLeft .dock__item:first-child,
+.dock#dockRight .dock__item:first-child {
+    margin-top: 0px;
+}
+
+.dock#dockLeft .dock__item:last-child,
+.dock#dockRight .dock__item:last-child {
+    margin-bottom: 0px;
+}
+
+.dock__item svg {
+    width: 14px;
+}
+
+.dock__item {
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.dock#dockLeft .dock__item:hover,
+.dock#dockRight .dock__item:hover {
+    background-color: var(--b3-block-icon-hover) !important;
+    box-shadow: none;
+    transition: all 300ms;
+}
+
+.status .toolbar__item:hover {
+    background-color: var(--b3-dock-item-hover-background) !important;
+}
+
+/*dock焦点状态*/
+.dock__item--activefocus {
+    background-color: transparent !important;
+    color: var(--b3-theme-primary) !important;
+}
+
+/* 面板展开时 */
+#dockLeft:not(.fn__none):has(~ #layouts .fn__flex-column.fn__flex-shrink.layout__dockl:not([style*="width: 0px"]):not(.layout--float)) {
+    background-color: var(--b3-theme-surface-glass);
+}
+
+#layouts:has(.fn__flex-column.layout__dockr:not([style*="width: 0px"]):not(.layout--float))~#dockRight:not(.fn__none) {
+    background-color: var(--b3-theme-surface-glass);
+}

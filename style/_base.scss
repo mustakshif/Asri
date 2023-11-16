@@ -1,0 +1,52 @@
+// functions ————————————————————
+@function rgbValue($color) {
+    @return red($color), green($color), blue($color);
+}
+
+// mixins ———————————————————————
+
+@mixin bg-blur($blur-radius, $saturate-value) {
+    backdrop-filter: blur($blur-radius) saturate($saturate-value);
+    -webkit-backdrop-filter: blur($blur-radius) saturate($saturate-value);
+}
+
+@mixin menu-shadow ($initialized: false, $shadow-clr: #000) {
+    @if $initialized {
+        box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
+    }
+
+    @else {
+        box-shadow: 0px 13px 19px -7px change-color($shadow-clr, $alpha: 0.1), 0px 30px 50px -20px change-color($shadow-clr, $alpha: 0.08), 0px 0px 10px 0px change-color($shadow-clr, $alpha: 0.05);
+    }
+}
+
+@mixin dialog-shadow ($initialized: false, $shadow-clr: #000) {
+    @if $initialized {
+        box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
+    }
+
+    @else {
+        box-shadow: 0px 13px 18px -2px change-color($shadow-clr, $alpha: 0.1), 0px 30px 50px 0px change-color($shadow-clr, $alpha: 0.1), 0px 0px 12px 0px change-color($shadow-clr, $alpha: 0.05), 0px 75px 65px -50px change-color($shadow-clr, $alpha: 0.1);
+    }
+}
+@mixin tooltip-shadow ($initialized: false, $shadow-clr:#000) {
+    @if $initialized {
+        box-shadow: 0 0 0 0 transparent;
+    } @else {
+        box-shadow: 0px 2px 6px 0px change-color($shadow-clr, $alpha: 0.1);
+    }
+}
+
+
+
+
+$toolbar-left-mac: 80px;
+$toolbar-height: 48px; // 默认为32px
+
+$border-rd-card: 20px;
+$border-rd-popover: 12px;
+$border-rd-menu: 10px;
+$border-rd-tab: 8px;
+$border-rd-default: 6px;
+
+

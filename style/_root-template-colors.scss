@@ -1,0 +1,176 @@
+
+:root{
+    @import 'palette-light';
+    /* 主色 */
+    --b3-theme-primary: #{$clr-primary};
+    --b3-theme-primary-light: #{rgba($clr-primary, 0.56)};
+    --b3-theme-primary-lighter: #{rgba($clr-primary, 0.38)};
+    --b3-theme-primary-lightest: #{rgba($clr-primary, 0.2)};
+    --b3-theme-secondary: #{$clr-secondary};
+    --b3-theme-background: #{$clr-background};
+    --b3-theme-background-light: #{rgb($clr-background,0.1)};
+    --b3-theme-surface: #{$clr-surface};
+    --b3-theme-surface-light: #{rgb($clr-surface, 0.5)};
+    --b3-theme-error: #{$clr-error};
+
+    /* 文字颜色 */
+    --b3-theme-on-primary: #{$clr-on-primary};
+    --b3-theme-on-secondary: #{$clr-on-secondary};
+    --b3-theme-on-background: #{$clr-on-background};
+    --b3-theme-on-surface:#{rgb($clr-on-background, 0.56)};
+    --b3-theme-on-surface-light: #{rgb($clr-on-surface-gray, 0.68)};
+    --b3-theme-on-error: #{$clr-on-primary};
+
+    /* 线条 */
+    --b3-border-color: #{$clr-border};
+
+    /* 滚动条 */
+    --b3-scroll-color: #{$clr-scroll};
+    --b3-scroll-color-hover: #{change-color($clr-scroll, $alpha:0.4)};
+
+    /* 列表 */
+    --b3-list-hover: #{$clr-list-hover};
+
+    /* 菜单 */
+    --b3-menu-background: #{$clr-menu-background};
+    --b3-menu-item-background-hover: #{$clr-menu-item-hv-background};
+    --b3-menu-item-background-hover-text:#{$clr-menu-item-hv-on-background};
+
+    /* 提示 */
+    --b3-tooltips-color: var(--b3-theme-background);
+    --b3-tooltips-background: var(--b3-theme-on-background);
+
+    /* 遮罩 */
+    --b3-mask-background: #($clr-mask-background);
+
+    /* 卡片背景 */
+    --b3-card-error-color: #{$clr-card-error};
+    --b3-card-error-background: #{$clr-card-error-background};
+    --b3-card-warning-color: #{$clr-card-warning};
+    --b3-card-warning-background:#{$clr-card-warning-background};
+    --b3-card-info-color: #{$clr-card-info};
+    --b3-card-info-background: #{$clr-card-info-background};
+    --b3-card-success-color: #{$clr-card-success};
+    --b3-card-success-background: #{$clr-card-success-background};
+
+    /* 自定义文字 */
+    --b3-font-color1: #{$font-color1};
+    --b3-font-color2: #{$font-color2};
+    --b3-font-color3: #{$font-color3};
+    --b3-font-color4: #{$font-color4};
+    --b3-font-color5: #{$font-color5};
+    --b3-font-color6: #{$font-color6};
+    --b3-font-color7: #{$font-color7};
+    --b3-font-color8: #{$font-color8};
+    --b3-font-color9: #{$font-color9};
+    --b3-font-color10:#{$font-color10};
+    --b3-font-color11:#{$font-color11};
+    --b3-font-color12:#{$font-color12};
+    --b3-font-color13:#{$font-color13};
+
+    --b3-font-background1: #{change-color($font-color1, $alpha: 0.1)};
+    --b3-font-background2: #{change-color($font-color2, $alpha: 0.1)};
+    --b3-font-background3: #{change-color($font-color3, $alpha: 0.1)};
+    --b3-font-background4: #{change-color($font-color4, $alpha: 0.1)};
+    --b3-font-background5: #{change-color($font-color5, $alpha: 0.1)};
+    --b3-font-background6: #{change-color($font-color6, $alpha: 0.1)};
+    --b3-font-background7: #{change-color($font-color7, $alpha: 0.1)};
+    --b3-font-background8: #{change-color($font-color8, $alpha: 0.1)};
+    --b3-font-background9: #{change-color($font-color9, $alpha: 0.1)};
+    --b3-font-background10: #{change-color($font-color10, $alpha: 0.1)};
+    --b3-font-background11: #{change-color($font-color11, $alpha: 0.1)};
+    --b3-font-background12: #{change-color($font-color12, $alpha: 0.1)};
+    --b3-font-background13: #{change-color($font-color13, $alpha: 0.1)};
+
+    /* 所见即所得行内元素颜色 */
+    --b3-protyle-inline-link-color: #{$inline-link-color};
+    --b3-protyle-inline-mark-background: #{$inline-mark-background};
+}
+
+html[data-theme-mode="dark"]:root{
+    @import 'palette-dark';
+    /* 主色 */
+    --b3-theme-primary: #{$clr-primary};
+    --b3-theme-primary-light: #{rgba($clr-primary, 0.56)};
+    --b3-theme-primary-lighter: #{rgba($clr-primary, 0.38)};
+    --b3-theme-primary-lightest: #{rgba($clr-primary, 0.2)};
+    --b3-theme-secondary: #{$clr-secondary};
+    --b3-theme-background: #{$clr-background};
+    --b3-theme-background-light: #{rgb($clr-background,0.1)};
+    --b3-theme-surface: #{$clr-surface};
+    --b3-theme-surface-light: #{rgb($clr-surface, 0.5)};
+    --b3-theme-error: #{$clr-error};
+
+    /* 文字颜色 */
+    --b3-theme-on-primary: #{$clr-on-primary};
+    --b3-theme-on-secondary: #{$clr-on-secondary};
+    --b3-theme-on-background: #{$clr-on-background};
+    --b3-theme-on-surface:#{rgb($clr-on-background, 0.56)};
+    --b3-theme-on-surface-light: #{rgb($clr-on-surface-gray, 0.68)};
+    --b3-theme-on-error: #{$clr-on-primary};
+
+    /* 线条 */
+    --b3-border-color: #{$clr-border};
+
+    /* 滚动条 */
+    --b3-scroll-color: #{$clr-scroll};
+    --b3-scroll-color-hover: #{change-color($clr-scroll, $alpha:0.4)};
+
+    /* 列表 */
+    --b3-list-hover: #{$clr-list-hover};
+
+    /* 菜单 */
+    --b3-menu-background: #{$clr-menu-background};
+    --b3-menu-item-background-hover: #{$clr-menu-item-hv-background};
+    --b3-menu-item-background-hover-text:#{$clr-menu-item-hv-on-background};
+
+    /* 提示 */
+    --b3-tooltips-color: var(--b3-theme-background);
+    --b3-tooltips-background: var(--b3-theme-on-background);
+
+    /* 遮罩 */
+    --b3-mask-background: #($clr-mask-background);
+
+    /* 卡片背景 */
+    --b3-card-error-color: #{$clr-card-error};
+    --b3-card-error-background: #{$clr-card-error-background};
+    --b3-card-warning-color: #{$clr-card-warning};
+    --b3-card-warning-background:#{$clr-card-warning-background};
+    --b3-card-info-color: #{$clr-card-info};
+    --b3-card-info-background: #{$clr-card-info-background};
+    --b3-card-success-color: #{$clr-card-success};
+    --b3-card-success-background: #{$clr-card-success-background};
+
+    /* 自定义文字 */
+    --b3-font-color1: #{$font-color1};
+    --b3-font-color2: #{$font-color2};
+    --b3-font-color3: #{$font-color3};
+    --b3-font-color4: #{$font-color4};
+    --b3-font-color5: #{$font-color5};
+    --b3-font-color6: #{$font-color6};
+    --b3-font-color7: #{$font-color7};
+    --b3-font-color8: #{$font-color8};
+    --b3-font-color9: #{$font-color9};
+    --b3-font-color10:#{$font-color10};
+    --b3-font-color11:#{$font-color11};
+    --b3-font-color12:#{$font-color12};
+    --b3-font-color13:#{$font-color13};
+
+    --b3-font-background1: #{change-color($font-color1, $alpha: 0.1)};
+    --b3-font-background2: #{change-color($font-color2, $alpha: 0.1)};
+    --b3-font-background3: #{change-color($font-color3, $alpha: 0.1)};
+    --b3-font-background4: #{change-color($font-color4, $alpha: 0.1)};
+    --b3-font-background5: #{change-color($font-color5, $alpha: 0.1)};
+    --b3-font-background6: #{change-color($font-color6, $alpha: 0.1)};
+    --b3-font-background7: #{change-color($font-color7, $alpha: 0.1)};
+    --b3-font-background8: #{change-color($font-color8, $alpha: 0.1)};
+    --b3-font-background9: #{change-color($font-color9, $alpha: 0.1)};
+    --b3-font-background10: #{change-color($font-color10, $alpha: 0.1)};
+    --b3-font-background11: #{change-color($font-color11, $alpha: 0.1)};
+    --b3-font-background12: #{change-color($font-color12, $alpha: 0.1)};
+    --b3-font-background13: #{change-color($font-color13, $alpha: 0.1)};
+
+    /* 所见即所得行内元素颜色 */
+    --b3-protyle-inline-link-color: #{$inline-link-color};
+    --b3-protyle-inline-mark-background: #{$inline-mark-background};
+}
