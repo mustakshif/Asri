@@ -1,0 +1,31 @@
+@use '../base' as *;
+
+.dock {
+    box-sizing: border-box;
+    @include theme-variant-color(background-color, $theme-light, background, 0.9);
+    @include darkmode-counterpart {
+        @include theme-variant-color(background-color, $theme-dark, background, 0.9);
+    }
+
+    .dock__item {
+        @include theme-icons($theme-light, 0.6);
+        @include darkmode-counterpart {
+            @include theme-icons($theme-dark, 0.6);
+        }
+
+        &--activefocus,
+        &--active {
+            color: var(--b3-theme-primary) !important;
+            background-color: transparent !important;
+        }
+    }
+}
+
+#dockLeft:has(+ #layouts .layout__dockl:not(.layout--float)>.fn__flex-1:not(.fn__none)),
+#layouts:has(.layout__dockr:not(.layout--float)> .fn__flex-1:not(.fn__none))~#dockRight {
+    border-color: transparent;
+    @include layout__dock-bg($theme-light);
+    @include darkmode-counterpart {
+        @include layout__dock-bg($theme-dark);
+    }
+}

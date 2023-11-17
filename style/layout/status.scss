@@ -1,0 +1,125 @@
+#status {
+    position: fixed;
+    background-color: var(--b3-theme-surface);
+    right: 48px;
+    bottom: -4px;
+    border-radius: 20px;
+    height: 26px;
+    border: 0;
+    padding: 0 26px 0 0;
+    margin: 0 0 12px 0;
+
+    .body--window & {
+        right: -22px;
+        bottom: -12px;
+        border-radius: 10px 0 0 0;
+        border-top: 1px solid var(--b3-border-color);
+        border-left: 1px solid var(--b3-border-color);
+        border-bottom: none;
+        border-right: none;
+    }
+    .fn__flex-1:has(#dockRight.fn__none)~& {
+        right: 6px;
+    }
+    #dockBottom:not(.fn__none)+& {
+        background-color: transparent;
+    }
+
+    .toolbar__item {
+        height: 26px;
+
+        span {
+            margin: 3px;
+            font-size: 12px;
+        }
+
+        &:not(.toolbar__item--close) {
+            margin: 3px !important;
+            padding: 3px;
+            background-color: rgb(0, 0, 0, 0);
+        }
+
+        svg {
+            padding: 3px 4px;
+            color: var(--b3-dockright-color);
+            width: 12px;
+        }
+    }
+
+    &>.fn__flex-1 {
+        position: relative !important;
+        width: 0px !important;
+        right: 0px;
+        flex: 0;
+    }
+
+    #barDock {
+        position: absolute;
+        right: 0px;
+        z-index: 8;
+        color: var(--b3-theme-on-background);
+
+        &::before {
+            right: unset !important;
+            left: 0px;
+            transform: rotateY(180deg);
+        }
+
+        &::after {
+            left: unset !important;
+            right: 100%;
+        }
+
+        svg {
+            color: var(--b3-theme-on-background);
+        }
+    }
+
+    .status__msg:not(:empty) {
+        animation: statusmsg 5s ease-in-out;
+        max-width: 140px;
+        padding: 0px 8px;
+        border-radius: 5px;
+        margin: 0px;
+        transition: max-width 300ms, opacity 300ms;
+        transition-delay: 2000ms;
+        position: relative;
+        height: 26px;
+        line-height: 26px;
+
+        &::before {
+            content: "";
+            font-size: 12px;
+            padding-right: 6px;
+        }
+
+        &:hover {
+            max-width: 400px;
+            transition: max-width 300ms ease-out;
+        }
+    }
+
+    .status__backgroundtask {
+        margin: 0px 0px 7px 0px;
+        padding: 0px 0px 0px 8px;
+        border-radius: 5px;
+        height: 26px;
+        line-height: 26px;
+    }
+
+    .status__counter:not(:empty) {
+        border-radius: 5px;
+        padding: 0px 0px 0 8px;
+        margin: 0px 2px 0px 0px;
+        height: 26px;
+        line-height: 26px;
+    }
+
+    #statusHelp {
+        position: relative;
+
+        svg {
+            color: var(--b3-theme-on-background);
+        }
+    }
+}

@@ -1,0 +1,9 @@
+
+.counter {
+    font-family: var(--b3-font-family-code);
+    margin-left: 0;
+    &:hover {
+        background-color: transparent !important;
+        font-weight: bold;
+    }
+}
