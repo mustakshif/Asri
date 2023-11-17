@@ -1,3 +1,13 @@
 #toolbar {
   height: 48px;
+  z-index: 99;
+}
+#toolbar #barWorkspace {
+  background-color: var(--b3-theme-primary);
+  color: var(--b3-theme-on-primary);
+  font-weight: 600;
+}
+#toolbar #barWorkspace .toolbar__text {
+  font-size: 14px;
+  line-height: 13.5px;
 }

@@ -1,5 +1,9 @@
 @use 'style/base' as *;
 
+@import url(style/plugins/fold-list-preview.css);
+@import url(style/plugins/webview.css);
+// @import url(style/customizable/hide-toolbar.css);
+
 html[data-theme-mode="light"]:root{
     @include theme-root($theme-light);
 }
@@ -33,7 +37,7 @@ body {
 @import 'style/layout/shrink';
 @import 'style/layout/dock';
 @import 'style/layout/toolbar';
-
+@import 'style/layout/editor';
 //components
 @import 'style/components/counter';
 

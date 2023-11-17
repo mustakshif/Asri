@@ -11,17 +11,26 @@ html[data-theme-mode=dark] .dock {
 html[data-theme-mode=dark] .dock .dock__item {
   color: rgba(222, 222, 222, 0.6);
 }
+.dock .dock__item:not(.dock__item--activefocus, .dock--active):hover {
+  color: var(--b3-theme-on-background);
+}
 .dock .dock__item--activefocus, .dock .dock__item--active {
   color: var(--b3-theme-primary) !important;
   background-color: transparent !important;
 }
+.dock#dockLeft {
+  border-right-width: 1px;
+}
+.dock#dockRight {
+  border-left-width: 1px;
+}
 
 #dockLeft:has(+ #layouts .layout__dockl:not(.layout--float) > .fn__flex-1:not(.fn__none)),
-#layouts:has(.layout__dockr:not(.layout--float) > .fn__flex-1:not(.fn__none)) ~ #dockRight {
+#layouts:has(.layout__dockr:not(.layout--float, [style="width: 0px;"]) > .fn__flex-1:first-child:not(.fn__none)) ~ #dockRight {
   border-color: transparent;
   background-color: rgba(246, 246, 246, 0.9);
 }
 html[data-theme-mode=dark] #dockLeft:has(+ #layouts .layout__dockl:not(.layout--float) > .fn__flex-1:not(.fn__none)),
-html[data-theme-mode=dark] #layouts:has(.layout__dockr:not(.layout--float) > .fn__flex-1:not(.fn__none)) ~ #dockRight {
+html[data-theme-mode=dark] #layouts:has(.layout__dockr:not(.layout--float, [style="width: 0px;"]) > .fn__flex-1:first-child:not(.fn__none)) ~ #dockRight {
   background-color: rgba(56, 56, 56, 0.9);
 }

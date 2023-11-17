@@ -1,5 +1,104 @@
 @use '../base' as *;
 
+@mixin layout-tab-container-contents {
+    .block__icons {
+        .block__logo {
+            svg {
+                visibility: hidden;
+                width: 0px;
+            }
+
+            font-weight: 600;
+
+            @include layout__dock-title($theme-light);
+
+            @include darkmode-counterpart {
+                @include layout__dock-title($theme-dark);
+            }
+        }
+
+        .block__icon {
+            &:hover {
+                background-color: transparent;
+            }
+        }
+
+        .fn__space {
+            width: 0;
+        }
+
+        &,
+        &~* {
+            @content; 
+            // 指定背景颜色
+        }
+
+        &~.fn__flex-1 {
+            margin-bottom: 0 !important;
+        }
+    }
+    .b3-list-item {
+        margin: 4px 8px;
+
+        .b3-list-item__text {
+            color: var(--b3-theme-on-surface);
+        }
+
+        .b3-list-item__toggle {
+            @include theme-icons($theme-light, $opacity: 0.6);
+
+            @include darkmode-counterpart {
+                @include theme-icons($theme-dark, $opacity: 0.6);
+            }
+
+            &--hl:hover {
+                color: var(--b3-theme-on-background) !important;
+                background-color: transparent;
+            }
+        }
+
+        &:hover {
+            background-color: transparent;
+
+            .b3-list-item__text {
+                color: var(--b3-theme-on-background);
+            }
+        }
+
+        &--focus {
+            background-color: var(--b3-list-hover);
+
+            .b3-list-item__text {
+                color: var(--b3-theme-on-background);
+                font-weight: 600;
+            }
+
+            &:hover {
+                background-color: var(--b3-list-hover);
+            }
+        }
+
+        .b3-list-item__icon {
+            font-size: 14px;
+        }
+
+        .b3-list-item__action {
+            color: var(--b3-theme-on-surface);
+
+            &:hover {
+                color: var(--b3-theme-on-background);
+                background-color: transparent;
+            }
+        }
+    }
+
+    .sy__outline {
+        .b3-list-item[title] {
+            display: none;
+        }
+    }
+}
+
 .layout__dockl,
 .layout__dockr {
     min-height: 90%;
@@ -7,84 +106,23 @@
     .layout-tab-container {
         background-color: transparent;
 
-        .block__icons {
-            .block__logo {
-                svg {
-                    visibility: hidden;
-                    width: 0px;
-                }
-
-                font-weight: 600;
-
-                @include layout__dock-title($theme-light);
-
-                @include darkmode-counterpart {
-                    @include layout__dock-title($theme-dark);
-                }
+        @include layout-tab-container-contents{
+            @include layout__dock-bg($theme-light);
+            @include darkmode-counterpart {
+                @include layout__dock-bg($theme-dark);
             }
-
-            .block__icon {
-                &:hover {
-                    background-color: transparent;
-                }
-            }
-
-            .fn__space {
-                width: 0;
-            }
-
-            &,
-            &~* {
-                @include layout__dock-bg($theme-light);
-
-                @include darkmode-counterpart {
-                    @include layout__dock-bg($theme-dark);
-                }
-            }
-
-            &~.fn__flex-1 {
-                margin-bottom: 0 !important;
-            }
-        }
-
-        .b3-list-item {
-            margin: 4px 8px;
-
-            .b3-list-item__text {
-                color: var(--b3-theme-on-surface);
-            }
-
-            &:hover {
-                background-color: transparent;
-
-                .b3-list-item__text {
-                    color: var(--b3-theme-on-background);
-                }
-            }
-
-            &--focus {
-                background-color: var(--b3-list-hover);
-                .b3-list-item__text {
-                    color: var(--b3-theme-on-background);
-                }
-
-                &:hover {
-                    background-color: var(--b3-list-hover);
-                }
-            }
-
-            &__action {
-                &:hover {
-                    background-color: transparent;
-                }
-            }
-        }
-
-        .sy__outline {
-            .b3-list-item[title] {
-                display: none;
-            }
-        }
+        }    
     }
 }
 
+.layout__dockr {
+    .b3-list--background {
+        padding-bottom: 36px;
+    }
+}
+
+.layout__center {
+    @include layout-tab-container-contents {
+        background-color: var(--b3-theme-background);
+    }
+}

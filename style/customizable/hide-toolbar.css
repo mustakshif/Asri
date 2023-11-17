@@ -1,0 +1,34 @@
+.toolbar {
+  opacity: 0;
+  transform: translateY(-38px);
+}
+.toolbar :has(#drag:hover) {
+  transition-delay: 0s;
+}
+.toolbar #drag {
+  height: 0px;
+  padding: 0;
+  transition: all 200s 0ms;
+}
+.toolbar:hover #drag {
+  height: var(--toolbar-height);
+  padding: calc(var(--toolbar-height) - 40px) 0 0 0;
+  transition: all 0s 600ms;
+}
+
+.toolbar:hover {
+  opacity: 1;
+  transform: none;
+}
+
+.toolbar {
+  height: var(48px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: opacity 300ms, transform 300ms;
+  transition-delay: 300ms;
+}
+.toolbar:hover {
+  transition: opacity 200ms 100ms, transform 300ms 100ms;
+}

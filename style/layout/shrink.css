@@ -50,6 +50,19 @@ html[data-theme-mode=dark] .layout__dockr .layout-tab-container .block__icons ~ 
 .layout__dockr .layout-tab-container .b3-list-item .b3-list-item__text {
   color: var(--b3-theme-on-surface);
 }
+.layout__dockl .layout-tab-container .b3-list-item .b3-list-item__toggle,
+.layout__dockr .layout-tab-container .b3-list-item .b3-list-item__toggle {
+  color: rgba(38, 38, 38, 0.6);
+}
+html[data-theme-mode=dark] .layout__dockl .layout-tab-container .b3-list-item .b3-list-item__toggle,
+html[data-theme-mode=dark] .layout__dockr .layout-tab-container .b3-list-item .b3-list-item__toggle {
+  color: rgba(222, 222, 222, 0.6);
+}
+.layout__dockl .layout-tab-container .b3-list-item .b3-list-item__toggle--hl:hover,
+.layout__dockr .layout-tab-container .b3-list-item .b3-list-item__toggle--hl:hover {
+  color: var(--b3-theme-on-background) !important;
+  background-color: transparent;
+}
 .layout__dockl .layout-tab-container .b3-list-item:hover,
 .layout__dockr .layout-tab-container .b3-list-item:hover {
   background-color: transparent;
@@ -65,16 +78,99 @@ html[data-theme-mode=dark] .layout__dockr .layout-tab-container .block__icons ~ 
 .layout__dockl .layout-tab-container .b3-list-item--focus .b3-list-item__text,
 .layout__dockr .layout-tab-container .b3-list-item--focus .b3-list-item__text {
   color: var(--b3-theme-on-background);
+  font-weight: 600;
 }
 .layout__dockl .layout-tab-container .b3-list-item--focus:hover,
 .layout__dockr .layout-tab-container .b3-list-item--focus:hover {
   background-color: var(--b3-list-hover);
 }
-.layout__dockl .layout-tab-container .b3-list-item__action:hover,
-.layout__dockr .layout-tab-container .b3-list-item__action:hover {
+.layout__dockl .layout-tab-container .b3-list-item .b3-list-item__icon,
+.layout__dockr .layout-tab-container .b3-list-item .b3-list-item__icon {
+  font-size: 14px;
+}
+.layout__dockl .layout-tab-container .b3-list-item .b3-list-item__action,
+.layout__dockr .layout-tab-container .b3-list-item .b3-list-item__action {
+  color: var(--b3-theme-on-surface);
+}
+.layout__dockl .layout-tab-container .b3-list-item .b3-list-item__action:hover,
+.layout__dockr .layout-tab-container .b3-list-item .b3-list-item__action:hover {
+  color: var(--b3-theme-on-background);
   background-color: transparent;
 }
 .layout__dockl .layout-tab-container .sy__outline .b3-list-item[title],
 .layout__dockr .layout-tab-container .sy__outline .b3-list-item[title] {
+  display: none;
+}
+
+.layout__dockr .b3-list--background {
+  padding-bottom: 36px;
+}
+
+.layout__center .block__icons .block__logo {
+  font-weight: 600;
+  color: rgba(38, 38, 38, 0.5);
+}
+.layout__center .block__icons .block__logo svg {
+  visibility: hidden;
+  width: 0px;
+}
+html[data-theme-mode=dark] .layout__center .block__icons .block__logo {
+  color: rgba(222, 222, 222, 0.5);
+}
+.layout__center .block__icons .block__icon:hover {
+  background-color: transparent;
+}
+.layout__center .block__icons .fn__space {
+  width: 0;
+}
+.layout__center .block__icons, .layout__center .block__icons ~ * {
+  background-color: var(--b3-theme-background);
+}
+.layout__center .block__icons ~ .fn__flex-1 {
+  margin-bottom: 0 !important;
+}
+.layout__center .b3-list-item {
+  margin: 4px 8px;
+}
+.layout__center .b3-list-item .b3-list-item__text {
+  color: var(--b3-theme-on-surface);
+}
+.layout__center .b3-list-item .b3-list-item__toggle {
+  color: rgba(38, 38, 38, 0.6);
+}
+html[data-theme-mode=dark] .layout__center .b3-list-item .b3-list-item__toggle {
+  color: rgba(222, 222, 222, 0.6);
+}
+.layout__center .b3-list-item .b3-list-item__toggle--hl:hover {
+  color: var(--b3-theme-on-background) !important;
+  background-color: transparent;
+}
+.layout__center .b3-list-item:hover {
+  background-color: transparent;
+}
+.layout__center .b3-list-item:hover .b3-list-item__text {
+  color: var(--b3-theme-on-background);
+}
+.layout__center .b3-list-item--focus {
+  background-color: var(--b3-list-hover);
+}
+.layout__center .b3-list-item--focus .b3-list-item__text {
+  color: var(--b3-theme-on-background);
+  font-weight: 600;
+}
+.layout__center .b3-list-item--focus:hover {
+  background-color: var(--b3-list-hover);
+}
+.layout__center .b3-list-item .b3-list-item__icon {
+  font-size: 14px;
+}
+.layout__center .b3-list-item .b3-list-item__action {
+  color: var(--b3-theme-on-surface);
+}
+.layout__center .b3-list-item .b3-list-item__action:hover {
+  color: var(--b3-theme-on-background);
+  background-color: transparent;
+}
+.layout__center .sy__outline .b3-list-item[title] {
   display: none;
 }

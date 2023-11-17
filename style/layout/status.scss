@@ -8,6 +8,7 @@
     border: 0;
     padding: 0 26px 0 0;
     margin: 0 0 12px 0;
+    border: 1px solid var(--b3-border-color);
 
     .body--window & {
         right: -22px;
@@ -71,12 +72,15 @@
         }
 
         svg {
-            color: var(--b3-theme-on-background);
+            color: var(--b3-theme-on-surface);
+            &:hover {
+                color: var(--b3-theme-on-background);
+            }
         }
     }
 
     .status__msg:not(:empty) {
-        animation: statusmsg 5s ease-in-out;
+        // animation: statusmsg 5s ease-in-out;
         max-width: 140px;
         padding: 0px 8px;
         border-radius: 5px;
@@ -119,7 +123,10 @@
         position: relative;
 
         svg {
-            color: var(--b3-theme-on-background);
+            color: var(--b3-theme-on-surface);
+            &:hover {
+                color: var(--b3-theme-on-background);
+            }
         }
     }
 }

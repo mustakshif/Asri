@@ -1,0 +1,44 @@
+@use '../base' as *;
+
+%toolbarHidden {
+    opacity: 0;
+    transform: translateY($toolbar-height * -1 + 10px);
+
+    :has(#drag:hover) {
+        transition-delay: 0s;
+    }
+
+    #drag {
+        height: 0px;
+        padding: 0;
+        transition: all 200s 0ms;
+        // delay设为0可防止在页签上方呼出顶栏
+    }
+
+    &:hover #drag{
+        height: var(--toolbar-height);
+        padding: calc(var(--toolbar-height) - 40px) 0 0 0;
+        transition: all 0s 600ms; 
+        // delay设大一点，超过所有动画时长，可防止在页签上方呼出顶栏
+    }
+}
+
+%toolbarShown {
+    opacity: 1;
+    transform: none;
+}
+
+.toolbar {
+    height: var($toolbar-height);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: opacity 300ms, transform 300ms;
+    transition-delay: 300ms;
+    @extend %toolbarHidden;
+
+    &:hover {
+        transition: opacity 200ms 100ms, transform 300ms 100ms;
+        @extend %toolbarShown;
+    }
+}

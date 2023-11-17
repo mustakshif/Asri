@@ -8,6 +8,7 @@
   border: 0;
   padding: 0 26px 0 0;
   margin: 0 0 12px 0;
+  border: 1px solid var(--b3-border-color);
 }
 .body--window #status {
   right: -22px;
@@ -63,10 +64,12 @@
   right: 100%;
 }
 #status #barDock svg {
+  color: var(--b3-theme-on-surface);
+}
+#status #barDock svg:hover {
   color: var(--b3-theme-on-background);
 }
 #status .status__msg:not(:empty) {
-  animation: statusmsg 5s ease-in-out;
   max-width: 140px;
   padding: 0px 8px;
   border-radius: 5px;
@@ -104,5 +107,8 @@
   position: relative;
 }
 #status #statusHelp svg {
+  color: var(--b3-theme-on-surface);
+}
+#status #statusHelp svg:hover {
   color: var(--b3-theme-on-background);
 }

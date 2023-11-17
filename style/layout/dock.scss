@@ -12,6 +12,9 @@
         @include darkmode-counterpart {
             @include theme-icons($theme-dark, 0.6);
         }
+        &:not(.dock__item--activefocus,.dock--active):hover {
+            color: var(--b3-theme-on-background);
+        }
 
         &--activefocus,
         &--active {
@@ -19,10 +22,17 @@
             background-color: transparent !important;
         }
     }
+    &#dockLeft {
+        border-right-width: 1px;
+    }
+    
+    &#dockRight {
+        border-left-width: 1px;
+    }
 }
 
 #dockLeft:has(+ #layouts .layout__dockl:not(.layout--float)>.fn__flex-1:not(.fn__none)),
-#layouts:has(.layout__dockr:not(.layout--float)> .fn__flex-1:not(.fn__none))~#dockRight {
+#layouts:has(.layout__dockr:not(.layout--float, [style="width: 0px;"])> .fn__flex-1:first-child:not(.fn__none))~#dockRight {
     border-color: transparent;
     @include layout__dock-bg($theme-light);
     @include darkmode-counterpart {
