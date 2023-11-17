@@ -22,6 +22,7 @@
 }
 
 .toolbar {
+  background-color: var(--b3-theme-background);
   height: var(48px);
   position: fixed;
   top: 0;

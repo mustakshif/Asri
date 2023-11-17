@@ -29,12 +29,14 @@
 }
 
 .toolbar {
+    background-color: var(--b3-theme-background);
     height: var($toolbar-height);
     position: fixed;
     top: 0;
     width: 100%;
     transition: opacity 300ms, transform 300ms;
     transition-delay: 300ms;
+    z-index: 3;
     @extend %toolbarHidden;
 
     &:hover {
