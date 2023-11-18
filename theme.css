@@ -20,7 +20,7 @@ html[data-theme-mode=light]:root {
   --b3-theme-on-surface-light: rgba(127, 127, 127, 0.68);
   --b3-theme-on-error: #fff;
   /* 线条 */
-  --b3-border-color: hsl(0, 0%, 80%);
+  --b3-border-color: hsl(0, 0%, 90%);
   /* 滚动条 */
   --b3-scroll-color: rgba(0, 0, 0, 0.2);
   --b3-scroll-color-hover: rgba(0, 0, 0, 0.4);
@@ -499,7 +499,6 @@ html[data-theme-mode=dark] #layouts:has(.layout__dockr:not(.layout--float, [styl
 
 #toolbar {
   height: 48px;
-  z-index: 99;
 }
 #toolbar #barWorkspace {
   background-color: var(--b3-theme-primary);
@@ -507,8 +506,20 @@ html[data-theme-mode=dark] #layouts:has(.layout__dockr:not(.layout--float, [styl
   font-weight: 600;
 }
 #toolbar #barWorkspace .toolbar__text {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 13.5px;
+}
+
+.layout__resize::after {
+  height: 1px;
+  width: 100%;
+}
+.layout__resize--lr::after {
+  height: 100%;
+  width: 1px;
+}
+.layout__resize--lr:hover::after {
+  background-color: var(--b3-theme-primary-light);
 }
 
 .counter {
@@ -518,4 +529,13 @@ html[data-theme-mode=dark] #layouts:has(.layout__dockr:not(.layout--float, [styl
 .counter:hover {
   background-color: transparent !important;
   font-weight: bold;
+}
+
+div.test {
+  -webkit-backdrop-filter: blur(40px) saturate(3px) brightness(1.07);
+          backdrop-filter: blur(40px) saturate(3px) brightness(1.07);
+}
+html[data-theme-mode=dark] div.test {
+  -webkit-backdrop-filter: blur(40px) saturate(3px) brightness(0.93);
+          backdrop-filter: blur(40px) saturate(3px) brightness(0.93);
 }

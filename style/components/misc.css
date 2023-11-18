@@ -1,0 +1,20 @@
+.layout__resize::after {
+  height: 1px;
+  width: 100%;
+}
+.layout__resize--lr::after {
+  height: 100%;
+  width: 1px;
+}
+.layout__resize--lr:hover::after {
+  background-color: var(--b3-theme-primary-light);
+}
+
+.counter {
+  font-family: var(--b3-font-family-code);
+  margin-left: 0;
+}
+.counter:hover {
+  background-color: transparent !important;
+  font-weight: bold;
+}

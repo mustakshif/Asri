@@ -1,15 +1,13 @@
 @use 'style/base' as *;
 
-@import url(style/plugins/fold-list-preview.css);
-@import url(style/plugins/webview.css);
 // @import url(style/customizable/hide-toolbar.css);
-
 html[data-theme-mode="light"]:root{
     @include theme-root($theme-light);
 }
 html[data-theme-mode="dark"]:root{
     @include theme-root($theme-dark);
 }
+
 :root {
     --b3-font-family: ui-sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", Helvetica, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
 
@@ -22,7 +20,7 @@ html[data-theme-mode="dark"]:root{
     --b3-font-family-math: KaTeX_Math;
 
     --b3-toolbar-left-mac: #{$toolbar-left-mac};
-}
+} // 字体家族
 
 body {
     border: 0px !important;
@@ -39,6 +37,14 @@ body {
 @import 'style/layout/toolbar';
 @import 'style/layout/editor';
 //components
-@import 'style/components/counter';
+@import 'style/components/misc';
 
 // customizable
+
+// plugins
+@import url(style/plugins/fold-list-preview.css);
+@import url(style/plugins/webview.css);
+
+div.test {
+    @include bg-blur;
+}

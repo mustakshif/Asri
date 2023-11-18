@@ -1,6 +1,5 @@
 #toolbar {
   height: 48px;
-  z-index: 99;
 }
 #toolbar #barWorkspace {
   background-color: var(--b3-theme-primary);
@@ -8,6 +7,6 @@
   font-weight: 600;
 }
 #toolbar #barWorkspace .toolbar__text {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 13.5px;
 }

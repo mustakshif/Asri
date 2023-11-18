@@ -1,0 +1,28 @@
+@use '../base' as *;
+
+// resizer
+.layout__resize {
+    &::after {
+        height: 1px;
+        width: 100%;
+    }
+    &--lr {
+        &::after {
+            height: 100%;
+            width: 1px;
+        }
+        &:hover::after {
+            background-color: var(--b3-theme-primary-light);
+        }
+    }
+}
+
+//计数器
+.counter {
+    font-family: var(--b3-font-family-code);
+    margin-left: 0;
+    &:hover {
+        background-color: transparent !important;
+        font-weight: bold;
+    }
+}

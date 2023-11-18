@@ -4,9 +4,11 @@
 }
 
 // common mixins ———————————————————————
-@mixin bg-blur($blur-radius, $saturate-value) {
-    backdrop-filter: blur($blur-radius) saturate($saturate-value);
-    -webkit-backdrop-filter: blur($blur-radius) saturate($saturate-value);
+@mixin bg-blur($blur-radius:40px, $saturate-value:3px, $brightness:1.07) {
+    backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness);
+    html[data-theme-mode="dark"] & {
+        backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness(2 - $brightness);
+    }
 }
 
 @mixin menu-shadow ($shadow-clr: #000, $initialized: false) {
@@ -50,7 +52,7 @@ $theme-light: (
     on-secondary: on-primary,
     on-background: rgb(38, 38, 38),
     on-surface-gray: rgb(127, 127, 127),
-    border: hsl(0, 0, 80%),
+    border: hsl(0, 0%, 90%),
     scroll: rgba(0, 0, 0, 0.2),
     list-hover: rgba(0, 0, 0, 0.06),
     menu-background: rgb(236, 236, 236),
