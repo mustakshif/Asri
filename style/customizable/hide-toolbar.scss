@@ -2,7 +2,7 @@
 
 %toolbarHidden {
     opacity: 0;
-    transform: translateY($toolbar-height * -1 + 10px);
+    transform: translateY(calc(var(--toolbar-height) * -1 + 10px));
 
     :has(#drag:hover) {
         transition-delay: 0s;
@@ -30,7 +30,7 @@
 
 .toolbar {
     background-color: var(--b3-theme-background);
-    height: var($toolbar-height);
+    height: var(--toolbar-height);
     position: fixed;
     top: 0;
     width: 100%;

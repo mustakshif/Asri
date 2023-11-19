@@ -4,40 +4,111 @@
 }
 
 // common mixins ———————————————————————
-@mixin bg-blur($blur-radius:40px, $saturate-value:3px, $brightness:1.07) {
+@mixin font-family {
+    --b3-font-family: ui-sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", Helvetica, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+
+    --b3-font-family-code: SF Mono, SFMono-Regular, ui-monospace, Menlo, "JetBrainsMono-Regular", mononoki, Consolas, "Liberation Mono", Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+
+    --b3-font-family-graph: mononoki;
+
+    --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
+
+    --b3-font-family-math: KaTeX_Math;
+}
+
+@mixin cssvars {
+    --b3-toolbar-left-mac: 80px;
+    --toolbar-height: 48px;
+}
+
+@mixin bg-blur($blur-radius: 40px, $saturate-value: 3px, $brightness: 1.07) {
     backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness);
+
     html[data-theme-mode="dark"] & {
         backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness(2 - $brightness);
     }
 }
 
+//------------------------------------
 @mixin menu-shadow ($shadow-clr: #000, $initialized: false) {
     @if $initialized {
-        box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
+        box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
     }
 
     @else {
-        box-shadow: 0px 13px 19px -7px change-color($shadow-clr, $alpha: 0.1), 0px 30px 50px -20px change-color($shadow-clr, $alpha: 0.08), 0px 0px 10px 0px change-color($shadow-clr, $alpha: 0.05);
+        box-shadow: 0 0 0px 1px change-color($shadow-clr, $alpha: 0.05), 0px 13px 19px -2px change-color($shadow-clr, $alpha: 0.1), 0px 30px 50px -20px change-color($shadow-clr, $alpha: 0.08), 0px 0px 10px 0px change-color($shadow-clr, $alpha: 0.05);
+
+        @include darkmode-counterpart {
+            box-shadow: 0 0 0 0.5px #000, 0px 13px 19px -7px change-color($shadow-clr, $alpha: 0.3), 0px 30px 50px -20px change-color($shadow-clr, $alpha: 0.3), 0px 0px 10px 0px change-color($shadow-clr, $alpha: 0.1);
+        }
     }
 }
 
 @mixin dialog-shadow ($shadow-clr: #000, $initialized: false) {
     @if $initialized {
         box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
+
+        @include darkmode-counterpart {
+            box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
+        }
     }
 
     @else {
         box-shadow: 0px 13px 18px -2px change-color($shadow-clr, $alpha: 0.1), 0px 30px 50px 0px change-color($shadow-clr, $alpha: 0.1), 0px 0px 12px 0px change-color($shadow-clr, $alpha: 0.05), 0px 75px 65px -50px change-color($shadow-clr, $alpha: 0.1);
+
+        @include darkmode-counterpart {
+            box-shadow: 0 0 0 0.5px #000, 0px 13px 18px -2px change-color($shadow-clr, $alpha: 0.3), 0px 30px 50px 0px change-color($shadow-clr, $alpha: 0.3), 0px 0px 12px 0px change-color($shadow-clr, $alpha: 0.15), 0px 75px 65px -50px change-color($shadow-clr, $alpha: 0.3);
+        }
     }
 }
 
 @mixin tooltip-shadow ($shadow-clr: #000, $initialized: false) {
     @if $initialized {
         box-shadow: 0 0 0 0 transparent;
+
+        @include darkmode-counterpart {
+            box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent;
+        }
     }
 
     @else {
         box-shadow: 0px 2px 6px 0px change-color($shadow-clr, $alpha: 0.1);
+
+        @include darkmode-counterpart {
+            box-shadow: 0 0 0 0.5px #000, 0px 2px 6px 0px change-color($shadow-clr, $alpha: 0.1);
+        }
+    }
+}
+
+//-------------------------------------
+@mixin border-or-not {
+    border: none;
+    @include darkmode-counterpart {
+        border: 1px solid var(--b3-border-color);
+    }
+}
+
+//------------------------------------
+@mixin button-primary {
+    background-color: var(--b3-menu-background);
+    border-radius: 99px;
+    color: var(--b3-theme-primary);
+    font-weight: 600;
+    transition: 0.1s all;
+    border: none;
+    box-shadow: none;
+
+    @include darkmode-counterpart {
+        background-color: rgb(24, 24, 24);
+        &:hover {
+            background-color: var(--b3-theme-primary);
+        }
+    }
+
+    &:hover {
+        background-color: var(--b3-theme-primary);
+        color: var(--b3-theme-on-primary);
+        transition: 0.1s all;
     }
 }
 
@@ -49,14 +120,14 @@ $theme-light: (
     surface: rgb(246, 246, 246),
     error: rgb(234, 77, 60),
     on-primary: #fff,
-    on-secondary: on-primary,
+    on-secondary: #fff,
     on-background: rgb(38, 38, 38),
     on-surface-gray: rgb(127, 127, 127),
     border: hsl(0, 0%, 90%),
     scroll: rgba(0, 0, 0, 0.2),
-    list-hover: rgba(0, 0, 0, 0.06),
+    list-hover: rgba(0, 0, 0, 0.05),
     menu-background: rgb(236, 236, 236),
-    menu-item-hv-background: rgb(41, 98, 217),
+    menu-item-hv-background: rgb(41, 98, 217, 0.9),
     menu-item-hv-on-background: #fff,
     mask-background: rgba(0, 0, 0, 0.78),
     card-error: rgb(233, 49, 71),
@@ -81,7 +152,8 @@ $theme-light: (
     font-color12: rgb(255, 45, 85),
     font-color13: rgb(255, 59, 48),
     inline-link-color: #4285f4,
-    inline-mark-background: rgb(168, 251, 172)
+    inline-mark-background: rgb(168, 251, 172),
+    light-components:#fff
 );
 
 $theme-dark: (
@@ -90,16 +162,16 @@ $theme-dark: (
     background: rgb(30, 30, 30),
     surface: rgb(56, 56, 56),
     error: rgb(255, 59, 48),
-    on-primary: #fff,
+    on-primary: #ffffffe3,
     on-secondary: #fff,
     on-background: rgb(222, 222, 222),
     on-surface-gray: rgb(127, 127, 127),
-    border: hsl(0, 0, 26%),
+    border: hsl(0, 0%, 26%),
     scroll: rgba(255, 255, 255, 0.2),
-    list-hover: rgba(255, 255, 255, 0.05),
+    list-hover: rgba(255, 255, 255, 0.08),
     menu-background: rgb(50, 50, 50),
     menu-item-hv-background: rgb(32, 80, 202),
-    menu-item-hv-on-background:#fff,
+    menu-item-hv-on-background:#ffffffe3,
     mask-background: rgba(0, 0, 0, 0.78),
     card-error: rgb(233, 49, 71),
     card-error-background: rgba(233, 49, 71, 0.1),
@@ -123,7 +195,8 @@ $theme-dark: (
     font-color12: rgb(255, 55, 95),
     font-color13: rgb(255, 69, 58),
     inline-link-color: #8ab4f8,
-    inline-mark-background: #00d95964
+    inline-mark-background: #00d95964,
+    light-components:#e0e0e0,
 );
 
 @mixin theme-root($theme-map) {
@@ -142,7 +215,7 @@ $theme-dark: (
     --b3-theme-on-primary: #{map-get($theme-map,on-primary)};
     --b3-theme-on-secondary: #{map-get($theme-map,on-secondary)};
     --b3-theme-on-background: #{map-get($theme-map,on-background)};
-    --b3-theme-on-surface:#{rgb(map-get($theme-map, on-background), 0.72)};
+    --b3-theme-on-surface:#{rgb(map-get($theme-map, on-background), 0.6)};
     --b3-theme-on-surface-light: #{rgb(map-get($theme-map,on-surface-gray), 0.68)};
     --b3-theme-on-error: #{map-get($theme-map,on-primary)};
 
@@ -202,38 +275,60 @@ $theme-dark: (
     --b3-font-background7: #{change-color(map-get($theme-map,font-color7), $alpha: 0.1)};
     --b3-font-background8: #{change-color(map-get($theme-map,font-color8), $alpha: 0.1)};
     --b3-font-background9: #{change-color(map-get($theme-map,font-color9), $alpha: 0.1)};
-    --b3-font-background10: #{change-color(map-get($theme-map,font-color10), $alpha: 0.1)};
-    --b3-font-background11: #{change-color(map-get($theme-map,font-color11), $alpha: 0.1)};
-    --b3-font-background12: #{change-color(map-get($theme-map,font-color12), $alpha: 0.1)};
-    --b3-font-background13: #{change-color(map-get($theme-map,font-color13), $alpha: 0.1)};
+    --b3-font-background10:#{change-color(map-get($theme-map,font-color10), $alpha: 0.1)};
+    --b3-font-background11:#{change-color(map-get($theme-map,font-color11), $alpha: 0.1)};
+    --b3-font-background12:#{change-color(map-get($theme-map,font-color12), $alpha: 0.1)};
+    --b3-font-background13:#{change-color(map-get($theme-map,font-color13), $alpha: 0.1)};
 
     /* 所见即所得行内元素颜色 */
     --b3-protyle-inline-link-color: #{map-get($theme-map,inline-link-color)};
     --b3-protyle-inline-mark-background: #{map-get($theme-map,inline-mark-background)};
 }
 
-@mixin theme-variant-color($property, $theme-map, $theme-key, $opacity:1, $importance:'') {
-    #{$property}:change-color(map-get($theme-map, $theme-key), $alpha:$opacity) #{$importance};
+@mixin theme-variant-color($property, $theme-key, $opacity-light: 1,$opacity-dark: $opacity-light, $importance: '') {
+
+    $_color: map-get($theme-light, $theme-key);
+
+    @if $_color !=null {
+        #{$property}: change-color($_color, $alpha: $opacity-light) #{$importance};
+    }
+
+    @else {
+        @warn "No color found for `#{$theme-key}` in `$theme-light`. Please check your `$theme-light` map and the `$theme-key` you are using.";
+    }
+
+    @include darkmode-counterpart {
+        $_color: map-get($theme-dark, $theme-key);
+
+        @if $_color !=null {
+            #{$property}: change-color($_color, $alpha: $opacity-dark) #{$importance};
+        }
+
+        @else {
+            @warn "No color found for `#{$theme-key}` in `$theme-dark`. Please check your `$theme-dark` map and the `$theme-key` you are using.";
+        }
+    }
 }
+
 @mixin darkmode-counterpart {
     html[data-theme-mode="dark"] & {
         @content;
     }
 }
 
-@mixin layout__dock-bg($theme-map){
-    background-color: change-color(map-get($theme-map, surface),$alpha:0.9);
+@mixin layout__dock-bg($theme-map) {
+    background-color: change-color(map-get($theme-map, surface), $alpha: 0.9);
 }
+
 @mixin layout__dock-title($theme-map) {
-    color: rgb(map-get($map: $theme-map, $key: on-background),0.5);
+    color: rgb(map-get($map: $theme-map, $key: on-background), 0.5);
 }
-@mixin theme-icons($theme-map, $opacity:0.72) {
+
+@mixin theme-icons($theme-map, $opacity: 0.72) {
     color: change-color(map-get($theme-map, on-background), $alpha: $opacity);
 }
 
 // other globvars ——————————————————————————
-$toolbar-left-mac: 80px;
-$toolbar-height: 48px; // 默认为32px
 
 $border-rd-card: 20px;
 $border-rd-popover: 12px;

@@ -29,7 +29,7 @@
 
         &,
         &~* {
-            @content; 
+            @content;
             // 指定背景颜色
         }
 
@@ -37,6 +37,7 @@
             margin-bottom: 0 !important;
         }
     }
+
     .b3-list-item {
         margin: 4px 8px;
 
@@ -101,17 +102,46 @@
 
 .layout__dockl,
 .layout__dockr {
-    min-height: 90%;
-
     .layout-tab-container {
         background-color: transparent;
 
-        @include layout-tab-container-contents{
+        @include layout-tab-container-contents {
             @include layout__dock-bg($theme-light);
+
             @include darkmode-counterpart {
                 @include layout__dock-bg($theme-dark);
             }
-        }    
+        }
+    }
+
+    // 浮动布局
+    &.layout--float {
+
+        .layout-tab-container {
+            .block__icons {
+                &,&~* {
+                    background-color: var(--b3-theme-background);
+                    @include darkmode-counterpart {
+                        background-color: var(--b3-theme-background);
+                    }
+                }
+            }
+        }
+        box-shadow: none;
+        height: calc(100% - var(--toolbar-height));
+        bottom: 0;
+        top: unset;
+        border-radius: 0;
+        border-top: none;
+        border-bottom: none;
+        opacity: 1 !important;
+    }
+}
+
+// 边框
+.layout__dockl {
+    &.layout--float {
+        border-right: 1px solid var(--b3-border-color);
     }
 }
 
@@ -119,8 +149,13 @@
     .b3-list--background {
         padding-bottom: 36px;
     }
+
+    &.layout--float {
+        border-left: 1px solid var(--b3-border-color);
+    }
 }
 
+// 作为页签打开时
 .layout__center {
     @include layout-tab-container-contents {
         background-color: var(--b3-theme-background);

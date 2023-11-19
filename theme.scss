@@ -1,26 +1,17 @@
 @use 'style/base' as *;
+@use 'style/main';
 
 // @import url(style/customizable/hide-toolbar.css);
 html[data-theme-mode="light"]:root{
     @include theme-root($theme-light);
+    @include font-family;
+    @include cssvars;
 }
 html[data-theme-mode="dark"]:root{
     @include theme-root($theme-dark);
+    @include font-family;
+    @include cssvars;
 }
-
-:root {
-    --b3-font-family: ui-sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", Helvetica, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
-
-    --b3-font-family-code: SF Mono, SFMono-Regular, ui-monospace, Menlo, "JetBrainsMono-Regular", mononoki, Consolas, "Liberation Mono", Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
-
-    --b3-font-family-graph: mononoki;
-
-    --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
-
-    --b3-font-family-math: KaTeX_Math;
-
-    --b3-toolbar-left-mac: #{$toolbar-left-mac};
-} // 字体家族
 
 body {
     border: 0px !important;
@@ -30,21 +21,7 @@ body {
     }
 }
 
-// layout
-@import 'style/layout/status';
-@import 'style/layout/shrink';
-@import 'style/layout/dock';
-@import 'style/layout/toolbar';
-@import 'style/layout/editor';
-//components
-@import 'style/components/misc';
-
-// customizable
-
 // plugins
 @import url(style/plugins/fold-list-preview.css);
 @import url(style/plugins/webview.css);
 
-div.test {
-    @include bg-blur;
-}

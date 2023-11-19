@@ -1,0 +1,116 @@
+@use '../base' as *;
+
+.fn__flex:has(>.layout-tab-bar:first-child) {
+    height: 42px;
+}
+
+.layout-tab-bar {
+    background-color: transparent;
+    height: 28px;
+    border-bottom: 0;
+    overflow-y: hidden;
+    border-radius: 6px;
+    margin: 8px 8px 6px;
+
+    .item {
+        margin-right: 8px;
+        border-radius: 6px !important;
+        min-width: unset;
+        min-height: unset;
+        line-height: 24px;
+        overflow: visible;
+        background-color: var(--b3-list-hover);
+        
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:hover {
+            @include theme-variant-color(background-color, list-hover, 0.12, 0.2);
+        }
+
+        &__icon {
+            padding: 0 0 0 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 28px;
+            font-size: 14px;
+            vertical-align: -1px;
+        }
+
+        &__text {
+            padding: 2px 6px 2px 6px;
+            mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0, #000 8px);
+        }
+
+        &__close {
+            padding: 4px 6px 4px 2px;
+
+            svg{
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        &--pin {
+            height: 24px;
+            padding: 2px;
+
+            .item__icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 2px 5px 0;
+            }
+
+            &:has(+.item:not(.item--pin, .item--readonly)) {
+                margin-right: 22px;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    right: -12px;
+                    display: block;
+                    width: 2px;
+                    background-color: var(--b3-border-color);
+                    height: 1.5em;
+                    border-radius: 9px;
+                }
+            }
+        }
+
+        &--focus {
+            max-width: 21rem;
+            @include theme-variant-color(background-color, list-hover, 0.12, 0.18);
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+}
+
+.layout-tab-bar--readonly {
+    margin-left: 0;
+    min-width: 60px;
+
+    .item {
+        background-color: transparent;
+        padding: 0;
+        height: 28px;
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        .block__icon {
+            padding: 7px;
+        }
+
+        span:nth-child(2) {
+            font-size: 0;
+        }
+    }
+
+}

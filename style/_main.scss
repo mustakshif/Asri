@@ -1,0 +1,149 @@
+@use 'base' as *; // 用于实时看到效果，最后可以删除
+
+@use 'layout/status';
+@use 'layout/shrink';
+@use 'layout/dock';
+@use 'layout/toolbar';
+@use 'layout/tab-bar';
+@use 'layout/editor';
+
+@use 'components/misc';
+@use 'components/breadcrumb';
+@use 'components/menu';
+@use 'components/dialog';
+
+// @use 'customizable/hide-toolbar';
+.b3-dialog--open {
+
+    .b3-dialog {
+        .b3-dialog__scrim {
+            background-color: #80808080;
+            backdrop-filter: saturate(0.5);
+            transition: opacity 250ms 0s, backdrop-filter 300ms 0s;
+
+            @include darkmode-counterpart {
+                background-color: #00000080;
+                backdrop-filter: saturate(0);
+            }
+        }
+
+        .b3-dialog__container {
+            overflow: hidden;
+
+            @include border-or-not;
+            
+            @include dialog-shadow;
+
+            // 设置面板 ————————————————————————————————
+            .config__panel {
+                .b3-tab-bar {
+                    background-color: var(--b3-theme-surface);
+                    padding: 16px 8px;
+
+                    .b3-list-item {
+                        height: 32px;
+                        line-height: 30px;
+                        margin: 4px 8px;
+
+                        &:hover:not(.b3-list-item--focus) {
+                            background-color: transparent;
+
+                            .b3-list-item__graphic,
+                            .b3-list-item__text {
+                                color: var(--b3-theme-on-background);
+                            }
+                        }
+
+                        &__graphic,
+                        &__text {
+                            color: var(--b3-theme-on-surface);
+                        }
+
+                        &--focus {
+
+                            .b3-list-item__graphic,
+                            .b3-list-item__text {
+                                color: var(--b3-theme-on-background);
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+
+                .config__tab-wrap {
+                    padding: 0;
+
+                    .config__tab-container {
+                        padding: 8px 0;
+
+                        &--top {
+                            margin-top: 0;
+                            height: 100%;
+                            padding: 8px 0 0;
+                        }
+
+                        .b3-label {
+                            border-bottom-color: transparent;
+                        }
+
+                        .bazaarPanel {
+                            padding-bottom: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 对话框中的 tab-bar ——————————————————————————————
+    .layout-tab-bar {
+        margin: 8px auto;
+        border-radius: 8px !important;
+        background-color: var(--b3-list-hover);
+        padding: 2px;
+        height: 32px;
+
+        .item {
+            border-radius: 6px !important;
+            background-color: transparent;
+            transition: none !important;
+            padding: 2px 12px;
+
+            &:hover:not(.item--focus) {
+                background-color: transparent !important;
+
+                .item__text {
+                    color: var(--b3-theme-on-surface) !important;
+                }
+            }
+
+            &--focus {
+                max-width: unset;
+                box-shadow: 0 1px 4px -1px #0003;
+
+                @include darkmode-counterpart {
+                    box-shadow: 0 1px 0 0 inset rgba(255, 255, 255, 0.1), 0 1px 4px -1px #0003;
+                }
+
+                @include theme-variant-color(background-color, light-components, 1, 0.2);
+
+                .item__text {
+                    color: var(--b3-theme-on-background);
+                }
+            }
+        }
+
+        .item:not(.item--focus, .fn__none)+.item:not(.item--focus):not(:first-child)::before {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 2px;
+            height: 1.2em;
+            left: -4px;
+            border-radius: 9px;
+
+            @include theme-variant-color(background-color, list-hover, 0.08);
+        }
+    }
+}
+

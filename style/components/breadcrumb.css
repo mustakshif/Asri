@@ -1,0 +1,53 @@
+.protyle-breadcrumb {
+  height: 42px;
+  color: var(--b3-theme-on-surface);
+  border-bottom: 1px solid var(--b3-border-color);
+  transition: 0.2s border-bottom;
+}
+.protyle:has(.protyle-content[data-scrolltop="0"], .protyle-content:not([data-scrolltop])) .protyle-breadcrumb {
+  border-bottom: 1px solid transparent;
+  transition: 0.2s border-bottom;
+}
+.protyle-breadcrumb__item:first-child {
+  padding: 4px 0;
+}
+.protyle-breadcrumb__item svg {
+  border-radius: 3px;
+  padding: 3px;
+  width: 12px;
+  height: 12px;
+}
+.protyle-breadcrumb__item:not(.protyle-breadcrumb__item--active):hover svg {
+  color: var(--b3-theme-on-background);
+}
+.protyle-breadcrumb__item--active {
+  background-color: transparent;
+}
+.protyle-breadcrumb__item--active:hover {
+  background-color: var(--b3-list-hover);
+}
+.protyle-breadcrumb__item--active:not(:first-child) svg {
+  background-color: var(--b3-theme-primary);
+  color: var(--b3-theme-on-primary);
+}
+.protyle-breadcrumb .protyle-breadcrumb__icon {
+  background-color: var(--b3-menu-background);
+  border-radius: 99px;
+  color: var(--b3-theme-primary);
+  font-weight: 600;
+  transition: 0.1s all;
+  border: none;
+  box-shadow: none;
+  padding: 0 8px;
+}
+html[data-theme-mode=dark] .protyle-breadcrumb .protyle-breadcrumb__icon {
+  background-color: rgb(24, 24, 24);
+}
+html[data-theme-mode=dark] .protyle-breadcrumb .protyle-breadcrumb__icon:hover {
+  background-color: var(--b3-theme-primary);
+}
+.protyle-breadcrumb .protyle-breadcrumb__icon:hover {
+  background-color: var(--b3-theme-primary);
+  color: var(--b3-theme-on-primary);
+  transition: 0.1s all;
+}

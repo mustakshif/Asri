@@ -2,10 +2,8 @@
 
 .dock {
     box-sizing: border-box;
-    @include theme-variant-color(background-color, $theme-light, background, 0.9);
-    @include darkmode-counterpart {
-        @include theme-variant-color(background-color, $theme-dark, background, 0.9);
-    }
+    @include theme-variant-color(background-color, background, 0.9);
+
 
     .dock__item {
         @include theme-icons($theme-light, 0.6);

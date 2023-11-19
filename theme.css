@@ -1,173 +1,6 @@
 @charset "UTF-8";
 @import url(style/plugins/fold-list-preview.css);
 @import url(style/plugins/webview.css);
-html[data-theme-mode=light]:root {
-  --b3-theme-primary: rgb(52, 120, 246);
-  --b3-theme-primary-light: rgba(52, 120, 246, 0.56);
-  --b3-theme-primary-lighter: rgba(52, 120, 246, 0.38);
-  --b3-theme-primary-lightest: rgba(52, 120, 246, 0.2);
-  --b3-theme-secondary: rgb(241, 154, 55);
-  --b3-theme-background: #fff;
-  --b3-theme-background-light: rgba(255, 255, 255, 0.1);
-  --b3-theme-surface: rgb(246, 246, 246);
-  --b3-theme-surface-light: rgba(246, 246, 246, 0.5);
-  --b3-theme-error: rgb(234, 77, 60);
-  /* 文字颜色 */
-  --b3-theme-on-primary: #fff;
-  --b3-theme-on-secondary: on-primary;
-  --b3-theme-on-background: rgb(38, 38, 38);
-  --b3-theme-on-surface:rgba(38, 38, 38, 0.72);
-  --b3-theme-on-surface-light: rgba(127, 127, 127, 0.68);
-  --b3-theme-on-error: #fff;
-  /* 线条 */
-  --b3-border-color: hsl(0, 0%, 90%);
-  /* 滚动条 */
-  --b3-scroll-color: rgba(0, 0, 0, 0.2);
-  --b3-scroll-color-hover: rgba(0, 0, 0, 0.4);
-  /* 列表 */
-  --b3-list-hover: rgba(0, 0, 0, 0.06);
-  /* 菜单 */
-  --b3-menu-background: rgb(236, 236, 236);
-  --b3-menu-item-background-hover: rgb(41, 98, 217);
-  --b3-menu-item-background-hover-text:#fff;
-  /* 提示 */
-  --b3-tooltips-color: var(--b3-theme-on-background);
-  --b3-tooltips-background: var(--b3-menu-background);
-  /* 遮罩 */
-  --b3-mask-background: rgba(0, 0, 0, 0.78);
-  /* 卡片背景 */
-  --b3-card-error-color: rgb(233, 49, 71);
-  --b3-card-error-background: rgba(233, 49, 71, 0.1);
-  --b3-card-warning-color: rgb(224, 172, 0);
-  --b3-card-warning-background:rgba(224, 172, 0, 0.1);
-  --b3-card-info-color: rgb(8, 109, 221);
-  --b3-card-info-background: rgba(8, 109, 221, 0.1);
-  --b3-card-success-color: rgb(8, 185, 78);
-  --b3-card-success-background: rgba(8, 185, 78, 0.1);
-  /* 自定义文字 */
-  --b3-font-color1: #000;
-  --b3-font-color2: rgb(142, 142, 147);
-  --b3-font-color3: rgb(162, 132, 94);
-  --b3-font-color4: rgb(255, 149, 0);
-  --b3-font-color5: rgb(255, 204, 0);
-  --b3-font-color6: rgb(8, 185, 78);
-  --b3-font-color7: rgb(0, 199, 190);
-  --b3-font-color8: rgb(85, 190, 240);
-  --b3-font-color9: rgb(0, 122, 255);
-  --b3-font-color10:rgb(88, 86, 214);
-  --b3-font-color11:rgb(175, 82, 222);
-  --b3-font-color12:rgb(255, 45, 85);
-  --b3-font-color13:rgb(255, 59, 48);
-  --b3-font-background1: rgba(0, 0, 0, 0.1);
-  --b3-font-background2: rgba(142, 142, 147, 0.1);
-  --b3-font-background3: rgba(162, 132, 94, 0.1);
-  --b3-font-background4: rgba(255, 149, 0, 0.1);
-  --b3-font-background5: rgba(255, 204, 0, 0.1);
-  --b3-font-background6: rgba(8, 185, 78, 0.1);
-  --b3-font-background7: rgba(0, 199, 190, 0.1);
-  --b3-font-background8: rgba(85, 190, 240, 0.1);
-  --b3-font-background9: rgba(0, 122, 255, 0.1);
-  --b3-font-background10: rgba(88, 86, 214, 0.1);
-  --b3-font-background11: rgba(175, 82, 222, 0.1);
-  --b3-font-background12: rgba(255, 45, 85, 0.1);
-  --b3-font-background13: rgba(255, 59, 48, 0.1);
-  /* 所见即所得行内元素颜色 */
-  --b3-protyle-inline-link-color: #4285f4;
-  --b3-protyle-inline-mark-background: rgb(168, 251, 172);
-}
-
-html[data-theme-mode=dark]:root {
-  --b3-theme-primary: rgb(17, 139, 255);
-  --b3-theme-primary-light: rgba(17, 139, 255, 0.56);
-  --b3-theme-primary-lighter: rgba(17, 139, 255, 0.38);
-  --b3-theme-primary-lightest: rgba(17, 139, 255, 0.2);
-  --b3-theme-secondary: rgb(198, 126, 44);
-  --b3-theme-background: rgb(30, 30, 30);
-  --b3-theme-background-light: rgba(30, 30, 30, 0.1);
-  --b3-theme-surface: rgb(56, 56, 56);
-  --b3-theme-surface-light: rgba(56, 56, 56, 0.5);
-  --b3-theme-error: rgb(255, 59, 48);
-  /* 文字颜色 */
-  --b3-theme-on-primary: #fff;
-  --b3-theme-on-secondary: #fff;
-  --b3-theme-on-background: rgb(222, 222, 222);
-  --b3-theme-on-surface:rgba(222, 222, 222, 0.72);
-  --b3-theme-on-surface-light: rgba(127, 127, 127, 0.68);
-  --b3-theme-on-error: #fff;
-  /* 线条 */
-  --b3-border-color: hsl(0, 0%, 26%);
-  /* 滚动条 */
-  --b3-scroll-color: rgba(255, 255, 255, 0.2);
-  --b3-scroll-color-hover: rgba(255, 255, 255, 0.4);
-  /* 列表 */
-  --b3-list-hover: rgba(255, 255, 255, 0.05);
-  /* 菜单 */
-  --b3-menu-background: rgb(50, 50, 50);
-  --b3-menu-item-background-hover: rgb(32, 80, 202);
-  --b3-menu-item-background-hover-text:#fff;
-  /* 提示 */
-  --b3-tooltips-color: var(--b3-theme-on-background);
-  --b3-tooltips-background: var(--b3-menu-background);
-  /* 遮罩 */
-  --b3-mask-background: rgba(0, 0, 0, 0.78);
-  /* 卡片背景 */
-  --b3-card-error-color: rgb(233, 49, 71);
-  --b3-card-error-background: rgba(233, 49, 71, 0.1);
-  --b3-card-warning-color: rgb(224, 172, 0);
-  --b3-card-warning-background:rgba(224, 172, 0, 0.1);
-  --b3-card-info-color: rgb(8, 109, 221);
-  --b3-card-info-background: rgba(8, 109, 221, 0.1);
-  --b3-card-success-color: rgb(8, 185, 78);
-  --b3-card-success-background: rgba(8, 185, 78, 0.1);
-  /* 自定义文字 */
-  --b3-font-color1: #FFF;
-  --b3-font-color2: rgb(152, 152, 157);
-  --b3-font-color3: rgb(172, 142, 104);
-  --b3-font-color4: rgb(255, 159, 10);
-  --b3-font-color5: rgb(255, 214, 10);
-  --b3-font-color6: rgb(50, 215, 75);
-  --b3-font-color7: rgb(102, 212, 207);
-  --b3-font-color8: rgb(90, 200, 245);
-  --b3-font-color9: rgb(10, 132, 255);
-  --b3-font-color10:rgb(94, 92, 230);
-  --b3-font-color11:rgb(191, 90, 242);
-  --b3-font-color12:rgb(255, 55, 95);
-  --b3-font-color13:rgb(255, 69, 58);
-  --b3-font-background1: rgba(255, 255, 255, 0.1);
-  --b3-font-background2: rgba(152, 152, 157, 0.1);
-  --b3-font-background3: rgba(172, 142, 104, 0.1);
-  --b3-font-background4: rgba(255, 159, 10, 0.1);
-  --b3-font-background5: rgba(255, 214, 10, 0.1);
-  --b3-font-background6: rgba(50, 215, 75, 0.1);
-  --b3-font-background7: rgba(102, 212, 207, 0.1);
-  --b3-font-background8: rgba(90, 200, 245, 0.1);
-  --b3-font-background9: rgba(10, 132, 255, 0.1);
-  --b3-font-background10: rgba(94, 92, 230, 0.1);
-  --b3-font-background11: rgba(191, 90, 242, 0.1);
-  --b3-font-background12: rgba(255, 55, 95, 0.1);
-  --b3-font-background13: rgba(255, 69, 58, 0.1);
-  /* 所见即所得行内元素颜色 */
-  --b3-protyle-inline-link-color: #8ab4f8;
-  --b3-protyle-inline-mark-background: rgba(0, 217, 89, 0.3921568627);
-}
-
-:root {
-  --b3-font-family: ui-sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", Helvetica, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
-  --b3-font-family-code: SF Mono, SFMono-Regular, ui-monospace, Menlo, "JetBrainsMono-Regular", mononoki, Consolas, "Liberation Mono", Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
-  --b3-font-family-graph: mononoki;
-  --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
-  --b3-font-family-math: KaTeX_Math;
-  --b3-toolbar-left-mac: 80px;
-}
-
-body {
-  border: 0px !important;
-  -webkit-font-smoothing: auto;
-}
-html[data-theme-mode=dark] body {
-  -webkit-font-smoothing: antialiased;
-}
-
 #status {
   position: fixed;
   background-color: var(--b3-theme-surface);
@@ -178,6 +11,9 @@ html[data-theme-mode=dark] body {
   border: 0;
   padding: 0 26px 0 0;
   margin: 0 0 12px 0;
+  border: none;
+}
+html[data-theme-mode=dark] #status {
   border: 1px solid var(--b3-border-color);
 }
 .body--window #status {
@@ -283,10 +119,6 @@ html[data-theme-mode=dark] body {
   color: var(--b3-theme-on-background);
 }
 
-.layout__dockl,
-.layout__dockr {
-  min-height: 90%;
-}
 .layout__dockl .layout-tab-container,
 .layout__dockr .layout-tab-container {
   background-color: transparent;
@@ -386,9 +218,37 @@ html[data-theme-mode=dark] .layout__dockr .layout-tab-container .b3-list-item .b
 .layout__dockr .layout-tab-container .sy__outline .b3-list-item[title] {
   display: none;
 }
+.layout__dockl.layout--float,
+.layout__dockr.layout--float {
+  box-shadow: none;
+  height: calc(100% - var(--toolbar-height));
+  bottom: 0;
+  top: unset;
+  border-radius: 0;
+  border-top: none;
+  border-bottom: none;
+  opacity: 1 !important;
+}
+.layout__dockl.layout--float .layout-tab-container .block__icons, .layout__dockl.layout--float .layout-tab-container .block__icons ~ *,
+.layout__dockr.layout--float .layout-tab-container .block__icons,
+.layout__dockr.layout--float .layout-tab-container .block__icons ~ * {
+  background-color: var(--b3-theme-background);
+}
+html[data-theme-mode=dark] .layout__dockl.layout--float .layout-tab-container .block__icons, html[data-theme-mode=dark] .layout__dockl.layout--float .layout-tab-container .block__icons ~ *,
+html[data-theme-mode=dark] .layout__dockr.layout--float .layout-tab-container .block__icons,
+html[data-theme-mode=dark] .layout__dockr.layout--float .layout-tab-container .block__icons ~ * {
+  background-color: var(--b3-theme-background);
+}
+
+.layout__dockl.layout--float {
+  border-right: 1px solid var(--b3-border-color);
+}
 
 .layout__dockr .b3-list--background {
   padding-bottom: 36px;
+}
+.layout__dockr.layout--float {
+  border-left: 1px solid var(--b3-border-color);
 }
 
 .layout__center .block__icons .block__logo {
@@ -498,7 +358,8 @@ html[data-theme-mode=dark] #layouts:has(.layout__dockr:not(.layout--float, [styl
 }
 
 #toolbar {
-  height: 48px;
+  height: var(--toolbar-height);
+  background-color: var(--b3-theme-background);
 }
 #toolbar #barWorkspace {
   background-color: var(--b3-theme-primary);
@@ -508,6 +369,110 @@ html[data-theme-mode=dark] #layouts:has(.layout__dockr:not(.layout--float, [styl
 #toolbar #barWorkspace .toolbar__text {
   font-size: 13px;
   line-height: 13.5px;
+}
+
+.fn__flex:has(> .layout-tab-bar:first-child) {
+  height: 42px;
+}
+
+.layout-tab-bar {
+  background-color: transparent;
+  height: 28px;
+  border-bottom: 0;
+  overflow-y: hidden;
+  border-radius: 6px;
+  margin: 8px 8px 6px;
+}
+.layout-tab-bar .item {
+  margin-right: 8px;
+  border-radius: 6px !important;
+  min-width: unset;
+  min-height: unset;
+  line-height: 24px;
+  overflow: visible;
+  background-color: var(--b3-list-hover);
+}
+.layout-tab-bar .item:last-child {
+  margin-right: 0;
+}
+.layout-tab-bar .item:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+html[data-theme-mode=dark] .layout-tab-bar .item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.layout-tab-bar .item__icon {
+  padding: 0 0 0 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 28px;
+  font-size: 14px;
+  vertical-align: -1px;
+}
+.layout-tab-bar .item__text {
+  padding: 2px 6px 2px 6px;
+  -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0, #000 8px);
+          mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0, #000 8px);
+}
+.layout-tab-bar .item__close {
+  padding: 4px 6px 4px 2px;
+}
+.layout-tab-bar .item__close svg {
+  width: 10px;
+  height: 10px;
+}
+.layout-tab-bar .item--pin {
+  height: 24px;
+  padding: 2px;
+}
+.layout-tab-bar .item--pin .item__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 5px 0;
+}
+.layout-tab-bar .item--pin:has(+ .item:not(.item--pin, .item--readonly)) {
+  margin-right: 22px;
+}
+.layout-tab-bar .item--pin:has(+ .item:not(.item--pin, .item--readonly))::before {
+  content: "";
+  position: absolute;
+  right: -12px;
+  display: block;
+  width: 2px;
+  background-color: var(--b3-border-color);
+  height: 1.5em;
+  border-radius: 9px;
+}
+.layout-tab-bar .item--focus {
+  max-width: 21rem;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+html[data-theme-mode=dark] .layout-tab-bar .item--focus {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+.layout-tab-bar .item--focus::after {
+  display: none;
+}
+
+.layout-tab-bar--readonly {
+  margin-left: 0;
+  min-width: 60px;
+}
+.layout-tab-bar--readonly .item {
+  background-color: transparent;
+  padding: 0;
+  height: 28px;
+}
+.layout-tab-bar--readonly .item:hover {
+  background-color: transparent;
+}
+.layout-tab-bar--readonly .item .block__icon {
+  padding: 7px;
+}
+.layout-tab-bar--readonly .item span:nth-child(2) {
+  font-size: 0;
 }
 
 .layout__resize::after {
@@ -531,11 +496,480 @@ html[data-theme-mode=dark] #layouts:has(.layout__dockr:not(.layout--float, [styl
   font-weight: bold;
 }
 
-div.test {
-  -webkit-backdrop-filter: blur(40px) saturate(3px) brightness(1.07);
-          backdrop-filter: blur(40px) saturate(3px) brightness(1.07);
+.b3-switch {
+  height: 20px;
+  width: 32px;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  background-color: rgba(127, 127, 127, 0.15);
 }
-html[data-theme-mode=dark] div.test {
-  -webkit-backdrop-filter: blur(40px) saturate(3px) brightness(0.93);
-          backdrop-filter: blur(40px) saturate(3px) brightness(0.93);
+html[data-theme-mode=dark] .b3-switch {
+  border: 1px solid var(--b3-border-color);
+}
+html[data-theme-mode=dark] .b3-switch {
+  background-color: rgba(127, 127, 127, 0.15);
+}
+.b3-switch::after {
+  top: 1px;
+  left: 1px;
+  background-color: white;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+html[data-theme-mode=dark] .b3-switch::after {
+  background-color: #e0e0e0;
+}
+.b3-switch::before {
+  display: none !important;
+}
+.b3-switch:checked {
+  background-color: var(--b3-theme-primary) !important;
+}
+.b3-switch:checked::after {
+  transform: translateX(12px);
+  background-color: white;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.2);
+}
+html[data-theme-mode=dark] .b3-switch:checked::after {
+  background-color: #e0e0e0;
+}
+.b3-switch:active {
+  filter: brightness(1.3);
+  transition: all 0.1s;
+}
+
+.b3-button--outline {
+  background-color: var(--b3-menu-background);
+  border-radius: 99px;
+  color: var(--b3-theme-primary);
+  font-weight: 600;
+  transition: 0.1s all;
+  border: none;
+  box-shadow: none;
+}
+html[data-theme-mode=dark] .b3-button--outline {
+  background-color: rgb(24, 24, 24);
+}
+html[data-theme-mode=dark] .b3-button--outline:hover {
+  background-color: var(--b3-theme-primary);
+}
+.b3-button--outline:hover {
+  background-color: var(--b3-theme-primary);
+  color: var(--b3-theme-on-primary);
+  transition: 0.1s all;
+}
+.b3-button--outline:focus {
+  box-shadow: none;
+}
+
+.b3-text-field,
+select.b3-select {
+  box-shadow: none;
+  background-color: var(--b3-list-hover);
+  transition: all 0.2s;
+  outline: 0px solid transparent;
+}
+.b3-text-field:not(.b3-text-field--text):hover,
+select.b3-select:not(.b3-text-field--text):hover {
+  box-shadow: none;
+}
+.b3-text-field:not(.b3-text-field--text):focus,
+select.b3-select:not(.b3-text-field--text):focus {
+  outline: 3px solid var(--b3-theme-primary-light);
+  box-shadow: none;
+}
+.config__panel .config__tab-container .fn__flex-1:has(> .b3-text-field,
+> select.b3-select) {
+  overflow: visible;
+}
+
+select.b3-select:hover {
+  background-color: var(--b3-menu-background);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.protyle-breadcrumb {
+  height: 42px;
+  color: var(--b3-theme-on-surface);
+  border-bottom: 1px solid var(--b3-border-color);
+  transition: 0.2s border-bottom;
+}
+.protyle:has(.protyle-content[data-scrolltop="0"], .protyle-content:not([data-scrolltop])) .protyle-breadcrumb {
+  border-bottom: 1px solid transparent;
+  transition: 0.2s border-bottom;
+}
+.protyle-breadcrumb__item:first-child {
+  padding: 4px 0;
+}
+.protyle-breadcrumb__item svg {
+  border-radius: 3px;
+  padding: 3px;
+  width: 12px;
+  height: 12px;
+}
+.protyle-breadcrumb__item:not(.protyle-breadcrumb__item--active):hover svg {
+  color: var(--b3-theme-on-background);
+}
+.protyle-breadcrumb__item--active {
+  background-color: transparent;
+}
+.protyle-breadcrumb__item--active:hover {
+  background-color: var(--b3-list-hover);
+}
+.protyle-breadcrumb__item--active:not(:first-child) svg {
+  background-color: var(--b3-theme-primary);
+  color: var(--b3-theme-on-primary);
+}
+.protyle-breadcrumb .protyle-breadcrumb__icon {
+  background-color: var(--b3-menu-background);
+  border-radius: 99px;
+  color: var(--b3-theme-primary);
+  font-weight: 600;
+  transition: 0.1s all;
+  border: none;
+  box-shadow: none;
+  padding: 0 8px;
+}
+html[data-theme-mode=dark] .protyle-breadcrumb .protyle-breadcrumb__icon {
+  background-color: rgb(24, 24, 24);
+}
+html[data-theme-mode=dark] .protyle-breadcrumb .protyle-breadcrumb__icon:hover {
+  background-color: var(--b3-theme-primary);
+}
+.protyle-breadcrumb .protyle-breadcrumb__icon:hover {
+  background-color: var(--b3-theme-primary);
+  color: var(--b3-theme-on-primary);
+  transition: 0.1s all;
+}
+
+.b3-menu, .b3-menu__submenu {
+  box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.05), 0px 13px 19px -2px rgba(0, 0, 0, 0.1), 0px 30px 50px -20px rgba(0, 0, 0, 0.08), 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 10px;
+  padding: 0;
+}
+html[data-theme-mode=dark] .b3-menu, html[data-theme-mode=dark] .b3-menu__submenu {
+  box-shadow: 0 0 0 0.5px #000, 0px 13px 19px -7px rgba(0, 0, 0, 0.3), 0px 30px 50px -20px rgba(0, 0, 0, 0.3), 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+html[data-theme-mode=dark] .b3-menu, html[data-theme-mode=dark] .b3-menu__submenu {
+  border: 1px solid var(--b3-border-color);
+}
+.b3-menu .b3-menu__items, .b3-menu__submenu .b3-menu__items {
+  padding: 5px;
+}
+.b3-menu .b3-menu__items .b3-menu__item, .b3-menu__submenu .b3-menu__items .b3-menu__item {
+  padding: 0 8px;
+  background-color: transparent;
+  line-height: 24px;
+  border-radius: 5px;
+}
+.b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]), .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]), .b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]), .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) {
+  background-color: var(--b3-menu-item-background-hover);
+  color: var(--b3-menu-item-background-hover-text);
+}
+.b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__icon, .b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__icon, .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__icon, .b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__icon, .b3-menu__submenu .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator {
+  color: var(--b3-menu-item-background-hover-text) !important;
+}
+.b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator {
+  opacity: 0.8;
+}
+.b3-menu .b3-menu__items .b3-menu__item .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item .b3-menu__accelerator {
+  font-family: var(--b3-font-family);
+}
+.b3-menu .b3-menu__items .b3-menu__icon, .b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__icon, .b3-menu__submenu .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator {
+  color: var(--b3-theme-on-surface);
+}
+.b3-menu .b3-menu__items .b3-menu__separator, .b3-menu__submenu .b3-menu__items .b3-menu__separator {
+  background-color: rgba(127, 127, 127, 0.15);
+}
+html[data-theme-mode=dark] .b3-menu .b3-menu__items .b3-menu__separator, html[data-theme-mode=dark] .b3-menu__submenu .b3-menu__items .b3-menu__separator {
+  background-color: rgba(127, 127, 127, 0.15);
+}
+
+.b3-dialog--open .b3-dialog .b3-dialog__scrim {
+  background-color: rgba(128, 128, 128, 0.5019607843);
+  -webkit-backdrop-filter: saturate(0.5);
+          backdrop-filter: saturate(0.5);
+  transition: opacity 250ms 0s, -webkit-backdrop-filter 300ms 0s;
+  transition: opacity 250ms 0s, backdrop-filter 300ms 0s;
+  transition: opacity 250ms 0s, backdrop-filter 300ms 0s, -webkit-backdrop-filter 300ms 0s;
+}
+html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__scrim {
+  background-color: rgba(0, 0, 0, 0.5019607843);
+  -webkit-backdrop-filter: saturate(0);
+          backdrop-filter: saturate(0);
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container {
+  overflow: hidden;
+  border: none;
+  box-shadow: 0px 13px 18px -2px rgba(0, 0, 0, 0.1), 0px 30px 50px 0px rgba(0, 0, 0, 0.1), 0px 0px 12px 0px rgba(0, 0, 0, 0.05), 0px 75px 65px -50px rgba(0, 0, 0, 0.1);
+}
+html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container {
+  border: 1px solid var(--b3-border-color);
+}
+html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container {
+  box-shadow: 0 0 0 0.5px #000, 0px 13px 18px -2px rgba(0, 0, 0, 0.3), 0px 30px 50px 0px rgba(0, 0, 0, 0.3), 0px 0px 12px 0px rgba(0, 0, 0, 0.15), 0px 75px 65px -50px rgba(0, 0, 0, 0.3);
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .b3-tab-bar {
+  background-color: var(--b3-theme-surface);
+  padding: 16px 8px;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .b3-tab-bar .b3-list-item {
+  height: 32px;
+  line-height: 30px;
+  margin: 4px 8px;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .b3-tab-bar .b3-list-item:hover:not(.b3-list-item--focus) {
+  background-color: transparent;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .b3-tab-bar .b3-list-item:hover:not(.b3-list-item--focus) .b3-list-item__graphic,
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .b3-tab-bar .b3-list-item:hover:not(.b3-list-item--focus) .b3-list-item__text {
+  color: var(--b3-theme-on-background);
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .b3-tab-bar .b3-list-item__graphic, .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .b3-tab-bar .b3-list-item__text {
+  color: var(--b3-theme-on-surface);
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .b3-tab-bar .b3-list-item--focus .b3-list-item__graphic,
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .b3-tab-bar .b3-list-item--focus .b3-list-item__text {
+  color: var(--b3-theme-on-background);
+  font-weight: 600;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap {
+  padding: 0;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container {
+  padding: 8px 0;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container--top {
+  margin-top: 0;
+  height: 100%;
+  padding: 8px 0 0;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .b3-label {
+  border-bottom-color: transparent;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel {
+  padding-bottom: 8px;
+}
+.b3-dialog--open .layout-tab-bar {
+  margin: 8px auto;
+  border-radius: 8px !important;
+  background-color: var(--b3-list-hover);
+  padding: 2px;
+  height: 32px;
+}
+.b3-dialog--open .layout-tab-bar .item {
+  border-radius: 6px !important;
+  background-color: transparent;
+  transition: none !important;
+  padding: 2px 12px;
+}
+.b3-dialog--open .layout-tab-bar .item:hover:not(.item--focus) {
+  background-color: transparent !important;
+}
+.b3-dialog--open .layout-tab-bar .item:hover:not(.item--focus) .item__text {
+  color: var(--b3-theme-on-surface) !important;
+}
+.b3-dialog--open .layout-tab-bar .item--focus {
+  max-width: unset;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.2);
+  background-color: white;
+}
+html[data-theme-mode=dark] .b3-dialog--open .layout-tab-bar .item--focus {
+  box-shadow: 0 1px 0 0 inset rgba(255, 255, 255, 0.1), 0 1px 4px -1px rgba(0, 0, 0, 0.2);
+}
+html[data-theme-mode=dark] .b3-dialog--open .layout-tab-bar .item--focus {
+  background-color: rgba(224, 224, 224, 0.2);
+}
+.b3-dialog--open .layout-tab-bar .item--focus .item__text {
+  color: var(--b3-theme-on-background);
+}
+.b3-dialog--open .layout-tab-bar .item:not(.item--focus, .fn__none) + .item:not(.item--focus):not(:first-child)::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 2px;
+  height: 1.2em;
+  left: -4px;
+  border-radius: 9px;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+html[data-theme-mode=dark] .b3-dialog--open .layout-tab-bar .item:not(.item--focus, .fn__none) + .item:not(.item--focus):not(:first-child)::before {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme-mode=light]:root {
+  --b3-theme-primary: rgb(52, 120, 246);
+  --b3-theme-primary-light: rgba(52, 120, 246, 0.56);
+  --b3-theme-primary-lighter: rgba(52, 120, 246, 0.38);
+  --b3-theme-primary-lightest: rgba(52, 120, 246, 0.2);
+  --b3-theme-secondary: rgb(241, 154, 55);
+  --b3-theme-background: #fff;
+  --b3-theme-background-light: rgba(255, 255, 255, 0.1);
+  --b3-theme-surface: rgb(246, 246, 246);
+  --b3-theme-surface-light: rgba(246, 246, 246, 0.5);
+  --b3-theme-error: rgb(234, 77, 60);
+  /* 文字颜色 */
+  --b3-theme-on-primary: #fff;
+  --b3-theme-on-secondary: #fff;
+  --b3-theme-on-background: rgb(38, 38, 38);
+  --b3-theme-on-surface:rgba(38, 38, 38, 0.6);
+  --b3-theme-on-surface-light: rgba(127, 127, 127, 0.68);
+  --b3-theme-on-error: #fff;
+  /* 线条 */
+  --b3-border-color: hsl(0, 0%, 90%);
+  /* 滚动条 */
+  --b3-scroll-color: rgba(0, 0, 0, 0.2);
+  --b3-scroll-color-hover: rgba(0, 0, 0, 0.4);
+  /* 列表 */
+  --b3-list-hover: rgba(0, 0, 0, 0.05);
+  /* 菜单 */
+  --b3-menu-background: rgb(236, 236, 236);
+  --b3-menu-item-background-hover: rgba(41, 98, 217, 0.9);
+  --b3-menu-item-background-hover-text:#fff;
+  /* 提示 */
+  --b3-tooltips-color: var(--b3-theme-on-background);
+  --b3-tooltips-background: var(--b3-menu-background);
+  /* 遮罩 */
+  --b3-mask-background: rgba(0, 0, 0, 0.78);
+  /* 卡片背景 */
+  --b3-card-error-color: rgb(233, 49, 71);
+  --b3-card-error-background: rgba(233, 49, 71, 0.1);
+  --b3-card-warning-color: rgb(224, 172, 0);
+  --b3-card-warning-background:rgba(224, 172, 0, 0.1);
+  --b3-card-info-color: rgb(8, 109, 221);
+  --b3-card-info-background: rgba(8, 109, 221, 0.1);
+  --b3-card-success-color: rgb(8, 185, 78);
+  --b3-card-success-background: rgba(8, 185, 78, 0.1);
+  /* 自定义文字 */
+  --b3-font-color1: #000;
+  --b3-font-color2: rgb(142, 142, 147);
+  --b3-font-color3: rgb(162, 132, 94);
+  --b3-font-color4: rgb(255, 149, 0);
+  --b3-font-color5: rgb(255, 204, 0);
+  --b3-font-color6: rgb(8, 185, 78);
+  --b3-font-color7: rgb(0, 199, 190);
+  --b3-font-color8: rgb(85, 190, 240);
+  --b3-font-color9: rgb(0, 122, 255);
+  --b3-font-color10:rgb(88, 86, 214);
+  --b3-font-color11:rgb(175, 82, 222);
+  --b3-font-color12:rgb(255, 45, 85);
+  --b3-font-color13:rgb(255, 59, 48);
+  --b3-font-background1: rgba(0, 0, 0, 0.1);
+  --b3-font-background2: rgba(142, 142, 147, 0.1);
+  --b3-font-background3: rgba(162, 132, 94, 0.1);
+  --b3-font-background4: rgba(255, 149, 0, 0.1);
+  --b3-font-background5: rgba(255, 204, 0, 0.1);
+  --b3-font-background6: rgba(8, 185, 78, 0.1);
+  --b3-font-background7: rgba(0, 199, 190, 0.1);
+  --b3-font-background8: rgba(85, 190, 240, 0.1);
+  --b3-font-background9: rgba(0, 122, 255, 0.1);
+  --b3-font-background10:rgba(88, 86, 214, 0.1);
+  --b3-font-background11:rgba(175, 82, 222, 0.1);
+  --b3-font-background12:rgba(255, 45, 85, 0.1);
+  --b3-font-background13:rgba(255, 59, 48, 0.1);
+  /* 所见即所得行内元素颜色 */
+  --b3-protyle-inline-link-color: #4285f4;
+  --b3-protyle-inline-mark-background: rgb(168, 251, 172);
+  --b3-font-family: ui-sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", Helvetica, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+  --b3-font-family-code: SF Mono, SFMono-Regular, ui-monospace, Menlo, "JetBrainsMono-Regular", mononoki, Consolas, "Liberation Mono", Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+  --b3-font-family-graph: mononoki;
+  --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
+  --b3-font-family-math: KaTeX_Math;
+  --b3-toolbar-left-mac: 80px;
+  --toolbar-height: 48px;
+}
+
+html[data-theme-mode=dark]:root {
+  --b3-theme-primary: rgb(17, 139, 255);
+  --b3-theme-primary-light: rgba(17, 139, 255, 0.56);
+  --b3-theme-primary-lighter: rgba(17, 139, 255, 0.38);
+  --b3-theme-primary-lightest: rgba(17, 139, 255, 0.2);
+  --b3-theme-secondary: rgb(198, 126, 44);
+  --b3-theme-background: rgb(30, 30, 30);
+  --b3-theme-background-light: rgba(30, 30, 30, 0.1);
+  --b3-theme-surface: rgb(56, 56, 56);
+  --b3-theme-surface-light: rgba(56, 56, 56, 0.5);
+  --b3-theme-error: rgb(255, 59, 48);
+  /* 文字颜色 */
+  --b3-theme-on-primary: rgba(255, 255, 255, 0.8901960784);
+  --b3-theme-on-secondary: #fff;
+  --b3-theme-on-background: rgb(222, 222, 222);
+  --b3-theme-on-surface:rgba(222, 222, 222, 0.6);
+  --b3-theme-on-surface-light: rgba(127, 127, 127, 0.68);
+  --b3-theme-on-error: rgba(255, 255, 255, 0.8901960784);
+  /* 线条 */
+  --b3-border-color: hsl(0, 0%, 26%);
+  /* 滚动条 */
+  --b3-scroll-color: rgba(255, 255, 255, 0.2);
+  --b3-scroll-color-hover: rgba(255, 255, 255, 0.4);
+  /* 列表 */
+  --b3-list-hover: rgba(255, 255, 255, 0.08);
+  /* 菜单 */
+  --b3-menu-background: rgb(50, 50, 50);
+  --b3-menu-item-background-hover: rgb(32, 80, 202);
+  --b3-menu-item-background-hover-text:rgba(255, 255, 255, 0.8901960784);
+  /* 提示 */
+  --b3-tooltips-color: var(--b3-theme-on-background);
+  --b3-tooltips-background: var(--b3-menu-background);
+  /* 遮罩 */
+  --b3-mask-background: rgba(0, 0, 0, 0.78);
+  /* 卡片背景 */
+  --b3-card-error-color: rgb(233, 49, 71);
+  --b3-card-error-background: rgba(233, 49, 71, 0.1);
+  --b3-card-warning-color: rgb(224, 172, 0);
+  --b3-card-warning-background:rgba(224, 172, 0, 0.1);
+  --b3-card-info-color: rgb(8, 109, 221);
+  --b3-card-info-background: rgba(8, 109, 221, 0.1);
+  --b3-card-success-color: rgb(8, 185, 78);
+  --b3-card-success-background: rgba(8, 185, 78, 0.1);
+  /* 自定义文字 */
+  --b3-font-color1: #FFF;
+  --b3-font-color2: rgb(152, 152, 157);
+  --b3-font-color3: rgb(172, 142, 104);
+  --b3-font-color4: rgb(255, 159, 10);
+  --b3-font-color5: rgb(255, 214, 10);
+  --b3-font-color6: rgb(50, 215, 75);
+  --b3-font-color7: rgb(102, 212, 207);
+  --b3-font-color8: rgb(90, 200, 245);
+  --b3-font-color9: rgb(10, 132, 255);
+  --b3-font-color10:rgb(94, 92, 230);
+  --b3-font-color11:rgb(191, 90, 242);
+  --b3-font-color12:rgb(255, 55, 95);
+  --b3-font-color13:rgb(255, 69, 58);
+  --b3-font-background1: rgba(255, 255, 255, 0.1);
+  --b3-font-background2: rgba(152, 152, 157, 0.1);
+  --b3-font-background3: rgba(172, 142, 104, 0.1);
+  --b3-font-background4: rgba(255, 159, 10, 0.1);
+  --b3-font-background5: rgba(255, 214, 10, 0.1);
+  --b3-font-background6: rgba(50, 215, 75, 0.1);
+  --b3-font-background7: rgba(102, 212, 207, 0.1);
+  --b3-font-background8: rgba(90, 200, 245, 0.1);
+  --b3-font-background9: rgba(10, 132, 255, 0.1);
+  --b3-font-background10:rgba(94, 92, 230, 0.1);
+  --b3-font-background11:rgba(191, 90, 242, 0.1);
+  --b3-font-background12:rgba(255, 55, 95, 0.1);
+  --b3-font-background13:rgba(255, 69, 58, 0.1);
+  /* 所见即所得行内元素颜色 */
+  --b3-protyle-inline-link-color: #8ab4f8;
+  --b3-protyle-inline-mark-background: rgba(0, 217, 89, 0.3921568627);
+  --b3-font-family: ui-sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", Helvetica, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+  --b3-font-family-code: SF Mono, SFMono-Regular, ui-monospace, Menlo, "JetBrainsMono-Regular", mononoki, Consolas, "Liberation Mono", Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+  --b3-font-family-graph: mononoki;
+  --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
+  --b3-font-family-math: KaTeX_Math;
+  --b3-toolbar-left-mac: 80px;
+  --toolbar-height: 48px;
+}
+
+body {
+  border: 0px !important;
+  -webkit-font-smoothing: auto;
+}
+html[data-theme-mode=dark] body {
+  -webkit-font-smoothing: antialiased;
 }

@@ -1,6 +1,6 @@
 .toolbar {
   opacity: 0;
-  transform: translateY(-38px);
+  transform: translateY(calc(var(--toolbar-height) * -1 + 10px));
 }
 .toolbar :has(#drag:hover) {
   transition-delay: 0s;
@@ -23,7 +23,7 @@
 
 .toolbar {
   background-color: var(--b3-theme-background);
-  height: var(48px);
+  height: var(--toolbar-height);
   position: fixed;
   top: 0;
   width: 100%;

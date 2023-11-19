@@ -1,0 +1,62 @@
+@use '../base' as *;
+
+.protyle-breadcrumb {
+    height: 42px;
+    color: var(--b3-theme-on-surface);
+    border-bottom: 1px solid var(--b3-border-color);
+    transition: 0.2s border-bottom;
+
+    // 页面滚动时才显示下边界，借鉴 @TinkMingKing 的 VSCode Lite 主题 
+    .protyle:has(.protyle-content[data-scrolltop="0"], .protyle-content:not([data-scrolltop])) & {
+        border-bottom: 1px solid transparent;
+        transition: 0.2s border-bottom;
+    }
+
+    &__item {
+        &:first-child {
+            padding: 4px 0;
+        }
+
+        // &:last-child {
+        //     .protyle-breadcrumb__text {
+        //         max-width: 21rem;
+        //     }
+        // }
+
+        svg {
+            // outline: 2px solid var(--b3-theme-primary);
+            border-radius: 3px;
+            padding: 3px;
+            width: 12px;
+            height: 12px;
+        }
+
+        &:not(&--active):hover {
+            svg {
+                color: var(--b3-theme-on-background);
+            }
+        }
+
+        &--active {
+            background-color: transparent;
+            
+
+            &:hover {
+                background-color: var(--b3-list-hover);
+            }
+
+            &:not(:first-child) {
+                svg {
+                    background-color: var(--b3-theme-primary);
+                    color: var(--b3-theme-on-primary);
+                }
+            }
+        }
+    }
+
+    // 退出聚焦按钮
+    & &__icon {
+        @include button-primary;
+        padding: 0 8px;
+    }
+}

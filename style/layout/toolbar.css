@@ -1,5 +1,6 @@
 #toolbar {
-  height: 48px;
+  height: var(--toolbar-height);
+  background-color: var(--b3-theme-background);
 }
 #toolbar #barWorkspace {
   background-color: var(--b3-theme-primary);

@@ -1,7 +1,8 @@
 @use '../base' as *;
 
 #toolbar {
-    height: $toolbar-height;
+    height: var(--toolbar-height);
+    background-color: var(--b3-theme-background);
     #barWorkspace {
         background-color: var(--b3-theme-primary);
         color:var(--b3-theme-on-primary);
