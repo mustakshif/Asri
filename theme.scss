@@ -22,6 +22,12 @@ body {
 }
 
 // plugins
-@import url(style/plugins/fold-list-preview.css);
-@import url(style/plugins/webview.css);
+// @import url(style/plugins/fold-list-preview.css);
+// @import url(style/plugins/webview.css); // 导致页面滚动卡顿
+
+
+div.test {
+    @include theme-variant-color(color, on-background, $important:true);
+    background-color: grayscale(pickThemeColor($theme-light,primary));
+}
 

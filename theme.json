@@ -4,8 +4,8 @@
   "url": "https://github.com/mustakshif/Formless",
   "version": "0.0.9",
   "displayName": {
-    "default": "Formless",
-    "zh_CN": "无形"
+    "default": "Hadeeth",
+    "zh_CN": "Hadeeth"
   },
   "description": {
     "default": "Like silent water, blending form with spirit, quietly adding a touch of elegance and efficiency to your notes",
@@ -28,6 +28,6 @@
     "dark"
   ],
   "keywords": [
-    "Formless", "无形"
+    "Hadeeth"
   ]
 }

@@ -1,43 +1,75 @@
-.b3-menu, .b3-menu__submenu {
+.b3-menu,
+.b3-menu__submenu {
   box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.05), 0px 13px 19px -2px rgba(0, 0, 0, 0.1), 0px 30px 50px -20px rgba(0, 0, 0, 0.08), 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
   border: none;
   border-radius: 10px;
   padding: 0;
 }
-html[data-theme-mode=dark] .b3-menu, html[data-theme-mode=dark] .b3-menu__submenu {
-  box-shadow: 0 0 0 0.5px #000, 0px 13px 19px -7px rgba(0, 0, 0, 0.3), 0px 30px 50px -20px rgba(0, 0, 0, 0.3), 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+html[data-theme-mode=dark] .b3-menu,
+html[data-theme-mode=dark] .b3-menu__submenu {
+  box-shadow: 0 0 0 0.5px #000, 0px 13px 19px -7px rgba(0, 0, 0, 0.3), 0px 30px 50px -20px rgba(0, 0, 0, 0.3), 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
-html[data-theme-mode=dark] .b3-menu, html[data-theme-mode=dark] .b3-menu__submenu {
+html[data-theme-mode=dark] .b3-menu,
+html[data-theme-mode=dark] .b3-menu__submenu {
   border: 1px solid var(--b3-border-color);
 }
-.b3-menu .b3-menu__items, .b3-menu__submenu .b3-menu__items {
+.b3-menu .b3-menu__items,
+.b3-menu__submenu .b3-menu__items {
   padding: 5px;
 }
-.b3-menu .b3-menu__items .b3-menu__item, .b3-menu__submenu .b3-menu__items .b3-menu__item {
+.b3-menu .b3-menu__items .b3-menu__item,
+.b3-menu__submenu .b3-menu__items .b3-menu__item {
   padding: 0 8px;
   background-color: transparent;
   line-height: 24px;
   border-radius: 5px;
 }
-.b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]), .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]), .b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]), .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) {
+.b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]), .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]),
+.b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]),
+.b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) {
   background-color: var(--b3-menu-item-background-hover);
   color: var(--b3-menu-item-background-hover-text);
 }
-.b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__icon, .b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__icon, .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__icon, .b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__icon, .b3-menu__submenu .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator {
+.b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__icon, .b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__icon, .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator,
+.b3-menu .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator,
+.b3-menu__submenu .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator,
+.b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__icon,
+.b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator,
+.b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__icon,
+.b3-menu__submenu .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator,
+.b3-menu .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator,
+.b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator {
   color: var(--b3-menu-item-background-hover-text) !important;
 }
-.b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator {
+.b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator,
+.b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator,
+.b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator {
   opacity: 0.8;
 }
-.b3-menu .b3-menu__items .b3-menu__item .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item .b3-menu__accelerator {
+.b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__label > .b3-tooltips .b3-slider::-webkit-slider-runnable-track, .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__label > .b3-tooltips .b3-slider::-webkit-slider-runnable-track,
+.b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__label > .b3-tooltips .b3-slider::-webkit-slider-runnable-track,
+.b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__label > .b3-tooltips .b3-slider::-webkit-slider-runnable-track {
+  background-color: rgba(255, 255, 255, 0.2666666667);
+}
+.b3-menu .b3-menu__items .b3-menu__item .b3-menu__accelerator,
+.b3-menu__submenu .b3-menu__items .b3-menu__item .b3-menu__accelerator {
   font-family: var(--b3-font-family);
 }
-.b3-menu .b3-menu__items .b3-menu__icon, .b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__icon, .b3-menu__submenu .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator {
+.b3-menu .b3-menu__items .b3-menu__icon, .b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator, .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator,
+.b3-menu .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator,
+.b3-menu__submenu .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator,
+.b3-menu__submenu .b3-menu__items .b3-menu__icon,
+.b3-menu__submenu .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator,
+.b3-menu .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator,
+.b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom):not([disabled]) > .b3-menu__accelerator,
+.b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly):not([disabled]) > .b3-menu__accelerator {
   color: var(--b3-theme-on-surface);
 }
-.b3-menu .b3-menu__items .b3-menu__separator, .b3-menu__submenu .b3-menu__items .b3-menu__separator {
+.b3-menu .b3-menu__items .b3-menu__separator,
+.b3-menu__submenu .b3-menu__items .b3-menu__separator {
   background-color: rgba(127, 127, 127, 0.15);
 }
-html[data-theme-mode=dark] .b3-menu .b3-menu__items .b3-menu__separator, html[data-theme-mode=dark] .b3-menu__submenu .b3-menu__items .b3-menu__separator {
+html[data-theme-mode=dark] .b3-menu .b3-menu__items .b3-menu__separator,
+html[data-theme-mode=dark] .b3-menu__submenu .b3-menu__items .b3-menu__separator {
   background-color: rgba(127, 127, 127, 0.15);
 }

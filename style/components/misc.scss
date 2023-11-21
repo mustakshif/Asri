@@ -12,8 +12,13 @@
             width: 1px;
         }
         &:hover::after {
-            background-color: var(--b3-theme-primary-light);
+            background-color: var(--b3-theme-primary-light) !important;
         }
+    }
+
+    .layout__dockl+&--lr::after,
+    .layout__center+&--lr::after {
+        background-color: transparent;
     }
 }
 
@@ -84,7 +89,8 @@
 select.b3-select {
     box-shadow: none;
     background-color: var(--b3-list-hover);
-    transition: all 0.2s;
+    min-height: 28px;
+    transition: outline 0.2s;
     outline: 0px solid transparent;
     
 
@@ -112,4 +118,50 @@ select.b3-select {
 
 textarea {
     resize: vertical;
+}
+
+
+// 滑动条
+.b3-slider {  
+    .b3-tooltips:has(>&) {
+        overflow: visible;
+    }
+    
+    &::-webkit-slider-runnable-track {
+        height: 6px;
+        border-radius: 9px;
+        transition: all 0.1s ease-out;
+    }
+
+    &::-webkit-slider-thumb {
+        @include theme-variant-color(background-color, light-components);
+        // @include tooltip-shadow;
+        outline: 1px solid var(--b3-border-color);
+        height: 16px;
+        width: 16px;
+        margin-top: -5px;
+        transition: all 0.1s ease-out;
+    }
+
+    &:hover:not(&:focus)::-webkit-slider-thumb {     
+        transform: none;
+        outline: 2px solid lighten(map-get($map: $theme-light, $key: primary),20%);
+        @include darkmode-counterpart {
+            outline: 2px solid darken(map-get($map: $theme-dark, $key: primary),10%);;
+        }
+    }
+    &:focus::-webkit-slider-thumb{
+        transform: scale(1.1);
+        outline: 3px solid var(--b3-theme-primary);
+        margin: -2px;
+        margin-left: 0.5px;
+    } 
+    &:focus::-webkit-slider-runnable-track {
+        height: 12px;
+    }
+}
+
+// 提示条
+.tooltip {
+    pointer-events: none;
 }

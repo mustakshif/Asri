@@ -1,12 +1,6 @@
 .protyle-breadcrumb {
   height: 42px;
   color: var(--b3-theme-on-surface);
-  border-bottom: 1px solid var(--b3-border-color);
-  transition: 0.2s border-bottom;
-}
-.protyle:has(.protyle-content[data-scrolltop="0"], .protyle-content:not([data-scrolltop])) .protyle-breadcrumb {
-  border-bottom: 1px solid transparent;
-  transition: 0.2s border-bottom;
 }
 .protyle-breadcrumb__item:first-child {
   padding: 4px 0;

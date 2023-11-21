@@ -21,9 +21,13 @@
         border-bottom: none;
         border-right: none;
     }
-    .fn__flex-1:has(#dockRight.fn__none)~& {
-        right: 6px;
-    }
+
+    // 以下代码由于反复遍历DOM，影响性能 —————————————————————
+    // .fn__flex-1:has(#dockRight.fn__none)~& {
+    //     right: 6px;
+    // }
+    //——————————————————————————————
+
     #dockBottom:not(.fn__none)+& {
         background-color: transparent;
     }

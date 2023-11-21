@@ -1,7 +1,7 @@
-.protyle-breadcrumb[class*="svelte"] .address-field[class*="svelte"] {
+.protyle-breadcrumb[class*="svelte"] .address-field {
     margin: 0 4px !important;
 }
-.protyle-breadcrumb[class*="svelte"][class*="svelte"] {
+.protyle-breadcrumb[class*="svelte"] {
     height: 38px;
     box-shadow: 0 1px 0 0 var(--b3-border-color);
 }

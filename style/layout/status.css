@@ -22,9 +22,6 @@ html[data-theme-mode=dark] #status {
   border-bottom: none;
   border-right: none;
 }
-.fn__flex-1:has(#dockRight.fn__none) ~ #status {
-  right: 6px;
-}
 #dockBottom:not(.fn__none) + #status {
   background-color: transparent;
 }

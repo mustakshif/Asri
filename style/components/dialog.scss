@@ -1,1 +1,336 @@
 @use '../base' as *;
+
+.b3-dialog--open {
+    // user-select: none;
+
+    .b3-dialog {
+        .b3-dialog__scrim {
+            background-color: #80808080;
+            backdrop-filter: saturate(0.5);
+            transition: opacity 250ms 0s, backdrop-filter 300ms 0s;
+
+            @include darkmode-counterpart {
+                background-color: #00000080;
+                backdrop-filter: saturate(0);
+            }
+        }
+
+        .b3-dialog__container {
+            overflow: hidden;
+
+            @include border-or-not;
+
+            @include dialog-shadow;
+
+            // 设置面板 ————————————————————————————————
+            .config__panel {
+                .b3-tab-bar {
+                    background-color: var(--b3-theme-surface);
+                    padding: 16px 8px;
+
+                    .b3-list-item {
+                        height: 32px;
+                        line-height: 30px;
+                        margin: 4px 8px;
+
+                        &:hover:not(.b3-list-item--focus) {
+                            background-color: transparent;
+
+                            .b3-list-item__graphic,
+                            .b3-list-item__text {
+                                color: var(--b3-theme-on-background);
+                            }
+                        }
+
+                        &__graphic,
+                        &__text {
+                            color: var(--b3-theme-on-surface);
+                        }
+
+                        &--focus {
+
+                            .b3-list-item__graphic,
+                            .b3-list-item__text {
+                                color: var(--b3-theme-on-background);
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+
+                .config__tab-wrap {
+                    padding: 0;
+
+                    .config__tab-container {
+                        padding: 8px 0;
+
+                        &--top {
+                            margin-top: 0;
+                            height: 100%;
+                            padding: 8px 0 0;
+                        }
+
+                        .b3-label {
+                            border-bottom-color: transparent;
+                        }
+
+                        .bazaarPanel {
+                            padding-bottom: 8px;
+
+                            &[data-type='downloaded'] {
+                                .b3-button {
+                                    @include button-action(1) {
+                                        padding: 4px;
+                                    }
+
+                                    &:not(.b3-button--outline) {
+                                        background-color: transparent;
+                                        color: var(--b3-theme-primary);
+                                        font-weight: 600;
+
+                                        &:hover,
+                                        &:focus {
+                                            box-shadow: none;
+                                        }
+                                    }
+
+                                    &.b3-button--outline {
+                                        background-color: transparent;
+                                        color: var(--b3-theme-on-surface);
+                                        font-weight: normal;
+
+                                        &:hover {
+                                            color: var(--b3-theme-on-background);
+                                            box-shadow: none;
+                                        }
+                                    }
+
+                                    &+.fn__space+.b3-form__icon {
+                                        margin-left: 8px;
+                                    }
+                                }
+                            }
+
+                            #configBazaarDownloaded {
+                                padding: 0 0 16px 0;
+
+                                .b3-card {
+                                    margin: 16px;
+                                }
+                            }
+
+                            div[id*=configBazaar] {
+                                width: 100%;
+                                // 网格布局要求父容器的宽度不固定
+
+                                .b3-cards {
+                                    display: grid;
+                                    grid-template-columns: repeat(auto-fill, minmax(342px, 1fr));
+                                    gap: 16px;
+                                    margin: 16px;
+                                }
+
+                                .b3-card {
+                                    transition-duration: 0.2s;
+                                    border-radius: $border-rd-card;
+                                    background-color: var(--b3-theme-background);
+                                    outline: 1.5px solid var(--b3-border-color);
+                                    border: none;
+                                    @include menu-shadow($initialized: true);
+                                    margin: 0;
+
+                                    &--current {
+                                        outline: 3px solid var(--b3-theme-primary-lighter);
+
+                                        @include darkmode-counterpart {
+                                            outline-color: var(--b3-theme-primary-light);
+                                        }
+                                    }
+
+                                    &:hover {
+                                        transform: scale(1.01);
+                                        outline: 2px solid var(--b3-theme-primary-light);
+                                        z-index: 1;
+
+                                        @include menu-shadow(map-get($theme-light, primary), map-get($theme-dark, primary));
+
+                                        @include darkmode-counterpart {
+                                            outline: 2px solid var(--b3-theme-primary);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .config-account {
+                            &__avatar {
+                                box-shadow: none;
+                                border: none;
+                            }
+
+                            &__name {
+                                bottom: -72px;
+
+                                &>.fn__a {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 对话框底部按钮区域 ——————————————————————————————
+        &__action {
+            padding: 8px 24px;
+
+            .b3-button {
+                &--cancel {
+                    @include button-action('normal');
+                }
+
+                &--text {
+                    @include button-action('primary');
+                }
+            }
+        }
+    }
+
+    // 对话框中的 tab-bar ——————————————————————————————
+    .layout-tab-bar {
+        margin: 8px auto;
+        border-radius: 8px !important;
+        background-color: var(--b3-list-hover);
+        padding: 2px;
+        height: 32px;
+
+        .item {
+            border-radius: 6px !important;
+            background-color: transparent;
+            transition: none !important;
+            padding: 2px 12px;
+
+            &:hover:not(.item--focus) {
+                background-color: transparent !important;
+
+                .item__text {
+                    color: var(--b3-theme-on-background) !important;
+                }
+            }
+
+            &--focus {
+                max-width: unset;
+                box-shadow: 0 1px 4px -1px #0003;
+
+                @include darkmode-counterpart {
+                    box-shadow: 0 1px 0 0 inset rgba(255, 255, 255, 0.1), 0 1px 4px -1px #0003;
+                }
+
+                @include theme-variant-color(background-color, light-components, 1, 0.2);
+
+                .item__text {
+                    color: var(--b3-theme-on-background);
+                }
+            }
+        }
+
+        .item:not(.item--focus, .fn__none)+.item:not(.item--focus):not(:first-child)::before {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 2px;
+            height: 1.3em;
+            left: -4px;
+            border-radius: 9px;
+
+            @include theme-variant-color(background-color, list-hover, 0.08);
+        }
+    }
+}
+
+// 随机题头图列表
+.b3-dialog__body {
+    position: relative;
+    z-index: 0;
+
+    &>.b3-cards {
+        grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+        margin: 0;
+        padding: 32px;
+        gap: 32px;
+        display: grid;
+
+        // 用 transform 会生成独立堆叠层
+        .b3-card {
+            width: auto !important;
+            margin: 0;
+            border-radius: $border-rd-card;
+            padding: 0;
+            overflow: visible;
+            box-shadow: none;
+            top: 0;
+            // transform: scale(0.9);
+
+            &:hover {
+                transform: none;
+                box-shadow: 0 4px 18px -8px #0000001b;
+                top: -4px;
+                @include darkmode-counterpart {
+                    box-shadow: 0 8px 28px -8px #00000062;
+                }
+            }
+
+            &::before {
+                content: "";
+                background: inherit;
+                background-size: inherit;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                // transform: none;
+                z-index: -1;
+                filter: blur(0px) opacity(0);
+                transition: top 0.2s, left 0.2s, filter 0.2s, width 0.2s, height 0.2s;
+            }            
+
+            &:hover::before {
+                top: 20px;            
+                left: 5%;
+                width: 90%;
+                height: 90%;
+                filter: blur(20px) opacity(0.8) saturate(0.8) brightness(0.9);
+
+                @include darkmode-counterpart {
+                    filter: blur(20px) opacity(1) saturate(2) brightness(0.65);
+                }
+            }           
+        }
+    }
+}
+
+
+// 弹出窗口
+.block__popover {
+    @include dialog-shadow;
+    @include border-or-not;
+
+    .block__icons {
+        .block__icon {
+            &:hover:not([disabled]):not(.ft__primary) {
+                background-color: transparent;
+            }
+
+            &--active {
+                color: var(--b3-theme-primary);
+                background-color: transparent;
+
+                &:hover:not([disabled]):not(.ft__primary) {
+                    color: var(--b3-theme-primary);
+                }
+            }
+        }
+    }
+}

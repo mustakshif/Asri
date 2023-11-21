@@ -11,3 +11,6 @@
   font-size: 13px;
   line-height: 13.5px;
 }
+#toolbar.toolbar--browser, body.body--win32 #toolbar {
+  padding-left: 8px;
+}

@@ -12,4 +12,9 @@
             line-height: 13.5px;
         }
     }
+
+    &.toolbar--browser,
+    body.body--win32 & {
+        padding-left: 8px;
+    }
 }

@@ -1,6 +1,11 @@
 // functions ————————————————————
-@function rgbValue($color) {
-    @return red($color), green($color), blue($color);
+
+// @function rgbValue($color) {
+//     @return red($color), green($color), blue($color);
+// }
+
+@function pickThemeColor($theme-map, $color-key, $opacity: 1) {
+    @return change-color(map-get($theme-map , $color-key), $alpha: $opacity);
 }
 
 // common mixins ———————————————————————
@@ -21,30 +26,30 @@
     --toolbar-height: 48px;
 }
 
-@mixin bg-blur($blur-radius: 40px, $saturate-value: 3px, $brightness: 1.07) {
-    backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness);
+@mixin bg-blur($blur-radius: 40px, $saturate-value: 3, $brightness-light: 1.07, $brightness-dark: calc(2 - $brightness-light)) {
+    backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness-light);
 
     html[data-theme-mode="dark"] & {
-        backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness(2 - $brightness);
+        backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness-dark);
     }
 }
 
 //------------------------------------
-@mixin menu-shadow ($shadow-clr: #000, $initialized: false) {
+@mixin menu-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $initialized: false) {
     @if $initialized {
         box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
     }
 
     @else {
-        box-shadow: 0 0 0px 1px change-color($shadow-clr, $alpha: 0.05), 0px 13px 19px -2px change-color($shadow-clr, $alpha: 0.1), 0px 30px 50px -20px change-color($shadow-clr, $alpha: 0.08), 0px 0px 10px 0px change-color($shadow-clr, $alpha: 0.05);
+        box-shadow: 0 0 0px 1px change-color($shadow-clr-light, $alpha: calc($opacity-light * 0.5)), 0px 13px 19px -2px change-color($shadow-clr-light, $alpha: $opacity-light), 0px 30px 50px -20px change-color($shadow-clr-light, $alpha: calc($opacity-light * 0.8)), 0px 0px 10px 0px change-color($shadow-clr-light, $alpha: calc($opacity-light * 0.5));
 
         @include darkmode-counterpart {
-            box-shadow: 0 0 0 0.5px #000, 0px 13px 19px -7px change-color($shadow-clr, $alpha: 0.3), 0px 30px 50px -20px change-color($shadow-clr, $alpha: 0.3), 0px 0px 10px 0px change-color($shadow-clr, $alpha: 0.1);
+            box-shadow: 0 0 0 0.5px #000, 0px 13px 19px -7px change-color($shadow-clr-dark, $alpha: $opacity-dark), 0px 30px 50px -20px change-color($shadow-clr-dark, $alpha: $opacity-dark), 0px 0px 10px 0px change-color($shadow-clr-dark, $alpha: calc($opacity-dark / 2));
         }
     }
 }
 
-@mixin dialog-shadow ($shadow-clr: #000, $initialized: false) {
+@mixin dialog-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $initialized: false) {
     @if $initialized {
         box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
 
@@ -54,15 +59,15 @@
     }
 
     @else {
-        box-shadow: 0px 13px 18px -2px change-color($shadow-clr, $alpha: 0.1), 0px 30px 50px 0px change-color($shadow-clr, $alpha: 0.1), 0px 0px 12px 0px change-color($shadow-clr, $alpha: 0.05), 0px 75px 65px -50px change-color($shadow-clr, $alpha: 0.1);
+        box-shadow: 0px 13px 18px -2px change-color($shadow-clr-light, $alpha: $opacity-light), 0px 30px 50px 0px change-color($shadow-clr-light, $alpha: $opacity-light), 0px 0px 12px 0px change-color($shadow-clr-light, $alpha: calc($opacity-light / 2)), 0px 75px 65px -50px change-color($shadow-clr-light, $alpha: $opacity-light);
 
         @include darkmode-counterpart {
-            box-shadow: 0 0 0 0.5px #000, 0px 13px 18px -2px change-color($shadow-clr, $alpha: 0.3), 0px 30px 50px 0px change-color($shadow-clr, $alpha: 0.3), 0px 0px 12px 0px change-color($shadow-clr, $alpha: 0.15), 0px 75px 65px -50px change-color($shadow-clr, $alpha: 0.3);
+            box-shadow: 0 0 0 0.5px #000, 0px 13px 18px -2px change-color($shadow-clr-dark, $alpha: $opacity-dark), 0px 30px 50px 0px change-color($shadow-clr-dark, $alpha: $opacity-dark), 0px 0px 12px 0px change-color($shadow-clr-dark, $alpha: calc($opacity-dark / 2)), 0px 75px 65px -50px change-color($shadow-clr-dark, $alpha: $opacity-dark);
         }
     }
 }
 
-@mixin tooltip-shadow ($shadow-clr: #000, $initialized: false) {
+@mixin tooltip-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $initialized: false) {
     @if $initialized {
         box-shadow: 0 0 0 0 transparent;
 
@@ -72,10 +77,10 @@
     }
 
     @else {
-        box-shadow: 0px 2px 6px 0px change-color($shadow-clr, $alpha: 0.1);
+        box-shadow: 0px 2px 6px 0px change-color($shadow-clr-light, $alpha: $opacity-light);
 
         @include darkmode-counterpart {
-            box-shadow: 0 0 0 0.5px #000, 0px 2px 6px 0px change-color($shadow-clr, $alpha: 0.1);
+            box-shadow: 0 0 0 0.5px #000, 0px 2px 6px 0px change-color($shadow-clr-dark, $alpha: $opacity-dark);
         }
     }
 }
@@ -83,6 +88,7 @@
 //-------------------------------------
 @mixin border-or-not {
     border: none;
+
     @include darkmode-counterpart {
         border: 1px solid var(--b3-border-color);
     }
@@ -98,8 +104,11 @@
     border: none;
     box-shadow: none;
 
+    @content;
+
     @include darkmode-counterpart {
         background-color: rgb(24, 24, 24);
+
         &:hover {
             background-color: var(--b3-theme-primary);
         }
@@ -110,6 +119,60 @@
         color: var(--b3-theme-on-primary);
         transition: 0.1s all;
     }
+}
+
+// 主要用于设置面板的大按钮
+
+@mixin button-action($type) {
+    border-radius: 99px;
+    padding: 4px 12px;
+
+    @if $type=='normal' {
+        color: var(--b3-theme-on-surface);
+
+        &:hover {
+            background-color: var(--b3-list-hover);
+            color: var(--b3-theme-on-background);
+        }
+
+        &:active,
+        &:focus {
+            @include theme-variant-color(background-color, list-hover, 0.1);
+            color: var(--b3-theme-on-background);
+        }
+    }
+
+    @else if $type =='primary' {
+        color: var(--b3-theme-primary);
+        font-weight: 600;
+
+        &:hover {
+            background-color: var(--b3-theme-primary-lightest);
+        }
+
+        &:active,
+        &:focus {
+            background-color: var(--b3-theme-primary);
+            color: var(--b3-theme-on-primary);
+        }
+    }
+
+    @else if $type =='danger' {
+        color: var(--b3-theme-error);
+        font-weight: 600;
+
+        &:hover {
+            @include theme-variant-color(background-color, error, 0.08)
+        }
+
+        &:active,
+        &:focus {
+            background-color: var(--b3-theme-error);
+            color: var(--b3-theme-on-error);
+        }
+    }
+
+    @content;
 }
 
 // color scheme related mixins————————————————
@@ -168,7 +231,7 @@ $theme-dark: (
     on-surface-gray: rgb(127, 127, 127),
     border: hsl(0, 0%, 26%),
     scroll: rgba(255, 255, 255, 0.2),
-    list-hover: rgba(255, 255, 255, 0.08),
+    list-hover: rgba(255, 255, 255, 0.06),
     menu-background: rgb(50, 50, 50),
     menu-item-hv-background: rgb(32, 80, 202),
     menu-item-hv-on-background:#ffffffe3,
@@ -215,7 +278,7 @@ $theme-dark: (
     --b3-theme-on-primary: #{map-get($theme-map,on-primary)};
     --b3-theme-on-secondary: #{map-get($theme-map,on-secondary)};
     --b3-theme-on-background: #{map-get($theme-map,on-background)};
-    --b3-theme-on-surface:#{rgb(map-get($theme-map, on-background), 0.6)};
+    --b3-theme-on-surface:#{rgb(map-get($theme-map, on-background), 0.65)};
     --b3-theme-on-surface-light: #{rgb(map-get($theme-map,on-surface-gray), 0.68)};
     --b3-theme-on-error: #{map-get($theme-map,on-primary)};
 
@@ -285,12 +348,18 @@ $theme-dark: (
     --b3-protyle-inline-mark-background: #{map-get($theme-map,inline-mark-background)};
 }
 
-@mixin theme-variant-color($property, $theme-key, $opacity-light: 1,$opacity-dark: $opacity-light, $importance: '') {
+@mixin theme-variant-color($property, $theme-key, $opacity-light: 1, $opacity-dark: $opacity-light, $important: false) {
 
     $_color: map-get($theme-light, $theme-key);
 
     @if $_color !=null {
-        #{$property}: change-color($_color, $alpha: $opacity-light) #{$importance};
+        @if $important {
+            #{$property}: change-color($_color, $alpha: $opacity-light) !important;
+        }
+
+        @else {
+            #{$property}: change-color($_color, $alpha: $opacity-light);
+        }
     }
 
     @else {
@@ -301,7 +370,13 @@ $theme-dark: (
         $_color: map-get($theme-dark, $theme-key);
 
         @if $_color !=null {
-            #{$property}: change-color($_color, $alpha: $opacity-dark) #{$importance};
+            @if $important {
+                #{$property}: change-color($_color, $alpha: $opacity-dark) !important;
+            }
+
+            @else {
+                #{$property}: change-color($_color, $alpha: $opacity-dark);
+            }
         }
 
         @else {
@@ -314,18 +389,6 @@ $theme-dark: (
     html[data-theme-mode="dark"] & {
         @content;
     }
-}
-
-@mixin layout__dock-bg($theme-map) {
-    background-color: change-color(map-get($theme-map, surface), $alpha: 0.9);
-}
-
-@mixin layout__dock-title($theme-map) {
-    color: rgb(map-get($map: $theme-map, $key: on-background), 0.5);
-}
-
-@mixin theme-icons($theme-map, $opacity: 0.72) {
-    color: change-color(map-get($theme-map, on-background), $alpha: $opacity);
 }
 
 // other globvars ——————————————————————————

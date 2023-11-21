@@ -1,6 +1,11 @@
 @use '../base' as *;
 
-.fn__flex:has(>.layout-tab-bar:first-child) {
+// .fn__flex:has(>.layout-tab-bar:first-child) {
+//     height: 42px;
+// } // 可能影响性能
+
+// tab-bar 容器
+.fn__flex-column[data-type='wnd']>.fn__flex:first-child {
     height: 42px;
 }
 
@@ -20,13 +25,13 @@
         line-height: 24px;
         overflow: visible;
         background-color: var(--b3-list-hover);
-        
+                
         &:last-child {
             margin-right: 0;
         }
 
-        &:hover {
-            @include theme-variant-color(background-color, list-hover, 0.12, 0.2);
+        &:not(.item--readonly, .item--full.item--focus):hover {
+            @include theme-variant-color(background-color, list-hover, 0.12, 0.15);
         }
 
         &__icon {
@@ -82,7 +87,8 @@
 
         &--focus {
             max-width: 21rem;
-            @include theme-variant-color(background-color, list-hover, 0.12, 0.18);
+
+            @include theme-variant-color(background-color, list-hover, 0.12, 0.15);
 
             &::after {
                 display: none;
@@ -93,7 +99,7 @@
 
 .layout-tab-bar--readonly {
     margin-left: 0;
-    min-width: 60px;
+    min-width: 59px;
 
     .item {
         background-color: transparent;
@@ -105,7 +111,12 @@
         }
 
         .block__icon {
-            padding: 7px;
+            padding: 8px;
+
+            svg {
+                width: 12px;
+                height: 12px;
+            }
         }
 
         span:nth-child(2) {

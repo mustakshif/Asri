@@ -2,14 +2,11 @@
 
 .dock {
     box-sizing: border-box;
-    @include theme-variant-color(background-color, background, 0.9);
-
+    background-color: transparent;
 
     .dock__item {
-        @include theme-icons($theme-light, 0.6);
-        @include darkmode-counterpart {
-            @include theme-icons($theme-dark, 0.6);
-        }
+        @include theme-variant-color(color, on-background, 0.6);
+        
         &:not(.dock__item--activefocus,.dock--active):hover {
             color: var(--b3-theme-on-background);
         }
@@ -29,11 +26,13 @@
     }
 }
 
-#dockLeft:has(+ #layouts .layout__dockl:not(.layout--float)>.fn__flex-1:not(.fn__none)),
-#layouts:has(.layout__dockr:not(.layout--float, [style="width: 0px;"])> .fn__flex-1:first-child:not(.fn__none))~#dockRight {
-    border-color: transparent;
-    @include layout__dock-bg($theme-light);
-    @include darkmode-counterpart {
-        @include layout__dock-bg($theme-dark);
-    }
-}
+// 以下代码影响性能 ——————————————————————————————————
+// #dockLeft:has(+ #layouts .layout__dockl:not(.layout--float)>.fn__flex-1:not(.fn__none)),
+// #layouts:has(.layout__dockr:not(.layout--float, [style="width: 0px;"])> .fn__flex-1:first-child:not(.fn__none))~#dockRight {
+//     border-color: transparent;
+//     @include layout__dock-bg($theme-light);
+//     @include darkmode-counterpart {
+//         @include layout__dock-bg($theme-dark);
+//     }
+// }
+//————————————————————————————————————————————

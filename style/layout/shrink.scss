@@ -10,11 +10,7 @@
 
             font-weight: 600;
 
-            @include layout__dock-title($theme-light);
-
-            @include darkmode-counterpart {
-                @include layout__dock-title($theme-dark);
-            }
+            @include theme-variant-color(color, on-background, 0.5);
         }
 
         .block__icon {
@@ -46,11 +42,7 @@
         }
 
         .b3-list-item__toggle {
-            @include theme-icons($theme-light, $opacity: 0.6);
-
-            @include darkmode-counterpart {
-                @include theme-icons($theme-dark, $opacity: 0.6);
-            }
+            @include theme-variant-color(color, on-background, 0.6);
 
             &--hl:hover {
                 color: var(--b3-theme-on-background) !important;
@@ -106,11 +98,7 @@
         background-color: transparent;
 
         @include layout-tab-container-contents {
-            @include layout__dock-bg($theme-light);
-
-            @include darkmode-counterpart {
-                @include layout__dock-bg($theme-dark);
-            }
+            @include theme-variant-color(background-color, surface, 0.9);
         }
     }
 
@@ -120,13 +108,11 @@
         .layout-tab-container {
             .block__icons {
                 &,&~* {
-                    background-color: var(--b3-theme-background);
-                    @include darkmode-counterpart {
-                        background-color: var(--b3-theme-background);
-                    }
+                    @include theme-variant-color(background-color,background);
                 }
             }
         }
+
         box-shadow: none;
         height: calc(100% - var(--toolbar-height));
         bottom: 0;
@@ -136,6 +122,13 @@
         border-bottom: none;
         opacity: 1 !important;
     }
+}
+.layout__dockr {
+    &.layout--float {
+        .b3-list--background {
+            padding-bottom: 0;
+        }
+    };
 }
 
 // 边框

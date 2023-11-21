@@ -111,12 +111,16 @@ html[data-theme-mode=dark] .layout__dockr .layout-tab-container .b3-list-item .b
 .layout__dockl.layout--float .layout-tab-container .block__icons, .layout__dockl.layout--float .layout-tab-container .block__icons ~ *,
 .layout__dockr.layout--float .layout-tab-container .block__icons,
 .layout__dockr.layout--float .layout-tab-container .block__icons ~ * {
-  background-color: var(--b3-theme-background);
+  background-color: white;
 }
 html[data-theme-mode=dark] .layout__dockl.layout--float .layout-tab-container .block__icons, html[data-theme-mode=dark] .layout__dockl.layout--float .layout-tab-container .block__icons ~ *,
 html[data-theme-mode=dark] .layout__dockr.layout--float .layout-tab-container .block__icons,
 html[data-theme-mode=dark] .layout__dockr.layout--float .layout-tab-container .block__icons ~ * {
-  background-color: var(--b3-theme-background);
+  background-color: #1e1e1e;
+}
+
+.layout__dockr.layout--float .b3-list--background {
+  padding-bottom: 0;
 }
 
 .layout__dockl.layout--float {

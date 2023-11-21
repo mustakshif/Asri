@@ -1,9 +1,6 @@
 .dock {
   box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.9);
-}
-html[data-theme-mode=dark] .dock {
-  background-color: rgba(30, 30, 30, 0.9);
+  background-color: transparent;
 }
 .dock .dock__item {
   color: rgba(38, 38, 38, 0.6);
@@ -23,14 +20,4 @@ html[data-theme-mode=dark] .dock .dock__item {
 }
 .dock#dockRight {
   border-left-width: 1px;
-}
-
-#dockLeft:has(+ #layouts .layout__dockl:not(.layout--float) > .fn__flex-1:not(.fn__none)),
-#layouts:has(.layout__dockr:not(.layout--float, [style="width: 0px;"]) > .fn__flex-1:first-child:not(.fn__none)) ~ #dockRight {
-  border-color: transparent;
-  background-color: rgba(246, 246, 246, 0.9);
-}
-html[data-theme-mode=dark] #dockLeft:has(+ #layouts .layout__dockl:not(.layout--float) > .fn__flex-1:not(.fn__none)),
-html[data-theme-mode=dark] #layouts:has(.layout__dockr:not(.layout--float, [style="width: 0px;"]) > .fn__flex-1:first-child:not(.fn__none)) ~ #dockRight {
-  background-color: rgba(56, 56, 56, 0.9);
 }
