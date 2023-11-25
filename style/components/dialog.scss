@@ -115,7 +115,7 @@
                                 padding: 0 0 16px 0;
 
                                 .b3-card {
-                                    margin: 16px;
+                                    margin: 20px;
                                 }
                             }
 
@@ -126,8 +126,8 @@
                                 .b3-cards {
                                     display: grid;
                                     grid-template-columns: repeat(auto-fill, minmax(342px, 1fr));
-                                    gap: 16px;
-                                    margin: 16px;
+                                    gap: 20px;
+                                    margin: 20px;
                                 }
 
                                 .b3-card {
@@ -175,6 +175,72 @@
                                     display: block;
                                 }
                             }
+                        }
+                    }
+                }
+            }
+
+            // emoji 面板
+            .emojis {
+                padding: 0;
+
+                .fn__flex:first-child {
+                    margin: 8px 0;
+
+                    // 搜索框
+                    span.fn__space+.b3-form__icon {
+                        overflow: visible;
+                    }
+                }
+
+                &__panel {
+                    padding: 0 16px;
+
+                    .emojis__content {
+                        display: grid;
+                        flex-wrap: wrap;
+                        grid-template-columns: repeat(auto-fill, minmax(32px, 4fr));
+                        gap: 8px;
+
+                        .emojis__item {
+                            padding: 0;
+                            font-size: 28px;
+                            height: 32px;
+
+                            &:hover {
+                                background: transparent;
+                                transform: scale(1.3);
+                                transition: transform 0.3s cubic-bezier(0.12, 0, 0.05, 2.5);
+                                animation: lighten 0.3s ease-in-out;
+
+                                @keyframes lighten {
+                                    0% {
+                                        filter: brightness(1);   
+                                    }
+
+                                    60% {
+                                        filter: brightness(1.15);
+                                    }
+                                    
+                                    100% {
+                                        filter: brightness(1); 
+                                    }
+                                } 
+                            }
+                        }
+                    }
+                }
+
+                &__panel+.fn__flex {
+                    border-top: 1px solid var(--b3-border-color);
+
+                    .emojis__type {
+                        padding: 4px 0;
+                        filter: saturate(0.1) opacity(0.6);
+
+                        &:hover {
+                            filter: none;
+                            background-color: transparent;
                         }
                     }
                 }
@@ -249,6 +315,10 @@
     }
 }
 
+#searchInput{
+    background-color: transparent;
+}
+
 // 随机题头图列表
 .b3-dialog__body {
     position: relative;
@@ -276,6 +346,7 @@
                 transform: none;
                 box-shadow: 0 4px 18px -8px #0000001b;
                 top: -4px;
+
                 @include darkmode-counterpart {
                     box-shadow: 0 8px 28px -8px #00000062;
                 }
@@ -294,10 +365,10 @@
                 z-index: -1;
                 filter: blur(0px) opacity(0);
                 transition: top 0.2s, left 0.2s, filter 0.2s, width 0.2s, height 0.2s;
-            }            
+            }
 
             &:hover::before {
-                top: 20px;            
+                top: 20px;
                 left: 5%;
                 width: 90%;
                 height: 90%;
@@ -306,13 +377,13 @@
                 @include darkmode-counterpart {
                     filter: blur(20px) opacity(1) saturate(2) brightness(0.65);
                 }
-            }           
+            }
         }
     }
 }
 
 
-// 弹出窗口
+// 弹出窗口 ——————————————————————————————————————
 .block__popover {
     @include dialog-shadow;
     @include border-or-not;
@@ -333,4 +404,11 @@
             }
         }
     }
+}
+
+
+// 浮窗 ————————————————————————————————————————
+.protyle-util {
+    @include dialog-shadow;
+    @include border-or-not;
 }

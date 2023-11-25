@@ -1,13 +1,19 @@
 @use 'style/base' as *;
 @use 'style/main';
 
-// @import url(style/customizable/hide-toolbar.css);
-html[data-theme-mode="light"]:root{
+html[data-theme-mode="light"]:root {
     @include theme-root($theme-light);
     @include font-family;
     @include cssvars;
+
+    body {
+        ::selection {
+            background-color: var(--b3-theme-primary-lightest);
+        }
+    }
 }
-html[data-theme-mode="dark"]:root{
+
+html[data-theme-mode="dark"]:root {
     @include theme-root($theme-dark);
     @include font-family;
     @include cssvars;
@@ -16,18 +22,22 @@ html[data-theme-mode="dark"]:root{
 body {
     border: 0px !important;
     -webkit-font-smoothing: auto;
-    html[data-theme-mode="dark"] & {
+
+    @include darkmode-counterpart {
         -webkit-font-smoothing: antialiased;
     }
+
+    text-underline-position: under;
 }
 
 // plugins
-// @import url(style/plugins/fold-list-preview.css);
+@import url(style/plugins/fold-list-preview.css);
+
 // @import url(style/plugins/webview.css); // 导致页面滚动卡顿
 
 
+
 div.test {
-    @include theme-variant-color(color, on-background, $important:true);
-    background-color: grayscale(pickThemeColor($theme-light,primary));
+    @include theme-variant-color(color, on-background, $important: true);
 }
 

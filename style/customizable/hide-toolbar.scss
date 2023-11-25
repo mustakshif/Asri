@@ -37,7 +37,7 @@
         #drag {
             app-region: drag;
         }
-    }
+    } // --> js
 }
 
 @mixin hide-toolbar-common($paddingTop: 4px) {
@@ -132,6 +132,19 @@ body {
     }
 }
 
+// 页签中的搜索
+.layout-tab-container {
+    .search__header {
+        margin-top: 42px;
+    }
+}
+
+// 消息区域
+.b3-snackbars {
+    top:0;
+}
+
+
 // 窗口顶部的拖移区域 ——————————————————————————————————————————
 #toolbar {
     .toolbar__item {
@@ -153,7 +166,7 @@ body {
 
     // tab-bar 视觉下移
     .layout-tab-bar {
-        margin-top: 2px;
+        margin-top: 0;
 
         &:not(.layout-tab-bar--readonly) {
             app-region: no-drag;
@@ -170,7 +183,7 @@ body {
 
 // 面包屑
 .protyle-breadcrumb {
-    .layout-tab-container *:not(.protyle.fullscreen)>& {
+    .layout-tab-container *:not(.protyle.fullscreen)>&__space {
         app-region: drag;
 
         &__item {
@@ -197,7 +210,6 @@ body {
     }
 }
 
-
 // 禁用拖动的区域 ————————————————————————————————————
 //菜单
 .b3-menu,
@@ -213,10 +225,15 @@ body {
 
 //其他
 .graph.fullscreen>.block__icons>.block__icon,
+
 .graph.fullscreen>.block__icons>.search__label,
 
 .search__header,
 
-.layout--float {
+.layout--float,
+
+.protyle-breadcrumb .block__icon,
+
+.b3-snackbar {
     app-region: no-drag;
 }

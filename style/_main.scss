@@ -13,25 +13,569 @@
 @use 'components/dialog';
 
 @use 'customizable/hide-toolbar';
+@use 'customizable/cover-image-fading';
+@use 'customizable/blur';
 
 
-
-// 标题
-
-
-// 块定位条
-.protyle-scroll {
-    opacity: 0;
-    transform: scale(0.95, 0.9);
-    transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1),
-    transform 0.2s cubic-bezier(0, 0, 0.2, 1);
-    transition-delay: 0.5s;
+@mixin protyle-icons {
+    border-radius: 99px;
+    transition: none;
 
     &:hover {
-        opacity: 1;
-        transform: none;
-        transition-delay: 0s;
+        backdrop-filter: blur(20px) saturate(3);
+        transition: none;
+        opacity: 1 !important;
     }
+
+    .protyle-icon {
+        @include theme-variant-color(background-color, surface, 0.8);
+        @include theme-variant-color(color, on-background, 0.6);
+        padding: 5px 6px;
+
+        &:not(.protyle-icon--text, .protyle-icon--only):hover {
+            color: var(--b3-theme-on-background);
+        }
+
+        &--first {
+            border-radius: 99px 0 0 99px;
+            padding-left: 10px;
+        }
+
+        &--last {
+            border-radius: 0 99px 99px 0;
+            padding-right: 10px;
+        }
+
+        &--text {
+            //调整题头图上下位置
+            border-radius: 99px;
+            padding: 5px 8px;
+        }
+
+        &--only {
+            // 正文图片
+            border-radius: 99px;
+            padding: 5px;
+            transition: none;
+
+            &:hover {
+                color: var(--b3-theme-on-background);
+                backdrop-filter: blur(20px) saturate(3);
+                transition: none;
+            }
+        }
+    }
+}
+
+@mixin typography-elements {
+
+    // h1-h6
+    @for $i from 1 through 6 {
+        .h#{$i} {
+            font-weight: 600;
+            margin-top: 1.2em;
+        }
+
+        @for $j from 2 through 6 {
+            @if $i < $j {
+                .h#{$i}+.h#{$j} {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    // .h1+.h2,
+    // :is(.h1, .h2)+.h3,
+    // :is(.h1, .h2, .h3)+.h4,
+    // :is(.h1, .h2, .h3, .h4)+.h5,
+    // :is(.h1, .h2, .h3, .h4, .h5)+.h6 {
+    //     margin-top: 0;
+    // }
+    [data-type='NodeSuperBlock']>[data-type='NodeHeading']:first-child,
+    .protyle-wysiwyg__embed>[data-type='NodeHeading']:first-child,
+    .protyle-wysiwyg__embed>.protyle-breadcrumb__bar+[data-type='NodeHeading'] {
+        margin-top: 0;
+    }
+
+    // 块引用
+    [data-node-id] span[data-type~=block-ref],
+    [data-node-id] span[data-type~=file-annotation-ref] {
+        color: inherit;
+        text-decoration: underline dashed;
+        text-decoration-color: var(--b3-theme-primary);
+        text-decoration-thickness: 0.1em;
+        background: linear-gradient(90deg, var(--b3-theme-primary-lightest) 100%, transparent 0%) center right;
+        background-size: 0;
+        background-repeat: no-repeat;
+        opacity: 1;
+        transition: background-size 0.3s;
+
+        &:hover {
+            background-position: center left;
+            text-decoration-style: solid !important;
+            background-size: 100% !important;
+        }
+    }
+
+    // 虚拟引用
+    [data-node-id] span[data-type=virtual-block-ref] {
+        border-bottom: none;
+        text-decoration: underline;
+        text-decoration-thickness: 0.1em;
+        text-decoration-color: var(--b3-theme-on-surface-light);
+        text-decoration-style: dashed;
+        background: linear-gradient(90deg, var(--b3-border-color) 100%, transparent 0%) center right;
+        background-size: 0;
+        background-repeat: no-repeat;
+        transition: background-size 0.3s;
+
+        &:hover {
+            background-position: center left;
+            border: none;
+            background-size: 100% !important;
+        }
+    }
+
+    // 超链接
+    [data-node-id] span[data-type~=a] {
+        color: inherit;
+        text-decoration: underline solid;
+        text-decoration-thickness: 0.1em;
+        text-decoration-color: var(--b3-theme-primary);
+
+        &:hover {
+            color: var(--b3-theme-primary);
+            border-bottom: none;
+        }
+    }
+
+    //加粗、倾斜
+    span[data-type~=strong],
+    span[data-type~=em] {
+        color: inherit;
+    }
+
+    // 下划线
+    span[data-type~=u] {
+        text-decoration: underline;
+        text-decoration-thickness: 0.1em;
+        border-bottom: none;
+    }
+
+    // 删除线
+    span[data-type~=s] {
+        color: inherit;
+    }
+
+    //高亮标记 
+    span[data-type~=mark] {
+        background: transparent;
+        box-shadow: 0 -0.5em 0 0 inset var(--b3-protyle-inline-mark-background), 0 0.1em 0 0 var(--b3-protyle-inline-mark-background);
+        color: inherit;
+    }
+
+    // 快捷键
+    span[data-type~=kbd] {
+        font: 80% SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
+        padding: 0.15em 0.5em;
+        border-radius: 1em;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+        vertical-align: baseline;
+
+        @include darkmode-counterpart {
+            box-shadow: inset 0 1px 0 var(--b3-theme-surface-lighter);
+        }
+    }
+
+    // 标签
+    [data-node-id] span[data-type~="tag"] {
+        font-size: 90%;
+        border-radius: 1em;
+        padding: 0.1em 0.5em 0.15em;
+        border: none;
+        box-shadow: 0 0 0 0.065em inset;
+        background-color: transparent;
+        transition: all 200ms;
+        color: var(--b3-theme-secondary);
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+
+        &:hover {
+            background-color: transparent;
+            color: change-color($color: pickThemeColor($theme-light, secondary), $lightness: 40%);
+
+            @include darkmode-counterpart {
+                color: change-color($color: pickThemeColor($theme-dark, secondary), $lightness: 70%);
+            }
+        }
+    }
+
+    // 行级代码 
+    span[data-type~=code] {
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+        border-radius: 0.4em;
+        color: inherit;
+    }
+
+    // 备注
+    span[data-type~=inline-memo] {
+        background-color: transparent;
+        border-bottom: none;
+        text-decoration: underline;
+        text-decoration-color: var(--b3-font-color5);
+        transition: all 150ms;
+
+        &:hover {
+            box-shadow: 0 -1.15em 0 0 inset pickThemeColor($theme-light, font-color5, 0.5);
+            transition: all 150ms;
+
+            @include darkmode-counterpart {
+                box-shadow: 0 -1.15em 0 0 inset pickThemeColor($theme-dark, font-color5, 0.3);
+            }
+        }
+    }
+
+    // 引用块
+    .bq,
+    blockquote {
+        padding: 16px;
+        border: 1.5px solid var(--b3-border-color-trans);
+        margin: 1em 0;
+
+        &>[data-type='NodeHeading']:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .sb .bq,
+    .sb blockquote {
+        border: none;
+    }
+
+    //代码块
+    .code-block {
+        margin: 0.4em 0;
+
+        .protyle-action .protyle-action__language {
+            margin-top: 0;
+        }
+
+        .protyle-linenumber__rows {
+            padding: 2em 4px;
+        }
+
+        .hljs {
+            border-radius: 10px;
+            background-color: var(--b3-theme-surface);
+            padding: 2em 16px;
+        }
+    }
+
+    // 列表
+    .li {
+        // 列表项序号、图标
+        .protyle-action {
+            opacity: 0.8;
+            color: inherit !important;
+
+            //任务列表
+            &--task {
+                color: inherit;
+
+                &:hover {
+                    color: var(--b3-theme-primary) !important;
+                    opacity: 1;
+                }
+            }
+        }
+
+        >.bq {
+            padding-right: 16px !important;
+        }
+    }
+
+    // 任务列表项
+    .protyle-task--done {
+        &>div[data-node-id].p {
+            opacity: 0.45;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        &>.protyle-action--task {
+            opacity: 0.45;
+        }
+    }
+
+    // 图片
+    [data-node-id] .img {
+        img {
+            border-radius: 6px;
+        }
+
+        &--select {
+            filter: none;
+
+            img {
+                filter: brightness(0.8);
+            }
+        }
+
+        .protyle-action__drag {
+            top: 50%;
+            transform: translateY(-50%);
+
+
+        }
+
+        &:hover {
+            .protyle-action__drag {
+                background-color: transparent;
+                backdrop-filter: invert(1) blur(200px) saturate(0) contrast(0.5) brightness(1.15);
+                filter: contrast(10) invert(0.1);
+                box-shadow: none;
+                transition: transform 50ms;
+
+                &:hover {
+                    transform: scale(1.2) translateY(-40%);
+                }
+            }
+        }
+    }
+
+    // 表格
+    table {
+        border-radius: 6px;
+        border: 1px solid var(--b3-border-color-trans);
+
+        td,
+        th {
+            border: 1px solid var(--b3-border-color-trans);
+            background-color: var(--b3-theme-background);
+        }
+
+        thead {
+            tr {
+                th {
+                    background-color: var(--b3-theme-surface);
+                    border-top: none;
+
+                    &:first-child {
+                        border-left: none;
+                    }
+
+                    &:last-child {
+                        border-right: none;
+                    }
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                &:nth-child(2n) {
+                    td {
+                        background-color: var(--b3-theme-surface);
+                    }
+                }
+
+                &:last-child {
+                    td {
+                        border-bottom: none;
+                    }
+                }
+
+                td:first-child {
+                    border-left: none;
+                }
+
+                td:last-child {
+                    border-right: none;
+                }
+            }
+        }
+    }
+
+    // 分隔线
+    [data-node-id].hr>div:after {
+        background-color: var(--b3-border-color-trans);
+        height: 2px;
+        border-radius: 2px;
+    }
+}
+
+.layout-tab-container {
+    background-color: transparent;
+}
+
+.protyle {
+
+    // 题头图区域
+    &-background {
+
+        // 工具条
+        .protyle-icons {
+            .protyle-icon {
+                height: 30px;
+                padding: 8px 6px;
+
+                &--first {
+                    padding-left: 12px;
+                }
+
+                &--last {
+                    padding-right: 12px;
+                }
+            }
+        }
+
+        // 图标工具条
+        &__icon:not(.fn__none)+.protyle-icons {
+            margin-top: 50px;
+        }
+
+        // 文档图标
+        // &__iconw {
+        // }
+    }
+
+    &-icons {
+        // 工具条
+        @include protyle-icons;
+    }
+
+    &-action {
+        // 代码块
+        @include protyle-icons;
+
+        &:hover {
+            backdrop-filter: none;
+        }
+    }
+
+    //编辑区域
+    &-content {
+        background-color: var(--b3-theme-background);
+    }
+
+    //文档标题
+    &-title {
+        &__input {
+            font-weight: 600;
+            font-size: 2.4em;
+            line-height: 1.4;
+            padding-top: 8px;
+            padding-bottom: 8px;
+
+            &:empty:after {
+                opacity: 0.6;
+            }
+        }
+    }
+
+    // 正文内容
+    &-wysiwyg {
+        @include typography-elements;
+
+        &>div[data-type="NodeHeading"]:first-child,
+        &>[data-node-id].sb:first-child .sb:first-child {
+            margin-top: 0;
+        }
+
+        //所有内容块
+        [data-node-id] {
+            border-radius: 10px;
+        }
+
+        // 超级块
+        [data-node-id].sb[data-sb-layout=row] .sb {
+            margin-top: 24px;
+        }
+
+        // [data-node-id].sb[data-sb-layout=row]>.sb:first-child {
+        //     margin-top: 0;
+        // }
+        [data-node-id].sb[data-sb-layout=col]>.sb {
+            margin-top: 0;
+        }
+
+        .sb > .bq {
+            margin: 0;
+        }
+
+
+        // 嵌入块 
+        [data-node-id].render-node[data-type=NodeBlockQueryEmbed] {
+            border-left: none;
+            padding: 16px;
+
+            &>.protyle-wysiwyg__embed {
+                border-top: 1px solid var(--b3-border-color-trans);
+            }
+        }
+
+
+
+        [data-node-id].table[custom-pinthead=true] thead {
+            position: sticky;
+            z-index: 1;
+            box-shadow: 0px -1px 0px var(--b3-border-color-trans) inset;
+        }
+    }
+
+    //文字格式工具条
+    &-toolbar {
+        animation: toolbar 0.2s ease-in-out;
+        border: none;
+        border-radius: 40px;
+        padding: 4px 6px;
+        // transform: translateY(-12px);
+        background-color: var(--b3-theme-surface);
+        @include menu-shadow;
+        @include border-or-not;
+
+        &__item {
+            height: 30px;
+            width: 30px;
+            padding-top: 3px;
+            border-radius: 20px;
+
+            &:hover {
+                @include theme-variant-color(background-color, on-background, 0.1);
+            }
+
+            &:not(.protyle-toolbar__item--current) {
+                @include theme-variant-color(color, on-background, 0.8);
+
+                &:hover {
+                    @include theme-variant-color(color, on-background, 1);
+                }
+            }
+        }
+    }
+
+    // 块定位滚动条
+    &-scroll {
+        opacity: 0;
+        transform: scale(0.95, 0.9);
+        transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1),
+            transform 0.2s cubic-bezier(0, 0, 0.2, 1);
+        transition-delay: 0.5s;
+
+        &:hover {
+            opacity: 1;
+            transform: none;
+            transition-delay: 0s;
+        }
+    }
+
+    // 框选框
+    // &-select {
+    // outline: 1px solid var(--b3-theme-primary-lighter);
+    // }
 }
 
 
@@ -39,3 +583,182 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+//blur -------------------
+
+$thick-transparency: 0.88;
+$thick-blur-rd: 40px;
+$medium-transparency: 0.8;
+$medium-blur-rd: 20px;
+$thin-transparency: 0.75;
+$thin-blur-rd: 12px;
+
+.layout__wnd--active {
+    &>.fn__flex:first-child {
+        background-color: transparent;
+        margin-bottom: -42px;
+        z-index: 3;
+    }
+
+    .layout-tab-bar {
+        .item {
+            &--focus {
+                background-color: transparent;
+                backdrop-filter: brightness(0.86) saturate(1.8);
+
+                @include darkmode-counterpart {
+                    backdrop-filter: brightness(1.2) saturate(2.5);
+                }
+            }
+        }
+    }
+
+    .layout-tab-container {
+        &>.protyle[data-loading="finished"]::before {
+            --blur-block-height: 84px;
+            --blur-radius-main: 40px;
+            content: "";
+            display: block;
+            width: 100%;
+            height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
+            position: absolute;
+            top: 0;
+            z-index: 2;
+            pointer-events: none;
+            // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
+            mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 0.5px), transparent calc(var(--blur-block-height) + 1px));
+
+            @include bg-blur;
+        }
+
+        :not(#searchPreview)>.protyle-breadcrumb {
+            padding-top: 42px;
+            margin-bottom: -84px;
+            height: 84px;
+            @include theme-variant-color(background-color, background, $thick-transparency);
+            z-index: 2;
+        }
+        .protyle[data-loading="finished"].fullscreen::before {
+            --blur-block-height:var(--toolbar-height);
+        }
+        .fullscreen>.protyle-breadcrumb {
+            height: var(--toolbar-height) !important;
+            padding-top: 0 !important;
+        }
+
+        :not(#searchPreview)>.protyle-content {
+            padding-top: 84px;
+        }
+    }
+}
+
+
+.protyle {
+
+    // 题头图区域
+    &-background {
+        &__img {
+            &::after {
+                content: "";
+                display: inline-block;
+                width: -webkit-fill-available;
+                height: 13.5vh;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                backdrop-filter: blur(4px);
+                mask-image: linear-gradient(to top, black 50%, transparent);
+                transform: translateZ(0);
+                pointer-events: none;
+            }
+        }
+    }
+
+    //文字格式工具条
+    &-toolbar {
+        @include theme-variant-color(background-color, surface, $medium-transparency);
+        @include bg-blur;
+
+        // z-index: 1;
+    }
+}
+
+#status {
+    @include theme-variant-color(background-color, surface, $medium-transparency);
+    @include bg-blur;
+}
+
+.layout__dockl,
+.layout__dockr {
+    &.layout--float {
+        margin-top: 0;
+
+        &::before,
+        &>.fn__flex-1:first-child::before {
+            @include theme-variant-color(background-color, background, $thick-transparency, $important: true);
+        }
+
+        .layout-tab-container {
+            .block__icons {
+
+                &,
+                &~* {
+                    @include theme-variant-color(background-color, background, $thick-transparency);
+                }
+            }
+
+            .graph {
+                background-color: transparent;
+
+                &.fullscreen {
+                    @include bg-blur;
+                }
+            }
+        }
+
+        &::after {
+            content: '';
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            z-index: -1;
+            @include bg-blur;
+        }
+    }
+}
+
+// 菜单
+.b3-menu,
+.b3-menu__submenu {
+    background-color: transparent;
+    overflow: hidden;
+
+    &:not(#searchHistoryList)::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-position: center top;
+        background-size: cover;
+        background-attachment: fixed;
+        border-radius: 0;
+        @include bg-blur;
+        @include theme-variant-color(background-color, menu-background, $thick-transparency);
+    }
+}
+
+.toolbar {
+    z-index: 4;
+}

@@ -2,6 +2,9 @@
   height: 1px;
   width: 100%;
 }
+.layout__resize--lr {
+  z-index: 3;
+}
 .layout__resize--lr::after {
   height: 100%;
   width: 1px;
@@ -159,4 +162,62 @@ html[data-theme-mode=dark] .b3-slider:hover:not(.b3-slider:focus)::-webkit-slide
 
 .tooltip {
   pointer-events: none;
+}
+
+#message.b3-snackbars > .fn__flex-1 {
+  padding: 12px 18px 32px;
+}
+#message.b3-snackbars .b3-snackbar__content {
+  border-radius: 16px;
+  box-shadow: 0 0 0px 1px rgba(52, 120, 246, 0.05), 0px 13px 19px -2px rgba(52, 120, 246, 0.1), 0px 30px 50px -20px rgba(52, 120, 246, 0.08), 0px 0px 10px 0px rgba(52, 120, 246, 0.05);
+}
+html[data-theme-mode=dark] #message.b3-snackbars .b3-snackbar__content {
+  box-shadow: 0 0 0 0.5px #118bff, 0px 13px 19px -7px rgba(17, 139, 255, 0.3), 0px 30px 50px -20px rgba(17, 139, 255, 0.3), 0px 0px 10px 0px rgba(17, 139, 255, 0.15);
+}
+#message.b3-snackbars .b3-snackbar__content--close {
+  padding-right: 16px;
+}
+#message.b3-snackbars .b3-snackbar__content--close:hover ~ .b3-snackbar__close {
+  transform: scale(1);
+}
+#message.b3-snackbars .b3-snackbar__close {
+  transform: scale(0);
+  color: var(--b3-theme-on-error);
+  top: 8px;
+  right: 8px;
+  transition-duration: 0.2s;
+}
+#message.b3-snackbars .b3-snackbar__close:hover {
+  transform: scale(1);
+}
+#message.b3-snackbars .b3-snackbar--error .b3-snackbar__content {
+  box-shadow: 0 0 0px 1px rgba(234, 77, 60, 0.05), 0px 13px 19px -2px rgba(234, 77, 60, 0.1), 0px 30px 50px -20px rgba(234, 77, 60, 0.08), 0px 0px 10px 0px rgba(234, 77, 60, 0.05);
+}
+html[data-theme-mode=dark] #message.b3-snackbars .b3-snackbar--error .b3-snackbar__content {
+  box-shadow: 0 0 0 0.5px #ff3b30, 0px 13px 19px -7px rgba(255, 59, 48, 0.3), 0px 30px 50px -20px rgba(255, 59, 48, 0.3), 0px 0px 10px 0px rgba(255, 59, 48, 0.15);
+}
+#message.b3-snackbars .b3-snackbar--error .b3-snackbar__content::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 3px;
+  height: 100%;
+  color: var(--b3-theme-error);
+  left: -4px;
+  z-index: 1;
+}
+#message.b3-snackbars button {
+  border-radius: 99px;
+  padding: 4px 12px;
+  background-color: var(--b3-theme-surface);
+  transition: transform 0.2s;
+  transform: translateY(-16px);
+  border: none;
+}
+#message.b3-snackbars button:hover {
+  color: var(--b3-theme-on-background);
+  transform: scale(1.2) translateY(-16px);
+}
+html[data-theme-mode=dark] #message.b3-snackbars button {
+  border: 1px solid var(--b3-border-color);
 }

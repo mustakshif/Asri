@@ -4,9 +4,11 @@
 .layout__resize {
     &::after {
         height: 1px;
-        width: 100%;
+        width: 100%;        
     }
     &--lr {
+        z-index: 3;
+
         &::after {
             height: 100%;
             width: 1px;
@@ -164,4 +166,71 @@ textarea {
 // 提示条
 .tooltip {
     pointer-events: none;
+}
+
+// 消息通知
+
+#message.b3-snackbars {
+    &>.fn__flex-1 {
+        padding: 12px 18px 32px;
+    }
+
+    .b3-snackbar {
+        &__content{
+            border-radius: 16px;
+
+            @include menu-shadow(pickThemeColor($theme-light, primary), pickThemeColor($theme-dark, primary)); 
+            
+            &--close {
+                padding-right: 16px;
+
+                &:hover~.b3-snackbar__close {
+                    transform: scale(1);
+                }
+            }
+        }
+
+        &__close {
+            transform: scale(0);
+            color: var(--b3-theme-on-error);
+            top: 8px;
+            right: 8px;
+            transition-duration: 0.2s;
+
+            &:hover{
+                transform: scale(1);
+            }
+        }
+
+        &--error {                        
+            .b3-snackbar__content {
+                @include menu-shadow(pickThemeColor($theme-light,error), pickThemeColor($theme-dark, error));
+
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    width: 3px;
+                    height: 100%;
+                    color: var(--b3-theme-error);
+                    left: -4px;
+                    z-index: 1;
+                }
+            }
+        }
+    }
+
+    button {
+        @include button-action(1) {
+            background-color: var(--b3-theme-surface);
+            transition: transform 0.2s;
+            transform: translateY(-16px);
+
+            &:hover {
+                color: var(--b3-theme-on-background);
+                transform: scale(1.2) translateY(-16px);
+            }
+        };
+        @include border-or-not;
+    }
 }

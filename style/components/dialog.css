@@ -92,7 +92,7 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container {
   padding: 0 0 16px 0;
 }
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel #configBazaarDownloaded .b3-card {
-  margin: 16px;
+  margin: 20px;
 }
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel div[id*=configBazaar] {
   width: 100%;
@@ -100,8 +100,8 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container {
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel div[id*=configBazaar] .b3-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(342px, 1fr));
-  gap: 16px;
-  margin: 16px;
+  gap: 20px;
+  margin: 20px;
 }
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel div[id*=configBazaar] .b3-card {
   transition-duration: 0.2s;
@@ -125,7 +125,7 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container .co
   box-shadow: 0 0 0px 1px rgba(52, 120, 246, 0.05), 0px 13px 19px -2px rgba(52, 120, 246, 0.1), 0px 30px 50px -20px rgba(52, 120, 246, 0.08), 0px 0px 10px 0px rgba(52, 120, 246, 0.05);
 }
 html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel div[id*=configBazaar] .b3-card:hover {
-  box-shadow: 0 0 0 0.5px #000, 0px 13px 19px -7px rgba(17, 139, 255, 0.3), 0px 30px 50px -20px rgba(17, 139, 255, 0.3), 0px 0px 10px 0px rgba(17, 139, 255, 0.15);
+  box-shadow: 0 0 0 0.5px #118bff, 0px 13px 19px -7px rgba(17, 139, 255, 0.3), 0px 30px 50px -20px rgba(17, 139, 255, 0.3), 0px 0px 10px 0px rgba(17, 139, 255, 0.15);
 }
 html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel div[id*=configBazaar] .b3-card:hover {
   outline: 2px solid var(--b3-theme-primary);
@@ -139,6 +139,57 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container .co
 }
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .config-account__name > .fn__a {
   display: block;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .emojis {
+  padding: 0;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .emojis .fn__flex:first-child {
+  margin: 8px 0;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .emojis .fn__flex:first-child span.fn__space + .b3-form__icon {
+  overflow: visible;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .emojis__panel {
+  padding: 0 16px;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .emojis__panel .emojis__content {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fill, minmax(32px, 4fr));
+  gap: 8px;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .emojis__panel .emojis__content .emojis__item {
+  padding: 0;
+  font-size: 28px;
+  height: 32px;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .emojis__panel .emojis__content .emojis__item:hover {
+  background: transparent;
+  transform: scale(1.3);
+  transition: transform 0.3s cubic-bezier(0.12, 0, 0.05, 2.5);
+  animation: lighten 0.3s ease-in-out;
+}
+@keyframes lighten {
+  0% {
+    filter: brightness(1);
+  }
+  60% {
+    filter: brightness(1.15);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .emojis__panel + .fn__flex {
+  border-top: 1px solid var(--b3-border-color);
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .emojis__panel + .fn__flex .emojis__type {
+  padding: 4px 0;
+  filter: saturate(0.1) opacity(0.6);
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .emojis__panel + .fn__flex .emojis__type:hover {
+  filter: none;
+  background-color: transparent;
 }
 .b3-dialog--open .b3-dialog__action {
   padding: 8px 24px;
@@ -219,6 +270,10 @@ html[data-theme-mode=dark] .b3-dialog--open .layout-tab-bar .item:not(.item--foc
   background-color: rgba(255, 255, 255, 0.08);
 }
 
+#searchInput {
+  background-color: transparent;
+}
+
 .b3-dialog__body {
   position: relative;
   z-index: 0;
@@ -290,4 +345,15 @@ html[data-theme-mode=dark] .block__popover {
 }
 .block__popover .block__icons .block__icon--active:hover:not([disabled]):not(.ft__primary) {
   color: var(--b3-theme-primary);
+}
+
+.protyle-util {
+  box-shadow: 0px 13px 18px -2px rgba(0, 0, 0, 0.1), 0px 30px 50px 0px rgba(0, 0, 0, 0.1), 0px 0px 12px 0px rgba(0, 0, 0, 0.05), 0px 75px 65px -50px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+html[data-theme-mode=dark] .protyle-util {
+  box-shadow: 0 0 0 0.5px #000, 0px 13px 18px -2px rgba(0, 0, 0, 0.3), 0px 30px 50px 0px rgba(0, 0, 0, 0.3), 0px 0px 12px 0px rgba(0, 0, 0, 0.15), 0px 75px 65px -50px rgba(0, 0, 0, 0.3);
+}
+html[data-theme-mode=dark] .protyle-util {
+  border: 1px solid var(--b3-border-color);
 }

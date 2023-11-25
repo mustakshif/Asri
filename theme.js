@@ -9,3 +9,9 @@
         });
 })();
 
+// let protyleBg = document.querySelector('.protyle-background--enable')
+// let protyleBgIcon = protyleBg.querySelectorAll('.protyle-background__icon')
+
+// if (protyleBgIcon.classList.contains('fn__none')) {
+//     protyleBg.style.marginBottom='-94px';
+// }

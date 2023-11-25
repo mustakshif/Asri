@@ -136,6 +136,14 @@ body.body--win32 .layout__dockl, body.body--browser .layout__dockl {
   min-height: 100%;
 }
 
+.layout-tab-container .search__header {
+  margin-top: 42px;
+}
+
+.b3-snackbars {
+  top: 0;
+}
+
 #toolbar .toolbar__item {
   app-region: no-drag;
 }
@@ -149,7 +157,7 @@ body.body--win32 .layout__dockl, body.body--browser .layout__dockl {
   app-region: unset;
 }
 .fn__flex-column[data-type=wnd] > .fn__flex:first-child .layout-tab-bar {
-  margin-top: 2px;
+  margin-top: 0;
 }
 .fn__flex-column[data-type=wnd] > .fn__flex:first-child .layout-tab-bar:not(.layout-tab-bar--readonly) {
   app-region: no-drag;
@@ -158,13 +166,13 @@ body.body--win32 .layout__dockl, body.body--browser .layout__dockl {
   app-region: no-drag;
 }
 
-.layout-tab-container *:not(.protyle.fullscreen) > .protyle-breadcrumb {
+.layout-tab-container *:not(.protyle.fullscreen) > .protyle-breadcrumb__space {
   app-region: drag;
 }
-.layout-tab-container *:not(.protyle.fullscreen) > .protyle-breadcrumb__item {
+.layout-tab-container *:not(.protyle.fullscreen) > .protyle-breadcrumb__space__item {
   app-region: no-drag;
 }
-.layout-tab-container *:not(.protyle.fullscreen) > .protyle-breadcrumb button {
+.layout-tab-container *:not(.protyle.fullscreen) > .protyle-breadcrumb__space button {
   app-region: no-drag;
 }
 .layout__dockl.layout--float:not([style*=transform]) ~ .layout__center .protyle-breadcrumb {
@@ -191,6 +199,8 @@ body.body--win32 .layout__dockl, body.body--browser .layout__dockl {
 .graph.fullscreen > .block__icons > .block__icon,
 .graph.fullscreen > .block__icons > .search__label,
 .search__header,
-.layout--float {
+.layout--float,
+.protyle-breadcrumb .block__icon,
+.b3-snackbar {
   app-region: no-drag;
 }
