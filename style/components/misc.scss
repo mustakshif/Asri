@@ -224,11 +224,11 @@ textarea {
         @include button-action(1) {
             background-color: var(--b3-theme-surface);
             transition: transform 0.2s;
-            transform: translateY(-16px);
+            transform: translateY(-32px);
 
             &:hover {
                 color: var(--b3-theme-on-background);
-                transform: scale(1.2) translateY(-16px);
+                transform: scale(1.2) translateY(-25.6px);
             }
         };
         @include border-or-not;

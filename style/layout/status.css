@@ -1,3 +1,8 @@
+@property --property-percentage {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
 #status {
   position: fixed;
   background-color: var(--b3-theme-surface);
@@ -74,7 +79,7 @@ html[data-theme-mode=dark] #status {
   padding: 0px 8px;
   border-radius: 5px;
   margin: 0px;
-  transition: max-width 300ms, opacity 300ms;
+  transition: max-width 300ms;
   transition-delay: 2000ms;
   position: relative;
   height: 26px;
@@ -87,7 +92,7 @@ html[data-theme-mode=dark] #status {
 }
 #status .status__msg:not(:empty):hover {
   max-width: 400px;
-  transition: max-width 300ms ease-out;
+  transition: max-width 300ms;
 }
 #status .status__backgroundtask {
   margin: 0px 0px 7px 0px;

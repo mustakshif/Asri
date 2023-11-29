@@ -91,7 +91,7 @@
         padding: 0px 8px;
         border-radius: 5px;
         margin: 0px;
-        transition: max-width 300ms, opacity 300ms;
+        transition: max-width 300ms;
         transition-delay: 2000ms;
         position: relative;
         height: 26px;
@@ -105,7 +105,7 @@
 
         &:hover {
             max-width: 400px;
-            transition: max-width 300ms ease-out;
+            transition: max-width 300ms;
         }
     }
 

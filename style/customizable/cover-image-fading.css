@@ -1,3 +1,8 @@
+@property --property-percentage {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
 .protyle-background[style="min-height: 30vh;"] {
   margin-bottom: -48px;
 }

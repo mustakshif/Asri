@@ -1,3 +1,8 @@
+@property --property-percentage {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
 .layout__resize::after {
   height: 1px;
   width: 100%;
@@ -211,12 +216,12 @@ html[data-theme-mode=dark] #message.b3-snackbars .b3-snackbar--error .b3-snackba
   padding: 4px 12px;
   background-color: var(--b3-theme-surface);
   transition: transform 0.2s;
-  transform: translateY(-16px);
+  transform: translateY(-32px);
   border: none;
 }
 #message.b3-snackbars button:hover {
   color: var(--b3-theme-on-background);
-  transform: scale(1.2) translateY(-16px);
+  transform: scale(1.2) translateY(-25.6px);
 }
 html[data-theme-mode=dark] #message.b3-snackbars button {
   border: 1px solid var(--b3-border-color);

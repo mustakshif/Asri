@@ -1,14 +1,11 @@
 // functions ————————————————————
-
-// @function rgbValue($color) {
-//     @return red($color), green($color), blue($color);
-// }
+@function getRgb($color) {
+    @return red($color), green($color), blue($color);
+}
 
 @function pickThemeColor($theme-map, $color-key, $opacity: 1) {
     @return change-color(map-get($theme-map , $color-key), $alpha: $opacity);
 }
-
-
 
 // common mixins ———————————————————————
 @mixin font-family {
@@ -401,3 +398,10 @@ $border-rd-popover: 12px;
 $border-rd-menu: 10px;
 $border-rd-tab: 8px;
 $border-rd-default: 6px;
+
+
+@property --property-percentage {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 0%;
+}

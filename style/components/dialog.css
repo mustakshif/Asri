@@ -1,3 +1,8 @@
+@property --property-percentage {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
 .b3-dialog--open .b3-dialog .b3-dialog__scrim {
   background-color: rgba(128, 128, 128, 0.5019607843);
   -webkit-backdrop-filter: saturate(0.5);
@@ -48,9 +53,6 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container {
 }
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap {
   padding: 0;
-}
-.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container {
-  padding: 8px 0;
 }
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container--top {
   margin-top: 0;
@@ -140,6 +142,9 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container .co
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .config-account__name > .fn__a {
   display: block;
 }
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap > .fn__hr--b {
+  display: none;
+}
 .b3-dialog--open .b3-dialog .b3-dialog__container .emojis {
   padding: 0;
 }
@@ -224,7 +229,7 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog__action .b3-button--cance
   color: var(--b3-theme-on-primary);
 }
 .b3-dialog--open .layout-tab-bar {
-  margin: 8px auto;
+  margin: 8px auto 8px;
   border-radius: 8px !important;
   background-color: var(--b3-list-hover);
   padding: 2px;
@@ -290,40 +295,24 @@ html[data-theme-mode=dark] .b3-dialog--open .layout-tab-bar .item:not(.item--foc
   margin: 0;
   border-radius: 20px;
   padding: 0;
-  overflow: visible;
   box-shadow: none;
   top: 0;
 }
 .b3-dialog__body > .b3-cards .b3-card:hover {
-  transform: none;
+  transform: scale(1.05);
   box-shadow: 0 4px 18px -8px rgba(0, 0, 0, 0.1058823529);
-  top: -4px;
+  animation: card-hover 0.5s;
+}
+@keyframes card-hover {
+  50% {
+    filter: brightness(1.1);
+  }
+  100% {
+    filter: none;
+  }
 }
 html[data-theme-mode=dark] .b3-dialog__body > .b3-cards .b3-card:hover {
   box-shadow: 0 8px 28px -8px rgba(0, 0, 0, 0.3843137255);
-}
-.b3-dialog__body > .b3-cards .b3-card::before {
-  content: "";
-  background: inherit;
-  background-size: inherit;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  filter: blur(0px) opacity(0);
-  transition: top 0.2s, left 0.2s, filter 0.2s, width 0.2s, height 0.2s;
-}
-.b3-dialog__body > .b3-cards .b3-card:hover::before {
-  top: 20px;
-  left: 5%;
-  width: 90%;
-  height: 90%;
-  filter: blur(20px) opacity(0.8) saturate(0.8) brightness(0.9);
-}
-html[data-theme-mode=dark] .b3-dialog__body > .b3-cards .b3-card:hover::before {
-  filter: blur(20px) opacity(1) saturate(2) brightness(0.65);
 }
 
 .block__popover {

@@ -1,3 +1,8 @@
+@property --property-percentage {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
 .layout__dockl .layout-tab-container,
 .layout__dockr .layout-tab-container {
   background-color: transparent;

@@ -21,6 +21,7 @@ export function handleToolbarHover() {
 export function ModifyMacTrafficLights() {
     if (!isInBrowser()) {
         const currentWindowModified = require("@electron/remote").getCurrentWindow();
+
         currentWindowModified.setTrafficLightPosition({ x: 16, y: 16 });
     }
 }
