@@ -1,5 +1,6 @@
 @use '../base' as *;
 
+// 页面小工具条
 @mixin protyle-icons {
     border-radius: 99px;
     transition: none;
@@ -59,15 +60,18 @@
 
     // h1-h6 ————————————————————————
     @for $i from 1 through 6 {
-        .h#{$i}, h#{$i} {
+
+        .h#{$i},
+        h#{$i} {
             font-weight: 600;
             margin-top: 1.2em;
         }
 
         @for $j from 2 through 6 {
             @if $i < $j {
+
                 .h#{$i}+.h#{$j},
-                h#{$i} + h#{$j}  {
+                h#{$i}+h#{$j} {
                     margin-top: 0;
                 }
             }
@@ -98,7 +102,7 @@
         background-size: 0;
         background-repeat: no-repeat;
         opacity: 1;
-        transition: background-size 0.3s;
+        transition: background-size 0.2s;
 
         &:hover {
             background-position: center left;
@@ -117,7 +121,7 @@
         background: linear-gradient(90deg, var(--b3-border-color) 100%, transparent 0%) center right;
         background-size: 0;
         background-repeat: no-repeat;
-        transition: background-size 0.3s;
+        transition: background-size 0.2s;
 
         &:hover {
             background-position: center left;
@@ -165,7 +169,7 @@
     }
 
     // 快捷键 ——————————————————————————————————————
-    span[data-type~=kbd] {
+    span[data-type~=kbd]{
         font: 80% SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
         padding: 0.15em 0.5em;
         border-radius: 1em;
@@ -177,6 +181,8 @@
             box-shadow: inset 0 1px 0 var(--b3-theme-surface-lighter);
         }
     }
+
+    
 
     // 标签 ——————————————————————————————————————
     [data-node-id] span[data-type~="tag"] {
@@ -281,9 +287,27 @@
                 }
             }
         }
+    }
 
-        >.bq {
-            padding-right: 16px !important;
+    [data-node-id].li {
+
+        // 缩进参考线
+        &::before {
+            border-left: 1px solid;
+            border-left-color: inherit;
+            mask-image: linear-gradient(to bottom, transparent 1px, black 1px); // 隐藏原有的1px 剩余
+            opacity: 0.1;
+            transition: opacity 0.2s;
+        }
+
+        &:hover::before {
+            border-left-color: inherit;
+            opacity: 0.3;
+        }
+
+        // 引用块 
+        &>:is(.bq, blockquote) {
+            padding-right: 16px;
         }
     }
 
@@ -409,10 +433,11 @@
 
 
     // 超级块 ————————————————————————————————————
-    &>.sb + .sb,
+    &>.sb+.sb,
     [data-node-id].sb[data-sb-layout=row] .sb:not(:first-child) {
         margin-top: 24px;
     }
+
     // [data-node-id].sb[data-sb-layout=row]>.sb:first-child {
     //     margin-top: 0;
     // }
@@ -428,7 +453,7 @@
         margin: 0.2em 0;
     }
 
-    .sb[data-sb-layout=row]>:where(.bq, .sb, blockquote) + :where(.bq, blockquote) {
+    .sb[data-sb-layout=row]>:where(.bq, .sb, blockquote)+ :where(.bq, blockquote) {
         margin-top: 24px;
     }
 
@@ -481,6 +506,38 @@
                 display: none;
             }
         }
+    }
+}
+
+@mixin protyle-font {
+    .color__square {
+        width: 20px;
+        height: 20px;
+        box-shadow: none;
+        border-radius: 50%;
+        line-height: 20px;
+        font-size: 14px;
+
+        &:hover {
+            box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+            transform: scale(1.2);
+            font-weight: bold;
+        }
+    }
+
+    .protyle-font__style {
+        font-size: 14px;
+        
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: none;
+            border-color: transparent;
+            background-color: var(--b3-list-hover);
+        }
+    }
+
+    .b3-button {
+        @include button-action('normal');
     }
 }
 
@@ -557,9 +614,23 @@
     &-wysiwyg {
         @include typography-elements;
 
+        // 正文紧挨文档标题的标题块
         &>div[data-type="NodeHeading"]:first-child,
         &>[data-node-id].sb:first-child .sb:first-child {
             margin-top: 0;
+        }
+
+        // 折叠块--标题块
+        div[fold="1"] {
+            &[data-type=NodeHeading] {
+                background-color: var(--b3-theme-surface-lighter);
+                outline: 1.5px solid var(--b3-border-color-trans);
+                opacity: 0.6;
+
+                &::before {
+                    display: none;
+                }
+            }
         }
     }
 
@@ -592,6 +663,10 @@
                 }
             }
         }
+
+        &__divider {
+            border-left: 1px solid var(--b3-border-color-trans);
+        }
     }
 
     // 块定位滚动条
@@ -608,6 +683,11 @@
             transition-delay: 0s;
         }
     }
+    
+    // 文字外观
+    &-font {
+        @include protyle-font();
+    }
 
     // 框选框
     // &-select {
@@ -623,8 +703,8 @@
             background-color: transparent;
 
             &.protyle-preview__action--current {
-                background-color:transparent; 
-                font-weight: 600;                  
+                background-color: transparent;
+                font-weight: 600;
             }
 
             &:not(.protyle-preview__action--current):hover {
@@ -632,9 +712,146 @@
                 color: var(--b3-theme-on-background);
             }
         }
-    }  
+    }
 }
 
 .b3-typography {
     @extend .protyle-wysiwyg;
+}
+
+
+.pdf__outer#outerContainer {
+    #sidebarContainer {
+        top: 42px;
+        z-index: 1;
+
+        #sidebarResizer {
+            right: -3px;
+
+            &::after {
+                background-color: transparent;
+            }
+
+            &:hover::after {
+                background-color: var(--b3-theme-primary-light);
+            }
+        }
+
+        #sidebarContent {
+            .treeItem>a {
+                line-height: 1.5;
+            }
+        }
+    }
+
+    .pdf__toolbar {
+        #toolbarContainer {
+
+            #toolbarViewer {
+                height: 42px;
+                align-items: center;
+
+                .dropdownToolbarButton {
+                    margin: 4px 8px 4px 0;
+                }
+            }
+        }
+    }
+
+    .findbar {
+        padding: 8px;
+        right: 8px;
+        overflow: visible !important;
+
+        #findInput,
+        #findPrevious,
+        #findNext,
+        label:nth-of-type(1),
+        label:nth-of-type(2) {
+            margin-bottom: 4px;
+        }
+
+        .b3-button {
+            transition: 0.2s;
+
+            // 选中样式
+            @include button-action('primary') {
+                margin: 0;
+                background-color: transparent;
+
+                &:hover {
+                    box-shadow: none;
+                }
+            }
+
+            // 默认样式
+            &--outline {
+                @include button-action('normal')
+            }
+
+        }
+
+        #findResultsCount {
+            pointer-events: none;
+            font-weight: 400;
+        }
+    }
+
+    #viewerContainer {
+        top: 42px;
+        transition: none;
+
+        body.body-status-shown & {
+            padding-bottom: 42px;
+        } // -> js
+    }
+
+    #dialogContainer {
+        .dialog {
+            padding: 16px;
+
+            @include dialog-shadow;
+            @include border-or-not;
+
+            #documentPropertiesClose {
+                @include button-action('primary') {
+                    background-color: transparent;
+                    transition: 0.2s;
+
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .pdf__util {
+        padding: 6px;
+
+        .color__square {
+            height: 14px;
+            width: 14px;
+            margin-right: 6px;
+            box-shadow: none;
+            border-radius: 50%;
+
+            &:hover {
+                box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+                transform: scale(1.2);
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        .b3-menu__item {
+            &:not(:hover) {
+                background-color: transparent;
+            }
+        }
+    }
 }

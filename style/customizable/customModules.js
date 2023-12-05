@@ -1,8 +1,8 @@
-import { isInBrowser } from "../../script/common.js";
+import { isInBrowser, isMacOS } from "../../script/common.js";
 import { useSysScrollbar } from "../../script/scrollbar.js";
 
 isInBrowser();
-useSysScrollbar();
+
 
 // 隐藏顶栏 --> hide-toolbar.scss
 export function handleToolbarHover() {
@@ -19,10 +19,16 @@ export function handleToolbarHover() {
 
 // Mac 红绿灯
 export function ModifyMacTrafficLights() {
-    if (!isInBrowser()) {
-        const currentWindowModified = require("@electron/remote").getCurrentWindow();
+    if (isMacOS()) {
+        //添加每当新建一个窗口，执行以下命令
+        useSysScrollbar();
+        console.log('使用系统滚动条已执行');
 
-        currentWindowModified.setTrafficLightPosition({ x: 16, y: 16 });
+        if (!isInBrowser()) {
+            const currentWindowModified = require("@electron/remote").getCurrentWindow();
+            currentWindowModified.setTrafficLightPosition({ x: 16, y: 16 });
+            console.log('调整红绿灯已执行')
+        }
     }
 }
 

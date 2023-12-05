@@ -1,8 +1,3 @@
-@property --property-percentage {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 0%;
-}
 .dock {
   box-sizing: border-box;
   background-color: transparent;
@@ -25,4 +20,16 @@ html[data-theme-mode=dark] .dock .dock__item {
 }
 .dock#dockRight {
   border-left-width: 1px;
+}
+.dock.dock-layout-expanded {
+  background-color: rgba(246, 246, 246, 0.9);
+}
+html[data-theme-mode=dark] .dock.dock-layout-expanded {
+  background-color: rgba(56, 56, 56, 0.9);
+}
+.dock.dock-layout-expanded#dockLeft {
+  border-right-color: transparent;
+}
+.dock.dock-layout-expanded#dockRight {
+  border-left-color: transparent;
 }

@@ -11,7 +11,7 @@
 @mixin font-family {
     --b3-font-family: ui-sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", Helvetica, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
 
-    --b3-font-family-code: SF Mono, SFMono-Regular, ui-monospace, Menlo, "JetBrainsMono-Regular", mononoki, Consolas, "Liberation Mono", Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+    --b3-font-family-code: Menlo, SF Mono,"JetBrainsMono", mononoki, Consolas, "Liberation Mono", Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
 
     --b3-font-family-graph: mononoki;
 
@@ -33,7 +33,7 @@
     }
 }
 
-//------------------------------------
+//————————————————————————————————————
 @mixin menu-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $initialized: false) {
     @if $initialized {
         box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
@@ -84,7 +84,7 @@
     }
 }
 
-//-------------------------------------
+//————————————————————————————————————————
 @mixin border-or-not {
     border: none;
 
@@ -93,7 +93,7 @@
     }
 }
 
-//------------------------------------
+//——————————————————————————————————————
 @mixin button-primary {
     background-color: var(--b3-menu-background);
     border-radius: 99px;
@@ -174,6 +174,9 @@
     @content;
 }
 
+// ——————————————————————————
+
+
 // color scheme related mixins————————————————
 $theme-light: (
     primary: rgb(52, 120, 246),
@@ -189,7 +192,7 @@ $theme-light: (
     scroll: rgba(0, 0, 0, 0.2),
     list-hover: rgba(0, 0, 0, 0.05),
     menu-background: rgb(236, 236, 236),
-    menu-item-hv-background: rgb(41, 98, 217, 0.9),
+    menu-item-hv-background: rgb(41, 98, 217, 0.8),
     menu-item-hv-on-background: #fff,
     mask-background: rgba(0, 0, 0, 0.78),
     card-error: rgb(233, 49, 71),
@@ -232,7 +235,7 @@ $theme-dark: (
     scroll: rgba(255, 255, 255, 0.2),
     list-hover: rgba(255, 255, 255, 0.06),
     menu-background: rgb(50, 50, 50),
-    menu-item-hv-background: rgb(32, 80, 202),
+    menu-item-hv-background: rgb(32, 80, 202, 0.8),
     menu-item-hv-on-background:#ffffffe3,
     mask-background: rgba(0, 0, 0, 0.78),
     card-error: rgb(233, 49, 71),
@@ -400,8 +403,3 @@ $border-rd-tab: 8px;
 $border-rd-default: 6px;
 
 
-@property --property-percentage {
-    syntax: "<percentage>";
-    inherits: false;
-    initial-value: 0%;
-}

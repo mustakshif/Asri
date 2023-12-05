@@ -1,8 +1,3 @@
-@property --property-percentage {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 0%;
-}
 #toolbar {
   height: var(--toolbar-height);
   background-color: var(--b3-theme-background);

@@ -4,8 +4,9 @@
 .layout__resize {
     &::after {
         height: 1px;
-        width: 100%;        
+        width: 100%;
     }
+
     &--lr {
         z-index: 3;
 
@@ -13,6 +14,7 @@
             height: 100%;
             width: 1px;
         }
+
         &:hover::after {
             background-color: var(--b3-theme-primary-light) !important;
         }
@@ -28,6 +30,7 @@
 .counter {
     font-family: var(--b3-font-family-code);
     margin-left: 0;
+
     &:hover {
         background-color: transparent !important;
         font-weight: bold;
@@ -41,9 +44,11 @@
     transition: all 0.3s;
     box-sizing: border-box;
     border: 1px solid transparent;
+
     html[data-theme-mode="dark"] & {
-        border: 1px solid var(--b3-border-color);
+        border: 1px solid var(--b3-border-color-trans);
     }
+
     @include theme-variant-color(background-color, on-surface-gray, 0.15);
 
     // 关闭状态指示点
@@ -66,7 +71,7 @@
         &::after {
             transform: translateX(12px);
             @include theme-variant-color(background-color, light-components);
-        box-shadow: 0 1px 4px -1px #0003;
+            box-shadow: 0 1px 4px -1px #0003;
         }
     }
 
@@ -83,7 +88,9 @@
     &:focus {
         box-shadow: none;
     }
-} // 设置面板主按钮
+}
+
+// 设置面板主按钮
 
 
 // 文本框
@@ -94,7 +101,7 @@ select.b3-select {
     min-height: 28px;
     transition: outline 0.2s;
     outline: 0px solid transparent;
-    
+
 
     &:not(.b3-text-field--text):hover {
         box-shadow: none;
@@ -109,9 +116,9 @@ select.b3-select {
     // 以下解决文本框聚焦时外框被裁切的情况
     .config__panel .config__tab-container .fn__flex-1:has(>&) {
         overflow: visible;
-    }    
+    }
 }
- 
+
 select.b3-select {
     &:hover {
         background-color: var(--b3-menu-background);
@@ -124,11 +131,11 @@ textarea {
 
 
 // 滑动条
-.b3-slider {  
+.b3-slider {
     .b3-tooltips:has(>&) {
         overflow: visible;
     }
-    
+
     &::-webkit-slider-runnable-track {
         height: 6px;
         border-radius: 9px;
@@ -138,26 +145,30 @@ textarea {
     &::-webkit-slider-thumb {
         @include theme-variant-color(background-color, light-components);
         // @include tooltip-shadow;
-        outline: 1px solid var(--b3-border-color);
+        outline: 1px solid var(--b3-border-color-trans);
         height: 16px;
         width: 16px;
         margin-top: -5px;
         transition: all 0.1s ease-out;
     }
 
-    &:hover:not(&:focus)::-webkit-slider-thumb {     
+    &:hover:not(&:focus)::-webkit-slider-thumb {
         transform: none;
-        outline: 2px solid lighten(map-get($map: $theme-light, $key: primary),20%);
+        outline: 2px solid lighten(map-get($map: $theme-light, $key: primary), 20%);
+
         @include darkmode-counterpart {
-            outline: 2px solid darken(map-get($map: $theme-dark, $key: primary),10%);;
+            outline: 2px solid darken(map-get($map: $theme-dark, $key: primary), 10%);
+            ;
         }
     }
-    &:focus::-webkit-slider-thumb{
+
+    &:focus::-webkit-slider-thumb {
         transform: scale(1.1);
         outline: 3px solid var(--b3-theme-primary);
         margin: -2px;
         margin-left: 0.5px;
-    } 
+    }
+
     &:focus::-webkit-slider-runnable-track {
         height: 12px;
     }
@@ -169,18 +180,17 @@ textarea {
 }
 
 // 消息通知
-
 #message.b3-snackbars {
     &>.fn__flex-1 {
         padding: 12px 18px 32px;
     }
 
     .b3-snackbar {
-        &__content{
+        &__content {
             border-radius: 16px;
 
-            @include menu-shadow(pickThemeColor($theme-light, primary), pickThemeColor($theme-dark, primary)); 
-            
+            @include menu-shadow(pickThemeColor($theme-light, primary), pickThemeColor($theme-dark, primary));
+
             &--close {
                 padding-right: 16px;
 
@@ -197,14 +207,14 @@ textarea {
             right: 8px;
             transition-duration: 0.2s;
 
-            &:hover{
+            &:hover {
                 transform: scale(1);
             }
         }
 
-        &--error {                        
+        &--error {
             .b3-snackbar__content {
-                @include menu-shadow(pickThemeColor($theme-light,error), pickThemeColor($theme-dark, error));
+                @include menu-shadow(pickThemeColor($theme-light, error), pickThemeColor($theme-dark, error));
 
                 &::after {
                     content: '';
@@ -230,7 +240,9 @@ textarea {
                 color: var(--b3-theme-on-background);
                 transform: scale(1.2) translateY(-25.6px);
             }
-        };
+        }
+
+        ;
         @include border-or-not;
     }
 }

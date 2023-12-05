@@ -17,11 +17,19 @@
 @use 'customizable/blur';
 
 
+@property --property-percentage {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
+}
 
+// @property --property-length {
+//     syntax: '<length>';
+//     inherits: false;
+//     initial-value: 0px;
+// }
 
-
-
-//blur -------------------
+//blur ————————————————————————————
 
 $thick-transparency: 0.88;
 $thick-blur-rd: 40px;
@@ -32,21 +40,23 @@ $thin-blur-rd: 12px;
 
 body:not(.body--blur) {
     .layout__wnd--active {
-        &>.fn__flex:first-child {
+        &:not(.shrink-in-tab)>.fn__flex:first-child {
             background-color: transparent;
             margin-bottom: -42px;
             z-index: 3;
         }
 
+        // -> js
+
         .layout-tab-bar {
             .item {
                 &--focus {
                     background-color: transparent;
-                    backdrop-filter: brightness(0.88) saturate(1.5);
+                    backdrop-filter: brightness(0.88) saturate(1.8);
 
                     @include darkmode-counterpart {
                         background-color: #ffffff20;
-                        backdrop-filter: brightness(1.2) saturate(2)
+                        backdrop-filter: brightness(1.2) saturate(1.8);
                     }
                 }
             }
@@ -89,6 +99,40 @@ body:not(.body--blur) {
 
             :not(#searchPreview)>.protyle-content {
                 padding-top: 84px;
+            }
+
+            .block__icons.search {
+                padding-top: 42px;
+            } // -> js
+        }
+
+        // pdf
+        .pdf__outer#outerContainer {
+            #sidebarContainer {
+                top: 84px;
+            }
+
+            .pdf__toolbar {
+                #toolbarContainer {
+                    padding-top: 42px;
+                }
+            }
+
+            .findbar {
+                top: 78px;                
+            }
+
+            #viewerContainer {
+                top: 84px;
+                transition: none;
+            }
+
+            #dialogContainer {
+                .dialog {
+                    @include theme-variant-color(background-color, menu-background, $thick-transparency);
+
+                    @include bg-blur($brightness-dark:0.95);                    
+                } 
             }
         }
     }
@@ -193,6 +237,24 @@ body:not(.body--blur) {
         }
     }
 
+    // '/'菜单
+    .protyle-hint {
+        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        @include bg-blur;
+    }
+
+    .protyle-util {
+        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        @include bg-blur;
+    }
+
+    #searchHistoryList {
+        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        @include bg-blur;
+        overflow: auto;
+    }
+
+    // 顶栏
     .toolbar {
         z-index: 4;
     }
@@ -221,7 +283,7 @@ body:not(.body--blur) {
 
                 &:hover::before {
                     --property-percentage: calc(100% + var(--glow-offset));
-                    transition: --property-percentage 0.4s ease-in-out;
+                    transition: --property-percentage 0.5s ease-in-out;
                 }
 
                 // &::before {
@@ -253,4 +315,13 @@ body:not(.body--blur) {
             }
         }
     }
+
+    .b3-dialog.emojis-container {
+        .b3-dialog__container {
+            @include theme-variant-color(background-color, menu-background, $medium-transparency);
+            @include bg-blur;
+        }
+    }
+
+    // ->js
 }

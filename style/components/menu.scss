@@ -35,6 +35,14 @@
                         background-color: #fff4;
                     }
                 }
+                
+                &>.b3-menu__action {
+                    color: var(--b3-theme-on-primary);
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
             }
 
             // &--show:not(.b3-menu__item--readonly):not([disabled]):not(.b3-menu__item--current) {
@@ -47,10 +55,6 @@
             //     }
             // }
             // 会闪烁
-
-            .b3-menu__accelerator {
-                font-family: var(--b3-font-family);
-            }
         }
 
         .b3-menu__icon {
@@ -58,7 +62,146 @@
         }
 
         .b3-menu__separator {
-            @include theme-variant-color(background-color, on-surface-gray, 0.15);
+           background-color: var(--b3-border-color-trans);
         }
+    }
+}
+.b3-menu__submenu {
+    max-height: none;
+}
+
+.b3-menu__accelerator {
+    font-family: var(--b3-font-family);
+}
+
+
+// '/'菜单
+.protyle-hint {
+    @include menu-shadow;
+    @include border-or-not;
+    padding: 0;
+    background-color: var(--b3-menu-background);
+
+    &>div {
+        padding: 4px 0;       
+
+        .b3-list-item {
+            &--focus:not(:hover) {
+                background-color: var(--b3-theme-primary-lightest);
+            }
+        }
+    }
+
+    .b3-list-item {
+        &__graphic {
+            color: var(--b3-theme-on-surface);
+        }
+
+        &:hover .b3-list-item__graphic {
+            color: var(--b3-theme-on-background);
+        }
+    }
+
+    // 引用、嵌入块菜单
+    .b3-list-item--two .b3-list-item__meta.b3-list-item__showall:not(:first-child) {
+        background-color: #0000000e;
+        padding: 4px;
+        width: fit-content;
+        border-radius: 4px;
+    }
+
+    // emojis
+    .emojis {
+        .fn__flex:last-child {
+            display: none;
+        }
+
+        &__panel {
+            padding-bottom: 8px;
+        }
+    }
+}
+
+.protyle-util {
+    background-color: var(--b3-menu-background);
+    padding: 8px 0 0;
+}
+
+
+
+// emoji 面板
+.emojis {
+    padding: 0;
+
+    .fn__flex:first-child {
+        margin: 8px 0;
+
+        // 搜索框
+        span.fn__space+.b3-form__icon {
+            overflow: visible;
+        }
+    }
+
+    &__panel {
+        padding: 0 8px;
+
+        .emojis__content:not([style="min-height:28px"]) {
+            display: grid;
+            flex-wrap: wrap;
+            grid-template-columns: repeat(auto-fill, minmax(36px, 4fr));
+            gap: 6px;
+
+            .emojis__item {
+                padding: 0;
+                font-size: 28px;
+                height: 36px;
+
+                &:hover {
+                    background: transparent;
+                    transform: scale(1.3) translateY(-2px);
+                    transition: transform 0.3s cubic-bezier(0.12, 0, 0.05, 2.5);
+                    animation: lighten 0.3s ease-in-out;
+
+                    @keyframes lighten {
+                        0% {
+                            filter: brightness(1);   
+                        }
+
+                        60% {
+                            filter: brightness(1.15);
+                        }
+                        
+                        100% {
+                            filter: brightness(1); 
+                        }
+                    } 
+                }
+            }
+        }
+    }
+
+    &__panel+.fn__flex {
+        border-top: 1px solid var(--b3-border-color);
+
+        .emojis__type {
+            padding: 4px 0;
+            filter: saturate(0.1) opacity(0.6);
+
+            &:hover {
+                filter: none;
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+#searchHistoryList {
+    background-color: var(--b3-menu-background);
+    overflow: auto;
+}
+
+#commonMenu[data-name='search-history'] {
+    .b3-menu__items {
+        max-height: calc(70vh - 10px);
     }
 }

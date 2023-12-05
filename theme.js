@@ -9,44 +9,101 @@
         });
 })();
 
-// let protyleBg = document.querySelector('.protyle-background--enable')
-// let protyleBgIcon = protyleBg.querySelectorAll('.protyle-background__icon')
 
-// if (protyleBgIcon.classList.contains('fn__none')) {
-//     protyleBg.style.marginBottom='-94px';
-// }
 
-// // 创建一个新的 <script> 元素
-// var script1 = document.createElement("script");
+function monitorDOM() {
+    var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+            if (mutation.type === 'childList') {
+                const doms = {
+                    dialog: document.querySelector('.b3-dialog--open .b3-dialog'),
+                    layouts: document.getElementById('layouts'),
+                    status: document.getElementById('status'),
+                    dockl: document.getElementById('dockLeft'),
+                    dockr: document.getElementById('dockRight'),
+                    docklLayout: layouts.querySelector('.layout__dockl'),
+                    dockrLayout: layouts.querySelector('.layout__dockr'),
+                    blockIconsList: layouts.querySelectorAll('.block__icons'),
+                }
 
-// // 设置 <script> 元素的 src 属性
-// script1.src = "https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.28/bundled/lenis.min.js";
+                // emoji dialog                
+                if (doms.dialog && doms.dialog.querySelector('.emojis')) {
+                    doms.dialog.classList.add('emojis-container');
+                }
 
-// // 获取 <head> 元素
-// var head = document.getElementsByTagName("head")[0];
+                // 页签中显示大纲、关系图、反链时
+                var layoutCenterActive = doms.layouts.querySelector('.layout__center .layout__wnd--active');
+                if (layoutCenterActive) {
+                    var layoutCenterFiletree = layoutCenterActive.querySelector('.file-tree');
+                    if (layoutCenterFiletree && !layoutCenterFiletree.classList.contains('fn__none')) {
+                        layoutCenterActive.classList.add('shrink-in-tab');
+                    } else {
+                        layoutCenterActive.classList.remove('shrink-in-tab');
+                    }
+                }
 
-// // 将 <script> 元素添加到 <head> 元素中
-// head.appendChild(script1);
+                // for (let key in doms.dock) {
+                //     doms.dock[key].classList.add('highlight');
+                // }
 
-// // 确保第一个脚本加载完成后再加载第二个脚本
-// script1.onload = function() {
-//     // 创建第二个 <script> 元素
-//     var script2 = document.createElement("script");
 
-//     // 设置脚本内容
-//     script2.text = `
-//         const lenis = new Lenis();
-//         lenis.on('scroll', (e) => {
-//             console.log(e)
-//           })
-//         function raf(time) {
-//             lenis.raf(time * 1.5);
-//             requestAnimationFrame(raf);
-//         }
+                // dock与侧栏 ——————————————————
+                function isDockLytPinned(node) {
+                    return !node.classList.contains('layout--float');
+                }
+                function isDockLytExpanded(node) {
+                    return node.style.width !== '0px';
+                }
 
-//         requestAnimationFrame(raf);
-//     `;
+                if (isDockLytPinned(doms.docklLayout) && isDockLytExpanded(doms.docklLayout)) {
+                    doms.dockl.classList.add('dock-layout-expanded');
+                    console.log('left added')
+                } else {
+                    doms.dockl.classList.remove('dock-layout-expanded');
+                    console.log('left removed')
+                }
+                if (isDockLytPinned(doms.dockrLayout) && isDockLytExpanded(doms.dockrLayout)) {
+                    doms.dockr.classList.add('dock-layout-expanded');
+                    console.log('right added')
+                } else {
+                    doms.dockr.classList.remove('dock-layout-expanded');
+                    console.log('right removed')
+                }
 
-//     // 将第二个 <script> 元素添加到 <head> 元素中
-//     head.appendChild(script2);
-// };
+
+
+                //右侧面板底部 padding
+                if (!doms.status.classList.contains('fn__none')) {
+                    doms.dockrLayout.classList.add('body-status-shown');
+                } else {
+                    doms.dockrLayout.classList.remove('body-status-shown');
+                }
+
+                // status 右边距
+                if (doms.dockr.classList.contains('fn__none')) {
+                    doms.status.style.right = '8px';
+                } else {
+                    doms.status.style.right = '48px';
+                }
+
+                //  页签搜索
+                doms.blockIconsList.forEach(function (blockIcons) {
+                    let nextSibling = blockIcons.nextElementSibling;
+                    if (nextSibling && nextSibling.classList.contains("search__header")) {
+                        blockIcons.classList.add("search");
+                    }                    
+                });
+            }
+        });
+    });
+
+    var config = {
+        attributes: true,
+        childList: true,
+        subtree: true
+    };
+
+    observer.observe(document.body, config);
+}
+
+monitorDOM();

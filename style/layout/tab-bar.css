@@ -1,8 +1,3 @@
-@property --property-percentage {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 0%;
-}
 .fn__flex-column[data-type=wnd] > .fn__flex:first-child {
   height: 42px;
 }

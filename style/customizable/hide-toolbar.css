@@ -1,8 +1,3 @@
-@property --property-percentage {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 0%;
-}
 .toolbar {
   background-color: var(--b3-theme-background);
   height: var(--toolbar-height);
@@ -141,10 +136,6 @@ body.body--win32 .layout__dockl, body.body--browser .layout__dockl {
   min-height: 100%;
 }
 
-.layout-tab-container .search__header {
-  margin-top: 42px;
-}
-
 .b3-snackbars {
   top: 0;
 }
@@ -180,7 +171,7 @@ body.body--win32 .layout__dockl, body.body--browser .layout__dockl {
 .layout-tab-container *:not(.protyle.fullscreen) > .protyle-breadcrumb__space button {
   app-region: no-drag;
 }
-.layout__dockl.layout--float:not([style*=transform]) ~ .layout__center .protyle-breadcrumb {
+.layout__dockl.layout--float:not([style*=transform]) ~ .layout__center .protyle-breadcrumb__space {
   app-region: unset;
 }
 
@@ -191,8 +182,73 @@ body.body--win32 .layout__dockl, body.body--browser .layout__dockl {
   app-region: unset;
 }
 
+body:not(.body--win32) .layout__dockl:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child, body:not(.body--win32) .layout__dockl:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child {
+  app-region: drag;
+}
+body:not(.body--win32) .layout__dockl:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .block__icon,
+body:not(.body--win32) .layout__dockl:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .b3-text-field, body:not(.body--win32) .layout__dockl:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .block__icon,
+body:not(.body--win32) .layout__dockl:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .b3-text-field {
+  app-region: no-drag;
+}
+body:not(.body--win32) .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .block__logo,
+body:not(.body--win32) .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .fn__space, body:not(.body--win32) .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .block__logo,
+body:not(.body--win32) .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .fn__space {
+  app-region: drag;
+}
+body:not(.body--win32) .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .fn__space, body:not(.body--win32) .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .fn__space {
+  height: 34px;
+  transform: translateY(4px);
+}
+body:not(.body--win32) .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .block__icon,
+body:not(.body--win32) .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .b3-text-field, body:not(.body--win32) .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .block__icon,
+body:not(.body--win32) .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .b3-text-field {
+  app-region: no-drag;
+}
+body:not(.body--win32) #toolbar:hover + div #layouts .layout__dockl:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child, body:not(.body--win32) #toolbar:hover + div #layouts .layout__dockl:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child {
+  app-region: unset;
+}
+body:not(.body--win32) #toolbar:hover + div #layouts .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .block__logo,
+body:not(.body--win32) #toolbar:hover + div #layouts .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .fn__space, body:not(.body--win32) #toolbar:hover + div #layouts .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .block__logo,
+body:not(.body--win32) #toolbar:hover + div #layouts .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .fn__space {
+  app-region: unset;
+}
+body.body--win32 .layout__dockl:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .block__logo,
+body.body--win32 .layout__dockl:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .fn__space, body.body--win32 .layout__dockl:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .block__logo,
+body.body--win32 .layout__dockl:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .fn__space,
+body.body--win32 .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .block__logo,
+body.body--win32 .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .fn__space,
+body.body--win32 .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .block__logo,
+body.body--win32 .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .fn__space {
+  app-region: drag;
+}
+body.body--win32 .layout__dockl:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .fn__space, body.body--win32 .layout__dockl:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .fn__space,
+body.body--win32 .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .fn__space,
+body.body--win32 .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .fn__space {
+  height: 34px;
+  transform: translateY(4px);
+}
+body.body--win32 .layout__dockl:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .block__icon,
+body.body--win32 .layout__dockl:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .b3-text-field, body.body--win32 .layout__dockl:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .block__icon,
+body.body--win32 .layout__dockl:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .b3-text-field,
+body.body--win32 .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .block__icon,
+body.body--win32 .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .b3-text-field,
+body.body--win32 .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .block__icon,
+body.body--win32 .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .b3-text-field {
+  app-region: no-drag;
+}
+body.body--win32 #toolbar:hover + div #layouts .layout__dockl:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .block__logo,
+body.body--win32 #toolbar:hover + div #layouts .layout__dockl:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .fn__space, body.body--win32 #toolbar:hover + div #layouts .layout__dockl:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .block__logo,
+body.body--win32 #toolbar:hover + div #layouts .layout__dockl:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .fn__space,
+body.body--win32 #toolbar:hover + div #layouts .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .block__logo,
+body.body--win32 #toolbar:hover + div #layouts .layout__dockr:not(.layout--float) > .fn__flex-1:first-child .block__icons:first-child .fn__space,
+body.body--win32 #toolbar:hover + div #layouts .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .block__logo,
+body.body--win32 #toolbar:hover + div #layouts .layout__dockr:not(.layout--float) > .fn__flex-1.fn__none ~ .fn__flex-1 .block__icons:first-child .fn__space {
+  app-region: unset;
+}
+
 .b3-menu,
-.b3-menu__submenu {
+.b3-menu__submenu,
+.protyle-hint {
   app-region: no-drag;
 }
 
@@ -201,11 +257,13 @@ body.body--win32 .layout__dockl, body.body--browser .layout__dockl {
   app-region: no-drag;
 }
 
-.graph.fullscreen > .block__icons > .block__icon,
-.graph.fullscreen > .block__icons > .search__label,
+.block__icons > .block__icon,
+.block__icons > .search__label,
 .search__header,
 .layout--float,
 .protyle-breadcrumb .block__icon,
-.b3-snackbar {
+.b3-snackbar,
+.protyle-toolbar,
+.protyle-util {
   app-region: no-drag;
 }

@@ -37,7 +37,9 @@
         #drag {
             app-region: drag;
         }
-    } // --> js
+    }
+
+    // --> js
 }
 
 @mixin hide-toolbar-common($paddingTop: 4px) {
@@ -132,16 +134,9 @@ body {
     }
 }
 
-// 页签中的搜索
-.layout-tab-container {
-    .search__header {
-        margin-top: 42px;
-    }
-}
-
 // 消息区域
 .b3-snackbars {
-    top:0;
+    top: 0;
 }
 
 
@@ -183,7 +178,7 @@ body {
 
 // 面包屑
 .protyle-breadcrumb {
-    .layout-tab-container *:not(.protyle.fullscreen)>&__space {
+    .layout-tab-container *:not(.protyle.fullscreen) > &__space {
         app-region: drag;
 
         &__item {
@@ -195,25 +190,161 @@ body {
         }
     }
 
-    .layout__dockl.layout--float:not([style*='transform'])~.layout__center & {
+    .layout__dockl.layout--float:not([style*='transform']) ~ .layout__center &__space {
         app-region: unset;
     }
 }
 
-.layout__dockl:not(.layout--float) {
-    &::before {
-        app-region: drag;
+// 左栏面板顶部
+.layout__dockl {
+    &:not(.layout--float) {
+        &::before {
+            app-region: drag;
 
-        #toolbar:hover+div #layouts & {
-            app-region: unset;
+            #toolbar:hover+div #layouts & {
+                app-region: unset;
+            }
         }
     }
 }
 
+body {
+    &:not(.body--win32) {
+
+        .layout__dockl{
+            &:not(.layout--float) {
+
+                &>.fn__flex-1:first-child,
+                &>.fn__flex-1.fn__none~.fn__flex-1 {
+                    .block__icons:first-child {
+                        app-region: drag;
+
+                        .block__icon,
+                        .b3-text-field {
+                            app-region: no-drag;
+                        }
+                    }
+                }
+            }
+        }
+
+        .layout__dockr {
+            &:not(.layout--float) {
+
+                &>.fn__flex-1:first-child,
+                &>.fn__flex-1.fn__none~.fn__flex-1 {
+                    .block__icons:first-child {
+
+                        .block__logo,
+                        .fn__space {
+                            app-region: drag;
+                        }
+
+                        .fn__space {
+                            height: 34px;
+                            transform: translateY(4px);
+                        }
+
+                        .block__icon,
+                        .b3-text-field {
+                            app-region: no-drag;
+                        }
+                    }
+                }
+            }
+        }
+        
+        #toolbar:hover+div #layouts {
+
+            .layout__dockl {
+                &:not(.layout--float) {
+
+                    &>.fn__flex-1:first-child,
+                    &>.fn__flex-1.fn__none~.fn__flex-1 {
+                        .block__icons:first-child {
+                             app-region: unset;
+                        }
+                    }
+                }
+            }
+
+            .layout__dockr {
+                &:not(.layout--float) {
+
+                    &>.fn__flex-1:first-child,
+                    &>.fn__flex-1.fn__none~.fn__flex-1 {
+                        .block__icons:first-child {
+
+                            .block__logo,
+                            .fn__space {
+                                app-region: unset;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.body--win32 {
+
+        .layout__dockl,
+        .layout__dockr {
+            &:not(.layout--float) {
+
+                &>.fn__flex-1:first-child,
+                &>.fn__flex-1.fn__none~.fn__flex-1 {
+                    .block__icons:first-child {
+
+                        .block__logo,
+                        .fn__space {
+                            app-region: drag;
+                        }
+
+                        .fn__space {
+                            height: 34px;
+                            transform: translateY(4px);
+                        }
+
+                        .block__icon,
+                        .b3-text-field {
+                            app-region: no-drag;
+                        }
+                    }
+                }
+            }
+        }
+
+        #toolbar:hover+div #layouts {
+
+            .layout__dockl,
+            .layout__dockr {
+                &:not(.layout--float) {
+
+                    &>.fn__flex-1:first-child,
+                    &>.fn__flex-1.fn__none~.fn__flex-1 {
+                        .block__icons:first-child {
+
+                            .block__logo,
+                            .fn__space {
+                                app-region: unset;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
 // 禁用拖动的区域 ————————————————————————————————————
 //菜单
 .b3-menu,
-.b3-menu__submenu {
+.b3-menu__submenu,
+.protyle-hint {
     app-region: no-drag;
 }
 
@@ -224,9 +355,9 @@ body {
 }
 
 //其他
-.graph.fullscreen>.block__icons>.block__icon,
+.block__icons>.block__icon,
 
-.graph.fullscreen>.block__icons>.search__label,
+.block__icons>.search__label,
 
 .search__header,
 
@@ -234,6 +365,11 @@ body {
 
 .protyle-breadcrumb .block__icon,
 
-.b3-snackbar {
+.b3-snackbar,
+
+.protyle-toolbar,
+
+.protyle-util {
     app-region: no-drag;
 }
+

@@ -1,8 +1,3 @@
-@property --property-percentage {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 0%;
-}
 .layout-tab-container {
   background-color: transparent;
 }
@@ -134,7 +129,9 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
 .protyle-wysiwyg [data-node-id], .b3-typography [data-node-id] {
   border-radius: 10px;
 }
-.protyle-wysiwyg .h1, .b3-typography .h1, .protyle-wysiwyg h1, .b3-typography h1 {
+.protyle-wysiwyg .h1, .b3-typography .h1,
+.protyle-wysiwyg h1,
+.b3-typography h1 {
   font-weight: 600;
   margin-top: 1.2em;
 }
@@ -163,7 +160,9 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
 .b3-typography h1 + h6 {
   margin-top: 0;
 }
-.protyle-wysiwyg .h2, .b3-typography .h2, .protyle-wysiwyg h2, .b3-typography h2 {
+.protyle-wysiwyg .h2, .b3-typography .h2,
+.protyle-wysiwyg h2,
+.b3-typography h2 {
   font-weight: 600;
   margin-top: 1.2em;
 }
@@ -187,7 +186,9 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
 .b3-typography h2 + h6 {
   margin-top: 0;
 }
-.protyle-wysiwyg .h3, .b3-typography .h3, .protyle-wysiwyg h3, .b3-typography h3 {
+.protyle-wysiwyg .h3, .b3-typography .h3,
+.protyle-wysiwyg h3,
+.b3-typography h3 {
   font-weight: 600;
   margin-top: 1.2em;
 }
@@ -206,7 +207,9 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
 .b3-typography h3 + h6 {
   margin-top: 0;
 }
-.protyle-wysiwyg .h4, .b3-typography .h4, .protyle-wysiwyg h4, .b3-typography h4 {
+.protyle-wysiwyg .h4, .b3-typography .h4,
+.protyle-wysiwyg h4,
+.b3-typography h4 {
   font-weight: 600;
   margin-top: 1.2em;
 }
@@ -220,7 +223,9 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
 .b3-typography h4 + h6 {
   margin-top: 0;
 }
-.protyle-wysiwyg .h5, .b3-typography .h5, .protyle-wysiwyg h5, .b3-typography h5 {
+.protyle-wysiwyg .h5, .b3-typography .h5,
+.protyle-wysiwyg h5,
+.b3-typography h5 {
   font-weight: 600;
   margin-top: 1.2em;
 }
@@ -229,7 +234,9 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
 .b3-typography h5 + h6 {
   margin-top: 0;
 }
-.protyle-wysiwyg .h6, .b3-typography .h6, .protyle-wysiwyg h6, .b3-typography h6 {
+.protyle-wysiwyg .h6, .b3-typography .h6,
+.protyle-wysiwyg h6,
+.b3-typography h6 {
   font-weight: 600;
   margin-top: 1.2em;
 }
@@ -252,7 +259,7 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
   background-size: 0;
   background-repeat: no-repeat;
   opacity: 1;
-  transition: background-size 0.3s;
+  transition: background-size 0.2s;
 }
 .protyle-wysiwyg [data-node-id] span[data-type~=block-ref]:hover, .b3-typography [data-node-id] span[data-type~=block-ref]:hover,
 .protyle-wysiwyg [data-node-id] span[data-type~=file-annotation-ref]:hover,
@@ -270,7 +277,7 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
   background: linear-gradient(90deg, var(--b3-border-color) 100%, transparent 0%) center right;
   background-size: 0;
   background-repeat: no-repeat;
-  transition: background-size 0.3s;
+  transition: background-size 0.2s;
 }
 .protyle-wysiwyg [data-node-id] span[data-type=virtual-block-ref]:hover, .b3-typography [data-node-id] span[data-type=virtual-block-ref]:hover {
   background-position: center left;
@@ -398,8 +405,20 @@ html[data-theme-mode=dark] .protyle-wysiwyg span[data-type~=inline-memo]:hover, 
   color: var(--b3-theme-primary) !important;
   opacity: 1;
 }
-.protyle-wysiwyg .li > .bq, .b3-typography .li > .bq {
-  padding-right: 16px !important;
+.protyle-wysiwyg [data-node-id].li::before, .b3-typography [data-node-id].li::before {
+  border-left: 1px solid;
+  border-left-color: inherit;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 1px, black 1px);
+          mask-image: linear-gradient(to bottom, transparent 1px, black 1px);
+  opacity: 0.1;
+  transition: opacity 0.2s;
+}
+.protyle-wysiwyg [data-node-id].li:hover::before, .b3-typography [data-node-id].li:hover::before {
+  border-left-color: inherit;
+  opacity: 0.3;
+}
+.protyle-wysiwyg [data-node-id].li > :is(.bq, blockquote), .b3-typography [data-node-id].li > :is(.bq, blockquote) {
+  padding-right: 16px;
 }
 .protyle-wysiwyg .protyle-task--done > div[data-node-id].p, .b3-typography .protyle-task--done > div[data-node-id].p {
   opacity: 0.45;
@@ -533,6 +552,14 @@ html[data-theme-mode=dark] .protyle-wysiwyg [data-node-id].iframe .protyle-actio
 .protyle-wysiwyg > div[data-type=NodeHeading]:first-child, .b3-typography > div[data-type=NodeHeading]:first-child, .protyle-wysiwyg > [data-node-id].sb:first-child .sb:first-child, .b3-typography > [data-node-id].sb:first-child .sb:first-child {
   margin-top: 0;
 }
+.protyle-wysiwyg div[fold="1"][data-type=NodeHeading], .b3-typography div[fold="1"][data-type=NodeHeading] {
+  background-color: var(--b3-theme-surface-lighter);
+  outline: 1.5px solid var(--b3-border-color-trans);
+  opacity: 0.6;
+}
+.protyle-wysiwyg div[fold="1"][data-type=NodeHeading]::before, .b3-typography div[fold="1"][data-type=NodeHeading]::before {
+  display: none;
+}
 .protyle-toolbar {
   animation: toolbar 0.2s ease-in-out;
   border: none;
@@ -572,6 +599,9 @@ html[data-theme-mode=dark] .protyle-toolbar__item:not(.protyle-toolbar__item--cu
 html[data-theme-mode=dark] .protyle-toolbar__item:not(.protyle-toolbar__item--current):hover {
   color: #dedede;
 }
+.protyle-toolbar__divider {
+  border-left: 1px solid var(--b3-border-color-trans);
+}
 .protyle-scroll {
   opacity: 0;
   transform: scale(0.95, 0.9);
@@ -582,6 +612,44 @@ html[data-theme-mode=dark] .protyle-toolbar__item:not(.protyle-toolbar__item--cu
   opacity: 1;
   transform: none;
   transition-delay: 0s;
+}
+.protyle-font .color__square {
+  width: 20px;
+  height: 20px;
+  box-shadow: none;
+  border-radius: 50%;
+  line-height: 20px;
+  font-size: 14px;
+}
+.protyle-font .color__square:hover {
+  box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+  transform: scale(1.2);
+  font-weight: bold;
+}
+.protyle-font .protyle-font__style {
+  font-size: 14px;
+}
+.protyle-font .protyle-font__style:hover {
+  transform: scale(1.1);
+  box-shadow: none;
+  border-color: transparent;
+  background-color: var(--b3-list-hover);
+}
+.protyle-font .b3-button {
+  border-radius: 99px;
+  padding: 4px 12px;
+  color: var(--b3-theme-on-surface);
+}
+.protyle-font .b3-button:hover {
+  background-color: var(--b3-list-hover);
+  color: var(--b3-theme-on-background);
+}
+.protyle-font .b3-button:active, .protyle-font .b3-button:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--b3-theme-on-background);
+}
+html[data-theme-mode=dark] .protyle-font .b3-button:active, html[data-theme-mode=dark] .protyle-font .b3-button:focus {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 .protyle .protyle-preview__action {
   background-color: var(--b3-theme-background);
@@ -597,4 +665,135 @@ html[data-theme-mode=dark] .protyle-toolbar__item:not(.protyle-toolbar__item--cu
 .protyle .protyle-preview__action button:not(.protyle-preview__action--current):hover {
   background-color: transparent;
   color: var(--b3-theme-on-background);
+}
+
+.pdf__outer#outerContainer #sidebarContainer {
+  top: 42px;
+  z-index: 1;
+}
+.pdf__outer#outerContainer #sidebarContainer #sidebarResizer {
+  right: -3px;
+}
+.pdf__outer#outerContainer #sidebarContainer #sidebarResizer::after {
+  background-color: transparent;
+}
+.pdf__outer#outerContainer #sidebarContainer #sidebarResizer:hover::after {
+  background-color: var(--b3-theme-primary-light);
+}
+.pdf__outer#outerContainer #sidebarContainer #sidebarContent .treeItem > a {
+  line-height: 1.5;
+}
+.pdf__outer#outerContainer .pdf__toolbar #toolbarContainer #toolbarViewer {
+  height: 42px;
+  align-items: center;
+}
+.pdf__outer#outerContainer .pdf__toolbar #toolbarContainer #toolbarViewer .dropdownToolbarButton {
+  margin: 4px 8px 4px 0;
+}
+.pdf__outer#outerContainer .findbar {
+  padding: 8px;
+  right: 8px;
+  overflow: visible !important;
+}
+.pdf__outer#outerContainer .findbar #findInput,
+.pdf__outer#outerContainer .findbar #findPrevious,
+.pdf__outer#outerContainer .findbar #findNext,
+.pdf__outer#outerContainer .findbar label:nth-of-type(1),
+.pdf__outer#outerContainer .findbar label:nth-of-type(2) {
+  margin-bottom: 4px;
+}
+.pdf__outer#outerContainer .findbar .b3-button {
+  transition: 0.2s;
+  border-radius: 99px;
+  padding: 4px 12px;
+  color: var(--b3-theme-primary);
+  font-weight: 600;
+  margin: 0;
+  background-color: transparent;
+}
+.pdf__outer#outerContainer .findbar .b3-button:hover {
+  background-color: var(--b3-theme-primary-lightest);
+}
+.pdf__outer#outerContainer .findbar .b3-button:active, .pdf__outer#outerContainer .findbar .b3-button:focus {
+  background-color: var(--b3-theme-primary);
+  color: var(--b3-theme-on-primary);
+}
+.pdf__outer#outerContainer .findbar .b3-button:hover {
+  box-shadow: none;
+}
+.pdf__outer#outerContainer .findbar .b3-button--outline {
+  border-radius: 99px;
+  padding: 4px 12px;
+  color: var(--b3-theme-on-surface);
+}
+.pdf__outer#outerContainer .findbar .b3-button--outline:hover {
+  background-color: var(--b3-list-hover);
+  color: var(--b3-theme-on-background);
+}
+.pdf__outer#outerContainer .findbar .b3-button--outline:active, .pdf__outer#outerContainer .findbar .b3-button--outline:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--b3-theme-on-background);
+}
+html[data-theme-mode=dark] .pdf__outer#outerContainer .findbar .b3-button--outline:active, html[data-theme-mode=dark] .pdf__outer#outerContainer .findbar .b3-button--outline:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.pdf__outer#outerContainer .findbar #findResultsCount {
+  pointer-events: none;
+  font-weight: 400;
+}
+.pdf__outer#outerContainer #viewerContainer {
+  top: 42px;
+  transition: none;
+}
+body.body-status-shown .pdf__outer#outerContainer #viewerContainer {
+  padding-bottom: 42px;
+}
+.pdf__outer#outerContainer #dialogContainer .dialog {
+  padding: 16px;
+  box-shadow: 0px 13px 18px -2px rgba(0, 0, 0, 0.1), 0px 30px 50px 0px rgba(0, 0, 0, 0.1), 0px 0px 12px 0px rgba(0, 0, 0, 0.05), 0px 75px 65px -50px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+html[data-theme-mode=dark] .pdf__outer#outerContainer #dialogContainer .dialog {
+  box-shadow: 0 0 0 0.5px #000, 0px 13px 18px -2px rgba(0, 0, 0, 0.3), 0px 30px 50px 0px rgba(0, 0, 0, 0.3), 0px 0px 12px 0px rgba(0, 0, 0, 0.15), 0px 75px 65px -50px rgba(0, 0, 0, 0.3);
+}
+html[data-theme-mode=dark] .pdf__outer#outerContainer #dialogContainer .dialog {
+  border: 1px solid var(--b3-border-color);
+}
+.pdf__outer#outerContainer #dialogContainer .dialog #documentPropertiesClose {
+  border-radius: 99px;
+  padding: 4px 12px;
+  color: var(--b3-theme-primary);
+  font-weight: 600;
+  background-color: transparent;
+  transition: 0.2s;
+}
+.pdf__outer#outerContainer #dialogContainer .dialog #documentPropertiesClose:hover {
+  background-color: var(--b3-theme-primary-lightest);
+}
+.pdf__outer#outerContainer #dialogContainer .dialog #documentPropertiesClose:active, .pdf__outer#outerContainer #dialogContainer .dialog #documentPropertiesClose:focus {
+  background-color: var(--b3-theme-primary);
+  color: var(--b3-theme-on-primary);
+}
+.pdf__outer#outerContainer #dialogContainer .dialog #documentPropertiesClose:hover, .pdf__outer#outerContainer #dialogContainer .dialog #documentPropertiesClose:active, .pdf__outer#outerContainer #dialogContainer .dialog #documentPropertiesClose:focus {
+  box-shadow: none;
+}
+.pdf__outer#outerContainer .pdf__util {
+  padding: 6px;
+}
+.pdf__outer#outerContainer .pdf__util .color__square {
+  height: 14px;
+  width: 14px;
+  margin-right: 6px;
+  box-shadow: none;
+  border-radius: 50%;
+}
+.pdf__outer#outerContainer .pdf__util .color__square:hover {
+  box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+  transform: scale(1.2);
+}
+.pdf__outer#outerContainer .pdf__util .color__square:last-child {
+  margin-right: 0;
+}
+.pdf__outer#outerContainer .pdf__util .b3-menu__item:not(:hover) {
+  background-color: transparent;
 }
