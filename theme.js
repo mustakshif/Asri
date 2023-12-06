@@ -57,17 +57,17 @@ function monitorDOM() {
 
                 if (isDockLytPinned(doms.docklLayout) && isDockLytExpanded(doms.docklLayout)) {
                     doms.dockl.classList.add('dock-layout-expanded');
-                    console.log('left added')
+                    // console.log('left added')
                 } else {
                     doms.dockl.classList.remove('dock-layout-expanded');
-                    console.log('left removed')
+                    // console.log('left removed')
                 }
                 if (isDockLytPinned(doms.dockrLayout) && isDockLytExpanded(doms.dockrLayout)) {
                     doms.dockr.classList.add('dock-layout-expanded');
-                    console.log('right added')
+                    // console.log('right added')
                 } else {
                     doms.dockr.classList.remove('dock-layout-expanded');
-                    console.log('right removed')
+                    // console.log('right removed')
                 }
 
 
@@ -91,8 +91,19 @@ function monitorDOM() {
                     let nextSibling = blockIcons.nextElementSibling;
                     if (nextSibling && nextSibling.classList.contains("search__header")) {
                         blockIcons.classList.add("search");
-                    }                    
+                    }
                 });
+
+                // 文档树缩进参考
+                let listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
+                document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => {
+                    oldUl.classList.remove('has-focus')
+                });
+                for (let li of listItemsFocus) {
+                    if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
+                        li.parentNode.classList.add('has-focus');
+                    }
+                }
             }
         });
     });

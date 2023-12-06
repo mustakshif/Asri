@@ -283,7 +283,7 @@ body:not(.body--blur) {
 
                 &:hover::before {
                     --property-percentage: calc(100% + var(--glow-offset));
-                    transition: --property-percentage 0.5s ease-in-out;
+                    transition: --property-percentage 0.5s $timing-function-decelerate;
                 }
 
                 // &::before {

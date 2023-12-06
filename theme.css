@@ -969,15 +969,12 @@ html[data-theme-mode=dark] .protyle-font .b3-button:active, html[data-theme-mode
   margin: 4px 8px 4px 0;
 }
 .pdf__outer#outerContainer .findbar {
-  padding: 8px;
+  padding: 4px 8px;
   right: 8px;
   overflow: visible !important;
 }
-.pdf__outer#outerContainer .findbar #findInput,
-.pdf__outer#outerContainer .findbar #findPrevious,
-.pdf__outer#outerContainer .findbar #findNext,
-.pdf__outer#outerContainer .findbar label:nth-of-type(1),
-.pdf__outer#outerContainer .findbar label:nth-of-type(2) {
+.pdf__outer#outerContainer .findbar > * {
+  margin-top: 4px;
   margin-bottom: 4px;
 }
 .pdf__outer#outerContainer .findbar .b3-button {
@@ -1371,7 +1368,31 @@ html[data-theme-mode=dark] .layout__center .b3-list-item .b3-list-item__toggle.f
   transition: 0.2s;
 }
 .file-tree > .fn__flex-1:hover > ul ul {
-  box-shadow: 1px 0 var(--b3-border-color-trans) inset;
+  box-shadow: 1px 0 rgba(38, 38, 38, 0.15) inset;
+}
+html[data-theme-mode=dark] .file-tree > .fn__flex-1:hover > ul ul {
+  box-shadow: 1px 0 rgba(222, 222, 222, 0.15) inset;
+}
+.file-tree > .fn__flex-1 li.b3-list-item--focus + ul,
+.file-tree > .fn__flex-1 ul.has-focus {
+  box-shadow: 1px 0 rgba(38, 38, 38, 0.15) inset;
+}
+html[data-theme-mode=dark] .file-tree > .fn__flex-1 li.b3-list-item--focus + ul,
+html[data-theme-mode=dark] .file-tree > .fn__flex-1 ul.has-focus {
+  box-shadow: 1px 0 rgba(222, 222, 222, 0.15) inset;
+}
+.file-tree > .fn__flex-1:hover li.b3-list-item--focus + ul, .file-tree > .fn__flex-1:hover ul.has-focus {
+  box-shadow: 1px 0 rgba(38, 38, 38, 0.3) inset;
+}
+html[data-theme-mode=dark] .file-tree > .fn__flex-1:hover li.b3-list-item--focus + ul, html[data-theme-mode=dark] .file-tree > .fn__flex-1:hover ul.has-focus {
+  box-shadow: 1px 0 rgba(222, 222, 222, 0.3) inset;
+}
+.file-tree > .fn__flex-1 > ul {
+  box-shadow: none !important;
+}
+
+.file-tree__sliderDown {
+  top: -4px !important;
 }
 
 .layout__resize::after {
@@ -2163,7 +2184,7 @@ html[data-theme-mode=dark] .b3-dialog--open .layout-tab-bar .item:not(.item--foc
 }
 .b3-dialog__body > .b3-cards .b3-card:hover {
   transform: scale(1.05);
-  animation: card-hover 0.5s;
+  animation: card-hover 0.3s;
   box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.05), 0px 13px 19px -2px rgba(0, 0, 0, 0.1), 0px 30px 50px -20px rgba(0, 0, 0, 0.08), 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
 }
 html[data-theme-mode=dark] .b3-dialog__body > .b3-cards .b3-card:hover {
@@ -2780,7 +2801,7 @@ body:not(.body--blur) .b3-dialog__body > .b3-cards .b3-card::before {
 }
 body:not(.body--blur) .b3-dialog__body > .b3-cards .b3-card:hover::before {
   --property-percentage: calc(100% + var(--glow-offset));
-  transition: --property-percentage 0.5s ease-in-out;
+  transition: --property-percentage 0.5s cubic-bezier(0, 0, 0, 1);
 }
 body:not(.body--blur) .b3-dialog.emojis-container .b3-dialog__container {
   background-color: rgba(236, 236, 236, 0.8);

@@ -402,4 +402,7 @@ $border-rd-menu: 10px;
 $border-rd-tab: 8px;
 $border-rd-default: 6px;
 
+$timing-function-decelerate: cubic-bezier(0, 0, 0, 1);
+$timing-function-accelerate: cubic-bezier(0.3, 0, 1, 1);
+
 

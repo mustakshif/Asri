@@ -691,15 +691,12 @@ html[data-theme-mode=dark] .protyle-font .b3-button:active, html[data-theme-mode
   margin: 4px 8px 4px 0;
 }
 .pdf__outer#outerContainer .findbar {
-  padding: 8px;
+  padding: 4px 8px;
   right: 8px;
   overflow: visible !important;
 }
-.pdf__outer#outerContainer .findbar #findInput,
-.pdf__outer#outerContainer .findbar #findPrevious,
-.pdf__outer#outerContainer .findbar #findNext,
-.pdf__outer#outerContainer .findbar label:nth-of-type(1),
-.pdf__outer#outerContainer .findbar label:nth-of-type(2) {
+.pdf__outer#outerContainer .findbar > * {
+  margin-top: 4px;
   margin-bottom: 4px;
 }
 .pdf__outer#outerContainer .findbar .b3-button {

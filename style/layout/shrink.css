@@ -293,5 +293,29 @@ html[data-theme-mode=dark] .layout__center .b3-list-item .b3-list-item__toggle.f
   transition: 0.2s;
 }
 .file-tree > .fn__flex-1:hover > ul ul {
-  box-shadow: 1px 0 var(--b3-border-color-trans) inset;
+  box-shadow: 1px 0 rgba(38, 38, 38, 0.15) inset;
+}
+html[data-theme-mode=dark] .file-tree > .fn__flex-1:hover > ul ul {
+  box-shadow: 1px 0 rgba(222, 222, 222, 0.15) inset;
+}
+.file-tree > .fn__flex-1 li.b3-list-item--focus + ul,
+.file-tree > .fn__flex-1 ul.has-focus {
+  box-shadow: 1px 0 rgba(38, 38, 38, 0.15) inset;
+}
+html[data-theme-mode=dark] .file-tree > .fn__flex-1 li.b3-list-item--focus + ul,
+html[data-theme-mode=dark] .file-tree > .fn__flex-1 ul.has-focus {
+  box-shadow: 1px 0 rgba(222, 222, 222, 0.15) inset;
+}
+.file-tree > .fn__flex-1:hover li.b3-list-item--focus + ul, .file-tree > .fn__flex-1:hover ul.has-focus {
+  box-shadow: 1px 0 rgba(38, 38, 38, 0.3) inset;
+}
+html[data-theme-mode=dark] .file-tree > .fn__flex-1:hover li.b3-list-item--focus + ul, html[data-theme-mode=dark] .file-tree > .fn__flex-1:hover ul.has-focus {
+  box-shadow: 1px 0 rgba(222, 222, 222, 0.3) inset;
+}
+.file-tree > .fn__flex-1 > ul {
+  box-shadow: none !important;
+}
+
+.file-tree__sliderDown {
+  top: -4px !important;
 }

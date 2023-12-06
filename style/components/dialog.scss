@@ -348,7 +348,7 @@
             &:hover {
                 transform: scale(1.05);
                 // box-shadow: 0 4px 18px -8px #0000001b;
-                animation: card-hover 0.5s;
+                animation: card-hover 0.3s;
                 @include menu-shadow;
 
                 @keyframes card-hover {

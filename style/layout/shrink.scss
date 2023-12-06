@@ -31,10 +31,10 @@
 
         &~.fn__flex-1 {
             margin-bottom: 0 !important;
-            
-            &:not(.graph__svg){
+
+            &:not(.graph__svg) {
                 padding: 0 2px;
-            }           
+            }
         }
     }
 
@@ -48,7 +48,7 @@
         .b3-list-item__toggle {
             @include theme-variant-color(color, on-background, 0.6);
             // transform: translateX(1px);
-            
+
             // 小圆点
             &.fn__hidden::before {
                 visibility: visible;
@@ -217,6 +217,34 @@
     }
 
     &:hover>ul ul {
-        box-shadow: 1px 0 var(--b3-border-color-trans) inset;
+        box-shadow: 1px 0 pickThemeColor($theme-light, on-background, 0.15) inset;
+        @include darkmode-counterpart {
+            box-shadow: 1px 0 pickThemeColor($theme-dark, on-background, 0.15) inset;
+        }
     }
+
+    li.b3-list-item--focus + ul,
+    ul.has-focus {
+        box-shadow: 1px 0 pickThemeColor($theme-light, on-background, 0.15) inset;
+        @include darkmode-counterpart {
+            box-shadow: 1px 0 pickThemeColor($theme-dark, on-background, 0.15) inset;
+        }
+    } // -> js
+
+    &:hover li.b3-list-item--focus + ul,
+    &:hover ul.has-focus {
+        box-shadow: 1px 0 pickThemeColor($theme-light, on-background, 0.3) inset;
+        @include darkmode-counterpart {
+            box-shadow: 1px 0 pickThemeColor($theme-dark, on-background, 0.3) inset;
+        }
+    }
+
+    &>ul {
+        box-shadow: none !important;
+    }
+}
+
+// 列表展开动画
+.file-tree__sliderDown {
+    top: -4px !important;
 }
