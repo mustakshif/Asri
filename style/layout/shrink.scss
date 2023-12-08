@@ -32,7 +32,7 @@
         &~.fn__flex-1 {
             margin-bottom: 0 !important;
 
-            &:not(.graph__svg) {
+            &:not(.graph__svg, .backlinkList, .backlinkMList) {
                 padding: 0 2px;
             }
         }
@@ -102,18 +102,6 @@
             }
         }
     }
-
-    .sy__outline {
-        .b3-list-item[title] {
-            display: none;
-        }
-    }
-
-    .sy__tag {
-        .b3-list-item__graphic {
-            display: none;
-        }
-    }
 }
 
 .layout__dockl,
@@ -147,14 +135,6 @@
         border-bottom: none;
         opacity: 1 !important;
     }
-
-    .sy__backlink {
-        .block__icons {
-            .search__label:not(.fn__none)~.block__icon {
-                opacity: 0;
-            }
-        }
-    }
 }
 
 // .layout__dockr {
@@ -173,14 +153,96 @@
 }
 
 .layout__dockr {
-    &.body-status-shown .b3-list--background {
-        padding-bottom: 36px;
-    }
-
     &.layout--float {
         border-left: 1px solid var(--b3-border-color);
     }
 }
+
+.sy__outline {
+    .b3-list-item[title] {
+        display: none;
+    }
+}
+
+.sy__tag {
+    .b3-list-item__graphic {
+        display: none;
+    }
+}
+
+.sy__backlink {
+    .block__icons {
+        .search__label:not(.fn__none)~.block__icon {
+            opacity: 0;
+        }
+
+        &+.fn__flex-1 {
+            li {
+                z-index: 1;
+
+                &.protyle-shown {
+                    position: sticky;
+                    top: 0;
+
+                    & {
+                        box-shadow: 0 -0.5px inset var(--b3-border-color-trans), 0 0.5px inset var(--b3-border-color-trans);
+                    }
+                }// -> js
+
+                &:not(.b3-list--empty) {
+                    margin: 0;
+                    padding: 2px 8px;
+                    border-radius: 0;
+                    background-color: change-color($color: pickThemeColor($theme-light,surface), $lightness: 93%) !important;
+
+                    @include darkmode-counterpart {
+                        background-color: change-color($color: pickThemeColor($theme-dark,surface), $lightness: 28%) !important;
+                    }
+
+                    .layout--float &,
+                    .layout__center & {
+                        background-color: var(--b3-theme-surface) !important;
+                    }
+                }
+                
+            }
+        }
+    }
+
+    .protyle {
+
+        &,
+        &-content {
+            background-color: transparent;
+        }
+
+        .protyle-breadcrumb__bar {
+            &:not(:first-child) {
+                border-top: 1px solid var(--b3-border-color-trans);
+            }
+
+            margin-bottom: 0 !important;
+            height: 36px;
+        }
+
+        // .protyle-wysiwyg {
+        //     padding: 4px 8px !important;
+        // }
+    }
+}
+
+// 避让状态栏
+body.body-status-shown {
+
+    .layout__dockr:not(.layout--float),
+    .layout__resize+.fn__flex-1 .layout-tab-container .file-tree {
+        .b3-list--background {
+            padding-bottom: 36px;
+        }
+    }
+}
+
+// -> js
 
 // 作为页签打开时
 .layout__center {
@@ -218,26 +280,33 @@
 
     &:hover>ul ul {
         box-shadow: 1px 0 pickThemeColor($theme-light, on-background, 0.15) inset;
+
         @include darkmode-counterpart {
             box-shadow: 1px 0 pickThemeColor($theme-dark, on-background, 0.15) inset;
         }
     }
 
-    li.b3-list-item--focus + ul,
+    li.b3-list-item--focus+ul,
     ul.has-focus {
         box-shadow: 1px 0 pickThemeColor($theme-light, on-background, 0.15) inset;
+
         @include darkmode-counterpart {
             box-shadow: 1px 0 pickThemeColor($theme-dark, on-background, 0.15) inset;
         }
-    } // -> js
+    }
 
-    &:hover li.b3-list-item--focus + ul,
+    // -> js
+
+    &:hover li.b3-list-item--focus+ul,
     &:hover ul.has-focus {
         box-shadow: 1px 0 pickThemeColor($theme-light, on-background, 0.3) inset;
+
         @include darkmode-counterpart {
             box-shadow: 1px 0 pickThemeColor($theme-dark, on-background, 0.3) inset;
         }
     }
+
+    // -> js
 
     &>ul {
         box-shadow: none !important;

@@ -763,7 +763,7 @@
         right: 8px;
         overflow: visible !important;
 
-        & > * {
+        & > :is(input, button, label.b3-button){
             margin-top: 4px;
             margin-bottom: 4px;
         }

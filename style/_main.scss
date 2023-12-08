@@ -23,6 +23,20 @@
     initial-value: 0%;
 }
 
+@keyframes click {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
 // @property --property-length {
 //     syntax: '<length>';
 //     inherits: false;
@@ -39,14 +53,13 @@ $thin-transparency: 0.75;
 $thin-blur-rd: 12px;
 
 body:not(.body--blur) {
-    .layout__wnd--active {
+    // .layout__wnd--active,
+    [data-type="wnd"] {
         &:not(.shrink-in-tab)>.fn__flex:first-child {
             background-color: transparent;
             margin-bottom: -42px;
             z-index: 3;
-        }
-
-        // -> js
+        }// -> js
 
         .layout-tab-bar {
             .item {
@@ -97,6 +110,7 @@ body:not(.body--blur) {
                 padding-top: 0 !important;
             }
 
+            &>:not(.file-tree) .protyle-content,
             :not(#searchPreview)>.protyle-content {
                 padding-top: 84px;
             }
@@ -139,7 +153,6 @@ body:not(.body--blur) {
 
 
     .protyle {
-
         // 题头图区域
         &-background {
             &__img {

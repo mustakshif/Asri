@@ -73,11 +73,11 @@ function monitorDOM() {
 
 
                 //右侧面板底部 padding
-                if (!doms.status.classList.contains('fn__none')) {
-                    doms.dockrLayout.classList.add('body-status-shown');
-                } else {
-                    doms.dockrLayout.classList.remove('body-status-shown');
-                }
+                // if (!doms.status.classList.contains('fn__none')) {
+                //     document.body.classList.add('body-status-shown');
+                // } else {
+                //     document.body.classList.remove('body-status-shown');
+                // }
 
                 // status 右边距
                 if (doms.dockr.classList.contains('fn__none')) {
@@ -94,16 +94,24 @@ function monitorDOM() {
                     }
                 });
 
-                // 文档树缩进参考
+                // 文档树缩进参考、反链
+                // 反链重写 目前不是立即生效
                 let listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
-                document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => {
-                    oldUl.classList.remove('has-focus')
-                });
+                let backlinkListItems = document.querySelectorAll('.sy__backlink .b3-list-item');
+
+                document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus')
+                );
                 for (let li of listItemsFocus) {
                     if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
                         li.parentNode.classList.add('has-focus');
                     }
                 }
+                document.querySelectorAll('.sy__backlink .protyle-shown').forEach (oldLi => oldLi.classList.remove('protyle-shown'))
+                for (let li of backlinkListItems) {
+                    if (li.nextElementSibling && !li.nextElementSibling.classList.contains('fn__none') && li.nextElementSibling.classList.contains('protyle')) {                        
+                        li.classList.add('protyle-shown');
+                    }
+                }                
             }
         });
     });
@@ -118,3 +126,18 @@ function monitorDOM() {
 }
 
 monitorDOM();
+
+
+
+// var tabbarItems = document.querySelectorAll(".layout-tab-bar .item");
+// tabbarItems.forEach(
+//     item => {
+//         item.addEventListener("mousedown", function () {
+//             item.classList.add("clicked");
+//           });
+//           item.addEventListener("mouseup", function () {
+//             item.classList.remove("clicked");
+//           })
+//     }
+// )
+

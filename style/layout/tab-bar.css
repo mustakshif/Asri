@@ -75,6 +75,7 @@ html[data-theme-mode=dark] .layout-tab-bar .item:not(.item--readonly, .item--ful
 .layout-tab-bar .item--focus {
   max-width: 21rem;
   background-color: rgba(0, 0, 0, 0.12);
+  animation: click 0.2s;
 }
 html[data-theme-mode=dark] .layout-tab-bar .item--focus {
   background-color: rgba(255, 255, 255, 0.15);

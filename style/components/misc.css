@@ -1,6 +1,7 @@
 .layout__resize::after {
   height: 1px;
   width: 100%;
+  transform: translateY(-1px);
 }
 .layout__resize--lr {
   z-index: 3;
@@ -32,6 +33,9 @@
   box-sizing: border-box;
   border: 1px solid transparent;
   background-color: rgba(127, 127, 127, 0.15);
+}
+.b3-menu__item--current .b3-switch {
+  border: 1px solid rgba(255, 255, 255, 0.5647058824);
 }
 html[data-theme-mode=dark] .b3-switch {
   border: 1px solid var(--b3-border-color-trans);
@@ -87,6 +91,10 @@ html[data-theme-mode=dark] .b3-button--outline:hover {
   background-color: var(--b3-theme-primary);
   color: var(--b3-theme-on-primary);
   transition: 0.1s all;
+}
+.b3-button--outline:active {
+  transform: scale(0.95);
+  opacity: 0.8;
 }
 .b3-button--outline:focus {
   box-shadow: none;
@@ -213,6 +221,10 @@ html[data-theme-mode=dark] #message.b3-snackbars .b3-snackbar--error .b3-snackba
   transition: transform 0.2s;
   transform: translateY(-32px);
   border: none;
+}
+#message.b3-snackbars button:active {
+  transform: scale(0.95);
+  opacity: 0.8;
 }
 #message.b3-snackbars button:hover {
   color: var(--b3-theme-on-background);

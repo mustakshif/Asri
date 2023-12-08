@@ -118,6 +118,11 @@
         color: var(--b3-theme-on-primary);
         transition: 0.1s all;
     }
+
+    &:active {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
 }
 
 // 主要用于设置面板的大按钮
@@ -125,6 +130,10 @@
 @mixin button-action($type) {
     border-radius: 99px;
     padding: 4px 12px;
+    &:active {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
 
     @if $type=='normal' {
         color: var(--b3-theme-on-surface);

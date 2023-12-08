@@ -90,6 +90,8 @@
 
             @include theme-variant-color(background-color, list-hover, 0.12, 0.15);
 
+            animation: click 0.2s;
+
             &::after {
                 display: none;
             }

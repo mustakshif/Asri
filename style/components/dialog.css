@@ -81,6 +81,10 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container {
   padding: 4px 12px;
   padding: 4px;
 }
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel[data-type=downloaded] .b3-button:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel[data-type=downloaded] .b3-button:not(.b3-button--outline) {
   background-color: transparent;
   color: var(--b3-theme-primary);
@@ -162,6 +166,10 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container .co
   color: var(--b3-theme-primary);
   font-weight: 600;
 }
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container[data-name=account] .config-account .b3-button--text:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container[data-name=account] .config-account .b3-button--text:hover {
   background-color: var(--b3-theme-primary-lightest);
 }
@@ -173,6 +181,10 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container .co
   border-radius: 99px;
   padding: 4px 12px;
   color: var(--b3-theme-on-surface);
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container[data-name=account] .config-account .b3-button--cancel:active {
+  transform: scale(0.95);
+  opacity: 0.8;
 }
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container[data-name=account] .config-account .b3-button--cancel:hover {
   background-color: var(--b3-list-hover);
@@ -205,6 +217,10 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container .co
   padding: 4px 12px;
   color: var(--b3-theme-on-surface);
 }
+.b3-dialog--open .b3-dialog__action .b3-button--cancel:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
 .b3-dialog--open .b3-dialog__action .b3-button--cancel:hover {
   background-color: var(--b3-list-hover);
   color: var(--b3-theme-on-background);
@@ -222,6 +238,10 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog__action .b3-button--cance
   color: var(--b3-theme-primary);
   font-weight: 600;
 }
+.b3-dialog--open .b3-dialog__action .b3-button--text:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
 .b3-dialog--open .b3-dialog__action .b3-button--text:hover {
   background-color: var(--b3-theme-primary-lightest);
 }
@@ -235,6 +255,9 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog__action .b3-button--cance
 .b3-dialog--open[data-key=⌘P] .b3-dialog__container .b3-dialog__body .search__tip {
   padding: 4px 8px;
   margin: 0;
+}
+.b3-dialog--open .search__tip kbd {
+  font-family: SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
 }
 .b3-dialog--open .layout-tab-bar {
   margin: 8px auto 8px;
@@ -258,6 +281,7 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog__action .b3-button--cance
 .b3-dialog--open .layout-tab-bar .item--focus {
   max-width: unset;
   box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.2);
+  animation: none;
   background-color: white;
 }
 html[data-theme-mode=dark] .b3-dialog--open .layout-tab-bar .item--focus {
@@ -296,6 +320,10 @@ html[data-theme-mode=dark] .b3-dialog--open .layout-tab-bar .item:not(.item--foc
   background-color: transparent;
   padding: 2px 8px;
   box-shadow: none;
+}
+#criteria .b3-button:active {
+  transform: scale(0.95);
+  opacity: 0.8;
 }
 #criteria .b3-button:hover {
   background-color: var(--b3-theme-primary-lightest);

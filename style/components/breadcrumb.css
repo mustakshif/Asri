@@ -45,3 +45,14 @@ html[data-theme-mode=dark] .protyle-breadcrumb .protyle-breadcrumb__icon:hover {
   color: var(--b3-theme-on-primary);
   transition: 0.1s all;
 }
+.protyle-breadcrumb .protyle-breadcrumb__icon:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+.layout__center .layout-tab-container .fn__flex-column > .protyle-breadcrumb {
+  height: 42px;
+}
+.layout__center .layout-tab-container .fn__flex-column > .protyle-breadcrumb .address-field {
+  margin: 8px 4px;
+}

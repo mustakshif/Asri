@@ -5,6 +5,8 @@
     &::after {
         height: 1px;
         width: 100%;
+        // top: 2px;
+        transform: translateY(-1px);
     }
 
     &--lr {
@@ -45,11 +47,15 @@
     box-sizing: border-box;
     border: 1px solid transparent;
 
+    .b3-menu__item--current & {
+        border: 1px solid #ffffff90;
+    }
+
     html[data-theme-mode="dark"] & {
         border: 1px solid var(--b3-border-color-trans);
     }
 
-    @include theme-variant-color(background-color, on-surface-gray, 0.15);
+    @include theme-variant-color(background-color, on-surface-gray, 0.5);
 
     // 关闭状态指示点
     &::after {

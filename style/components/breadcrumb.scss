@@ -4,7 +4,8 @@
     height: 42px;
     color: var(--b3-theme-on-surface);
 
-    // 以下代码影响页面滚动性能，可能由于要不断监听 data-scrolltop：————————————————————————————————————————
+    // 以下代码影响页面滚动性能
+    // ————————————————————————————————————————
     // border-bottom: 1px solid var(--b3-border-color);
     // transition: 0.2s border-bottom;
 
@@ -61,5 +62,14 @@
     & &__icon {
         @include button-primary;
         padding: 0 8px;
+    }
+}
+
+// 覆盖 webview 插件
+.layout__center .layout-tab-container .fn__flex-column > .protyle-breadcrumb {
+    height: 42px;
+
+    .address-field {
+        margin: 8px 4px;
     }
 }

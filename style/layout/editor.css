@@ -640,6 +640,10 @@ html[data-theme-mode=dark] .protyle-toolbar__item:not(.protyle-toolbar__item--cu
   padding: 4px 12px;
   color: var(--b3-theme-on-surface);
 }
+.protyle-font .b3-button:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
 .protyle-font .b3-button:hover {
   background-color: var(--b3-list-hover);
   color: var(--b3-theme-on-background);
@@ -695,7 +699,7 @@ html[data-theme-mode=dark] .protyle-font .b3-button:active, html[data-theme-mode
   right: 8px;
   overflow: visible !important;
 }
-.pdf__outer#outerContainer .findbar > * {
+.pdf__outer#outerContainer .findbar > :is(input, button, label.b3-button) {
   margin-top: 4px;
   margin-bottom: 4px;
 }
@@ -707,6 +711,10 @@ html[data-theme-mode=dark] .protyle-font .b3-button:active, html[data-theme-mode
   font-weight: 600;
   margin: 0;
   background-color: transparent;
+}
+.pdf__outer#outerContainer .findbar .b3-button:active {
+  transform: scale(0.95);
+  opacity: 0.8;
 }
 .pdf__outer#outerContainer .findbar .b3-button:hover {
   background-color: var(--b3-theme-primary-lightest);
@@ -722,6 +730,10 @@ html[data-theme-mode=dark] .protyle-font .b3-button:active, html[data-theme-mode
   border-radius: 99px;
   padding: 4px 12px;
   color: var(--b3-theme-on-surface);
+}
+.pdf__outer#outerContainer .findbar .b3-button--outline:active {
+  transform: scale(0.95);
+  opacity: 0.8;
 }
 .pdf__outer#outerContainer .findbar .b3-button--outline:hover {
   background-color: var(--b3-list-hover);
@@ -763,6 +775,10 @@ html[data-theme-mode=dark] .pdf__outer#outerContainer #dialogContainer .dialog {
   font-weight: 600;
   background-color: transparent;
   transition: 0.2s;
+}
+.pdf__outer#outerContainer #dialogContainer .dialog #documentPropertiesClose:active {
+  transform: scale(0.95);
+  opacity: 0.8;
 }
 .pdf__outer#outerContainer #dialogContainer .dialog #documentPropertiesClose:hover {
   background-color: var(--b3-theme-primary-lightest);

@@ -255,7 +255,9 @@
             }
         }
     }
-
+    .search__tip kbd {
+        font-family: SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
+    }
     // 对话框中的 tab-bar ——————————————————————————————
     .layout-tab-bar {
         margin: 8px auto 8px;
@@ -281,6 +283,7 @@
             &--focus {
                 max-width: unset;
                 box-shadow: 0 1px 4px -1px #0003;
+                animation: none;
 
                 @include darkmode-counterpart {
                     box-shadow: 0 1px 0 0 inset rgba(255, 255, 255, 0.1), 0 1px 4px -1px #0003;
