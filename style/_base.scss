@@ -411,3 +411,417 @@ $timing-function-decelerate: cubic-bezier(0, 0, 0, 1);
 $timing-function-accelerate: cubic-bezier(0.3, 0, 1, 1);
 
 
+
+// functions ————————————————————
+@function getRgb($color) {
+    @return red($color), green($color), blue($color);
+}
+
+@function pickThemeColor($theme-map, $color-key, $opacity: 1) {
+    @return change-color(map-get($theme-map , $color-key), $alpha: $opacity);
+}
+
+// common mixins ———————————————————————
+@mixin font-family {
+    --b3-font-family: ui-sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", Helvetica, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+
+    --b3-font-family-code: SF Mono, "JetBrains Mono", Menlo, mononoki, Consolas, "Liberation Mono", Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols", var(--b3-font-family);
+
+    // --b3-font-family-graph: mononoki;
+
+    // --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
+
+    // --b3-font-family-math: KaTeX_Math;
+}
+
+@mixin cssvars {
+    --b3-toolbar-left-mac: 80px;
+    --toolbar-height: 48px;
+}
+
+@mixin bg-blur($blur-radius: 40px, $saturate-value: 3, $brightness-light: 1.1, $brightness-dark: calc(2 - $brightness-light)) {
+    backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness-light);
+
+    html[data-theme-mode="dark"] & {
+        backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness-dark);
+    }
+}
+
+//————————————————————————————————————
+@mixin menu-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $initialized: false) {
+    @if $initialized {
+        box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
+    }
+
+    @else {
+        box-shadow: 0 0 0px 1px change-color($shadow-clr-light, $alpha: calc($opacity-light * 0.5)), 0px 13px 19px -2px change-color($shadow-clr-light, $alpha: $opacity-light), 0px 30px 50px -20px change-color($shadow-clr-light, $alpha: calc($opacity-light * 0.8)), 0px 0px 10px 0px change-color($shadow-clr-light, $alpha: calc($opacity-light * 0.5));
+
+        @include darkmode-counterpart {
+            box-shadow: 0 0 0 1px change-color($shadow-clr-dark, $alpha: 1), 0px 13px 19px -7px change-color($shadow-clr-dark, $alpha: $opacity-dark), 0px 30px 50px -20px change-color($shadow-clr-dark, $alpha: $opacity-dark), 0px 0px 10px 0px change-color($shadow-clr-dark, $alpha: calc($opacity-dark / 2));
+        }
+    }
+}
+
+@mixin dialog-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $initialized: false) {
+    @if $initialized {
+        box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
+
+        @include darkmode-counterpart {
+            box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
+        }
+    }
+
+    @else {
+        box-shadow: 0px 13px 18px -2px change-color($shadow-clr-light, $alpha: $opacity-light), 0px 30px 50px 0px change-color($shadow-clr-light, $alpha: $opacity-light), 0px 0px 12px 0px change-color($shadow-clr-light, $alpha: calc($opacity-light / 2)), 0px 75px 65px -50px change-color($shadow-clr-light, $alpha: $opacity-light);
+
+        @include darkmode-counterpart {
+            box-shadow: 0 0 0 1px #000, 0px 13px 18px -2px change-color($shadow-clr-dark, $alpha: $opacity-dark), 0px 30px 50px 0px change-color($shadow-clr-dark, $alpha: $opacity-dark), 0px 0px 12px 0px change-color($shadow-clr-dark, $alpha: calc($opacity-dark / 2)), 0px 75px 65px -50px change-color($shadow-clr-dark, $alpha: $opacity-dark);
+        }
+    }
+}
+
+@mixin tooltip-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $initialized: false) {
+    @if $initialized {
+        box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent;
+    }
+
+    @else {
+        box-shadow: 0 0 0px 0.5px change-color($shadow-clr-light, $alpha: $opacity-light), 0px 2px 6px 0px change-color($shadow-clr-light, $alpha: $opacity-light);
+
+        @include darkmode-counterpart {
+            box-shadow: 0 0 0 1px #000, 0px 2px 6px 0px change-color($shadow-clr-dark, $alpha: $opacity-dark);
+        }
+    }
+}
+
+//————————————————————————————————————————
+@mixin border-or-not {
+    border: none;
+
+    @include darkmode-counterpart {
+        outline: 1px solid var(--b3-border-color);
+    }
+}
+
+//——————————————————————————————————————
+@mixin button-primary {
+    background-color: var(--b3-menu-background);
+    border-radius: 99px;
+    color: var(--b3-theme-primary);
+    font-weight: 600;
+    transition: 0.1s all;
+    border: none;
+    box-shadow: none;
+
+    @content;
+
+    @include darkmode-counterpart {
+        background-color: rgb(24, 24, 24);
+
+        &:hover {
+            background-color: var(--b3-theme-primary);
+        }
+    }
+
+    &:hover {
+        background-color: var(--b3-theme-primary);
+        color: var(--b3-theme-on-primary);
+        transition: 0.1s all;
+    }
+
+    &:active {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+}
+
+// 主要用于设置面板的大按钮
+
+@mixin button-action($type) {
+    border-radius: 99px;
+    padding: 4px 12px;
+    &:active {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+
+    @if $type=='normal' {
+        color: var(--b3-theme-on-surface);
+
+        &:hover {
+            background-color: var(--b3-list-hover);
+            color: var(--b3-theme-on-background);
+        }
+
+        &:active,
+        &:focus {
+            @include theme-variant-color(background-color, list-hover, 0.1);
+            color: var(--b3-theme-on-background);
+        }
+    }
+
+    @else if $type =='primary' {
+        color: var(--b3-theme-primary);
+        font-weight: 600;
+
+        &:hover {
+            background-color: var(--b3-theme-primary-lightest);
+        }
+
+        &:active,
+        &:focus {
+            background-color: var(--b3-theme-primary);
+            color: var(--b3-theme-on-primary);
+        }
+    }
+
+    @else if $type =='danger' {
+        color: var(--b3-theme-error);
+        font-weight: 600;
+
+        &:hover {
+            @include theme-variant-color(background-color, error, 0.08)
+        }
+
+        &:active,
+        &:focus {
+            background-color: var(--b3-theme-error);
+            color: var(--b3-theme-on-error);
+        }
+    }
+
+    @content;
+}
+
+// ——————————————————————————
+
+
+// color scheme related mixins————————————————
+$theme-light: (
+    primary: rgb(52, 120, 246),
+    secondary: rgb(241, 154, 55),
+    background: #fff,
+    surface: rgb(246, 246, 246),
+    error: rgb(234, 77, 60),
+    on-primary: #fff,
+    on-secondary: #fff,
+    on-background: rgb(38, 38, 38),
+    on-surface-gray: rgb(127, 127, 127),
+    border: hsl(0, 0%, 90%),
+    scroll: rgba(0, 0, 0, 0.2),
+    list-hover: rgba(0, 0, 0, 0.05),
+    menu-background: rgb(236, 236, 236),
+    menu-item-hv-background: rgb(41, 98, 217, 0.8),
+    menu-item-hv-on-background: #fff,
+    mask-background: rgba(0, 0, 0, 0.78),
+    card-error: rgb(233, 49, 71),
+    card-error-background: rgba(233, 49, 71, 0.1),
+    card-warning: rgb(224, 172, 0),
+    card-warning-background: rgba(224, 172, 0, 0.1),
+    card-info: rgb(8, 109, 221),
+    card-info-background: rgba(8, 109, 221, 0.1),
+    card-success: rgb(8, 185, 78),
+    card-success-background: rgba(8, 185, 78, 0.1),
+    font-color1: #000,
+    font-color2: rgb(142, 142, 147),
+    font-color3: rgb(162, 132, 94),
+    font-color4: rgb(255, 149, 0),
+    font-color5: rgb(255, 204, 0),
+    font-color6: rgb(8, 185, 78),
+    font-color7: rgb(0, 199, 190),
+    font-color8: rgb(85, 190, 240),
+    font-color9: rgb(0, 122, 255),
+    font-color10: rgb(88, 86, 214),
+    font-color11: rgb(175, 82, 222),
+    font-color12: rgb(255, 45, 85),
+    font-color13: rgb(255, 59, 48),
+    inline-link-color: #4285f4,
+    inline-mark-background: rgb(168, 251, 172),
+    light-components:#fff
+);
+
+$theme-dark: (
+    primary: rgb(17, 139, 255),
+    secondary: rgb(198, 126, 44),
+    background: rgb(30, 30, 30),
+    surface: rgb(56, 56, 56),
+    error: rgb(255, 59, 48),
+    on-primary: #ffffffe3,
+    on-secondary: #fff,
+    on-background: rgb(222, 222, 222),
+    on-surface-gray: rgb(127, 127, 127),
+    border: hsl(0, 0%, 26%),
+    scroll: rgba(255, 255, 255, 0.2),
+    list-hover: rgba(255, 255, 255, 0.06),
+    menu-background: rgb(50, 50, 50),
+    menu-item-hv-background: rgb(32, 80, 202, 0.8),
+    menu-item-hv-on-background:#ffffffe3,
+    mask-background: rgba(0, 0, 0, 0.78),
+    card-error: rgb(233, 49, 71),
+    card-error-background: rgba(233, 49, 71, 0.1),
+    card-warning: rgb(224, 172, 0),
+    card-warning-background: rgba(224, 172, 0, 0.1),
+    card-info: rgb(8, 109, 221),
+    card-info-background: rgba(8, 109, 221, 0.1),
+    card-success: rgb(8, 185, 78),
+    card-success-background: rgba(8, 185, 78, 0.1),
+    font-color1: #FFF,
+    font-color2: rgb(152, 152, 157),
+    font-color3: rgb(172, 142, 104),
+    font-color4: rgb(255, 159, 10),
+    font-color5: rgb(255, 214, 10),
+    font-color6: rgb(50, 215, 75),
+    font-color7: rgb(102, 212, 207),
+    font-color8: rgb(90, 200, 245),
+    font-color9: rgb(10, 132, 255),
+    font-color10: rgb(94, 92, 230),
+    font-color11: rgb(191, 90, 242),
+    font-color12: rgb(255, 55, 95),
+    font-color13: rgb(255, 69, 58),
+    inline-link-color: #8ab4f8,
+    inline-mark-background: #00d95964,
+    light-components:#e0e0e0,
+);
+
+@mixin theme-root($theme-map) {
+    --b3-theme-primary: #{map-get($theme-map,primary)};
+    --b3-theme-primary-light: #{rgba(map-get($theme-map, primary), 0.56)};
+    --b3-theme-primary-lighter: #{rgba(map-get($theme-map,primary), 0.38)};
+    --b3-theme-primary-lightest: #{rgba(map-get($theme-map,primary), 0.2)};
+    --b3-theme-secondary: #{map-get($theme-map,secondary)};
+    --b3-theme-background: #{map-get($theme-map, background)};
+    --b3-theme-background-light: #{rgb(map-get($theme-map,background),0.1)};
+    --b3-theme-surface: #{map-get($theme-map,surface)};
+    --b3-theme-surface-light: #{rgb(map-get($theme-map,surface), 0.5)};
+    --b3-theme-error: #{map-get($theme-map,error)};
+
+    /* 文字颜色 */
+    --b3-theme-on-primary: #{map-get($theme-map,on-primary)};
+    --b3-theme-on-secondary: #{map-get($theme-map,on-secondary)};
+    --b3-theme-on-background: #{map-get($theme-map,on-background)};
+    --b3-theme-on-surface:#{rgb(map-get($theme-map, on-background), 0.65)};
+    --b3-theme-on-surface-light: #{rgb(map-get($theme-map,on-surface-gray), 0.68)};
+    --b3-theme-on-error: #{map-get($theme-map,on-primary)};
+
+    /* 线条 */
+    --b3-border-color: #{map-get($theme-map,border)};
+    --b3-border-color-trans:#{rgb(map-get($theme-map, on-background), 0.15)};
+
+    /* 滚动条 */
+    --b3-scroll-color: #{map-get($theme-map,scroll)};
+    --b3-scroll-color-hover: #{change-color(map-get($theme-map, scroll), $alpha:0.4)};
+
+    /* 列表 */
+    --b3-list-hover: #{map-get($theme-map,list-hover)};
+
+    /* 菜单 */
+    --b3-menu-background: #{map-get($theme-map,menu-background)};
+    --b3-menu-item-background-hover: #{map-get($theme-map,menu-item-hv-background)};
+    --b3-menu-item-background-hover-text:#{map-get($theme-map,menu-item-hv-on-background)};
+
+    /* 提示 */
+    --b3-tooltips-color: var(--b3-theme-on-background);
+    --b3-tooltips-background: var(--b3-menu-background);
+
+    /* 遮罩 */
+    --b3-mask-background: #{map-get($theme-map,mask-background)};
+
+    /* 卡片背景 */
+    --b3-card-error-color: #{map-get($theme-map,card-error)};
+    --b3-card-error-background: #{map-get($theme-map,card-error-background)};
+    --b3-card-warning-color: #{map-get($theme-map,card-warning)};
+    --b3-card-warning-background:#{map-get($theme-map,card-warning-background)};
+    --b3-card-info-color: #{map-get($theme-map,card-info)};
+    --b3-card-info-background: #{map-get($theme-map,card-info-background)};
+    --b3-card-success-color: #{map-get($theme-map,card-success)};
+    --b3-card-success-background: #{map-get($theme-map,card-success-background)};
+
+    /* 自定义文字 */
+    --b3-font-color1: #{map-get($theme-map,font-color1)};
+    --b3-font-color2: #{map-get($theme-map,font-color2)};
+    --b3-font-color3: #{map-get($theme-map,font-color3)};
+    --b3-font-color4: #{map-get($theme-map,font-color4)};
+    --b3-font-color5: #{map-get($theme-map,font-color5)};
+    --b3-font-color6: #{map-get($theme-map,font-color6)};
+    --b3-font-color7: #{map-get($theme-map,font-color7)};
+    --b3-font-color8: #{map-get($theme-map,font-color8)};
+    --b3-font-color9: #{map-get($theme-map,font-color9)};
+    --b3-font-color10:#{map-get($theme-map,font-color10)};
+    --b3-font-color11:#{map-get($theme-map,font-color11)};
+    --b3-font-color12:#{map-get($theme-map,font-color12)};
+    --b3-font-color13:#{map-get($theme-map,font-color13)};
+
+    --b3-font-background1: #{change-color(map-get($theme-map,font-color1), $alpha: 0.1)};
+    --b3-font-background2: #{change-color(map-get($theme-map,font-color2), $alpha: 0.1)};
+    --b3-font-background3: #{change-color(map-get($theme-map,font-color3), $alpha: 0.1)};
+    --b3-font-background4: #{change-color(map-get($theme-map,font-color4), $alpha: 0.1)};
+    --b3-font-background5: #{change-color(map-get($theme-map,font-color5), $alpha: 0.1)};
+    --b3-font-background6: #{change-color(map-get($theme-map,font-color6), $alpha: 0.1)};
+    --b3-font-background7: #{change-color(map-get($theme-map,font-color7), $alpha: 0.1)};
+    --b3-font-background8: #{change-color(map-get($theme-map,font-color8), $alpha: 0.1)};
+    --b3-font-background9: #{change-color(map-get($theme-map,font-color9), $alpha: 0.1)};
+    --b3-font-background10:#{change-color(map-get($theme-map,font-color10), $alpha: 0.1)};
+    --b3-font-background11:#{change-color(map-get($theme-map,font-color11), $alpha: 0.1)};
+    --b3-font-background12:#{change-color(map-get($theme-map,font-color12), $alpha: 0.1)};
+    --b3-font-background13:#{change-color(map-get($theme-map,font-color13), $alpha: 0.1)};
+
+    /* 所见即所得行内元素颜色 */
+    --b3-protyle-inline-link-color: #{map-get($theme-map,inline-link-color)};
+    --b3-protyle-inline-mark-background: #{map-get($theme-map,inline-mark-background)};
+}
+
+@mixin theme-variant-color($property, $theme-key, $opacity-light: 1, $opacity-dark: $opacity-light, $important: false) {
+
+    $_color: map-get($theme-light, $theme-key);
+
+    @if $_color !=null {
+        @if $important {
+            #{$property}: change-color($_color, $alpha: $opacity-light) !important;
+        }
+
+        @else {
+            #{$property}: change-color($_color, $alpha: $opacity-light);
+        }
+    }
+
+    @else {
+        @warn "No color found for `#{$theme-key}` in `$theme-light`. Please check your `$theme-light` map and the `$theme-key` you are using.";
+    }
+
+    @include darkmode-counterpart {
+        $_color: map-get($theme-dark, $theme-key);
+
+        @if $_color !=null {
+            @if $important {
+                #{$property}: change-color($_color, $alpha: $opacity-dark) !important;
+            }
+
+            @else {
+                #{$property}: change-color($_color, $alpha: $opacity-dark);
+            }
+        }
+
+        @else {
+            @warn "No color found for `#{$theme-key}` in `$theme-dark`. Please check your `$theme-dark` map and the `$theme-key` you are using.";
+        }
+    }
+}
+
+@mixin darkmode-counterpart {
+    html[data-theme-mode="dark"] & {
+        @content;
+    }
+}
+
+// other globvars ——————————————————————————
+
+$border-rd-card: 20px;
+$border-rd-popover: 12px;
+$border-rd-menu: 10px;
+$border-rd-tab: 8px;
+$border-rd-default: 6px;
+
+$timing-function-decelerate: cubic-bezier(0, 0, 0, 1);
+$timing-function-accelerate: cubic-bezier(0.3, 0, 1, 1);
+
+
