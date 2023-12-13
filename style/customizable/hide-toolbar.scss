@@ -123,6 +123,44 @@
 body {
     @include hide-toolbar-for-mac;
 
+    // tabbar
+    // &.body--mac {
+    //     #dockLeft {
+
+    //         //侧栏和面板同时隐藏
+    //         &.fn__none {
+    //             &+#layouts {
+
+    //                 .layout__dockl[style*="width: 0px"],
+    //                 .layout__dockl.layout--float {
+    //                     &~.layout__center {
+    //                         .fn__flex-1:first-child>.fn__flex-1:first-child>.fn__flex:first-child>[data-type="wnd"] {
+    //                             .layout-tab-bar:not(.layout-tab-bar--readonly) {
+    //                                 margin-left: var(--b3-toolbar-left-mac);
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+
+    //         // 仅显示侧栏
+    //         &+#layouts {
+
+    //             .layout__dockl[style*="width: 0px"],
+    //             .layout__dockl.layout--float {
+    //                 &~.layout__center {
+    //                     .fn__flex-1:first-child>.fn__flex-1:first-child>.fn__flex:first-child>[data-type="wnd"] {
+    //                         .layout-tab-bar:not(.layout-tab-bar--readonly) {
+    //                             margin-left: calc(var(--b3-toolbar-left-mac) - 42px);
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
     &.body--win32,
     &.body--browser {
         @include hide-toolbar-common;
@@ -133,6 +171,7 @@ body {
         }
     }
 }
+
 
 // 消息区域
 .b3-snackbars {
@@ -178,7 +217,7 @@ body {
 
 // 面包屑
 .protyle-breadcrumb {
-    .layout-tab-container *:not(.protyle.fullscreen) > &__space {
+    .layout-tab-container *:not(.protyle.fullscreen)>&__space {
         app-region: drag;
 
         &__item {
@@ -190,7 +229,7 @@ body {
         }
     }
 
-    .layout__dockl.layout--float:not([style*='transform']) ~ .layout__center &__space {
+    .layout__dockl.layout--float:not([style*='transform'])~.layout__center &__space {
         app-region: unset;
     }
 }
@@ -211,7 +250,7 @@ body {
 body {
     &:not(.body--win32) {
 
-        .layout__dockl{
+        .layout__dockl {
             &:not(.layout--float) {
 
                 &>.fn__flex-1:first-child,
@@ -253,7 +292,7 @@ body {
                 }
             }
         }
-        
+
         #toolbar:hover+div #layouts {
 
             .layout__dockl {
@@ -262,7 +301,7 @@ body {
                     &>.fn__flex-1:first-child,
                     &>.fn__flex-1.fn__none~.fn__flex-1 {
                         .block__icons:first-child {
-                             app-region: unset;
+                            app-region: unset;
                         }
                     }
                 }
@@ -372,4 +411,3 @@ body {
 .protyle-util {
     app-region: no-drag;
 }
-

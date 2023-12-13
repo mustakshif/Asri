@@ -1,25 +1,28 @@
 import { isInBrowser, isMacOS } from "../../script/common.js";
 import { useSysScrollbar } from "../../script/scrollbar.js";
 
+
 isInBrowser();
 
 
 // 隐藏顶栏 --> hide-toolbar.scss
 export function handleToolbarHover() {
     let toolbar = document.querySelector('.toolbar');
-    let toolbarDrag = toolbar.querySelector('#drag');
-
-    toolbarDrag.addEventListener('mouseenter', () => {
-        toolbar.classList.add('no-hover');
-    });
-    toolbarDrag.addEventListener('mouseleave', () => {
-        toolbar.classList.remove('no-hover');
-    });
+    let toolbarDrag = document.getElementById('drag');
+    if (toolbarDrag) {
+        toolbarDrag.addEventListener('mouseenter', () => {
+            toolbar.classList.add('no-hover');
+        });
+        toolbarDrag.addEventListener('mouseleave', () => {
+            toolbar.classList.remove('no-hover');
+        });
+    }
 }
 
 // Mac 红绿灯
 export function ModifyMacTrafficLights() {
     if (isMacOS()) {
+        document.body.classList.add('body--mac')
         //添加每当新建一个窗口，执行以下命令
         useSysScrollbar();
         console.log('使用系统滚动条已执行');
@@ -31,6 +34,7 @@ export function ModifyMacTrafficLights() {
         }
     }
 }
+
 
 //题头图渐隐 --> cover-image-fading.scss
 // document.addEventListener("DOMContentLoaded", function () {

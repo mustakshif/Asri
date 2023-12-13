@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .layout__dockl .layout-tab-container,
 .layout__dockr .layout-tab-container {
   background-color: transparent;
@@ -142,6 +143,46 @@ html[data-theme-mode=dark] .layout__dockr.layout--float .layout-tab-container .b
 .sy__outline .b3-list-item[title] {
   display: none;
 }
+.sy__outline .b3-list-item[data-type=NodeHeading][data-subtype=h1] .b3-list-item__text::before {
+  content: "❶";
+}
+.sy__outline .b3-list-item[data-type=NodeHeading][data-subtype=h2] .b3-list-item__text::before {
+  content: "❷";
+}
+.sy__outline .b3-list-item[data-type=NodeHeading][data-subtype=h3] .b3-list-item__text::before {
+  content: "❸";
+}
+.sy__outline .b3-list-item[data-type=NodeHeading][data-subtype=h4] .b3-list-item__text::before {
+  content: "❹";
+}
+.sy__outline .b3-list-item[data-type=NodeHeading][data-subtype=h5] .b3-list-item__text::before {
+  content: "❺";
+}
+.sy__outline .b3-list-item[data-type=NodeHeading][data-subtype=h6] .b3-list-item__text::before {
+  content: "❻";
+}
+.sy__outline .b3-list-item[data-type=NodeHeading] .b3-list-item__text::before {
+  position: absolute;
+  background-color: transparent;
+  left: 24px;
+  opacity: 0.5;
+  z-index: 0;
+  transition: 0.2s;
+  font-family: SF Pro;
+  font-size: 16px;
+}
+body.body--win32 .sy__outline .b3-list-item[data-type=NodeHeading] .b3-list-item__text::before {
+  font-family: "Segoe UI";
+  font-size: 12px;
+}
+.sy__outline .b3-list-item[data-type=NodeHeading] > svg {
+  color: transparent;
+  z-index: 1;
+}
+.sy__outline .b3-list-item[data-type=NodeHeading] > svg:hover ~ .b3-list-item__text::before {
+  color: var(--b3-theme-primary);
+  opacity: 1;
+}
 
 .sy__tag .b3-list-item__graphic {
   display: none;
@@ -181,6 +222,9 @@ html[data-theme-mode=dark] .sy__backlink .block__icons + .fn__flex-1 li:not(.b3-
 }
 .sy__backlink .protyle .protyle-breadcrumb__bar:not(:first-child) {
   border-top: 1px solid var(--b3-border-color-trans);
+}
+.sy__backlink .protyle .protyle-wysiwyg {
+  padding-top: 0 !important;
 }
 
 body.body-status-shown .layout__dockr:not(.layout--float) .b3-list--background,

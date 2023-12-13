@@ -158,9 +158,52 @@
     }
 }
 
+// 其他模块 ——————————————
 .sy__outline {
     .b3-list-item[title] {
         display: none;
+    }
+
+    .b3-list-item[data-type="NodeHeading"] {
+        // $titleIcons: 'h1' '❶', 'h2' '❷', 'h3' '❸', 'h4' '❹', 'h5' '❺', 'h6' '❻';
+        // @each $title, $icon in $titleIcons {
+        //     &[data-subtype=#{$title}] .b3-list-item__text::before {
+        //         content: $icon;
+        //     }
+        // }
+
+        $titleIcons: '❶', '❷', '❸', '❹', '❺', '❻';
+        @for $i from 1 through length($titleIcons) {
+            &[data-subtype=h#{$i}] .b3-list-item__text::before {
+                content: nth($titleIcons, $i);
+            }
+        }        
+
+        .b3-list-item__text::before {
+            position: absolute;
+            background-color: transparent;
+            left: 24px;
+            opacity: 0.5;
+            z-index: 0;
+            transition: 0.2s;
+            font-family: SF Pro;
+            font-size: 16px;
+
+            body.body--win32 & {
+                font-family: "Segoe UI";
+                font-size: 12px;
+            }
+        }
+
+        &>svg {
+            color: transparent;
+            z-index: 1;
+
+            &:hover~.b3-list-item__text::before {
+                color: var(--b3-theme-primary);
+                opacity: 1;
+            }
+        }
     }
 }
 
@@ -187,16 +230,18 @@
                     & {
                         box-shadow: 0 -0.5px inset var(--b3-border-color-trans), 0 0.5px inset var(--b3-border-color-trans);
                     }
-                }// -> js
+                }
+
+                // -> js
 
                 &:not(.b3-list--empty) {
                     margin: 0;
                     padding: 2px 8px;
                     border-radius: 0;
-                    background-color: change-color($color: pickThemeColor($theme-light,surface), $lightness: 93%) !important;
+                    background-color: change-color($color: pickThemeColor($theme-light, surface), $lightness: 93%) !important;
 
                     @include darkmode-counterpart {
-                        background-color: change-color($color: pickThemeColor($theme-dark,surface), $lightness: 28%) !important;
+                        background-color: change-color($color: pickThemeColor($theme-dark, surface), $lightness: 28%) !important;
                     }
 
                     .layout--float &,
@@ -204,7 +249,7 @@
                         background-color: var(--b3-theme-surface) !important;
                     }
                 }
-                
+
             }
         }
     }
@@ -225,9 +270,9 @@
             height: 36px;
         }
 
-        // .protyle-wysiwyg {
-        //     padding: 4px 8px !important;
-        // }
+         .protyle-wysiwyg {
+            padding-top: 0 !important;
+        }
     }
 }
 

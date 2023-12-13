@@ -1,9 +1,5 @@
 @use '../base' as *;
 
-// .fn__flex:has(>.layout-tab-bar:first-child) {
-//     height: 42px;
-// } // 可能影响性能
-
 // tab-bar 容器
 .fn__flex-column[data-type='wnd']>.fn__flex:first-child {
     height: 42px;
@@ -18,6 +14,7 @@
     margin: 8px 8px 6px;
 
     .item {
+        // transition: none;
         margin-right: 8px;
         border-radius: 6px !important;
         min-width: unset;
@@ -25,6 +22,7 @@
         line-height: 24px;
         overflow: visible;
         background-color: var(--b3-list-hover);
+        // transition-property: max-width, width, backdrop-filter, background-color, color;
                 
         &:last-child {
             margin-right: 0;
@@ -69,26 +67,27 @@
                 padding: 2px 5px 0;
             }
 
-            &:has(+.item:not(.item--pin, .item--readonly)) {
-                margin-right: 22px;
+            &+.item:not(.item--pin, .item--readonly) {
+                margin-left: 14px;
 
                 &::before {
                     content: "";
                     position: absolute;
-                    right: -12px;
+                    left: -12px;
                     display: block;
                     width: 2px;
                     background-color: var(--b3-border-color-trans);
                     height: 1.5em;
                     border-radius: 9px;
+                    pointer-events: none;
                 }
             }
         }
 
         &--focus {
             max-width: 21rem;
-
-            @include theme-variant-color(background-color, list-hover, 0.12, 0.15);
+            transition: 0.2s;
+            @include theme-variant-color(background-color, list-hover, 0.12, 0.15);          
 
             animation: click 0.2s;
 
@@ -125,5 +124,8 @@
             font-size: 0;
         }
     }
+}
 
+body.body--blur .layout__wnd--active .layout-tab-bar .item--focus {
+    box-shadow: none
 }

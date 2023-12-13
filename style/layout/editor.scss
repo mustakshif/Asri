@@ -3,7 +3,7 @@
 // 页面小工具条
 @mixin protyle-icons {
     border-radius: 99px;
-    transition: none;
+    // transition: none;
 
     &:hover {
         backdrop-filter: blur(20px) saturate(3);
@@ -169,7 +169,7 @@
     }
 
     // 快捷键 ——————————————————————————————————————
-    span[data-type~=kbd]{
+    span[data-type~=kbd] {
         font: 80% SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
         padding: 0.15em 0.5em;
         border-radius: 1em;
@@ -182,7 +182,7 @@
         }
     }
 
-    
+
 
     // 标签 ——————————————————————————————————————
     [data-node-id] span[data-type~="tag"] {
@@ -224,11 +224,20 @@
         transition: all 150ms;
 
         &:hover {
-            box-shadow: 0 -1.15em 0 0 inset pickThemeColor($theme-light, font-color5, 0.5);
+            box-shadow: 0 -1.2em 0 0 inset mix(map-get($theme-light, font-color5), map-get($theme-light, background), 40%);
             transition: all 150ms;
+            text-decoration-color: mix(map-get($theme-light, font-color5), map-get($theme-light, background), 40%);
+            color: var(--b3-theme-on-background);
+            border-radius: 0;
+            // padding-left: 8px;
+            // padding-right: 8px;
+            // margin-left: -8px;
+            // margin-right: -8px;
 
             @include darkmode-counterpart {
-                box-shadow: 0 -1.15em 0 0 inset pickThemeColor($theme-dark, font-color5, 0.3);
+                box-shadow: 0 -1.2em 0 0 inset mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%);
+                color: var(--b3-theme-background);
+                text-decoration-color:mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%);
             }
         }
     }
@@ -469,10 +478,18 @@
 
     // iframe ————————————————————————————————————————
     [data-node-id].iframe {
-        .iframe-content {
+        iframe {
+            border-radius: 4px;
+            border-color: transparent;
+            transition: border-color 0.2s;
+        }        
+
+        &:hover {
             iframe {
-                border-radius: 4px;
-                // border: none;
+                border-color: var(--b3-border-color-trans);
+            }
+            .protyle-action__drag {
+                opacity: 0.5;
             }
         }
 
@@ -488,12 +505,12 @@
             right: -8px;
             bottom: -8.5px;
             filter: brightness(0.5);
+            display: inline-block;
+            opacity: 0;
 
             @include darkmode-counterpart {
                 filter: none;
             }
-
-            ;
 
             &:hover {
                 box-shadow: none;
@@ -527,7 +544,7 @@
 
     .protyle-font__style {
         font-size: 14px;
-        
+
         &:hover {
             transform: scale(1.1);
             box-shadow: none;
@@ -683,7 +700,7 @@
             transition-delay: 0s;
         }
     }
-    
+
     // 文字外观
     &-font {
         @include protyle-font();
@@ -763,7 +780,7 @@
         right: 8px;
         overflow: visible !important;
 
-        & > :is(input, button, label.b3-button){
+        &> :is(input, button, label.b3-button) {
             margin-top: 4px;
             margin-bottom: 4px;
         }
@@ -800,7 +817,9 @@
 
         body.body-status-shown & {
             padding-bottom: 42px;
-        } // -> js
+        }
+
+        // -> js
     }
 
     #dialogContainer {

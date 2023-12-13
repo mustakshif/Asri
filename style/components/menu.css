@@ -7,11 +7,11 @@
 }
 html[data-theme-mode=dark] .b3-menu,
 html[data-theme-mode=dark] .b3-menu__submenu {
-  box-shadow: 0 0 0 0.5px black, 0px 13px 19px -7px rgba(0, 0, 0, 0.3), 0px 30px 50px -20px rgba(0, 0, 0, 0.3), 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0 1px black, 0px 13px 19px -7px rgba(0, 0, 0, 0.3), 0px 30px 50px -20px rgba(0, 0, 0, 0.3), 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
 html[data-theme-mode=dark] .b3-menu,
 html[data-theme-mode=dark] .b3-menu__submenu {
-  border: 1px solid var(--b3-border-color);
+  outline: 1px solid var(--b3-border-color);
 }
 .b3-menu .b3-menu__items,
 .b3-menu__submenu .b3-menu__items {
@@ -91,10 +91,10 @@ html[data-theme-mode=dark] .b3-menu__submenu {
   background-color: var(--b3-menu-background);
 }
 html[data-theme-mode=dark] .protyle-hint {
-  box-shadow: 0 0 0 0.5px black, 0px 13px 19px -7px rgba(0, 0, 0, 0.3), 0px 30px 50px -20px rgba(0, 0, 0, 0.3), 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0 1px black, 0px 13px 19px -7px rgba(0, 0, 0, 0.3), 0px 30px 50px -20px rgba(0, 0, 0, 0.3), 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
 html[data-theme-mode=dark] .protyle-hint {
-  border: 1px solid var(--b3-border-color);
+  outline: 1px solid var(--b3-border-color);
 }
 .protyle-hint > div {
   padding: 4px 0;
@@ -160,7 +160,7 @@ html[data-theme-mode=dark] .protyle-hint {
   0% {
     filter: brightness(1);
   }
-  60% {
+  50% {
     filter: brightness(1.15);
   }
   100% {

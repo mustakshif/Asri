@@ -1,26 +1,29 @@
 {
   "name": "Hadeeth",
-  "author": "mustakshif",
+  "author": "MUSTAKSHIF",
   "url": "https://github.com/mustakshif/Hadeeth",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "displayName": {
     "default": "Hadeeth",
-    "zh_CN": "Hadeeth"
+    "zh_CN": "Hadeeth",
+    "en_US": "Hadeeth"
   },
   "description": {
-    "default": "A theme with an extremely modern macOS aesthetic, characterized by its fresh and minimalist design, provides an elegant and efficient note-taking experience.",
-    "zh_CN": "极富现代感的类 macOS 风格主题，以清新、极简的风格，带来优雅而高效的笔记体验。"
+    "default": "极富现代感的类 macOS 主题，以轻量、极简的风格，带来优雅、高效的笔记体验。",
+    "zh_CN": "极富现代感的类 macOS 主题，以轻量、极简的风格，带来优雅、高效的笔记体验。",
+    "en_US": "An ultra-modern macOS-like theme that offers a lightweight and minimalistic style, providing an elegant and efficient note-taking experience."
   },
   "readme": {
     "default": "README.md",
-    "zh_CN": "README_zh_CN.md"
+    "zh_CN": "README.md",
+    "en_US": "README_en_US.md"
   },
   "funding": {
     "openCollective": "",
     "patreon": "",
     "github": "",
     "custom": [
-      ""
+      "https://afdian.net/a/mustakshif"
     ]
   },
   "modes": [

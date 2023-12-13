@@ -17,7 +17,6 @@
 }
 .protyle-icons {
   border-radius: 99px;
-  transition: none;
 }
 .protyle-icons:hover {
   -webkit-backdrop-filter: blur(20px) saturate(3);
@@ -64,7 +63,6 @@ html[data-theme-mode=dark] .protyle-icons .protyle-icon {
 }
 .protyle-action {
   border-radius: 99px;
-  transition: none;
 }
 .protyle-action:hover {
   -webkit-backdrop-filter: blur(20px) saturate(3);
@@ -357,11 +355,16 @@ html[data-theme-mode=dark] .protyle-wysiwyg [data-node-id] span[data-type~=tag]:
   transition: all 150ms;
 }
 .protyle-wysiwyg span[data-type~=inline-memo]:hover, .b3-typography span[data-type~=inline-memo]:hover {
-  box-shadow: 0 -1.15em 0 0 inset rgba(255, 204, 0, 0.5);
+  box-shadow: 0 -1.2em 0 0 inset #ffeb99;
   transition: all 150ms;
+  text-decoration-color: #ffeb99;
+  color: var(--b3-theme-on-background);
+  border-radius: 0;
 }
 html[data-theme-mode=dark] .protyle-wysiwyg span[data-type~=inline-memo]:hover, html[data-theme-mode=dark] .b3-typography span[data-type~=inline-memo]:hover {
-  box-shadow: 0 -1.15em 0 0 inset rgba(255, 214, 10, 0.3);
+  box-shadow: 0 -1.2em 0 0 inset #ddba0d;
+  color: var(--b3-theme-background);
+  text-decoration-color: #ddba0d;
 }
 .protyle-wysiwyg .bq, .b3-typography .bq,
 .protyle-wysiwyg blockquote,
@@ -521,8 +524,16 @@ html[data-theme-mode=dark] .protyle-wysiwyg span[data-type~=inline-memo]:hover, 
 .protyle-wysiwyg [data-node-id].render-node[data-type=NodeBlockQueryEmbed] > .protyle-wysiwyg__embed, .b3-typography [data-node-id].render-node[data-type=NodeBlockQueryEmbed] > .protyle-wysiwyg__embed {
   border-top: 1px solid var(--b3-border-color-trans);
 }
-.protyle-wysiwyg [data-node-id].iframe .iframe-content iframe, .b3-typography [data-node-id].iframe .iframe-content iframe {
+.protyle-wysiwyg [data-node-id].iframe iframe, .b3-typography [data-node-id].iframe iframe {
   border-radius: 4px;
+  border-color: transparent;
+  transition: border-color 0.2s;
+}
+.protyle-wysiwyg [data-node-id].iframe:hover iframe, .b3-typography [data-node-id].iframe:hover iframe {
+  border-color: var(--b3-border-color-trans);
+}
+.protyle-wysiwyg [data-node-id].iframe:hover .protyle-action__drag, .b3-typography [data-node-id].iframe:hover .protyle-action__drag {
+  opacity: 0.5;
 }
 .protyle-wysiwyg [data-node-id].iframe .protyle-action__drag, .b3-typography [data-node-id].iframe .protyle-action__drag {
   height: 24px;
@@ -536,6 +547,8 @@ html[data-theme-mode=dark] .protyle-wysiwyg span[data-type~=inline-memo]:hover, 
   right: -8px;
   bottom: -8.5px;
   filter: brightness(0.5);
+  display: inline-block;
+  opacity: 0;
 }
 html[data-theme-mode=dark] .protyle-wysiwyg [data-node-id].iframe .protyle-action__drag, html[data-theme-mode=dark] .b3-typography [data-node-id].iframe .protyle-action__drag {
   filter: none;
@@ -570,10 +583,10 @@ html[data-theme-mode=dark] .protyle-wysiwyg [data-node-id].iframe .protyle-actio
   border: none;
 }
 html[data-theme-mode=dark] .protyle-toolbar {
-  box-shadow: 0 0 0 0.5px black, 0px 13px 19px -7px rgba(0, 0, 0, 0.3), 0px 30px 50px -20px rgba(0, 0, 0, 0.3), 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0 1px black, 0px 13px 19px -7px rgba(0, 0, 0, 0.3), 0px 30px 50px -20px rgba(0, 0, 0, 0.3), 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
 html[data-theme-mode=dark] .protyle-toolbar {
-  border: 1px solid var(--b3-border-color);
+  outline: 1px solid var(--b3-border-color);
 }
 .protyle-toolbar__item {
   height: 30px;
@@ -763,10 +776,10 @@ body.body-status-shown .pdf__outer#outerContainer #viewerContainer {
   border: none;
 }
 html[data-theme-mode=dark] .pdf__outer#outerContainer #dialogContainer .dialog {
-  box-shadow: 0 0 0 0.5px #000, 0px 13px 18px -2px rgba(0, 0, 0, 0.3), 0px 30px 50px 0px rgba(0, 0, 0, 0.3), 0px 0px 12px 0px rgba(0, 0, 0, 0.15), 0px 75px 65px -50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 1px #000, 0px 13px 18px -2px rgba(0, 0, 0, 0.3), 0px 30px 50px 0px rgba(0, 0, 0, 0.3), 0px 0px 12px 0px rgba(0, 0, 0, 0.15), 0px 75px 65px -50px rgba(0, 0, 0, 0.3);
 }
 html[data-theme-mode=dark] .pdf__outer#outerContainer #dialogContainer .dialog {
-  border: 1px solid var(--b3-border-color);
+  outline: 1px solid var(--b3-border-color);
 }
 .pdf__outer#outerContainer #dialogContainer .dialog #documentPropertiesClose {
   border-radius: 99px;

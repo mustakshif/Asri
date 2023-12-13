@@ -1,2 +1,335 @@
 @use '../base' as *;
 
+
+//blur ————————————————————————————
+
+$thick-transparency: 0.88;
+$thick-blur-rd: 40px;
+$medium-transparency: 0.8;
+$medium-blur-rd: 20px;
+$thin-transparency: 0.75;
+$thin-blur-rd: 12px;
+
+body:not(.body--blur) {
+
+    // .layout__wnd--active,
+    [data-type="wnd"] {
+        &:not(.shrink-in-tab)>.fn__flex:first-child {
+            background-color: transparent;
+            margin-bottom: -42px;
+            z-index: 3;
+        }
+
+        // -> js
+
+        .layout-tab-bar {
+            .item {
+                // backdrop-filter: brightness(1) saturate(1);
+
+                &--focus {
+                    // background-color: transparent;
+                    backdrop-filter: brightness(1) saturate(1.8);
+
+                    @include darkmode-counterpart {
+                        background-color: #ffffff20;
+                        backdrop-filter: brightness(1.2) saturate(1.8);
+                    }
+                }
+            }
+        }
+
+        .layout-tab-container {
+            &>.protyle[data-loading="finished"]::before {
+                --blur-block-height: 84px;
+                --blur-radius-main: 40px;
+                content: "";
+                display: block;
+                width: 100%;
+                height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
+                position: absolute;
+                top: 0;
+                z-index: 2;
+                pointer-events: none;
+                // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
+                mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 0.5px), transparent calc(var(--blur-block-height) + 1px));
+
+                @include bg-blur($brightness-dark: 0.95);
+            }
+
+            :not(#searchPreview)>.protyle-breadcrumb {
+                padding-top: 42px;
+                margin-bottom: -84px;
+                height: 84px;
+                @include theme-variant-color(background-color, background, $thick-transparency);
+                z-index: 2;
+            }
+
+            .protyle[data-loading="finished"].fullscreen::before {
+                --blur-block-height: var(--toolbar-height);
+            }
+
+            .fullscreen>.protyle-breadcrumb {
+                height: var(--toolbar-height) !important;
+                padding-top: 0 !important;
+            }
+
+            :not(#searchPreview)>.protyle-content {
+                padding-top: 84px;
+            }
+
+            &>.file-tree .protyle-content {
+                padding-top: 0 !important;
+            }
+
+            .block__icons.search {
+                padding-top: 42px;
+            }
+
+            // -> js
+        }
+
+        // pdf
+        .pdf__outer#outerContainer {
+            #sidebarContainer {
+                top: 84px;
+            }
+
+            .pdf__toolbar {
+                #toolbarContainer {
+                    padding-top: 42px;
+                }
+            }
+
+            .findbar {
+                top: 78px;
+            }
+
+            #viewerContainer {
+                top: 84px;
+                transition: none;
+            }
+
+            #dialogContainer {
+                .dialog {
+                    @include theme-variant-color(background-color, menu-background, $thick-transparency);
+
+                    @include bg-blur($brightness-dark: 0.95);
+                }
+            }
+        }
+    }
+
+
+    .protyle {
+
+        // 题头图区域
+        &-background {
+            &__img {
+                &::after {
+                    content: "";
+                    display: inline-block;
+                    width: -webkit-fill-available;
+                    height: 13.5vh;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    backdrop-filter: blur(4px);
+                    mask-image: linear-gradient(to top, black 50%, transparent);
+                    transform: translateZ(0);
+                    pointer-events: none;
+                }
+            }
+        }
+
+        //文字格式工具条
+        &-toolbar {
+            @include theme-variant-color(background-color, surface, $medium-transparency);
+            @include bg-blur;
+
+            // z-index: 1;
+        }
+
+        // 导出预览模式 
+        &-preview {
+            margin-top: 84px;
+        }
+    }
+
+    #status {
+        @include theme-variant-color(background-color, surface, $medium-transparency);
+        @include bg-blur;
+    }
+
+    .layout__dockl,
+    .layout__dockr {
+        &.layout--float {
+            margin-top: 0;
+
+            &::before,
+            &>.fn__flex-1:first-child::before {
+                @include theme-variant-color(background-color, background, $thick-transparency, $important: true);
+            }
+
+            .layout-tab-container {
+                .block__icons {
+
+                    &,
+                    &~* {
+                        @include theme-variant-color(background-color, background, $thick-transparency);
+                    }
+                }
+
+                .graph {
+                    background-color: transparent;
+
+                    &.fullscreen {
+                        @include bg-blur;
+                    }
+                }
+            }
+
+            &::after {
+                content: '';
+                width: inherit;
+                height: inherit;
+                position: absolute;
+                z-index: -1;
+                @include bg-blur;
+            }
+        }
+    }
+
+    // 菜单
+    .b3-menu,
+    .b3-menu__submenu {
+        background-color: transparent;
+        overflow: hidden;
+
+        &:not(#searchHistoryList)::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background-position: center top;
+            background-size: cover;
+            background-attachment: fixed;
+            border-radius: 8px;
+            @include bg-blur;
+            @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        }
+    }
+
+    // '/'菜单
+    .protyle-hint {
+        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        @include bg-blur;
+    }
+
+    .protyle-util {
+        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        @include bg-blur;
+    }
+
+    #searchHistoryList {
+        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        @include bg-blur;
+        overflow: auto;
+    }
+
+    // 顶栏
+    .toolbar {
+        z-index: 4;
+    }
+
+    // 题头图列表
+    .b3-dialog__body {
+        &>.b3-cards {
+            .b3-card {
+                &::before {
+                    --glow-offset: 50%;
+                    --glow-dir: 135deg;
+                    --glow-brightness: 1.2;
+                    --property-percentage: calc(var(--glow-offset) * -1);
+
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    background: inherit;
+                    border-radius: inherit;
+                    filter: brightness(var(--glow-brightness)) blur(3px);
+                    mask-image: linear-gradient(var(--glow-dir),
+                            transparent calc(var(--property-percentage) - var(--glow-offset)),
+                            black var(--property-percentage),
+                            transparent calc(var(--property-percentage) + var(--glow-offset)));
+                }
+
+                &:hover::before {
+                    --property-percentage: calc(100% + var(--glow-offset));
+                    transition: --property-percentage 0.5s $timing-function-decelerate;
+                }
+
+                // &::before {
+                //     content: "";
+                //     background: inherit;
+                //     background-size: inherit;
+                //     width: 100%;
+                //     height: 100%;
+                //     position: absolute;
+                //     top: 0;
+                //     left: 0;
+                //     // transform: none;
+                //     z-index: -1;
+                //     filter: blur(0px) opacity(0);
+                //     transition: top 0.2s, left 0.2s, filter 0.2s, width 0.2s, height 0.2s;
+                // }
+
+                // &:hover::before {
+                //     top: 20px;
+                //     left: 5%;
+                //     width: 90%;
+                //     height: 90%;
+                //     filter: blur(20px) opacity(0.8) saturate(0.8) brightness(0.9);
+
+                //     @include darkmode-counterpart {
+                //         filter: blur(20px) opacity(1) saturate(2) brightness(0.65);
+                //     }
+                // }
+            }
+        }
+    }
+
+    .b3-dialog.emojis-container {
+        .b3-dialog__container {
+            @include theme-variant-color(background-color, menu-background, $medium-transparency);
+            @include bg-blur;
+        }
+    }
+
+    // ->js
+
+    // .config-bazaar__readme {
+    //     filter: saturate(0);
+
+    //     &--show {
+    //         filter: none;
+    //     }
+    // }
+
+    .tooltip {
+        // -> blur
+        @include theme-variant-color(background-color, menu-background, 0.8);
+        @include bg-blur(20px);
+    }
+
+    $tooltipsBlurExcept: (
+        '.protyle-toolbar__item',
+        '.protyle-icon'
+    );
+
+    @each $el in $tooltipsBlurExcept {
+        #{$el}:hover::after {
+            background-color: var(--b3-tooltips-background);
+            backdrop-filter: none;
+        }
+    }
+}

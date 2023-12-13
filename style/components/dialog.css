@@ -29,10 +29,10 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog.emojis-container .b3-dial
   box-shadow: 0px 13px 18px -2px rgba(0, 0, 0, 0.1), 0px 30px 50px 0px rgba(0, 0, 0, 0.1), 0px 0px 12px 0px rgba(0, 0, 0, 0.05), 0px 75px 65px -50px rgba(0, 0, 0, 0.1);
 }
 html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container {
-  border: 1px solid var(--b3-border-color);
+  outline: 1px solid var(--b3-border-color);
 }
 html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container {
-  box-shadow: 0 0 0 0.5px #000, 0px 13px 18px -2px rgba(0, 0, 0, 0.3), 0px 30px 50px 0px rgba(0, 0, 0, 0.3), 0px 0px 12px 0px rgba(0, 0, 0, 0.15), 0px 75px 65px -50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 1px #000, 0px 13px 18px -2px rgba(0, 0, 0, 0.3), 0px 30px 50px 0px rgba(0, 0, 0, 0.3), 0px 0px 12px 0px rgba(0, 0, 0, 0.15), 0px 75px 65px -50px rgba(0, 0, 0, 0.3);
 }
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .b3-tab-bar {
   background-color: var(--b3-theme-surface);
@@ -75,6 +75,9 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container {
 }
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel {
   padding-bottom: 8px;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel .counter {
+  background-color: transparent !important;
 }
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel[data-type=downloaded] .b3-button {
   border-radius: 99px;
@@ -142,10 +145,45 @@ html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container .co
   box-shadow: 0 0 0px 1px rgba(52, 120, 246, 0.05), 0px 13px 19px -2px rgba(52, 120, 246, 0.1), 0px 30px 50px -20px rgba(52, 120, 246, 0.08), 0px 0px 10px 0px rgba(52, 120, 246, 0.05);
 }
 html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel div[id*=configBazaar] .b3-card:hover {
-  box-shadow: 0 0 0 0.5px #118bff, 0px 13px 19px -7px rgba(17, 139, 255, 0.3), 0px 30px 50px -20px rgba(17, 139, 255, 0.3), 0px 0px 10px 0px rgba(17, 139, 255, 0.15);
+  box-shadow: 0 0 0 1px #118bff, 0px 13px 19px -7px rgba(17, 139, 255, 0.3), 0px 30px 50px -20px rgba(17, 139, 255, 0.3), 0px 0px 10px 0px rgba(17, 139, 255, 0.15);
 }
 html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .bazaarPanel div[id*=configBazaar] .b3-card:hover {
   outline: 2px solid var(--b3-theme-primary);
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .config-bazaar__readme {
+  transition: transform cubic-bezier(0.3, 0, 1, 1) 0.2s, filter linear 0.2s;
+  opacity: 1;
+  z-index: 2;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .config-bazaar__readme--show {
+  transition: transform cubic-bezier(0, 0, 0, 1) 0.3s, filter linear 0.3s 0.1s;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .config-bazaar__readme .item__side .b3-button {
+  background-color: var(--b3-menu-background);
+  border-radius: 99px;
+  color: var(--b3-theme-primary);
+  font-weight: 600;
+  transition: 0.1s all;
+  border: none;
+  box-shadow: none;
+}
+html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .config-bazaar__readme .item__side .b3-button {
+  background-color: rgb(24, 24, 24);
+}
+html[data-theme-mode=dark] .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .config-bazaar__readme .item__side .b3-button:hover {
+  background-color: var(--b3-theme-primary);
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .config-bazaar__readme .item__side .b3-button:hover {
+  background-color: var(--b3-theme-primary);
+  color: var(--b3-theme-on-primary);
+  transition: 0.1s all;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .config-bazaar__readme .item__side .b3-button:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+.b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container .config-bazaar__readme .item__side .b3-button--progress > span {
+  border-radius: 99px;
 }
 .b3-dialog--open .b3-dialog .b3-dialog__container .config__panel .config__tab-wrap .config__tab-container[data-name=account] {
   padding: 0;
@@ -307,6 +345,11 @@ html[data-theme-mode=dark] .b3-dialog--open .layout-tab-bar .item:not(.item--foc
   background-color: rgba(255, 255, 255, 0.08);
 }
 
+.b3-dialog__container {
+  transform: translateY(-40px);
+  transition: opacity 150ms linear 0s, transform 300ms cubic-bezier(0, 0, 0, 1);
+}
+
 #searchInput,
 #searchAssetInput {
   background-color: transparent;
@@ -358,7 +401,7 @@ html[data-theme-mode=dark] .b3-dialog--open .layout-tab-bar .item:not(.item--foc
   box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.05), 0px 13px 19px -2px rgba(0, 0, 0, 0.1), 0px 30px 50px -20px rgba(0, 0, 0, 0.08), 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
 }
 html[data-theme-mode=dark] .b3-dialog__body > .b3-cards .b3-card:hover {
-  box-shadow: 0 0 0 0.5px black, 0px 13px 19px -7px rgba(0, 0, 0, 0.3), 0px 30px 50px -20px rgba(0, 0, 0, 0.3), 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0 1px black, 0px 13px 19px -7px rgba(0, 0, 0, 0.3), 0px 30px 50px -20px rgba(0, 0, 0, 0.3), 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
 @keyframes card-hover {
   50% {
@@ -377,10 +420,10 @@ html[data-theme-mode=dark] .b3-dialog__body > .b3-cards .b3-card:hover {
   border: none;
 }
 html[data-theme-mode=dark] .block__popover {
-  box-shadow: 0 0 0 0.5px #000, 0px 13px 18px -2px rgba(0, 0, 0, 0.3), 0px 30px 50px 0px rgba(0, 0, 0, 0.3), 0px 0px 12px 0px rgba(0, 0, 0, 0.15), 0px 75px 65px -50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 1px #000, 0px 13px 18px -2px rgba(0, 0, 0, 0.3), 0px 30px 50px 0px rgba(0, 0, 0, 0.3), 0px 0px 12px 0px rgba(0, 0, 0, 0.15), 0px 75px 65px -50px rgba(0, 0, 0, 0.3);
 }
 html[data-theme-mode=dark] .block__popover {
-  border: 1px solid var(--b3-border-color);
+  outline: 1px solid var(--b3-border-color);
 }
 .block__popover .block__icons .block__icon:hover:not([disabled]):not(.ft__primary) {
   background-color: transparent;
@@ -398,8 +441,64 @@ html[data-theme-mode=dark] .block__popover {
   border: none;
 }
 html[data-theme-mode=dark] .protyle-util {
-  box-shadow: 0 0 0 0.5px #000, 0px 13px 18px -2px rgba(0, 0, 0, 0.3), 0px 30px 50px 0px rgba(0, 0, 0, 0.3), 0px 0px 12px 0px rgba(0, 0, 0, 0.15), 0px 75px 65px -50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 1px #000, 0px 13px 18px -2px rgba(0, 0, 0, 0.3), 0px 30px 50px 0px rgba(0, 0, 0, 0.3), 0px 0px 12px 0px rgba(0, 0, 0, 0.15), 0px 75px 65px -50px rgba(0, 0, 0, 0.3);
 }
 html[data-theme-mode=dark] .protyle-util {
-  border: 1px solid var(--b3-border-color);
+  outline: 1px solid var(--b3-border-color);
+}
+
+#aciton .b3-button--cancel {
+  border-radius: 99px;
+  padding: 4px 12px;
+  color: var(--b3-theme-on-surface);
+}
+#aciton .b3-button--cancel:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+#aciton .b3-button--cancel:hover {
+  background-color: var(--b3-list-hover);
+  color: var(--b3-theme-on-background);
+}
+#aciton .b3-button--cancel:active, #aciton .b3-button--cancel:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--b3-theme-on-background);
+}
+html[data-theme-mode=dark] #aciton .b3-button--cancel:active, html[data-theme-mode=dark] #aciton .b3-button--cancel:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+#aciton .b3-button--text {
+  border-radius: 99px;
+  padding: 4px 12px;
+  color: var(--b3-theme-primary);
+  font-weight: 600;
+}
+#aciton .b3-button--text:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+#aciton .b3-button--text:hover {
+  background-color: var(--b3-theme-primary-lightest);
+}
+#aciton .b3-button--text:active, #aciton .b3-button--text:focus {
+  background-color: var(--b3-theme-primary);
+  color: var(--b3-theme-on-primary);
+}
+
+body.body--window .toolbar__window .toolbar__item {
+  app-region: no-drag;
+  color: var(--b3-theme-on-surface);
+}
+body.body--window .toolbar__window .toolbar__item:hover {
+  color: var(--b3-theme-on-background);
+}
+body.body--window .toolbar__window .toolbar__item--active {
+  color: var(--b3-theme-primary);
+}
+body.body--window .toolbar__window .toolbar__item--active:hover {
+  color: var(--b3-theme-primary);
+}
+body.body--window #status {
+  right: 0 !important;
+  padding-right: 0;
 }

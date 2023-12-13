@@ -31,11 +31,4 @@ body {
 }
 
 // plugins
-@import url(style/plugins/fold-list-preview.css);
-
-
-div.test {
-    @include theme-variant-color(color, on-background, $important: true);
-}
-
 

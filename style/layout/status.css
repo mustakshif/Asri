@@ -11,7 +11,7 @@
   border: none;
 }
 html[data-theme-mode=dark] #status {
-  border: 1px solid var(--b3-border-color);
+  outline: 1px solid var(--b3-border-color);
 }
 .body--window #status {
   right: -22px;

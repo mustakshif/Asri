@@ -32,10 +32,34 @@
 .counter {
     font-family: var(--b3-font-family-code);
     margin-left: 0;
+    transition: 0.2s;
+    @include theme-variant-color(color, on-background, 0.5);
 
     &:hover {
         background-color: transparent !important;
         font-weight: bold;
+    }
+
+    .block__icons & {
+        background-color: transparent;
+        pointer-events: none;        
+        padding-left: 0;
+    }
+}
+
+.sy__outline .counter {
+    pointer-events: none;
+}
+
+.protyle-attr--refcount {
+    @extend .counter;
+    background-color: transparent;
+    &:hover {
+        color: var(--b3-theme-primary);
+
+        @include darkmode-counterpart {
+            color: var(--b3-theme-primary);
+        }
     }
 }
 
@@ -96,9 +120,6 @@
     }
 }
 
-// 设置面板主按钮
-
-
 // 文本框
 .b3-text-field,
 select.b3-select {
@@ -120,9 +141,9 @@ select.b3-select {
 
 
     // 以下解决文本框聚焦时外框被裁切的情况
-    .config__panel .config__tab-container .fn__flex-1:has(>&) {
-        overflow: visible;
-    }
+    // .config__panel .config__tab-container .fn__flex-1:has(>&) {
+    //     overflow: visible;
+    // }
 }
 
 select.b3-select {
@@ -138,9 +159,9 @@ textarea {
 
 // 滑动条
 .b3-slider {
-    .b3-tooltips:has(>&) {
-        overflow: visible;
-    }
+    // .b3-tooltips:has(>&) {
+    //     overflow: visible;
+    // }
 
     &::-webkit-slider-runnable-track {
         height: 6px;
@@ -183,12 +204,56 @@ textarea {
 // 提示条
 .tooltip {
     pointer-events: none;
+    @include tooltip-shadow;
+    @include border-or-not;
+}
+
+.tooltip--memo#tooltip {
+    --property-percentage: 0%;
+
+    font-size: 14px;
+    padding: 8px;
+    line-height: 1.5;
+    font-family: var(--b3-font-family-code);
+    background-color: mix(map-get($theme-light, font-color5), map-get($theme-light, background), 40%);
+    border-radius: 0;
+    backdrop-filter: none;
+    box-shadow: none;
+
+    @include darkmode-counterpart {
+        background-color: mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%);
+        color: var(--b3-theme-background);
+    }
+    
+    mask-image: linear-gradient(to bottom, black var(--property-percentage), transparent var(--property-percentage));
+
+    animation-name: appear-wipe;
+    @keyframes appear-wipe {
+        to {
+            --property-percentage: 100%;
+        }
+    }
+}
+
+.b3-tooltips {
+    // 三角形
+    &:hover::before {
+        display: none;
+    }
+
+    // 主体
+    &:hover::after {
+        margin-top: 0;
+        // margin-bottom: 0;
+        @extend .tooltip;
+    }
 }
 
 // 消息通知
 #message.b3-snackbars {
     &>.fn__flex-1 {
-        padding: 12px 18px 32px;
+        padding: 12px 18px 56px;
+        max-height: calc(100vh - 160px);
     }
 
     .b3-snackbar {
@@ -236,19 +301,41 @@ textarea {
         }
     }
 
-    button {
+    button:not(.b3-button--white) {
         @include button-action(1) {
             background-color: var(--b3-theme-surface);
             transition: transform 0.2s;
-            transform: translateY(-32px);
+            transform: translateY(-42px);
+            height: 28px;
 
             &:hover {
                 color: var(--b3-theme-on-background);
-                transform: scale(1.2) translateY(-25.6px);
+                transform: scale(1.2) translateY(-35px);
+            }
+            &:active {
+                transform: scale(0.95) translateY(-42px);
             }
         }
 
-        ;
         @include border-or-not;
+    }
+
+    .b3-button--white {
+        @include button-action(1) {
+            background-color: transparent;
+            transition: all 0.2s;
+            font-weight: 600;
+            color: var(--b3-theme-on-primary);
+            box-shadow: 0 0 1px inset var(--b3-theme-on-primary);
+
+            &:hover {
+                transform: scale(1.1);
+            }
+            &:active {
+                color: var(--b3-theme-primary);
+                transform: scale(0.95);
+                background-color: var(--b3-theme-on-primary);
+            }
+        }
     }
 }

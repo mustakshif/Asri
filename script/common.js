@@ -9,7 +9,7 @@ export function isInBrowser() {
     let body = document.body;
     let toolbar = document.querySelector('.toolbar');
 
-    if (toolbar.classList.contains('toolbar--browser')) {
+    if (toolbar && toolbar.classList.contains('toolbar--browser')) {
         body.classList.add("body--browser");
         return true;
     } else {
