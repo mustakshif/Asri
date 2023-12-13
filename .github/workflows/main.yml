@@ -1,0 +1,25 @@
+name: Release
+
+on:
+    push:
+        tags:
+            - 'v*'
+
+jobs:
+    release:
+        name: Create Release
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Package
+              run: |
+                  zip -r package.zip asset img icon.png preview.png README_en_US.md README.md theme.css theme.js theme.json
+
+            - name: Release
+              uses: ncipollo/release-action@v1
+              with:
+                  allowUpdates: true
+                  artifactErrorsFailBuild: true
+                  artifacts: 'package.zip'
+                  token: ${{ secrets.GITHUB_TOKEN }}

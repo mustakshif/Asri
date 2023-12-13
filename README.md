@@ -1,9 +1,9 @@
 简体中文 ｜ [English](./README_en_US.md)
+
 ---
 
-# Hadeeth
-theme for SiYuan
----
+# Hadeeth, theme for SiYuan
+
 Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
 
 ## 主题特性
@@ -17,13 +17,13 @@ Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风�
 
     * **页签栏**
     * **面包屑**
-    * **侧栏面板上部**
+    * **侧栏面板标题区域**
 * 🗂️ 文档树、大纲缩进参考线
 * 🌫️ 引入毛玻璃材质，带来富有层次感的视觉体验
 * 🚀 流畅度表现优秀
 * 🚥 优化 macOS 红绿灯位置，更具呼吸感
 
-  ![tfl](assets/tfl.png)
+  ![tfl](./assets/tfl.png)
 * ……
 
 ## 鸣谢
@@ -40,3 +40,6 @@ Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风�
 
 * ⚠️ 编辑区内向上拖移块至边界时可能无法触发页面滚动，此时可以用剪切（<kbd>Ctrl/Cmd</kbd> + <kbd>X</kbd>）进行块的移动
 * ⚠️ 设置菜单拖移区域仅保留左栏顶部图标和「设置」区域
+
+## 版本日志
+[CHANGELOG](./CHANGELOG.md)
