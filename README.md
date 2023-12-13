@@ -1,5 +1,9 @@
-[English](./README_en_US.md)
+简体中文 ｜ [English](./README_en_US.md)
+---
 
+# Hadeeth
+theme for SiYuan
+---
 Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
 
 ## 主题特性
