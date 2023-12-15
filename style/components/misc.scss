@@ -213,26 +213,34 @@ textarea {
 
     font-size: 14px;
     padding: 8px;
+    margin: 0 -8px;
     line-height: 1.5;
     font-family: var(--b3-font-family-code);
-    background-color: mix(map-get($theme-light, font-color5), map-get($theme-light, background), 40%);
-    border-radius: 0;
+    background-color: mix(map-get($theme-light, font-color5), map-get($theme-light, background));
+    border-radius: 4px;
     backdrop-filter: none;
+    color: pickThemeColor($theme-light, on-background, 0.7);
     box-shadow: none;
+    outline: none;
+    border: none;
+    transform-origin: 25% top;
+    // transform: scale(0.9);
 
     @include darkmode-counterpart {
         background-color: mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%);
-        color: var(--b3-theme-background);
+        color: pickThemeColor($theme-dark, background, 0.7);
     }
     
-    mask-image: linear-gradient(to bottom, black var(--property-percentage), transparent var(--property-percentage));
+    // mask-image: linear-gradient(90deg, black var(--property-percentage), transparent var(--property-percentage));
+    // mask-image: radial-gradient(circle at 0% 0%,black var(--property-percentage), transparent var(--property-percentage));
 
-    animation-name: appear-wipe;
-    @keyframes appear-wipe {
-        to {
-            --property-percentage: 100%;
-        }
-    }
+    // animation-name: appear-wipe;
+    // @keyframes appear-wipe {
+    //     to {
+    //         --property-percentage: 100%;
+    //         transform: scale(1);
+    //     }
+    // }
 }
 
 .b3-tooltips {

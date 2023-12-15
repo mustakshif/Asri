@@ -14,79 +14,85 @@ body:not(.body--blur) {
 
     // .layout__wnd--active,
     [data-type="wnd"] {
-        &:not(.shrink-in-tab)>.fn__flex:first-child {
-            background-color: transparent;
-            margin-bottom: -42px;
-            z-index: 3;
-        }
 
-        // -> js
+        // 以下代码导致：
+        // 1. 块拖动至页面顶部时无法触发自动滚动
+        // 2. 页面块进度条（.protyle-scroll）无法自动定位；点击时跳转到块的位置，但溢出页面顶部
+        // ——————————————————————————————
+        // &:not(.shrink-in-tab)>.fn__flex:first-child {
+        //     background-color: transparent;
+        //     margin-bottom: -42px;
+        //     z-index: 3;
+        // }
 
-        .layout-tab-bar {
-            .item {
-                // backdrop-filter: brightness(1) saturate(1);
+        // // -> js
 
-                &--focus {
-                    // background-color: transparent;
-                    backdrop-filter: brightness(1) saturate(1.8);
+        // :not(.av__views) > .layout-tab-bar {
+        //     .item {
+        //         // backdrop-filter: brightness(1) saturate(1);
 
-                    @include darkmode-counterpart {
-                        background-color: #ffffff20;
-                        backdrop-filter: brightness(1.2) saturate(1.8);
-                    }
-                }
-            }
-        }
+        //         &--focus {
+        //             // background-color: transparent;
+        //             backdrop-filter: brightness(1) saturate(1.8);
 
-        .layout-tab-container {
-            &>.protyle[data-loading="finished"]::before {
-                --blur-block-height: 84px;
-                --blur-radius-main: 40px;
-                content: "";
-                display: block;
-                width: 100%;
-                height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
-                position: absolute;
-                top: 0;
-                z-index: 2;
-                pointer-events: none;
-                // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
-                mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 0.5px), transparent calc(var(--blur-block-height) + 1px));
+        //             @include darkmode-counterpart {
+        //                 background-color: #ffffff20;
+        //                 backdrop-filter: brightness(1.2) saturate(1.8);
+        //             }
+        //         }
+        //     }
+        // }
 
-                @include bg-blur($brightness-dark: 0.95);
-            }
+        // .layout-tab-container {
+        //     &>.protyle[data-loading="finished"]::before {
+        //         --blur-block-height: 84px;
+        //         --blur-radius-main: 40px;
+        //         content: "";
+        //         display: block;
+        //         width: 100%;
+        //         height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
+        //         position: absolute;
+        //         top: 0;
+        //         z-index: 2;
+        //         pointer-events: none;
+        //         // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
+        //         mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 0.5px), transparent calc(var(--blur-block-height) + 1px));
 
-            :not(#searchPreview)>.protyle-breadcrumb {
-                padding-top: 42px;
-                margin-bottom: -84px;
-                height: 84px;
-                @include theme-variant-color(background-color, background, $thick-transparency);
-                z-index: 2;
-            }
+        //         @include bg-blur($brightness-dark: 0.95);
+        //     }
 
-            .protyle[data-loading="finished"].fullscreen::before {
-                --blur-block-height: var(--toolbar-height);
-            }
+        //     :not(#searchPreview)>.protyle-breadcrumb {
+        //         padding-top: 42px;
+        //         margin-bottom: -84px;
+        //         height: 84px;
+        //         @include theme-variant-color(background-color, background, $thick-transparency);
+        //         z-index: 2;
+        //     }
 
-            .fullscreen>.protyle-breadcrumb {
-                height: var(--toolbar-height) !important;
-                padding-top: 0 !important;
-            }
+        //     .protyle[data-loading="finished"].fullscreen::before {
+        //         --blur-block-height: var(--toolbar-height);
+        //     }
 
-            :not(#searchPreview)>.protyle-content {
-                padding-top: 84px;
-            }
+        //     .fullscreen>.protyle-breadcrumb {
+        //         height: var(--toolbar-height) !important;
+        //         padding-top: 0 !important;
+        //     }
 
-            &>.file-tree .protyle-content {
-                padding-top: 0 !important;
-            }
+        //     :not(#searchPreview)>.protyle-content {
+        //         padding-top: 84px;
+        //     }
 
-            .block__icons.search {
-                padding-top: 42px;
-            }
+        //     &>.file-tree .protyle-content {
+        //         padding-top: 0 !important;
+        //     }
 
-            // -> js
-        }
+        //     .block__icons.search {
+        //         padding-top: 42px;
+        //     }
+
+        //     // -> js
+        // }
+        // ————————————————————————————————————
 
         // pdf
         .pdf__outer#outerContainer {
@@ -210,9 +216,9 @@ body:not(.body--blur) {
             position: absolute;
             inset: 0;
             z-index: -1;
-            background-position: center top;
-            background-size: cover;
-            background-attachment: fixed;
+            // background-position: center top;
+            // background-size: cover;
+            // background-attachment: fixed;
             border-radius: 8px;
             @include bg-blur;
             @include theme-variant-color(background-color, menu-background, $medium-transparency);
@@ -321,13 +327,9 @@ body:not(.body--blur) {
         @include bg-blur(20px);
     }
 
-    $tooltipsBlurExcept: (
-        '.protyle-toolbar__item',
-        '.protyle-icon'
-    );
-
-    @each $el in $tooltipsBlurExcept {
-        #{$el}:hover::after {
+    .protyle-toolbar__item,
+    .protyle-icon{
+        ::after {
             background-color: var(--b3-tooltips-background);
             backdrop-filter: none;
         }

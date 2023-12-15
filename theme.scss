@@ -32,3 +32,47 @@ body {
 
 // plugins
 
+
+.custom-attr .block__logo.custom-attr__avheader {
+    color: var(--b3-theme-primary);
+}
+
+.av {
+    &__header {
+        .layout-tab-bar {
+            margin-left: 0;
+            margin-right: 0;
+
+            .item {
+                .item__graphic {
+                    color: var(--b3-theme-on-surface);
+                }
+                &:hover, &--focus {
+                    .item__graphic {
+                        color: var(--b3-theme-on-background);
+                    }
+                }
+            }
+        }
+
+        .av__title {
+            font-size: 1.2em;
+
+        }
+    }
+
+    &__panel {
+        .b3-menu {
+        }
+    }
+    
+    // 文本框键入
+    &__mask {
+        textarea {
+            resize: both;
+            background-color: var(--b3-theme-surface);
+        }
+    }
+}
+
+

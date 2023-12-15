@@ -130,7 +130,6 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
 .protyle-wysiwyg .h1, .b3-typography .h1,
 .protyle-wysiwyg h1,
 .b3-typography h1 {
-  font-weight: 600;
   margin-top: 1.2em;
 }
 .protyle-wysiwyg .h1 + .h2, .b3-typography .h1 + .h2,
@@ -161,7 +160,6 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
 .protyle-wysiwyg .h2, .b3-typography .h2,
 .protyle-wysiwyg h2,
 .b3-typography h2 {
-  font-weight: 600;
   margin-top: 1.2em;
 }
 .protyle-wysiwyg .h2 + .h3, .b3-typography .h2 + .h3,
@@ -187,7 +185,6 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
 .protyle-wysiwyg .h3, .b3-typography .h3,
 .protyle-wysiwyg h3,
 .b3-typography h3 {
-  font-weight: 600;
   margin-top: 1.2em;
 }
 .protyle-wysiwyg .h3 + .h4, .b3-typography .h3 + .h4,
@@ -208,7 +205,6 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
 .protyle-wysiwyg .h4, .b3-typography .h4,
 .protyle-wysiwyg h4,
 .b3-typography h4 {
-  font-weight: 600;
   margin-top: 1.2em;
 }
 .protyle-wysiwyg .h4 + .h5, .b3-typography .h4 + .h5,
@@ -224,7 +220,6 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
 .protyle-wysiwyg .h5, .b3-typography .h5,
 .protyle-wysiwyg h5,
 .b3-typography h5 {
-  font-weight: 600;
   margin-top: 1.2em;
 }
 .protyle-wysiwyg .h5 + .h6, .b3-typography .h5 + .h6,
@@ -235,7 +230,6 @@ html[data-theme-mode=dark] .protyle-action .protyle-icon {
 .protyle-wysiwyg .h6, .b3-typography .h6,
 .protyle-wysiwyg h6,
 .b3-typography h6 {
-  font-weight: 600;
   margin-top: 1.2em;
 }
 .protyle-wysiwyg [data-type=NodeSuperBlock] > [data-type=NodeHeading]:first-child, .b3-typography [data-type=NodeSuperBlock] > [data-type=NodeHeading]:first-child,
@@ -353,18 +347,23 @@ html[data-theme-mode=dark] .protyle-wysiwyg [data-node-id] span[data-type~=tag]:
   text-decoration: underline;
   text-decoration-color: var(--b3-font-color5);
   transition: all 150ms;
+  -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
 }
 .protyle-wysiwyg span[data-type~=inline-memo]:hover, .b3-typography span[data-type~=inline-memo]:hover {
-  box-shadow: 0 -1.2em 0 0 inset #ffeb99;
+  --memo-bg: #ffe680;
+  background-color: var(--memo-bg);
+  box-shadow: 0 0 0 8px var(--memo-bg);
   transition: all 150ms;
-  text-decoration-color: #ffeb99;
+  text-decoration-color: var(--memo-bg);
   color: var(--b3-theme-on-background);
-  border-radius: 0;
+  border-radius: 1px;
+  z-index: 1;
+  position: relative;
 }
 html[data-theme-mode=dark] .protyle-wysiwyg span[data-type~=inline-memo]:hover, html[data-theme-mode=dark] .b3-typography span[data-type~=inline-memo]:hover {
-  box-shadow: 0 -1.2em 0 0 inset #ddba0d;
+  --memo-bg: #ddba0d;
   color: var(--b3-theme-background);
-  text-decoration-color: #ddba0d;
 }
 .protyle-wysiwyg .bq, .b3-typography .bq,
 .protyle-wysiwyg blockquote,
@@ -822,4 +821,8 @@ html[data-theme-mode=dark] .pdf__outer#outerContainer #dialogContainer .dialog {
 }
 .pdf__outer#outerContainer .pdf__util .b3-menu__item:not(:hover) {
   background-color: transparent;
+}
+
+.custom-attr .block__logo.custom-attr__avheader {
+  color: var(--b3-theme-primary);
 }

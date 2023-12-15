@@ -195,12 +195,12 @@ function monitorDOM() {
                 }
 
                 //  页签搜索
-                document.querySelectorAll('.block__icons').forEach(blockIcons => {
-                    let nextSibling = blockIcons.nextElementSibling;
-                    if (nextSibling && nextSibling.classList.contains("search__header")) {
-                        blockIcons.classList.add("search");
-                    }
-                });
+                // document.querySelectorAll('.block__icons').forEach(blockIcons => {
+                //     let nextSibling = blockIcons.nextElementSibling;
+                //     if (nextSibling && nextSibling.classList.contains("search__header")) {
+                //         blockIcons.classList.add("search");
+                //     }
+                // });
 
                 // 文档树缩进参考、反链
                 // 反链重写 目前不是立即生效

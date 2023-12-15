@@ -26,11 +26,19 @@
         } // -> js
 
         .b3-dialog__container {
-            overflow: hidden;
+            // overflow: hidden; // 导致搜索窗口上部溢出
             background-color: var(--b3-theme-background);
 
             @include border-or-not;
             @include dialog-shadow;
+
+            .b3-dialog__close {
+                visibility: hidden;
+            }
+
+            .b3-dialog__body {
+                border-radius: 12px;
+            }
 
             // 设置面板 ————————————————————————————————
             .config__panel {
@@ -345,7 +353,7 @@
     }
 }
 
-// 动画
+// 弹出动画
 .b3-dialog__container {
     transform: translateY(-40px);
     transition: opacity 150ms linear 0s, transform 300ms $timing-function-decelerate;
@@ -353,7 +361,8 @@
 
 // 搜索通用
 #searchInput,
-#searchAssetInput{
+#searchAssetInput,
+#replaceInput{
     background-color: transparent;
 }
 
@@ -439,6 +448,10 @@
 .protyle-util {
     @include dialog-shadow;
     @include border-or-not;
+
+    textarea {
+        resize: both;
+    }
 }
 
 

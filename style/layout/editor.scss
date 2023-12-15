@@ -63,7 +63,6 @@
 
         .h#{$i},
         h#{$i} {
-            font-weight: 600;
             margin-top: 1.2em;
         }
 
@@ -222,22 +221,29 @@
         text-decoration: underline;
         text-decoration-color: var(--b3-font-color5);
         transition: all 150ms;
+        box-decoration-break: clone;
 
         &:hover {
-            box-shadow: 0 -1.2em 0 0 inset mix(map-get($theme-light, font-color5), map-get($theme-light, background), 40%);
+            --memo-bg: #{mix(map-get($theme-light, font-color5), map-get($theme-light, background))};
+
+            background-color: var(--memo-bg);
+            box-shadow: 0 0 0 8px var(--memo-bg);
             transition: all 150ms;
-            text-decoration-color: mix(map-get($theme-light, font-color5), map-get($theme-light, background), 40%);
+            text-decoration-color: var(--memo-bg);
             color: var(--b3-theme-on-background);
-            border-radius: 0;
+            border-radius: 1px;
+            z-index: 1;
+            position: relative;
             // padding-left: 8px;
             // padding-right: 8px;
             // margin-left: -8px;
             // margin-right: -8px;
 
             @include darkmode-counterpart {
-                box-shadow: 0 -1.2em 0 0 inset mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%);
+                // box-shadow: 0 -1.2em 0 0 inset mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%);
+                --memo-bg: #{mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%)};
+
                 color: var(--b3-theme-background);
-                text-decoration-color:mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%);
             }
         }
     }
@@ -736,7 +742,7 @@
     @extend .protyle-wysiwyg;
 }
 
-
+// PDF ————————————————————————————————
 .pdf__outer#outerContainer {
     #sidebarContainer {
         top: 42px;
@@ -870,4 +876,13 @@
             }
         }
     }
+}
+
+// 数据库/属性视图 ————————————————————————————
+.custom-attr .block__logo.custom-attr__avheader {
+    color: var(--b3-theme-primary);
+}
+.av {
+
+
 }

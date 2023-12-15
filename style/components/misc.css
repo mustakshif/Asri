@@ -201,25 +201,22 @@ html[data-theme-mode=dark] .tooltip, html[data-theme-mode=dark] .b3-tooltips:hov
   --property-percentage: 0%;
   font-size: 14px;
   padding: 8px;
+  margin: 0 -8px;
   line-height: 1.5;
   font-family: var(--b3-font-family-code);
-  background-color: #ffeb99;
-  border-radius: 0;
+  background-color: #ffe680;
+  border-radius: 4px;
   -webkit-backdrop-filter: none;
           backdrop-filter: none;
+  color: rgba(38, 38, 38, 0.7);
   box-shadow: none;
-  -webkit-mask-image: linear-gradient(to bottom, black var(--property-percentage), transparent var(--property-percentage));
-          mask-image: linear-gradient(to bottom, black var(--property-percentage), transparent var(--property-percentage));
-  animation-name: appear-wipe;
+  outline: none;
+  border: none;
+  transform-origin: 25% top;
 }
 html[data-theme-mode=dark] .tooltip--memo#tooltip {
   background-color: #ddba0d;
-  color: var(--b3-theme-background);
-}
-@keyframes appear-wipe {
-  to {
-    --property-percentage: 100%;
-  }
+  color: rgba(30, 30, 30, 0.7);
 }
 
 .b3-tooltips:hover::before {
