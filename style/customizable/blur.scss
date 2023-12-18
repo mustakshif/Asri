@@ -15,7 +15,7 @@ body:not(.body--blur) {
     // .layout__wnd--active,
     [data-type="wnd"] {
 
-        // 以下代码导致：
+        // 以下breadcrumb 相关代码导致：
         // 1. 块拖动至页面顶部时无法触发自动滚动
         // 2. 页面块进度条（.protyle-scroll）无法自动定位；点击时跳转到块的位置，但溢出页面顶部
         // ——————————————————————————————
@@ -96,24 +96,24 @@ body:not(.body--blur) {
 
         // pdf
         .pdf__outer#outerContainer {
-            #sidebarContainer {
-                top: 84px;
-            }
+            // #sidebarContainer {
+            //     top: 84px;
+            // }
 
-            .pdf__toolbar {
-                #toolbarContainer {
-                    padding-top: 42px;
-                }
-            }
+            // .pdf__toolbar {
+            //     #toolbarContainer {
+            //         padding-top: 42px;
+            //     }
+            // }
 
-            .findbar {
-                top: 78px;
-            }
+            // .findbar {
+            //     top: 78px;
+            // }
 
-            #viewerContainer {
-                top: 84px;
-                transition: none;
-            }
+            // #viewerContainer {
+            //     top: 84px;
+            //     transition: none;
+            // }
 
             #dialogContainer {
                 .dialog {
@@ -153,11 +153,6 @@ body:not(.body--blur) {
             @include bg-blur;
 
             // z-index: 1;
-        }
-
-        // 导出预览模式 
-        &-preview {
-            margin-top: 84px;
         }
     }
 
@@ -313,13 +308,13 @@ body:not(.body--blur) {
 
     // ->js
 
-    // .config-bazaar__readme {
-    //     filter: saturate(0);
+    .config-bazaar__readme {
+        filter: saturate(0);
 
-    //     &--show {
-    //         filter: none;
-    //     }
-    // }
+        &--show {
+            filter: none;
+        }
+    }
 
     .tooltip {
         // -> blur

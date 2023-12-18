@@ -1,0 +1,26 @@
+body.body--mobile {
+    // -> js
+
+    //菜单 
+    #menu {
+        &.b3-menu--fullscreen {
+            box-shadow: none;            
+        }
+    }
+
+    .b3-menu__separator {
+        height: 1px;
+        margin: 16px;
+        width: calc(100% - 32px);
+    }
+
+    // 状态栏
+    .status {
+        padding: 8px;
+    }
+
+    //侧栏遮罩
+    [style="transform: translateX(0px);"]~.side-mask {
+        opacity: 0 !important;
+    }
+}

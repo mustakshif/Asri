@@ -228,9 +228,9 @@
 
             background-color: var(--memo-bg);
             box-shadow: 0 0 0 8px var(--memo-bg);
-            transition: all 150ms;
+            transition: all 0.15s;
             text-decoration-color: var(--memo-bg);
-            color: var(--b3-theme-on-background);
+            color: var(--b3-theme-on-background) !important;
             border-radius: 1px;
             z-index: 1;
             position: relative;
@@ -243,7 +243,7 @@
                 // box-shadow: 0 -1.2em 0 0 inset mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%);
                 --memo-bg: #{mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%)};
 
-                color: var(--b3-theme-background);
+                color: var(--b3-theme-background) !important;
             }
         }
     }
@@ -502,12 +502,12 @@
         .protyle-action__drag {
             height: 24px;
             width: 24px;
-            background: url(img/iframeScaler.svg);
-            background-size: contain;
+            background-color: var(--b3-theme-on-surface);
+            mask-image: url(img/iframeScaler.svg);
+            mask-size: contain;
+            mask-repeat: no-repeat;
             box-shadow: none;
             border-radius: 0;
-            background-repeat: no-repeat;
-            opacity: 0.5;
             right: -8px;
             bottom: -8.5px;
             filter: brightness(0.5);
@@ -520,8 +520,8 @@
 
             &:hover {
                 box-shadow: none;
-                opacity: 1;
-                background-color: transparent;
+                opacity: 0.8;
+                background-color: var(--b3-theme-on-background);
                 transform: scale(1.2);
             }
 

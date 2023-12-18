@@ -11,7 +11,7 @@
 @mixin font-family {
     --b3-font-family: ui-sans-serif, -apple-system, system-ui, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", Helvetica, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
 
-    --b3-font-family-code: SF Mono, "JetBrains Mono", Menlo, mononoki, Consolas, "Liberation Mono", Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols", var(--b3-font-family);
+    --b3-font-family-code: SF Mono, "JetBrains Mono", Menlo, mononoki, Consolas, "Liberation Mono", Courier, monospace, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
 
     // --b3-font-family-graph: mononoki;
 
@@ -85,7 +85,7 @@
     border: none;
 
     @include darkmode-counterpart {
-        outline: 1px solid var(--b3-border-color);
+        border: 1px solid var(--b3-border-color);
     }
 }
 
@@ -180,7 +180,6 @@
 }
 
 // ——————————————————————————
-
 
 // color scheme related mixins————————————————
 $theme-light: (

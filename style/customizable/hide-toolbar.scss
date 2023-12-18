@@ -15,33 +15,6 @@
     transform: none;
 }
 
-.toolbar {
-    background-color: var(--b3-theme-background);
-    height: var(--toolbar-height);
-    position: fixed;
-    top: 0;
-    width: 100%;
-    transition: opacity 300ms, transform 300ms;
-    transition-delay: 0.3s;
-    z-index: 3; //用 js 动态设置，比菜单低，比 layout--float 高
-    @include toolbarHidden;
-
-    &:hover {
-        transition: opacity 200ms 100ms, transform 300ms 100ms;
-        @include toolbarShown;
-    }
-
-    &.no-hover {
-        @include toolbarHidden;
-
-        #drag {
-            app-region: drag;
-        }
-    }
-
-    // --> js
-}
-
 @mixin hide-toolbar-common($paddingTop: 4px) {
 
     .dock#dockLeft,
@@ -120,46 +93,38 @@
     }
 }
 
-body {
+
+body:not(.body--mobile) {
+    // -> js
+
+    .toolbar {
+        background-color: var(--b3-theme-background);
+        height: var(--toolbar-height);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        transition: opacity 300ms, transform 300ms;
+        transition-delay: 0.3s;
+        z-index: 3; //用 js 动态设置，比菜单低，比 layout--float 高
+        @include toolbarHidden;
+
+        &:hover {
+            transition: opacity 200ms 100ms, transform 300ms 100ms;
+            @include toolbarShown;
+        }
+
+        &.no-hover {
+            @include toolbarHidden;
+
+            #drag {
+                app-region: drag;
+            }
+        }
+
+        // --> js
+    }
+
     @include hide-toolbar-for-mac;
-
-    // tabbar
-    // &.body--mac {
-    //     #dockLeft {
-
-    //         //侧栏和面板同时隐藏
-    //         &.fn__none {
-    //             &+#layouts {
-
-    //                 .layout__dockl[style*="width: 0px"],
-    //                 .layout__dockl.layout--float {
-    //                     &~.layout__center {
-    //                         .fn__flex-1:first-child>.fn__flex-1:first-child>.fn__flex:first-child>[data-type="wnd"] {
-    //                             .layout-tab-bar:not(.layout-tab-bar--readonly) {
-    //                                 margin-left: var(--b3-toolbar-left-mac);
-    //                             }
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         }
-
-    //         // 仅显示侧栏
-    //         &+#layouts {
-
-    //             .layout__dockl[style*="width: 0px"],
-    //             .layout__dockl.layout--float {
-    //                 &~.layout__center {
-    //                     .fn__flex-1:first-child>.fn__flex-1:first-child>.fn__flex:first-child>[data-type="wnd"] {
-    //                         .layout-tab-bar:not(.layout-tab-bar--readonly) {
-    //                             margin-left: calc(var(--b3-toolbar-left-mac) - 42px);
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
 
     &.body--win32,
     &.body--browser {
@@ -170,84 +135,15 @@ body {
             min-height: 100%;
         }
     }
-}
 
 
-// 消息区域
-.b3-snackbars {
-    top: 0;
-}
-
-
-// 窗口顶部的拖移区域 ——————————————————————————————————————————
-#toolbar {
-    .toolbar__item {
-        app-region: no-drag;
+    // 消息区域
+    .b3-snackbars {
+        top: 0;
     }
 
-}
 
-// tab-bar 容器
-.fn__flex-column[data-type='wnd']>.fn__flex:first-child {
-    app-region: drag;
-    margin-top: 10px;
-    height: calc(var(--toolbar-height) - 16px);
-
-    #toolbar:hover+div #layouts &,
-    .layout__dockl.layout--float:not([style*='transform'])~.layout__center & {
-        app-region: unset;
-    }
-
-    // tab-bar 视觉下移
-    .layout-tab-bar {
-        margin-top: 0;
-
-        &:not(.layout-tab-bar--readonly) {
-            app-region: no-drag;
-        }
-    }
-
-    .layout-tab-bar--readonly {
-        .block__icon {
-            app-region: no-drag;
-        }
-    }
-}
-
-
-// 面包屑
-.protyle-breadcrumb {
-    .layout-tab-container *:not(.protyle.fullscreen)>&__space {
-        app-region: drag;
-
-        &__item {
-            app-region: no-drag;
-        }
-
-        button {
-            app-region: no-drag;
-        }
-    }
-
-    .layout__dockl.layout--float:not([style*='transform'])~.layout__center &__space {
-        app-region: unset;
-    }
-}
-
-// 左栏面板顶部
-.layout__dockl {
-    &:not(.layout--float) {
-        &::before {
-            app-region: drag;
-
-            #toolbar:hover+div #layouts & {
-                app-region: unset;
-            }
-        }
-    }
-}
-
-body {
+    // 侧栏面板顶部填充 
     &:not(.body--win32) {
 
         .layout__dockl {
@@ -377,7 +273,73 @@ body {
 }
 
 
+// 窗口顶部的拖移区 ——————————————————————————————————————
+#toolbar {
+    .toolbar__item {
+        app-region: no-drag;
+    }
 
+}
+
+// tab-bar 容器
+.fn__flex-column[data-type='wnd']>.fn__flex:first-child {
+    app-region: drag;
+    margin-top: 10px;
+    height: calc(var(--toolbar-height) - 16px);
+
+    #toolbar:hover+div #layouts &,
+    .layout__dockl.layout--float:not([style*='transform'])~.layout__center & {
+        app-region: unset;
+    }
+
+    // tab-bar 视觉下移
+    .layout-tab-bar {
+        margin-top: 0;
+
+        &:not(.layout-tab-bar--readonly) {
+            app-region: no-drag;
+        }
+    }
+
+    .layout-tab-bar--readonly {
+        .block__icon {
+            app-region: no-drag;
+        }
+    }
+}
+
+
+// 面包屑
+.protyle-breadcrumb {
+    .layout-tab-container *:not(.protyle.fullscreen)>&__space {
+        app-region: drag;
+
+        &__item {
+            app-region: no-drag;
+        }
+
+        button {
+            app-region: no-drag;
+        }
+    }
+
+    .layout__dockl.layout--float:not([style*='transform'])~.layout__center &__space {
+        app-region: unset;
+    }
+}
+
+// 左栏面板顶部
+.layout__dockl {
+    &:not(.layout--float) {
+        &::before {
+            app-region: drag;
+
+            #toolbar:hover+div #layouts & {
+                app-region: unset;
+            }
+        }
+    }
+}
 
 // 禁用拖动的区域 ————————————————————————————————————
 //菜单

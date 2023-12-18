@@ -1,0 +1,45 @@
+
+@mixin scroll-divider {
+    &::before {
+        --dividerHeight: 1px;
+        display: block;
+        position: sticky;
+        top: 0;
+        content: '';
+        height: var(--dividerHeight);
+        // background-image: linear-gradient(to bottom, var(--b3-border-color-trans), transparent) ;
+        background-color: var(--b3-border-color-trans);
+        width: 100%;
+        animation-name: dividerAppear;
+        animation-timeline: scroll();
+        margin-bottom: calc(-1 * var(--dividerHeight));
+        z-index: 1;
+    }
+}
+
+.protyle-content,
+[data-name="bazaar"] .layout-tab-bar + .fn__flex-1,
+.file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
+    @include scroll-divider();
+}
+
+.file-tree:not(.sy__backlink) .block__icons~.fn__flex-1::before {
+    width: calc(100% + 6px);
+    margin-left: -2px;
+    margin-right: -2px;
+}
+
+[data-name="bazaar"] .layout-tab-bar + .fn__flex-1::before {
+    top: 40px;
+    z-index: 2;
+}
+
+@keyframes dividerAppear {
+    0% {
+        opacity: 0;
+    }
+
+    2% {
+        opacity: 1;
+    }
+}

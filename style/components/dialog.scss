@@ -2,17 +2,6 @@
 
 .b3-dialog--open {
     .b3-dialog {
-        .b3-dialog__scrim {
-            background-color: #80808080;
-            backdrop-filter: saturate(0.5);
-            transition: opacity 250ms 0s, backdrop-filter 300ms 0s;
-
-            @include darkmode-counterpart {
-                background-color: #00000080;
-                backdrop-filter: saturate(0);
-            }
-        }
-
         &.emojis-container {
             .b3-dialog__scrim {
                 backdrop-filter: none;
@@ -23,7 +12,9 @@
                     transition: none;
                 }
             }
-        } // -> js
+        }
+
+        // -> js
 
         .b3-dialog__container {
             // overflow: hidden; // 导致搜索窗口上部溢出
@@ -82,7 +73,7 @@
                     .config__tab-container {
                         padding: 8px 0;
                         background-color: var(--b3-theme-background);
-                       
+
                         &--top {
                             margin-top: 0;
                             height: 100%;
@@ -95,6 +86,27 @@
 
                         .bazaarPanel {
                             padding-bottom: 8px;
+
+                            .fn__hr--b {
+                                height: 4px;
+                        
+                                + .fn__flex:nth-child(2) {
+                                    position: sticky;
+                                    top: 4px;
+                                    z-index: 2;
+                            
+                                    &::before {
+                                        content: '';
+                                        background-color: var(--b3-theme-background);
+                                        width: 100%;
+                                        height: 40px;
+                                        display: block;
+                                        position: absolute;
+                                        top: -4px;
+                                        z-index: -1;
+                                    }       
+                                }
+                            }
 
                             .counter {
                                 background-color: transparent !important;
@@ -197,7 +209,7 @@
                             // transition: opacity $timing-function-decelerate 0.2s, transform 0.3s, filter $timing-function-decelerate 0.3s;
 
                             &--show {
-                                transition: transform $timing-function-decelerate 0.3s,  filter linear 0.3s 0.1s;
+                                transition: transform $timing-function-decelerate 0.3s, filter linear 0.3s 0.1s;
 
                                 // transform: none;
                                 // opacity: 1;
@@ -217,16 +229,16 @@
 
                         &[data-name="account"] {
                             padding: 0;
-                            
+
                             .config-account {
                                 &__avatar {
                                     box-shadow: none;
                                     border: none;
                                 }
-    
+
                                 &__name {
                                     bottom: -72px;
-    
+
                                     &>.fn__a {
                                         display: block;
                                     }
@@ -240,7 +252,7 @@
                                     @include button-action('normal');
                                 }
                             }
-                        }                        
+                        }
                     }
 
                     &>.fn__hr--b {
@@ -249,12 +261,13 @@
                 }
 
                 .config-keymap__key {
-                    font-family: SF Pro,Consolas,"Liberation Mono",Menlo,Courier,monospace,var(--b3-font-family);
+                    font-family: SF Pro, Consolas, "Liberation Mono", Menlo, Courier, monospace, var(--b3-font-family);
                 }
             }
 
             // 数据历史 ————————————————————————————————————————
             .history__panel {
+
                 &>.b3-list,
                 &>.history__diff {
                     width: min(256px, 30%);
@@ -290,16 +303,18 @@
                     }
                 }
 
-                .search__tip{
+                .search__tip {
                     padding: 4px 8px;
                     margin: 0;
                 }
             }
         }
     }
+
     .search__tip kbd {
         font-family: SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
     }
+
     // 对话框中的 tab-bar ——————————————————————————————
     .layout-tab-bar {
         margin: 8px auto 8px;
@@ -353,6 +368,17 @@
     }
 }
 
+.b3-dialog__scrim {
+    background-color: #80808080;
+    backdrop-filter: saturate(0.5);
+    transition: opacity 250ms 0s, backdrop-filter 300ms 0s;
+
+    @include darkmode-counterpart {
+        background-color: #00000080;
+        backdrop-filter: saturate(0);
+    }
+}
+
 // 弹出动画
 .b3-dialog__container {
     transform: translateY(-40px);
@@ -362,7 +388,7 @@
 // 搜索通用
 #searchInput,
 #searchAssetInput,
-#replaceInput{
+#replaceInput {
     background-color: transparent;
 }
 
@@ -407,6 +433,7 @@
                     50% {
                         filter: brightness(1.1);
                     }
+
                     100% {
                         filter: none;
                     }
@@ -463,6 +490,7 @@
     .b3-button--cancel {
         @include button-action('normal');
     }
+
     .b3-button--text {
         @include button-action('primary');
     }
@@ -475,17 +503,21 @@ body.body--window {
         .toolbar__item {
             app-region: no-drag;
             color: var(--b3-theme-on-surface);
+
             &:hover {
                 color: var(--b3-theme-on-background);
             }
+
             &--active {
                 color: var(--b3-theme-primary);
+
                 &:hover {
                     color: var(--b3-theme-primary);
                 }
             }
         }
     }
+
     // &.body--mac {
     //     .fn__flex:first-child>[data-type="wnd"] {
     //         .layout-tab-bar:not(.layout-tab-bar--readonly) {
@@ -494,9 +526,38 @@ body.body--window {
     //     }
     // } // -> js 
 
-
     #status {
-        right: 0 !important;
+        right: 8px !important;
         padding-right: 0;
     }
+}
+
+// 图片预览 ——————————————————————
+.viewer-backdrop {
+    @extend .b3-dialog__scrim;
+    @include bg-blur($saturate-value: 1);
+    backdrop-filter: blur(40px);
+    animation: fadeIn 0.3s;
+    transform-origin: var(--mouseX) var(--mouseY);
+
+    animation-timing-function: $timing-function-decelerate;
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.1);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+}
+
+.viewer-title {
+    padding: 4px 8px;
+    background-color: var(--b3-theme-surface);
+    border-radius: 99px;
 }

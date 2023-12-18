@@ -223,7 +223,7 @@ textarea {
     box-shadow: none;
     outline: none;
     border: none;
-    transform-origin: 25% top;
+    transform-origin: 40px top;
     // transform: scale(0.9);
 
     @include darkmode-counterpart {
@@ -231,6 +231,9 @@ textarea {
         color: pickThemeColor($theme-dark, background, 0.7);
     }
     
+    body.body--win32 & {
+        font-family: var(--b3-font-family);
+    }
     // mask-image: linear-gradient(90deg, black var(--property-percentage), transparent var(--property-percentage));
     // mask-image: radial-gradient(circle at 0% 0%,black var(--property-percentage), transparent var(--property-percentage));
 

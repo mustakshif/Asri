@@ -2,15 +2,20 @@ function isMacOS() {
     return navigator.platform.indexOf("Mac") === 0 || navigator.userAgentData.platform === "macOS";
 }
 
-if (isMacOS()) document.body.classList.add('body--mac');
+isMacOS() && document.body.classList.add('body--mac');
 
-// 判断是否在浏览器中
-function isInBrowser() {
-    let toolbar = document.querySelector('.toolbar');
-    return toolbar && toolbar.classList.contains('toolbar--browser') > 0
+function isMobile() {
+    return document.getElementById('sidebar') && document.getElementById('editor');
 }
 
-if (isInBrowser()) document.body.classList.add("body--browser");
+isMobile() && document.body.classList.add('body--mobile');
+
+function isInBrowser() {
+    let toolbar = document.querySelector('.toolbar');
+    return toolbar && toolbar.classList.contains('toolbar--browser')
+}
+
+isInBrowser() && document.body.classList.add("body--browser");
 
 function useSysScrollbar() {
     for (let i = 0; i < document.styleSheets.length; i++) {
@@ -24,15 +29,12 @@ function useSysScrollbar() {
                     }
                 }
             }
-        } catch (e) {
-            // 忽略跨域样式表的错误
-        }
+        } catch (e) { }
     }
 }
 
-if (isMacOS()) useSysScrollbar();
+isMacOS() && useSysScrollbar();
 
-// 隐藏顶栏 --> hide-toolbar.scss
 function handleToolbarHover() {
     let toolbar = document.querySelector('.toolbar');
     let toolbarDrag = document.getElementById('drag');
@@ -48,71 +50,81 @@ function handleToolbarHover() {
 
 handleToolbarHover();
 
-// Mac 红绿灯
+// Mac 红绿灯位置
 function ModifyMacTrafficLights() {
     let currentWindow = require("@electron/remote").getCurrentWindow();
     currentWindow.setTrafficLightPosition({ x: 16, y: 16 });
 }
 
-if (isMacOS() && !isInBrowser()) ModifyMacTrafficLights();
+if (isMacOS() && !isInBrowser() && !isMobile()) ModifyMacTrafficLights();
 
-// (() => {
-//     import('./style/customizable/customModules.js')
-//         .then((customModules) => {
-//             customModules.handleToolbarHover();
-//             customModules.ModifyMacTrafficLights();
-//         })
-//         .catch((e) => {
-//             console.error(e);
-//         });
-// })();
-
-const doms = {
-    layouts: document.getElementById('layouts'),
-    status: document.getElementById('status'),
-    dockl: document.getElementById('dockLeft'),
-    dockr: document.getElementById('dockRight'),
-}
-
-// 避让红绿灯
-function toolbarSpacingRight() {
-    const topRightRect = {
-        right: 0,
-        top: 0,
-        width: 42,
-        height: 42
+/**
+ * 隐藏顶栏后主窗口、新小窗顶栏页签栏的左右间距控制
+ */
+function tabbarSpacing() {
+    var toolbarWindowRec = document.querySelector('.toolbar__window')?.getBoundingClientRect();
+    if (toolbarWindowRec) {
+        var topRightRect = {
+            left: toolbarWindowRec.left,
+            top: 0,
+            width: toolbarWindowRec.width,
+            height: toolbarWindowRec.height
+        }
     }
-}
-
-function toolbarSpacingLeft() {
-    const topLeftRect = {
+    var topLeftRect = {
         left: 0,
         top: 0,
         width: 80,
         height: 42
     };
 
-    let wndElements = document.querySelectorAll('#layouts [data-type="wnd"]');
+    /**
+     * 传入两个rec, 参照 getBoundingClientRect() 的属性标准
+     * @param {*} elementRect 
+     * @param {*} targetRect 
+     */
+    function isOverlapping(elementRect, targetRect) {
+        if (elementRect && targetRect) {
+            return (
+                elementRect.right > targetRect.left &&
+                elementRect.bottom > targetRect.top &&
+                elementRect.left < targetRect.left + targetRect.width &&
+                elementRect.top < targetRect.top + targetRect.height
+            )
+        }
+    }
+
+    var wndElements = document.querySelectorAll('#layouts [data-type="wnd"]');
     if (wndElements) {
+
         for (let element of wndElements) {
-            let layoutTabbar = element.querySelector('.layout-tab-bar:not(.layout-tab-bar--readonly)');
-            let elementRect = element.getBoundingClientRect();
-            let isOverlappingTopLeft = (
-                elementRect.right > topLeftRect.left &&
-                elementRect.bottom > topLeftRect.top &&
-                elementRect.left < topLeftRect.left + topLeftRect.width &&
-                elementRect.top < topLeftRect.top + topLeftRect.height
-            );
+            var elementRect = element.getBoundingClientRect();
+            var layoutTabbar = element.querySelector('.layout-tab-bar:not(.layout-tab-bar--readonly)');
 
-            let isDockLHidden = document.querySelector('#dockLeft.fn__none') ? 1 : 0;
-            let isLayoutDockLHidden = document.querySelector('.layout__dockl[style*="width: 0px"], .layout__dockl.layout--float') ? 1 : 0;
+            var isOverlappingTopLeft = isOverlapping(elementRect, topLeftRect);
+            if (toolbarWindowRec) {
+                var isOverlappingTopRight = isOverlapping(elementRect, topRightRect);
+            }
 
-            if (isOverlappingTopLeft && isDockLHidden || !document.getElementById('dockLeft')) {
-                layoutTabbar.style.marginLeft = 'var(--b3-toolbar-left-mac)';
-            } else if (isOverlappingTopLeft && isLayoutDockLHidden) {
-                layoutTabbar.style.marginLeft = 'calc(var(--b3-toolbar-left-mac) - 42px)';
+            var isDockLHidden = document.querySelector('#dockLeft.fn__none') ? 1 : 0;
+            var isLayoutDockLHidden = document.querySelector('.layout__dockl[style*="width: 0px"], .layout__dockl.layout--float') ? 1 : 0;
+
+            // 左侧红绿灯
+            if (!isInBrowser() && isMacOS()) {
+                if (isOverlappingTopLeft && (isDockLHidden || !document.getElementById('dockLeft'))) {
+                    layoutTabbar.style.marginLeft = 'var(--b3-toolbar-left-mac)';
+                } else if (isOverlappingTopLeft && isLayoutDockLHidden) {
+                    layoutTabbar.style.marginLeft = 'calc(var(--b3-toolbar-left-mac) - 42px)';
+                } else {
+                    layoutTabbar.style.removeProperty('margin-left');
+                }
+            }
+
+            // 新窗口右侧图标区域
+            if (toolbarWindowRec && isOverlappingTopRight) {
+                layoutTabbar.parentNode.style.marginRight = topRightRect.width - 8 + 'px'
             } else {
-                layoutTabbar.style.removeProperty('margin-left');
+                layoutTabbar.parentNode.style.removeProperty('margin-right');
             }
         }
     }
@@ -121,12 +133,17 @@ function toolbarSpacingLeft() {
 function monitorDOM() {
     var observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
+
+            const doms = {
+                layouts: document.getElementById('layouts'),
+                status: document.getElementById('status'),
+                dockl: document.getElementById('dockLeft'),
+                dockr: document.getElementById('dockRight'),
+            }
+
             if (mutation.type === 'childList') {
 
-                // 避让mac红绿灯 
-                if (!isInBrowser()) {
-                    if (isMacOS()) toolbarSpacingLeft();
-                }
+                // tabbarSpacing();
 
                 // emoji dialog
                 let dialog = document.querySelector('.b3-dialog--open .b3-dialog');
@@ -135,49 +152,20 @@ function monitorDOM() {
                 }
 
                 // 页签中显示大纲、关系图、反链时
-                let layoutCenterWnds = document.querySelectorAll('.layout__center [data-type="wnd"]');
-                if (layoutCenterWnds) layoutCenterWnds.forEach(wndEl => {
-                    let layoutCenterFiletree = wndEl.querySelector('.file-tree');
-                    if (layoutCenterFiletree && !layoutCenterFiletree.classList.contains('fn__none')) {
-                        wndEl.classList.add('shrink-in-tab');
-                    } else {
-                        wndEl.classList.remove('shrink-in-tab');
-                    }
-                });
+                // let layoutCenterWnds = document.querySelectorAll('.layout__center [data-type="wnd"]');
+                // if (layoutCenterWnds) layoutCenterWnds.forEach(wndEl => {
+                //     let layoutCenterFiletree = wndEl.querySelector('.file-tree');
+                //     if (layoutCenterFiletree && !layoutCenterFiletree.classList.contains('fn__none')) {
+                //         wndEl.classList.add('shrink-in-tab');
+                //     } else {
+                //         wndEl.classList.remove('shrink-in-tab');
+                //     }
+                // });
 
 
                 // for (let key in doms.dock) {
                 //     doms.dock[key].classList.add('highlight');
                 // }
-
-
-                // dock与侧栏 ——————————————————
-                function isDockLytPinned(node) {
-                    return node && !node.classList.contains('layout--float');
-                }
-                function isDockLytExpanded(node) {
-                    return node.style.width !== '0px';
-                }
-
-                let docklLayout = document.querySelector('.layout__dockl'),
-                    dockrLayout = document.querySelector('.layout__dockr'),
-                    dockl = document.getElementById('dockLeft'),     dockr = document.getElementById('dockRight');
-
-                if (isDockLytPinned(docklLayout) && isDockLytExpanded(docklLayout)) {
-                    dockl.classList.add('dock-layout-expanded');
-                    // console.log('left added')
-                } else {
-                    if (dockl) dockl.classList.remove('dock-layout-expanded');
-                    // console.log('left removed')
-                }
-                if (isDockLytPinned(dockrLayout) && isDockLytExpanded(dockrLayout)) {
-                    dockr.classList.add('dock-layout-expanded');
-                    // console.log('right added')
-                } else {
-                    if (dockr) dockr.classList.remove('dock-layout-expanded');
-                    // console.log('right removed')
-                }
-
 
 
                 //右侧面板底部 padding
@@ -203,18 +191,20 @@ function monitorDOM() {
                 // });
 
                 // 文档树缩进参考、反链
-                // 反链重写 目前不是立即生效
                 let listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
                 let backlinkListItems = document.querySelectorAll('.sy__backlink .b3-list-item');
 
                 document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus')
                 );
+
                 for (let li of listItemsFocus) {
                     if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
                         li.parentNode.classList.add('has-focus');
                     }
                 }
-                document.querySelectorAll('.sy__backlink .protyle-shown').forEach(oldLi => oldLi.classList.remove('protyle-shown'))
+
+                document.querySelectorAll('.sy__backlink .protyle-shown').forEach(oldLi => oldLi.classList.remove('protyle-shown'));
+
                 for (let li of backlinkListItems) {
                     if (li.nextElementSibling && !li.nextElementSibling.classList.contains('fn__none') && li.nextElementSibling.classList.contains('protyle')) {
                         li.classList.add('protyle-shown');
@@ -227,12 +217,37 @@ function monitorDOM() {
                     '.config__panel .config__tab-container .fn__flex-1 > select.b3-select',
                     '.b3-tooltips > .b3-slider'
                 ]
+
                 textFieldSelectors.forEach(selector => {
                     let els = document.querySelectorAll(selector);
-                    if (els) {
-                        els.forEach(el => el.parentNode.style.overflow = 'visible')
-                    }
+
+                    els?.forEach(el => el.parentNode.style.overflow = 'visible')
                 })
+
+                // dock与侧栏背景
+                function isDockLytPinned(node) {
+                    return node && !node.classList.contains('layout--float');
+                }
+                function isDockLytExpanded(node) {
+                    return node.style.width !== '0px';
+                }
+
+                let docklLayout = document.querySelector('.layout__dockl'),
+                    dockrLayout = document.querySelector('.layout__dockr'),
+                    dockl = document.getElementById('dockLeft'),
+                    dockr = document.getElementById('dockRight');
+
+                if (isDockLytPinned(docklLayout) && isDockLytExpanded(docklLayout)) {
+                    dockl.classList.add('dock-layout-expanded');
+                } else {
+                    dockl?.classList.remove('dock-layout-expanded');
+                }
+
+                if (isDockLytPinned(dockrLayout) && isDockLytExpanded(dockrLayout)) {
+                    dockr.classList.add('dock-layout-expanded');
+                } else {
+                    dockr?.classList.remove('dock-layout-expanded');
+                }
             }
         });
     });
@@ -248,22 +263,31 @@ function monitorDOM() {
 
 monitorDOM();
 
+/**
+ * 根据当前帧是否还有剩余的空闲时间选择是否执行任务
+ * @param {Function} task 
+ * @param {Function} callback 
+ */
+function _runTask(task, callback) {
+    requestIdleCallback((idle) => {
+        if (idle.timeRemaining() > 0) {
+            task();
+            callback()
+        } else _runTask(task, callback)        
+    })
+}
 
+// new Promise((resolve) => {
+//     _runTask(monitorDOM, resolve);
+//     console.log('task run')
+// });
 
-// var tabbarItems = document.querySelectorAll(".layout-tab-bar .item");
-// tabbarItems.forEach(
-//     item => {
-//         item.addEventListener("mousedown", function () {
-//             item.classList.add("clicked");
-//           });
-//           item.addEventListener("mouseup", function () {
-//             item.classList.remove("clicked");
-//           })
-//     }
-// )
+function getDblClickMouseXY() {
+    window.addEventListener('dblclick', handleDblClick);
+    function handleDblClick(event) {
+        document.body.style.setProperty('--mouseX', event.clientX + 'px');
+        document.body.style.setProperty('--mouseY', event.clientY + 'px');
+    }
+}
 
-
-
-
-
-
+getDblClickMouseXY();

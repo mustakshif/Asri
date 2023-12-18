@@ -183,6 +183,7 @@
             position: absolute;
             background-color: transparent;
             left: 24px;
+            top: 0;
             opacity: 0.5;
             z-index: 0;
             transition: 0.2s;
@@ -191,7 +192,7 @@
 
             body.body--win32 & {
                 font-family: "Segoe UI";
-                font-size: 12px;
+                font-size: 11px;
             }
         }
 

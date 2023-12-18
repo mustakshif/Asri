@@ -13,7 +13,9 @@
 @use 'customizable/hide-toolbar';
 @use 'customizable/cover-image-fading';
 @use 'customizable/blur';
+// @use 'customizable/scroll-divider';
 
+@use 'platforms/mobile';
 
 @property --property-percentage {
     syntax: '<percentage>';
@@ -40,6 +42,4 @@
 //     inherits: false;
 //     initial-value: 0px;
 // }
-
-
 

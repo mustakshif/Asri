@@ -20,7 +20,6 @@ html[data-theme-mode="dark"]:root {
 }
 
 body {
-    border: 0px !important;
     -webkit-font-smoothing: auto;
 
     @include darkmode-counterpart {
@@ -47,7 +46,9 @@ body {
                 .item__graphic {
                     color: var(--b3-theme-on-surface);
                 }
-                &:hover, &--focus {
+
+                &:hover,
+                &--focus {
                     .item__graphic {
                         color: var(--b3-theme-on-background);
                     }
@@ -62,10 +63,9 @@ body {
     }
 
     &__panel {
-        .b3-menu {
-        }
+        .b3-menu {}
     }
-    
+
     // 文本框键入
     &__mask {
         textarea {
