@@ -1,8 +1,6 @@
-![banner](/assets/banner.png)
-
 [简体中文](./README.md) | English
 
----
+![banner](/assets/banner.png)
 
 # Hadeeth, theme for SiYuan
 
@@ -45,7 +43,7 @@ The theme development process drew inspiration from the following themes, and I 
 | Hide top bar<br />Dots before sidebar panel list items<br />Outline list item icons<br />Status bar | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
 | file tree indent guides<br />`setMutationObserver` function                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
 
-## Other
+## Notes
 
 * ⚠️ Setting menu's dragable area cut to the top area of the left column.
 

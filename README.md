@@ -1,8 +1,6 @@
-![banner](/assets/banner.png)
-
 简体中文 ｜ [English](./README_en_US.md)
 
----
+![banner](/assets/banner.png)
 
 # Hadeeth, theme for SiYuan
 
