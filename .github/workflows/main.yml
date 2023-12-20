@@ -9,10 +9,13 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-        - uses: actions/checkout@v4.1.1
+        - uses: actions/checkout@master
         - name: Package
-          run:  |
-                zip -r package.zip img icon.png preview.png README_en_US.md README.md theme.css theme.js theme.json
+          uses: thedoctor0/zip-release@0.7.6
+          with:
+            type: 'zip'
+            filename: 'package.zip'
+            exclusions: '*.git*, *.scss, style/**, assets/**'
     
         - name: Create Release
           uses: ncipollo/release-action@v1.13.0
