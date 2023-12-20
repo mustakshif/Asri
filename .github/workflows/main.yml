@@ -16,7 +16,7 @@ jobs:
             type: 'zip'
             filename: 'package.zip'
             exclusions: '*.git* /*style/* /*assets/*'
-            recursive_exclusions: *.scss
+            recursive_exclusions: '*.scss'
     
         - name: Create Release
           uses: ncipollo/release-action@v1.13.0
