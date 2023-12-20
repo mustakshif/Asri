@@ -127,7 +127,9 @@ body:not(.body--mobile) {
     @include hide-toolbar-for-mac;
 
     &.body--win32,
-    &.body--browser {
+    &.body--browser,
+    &.body--fullscreen {
+        // -> js
         @include hide-toolbar-common;
 
         .layout__dockl {

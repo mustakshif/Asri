@@ -17,4 +17,9 @@
     body.body--win32 & {
         padding-left: 8px;
     }
+
+    // 应用全屏时
+    &[style="padding-left: 0px;"] {
+        padding-left: 8px !important;
+    }
 }

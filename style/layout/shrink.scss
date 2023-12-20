@@ -173,11 +173,12 @@
         // }
 
         $titleIcons: '❶', '❷', '❸', '❹', '❺', '❻';
+
         @for $i from 1 through length($titleIcons) {
             &[data-subtype=h#{$i}] .b3-list-item__text::before {
                 content: nth($titleIcons, $i);
             }
-        }        
+        }
 
         .b3-list-item__text::before {
             position: absolute;
@@ -224,16 +225,15 @@
             li {
                 z-index: 1;
 
-                &.protyle-shown {
+                &:not(.b3-list--empty) {
                     position: sticky;
                     top: 0;
-
-                    & {
-                        box-shadow: 0 -0.5px inset var(--b3-border-color-trans), 0 0.5px inset var(--b3-border-color-trans);
-                    }
+                    // box-shadow: 0 -0.5px inset var(--b3-border-color-trans), 0 0.5px inset var(--b3-border-color-trans);
                 }
 
-                // -> js
+                &.protyle-shown {
+                    // -> js
+                }
 
                 &:not(.b3-list--empty) {
                     margin: 0;
@@ -271,7 +271,7 @@
             height: 36px;
         }
 
-         .protyle-wysiwyg {
+        .protyle-wysiwyg {
             padding-top: 0 !important;
         }
     }
