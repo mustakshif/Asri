@@ -91,7 +91,7 @@
     }
 
     // 块引用 ————————————————————————————————————
-    [data-node-id] span[data-type~=block-ref],
+    [data-node-id] span[data-type~=block-ref]:not(.av__celltext),
     [data-node-id] span[data-type~=file-annotation-ref] {
         color: inherit;
         text-decoration: underline dashed;
@@ -566,6 +566,7 @@
 
 .layout-tab-container {
     background-color: transparent;
+    transition: padding 0.2s;
 }
 
 .protyle {
@@ -705,7 +706,13 @@
             transform: none;
             transition-delay: 0s;
         }
+
+        // 溢出显示
+        > .protyle-scroll__bar {
+            overflow: visible
+        }
     }
+
 
     // 文字外观
     &-font {

@@ -4,13 +4,16 @@
     body:not(.body--mobile) & {
         position: fixed;
         background-color: var(--b3-theme-surface);
-        right: 48px;
+        right: 8px;
         bottom: -4px;
         border-radius: 20px;
         height: 26px;
         border: 0;
         padding: 0 26px 0 0;
         margin: 0 0 12px 0;
+        transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        overflow: hidden;
+
         @include border-or-not;
     
         // 以下代码由于反复遍历DOM，影响性能 —————————————————————

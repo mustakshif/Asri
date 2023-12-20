@@ -82,6 +82,11 @@
 
                         .b3-label {
                             border-bottom-color: transparent;
+
+                            // 表单元素溢出显示
+                            > .fn__flex-1 {
+                                overflow: visible;
+                            }
                         }
 
                         .bazaarPanel {

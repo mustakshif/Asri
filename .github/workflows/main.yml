@@ -1,0 +1,25 @@
+name: Release
+on:
+    push:
+        tags:
+            - 'v*'
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@master
+        - name: Zip Release
+          uses: thedoctor0/zip-release@0.7.6
+          with:
+            type: 'zip'
+            filename: 'package.zip'
+            exclusions: '*.git* /*.scss /*style/*'
+    
+        - name: Create Release
+          uses: ncipollo/release-action@v1.13.0
+          with:
+            allowUpdates: true
+            artifactErrorsFailBuild: true
+            artifacts: "package.zip"
+            token: ${{ secrets.GITHUB_TOKEN }}
