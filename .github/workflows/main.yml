@@ -10,12 +10,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@master
-        - name: Package
+        - name: Zip Release
           uses: thedoctor0/zip-release@0.7.6
           with:
             type: 'zip'
             filename: 'package.zip'
-            exclusions: '*.git*, *.scss, style/**, assets/**'
+            exclusions: '*.git* /*style/* /*assets/*'
+            recursive_exclusions: *.scss
     
         - name: Create Release
           uses: ncipollo/release-action@v1.13.0
