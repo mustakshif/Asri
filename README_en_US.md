@@ -49,7 +49,7 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 
 The theme development process drew inspiration from the following themes, and I would like to express my gratitude to the developers 🙏:
 
-| Reference Content                                                 | From Theme | Author |
+| Reference Content                                                 | From Theme | Developer |
 | ---------------------------------------------------------- | ---------- | ------ |
 | Menu background blur                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
 | Hide top bar<br />Dots before sidebar panel list items<br />Outline list item icons<br />Status bar | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
