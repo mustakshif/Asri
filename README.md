@@ -53,3 +53,8 @@ Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风�
 
 * [GitHub - siyuan-note/siyuan: SiYuan is a local-first personal knowledge management system, supports fine-grained block-level reference, and Markdown WYSIWYG.](https://github.com/siyuan-note/siyuan)
 * [GitHub - sass/sass: Sass makes CSS fun!](https://github.com/sass/sass)
+
+## 更新日志
+
+### v1.0.1
+- 修复 README.md 中的图片地址

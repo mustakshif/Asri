@@ -3,8 +3,8 @@ const doms = {
     status: document.getElementById('status'),
     dockl: document.getElementById('dockLeft'),
     dockr: document.getElementById('dockRight'),
-    layoutDockl: document.querySelector('.layout__dockl'),
-    layoutDockr: document.querySelector('.layout__dockr'),
+    layoutDockl: layouts.querySelector('.layout__dockl'),
+    layoutDockr: layouts.querySelector('.layout__dockr'),
     toolbarWindow: document.querySelector('.toolbar__window'),
     toolbar: document.getElementById('toolbar')
     // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
@@ -83,8 +83,6 @@ function ModifyMacTrafficLights() {
 
 if (isMacOS() && !isInBrowser() && !isMobile()) ModifyMacTrafficLights();
 
-
-
 // function updateDocksAndLayouts() {
 //     doms.dockl = document.getElementById('dockLeft');
 //     doms.dockr = document.getElementById('dockRight');
@@ -111,7 +109,7 @@ function tabbarSpacing() {
             height: 42
         };
     }
-    
+
     let wndElements = doms.layouts.querySelectorAll('[data-type="wnd"]');
 
     if (wndElements) {
@@ -220,7 +218,7 @@ statusPositon();
  */
 function avoidOverlappingWithStatus() {
     if (!doms.status.classList.contains('.fn__none')) {
-        
+
         let layoutTabContainers = doms.layouts.querySelectorAll('.layout__center .layout-tab-container');
         let statusRect = doms.status.getBoundingClientRect();
 
@@ -239,7 +237,7 @@ function avoidOverlappingWithStatus() {
         if (searchList) {
             let searchListRect = searchList.getBoundingClientRect();
 
-            if (isOverlapping(searchListRect, statusRect)){
+            if (isOverlapping(searchListRect, statusRect)) {
                 searchList.style.paddingBottom = '35px'
             } else {
                 searchList.style.removeProperty('padding-bottom')
@@ -299,9 +297,9 @@ formatIndentGuidesForFocusedItems();
 
 function formatProtyleWithBgImageOnly() {
     let protyleBgs = doms.layouts.querySelectorAll('.protyle .protyle-background');
-    
+
     protyleBgs.forEach(protyleBg => {
-        if (!protyleBg.querySelector('.protyle-background__img img')?.classList.contains('fn__none') && protyleBg.querySelector('.protyle-background__icon.fn__none')){
+        if (!protyleBg.querySelector('.protyle-background__img img')?.classList.contains('fn__none') && protyleBg.querySelector('.protyle-background__icon.fn__none')) {
             protyleBg.classList.add('without-icon')
         } else {
             protyleBg.classList.remove('without-icon')
@@ -414,6 +412,7 @@ function layoutsObserver(funcChildList, funcAttr = undefined, fucnCharacterData 
     observer.observe(layouts, config);
 }
 
+// 开始监视变化
 docBodyObserver(
     // childList mutations func
     () => {
@@ -485,6 +484,7 @@ layoutsObserver(
     undefined,
     true
 )
+
 
 /**
  * 根据当前帧是否还有剩余的空闲时间选择是否执行任务

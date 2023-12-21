@@ -50,3 +50,8 @@ The theme development process drew inspiration from the following themes, and I 
 ## Project Dependencies
 * [GitHub - siyuan-note/siyuan: SiYuan is a local-first personal knowledge management system, supports fine-grained block-level reference, and Markdown WYSIWYG.](https://github.com/siyuan-note/siyuan)
 * [GitHub - sass/sass: Sass makes CSS fun!](https://github.com/sass/sass)
+
+## Changelogs
+
+### v1.0.1
+- fix image url in README.md
