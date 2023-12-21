@@ -45,6 +45,10 @@ The theme development process drew inspiration from the following themes, and I 
 
 （The order in the list does not imply any ranking）
 
+## Feedbacks & suggestions
+- Create an issue at [my repository page](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues)
+- Send emails to mustakshif@icloud.com
+
 ## Notes
 
 * ⚠️ Setting menu's dragable area cut to the top area of the left column.
