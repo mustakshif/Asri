@@ -47,7 +47,7 @@ The theme development process drew inspiration from the following themes, and I 
 
 ## Feedbacks & suggestions
 - Create an issue at [my repository page](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues)
-- Send emails to mustakshif@icloud.com
+- Send an email to mustakshif@icloud.com
 
 ## Notes
 
