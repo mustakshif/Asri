@@ -229,10 +229,8 @@ function avoidOverlappingWithStatus() {
                 let containerRect = layoutTabContainer.getBoundingClientRect();
                 if (isOverlapping(containerRect, statusRect)) {
                     layoutTabContainer.style.paddingBottom = '35px'
-                    console.log('formatted')
                 } else {
                     layoutTabContainer.style.removeProperty('padding-bottom');
-                    console.log('canceled')
                 }
             }
         })
