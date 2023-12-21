@@ -2,6 +2,7 @@
 
 @mixin layout-tab-container-contents {
     .block__icons {
+        
         .block__logo {
             svg {
                 visibility: hidden;
@@ -277,16 +278,15 @@
     }
 }
 
-// 避让状态栏
-body.body-status-shown {
-
-    .layout__dockr:not(.layout--float),
-    .layout__resize+.fn__flex-1 .layout-tab-container .file-tree {
-        .b3-list--background {
-            padding-bottom: 36px;
-        }
-    }
-}
+// // 避让状态栏
+// body.body-status-shown {
+//     .layout__dockr:not(.layout--float),
+//     .layout__resize+.fn__flex-1 .layout-tab-container .file-tree {
+//         .b3-list--background {
+//             padding-bottom: 36px;
+//         }
+//     }
+// }
 
 // -> js
 
@@ -362,4 +362,9 @@ body.body-status-shown {
 // 列表展开动画
 .file-tree__sliderDown {
     top: -4px !important;
+}
+
+// 全屏状态
+.fullscreen > .block__icons {
+    height: 48px;
 }

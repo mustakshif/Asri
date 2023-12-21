@@ -1,6 +1,6 @@
 [简体中文](./README.md) | English
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v3.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v4.png)
 
 # Hadeeth, theme for SiYuan
 
@@ -25,6 +25,11 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 * ↕️ Default system style scrollbar used on macOS.
 * 🚥 Position of traffic lights on Mac side adjusted, optimizing the layout rhythm.
 * ...
+
+## Changelogs
+
+### v1.0.1
+- fixed image url in README.md
 
 ## Plans
 
@@ -56,8 +61,3 @@ The theme development process drew inspiration from the following themes, and I 
 ## Project Dependencies
 * [GitHub - siyuan-note/siyuan: SiYuan is a local-first personal knowledge management system, supports fine-grained block-level reference, and Markdown WYSIWYG.](https://github.com/siyuan-note/siyuan)
 * [GitHub - sass/sass: Sass makes CSS fun!](https://github.com/sass/sass)
-
-## Changelogs
-
-### v1.0.1
-- fixed image url in README.md
