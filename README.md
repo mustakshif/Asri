@@ -1,6 +1,6 @@
 简体中文 ｜ [English](./README_en_US.md)
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v2.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v3.png)
 
 # Hadeeth, theme for SiYuan
 
