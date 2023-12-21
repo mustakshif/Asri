@@ -157,7 +157,7 @@ function isLayoutDockHidden(direction) {
 }
 
 /**
- * 边栏面板战开始边栏的背景变化
+ * 边栏面板展开时边栏的背景变化
  */
 function dockBg() {
     function isDockLytPinned(node) {
@@ -534,10 +534,6 @@ function runWhenIdle(func) {
     })
 }
 
-// new Promise((resolve) => {
-//     _runTask(monitorDOM, resolve);
-//     console.log('task run')
-// });
 
 function getDblClickMouseXY() {
     window.addEventListener('dblclick', handleDblClick);
