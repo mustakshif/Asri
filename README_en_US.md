@@ -34,9 +34,7 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 - Added feedback & suggestions section to README.
 
 ### v1.0.1
-- Fixed image addresses in README.md.
-### v1.0.1
-- Fixed image url in README.md
+- Fixed image url in README
 
 ## Plans
 
