@@ -29,7 +29,7 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 ## Changelog
 
 ### v1.0.2
-- Adjusted the height of breadcrumbs, side panel title bar under fullscreen.
+- Adjusted the height of breadcrumbs, side panel title bar under fullscreen view.
 - Fixed an issue where JavaScript was not effective in certain situations.
 - Added feedback & suggestions section to README.
 
