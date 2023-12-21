@@ -1,6 +1,6 @@
 简体中文 ｜ [English](./README_en_US.md)
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v5.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v6.png)
 
 # Hadeeth, theme for SiYuan
 
@@ -32,7 +32,9 @@ Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风�
 
 ### v1.0.2
 - 调整全屏状态下面包屑、侧栏面板标题栏的高度
-
+- 修复部分情况下 js 代码不生效的问题
+- README中新增反馈和建议
+  
 ### v1.0.1
 - 修复 README.md 中的图片地址
 

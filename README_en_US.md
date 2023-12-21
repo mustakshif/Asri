@@ -1,6 +1,6 @@
 [简体中文](./README.md) | English
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v5.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v6.png)
 
 # Hadeeth, theme for SiYuan
 
@@ -26,8 +26,15 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 * 🚥 Position of traffic lights on Mac side adjusted, optimizing the layout rhythm.
 * ...
 
-## Changelogs
+## Changelog
 
+### v1.0.2
+- Adjusted the height of breadcrumbs, side panel title bar under fullscreen.
+- Fixed an issue where JavaScript was not effective in certain situations.
+- Added feedback & suggestions section to README.
+
+### v1.0.1
+- Fixed image addresses in README.md.
 ### v1.0.1
 - fixed image url in README.md
 
