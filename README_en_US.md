@@ -13,7 +13,7 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
   * 📌 Window drag area adjusted to **blank areas** of:
     * **Tab bar**
     * **Breadcrumb**
-    * **Sidebar panel title and top**
+    * **Sidebar panel title and above**
 * ➖ Dividing lines simplified, creating a consistent and organized layout style.
 * 📐 Extra spacing between layout blocks removed, expanding overall display range.
 * 🌓 Light and dark modes supportted.
@@ -43,6 +43,8 @@ The theme development process drew inspiration from the following themes, and I 
 | Hide top bar<br />Dots before sidebar panel list items<br />Outline list item icons<br />Status bar | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
 | file tree indent guides<br />`setMutationObserver` function                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
 
+（The order in the list does not imply any ranking）
+
 ## Notes
 
 * ⚠️ Setting menu's dragable area cut to the top area of the left column.
@@ -54,4 +56,4 @@ The theme development process drew inspiration from the following themes, and I 
 ## Changelogs
 
 ### v1.0.1
-- fix image url in README.md
+- fixed image url in README.md

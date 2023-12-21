@@ -1,6 +1,6 @@
 简体中文 ｜ [English](./README_en_US.md)
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v2.png)
 
 # Hadeeth, theme for SiYuan
 
@@ -44,6 +44,8 @@ Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风�
 | 菜单背景模糊                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
 | 隐藏顶栏<br />侧栏面板列表项前圆点<br />大纲列表标题图标<br />状态栏 | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
 | 文档树缩进线<br />`setMutationObserver` 函数                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
+
+(以上排名不分先后)
 
 ## 其他
 

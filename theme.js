@@ -345,20 +345,53 @@ function setCompoundMutationObserver(funcChildList, funcAttr = undefined, fucnCh
 }
 
 // observers ————————————————————————————————————————————————
+
+/**
+ * 
+ * @param {Function} observer Mutation Observer
+ * @param {Node} targetEl 
+ * @param {Object} config observe config
+ * @returns observer with isActive property, start() and stop() method
+ */
+function addObserverSwitch(observer, targetEl, config) {
+    observer.isActive = false;
+    observer.start = function() {
+        if (!this.isActive) {
+            this.observe(targetEl, config);
+            this.isActive = true
+        } else {
+            console.log('Observer 已在运行')
+        }
+    }
+
+    observer.stop = function() {
+        if (this.isActive) {
+            this.disconnect();
+            this.isActive = false;
+        } else {
+            console.log("Observer 已经处于停止状态");
+        }
+    };
+
+    return observer
+}
+
 /**
  * 
  * @param {Function | undefined} funcChildList 
  * @param {Function | undefined} funcAttr default: undefined
  * @param {boolean} subTree default: false
  */
-function docBodyObserver(funcChildList, funcAttr = undefined, subTree = false) {
+function createDocBodyObserver(funcChildList, funcAttr = undefined, subTree = false) {
     let config = {};
     if (funcChildList) config.childList = true;
     if (funcAttr) config.attributes = true;
     if (funcChildList && subTree) config.subtree = true;
 
     let observer = setCompoundMutationObserver(funcChildList, funcAttr);
-    observer.observe(document.body, config);
+    let targetEl = document.body;
+
+    return addObserverSwitch(observer, targetEl, config);
 }
 
 /**
@@ -413,7 +446,7 @@ function layoutsObserver(funcChildList, funcAttr = undefined, fucnCharacterData 
 }
 
 // 开始监视变化
-docBodyObserver(
+let docBodyObserver = createDocBodyObserver(
     // childList mutations func
     () => {
         // emoji dialog
@@ -422,7 +455,8 @@ docBodyObserver(
             dialog.classList.add('emojis-container');
         }
     }
-)
+);
+docBodyObserver.start();
 
 // 左栏dock
 dockObserver('l', 'attributes', () => {
@@ -435,6 +469,18 @@ dockObserver('r', 'attributes', () => {
     statusPositon();
     avoidOverlappingWithStatus();
 });
+
+function getLayoutDocks() {
+    let count = 0;
+    while ((doms.layoutDockl == null || doms.layoutDockr == null) && count < 100) {
+        doms.layoutDockl = doms.layouts.querySelector('.layout__dockl');
+        doms.layoutDockr = doms.layouts.querySelector('.layout__dockr');
+        count++;
+        console.log(doms)
+    }   
+}
+
+runWhenIdle(getLayoutDocks);
 
 // 左栏面板
 dockLayoutObserver(
