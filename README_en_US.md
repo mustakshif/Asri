@@ -26,7 +26,7 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 * ↕️ Default system style scrollbar used on macOS.
 * 🚥 Position of traffic lights on MacOS adjusted, optimizing the layout rhythm.
 
-  * 📌 You will need to restart the application after switching to another theme to restore the traffic light to the original position.
+  * 📌 You will need to restart the application after switching to another theme to restore the traffic light to its default position.
 * ...
 
 ## Changelog
@@ -66,7 +66,7 @@ The theme development process drew inspiration from the following themes, and I 
 
 （The order in the list does not imply any ranking）
 
-Other reference materials include:
+Other reference materials:
 
 * macOS Sonoma system applications
 * [Apple's Human Interface Guidelines - Foundations - Color](https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/)

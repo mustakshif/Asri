@@ -28,7 +28,7 @@ Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风�
 * ↕️ 修改 Mac 端滚动条为系统样式
 * 🚥 调整 Mac 端红绿灯位置，优化版面节奏
 
-  * 📌 切换至其他主题后需要重启应用才能恢复至原本位置
+  * 📌 切换至其他主题后需要重启应用才能将红绿灯恢复至默认位置
 * ……
 
 ## 更新日志
@@ -67,7 +67,7 @@ Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风�
 
 (以上排名不分先后)
 
-其他参考内容包括：
+其他参考内容：
 * macOS Sonoma 系统应用样式
 * [苹果人机界面指南 - 基础 - 颜色](https://developer.apple.com/cn/design/human-interface-guidelines/color)
 
