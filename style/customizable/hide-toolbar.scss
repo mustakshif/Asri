@@ -105,7 +105,10 @@ body:not(.body--mobile) {
         width: 100%;
         transition: opacity 300ms, transform 300ms;
         transition-delay: 0.3s;
-        z-index: 3; //用 js 动态设置，比菜单低，比 layout--float 高
+        z-index: 9; 
+        // 需要比.fullscreen（z-index: 8）高
+        //比菜单低，比 layout--float 高
+
         @include toolbarHidden;
 
         &:hover {
@@ -117,6 +120,7 @@ body:not(.body--mobile) {
             @include toolbarHidden;
 
             #drag {
+                // 使鼠标事件立即失效
                 app-region: drag;
             }
         }
@@ -325,7 +329,10 @@ body:not(.body--mobile) {
         }
     }
 
-    .layout__dockl.layout--float:not([style*='transform'])~.layout__center &__space {
+    .layout__dockl.layout--float:not([style*='transform'])~.layout__center &__space,
+
+    // 全屏视图下
+    #toolbar:hover+.fn__flex-1 #layouts .fullscreen &__space {
         app-region: unset;
     }
 }
@@ -340,6 +347,13 @@ body:not(.body--mobile) {
                 app-region: unset;
             }
         }
+    }
+}
+
+// 全屏关系图
+.fullscreen>.block__icons>.fn__flex-1{
+    #toolbar:hover + .fn__flex-1 #layouts & {
+        app-region: unset;
     }
 }
 

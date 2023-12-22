@@ -711,6 +711,10 @@
         > .protyle-scroll__bar {
             overflow: visible
         }
+
+        &__bar{
+            top: calc(50% - 12px);
+        }
     }
 
 

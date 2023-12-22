@@ -278,6 +278,10 @@
     }
 }
 
+.graph:not(.fullscreen) {
+    background-color: transparent;
+}
+
 // // 避让状态栏
 // body.body-status-shown {
 //     .layout__dockr:not(.layout--float),
@@ -366,5 +370,14 @@
 
 // 全屏状态
 .fullscreen > .block__icons {
-    height: 48px;
+    height: var(--toolbar-height);
+    padding-right: 10px;
+
+    > .fn__flex-1:hover {
+        background-color: transparent;
+    }
+
+    body.body-win32 & {
+        padding-right: 10px;
+    }
 }

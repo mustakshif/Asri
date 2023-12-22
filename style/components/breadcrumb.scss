@@ -5,7 +5,17 @@
     color: var(--b3-theme-on-surface);
 
     .fullscreen>& {
-        height: 48px;
+        height: var(--toolbar-height);
+        padding-right: 10px;
+
+        >.protyle-breadcrumb__space:hover{
+            background-color: transparent;
+        }
+
+        body.body--win32 & {
+            padding-right: 10px;
+            // 默认会给窗口控制留空间，为108px
+        }
     }
 
     // 以下代码影响页面滚动性能

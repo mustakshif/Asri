@@ -21,7 +21,8 @@
     #closeWindow{
         padding: 9px;
         padding-right: 16px;
-        &:hover{
+        &:hover,
+        body.body--win32 &:hover{
             color: var(--b3-theme-error);
             background-color: transparent;
         }

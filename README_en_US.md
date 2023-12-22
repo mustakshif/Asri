@@ -1,6 +1,6 @@
 [简体中文](https://github.com/mustakshif/Hadeeth-for-SiYuan/blob/main/README.md) | English
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v6.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v7.png)
 
 # Hadeeth - theme for SiYuan
 
@@ -31,13 +31,20 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 
 ## Changelog
 
-### v1.0.2
-- Adjusted the height of breadcrumbs, side panel title bar under fullscreen view.
-- Fixed an issue where JavaScript was not effective in certain situations.
-- Added feedback & suggestions section to README.
+Latest updates:
 
-### v1.0.1
-- Fixed image url in README
+### v1.0.3
+
+* Fixed the problem of not being able to bring up the toolbar in full-screen views.
+* Fixed the problem of slider elements being clipped.
+* Fixed the issue of incorrect display of the icon tooltip layer of the header image.
+* Adjusted the background color of pinned graph views to be consistent with other side panels.
+* Adjusted the position of the document block slider to align it vertically.
+* Adjusted the font list for code blocks, with `JetBrainsMono-Regular` having higher priority.
+* Adjusted the padding inside the fixed tab icon on the Windows platform.
+* Adjust the style of the window close button on the Windows platform.
+
+For all updates, see 👉 [CHANGELOG](./CHANGELOG.md)
 
 ## Plans
 

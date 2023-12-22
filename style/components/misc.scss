@@ -159,10 +159,8 @@ textarea {
 
 // 滑动条
 .b3-slider {
-    // .b3-tooltips:has(>&) {
-    //     overflow: visible;
-    // }
-
+    height: 24px;
+    
     &::-webkit-slider-runnable-track {
         height: 6px;
         border-radius: 9px;
