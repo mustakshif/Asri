@@ -16,14 +16,17 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
     * **Sidebar panel title and above**
 * ➖ Dividing lines simplified, creating a consistent and organized layout style.
 * 📐 Extra spacing between layout blocks removed, expanding overall display range.
-* 🌓 Light and dark modes supportted.
+* 🌓 Light and dark modes supported.
 * 🗂️ File tree and outline indent guides line added.
 * 🔗 Backlink list display optimized.
+* 🧩 Styles of iFrame, videos, images, and other controls redesigned.
 * 🧊 Glassmorphism introduced, enhancing the visual hierarchy.
 * 💫 Lively effects added appropriately, enriching the interaction experience.
 * 🚀 High level of performance maintained.
 * ↕️ Default system style scrollbar used on macOS.
 * 🚥 Position of traffic lights on Mac side adjusted, optimizing the layout rhythm.
+
+  * 📌 You will need to restart the application after switching to another theme to restore the traffic light to the original position.
 * ...
 
 ## Changelog

@@ -18,6 +18,16 @@
         padding-left: 8px;
     }
 
+    #closeWindow{
+        padding: 9px;
+        padding-right: 16px;
+        &:hover{
+            color: var(--b3-theme-error);
+            background-color: transparent;
+        }
+    }
+
+
     // 应用全屏时
     &[style="padding-left: 0px;"] {
         padding-left: 8px !important;

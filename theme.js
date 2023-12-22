@@ -395,24 +395,24 @@ function dockLayoutObserver(direction, funcChildList, funcAttr = undefined, fucn
     // 解决部分情况下layoutDock元素加载滞后于此js而出现无法启动监视的情况
     if (dockLayout) observer.observe(dockLayout, config);
     else {
-        let count = 0;
-        let intervalID;
+        let count = 0,
+            maxCount = 10;
+        let tryGetLayoutDock;
+
         function updateDockLayout() {
             dockLayout = doms.layouts.querySelector(`.layout__dock${direction}`);
             count++;
 
-            if (count === 5 || dockLayout) {
-                clearInterval(intervalID);
+            if (count === maxCount || dockLayout) {
+                clearInterval(tryGetLayoutDock);
                 doms[`layoutDock${direction}`] = dockLayout;
-                observer.observe(dockLayout, config);
                 dockBg();
+                observer.observe(dockLayout, config);
             }
         }
 
         setTimeout(() => {
-            intervalID = setInterval(() => {
-                updateDockLayout()
-            }, 1000);
+            tryGetLayoutDock = setInterval(updateDockLayout, 1000);
         }, 0);
     }
 }
