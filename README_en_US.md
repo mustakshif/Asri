@@ -65,7 +65,7 @@ The theme development process drew inspiration from the following themes, and I 
 
 （The order in the list does not imply any ranking）
 
-Other reference materials include:
+Other reference materials:
 
 * macOS Sonoma system applications
 * [Apple's Human Interface Guidelines - Foundations - Color](https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/)
