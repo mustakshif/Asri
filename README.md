@@ -1,6 +1,6 @@
-简体中文 ｜ [English](https://github.com/mustakshif/Hadeeth-for-SiYuan/blob/main/README_en_US.md)
-
 ![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v7.png)
+
+简体中文 ｜ [English](https://github.com/mustakshif/Hadeeth-for-SiYuan/blob/main/README_en_US.md)
 
 # Hadeeth - theme for SiYuan
 
@@ -53,6 +53,7 @@ Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风�
 * 优化文档页面顶部标签显示
 * 持续优化流畅度
 * 优化数据库元素样式
+* 优化闪卡样式
 
 ## 鸣谢
 

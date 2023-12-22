@@ -1,6 +1,6 @@
-[简体中文](https://github.com/mustakshif/Hadeeth-for-SiYuan/blob/main/README.md) | English
-
 ![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v7.png)
+
+[简体中文](https://github.com/mustakshif/Hadeeth-for-SiYuan/blob/main/README.md) | English
 
 # Hadeeth - theme for SiYuan
 
@@ -51,7 +51,8 @@ For all updates, see 👉 [CHANGELOG](./CHANGELOG.md)
 * Adapt to mobile platform.
 * Optimize the display of tags on top of the document page.
 * Continuous performance improvement.
-* Optimize database element style.
+* Optimize database element styles.
+* Optimize flashcards styles.
 
 ## Acknowledgements
 
