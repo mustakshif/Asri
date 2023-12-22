@@ -49,7 +49,6 @@ For all updates, see 👉 [CHANGELOG](./CHANGELOG.md)
 ## Plans
 
 * Adapt to mobile platform.
-* Optimize the display of tags on top of the document page.
 * Continuous performance improvement.
 * Optimize database element styles.
 * Optimize flashcards styles.
