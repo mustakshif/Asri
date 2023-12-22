@@ -1,4 +1,4 @@
-[简体中文](./README.md) | English
+[简体中文](https://github.com/mustakshif/Hadeeth-for-SiYuan/blob/main/README.md) | English
 
 ![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v6.png)
 
