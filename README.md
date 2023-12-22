@@ -60,6 +60,10 @@ Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风�
 
 (以上排名不分先后)
 
+其他参考内容包括：
+* macOS Sonoma 系统应用样式
+* [苹果人机界面指南 - 基础 - 颜色](https://developer.apple.com/cn/design/human-interface-guidelines/color)
+
 ## 反馈和建议
 - [项目主页](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues)提交 issue
 - 发送邮件至 mustakshif@icloud.com
