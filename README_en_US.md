@@ -24,7 +24,7 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 * 💫 Lively effects added appropriately, enriching the interaction experience.
 * 🚀 High level of performance maintained.
 * ↕️ Default system style scrollbar used on macOS.
-* 🚥 Position of traffic lights on Mac side adjusted, optimizing the layout rhythm.
+* 🚥 Position of traffic lights on MacOS adjusted, optimizing the layout rhythm.
 
   * 📌 You will need to restart the application after switching to another theme to restore the traffic light to the original position.
 * ...
