@@ -2,7 +2,7 @@
 
 ![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v6.png)
 
-# Hadeeth, theme for SiYuan
+# Hadeeth - theme for SiYuan
 
 An ultra-modern macOS-like theme that offers a lightweight and minimalistic style, providing an elegant and efficient note-taking experience.
 
