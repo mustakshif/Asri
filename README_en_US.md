@@ -24,7 +24,7 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 * 💫 Lively effects added appropriately, enriching the interaction experience.
 * 🚀 High level of performance maintained.
 * ↕️ Default system style scrollbar used on macOS.
-* 🚥 Position of traffic lights on Mac side adjusted, optimizing the layout rhythm.
+* 🚥 Position of traffic lights on MacOS adjusted, optimizing the layout rhythm.
 
   * 📌 You will need to restart the application after switching to another theme to restore the traffic light to the original position.
 * ...
@@ -53,8 +53,8 @@ The theme development process drew inspiration from the following themes, and I 
 | Reference Content                                                 | From Theme | Developer |
 | ---------------------------------------------------------- | ---------- | ------ |
 | Menu background blur                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
-| Hide top bar<br />Dots before sidebar panel list items<br />Outline list item icons<br />Status bar | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
-| file tree indent guides<br />`setMutationObserver` function                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
+|Toolbar hiding<br />Dots before sidebar panel list items<br />Outline list item icons<br />Status bar | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
+| File tree indent guides<br />`setMutationObserver` function                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
 
 （The order in the list does not imply any ranking）
 
