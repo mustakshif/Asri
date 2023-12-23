@@ -294,6 +294,10 @@
                 &--text {
                     @include button-action('primary');
                 }
+
+                &--error {
+                    @include button-action('danger');
+                }
             }
         }
     }

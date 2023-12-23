@@ -126,10 +126,19 @@
 @mixin button-action($type) {
     border-radius: 99px;
     padding: 4px 12px;
+    &:hover {
+        box-shadow: none;
+    }
     &:active {
         transform: scale(0.95);
         opacity: 0.8;
+        box-shadow: none;
     }
+    &:focus{
+        box-shadow: none;
+    }
+
+    transition: 0.2s;
 
     @if $type=='normal' {
         color: var(--b3-theme-on-surface);
@@ -164,6 +173,7 @@
     @else if $type =='danger' {
         color: var(--b3-theme-error);
         font-weight: 600;
+        background-color: transparent;
 
         &:hover {
             @include theme-variant-color(background-color, error, 0.08)

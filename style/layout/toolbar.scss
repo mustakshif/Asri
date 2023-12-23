@@ -4,12 +4,31 @@
     height: var(--toolbar-height);
     background-color: var(--b3-theme-background);
     #barWorkspace {
-        background-color: var(--b3-theme-primary);
+        background-color: transparent;
         color:var(--b3-theme-on-primary);
         font-weight: 600;
+        height: var(--toolbar-height);
+        position: relative;
+
+        &::before {
+            content: '';
+            display: block;
+            height: 28px;
+            width: 100%;
+            position: absolute;
+            background-color: var(--b3-theme-primary);
+            z-index: -1;
+            transform: translate(-5px, 5px);
+            border-radius: 6px;
+        }
+
         .toolbar__text {
-            font-size: 13px;
-            line-height: 13.5px;
+            font-size: 14px;
+            align-self: center;
+        }
+
+        svg.toolbar__svg{
+            align-self: center;
         }
     }
 
