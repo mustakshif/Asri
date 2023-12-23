@@ -84,7 +84,7 @@ Other reference materials:
 
 ## Notes
 
-* ⚠️ Setting menu's dragable area cut to the top area of the left column.
+* Setting menu's dragable area cut to the top area of the left column.
 
 ## Project Dependencies
 * [GitHub - siyuan-note/siyuan: SiYuan is a local-first personal knowledge management system, supports fine-grained block-level reference, and Markdown WYSIWYG.](https://github.com/siyuan-note/siyuan)
