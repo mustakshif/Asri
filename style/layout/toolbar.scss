@@ -3,6 +3,7 @@
 #toolbar {
     height: var(--toolbar-height);
     background-color: var(--b3-theme-background);
+
     #barWorkspace {
         background-color: transparent;
         color:var(--b3-theme-on-primary);
@@ -31,6 +32,14 @@
             align-self: center;
         }
     }
+
+    // .toolbar__item {
+    //     height: var(--toolbar-height);
+        
+    //     svg {
+    //         align-self: center;
+    //     }
+    // }
 
     &.toolbar--browser,
     body.body--win32 & {

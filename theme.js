@@ -160,30 +160,44 @@ function isLayoutDockHidden(direction) {
  * 边栏面板展开时边栏的背景变化
  */
 function dockBg() {
+
     function isDockLytPinned(node) {
         return node && !node.classList.contains('layout--float');
     }
     function isDockLytExpanded(node) {
-        return node.style.width !== '0px';
+        return node?.style.width !== '0px';
+    }
+    function isFloatDockLytHidden(node) {
+        return !isDockLytPinned(node) && node?.style.cssText.includes('transform: translateX');
     }
 
-    let docklLayout = doms.layoutDockl,
-        dockrLayout = doms.layoutDockr,
-        dockl = doms.dockl,
-        dockr = doms.dockr;
+    for (let dir of ['l', 'r']) {
 
-    if (isDockLytPinned(docklLayout) && isDockLytExpanded(docklLayout)) {
-        dockl.classList.add('dock-layout-expanded');
-    } else {
-        dockl?.classList.remove('dock-layout-expanded');
-    }
-
-    if (isDockLytPinned(dockrLayout) && isDockLytExpanded(dockrLayout)) {
-        dockr.classList.add('dock-layout-expanded');
-    } else {
-        dockr?.classList.remove('dock-layout-expanded');
+        let lyt = doms[`layoutDock${dir}`],
+            dock = doms[`dock${dir}`];
+            
+        if (isDockLytPinned(lyt) && isDockLytExpanded(lyt)) {
+            dock.classList.add('dock-layout-expanded');
+        } else {
+            dock.classList.remove('dock-layout-expanded');
+        }
+        
+        if (!isDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
+            switch(dir){
+                case 'l':
+                    dock.style.borderRightColor = 'transparent';
+                    break;
+                case 'r':
+                    dock.style.borderLeftColor = 'transparent';
+                    break;
+            }
+        } else {
+            dock.style.removeProperty('border-left-color');
+            dock.style.removeProperty('border-right-color');
+        }
     }
 }
+
 dockBg();
 
 /**
