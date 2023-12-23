@@ -11,7 +11,7 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 * 📃 Top bar hidden, window drag area adjusted for maximum display space.
   * 📌 Quickly access the top bar by hovering over the area with interactive icons on the left and right sides of the top of the window.
   * 📌 Window drag area adjusted to **blank areas** of:
-    * **Tab bar**
+    * **Tab bar (not toolbar/top bar!)**
     * **Breadcrumb**
     * **Sidebar panel title and above**
 * ➖ Dividing lines simplified, creating a consistent and organized layout style.
