@@ -69,7 +69,7 @@ The theme development process drew inspiration from the following themes, and I 
 |Toolbar hiding<br />Dots before sidebar panel list items<br />Outline list item icons<br />Status bar | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
 | File tree indent guides<br />`setMutationObserver` function                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
 
-（The order in the list does not imply any ranking）
+（The order in the list above does not imply any ranking）
 
 Other reference materials:
 
