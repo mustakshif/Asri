@@ -44,7 +44,7 @@ Latest updates:
 * Adjusted the padding inside the fixed tab icon on the Windows platform.
 * Adjust the style of the window close button on the Windows platform.
 
-For all updates, see 👉 [CHANGELOG](./CHANGELOG.md)
+Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
 ## Plans
 
