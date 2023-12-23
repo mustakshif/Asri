@@ -29,7 +29,7 @@
 * Adjusted the background color of pinned graph views to be consistent with other side panels.
 * Adjusted the position of the document block slider to align it vertically.
 * Adjusted the font list for code blocks, with `JetBrainsMono-Regular` having higher priority.
-* Adjusted the padding inside the fixed tab icon on the Windows platform.
+* Adjusted the icon padding inside the pinned tab on the Windows platform.
 * Adjusted the style of the window close button on the Windows platform.
 
 ---
