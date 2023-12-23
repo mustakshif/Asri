@@ -13,7 +13,7 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 * 📃 Top bar hidden, window drag area adjusted for maximum display space.
   * 📌 Quickly access the top bar by hovering over the area with interactive icons on the left and right sides of the top of the window.
   * 📌 Window drag area adjusted to **blank areas** of:
-    * **Tab bar**
+    * **Tab bar (not toolbar/top bar!)**
     * **Breadcrumb**
     * **Sidebar panel title and above**
 * ➖ Dividing lines simplified, creating a consistent and organized layout style.
@@ -71,7 +71,7 @@ The theme development process drew inspiration from the following themes, and I 
 |Toolbar hiding<br />Dots before sidebar panel list items<br />Outline list item icons<br />Status bar | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
 | File tree indent guides<br />`setMutationObserver` function                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
 
-（The order in the list does not imply any ranking）
+（The order in the list above does not imply any ranking）
 
 Other reference materials:
 
