@@ -1,3 +1,15 @@
+### v1.0.4
+
+* 扩大顶栏「主菜单」图标的响应区域，呼出顶栏后无需再次移动鼠标就可点击
+* 调整对话框的错误按钮样式
+
+<br />
+
+* Expanded the responsive area of the “main menu” button in the toolbar (top bar), allowing users to click it without extra mouse movements after the toolbar appears.
+* Modified the error button in dialogs.
+
+---
+
 ### v1.0.3
 
 * 修复全屏视图下无法呼出顶栏的问题

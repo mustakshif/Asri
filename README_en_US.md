@@ -23,8 +23,8 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 * 🧊 Glassmorphism introduced, enhancing the visual hierarchy.
 * 💫 Lively effects added appropriately, enriching the interaction experience.
 * 🚀 High level of performance maintained.
-* ↕️ System scrollbar used on macOS, being able to hide automatically.
-* 🚥 Position of traffic lights on MacOS adjusted, optimizing the layout rhythm.
+* ↕️ Applied system scrollbar on macOS, which can be hidden automatically and reduce visual interference.
+* 🚥 Position of traffic lights on macOS adjusted, optimizing the layout rhythm.
 
   * 📌 You will need to restart the application after switching to another theme to restore the traffic light to its default position.
 * ...
@@ -32,6 +32,12 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 ## Changelog
 
 Latest updates:
+
+### v1.0.4
+
+  * Expanded the responsive area of the "main menu" button in the toolbar (top bar), allowing users to click it without extra mouse movements after the toolbar appears.
+* Modified the error button in dialogs.
+
 
 ### v1.0.3
 
