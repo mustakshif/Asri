@@ -33,8 +33,8 @@ An ultra-modern macOS-like theme for [SiYuan](https://github.com/siyuan-note/siy
 
 ## How to use
 
-1. Automatic download & updates: Go to the `Settings - Bazaar - Themes` in SiYuan and search for "Hadeeth" to download and apply.
-2. Manual download & updates: Download the `package.zip` from the releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart the application. Then choose "Hadeeth" in your theme list in `Settings - Appearance`.
+* Automatic download & updates: Go to the `Settings - Bazaar - Themes` in SiYuan and search for "Hadeeth" to download and apply.
+* Manual download & updates: Download the `package.zip` from the releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart the application. Then choose "Hadeeth" in your theme list in `Settings - Appearance`.
 
 ## Changelog
 
