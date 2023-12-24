@@ -230,6 +230,10 @@
                                     }
                                 }
                             }
+                            
+                            .item__main {
+                                border-radius: 6px;
+                            }
                         }
 
                         &[data-name="account"] {

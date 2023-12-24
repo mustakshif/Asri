@@ -299,7 +299,7 @@ function formatSyBacklinkItemsLayout() {
 function formatIndentGuidesForFocusedItems() {
     let listItemsFocus = doms.layouts.querySelectorAll('.file-tree .b3-list-item--focus');
 
-    document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
+    doms.layouts.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
 
     for (let li of listItemsFocus) {
         if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
@@ -348,10 +348,10 @@ function setCompoundMutationObserver(funcChildList, funcAttr = undefined, fucnCh
         mutationList.forEach(mutation => {
             if (funcChildList && mutation.type === 'childList') {
                 funcChildList(mutation, observer);
-            } else if (fucnCharacterData && mutation.type === 'characterData') {
-                fucnCharacterData(mutation, observer);
             } else if (funcAttr && mutation.type === 'attributes') {
                 funcAttr(mutation, observer);
+            } else if (fucnCharacterData && mutation.type === 'characterData') {
+                fucnCharacterData(mutation, observer);
             }
         })
     }

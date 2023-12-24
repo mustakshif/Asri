@@ -6,7 +6,7 @@
 
 # Hadeeth - theme for SiYuan
 
-An ultra-modern macOS-like theme that offers a lightweight and minimalistic style, providing an elegant and efficient note-taking experience.
+An ultra-modern macOS-like theme for [SiYuan](https://github.com/siyuan-note/siyuan), provides an elegant and efficient note-taking experience with its lightweight and minimalistic style,.
 
 ## Theme Features
 
@@ -30,6 +30,11 @@ An ultra-modern macOS-like theme that offers a lightweight and minimalistic styl
 
   * 📌 You will need to restart the application after switching to another theme to restore the traffic light to its default position.
 * ...
+
+## How to use
+
+1. Automatic download & updates: Go to the `Settings - Bazaar - Themes` in SiYuan and search for "Hadeeth" to download and apply.
+2. Manual download & updates: Download the `package.zip` from the releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart the application. Then choose "Hadeeth" in your theme list in `Settings - Appearance`.
 
 ## Changelog
 
@@ -87,5 +92,5 @@ Other reference materials:
 * Setting menu's dragable area cut to the top area of the left column.
 
 ## Project Dependencies
-* [GitHub - siyuan-note/siyuan: SiYuan is a local-first personal knowledge management system, supports fine-grained block-level reference, and Markdown WYSIWYG.](https://github.com/siyuan-note/siyuan)
+* [GitHub - siyuan-note/siyuan: A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.](https://github.com/siyuan-note/siyuan)
 * [GitHub - sass/sass: Sass makes CSS fun!](https://github.com/sass/sass)

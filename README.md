@@ -6,7 +6,7 @@
 
 # Hadeeth - theme for SiYuan
 
-Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
+Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyuan-note/siyuan)主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
 
 ## 主题特性
 
@@ -32,6 +32,11 @@ Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风�
 
   * 📌 切换至其他主题后需要重启应用才能将红绿灯恢复至默认位置
 * ……
+
+## 如何使用
+
+1. 自动下载更新：进入思源笔记应用，在`设置-集市-主题`中搜索下载「Hadeeth」并应用
+2. 手动下载更新：下载 release 中的 `package.zip`，手动解压至思源笔记工作空间下的`conf/appearance/themes`，重启思源，在应用`设置-外观`中选择 Hadeeth 主题
 
 ## 更新日志
 
@@ -87,6 +92,6 @@ Hadeeth 是一款极富现代感的类 macOS 主题，以轻量、极简的风�
 
 ## 项目依赖
 
-* [GitHub - siyuan-note/siyuan: SiYuan is a local-first personal knowledge management system, supports fine-grained block-level reference, and Markdown WYSIWYG.](https://github.com/siyuan-note/siyuan)
+* [GitHub - siyuan-note/siyuan: A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.](https://github.com/siyuan-note/siyuan)
 * [GitHub - sass/sass: Sass makes CSS fun!](https://github.com/sass/sass)
 

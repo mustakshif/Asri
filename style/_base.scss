@@ -188,7 +188,8 @@
 }
 
 // ——————————————————————————
-
+@mixin scroll-fading($start:true, $end:true) {
+}
 
 // color scheme related mixins————————————————
 $theme-light: (
