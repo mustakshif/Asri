@@ -6,7 +6,7 @@
 
 # Hadeeth - theme for SiYuan
 
-An ultra-modern macOS-like theme for [SiYuan](https://github.com/siyuan-note/siyuan), provides an elegant and efficient note-taking experience with its lightweight and minimalistic style,.
+An ultra-modern macOS-like theme for [SiYuan](https://github.com/siyuan-note/siyuan), provides an elegant and efficient note-taking experience with its lightweight and minimalistic style.
 
 ## Theme Features
 
