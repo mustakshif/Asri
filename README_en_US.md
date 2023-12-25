@@ -13,7 +13,7 @@ An ultra-modern macOS-like theme for [SiYuan](https://github.com/siyuan-note/siy
 * 📃 Top bar hidden, window drag area adjusted for maximum display space.
   * 📌 Quickly access the top bar by hovering over the area with interactive icons on the left and right sides of the top of the window.
   * 📌 Window drag area adjusted to **blank areas** of:
-    * **Tab bar (not toolbar/top bar!)**
+    * **Tab bar (not toolbar/top bar)**
     * **Breadcrumb**
     * **Sidebar panel title and above**
 * ➖ Dividing lines simplified, creating a consistent and organized layout style.
@@ -63,7 +63,7 @@ Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
 ## Acknowledgements
 
-The theme development process drew inspiration from the following themes, and I would like to express my gratitude to the developers 🙏:
+The theme development process drew inspiration from the following themes, and I would like to express my gratitude to their developers 🙏:
 
 | Reference Content                                                 | From Theme | Developer |
 | ---------------------------------------------------------- | ---------- | ------ |
