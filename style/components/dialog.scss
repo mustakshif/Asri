@@ -228,6 +228,8 @@
                         
                                 .b3-button {
                                     @include button-primary;
+
+                                    margin-top: 12px;
                         
                                     &--progress>span {
                                         border-radius: 99px;
