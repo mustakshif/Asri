@@ -1,4 +1,4 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v7.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v8.png)
 
 <br/>
 
@@ -19,11 +19,12 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
     * **面包屑**
     * **侧栏面板标题及上部**
 * ➖ 精简分割线，打造一体化的版面风格，更为清爽整洁
+* 🧩 优化超级块内外部间距，轻松实现网格、瀑布流布局，打造优雅排版
 * 📐 取消页面区块间的多余间距，扩大展示范围
 * 🌓 支持亮色模式和暗色模式
 * 🗂️ 添加文档树、大纲缩进参考线
 * 🔗 优化反链列表展示
-* 🧩 重新设计 iFrame、视频、图片等控件样式
+* ⚙️ 重新设计 iFrame、视频、图片等控件样式
 * 🧊 引入毛玻璃材质，带来富有层次感的视觉体验
 * 💫 适当加入鲜活动效，丰富交互体验
 * 🚀 保持较高的流畅度表现

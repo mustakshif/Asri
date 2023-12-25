@@ -324,6 +324,13 @@
         &>:is(.bq, blockquote) {
             padding-right: 16px;
         }
+
+        //折叠时序号背景
+        &[fold="1"]>.protyle-action:after{
+            border-radius: 99px;
+            transform: scale(1.5);  
+            @include theme-variant-color(background-color, on-background, 0.1);   
+        }
     }
 
     // 任务列表项 ————————————————————————————————

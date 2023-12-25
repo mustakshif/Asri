@@ -332,33 +332,19 @@ $theme-dark: (
     --b3-card-success-background: #{map-get($theme-map,card-success-background)};
 
     /* 自定义文字 */
-    --b3-font-color1: #{map-get($theme-map,font-color1)};
-    --b3-font-color2: #{map-get($theme-map,font-color2)};
-    --b3-font-color3: #{map-get($theme-map,font-color3)};
-    --b3-font-color4: #{map-get($theme-map,font-color4)};
-    --b3-font-color5: #{map-get($theme-map,font-color5)};
-    --b3-font-color6: #{map-get($theme-map,font-color6)};
-    --b3-font-color7: #{map-get($theme-map,font-color7)};
-    --b3-font-color8: #{map-get($theme-map,font-color8)};
-    --b3-font-color9: #{map-get($theme-map,font-color9)};
-    --b3-font-color10:#{map-get($theme-map,font-color10)};
-    --b3-font-color11:#{map-get($theme-map,font-color11)};
-    --b3-font-color12:#{map-get($theme-map,font-color12)};
-    --b3-font-color13:#{map-get($theme-map,font-color13)};
+    @for $i from 1 through 13 {
+        $font-color: map-get($theme-map, font-color#{$i});
+        
+        //背景色：不透明色
+        // $font-background:mix(map-get($theme-map, font-color#{$i}), map-get($theme-map, background), 12.5%);
 
-    --b3-font-background1: #{change-color(map-get($theme-map,font-color1), $alpha: 0.1)};
-    --b3-font-background2: #{change-color(map-get($theme-map,font-color2), $alpha: 0.1)};
-    --b3-font-background3: #{change-color(map-get($theme-map,font-color3), $alpha: 0.1)};
-    --b3-font-background4: #{change-color(map-get($theme-map,font-color4), $alpha: 0.1)};
-    --b3-font-background5: #{change-color(map-get($theme-map,font-color5), $alpha: 0.1)};
-    --b3-font-background6: #{change-color(map-get($theme-map,font-color6), $alpha: 0.1)};
-    --b3-font-background7: #{change-color(map-get($theme-map,font-color7), $alpha: 0.1)};
-    --b3-font-background8: #{change-color(map-get($theme-map,font-color8), $alpha: 0.1)};
-    --b3-font-background9: #{change-color(map-get($theme-map,font-color9), $alpha: 0.1)};
-    --b3-font-background10:#{change-color(map-get($theme-map,font-color10), $alpha: 0.1)};
-    --b3-font-background11:#{change-color(map-get($theme-map,font-color11), $alpha: 0.1)};
-    --b3-font-background12:#{change-color(map-get($theme-map,font-color12), $alpha: 0.1)};
-    --b3-font-background13:#{change-color(map-get($theme-map,font-color13), $alpha: 0.1)};
+        // 背景色：透明色
+        $font-background:change-color(map-get($theme-map,font-color#{$i}), $alpha: 0.1);
+
+        --b3-font-color#{$i}: #{$font-color};
+        
+        --b3-font-background#{$i}:#{$font-background};
+    };
 
     /* 所见即所得行内元素颜色 */
     --b3-protyle-inline-link-color: #{map-get($theme-map,inline-link-color)};

@@ -282,6 +282,13 @@
     background-color: transparent;
 }
 
+.graph__panel{
+    .b3-button{
+        @include button-action('normal');
+        background-color: transparent;
+    }
+}
+
 // // 避让状态栏
 // body.body-status-shown {
 //     .layout__dockr:not(.layout--float),

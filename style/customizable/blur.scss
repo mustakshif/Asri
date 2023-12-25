@@ -200,6 +200,11 @@ body:not(.body--blur) {
         }
     }
 
+    .graph__panel {
+        @include bg-blur(20px);
+        opacity: 1;
+    }
+
     // 菜单
     .b3-menu,
     .b3-menu__submenu {

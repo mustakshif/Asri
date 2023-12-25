@@ -1,4 +1,4 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v7.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v8.png)
 
 <br/>
 
@@ -17,11 +17,12 @@ An ultra-modern macOS-like theme for [SiYuan](https://github.com/siyuan-note/siy
     * **Breadcrumb**
     * **Sidebar panel title and above**
 * ➖ Dividing lines simplified, creating a consistent and organized layout style.
+* 🧩 Optimized the inner and outer spacing of super blocks, making it easy to achieve grid and masonry layouts and create an elegant doc page.
 * 📐 Extra spacing between layout blocks removed, expanding overall display range.
 * 🌓 Light and dark modes supported.
 * 🗂️ File tree and outline indent guides line added.
 * 🔗 Backlink list display optimized.
-* 🧩 Styles of iFrame, videos, images, and other controls redesigned.
+* ⚙️ Styles of iFrame, videos, images, and other controls redesigned.
 * 🧊 Glassmorphism introduced, enhancing the visual hierarchy.
 * 💫 Lively effects added appropriately, enriching the interaction experience.
 * 🚀 High level of performance maintained.

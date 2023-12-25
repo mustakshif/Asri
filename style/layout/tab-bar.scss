@@ -14,6 +14,39 @@
     margin: 8px 8px 6px;
     transition: margin 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
+    // bug：当容器无需滚动时遮罩层会一直显示
+    // &:not(.layout-tab-bar--readonly) {
+    //     $size: 40px;
+
+    //     &::before, &::after { 
+    //         --timeline: not-specified;
+    //         content: '';
+    //         height: 100%;
+    //         min-width: $size;
+    //         display: block;
+    //         position: sticky;         
+    //         pointer-events: none;
+    //         animation-name: scroll-fadein;
+    //         animation-timeline: scroll(x);
+    //         z-index: 1;
+    //     }
+
+    //     &::before {
+    //         left: 0;
+    //         margin-right: $size * -1;
+    //         background: linear-gradient(to right, var(--b3-theme-background), transparent);
+    //         animation-range: 0 2%;
+    //     }
+
+    //     &::after {
+    //         right: 0;
+    //         margin-left: $size * -1;
+    //         background: linear-gradient(to left, var(--b3-theme-background), transparent);
+    //         animation-direction: reverse;
+    //         animation-range: 98% 100%;
+    //     }
+    // }
+
     .item {
         // transition: none;
         margin-right: 8px;
