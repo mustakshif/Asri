@@ -1,3 +1,15 @@
+### v1.0.5
+
+* 优化 `闪卡 - 间隔复习` 窗口样式
+* 优化关系图配置面板样式
+* 调整列表项折叠时序号样式
+
+<br/>
+
+* Optimized the style of `Flashcard - Spaced Repetition` dialog.
+* Optimized the style of graph configuration panel.
+* Adjusted the list style when folded.
+
 ### v1.0.4
 
 * 扩大顶栏「主菜单」图标的响应区域，呼出顶栏后无需再次移动鼠标就可点击

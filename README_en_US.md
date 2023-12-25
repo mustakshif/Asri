@@ -41,22 +41,16 @@ An ultra-modern macOS-like theme for [SiYuan](https://github.com/siyuan-note/siy
 
 Latest updates:
 
+### v1.0.5
+
+* Optimized the style of `Flashcard - Spaced Repetition` dialog.
+* Optimized the style of graph configuration panel.
+* Adjusted the list style when folded.
+
 ### v1.0.4
 
   * Expanded the responsive area of the "main menu" button in the toolbar (top bar), allowing users to click it without extra mouse movements after the toolbar appears.
 * Modified the error button in dialogs.
-
-
-### v1.0.3
-
-* Fixed the problem of not being able to bring up the toolbar in full-screen views.
-* Fixed the problem of slider elements being clipped.
-* Fixed the issue of incorrect display of the icon tooltip layer of the header image.
-* Adjusted the background color of pinned graph views to be consistent with other side panels.
-* Adjusted the position of the document block slider to align it vertically.
-* Adjusted the font list for code blocks, with `JetBrainsMono-Regular` having higher priority.
-* Adjusted the padding inside the fixed tab icon on the Windows platform.
-* Adjust the style of the window close button on the Windows platform.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
