@@ -10,6 +10,7 @@
         font-weight: 600;
         height: var(--toolbar-height);
         position: relative;
+        transition: none;
 
         &::before {
             content: '';
