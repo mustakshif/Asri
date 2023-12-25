@@ -10,6 +10,8 @@
 * Optimized the style of graph configuration panel.
 * Adjusted the list style when folded.
 
+---
+
 ### v1.0.4
 
 * 扩大顶栏「主菜单」图标的响应区域，呼出顶栏后无需再次移动鼠标就可点击
