@@ -105,9 +105,9 @@ body:not(.body--mobile) {
         width: 100%;
         transition: opacity 300ms, transform 300ms;
         transition-delay: 0.3s;
-        z-index: 9; 
+        z-index: 16;
         // 需要比.fullscreen（z-index: 8）高
-        //比菜单低，比 layout--float 高
+        //比菜单低(约 31)，比 layout--float 高
 
         @include toolbarHidden;
 
@@ -352,7 +352,8 @@ body:not(.body--mobile) {
 
 // 全屏关系图
 .fullscreen>.block__icons>.fn__flex-1{
-    #toolbar:hover + .fn__flex-1 #layouts & {
+    #toolbar:hover + .fn__flex-1 #layouts &,
+    #toolbar:hover ~ .b3-dialog--open &{
         app-region: unset;
     }
 }

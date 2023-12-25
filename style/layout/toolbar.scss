@@ -33,13 +33,13 @@
         }
     }
 
-    // .toolbar__item {
-    //     height: var(--toolbar-height);
+    .toolbar__item {
+        height: var(--toolbar-height);
         
-    //     svg {
-    //         align-self: center;
-    //     }
-    // }
+        svg {
+            align-self: center;
+        }
+    }
 
     &.toolbar--browser,
     body.body--win32 & {

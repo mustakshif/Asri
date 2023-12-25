@@ -248,13 +248,21 @@ function avoidOverlappingWithStatus() {
         })
 
         let searchList = document.getElementById('searchList');
-        if (searchList) {
+        let searchPreview = document.getElementById('searchPreview');
+        if (searchList || searchPreview) {
             let searchListRect = searchList.getBoundingClientRect();
+            let searchPreviewRect = searchPreview.getBoundingClientRect();
 
             if (isOverlapping(searchListRect, statusRect)) {
                 searchList.style.paddingBottom = '35px'
             } else {
                 searchList.style.removeProperty('padding-bottom')
+            }
+
+            if (isOverlapping(searchPreviewRect, statusRect)) {
+                searchPreview.style.paddingBottom = '35px'
+            } else {
+                searchPreview.style.removeProperty('padding-bottom')
             }
         }
     }
