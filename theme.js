@@ -3,8 +3,8 @@ const doms = {
     status: document.getElementById('status'),
     dockl: document.getElementById('dockLeft'),
     dockr: document.getElementById('dockRight'),
-    layoutDockl: layouts.querySelector('.layout__dockl'),
-    layoutDockr: layouts.querySelector('.layout__dockr'),
+    layoutDockl: document.querySelector('.layout__dockl'),
+    layoutDockr: document.querySelector('.layout__dockr'),
     toolbarWindow: document.querySelector('.toolbar__window'),
     toolbar: document.getElementById('toolbar')
     // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
@@ -171,20 +171,20 @@ function dockBg() {
         return !isDockLytPinned(node) && node?.style.cssText.includes('transform: translateX');
     }
 
-    if (doms.dockl) {
+    if (doms.dockl && !isMobile()) {
         for (let dir of ['l', 'r']) {
 
             let lyt = doms[`layoutDock${dir}`],
                 dock = doms[`dock${dir}`];
-                
+
             if (isDockLytPinned(lyt) && isDockLytExpanded(lyt)) {
                 dock.classList.add('dock-layout-expanded');
             } else {
                 dock.classList.remove('dock-layout-expanded');
             }
-            
+
             if (!isDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
-                switch(dir){
+                switch (dir) {
                     case 'l':
                         dock.style.borderRightColor = 'transparent';
                         break;
@@ -206,25 +206,27 @@ dockBg();
  * 边栏和边栏面板展开/收起时状态栏的位置
  */
 function statusPositon() {
-    let layoutCenter = doms.layouts.querySelector('.layout__center');
+    if (!isMobile()) {
+        let layoutCenter = doms.layouts.querySelector('.layout__center');
 
-    if (layoutCenter && doms.layoutDockr && !doms.status.classList.contains('.fn__none')) {
-        let layoutDockrWidth = doms.layoutDockr.clientWidth;
-        let layoutCenterWidth = layoutCenter.clientWidth;
+        if (layoutCenter && doms.layoutDockr && !doms.status.classList.contains('.fn__none')) {
+            let layoutDockrWidth = doms.layoutDockr.clientWidth;
+            let layoutCenterWidth = layoutCenter.clientWidth;
 
-        doms.status.style.maxWidth = layoutCenterWidth - 12 + 'px';
+            doms.status.style.maxWidth = layoutCenterWidth - 12 + 'px';
 
-        if (isDockHidden() && isLayoutDockHidden('r')) {
-            doms.status.style.transform = 'none';
-        } else if (!isDockHidden() && isLayoutDockHidden('r')) {
-            doms.status.style.transform = 'translateX(-40px)';
-        } else if (!isDockHidden() && !isLayoutDockHidden('r')) {
-            doms.status.style.transform = `translateX(-${layoutDockrWidth + 40}px)`;
-        } else if (isDockHidden() && !isLayoutDockHidden('r')) {
-            doms.status.style.transform = `translateX(-${layoutDockrWidth}px)`;
+            if (isDockHidden() && isLayoutDockHidden('r')) {
+                doms.status.style.transform = 'none';
+            } else if (!isDockHidden() && isLayoutDockHidden('r')) {
+                doms.status.style.transform = 'translateX(-40px)';
+            } else if (!isDockHidden() && !isLayoutDockHidden('r')) {
+                doms.status.style.transform = `translateX(-${layoutDockrWidth + 40}px)`;
+            } else if (isDockHidden() && !isLayoutDockHidden('r')) {
+                doms.status.style.transform = `translateX(-${layoutDockrWidth}px)`;
+            }
+
+            doms.status = document.getElementById('status');
         }
-
-        doms.status = document.getElementById('status');
     }
 }
 statusPositon();
@@ -235,7 +237,7 @@ statusPositon();
 function avoidOverlappingWithStatus() {
     if (!doms.status.classList.contains('.fn__none')) {
 
-        let layoutTabContainers = doms.layouts.querySelectorAll('.layout__center .layout-tab-container');
+        let layoutTabContainers = doms.layouts?.querySelectorAll('.layout__center .layout-tab-container');
         let statusRect = doms.status.getBoundingClientRect();
 
         layoutTabContainers?.forEach(layoutTabContainer => {
@@ -271,7 +273,7 @@ function avoidOverlappingWithStatus() {
         // pdfviewer
         let viewerContainer = document.getElementById('viewerContainer');
 
-        if(viewerContainer) {
+        if (viewerContainer) {
             let viewerContainerRect = viewerContainer.getBoundingClientRect();
 
             if (isOverlapping(viewerContainerRect, statusRect)) {
@@ -320,20 +322,22 @@ function formatSyBacklinkItemsLayout() {
  * 文档树聚焦条目参考线
  */
 function formatIndentGuidesForFocusedItems() {
-    let listItemsFocus = doms.layouts.querySelectorAll('.file-tree .b3-list-item--focus');
+    if (!isMobile()) {
+        let listItemsFocus = doms.layouts.querySelectorAll('.file-tree .b3-list-item--focus');
 
-    doms.layouts.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
+        doms.layouts.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
 
-    for (let li of listItemsFocus) {
-        if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
-            li.parentNode.classList.add('has-focus');
+        for (let li of listItemsFocus) {
+            if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
+                li.parentNode.classList.add('has-focus');
+            }
         }
     }
 }
 formatIndentGuidesForFocusedItems();
 
 function formatProtyleWithBgImageOnly() {
-    let protyleBgs = doms.layouts.querySelectorAll('.protyle .protyle-background');
+    let protyleBgs = doms.layouts?.querySelectorAll('.protyle .protyle-background');
 
     protyleBgs.forEach(protyleBg => {
         if (!protyleBg.querySelector('.protyle-background__img img')?.classList.contains('fn__none') && protyleBg.querySelector('.protyle-background__icon.fn__none')) {
@@ -485,68 +489,70 @@ docBodyObserver(
     }
 )
 
-
-// 左栏dock
-dockObserver('l', 'attributes', () => {
-    doms.dockl = document.getElementById('dockLeft');
-    tabbarSpacing();
-});
-// 右栏dock
-dockObserver('r', 'attributes', () => {
-    doms.dockr = document.getElementById('dockRight');
-    statusPositon();
-    avoidOverlappingWithStatus();
-});
-
-// 左栏面板
-dockLayoutObserver(
-    'l',
-    undefined,
-    () => {
-        setTimeout(() => {
-            doms.layoutDockl = document.querySelector('.layout__dockl');
-            tabbarSpacing();
-            avoidOverlappingWithStatus();
-        }, 200); // 动画之后
-        // 左栏dock背景
-        dockBg();
-    }
-)
-
-// 右栏面板
-dockLayoutObserver(
-    'r',
-    undefined,
-    () => {
-        setTimeout(() => {
-            doms.layoutDockr = document.querySelector('.layout__dockr');
-            statusPositon();
-            avoidOverlappingWithStatus();
-        }, 200);
-        //右栏dock背景
-        dockBg();
-    }
-)
-
-
-// 中心布局
-layoutsObserver(
-    // childList mutation func
-    () => {
-        doms.layouts = document.getElementById('layouts');
-        setTimeout(() => {
-            tabbarSpacing(); // 适用于分屏操作时
-            statusPositon();
-        }, 1);
-        // runWhenIdle(formatSyBacklinkItemsLayout);
-        formatIndentGuidesForFocusedItems();
-        formatProtyleWithBgImageOnly();
+if (!isMobile()) {
+    // 左栏dock
+    dockObserver('l', 'attributes', () => {
+        doms.dockl = document.getElementById('dockLeft');
+        tabbarSpacing();
+    });
+    // 右栏dock
+    dockObserver('r', 'attributes', () => {
+        doms.dockr = document.getElementById('dockRight');
+        statusPositon();
         avoidOverlappingWithStatus();
-    },
-    undefined,
-    undefined,
-    true
-)
+    });
+
+    // 左栏面板
+    dockLayoutObserver(
+        'l',
+        undefined,
+        () => {
+            setTimeout(() => {
+                doms.layoutDockl = document.querySelector('.layout__dockl');
+                tabbarSpacing();
+                avoidOverlappingWithStatus();
+            }, 200); // 动画之后
+            // 左栏dock背景
+            dockBg();
+        }
+    )
+
+    // 右栏面板
+    dockLayoutObserver(
+        'r',
+        undefined,
+        () => {
+            setTimeout(() => {
+                doms.layoutDockr = document.querySelector('.layout__dockr');
+                statusPositon();
+                avoidOverlappingWithStatus();
+            }, 200);
+            //右栏dock背景
+            dockBg();
+        }
+    )
+
+
+    // 中心布局
+
+    layoutsObserver(
+        // childList mutation func
+        () => {
+            doms.layouts = document.getElementById('layouts');
+            setTimeout(() => {
+                tabbarSpacing(); // 适用于分屏操作时
+                statusPositon();
+            }, 1);
+            // runWhenIdle(formatSyBacklinkItemsLayout);
+            formatIndentGuidesForFocusedItems();
+            formatProtyleWithBgImageOnly();
+            avoidOverlappingWithStatus();
+        },
+        undefined,
+        undefined,
+        true
+    )
+}
 
 
 /**
