@@ -102,7 +102,7 @@
     @content;
 
     @include darkmode-counterpart {
-        background-color: rgb(24, 24, 24);
+        background-color: rgb(0, 0, 0, 0.2);
 
         &:hover {
             background-color: var(--b3-theme-primary);

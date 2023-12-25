@@ -210,6 +210,7 @@
                             transition: transform $timing-function-accelerate 0.2s, filter linear 0.2s;
                             opacity: 1;
                             z-index: 2;
+                            padding: 0;
 
                             // transform: scale(1.08);
                             // right: 0;
@@ -217,26 +218,64 @@
                             // pointer-events: none;
                             // transition: opacity $timing-function-decelerate 0.2s, transform 0.3s, filter $timing-function-decelerate 0.3s;
 
+                            .item__side {
+                                padding: 16px;
+                                background-color: var(--b3-theme-surface);
+                        
+                                .item__title {
+                                    font-weight: 600;
+                                }
+                        
+                                .b3-button {
+                                    @include button-primary;
+                        
+                                    &--progress>span {
+                                        border-radius: 99px;
+                                    }
+                                }
+                            }
+                        
+                            .item__main {
+                                margin-left: 0;
+                                padding: 0;
+                                background-color: var(--b3-theme-background);
+                                
+                        
+                                .item__preview {
+                                    border-radius: 0;
+                                }
+                        
+                                .b3-typography {
+                                    padding: 0 32px;
+                        
+                                    .bq {
+                                        border: none;
+                                        padding: 0;
+                                        background-color: transparent;
+                                        font-weight: 600;
+                                        margin: 0;
+                                        font-size: 120%;
+                                        opacity: 0.8;
+                                    }
+                        
+                                    &.item__readme{
+                                        padding-bottom: 32px;
+                        
+                                        @for $i from 1 through 6{
+                                            > h#{$i}:first-child{
+                                                margin-top: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            
                             &--show {
                                 transition: transform $timing-function-decelerate 0.3s, filter linear 0.3s 0.1s;
 
                                 // transform: none;
                                 // opacity: 1;
                                 // pointer-events: all;
-                            }
-
-                            .item__side {
-                                .b3-button {
-                                    @include button-primary;
-
-                                    &--progress>span {
-                                        border-radius: 99px;
-                                    }
-                                }
-                            }
-                            
-                            .item__main {
-                                border-radius: 6px;
                             }
                         }
 

@@ -1,5 +1,35 @@
 @use '../base' as *;
 
+.protyle-background__img {
+
+    //遮罩层
+    &::before {
+        content: "";
+        display: inline-block;
+        width: -webkit-fill-available;
+        height: 90%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(to top, pickThemeColor($theme-light, background) 2%, pickThemeColor($theme-light, background, 0.97) 10%, pickThemeColor($theme-light, background, 0.9) 18%, pickThemeColor($theme-light, background, 0.75) 33%, pickThemeColor($theme-light, background, 0.05) 92%, transparent 99%);
+        pointer-events: none;
+
+        @include darkmode-counterpart {
+            background: linear-gradient(to top, pickThemeColor($theme-dark, background) 2%, pickThemeColor($theme-dark, background, 0.97) 10%, pickThemeColor($theme-dark, background, 0.9) 18%, pickThemeColor($theme-dark, background, 0.75) 33%, pickThemeColor($theme-dark, background, 0.05) 92%, transparent 99%);
+        }
+    }
+
+    // img {
+    //     mask-image: linear-gradient(to bottom,
+    //             black 2%,
+    //             rgba(0, 0, 0, 0.97) 10%,
+    //             rgba(0, 0, 0, 0.9) 18%,
+    //             rgba(0, 0, 0, 0.75) 33%,
+    //             rgba(0, 0, 0, 0.05) 92%,
+    //             transparent 99%);
+    // }
+}    
+
 //有题头图时
 .protyle-background[style="min-height: 30vh;"] {
     margin-bottom: -48px;
@@ -7,36 +37,6 @@
     // &.without-icon {
     //     min-height: calc(30vh - 80px) !important;
     // }
-
-    .protyle-background__img {
-
-        //遮罩层
-        &::before {
-            content: "";
-            display: inline-block;
-            width: -webkit-fill-available;
-            height: 90%;
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: linear-gradient(to top, pickThemeColor($theme-light, background) 2%, pickThemeColor($theme-light, background, 0.97) 10%, pickThemeColor($theme-light, background, 0.9) 18%, pickThemeColor($theme-light, background, 0.75) 33%, pickThemeColor($theme-light, background, 0.05) 92%, transparent 99%);
-            pointer-events: none;
-
-            @include darkmode-counterpart {
-                background: linear-gradient(to top, pickThemeColor($theme-dark, background) 2%, pickThemeColor($theme-dark, background, 0.97) 10%, pickThemeColor($theme-dark, background, 0.9) 18%, pickThemeColor($theme-dark, background, 0.75) 33%, pickThemeColor($theme-dark, background, 0.05) 92%, transparent 99%);
-            }
-        }
-
-        // img {
-        //     mask-image: linear-gradient(to bottom,
-        //             black 2%,
-        //             rgba(0, 0, 0, 0.97) 10%,
-        //             rgba(0, 0, 0, 0.9) 18%,
-        //             rgba(0, 0, 0, 0.75) 33%,
-        //             rgba(0, 0, 0, 0.05) 92%,
-        //             transparent 99%);
-        // }
-    }    
 
     // 无文档图标时
     &.without-icon {

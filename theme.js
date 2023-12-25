@@ -171,29 +171,31 @@ function dockBg() {
         return !isDockLytPinned(node) && node?.style.cssText.includes('transform: translateX');
     }
 
-    for (let dir of ['l', 'r']) {
+    if (doms.dockl) {
+        for (let dir of ['l', 'r']) {
 
-        let lyt = doms[`layoutDock${dir}`],
-            dock = doms[`dock${dir}`];
-            
-        if (isDockLytPinned(lyt) && isDockLytExpanded(lyt)) {
-            dock.classList.add('dock-layout-expanded');
-        } else {
-            dock.classList.remove('dock-layout-expanded');
-        }
-        
-        if (!isDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
-            switch(dir){
-                case 'l':
-                    dock.style.borderRightColor = 'transparent';
-                    break;
-                case 'r':
-                    dock.style.borderLeftColor = 'transparent';
-                    break;
+            let lyt = doms[`layoutDock${dir}`],
+                dock = doms[`dock${dir}`];
+                
+            if (isDockLytPinned(lyt) && isDockLytExpanded(lyt)) {
+                dock.classList.add('dock-layout-expanded');
+            } else {
+                dock.classList.remove('dock-layout-expanded');
             }
-        } else {
-            dock.style.removeProperty('border-left-color');
-            dock.style.removeProperty('border-right-color');
+            
+            if (!isDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
+                switch(dir){
+                    case 'l':
+                        dock.style.borderRightColor = 'transparent';
+                        break;
+                    case 'r':
+                        dock.style.borderLeftColor = 'transparent';
+                        break;
+                }
+            } else {
+                dock.style.removeProperty('border-left-color');
+                dock.style.removeProperty('border-right-color');
+            }
         }
     }
 }
@@ -263,6 +265,19 @@ function avoidOverlappingWithStatus() {
                 searchPreview.style.paddingBottom = '35px'
             } else {
                 searchPreview.style.removeProperty('padding-bottom')
+            }
+        }
+
+        // pdfviewer
+        let viewerContainer = document.getElementById('viewerContainer');
+
+        if(viewerContainer) {
+            let viewerContainerRect = viewerContainer.getBoundingClientRect();
+
+            if (isOverlapping(viewerContainerRect, statusRect)) {
+                viewerContainer.style.paddingBottom = '35px';
+            } else {
+                viewerContainer.style.removeProperty('padding-bottom')
             }
         }
     }
