@@ -1,96 +1,94 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v8.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v9.png)
 
 <br/>
 
-简体中文 ｜ [English](https://github.com/mustakshif/Hadeeth-for-SiYuan/blob/main/README_en_US.md)
+[简体中文](https://github.com/mustakshif/Hadeeth-for-SiYuan/blob/main/README_zh_CN.md) | English
 
 # Hadeeth - theme for SiYuan
 
-Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyuan-note/siyuan)主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
+An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), provides an elegant and efficient note-taking experience with its lightweight and minimalistic style.
 
-## 主题特性
+## Theme Features
 
-* 📃 隐藏顶栏，调整窗口拖动区域，获得更多显示空间
+* 📃 Top bar hidden, window drag area adjusted for maximum display space.
+  * 📌 Quickly access the top bar by hovering over the area with interactive icons on the left and right sides of the top of the window.
+  * 📌 Window drag area adjusted to **blank areas** of:
+    * **Tab bar (not toolbar/top bar)**
+    * **Breadcrumb**
+    * **Sidebar panel title and above**
+* ➖ Dividing lines simplified, creating a consistent and organized layout style.
+* 🧩 Optimized the inner and outer spacing of super blocks, making it easy to achieve grid and masonry layouts and create an elegant doc page.
+* 📐 Extra spacing between layout blocks removed, expanding overall display range.
+* 🌓 Light and dark modes supported.
+* 🗂️ File tree and outline indent guides line added.
+* 🔗 Backlink list display optimized.
+* ⚙️ Styles of iFrame, videos, images, and other controls redesigned.
+* 🧊 Glassmorphism introduced, enhancing the visual hierarchy.
+* 💫 Lively effects added appropriately, enriching the interaction experience.
+* 🚀 High level of performance maintained.
+* ↕️ Applied system scrollbar on macOS, which can be hidden automatically and reduce visual interference.
+* 🚥 Position of traffic lights on macOS adjusted, optimizing the layout rhythm.
 
-  * 📌 鼠标移至窗口顶部左侧和右侧有图标的区域，即可快速呼出顶栏
-  * 📌 主窗口拖动区域调整为**以下区域的空白部分**：
+  * 📌 You will need to restart the application after switching to another theme to restore the traffic light to its default position.
+* ...
 
-    * **页签栏（不是顶栏）**
-    * **面包屑**
-    * **侧栏面板标题及上部**
-* ➖ 精简分割线，打造一体化的版面风格，更为清爽整洁
-* 🧩 优化超级块内外部间距，轻松实现网格、瀑布流布局，打造优雅排版
-* 📐 取消页面区块间的多余间距，扩大展示范围
-* 🌓 支持亮色模式和暗色模式
-* 🗂️ 添加文档树、大纲缩进参考线
-* 🔗 优化反链列表展示
-* ⚙️ 重新设计 iFrame、视频、图片等控件样式
-* 🧊 引入毛玻璃材质，带来富有层次感的视觉体验
-* 💫 适当加入鲜活动效，丰富交互体验
-* 🚀 保持较高的流畅度表现
-* ↕️ 修改 Mac 端滚动条为系统样式，可自动隐藏，减少视觉干扰
-* 🚥 调整 Mac 端红绿灯位置，优化版面节奏
+## How to use
 
-  * 📌 切换至其他主题后需要重启应用才能将红绿灯恢复至默认位置
-* ……
+* Automatic download & updates: Go to the `Settings - Bazaar - Themes` in SiYuan and search for "Hadeeth" to download and apply.
+* Manual download & updates: Download the `package.zip` from the releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart the application. Then choose "Hadeeth" in your theme list in `Settings - Appearance`.
 
-## 如何使用
+## Changelog
 
-* 自动下载更新：进入思源笔记应用，在`设置 - 集市 - 主题`中搜索下载「Hadeeth」并应用
-* 手动下载更新：下载 release 中的 `package.zip`，手动解压至思源笔记工作空间下的 `conf/appearance/themes`，重启思源，在应用 `设置 - 外观` 中选择 Hadeeth 主题
-
-## 更新日志
-
-最近更新：
+Latest updates:
 
 ### v1.0.6
 
-* 优化代码块字体列表，代码块中文字体同正文字体
-* 优化集市项目详情页设计
-* 修复移动端顶栏、状态栏显示异常的问题
-* 修复小窗页签栏右边距失效的问题
+* Optimized the font list of code blocks, making Chinese characters in code blocks consistent with the regular text.
+* Redesigned the marketplace project detail page.
+* Fixed the issue where the top bar and status bar were displaying abnormally on mobile devices.
+* Fixed the issue of the right margin not working for the tab bar in mini windows.
 
 ### v1.0.5
 
-* 优化 `闪卡 - 间隔复习` 窗口样式
-* 优化关系图配置面板样式
-* 调整列表项折叠时序号样式
+* Optimized the style of `Flashcard - Spaced Repetition` dialog.
+* Optimized the style of graph configuration panel.
+* Adjusted the list style when folded.
 
-查看全部日志 👉 [更新日志](./CHANGELOG.md)
+Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
-## 计划
+## Plans
 
-* 适配移动端
-* 持续优化流畅度
-* 优化数据库元素样式
-* 优化闪卡样式
+* Adapt to mobile platform.
+* Continuous performance improvement.
+* Optimize database element styles.
+* Optimize flashcards styles.
 
-## 鸣谢
+## Acknowledgements
 
-主题制作过程中参考借鉴了以下主题的思路，在此对各位主题开发者表示感谢 🙏：
+The theme development process drew inspiration from the following themes, and I would like to express my gratitude to their developers 🙏:
 
-| 借鉴内容                                                 | 来自主题 | 作者 |
+| Reference Content                                                 | From Theme | Developer |
 | ---------------------------------------------------------- | ---------- | ------ |
-| 菜单背景模糊                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
-| 隐藏顶栏<br />侧栏面板列表项前圆点<br />大纲列表标题图标<br />状态栏 | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
-| 文档树缩进线<br />`setMutationObserver` 函数                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
+| Menu background blur                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
+|Toolbar hiding<br />Dots before sidebar panel list items<br />Outline list item icons<br />Status bar | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
+| File tree indent guides<br />`setMutationObserver` function                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
 
-(以上排名不分先后)
+（The order in the list above does not imply any ranking）
 
-其他参考内容：
-* macOS Sonoma 系统应用样式
-* [苹果人机界面指南 - 基础 - 颜色](https://developer.apple.com/cn/design/human-interface-guidelines/color)
+Other reference materials:
 
-## 反馈和建议
-- [项目主页](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues)提交 issue
-- 发送邮件至 mustakshif@icloud.com
+* macOS Sonoma system applications
+* [Apple's Human Interface Guidelines - Foundations - Color](https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/)
 
-## 其他
+## Feedbacks & suggestions
+- Create an issue at [my repository page](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues)
+- Send an email to mustakshif@icloud.com
 
-* 设置菜单拖移区域仅保留左栏顶部区域
+## Notes
 
-## 项目依赖
+* Setting menu's dragable area cut to the top area of the left column.
+* The close button in the upper right corner of the dialog box is hidden. The dialog box can be closed by clicking outside the dialog box.
 
+## Project Dependencies
 * [GitHub - siyuan-note/siyuan: A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.](https://github.com/siyuan-note/siyuan)
 * [GitHub - sass/sass: Sass makes CSS fun!](https://github.com/sass/sass)
-

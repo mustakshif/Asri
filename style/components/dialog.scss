@@ -81,10 +81,10 @@
                         }
 
                         .b3-label {
-                            border-bottom-color: transparent;
+                            box-shadow: none;
 
                             // 表单元素溢出显示
-                            > .fn__flex-1 {
+                            >.fn__flex-1 {
                                 overflow: visible;
                             }
                         }
@@ -94,12 +94,12 @@
 
                             .fn__hr--b {
                                 height: 4px;
-                        
-                                + .fn__flex:nth-child(2) {
+
+                                +.fn__flex:nth-child(2) {
                                     position: sticky;
                                     top: 4px;
                                     z-index: 2;
-                            
+
                                     &::before {
                                         content: '';
                                         background-color: var(--b3-theme-background);
@@ -109,7 +109,7 @@
                                         position: absolute;
                                         top: -4px;
                                         z-index: -1;
-                                    }       
+                                    }
                                 }
                             }
 
@@ -187,6 +187,13 @@
                                         }
                                     }
 
+                                    &__info {
+                                        font-weight: 500;
+                                        >* {
+                                            font-weight: normal;
+                                        }
+                                    }
+
                                     &__desc {
                                         word-break: initial;
                                     }
@@ -221,36 +228,36 @@
                             .item__side {
                                 padding: 16px;
                                 background-color: var(--b3-theme-surface);
-                        
+
                                 .item__title {
                                     font-weight: 600;
                                     word-break: normal;
                                 }
-                        
+
                                 .b3-button {
                                     @include button-primary;
 
                                     margin-top: 12px;
-                        
+
                                     &--progress>span {
                                         border-radius: 99px;
                                     }
                                 }
                             }
-                        
+
                             .item__main {
                                 margin-left: 0;
                                 padding: 0;
                                 background-color: var(--b3-theme-background);
-                                
-                        
+
+
                                 .item__preview {
                                     border-radius: 0;
                                 }
-                        
+
                                 .b3-typography {
                                     padding: 0 32px;
-                        
+
                                     .bq {
                                         border: none;
                                         padding: 0;
@@ -260,19 +267,19 @@
                                         font-size: 120%;
                                         opacity: 0.8;
                                     }
-                        
-                                    &.item__readme{
+
+                                    &.item__readme {
                                         padding-bottom: 32px;
-                        
-                                        @for $i from 1 through 6{
-                                            > h#{$i}:first-child{
+
+                                        @for $i from 1 through 6 {
+                                            >h#{$i}:first-child {
                                                 margin-top: 0;
                                             }
                                         }
                                     }
                                 }
                             }
-                            
+
                             &--show {
                                 transition: transform $timing-function-decelerate 0.3s, filter linear 0.3s 0.1s;
 
@@ -328,62 +335,6 @@
                     width: min(256px, 30%);
                     min-width: fit-content;
                     background-color: var(--b3-theme-surface);
-                }
-            }
-
-            // 闪卡复习 ————————————————————————————————————
-            .card__main {
-                .card__action {
-                    > div {
-                        margin: 0 12px 8px;
-                    }
-
-                    .b3-button{
-                        font-weight: 600;                        
-                        border-radius: $border-rd-card;
-                        transition: 0.2s;
-
-                        &:hover {
-                            transform: scale(1.05);
-                        }
-                        &:active {
-                            transform: scale(0.95);
-                            opacity: 0.8;
-                            box-shadow: none;
-                        }
-                        &:focus{
-                            box-shadow: none;
-                        }
-
-                        $button-colors:(
-                            (map-get($theme-light, card-error), map-get($theme-dark, card-error)),
-                            (map-get($theme-light, card-warning), map-get($theme-dark, card-warning)),
-                            (map-get($theme-light, card-info), map-get($theme-dark, card-info)),
-                            (map-get($theme-light, card-success), map-get($theme-dark, card-success))
-                        );
-
-                        @for $i from 1 through 4 {
-                            &[data-type="#{$i}"]:hover{
-                                @include menu-shadow(nth($button-colors,$i)..., $opacity-dark: 0.2)
-                            }
-                        }
-
-                        // 显示答案按钮、(p)按钮 
-                        &[data-type="-1"], &[data-type="-2"] {
-                            &:hover{
-                                transform: none;
-                                box-shadow: none;
-                            }
-                            &:active {
-                                transform: scale(0.9)
-                            }
-                        }
-
-                        // 跳过按钮
-                        &[data-type="-3"]:hover{
-                            background-color: var(--b3-list-hover);
-                        }
-                    }
                 }
             }
         }
@@ -676,4 +627,65 @@ body.body--window {
     padding: 4px 8px;
     background-color: var(--b3-theme-surface);
     border-radius: 99px;
+}
+
+
+
+// 闪卡复习 ————————————————————————————————————
+.card__main {
+    .card__action {
+        >div {
+            margin: 0 12px 8px;
+        }
+
+        .b3-button {
+            font-weight: 600;
+            border-radius: $border-rd-card;
+            transition: 0.2s;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            &:active {
+                transform: scale(0.95);
+                opacity: 0.8;
+                box-shadow: none;
+            }
+
+            &:focus {
+                box-shadow: none;
+            }
+
+            $button-colors: (
+                (map-get($theme-light, card-error), map-get($theme-dark, card-error)),
+                (map-get($theme-light, card-warning), map-get($theme-dark, card-warning)),
+                (map-get($theme-light, card-info), map-get($theme-dark, card-info)),
+                (map-get($theme-light, card-success), map-get($theme-dark, card-success))
+            );
+
+            @for $i from 1 through 4 {
+            &[data-type="#{$i}"]:hover {
+                @include menu-shadow(nth($button-colors, $i)..., $opacity-dark: 0.2)
+            }
+            }
+
+            // 显示答案按钮、(p)按钮 
+            &[data-type="-1"], &[data-type="-2"] {
+                &:hover {
+                    transform: none;
+                    box-shadow: none;
+                }
+
+                &:active {
+                    transform: scale(0.9)
+                }
+            }
+
+            // 跳过按钮
+            &[data-type="-3"]:hover {
+                background-color: var(--b3-list-hover);
+            }
+        }
+    }
 }

@@ -14,9 +14,9 @@
     "en_US": "An ultra-modern macOS-like theme that offers a lightweight and minimalistic style, providing an elegant and efficient note-taking experience."
   },
   "readme": {
-    "default": "README.md",
-    "zh_CN": "README.md",
-    "en_US": "README_en_US.md"
+    "default": "README_zh_CN.md",
+    "zh_CN": "READM_zh_CN.md",
+    "en_US": "README.md"
   },
   "funding": {
     "openCollective": "",
