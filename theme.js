@@ -532,9 +532,7 @@ if (!isMobile()) {
         }
     )
 
-
     // 中心布局
-
     layoutsObserver(
         // childList mutation func
         () => {
