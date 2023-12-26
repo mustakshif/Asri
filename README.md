@@ -87,7 +87,7 @@ Other reference materials:
 ## Notes
 
 * Setting menu's dragable area cut to the top area of the left column.
-* The close button in the upper right corner of the dialog box is hidden. The dialog box can be closed by clicking outside the dialog box.
+* The close button in the upper right corner of the dialog box is hidden. To close the dialog box, click anywhere outside the dialog box.
 
 ## Project Dependencies
 * [GitHub - siyuan-note/siyuan: A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.](https://github.com/siyuan-note/siyuan)
