@@ -326,10 +326,10 @@
         }
 
         //折叠时序号背景
-        &[fold="1"]>.protyle-action:after{
+        &[fold="1"]>.protyle-action:after {
             border-radius: 99px;
-            transform: scale(1.5);  
-            @include theme-variant-color(background-color, on-background, 0.1);   
+            transform: scale(1.5);
+            @include theme-variant-color(background-color, on-background, 0.1);
         }
     }
 
@@ -495,12 +495,13 @@
             border-radius: 4px;
             border-color: transparent;
             transition: border-color 0.2s;
-        }        
+        }
 
         &:hover {
             iframe {
                 border-color: var(--b3-border-color-trans);
             }
+
             .protyle-action__drag {
                 opacity: 0.5;
             }
@@ -605,155 +606,226 @@
         // 文档图标
         // &__iconw {
         // }
-    }
 
-    &-icons {
-        // 工具条
-        @include protyle-icons;
-    }
+        // 文档标签
+        .b3-chips {
+            padding: 8px 16px;
+            justify-content: flex-end;
 
-    &-action {
-        // 代码块
-        @include protyle-icons;
-
-        &:hover {
-            backdrop-filter: none;
-        }
-    }
-
-    //编辑区域
-    &-content {
-        background-color: var(--b3-theme-background);
-    }
-
-    //文档标题
-    &-title {
-        &__input {
-            font-weight: 600;
-            font-size: 2.4em;
-            line-height: 1.4;
-            padding-top: 8px;
-            padding-bottom: 8px;
-
-            &:empty:after {
-                opacity: 0.6;
+            .b3-chip--pointer {
+                opacity: 1;
             }
-        }
-    }
 
-    // 正文内容
-    &-wysiwyg {
-        @include typography-elements;
+            position: relative;
 
-        // 正文紧挨文档标题的标题块
-        &>div[data-type="NodeHeading"]:first-child,
-        &>[data-node-id].sb:first-child .sb:first-child {
-            margin-top: 0;
-        }
-
-        // 折叠块--标题块
-        div[fold="1"] {
-            &[data-type=NodeHeading] {
-                background-color: var(--b3-theme-surface-lighter);
-                outline: 1.5px solid var(--b3-border-color-trans);
-                opacity: 0.6;
+            .b3-chip--middle {
+                padding: 4px 8px;
 
                 &::before {
-                    display: none;
+                    content: '';
+                    width: 8px;
+                    transition: var(--b3-transition);
+                }
+
+                &:hover::before {
+                    width: 0px;
+                }
+
+                .b3-chip__close {
+                    width: 8px;
+                    opacity: 0;
+                    // transform: scale(0);
+                    margin-right: -4px;
+                }
+
+                &:hover .b3-chip__close {
+                    width: 16px;
+                    opacity: 0.7;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+
+                $chip-colors: (
+                    secondary: font-color4,
+                    primary: font-color5,
+                    info: font-color6,
+                    success: font-color8,
+                    warning:font-color9,
+                    error: font-color10,
+                    pink: font-color12
+                );
+
+            @each $chip-type, $chip-color in $chip-colors {
+                &.b3-chip--#{$chip-type} {
+                    // @include theme-variant-color(background-color, $chip-color, 1);
+                    @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+                    // filter:saturate(0.5);
+                    font-weight: 500;
+                    mix-blend-mode: luminosity;
+
+                    @include theme-variant-color(background-color, surface, 0.8, 0.6);
+                    @include theme-variant-color(color, on-background, 0.6, 1);
+                    // color: rgba(128, 128, 128, .8);
+                    // background-color: #fffd;
+                    // @include darkmode-counterpart {
+                    //     background-color: rgba(112, 112, 112, .5);
+                    //     color: #fffd;
+                    // }
                 }
             }
         }
     }
+}
 
-    //文字格式工具条
-    &-toolbar {
-        animation: toolbar 0.2s ease-in-out;
-        border: none;
-        border-radius: 40px;
-        padding: 4px 6px;
-        // transform: translateY(-12px);
-        background-color: var(--b3-theme-surface);
-        @include menu-shadow;
-        @include border-or-not;
+&-icons {
+    // 工具条
+    @include protyle-icons;
+}
 
-        &__item {
-            height: 30px;
-            width: 30px;
-            padding-top: 3px;
-            border-radius: 20px;
+&-action {
+    // 代码块
+    @include protyle-icons;
 
-            &:hover {
-                @include theme-variant-color(background-color, on-background, 0.1);
-            }
+    &:hover {
+        backdrop-filter: none;
+    }
+}
 
-            &:not(.protyle-toolbar__item--current) {
-                @include theme-variant-color(color, on-background, 0.8);
+//编辑区域
+&-content {
+    background-color: var(--b3-theme-background);
+}
 
-                &:hover {
-                    @include theme-variant-color(color, on-background, 1);
-                }
-            }
-        }
+//文档标题
+&-title {
+    &__input {
+        font-weight: 600;
+        font-size: 2.4em;
+        line-height: 1.4;
+        padding-top: 8px;
+        padding-bottom: 8px;
 
-        &__divider {
-            border-left: 1px solid var(--b3-border-color-trans);
+        &:empty:after {
+            opacity: 0.6;
         }
     }
+}
 
-    // 块定位滚动条
-    &-scroll {
-        opacity: 0;
-        transform: scale(0.95, 0.9);
-        transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1),
-            transform 0.2s cubic-bezier(0, 0, 0.2, 1);
-        transition-delay: 0.5s;
+// 正文内容
+&-wysiwyg {
+    @include typography-elements;
+
+    // 正文紧挨文档标题的标题块
+    &>div[data-type="NodeHeading"]:first-child,
+    &>[data-node-id].sb:first-child .sb:first-child {
+        margin-top: 0;
+    }
+
+    // 折叠块--标题块
+    div[fold="1"] {
+        &[data-type=NodeHeading] {
+            background-color: var(--b3-theme-surface-lighter);
+            outline: 1.5px solid var(--b3-border-color-trans);
+            opacity: 0.6;
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+}
+
+//文字格式工具条
+&-toolbar {
+    animation: toolbar 0.2s ease-in-out;
+    border: none;
+    border-radius: 40px;
+    padding: 4px 6px;
+    // transform: translateY(-12px);
+    background-color: var(--b3-theme-surface);
+    @include menu-shadow;
+    @include border-or-not;
+
+    &__item {
+        height: 30px;
+        width: 30px;
+        padding-top: 3px;
+        border-radius: 20px;
 
         &:hover {
-            opacity: 1;
-            transform: none;
-            transition-delay: 0s;
+            @include theme-variant-color(background-color, on-background, 0.1);
         }
 
-        // 溢出显示
-        > .protyle-scroll__bar {
-            overflow: visible
-        }
+        &:not(.protyle-toolbar__item--current) {
+            @include theme-variant-color(color, on-background, 0.8);
 
-        &__bar{
-            top: calc(50% - 12px);
+            &:hover {
+                @include theme-variant-color(color, on-background, 1);
+            }
         }
     }
 
+    &__divider {
+        border-left: 1px solid var(--b3-border-color-trans);
+    }
+}
 
-    // 文字外观
-    &-font {
-        @include protyle-font();
+// 块定位滚动条
+&-scroll {
+    opacity: 0;
+    transform: scale(0.95, 0.9);
+    transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1),
+        transform 0.2s cubic-bezier(0, 0, 0.2, 1);
+    transition-delay: 0.5s;
+
+    &:hover {
+        opacity: 1;
+        transform: none;
+        transition-delay: 0s;
     }
 
-    // 框选框
-    // &-select {
-    // outline: 1px solid var(--b3-theme-primary-lighter);
-    // }
+    // 溢出显示
+    >.protyle-scroll__bar {
+        overflow: visible
+    }
 
-    // 预览模式 ————————————————————————————
-    .protyle-preview__action {
-        background-color: var(--b3-theme-background);
-        border-bottom: 1px solid var(--b3-border-color-trans);
+    &__bar {
+        top: calc(50% - 12px);
+    }
+}
 
-        button {
+
+// 文字外观
+&-font {
+    @include protyle-font();
+}
+
+// 框选框
+// &-select {
+// outline: 1px solid var(--b3-theme-primary-lighter);
+// }
+
+// 预览模式 ————————————————————————————
+.protyle-preview__action {
+    background-color: var(--b3-theme-background);
+    border-bottom: 1px solid var(--b3-border-color-trans);
+
+    button {
+        background-color: transparent;
+
+        &.protyle-preview__action--current {
             background-color: transparent;
+            font-weight: 600;
+        }
 
-            &.protyle-preview__action--current {
-                background-color: transparent;
-                font-weight: 600;
-            }
-
-            &:not(.protyle-preview__action--current):hover {
-                background-color: transparent;
-                color: var(--b3-theme-on-background);
-            }
+        &:not(.protyle-preview__action--current):hover {
+            background-color: transparent;
+            color: var(--b3-theme-on-background);
         }
     }
+}
 }
 
 .b3-typography {
@@ -900,7 +972,5 @@
 .custom-attr .block__logo.custom-attr__avheader {
     color: var(--b3-theme-primary);
 }
-.av {
 
-
-}
+.av {}
