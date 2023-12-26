@@ -1,3 +1,19 @@
+### v1.0.6
+
+* 优化代码块字体列表，代码块中文字体同正文字体
+* 优化集市项目详情页设计
+* 修复移动端顶栏、状态栏显示异常的问题
+* 修复小窗页签栏右边距失效的问题
+
+<br />
+
+* Optimized the font list of code blocks, making Chinese characters in code blocks consistent with the regular text.
+* Redesigned the marketplace project detail page.
+* Fixed the issue where the top bar and status bar were displaying abnormally on mobile devices.
+* Fixed the issue of the right margin not working for the tab bar in mini windows.
+
+---
+
 ### v1.0.5
 
 * 优化 `闪卡 - 间隔复习` 窗口样式

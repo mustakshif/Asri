@@ -41,16 +41,18 @@ An ultra-modern macOS-like theme for [SiYuan](https://github.com/siyuan-note/siy
 
 Latest updates:
 
+### v1.0.6
+
+* Optimized the font list of code blocks, making Chinese characters in code blocks consistent with the regular text.
+* Redesigned the marketplace project detail page.
+* Fixed the issue where the top bar and status bar were displaying abnormally on mobile devices.
+* Fixed the issue of the right margin not working for the tab bar in mini windows.
+
 ### v1.0.5
 
 * Optimized the style of `Flashcard - Spaced Repetition` dialog.
 * Optimized the style of graph configuration panel.
 * Adjusted the list style when folded.
-
-### v1.0.4
-
-  * Expanded the responsive area of the "main menu" button in the toolbar (top bar), allowing users to click it without extra mouse movements after the toolbar appears.
-* Modified the error button in dialogs.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
