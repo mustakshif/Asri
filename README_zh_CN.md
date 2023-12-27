@@ -36,7 +36,7 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
 
 ## 如何使用
 
-* 应用内下载更新（推荐）：进入思源笔记应用，在 `设置 - 集市 - 主题` 中搜索下载「Hadeeth」并应用
+* **应用内下载更新（推荐）**：进入思源笔记应用，在 `设置 - 集市 - 主题` 中搜索下载「Hadeeth」并应用
 * GitHub 下载更新：下载 release 中的 `package.zip`，手动解压至思源笔记工作空间下的 `conf/appearance/themes`，重启思源，在应用 `设置 - 外观` 中选择 Hadeeth 主题
 
 ## 更新日志

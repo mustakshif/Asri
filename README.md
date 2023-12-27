@@ -34,7 +34,7 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## How to use
 
-* Download & update within SiYuan (recommended): Go to the `Settings - Bazaar - Themes` in SiYuan and search for "Hadeeth" to download and apply.
+* **Download & update within SiYuan (recommended)**: Go to the `Settings - Bazaar - Themes` in SiYuan and search for "Hadeeth" to download and apply.
 * Download & update from GitHub: Download the `package.zip` from the releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart the application. Then choose "Hadeeth" in your theme list in `Settings - Appearance`.
 
 ## Changelog
