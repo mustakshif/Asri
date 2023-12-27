@@ -1,3 +1,14 @@
+### v1.0.8
+
+* 优化搜索列表按文档分组显示
+* 修复主题简介无法找到的问题
+
+
+* Improved the display of grouped search results.
+* Fixed the issue where the theme README.md could not be found.
+
+---
+
 ### v1.0.7
 
 * 重新设计文档标签，改为单色样式，与题头图更好地融合

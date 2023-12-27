@@ -41,6 +41,11 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 Latest updates:
 
+### v1.0.8
+
+* Improved the display of grouped search results.
+* Fixed the issue where the theme README.md could not be found.
+
 ### v1.0.7
 
 * Redesigned document tags by using a monocolor style, improving their integration with the header image.
