@@ -1,3 +1,17 @@
+### v1.0.7
+
+* 重新设计文档标签，改为单色样式，与题头图更好地融合
+* 重新设计搜索列表和搜索结果高亮，优化按文档分组显示
+* 去除设置菜单设置项之间的分割线
+
+<br />
+
+* Redesigned document tags by using a monocolor style, improving their integration with the header image.
+* Redesigned the search list and search results highlight, and enhanced the display of grouped search list.
+* Removed dividing lines between the options in settings.
+
+---
+
 ### v1.0.6
 
 * 优化代码块字体列表，代码块中文字体同正文字体

@@ -43,18 +43,11 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
 
 最近更新：
 
-### v1.0.6
+### v1.0.7
 
-* 优化代码块字体列表，代码块中文字体同正文字体
-* 优化集市项目详情页设计
-* 修复移动端顶栏、状态栏显示异常的问题
-* 修复小窗页签栏右边距失效的问题
-
-### v1.0.5
-
-* 优化 `闪卡 - 间隔复习` 窗口样式
-* 优化关系图配置面板样式
-* 调整列表项折叠时序号样式
+* 重新设计文档标签，改为单色样式，与题头图更好地融合
+* 重新设计搜索列表和搜索结果高亮，优化按文档分组显示
+* 去除设置菜单设置项之间的分割线
 
 查看全部日志 👉 [更新日志](./CHANGELOG.md)
 
@@ -72,7 +65,7 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
 | 借鉴内容                                                 | 来自主题 | 作者 |
 | ---------------------------------------------------------- | ---------- | ------ |
 | 菜单背景模糊                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
-| 隐藏顶栏<br />侧栏面板列表项前圆点<br />大纲列表标题图标<br />状态栏 | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
+| 隐藏顶栏<br />侧栏面板列表项前圆点<br />大纲列表标题图标<br />状态栏<br />搜索列表 | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
 | 文档树缩进线<br />`setMutationObserver` 函数                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
 
 (以上排名不分先后)

@@ -41,18 +41,11 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 Latest updates:
 
-### v1.0.6
+### v1.0.7
 
-* Optimized the font list of code blocks, making Chinese characters in code blocks consistent with the regular text.
-* Redesigned the marketplace project detail page.
-* Fixed the issue where the top bar and status bar were displaying abnormally on mobile devices.
-* Fixed the issue of the right margin not working for the tab bar in mini windows.
-
-### v1.0.5
-
-* Optimized the style of `Flashcard - Spaced Repetition` dialog.
-* Optimized the style of graph configuration panel.
-* Adjusted the list style when folded.
+* Redesigned document tags by using a monocolor style, improving their integration with the header image.
+* Redesigned the search list and search results highlight, and enhanced the display of grouped search list.
+* Removed dividing lines between the options in settings.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
@@ -70,7 +63,7 @@ The theme development process drew inspiration from the following themes, and I 
 | Reference Content                                                 | From Theme | Developer |
 | ---------------------------------------------------------- | ---------- | ------ |
 | Menu background blur                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
-|Toolbar hiding<br />Dots before sidebar panel list items<br />Outline list item icons<br />Status bar | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
+|Toolbar hiding<br />Dots before sidebar panel list items<br />Outline list item icons<br />Status bar<br />Seach list | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
 | File tree indent guides<br />`setMutationObserver` function                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
 
 （The order in the list above does not imply any ranking）

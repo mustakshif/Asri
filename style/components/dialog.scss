@@ -469,6 +469,121 @@
     }
 }
 
+#searchList {
+    background-color: var(--b3-theme-surface);
+
+    [data-type="search-item"] {
+        flex-wrap: wrap;
+        padding: 4px;
+        justify-content: flex-end;
+
+        .b3-list-item__graphic {
+            align-self: flex-start;
+            transform: translateY(20%);
+            color: var(--b3-theme-on-surface);
+        }
+
+        .b3-list-item__text {
+            @include theme-variant-color(color, on-background, 0.8);
+
+            font-weight: 500;
+            line-height: 1.5;
+            flex-shrink: 0;
+            flex-basis: calc(100% - 44px);
+            -webkit-line-clamp: 2;
+
+            mark {
+                background-color: transparent;
+                color: var(--b3-theme-primary);
+            }
+        }
+
+        .b3-list-item__meta {
+            // 备注文本等
+            .b3-list-item__hinttext {
+                line-height: 1;
+                padding: 4px 0;
+            }
+            // 文档路径
+            &--ellipsis {
+                max-width: calc(100% - 22px);
+                padding: 8px 0 8px 8px;
+                line-height: 1;
+            }
+        }
+    }
+
+    // 分组设置为“按文档分组”
+    >.b3-list-item:not([data-type="search-item"]) {
+        margin: 0;
+        padding: 0 8px;
+        border-radius: 0;
+        position: sticky;
+        top: -8px;
+        background-color: var(--b3-theme-surface);
+        z-index: 1;
+
+        .b3-list-item__toggle--hl:hover {
+            background-color: transparent;
+        }
+
+        &:hover .b3-list-item__text {
+            color: var(--b3-theme-on-background) !important;
+        }
+
+        +div>.b3-list-item {
+            min-height: unset;
+            margin-left: 40px;
+            padding-left: 4px !important;
+        }
+    }
+}
+
+// 水平布局
+.search__layout:not(.search__layout--row){
+    #searchList {
+        [data-type="search-item"] {    
+            .b3-list-item__graphic {
+                align-self: center;
+                transform: none;
+            }
+
+            span.b3-list-item__graphic{
+                margin-right: 0;
+                font-size: 14px;
+            }
+    
+            .b3-list-item__text {  
+                flex-shrink: 1;
+                flex-basis: 0;
+                -webkit-line-clamp: 1;
+            }
+        }
+    }
+}
+
+// 高亮
+.protyle-wysiwyg [data-node-id] span[data-type~=search-mark] {
+    border-radius: 4px;
+    padding: 2px;
+    margin: 0 -2px;
+    mix-blend-mode: multiply;
+    -webkit-box-decoration-break: clone;
+    background-color: var(--b3-protyle-inline-mark-background) !important;
+    color: var(--b3-theme-on-background) !important;
+
+    @include darkmode-counterpart {
+        mix-blend-mode: normal;
+    }
+
+    &.search-mark--hl {
+        @include menu-shadow(map-get($theme-light, primary), $opacity-light: 0.2);
+        mix-blend-mode: normal;
+        background-color: var(--b3-theme-primary-lighter) !important;
+        color: var(--b3-theme-on-background) !important;
+    }
+}
+
 // 随机题头图列表
 .b3-dialog__body {
     position: relative;
