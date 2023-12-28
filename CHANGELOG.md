@@ -3,7 +3,7 @@
 * **引入常驻顶栏，现可通过代码片段取消隐藏顶栏**
 * 修复部分情况下浮动反链面板背景模糊失效的问题
 
-<br >
+<br />
 
 * **Introduced pinned top bar, and now it is possible to pin the top bar using code snippets.**
 * Fixed an issue where the background blur of the floating backlink panel was not working properly in certain cases.
