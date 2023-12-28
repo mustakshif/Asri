@@ -42,6 +42,11 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 Latest updates:
 
+### v1.1.0
+
+* **Introduced pinned top bar, and now it is possible to pin the top bar using code snippets.**
+* Fixed an issue where the background blur of the floating backlink panel was not working properly in certain cases.
+
 ### v1.0.9
 
 * Optimized the style of selected items in the search list when grouped by documents.
