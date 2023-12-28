@@ -2,16 +2,16 @@
   "name": "Hadeeth",
   "author": "MUSTAKSHIF",
   "url": "https://github.com/mustakshif/Hadeeth",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "displayName": {
     "default": "Hadeeth",
     "zh_CN": "Hadeeth",
     "en_US": "Hadeeth"
   },
   "description": {
-    "default": "极富现代感的类 macOS 主题，以轻量、极简的风格，带来优雅、高效的笔记体验。ps：顶栏相关问题请参阅主题特性第一点👇",
-    "zh_CN": "极富现代感的类 macOS 主题，以轻量、极简的风格，带来优雅、高效的笔记体验。ps：顶栏相关问题请参阅主题特性第一点👇",
-    "en_US": "An ultra-modern macOS-like theme that offers a lightweight and minimalistic style, providing an elegant and efficient note-taking experience. ps: For top bar related issues, please refer to the first point of Theme Features below👇"
+    "default": "极富现代感的类 macOS 主题，以轻量、极简的风格，带来优雅、高效的笔记体验。ps：现已支持顶栏常驻，详见主题特性👇",
+    "zh_CN": "极富现代感的类 macOS 主题，以轻量、极简的风格，带来优雅、高效的笔记体验。ps：现已支持顶栏常驻，详见主题特性👇",
+    "en_US": "An ultra-modern macOS-like theme that offers a lightweight and minimalistic style, providing an elegant and efficient note-taking experience. ps: Pinned top bar is available now. Please check Theme Features below for details👇"
   },
   "readme": {
     "default": "README_zh_CN.md",

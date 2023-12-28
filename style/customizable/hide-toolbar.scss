@@ -93,7 +93,7 @@
     }
 }
 
-body:not(.hadeeth-always-show-toolbar),
+body:not(.hadeeth-pin-toolbar),
 body.body--window {
     // -> js
 
@@ -390,7 +390,7 @@ body.body--window {
     }
 }
 
-body.hadeeth-always-show-toolbar:not(.body--window) {
+body.hadeeth-pin-toolbar:not(.body--window) {
     // -> js
 
     --toolbar-height: 40px;
@@ -402,7 +402,7 @@ body.hadeeth-always-show-toolbar:not(.body--window) {
     }
 }
 
-body.body--win32.hadeeth-always-show-toolbar {
+body.body--win32.hadeeth-pin-toolbar {
     #toolbar {
         padding-left: 6px;
     }

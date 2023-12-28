@@ -11,7 +11,7 @@ const doms = {
 }
 
 function isToolbarAlwaysShown() {
-    if (document.body.classList.contains('hadeeth-always-show-toolbar')) {
+    if (document.body.classList.contains('hadeeth-pin-toolbar')) {
         return true;
     } else {
         return false;
