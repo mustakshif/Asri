@@ -5,6 +5,7 @@
 * 微调正文字体颜色，页面呈现更柔和
 * 修复暗色模式下 Windows 端选单背景颜色异常的问题
 
+<br />
 
 * Optimized the style of selected items in the search list when grouped by documents.
 * Improved the display of icons in the bottom navigation of the emoji menu.
@@ -18,6 +19,7 @@
 * 优化搜索列表按文档分组显示
 * 修复主题简介无法找到的问题
 
+<br />
 
 * Improved the display of grouped search results.
 * Fixed the issue where the theme README.md could not be found.
