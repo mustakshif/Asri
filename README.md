@@ -16,6 +16,7 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
     * **Tab bar (not toolbar/top bar)**
     * **Breadcrumb**
     * **Sidebar panel title and above**
+  * Always-show-topbar will be available in following updates
 * ➖ Dividing lines simplified, creating a consistent and organized layout style.
 * 🧩 Optimized the inner and outer spacing of super blocks, making it easy to achieve grid and masonry layouts and create an elegant doc page.
 * 📐 Extra spacing between layout blocks removed, expanding overall display range.
