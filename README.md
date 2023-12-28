@@ -12,11 +12,11 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 * 📃 Top bar hidden, window drag area adjusted for maximum display space.
   * ❗️ Quickly access the top bar by hovering over the area with icons on the left and right sides of the top of the window.
-  * ❗️ Window drag area adjusted to **blank areas** of:
+  * ❗️ When top bar hidden, window drag area adjusted to **blank areas** of:
     * **Tab bar (not toolbar/top bar)**
     * **Breadcrumb**
     * **Sidebar panel title and above**
-  * ❗️ If you need the top bar to be permanent, please go to `Settings - Appearance - Code Snippet`, then add and enable this code under `JS` tab: `document.body.classList.add("hadeeth-pin-toolbar");`. To hide the top bar again, you need to disable this snippet and reload the page or restart the app.
+  * ❗️ If you need the top bar pinned, please go to `Settings - Appearance - Code Snippet`, then add and enable this code under `JS` tab: `document.body.classList.add("hadeeth-pin-toolbar");`. To hide the top bar again, you need to disable this snippet and reload the page or restart the app.
 * ➖ Dividing lines simplified, creating a consistent and organized layout style.
 * 🧩 Optimized the inner and outer spacing of super blocks, making it easy to achieve grid and masonry layouts and create an elegant doc page.
 * 📐 Extra spacing between layout blocks removed, expanding overall display range.
