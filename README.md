@@ -11,8 +11,8 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 ## Theme Features
 
 * 📃 Top bar hidden, window drag area adjusted for maximum display space.
-  * 📌 Quickly access the top bar by hovering over the area with interactive icons on the left and right sides of the top of the window.
-  * 📌 Window drag area adjusted to **blank areas** of:
+  * ❗️ Quickly access the top bar by hovering over the area with icons on the left and right sides of the top of the window.
+  * ❗️ Window drag area adjusted to **blank areas** of:
     * **Tab bar (not toolbar/top bar)**
     * **Breadcrumb**
     * **Sidebar panel title and above**
@@ -21,7 +21,7 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 * 📐 Extra spacing between layout blocks removed, expanding overall display range.
 * 🌓 Light and dark modes supported.
 * 🗂️ File tree and outline indent guides line added.
-* 🔗 Backlink list display optimized.
+* 🔍 Search list and backlink list display optimized.
 * ⚙️ Styles of iFrame, videos, images, and other controls redesigned.
 * 🧊 Glassmorphism introduced, enhancing the visual hierarchy.
 * 💫 Lively effects added appropriately, enriching the interaction experience.
@@ -29,7 +29,7 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 * ↕️ Applied system scrollbar on macOS, which can be hidden automatically and reduce visual interference.
 * 🚥 Position of traffic lights on macOS adjusted, optimizing the layout rhythm.
 
-  * 📌 You will need to restart the application after switching to another theme to restore the traffic light to its default position.
+  * ❗️ You will need to restart the application after switching to another theme to restore the traffic light to its default position.
 * ...
 
 ## How to use
@@ -41,16 +41,12 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 Latest updates:
 
-### v1.0.8
+### v1.0.9
 
-* Improved the display of grouped search results.
-* Fixed the issue where the theme README.md could not be found.
-
-### v1.0.7
-
-* Redesigned document tags by using a monocolor style, improving their integration with the header image.
-* Redesigned the search list and search results highlight, and enhanced the display of grouped search list.
-* Removed dividing lines between the options in settings.
+* Optimized the style of selected items in the search list when grouped by documents.
+* Improved the display of icons in the bottom navigation of the emoji menu.
+* Fine-tuned the font color of the body text for a softer page rendering.
+* Fixed an issue where the background color of select menus were abnormal in dark mode on Windows.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 

@@ -1,3 +1,18 @@
+### v1.0.9
+
+* 优化搜索列表按文档分组时被选中条目的样式
+* 优化 emoji 选单底部导航的图标显示
+* 微调正文字体颜色，页面呈现更柔和
+* 修复暗色模式下 Windows 端选单背景颜色异常的问题
+
+
+* Optimized the style of selected items in the search list when grouped by documents.
+* Improved the display of icons in the bottom navigation of the emoji menu.
+* Fine-tuned the font color of the body text for a softer page rendering.
+* Fixed an issue where the background color of select menus were abnormal in dark mode on Windows.
+
+---
+
 ### v1.0.8
 
 * 优化搜索列表按文档分组显示

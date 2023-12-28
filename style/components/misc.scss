@@ -139,17 +139,19 @@ select.b3-select {
         box-shadow: none;
     }
 
-
     // 以下解决文本框聚焦时外框被裁切的情况
     // .config__panel .config__tab-container .fn__flex-1:has(>&) {
     //     overflow: visible;
     // }
 }
 
+
 select.b3-select {
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: var(--b3-menu-background);
     }
+    //focus 修复暗色模式下 Windows 端选单背景颜色异常
 }
 
 textarea {

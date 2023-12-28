@@ -360,7 +360,9 @@
     }
 
     // 搜索 ————————————————————————————————————
-    &[data-key="dialog-globalsearch"] {
+    &[data-key="dialog-globalsearch"],
+    &[data-key="dialog-search"],
+    &[data-key="dialog-replace"] {
         .b3-dialog__container {
             .b3-dialog__body {
                 .search__layout {
@@ -477,6 +479,14 @@
     }
 }
 
+#replaceBtn, #replaceAllBtn {
+    @include button-action('primary') {
+        background-color: transparent;
+        padding: 2px 8px;
+        box-shadow: none;
+    }
+}
+
 #searchList {
     [data-type="search-item"] {
         flex-wrap: wrap;
@@ -490,7 +500,7 @@
         }
 
         .b3-list-item__text {
-            @include theme-variant-color(color, on-background, 0.8);
+            @include theme-variant-color(color, on-background, 0.9);
 
             font-weight: 500;
             line-height: 1.5;
@@ -544,6 +554,10 @@
             padding: 4px;
             // margin-left: 40px;
             // padding-left: 4px !important;
+
+            &.b3-list-item--focus {
+                background-color: var(--b3-theme-primary-lightest);
+            }
         }
     }
 }
@@ -586,7 +600,7 @@
     }
 
     &.search-mark--hl {
-        @include menu-shadow(map-get($theme-light, primary), $opacity-light: 0.2);
+        @include menu-shadow(map-get($theme-light, primary), $opacity-light: 0.15);
         mix-blend-mode: normal;
         background-color: var(--b3-theme-primary-lighter) !important;
         color: var(--b3-theme-on-background) !important;
