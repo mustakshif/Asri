@@ -10,6 +10,14 @@ const doms = {
     // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
 }
 
+function isToolbarAlwaysShown() {
+    if (document.body.classList.contains('hadeeth-always-show-toolbar')) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function isMacOS() {
     return navigator.platform.indexOf("Mac") === 0 || navigator.userAgentData.platform === "macOS";
 }
@@ -81,7 +89,12 @@ function ModifyMacTrafficLights() {
     currentWindow.setTrafficLightPosition({ x: 16, y: 16 });
 }
 
-if (isMacOS() && !isInBrowser() && !isMobile()) ModifyMacTrafficLights();
+if (isMacOS() && !isInBrowser() && !isMobile() && !isToolbarAlwaysShown()) ModifyMacTrafficLights();
+
+function RestoreMacTrafficLights() {
+    let currentWindow = require("@electron/remote").getCurrentWindow();
+    currentWindow.setTrafficLightPosition({ x: 12, y: 12 });
+}
 
 // function updateDocksAndLayouts() {
 //     doms.dockl = document.getElementById('dockLeft');
@@ -102,12 +115,21 @@ function tabbarSpacing() {
     }
 
     if (!isFullScreen()) {
-        var topLeftRect = {
-            left: 0,
-            top: 0,
-            width: 80,
-            height: 42
-        };
+        if (!isToolbarAlwaysShown()) {
+            var topLeftRect = {
+                left: 0,
+                top: 0,
+                width: 80,
+                height: 48
+            };
+        } else {
+            var topLeftRect = {
+                left: 0,
+                top: 0,
+                width: 72,
+                height: 40
+            };
+        }
     }
 
     let wndElements = doms.layouts.querySelectorAll('[data-type="wnd"]');
@@ -135,7 +157,7 @@ function tabbarSpacing() {
 
             // 新窗口右侧图标区域
             if (isOverlappingTopRight) {
-                layoutTabbar.parentNode.style.marginRight = topRightRect.width - 8 + 'px'
+                layoutTabbar.parentNode.style.marginRight = topRightRect.width - 8 + 'px';
             } else {
                 layoutTabbar.parentNode.style.removeProperty('margin-right');
             }
@@ -486,51 +508,63 @@ docBodyObserver(
         if (dialog && dialog.querySelector('.emojis')) {
             dialog.classList.add('emojis-container');
         }
+    },
+    () => {
+        if (isMacOS() && !isInBrowser() && !isMobile()) {
+            if (isToolbarAlwaysShown() && !doms.toolbarWindow) {
+                RestoreMacTrafficLights();
+            } else {
+                ModifyMacTrafficLights();
+            }
+        }
     }
 )
 
 if (!isMobile()) {
-    // 左栏dock
-    dockObserver('l', 'attributes', () => {
-        doms.dockl = document.getElementById('dockLeft');
-        tabbarSpacing();
-    });
-    // 右栏dock
-    dockObserver('r', 'attributes', () => {
-        doms.dockr = document.getElementById('dockRight');
-        statusPositon();
-        avoidOverlappingWithStatus();
-    });
 
-    // 左栏面板
-    dockLayoutObserver(
-        'l',
-        undefined,
-        () => {
-            setTimeout(() => {
-                doms.layoutDockl = document.querySelector('.layout__dockl');
-                tabbarSpacing();
-                avoidOverlappingWithStatus();
-            }, 200); // 动画之后
-            // 左栏dock背景
-            dockBg();
-        }
-    )
+    if (!doms.toolbarWindow) {
+        // 左栏dock
+        dockObserver('l', 'attributes', () => {
+            doms.dockl = document.getElementById('dockLeft');
+            tabbarSpacing();
+        });
+        // 右栏dock
+        dockObserver('r', 'attributes', () => {
+            doms.dockr = document.getElementById('dockRight');
+            statusPositon();
+            avoidOverlappingWithStatus();
+        });
 
-    // 右栏面板
-    dockLayoutObserver(
-        'r',
-        undefined,
-        () => {
-            setTimeout(() => {
-                doms.layoutDockr = document.querySelector('.layout__dockr');
-                statusPositon();
-                avoidOverlappingWithStatus();
-            }, 200);
-            //右栏dock背景
-            dockBg();
-        }
-    )
+        // 左栏面板
+        dockLayoutObserver(
+            'l',
+            undefined,
+            () => {
+                setTimeout(() => {
+                    doms.layoutDockl = document.querySelector('.layout__dockl');
+                    tabbarSpacing();
+                    avoidOverlappingWithStatus();
+                }, 200); // 动画之后
+                // 左栏dock背景
+                dockBg();
+            }
+        )
+
+        // 右栏面板
+        dockLayoutObserver(
+            'r',
+            undefined,
+            () => {
+                setTimeout(() => {
+                    doms.layoutDockr = document.querySelector('.layout__dockr');
+                    statusPositon();
+                    avoidOverlappingWithStatus();
+                }, 200);
+                //右栏dock背景
+                dockBg();
+            }
+        )
+    }
 
     // 中心布局
     layoutsObserver(

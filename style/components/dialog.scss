@@ -599,6 +599,13 @@
         mix-blend-mode: normal;
     }
 
+    .file-tree & {
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+        mix-blend-mode: normal;
+    }
+
     &.search-mark--hl {
         @include menu-shadow(map-get($theme-light, primary), $opacity-light: 0.15);
         mix-blend-mode: normal;
