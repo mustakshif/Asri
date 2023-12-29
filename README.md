@@ -16,7 +16,7 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
     * **Tab bar (not toolbar/top bar)**
     * **Breadcrumb**
     * **Sidebar panel title and above**
-  * ❗️ If you need the top bar pinned, please go to `Settings - Appearance - Code Snippet`, then add and enable this code under `JS` tab: `document.body.classList.add("hadeeth-pin-toolbar");`. To hide the top bar again, you need to disable this snippet and reload the page or restart the app.
+  * ❗️ If you need the top bar pinned, please go to `Settings - Appearance - Code Snippet`, then add and enable this code line under `JS` tab: `document.body.classList.add("hadeeth-pin-toolbar");`. To hide the top bar again, you need to disable this snippet and reload the page or restart the app.
 * ➖ Dividing lines simplified, creating a consistent and organized layout style.
 * 🧩 Optimized the inner and outer spacing of super blocks, making it easy to achieve grid and masonry layouts and create an elegant doc page.
 * 📐 Extra spacing between layout blocks removed, expanding overall display range.
