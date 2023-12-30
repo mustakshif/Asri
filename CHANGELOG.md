@@ -7,7 +7,7 @@
 <br/>
 
 * Improved the distribution of keyword context and document paths in the horizontal layout of the search list.
-* Fixed an issue on Mac where, in dark mode with system scroll bar set to auto-hide, certain page elements would still display the light mode scroll bar.
+* Fixed an issue on Mac where, in dark mode with system scroll bar set to `When scrolling`, certain page elements would still display the light mode scroll bar.
 * Updated the theme instructions to highlight changes that might affect the user experience.
 
 ---
