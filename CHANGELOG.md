@@ -1,3 +1,17 @@
+### v1.1.1
+
+* 改进搜索列表水平布局时的关键字上下文和文档路径的分布
+* 修复暗色模式下，Mac 端系统滚动条设置为自动隐藏时，部分页面元素滚动条仍显示浅色模式滚动条的问题
+* 更新主题说明，将可能影响体验的改动提前
+
+<br/>
+
+* Improved the distribution of keyword context and document paths in the horizontal layout of the search list.
+* Fixed an issue on Mac where, in dark mode with system scroll bar set to auto-hide, certain page elements would still display the light mode scroll bar.
+* Updated the theme instructions to highlight changes that might affect the user experience.
+
+---
+
 ### v1.1.0
 
 * **引入常驻顶栏，现可通过代码片段取消隐藏顶栏**

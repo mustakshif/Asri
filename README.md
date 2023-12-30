@@ -44,17 +44,16 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 Latest updates:
 
+### v1.1.1
+
+* Improved the distribution of keyword context and document paths in the horizontal layout of the search list.
+* Fixed an issue on Mac where, in dark mode with system scroll bar set to auto-hide, certain page elements would still display the light mode scroll bar.
+* Updated the theme instructions to highlight changes that might affect the user experience.
+
 ### v1.1.0
 
 * **Introduced pinned top bar, and now it is possible to pin the top bar using code snippets.**
 * Fixed an issue where the background blur of the floating backlink panel was not working properly in certain cases.
-
-### v1.0.9
-
-* Optimized the style of selected items in the search list when grouped by documents.
-* Improved the display of icons in the bottom navigation of the emoji menu.
-* Fine-tuned the font color of the body text for a softer page rendering.
-* Fixed an issue where the background color of select menus were abnormal in dark mode on Windows.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
