@@ -48,6 +48,7 @@ Latest updates:
 
 * Improved the distribution of keyword context and document paths in the horizontal layout of the search list.
 * Fixed an issue on Mac where, in dark mode with system scroll bar set to `When scrolling`, certain page elements would still display the light mode scroll bar.
+* Modified the pointer to default in the blank space of the tab bar.
 * Updated the theme instructions to highlight changes that might affect the user experience.
 
 ### v1.1.0
