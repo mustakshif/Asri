@@ -27,7 +27,7 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 * 🧩 Optimized the inner and outer spacing of super blocks, making it easy to achieve grid and masonry layouts and create an elegant doc page.
 * 📐 Extra spacing between layout blocks removed, expanding overall display range.
 * 🌓 Light and dark modes supported.
-* 🗂️ File tree and outline indent guides line added.
+* 🗂️ File tree and outline indent guides added.
 * 🔍 Search list and backlink list display optimized.
 * ⚙️ Styles of iFrame, videos, images, and other controls redesigned.
 * 🧊 Glassmorphism introduced, enhancing the visual hierarchy.
