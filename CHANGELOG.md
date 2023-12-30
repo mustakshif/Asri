@@ -8,6 +8,8 @@
 * **Introduced pinned top bar, and now it is possible to pin the top bar using code snippets.**
 * Fixed an issue where the background blur of the floating backlink panel was not working properly in certain cases.
 
+---
+
 ### v1.0.9
 
 * 优化搜索列表按文档分组时被选中条目的样式

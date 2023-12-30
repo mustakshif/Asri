@@ -126,9 +126,8 @@ select.b3-select {
     box-shadow: none;
     background-color: var(--b3-list-hover);
     min-height: 28px;
-    transition: outline 0.2s;
+    transition: outline 0.2s, background-color 0.2s;
     outline: 0px solid transparent;
-
 
     &:not(.b3-text-field--text):hover {
         box-shadow: none;

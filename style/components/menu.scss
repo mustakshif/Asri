@@ -35,7 +35,7 @@
                         background-color: #fff4;
                     }
                 }
-                
+
                 &>.b3-menu__action {
                     color: var(--b3-theme-on-primary);
 
@@ -62,10 +62,11 @@
         }
 
         .b3-menu__separator {
-           background-color: var(--b3-border-color-trans);
+            background-color: var(--b3-border-color-trans);
         }
     }
 }
+
 .b3-menu__submenu {
     max-height: none;
 }
@@ -83,7 +84,7 @@
     background-color: var(--b3-menu-background);
 
     &>div {
-        padding: 4px 0;       
+        padding: 4px 0;
 
         .b3-list-item {
             &--focus:not(:hover) {
@@ -103,11 +104,18 @@
     }
 
     // 引用、嵌入块菜单
+    .b3-list-item--first,
+    .b3-list-item--two {
+        .b3-list-item__text {
+            font-weight: 500;
+        }
+    }
     .b3-list-item--two .b3-list-item__meta.b3-list-item__showall:not(:first-child) {
-        background-color: #0000000e;
-        padding: 4px;
+        padding: 4px 4px 4px 22px;
         width: fit-content;
         border-radius: 4px;
+        word-break: normal;
+        opacity: 0.8;
     }
 
     // emojis
@@ -130,11 +138,20 @@
 
 
 // emoji 面板
+
+.b3-dialog--open .b3-dialog.emojis-container {
+    // -> js
+    .b3-dialog__container {
+        background-color: var(--b3-menu-background);
+    }
+}
+
 .emojis {
     padding: 0;
 
     .fn__flex:first-child {
-        margin: 8px 0;
+        // margin: 8px 0;
+        padding: 8px 0;
 
         // 搜索框
         span.fn__space+.b3-form__icon {
@@ -166,20 +183,22 @@
                         0% {
                             filter: brightness(1);
                         }
+
                         50% {
                             filter: brightness(1.15);
                         }
+
                         100% {
                             filter: brightness(1);
                         }
-                    } 
+                    }
                 }
             }
         }
     }
 
     &__panel+.fn__flex {
-        border-top: 1px solid var(--b3-border-color);
+        border-top: 1px solid var(--b3-border-color-trans);
         font-family: var(--b3-font-family-emoji);
 
         .emojis__type {

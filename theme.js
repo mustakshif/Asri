@@ -19,7 +19,8 @@ function isToolbarAlwaysShown() {
 }
 
 function isMacOS() {
-    return navigator.platform.indexOf("Mac") === 0 || navigator.userAgentData.platform === "macOS";
+    // return navigator.platform.indexOf("Mac") === 0 || navigator.userAgentData.platform === "macOS";
+    return "darwin" === process.platform;
 }
 
 isMacOS() && document.body.classList.add('body--mac');
@@ -619,3 +620,5 @@ function getDblClickMouseXY() {
 }
 
 getDblClickMouseXY();
+
+

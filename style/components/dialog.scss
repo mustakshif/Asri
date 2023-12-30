@@ -74,6 +74,10 @@
                         padding: 8px 0;
                         background-color: var(--b3-theme-background);
 
+                        .layout-tab-bar + .fn__flex-1 {
+                            background-color: var(--b3-theme-background);
+                        }
+
                         &--top {
                             margin-top: 0;
                             height: 100%;
@@ -580,6 +584,13 @@
                 flex-shrink: 1;
                 flex-basis: 0;
                 -webkit-line-clamp: 1;
+            }
+
+            .b3-list-item__meta {
+                // 文档路径
+                &--ellipsis {
+                    max-width: 50%;
+                }
             }
         }
     }

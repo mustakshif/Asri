@@ -220,20 +220,31 @@ body:not(.body--blur) {
             // background-size: cover;
             // background-attachment: fixed;
             border-radius: 8px;
-            @include bg-blur;
+            @include bg-blur;            
+        }
+
+        .b3-menu__items {
             @include theme-variant-color(background-color, menu-background, $medium-transparency);
         }
     }
 
     // '/'菜单
     .protyle-hint {
-        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        background-color: transparent;
         @include bg-blur;
+
+        > div:not(.emojis) {
+            @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        }
+
+        > .emojis > .emojis__panel {
+            @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        }
     }
 
     .protyle-util {
         @include theme-variant-color(background-color, menu-background, $medium-transparency);
-        @include bg-blur;
+        @include bg-blur;        
     }
 
     #searchHistoryList {
@@ -305,13 +316,16 @@ body:not(.body--blur) {
     }
 
     .b3-dialog.emojis-container {
+        // ->js
         .b3-dialog__container {
-            @include theme-variant-color(background-color, menu-background, $medium-transparency);
-            @include bg-blur;
+            @include bg-blur();
+            background-color: transparent;
+
+            .emojis > * {
+                @include theme-variant-color(background-color, menu-background, $medium-transparency);
+            }
         }
     }
-
-    // ->js
 
     .config-bazaar__readme {
         filter: saturate(0);
