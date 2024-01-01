@@ -530,6 +530,11 @@
                 padding: 8px 0 8px 8px;
                 line-height: 1;
             }
+
+            mark {
+                background-color: transparent;
+                color: var(--b3-theme-primary);
+            }
         }
     }
 

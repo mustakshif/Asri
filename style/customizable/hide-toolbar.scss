@@ -115,7 +115,7 @@ body.body--window {
             @include toolbarHidden;
     
             &:hover {
-                transition: opacity 200ms 100ms, transform 300ms 100ms;
+                transition: opacity 100ms 100ms, transform 200ms 100ms;
                 @include toolbarShown;
             }
     

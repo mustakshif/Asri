@@ -11,18 +11,18 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 ## Theme Features
 
 * 📃 Top bar hidden, window drag area adjusted for maximum display space.
-  * ❗️ Quickly access the top bar by hovering over the area with icons on the left and right sides of the top of the window.
-  * ❗️ When top bar hidden, window drag area adjusted to **blank areas** of:
+  * 📌 Quickly access the top bar by hovering over the area with icons on the left and right sides of the top of the window.
+  * 📌 When top bar hidden, window drag area adjusted to **blank areas** of:
     * **Tab bar (not toolbar/top bar)**
     * **Breadcrumb**
     * **Sidebar panel title and above**
-  * ❗️ If you need the top bar pinned, please go to `Settings - Appearance - Code Snippet`, then add and enable this code line under `JS` tab: `document.body.classList.add("hadeeth-pin-toolbar");`. To hide the top bar again, you need to disable this snippet and reload the page or restart the app.
+  * 📌 If you need the top bar pinned, please go to `Settings - Appearance - Code Snippet`, then add and enable this code line under `JS` tab: `document.body.classList.add("hadeeth-pin-toolbar");`. To hide the top bar again, you need to disable this snippet and reload the page or restart the app.
 * ↕️ Applied system scrollbar on macOS, which can be hidden automatically and reduce visual interference.
   
-  * ❗️ If your system scroll bar setting is **not** set to `When scrolling` in: `System Settings - Appearance - Show scroll bars` on macOS, scroll bars in SiYuan’s dark mode will be displayed as in light mode, which still needs to be fixed.
+  * 📌 If your system scroll bar setting is **not** set to `When scrolling` in: `System Settings - Appearance - Show scroll bars` on macOS, scroll bars in SiYuan’s dark mode will be displayed as in light mode, which still needs to be fixed.
 * 🚥 Position of traffic lights on macOS adjusted, optimizing the layout rhythm.
 
-  * ❗️ You will need to restart the application after switching to another theme to restore the traffic light to its default position.
+  * 📌 You will need to restart the application after switching to another theme to restore the traffic light to its default position.
 * ➖ Dividing lines simplified, creating a consistent and organized layout style.
 * 🧩 Optimized the inner and outer spacing of super blocks, making it easy to achieve grid and masonry layouts and create an elegant doc page.
 * 📐 Extra spacing between layout blocks removed, expanding overall display range.
