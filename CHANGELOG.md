@@ -1,3 +1,12 @@
+### v1.1.2
+* 微调 `/` 菜单中样式列表的图标
+* 加快顶栏弹出动画速率
+
+<br />
+
+* Fine-tuned the icons of the text style list in the `/` menu.
+* Accelerated top bar's pop-up animation.
+
 ### v1.1.1
 
 * 改进搜索列表水平布局时的关键字上下文和文档路径的分布
