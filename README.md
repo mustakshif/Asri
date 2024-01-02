@@ -35,6 +35,8 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 * 🚀 High level of performance maintained.
 * ...
 
+
+
 ## How to use
 
 * **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Hadeeth" to download and apply.

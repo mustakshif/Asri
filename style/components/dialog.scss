@@ -654,18 +654,7 @@
             &:hover {
                 transform: scale(1.05);
                 // box-shadow: 0 4px 18px -8px #0000001b;
-                animation: card-hover 0.3s;
                 @include menu-shadow;
-
-                @keyframes card-hover {
-                    50% {
-                        filter: brightness(1.1);
-                    }
-
-                    100% {
-                        filter: none;
-                    }
-                }
 
                 @include darkmode-counterpart {
                     box-shadow: 0 8px 28px -8px #00000062;
@@ -763,8 +752,6 @@ body.body--window {
 // 图片预览 ——————————————————————
 .viewer-backdrop {
     @extend .b3-dialog__scrim;
-    @include bg-blur($saturate-value: 1);
-    backdrop-filter: blur(40px);
     animation: fadeIn 0.3s;
     transform-origin: var(--mouseX) var(--mouseY);
 

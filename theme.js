@@ -11,11 +11,7 @@ const doms = {
 }
 
 function isToolbarAlwaysShown() {
-    if (document.body.classList.contains('hadeeth-pin-toolbar')) {
-        return true;
-    } else {
-        return false;
-    }
+    return document.body.classList.contains('hadeeth-pin-toolbar') ? true : false;
 }
 
 function isMacOS() {
@@ -53,22 +49,40 @@ function isFullScreen() {
 }
 
 function useSysScrollbar() {
-    for (let i = 0; i < document.styleSheets.length; i++) {
-        let styleSheet = document.styleSheets[i];
-        try {
-            for (let j = 0; j < styleSheet.cssRules.length; j++) {
-                let rule = styleSheet.cssRules[j];
-                if (rule.selectorText && rule.selectorText.includes('::-webkit-scrollbar')) {
-                    if (rule.style.width || rule.style.height) {
-                        styleSheet.deleteRule(j);
+    if (isMacOS()) {
+        let HadeethWebkitScrollbar = document.getElementById('HadeethWebkitScrollbar');
+
+        if (!document.body.classList.contains('hadeeth-use-webkit-scrollbar')) {
+            HadeethWebkitScrollbar?.parentNode.removeChild(HadeethWebkitScrollbar);
+            
+            for (let i = 0; i < document.styleSheets.length; i++) {
+                let styleSheet = document.styleSheets[i];
+                try {
+                    for (let j = 0; j < styleSheet.cssRules.length; j++) {
+                        let rule = styleSheet.cssRules[j];
+                        if (rule.selectorText && rule.selectorText.includes('::-webkit-scrollbar')) {
+                            if (rule.style.width || rule.style.height) {
+                                styleSheet.deleteRule(j);
+                            }
+                        }
                     }
-                }
+                } catch (e) { }
             }
-        } catch (e) { }
-    }
+        } else {
+            function addWebkitScrollbar() {
+                HadeethWebkitScrollbar?.parentNode.removeChild(HadeethWebkitScrollbar);
+    
+                var style = document.createElement('style');
+                style.setAttribute('id', 'HadeethWebkitScrollbar');
+                style.innerHTML = "::-webkit-scrollbar {width: 10px;height: 10px;}";
+                document.head.appendChild(style);
+            }
+            addWebkitScrollbar();
+        }
+    }    
 }
 
-isMacOS() && useSysScrollbar();
+useSysScrollbar();
 
 function handleToolbarHover() {
     let toolbarDrag = document.getElementById('drag');
@@ -518,6 +532,8 @@ docBodyObserver(
                 ModifyMacTrafficLights();
             }
         }
+
+        useSysScrollbar();
     }
 )
 

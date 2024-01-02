@@ -37,6 +37,27 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
 * 🚀 保持较高的流畅度表现
 * ……
 
+> ### 🔧 关于自定义主题配置
+>
+> ---
+>
+> 对于部分可能影响使用体验的主题特性，可以通过代码片段自定义是否启用。
+>
+> 前往 `设置 - 外观 - 代码片段`，在 `JS` 选项卡下，按需选择添加以下代码并启用：
+>
+> ```js
+> // 常驻顶栏
+> document.body.classList.add("hadeeth-pin-toolbar");
+>
+> // 全局禁用毛玻璃效果
+> document.body.classList.add("hadeeth-disable-backdrop-blur");
+>
+> // 使用思源默认样式的滚动条（仅Mac端）
+> document.body.classList.add("hadeeth-use-webkit-scrollbar");
+> ```
+>
+> 还原主题默认配置需要关闭相关代码片段并重新载入页面或重启应用。
+
 ## 如何使用
 
 * **应用内下载更新（推荐）**：进入思源笔记应用，在 `设置 - 集市 - 主题` 中搜索下载「Hadeeth」并应用

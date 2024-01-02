@@ -10,7 +10,7 @@ $medium-blur-rd: 20px;
 $thin-transparency: 0.75;
 $thin-blur-rd: 12px;
 
-body:not(.body--blur) {
+body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
 
     // .layout__wnd--active,
     [data-type="wnd"] {
@@ -145,6 +145,26 @@ body:not(.body--blur) {
                     pointer-events: none;
                 }
             }
+
+            .b3-chips {
+                $chip-colors: (
+                    secondary: font-color4,
+                    primary: font-color5,
+                    info: font-color6,
+                    success: font-color8,
+                    warning:font-color9,
+                    error: font-color10,
+                    pink: font-color12
+                );
+
+                @each $chip-type, $chip-color in $chip-colors {
+                    .b3-chip--middle.b3-chip--#{$chip-type} {
+                        @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+                        @include theme-variant-color(background-color, surface, 0.8, 0.6);
+                        @include theme-variant-color(color, on-background, 0.6, 1);
+                    }
+                }
+            }
         }
 
         //文字格式工具条
@@ -153,6 +173,53 @@ body:not(.body--blur) {
             @include bg-blur;
 
             // z-index: 1;
+        }
+
+        // 图片控件
+        [data-node-id] .img {
+            &:hover {
+                .protyle-action__drag {
+                    background-color: transparent;
+                    backdrop-filter: invert(1) blur(200px) saturate(0) contrast(0.5) brightness(1.15);
+                    filter: contrast(10) invert(0.1) opacity(0.9);
+                    box-shadow: none;
+                    transition: transform 50ms;
+                }
+            }
+        }
+
+        &-icons {
+            // 工具条
+            &:hover{
+                backdrop-filter: blur(20px) saturate(3);
+            }
+
+            .protyle-icon {
+                &--only {
+                    &:hover {
+                        backdrop-filter: blur(20px) saturate(3);
+                    }
+                }
+            }
+        }
+    
+        &-action {
+            // 代码块
+            &:hover{
+                backdrop-filter: blur(20px) saturate(3);
+            }
+    
+            &:hover {
+                backdrop-filter: none;
+            }
+
+            .protyle-icon {
+                &--only {
+                    &:hover {
+                        backdrop-filter: blur(20px) saturate(3);
+                    }
+                }
+            }
         }
     }
 
@@ -262,6 +329,20 @@ body:not(.body--blur) {
     .b3-dialog__body {
         &>.b3-cards {
             .b3-card {
+                &:hover {
+                    animation: card-hover 0.3s;
+  
+                    @keyframes card-hover {
+                        50% {
+                            filter: brightness(1.1);
+                        }
+    
+                        100% {
+                            filter: none;
+                        }
+                    }
+                }
+
                 &::before {
                     --glow-offset: 50%;
                     --glow-dir: 135deg;
@@ -327,6 +408,25 @@ body:not(.body--blur) {
         }
     }
 
+    .emojis__panel {
+        .emojis__content:not([style="min-height:28px"]) .emojis__item:hover {
+            animation: lighten 0.3s ease-in-out;
+            @keyframes lighten {
+                0% {
+                    filter: brightness(1);
+                }
+
+                50% {
+                    filter: brightness(1.15);
+                }
+
+                100% {
+                    filter: brightness(1);
+                }
+            }
+        }
+    }
+
     .config-bazaar__readme {
         filter: saturate(0);
 
@@ -336,7 +436,6 @@ body:not(.body--blur) {
     }
 
     .tooltip {
-        // -> blur
         @include theme-variant-color(background-color, menu-background, 0.8);
         @include bg-blur(20px);
     }
@@ -347,5 +446,11 @@ body:not(.body--blur) {
             background-color: var(--b3-tooltips-background);
             backdrop-filter: none;
         }
+    }
+
+    // 图片预览 ——————————————————————
+    .viewer-backdrop {
+        @include bg-blur($saturate-value: 1);
+        backdrop-filter: blur(40px);
     }
 }
