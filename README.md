@@ -16,7 +16,6 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
     * **Tab bar (not toolbar/top bar)**
     * **Breadcrumb**
     * **Sidebar panel title and above**
-  * 📌 If you need the top bar pinned, please go to `Settings - Appearance - Code Snippet`, then add and enable this code line under `JS` tab: `document.body.classList.add("hadeeth-pin-toolbar");`. To hide the top bar again, you need to disable this snippet and reload the page or restart the app.
 * ↕️ Applied system scrollbar on macOS, which can be hidden automatically and reduce visual interference.
   
   * 📌 If your system scroll bar setting is **not** set to `When scrolling` in: `System Settings - Appearance - Show scroll bars` on macOS, scroll bars in SiYuan’s dark mode will be displayed as in light mode, which still needs to be fixed.
@@ -35,7 +34,24 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 * 🚀 High level of performance maintained.
 * ...
 
-
+> ### 🔧 About Custom Configuration
+>
+> For some theme features that may affect user experience, you can customize whether they are disabled using code snippets.
+>
+> Go to `Settings - Appearance - Code Snippet` in SiYuan and, in the `JS` tab, chose from the following code snippets as needed and then add to your list and enable them:
+>
+> ```js
+> // Use pinned top bar
+> document.body.classList.add("hadeeth-pin-toolbar");
+>
+> // Disable glassmorphism
+> document.body.classList.add("hadeeth-disable-backdrop-blur");
+>
+> // Use SiYuan's default scrollbar (macOS only)
+> document.body.classList.add("hadeeth-use-webkit-scrollbar");
+> ```
+>
+> To restore the default theme configuration, you need to disable the code snippets you used and reload app window or restart the app.
 
 ## How to use
 
