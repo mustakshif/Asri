@@ -38,7 +38,7 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 >
 > For some theme features that may affect user experience, you can customize whether they are disabled using code snippets.
 >
-> Go to `Settings - Appearance - Code Snippet` in SiYuan and, in the `JS` tab, chose from the following code snippets as needed and then add to your list and enable them:
+> You can choose from the following code snippets as needed. Then go to `Settings - Appearance - Code Snippet`. under `JS` tab,  add them to your list and enable them:
 >
 > ```js
 > // Use pinned top bar
