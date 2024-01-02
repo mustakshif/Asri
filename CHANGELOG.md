@@ -1,9 +1,12 @@
 ### v1.1.2
+
+* 适配底栏和底栏面板
 * 微调 `/` 菜单中样式列表的图标
 * 加快顶栏弹出动画速率
 
 <br />
 
+* Adapted the bottom dock and bottom panel.
 * Fine-tuned the icons of the text style list in the `/` menu.
 * Accelerated top bar's pop-up animation.
 

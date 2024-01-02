@@ -26,8 +26,12 @@
         border-left-width: 1px;
     }
 
+    &#dockBottom {
+        padding: 0;
+    }
+
     &.dock-layout-expanded {
-        @include theme-variant-color(background-color, surface, 0.9);
+        @include theme-variant-color(background-color, surface, 1);
 
         &#dockLeft {
             border-right-color: transparent;

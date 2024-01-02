@@ -1,6 +1,6 @@
 @use '../base' as *;
 
-#status {
+.fn__flex-1:not(.has-dockb) ~ #status {
     body:not(.body--mobile) & {
         position: fixed;
         background-color: var(--b3-theme-surface);
@@ -131,4 +131,45 @@
         }
     }
     
+}
+
+.fn__flex-1.has-dockb ~ #status {
+    background-color: var(--b3-theme-background);
+    border-top-color: transparent;
+    padding: 0 32px 4px 6px;
+
+    #barDock {
+        position: absolute;
+        right: 6px;
+        z-index: 8;
+        color: var(--b3-theme-on-background);
+
+        &::before {
+            right: unset !important;
+            left: 0px;
+            transform: rotateY(180deg);
+        }
+
+        &::after {
+            left: unset !important;
+            right: 100%;
+        }
+
+        svg {
+            color: var(--b3-theme-on-surface);
+            &:hover {
+                color: var(--b3-theme-on-background);
+            }
+        }
+    }
+
+    .status__counter,
+    .status__msg,
+    .status__backgroundtask {
+        align-self: center;
+    }
+}
+
+body.body--window #status {
+    padding-right: 0 !important;
 }

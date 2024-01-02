@@ -42,6 +42,19 @@
             }
         }
     }
+
+    .fn__flex-1.has-dockb {
+
+        // -> js
+        .layout__dockl,
+        .layout__dockr {
+            // 浮动布局
+            &.layout--float {
+                height: calc(100% - 74px);
+                top: 0;
+            }
+        }
+    }
 }
 
 @mixin hide-toolbar-for-mac {
@@ -56,7 +69,10 @@
 
     .layout__dockl {
         margin-top: 10px;
-        min-height: calc(100% - 10px);
+
+        &:not(.layout--float) {
+            min-height: calc(100% - 10px);
+        }
 
         &::before {
             height: $paddingTopL;

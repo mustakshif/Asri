@@ -3,20 +3,21 @@ const doms = {
     status: document.getElementById('status'),
     dockl: document.getElementById('dockLeft'),
     dockr: document.getElementById('dockRight'),
+    dockb: document.getElementById('dockBottom'),
     layoutDockl: document.querySelector('.layout__dockl'),
     layoutDockr: document.querySelector('.layout__dockr'),
+    layoutDockb: document.querySelector('.layout__dockb'),
     toolbarWindow: document.querySelector('.toolbar__window'),
     toolbar: document.getElementById('toolbar')
     // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
 }
 
 function isToolbarAlwaysShown() {
-    return document.body.classList.contains('hadeeth-pin-toolbar') ? true : false;
+    return document.body.classList.contains('hadeeth-pin-toolbar') > 0;
 }
 
 function isMacOS() {
     return navigator.platform.indexOf("Mac") === 0 || navigator.userAgentData.platform === "macOS" || "darwin" === process.platform;
-    // return;
 }
 
 isMacOS() && document.body.classList.add('body--mac');
@@ -54,7 +55,7 @@ function useSysScrollbar() {
 
         if (!document.body.classList.contains('hadeeth-use-webkit-scrollbar')) {
             HadeethWebkitScrollbar?.parentNode.removeChild(HadeethWebkitScrollbar);
-            
+
             for (let i = 0; i < document.styleSheets.length; i++) {
                 let styleSheet = document.styleSheets[i];
                 try {
@@ -71,7 +72,7 @@ function useSysScrollbar() {
         } else {
             function addWebkitScrollbar() {
                 HadeethWebkitScrollbar?.parentNode.removeChild(HadeethWebkitScrollbar);
-    
+
                 var style = document.createElement('style');
                 style.setAttribute('id', 'HadeethWebkitScrollbar');
                 style.innerHTML = "::-webkit-scrollbar {width: 10px;height: 10px;}";
@@ -79,7 +80,7 @@ function useSysScrollbar() {
             }
             addWebkitScrollbar();
         }
-    }    
+    }
 }
 
 useSysScrollbar();
@@ -161,7 +162,7 @@ function tabbarSpacing() {
 
             // 左侧红绿灯
             if (!isInBrowser() && !isMobile() && isMacOS()) {
-                if (isOverlappingTopLeft && (isDockHidden() || !document.getElementById('dockLeft'))) {
+                if (isOverlappingTopLeft && (isSideDockHidden() || !document.getElementById('dockLeft'))) {
                     layoutTabbar.style.marginLeft = 'var(--b3-toolbar-left-mac)';
                 } else if (isOverlappingTopLeft && isLayoutDockHidden('l')) {
                     layoutTabbar.style.marginLeft = 'calc(var(--b3-toolbar-left-mac) - 42px)';
@@ -180,33 +181,50 @@ function tabbarSpacing() {
     }
 }
 
-function isDockHidden() {
+function isSideDockHidden() {
     return doms.dockl && doms.dockl.classList.contains('fn__none') > 0
 }
+function hasDockb() {
+    return doms.dockb && !doms.dockb.classList.contains('fn__none') > 0;
+}
+function addDockbClassName() {
+    if (hasDockb()) {
+        doms.toolbar?.nextElementSibling.classList.add('has-dockb')
+    } else {
+        doms.toolbar?.nextElementSibling.classList.remove('has-dockb');
+    }
+}
 
+function addEmojiDialogClassName() {
+    // emoji dialog
+    let dialog = document.querySelector('.b3-dialog--open .b3-dialog');
+    if (dialog && dialog.querySelector('.emojis')) {
+        dialog.classList.add('emojis-container');
+    }
+}
 /**
  * 判断 .layout__dock 是否隐藏或浮动
- * @param {'l' | 'r'} direction
+ * @param {'l' | 'r' | 'b'} direction
  */
 function isLayoutDockHidden(direction) {
     let layoutDockNew = doms[`layoutDock${direction}`];
     return layoutDockNew && (layoutDockNew.classList.contains('layout--float') || layoutDockNew.style.cssText.includes('width: 0px'))
 }
 
+function isDockLytPinned(node) {
+    return node && !node.classList.contains('layout--float');
+}
+function isDockLytExpanded(node) {
+    return node?.style.width !== '0px';
+}
+function isFloatDockLytHidden(node) {
+    return !isDockLytPinned(node) && node?.style.cssText.includes('transform: translate');
+}
+
 /**
  * 边栏面板展开时边栏的背景变化
  */
 function dockBg() {
-
-    function isDockLytPinned(node) {
-        return node && !node.classList.contains('layout--float');
-    }
-    function isDockLytExpanded(node) {
-        return node?.style.width !== '0px';
-    }
-    function isFloatDockLytHidden(node) {
-        return !isDockLytPinned(node) && node?.style.cssText.includes('transform: translateX');
-    }
 
     if (doms.dockl && !isMobile()) {
         for (let dir of ['l', 'r']) {
@@ -220,7 +238,7 @@ function dockBg() {
                 dock.classList.remove('dock-layout-expanded');
             }
 
-            if (!isDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
+            if (!isSideDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
                 switch (dir) {
                     case 'l':
                         dock.style.borderRightColor = 'transparent';
@@ -244,26 +262,43 @@ dockBg();
  */
 function statusPositon() {
     if (!isMobile()) {
-        let layoutCenter = doms.layouts.querySelector('.layout__center');
-
-        if (layoutCenter && doms.layoutDockr && !doms.status.classList.contains('.fn__none')) {
-            let layoutDockrWidth = doms.layoutDockr.clientWidth;
-            let layoutCenterWidth = layoutCenter.clientWidth;
-
-            doms.status.style.maxWidth = layoutCenterWidth - 12 + 'px';
-
-            if (isDockHidden() && isLayoutDockHidden('r')) {
-                doms.status.style.transform = 'none';
-            } else if (!isDockHidden() && isLayoutDockHidden('r')) {
-                doms.status.style.transform = 'translateX(-40px)';
-            } else if (!isDockHidden() && !isLayoutDockHidden('r')) {
-                doms.status.style.transform = `translateX(-${layoutDockrWidth + 40}px)`;
-            } else if (isDockHidden() && !isLayoutDockHidden('r')) {
-                doms.status.style.transform = `translateX(-${layoutDockrWidth}px)`;
+        if (!hasDockb()) {
+            function setStatusTransform(x, y) {
+                doms.status.style.transform = `translate(${x}px, ${y}px)`;
             }
 
-            doms.status = document.getElementById('status');
+            let layoutCenter = doms.layouts.querySelector('.layout__center');
+
+            if (layoutCenter && doms.layoutDockr && !doms.status.classList.contains('.fn__none')) {
+                let layoutDockrWidth = doms.layoutDockr.clientWidth;
+                let layoutCenterWidth = layoutCenter.clientWidth;
+                
+                doms.layoutDockb = doms.layouts.querySelector('.layout__dockb');
+                if (doms.layoutDockb && isDockLytPinned(doms.layoutDockb)) var y = doms.layoutDockb.clientHeight * -1;
+                else y = 0;
+
+                doms.status.style.maxWidth = layoutCenterWidth - 12 + 'px';
+
+                if (isSideDockHidden() && isLayoutDockHidden('r')) setStatusTransform(0, y);
+                else if (!isSideDockHidden() && isLayoutDockHidden('r')) setStatusTransform(-40, y);
+                else if (!isSideDockHidden() && !isLayoutDockHidden('r')) setStatusTransform((layoutDockrWidth + 40) * -1, y);
+                else if (isSideDockHidden() && !isLayoutDockHidden('r')) setStatusTransform(layoutDockrWidth * -1, y);
+
+                doms.status = document.getElementById('status');
+            }
+        } else {
+            doms.status?.style.removeProperty('max-width');
+            doms.status?.style.removeProperty('transform');
         }
+
+
+
+        // if (!hasDockb() && !isLayoutDockHidden('b')) {
+        //     let layoutDockbHeight = doms.layoutDockb?.clientHeight;
+        //     doms.status.style.transform = `translateY(-${layoutDockbHeight + 42}px)`;
+        // }   
+
+
     }
 }
 statusPositon();
@@ -518,11 +553,9 @@ function layoutsObserver(funcChildList, funcAttr = undefined, fucnCharacterData 
 docBodyObserver(
     // childList mutations func
     () => {
-        // emoji dialog
-        let dialog = document.querySelector('.b3-dialog--open .b3-dialog');
-        if (dialog && dialog.querySelector('.emojis')) {
-            dialog.classList.add('emojis-container');
-        }
+        addEmojiDialogClassName();
+        addDockbClassName();
+        statusPositon();
     },
     () => {
         if (isMacOS() && !isInBrowser() && !isMobile()) {
@@ -532,8 +565,6 @@ docBodyObserver(
                 ModifyMacTrafficLights();
             }
         }
-
-        useSysScrollbar();
     }
 )
 
@@ -596,6 +627,7 @@ if (!isMobile()) {
             formatIndentGuidesForFocusedItems();
             formatProtyleWithBgImageOnly();
             avoidOverlappingWithStatus();
+            addDockbClassName();
         },
         undefined,
         undefined,

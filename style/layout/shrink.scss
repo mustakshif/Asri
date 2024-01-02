@@ -2,7 +2,7 @@
 
 @mixin layout-tab-container-contents {
     .block__icons {
-        
+
         .block__logo {
             svg {
                 visibility: hidden;
@@ -111,9 +111,13 @@
         background-color: transparent;
 
         @include layout-tab-container-contents {
-            @include theme-variant-color(background-color, surface, 0.9);
+            @include theme-variant-color(background-color, surface);
         }
     }
+}
+
+.layout__dockl,
+.layout__dockr {
 
     // 浮动布局
     &.layout--float {
@@ -138,6 +142,52 @@
     }
 }
 
+.fn__flex-1.has-dockb {
+
+    // -> js
+    .layout__dockl,
+    .layout__dockr {
+
+        // 浮动布局
+        &.layout--float {
+            height: calc(100% - var(--toolbar-height) - 42px);
+            top: 0;
+        }
+    }
+}
+
+.layout__dockb {
+    .layout-tab-container {
+        background-color: transparent;
+
+        @include layout-tab-container-contents {
+            @include theme-variant-color(background-color, surface);
+        }
+    }
+
+    &.layout--float {
+        box-shadow: none;
+        opacity: 1 !important;
+
+        .fn__flex-1.has-dockb &:not([style*="transform"]) {
+            bottom: 73px !important;
+        }
+
+        &[style*="bottom: 26px"] {
+            bottom: 0 !important;
+        }
+
+        .layout-tab-container {
+            .block__icons {
+                &,
+                &~* {
+                    @include theme-variant-color(background-color, background)
+                }
+            }
+        }
+    }
+}
+
 // .layout__dockr {
 //     &.layout--float {
 //         .b3-list--background {
@@ -156,6 +206,12 @@
 .layout__dockr {
     &.layout--float {
         border-left: 1px solid var(--b3-border-color);
+    }
+}
+
+.layout__dockb {
+    &.layout--float {
+        border-top: 1px solid var(--b3-border-color);
     }
 }
 
@@ -282,8 +338,8 @@
     background-color: transparent;
 }
 
-.graph__panel{
-    .b3-button{
+.graph__panel {
+    .b3-button {
         @include button-action('normal');
         background-color: transparent;
     }
@@ -376,11 +432,11 @@
 }
 
 // 全屏状态
-.fullscreen > .block__icons {
+.fullscreen>.block__icons {
     height: var(--toolbar-height);
     padding-right: 10px;
 
-    > .fn__flex-1:hover {
+    >.fn__flex-1:hover {
         background-color: transparent;
     }
 

@@ -8,6 +8,23 @@
 
 An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), provides an elegant and efficient note-taking experience with its lightweight and minimalistic style.
 
+## Latest Updates
+
+### v1.1.2
+
+* Adapted the bottom dock and bottom panel.
+* Fine-tuned the icons of the text style list in the `/` menu.
+* Accelerated top bar's pop-up animation.
+
+### v1.1.1
+
+* Improved the distribution of keyword context and document paths in the horizontal layout of the search list.
+* Fixed an issue on Mac where, in dark mode with system scroll bar set to `When scrolling`, certain page elements would still display the light mode scroll bar.
+* Modified the pointer to default in the blank space of the tab bar.
+* Updated the theme instructions to highlight changes that might affect the user experience.
+
+Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
+
 ## Theme Features
 
 * 📃 Top bar hidden, window drag area adjusted for maximum display space.
@@ -39,24 +56,6 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 * **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Hadeeth" to download and apply.
 * Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Hadeeth" in your theme list in `Settings - Appearance`.
-
-## Changelog
-
-Latest updates:
-
-### v1.1.1
-
-* Improved the distribution of keyword context and document paths in the horizontal layout of the search list.
-* Fixed an issue on Mac where, in dark mode with system scroll bar set to `When scrolling`, certain page elements would still display the light mode scroll bar.
-* Modified the pointer to default in the blank space of the tab bar.
-* Updated the theme instructions to highlight changes that might affect the user experience.
-
-### v1.1.0
-
-* **Introduced pinned top bar, and now it is possible to pin the top bar using code snippets.**
-* Fixed an issue where the background blur of the floating backlink panel was not working properly in certain cases.
-
-Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
 ## Plans
 
