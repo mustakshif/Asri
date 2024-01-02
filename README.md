@@ -34,24 +34,23 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 * 🚀 High level of performance maintained.
 * ...
 
-> ### 🔧 About Custom Configuration
->
-> For some theme features that may affect user experience, you can customize whether they are disabled using code snippets.
->
-> You can choose from the following code snippets as needed. Then go to `Settings - Appearance - Code Snippet`. under `JS` tab,  add them to your list and enable them:
->
-> ```js
-> // Use pinned top bar
-> document.body.classList.add("hadeeth-pin-toolbar");
->
-> // Disable glassmorphism
-> document.body.classList.add("hadeeth-disable-backdrop-blur");
->
-> // Use SiYuan's default scrollbar (macOS only)
-> document.body.classList.add("hadeeth-use-webkit-scrollbar");
-> ```
->
-> To restore the default theme configuration, you need to disable the code snippets you used and reload app window or restart the app.
+### 🔧 About Customizable Options
+For some theme features that may affect user experience, you can customize whether they are disabled using code snippets.
+
+You can choose from the following code snippets as needed. Then go to `Settings - Appearance - Code Snippet`. under `JS` tab,  add them to your list and enable them:
+
+```js
+// Use pinned top bar
+document.body.classList.add("hadeeth-pin-toolbar");
+
+// Disable glassmorphism
+document.body.classList.add("hadeeth-disable-backdrop-blur");
+
+// Use SiYuan's default scrollbar (macOS only)
+document.body.classList.add("hadeeth-use-webkit-scrollbar");
+```
+
+To restore the default theme configuration, you need to disable the code snippets you used and reload app window or restart the app.
 
 ## How to use
 
