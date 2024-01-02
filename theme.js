@@ -15,8 +15,8 @@ function isToolbarAlwaysShown() {
 }
 
 function isMacOS() {
-    // return navigator.platform.indexOf("Mac") === 0 || navigator.userAgentData.platform === "macOS";
-    return "darwin" === process.platform;
+    return navigator.platform.indexOf("Mac") === 0 || navigator.userAgentData.platform === "macOS" || "darwin" === process.platform;
+    // return;
 }
 
 isMacOS() && document.body.classList.add('body--mac');
