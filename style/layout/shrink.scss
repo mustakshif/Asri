@@ -42,6 +42,7 @@
     .b3-list-item {
         margin: 4px 6px;
 
+        .b3-list-item__graphic,
         .b3-list-item__text {
             color: var(--b3-theme-on-surface);
         }
@@ -255,7 +256,7 @@
         }
 
         &>svg {
-            color: transparent;
+            color: transparent !important;
             z-index: 1;
 
             &:hover~.b3-list-item__text::before {
