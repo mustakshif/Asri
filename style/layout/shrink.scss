@@ -151,8 +151,8 @@
 
         // 浮动布局
         &.layout--float {
-            height: calc(100% - var(--toolbar-height) - 42px);
-            top: 0;
+            height: calc(100% - var(--toolbar-height) - 42px - var(--status-height, 32px));
+            top: var(--toolbar-height);
         }
     }
 }
@@ -171,7 +171,7 @@
         opacity: 1 !important;
 
         .fn__flex-1.has-dockb &:not([style*="transform"]) {
-            bottom: 73px !important;
+            bottom: calc(42px + var(--status-height, 32px) - 1px) !important;
         }
 
         &[style*="bottom: 26px"] {

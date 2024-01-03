@@ -28,6 +28,14 @@
 
     &#dockBottom {
         padding: 0;
+        border-top-width: 1px;
+
+        .fn__flex:first-child,
+        .fn__flex:last-child {
+            .dock__item:not(:first-child){
+                margin-left: 0;
+            }
+        }
     }
 
     &.dock-layout-expanded {

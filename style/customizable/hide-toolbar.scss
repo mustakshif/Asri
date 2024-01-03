@@ -50,7 +50,7 @@
         .layout__dockr {
             // 浮动布局
             &.layout--float {
-                height: calc(100% - 74px);
+                height: calc(100% - 42px - var(--status-height, 32px));
                 top: 0;
             }
         }

@@ -195,6 +195,10 @@ function addDockbClassName() {
     }
 }
 
+function isStatusHidden() {
+    return doms.status && doms.status.classList.contains('fn__none');
+}
+
 function addEmojiDialogClassName() {
     // emoji dialog
     let dialog = document.querySelector('.b3-dialog--open .b3-dialog');
@@ -272,7 +276,7 @@ function statusPositon() {
             if (layoutCenter && doms.layoutDockr && !doms.status.classList.contains('.fn__none')) {
                 let layoutDockrWidth = doms.layoutDockr.clientWidth;
                 let layoutCenterWidth = layoutCenter.clientWidth;
-                
+
                 doms.layoutDockb = doms.layouts.querySelector('.layout__dockb');
                 if (doms.layoutDockb && isDockLytPinned(doms.layoutDockb)) var y = doms.layoutDockb.clientHeight * -1;
                 else y = 0;
@@ -302,6 +306,13 @@ function statusPositon() {
     }
 }
 statusPositon();
+
+function setStatusHeightVar() {
+    if (isStatusHidden()) document.body.style.setProperty('--status-height', '0px');
+    else document.body.style.setProperty('--status-height', '32px');
+}
+
+setStatusHeightVar();
 
 /**
  * 大纲、反链、搜索列表等在作为标签页显示时，避免被status遮住底部
@@ -475,6 +486,12 @@ function docBodyObserver(funcChildList, funcAttr = undefined, subTree = false) {
     observer.observe(document.body, config);
 }
 
+function statusObsever(type, func) {
+    let status = doms.status;
+    let observer = setSimpleMutationObserver(type, func);
+    if(status) observer.observe(status, { [type]: true });
+}
+
 /**
  * 
  * @param {'l' | 'r'} direction 
@@ -612,6 +629,9 @@ if (!isMobile()) {
                 dockBg();
             }
         )
+
+        // 状态栏
+        statusObsever('attributes', setStatusHeightVar);
     }
 
     // 中心布局
