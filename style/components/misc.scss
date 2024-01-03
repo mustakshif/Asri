@@ -111,6 +111,15 @@
     }
 }
 
+
+.b3-switch--menu {
+    margin: 0;
+
+    html[data-theme-mode="light"] .b3-menu__item:hover>& {
+        border: 1px solid #ffffff90;
+    }
+}
+
 // 按钮
 .b3-button--outline {
     @include button-primary;

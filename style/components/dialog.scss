@@ -74,7 +74,7 @@
                         padding: 8px 0;
                         background-color: var(--b3-theme-background);
 
-                        .layout-tab-bar + .fn__flex-1 {
+                        .layout-tab-bar+.fn__flex-1 {
                             background-color: var(--b3-theme-background);
                         }
 
@@ -193,6 +193,7 @@
 
                                     &__info {
                                         font-weight: 500;
+
                                         >* {
                                             font-weight: normal;
                                         }
@@ -398,54 +399,7 @@
 
     // 对话框中的 tab-bar ——————————————————————————————
     .layout-tab-bar {
-        margin: 8px auto 8px;
-        border-radius: 8px !important;
-        background-color: var(--b3-list-hover);
-        padding: 2px;
-        height: 32px;
-
-        .item {
-            border-radius: 6px !important;
-            background-color: transparent;
-            transition: none !important;
-            padding: 2px 12px;
-
-            &:hover:not(.item--focus) {
-                background-color: transparent !important;
-
-                .item__text {
-                    color: var(--b3-theme-on-background) !important;
-                }
-            }
-
-            &--focus {
-                max-width: unset;
-                box-shadow: 0 1px 4px -1px #0003;
-                animation: none;
-
-                @include darkmode-counterpart {
-                    box-shadow: 0 1px 0 0 inset rgba(255, 255, 255, 0.1), 0 1px 4px -1px #0003;
-                }
-
-                @include theme-variant-color(background-color, light-components, 1, 0.2);
-
-                .item__text {
-                    color: var(--b3-theme-on-background);
-                }
-            }
-        }
-
-        .item:not(.item--focus, .fn__none)+.item:not(.item--focus):not(:first-child)::before {
-            content: "";
-            position: absolute;
-            display: block;
-            width: 2px;
-            height: 1.3em;
-            left: -4px;
-            border-radius: 9px;
-
-            @include theme-variant-color(background-color, list-hover, 0.08);
-        }
+        @include dialog-tabbar;
     }
 }
 
@@ -483,7 +437,8 @@
     }
 }
 
-#replaceBtn, #replaceAllBtn {
+#replaceBtn,
+#replaceAllBtn {
     @include button-action('primary') {
         background-color: transparent;
         padding: 2px 8px;
@@ -519,11 +474,13 @@
         }
 
         .b3-list-item__meta {
+
             // 备注文本等
             .b3-list-item__hinttext {
                 line-height: 1;
                 padding: 4px 0;
             }
+
             // 文档路径
             &--ellipsis {
                 max-width: calc(100% - 22px);
@@ -545,7 +502,7 @@
         border-radius: 0;
         position: sticky;
         top: -8px;
-        background-color:var(--b3-theme-surface);
+        background-color: var(--b3-theme-surface);
         z-index: 1;
 
         .b3-list-item__toggle--hl:hover {
@@ -572,26 +529,27 @@
 }
 
 // 水平布局
-.search__layout:not(.search__layout--row){
+.search__layout:not(.search__layout--row) {
     #searchList {
-        [data-type="search-item"] {    
+        [data-type="search-item"] {
             .b3-list-item__graphic {
                 align-self: center;
                 transform: none;
             }
 
-            span.b3-list-item__graphic{
+            span.b3-list-item__graphic {
                 margin-right: 0;
                 font-size: 14px;
             }
-    
-            .b3-list-item__text {  
+
+            .b3-list-item__text {
                 flex-shrink: 1;
                 flex-basis: 0;
                 -webkit-line-clamp: 1;
             }
 
             .b3-list-item__meta {
+
                 // 文档路径
                 &--ellipsis {
                     max-width: 50%;
@@ -813,9 +771,9 @@ body.body--window {
             );
 
             @for $i from 1 through 4 {
-            &[data-type="#{$i}"]:hover {
-                @include menu-shadow(nth($button-colors, $i)..., $opacity-dark: 0.2)
-            }
+                &[data-type="#{$i}"]:hover {
+                    @include menu-shadow(nth($button-colors, $i)..., $opacity-dark: 0.2)
+                }
             }
 
             // 显示答案按钮、(p)按钮 
@@ -834,6 +792,75 @@ body.body--window {
             &[data-type="-3"]:hover {
                 background-color: var(--b3-list-hover);
             }
+        }
+    }
+}
+
+// 数据库
+.custom-attr .block__logo.custom-attr__avheader {
+    color: var(--b3-theme-primary);
+    font-weight: 500;
+    margin-right: 0;
+    margin-bottom: 4px;
+    opacity: 1;
+    position: sticky;
+    top: 0;
+    background-color: var(--b3-theme-background);
+    z-index: 1;
+}
+
+.custom-attr[data-type="NodeAttributeView"] {
+    padding-bottom: 16px;
+
+    .block__icons {
+        height: auto;
+        min-height: unset;
+        padding: 4px 16px;
+    }
+
+    .av__row {
+        .block__logo {
+            font-weight: 500;
+        }
+
+        .block__logo~.fn__flex-1 {
+            overflow: visible;
+        }
+
+        .custom-attr__avvalue {
+            padding: 4px 0;
+        }
+
+        input,
+        select,
+        [data-type=text] .b3-text-field {
+            min-height: unset;
+            height: 28px;
+            padding: 4px;
+
+            &:hover {
+                background-color: var(--b3-theme-surface);
+            }
+
+            &:focus {
+                background-color: var(--b3-theme-surface);
+                outline: 3px solid var(--b3-theme-primary-light);
+            }
+        }
+
+        [data-type=text] {
+            align-self: flex-start;
+        }
+
+        .b3-chip {
+            border-radius: 4px;
+        }
+
+        .av__celltext--url,
+        .av__celltext--ref {
+            border-bottom: none;
+            text-decoration: underline var(--b3-theme-primary-lightest);
+            text-decoration-thickness: 0.1em;
         }
     }
 }
