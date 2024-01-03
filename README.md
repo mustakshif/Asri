@@ -10,18 +10,18 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
+### v1.1.3
+
+* Adapted the style of database / atrribute view.
+* Changed the customizable text background colors to solid colors instead of transparent ones.
+* Fixed the display issue of floating panels when the status bar is hidden.
+* Optimized the spacing between icons in the bottom bar.
+
 ### v1.1.2
 
 * Adapted the bottom dock and bottom panel.
 * Fine-tuned the icons of the text style list in the `/` menu.
 * Accelerated top bar's pop-up animation.
-
-### v1.1.1
-
-* Improved the distribution of keyword context and document paths in the horizontal layout of the search list.
-* Fixed an issue on Mac where, in dark mode with system scroll bar set to `When scrolling`, certain page elements would still display the light mode scroll bar.
-* Modified the pointer to default in the blank space of the tab bar.
-* Updated the theme instructions to highlight changes that might affect the user experience.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 

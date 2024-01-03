@@ -956,8 +956,276 @@
 }
 
 // 数据库/属性视图 ————————————————————————————
-.custom-attr .block__logo.custom-attr__avheader {
-    color: var(--b3-theme-primary);
+
+.av {
+
+    // 数据库视图切换、标题
+    &__header {
+        .layout-tab-bar {
+            @include dialog-tabbar;
+
+            .item:not(.item--focus) {
+                .item__graphic {
+                    color: var(--b3-theme-on-surface);
+                }
+
+                &:hover {
+                    .item__graphic {
+                        color: var(--b3-theme-on-background);
+                    }
+                }
+            }
+
+            .item--focus {
+                &:hover {
+                    @include theme-variant-color(background-color, light-components, 1, 0.2, $important: true);
+                }
+            }
+        }
+
+        .block__icon {
+            &:hover {
+                background-color: transparent !important;
+            }
+
+            &--active {
+                color: var(--b3-theme-primary);
+                background-color: transparent;
+            }
+        }
+
+        .av__title {
+            font-size: 1.2em;
+            margin: 0 0 4px;
+        }
+    }
+
+    // 数据库主体
+    &__scroll {
+        .av__row--header {
+            color: var(--b3-theme-on-surface);
+            font-weight: 500;
+        }
+
+        .av__row {
+            border-bottom-color: var(--b3-border-color-trans);
+
+            &:hover .b3-chip[data-type=block-more] {
+                opacity: 1;
+            }
+
+            .av__cell {
+                border-right-color: var(--b3-border-color-trans);
+
+                .b3-chip {
+                    border-radius: 4px;
+                    padding: 2px 6px;
+                    color: var(--b3-theme-on-surface);
+                    background-color: var(--b3-theme-surface);
+
+                    &:hover {
+                        color: var(--b3-theme-on-background);
+                    }
+                }
+
+                // 「更新」按钮
+                .popover__block {
+                    color: var(--b3-theme-primary);
+                    font-weight: 500;
+
+                    &:hover {
+                        background-color: var(--b3-theme-primary);
+                        color: var(--b3-theme-on-primary);
+                    }
+                }
+
+                .b3-chip[data-type=block-more] {
+                    font-weight: 500;
+                }
+
+                .av__celltext--url,
+                .av__celltext--ref {
+                    border-bottom: none;
+                    text-decoration: underline var(--b3-theme-primary-lightest);
+                    text-decoration-thickness: 0.1em;
+                }
+
+                &:hover {
+                    .block__icon {
+                        background-color: var(--b3-theme-surface) !important;
+                    }
+                }
+            }
+        }        
+        
+        // 单元格选中状态
+        .av__cell--select {
+            box-shadow: none;
+            outline: 3px solid var(--b3-theme-primary-light);
+
+        }
+    }
+
+    // 菜单
+    &__panel {
+        .b3-menu {
+            .b3-menu__items {
+                .b3-menu__item[data-type="nobg"] {
+                    cursor: default;
+                    align-items: center;
+                    height: 30px;
+
+                    .b3-menu__label {
+                        font-weight: 500;
+                        color: var(--b3-theme-on-surface)
+                    }
+                }
+
+                .b3-menu__item[data-type="goUpdateColType"] {
+                    height: 30px;
+                    align-items: center;
+                    margin-top: 4px;
+                }
+
+                .b3-menu__item[draggable=true] {
+                    mix-blend-mode: normal !important;
+
+                    .b3-chip:not(.b3-chip--primary) {
+                        background-color: var(--b3-theme-surface);
+                    }
+
+                    &:hover .b3-menu__action {
+                        opacity: 0.7;
+
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+            .b3-chips {
+                border-bottom: 1px solid var(--b3-border-color-trans);
+                margin-bottom: 4px;
+
+                //多选标签
+                .b3-chip--middle {
+                    &::before {
+                        content: '';
+                        display: inline-block;
+                        width: 8px;
+                        transition: var(--b3-transition);
+                    }
+
+                    .b3-chip__close {
+                        opacity: 0;
+                        width: 8px;
+                    }
+
+                    &:hover {
+                        &::before {
+                            width: 0;
+                        }
+
+                        .b3-chip__close {
+                            opacity: 1;
+                            width: 16px;
+                        }
+                    }
+                }
+
+                .b3-chip--middle,
+                &~div [data-type="addColOptionOrCell"] .b3-chip {
+                    border-radius: 4px;
+                }
+
+                input {
+                    background-color: transparent;
+                }
+            }
+        }
+
+    }
+
+
+    // 文本框键入
+    &__mask {
+        textarea {
+            resize: both;
+            background-color: var(--b3-theme-surface);
+        }
+
+        .b3-text-field,
+        select.b3-select {
+            background-color: var(--b3-theme-surface);
+        }
+    }
 }
 
-.av {}
+.b3-menu {
+    &[data-name="av-col-option"] {
+        .b3-menu__item {
+            .color__square {
+                box-shadow: none;
+            }
+        }
+    }
+
+    .b3-menu__label {
+        input:focus {
+            background-color: var(--b3-menu-background);
+        }
+
+        .b3-chip {
+            border-radius: 4px;
+        }
+    }
+
+    &__item {
+        .b3-menu__accelerator {
+            svg {
+                height: 24px !important;
+            }
+        }
+        &:hover textarea,
+        textarea:focus {
+            background-color: var(--b3-menu-background);
+            transition: none;
+        }
+        &:hover {
+            select {
+                background-color: var(--b3-menu-background);
+                transition: none;
+            }
+        }
+
+        .b3-button {
+            @include button-primary;
+        }
+    }
+
+    .b3-chip {
+        border-radius: 4px;
+
+        &[style*="background-color"] {
+            padding: 4px 8px;
+        }
+    }
+}
+
+
+.protyle-hint {
+    &>input.b3-text-field {
+        margin: 0 !important;
+        background-color: var(--b3-menu-background);
+        padding: 8px;
+        box-sizing: content-box;
+        border-bottom: 1px solid var(--b3-border-color-trans);
+        border-radius: 0;
+
+        &:focus {
+            background-color: var(--b3-menu-background);
+            outline: none;
+        }
+    }
+}

@@ -1,3 +1,17 @@
+### v1.1.3
+
+* 适配数据库/属性视图样式
+* 自定义背景色改为不透明色
+* 修复隐藏状态栏时浮动面板的显示问题
+* 优化底栏图标间距
+
+<br />
+
+* Adapted the style of database / atrribute view.
+* Changed the customizable text background colors to solid colors instead of transparent ones.
+* Fixed the display issue of floating panels when the status bar is hidden.
+* Optimized the spacing between icons in the bottom bar.
+
 ### v1.1.2
 
 * 适配底栏和底栏面板
