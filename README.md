@@ -10,18 +10,20 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
+### v1.1.4
+
+* Optimized the style of the selected item counter of database.
+* Top bar in full-screen mode on macOS will now be automatically pinned.
+* Fixed the issue where the edges of the database selected cells were clipped.
+* Fixed the issue of color difference on the top of the sidebar panel.
+* Fixed the issue of horizontal displacement of buttons when the dialog box first pops up.
+
 ### v1.1.3
 
 * Adapted the style of database / atrribute view.
 * Changed the customizable text background colors to solid colors instead of transparent ones.
 * Fixed the display issue of floating panels when the status bar is hidden.
 * Optimized the spacing between icons in the bottom bar.
-
-### v1.1.2
-
-* Adapted the bottom dock and bottom panel.
-* Fine-tuned the icons of the text style list in the `/` menu.
-* Accelerated top bar's pop-up animation.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
