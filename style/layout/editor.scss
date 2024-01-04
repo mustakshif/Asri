@@ -391,6 +391,7 @@
             tr {
                 th {
                     background-color: var(--b3-theme-surface);
+                    // @include theme-variant-color(background-color, on-background, 0.1);
                     border-top: none;
 
                     &:first-child {
@@ -409,6 +410,7 @@
                 &:nth-child(2n) {
                     td {
                         background-color: var(--b3-theme-surface);
+                        // @include theme-variant-color(background-color, on-background, 0.1);
                     }
                 }
 
@@ -1085,6 +1087,12 @@
                         font-weight: 500;
                         color: var(--b3-theme-on-surface)
                     }
+
+                    ~ .b3-menu__item{
+                        input:focus {
+                            background-color: var(--b3-menu-background);
+                        }
+                    }
                 }
 
                 .b3-menu__item[data-type="goUpdateColType"] {
@@ -1178,10 +1186,6 @@
     }
 
     .b3-menu__label {
-        input:focus {
-            background-color: var(--b3-menu-background);
-        }
-
         .b3-chip {
             border-radius: 4px;
         }
