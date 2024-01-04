@@ -267,11 +267,11 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
         }
     }
 
-    .layout__dockb {
-        &.layout--float {
+    // .layout__dockb {
+    //     &.layout--float {
 
-        }
-    }
+    //     }
+    // }
 
     .graph__panel {
         @include bg-blur(20px);
