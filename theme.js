@@ -16,41 +16,52 @@ function isToolbarAlwaysShown() {
     return document.body.classList.contains('hadeeth-pin-toolbar') > 0;
 }
 
-function isMacOS() {
+function isMacOSFunc() {
     return navigator.platform.indexOf("Mac") === 0 || navigator.userAgentData.platform === "macOS" || "darwin" === process.platform;
 }
+let isMacOS = isMacOSFunc();
+isMacOS && document.body.classList.add('body--mac');
 
-isMacOS() && document.body.classList.add('body--mac');
-
-function isMobile() {
+function isMobileFunc() {
     return document.getElementById('sidebar') && document.getElementById('editor');
 }
 
-isMobile() && document.body.classList.add('body--mobile');
+let isMobile = isMobileFunc();
+isMobile && document.body.classList.add('body--mobile');
 
-function isInBrowser() {
+function isInBrowserFunc() {
     let toolbar = document.getElementById('toolbar');
     return toolbar && toolbar.classList.contains('toolbar--browser')
 }
-
-isInBrowser() && document.body.classList.add("body--browser");
+let isInBrowser = isInBrowserFunc();
+isInBrowser && document.body.classList.add("body--browser");
 
 function isFullScreen() {
-    if (!isInBrowser()) {
-        let isFull = require("@electron/remote").getCurrentWindow().isFullScreen();
-
-        if (isFull) {
-            document.body.classList.add('body--fullscreen');
-            return true
-        } else {
-            document.body.classList.remove('body--fullscreen');
-            return false
-        }
+    if (!isInBrowser && !isMobile) {
+        return require("@electron/remote").getCurrentWindow().isFullScreen();
     }
 }
 
+function addFullscreenClassName() {
+    if (!isInBrowser && !isMobile) {
+        let currentWindow = require("@electron/remote").getCurrentWindow();
+
+        currentWindow.on('resize', () => {
+            if (isFullScreen()) {
+                document.body.classList.add('body--fullscreen');
+            } else {
+                document.body.classList.remove('body--fullscreen');
+            } 
+            
+            tabbarSpacing();
+        })
+    }
+}
+
+addFullscreenClassName();
+
 function useSysScrollbar() {
-    if (isMacOS()) {
+    if (isMacOS) {
         let HadeethWebkitScrollbar = document.getElementById('HadeethWebkitScrollbar');
 
         if (!document.body.classList.contains('hadeeth-use-webkit-scrollbar')) {
@@ -105,19 +116,13 @@ function ModifyMacTrafficLights() {
     currentWindow.setTrafficLightPosition({ x: 16, y: 16 });
 }
 
-if (isMacOS() && !isInBrowser() && !isMobile() && !isToolbarAlwaysShown()) ModifyMacTrafficLights();
+if (isMacOS && !isInBrowser && !isMobile && !isToolbarAlwaysShown()) ModifyMacTrafficLights();
 
 function RestoreMacTrafficLights() {
     let currentWindow = require("@electron/remote").getCurrentWindow();
     currentWindow.setTrafficLightPosition({ x: 12, y: 12 });
 }
 
-// function updateDocksAndLayouts() {
-//     doms.dockl = document.getElementById('dockLeft');
-//     doms.dockr = document.getElementById('dockRight');
-//     doms.layoutDockl = document.querySelector('.layout__dockl');
-//     doms.layoutDockr = document.querySelector('.layout__dockr');
-// }
 /**
  * 主窗口、新小窗页签栏左右边距控制
  */
@@ -161,7 +166,7 @@ function tabbarSpacing() {
 
 
             // 左侧红绿灯
-            if (!isInBrowser() && !isMobile() && isMacOS()) {
+            if (!isInBrowser && !isMobile && isMacOS) {
                 if (isOverlappingTopLeft && (isSideDockHidden() || !document.getElementById('dockLeft'))) {
                     layoutTabbar.style.marginLeft = 'var(--b3-toolbar-left-mac)';
                 } else if (isOverlappingTopLeft && isLayoutDockHidden('l')) {
@@ -230,7 +235,7 @@ function isFloatDockLytHidden(node) {
  */
 function dockBg() {
 
-    if (doms.dockl && !isMobile()) {
+    if (doms.dockl && !isMobile) {
         for (let dir of ['l', 'r']) {
 
             let lyt = doms[`layoutDock${dir}`],
@@ -265,7 +270,7 @@ dockBg();
  * 边栏和边栏面板展开/收起时状态栏的位置
  */
 function statusPositon() {
-    if (!isMobile()) {
+    if (!isMobile) {
         if (!hasDockb()) {
             function setStatusTransform(x, y) {
                 doms.status.style.transform = `translate(${x}px, ${y}px)`;
@@ -405,7 +410,7 @@ function formatSyBacklinkItemsLayout() {
  * 文档树聚焦条目参考线
  */
 function formatIndentGuidesForFocusedItems() {
-    if (!isMobile()) {
+    if (!isMobile) {
         let listItemsFocus = doms.layouts.querySelectorAll('.file-tree .b3-list-item--focus');
 
         doms.layouts.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
@@ -489,7 +494,7 @@ function docBodyObserver(funcChildList, funcAttr = undefined, subTree = false) {
 function statusObsever(type, func) {
     let status = doms.status;
     let observer = setSimpleMutationObserver(type, func);
-    if(status) observer.observe(status, { [type]: true });
+    if (status) observer.observe(status, { [type]: true });
 }
 
 /**
@@ -575,7 +580,7 @@ docBodyObserver(
         statusPositon();
     },
     () => {
-        if (isMacOS() && !isInBrowser() && !isMobile()) {
+        if (isMacOS && !isInBrowser && !isMobile) {
             if (isToolbarAlwaysShown() && !doms.toolbarWindow) {
                 RestoreMacTrafficLights();
             } else {
@@ -585,7 +590,7 @@ docBodyObserver(
     }
 )
 
-if (!isMobile()) {
+if (!isMobile) {
 
     if (!doms.toolbarWindow) {
         // 左栏dock

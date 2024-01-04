@@ -651,7 +651,7 @@
                     pink: font-color12
                 );
 
-                @each $chip-type, $chip-color in $chip-colors {
+            @each $chip-type, $chip-color in $chip-colors {
                 &.b3-chip--#{$chip-type} {
                     @include theme-variant-color(background-color, $chip-color, 1);
                     font-weight: 500;
@@ -664,155 +664,155 @@
                     //     background-color: rgba(112, 112, 112, .5);
                     //     color: #fffd;
                     // }
-                    }
                 }
             }
         }
     }
+}
 
-    &-icons {
-        // 工具条
-        @include protyle-icons;
+&-icons {
+    // 工具条
+    @include protyle-icons;
+}
+
+&-action {
+    // 代码块
+    @include protyle-icons;
+}
+
+//编辑区域
+&-content {
+    background-color: var(--b3-theme-background);
+}
+
+//文档标题
+&-title {
+    &__input {
+        font-weight: 600;
+        font-size: 2.4em;
+        line-height: 1.4;
+        padding-top: 8px;
+        padding-bottom: 8px;
+
+        &:empty:after {
+            opacity: 0.6;
+        }
+    }
+}
+
+// 正文内容
+&-wysiwyg {
+    @include typography-elements;
+
+    // 正文紧挨文档标题的标题块
+    &>div[data-type="NodeHeading"]:first-child,
+    &>[data-node-id].sb:first-child .sb:first-child {
+        margin-top: 0;
     }
 
-    &-action {
-        // 代码块
-        @include protyle-icons;
-    }
+    // 折叠块--标题块
+    div[fold="1"] {
+        &[data-type=NodeHeading] {
+            background-color: var(--b3-theme-surface-lighter);
+            outline: 1.5px solid var(--b3-border-color-trans);
+            opacity: 0.6;
 
-    //编辑区域
-    &-content {
-        background-color: var(--b3-theme-background);
-    }
-
-    //文档标题
-    &-title {
-        &__input {
-            font-weight: 600;
-            font-size: 2.4em;
-            line-height: 1.4;
-            padding-top: 8px;
-            padding-bottom: 8px;
-
-            &:empty:after {
-                opacity: 0.6;
+            &::before {
+                display: none;
             }
         }
     }
+}
 
-    // 正文内容
-    &-wysiwyg {
-        @include typography-elements;
+//文字格式工具条
+&-toolbar {
+    animation: toolbar 0.2s ease-in-out;
+    border: none;
+    border-radius: 40px;
+    padding: 4px 6px;
+    // transform: translateY(-12px);
+    background-color: var(--b3-theme-surface);
+    @include menu-shadow;
+    @include border-or-not;
 
-        // 正文紧挨文档标题的标题块
-        &>div[data-type="NodeHeading"]:first-child,
-        &>[data-node-id].sb:first-child .sb:first-child {
-            margin-top: 0;
-        }
-
-        // 折叠块--标题块
-        div[fold="1"] {
-            &[data-type=NodeHeading] {
-                background-color: var(--b3-theme-surface-lighter);
-                outline: 1.5px solid var(--b3-border-color-trans);
-                opacity: 0.6;
-
-                &::before {
-                    display: none;
-                }
-            }
-        }
-    }
-
-    //文字格式工具条
-    &-toolbar {
-        animation: toolbar 0.2s ease-in-out;
-        border: none;
-        border-radius: 40px;
-        padding: 4px 6px;
-        // transform: translateY(-12px);
-        background-color: var(--b3-theme-surface);
-        @include menu-shadow;
-        @include border-or-not;
-
-        &__item {
-            height: 30px;
-            width: 30px;
-            padding-top: 3px;
-            border-radius: 20px;
-
-            &:hover {
-                @include theme-variant-color(background-color, on-background, 0.1);
-            }
-
-            &:not(.protyle-toolbar__item--current) {
-                @include theme-variant-color(color, on-background, 0.8);
-
-                &:hover {
-                    @include theme-variant-color(color, on-background, 1);
-                }
-            }
-        }
-
-        &__divider {
-            border-left: 1px solid var(--b3-border-color-trans);
-        }
-    }
-
-    // 块定位滚动条
-    &-scroll {
-        opacity: 0;
-        transform: scale(0.95, 0.9);
-        transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1),
-            transform 0.2s cubic-bezier(0, 0, 0.2, 1);
-        transition-delay: 0.5s;
+    &__item {
+        height: 30px;
+        width: 30px;
+        padding-top: 3px;
+        border-radius: 20px;
 
         &:hover {
-            opacity: 1;
-            transform: none;
-            transition-delay: 0s;
+            @include theme-variant-color(background-color, on-background, 0.1);
         }
 
-        // 溢出显示
-        >.protyle-scroll__bar {
-            overflow: visible
-        }
+        &:not(.protyle-toolbar__item--current) {
+            @include theme-variant-color(color, on-background, 0.8);
 
-        &__bar {
-            top: calc(50% - 12px);
+            &:hover {
+                @include theme-variant-color(color, on-background, 1);
+            }
         }
     }
 
+    &__divider {
+        border-left: 1px solid var(--b3-border-color-trans);
+    }
+}
 
-    // 文字外观
-    &-font {
-        @include protyle-font();
+// 块定位滚动条
+&-scroll {
+    opacity: 0;
+    transform: scale(0.95, 0.9);
+    transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1),
+        transform 0.2s cubic-bezier(0, 0, 0.2, 1);
+    transition-delay: 0.5s;
+
+    &:hover {
+        opacity: 1;
+        transform: none;
+        transition-delay: 0s;
     }
 
-    // 框选框
-    // &-select {
-    // outline: 1px solid var(--b3-theme-primary-lighter);
-    // }
+    // 溢出显示
+    >.protyle-scroll__bar {
+        overflow: visible
+    }
 
-    // 预览模式 ————————————————————————————
-    .protyle-preview__action {
-        background-color: var(--b3-theme-background);
-        border-bottom: 1px solid var(--b3-border-color-trans);
+    &__bar {
+        top: calc(50% - 12px);
+    }
+}
 
-        button {
+
+// 文字外观
+&-font {
+    @include protyle-font();
+}
+
+// 框选框
+// &-select {
+// outline: 1px solid var(--b3-theme-primary-lighter);
+// }
+
+// 预览模式 ————————————————————————————
+.protyle-preview__action {
+    background-color: var(--b3-theme-background);
+    border-bottom: 1px solid var(--b3-border-color-trans);
+
+    button {
+        background-color: transparent;
+
+        &.protyle-preview__action--current {
             background-color: transparent;
+            font-weight: 600;
+        }
 
-            &.protyle-preview__action--current {
-                background-color: transparent;
-                font-weight: 600;
-            }
-
-            &:not(.protyle-preview__action--current):hover {
-                background-color: transparent;
-                color: var(--b3-theme-on-background);
-            }
+        &:not(.protyle-preview__action--current):hover {
+            background-color: transparent;
+            color: var(--b3-theme-on-background);
         }
     }
+}
 }
 
 .b3-typography {
@@ -998,6 +998,12 @@
             font-size: 1.2em;
             margin: 0 0 4px;
         }
+
+        .av__counter {
+            display: inline-block;
+            width: 100%;
+            padding: 4px;
+        }
     }
 
     // 数据库主体
@@ -1046,7 +1052,7 @@
                 .av__celltext--url,
                 .av__celltext--ref {
                     border-bottom: none;
-                    text-decoration: underline var(--b3-theme-primary-lightest);
+                    text-decoration: underline var(--b3-border-color-trans);
                     text-decoration-thickness: 0.1em;
                 }
 
@@ -1056,13 +1062,13 @@
                     }
                 }
             }
-        }        
-        
+        }
+
         // 单元格选中状态
         .av__cell--select {
             box-shadow: none;
             outline: 3px solid var(--b3-theme-primary-light);
-
+            z-index: 3;
         }
     }
 
@@ -1187,11 +1193,13 @@
                 height: 24px !important;
             }
         }
+
         &:hover textarea,
         textarea:focus {
             background-color: var(--b3-menu-background);
             transition: none;
         }
+
         &:hover {
             select {
                 background-color: var(--b3-menu-background);
@@ -1201,6 +1209,10 @@
 
         .b3-button {
             @include button-primary;
+        }
+
+        .block__icon {
+            font-family: var(--b3-font-family-emoji);
         }
     }
 
@@ -1212,8 +1224,6 @@
         }
     }
 }
-
-
 .protyle-hint {
     &>input.b3-text-field {
         margin: 0 !important;

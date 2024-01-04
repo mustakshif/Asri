@@ -33,7 +33,7 @@ Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
     * **Tab bar (not toolbar/top bar)**
     * **Breadcrumb**
     * **Sidebar panel title and above**
-  * If you need the top bar pinned, please go to `Settings - Appearance - Code Snippet`, then add and enable this code line under `JS` tab: `document.body.classList.add("hadeeth-pin-toolbar");`. To hide the top bar again, you need to disable this snippet and reload the page or restart the app.
+  * 📌 If you need the top bar pinned, please go to `Settings - Appearance - Code Snippet`, then add and enable this code line under `JS` tab: `document.body.classList.add("hadeeth-pin-toolbar");`. To hide the top bar again, you need to disable this snippet and reload the page or restart the app.
 * ↕️ Applied system scrollbar on macOS, which can be hidden automatically and reduce visual interference.
   
   * 📌 If your system scroll bar setting is **not** set to `When scrolling` in: `System Settings - Appearance - Show scroll bars` on macOS, scroll bars in SiYuan’s dark mode will be displayed as in light mode, which still needs to be fixed.
@@ -72,7 +72,7 @@ The theme development process drew inspiration from the following themes, and I 
 | ---------------------------------------------------------- | ---------- | ------ |
 | Menu background blur                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
 |Toolbar hiding<br />Dots before sidebar panel list items<br />Outline list item icons<br />Status bar<br />Seach list | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
-| File tree indent guides<br />`setMutationObserver` function                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
+| File tree indent guides<br />MutationObserver releted functions                                     | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
 
 （The order in the list above does not imply any ranking）
 

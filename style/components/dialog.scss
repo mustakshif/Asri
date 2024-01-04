@@ -859,7 +859,7 @@ body.body--window {
         .av__celltext--url,
         .av__celltext--ref {
             border-bottom: none;
-            text-decoration: underline var(--b3-theme-primary-lightest);
+            text-decoration: underline var(--b3-border-color-trans);
             text-decoration-thickness: 0.1em;
         }
     }

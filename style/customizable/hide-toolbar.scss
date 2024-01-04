@@ -28,7 +28,7 @@
             content: '';
             height: $paddingTop;
             width: auto;
-            @include theme-variant-color(background-color, surface, 0.9);
+            @include theme-variant-color(background-color, surface, 1);
         }
 
         &.layout--float {
@@ -96,7 +96,7 @@
                 height: 10px;
                 position: absolute;
                 top: calc(-1 * var(--toolbar-height) + 6px);
-                @include theme-variant-color(background-color, surface, 0.9)
+                @include theme-variant-color(background-color, surface, 1)
             }
         }
 
@@ -109,7 +109,7 @@
     }
 }
 
-body:not(.hadeeth-pin-toolbar),
+body:not(.hadeeth-pin-toolbar, .body--fullscreen),
 body.body--window {
     // -> js
 
@@ -406,7 +406,7 @@ body.body--window {
     }
 }
 
-body.hadeeth-pin-toolbar:not(.body--window) {
+body:where(.hadeeth-pin-toolbar, .body--fullscreen):not(.body--window) {
     // -> js
 
     --toolbar-height: 40px;
