@@ -384,14 +384,16 @@
         td,
         th {
             border: 1px solid var(--b3-border-color-trans);
-            background-color: var(--b3-theme-background);
+            // background-color: var(--b3-theme-background);
+            // @include theme-variant-color(background-color, background, 0.5);
+            background-color: transparent;
         }
 
         thead {
             tr {
                 th {
-                    background-color: var(--b3-theme-surface);
-                    // @include theme-variant-color(background-color, on-background, 0.1);
+                    // background-color: var(--b3-theme-surface);
+                    @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
                     border-top: none;
 
                     &:first-child {
@@ -409,8 +411,8 @@
             tr {
                 &:nth-child(2n) {
                     td {
-                        background-color: var(--b3-theme-surface);
-                        // @include theme-variant-color(background-color, on-background, 0.1);
+                        // background-color: var(--b3-theme-surface);
+                        @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
                     }
                 }
 
@@ -437,6 +439,16 @@
         box-shadow: 0px -1px 0px var(--b3-border-color-trans) inset;
     }
 
+    .table[custom-pinthead="true"] {
+        thead {
+            tr {
+                th {
+                    background-color: var(--b3-theme-surface);
+                }
+            }
+        }
+    }
+
     // 分隔线 ————————————————————————————————————
     [data-node-id].hr>div:after {
         background-color: var(--b3-border-color-trans);
@@ -452,7 +464,7 @@
 
     // 超级块 ————————————————————————————————————
     &>.sb+.sb,
-    [data-node-id].sb[data-sb-layout=row] .sb:not(:first-child) {
+    [data-node-id].sb[data-sb-layout=row]>.sb:not(:first-child) {
         margin-top: 24px;
     }
 
@@ -1088,11 +1100,11 @@
                         color: var(--b3-theme-on-surface)
                     }
 
-                    ~ .b3-menu__item{
-                        input:focus {
-                            background-color: var(--b3-menu-background);
-                        }
-                    }
+                    // ~.b3-menu__item {
+                    //     input:focus {
+                    //         background-color: var(--b3-menu-background);
+                    //     }
+                    // }
                 }
 
                 .b3-menu__item[data-type="goUpdateColType"] {
@@ -1185,13 +1197,22 @@
         }
     }
 
+    &[data-name*="set-filter"],
+    &[data-name="av-col-option"] {
+        .b3-menu__item {
+            input:focus {
+                background-color: var(--b3-menu-background);
+            }
+        }
+    }
+
     .b3-menu__label {
         .b3-chip {
             border-radius: 4px;
         }
     }
 
-    &__item {
+    &__item:not(.b3-menu__item--readonly) {
         .b3-menu__accelerator {
             svg {
                 height: 24px !important;
@@ -1226,8 +1247,13 @@
         &[style*="background-color"] {
             padding: 4px 8px;
         }
+
+        .icon {
+            font-family: var(--b3-font-family-emoji);
+        }
     }
 }
+
 .protyle-hint {
     &>input.b3-text-field {
         margin: 0 !important;
