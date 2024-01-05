@@ -88,6 +88,8 @@
         padding: 4px 0;
 
         .b3-list-item {
+            width: calc(100% - 12px) !important;
+            
             &--focus:not(:hover) {
                 background-color: var(--b3-theme-primary-lightest);
             }

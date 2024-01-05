@@ -154,7 +154,7 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
                     success: font-color8,
                     warning:font-color9,
                     error: font-color10,
-                    pink: font-color12
+                    "pink": font-color12
                 );
 
                 @each $chip-type, $chip-color in $chip-colors {

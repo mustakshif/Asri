@@ -183,24 +183,32 @@
 
     // 标签 ——————————————————————————————————————
     [data-node-id] span[data-type~="tag"] {
+        --tag-color: var(--b3-font-color4);
+
         font-size: 90%;
         border-radius: 1em;
         padding: 0.1em 0.5em 0.15em;
         border: none;
-        box-shadow: 0 0 0 0.065em inset;
+        box-shadow: 0 0 0 0.1em inset var(--tag-color);
         background-color: transparent;
-        transition: all 200ms;
-        color: var(--b3-theme-secondary);
+        color: var(--tag-color);
         box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
 
         &:hover {
+            box-shadow: 0 0 0 0.8em inset var(--tag-color);
+            color: var(--b3-theme-background);
             background-color: transparent;
-            color: change-color($color: pickThemeColor($theme-light, secondary), $lightness: 40%);
+            // color: change-color($color: pickThemeColor($theme-light, secondary), $lightness: 40%);
 
-            @include darkmode-counterpart {
-                color: change-color($color: pickThemeColor($theme-dark, secondary), $lightness: 70%);
-            }
+            // @include darkmode-counterpart {
+            //     color: change-color($color: pickThemeColor($theme-dark, secondary), $lightness: 70%);
+            // }
+        }
+
+        @include darkmode-counterpart {
+            // --tag-color: #{mix(map-get($theme-dark, background), map-get($theme-dark, font-color4), 20%)};
+            --tag-color: #{change-color(map-get($theme-dark, font-color4), $lightness: 40%)};
         }
     }
 
@@ -463,9 +471,15 @@
 
 
     // 超级块 ————————————————————————————————————
+    $sb-gap: 24px;
+
     &>.sb+.sb,
     [data-node-id].sb[data-sb-layout=row]>.sb:not(:first-child) {
-        margin-top: 24px;
+        margin-top: $sb-gap;
+    }
+
+    [data-node-id].sb[data-sb-layout=col]>div {
+        margin-right: $sb-gap;
     }
 
     // [data-node-id].sb[data-sb-layout=row]>.sb:first-child {
@@ -484,7 +498,7 @@
     }
 
     .sb[data-sb-layout=row]>:where(.bq, .sb, blockquote)+ :where(.bq, blockquote) {
-        margin-top: 24px;
+        margin-top: $sb-gap;
     }
 
     // 嵌入块 ——————————————————————————————————————
@@ -662,7 +676,7 @@
                     success: font-color8,
                     warning:font-color9,
                     error: font-color10,
-                    pink: font-color12
+                    "pink": font-color12
                 );
 
             @each $chip-type, $chip-color in $chip-colors {
