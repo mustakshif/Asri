@@ -1,3 +1,15 @@
+### v1.1.5
+
+* 调整表格背景色为透明色
+* 调整正文中的标签样式
+* 优化数据库部分菜单中的表单元素背景色
+
+<br />
+
+* Adjusted the table background color to transparent.
+* Adjusted the style of tags in the body text.
+* Optimized the background color of form elements in menus of database.
+
 ### v1.1.4
 
 * 优化数据库选中条目计数器样式
