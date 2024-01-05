@@ -581,7 +581,7 @@
     }
 
     &.search-mark--hl {
-        @include menu-shadow(map-get($theme-light, primary), $opacity-light: 0.15);
+        @include menu-shadow(map-get($theme-light, primary), $opacity-light: 0.15, $opacity-dark: 0.5);
         mix-blend-mode: normal;
         background-color: var(--b3-theme-primary-lighter) !important;
         color: var(--b3-theme-on-background) !important;

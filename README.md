@@ -64,6 +64,7 @@ Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 * Continuous performance improvement.
 * Optimize database element styles.
 * Optimize flashcards styles.
+* Optimize the `/` menu in wide screen.
 
 ## Acknowledgements
 
