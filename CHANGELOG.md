@@ -27,7 +27,7 @@
 ### v1.1.4
 
 * 优化数据库选中条目计数器样式
-* Mac 端应用全屏状态下自动钉住顶栏
+* Mac 端应用全屏状态下自动钉住顶栏  [[Issue #5](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/5)]
 * 修复数据库选中单元格边缘被裁切的问题
 * 修复侧栏面板顶部色差问题
 * 修复对话框刚弹出时按钮横向位移的问题
@@ -35,7 +35,7 @@
 <br />
 
 * Optimized the style of the selected item counter of database.
-* Top bar in full-screen mode on macOS will be automatically pinned.
+* Top bar in full-screen mode on macOS will be automatically pinned.  [[Issue #5](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/5)]
 * Fixed the issue where the edges of the database selected cells were clipped.
 * Fixed the issue of color difference on the top of the sidebar panel.
 * Fixed the issue of horizontal displacement of buttons when the dialog box first pops up.

@@ -534,7 +534,7 @@
             height: 24px;
             width: 24px;
             background-color: var(--b3-theme-on-surface);
-            mask-image: url(img/iframeScaler.svg);
+            mask-image: url(img/iframeResizer.svg);
             mask-size: contain;
             mask-repeat: no-repeat;
             box-shadow: none;
@@ -769,6 +769,10 @@
         width: 30px;
         padding-top: 3px;
         border-radius: 20px;
+
+        &:first-child, &:last-child {
+            border-radius: 20px;
+        }
 
         &:hover {
             @include theme-variant-color(background-color, on-background, 0.1);
