@@ -1,3 +1,15 @@
+### v1.1.6
+
+* 调整表格为自动宽度，超过页宽时自动换行 [[Issue #7](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/7)]
+* 优化宽屏下的 `/` 菜单布局 [[Issue #6](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/6)]
+
+<br />
+
+* Adjusted the table to have automatic width and wrap text when exceeding the page width. [[Issue #7](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/7)]
+* Updated the layout of the `/` menu to adapt to wider windows. [[Issue #6](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/6)]
+
+---
+
 ### v1.1.5
 
 * 调整表格背景色为透明色
@@ -9,6 +21,8 @@
 * Adjusted the table background color to transparent.
 * Adjusted the style of tags in the body text.
 * Optimized the background color of form elements in menus of database.
+
+---
 
 ### v1.1.4
 
@@ -26,6 +40,8 @@
 * Fixed the issue of color difference on the top of the sidebar panel.
 * Fixed the issue of horizontal displacement of buttons when the dialog box first pops up.
 
+---
+
 ### v1.1.3
 
 * 适配数据库/属性视图样式
@@ -39,6 +55,8 @@
 * Changed the customizable text background colors to solid colors instead of transparent ones.
 * Fixed the display issue of floating panels when the status bar is hidden.
 * Optimized the spacing between icons in the bottom bar.
+
+---
 
 ### v1.1.2
 
@@ -70,12 +88,12 @@
 
 ### v1.1.0
 
-* **引入常驻顶栏，现可通过代码片段取消隐藏顶栏**
+* **引入常驻顶栏，现可通过代码片段取消隐藏顶栏** [[Issue #3](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/3)]
 * 修复部分情况下浮动反链面板背景模糊失效的问题
 
 <br />
 
-* **Introduced pinned top bar, and now it is possible to pin the top bar using code snippets.**
+* **Introduced pinned top bar, and now it is possible to pin the top bar using code snippets.** [[Issue #3](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/3)]
 * Fixed an issue where the background blur of the floating backlink panel was not working properly in certain cases.
 
 ---

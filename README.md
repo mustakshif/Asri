@@ -10,19 +10,16 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
+### v1.1.6
+
+* Adjusted the table to have automatic width and wrap text when exceeding the page width. [[Issue #7](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/7)]
+* Updated the layout of the `/` menu to adapt to wider windows. [[Issue #6](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/6)]
+
 ### v1.1.5
 
 * Adjusted the table background color to transparent.
 * Adjusted the style of tags in the body text.
 * Optimized the background color of form elements in menus of database.
-
-### v1.1.4
-
-* Optimized the style of the selected item counter of database.
-* Top bar in full-screen mode on macOS will now be automatically pinned.
-* Fixed the issue where the edges of the database selected cells were clipped.
-* Fixed the issue of color difference on the top of the sidebar panel.
-* Fixed the issue of horizontal displacement of buttons when the dialog box first pops up.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
@@ -64,7 +61,6 @@ Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 * Continuous performance improvement.
 * Optimize database element styles.
 * Optimize flashcards styles.
-* Optimize the `/` menu in wide screen.
 
 ## Acknowledgements
 
@@ -72,9 +68,9 @@ The theme development process drew inspiration from the following themes, and I 
 
 | Reference Content                                                 | From Theme | Developer |
 | ---------------------------------------------------------- | ---------- | ------ |
-| Menu background blur                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
-|Toolbar hiding<br />Dots before sidebar panel list items<br />Outline list item icons<br />Status bar<br />Seach list | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
-| File tree indent guides<br />MutationObserver related functions                                     | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
+|- Menu background blur                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
+|- Toolbar hiding<br />- Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
+|- File tree indent guides<br />- MutationObserver related functions                                     | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
 
 （The order in the list above does not imply any ranking）
 

@@ -9,20 +9,16 @@
 Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyuan-note/siyuan)主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
 
 ## 最近更新
+### v1.1.6
+
+* 调整表格为自动宽度，超过页宽时自动换行 [[Issue #7](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/7)]
+* 优化宽屏下的 `/` 菜单布局 [[Issue #6](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/6)]
 
 ### v1.1.5
 
 * 调整表格背景色为透明色
 * 调整正文中的标签样式
 * 优化数据库部分菜单中的表单元素背景色
-
-### v1.1.4
-
-* 优化数据库选中条目计数器样式
-* Mac 端应用全屏状态下将自动钉住顶栏
-* 修复数据库选中单元格边缘被裁切的问题
-* 修复侧栏面板顶部色差问题
-* 修复对话框刚弹出时按钮横向位移的问题
 
 查看全部日志 👉 [更新日志](./CHANGELOG.md)
 
@@ -66,17 +62,16 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
 * 持续优化流畅度
 * 优化数据库元素样式
 * 优化闪卡样式
-* 宽屏下的 `/` 菜单样式
 
 ## 鸣谢
 
 主题制作过程中参考借鉴了以下主题的思路，在此对各位主题开发者表示感谢 🙏：
 
-| 借鉴内容                                                 | 来自主题 | 作者 |
+| 借鉴内容                                                 | 来自主题 | 开发者 |
 | ---------------------------------------------------------- | ---------- | ------ |
-| 菜单背景模糊                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
-| 隐藏顶栏<br />侧栏面板列表项前圆点<br />大纲列表标题图标<br />状态栏<br />搜索列表 | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
-| 文档树缩进线<br />DOM 变动观察相关函数                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
+|- 菜单背景模糊                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
+|- 隐藏顶栏<br />- 侧栏面板列表项前圆点<br />- 大纲列表标题图标<br />- 状态栏<br />- 搜索列表<br />- 表格列宽<br />- `/` 菜单多栏布局 | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
+|- 文档树缩进线<br />- DOM 变动观察相关函数                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
 
 (以上排名不分先后)
 

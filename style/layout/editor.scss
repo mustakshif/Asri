@@ -387,7 +387,8 @@
     // 表格 ——————————————————————————————————————
     table {
         border-radius: 6px;
-        border: 1px solid var(--b3-border-color-trans);
+        border: 1px solid var(--b3-border-color-trans);        
+        width: auto;
 
         td,
         th {
