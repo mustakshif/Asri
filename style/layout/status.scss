@@ -134,6 +134,8 @@
 }
 
 .fn__flex-1.has-dockb ~ #status {
+    // -> js
+    
     background-color: var(--b3-theme-background);
     border-top-color: transparent;
     padding: 0 32px 4px 6px;

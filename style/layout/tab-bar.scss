@@ -124,6 +124,7 @@
 
         &--focus {
             max-width: 21rem;
+            // font-weight: 500;
             transition: 0.2s;
             @include theme-variant-color(background-color, list-hover, 0.12, 0.15);          
 

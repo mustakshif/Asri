@@ -189,7 +189,7 @@
         border-radius: 1em;
         padding: 0.1em 0.5em 0.15em;
         border: none;
-        box-shadow: 0 0 0 0.1em inset var(--tag-color);
+        box-shadow: 0 0 0 0.065em inset var(--tag-color);
         background-color: transparent;
         color: var(--tag-color);
         box-decoration-break: clone;
@@ -197,8 +197,8 @@
 
         &:hover {
             box-shadow: 0 0 0 0.8em inset var(--tag-color);
-            color: var(--b3-theme-background);
             background-color: transparent;
+            @include theme-variant-color(color, background);
             // color: change-color($color: pickThemeColor($theme-light, secondary), $lightness: 40%);
 
             // @include darkmode-counterpart {
