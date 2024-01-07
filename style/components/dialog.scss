@@ -64,6 +64,20 @@
                             }
                         }
                     }
+
+                    @media (max-width: 750px) {
+                        .config__tab-title, .b3-list-item{
+                            justify-content: center;
+                        }
+                
+                        .b3-list-item {
+                            margin: 4px 6px !important;
+                        }
+                
+                        .b3-list-item__graphic {
+                            padding: 0 4px;
+                        }
+                    }
                 }
 
                 .config__tab-wrap {
