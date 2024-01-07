@@ -12,31 +12,16 @@ const doms = {
     // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
 }
 
-function isToolbarAlwaysShown() {
-    return document.body.classList.contains('hadeeth-pin-toolbar') > 0;
-}
+const isToolbarAlwaysShown = document.body.classList.contains('hadeeth-pin-toolbar') > 0;
+const isMacOS = navigator.platform.indexOf("Mac") === 0 || navigator.userAgentData.platform === "macOS" || "darwin" === process.platform;
+const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
+const isInBrowser = doms.toolbar && doms.toolbar.classList.contains('toolbar--browser');
 
-function isMacOSFunc() {
-    return navigator.platform.indexOf("Mac") === 0 || navigator.userAgentData.platform === "macOS" || "darwin" === process.platform;
-}
-let isMacOS = isMacOSFunc();
 isMacOS && document.body.classList.add('body--mac');
-
-function isMobileFunc() {
-    return document.getElementById('sidebar') && document.getElementById('editor');
-}
-
-let isMobile = isMobileFunc();
 isMobile && document.body.classList.add('body--mobile');
-
-function isInBrowserFunc() {
-    let toolbar = document.getElementById('toolbar');
-    return toolbar && toolbar.classList.contains('toolbar--browser')
-}
-let isInBrowser = isInBrowserFunc();
 isInBrowser && document.body.classList.add("body--browser");
 
-function isFullScreen() {
+const isFullScreen = () => {
     if (!isInBrowser && !isMobile) {
         return require("@electron/remote").getCurrentWindow().isFullScreen();
     }
@@ -65,7 +50,7 @@ function useSysScrollbar() {
         let HadeethWebkitScrollbar = document.getElementById('HadeethWebkitScrollbar');
 
         if (!document.body.classList.contains('hadeeth-use-webkit-scrollbar')) {
-            HadeethWebkitScrollbar?.parentNode.removeChild(HadeethWebkitScrollbar);
+            HadeethWebkitScrollbar?.remove();
 
             for (let i = 0; i < document.styleSheets.length; i++) {
                 let styleSheet = document.styleSheets[i];
@@ -116,7 +101,7 @@ function ModifyMacTrafficLights() {
     currentWindow.setTrafficLightPosition({ x: 16, y: 16 });
 }
 
-if (isMacOS && !isInBrowser && !isMobile && !isToolbarAlwaysShown()) ModifyMacTrafficLights();
+if (isMacOS && !isInBrowser && !isMobile && !isToolbarAlwaysShown) ModifyMacTrafficLights();
 
 function RestoreMacTrafficLights() {
     let currentWindow = require("@electron/remote").getCurrentWindow();
@@ -136,7 +121,7 @@ function tabbarSpacing() {
     }
 
     if (!isFullScreen()) {
-        if (!isToolbarAlwaysShown()) {
+        if (!isToolbarAlwaysShown) {
             var topLeftRect = {
                 left: 0,
                 top: 0,
@@ -393,17 +378,17 @@ function isOverlapping(elementRect, targetRect) {
 /**
  * 反链面板文档题图粘性置顶
  */
-function formatSyBacklinkItemsLayout() {
-    doms.backlinkListItems = doms.layouts.querySelectorAll('.sy__backlink .b3-list-item');
+// function formatSyBacklinkItemsLayout() {
+//     doms.backlinkListItems = doms.layouts.querySelectorAll('.sy__backlink .b3-list-item');
 
-    document.querySelectorAll('.sy__backlink .protyle-shown').forEach(oldLi => oldLi.classList.remove('protyle-shown'));
+//     document.querySelectorAll('.sy__backlink .protyle-shown').forEach(oldLi => oldLi.classList.remove('protyle-shown'));
 
-    for (let li of doms.backlinkListItems) {
-        if (li.nextElementSibling && !li.nextElementSibling.classList.contains('fn__none') && li.nextElementSibling.classList.contains('protyle')) {
-            li.classList.add('protyle-shown');
-        }
-    }
-}
+//     for (let li of doms.backlinkListItems) {
+//         if (li.nextElementSibling && !li.nextElementSibling.classList.contains('fn__none') && li.nextElementSibling.classList.contains('protyle')) {
+//             li.classList.add('protyle-shown');
+//         }
+//     }
+// }
 // formatSyBacklinkItemsLayout();
 
 /**
@@ -456,17 +441,17 @@ function setSimpleMutationObserver(type, func) {
  * 设置多种类型变动的监视
  * @param {Function | undefined} funcChildList 
  * @param {Function | undefined} funcAttr default: undefined
- * @param {Function | undefined} fucnCharacterData default: undefined
+ * @param {Function | undefined} funcCharacterData default: undefined
  */
-function setCompoundMutationObserver(funcChildList, funcAttr = undefined, fucnCharacterData = undefined) {
+function setCompoundMutationObserver(funcChildList, funcAttr = undefined, funcCharacterData = undefined) {
     let callback = function (mutationList, observer) {
         mutationList.forEach(mutation => {
             if (funcChildList && mutation.type === 'childList') {
                 funcChildList(mutation, observer);
             } else if (funcAttr && mutation.type === 'attributes') {
                 funcAttr(mutation, observer);
-            } else if (fucnCharacterData && mutation.type === 'characterData') {
-                fucnCharacterData(mutation, observer);
+            } else if (funcCharacterData && mutation.type === 'characterData') {
+                funcCharacterData(mutation, observer);
             }
         })
     }
@@ -581,7 +566,7 @@ docBodyObserver(
     },
     () => {
         if (isMacOS && !isInBrowser && !isMobile) {
-            if (isToolbarAlwaysShown() && !doms.toolbarWindow) {
+            if (isToolbarAlwaysShown && !doms.toolbarWindow) {
                 RestoreMacTrafficLights();
             } else {
                 ModifyMacTrafficLights();
@@ -661,27 +646,27 @@ if (!isMobile) {
 }
 
 
-/**
- * 根据当前帧是否还有剩余的空闲时间选择是否执行任务
- * @param {Function} task 
- * @param {Function} callback 
- */
-function _runTask(task, callback) {
-    requestIdleCallback((idle) => {
-        if (idle.timeRemaining() > 0) {
-            task();
-            callback()
-        } else _runTask(task, callback)
-    })
-}
+// /**
+//  * 根据当前帧是否还有剩余的空闲时间选择是否执行任务
+//  * @param {Function} task 
+//  * @param {Function} callback 
+//  */
+// function _runTask(task, callback) {
+//     requestIdleCallback((idle) => {
+//         if (idle.timeRemaining() > 0) {
+//             task();
+//             callback()
+//         } else _runTask(task, callback)
+//     })
+// }
 
-function runWhenIdle(func) {
-    requestIdleCallback((idle) => {
-        if (idle.timeRemaining() > 0) {
-            func();
-        } else runWhenIdle(func)
-    })
-}
+// function runWhenIdle(func) {
+//     requestIdleCallback((idle) => {
+//         if (idle.timeRemaining() > 0) {
+//             func();
+//         } else runWhenIdle(func)
+//     })
+// }
 
 
 function getDblClickMouseXY() {
