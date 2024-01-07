@@ -332,75 +332,77 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
     // }
 
     // 题头图列表
-    .b3-dialog__body {
-        &>.b3-cards {
-            .b3-card {
-                &:hover {
-                    animation: card-hover 0.3s;
+    // .b3-dialog__body {
+    //     >.b3-cards {
+    //         .b3-card {
+    //             // 闪光效果
+    //             &:hover {
+    //                 animation: card-hover 0.3s;
   
-                    @keyframes card-hover {
-                        50% {
-                            filter: brightness(1.1);
-                        }
+    //                 @keyframes card-hover {
+    //                     50% {
+    //                         filter: brightness(1.1);
+    //                     }
     
-                        100% {
-                            filter: none;
-                        }
-                    }
-                }
+    //                     100% {
+    //                         filter: none;
+    //                     }
+    //                 }
+    //             }
 
-                &::before {
-                    --glow-offset: 50%;
-                    --glow-dir: 135deg;
-                    --glow-brightness: 1.2;
-                    --property-percentage: calc(var(--glow-offset) * -1);
+    //             &::before {
+    //                 --glow-offset: 50%;
+    //                 --glow-dir: 135deg;
+    //                 --glow-brightness: 1.2;
+    //                 --property-percentage: calc(var(--glow-offset) * -1);
 
-                    content: '';
-                    width: 100%;
-                    height: 100%;
-                    background: inherit;
-                    border-radius: inherit;
-                    filter: brightness(var(--glow-brightness)) blur(3px);
-                    mask-image: linear-gradient(var(--glow-dir),
-                            transparent calc(var(--property-percentage) - var(--glow-offset)),
-                            black var(--property-percentage),
-                            transparent calc(var(--property-percentage) + var(--glow-offset)));
-                }
+    //                 content: '';
+    //                 width: 100%;
+    //                 height: 100%;
+    //                 background: inherit;
+    //                 border-radius: inherit;
+    //                 filter: brightness(var(--glow-brightness)) blur(3px);
+    //                 mask-image: linear-gradient(var(--glow-dir),
+    //                         transparent calc(var(--property-percentage) - var(--glow-offset)),
+    //                         black var(--property-percentage),
+    //                         transparent calc(var(--property-percentage) + var(--glow-offset)));
+    //             }
 
-                &:hover::before {
-                    --property-percentage: calc(100% + var(--glow-offset));
-                    transition: --property-percentage 0.5s $timing-function-decelerate;
-                }
+    //             &:hover::before {
+    //                 --property-percentage: calc(100% + var(--glow-offset));
+    //                 transition: --property-percentage 0.5s $timing-function-decelerate;
+    //             }
 
-                // &::before {
-                //     content: "";
-                //     background: inherit;
-                //     background-size: inherit;
-                //     width: 100%;
-                //     height: 100%;
-                //     position: absolute;
-                //     top: 0;
-                //     left: 0;
-                //     // transform: none;
-                //     z-index: -1;
-                //     filter: blur(0px) opacity(0);
-                //     transition: top 0.2s, left 0.2s, filter 0.2s, width 0.2s, height 0.2s;
-                // }
+    //             // 图片色阴影
+    //             // &::before {
+    //             //     content: "";
+    //             //     background: inherit;
+    //             //     background-size: inherit;
+    //             //     width: 100%;
+    //             //     height: 100%;
+    //             //     position: absolute;
+    //             //     top: 0;
+    //             //     left: 0;
+    //             //     // transform: none;
+    //             //     z-index: -1;
+    //             //     filter: blur(0px) opacity(0);
+    //             //     transition: top 0.2s, left 0.2s, filter 0.2s, width 0.2s, height 0.2s;
+    //             // }
 
-                // &:hover::before {
-                //     top: 20px;
-                //     left: 5%;
-                //     width: 90%;
-                //     height: 90%;
-                //     filter: blur(20px) opacity(0.8) saturate(0.8) brightness(0.9);
+    //             // &:hover::before {
+    //             //     top: 20px;
+    //             //     left: 5%;
+    //             //     width: 90%;
+    //             //     height: 90%;
+    //             //     filter: blur(20px) opacity(0.8) saturate(0.8) brightness(0.9);
 
-                //     @include darkmode-counterpart {
-                //         filter: blur(20px) opacity(1) saturate(2) brightness(0.65);
-                //     }
-                // }
-            }
-        }
-    }
+    //             //     @include darkmode-counterpart {
+    //             //         filter: blur(20px) opacity(1) saturate(2) brightness(0.65);
+    //             //     }
+    //             // }
+    //         }
+    //     }
+    // }
 
     .b3-dialog.emojis-container {
         // ->js
