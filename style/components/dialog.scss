@@ -3,6 +3,7 @@
 .b3-dialog--open {
     .b3-dialog {
         &.emojis-container {
+            // -> js
             .b3-dialog__scrim {
                 backdrop-filter: none;
                 transition: none;
@@ -13,8 +14,6 @@
                 }
             }
         }
-
-        // -> js
 
         .b3-dialog__container {
             // overflow: hidden; // 导致搜索窗口上部溢出
@@ -709,7 +708,7 @@ body.body--window {
 
 // 图片预览 ——————————————————————
 .viewer-backdrop {
-    @extend .b3-dialog__scrim;
+    @extend .b3-dialog__scrim !optional;
     animation: fadeIn 0.3s;
     transform-origin: var(--mouseX) var(--mouseY);
 
@@ -770,30 +769,30 @@ body.body--window {
                 (map-get($theme-light, card-success), map-get($theme-dark, card-success))
             );
 
-            @for $i from 1 through 4 {
-                &[data-type="#{$i}"]:hover {
-                    @include menu-shadow(nth($button-colors, $i)..., $opacity-dark: 0.2)
-                }
-            }
-
-            // 显示答案按钮、(p)按钮 
-            &[data-type="-1"], &[data-type="-2"] {
-                &:hover {
-                    transform: none;
-                    box-shadow: none;
-                }
-
-                &:active {
-                    transform: scale(0.9)
-                }
-            }
-
-            // 跳过按钮
-            &[data-type="-3"]:hover {
-                background-color: var(--b3-list-hover);
+        @for $i from 1 through 4 {
+            &[data-type="#{$i}"]:hover {
+                @include menu-shadow(nth($button-colors, $i)..., $opacity-dark: 0.2)
             }
         }
+
+        // 显示答案按钮、(p)按钮 
+        &[data-type="-1"], &[data-type="-2"] {
+            &:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            &:active {
+                transform: scale(0.9)
+            }
+        }
+
+        // 跳过按钮
+        &[data-type="-3"]:hover {
+            background-color: var(--b3-list-hover);
+        }
     }
+}
 }
 
 // 数据库
