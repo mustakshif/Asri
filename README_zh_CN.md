@@ -9,16 +9,17 @@
 Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyuan-note/siyuan)主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
 
 ## 最近更新
+
+### v1.1.7
+
+* 修复文本编辑菜单图标背景圆角样式
+* 简化对话框阴影效果和部分特效，优化流畅度
+* 优化 `设置` 窗口侧栏导航自适应宽度样式
+
 ### v1.1.6
 
 * 调整表格为自动宽度，超过页宽时自动换行 [[Issue #7](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/7)]
 * 优化宽屏下的 `/` 菜单布局 [[Issue #6](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/6)]
-
-### v1.1.5
-
-* 调整表格背景色为透明色
-* 调整正文中的标签样式
-* 优化数据库部分菜单中的表单元素背景色
 
 查看全部日志 👉 [更新日志](./CHANGELOG.md)
 

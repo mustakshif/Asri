@@ -10,16 +10,16 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
+### v1.1.7
+
+* Fixed the rounded corner style of the icon background in the text editing toolbar.
+* Simplified the dialog shadow and some effects to improve performance.
+* Optimized the adaptive width style of the sidebar navigation in `Settings`.
+
 ### v1.1.6
 
 * Adjusted the table to have automatic width and wrap text when exceeding the page width. [[Issue #7](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/7)]
 * Updated the layout of the `/` menu to adapt to wider windows. [[Issue #6](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/6)]
-
-### v1.1.5
-
-* Adjusted the table background color to transparent.
-* Adjusted the style of tags in the body text.
-* Optimized the background color of form elements in menus of database.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 

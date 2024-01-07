@@ -1,3 +1,17 @@
+### v1.1.7
+
+* 修复文本编辑菜单图标背景圆角样式
+* 简化对话框阴影效果和部分特效，优化流畅度
+* 优化 `设置` 窗口侧栏导航自适应宽度样式
+
+<br />
+
+* Fixed the rounded corner style of the icon background in the text editing toolbar.
+* Simplified the dialog shadow and some effects to improve performance.
+* Optimized the adaptive width style of the sidebar navigation in `Settings`.
+
+---
+
 ### v1.1.6
 
 * 调整表格为自动宽度，超过页宽时自动换行 [[Issue #7](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/7)]
