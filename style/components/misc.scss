@@ -157,7 +157,6 @@ select.b3-select {
     // }
 }
 
-
 select.b3-select {
     &:hover,
     &:focus {
@@ -168,6 +167,10 @@ select.b3-select {
 
 textarea {
     resize: vertical;
+
+    &::placeholder {
+        color: var(--b3-empty-color);
+    }
 }
 
 

@@ -26,7 +26,7 @@ Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 ## Theme Features
 
 * 📃 Top bar hidden, window drag area adjusted for maximum display space.
-  * 📌 Quickly access the top bar by hovering over the area with icons on the left and right sides of the top of the window.
+  * 📌 Quickly access the top bar by hovering over the area with icons on the **left and right sides of the top of the window**.
   * 📌 When top bar hidden, window drag area adjusted to **blank areas** of:
     * **Tab bar (not toolbar/top bar)**
     * **Breadcrumb**

@@ -463,7 +463,6 @@
 }
 
 // 代码片段对话框
-
 #addCodeSnippetCSS, #addCodeSnippetJS{
     right: 93px;
 
@@ -476,6 +475,15 @@
         top: 16px;
     }
 }
+
+// [data-id]{
+//     &[data-type="css"],
+//     &[data-type="js"] {
+//         [type="text"].fn__size200.b3-text-field{
+//             font-weight: 500;
+//         }
+//     }
+// }
 
 //
 .b3-dialog__scrim {
