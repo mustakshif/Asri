@@ -10,16 +10,19 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
 
 ## 最近更新
 
+### v1.1.8
+
+* 新增顶栏弹出教程动画，首次应用主题时播放
+* 固定已下载插件总开关按钮位置
+* 固定 `代码片段` 对话框添加和总开关按钮位置
+* 调整 `最近文档` 对话框搜索框位置
+* 统一文本框提示文本颜色
+
 ### v1.1.7
 
 * 修复文本编辑菜单图标背景圆角样式
 * 简化对话框阴影效果和部分特效，优化流畅度
 * 优化 `设置` 窗口侧栏导航自适应宽度样式
-
-### v1.1.6
-
-* 调整表格为自动宽度，超过页宽时自动换行 [[Issue #7](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/7)]
-* 优化宽屏下的 `/` 菜单布局 [[Issue #6](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/6)]
 
 查看全部日志 👉 [更新日志](./CHANGELOG.md)
 

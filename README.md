@@ -10,16 +10,19 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
+### v1.1.8
+
+* Added a top bar pop-up tutorial animation that plays when the theme is applied for the first time.
+* Updated the position of the overall switch button for downloaded plugins.
+* Updated the position of the add button and the overall switch button for the `Code Snippet` dialog and unified it.
+* Adjusted the position of the search bar in the `Recent documents` dialog.
+* Unified the prompt text color of text fields.
+
 ### v1.1.7
 
 * Fixed the rounded corner style of the icon background in the text editing toolbar.
 * Simplified the dialog shadow and some effects to improve performance.
 * Optimized the adaptive width style of the sidebar navigation in `Settings`.
-
-### v1.1.6
-
-* Adjusted the table to have automatic width and wrap text when exceeding the page width. [[Issue #7](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/7)]
-* Updated the layout of the `/` menu to adapt to wider windows. [[Issue #6](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/6)]
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
