@@ -118,7 +118,7 @@ body.body--window {
         // -> js
         overflow: visible;
 
-        $animation-speed: 1;
+        $animation-speed: 0.8;
         $sway-duration: 1s * $animation-speed;
         $sway-iteration: 1.5;
         $hide-duration: 0.5s * $animation-speed;
@@ -126,14 +126,14 @@ body.body--window {
         $glow-duration: 0.8s * $animation-speed;
         $glow-iteration: 6;
         $glow-delay: $hide-delay + $hide-duration;
-        $transparent-toolbar-duration: $glow-duration * $glow-iteration;
+        // $transparent-toolbar-duration: $glow-duration * $glow-iteration;
 
         animation: 
             sway $sway-duration 0s $sway-iteration alternate,
             hide $hide-duration $hide-delay,
-            transparent-toolbar $transparent-toolbar-duration $glow-delay;
+            transparent-toolbar $glow-duration $glow-delay $glow-iteration alternate;
         // animation-composition: accumulate;
-        --offset: 5px;
+        --offset: 8px;
 
         @keyframes sway {
             0% {
@@ -165,20 +165,21 @@ body.body--window {
 
         @keyframes transparent-toolbar {
             0% {
-                opacity: 0;
-            }
-            20% {
                 opacity: 1;
-                background-color: var(--b3-theme-primary-light);
+                background-color: var(--b3-theme-background)
             }
-            90% {
-                opacity: 1;
-                background-color: var(--b3-theme-primary-light);
-            }
+            // 20% {
+            //     opacity: 1;
+            //     background-color: var(--b3-theme-primary-light);
+            // }
             100% {
                 opacity: 1;
-                background-color: var(--b3-theme-background);
+                background-color: var(--b3-theme-primary-light);
             }
+            // 100% {
+            //     opacity: 1;
+            //     background-color: var(--b3-theme-background);
+            // }
         }
 
         @keyframes glow {
@@ -203,13 +204,13 @@ body.body--window {
         }
 
         &::before {
-            width: 25%;
-            left: -4%;
+            width: 30%;
+            left: -8%;
         }
 
         &::after {
-            width: 25%;
-            right: -4%;
+            width: 30%;
+            right: -8%;
         }
 
         #drag {
