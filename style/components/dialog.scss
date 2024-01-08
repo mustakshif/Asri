@@ -3,6 +3,7 @@
 .b3-dialog--open {
     .b3-dialog {
         &.emojis-container {
+
             // -> js
             .b3-dialog__scrim {
                 backdrop-filter: none;
@@ -66,14 +67,16 @@
                     }
 
                     @media (max-width: 750px) {
-                        .config__tab-title, .b3-list-item{
+
+                        .config__tab-title,
+                        .b3-list-item {
                             justify-content: center;
                         }
-                
+
                         .b3-list-item {
                             margin: 4px 6px !important;
                         }
-                
+
                         .b3-list-item__graphic {
                             padding: 0 4px;
                         }
@@ -132,6 +135,18 @@
 
                             .counter {
                                 background-color: transparent !important;
+
+                                &::after {
+                                    top: 100%;
+                                    right: 50%;
+                                    bottom: unset;
+                                    margin-right: 0;
+                                    transform: translateX(50%) scale(0.8);
+                                }
+
+                                &:hover::after {
+                                    transform: translateX(50%) scale(1);
+                                }
                             }
 
                             &[data-type='downloaded'] {
@@ -171,6 +186,13 @@
                             #configBazaarDownloaded {
                                 padding: 0 0 16px 0;
 
+                                >.fn__flex>input.b3-switch {
+                                    position: absolute;
+                                    top: 60px;
+                                    z-index: 2;
+                                    right: 32px;
+                                }
+
                                 .b3-card {
                                     margin: 20px;
                                 }
@@ -206,7 +228,7 @@
                                         opacity: 0;
                                         z-index: 0;
                                         border-radius: inherit;
-                                        background-color:transparent;
+                                        background-color: transparent;
                                         pointer-events: none;
                                         transition: opacity 0.2s;
                                     }
@@ -240,7 +262,7 @@
                                             outline: 2px solid var(--b3-theme-primary);
                                         }
 
-                                        &::before{
+                                        &::before {
                                             opacity: 1;
                                         }
                                     }
@@ -427,12 +449,35 @@
         font-family: SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
     }
 
+    // 最近文档 ——————————————————————————————————
+    &[data-key="dialog-recentdocs"] {
+        .b3-form__icon.fn__size200{
+            transform: translateX(16px)
+        }
+    }
+
     // 对话框中的 tab-bar ——————————————————————————————
     .layout-tab-bar {
         @include dialog-tabbar;
     }
 }
 
+// 代码片段对话框
+
+#addCodeSnippetCSS, #addCodeSnippetJS{
+    right: 93px;
+
+    &~.b3-switch{
+        right: 24px;
+    }
+
+    &, &~.b3-switch{
+        position: absolute;
+        top: 16px;
+    }
+}
+
+//
 .b3-dialog__scrim {
     background-color: #80808080;
     backdrop-filter: saturate(0.5);

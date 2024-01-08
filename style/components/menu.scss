@@ -85,6 +85,10 @@
     background-color: var(--b3-menu-background);
 
     &.hint--menu {
+        .b3-menu__separator {
+            background-color: var(--b3-border-color-trans);
+        }
+
         @media screen and (min-width: 1292px) {
     
             width: auto !important;

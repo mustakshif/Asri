@@ -42,7 +42,7 @@
     }
 }
 
-@mixin dialog-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.35) {
+@mixin dialog-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3) {
     // box-shadow: 0px 13px 18px -2px change-color($shadow-clr-light, $alpha: $opacity-light), 0px 30px 50px 0px change-color($shadow-clr-light, $alpha: $opacity-light), 0px 0px 12px 0px change-color($shadow-clr-light, $alpha: calc($opacity-light / 2)), 0px 75px 65px -50px change-color($shadow-clr-light, $alpha: $opacity-light);
     box-shadow: 0px 10px 15px -3px change-color($shadow-clr-light, $alpha: $opacity-light),0px 24px 40px 9px change-color($shadow-clr-light, $alpha: $opacity-light);
 
