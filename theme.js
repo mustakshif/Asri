@@ -1,6 +1,6 @@
 // 思源 API
-//[cc-baselib/siYuanApi.js at main · leolee9086/cc-baselib](https://github.com/leolee9086/cc-baselib/blob/main/src/siYuanApi.js)
-// Rem Craft/util/api.js
+// 来自 [cc-baselib/siYuanApi.js at main · leolee9086/cc-baselib](https://github.com/leolee9086/cc-baselib/blob/main/src/siYuanApi.js)
+// 来自 Rem Craft/util/api.js
 
 async function getFile(path) {
     const response = await fetch('/api/file/getFile', {

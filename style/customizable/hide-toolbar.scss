@@ -133,7 +133,7 @@ body.body--window {
             hide $hide-duration $hide-delay,
             transparent-toolbar $glow-duration $glow-delay $glow-iteration alternate;
         // animation-composition: accumulate;
-        --offset: 8px;
+        --offset: 4px;
 
         @keyframes sway {
             0% {
