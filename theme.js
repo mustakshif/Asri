@@ -36,8 +36,8 @@ function addFullscreenClassName() {
                 document.body.classList.add('body--fullscreen');
             } else {
                 document.body.classList.remove('body--fullscreen');
-            } 
-            
+            }
+
             tabbarSpacing();
         })
     }
@@ -94,6 +94,27 @@ function handleToolbarHover() {
 }
 
 handleToolbarHover();
+
+function toolbarTutorial() {
+    let toolbar = doms.toolbar;
+    if (toolbar) {
+        function playAnimation() {
+            toolbar.classList.add("hadeeth-toolbar-tutorial");
+            console.log('added')
+        }
+    
+        function onAnimationEnd() {
+            toolbar.classList.remove("hadeeth-toolbar-tutorial");
+            toolbar?.removeEventListener("animationend", onAnimationEnd);
+        }
+    
+        toolbar.addEventListener("animationend", onAnimationEnd);
+    
+        playAnimation();
+    }
+}
+
+toolbarTutorial();
 
 // Mac 红绿灯位置
 function ModifyMacTrafficLights() {
