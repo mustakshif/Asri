@@ -114,6 +114,109 @@ body:not(.hadeeth-pin-toolbar, .body--fullscreen),
 body.body--window {
     // -> js
 
+    #toolbar.hadeeth-toolbar-tutorial {
+        // -> js
+        overflow: visible;
+
+        $animation-speed: 1;
+        $sway-duration: 1s * $animation-speed;
+        $sway-iteration: 1.5;
+        $hide-duration: 0.5s * $animation-speed;
+        $hide-delay: $sway-duration * $sway-iteration;
+        $glow-duration: 0.8s * $animation-speed;
+        $glow-iteration: 6;
+        $glow-delay: $hide-delay + $hide-duration;
+        $transparent-toolbar-duration: $glow-duration * $glow-iteration;
+
+        animation: 
+            sway $sway-duration 0s $sway-iteration alternate,
+            hide $hide-duration $hide-delay,
+            transparent-toolbar $transparent-toolbar-duration $glow-delay;
+        // animation-composition: accumulate;
+        --offset: 5px;
+
+        @keyframes sway {
+            0% {
+                transform: translateY(calc(var(--offset) * -1));
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(calc(var(--offset)))
+            }
+            100% {
+                transform: none;
+                opacity: 1
+            }
+        }
+
+        @keyframes hide {
+            0% {
+                transform: translateY(calc(var(--offset)));
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(calc(var(--toolbar-height) * -1 + 10px));
+                opacity: 0;
+            }
+        }
+
+        @keyframes transparent-toolbar {
+            0% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+                background-color: var(--b3-theme-primary-light);
+            }
+            90% {
+                opacity: 1;
+                background-color: var(--b3-theme-primary-light);
+            }
+            100% {
+                opacity: 1;
+                background-color: var(--b3-theme-background);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1
+            }
+        }
+
+        &::before, &::after {
+            content: '';
+            pointer-events: none;
+            height: 100%;
+            position: absolute;
+            top:0;
+            background-color: var(--b3-theme-primary);
+            filter: blur(30px);
+            animation: glow $glow-duration $glow-delay $glow-iteration alternate;
+            opacity: 0;
+        }
+
+        &::before {
+            width: 25%;
+            left: -4%;
+        }
+
+        &::after {
+            width: 25%;
+            right: -4%;
+        }
+
+        #drag {
+            background-color: var(--b3-theme-background);
+        }
+    }
+
     &:not(.body--mobile) {
         // -> js
 
@@ -128,26 +231,6 @@ body.body--window {
             z-index: 16;
             // 需要比.fullscreen（z-index: 8）高
             //比菜单低(约 31)，比 layout--float 高
-
-            &.hadeeth-toolbar-tutorial {
-                opacity: 1;
-                animation: toolbar-tutorial 2s;
-                animation-iteration-count: 1;
-
-                @keyframes toolbar-tutorial {
-                    0% {
-                        transform: none;
-                        opacity: 1;
-                    }
-                    50% {
-                        transform: none;
-                    }
-                    100% {
-                        transform: translateY(calc(var(--toolbar-height) * -1 + 10px));
-                        opacity: 1;
-                    }
-                }
-            }
 
             @include toolbarHidden;
 

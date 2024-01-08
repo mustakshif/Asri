@@ -97,20 +97,18 @@ handleToolbarHover();
 
 function toolbarTutorial() {
     let toolbar = doms.toolbar;
+    let hasPlayedToolbarTutorial = localStorage.getItem("hasPlayedHadeethToolbarTutorial");
     if (toolbar) {
-        function playAnimation() {
+        function playToolbarTutorial() {
             toolbar.classList.add("hadeeth-toolbar-tutorial");
-            console.log('added')
+            localStorage.setItem("hasPlayedHadeethToolbarTutorial", true);
         }
     
-        function onAnimationEnd() {
+        if (!hasPlayedToolbarTutorial) playToolbarTutorial();
+
+        setTimeout(() => {
             toolbar.classList.remove("hadeeth-toolbar-tutorial");
-            toolbar?.removeEventListener("animationend", onAnimationEnd);
-        }
-    
-        toolbar.addEventListener("animationend", onAnimationEnd);
-    
-        playAnimation();
+        }, 7000);
     }
 }
 

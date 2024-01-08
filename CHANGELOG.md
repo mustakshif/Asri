@@ -1,3 +1,21 @@
+### v1.1.8
+
+* 新增顶栏弹出教程动画，首次应用主题时播放
+* 固定已下载插件总开关按钮位置
+* 固定 `代码片段` 对话框添加和总开关按钮位置
+* 调整 `最近文档` 对话框搜索框位置
+* 统一文本框提示文本颜色
+
+<br />
+
+* Added a top bar pop-up tutorial animation that plays when the theme is applied for the first time.
+* Updated the position of the overall switch button for downloaded plugins.
+* Updated the position of the add button and the overall switch button for the `Code Snippet` dialog and unified it.
+* Adjusted the position of the search bar in the `Recent documents` dialog.
+* Unified the prompt text color of text fields.
+
+---
+
 ### v1.1.7
 
 * 修复文本编辑菜单图标背景圆角样式
