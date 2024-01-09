@@ -1,3 +1,17 @@
+### v1.1.9
+
+* 新增 `集市` 已下载项目宽度自适应显示
+* 简化反链面板面包屑条目数量，仅显示有关块及其父级块
+* 修复 Mac 端切换是否钉住顶栏时红绿灯不移动的问题
+
+<br />
+
+* Added adaptive display of downloaded items in `Marketplace`
+* Simplified the breadcrumb entries in the backlink panel, displaying only relevant blocks and their parent blocks
+* Fixed the issue on Mac where the traffic light would not move when toggling whether to pin the top bar.
+
+---
+
 ### v1.1.8
 
 * 新增顶栏弹出教程动画，首次应用主题时播放

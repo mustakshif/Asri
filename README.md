@@ -10,6 +10,12 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
+### v1.1.9
+
+* Added adaptive display of downloaded items in `Marketplace`
+* Simplified the breadcrumb entries in the backlink panel, displaying only relevant blocks and their parent blocks
+* Fixed the issue on Mac where the traffic light would not move when toggling whether to pin the top bar.
+
 ### v1.1.8
 
 * Added a top bar pop-up tutorial animation that plays when the theme is applied for the first time.
