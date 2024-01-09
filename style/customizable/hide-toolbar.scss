@@ -118,7 +118,7 @@ body.body--window {
         // -> js
         overflow: visible;
 
-        $animation-speed: 0.8;
+        $animation-speed: 1;
         $sway-duration: 1s * $animation-speed;
         $sway-iteration: 1.5;
         $hide-duration: 0.5s * $animation-speed;

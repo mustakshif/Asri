@@ -182,168 +182,6 @@
                                     }
                                 }
                             }
-
-                            #configBazaarDownloaded {
-                                padding: 0 0 16px 0;
-
-                                >.fn__flex>input.b3-switch {
-                                    position: absolute;
-                                    top: 60px;
-                                    z-index: 2;
-                                    right: 32px;
-                                }
-
-                                .b3-card {
-                                    margin: 20px;
-                                }
-                            }
-
-                            div[id*=configBazaar] {
-                                width: 100%;
-                                // 网格布局要求父容器的宽度不固定
-
-                                .b3-cards {
-                                    display: grid;
-                                    grid-template-columns: repeat(auto-fill, minmax(342px, 1fr));
-                                    gap: 20px;
-                                    margin: 20px;
-                                }
-
-                                .b3-card {
-                                    transition-duration: 0.2s;
-                                    border-radius: $border-rd-card;
-                                    background-color: var(--b3-theme-background);
-                                    outline: 1.5px solid var(--b3-border-color-trans);
-                                    border: none;
-                                    box-shadow: none;
-                                    margin: 0;
-                                    overflow: visible;
-
-                                    &::before {
-                                        content: '';
-                                        width: 100%;
-                                        height: 100%;
-                                        @include menu-shadow(map-get($theme-light, primary), map-get($theme-dark, primary));
-                                        position: absolute;
-                                        opacity: 0;
-                                        z-index: 0;
-                                        border-radius: inherit;
-                                        background-color: transparent;
-                                        pointer-events: none;
-                                        transition: opacity 0.2s;
-                                    }
-
-                                    &--current {
-                                        outline: 3px solid var(--b3-theme-primary-lighter);
-
-                                        @include darkmode-counterpart {
-                                            outline-color: var(--b3-theme-primary-light);
-                                        }
-                                    }
-
-                                    &__info {
-                                        font-weight: 500;
-
-                                        >* {
-                                            font-weight: normal;
-                                        }
-                                    }
-
-                                    &__desc {
-                                        word-break: initial;
-                                    }
-
-                                    &:hover {
-                                        transform: scale(1.01);
-                                        outline: 2px solid var(--b3-theme-primary-light);
-                                        z-index: 1;
-
-                                        @include darkmode-counterpart {
-                                            outline: 2px solid var(--b3-theme-primary);
-                                        }
-
-                                        &::before {
-                                            opacity: 1;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        .config-bazaar__readme {
-                            transition: transform $timing-function-accelerate 0.2s, filter linear 0.2s;
-                            opacity: 1;
-                            z-index: 2;
-                            padding: 0;
-
-                            // transform: scale(1.08);
-                            // right: 0;
-                            // opacity: 0;
-                            // pointer-events: none;
-                            // transition: opacity $timing-function-decelerate 0.2s, transform 0.3s, filter $timing-function-decelerate 0.3s;
-
-                            .item__side {
-                                padding: 16px;
-                                background-color: var(--b3-theme-surface);
-
-                                .item__title {
-                                    font-weight: 600;
-                                    word-break: normal;
-                                }
-
-                                .b3-button {
-                                    @include button-primary;
-
-                                    margin-top: 12px;
-
-                                    &--progress>span {
-                                        border-radius: 99px;
-                                    }
-                                }
-                            }
-
-                            .item__main {
-                                margin-left: 0;
-                                padding: 0;
-                                background-color: var(--b3-theme-background);
-
-
-                                .item__preview {
-                                    border-radius: 0;
-                                }
-
-                                .b3-typography {
-                                    padding: 0 32px;
-
-                                    .bq {
-                                        border: none;
-                                        padding: 0;
-                                        background-color: transparent;
-                                        font-weight: 600;
-                                        margin: 0;
-                                        font-size: 120%;
-                                        opacity: 0.9;
-                                    }
-
-                                    &.item__readme {
-                                        padding-bottom: 32px;
-
-                                        @for $i from 1 through 6 {
-                                            >h#{$i}:first-child {
-                                                margin-top: 0;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
-                            &--show {
-                                transition: transform $timing-function-decelerate 0.3s, filter linear 0.3s 0.1s;
-
-                                // transform: none;
-                                // opacity: 1;
-                                // pointer-events: all;
-                            }
                         }
 
                         &[data-name="account"] {
@@ -451,7 +289,7 @@
 
     // 最近文档 ——————————————————————————————————
     &[data-key="dialog-recentdocs"] {
-        .b3-form__icon.fn__size200{
+        .b3-form__icon.fn__size200 {
             transform: translateX(16px)
         }
     }
@@ -462,15 +300,192 @@
     }
 }
 
+// 集市卡片
+#configBazaarDownloaded {
+    // padding: 0 0 16px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(472px, 1fr));
+    gap: 20px;
+    margin: 20px;
+    width: auto;
+
+    >.fn__flex:first-child {
+        grid-column: 1 / -1;
+
+        >input.b3-switch {
+            position: absolute;
+            top: 60px;
+            z-index: 2;
+            right: 32px;
+        }
+    }
+
+    .b3-list--empty {
+        padding: 0;
+        position: absolute;
+        left: 240px;
+        top: 108px;
+    }
+}
+
+div[id*=configBazaar] {
+    width: 100%;
+    // 网格布局要求父容器的宽度不固定
+
+    .b3-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(342px, 1fr));
+        gap: 20px;
+        margin: 20px;
+    }
+
+    .b3-card {
+        transition-duration: 0.2s;
+        border-radius: $border-rd-card;
+        background-color: var(--b3-theme-background);
+        outline: 1.5px solid var(--b3-border-color-trans);
+        border: none;
+        box-shadow: none;
+        margin: 0;
+        overflow: visible;
+
+        &::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            @include menu-shadow(map-get($theme-light, primary), map-get($theme-dark, primary));
+            position: absolute;
+            opacity: 0;
+            z-index: 0;
+            border-radius: inherit;
+            background-color: transparent;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+
+        &--current {
+            outline: 3px solid var(--b3-theme-primary-lighter);
+
+            @include darkmode-counterpart {
+                outline-color: var(--b3-theme-primary-light);
+            }
+        }
+
+        &__info {
+            font-weight: 500;
+
+            >* {
+                font-weight: normal;
+            }
+        }
+
+        &__desc {
+            word-break: initial;
+        }
+
+        &:hover {
+            transform: scale(1.01);
+            outline: 2px solid var(--b3-theme-primary-light);
+            z-index: 1;
+
+            @include darkmode-counterpart {
+                outline: 2px solid var(--b3-theme-primary);
+            }
+
+            &::before {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+#configBazaarReadme {
+    transition: transform $timing-function-accelerate 0.2s, filter linear 0.2s;
+    opacity: 1;
+    z-index: 2;
+    padding: 0;
+
+    // transform: scale(1.08);
+    // right: 0;
+    // opacity: 0;
+    // pointer-events: none;
+    // transition: opacity $timing-function-decelerate 0.2s, transform 0.3s, filter $timing-function-decelerate 0.3s;
+
+    .item__side {
+        padding: 16px;
+        background-color: var(--b3-theme-surface);
+
+        .item__title {
+            font-weight: 600;
+            word-break: normal;
+        }
+
+        .b3-button {
+            @include button-primary;
+
+            margin-top: 12px;
+
+            &--progress>span {
+                border-radius: 99px;
+            }
+        }
+    }
+
+    .item__main {
+        margin-left: 0;
+        padding: 0;
+        background-color: var(--b3-theme-background);
+
+
+        .item__preview {
+            border-radius: 0;
+        }
+
+        .b3-typography {
+            padding: 0 32px;
+
+            .bq {
+                border: none;
+                padding: 0;
+                background-color: transparent;
+                font-weight: 600;
+                margin: 0;
+                font-size: 120%;
+                opacity: 0.9;
+            }
+
+            &.item__readme {
+                padding-bottom: 32px;
+
+                @for $i from 1 through 6 {
+                    >h#{$i}:first-child {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    &.config-bazaar__readme--show {
+        transition: transform $timing-function-decelerate 0.3s, filter linear 0.3s 0.1s;
+
+        // transform: none;
+        // opacity: 1;
+        // pointer-events: all;
+    }
+}
+
 // 代码片段对话框
-#addCodeSnippetCSS, #addCodeSnippetJS{
+#addCodeSnippetCSS,
+#addCodeSnippetJS {
     right: 93px;
 
-    &~.b3-switch{
+    &~.b3-switch {
         right: 24px;
     }
 
-    &, &~.b3-switch{
+    &,
+    &~.b3-switch {
         position: absolute;
         top: 16px;
     }

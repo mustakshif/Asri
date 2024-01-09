@@ -50,7 +50,6 @@ const doms = {
     // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
 }
 
-const isToolbarAlwaysShown = document.body.classList.contains('hadeeth-pin-toolbar') > 0;
 const isMacOS = navigator.platform.indexOf("Mac") === 0 || navigator.userAgentData.platform === "macOS" || "darwin" === process.platform;
 const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
 const isInBrowser = doms.toolbar && doms.toolbar.classList.contains('toolbar--browser');
@@ -63,6 +62,9 @@ const isFullScreen = () => {
     if (!isInBrowser && !isMobile) {
         return require("@electron/remote").getCurrentWindow().isFullScreen();
     }
+}
+function isToolbarAlwaysShown() {
+    return document.body.classList.contains('hadeeth-pin-toolbar') > 0;
 }
 
 function addFullscreenClassName() {
@@ -169,7 +171,7 @@ function ModifyMacTrafficLights() {
     currentWindow.setTrafficLightPosition({ x: 16, y: 16 });
 }
 
-if (isMacOS && !isInBrowser && !isMobile && !isToolbarAlwaysShown) ModifyMacTrafficLights();
+if (isMacOS && !isInBrowser && !isMobile && !isToolbarAlwaysShown()) ModifyMacTrafficLights();
 
 function RestoreMacTrafficLights() {
     let currentWindow = require("@electron/remote").getCurrentWindow();
@@ -180,6 +182,7 @@ function RestoreMacTrafficLights() {
  * 主窗口、新小窗页签栏左右边距控制
  */
 function tabbarSpacing() {
+    var isToolbarAlwaysShownStatic = isToolbarAlwaysShown();
     var toolbarWindowRec = doms.toolbarWindow?.getBoundingClientRect();
     var topRightRect = toolbarWindowRec && {
         left: toolbarWindowRec.left,
@@ -189,7 +192,7 @@ function tabbarSpacing() {
     }
 
     if (!isFullScreen()) {
-        if (!isToolbarAlwaysShown) {
+        if (!isToolbarAlwaysShownStatic) {
             var topLeftRect = {
                 left: 0,
                 top: 0,
@@ -634,7 +637,7 @@ docBodyObserver(
     },
     () => {
         if (isMacOS && !isInBrowser && !isMobile) {
-            if (isToolbarAlwaysShown && !doms.toolbarWindow) {
+            if (isToolbarAlwaysShown() && !doms.toolbarWindow) {
                 RestoreMacTrafficLights();
             } else {
                 ModifyMacTrafficLights();
