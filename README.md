@@ -12,7 +12,7 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ### v1.1.9
 
-* Added adaptive display of downloaded items in `Marketplace`
+* Added adaptive display for downloaded items in `Marketplace`
 * Simplified the breadcrumb entries in the backlink panel, displaying only relevant blocks and their parent blocks
 * Fixed the issue on Mac where the traffic light would not move when toggling whether to pin the top bar.
 
@@ -23,12 +23,6 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 * Updated the position of the add button and the overall switch button for the `Code Snippet` dialog and unified it.
 * Adjusted the position of the search bar in the `Recent documents` dialog.
 * Unified the prompt text color of text fields.
-
-### v1.1.7
-
-* Fixed the rounded corner style of the icon background in the text editing toolbar.
-* Simplified the dialog shadow and some effects to improve performance.
-* Optimized the adaptive width style of the sidebar navigation in `Settings`.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 

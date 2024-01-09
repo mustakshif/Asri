@@ -6,7 +6,7 @@
 
 <br />
 
-* Added adaptive display of downloaded items in `Marketplace`
+* Added adaptive display for downloaded items in `Marketplace`
 * Simplified the breadcrumb entries in the backlink panel, displaying only relevant blocks and their parent blocks
 * Fixed the issue on Mac where the traffic light would not move when toggling whether to pin the top bar.
 
