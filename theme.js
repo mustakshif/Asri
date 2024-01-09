@@ -150,19 +150,17 @@ async function toolbarTutorial() {
             return false;
         });
 
-    if (toolbar) {
-        if (!hasPlayedToolbarTutorial) {
-            toolbar.classList.add("hadeeth-toolbar-tutorial");
+    if (toolbar && !hasPlayedToolbarTutorial) {
+        toolbar.classList.add("hadeeth-toolbar-tutorial");
 
-            await putFile("/data/snippets/Hadeeth.config.json", JSON.stringify({ hasPlayedToolbarTutorial: "1" }, undefined, 4));
+        await putFile("/data/snippets/Hadeeth.config.json", JSON.stringify({ hasPlayedToolbarTutorial: "1" }, undefined, 4));
 
-            setTimeout(() => {
-                toolbar.classList.remove("hadeeth-toolbar-tutorial");
-            }, 7000);
-        }
+        setTimeout(() => {
+            toolbar.classList.remove("hadeeth-toolbar-tutorial");
+        }, 7000);
     }
 }
-    
+
 toolbarTutorial();
 
 // Mac 红绿灯位置
