@@ -10,19 +10,18 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
+### v1.1.10
+
+* Optimized UI of image viewer.
+* Optimized color effects of the text editing toolbar, status bar etc.
+* Aligned the position of the overall switch button for downloaded plugins.
+* Fixed the issue where the image operation menu icon was always displayed.
+
 ### v1.1.9
 
 * Added adaptive display for downloaded items in `Marketplace`
 * Simplified the breadcrumb entries in the backlink panel, displaying only relevant blocks and their parent blocks
 * Fixed the issue on Mac where the traffic light would not move when toggling whether to pin the top bar.
-
-### v1.1.8
-
-* Added a top bar pop-up tutorial animation that plays when the theme is applied for the first time.
-* Updated the position of the overall switch button for downloaded plugins.
-* Updated the position of the add button and the overall switch button for the `Code Snippet` dialog and unified it.
-* Adjusted the position of the search bar in the `Recent documents` dialog.
-* Unified the prompt text color of text fields.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
@@ -88,7 +87,7 @@ Other reference materials:
 
 ## Notes
 
-* Setting menu's dragable area cut to the top area of the left column.
+* Setting menu's dragable area is cut to the top area of the left column.
 * The close button in the upper right corner of the dialog box is hidden. To close the dialog box, click anywhere outside the dialog box.
 
 ## Project Dependencies

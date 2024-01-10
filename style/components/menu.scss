@@ -172,8 +172,14 @@
 .protyle-util {
     background-color: var(--b3-menu-background);
     padding: 8px 0 0;
-}
 
+    @include menu-shadow;
+    @include border-or-not;
+
+    textarea {
+        resize: both;
+    }
+}
 
 // emoji 面板
 

@@ -1,3 +1,19 @@
+### v1.1.10
+
+* 优化图片查看器 UI
+* 优化文字编辑工具条、状态栏等部件的色彩效果
+* 对齐已下载插件总开关按钮位置
+* 修复图片操作菜单图标一直显示的问题
+
+<br />
+
+* Optimized UI of image viewer.
+* Optimized color effects of the text editing toolbar, status bar etc.
+* Aligned the position of the overall switch button for downloaded plugins.
+* Fixed the issue where the image operation menu icon was always displayed.
+
+---
+
 ### v1.1.9
 
 * 新增 `集市` 已下载项目宽度自适应显示
@@ -6,8 +22,8 @@
 
 <br />
 
-* Added adaptive display for downloaded items in `Marketplace`
-* Simplified the breadcrumb entries in the backlink panel, displaying only relevant blocks and their parent blocks
+* Added adaptive display for downloaded items in `Marketplace`.
+* Simplified the breadcrumb entries in the backlink panel, displaying only relevant blocks and their parent blocks.
 * Fixed the issue on Mac where the traffic light would not move when toggling whether to pin the top bar.
 
 ---

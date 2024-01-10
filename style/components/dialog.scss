@@ -135,18 +135,6 @@
 
                             .counter {
                                 background-color: transparent !important;
-
-                                &::after {
-                                    top: 100%;
-                                    right: 50%;
-                                    bottom: unset;
-                                    margin-right: 0;
-                                    transform: translateX(50%) scale(0.8);
-                                }
-
-                                &:hover::after {
-                                    transform: translateX(50%) scale(1);
-                                }
                             }
 
                             &[data-type='downloaded'] {
@@ -180,6 +168,10 @@
                                     &+.fn__space+.b3-form__icon {
                                         margin-left: 8px;
                                     }
+                                }
+
+                                [data-type="myPlugin"]:not(.b3-button--outline) ~ .counter {
+                                    transform: translateX(-64px);
                                 }
                             }
                         }
@@ -316,7 +308,7 @@
             position: absolute;
             top: 60px;
             z-index: 2;
-            right: 32px;
+            right: 4px;
         }
     }
 
@@ -744,19 +736,6 @@ div[id*=configBazaar] {
 }
 
 
-// 浮窗 ————————————————————————————————————————
-.protyle-util {
-    @include dialog-shadow;
-    @include border-or-not;
-
-    textarea {
-        resize: both;
-    }
-}
-
-
-
-
 //导出窗口 ——————————————————————————
 
 #aciton {
@@ -824,7 +803,6 @@ body.body--window {
             transform: none;
         }
     }
-
 }
 
 .viewer-title {
@@ -833,7 +811,34 @@ body.body--window {
     border-radius: 99px;
 }
 
+.viewer-toolbar {
+    > ul {
+        background-color: var(--b3-theme-surface);
+        padding: 8px;
+        border-radius: 99px;
 
+        >li {
+            background-color: transparent;
+
+            &:hover {
+                background-color: var(--b3-list-hover);
+
+                > svg {
+                    color: var(--b3-theme-on-background);  
+                }
+            }
+
+            &:focus {
+                background-color:var(--b3-theme-on-background);
+                box-shadow: none;
+
+                > svg {
+                    color: var(--b3-menu-background); 
+                }
+            }
+        }
+    }
+}
 
 // 闪卡复习 ————————————————————————————————————
 .card__main {

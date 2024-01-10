@@ -157,308 +157,336 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
                     "pink": font-color12
                 );
 
-                @each $chip-type, $chip-color in $chip-colors {
-                    .b3-chip--middle.b3-chip--#{$chip-type} {
-                        @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
-                        @include theme-variant-color(background-color, surface, 0.8, 0.6);
-                        @include theme-variant-color(color, on-background, 0.6, 1);
-                    }
-                }
-            }
-        }
-
-        //文字格式工具条
-        &-toolbar {
-            @include theme-variant-color(background-color, surface, $medium-transparency);
-            @include bg-blur;
-
-            // z-index: 1;
-        }
-
-        // 图片控件
-        [data-node-id] .img {
-            &:hover {
-                .protyle-action__drag {
-                    background-color: transparent;
-                    backdrop-filter: invert(1) blur(200px) saturate(0) contrast(0.5) brightness(1.15);
-                    filter: contrast(10) invert(0.1) opacity(0.9);
-                    box-shadow: none;
-                    transition: transform 50ms;
-                }
-            }
-        }
-
-        &-icons {
-            // 工具条
-            &:hover{
-                backdrop-filter: blur(20px) saturate(3);
-            }
-
-            .protyle-icon {
-                &--only {
-                    &:hover {
-                        backdrop-filter: blur(20px) saturate(3);
-                    }
-                }
-            }
-        }
-    
-        &-action {
-            // 代码块
-            &:hover{
-                backdrop-filter: blur(20px) saturate(3);
-            }
-    
-            &:hover {
-                backdrop-filter: none;
-            }
-
-            .protyle-icon {
-                &--only {
-                    &:hover {
-                        backdrop-filter: blur(20px) saturate(3);
-                    }
+            @each $chip-type, $chip-color in $chip-colors {
+                .b3-chip--middle.b3-chip--#{$chip-type} {
+                    @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+                    @include theme-variant-color(background-color, surface, 0.8, 0.6);
+                    @include theme-variant-color(color, on-background, 0.6, 1);
                 }
             }
         }
     }
 
-    .fn__flex-1:not(.has-dockb) ~ #status {
+    //文字格式工具条
+    &-toolbar {
         @include theme-variant-color(background-color, surface, $medium-transparency);
-        @include bg-blur;
+        @include bg-blur($saturate-value: 1);
+        mix-blend-mode: luminosity;
+        // z-index: 1;
     }
 
-    .layout__dockl,
-    .layout__dockr{
-        &.layout--float {
-            margin-top: 0;
-
-            &::before,
-            &>.fn__flex-1:first-child::before {
-                @include theme-variant-color(background-color, background, $thick-transparency, $important: true);
-            }
-
-            .layout-tab-container {
-                .block__icons {
-
-                    &,
-                    &~* {
-                        @include theme-variant-color(background-color, background, $thick-transparency);
-                    }
-                }
-
-                .graph {
-                    background-color: transparent;
-
-                    &.fullscreen {
-                        @include bg-blur;
-                    }
-                }
-            }
-
-            &::after {
-                content: '';
-                width: inherit;
-                height: 100%;
-                position: absolute;
-                z-index: -1;
-                @include bg-blur;
+    // 图片控件
+    [data-node-id] .img {
+        &:hover {
+            .protyle-action__drag {
+                background-color: transparent;
+                backdrop-filter: invert(1) blur(200px) saturate(0) contrast(0.5) brightness(1.15);
+                filter: contrast(10) invert(0.1) opacity(0.9);
+                box-shadow: none;
+                transition: transform 50ms;
             }
         }
     }
 
-    // .layout__dockb {
-    //     &.layout--float {
+    &-icons {
+        mix-blend-mode: luminosity;
 
-    //     }
-    // }
-
-    .graph__panel {
-        @include bg-blur(20px);
-        opacity: 1;
-    }
-
-    // 菜单
-    .b3-menu,
-    .b3-menu__submenu {
-        background-color: transparent;
-        overflow: hidden;
-
-        &:not(#searchHistoryList)::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            // background-position: center top;
-            // background-size: cover;
-            // background-attachment: fixed;
-            border-radius: 8px;
-            @include bg-blur;            
+        // 工具条
+        &:hover {
+            backdrop-filter: blur(20px);
         }
 
-        .b3-menu__items {
-            @include theme-variant-color(background-color, menu-background, $medium-transparency);
-        }
-    }
-
-    // '/'菜单
-    .protyle-hint {
-        background-color: transparent;
-        @include bg-blur;
-
-        > div:not(.emojis) {
-            @include theme-variant-color(background-color, menu-background, $medium-transparency);
-        }
-
-        > .emojis > .emojis__panel {
-            @include theme-variant-color(background-color, menu-background, $medium-transparency);
-        }
-    }
-
-    .protyle-util {
-        @include theme-variant-color(background-color, menu-background, $medium-transparency);
-        @include bg-blur;        
-    }
-
-    #searchHistoryList {
-        @include theme-variant-color(background-color, menu-background, $medium-transparency);
-        @include bg-blur;
-        overflow: auto;
-    }
-
-    // 顶栏
-    // .toolbar {
-    //     z-index: 4;
-    // }
-
-    // 题头图列表
-    // .b3-dialog__body {
-    //     >.b3-cards {
-    //         .b3-card {
-    //             // 闪光效果
-    //             &:hover {
-    //                 animation: card-hover 0.3s;
-  
-    //                 @keyframes card-hover {
-    //                     50% {
-    //                         filter: brightness(1.1);
-    //                     }
-    
-    //                     100% {
-    //                         filter: none;
-    //                     }
-    //                 }
-    //             }
-
-    //             &::before {
-    //                 --glow-offset: 50%;
-    //                 --glow-dir: 135deg;
-    //                 --glow-brightness: 1.2;
-    //                 --property-percentage: calc(var(--glow-offset) * -1);
-
-    //                 content: '';
-    //                 width: 100%;
-    //                 height: 100%;
-    //                 background: inherit;
-    //                 border-radius: inherit;
-    //                 filter: brightness(var(--glow-brightness)) blur(3px);
-    //                 mask-image: linear-gradient(var(--glow-dir),
-    //                         transparent calc(var(--property-percentage) - var(--glow-offset)),
-    //                         black var(--property-percentage),
-    //                         transparent calc(var(--property-percentage) + var(--glow-offset)));
-    //             }
-
-    //             &:hover::before {
-    //                 --property-percentage: calc(100% + var(--glow-offset));
-    //                 transition: --property-percentage 0.5s $timing-function-decelerate;
-    //             }
-
-    //             // 图片色阴影
-    //             // &::before {
-    //             //     content: "";
-    //             //     background: inherit;
-    //             //     background-size: inherit;
-    //             //     width: 100%;
-    //             //     height: 100%;
-    //             //     position: absolute;
-    //             //     top: 0;
-    //             //     left: 0;
-    //             //     // transform: none;
-    //             //     z-index: -1;
-    //             //     filter: blur(0px) opacity(0);
-    //             //     transition: top 0.2s, left 0.2s, filter 0.2s, width 0.2s, height 0.2s;
-    //             // }
-
-    //             // &:hover::before {
-    //             //     top: 20px;
-    //             //     left: 5%;
-    //             //     width: 90%;
-    //             //     height: 90%;
-    //             //     filter: blur(20px) opacity(0.8) saturate(0.8) brightness(0.9);
-
-    //             //     @include darkmode-counterpart {
-    //             //         filter: blur(20px) opacity(1) saturate(2) brightness(0.65);
-    //             //     }
-    //             // }
-    //         }
-    //     }
-    // }
-
-    .b3-dialog.emojis-container {
-        // ->js
-        .b3-dialog__container {
-            @include bg-blur();
-            background-color: transparent;
-
-            .emojis > * {
-                @include theme-variant-color(background-color, menu-background, $medium-transparency);
-            }
-        }
-    }
-
-    .emojis__panel {
-        .emojis__content:not([style="min-height:28px"]) .emojis__item:hover {
-            animation: lighten 0.3s ease-in-out;
-            @keyframes lighten {
-                0% {
-                    filter: brightness(1);
-                }
-
-                50% {
-                    filter: brightness(1.15);
-                }
-
-                100% {
-                    filter: brightness(1);
+        .protyle-icon {
+            &--only {
+                &:hover {
+                    backdrop-filter: blur(20px);
                 }
             }
         }
     }
 
-    .config-bazaar__readme {
-        filter: saturate(0);
-
-        &--show {
-            filter: none;
+    &-background__iconw {
+        .protyle-icons {
+            mix-blend-mode: normal;
         }
     }
 
-    .tooltip {
-        @include theme-variant-color(background-color, menu-background, 0.8);
-        @include bg-blur(20px);
-    }
+    &-action {
 
-    .protyle-toolbar__item,
-    .protyle-icon{
-        ::after {
-            background-color: var(--b3-tooltips-background);
+        // 代码块
+        &:hover {
+            backdrop-filter: blur(20px);
+        }
+
+        &:hover {
             backdrop-filter: none;
         }
+
+        .protyle-icon {
+            &--only {
+                &:hover {
+                    backdrop-filter: blur(20px);
+                }
+            }
+        }
+    }
+}
+
+.fn__flex-1:not(.has-dockb)~#status {
+    @include theme-variant-color(background-color, surface, $medium-transparency);
+    @include bg-blur($saturate-value: 1);
+    mix-blend-mode: luminosity;
+}
+
+.layout__dockl,
+.layout__dockr {
+    &.layout--float {
+        margin-top: 0;
+
+        &::before,
+        &>.fn__flex-1:first-child::before {
+            @include theme-variant-color(background-color, background, $thick-transparency, $important: true);
+        }
+
+        .layout-tab-container {
+            .block__icons {
+
+                &,
+                &~* {
+                    @include theme-variant-color(background-color, background, $thick-transparency);
+                }
+            }
+
+            .graph {
+                background-color: transparent;
+
+                &.fullscreen {
+                    @include bg-blur;
+                }
+            }
+        }
+
+        &::after {
+            content: '';
+            width: inherit;
+            height: 100%;
+            position: absolute;
+            z-index: -1;
+            @include bg-blur;
+        }
+    }
+}
+
+// .layout__dockb {
+//     &.layout--float {
+
+//     }
+// }
+
+.graph__panel {
+    @include bg-blur(20px);
+    opacity: 1;
+}
+
+// 菜单
+.b3-menu,
+.b3-menu__submenu {
+    background-color: transparent;
+    overflow: hidden;
+
+    &:not(#searchHistoryList)::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        // background-position: center top;
+        // background-size: cover;
+        // background-attachment: fixed;
+        border-radius: 8px;
+        @include bg-blur;
     }
 
+    .b3-menu__items {
+        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+    }
+}
+
+// '/'菜单
+.protyle-hint {
+    background-color: transparent;
+    @include bg-blur;
+
+    >div:not(.emojis) {
+        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+    }
+
+    >.emojis>.emojis__panel {
+        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+    }
+}
+
+.protyle-util {
+    @include theme-variant-color(background-color, menu-background, $medium-transparency);
+    @include bg-blur;
+}
+
+#searchHistoryList {
+    @include theme-variant-color(background-color, menu-background, $medium-transparency);
+    @include bg-blur;
+    overflow: auto;
+}
+
+// 顶栏
+// .toolbar {
+//     z-index: 4;
+// }
+
+// 题头图列表
+// .b3-dialog__body {
+//     >.b3-cards {
+//         .b3-card {
+//             // 闪光效果
+//             &:hover {
+//                 animation: card-hover 0.3s;
+
+//                 @keyframes card-hover {
+//                     50% {
+//                         filter: brightness(1.1);
+//                     }
+
+//                     100% {
+//                         filter: none;
+//                     }
+//                 }
+//             }
+
+//             &::before {
+//                 --glow-offset: 50%;
+//                 --glow-dir: 135deg;
+//                 --glow-brightness: 1.2;
+//                 --property-percentage: calc(var(--glow-offset) * -1);
+
+//                 content: '';
+//                 width: 100%;
+//                 height: 100%;
+//                 background: inherit;
+//                 border-radius: inherit;
+//                 filter: brightness(var(--glow-brightness)) blur(3px);
+//                 mask-image: linear-gradient(var(--glow-dir),
+//                         transparent calc(var(--property-percentage) - var(--glow-offset)),
+//                         black var(--property-percentage),
+//                         transparent calc(var(--property-percentage) + var(--glow-offset)));
+//             }
+
+//             &:hover::before {
+//                 --property-percentage: calc(100% + var(--glow-offset));
+//                 transition: --property-percentage 0.5s $timing-function-decelerate;
+//             }
+
+//             // 图片色阴影
+//             // &::before {
+//             //     content: "";
+//             //     background: inherit;
+//             //     background-size: inherit;
+//             //     width: 100%;
+//             //     height: 100%;
+//             //     position: absolute;
+//             //     top: 0;
+//             //     left: 0;
+//             //     // transform: none;
+//             //     z-index: -1;
+//             //     filter: blur(0px) opacity(0);
+//             //     transition: top 0.2s, left 0.2s, filter 0.2s, width 0.2s, height 0.2s;
+//             // }
+
+//             // &:hover::before {
+//             //     top: 20px;
+//             //     left: 5%;
+//             //     width: 90%;
+//             //     height: 90%;
+//             //     filter: blur(20px) opacity(0.8) saturate(0.8) brightness(0.9);
+
+//             //     @include darkmode-counterpart {
+//             //         filter: blur(20px) opacity(1) saturate(2) brightness(0.65);
+//             //     }
+//             // }
+//         }
+//     }
+// }
+
+.b3-dialog.emojis-container {
+
+    // ->js
+    .b3-dialog__container {
+        @include bg-blur();
+        background-color: transparent;
+
+        .emojis>* {
+            @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        }
+    }
+}
+
+.emojis__panel {
+    .emojis__content:not([style="min-height:28px"]) .emojis__item:hover {
+        animation: lighten 0.3s ease-in-out;
+
+        @keyframes lighten {
+            0% {
+                filter: brightness(1);
+            }
+
+            50% {
+                filter: brightness(1.15);
+            }
+
+            100% {
+                filter: brightness(1);
+            }
+        }
+    }
+}
+
+.config-bazaar__readme {
+    filter: saturate(0);
+
+    &--show {
+        filter: none;
+    }
+}
+
+.tooltip {
+    @include theme-variant-color(background-color, menu-background, 0.8);
+    @include bg-blur(20px);
+}
+
+.protyle-toolbar__item,
+.protyle-icon {
+    ::after {
+        background-color: var(--b3-tooltips-background);
+        backdrop-filter: none;
+    }
+}
+}
+
+body:not(.hadeeth-disable-backdrop-blur) {
     // 图片预览 ——————————————————————
     .viewer-backdrop {
         @include bg-blur($saturate-value: 1);
         backdrop-filter: blur(40px);
+    }
+
+    .viewer-title {
+        backdrop-filter: blur($medium-blur-rd);
+        @include theme-variant-color(background-color, surface, 0.6);
+        mix-blend-mode: luminosity;
+    }
+
+    .viewer-toolbar {
+        > ul {
+            backdrop-filter: blur($medium-blur-rd);
+            @include theme-variant-color(background-color, surface, $medium-transparency);
+            mix-blend-mode: luminosity;
+        }        
     }
 }

@@ -366,6 +366,9 @@
             }
         }
 
+        .protyle-action {
+            opacity: 0;
+        }
         .protyle-action__drag {
             top: 50%;
             transform: translateY(-50%);
