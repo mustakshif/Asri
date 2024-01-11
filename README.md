@@ -10,18 +10,13 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
-### v1.1.10
+### v1.1.11
 
-* Optimized UI of image viewer.
-* Optimized color effects of the text editing toolbar, status bar etc.
-* Aligned the position of the overall switch button for downloaded plugins.
-* Fixed the issue where the image operation menu icon was always displayed.
-
-### v1.1.9
-
-* Added adaptive display for downloaded items in `Marketplace`
-* Simplified the breadcrumb entries in the backlink panel, displaying only relevant blocks and their parent blocks
-* Fixed the issue on Mac where the traffic light would not move when toggling whether to pin the top bar.
+* Optimized the `command panel` UI.
+* Aligned `code block` language identifiers.
+* Visually aligned the counter in the `backlink` panel.
+* Fixed the issue where the background blur on the sidebar panel was not working in certain cases.
+* Fixed the color of the highlighted icon in the text editing toolbar.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 

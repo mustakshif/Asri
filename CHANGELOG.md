@@ -1,3 +1,21 @@
+### v1.1.11
+
+* 优化 `命令面板` UI
+* 对齐 `代码块` 语言标识
+* 视觉对齐 `反链面板` 计数器
+* 修复部分情况下侧栏面板背景模糊失效的问题
+* 修复文字编辑工具条高亮图标的颜色
+
+<br />
+
+* Optimized the `command panel` UI.
+* Aligned `code block` language identifiers.
+* Visually aligned the counter in the `backlink` panel.
+* Fixed the issue where the background blur on the sidebar panel was not working in certain cases.
+* Fixed the color of the highlighted icon in the text editing toolbar.
+
+---
+
 ### v1.1.10
 
 * 优化图片查看器 UI

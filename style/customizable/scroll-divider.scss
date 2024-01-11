@@ -14,6 +14,7 @@
         animation-timeline: scroll();
         margin-bottom: calc(-1 * var(--dividerHeight));
         z-index: 1;
+        opacity: 0;
     }
 }
 
@@ -40,6 +41,10 @@
     }
 
     2% {
+        opacity: 1;
+    }
+
+    100% {
         opacity: 1;
     }
 }

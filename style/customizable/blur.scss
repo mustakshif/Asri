@@ -170,8 +170,7 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
     //文字格式工具条
     &-toolbar {
         @include theme-variant-color(background-color, surface, $medium-transparency);
-        @include bg-blur($saturate-value: 1);
-        mix-blend-mode: luminosity;
+        @include bg-blur;
         // z-index: 1;
     }
 
@@ -205,21 +204,11 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
         }
     }
 
-    &-background__iconw {
-        .protyle-icons {
-            mix-blend-mode: normal;
-        }
-    }
-
     &-action {
 
         // 代码块
         &:hover {
             backdrop-filter: blur(20px);
-        }
-
-        &:hover {
-            backdrop-filter: none;
         }
 
         .protyle-icon {
@@ -274,6 +263,13 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
             z-index: -1;
             @include bg-blur;
         }
+    }
+}
+
+.layout--float,
+.protyle-background__iconw {
+    .protyle-icons {
+        mix-blend-mode: normal;
     }
 }
 

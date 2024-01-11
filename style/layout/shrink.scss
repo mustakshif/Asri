@@ -278,6 +278,9 @@
         .search__label:not(.fn__none)~.block__icon {
             opacity: 0;
         }
+        .block__logo+.counter {
+            line-height: 24px;
+        }
 
         &+.fn__flex-1 {
             li {
