@@ -370,6 +370,7 @@
         .protyle-action {
             opacity: 0;
         }
+
         .protyle-action__drag {
             top: 50%;
             transform: translateY(-50%);
@@ -391,7 +392,7 @@
     // 表格 ——————————————————————————————————————
     table {
         border-radius: 6px;
-        border: 1px solid var(--b3-border-color-trans);        
+        border: 1px solid var(--b3-border-color-trans);
         width: auto;
 
         td,
@@ -774,7 +775,8 @@
         padding-top: 3px;
         border-radius: 20px;
 
-        &:first-child, &:last-child {
+        &:first-child,
+        &:last-child {
             border-radius: 20px;
         }
 
@@ -993,7 +995,6 @@
 }
 
 // 数据库/属性视图 ————————————————————————————
-
 .av {
 
     // 数据库视图切换、标题
@@ -1061,7 +1062,7 @@
                 border-right-color: var(--b3-border-color-trans);
 
                 .b3-chip {
-                    border-radius: 4px;
+                    border-radius: 20px;
                     padding: 2px 6px;
                     color: var(--b3-theme-on-surface);
                     background-color: var(--b3-theme-surface);
@@ -1093,6 +1094,11 @@
                     text-decoration-thickness: 0.1em;
                 }
 
+                // 复制按钮
+                .block__icon {
+                    border-radius: 20px;
+                }
+
                 &:hover {
                     .block__icon {
                         background-color: var(--b3-theme-surface) !important;
@@ -1104,8 +1110,9 @@
         // 单元格选中状态
         .av__cell--select {
             box-shadow: none;
-            outline: 3px solid var(--b3-theme-primary-light);
-            z-index: 3;
+            // outline: 3px solid var(--b3-theme-primary-light);
+            // z-index: 3;
+            border-radius: 0;
         }
     }
 
@@ -1113,41 +1120,49 @@
     &__panel {
         .b3-menu {
             .b3-menu__items {
-                .b3-menu__item[data-type="nobg"] {
-                    cursor: default;
-                    align-items: center;
-                    height: 30px;
+                .b3-menu__item {
+                    &[data-type="nobg"] {
+                        cursor: default;
+                        align-items: center;
+                        height: 30px;
 
-                    .b3-menu__label {
-                        font-weight: 500;
-                        color: var(--b3-theme-on-surface)
+                        .b3-menu__label {
+                            font-weight: 500;
+                            color: var(--b3-theme-on-surface)
+                        }
+
+                        // ~.b3-menu__item {
+                        //     input:focus {
+                        //         background-color: var(--b3-menu-background);
+                        //     }
+                        // }
                     }
 
-                    // ~.b3-menu__item {
-                    //     input:focus {
-                    //         background-color: var(--b3-menu-background);
-                    //     }
-                    // }
-                }
-
-                .b3-menu__item[data-type="goUpdateColType"] {
-                    height: 30px;
-                    align-items: center;
-                    margin-top: 4px;
-                }
-
-                .b3-menu__item[draggable=true] {
-                    mix-blend-mode: normal !important;
-
-                    .b3-chip:not(.b3-chip--primary) {
-                        background-color: var(--b3-theme-surface);
+                    &[data-type="goUpdateColType"] {
+                        height: 30px;
+                        align-items: center;
+                        margin-top: 4px;
                     }
 
-                    &:hover .b3-menu__action {
-                        opacity: 0.7;
+                    &[draggable=true] {
+                        mix-blend-mode: normal !important;
 
-                        &:hover {
-                            opacity: 1;
+                        .b3-chip:not(.b3-chip--primary) {
+                            background-color: var(--b3-theme-surface);
+                        }
+
+                        &:hover .b3-menu__action {
+                            opacity: 0.7;
+
+                            &:hover {
+                                opacity: 1;
+                            }
+                        }
+                    }
+
+                    .b3-menu__label{
+                        input[data-type="addOption"]:focus{
+                            background-color: var(--b3-menu-background);
                         }
                     }
                 }
@@ -1185,7 +1200,7 @@
 
                 .b3-chip--middle,
                 &~div [data-type="addColOptionOrCell"] .b3-chip {
-                    border-radius: 4px;
+                    border-radius: 20px;
                 }
 
                 input {
@@ -1242,8 +1257,8 @@
             }
         }
 
-        &:hover textarea,
-        textarea:focus {
+        &:hover textarea:not([data-type="ocr"]),
+        textarea:not([data-type="ocr"]):focus {
             background-color: var(--b3-menu-background);
             transition: none;
         }

@@ -305,6 +305,11 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
     .b3-menu__items {
         @include theme-variant-color(background-color, menu-background, $medium-transparency);
     }
+
+    // 数据库菜单
+    .protyle-icons {
+        mix-blend-mode: normal;
+    }
 }
 
 // '/'菜单
@@ -453,7 +458,7 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
 
 .tooltip {
     @include theme-variant-color(background-color, menu-background, 0.8);
-    @include bg-blur(20px);
+    @include bg-blur($medium-blur-rd);
 }
 
 .protyle-toolbar__item,

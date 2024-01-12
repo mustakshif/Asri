@@ -10,13 +10,14 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
-### v1.1.11
+### v1.1.12
 
-* Optimized the `command panel` UI.
-* Aligned `code block` language identifiers.
-* Visually aligned the counter in the `backlink` panel.
-* Fixed the issue where the background blur on the sidebar panel was not working in certain cases.
-* Fixed the color of the highlighted icon in the text editing toolbar.
+* Optimized the style of the `Assets Panel`.
+* Aligned toggle items in menu for better vertical align.
+* Optimized the background color of the focused text box in `Database` menus.
+* Unified the rounding of buttons and labels of `Database`.
+* Simplified the style of selected cells of `Database`.
+* Fixed the issue where the background blur effect was not working properly in some menus of `Database`.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 

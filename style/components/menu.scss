@@ -46,6 +46,10 @@
                 }
             }
 
+            >.b3-menu__label>.fn__flex {
+                margin: 2px 0 !important;
+            }
+
             // &--show:not(.b3-menu__item--readonly):not([disabled]):not(.b3-menu__item--current) {
             //     background-color:
             //         grayscale(pickThemeColor($theme-light, menu-item-hv-background));
@@ -90,23 +94,23 @@
         }
 
         @media screen and (min-width: 1292px) {
-    
+
             width: auto !important;
             max-height: 65vh;
-    
+
             &>div {
                 column-count: 5;
                 column-gap: 4px;
                 column-rule: 1px solid var(--b3-border-color-trans);
-    
+
                 .b3-list-item {
-    
+
                     .b3-list-item__text {
                         width: max-content;
                         margin-right: 4px;
                     }
                 }
-    
+
                 .b3-menu__separator:not(:nth-of-type(2n + 4)) {
                     break-before: column;
                     margin-bottom: -5px;
@@ -121,7 +125,7 @@
 
         .b3-list-item {
             width: calc(100% - 12px) !important;
-            
+
             &--focus:not(:hover) {
                 background-color: var(--b3-theme-primary-lightest);
             }
@@ -145,6 +149,7 @@
             font-weight: 500;
         }
     }
+
     .b3-list-item--two .b3-list-item__meta.b3-list-item__showall:not(:first-child) {
         padding: 4px 4px 4px 22px;
         width: fit-content;
@@ -184,6 +189,7 @@
 // emoji 面板
 
 .b3-dialog--open .b3-dialog.emojis-container {
+
     // -> js
     .b3-dialog__container {
         background-color: var(--b3-menu-background);
@@ -242,13 +248,46 @@
     }
 }
 
+
 #searchHistoryList {
     background-color: var(--b3-menu-background);
     overflow: auto;
 }
 
-#commonMenu[data-name='search-history'] {
-    .b3-menu__items {
-        max-height: calc(70vh - 10px);
+#commonMenu {
+    &[data-name='search-history'] {
+        .b3-menu__items {
+            max-height: calc(70vh - 10px);
+        }
+    }
+
+    // 资源面板
+    &[data-name="background-asset"] {
+        .b3-menu__items {
+            padding: 0;
+            .b3-menu__item--custom {
+                margin: 0;
+                padding: 0;
+
+                .b3-menu__label>.fn__flex {
+                    margin: 0 !important;
+
+                    .fn__flex-column{
+                        // 搜索框
+                        > .fn__flex:first-child {
+                            margin: 8px !important;
+                        }
+                        // 列表
+                        .b3-list {
+                            padding-bottom: 8px;
+                        }
+                    }
+                }
+            }
+        }
+
+        #preview {
+            >*{border-radius: 4px;}
+        }
     }
 }

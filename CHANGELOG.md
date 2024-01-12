@@ -1,3 +1,23 @@
+### v1.1.12
+
+* 优化 `资源面板` 样式
+* 优化菜单中开关项目的上下对齐
+* 优化 `数据库` 菜单中聚焦文本框背景色
+* 统一 `数据库` 按钮和标签的圆角
+* 简化 `数据库` 选中单元格样式
+* 修复 `数据库` 部分菜单背景模糊失效的问题
+
+<br />
+
+* Optimized the style of the `Assets Panel`.
+* Aligned toggle items in menu for better vertical align.
+* Optimized the background color of the focused text box in `Database` menus.
+* Unified the rounding of buttons and labels of `Database`.
+* Simplified the style of selected cells of `Database`.
+* Fixed the issue where the background blur effect was not working properly in some menus of `Database`.
+
+---
+
 ### v1.1.11
 
 * 优化 `命令面板` UI
