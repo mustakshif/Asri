@@ -10,14 +10,11 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
-### v1.1.12
+### v1.1.13
 
-* Optimized the style of the `Assets Panel`.
-* Aligned toggle items in menu for better vertical align.
-* Optimized the background color of the focused text box in `Database` menus.
-* Unified the rounding of buttons and labels of `Database`.
-* Simplified the style of selected cells of `Database`.
-* Fixed the issue where the background blur effect was not working properly in some menus of `Database`.
+* Updated the tag's corner radius in `Block Properties - Database`.
+* Fixed an issue where the window control icon and document control icon overlapped in the full-screen view on Windows. [[Issue #9](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/9)]
+* Fixed an issue where the breadcrumb in the `Backlink Panel` would only be displayed when hovering over it when there was only one path entry.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 

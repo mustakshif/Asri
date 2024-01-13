@@ -1,3 +1,17 @@
+### v1.1.13
+
+* 统一 `块属性 - 数据库` 中标签圆角
+* 修复 Windows 端全屏视图下窗口控制图标和文档控制图标重叠的问题 [[Issue #9](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/9)]
+* 修复 `反链面板` 面包屑仅有一个路径条目时需要鼠标悬浮才会显示的问题
+
+<br />
+
+* Updated the tag's corner radius in `Block Properties - Database`.
+* Fixed an issue where the window control icon and document control icon overlapped in the full-screen view on Windows. [[Issue #9](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues/9)]
+* Fixed an issue where the breadcrumb in the `Backlink Panel` would only be displayed when hovering over it when there was only one path entry.
+
+---
+
 ### v1.1.12
 
 * 优化 `资源面板` 样式
