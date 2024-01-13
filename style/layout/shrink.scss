@@ -469,7 +469,7 @@
         background-color: transparent;
     }
 
-    body.body--win32 & {
+    body.body--win32:not(.hadeeth-pin-toolbar) & {
         padding-right: 10px;
     }
 }

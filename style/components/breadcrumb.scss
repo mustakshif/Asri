@@ -14,6 +14,8 @@
         }
 
         body.body--win32:not(.hadeeth-pin-toolbar) & {
+            // -> js
+            
             padding-right: 10px;
             // 默认会给窗口控制留空间，为108px
         }
