@@ -4,6 +4,7 @@
     height: 42px;
     color: var(--b3-theme-on-surface);
 
+    // alt+Y 全屏视图
     .fullscreen>& {
         height: var(--toolbar-height);
         padding-right: 10px;
@@ -12,7 +13,7 @@
             background-color: transparent;
         }
 
-        body.body--win32 & {
+        body.body--win32:not(.hadeeth-pin-toolbar) & {
             padding-right: 10px;
             // 默认会给窗口控制留空间，为108px
         }

@@ -348,6 +348,13 @@
             &:hover span.protyle-breadcrumb__item:nth-last-of-type(1){
                 opacity: 1;
             }
+            span.protyle-breadcrumb__item:first-child{
+                opacity: 1;
+            }
+            .protyle-breadcrumb__item--active svg {
+                background-color: var(--b3-theme-primary);
+                color: var(--b3-theme-on-primary);
+            }
         }
 
         .protyle-wysiwyg {
