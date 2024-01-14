@@ -14,7 +14,7 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 * Unified the border color of the tables in `database`.
 * Visually centered titles of menu in `database`.
-* Fixed the issue with the background mask filter when invoking the emoji panel through `block properties - database`.
+* Fixed the issue with the background mask filter when invoking the emoji panel from `block properties - database`.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
