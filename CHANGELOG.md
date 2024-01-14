@@ -1,3 +1,17 @@
+### v1.1.14
+
+* 统一 `数据库` 表格边框线颜色
+* 视觉居中 `数据库` 菜单的标题
+* 修复当通过 `块属性 - 数据库` 呼出 emoji 面板时的背景遮罩滤镜问题
+
+<br />
+
+* Unified the border color of the tables in `database`.
+* Visually centered titles of menu in `database`.
+* Fixed the issue with the background mask filter when invoking the emoji panel through `block properties - database`.
+
+---
+
 ### v1.1.13
 
 * 统一 `块属性 - 数据库` 中标签圆角
