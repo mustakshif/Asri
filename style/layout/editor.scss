@@ -1105,6 +1105,10 @@
                     }
                 }
             }
+
+            &--footer {
+                border-top-color: var(--b3-border-color-trans);
+            }
         }
 
         // 单元格选中状态
@@ -1129,6 +1133,11 @@
                         .b3-menu__label {
                             font-weight: 500;
                             color: var(--b3-theme-on-surface)
+                        }
+
+                        &:first-child > .block__icon + .ft__center {
+                            transform: translateX(-15px);
+                            pointer-events: none;
                         }
 
                         // ~.b3-menu__item {

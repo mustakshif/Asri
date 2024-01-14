@@ -262,10 +262,10 @@ function isStatusHidden() {
 
 function addEmojiDialogClassName() {
     // emoji dialog
-    let dialog = document.querySelector('.b3-dialog--open .b3-dialog');
-    if (dialog && dialog.querySelector('.emojis')) {
-        dialog.classList.add('emojis-container');
-    }
+    let dialogs = document.querySelectorAll('.b3-dialog--open .b3-dialog');
+    dialogs.forEach(dialog => {
+        dialog.querySelector('.emojis') && dialog.classList.add('emojis-container');        
+    })
 }
 /**
  * 判断 .layout__dock 是否隐藏或浮动
