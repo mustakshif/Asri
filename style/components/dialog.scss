@@ -807,9 +807,13 @@ body.body--window {
 
 // 图片预览 ——————————————————————
 .viewer-backdrop {
-    @extend .b3-dialog__scrim !optional;
     animation: fadeIn 0.3s;
     transform-origin: var(--mouseX) var(--mouseY);
+    background-color: #bbb;
+    
+    @include darkmode-counterpart {
+        background-color: var(--b3-theme-background);
+    }
 
     animation-timing-function: $timing-function-decelerate;
 

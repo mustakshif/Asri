@@ -1,5 +1,17 @@
 @use '../base' as *;
 
+@function matchSelector($editor1, $selector1, $editor2, $selector2: $selector1) {
+    @if $editor1 ==true {
+        @return $selector1;
+    }
+
+    @if $editor2 ==true {
+        @return $selector2;
+    }
+}
+
+;
+
 // 页面小工具条
 @mixin protyle-icons {
     border-radius: 99px;
@@ -49,14 +61,8 @@
     }
 }
 
-@mixin typography-elements {
-
-    //所有内容块 ————————————————————————
-    [data-node-id] {
-        border-radius: 10px;
-    }
-
-    // h1-h6 ————————————————————————
+// 排版元素
+@mixin headings {
     @for $i from 1 through 6 {
 
         .h#{$i},
@@ -82,13 +88,10 @@
     // :is(.h1, .h2, .h3, .h4, .h5)+.h6 {
     //     margin-top: 0;
     // }
-    [data-type='NodeSuperBlock']>[data-type='NodeHeading']:first-child,
-    .protyle-wysiwyg__embed>[data-type='NodeHeading']:first-child,
-    .protyle-wysiwyg__embed>.protyle-breadcrumb__bar+[data-type='NodeHeading'] {
-        margin-top: 0;
-    }
+}
 
-    // 块引用 ————————————————————————————————————
+@mixin block-ref {
+
     [data-node-id] span[data-type~=block-ref]:not(.av__celltext),
     [data-node-id] span[data-type~=file-annotation-ref] {
         color: inherit;
@@ -107,8 +110,9 @@
             background-size: 100% !important;
         }
     }
+}
 
-    // 虚拟引用 ——————————————————————————————————————
+@mixin v-block-ref {
     [data-node-id] span[data-type=virtual-block-ref] {
         border-bottom: none;
         text-decoration: underline;
@@ -126,9 +130,12 @@
             background-size: 100% !important;
         }
     }
+}
 
-    // 超链接 ————————————————————————————————————————
-    [data-node-id] span[data-type~=a] {
+@mixin superlink($protyle: true, $typography: false) {
+    $selector: matchSelector($protyle, '[data-node-id] span[data-type~=a],a', $typography, 'a');
+
+    #{$selector} {
         color: inherit;
         text-decoration: underline solid;
         text-decoration-thickness: 0.1em;
@@ -139,34 +146,56 @@
             border-bottom: none;
         }
     }
+}
 
-    //加粗、倾斜 ——————————————————————————————————————
-    span[data-type~=strong],
-    span[data-type~=em] {
+@mixin bold {
+
+    span[data-type~="strong"],
+    strong {
         color: inherit;
     }
+}
 
-    // 下划线 —————————————————————————————————————————
-    span[data-type~=u] {
+@mixin italic {
+
+    span[data-type~=em],
+    em {
+        color: inherit;
+    }
+}
+
+@mixin underline {
+
+    span[data-type~=u],
+    u {
         text-decoration: underline;
         text-decoration-thickness: 0.1em;
         border-bottom: none;
     }
+}
 
-    // 删除线 ————————————————————————————————————————
-    span[data-type~=s] {
+@mixin linethrough {
+
+    span[data-type~=s],
+    s {
         color: inherit;
     }
+}
 
-    //高亮标记 ——————————————————————————————————————
-    span[data-type~=mark] {
+@mixin highlight {
+
+    span[data-type~=mark],
+    mark {
         background: transparent;
         box-shadow: 0 -0.5em 0 0 inset var(--b3-protyle-inline-mark-background), 0 0.1em 0 0 var(--b3-protyle-inline-mark-background);
         color: inherit;
     }
+}
 
-    // 快捷键 ——————————————————————————————————————
-    span[data-type~=kbd] {
+@mixin kbd {
+
+    span[data-type~=kbd],
+    kbd {
         font: 80% SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
         padding: 0.15em 0.5em;
         border-radius: 1em;
@@ -178,10 +207,9 @@
             box-shadow: inset 0 1px 0 var(--b3-theme-surface-lighter);
         }
     }
+}
 
-
-
-    // 标签 ——————————————————————————————————————
+@mixin tag {
     [data-node-id] span[data-type~="tag"] {
         --tag-color: var(--b3-font-color4);
 
@@ -196,9 +224,9 @@
         -webkit-box-decoration-break: clone;
 
         &:hover {
-            box-shadow: 0 0 0 0.8em inset var(--tag-color);
+            // box-shadow: 0 0 0 0.8em inset var(--tag-color);
             background-color: transparent;
-            @include theme-variant-color(color, background);
+            // @include theme-variant-color(color, background);
             // color: change-color($color: pickThemeColor($theme-light, secondary), $lightness: 40%);
 
             // @include darkmode-counterpart {
@@ -211,16 +239,20 @@
             --tag-color: #{change-color(map-get($theme-dark, font-color4), $lightness: 40%)};
         }
     }
+}
 
-    // 行级代码 ————————————————————————————————————
-    span[data-type~=code] {
+@mixin inline-code {
+
+    span[data-type~=code],
+    code:not(.hljs) {
         box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
         border-radius: 0.4em;
         color: inherit;
     }
+}
 
-    // 备注 ——————————————————————————————————————
+@mixin inline-memo {
     span[data-type~=inline-memo] {
         background-color: transparent;
         border-bottom: none;
@@ -253,8 +285,10 @@
             }
         }
     }
+}
 
-    // 引用块 ——————————————————————————————————————
+@mixin blockquote {
+
     .bq,
     blockquote {
         padding: 16px;
@@ -265,6 +299,127 @@
             margin-top: 0;
         }
     }
+}
+
+@mixin table {
+    table {
+        border-radius: 6px;
+        border: 1px solid var(--b3-border-color-trans);
+        width: auto;
+        display: inline-block !important;
+
+        td,
+        th {
+            border: 1px solid var(--b3-border-color-trans);
+            // background-color: var(--b3-theme-background);
+            // @include theme-variant-color(background-color, background, 0.5);
+            background-color: transparent;
+        }
+
+        thead {
+            tr {
+                th {
+                    // background-color: var(--b3-theme-surface);
+                    @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
+                    border-top: none;
+
+                    &:first-child {
+                        border-left: none;
+                    }
+
+                    &:last-child {
+                        border-right: none;
+                    }
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                &:nth-child(2n) {
+                    td {
+                        // background-color: var(--b3-theme-surface);
+                        @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
+                    }
+                }
+
+                &:last-child {
+                    td {
+                        border-bottom: none;
+                    }
+                }
+
+                td:first-child {
+                    border-left: none;
+                }
+
+                td:last-child {
+                    border-right: none;
+                }
+            }
+        }
+    }
+}
+
+@mixin hljs {
+    .hljs {
+        border-radius: 10px;
+        background-color: var(--b3-theme-surface);
+        padding: 2em 16px;
+    }
+}
+
+@mixin wysiwyg-elements {
+
+    //所有内容块 ————————————————————————
+    [data-node-id] {
+        border-radius: 10px;
+    }
+
+    @include headings;
+
+    [data-type='NodeSuperBlock']>[data-type='NodeHeading']:first-child,
+    .protyle-wysiwyg__embed>[data-type='NodeHeading']:first-child,
+    .protyle-wysiwyg__embed>.protyle-breadcrumb__bar+[data-type='NodeHeading'] {
+        margin-top: 0;
+    }
+
+    // 块引用 ————————————————————————————————————
+    @include block-ref;
+
+    // 虚拟引用 ——————————————————————————————————————
+    @include v-block-ref;
+
+    // 超链接 ————————————————————————————————————————
+    @include superlink;
+
+    //加粗、倾斜 ——————————————————————————————————————
+    @include bold;
+    @include italic;
+
+    // 下划线 —————————————————————————————————————————
+    @include underline;
+
+    // 删除线 ————————————————————————————————————————
+    @include linethrough;
+
+    //高亮标记 ——————————————————————————————————————
+    @include highlight;
+
+    // 快捷键 ——————————————————————————————————————
+    @include kbd;
+
+    // 标签 ——————————————————————————————————————
+    @include tag;
+
+    // 行级代码 ————————————————————————————————————
+    @include inline-code;
+
+    // 备注 ——————————————————————————————————————
+    @include inline-memo;
+
+    // 引用块 ——————————————————————————————————————
+    @include blockquote;
 
     .sb .bq,
     .sb blockquote {
@@ -284,11 +439,7 @@
             padding: 2em 4px;
         }
 
-        .hljs {
-            border-radius: 10px;
-            background-color: var(--b3-theme-surface);
-            padding: 2em 16px;
-        }
+        @include hljs;
     }
 
     // 列表 ——————————————————————————————————————
@@ -390,62 +541,7 @@
     }
 
     // 表格 ——————————————————————————————————————
-    table {
-        border-radius: 6px;
-        border: 1px solid var(--b3-border-color-trans);
-        width: auto;
-
-        td,
-        th {
-            border: 1px solid var(--b3-border-color-trans);
-            // background-color: var(--b3-theme-background);
-            // @include theme-variant-color(background-color, background, 0.5);
-            background-color: transparent;
-        }
-
-        thead {
-            tr {
-                th {
-                    // background-color: var(--b3-theme-surface);
-                    @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
-                    border-top: none;
-
-                    &:first-child {
-                        border-left: none;
-                    }
-
-                    &:last-child {
-                        border-right: none;
-                    }
-                }
-            }
-        }
-
-        tbody {
-            tr {
-                &:nth-child(2n) {
-                    td {
-                        // background-color: var(--b3-theme-surface);
-                        @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
-                    }
-                }
-
-                &:last-child {
-                    td {
-                        border-bottom: none;
-                    }
-                }
-
-                td:first-child {
-                    border-left: none;
-                }
-
-                td:last-child {
-                    border-right: none;
-                }
-            }
-        }
-    }
+    @include table;
 
     [data-node-id].table[custom-pinthead=true] thead {
         position: sticky;
@@ -736,7 +832,7 @@
 
 // 正文内容
 &-wysiwyg {
-    @include typography-elements;
+    @include wysiwyg-elements;
 
     // 正文紧挨文档标题的标题块
     &>div[data-type="NodeHeading"]:first-child,
@@ -855,7 +951,44 @@
 }
 
 .b3-typography {
-    @extend .protyle-wysiwyg;
+
+    // @extend .protyle-wysiwyg;
+    >* {
+        border-radius: 10px;
+    }
+
+    @include headings;
+    @include superlink(false, true);
+    @include bold;
+    @include italic;
+    @include underline;
+    @include linethrough;
+    @include highlight;
+    @include kbd;
+    @include inline-code;
+    @include blockquote;
+    @include hljs;
+    @include table;
+
+    table {
+        width: max-content;
+        border: none;
+        box-shadow: 0 0 0 1px var(--b3-border-color-trans);
+    }
+
+    img {
+        border-radius: 6px;
+    }
+
+    hr {
+        background-color: transparent;
+        border: 1px solid var(--b3-border-color-trans);
+    }
+
+    video, iframe {
+        border-radius: 4px;
+        border-color: transparent;
+    }
 }
 
 // PDF ————————————————————————————————
@@ -1135,7 +1268,7 @@
                             color: var(--b3-theme-on-surface)
                         }
 
-                        &:first-child > .block__icon + .ft__center {
+                        &:first-child>.block__icon+.ft__center {
                             transform: translateX(-15px);
                             pointer-events: none;
                         }
@@ -1169,8 +1302,8 @@
                         }
                     }
 
-                    .b3-menu__label{
-                        input[data-type="addOption"]:focus{
+                    .b3-menu__label {
+                        input[data-type="addOption"]:focus {
                             background-color: var(--b3-menu-background);
                         }
                     }

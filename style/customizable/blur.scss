@@ -468,26 +468,29 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
         backdrop-filter: none;
     }
 }
+
+// 图片预览 ——————————————————————
+.viewer-backdrop {
+    @include bg-blur($saturate-value: 1);
+    backdrop-filter: blur(40px);
+    background-color: #80808080;
+    
+    @include darkmode-counterpart {
+        background-color: #00000080;
+    }
 }
 
-body:not(.hadeeth-disable-backdrop-blur) {
-    // 图片预览 ——————————————————————
-    .viewer-backdrop {
-        @include bg-blur($saturate-value: 1);
-        backdrop-filter: blur(40px);
-    }
+.viewer-title {
+    backdrop-filter: blur($medium-blur-rd);
+    @include theme-variant-color(background-color, surface, 0.6);
+    mix-blend-mode: luminosity;
+}
 
-    .viewer-title {
+.viewer-toolbar {
+    >ul {
         backdrop-filter: blur($medium-blur-rd);
-        @include theme-variant-color(background-color, surface, 0.6);
+        @include theme-variant-color(background-color, surface, $medium-transparency);
         mix-blend-mode: luminosity;
     }
-
-    .viewer-toolbar {
-        > ul {
-            backdrop-filter: blur($medium-blur-rd);
-            @include theme-variant-color(background-color, surface, $medium-transparency);
-            mix-blend-mode: luminosity;
-        }        
-    }
+}
 }

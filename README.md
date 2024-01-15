@@ -10,11 +10,11 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
-### v1.1.14
+### v1.1.15
 
-* Unified the border color of the tables in `Database`.
-* Visually centered titles of menus in `Database`.
-* Fixed the issue with the background mask filter when invoking the emoji panel from `Block Properties - Database`.
+* Unified the typography elements' styles of the editing page, preview page, and export page, etc.
+* Changed the blurring of the `image viewer` to no blurring when the window loses focus.
+* Removed the mouse hover animation from the `tag` element to reduce visual distractions.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 

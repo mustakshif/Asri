@@ -1,3 +1,17 @@
+### v1.1.15
+
+* 统一编辑页面、预览页面、导出页面等的排版元素样式
+* 优化 `图片查看器` 背景模糊逻辑，窗口失焦时不再保持模糊
+* 去除 `标签` 元素的鼠标悬浮动画，减少视觉干扰
+
+<br />
+
+* Unified the typography elements' styles of the editing page, preview page, and export page, etc.
+* Changed the blurring of the `image viewer` to no blurring when the window loses focus.
+* Removed the mouse hover animation from the `tag` element to reduce visual distractions.
+
+---
+
 ### v1.1.14
 
 * 统一 `数据库` 表格边框线颜色
