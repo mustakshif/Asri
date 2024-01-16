@@ -1,3 +1,19 @@
+### v1.1.16
+
+* 优化 `搜索 - 替换类型` 对话框内容布局
+* 统一各种排版页面下引用块圆角
+* 侧栏面板背景色适配插件
+* 修复 Mac 端窗口控制按钮位置调整失败的问题
+
+<br />
+
+* Optimized the layout of the `Search - Replace Type` dialog content.
+* Unified the rounding of the block quotes in various typesetting pages.
+* Adapted the background color of the sidebar panel for plugins.
+* Fixed the issue where the position adjustment of the window control buttons on Mac failed.
+
+---
+
 ### v1.1.15
 
 * 统一编辑页面、预览页面、导出页面等的排版元素样式

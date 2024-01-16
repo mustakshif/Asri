@@ -288,9 +288,9 @@
 }
 
 @mixin blockquote {
-
     .bq,
     blockquote {
+        border-radius: 10px;
         padding: 16px;
         border: 1.5px solid var(--b3-border-color-trans);
         margin: 1em 0;

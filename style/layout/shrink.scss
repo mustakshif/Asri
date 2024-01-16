@@ -109,10 +109,11 @@
 .layout__dockl,
 .layout__dockr {
     .layout-tab-container {
-        background-color: transparent;
+        // background-color: transparent;
+        background-color: var(--b3-theme-surface);
 
         @include layout-tab-container-contents {
-            @include theme-variant-color(background-color, surface);
+            // @include theme-variant-color(background-color, surface);
         }
     }
 }
@@ -123,11 +124,12 @@
     // 浮动布局
     &.layout--float {
         .layout-tab-container {
+            background-color: var(--b3-theme-background);
             .block__icons {
 
                 &,
                 &~* {
-                    @include theme-variant-color(background-color, background);
+                    // @include theme-variant-color(background-color, background);
                 }
             }
         }
@@ -159,10 +161,11 @@
 
 .layout__dockb {
     .layout-tab-container {
-        background-color: transparent;
+        // background-color: transparent;
+        background-color: var(--b3-theme-surface);
 
         @include layout-tab-container-contents {
-            @include theme-variant-color(background-color, surface);
+            // @include theme-variant-color(background-color, surface);
         }
     }
 
@@ -179,10 +182,11 @@
         }
 
         .layout-tab-container {
+            background-color: var(--b3-theme-background);
             .block__icons {
                 &,
                 &~* {
-                    @include theme-variant-color(background-color, background)
+                    // @include theme-variant-color(background-color, background)
                 }
             }
         }
@@ -360,6 +364,12 @@
         .protyle-wysiwyg {
             padding-top: 0 !important;
         }
+    }
+}
+
+.sy__graph{
+    .graph__svg{
+        background-color: transparent;
     }
 }
 

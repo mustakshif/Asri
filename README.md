@@ -10,11 +10,12 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
-### v1.1.15
+### v1.1.16
 
-* Unified the typography elements' styles of the editing page, preview page, and export page, etc.
-* Changed the blurring of the `image viewer` to no blurring when the window loses focus.
-* Removed the mouse hover animation from the `tag` element to reduce visual distractions.
+* Optimized the layout of the `Search - Replace Type` dialog content.
+* Unified the rounding of the block quotes in various typesetting pages.
+* Adapted the background color of the sidebar panel for plugins.
+* Fixed the issue where the position adjustment of the window control buttons on Mac failed.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 

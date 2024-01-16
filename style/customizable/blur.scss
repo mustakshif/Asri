@@ -238,11 +238,13 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
         }
 
         .layout-tab-container {
+            @include theme-variant-color(background-color, background, $thick-transparency);
+
             .block__icons {
 
                 &,
                 &~* {
-                    @include theme-variant-color(background-color, background, $thick-transparency);
+                    // @include theme-variant-color(background-color, background, $thick-transparency);
                 }
             }
 
@@ -263,6 +265,10 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
             z-index: -1;
             @include bg-blur;
         }
+
+        .sy__graph.fullscreen {
+            @include theme-variant-color(background-color, background,$medium-transparency)
+        }
     }
 }
 
@@ -282,6 +288,7 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
 .graph__panel {
     @include bg-blur(20px);
     opacity: 1;
+    @include theme-variant-color(background-color, background, $medium-transparency);
 }
 
 // 菜单
@@ -474,7 +481,7 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
     @include bg-blur($saturate-value: 1);
     backdrop-filter: blur(40px);
     background-color: #80808080;
-    
+
     @include darkmode-counterpart {
         background-color: #00000080;
     }

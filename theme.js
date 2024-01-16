@@ -168,7 +168,7 @@ toolbarTutorial();
 // Mac 红绿灯位置
 function ModifyMacTrafficLights() {
     let currentWindow = require("@electron/remote").getCurrentWindow();
-    currentWindow.setTrafficLightPosition({ x: 16, y: 16 });
+    currentWindow.setWindowButtonPosition({ x: 16, y: 16 });
 }
 
 if (isMacOS && !isInBrowser && !isMobile && !isToolbarAlwaysShown()) ModifyMacTrafficLights();

@@ -34,7 +34,7 @@
             // 命令面板 ——————————————————————————
 
             .search__header[style*=border-top] {
-                >.b3-form__icon-icon{
+                >.b3-form__icon-icon {
                     left: 20px;
                 }
 
@@ -47,7 +47,7 @@
             #commands {
                 padding: 0 8px 8px;
 
-                ~ .fn__hr {
+                ~.fn__hr {
                     display: none;
                 }
             }
@@ -291,6 +291,21 @@
                     padding: 4px 8px;
                     margin: 0;
                     color: var(--b3-theme-on-surface);
+                }
+            }
+        }
+
+        ~.b3-dialog--open {
+            [onselectstart]+.b3-dialog__body>.b3-dialog__content {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                grid-template-rows: repeat(auto-fill, 28px);
+                gap: 20px 90px;
+
+                .b3-label {
+                    border-bottom-color: transparent;
+                    padding: 0;
+                    height: 28px;
                 }
             }
         }
@@ -810,7 +825,7 @@ body.body--window {
     animation: fadeIn 0.3s;
     transform-origin: var(--mouseX) var(--mouseY);
     background-color: #bbb;
-    
+
     @include darkmode-counterpart {
         background-color: var(--b3-theme-background);
     }
