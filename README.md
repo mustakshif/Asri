@@ -10,12 +10,12 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
-### v1.1.16
+### v1.1.17
 
-* Optimized the layout of the `Search - Replace Type` dialog content.
-* Unified the rounding of the block quotes in various typesetting pages.
-* Adapted the background color of the sidebar panel for plugins.
-* Fixed the issue where the position adjustment of the window control buttons on Mac failed.
+* Optimized the scroll bar style on Windows.
+* Fine-tuned the background color of side panels in the light mode.
+* Adjusted the background color of quote blocks, code blocks, and embed blocks.
+* Fixed an issue on macOS where the scroll bar in dark mode was displayed as in light mode.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
@@ -55,6 +55,8 @@ Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 * Continuous performance improvement.
 * Optimize database element styles.
 * Optimize flashcards styles.
+* Improve user experience of the top bar
+* Optimize numbering of ordered lists
 
 ## Acknowledgements
 

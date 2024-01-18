@@ -1,3 +1,19 @@
+### v1.1.17
+
+* 优化 Windows 端滚动条样式
+* 微调浅色模式下面板背景色
+* 微调引用块、代码块、嵌入块背景色
+* 修复 Mac 端暗色模式下仍显示亮色模式滚动条的问题
+
+<br />
+
+* Optimized the scroll bar style on Windows.
+* Fine-tuned the background color of side panels in the light mode.
+* Adjusted the background color of quote blocks, code blocks, and embed blocks.
+* Fixed an issue on macOS where the scroll bar in dark mode was displayed as in light mode.
+
+---
+
 ### v1.1.16
 
 * 优化 `搜索 - 替换类型` 对话框内容布局
