@@ -10,12 +10,11 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
-### v1.1.17
+### v1.1.18
 
-* Optimized the scroll bar style on Windows.
-* Fine-tuned the background color of side panels in the light mode.
-* Adjusted the background color of quote blocks, code blocks, and embed blocks.
-* Fixed an issue on macOS where the scroll bar in dark mode was displayed as in light mode.
+* [Added window borders on Linux, improving accessibility.](https://github.com/mustakshif/Hadeeth-for-SiYuan/pull/10)
+* Fixed an issue where some widget colors were abnormal in dark mode.
+* Fixed the problem where the theme JavaScript did not run properly when used in  browser.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 

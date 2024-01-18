@@ -10,12 +10,11 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
 
 ## 最近更新
 
-### v1.1.17
+### v1.1.18
 
-* 优化 Windows 端滚动条样式
-* 微调浅色模式下面板背景色
-* 微调引用块、代码块、嵌入块背景色
-* 修复 Mac 端暗色模式下仍显示亮色模式滚动条的问题
+* [添加 Linux 端窗口边框，增强可访问性](https://github.com/mustakshif/Hadeeth-for-SiYuan/pull/10)
+* 修复暗色模式下部分挂件颜色异常的问题
+* 修复在浏览器中使用时主题 js 无法正常运行的问题
 
 查看全部日志 👉 [更新日志](./CHANGELOG.md)
 

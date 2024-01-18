@@ -1,3 +1,17 @@
+### v1.1.18
+
+* [添加 Linux 端窗口边框，增强可访问性](https://github.com/mustakshif/Hadeeth-for-SiYuan/pull/10)
+* 修复暗色模式下部分挂件颜色异常的问题
+* 修复在浏览器中使用时主题 js 无法正常运行的问题
+
+<br />
+
+* [Added window borders on Linux, improving accessibility.](https://github.com/mustakshif/Hadeeth-for-SiYuan/pull/10)
+* Fixed an issue where some widget colors were abnormal in dark mode.
+* Fixed the problem where the theme JavaScript did not run properly when used in  browser.
+
+---
+
 ### v1.1.17
 
 * 优化 Windows 端滚动条样式
