@@ -1,8 +1,19 @@
+
 body.body--win32 {
+
+    // 滚动条
     ::-webkit-scrollbar {
-        width: 12px;
-        height: 12px;
-        -webkit-border-radius: var(--radius-l);
         background-color: transparent;
+
+        &-thumb {
+            -webkit-border-radius: 10px;
+            background-clip: padding-box;
+            border: 2px solid transparent;
+            background-color: var(--b3-scroll-color);
+
+            &:hover{
+                background-color: var(--b3-scroll-color-hover);
+            }
+        }
     }
 }

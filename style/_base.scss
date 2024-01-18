@@ -242,7 +242,7 @@ $theme-light: (
     on-background: rgb(69, 69, 69),
     on-surface-gray: rgb(127, 127, 127),
     border: hsl(0, 0%, 90%),
-    scroll: rgba(0, 0, 0, 0.2),
+    scroll: rgba(0, 0, 0, 0.08),
     list-hover: rgba(0, 0, 0, 0.05),
     menu-background: rgb(236, 236, 236),
     menu-item-hv-background: rgb(41, 98, 217, 0.8),
@@ -285,7 +285,7 @@ $theme-dark: (
     on-background: rgb(220, 220, 220),
     on-surface-gray: rgb(127, 127, 127),
     border: hsl(0, 0%, 26%),
-    scroll: rgba(255, 255, 255, 0.2),
+    scroll: rgba(255, 255, 255, 0.1),
     list-hover: rgba(255, 255, 255, 0.06),
     menu-background: rgb(50, 50, 50),
     menu-item-hv-background: rgb(32, 80, 202, 0.8),
@@ -343,7 +343,7 @@ $theme-dark: (
 
     /* 滚动条 */
     --b3-scroll-color: #{map-get($theme-map,scroll)};
-    --b3-scroll-color-hover: #{change-color(map-get($theme-map, scroll), $alpha:0.4)};
+    --b3-scroll-color-hover: #{change-color(map-get($theme-map, scroll), $alpha:alpha(map-get($theme-map, scroll)) * 2)};
 
     /* 列表 */
     --b3-list-hover: #{map-get($theme-map,list-hover)};
@@ -383,9 +383,7 @@ $theme-dark: (
         --b3-font-color#{$i}: #{$font-color};
 
         --b3-font-background#{$i}:#{$font-background};
-    }
-
-    ;
+    };
 
     /* 所见即所得行内元素颜色 */
     --b3-protyle-inline-link-color: #{map-get($theme-map,inline-link-color)};
