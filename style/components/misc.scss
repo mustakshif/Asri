@@ -141,6 +141,7 @@ select.b3-select {
     min-height: 28px;
     transition: outline 0.2s, background-color 0.2s;
     outline: 0px solid transparent;
+    color-scheme: inherit;
 
     &:not(.b3-text-field--text):hover {
         box-shadow: none;
