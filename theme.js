@@ -51,10 +51,12 @@ const doms = {
 }
 
 const isMacOS = navigator.platform.indexOf("Mac") === 0 || navigator.userAgentData.platform === "macOS" || "darwin" === process.platform;
+const isLinux = navigator.platform.indexOf("Linux") === 0 || navigator.userAgentData.platform === "Linux" || "linux" === process.platform;
 const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
 const isInBrowser = doms.toolbar && doms.toolbar.classList.contains('toolbar--browser');
 
 isMacOS && document.body.classList.add('body--mac');
+isLinux && document.body.classList.add('body--linux');
 isMobile && document.body.classList.add('body--mobile');
 isInBrowser && document.body.classList.add("body--browser");
 
