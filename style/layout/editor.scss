@@ -294,6 +294,7 @@
         padding: 16px;
         border: 1.5px solid var(--b3-border-color-trans);
         margin: 1em 0;
+        background-color: var(--b3-theme-surface-light);
 
         &>[data-type='NodeHeading']:first-child {
             margin-top: 0;
@@ -364,7 +365,7 @@
 @mixin hljs {
     .hljs {
         border-radius: 10px;
-        background-color: var(--b3-theme-surface);
+        background-color: var(--b3-theme-surface-light);
         padding: 2em 16px;
     }
 }
@@ -607,6 +608,7 @@
     [data-node-id].render-node[data-type=NodeBlockQueryEmbed] {
         border-left: none;
         padding: 16px;
+        background-color: var(--b3-theme-surface-light);
 
         &>.protyle-wysiwyg__embed {
             border-top: 1px solid var(--b3-border-color-trans);
