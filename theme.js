@@ -63,6 +63,7 @@ const isFullScreen = () => {
         return require("@electron/remote").getCurrentWindow().isFullScreen();
     }
 }
+
 function isToolbarAlwaysShown() {
     return document.body.classList.contains('hadeeth-pin-toolbar') > 0;
 }
@@ -98,7 +99,7 @@ function useSysScrollbar() {
                     for (let j = 0; j < styleSheet.cssRules.length; j++) {
                         let rule = styleSheet.cssRules[j];
                         if (rule.selectorText && rule.selectorText.includes('::-webkit-scrollbar')) {
-                            if (rule.style.width || rule.style.height) {
+                            if (rule.style.width || rule.style.height || rule.style.backgroundColor) {
                                 styleSheet.deleteRule(j);
                             }
                         }
@@ -107,7 +108,7 @@ function useSysScrollbar() {
             }
         } else {
             function addWebkitScrollbar() {
-                HadeethWebkitScrollbar?.parentNode.removeChild(HadeethWebkitScrollbar);
+                HadeethWebkitScrollbar?.remove();
 
                 var style = document.createElement('style');
                 style.setAttribute('id', 'HadeethWebkitScrollbar');
