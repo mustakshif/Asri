@@ -19,6 +19,7 @@
 
 @use 'platforms/mobile';
 @use 'platforms/windows';
+@use 'platforms/linux';
 
 @property --property-percentage {
     syntax: '<percentage>';
