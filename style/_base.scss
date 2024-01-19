@@ -237,6 +237,24 @@
 // ——————————————————————————
 @mixin scroll-fading($start: true, $end: true) {}
 
+// ——————————————————————————
+@mixin webkit-scrollbar{
+    ::-webkit-scrollbar {
+        background-color: transparent;
+
+        &-thumb {
+            -webkit-border-radius: 10px;
+            background-clip: padding-box;
+            border: 2px solid transparent;
+            background-color: var(--b3-scroll-color);
+
+            &:hover{
+                background-color: var(--b3-scroll-color-hover);
+            }
+        }
+    }
+}
+
 // color scheme related mixins————————————————
 $theme-light: (
     primary: rgb(52, 120, 246),

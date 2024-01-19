@@ -84,7 +84,7 @@
 // '/'菜单
 .protyle-hint {
     @include menu-shadow;
-    @include border-or-not;
+    @include border-or-not($border:false);
     padding: 0;
     background-color: var(--b3-menu-background);
 
@@ -179,7 +179,7 @@
     padding: 8px 0 0;
 
     @include menu-shadow;
-    @include border-or-not;
+    @include border-or-not($border:false);
 
     textarea {
         resize: both;
