@@ -71,7 +71,7 @@
 
 //——————————————————————————————————————
 @mixin button-primary {
-    background-color: var(--b3-menu-background);
+    background-color: var(--b3-list-hover);
     border-radius: 99px;
     color: var(--b3-theme-primary);
     font-weight: 600;

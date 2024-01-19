@@ -307,7 +307,7 @@
         border-radius: 6px;
         border: 1px solid var(--b3-border-color-trans);
         width: auto;
-        display: inline-block !important;
+        // display: inline-block !important;
 
         td,
         th {
@@ -974,7 +974,7 @@
     @include table;
 
     table {
-        width: max-content;
+        // width: max-content;
         border: none;
         box-shadow: 0 0 0 1px var(--b3-border-color-trans);
     }

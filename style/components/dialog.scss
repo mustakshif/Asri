@@ -278,7 +278,7 @@
                         background-color: var(--b3-theme-surface);
 
                         >.b3-list-item:not([data-type="search-item"]) {
-                            background-color: change-color(pickThemeColor($theme-light, surface), $lightness: 93%);
+                            background-color: change-color(pickThemeColor($theme-light, surface), $lightness: 90%);
 
                             @include darkmode-counterpart {
                                 background-color: change-color(pickThemeColor($theme-dark, surface), $lightness: 28%);
@@ -1005,6 +1005,41 @@ body.body--window {
             border-bottom: none;
             text-decoration: underline var(--b3-border-color-trans);
             text-decoration-thickness: 0.1em;
+        }
+    }
+}
+
+// 导出界面
+body[style*="-webkit-print-color-adjust"]
+{
+    #action {
+        padding-bottom: 8px;
+
+        .b3-label{
+            border-bottom: none;
+            display: flex;
+
+            &:nth-child(1),
+            &:nth-child(2),
+            &:nth-child(3) {
+                flex-direction: column;
+            }
+
+            .fn__hr {
+                flex-grow: 1;
+            }
+
+            .b3-switch {
+                margin-left: 8px;
+                align-self: center;
+            }
+        }
+
+        .b3-button--cancel{
+            @include button-action('normal')
+        }
+        .b3-button--text {
+            @include button-action('primary')
         }
     }
 }
