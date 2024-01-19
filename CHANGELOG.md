@@ -1,3 +1,19 @@
+### v1.1.19
+
+* 优化暗色模式下 `对话框`、`菜单`、`工具条`、`状态栏`、`提示条` 等元素的边框，增强可访问性
+* 优化 `导出 PDF 窗口` 布局
+* 增强与 Safari 浏览器的兼容性
+* 修复 `表格` 固定表头时的显示问题
+
+<br />
+
+* Optimized the borders of elements such as `dialogs`, `menus`, `toolbars`, `status bars`, and `tooltips` in dark mode, enhancing accessibility.
+* Optimized the layout of the `Export PDF window`.
+* Improved compatibility with Safari browser.
+* Fixed display issues when using fixed headers in `tables`.
+
+---
+
 ### v1.1.18
 
 * [添加 Linux 端窗口边框，增强可访问性](https://github.com/mustakshif/Hadeeth-for-SiYuan/pull/10)

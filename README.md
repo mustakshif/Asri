@@ -10,11 +10,12 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
-### v1.1.18
+### v1.1.19
 
-* [Added window borders on Linux, improving accessibility.](https://github.com/mustakshif/Hadeeth-for-SiYuan/pull/10)
-* Fixed an issue where some widget colors were abnormal in dark mode.
-* Fixed the problem where the theme JavaScript did not run properly when used in  browser.
+* Optimized the borders of elements such as `dialogs`, `menus`, `toolbars`, `status bars`, and `tooltips` in dark mode, enhancing accessibility.
+* Optimized the layout of the `Export PDF window`.
+* Improved compatibility with Safari browser.
+* Fixed display issues when using fixed headers in `tables`.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 

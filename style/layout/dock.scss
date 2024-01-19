@@ -41,7 +41,7 @@
     }
 
     &.dock-layout-expanded {
-        @include theme-variant-color(background-color, surface, 1);
+        background-color: var(--b3-theme-surface);
 
         &#dockLeft {
             border-right-color: transparent;

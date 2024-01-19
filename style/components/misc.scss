@@ -221,7 +221,7 @@ textarea {
 .tooltip {
     pointer-events: none;
     @include tooltip-shadow;
-    @include border-or-not;
+    @include border-or-not($outline:false);
 }
 
 .tooltip--memo#tooltip {

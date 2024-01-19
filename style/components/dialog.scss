@@ -1010,8 +1010,7 @@ body.body--window {
 }
 
 // 导出界面
-body[style*="-webkit-print-color-adjust"]
-{
+body[style*="-webkit-print-color-adjust"] {
     #action {
         padding-bottom: 8px;
 
@@ -1019,9 +1018,7 @@ body[style*="-webkit-print-color-adjust"]
             border-bottom: none;
             display: flex;
 
-            &:nth-child(1),
-            &:nth-child(2),
-            &:nth-child(3) {
+            &:nth-child(-n + 3) {
                 flex-direction: column;
             }
 

@@ -61,11 +61,18 @@
 }
 
 //————————————————————————————————————————
-@mixin border-or-not {
+@mixin border-or-not($outline:true, $border:true, $outline-width: 1px) {
     border: none;
 
     @include darkmode-counterpart {
-        outline: 1px solid var(--b3-border-color);
+        @if $outline == true {
+            outline: $outline-width solid var(--b3-border-color-trans);
+            outline-offset: $outline-width * -1;
+        }
+
+        @if $border == true {
+            border: 1px solid var(--b3-border-color-trans);
+        } 
     }
 }
 
@@ -235,7 +242,7 @@ $theme-light: (
     primary: rgb(52, 120, 246),
     secondary: rgb(241, 154, 55),
     background: #fff,
-    surface: rgb(239, 239, 239),
+    surface: rgb(240, 240, 240),
     error: rgb(234, 77, 60),
     on-primary: #fff,
     on-secondary: #fff,

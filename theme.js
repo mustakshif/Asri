@@ -50,8 +50,8 @@ const doms = {
     // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
 }
 
-const isMacOS = navigator.platform.indexOf("Mac") === 0 || navigator.userAgentData.platform === "macOS";
-const isLinux = navigator.platform.indexOf("Linux") === 0 || navigator.userAgentData.platform === "Linux";
+const isMacOS = navigator.platform.indexOf("Mac") === 0;
+const isLinux = navigator.platform.indexOf("Linux") === 0;
 const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
 const isInBrowser = doms.toolbar && doms.toolbar.classList.contains('toolbar--browser');
 
