@@ -1,6 +1,6 @@
 // 思源 API
-// 来自 [cc-baselib/siYuanApi.js at main · leolee9086/cc-baselib](https://github.com/leolee9086/cc-baselib/blob/main/src/siYuanApi.js)
-// 来自 Rem Craft/util/api.js
+// [cc-baselib/siYuanApi.js at main · leolee9086/cc-baselib](https://github.com/leolee9086/cc-baselib/blob/main/src/siYuanApi.js)
+// Rem Craft/util/api.js
 
 async function getFile(path) {
     const response = await fetch('/api/file/getFile', {
@@ -46,7 +46,11 @@ const doms = {
     layoutDockr: document.querySelector('.layout__dockr'),
     layoutDockb: document.querySelector('.layout__dockb'),
     toolbarWindow: document.querySelector('.toolbar__window'),
-    toolbar: document.getElementById('toolbar')
+    toolbar: document.getElementById('toolbar'),
+    toolbarVIP:document.getElementById('toolbarVIP'),
+    drag: document.getElementById('drag'),
+    barPlugins: document.getElementById('barPlugins'),
+    barMode:document.getElementById('barMode')
     // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
 }
 
@@ -138,7 +142,7 @@ function handleToolbarHover() {
     }
 }
 
-handleToolbarHover();
+// handleToolbarHover();
 
 async function toolbarTutorial() {
     let toolbar = doms.toolbar;
@@ -170,18 +174,34 @@ async function toolbarTutorial() {
 
 toolbarTutorial();
 
-// Mac 红绿灯位置
-function ModifyMacTrafficLights() {
-    let currentWindow = require("@electron/remote").getCurrentWindow();
-    currentWindow.setWindowButtonPosition({ x: 16, y: 16 });
+function setTrafficLightPosition(x, y = x) {
+    require("@electron/remote").getCurrentWindow().setWindowButtonPosition({ x: x, y: y });
 }
 
-if (isMacOS && !isInBrowser && !isMobile && !isToolbarAlwaysShown()) ModifyMacTrafficLights();
+if (isMacOS && !isInBrowser && !isMobile && !isToolbarAlwaysShown()) setTrafficLightPosition(16);
 
-function RestoreMacTrafficLights() {
-    let currentWindow = require("@electron/remote").getCurrentWindow();
-    currentWindow.setTrafficLightPosition({ x: 12, y: 12 });
+/**
+ * 
+ * @param {string} newid 
+ * @param {node} before 
+ * @param {node} after 
+ */
+function createTopbarElementById(newId, before = undefined, after = undefined) {
+    let newDiv = document.createElement('div');
+    newDiv.id = newId;
+
+    if (before && before.parentNode === doms.toolbar) {
+        doms.toolbar.insertBefore(newDiv, before);
+    } else if (after) {
+        doms.toolbar.insertBefore(newDiv, after.nextSibling);
+    } else {
+        doms.toolbar.appendChild(newDiv);
+    }
 }
+
+createTopbarElementById("AsriPluginIconsContainer", undefined, doms.drag);
+createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode);
+
 
 /**
  * 主窗口、新小窗页签栏左右边距控制
@@ -269,7 +289,7 @@ function addEmojiDialogClassName() {
     // emoji dialog
     let dialogs = document.querySelectorAll('.b3-dialog--open .b3-dialog');
     dialogs.forEach(dialog => {
-        dialog.querySelector('.emojis') && dialog.classList.add('emojis-container');        
+        dialog.querySelector('.emojis') && dialog.classList.add('emojis-container');
     })
 }
 /**
@@ -643,9 +663,9 @@ docBodyObserver(
     () => {
         if (isMacOS && !isInBrowser && !isMobile) {
             if (isToolbarAlwaysShown() && !doms.toolbarWindow) {
-                RestoreMacTrafficLights();
+                setTrafficLightPosition(12);
             } else {
-                ModifyMacTrafficLights();
+                setTrafficLightPosition(16);
             }
         }
     }

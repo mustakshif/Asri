@@ -38,6 +38,10 @@
 
     .toolbar__item {
         height: var(--toolbar-height);
+
+        &:hover{
+            background-color: transparent;
+        }
         
         svg {
             align-self: center;
