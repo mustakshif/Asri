@@ -52,6 +52,8 @@ const doms = {
 
 const isMacOS = navigator.platform.indexOf("Mac") === 0;
 const isLinux = navigator.platform.indexOf("Linux") === 0;
+// Safari 不支持 navigator.UserAgentData.platform；浏览器不支持 process.platform
+
 const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
 const isInBrowser = doms.toolbar && doms.toolbar.classList.contains('toolbar--browser');
 

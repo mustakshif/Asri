@@ -76,7 +76,7 @@ Other reference materials:
 * [Apple's Human Interface Guidelines - Foundations - Color](https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/)
 
 ## Feedbacks & suggestions
-- Create an issue at [my project page](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues)
+- Create an issue or PR at [the project page](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues)
 - Send an email to mustakshif@icloud.com
 
 ## Notes
