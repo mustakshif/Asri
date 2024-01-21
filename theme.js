@@ -290,6 +290,7 @@ function LayoutsCenterResizeObserver(func) {
         let tryGetLytCenter;
 
         function updateLytCenter() {
+            doms.layouts = document.getElementById('layouts');
             lytCenter = doms.layouts.querySelector('.layout__center');
             count++;
             if (count === maxCount || lytCenter) {
@@ -313,52 +314,52 @@ if (!isMobile && !doms.toolbarWindow) LayoutsCenterResizeObserver(() => {
 /**
  * 新小窗页签栏左右边距控制
  */
-function tabbarSpacinginMiniWindow() {
-    var toolbarWindowRec = doms.toolbarWindow?.getBoundingClientRect();
-    var topRightRect = toolbarWindowRec && {
-        left: toolbarWindowRec.left,
-        top: 0,
-        width: toolbarWindowRec.width,
-        height: toolbarWindowRec.height
-    }
+// function tabbarSpacinginMiniWindow() {
+//     var toolbarWindowRec = doms.toolbarWindow?.getBoundingClientRect();
+//     var topRightRect = toolbarWindowRec && {
+//         left: toolbarWindowRec.left,
+//         top: 0,
+//         width: toolbarWindowRec.width,
+//         height: toolbarWindowRec.height
+//     }
 
-    var topLeftRect = {
-        left: 0,
-        top: 0,
-        width: 80,
-        height: 48
-    };
+//     var topLeftRect = {
+//         left: 0,
+//         top: 0,
+//         width: 80,
+//         height: 48
+//     };
 
-    let wndElements = doms.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
+//     let wndElements = doms.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
 
-    if (wndElements) {
-        for (let element of wndElements) {
-            var elementRect = element.getBoundingClientRect();
-            var layoutTabbar = element.querySelector('.layout-tab-bar:not(.layout-tab-bar--readonly)');
+//     if (wndElements) {
+//         for (let element of wndElements) {
+//             var elementRect = element.getBoundingClientRect();
+//             var layoutTabbar = element.querySelector('.layout-tab-bar:not(.layout-tab-bar--readonly)');
 
-            var isOverlappingTopLeft = topLeftRect && isOverlapping(elementRect, topLeftRect);
+//             var isOverlappingTopLeft = topLeftRect && isOverlapping(elementRect, topLeftRect);
 
-            var isOverlappingTopRight = toolbarWindowRec && isOverlapping(elementRect, topRightRect);
+//             var isOverlappingTopRight = toolbarWindowRec && isOverlapping(elementRect, topRightRect);
 
 
-            // 左侧红绿灯
-            if (!isInBrowser && !isMobile && isMacOS) {
-                if (isOverlappingTopLeft) {
-                    layoutTabbar.style.marginLeft = 'var(--b3-toolbar-left-mac)';
-                } else {
-                    layoutTabbar.style.removeProperty('margin-left');
-                }
-            }
+//             // 左侧红绿灯
+//             if (!isInBrowser && !isMobile && isMacOS) {
+//                 if (isOverlappingTopLeft) {
+//                     layoutTabbar.style.marginLeft = 'var(--b3-toolbar-left-mac)';
+//                 } else {
+//                     layoutTabbar.style.removeProperty('margin-left');
+//                 }
+//             }
 
-            // 右侧图标区域
-            if (isOverlappingTopRight) {
-                layoutTabbar.parentNode.style.marginRight = topRightRect.width - 8 + 'px';
-            } else {
-                layoutTabbar.parentNode.style.removeProperty('margin-right');
-            }
-        }
-    }
-} // 弃用，采用思源自动避让
+//             // 右侧图标区域
+//             if (isOverlappingTopRight) {
+//                 layoutTabbar.parentNode.style.marginRight = topRightRect.width - 8 + 'px';
+//             } else {
+//                 layoutTabbar.parentNode.style.removeProperty('margin-right');
+//             }
+//         }
+//     }
+// } // 弃用，采用思源自动避让
 
 function isSideDockHidden() {
     return doms.dockl && doms.dockl.classList.contains('fn__none') > 0
