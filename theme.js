@@ -233,15 +233,14 @@ function calcTopbarSpacings() {
     if (layoutsCenterRect.right < dragRectRightInitial - 8) {
         topbar.style.setProperty('--topbar-right-spacing', 0);
 
-        // 药丸容器
+        // 药丸容器形状
         pluginsContainer.style.setProperty('--container-bg', 'var(--b3-list-hover)');
-        pluginsContainer.style.left = dragRectRightInitial - 2 + 'px';
+        pluginsContainer.style.left = dragRectRightInitial + 'px';
         pluginsContainer.style.right = window.innerWidth - rightSpacingRect.right + 'px';
         pluginsContainer.style.removeProperty('height');
         pluginsContainer.style.removeProperty('top');
 
         dragRectRightInitial = doms.drag.getBoundingClientRect().right;
-
 
         if (isMacOS) {
             doms.dockr.style?.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
@@ -253,10 +252,10 @@ function calcTopbarSpacings() {
 
         pluginsContainer.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
 
-        // 线条
+        // 线条形状
         dragRect = doms.drag.getBoundingClientRect();
-        pluginsContainer.style.left = dragRect.right - 6 + 'px';
-        pluginsContainer.style.right = window.innerWidth - dragRect.right + 4 + 'px';
+        pluginsContainer.style.left = dragRect.right - 10 + 'px';
+        pluginsContainer.style.right = window.innerWidth - dragRect.right + 8 + 'px';
         pluginsContainer.style.height = '21px';
         pluginsContainer.style.top = '13.5px';
 
@@ -280,7 +279,7 @@ function calcTabbarSpacings() {
 
             if (isOverlapping(tabbarContainerRect, dragRect)) {
                 let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 6 + 'px' : '';
-                let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 'px' : '';
+                let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 + 'px' : '';
 
                 tabbarContainer.style.paddingLeft = paddingLeftValue;
                 tabbarContainer.style.paddingRight = paddingRightValue;

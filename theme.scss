@@ -65,14 +65,15 @@ body:not(.body--mobile) {
         #AsriPluginIconsContainer {
             width: auto;
             height: 28px;
-            border-radius: 99px;
+            border-radius: 20px;
             align-self: center;
             // outline: 1.5px solid var(--outline-clr);
             // outline-offset: 0px;
             position: absolute;
             top: 10px;
             background-color: var(--container-bg);
-            transition: all 0.2s 0.1s;
+            transition: 0.2s 0.1s;
+            z-index: -1;
         }
 
         #AsriTopbarLeftSpacing {
@@ -81,10 +82,6 @@ body:not(.body--mobile) {
 
         #AsriTopbarRightSpacing {
             width: var(--topbar-right-spacing);
-        }
-
-        #barMode {
-            // margin-right: 8px;
         }
     }
 
