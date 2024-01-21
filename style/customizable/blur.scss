@@ -427,11 +427,7 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
     // ->js
     .b3-dialog__container {
         @include bg-blur();
-        background-color: transparent;
-
-        .emojis>* {
-            @include theme-variant-color(background-color, menu-background, $medium-transparency);
-        }
+        @include theme-variant-color(background-color, menu-background, $medium-transparency);
     }
 }
 

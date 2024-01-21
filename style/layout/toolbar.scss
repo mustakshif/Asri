@@ -4,14 +4,15 @@
     height: var(--toolbar-height);
     background-color: var(--b3-theme-background);
     border-bottom: 1px solid var(--b3-border-color);
+    overflow: visible;
 
     #barWorkspace {
         background-color: transparent;
-        color:var(--b3-theme-on-primary);
+        color:var(--b3-theme-on-surface);
         font-weight: 600;
         height: var(--toolbar-height);
         position: relative;
-        transition: none;
+        transition: color 0.2s;
 
         &::before {
             content: '';
@@ -19,10 +20,22 @@
             height: 28px;
             width: 100%;
             position: absolute;
-            background-color: var(--b3-theme-primary);
             z-index: 0;
             transform: translate(-5px, 5px);
             border-radius: 6px;
+            transition: background-color 0.2s, outline 0.2s, box-shadow 0.2s;
+            outline: 1px solid var(--b3-border-color-trans);
+            outline-offset: -1px;
+        }
+
+        &:hover{
+            color: var(--b3-theme-on-primary);
+
+            &::before{
+                background-color: var(--b3-theme-primary);
+                outline: 1px solid transparent;
+                // @include menu-shadow(map-get($theme-light, primary), map-get($theme-dark, primary), 0.3, 0.4, 0px);
+            }
         }
 
         .toolbar__text {

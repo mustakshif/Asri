@@ -34,11 +34,11 @@
 }
 
 //————————————————————————————————————
-@mixin menu-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3) {
-    box-shadow: 0 0 0px 1px change-color($shadow-clr-light, $alpha: calc($opacity-light * 0.5)), 0px 13px 25px -2px change-color($shadow-clr-light, $alpha: $opacity-light),0px 0px 10px 0px change-color($shadow-clr-light, $alpha: calc($opacity-light * 0.5));
+@mixin menu-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $border-light: 1px, $border-dark: 1px) {
+    box-shadow: 0 0 0 $border-light change-color($shadow-clr-light, $alpha: calc($opacity-light * 0.5)), 0px 13px 25px -2px change-color($shadow-clr-light, $alpha: $opacity-light),0px 0px 10px 0px change-color($shadow-clr-light, $alpha: calc($opacity-light * 0.5));
 
     @include darkmode-counterpart {
-        box-shadow: 0 0 0 1px change-color($shadow-clr-dark, $alpha: 1), 0px 13px 25px -2px change-color($shadow-clr-dark, $alpha: $opacity-dark), 0px 0px 10px 0px change-color($shadow-clr-dark, $alpha: calc($opacity-dark / 2));
+        box-shadow: 0 0 0 $border-dark change-color($shadow-clr-dark, $alpha: 1), 0px 13px 25px -2px change-color($shadow-clr-dark, $alpha: $opacity-dark), 0px 0px 10px 0px change-color($shadow-clr-dark, $alpha: calc($opacity-dark / 2));
     }
 }
 

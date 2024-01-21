@@ -849,6 +849,7 @@ body.body--window {
     padding: 4px 8px;
     background-color: var(--b3-theme-surface);
     border-radius: 99px;
+    @include border-or-not($border:false);
 }
 
 .viewer-toolbar {
@@ -856,6 +857,7 @@ body.body--window {
         background-color: var(--b3-theme-surface);
         padding: 8px;
         border-radius: 99px;
+        @include border-or-not($border:false);
 
         >li {
             background-color: transparent;

@@ -820,11 +820,6 @@
     @include protyle-icons;
 }
 
-//编辑区域
-&-content {
-    background-color: var(--b3-theme-background);
-}
-
 //文档标题
 &-title {
     &__input {
