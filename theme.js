@@ -197,7 +197,7 @@ function createTopbarElementById(newId, before = undefined, after = undefined) {
 
 let dragRectLeftInitial = doms.drag.getBoundingClientRect().left,
     dragRectRightInitial = doms.drag.getBoundingClientRect().right;
-let leftSpacing, rightSpacing, topbar,
+let pluginsContainer, leftSpacing, rightSpacing, topbar,
     layoutsCenterRect, leftSpacingRect, rightSpacingRect, barSyncRect, dragRect;
 
 if (!isMobile && doms.toolbar) {
@@ -207,6 +207,7 @@ if (!isMobile && doms.toolbar) {
 }
 
 function calcTopbarSpacings() {
+    pluginsContainer = document.getElementById('AsriPluginIconsContainer');
     leftSpacing = document.getElementById('AsriTopbarLeftSpacing');
     rightSpacing = document.getElementById('AsriTopbarRightSpacing');
     topbar = doms.toolbar;
@@ -223,16 +224,32 @@ function calcTopbarSpacings() {
 
     // 右侧
     if (layoutsCenterRect.right < dragRectRightInitial - 8) {
-        topbar.style.setProperty('--topbar-right-spacing', 0);
+        topbar.style.setProperty('--topbar-right-spacing', 0);        
+
+        pluginsContainer.style.setProperty('--container-bg', 'var(--b3-list-hover)');
+        pluginsContainer.style.left = dragRectRightInitial - 2 + 'px';
+        pluginsContainer.style.right = window.innerWidth - rightSpacingRect.right + 2 + 'px';
+        pluginsContainer.style.removeProperty('height');
+        pluginsContainer.style.removeProperty('top');
+
         dragRectRightInitial = doms.drag.getBoundingClientRect().right;
+
         
         if (isMacOS) {
             doms.dockr.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
-            doms.layoutDockr.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
+            doms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
         }
     }
     else {
-        topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - layoutsCenterRect.right + 6 + 'px');
+        topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - layoutsCenterRect.right + 'px');
+
+        pluginsContainer.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
+
+        dragRect = doms.drag.getBoundingClientRect();
+        pluginsContainer.style.left = dragRect.right - 6 + 'px';
+        pluginsContainer.style.right = window.innerWidth - dragRect.right + 4 + 'px';
+        pluginsContainer.style.height = '21px';
+        pluginsContainer.style.top = '13.5px';
 
         if (isMacOS) {
             doms.dockr.style.setProperty('--avoid-topbar', '4px');
@@ -240,6 +257,8 @@ function calcTopbarSpacings() {
         };
     }
 }
+
+setTimeout(calcTopbarSpacings, 200);
 
 function calcTabbarSpacings() {
     let wndElements = doms.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
@@ -296,11 +315,11 @@ function LayoutsCenterResizeObserver(func) {
             if (count === maxCount || lytCenter) {
                 clearInterval(tryGetLytCenter);
                 // doms.layouts = document.getElementById('layouts');
-                observer.observer(lytCenter);
+                observer.observe(lytCenter);
             }
         }
         setTimeout(() => {
-            tryGetLytCenter = setInterval(() => updateLytCenter, 1000);
+            tryGetLytCenter = setInterval(updateLytCenter, 1000);
         }, 0);
     }
 }

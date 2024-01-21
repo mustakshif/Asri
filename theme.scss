@@ -62,6 +62,19 @@ body:not(.body--mobile) {
             height: auto;
         }
 
+        #AsriPluginIconsContainer {
+            width: auto;
+            height: 28px;
+            border-radius: 99px;
+            align-self: center;
+            // outline: 1.5px solid var(--outline-clr);
+            // outline-offset: 0px;
+            position: absolute;
+            top:10px;
+            background-color: var(--container-bg);
+            // transition: all 0.2s;
+        }
+
         #AsriTopbarLeftSpacing{
             width: var(--topbar-left-spacing);
         }
@@ -69,11 +82,15 @@ body:not(.body--mobile) {
         #AsriTopbarRightSpacing {
             width: var(--topbar-right-spacing);
         }
+
+        #barMode {
+            margin-right: 10px;
+        }
     }
 
     // 页签栏
     .fn__flex-column[data-type=wnd]>.fn__flex:first-child {
-        
+
     }
 
     .layout-tab-bar {
@@ -81,11 +98,28 @@ body:not(.body--mobile) {
 
         &--readonly {
             margin-left: 0;
+            .item--readonly {
+                justify-content: end;
+                .fn__flex-1:nth-child(2){
+                    flex-grow: 0;
+                }
+                .block__icon:hover {
+                    background-color: transparent;
+                }
+            }
         }
     }
 
     .b3-dialog--open .layout-tab-bar {
         margin: 8px auto;
+    }
+
+    .layout__center {
+        .protyle-breadcrumb {
+            .fn__space{
+                width: 4px;
+            }
+        }
     }
 
     // 侧栏 ————————————————————————————
