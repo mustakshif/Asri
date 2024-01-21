@@ -43,7 +43,7 @@ body:not(.body--mobile) {
         margin-bottom: calc(var(--toolbar-height) * -1);
         z-index: var(--topbar-z-index);
         pointer-events: none;
-        app-region:drag;
+        app-region: drag;
 
         #drag {
             opacity: 0;
@@ -58,7 +58,7 @@ body:not(.body--mobile) {
 
         .toolbar__item {
             pointer-events: visibleFill;
-            app-region:no-drag;
+            app-region: no-drag;
             height: auto;
         }
 
@@ -70,12 +70,12 @@ body:not(.body--mobile) {
             // outline: 1.5px solid var(--outline-clr);
             // outline-offset: 0px;
             position: absolute;
-            top:10px;
+            top: 10px;
             background-color: var(--container-bg);
             transition: all 0.2s 0.1s;
         }
 
-        #AsriTopbarLeftSpacing{
+        #AsriTopbarLeftSpacing {
             width: var(--topbar-left-spacing);
         }
 
@@ -89,11 +89,7 @@ body:not(.body--mobile) {
     }
 
     // 页签栏
-    .fn__flex-column[data-type=wnd]>.fn__flex:first-child {
-
-    }
-
-    .layout-tab-bar {
+    .layout__center .layout-tab-bar {
         margin: 10px;
 
         &:not(&--readonly) {
@@ -102,11 +98,14 @@ body:not(.body--mobile) {
 
         &--readonly {
             margin-left: 0;
+
             .item--readonly {
                 justify-content: end;
-                .fn__flex-1:nth-child(2){
+
+                .fn__flex-1:nth-child(2) {
                     flex-grow: 0;
                 }
+
                 .block__icon:hover {
                     background-color: transparent;
                 }
@@ -120,7 +119,7 @@ body:not(.body--mobile) {
 
     .layout__center {
         .protyle-breadcrumb {
-            .fn__space{
+            .fn__space {
                 width: 4px;
             }
         }
@@ -150,10 +149,10 @@ body:not(.body--mobile) {
     }
 
     &.body--mac {
-        #dockRight{
+        #dockRight {
             padding-top: var(--avoid-topbar);
         }
-        
+
         .layout__dockr.layout--float {
 
             >.fn__flex:not(.fn__none):first-child,
@@ -212,7 +211,7 @@ body:not(.body--mobile) {
     .protyle-toolbar,
 
     .protyle-util,
-    
+
     .dock__item {
         app-region: no-drag;
     }

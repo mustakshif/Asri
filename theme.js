@@ -63,9 +63,13 @@ const isLinux = navigator.platform.indexOf("Linux") === 0;
 const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
 const isInBrowser = doms.toolbar && doms.toolbar.classList.contains('toolbar--browser');
 
+// function isFullScreen() {
+//     ipcRenderer.invoke('siyuan-get', { cmd: 'isFullScreen' })
+//         .then(isFullscreen => isFullscreen ? true : false);
+// }
+
 function isFullScreen() {
-    ipcRenderer.invoke('siyuan-get', { cmd: 'isFullScreen' })
-        .then(isFullscreen => isFullscreen ? true : false);
+    return require("@electron/remote").getCurrentWindow().isFullScreen()
 }
 
 isMacOS && document.body.classList.add('body--mac');
@@ -78,11 +82,14 @@ isInBrowser && document.body.classList.add("body--browser");
 //         let currentWindow = require("@electron/remote").getCurrentWindow();
 
 //         currentWindow.on('resize', () => {
+//             console.log('resize')
 //             if (isFullScreen()) {
 //                 document.body.classList.add('body--fullscreen');
 //             } else {
 //                 document.body.classList.remove('body--fullscreen');
 //             }
+
+//             calcTopbarSpacings();
 //         })
 //     }
 // }
@@ -220,11 +227,11 @@ function calcTopbarSpacings() {
     if (layoutsCenterRect.left > dragRectLeftInitial + 8) topbar.style.setProperty('--topbar-left-spacing', 0),
         dragRectLeftInitial = doms.drag.getBoundingClientRect().left;
     // 每次重新计算 initial
-    else topbar.style.setProperty('--topbar-left-spacing', layoutsCenterRect.left - barSyncRect.right + 'px');
+    else topbar.style.setProperty('--topbar-left-spacing', layoutsCenterRect.left - barSyncRect.right + 4 + 'px');
 
     // 右侧
     if (layoutsCenterRect.right < dragRectRightInitial - 8) {
-        topbar.style.setProperty('--topbar-right-spacing', 0);        
+        topbar.style.setProperty('--topbar-right-spacing', 0);
 
         // 药丸容器
         pluginsContainer.style.setProperty('--container-bg', 'var(--b3-list-hover)');
@@ -235,9 +242,9 @@ function calcTopbarSpacings() {
 
         dragRectRightInitial = doms.drag.getBoundingClientRect().right;
 
-        
+
         if (isMacOS) {
-            doms.dockr.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
+            doms.dockr.style?.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
             doms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
         }
     }
@@ -254,8 +261,8 @@ function calcTopbarSpacings() {
         pluginsContainer.style.top = '13.5px';
 
         if (isMacOS) {
-            doms.dockr.style.setProperty('--avoid-topbar', '4px');
-            doms.layoutDockr.style.setProperty('--avoid-topbar', '4px')
+            doms.dockr?.style.setProperty('--avoid-topbar', '4px');
+            doms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
         };
     }
 }
@@ -267,23 +274,31 @@ function calcTabbarSpacings() {
 
     if (wndElements) {
         for (let wnd of wndElements) {
-            let TabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
-            let TabbarContainerRect = TabbarContainer.getBoundingClientRect();
+            let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
+            let tabbarContainerRect = tabbarContainer.getBoundingClientRect();
             let dragRect = doms.drag.getBoundingClientRect();
-        
-            if (isOverlapping(TabbarContainerRect, dragRect)) {
-                let paddingLeftValue = (TabbarContainerRect.left < dragRect.left) ? dragRect.left - TabbarContainerRect.left - 6 + 'px' : '';
-                let paddingRightValue = (TabbarContainerRect.right > dragRect.right) ? TabbarContainerRect.right - dragRect.right + 'px' : '';
-        
-                TabbarContainer.style.paddingLeft = paddingLeftValue;
-                TabbarContainer.style.paddingRight = paddingRightValue;
+
+            if (isOverlapping(tabbarContainerRect, dragRect)) {
+                let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 6 + 'px' : '';
+                let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 'px' : '';
+
+                tabbarContainer.style.paddingLeft = paddingLeftValue;
+                tabbarContainer.style.paddingRight = paddingRightValue;
 
                 doms.drag = document.getElementById('drag');
             } else {
-                TabbarContainer.style.paddingLeft = 0;
-                TabbarContainer.style.paddingRight = 0;
+                tabbarContainer.style.paddingLeft = 0;
+                tabbarContainer.style.paddingRight = 0;
             }
-        }        
+
+            if (tabbarContainerRect.right - 60 < dragRect.left) {
+                tabbarContainer.style.paddingTop = '42px';
+                tabbarContainer.style.paddingLeft = 0;
+                tabbarContainer.style.paddingRight = 0;
+            } else {
+                tabbarContainer.style.removeProperty('padding-top');
+            }
+        }
     }
 }
 
