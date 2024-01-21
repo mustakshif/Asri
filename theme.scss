@@ -72,7 +72,7 @@ body:not(.body--mobile) {
             position: absolute;
             top:10px;
             background-color: var(--container-bg);
-            // transition: all 0.2s;
+            transition: all 0.2s 0.1s;
         }
 
         #AsriTopbarLeftSpacing{
@@ -84,7 +84,7 @@ body:not(.body--mobile) {
         }
 
         #barMode {
-            margin-right: 10px;
+            // margin-right: 8px;
         }
     }
 
@@ -95,6 +95,10 @@ body:not(.body--mobile) {
 
     .layout-tab-bar {
         margin: 10px;
+
+        &:not(&--readonly) {
+            margin-right: 0;
+        }
 
         &--readonly {
             margin-left: 0;

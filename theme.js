@@ -89,11 +89,11 @@ isInBrowser && document.body.classList.add("body--browser");
 
 // addFullscreenClassName();
 
-// function setTrafficLightPosition(x, y = x) {
-//     require("@electron/remote").getCurrentWindow().setWindowButtonPosition({ x: x, y: y });
-// }
+function setTrafficLightPosition(x, y = x) {
+    require("@electron/remote").getCurrentWindow().setWindowButtonPosition({ x: x, y: y });
+}
 
-// if (isMacOS && !isInBrowser && !isMobile) setTrafficLightPosition(16);
+if (isMacOS && !isInBrowser && !isMobile) setTrafficLightPosition(16);
 
 function useSysScrollbar() {
     if (isMacOS) {
@@ -226,9 +226,10 @@ function calcTopbarSpacings() {
     if (layoutsCenterRect.right < dragRectRightInitial - 8) {
         topbar.style.setProperty('--topbar-right-spacing', 0);        
 
+        // 药丸容器
         pluginsContainer.style.setProperty('--container-bg', 'var(--b3-list-hover)');
         pluginsContainer.style.left = dragRectRightInitial - 2 + 'px';
-        pluginsContainer.style.right = window.innerWidth - rightSpacingRect.right + 2 + 'px';
+        pluginsContainer.style.right = window.innerWidth - rightSpacingRect.right + 'px';
         pluginsContainer.style.removeProperty('height');
         pluginsContainer.style.removeProperty('top');
 
@@ -241,10 +242,11 @@ function calcTopbarSpacings() {
         }
     }
     else {
-        topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - layoutsCenterRect.right + 'px');
+        topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - layoutsCenterRect.right + 7 + 'px');
 
         pluginsContainer.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
 
+        // 线条
         dragRect = doms.drag.getBoundingClientRect();
         pluginsContainer.style.left = dragRect.right - 6 + 'px';
         pluginsContainer.style.right = window.innerWidth - dragRect.right + 4 + 'px';
@@ -290,10 +292,10 @@ function setResizeObserver(func) {
     let callback = function (entries, observer) {
         for (let entry of entries) {
             func(entry, observer);
-            //测试
-            const target = entry.target;
-            const { width, height } = target.getBoundingClientRect();
-            console.log(`Element resized: ${width}px x ${height}px`);
+            // 测试
+            // const target = entry.target;
+            // const { width, height } = target.getBoundingClientRect();
+            // console.log(`Element resized: ${width}px x ${height}px`);
         }
     }
     return new ResizeObserver(callback);
