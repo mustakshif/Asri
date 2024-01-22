@@ -72,7 +72,7 @@ body:not(.body--mobile) {
             position: absolute;
             top: 10px;
             background-color: var(--container-bg);
-            transition: 0.2s 0.1s;
+            // transition: 0.2s 0.1s;
             z-index: -1;
         }
 
@@ -90,7 +90,7 @@ body:not(.body--mobile) {
         margin: 10px;
 
         &:not(&--readonly) {
-            margin-right: 0;
+            margin-right: 4px;
         }
 
         &--readonly {

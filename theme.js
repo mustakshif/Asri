@@ -225,11 +225,8 @@ function calcTopbarSpacings() {
 
     let winWidth = window.innerWidth;
 
-    function calc() {
-        
-    }
     // 左侧
-    if (layoutsCenterRect.left > dragRectLeftInitial + 8) topbar.style.setProperty('--topbar-left-spacing', 0),
+    if (layoutsCenterRect.left > dragRectLeftInitial + 4) topbar.style.setProperty('--topbar-left-spacing', 0),
         dragRectLeftInitial = doms.drag.getBoundingClientRect().left;
     // 每次重新计算 initial
     else topbar.style.setProperty('--topbar-left-spacing', layoutsCenterRect.left - barSyncRect.right + 4 + 'px');
@@ -244,7 +241,7 @@ function calcTopbarSpacings() {
         pluginsContainer.style.right = winWidth - rightSpacingRect.right + 'px';
         pluginsContainer.style.removeProperty('height');
         pluginsContainer.style.removeProperty('top');
-
+        
         dragRectRightInitial = doms.drag.getBoundingClientRect().right;
 
         if (isMacOS || isInBrowser) {
@@ -269,8 +266,6 @@ function calcTopbarSpacings() {
         };
     }
 }
-
-setTimeout(calcTopbarSpacings, 200);
 
 function calcTabbarSpacings() {
     let wndElements = doms.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
@@ -303,17 +298,6 @@ function calcTabbarSpacings() {
             }
         }
     }
-}
-
-function debounce(func, delay) {
-    let timerId;
-
-    return function (...args) {
-        clearTimeout(timerId);
-        timerId = setTimeout(() => {
-            func.apply(this, args);
-        }, delay);
-    };
 }
 
 function setResizeObserver(func) {
@@ -360,9 +344,7 @@ function handleResize() {
     statusPositon();
 }
 
-if (!isMobile && !doms.toolbarWindow) LayoutsCenterResizeObserver(() => {
-    debounce(handleResize, 200)();
-})
+if (!isMobile && !doms.toolbarWindow) setTimeout(calcTopbarSpacings, 200), LayoutsCenterResizeObserver(handleResize)
 /**
  * 新小窗页签栏左右边距控制
  */
