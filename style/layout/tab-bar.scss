@@ -1,8 +1,10 @@
 @use '../base' as *;
 
 // tab-bar 容器
-.fn__flex-column[data-type='wnd']>.fn__flex:first-child {
-    height: 42px;
+.fn__flex-column[data-type='wnd'] {
+    >.fn__flex:first-child {
+        height: 42px;
+    }
 }
 
 .layout-tab-bar {
@@ -57,7 +59,7 @@
         overflow: visible;
         background-color: var(--b3-list-hover);
         // transition-property: max-width, width, backdrop-filter, background-color, color;
-                
+
         &:last-child {
             margin-right: 0;
         }
@@ -84,7 +86,7 @@
         &__close {
             padding: 4px 6px 4px 2px;
 
-            svg{
+            svg {
                 width: 10px;
                 height: 10px;
             }
@@ -126,7 +128,7 @@
             max-width: 21rem;
             // font-weight: 500;
             transition: 0.2s;
-            @include theme-variant-color(background-color, list-hover, 0.12, 0.15);          
+            @include theme-variant-color(background-color, list-hover, 0.12, 0.15);
 
             animation: click 0.2s;
 

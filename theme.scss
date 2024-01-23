@@ -84,12 +84,10 @@ body:not(.body--mobile) {
 
         #AsriTopbarLeftSpacing {
             width: var(--topbar-left-spacing);
-            // transition: 0.2s;
         }
 
         #AsriTopbarRightSpacing {
             width: var(--topbar-right-spacing);
-            // transition: 0.2s;
         }
     }
 
@@ -142,6 +140,7 @@ body:not(.body--mobile) {
 
     #dockRight {
         background-color: var(--b3-theme-background);
+                padding-top: var(--avoid-topbar);
     }
 
     .layout__dockl,
@@ -211,6 +210,20 @@ body:not(.body--mobile) {
                 .layout-tab-container {
                     padding-top: 4px;
                 }
+            }
+        }
+    }
+
+    .fn__flex-1.has-dockb {
+
+        // -> js
+        .layout__dockl,
+        .layout__dockr {
+    
+            // 浮动布局
+            &.layout--float {
+                height: calc(100% - 42px - var(--status-height, 32px));
+                top: 0;
             }
         }
     }

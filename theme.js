@@ -251,7 +251,7 @@ function calcTopbarSpacings(widthChange) {
     let winWidth = window.innerWidth,
         centerRectRight = layoutsCenterRect.right;
 
-    function calc() {
+    function calcAndApply() {
         // 左侧
         if (layoutsCenterRect.left > dragRectLeftInitial + 8) topbar.style.setProperty('--topbar-left-spacing', 0),
             dragRectLeftInitial = doms.drag.getBoundingClientRect().left;
@@ -265,8 +265,6 @@ function calcTopbarSpacings(widthChange) {
             dragRectRightInitial = doms.drag.getBoundingClientRect().right;
 
             if (isMacOS || isInBrowser) {
-                // doms.dockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
-                // doms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
                 doms.dockr?.style.removeProperty('--avoid-topbar');
                 doms.layoutDockr?.style.removeProperty('--avoid-topbar');
             }
@@ -281,31 +279,32 @@ function calcTopbarSpacings(widthChange) {
         }
     }
 
-    if (!isWinResizing) calc();
+    if (!isWinResizing) calcAndApply()
+    else dragRectRightInitial = dragRectRightInitial + widthChange;
 
-    // (function barLineSwitch(){
-    //     if (centerRectRight < dragRectRightInitial - 8) {
-    //         dragRectRightInitial = doms.drag.getBoundingClientRect().right;
-    //         // 横线
-    //         pluginsContainer.style.setProperty('--container-bg', 'var(--b3-list-hover)');
-    //         // pluginsContainer.style.left = dragRectRightInitial + 'px';
-    //         pluginsContainer.style.left = centerRectRight + 'px';
-    //         // pluginsContainer.style.right = winWidth - rightSpacingRect.right + 'px';
-    //         pluginsContainer.style.right = '0';
-    //         pluginsContainer.style.removeProperty('height');
-    //         pluginsContainer.style.removeProperty('top');
-    //     }
-    //     else {
-    //         if (isWinResizing) dragRectRightInitial = dragRectRightInitial + widthChange;
-    //         // 竖线
-    //         dragRect = doms.drag.getBoundingClientRect();
-    //         pluginsContainer.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
-    //         pluginsContainer.style.left = dragRect.right - 10 + 'px';
-    //         pluginsContainer.style.right = winWidth - dragRect.right + 8 + 'px';
-    //         pluginsContainer.style.height = '21px';
-    //         pluginsContainer.style.top = '13.5px';
-    //     }
-    // })();
+    (function barLineSwitch(){
+        if (centerRectRight < dragRectRightInitial - 8) {
+            // dragRectRightInitial = doms.drag.getBoundingClientRect().right;
+            // 横线
+            pluginsContainer.style.setProperty('--container-bg', 'var(--b3-list-hover)');
+            // pluginsContainer.style.left = dragRectRightInitial + 'px';
+            pluginsContainer.style.left = centerRectRight + 'px';
+            // pluginsContainer.style.right = winWidth - rightSpacingRect.right + 'px';
+            pluginsContainer.style.right = '0';
+            pluginsContainer.style.removeProperty('height');
+            pluginsContainer.style.removeProperty('top');
+        }
+        else {
+            // if (isWinResizing) dragRectRightInitial = dragRectRightInitial + widthChange;
+            // 竖线
+            dragRect = doms.drag.getBoundingClientRect();
+            pluginsContainer.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
+            pluginsContainer.style.left = dragRect.right - 10 + 'px';
+            pluginsContainer.style.right = winWidth - dragRect.right + 8 + 'px';
+            pluginsContainer.style.height = '21px';
+            pluginsContainer.style.top = '13.5px';
+        }
+    })();
 
     console.log(`drag右\t\t${dragRectRightInitial}\ncenter右\t${centerRectRight}`)
 }
@@ -343,41 +342,29 @@ function calcTabbarSpacings() {
     }
 }
 
-// function setResizeObserver(func) {
-//     let callback = function (entries, observer) {
-//         for (let entry of entries) {
-//             func(entry, observer);
-//             // 测试
-//             // const target = entry.target;
-//             // const { width, height } = target.getBoundingClientRect();
-//             // console.log(`Element resized: ${width}px x ${height}px`);
-//         }
-//     }
-//     return new ResizeObserver(callback);
-// }
-
 function LayoutsCenterResizeObserver() {
     let lytCenter = doms.layouts.querySelector('.layout__center');
-    // let observer = setResizeObserver(func);
     const ro = new ResizeObserver(entries => {
         for (let entry of entries) {
-            // const { inlineSize } = entry.contentBoxSize[0];
+            // 获取当前元素的大小
+            const { inlineSize } = entry.contentBoxSize[0];
 
-            // if (!entry.target.dataset.prevWidth) {
-            //     entry.target.dataset.prevWidth = inlineSize;
-            //     continue;
-            // }
+            // 检查是否是第一次触发resize事件，如果是则跳过计算
+            if (!entry.target.dataset.prevWidth) {
+                entry.target.dataset.prevWidth = inlineSize;
+                continue;
+            }
 
-            // const prevWidth = parseFloat(entry.target.dataset.prevWidth);
+            // 获取上一次的宽度
+            const prevWidth = parseFloat(entry.target.dataset.prevWidth);
 
-            // const widthChange = inlineSize - prevWidth;
+            // 计算宽度变化量
+            const widthChange = inlineSize - prevWidth;
 
-            // // 保存当前宽度作为下一次的上一次宽度
-            // entry.target.dataset.prevWidth = inlineSize;
-            // // 处理宽度变化量
-            // console.log(`宽度变化量\t${widthChange}px`);
+            // 保存当前宽度作为下一次的上一次宽度
+            entry.target.dataset.prevWidth = inlineSize;
 
-            handleCenterResize();
+            handleCenterResize(widthChange);
         }
     });
 
@@ -403,8 +390,8 @@ function LayoutsCenterResizeObserver() {
     }
 }
 
-function handleCenterResize() {
-    calcTopbarSpacings();
+function handleCenterResize(widthChange) {
+    calcTopbarSpacings(widthChange);
     calcTabbarSpacings();
     statusPositon();
 }
