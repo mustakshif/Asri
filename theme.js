@@ -78,24 +78,24 @@ isLinux && document.body.classList.add('body--linux');
 isMobile && document.body.classList.add('body--mobile');
 isInBrowser && document.body.classList.add("body--browser");
 
-// function addFullscreenClassName() {
-//     if (!isInBrowser && !isMobile) {
-//         let currentWindow = require("@electron/remote").getCurrentWindow();
+function addFullscreenClassName() {
+    if (!isInBrowser && !isMobile) {
+        let currentWindow = require("@electron/remote").getCurrentWindow();
 
-//         currentWindow.on('resize', () => {
-//             console.log('resize')
-//             if (isFullScreen()) {
-//                 document.body.classList.add('body--fullscreen');
-//             } else {
-//                 document.body.classList.remove('body--fullscreen');
-//             }
+        currentWindow.on('resize', () => {
+            console.log('resize')
+            if (isFullScreen()) {
+                document.body.classList.add('body--fullscreen');
+            } else {
+                document.body.classList.remove('body--fullscreen');
+            }
 
-//             calcTopbarSpacings();
-//         })
-//     }
-// }
+            calcTopbarSpacings();
+        })
+    }
+}
 
-// addFullscreenClassName();
+addFullscreenClassName();
 
 function setTrafficLightPosition(x, y = x) {
     require("@electron/remote").getCurrentWindow().setWindowButtonPosition({ x: x, y: y });

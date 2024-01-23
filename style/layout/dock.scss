@@ -41,6 +41,7 @@
     }
 
     &.dock-layout-expanded {
+        // -> js
         background-color: var(--b3-theme-surface);
 
         &#dockLeft {
@@ -51,6 +52,12 @@
             border-left-color: transparent;
         }
 
+    }
+}
+
+body.body--mac{
+    #dockRight {
+        border-left-color: var(--b3-border-color);
     }
 }
 
