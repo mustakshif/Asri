@@ -66,19 +66,12 @@ body:not(.body--mobile) {
 
         #AsriPluginIconsContainer {
             width: auto;
-            // height: 28px;
             height: 1px;
             border-radius: 6px;
             align-self: center;
-            // outline: 1.5px solid var(--outline-clr);
-            // outline-offset: 0px;
             position: absolute;
-            // top: 10px;
             top: var(--toolbar-height);
-            background-color: var(--container-bg);
-            // background-color: var(--b3-theme-surface);
             background-color: var(--b3-border-color-trans);
-            // transition: 0.2s 0.1s;
             z-index: -1;
         }
 
@@ -140,7 +133,7 @@ body:not(.body--mobile) {
 
     #dockRight {
         background-color: var(--b3-theme-background);
-                padding-top: var(--avoid-topbar);
+        padding-top: var(--avoid-topbar);
     }
 
     .layout__dockl,
@@ -159,7 +152,8 @@ body:not(.body--mobile) {
         }
     }
 
-    .layout__dockl{
+    .layout__dockl {
+
         >.fn__flex:not(.fn__none):first-child,
         >.fn__flex.fn__none~.fn__flex {
             .layout-tab-container {
@@ -219,7 +213,7 @@ body:not(.body--mobile) {
         // -> js
         .layout__dockl,
         .layout__dockr {
-    
+
             // 浮动布局
             &.layout--float {
                 height: calc(100% - 42px - var(--status-height, 32px));

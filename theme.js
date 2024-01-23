@@ -264,17 +264,18 @@ function calcTopbarSpacings(widthChange) {
 
             dragRectRightInitial = doms.drag.getBoundingClientRect().right;
 
-            if (isMacOS || isInBrowser) {
-                doms.dockr?.style.removeProperty('--avoid-topbar');
-                doms.layoutDockr?.style.removeProperty('--avoid-topbar');
-            }
-        }
-        else {
+            //使用 CSS
+            doms.dockr?.style.removeProperty('--avoid-topbar');
+            doms.layoutDockr?.style.removeProperty('--avoid-topbar');
+        } else {
             topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 7 + 'px');
 
             if (isMacOS || isInBrowser) {
                 doms.dockr?.style.setProperty('--avoid-topbar', '4px');
                 doms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
+            } else {
+                doms.dockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
+                doms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
             };
         }
     }
@@ -282,7 +283,7 @@ function calcTopbarSpacings(widthChange) {
     if (!isWinResizing) calcAndApply()
     else dragRectRightInitial = dragRectRightInitial + widthChange;
 
-    (function barLineSwitch(){
+    (function barLineSwitch() {
         if (centerRectRight < dragRectRightInitial - 8) {
             // dragRectRightInitial = doms.drag.getBoundingClientRect().right;
             // 横线
