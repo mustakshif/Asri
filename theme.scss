@@ -6,8 +6,6 @@ html[data-theme-mode="light"]:root {
     // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
 
     @include theme-root($theme-light);
-    @include font-family;
-    @include cssvars;
 
     body {
         ::selection {
@@ -18,8 +16,10 @@ html[data-theme-mode="light"]:root {
 
 html[data-theme-mode="dark"]:root {
     color-scheme: dark;
-
     @include theme-root($theme-dark);
+}
+
+:root {
     @include font-family;
     @include cssvars;
 }
@@ -64,14 +64,18 @@ body:not(.body--mobile) {
 
         #AsriPluginIconsContainer {
             width: auto;
-            height: 28px;
-            border-radius: 20px;
+            // height: 28px;
+            height: 1px;
+            border-radius: 6px;
             align-self: center;
             // outline: 1.5px solid var(--outline-clr);
             // outline-offset: 0px;
             position: absolute;
-            top: 10px;
+            // top: 10px;
+            top: 42px;
             background-color: var(--container-bg);
+            // background-color: var(--b3-theme-surface);
+            background-color: var(--b3-border-color-trans);
             // transition: 0.2s 0.1s;
             z-index: -1;
         }
@@ -142,6 +146,17 @@ body:not(.body--mobile) {
         &.layout--float {
             // height: calc(100% - var(--toolbar-height));
             height: 100%;
+        }
+    }
+
+    #dockRight {
+        background-color: var(--b3-theme-background);
+    }
+
+    .layout__dockr:not(.layout--float) {
+        .layout-tab-container {
+            background-color: var(--b3-theme-background);
+            border-left: 1px solid var(--b3-border-color);
         }
     }
 

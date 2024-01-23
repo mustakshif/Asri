@@ -206,6 +206,7 @@ let dragRectLeftInitial = doms.drag.getBoundingClientRect().left,
     dragRectRightInitial = doms.drag.getBoundingClientRect().right;
 let pluginsContainer, leftSpacing, rightSpacing, topbar,
     layoutsCenterRect, leftSpacingRect, rightSpacingRect, barSyncRect, dragRect;
+let isWinResizing = false, resizeTimeout;
 
 if (!isMobile && doms.toolbar) {
     createTopbarElementById('AsriPluginIconsContainer', undefined, doms.drag);
@@ -223,25 +224,28 @@ function calcTopbarSpacings() {
     rightSpacingRect = rightSpacing.getBoundingClientRect();
     barSyncRect = doms.barSync.getBoundingClientRect();
 
-    let winWidth = window.innerWidth;
+    let winWidth = window.innerWidth,
+        centerRectRight = layoutsCenterRect.right;
 
     // 左侧
-    if (layoutsCenterRect.left > dragRectLeftInitial + 4) topbar.style.setProperty('--topbar-left-spacing', 0),
+    if (layoutsCenterRect.left > dragRectLeftInitial + 8) topbar.style.setProperty('--topbar-left-spacing', 0),
         dragRectLeftInitial = doms.drag.getBoundingClientRect().left;
     // 每次重新计算 initial
     else topbar.style.setProperty('--topbar-left-spacing', layoutsCenterRect.left - barSyncRect.right + 4 + 'px');
 
     // 右侧
-    if (layoutsCenterRect.right < dragRectRightInitial - 8) {
+    if (centerRectRight < dragRectRightInitial - 8) {
         topbar.style.setProperty('--topbar-right-spacing', 0);
 
         // 药丸容器形状
         pluginsContainer.style.setProperty('--container-bg', 'var(--b3-list-hover)');
-        pluginsContainer.style.left = dragRectRightInitial + 'px';
-        pluginsContainer.style.right = winWidth - rightSpacingRect.right + 'px';
+        // pluginsContainer.style.left = dragRectRightInitial + 'px';
+        pluginsContainer.style.left = centerRectRight + 'px';
+        // pluginsContainer.style.right = winWidth - rightSpacingRect.right + 'px';
+        pluginsContainer.style.right = '0';
         pluginsContainer.style.removeProperty('height');
         pluginsContainer.style.removeProperty('top');
-        
+
         dragRectRightInitial = doms.drag.getBoundingClientRect().right;
 
         if (isMacOS || isInBrowser) {
@@ -250,7 +254,7 @@ function calcTopbarSpacings() {
         }
     }
     else {
-        topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - layoutsCenterRect.right + 7 + 'px');
+        topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 7 + 'px');
 
         // 线条形状
         dragRect = doms.drag.getBoundingClientRect();
@@ -340,11 +344,24 @@ function LayoutsCenterResizeObserver(func) {
 
 function handleResize() {
     calcTopbarSpacings();
-    calcTabbarSpacings()
+    calcTabbarSpacings();
     statusPositon();
 }
 
-if (!isMobile && !doms.toolbarWindow) setTimeout(calcTopbarSpacings, 200), LayoutsCenterResizeObserver(handleResize)
+if (!isMobile && !doms.toolbarWindow) {
+    setTimeout(calcTopbarSpacings, 200);
+    window.addEventListener('resize', function () {
+        isWinResizing = true;
+
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function () {
+            isWinResizing = false;
+        }, 200);
+    });
+    LayoutsCenterResizeObserver(handleResize);
+}
+
+
 /**
  * 新小窗页签栏左右边距控制
  */
