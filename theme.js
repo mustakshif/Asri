@@ -52,6 +52,7 @@ const doms = {
     toolbarVIP: document.getElementById('toolbarVIP'),
     drag: document.getElementById('drag'),
     barPlugins: document.getElementById('barPlugins'),
+    barSearch: document.getElementById('barSearch'),
     barMode: document.getElementById('barMode')
     // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
 }
@@ -211,7 +212,7 @@ let isWinResizing = false, resizeTimeout;
 if (!isMobile && doms.toolbar) {
     createTopbarElementById('AsriPluginIconsContainer', undefined, doms.drag);
     createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barSync);
-    isMacOS? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barPlugins);
+    isMacOS? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
 }
 
 function calcTopbarSpacings() {
