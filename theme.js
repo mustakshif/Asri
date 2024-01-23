@@ -211,7 +211,7 @@ let isWinResizing = false, resizeTimeout;
 if (!isMobile && doms.toolbar) {
     createTopbarElementById('AsriPluginIconsContainer', undefined, doms.drag);
     createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barSync);
-    createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode);
+    isMacOS? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barPlugins);
 }
 
 function calcTopbarSpacings() {

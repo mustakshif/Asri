@@ -99,6 +99,7 @@ body:not(.body--mobile) {
 
         &--readonly {
             margin-left: 0;
+            margin-right: 8px;
 
             .item--readonly {
                 justify-content: end;
@@ -121,7 +122,10 @@ body:not(.body--mobile) {
     .layout__center {
         .protyle-breadcrumb {
             .fn__space {
-                width: 4px;
+                width: 0;
+            }
+            .block__icon{
+                margin: 1.5px;
             }
         }
     }
