@@ -78,33 +78,6 @@ isLinux && document.body.classList.add('body--linux');
 isMobile && document.body.classList.add('body--mobile');
 isInBrowser && document.body.classList.add("body--browser");
 
-
-let isWinResizing = false, resizeTimeout;
-
-function handleWinResize() {
-    if (!isInBrowser && !isMobile) {
-        let currentWindow = require("@electron/remote").getCurrentWindow();
-
-        currentWindow.on('resize', () => {
-            console.log('resize');
-
-            if (isFullScreen()) {
-                document.body.classList.add('body--fullscreen');
-            } else {
-                document.body.classList.remove('body--fullscreen');
-            }
-
-            isWinResizing = true;
-
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(function () {
-                isWinResizing = false;
-                // calcTopbarSpacings();
-            }, 200);
-        })
-    }
-}
-
 handleWinResize();
 
 function setTrafficLightPosition(x, y = x) {
@@ -212,6 +185,47 @@ function createTopbarElementById(newId, before = undefined, after = undefined) {
     }
 }
 
+let isWinResizing = false, resizeTimeout;
+
+function handleWinResize() {
+    // if (!isInBrowser && !isMobile) {
+    //     let currentWindow = require("@electron/remote").getCurrentWindow();
+
+    //     currentWindow.on('resize', () => {
+    //         isWinResizing = true;
+
+    //         clearTimeout(resizeTimeout);
+    //         resizeTimeout = setTimeout(function () {
+    //             isWinResizing = false;
+
+    //             if (isFullScreen()) {
+    //                 document.body.classList.add('body--fullscreen');
+    //             } else {
+    //                 document.body.classList.remove('body--fullscreen');
+    //             }
+    //             // calcTopbarSpacings();
+    //             // calcTabbarSpacings();
+    //         }, 200);
+    //     })
+    // } 
+
+    window.addEventListener('resize', function () {
+        isWinResizing = true;
+
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function () {
+            isWinResizing = false;
+
+            if (isFullScreen()) {
+                document.body.classList.add('body--fullscreen');
+            } else {
+                document.body.classList.remove('body--fullscreen');
+            }
+            // calcTopbarSpacings();
+            // calcTabbarSpacings();
+        }, 200);
+    });
+}
 
 let dragRectLeftInitial = doms.drag.getBoundingClientRect().left,
     dragRectRightInitial = doms.drag.getBoundingClientRect().right;
@@ -224,7 +238,7 @@ if (!isMobile && doms.toolbar) {
     isMacOS ? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
 }
 
-function calcTopbarSpacings() {
+function calcTopbarSpacings(widthChange) {
     pluginsContainer = document.getElementById('AsriPluginIconsContainer');
     leftSpacing = document.getElementById('AsriTopbarLeftSpacing');
     rightSpacing = document.getElementById('AsriTopbarRightSpacing');
@@ -237,50 +251,63 @@ function calcTopbarSpacings() {
     let winWidth = window.innerWidth,
         centerRectRight = layoutsCenterRect.right;
 
-    // 左侧
-    if (layoutsCenterRect.left > dragRectLeftInitial + 8) topbar.style.setProperty('--topbar-left-spacing', 0),
-        dragRectLeftInitial = doms.drag.getBoundingClientRect().left;
-    // 每次重新计算 initial
-    else topbar.style.setProperty('--topbar-left-spacing', layoutsCenterRect.left - barSyncRect.right + 4 + 'px');
+    function calc() {
+        // 左侧
+        if (layoutsCenterRect.left > dragRectLeftInitial + 8) topbar.style.setProperty('--topbar-left-spacing', 0),
+            dragRectLeftInitial = doms.drag.getBoundingClientRect().left;
+        // 每次重新计算 initial
+        else topbar.style.setProperty('--topbar-left-spacing', layoutsCenterRect.left - barSyncRect.right + 4 + 'px');
 
-    // 右侧
-    if (centerRectRight < dragRectRightInitial - 8) {
-        topbar.style.setProperty('--topbar-right-spacing', 0);
+        // 右侧
+        if (centerRectRight < dragRectRightInitial - 8) {
+            topbar.style.setProperty('--topbar-right-spacing', 0);
 
-        // 药丸容器形状
-        pluginsContainer.style.setProperty('--container-bg', 'var(--b3-list-hover)');
-        // pluginsContainer.style.left = dragRectRightInitial + 'px';
-        pluginsContainer.style.left = centerRectRight + 'px';
-        // pluginsContainer.style.right = winWidth - rightSpacingRect.right + 'px';
-        pluginsContainer.style.right = '0';
-        pluginsContainer.style.removeProperty('height');
-        pluginsContainer.style.removeProperty('top');
+            dragRectRightInitial = doms.drag.getBoundingClientRect().right;
 
-        dragRectRightInitial = doms.drag.getBoundingClientRect().right;
+            if (isMacOS || isInBrowser) {
+                // doms.dockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
+                // doms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
+                doms.dockr?.style.removeProperty('--avoid-topbar');
+                doms.layoutDockr?.style.removeProperty('--avoid-topbar');
+            }
+        }
+        else {
+            topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 7 + 'px');
 
-        if (isMacOS || isInBrowser) {
-            // doms.dockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
-            // doms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
-            doms.dockr?.style.removeProperty('--avoid-topbar');
-            doms.layoutDockr?.style.removeProperty('--avoid-topbar');
+            if (isMacOS || isInBrowser) {
+                doms.dockr?.style.setProperty('--avoid-topbar', '4px');
+                doms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
+            };
         }
     }
-    else {
-        topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 7 + 'px');
 
-        // 线条形状
-        dragRect = doms.drag.getBoundingClientRect();
-        pluginsContainer.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
-        pluginsContainer.style.left = dragRect.right - 10 + 'px';
-        pluginsContainer.style.right = winWidth - dragRect.right + 8 + 'px';
-        pluginsContainer.style.height = '21px';
-        pluginsContainer.style.top = '13.5px';
+    if (!isWinResizing) calc();
 
-        if (isMacOS || isInBrowser) {
-            doms.dockr?.style.setProperty('--avoid-topbar', '4px');
-            doms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
-        };
-    }
+    // (function barLineSwitch(){
+    //     if (centerRectRight < dragRectRightInitial - 8) {
+    //         dragRectRightInitial = doms.drag.getBoundingClientRect().right;
+    //         // 横线
+    //         pluginsContainer.style.setProperty('--container-bg', 'var(--b3-list-hover)');
+    //         // pluginsContainer.style.left = dragRectRightInitial + 'px';
+    //         pluginsContainer.style.left = centerRectRight + 'px';
+    //         // pluginsContainer.style.right = winWidth - rightSpacingRect.right + 'px';
+    //         pluginsContainer.style.right = '0';
+    //         pluginsContainer.style.removeProperty('height');
+    //         pluginsContainer.style.removeProperty('top');
+    //     }
+    //     else {
+    //         if (isWinResizing) dragRectRightInitial = dragRectRightInitial + widthChange;
+    //         // 竖线
+    //         dragRect = doms.drag.getBoundingClientRect();
+    //         pluginsContainer.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
+    //         pluginsContainer.style.left = dragRect.right - 10 + 'px';
+    //         pluginsContainer.style.right = winWidth - dragRect.right + 8 + 'px';
+    //         pluginsContainer.style.height = '21px';
+    //         pluginsContainer.style.top = '13.5px';
+    //     }
+    // })();
+
+    console.log(`drag右\t\t${dragRectRightInitial}\ncenter右\t${centerRectRight}`)
 }
 
 function calcTabbarSpacings() {
@@ -316,23 +343,45 @@ function calcTabbarSpacings() {
     }
 }
 
-function setResizeObserver(func) {
-    let callback = function (entries, observer) {
-        for (let entry of entries) {
-            func(entry, observer);
-            // 测试
-            // const target = entry.target;
-            // const { width, height } = target.getBoundingClientRect();
-            // console.log(`Element resized: ${width}px x ${height}px`);
-        }
-    }
-    return new ResizeObserver(callback);
-}
+// function setResizeObserver(func) {
+//     let callback = function (entries, observer) {
+//         for (let entry of entries) {
+//             func(entry, observer);
+//             // 测试
+//             // const target = entry.target;
+//             // const { width, height } = target.getBoundingClientRect();
+//             // console.log(`Element resized: ${width}px x ${height}px`);
+//         }
+//     }
+//     return new ResizeObserver(callback);
+// }
 
-function LayoutsCenterResizeObserver(func) {
+function LayoutsCenterResizeObserver() {
     let lytCenter = doms.layouts.querySelector('.layout__center');
-    let observer = setResizeObserver(func);
-    if (lytCenter) observer.observe(lytCenter);
+    // let observer = setResizeObserver(func);
+    const ro = new ResizeObserver(entries => {
+        for (let entry of entries) {
+            // const { inlineSize } = entry.contentBoxSize[0];
+
+            // if (!entry.target.dataset.prevWidth) {
+            //     entry.target.dataset.prevWidth = inlineSize;
+            //     continue;
+            // }
+
+            // const prevWidth = parseFloat(entry.target.dataset.prevWidth);
+
+            // const widthChange = inlineSize - prevWidth;
+
+            // // 保存当前宽度作为下一次的上一次宽度
+            // entry.target.dataset.prevWidth = inlineSize;
+            // // 处理宽度变化量
+            // console.log(`宽度变化量\t${widthChange}px`);
+
+            handleCenterResize();
+        }
+    });
+
+    if (lytCenter) ro.observe(lytCenter);
     else {
         let count = 0,
             maxCount = 10;
@@ -345,7 +394,7 @@ function LayoutsCenterResizeObserver(func) {
             if (count === maxCount || lytCenter) {
                 clearInterval(tryGetLytCenter);
                 // doms.layouts = document.getElementById('layouts');
-                observer.observe(lytCenter);
+                ro.observe(lytCenter);
             }
         }
         setTimeout(() => {
@@ -354,7 +403,7 @@ function LayoutsCenterResizeObserver(func) {
     }
 }
 
-function handleResize() {
+function handleCenterResize() {
     calcTopbarSpacings();
     calcTabbarSpacings();
     statusPositon();
@@ -362,9 +411,8 @@ function handleResize() {
 
 if (!isMobile && !doms.toolbarWindow) {
     setTimeout(calcTopbarSpacings, 200);
-    LayoutsCenterResizeObserver(handleResize);
+    LayoutsCenterResizeObserver(handleCenterResize);
 }
-
 
 /**
  * 新小窗页签栏左右边距控制

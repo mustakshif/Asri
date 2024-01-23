@@ -36,8 +36,9 @@ body {
 
 
 body:not(.body--mobile) {
+    // --toolbar-height: 42px;
     --topbar-z-index: 2;
-    --avoid-topbar: calc(var(--toolbar-height) - 6px);
+    --avoid-topbar: calc(var(--toolbar-height));
 
     .toolbar {
         margin-bottom: calc(var(--toolbar-height) * -1);
@@ -47,6 +48,7 @@ body:not(.body--mobile) {
 
         #drag {
             opacity: 0;
+            // background-color: aqua;
         }
     }
 
@@ -72,7 +74,7 @@ body:not(.body--mobile) {
             // outline-offset: 0px;
             position: absolute;
             // top: 10px;
-            top: 42px;
+            top: var(--toolbar-height);
             background-color: var(--container-bg);
             // background-color: var(--b3-theme-surface);
             background-color: var(--b3-border-color-trans);
@@ -82,10 +84,12 @@ body:not(.body--mobile) {
 
         #AsriTopbarLeftSpacing {
             width: var(--topbar-left-spacing);
+            // transition: 0.2s;
         }
 
         #AsriTopbarRightSpacing {
             width: var(--topbar-right-spacing);
+            // transition: 0.2s;
         }
     }
 
@@ -124,19 +128,22 @@ body:not(.body--mobile) {
             .fn__space {
                 width: 0;
             }
-            .block__icon{
+
+            .block__icon {
                 margin: 1.5px;
             }
         }
     }
 
-    // 侧栏 ————————————————————————————
-    #dockLeft,
-    #dockRight {
-        padding-top: var(--avoid-topbar);
+    // 侧栏、侧栏面板 ——————————————————————————
+    #dockLeft {
+        padding-top: calc(var(--avoid-topbar) - 6px);
     }
 
-    // 侧栏面板 ——————————————————————————
+    #dockRight {
+        background-color: var(--b3-theme-background);
+    }
+
     .layout__dockl,
     .layout__dockr {
 
@@ -153,14 +160,29 @@ body:not(.body--mobile) {
         }
     }
 
-    #dockRight {
-        background-color: var(--b3-theme-background);
+    .layout__dockl{
+        >.fn__flex:not(.fn__none):first-child,
+        >.fn__flex.fn__none~.fn__flex {
+            .layout-tab-container {
+                padding-top: calc(var(--avoid-topbar) - 6px);
+            }
+        }
     }
 
-    .layout__dockr:not(.layout--float) {
-        .layout-tab-container {
-            background-color: var(--b3-theme-background);
-            border-left: 1px solid var(--b3-border-color);
+    .layout__dockr {
+
+        >.fn__flex:not(.fn__none):first-child,
+        >.fn__flex.fn__none~.fn__flex {
+            .layout-tab-container {
+                padding-top: var(--avoid-topbar);
+            }
+        }
+
+        &:not(.layout--float) {
+            .layout-tab-container {
+                background-color: var(--b3-theme-background);
+                border-left: 1px solid var(--b3-border-color);
+            }
         }
     }
 

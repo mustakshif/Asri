@@ -35,6 +35,7 @@ Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 * ➖ Dividing lines simplified, creating a consistent and organized layout style.
 * 🧩 Optimized the inner and outer spacing of super blocks, making it easy to achieve grid and masonry layouts and create an elegant doc page.
 * 📐 Extra spacing between layout blocks removed, expanding overall display range.
+* 🔛 Adaptive layout implemented, maximizing screen space utilization.
 * 🌓 Light and dark modes supported.
 * 🗂️ File tree and outline indent guides added.
 * 🔍 Search list and backlink list display optimized.

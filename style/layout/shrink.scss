@@ -304,14 +304,15 @@
                     margin: 0;
                     padding: 2px 8px;
                     border-radius: 0;
-                    background-color: change-color($color: pickThemeColor($theme-light, surface), $lightness: 90%) !important;
+                    background-color: change-color($color: pickThemeColor($theme-light, surface), $lightness: 90%);
 
                     @include darkmode-counterpart {
-                        background-color: change-color($color: pickThemeColor($theme-dark, surface), $lightness: 28%) !important;
+                        background-color: change-color($color: pickThemeColor($theme-dark, surface), $lightness: 28%);
                     }
 
                     .layout--float &,
-                    .layout__center & {
+                    .layout__center &,
+                    .layout__dockr &{
                         background-color: var(--b3-theme-surface) !important;
                     }
                 }
