@@ -78,24 +78,34 @@ isLinux && document.body.classList.add('body--linux');
 isMobile && document.body.classList.add('body--mobile');
 isInBrowser && document.body.classList.add("body--browser");
 
-function addFullscreenClassName() {
+
+let isWinResizing = false, resizeTimeout;
+
+function handleWinResize() {
     if (!isInBrowser && !isMobile) {
         let currentWindow = require("@electron/remote").getCurrentWindow();
 
         currentWindow.on('resize', () => {
-            console.log('resize')
+            console.log('resize');
+
             if (isFullScreen()) {
                 document.body.classList.add('body--fullscreen');
             } else {
                 document.body.classList.remove('body--fullscreen');
             }
 
-            calcTopbarSpacings();
+            isWinResizing = true;
+
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function () {
+                isWinResizing = false;
+                // calcTopbarSpacings();
+            }, 200);
         })
     }
 }
 
-addFullscreenClassName();
+handleWinResize();
 
 function setTrafficLightPosition(x, y = x) {
     require("@electron/remote").getCurrentWindow().setWindowButtonPosition({ x: x, y: y });
@@ -207,12 +217,11 @@ let dragRectLeftInitial = doms.drag.getBoundingClientRect().left,
     dragRectRightInitial = doms.drag.getBoundingClientRect().right;
 let pluginsContainer, leftSpacing, rightSpacing, topbar,
     layoutsCenterRect, leftSpacingRect, rightSpacingRect, barSyncRect, dragRect;
-let isWinResizing = false, resizeTimeout;
 
 if (!isMobile && doms.toolbar) {
     createTopbarElementById('AsriPluginIconsContainer', undefined, doms.drag);
     createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barSync);
-    isMacOS? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
+    isMacOS ? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
 }
 
 function calcTopbarSpacings() {
@@ -250,8 +259,10 @@ function calcTopbarSpacings() {
         dragRectRightInitial = doms.drag.getBoundingClientRect().right;
 
         if (isMacOS || isInBrowser) {
-            doms.dockr.style?.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
-            doms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
+            // doms.dockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
+            // doms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
+            doms.dockr?.style.removeProperty('--avoid-topbar');
+            doms.layoutDockr?.style.removeProperty('--avoid-topbar');
         }
     }
     else {
@@ -351,14 +362,6 @@ function handleResize() {
 
 if (!isMobile && !doms.toolbarWindow) {
     setTimeout(calcTopbarSpacings, 200);
-    window.addEventListener('resize', function () {
-        isWinResizing = true;
-
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function () {
-            isWinResizing = false;
-        }, 200);
-    });
     LayoutsCenterResizeObserver(handleResize);
 }
 
