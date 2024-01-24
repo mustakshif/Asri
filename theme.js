@@ -516,15 +516,16 @@ function dockBg() {
             if (!isSideDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
                 switch (dir) {
                     case 'l':
-                        dock.style.borderRightColor = 'transparent';
+                        // dock.style.borderRightColor = 'transparent';
+                        dock.style.setProperty('--border-clr', 'transparent');
                         break;
                     case 'r':
-                        dock.style.borderLeftColor = 'transparent';
+                        // dock.style.borderLeftColor = 'transparent';
+                        dock.style.setProperty('--border-clr', 'transparent');
                         break;
                 }
             } else {
-                dock.style.removeProperty('border-left-color');
-                dock.style.removeProperty('border-right-color');
+                dock.style.removeProperty('--border-clr');
             }
         }
     }

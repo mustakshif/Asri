@@ -19,13 +19,25 @@
     }
 
     &#dockLeft {
-        border-right-width: 1px;
-        border-right-color: transparent;
+        --border-clr:var(--b3-border-color);
+        box-shadow: 1px var(--toolbar-height) 0 var(--border-clr);
+        border:none;
+        padding-left: 1px;
+        // border-right-width: 1px;
+        // border-right-color: transparent;
     }
 
     &#dockRight {
-        border-left-width: 1px;
-        border-left-color: transparent;
+        --border-clr:var(--b3-border-color);
+        box-shadow: -1px var(--toolbar-height) 0 var(--border-clr);
+        border: none;
+        // border-left-width: 1px;
+        // border-left-color: transparent;
+
+        .body--mac &,
+        .body--browser & {
+            box-shadow: -1px 0 0 var(--border-clr);
+        }
     }
 
     &#dockBottom {
@@ -44,14 +56,9 @@
         // -> js
         background-color: var(--b3-theme-surface);
 
-        &#dockLeft {
-            border-right-color: transparent;
+        &#dockLeft, &#dockRight {
+            --border-clr:var(--b3-border-color)
         }
-
-        &#dockRight {
-            border-left-color: transparent;
-        }
-
     }
 }
 
