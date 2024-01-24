@@ -1,13 +1,13 @@
 ### v2.0.0
 
-* 🎉 全新顶栏设计，融合页签栏，兼顾美感与效率
+* 🎉 全新顶栏设计，与标签栏无缝融合，兼顾美感与效率
 * 主题更名为 Asri，更具现代气息
 * [修复自定义字体 CSS 代码失效的问题](https://github.com/mustakshif/Asri-for-SiYuan/issues/11)
 * 其他细节优化
 
 <br />
 
-* 🎉 Introduced a brand new top bar design that combines the tab bar, balancing aesthetics and efficiency.
+* 🎉 Introduced a new top bar design seamlessly integrated with the tab bar, balancing aesthetics and efficiency.
 * Renamed the theme to Asri, giving it a more modern touch.
 * [Fixed the issue where custom font CSS code was not working](https://github.com/mustakshif/Asri-for-SiYuan/issues/11).
 * Other minor optimizations and improvements.

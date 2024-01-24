@@ -12,7 +12,7 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ### v2.0.0
 
-* 🎉 Introduced a brand new top bar design that combines the tab bar, balancing aesthetics and efficiency.
+* 🎉 Introduced a new top bar design seamlessly integrated with the tab bar, balancing aesthetics and efficiency.
 * Renamed the theme to Asri, giving it a more modern touch.
 * [Fixed the issue where custom font CSS code was not working](https://github.com/mustakshif/Asri-for-SiYuan/issues/11).
 * Other minor optimizations and improvements.
@@ -21,7 +21,7 @@ Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
 ## Theme Features
 
-* 📃 Introducing top-bar fusion, balancing aesthetics and efficiency
+* 📃 Introducing top-bar fusion, striking a balance between aesthetics and efficiency.
 
     * 📌 All blank areas of the top bar can be used to drag the window (except for the gap between tabs)
     * 📌 The code for pinning the top bar in previous versions is no longer effective and can be manually deleted.
