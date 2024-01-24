@@ -10,23 +10,21 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
-### v1.1.19
+### v2.0.0
 
-* Optimized the borders of elements such as `dialogs`, `menus`, `toolbars`, `status bars`, and `tooltips` in dark mode, enhancing accessibility.
-* Optimized the layout of the `Export PDF window`.
-* Improved compatibility with Safari browser.
-* Fixed display issues when using fixed headers in `tables`.
+* 🎉 Introduced a brand new top bar design that combines the tab bar, balancing aesthetics and efficiency.
+* Renamed the theme to Asri, giving it a more modern touch.
+* [Fixed the issue where custom font CSS code was not working](https://github.com/mustakshif/Asri-for-SiYuan/issues/11).
+* Other minor optimizations and improvements.
 
 Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
 ## Theme Features
 
-* 📃 Top bar hidden, window drag area adjusted for maximum display space.
-  * 📌 Quickly access the top bar by hovering over the area with icons on the **left and right sides of the top of the window**.
-  * 📌 When top bar hidden, window drag area adjusted to **blank areas** of:
-    * **Tab bar (not toolbar/top bar)**
-    * **Breadcrumb**
-    * **Sidebar panel title and above**
+* 📃 Introducing top-bar fusion, balancing aesthetics and efficiency
+
+    * 📌 All blank areas of the top bar can be used to drag the window (except for the gap between tabs)
+    * 📌 The code for pinning the top bar in previous versions is no longer effective and can be manually deleted.
 * 🚥 Position of traffic lights on macOS adjusted, optimizing the layout rhythm.
 
   * 📌 You will need to restart the application after switching to another theme to restore the traffic light to its default position.
