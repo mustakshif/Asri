@@ -128,7 +128,7 @@ body.body--window {
         $glow-delay: $hide-delay + $hide-duration;
         // $transparent-toolbar-duration: $glow-duration * $glow-iteration;
 
-        animation: 
+        animation:
             sway $sway-duration 0s $sway-iteration alternate,
             hide $hide-duration $hide-delay,
             transparent-toolbar $glow-duration $glow-delay $glow-iteration alternate;
@@ -140,9 +140,11 @@ body.body--window {
                 transform: translateY(calc(var(--offset) * -1));
                 opacity: 1;
             }
+
             50% {
                 transform: translateY(calc(var(--offset)))
             }
+
             100% {
                 transform: none;
                 opacity: 1
@@ -154,9 +156,11 @@ body.body--window {
                 transform: translateY(calc(var(--offset)));
                 opacity: 1;
             }
+
             50% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(calc(var(--toolbar-height) * -1 + 10px));
                 opacity: 0;
@@ -168,6 +172,7 @@ body.body--window {
                 opacity: 1;
                 background-color: var(--b3-theme-background)
             }
+
             // 20% {
             //     opacity: 1;
             //     background-color: var(--b3-theme-primary-light);
@@ -176,6 +181,7 @@ body.body--window {
                 opacity: 1;
                 background-color: var(--b3-theme-primary-light);
             }
+
             // 100% {
             //     opacity: 1;
             //     background-color: var(--b3-theme-background);
@@ -186,17 +192,19 @@ body.body--window {
             0% {
                 opacity: 0;
             }
+
             100% {
                 opacity: 1
             }
         }
 
-        &::before, &::after {
+        &::before,
+        &::after {
             content: '';
             pointer-events: none;
             height: 100%;
             position: absolute;
-            top:0;
+            top: 0;
             background-color: var(--b3-theme-primary);
             filter: blur(30px);
             animation: glow $glow-duration $glow-delay $glow-iteration alternate;
@@ -526,5 +534,14 @@ body:where(.hadeeth-pin-toolbar, .body--fullscreen):not(.body--window) {
 body.body--win32.hadeeth-pin-toolbar {
     #toolbar {
         padding-left: 6px;
+    }
+}
+
+
+// 全屏状态
+body.body--win32:not(.hadeeth-pin-toolbar) {
+    .fullscreen>.block__icons,
+    .fullscreen>.protyle-breadcrumb {
+        padding-right: 10px;
     }
 }

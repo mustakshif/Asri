@@ -34,10 +34,12 @@ body {
     text-underline-position: under;
 }
 
+.body--linux {
+    @extend .body--win32;
+}
 
 body:not(.body--mobile) {
-    // --toolbar-height: 42px;
-    --topbar-z-index: 2;
+    --topbar-z-index: 9;
     --avoid-topbar: calc(var(--toolbar-height));
 
     .toolbar {
@@ -53,8 +55,6 @@ body:not(.body--mobile) {
     }
 
     #toolbar {
-        // --topbar-left-spacing: 20px;
-        // --topbar-right-spacing: 0px;
         background-color: transparent;
         border-bottom-color: transparent;
 
@@ -132,7 +132,7 @@ body:not(.body--mobile) {
     }
 
     #dockRight {
-        background-color: var(--b3-theme-background);
+        // background-color: var(--b3-theme-background);
         padding-top: var(--avoid-topbar);
     }
 
@@ -160,6 +160,12 @@ body:not(.body--mobile) {
                 padding-top: calc(var(--avoid-topbar) - 6px);
             }
         }
+
+        // &:not(.layout--float) {
+        //     .layout-tab-container {
+        //         border-right: 1px solid var(--b3-border-color-trans);
+        //     }
+        // }
     }
 
     .layout__dockr {
@@ -173,8 +179,8 @@ body:not(.body--mobile) {
 
         &:not(.layout--float) {
             .layout-tab-container {
-                background-color: var(--b3-theme-background);
-                border-left: 1px solid var(--b3-border-color);
+                // background-color: var(--b3-theme-background);
+                // border-left: 1px solid var(--border-lyt-right);
             }
         }
     }

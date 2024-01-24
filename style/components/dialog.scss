@@ -58,6 +58,10 @@
                     background-color: var(--b3-theme-surface);
                     padding: 16px 8px;
 
+                    .config__tab-hr {
+                        background-color: var(--b3-border-color-trans);
+                    }
+
                     .b3-list-item {
                         height: 32px;
                         line-height: 30px;

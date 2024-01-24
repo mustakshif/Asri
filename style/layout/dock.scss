@@ -20,24 +20,24 @@
 
     &#dockLeft {
         --border-clr:var(--b3-border-color);
-        box-shadow: 1px var(--toolbar-height) 0 var(--border-clr);
-        border:none;
-        padding-left: 1px;
-        // border-right-width: 1px;
-        // border-right-color: transparent;
+        // box-shadow: 1px var(--toolbar-height) 0 var(--border-clr);
+        // border:none;
+        // padding-left: 1px;
+        border-right-width: 1px;
+        border-right-color: var(--border-clr);
     }
 
     &#dockRight {
         --border-clr:var(--b3-border-color);
-        box-shadow: -1px var(--toolbar-height) 0 var(--border-clr);
-        border: none;
-        // border-left-width: 1px;
-        // border-left-color: transparent;
+        // box-shadow: -1px var(--toolbar-height) 0 var(--border-clr);
+        // border: none;
+        border-left-width: 1px;
+        border-left-color: var(--border-clr);
 
-        .body--mac &,
-        .body--browser & {
-            box-shadow: -1px 0 0 var(--border-clr);
-        }
+        // .body--mac &,
+        // .body--browser & {
+        //     box-shadow: -1px 0 0 var(--border-clr);
+        // }
     }
 
     &#dockBottom {
@@ -59,12 +59,6 @@
         &#dockLeft, &#dockRight {
             --border-clr:var(--b3-border-color)
         }
-    }
-}
-
-body.body--mac{
-    #dockRight {
-        border-left-color: var(--b3-border-color);
     }
 }
 

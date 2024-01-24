@@ -289,11 +289,12 @@ function calcTopbarSpacings(widthChange) {
             // 横线
             pluginsContainer.style.setProperty('--container-bg', 'var(--b3-list-hover)');
             // pluginsContainer.style.left = dragRectRightInitial + 'px';
-            pluginsContainer.style.left = centerRectRight + 'px';
+            pluginsContainer.style.left = centerRectRight + 8 + 'px';
             // pluginsContainer.style.right = winWidth - rightSpacingRect.right + 'px';
-            pluginsContainer.style.right = '0';
+            pluginsContainer.style.right = '8px';
             pluginsContainer.style.removeProperty('height');
             pluginsContainer.style.removeProperty('top');
+            doms.layouts.style.setProperty('--border-lyt-right','var(--b3-border-color-trans)');
         }
         else {
             // if (isWinResizing) dragRectRightInitial = dragRectRightInitial + widthChange;
@@ -304,6 +305,7 @@ function calcTopbarSpacings(widthChange) {
             pluginsContainer.style.right = winWidth - dragRect.right + 8 + 'px';
             pluginsContainer.style.height = '21px';
             pluginsContainer.style.top = '13.5px';
+            doms.layouts.style.removeProperty('--border-lyt-right');
         }
     })();
 
