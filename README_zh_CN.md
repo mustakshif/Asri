@@ -1,12 +1,12 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v12.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v13.png)
 
 <br/>
 
-简体中文 ｜ [English](https://github.com/mustakshif/Hadeeth-for-SiYuan/blob/main/README_en_US.md)
+简体中文 ｜ [English](https://github.com/mustakshif/Asri-for-SiYuan/blob/main/README_en_US.md)
 
-# Hadeeth - theme for SiYuan
+# Asri - theme for SiYuan
 
-Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyuan-note/siyuan)主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
+Asri 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyuan-note/siyuan)主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
 
 ## 最近更新
 
@@ -29,7 +29,6 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
     * **页签栏（不是顶栏）**
     * **面包屑**
     * **侧栏面板标题及上部**
-  * 📌 如需顶栏常驻，请前往 `设置 - 外观 - 代码片段`，在 `JS` 选项卡下添加这段代码并启用：`document.body.classList.add("hadeeth-pin-toolbar");`。重新隐藏顶栏需要关闭这段代码并重新载入页面或重启应用。
 * 🚥 调整 Mac 端红绿灯位置，优化版面节奏
 
   * 📌 切换至其他主题后需要重启应用才能将红绿灯恢复至默认位置
@@ -37,6 +36,7 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
 * ➖ 精简分割线，打造一体化的版面风格，更为清爽整洁
 * 🧩 优化超级块内外部间距，轻松实现网格、瀑布流布局，打造优雅排版
 * 📐 取消页面区块间的多余间距，扩大展示范围
+* 🔛 宽度自适应布局，充分利用屏幕空间
 * 🌓 支持亮色模式和暗色模式
 * 🗂️ 添加文档树、大纲缩进参考线
 * 🔍 优化搜索列表、反链列表展示
@@ -48,8 +48,8 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
 
 ## 如何使用
 
-* **应用内下载更新（推荐）**：进入思源笔记应用，在 `设置 - 集市 - 主题` 中搜索下载「Hadeeth」并应用
-* GitHub 下载更新：下载 release 中的 `package.zip`，手动解压至思源笔记工作空间下的 `conf/appearance/themes`，重启思源，在应用 `设置 - 外观` 中选择 Hadeeth 主题
+* **应用内下载更新（推荐）**：进入思源笔记应用，在 `设置 - 集市 - 主题` 中搜索下载「Asri」并应用
+* GitHub 下载更新：下载 release 中的 `package.zip`，手动解压至思源笔记工作空间下的 `conf/appearance/themes`，重启思源，在应用 `设置 - 外观` 中选择 Asri 主题
 
 ## 计划
 
@@ -68,7 +68,7 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
 | ---------------------------------------------------------- | ---------- | ------ |
 |- 菜单背景模糊                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
 |- 隐藏顶栏<br />- 侧栏面板列表项前圆点<br />- 大纲列表标题图标<br />- 状态栏<br />- 搜索列表<br />- 表格列宽<br />- `/` 菜单多栏布局 | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
-|- 文档树缩进线<br />- DOM 变动观察相关函数                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
+|- 顶栏页签栏合并<br />- 文档树缩进线<br />- DOM 变动观察相关函数                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
 
 (以上排名不分先后)
 
@@ -77,7 +77,7 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
 * [苹果人机界面指南 - 基础 - 颜色](https://developer.apple.com/cn/design/human-interface-guidelines/color)
 
 ## 反馈和建议
-- [项目主页](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues)提交 issue 或 PR
+- [项目主页](https://github.com/mustakshif/Asri-for-SiYuan/issues)提交 issue 或 PR
 - 发送邮件至 mustakshif@icloud.com
 
 ## 其他

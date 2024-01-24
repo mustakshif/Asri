@@ -257,6 +257,10 @@
                 font-family: "Segoe UI";
                 font-size: 11px;
             }
+
+            body.body--linux & {
+                font-family: Dejavu Sans;
+            }
         }
 
         &>svg {
@@ -304,14 +308,15 @@
                     margin: 0;
                     padding: 2px 8px;
                     border-radius: 0;
-                    background-color: change-color($color: pickThemeColor($theme-light, surface), $lightness: 90%) !important;
+                    background-color: change-color($color: pickThemeColor($theme-light, surface), $lightness: 90%);
 
                     @include darkmode-counterpart {
-                        background-color: change-color($color: pickThemeColor($theme-dark, surface), $lightness: 28%) !important;
+                        background-color: change-color($color: pickThemeColor($theme-dark, surface), $lightness: 28%);
                     }
 
                     .layout--float &,
-                    .layout__center & {
+                    .layout__center &,
+                    .layout__dockr &{
                         background-color: var(--b3-theme-surface) !important;
                     }
                 }
@@ -479,7 +484,7 @@
         background-color: transparent;
     }
 
-    body.body--win32:not(.hadeeth-pin-toolbar) & {
-        padding-right: 10px;
-    }
+    // body.body--win32:not(.hadeeth-pin-toolbar) & {
+    //     padding-right: 10px;
+    // }
 }

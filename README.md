@@ -1,10 +1,10 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v12.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v13.png)
 
 <br/>
 
-[简体中文](https://github.com/mustakshif/Hadeeth-for-SiYuan/blob/main/README_zh_CN.md) | English
+[简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main/README_zh_CN.md) | English
 
-# Hadeeth - theme for SiYuan
+# Asri - theme for SiYuan
 
 An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), provides an elegant and efficient note-taking experience with its lightweight and minimalistic style.
 
@@ -27,7 +27,6 @@ Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
     * **Tab bar (not toolbar/top bar)**
     * **Breadcrumb**
     * **Sidebar panel title and above**
-  * 📌 If you need the top bar pinned, please go to `Settings - Appearance - Code Snippet`, then add and enable this code line under `JS` tab: `document.body.classList.add("hadeeth-pin-toolbar");`. To hide the top bar again, you need to disable this snippet and reload the page or restart the app.
 * 🚥 Position of traffic lights on macOS adjusted, optimizing the layout rhythm.
 
   * 📌 You will need to restart the application after switching to another theme to restore the traffic light to its default position.
@@ -35,6 +34,7 @@ Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 * ➖ Dividing lines simplified, creating a consistent and organized layout style.
 * 🧩 Optimized the inner and outer spacing of super blocks, making it easy to achieve grid and masonry layouts and create an elegant doc page.
 * 📐 Extra spacing between layout blocks removed, expanding overall display range.
+* 🔛 Adaptive layout implemented, maximizing screen space utilization.
 * 🌓 Light and dark modes supported.
 * 🗂️ File tree and outline indent guides added.
 * 🔍 Search list and backlink list display optimized.
@@ -46,8 +46,8 @@ Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
 ## How to use
 
-* **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Hadeeth" to download and apply.
-* Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Hadeeth" in your theme list in `Settings - Appearance`.
+* **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
+* Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
 
 ## Plans
 
@@ -66,7 +66,7 @@ The theme development process drew inspiration from the following themes, and I 
 | ---------------------------------------------------------- | ---------- | ------ |
 |- Menu background blur                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
 |- Toolbar hiding<br />- Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
-|- File tree indent guides<br />- MutationObserver related functions                                     | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
+|- Topbar-tabbar mergence<br />- File tree indent guides<br />- MutationObserver related functions                                     | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
 
 （The order in the list above does not imply any ranking）
 
@@ -76,7 +76,7 @@ Other reference materials:
 * [Apple's Human Interface Guidelines - Foundations - Color](https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/)
 
 ## Feedbacks & suggestions
-- Create an issue or PR at [the project page](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues)
+- Create an issue or PR at [the project page](https://github.com/mustakshif/Asri-for-SiYuan/issues)
 - Send an email to mustakshif@icloud.com
 
 ## Notes

@@ -193,6 +193,11 @@
     // -> js
     .b3-dialog__container {
         background-color: var(--b3-menu-background);
+
+        .b3-dialog__body{
+            border-radius: 11px;
+            z-index: 0;
+        }
     }
 }
 

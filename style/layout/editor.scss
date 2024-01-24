@@ -711,6 +711,7 @@
 }
 
 .protyle {
+    // background-color: transparent; // 全屏视图下是透明的
 
     // 题头图区域
     &-background {
@@ -818,11 +819,6 @@
 &-action {
     // 代码块
     @include protyle-icons;
-}
-
-//编辑区域
-&-content {
-    background-color: var(--b3-theme-background);
 }
 
 //文档标题
@@ -961,7 +957,6 @@
 }
 
 .b3-typography {
-
     // @extend .protyle-wysiwyg;
     >* {
         border-radius: 10px;

@@ -1,8 +1,14 @@
 @use '../base' as *;
 
 .protyle-breadcrumb {
+    // padding: 0 4px;
     height: 42px;
     color: var(--b3-theme-on-surface);
+    // background-color: transparent; //全屏视图下是透明的
+
+    .block__icon:hover:not([disabled]):not(.ft__primary) {
+        background-color: transparent;
+    }
 
     // alt+Y 全屏视图
     .fullscreen>& {
@@ -11,13 +17,6 @@
 
         >.protyle-breadcrumb__space:hover{
             background-color: transparent;
-        }
-
-        body.body--win32:not(.hadeeth-pin-toolbar) & {
-            // -> js
-            
-            padding-right: 10px;
-            // 默认会给窗口控制留空间，为108px
         }
     }
 

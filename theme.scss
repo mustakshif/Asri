@@ -6,8 +6,6 @@ html[data-theme-mode="light"]:root {
     // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
 
     @include theme-root($theme-light);
-    @include font-family;
-    @include cssvars;
 
     body {
         ::selection {
@@ -18,8 +16,10 @@ html[data-theme-mode="light"]:root {
 
 html[data-theme-mode="dark"]:root {
     color-scheme: dark;
-
     @include theme-root($theme-dark);
+}
+
+:root {
     @include font-family;
     @include cssvars;
 }
@@ -32,4 +32,8 @@ body {
     }
 
     text-underline-position: under;
+}
+
+.body--linux {
+    @extend .body--win32;
 }

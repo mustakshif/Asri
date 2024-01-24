@@ -4,25 +4,39 @@
     height: var(--toolbar-height);
     background-color: var(--b3-theme-background);
     border-bottom: 1px solid var(--b3-border-color);
+    overflow: visible;
 
     #barWorkspace {
         background-color: transparent;
-        color:var(--b3-theme-on-primary);
+        color:var(--b3-theme-on-surface);
         font-weight: 600;
         height: var(--toolbar-height);
         position: relative;
-        transition: none;
+        transition: color 0.2s;
 
         &::before {
+            --outline-clr: var(--b3-border-color-trans);
             content: '';
             display: block;
             height: 28px;
             width: 100%;
             position: absolute;
-            background-color: var(--b3-theme-primary);
             z-index: 0;
             transform: translate(-5px, 5px);
             border-radius: 6px;
+            transition: background-color 0.2s, outline 0.2s, box-shadow 0.2s;
+            outline: 1.5px solid var(--outline-clr);
+            outline-offset: -1.5px;
+        }
+
+        &:hover{
+            color: var(--b3-theme-on-primary);
+
+            &::before{
+                --outline-clr:transparent;
+                background-color: var(--b3-theme-primary);
+                // @include menu-shadow(map-get($theme-light, primary), map-get($theme-dark, primary), 0.3, 0.4, 0px);
+            }
         }
 
         .toolbar__text {
@@ -38,6 +52,10 @@
 
     .toolbar__item {
         height: var(--toolbar-height);
+
+        &:hover{
+            background-color: transparent;
+        }
         
         svg {
             align-self: center;
@@ -61,7 +79,7 @@
 
 
     // 应用全屏时
-    &[style="padding-left: 0px;"] {
+    &[style*="padding-left: 0px;"] {
         padding-left: 8px !important;
     }
 }

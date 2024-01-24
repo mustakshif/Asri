@@ -1,34 +1,75 @@
 @use '../base' as *;
 
-body:not(.body--mobile) {
-    --topbar-z-index: 1;
-    --padding-top-for-docks: calc(var(--toolbar-height) - 6px);
+
+body:not(.body--mobile, .body--window) {
+    --topbar-z-index: 2;
+    --avoid-topbar: calc(var(--toolbar-height));
 
     .toolbar {
         margin-bottom: calc(var(--toolbar-height) * -1);
         z-index: var(--topbar-z-index);
-        pointer-events: fill;
+        pointer-events: none;
+        app-region: drag;
 
         #drag {
             opacity: 0;
-            pointer-events: none;
+            // background-color: aqua;
         }
     }
 
     #toolbar {
         background-color: transparent;
-        border-bottom: none;
+        border-bottom-color: transparent;
+
+        .toolbar__item {
+            pointer-events: visibleFill;
+            app-region: no-drag;
+            height: auto;
+        }
+
+        #AsriPluginIconsContainer {
+            width: auto;
+            height: 1px;
+            border-radius: 6px;
+            align-self: center;
+            position: absolute;
+            top: var(--toolbar-height);
+            background-color: var(--b3-border-color-trans);
+            z-index: -1;
+        }
+
+        #AsriTopbarLeftSpacing {
+            width: var(--topbar-left-spacing);
+        }
+
+        #AsriTopbarRightSpacing {
+            width: var(--topbar-right-spacing);
+        }
     }
 
-    .fn__flex-column[data-type=wnd]>.fn__flex:first-child {
-        z-index: calc(var(--topbar-z-index) + 1);
-    }
-
-    .layout-tab-bar {
+    // 页签栏
+    .layout__center .layout-tab-bar {
         margin: 10px;
+
+        &:not(&--readonly) {
+            margin-right: 4px;
+        }
 
         &--readonly {
             margin-left: 0;
+            margin-right: 8px;
+
+            .item--readonly {
+                justify-content: end;
+
+                .fn__flex-1:nth-child(2) {
+                    flex-grow: 0;
+                }
+
+                .block__icon:hover {
+                    background-color: transparent;
+                }
+            }
         }
     }
 
@@ -36,20 +77,35 @@ body:not(.body--mobile) {
         margin: 8px auto;
     }
 
-    // 侧栏 ————————————————————————————
-    #dockLeft,
-    #dockRight {
-        padding-top: var(--padding-top-for-docks);
+    .layout__center {
+        .protyle-breadcrumb {
+            .fn__space {
+                width: 0;
+            }
+
+            .block__icon {
+                margin: 1.5px;
+            }
+        }
     }
 
-    // 侧栏面板 ——————————————————————————
+    // 侧栏、侧栏面板 ——————————————————————————
+    #dockLeft {
+        padding-top: calc(var(--avoid-topbar) - 6px);
+    }
+
+    #dockRight {
+        background-color: var(--b3-theme-background);
+        padding-top: var(--avoid-topbar);
+    }
+
     .layout__dockl,
     .layout__dockr {
 
         >.fn__flex:not(.fn__none):first-child,
         >.fn__flex.fn__none~.fn__flex {
             .layout-tab-container {
-                padding-top: var(--padding-top-for-docks);
+                padding-top: var(--avoid-topbar);
             }
         }
 
@@ -58,14 +114,80 @@ body:not(.body--mobile) {
         }
     }
 
-    &.body--mac {
-        .layout__dockr.layout--float {
+    .layout__dockl {
 
-            >.fn__flex:not(.fn__none):first-child,
-            >.fn__flex.fn__none~.fn__flex {
-                .layout-tab-container {
-                    padding-top: 4px;
-                }
+        >.fn__flex:not(.fn__none):first-child,
+        >.fn__flex.fn__none~.fn__flex {
+            .layout-tab-container {
+                padding-top: calc(var(--avoid-topbar) - 6px);
+            }
+        }
+
+        // &:not(.layout--float) {
+        //     .layout-tab-container {
+        //         border-right: 1px solid var(--b3-border-color-trans);
+        //     }
+        // }
+    }
+
+    .layout__dockr {
+
+        >.fn__flex:not(.fn__none):first-child,
+        >.fn__flex.fn__none~.fn__flex {
+            .layout-tab-container {
+                padding-top: var(--avoid-topbar);
+            }
+        }
+
+        &:not(.layout--float) {
+            .layout-tab-container {
+                background-color: var(--b3-theme-background);
+                border-left: 1px solid var(--b3-border-color);
+            }
+        }
+    }
+
+    #dockLeft,
+    #dockRight {
+        &:not(.dock-layout-expanded) {
+            background-color: var(--b3-theme-background);
+        }
+
+        &::before {
+            content: '';
+            height: var(--toolbar-height);
+            position: fixed;
+            background-color: inherit;
+            width: inherit;
+            top: 0;
+        }
+    }
+
+    #dockRight::before {
+        right: 0;
+    }
+
+    &.body--mac {
+        #dockRight {
+            padding-top: var(--avoid-topbar);
+        }
+    }
+
+    &:where(.body--mac, .body--browser) {
+        #dockRight::before {
+            display: none;
+        }
+    }
+
+    &:not(.body--mac){
+        .layout__dockl.layout--float{
+            &::before {
+                content: '';
+                width: 41px;
+                height: var(--toolbar-height);
+                position: fixed;
+                left: 0;
+                background-color:var(--b3-theme-background);
             }
         }
     }
@@ -80,6 +202,28 @@ body:not(.body--mobile) {
                     padding-top: 4px;
                 }
             }
+        }
+    }
+
+    .fn__flex-1.has-dockb {
+
+        // -> js
+        .layout__dockl,
+        .layout__dockr {
+
+            // 浮动布局
+            &.layout--float {
+                height: calc(100% - 42px - var(--status-height, 32px));
+                top: 0;
+            }
+        }
+    }
+
+    &.body--win32 {
+
+        .fullscreen>.block__icons,
+        .fullscreen>.protyle-breadcrumb {
+            padding-right: 10px;
         }
     }
 
@@ -116,7 +260,13 @@ body:not(.body--mobile) {
 
     .protyle-toolbar,
 
-    .protyle-util {
+    .protyle-util,
+
+    .dock__item {
         app-region: no-drag;
     }
+}
+
+.body--window .protyle-breadcrumb {
+    height: 32px;
 }

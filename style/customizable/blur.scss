@@ -232,10 +232,11 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
     &.layout--float {
         margin-top: 0;
 
-        &::before,
-        &>.fn__flex-1:first-child::before {
-            @include theme-variant-color(background-color, background, $thick-transparency, $important: true);
-        }
+        // 与 topbar fusion 冲突
+        // &::before,
+        // &>.fn__flex-1:first-child::before {
+        //     @include theme-variant-color(background-color, background, $thick-transparency, $important: true);
+        // }
 
         .layout-tab-container {
             @include theme-variant-color(background-color, background, $thick-transparency);
@@ -427,11 +428,7 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
     // ->js
     .b3-dialog__container {
         @include bg-blur();
-        background-color: transparent;
-
-        .emojis>* {
-            @include theme-variant-color(background-color, menu-background, $medium-transparency);
-        }
+        @include theme-variant-color(background-color, menu-background, $medium-transparency);
     }
 }
 
