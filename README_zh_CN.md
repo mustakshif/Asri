@@ -1,12 +1,12 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v12.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v13.png)
 
 <br/>
 
-简体中文 ｜ [English](https://github.com/mustakshif/Hadeeth-for-SiYuan/blob/main/README_en_US.md)
+简体中文 ｜ [English](https://github.com/mustakshif/Asri-for-SiYuan/blob/main/README_en_US.md)
 
-# Hadeeth - theme for SiYuan
+# Asri - theme for SiYuan
 
-Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyuan-note/siyuan)主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
+Asri 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyuan-note/siyuan)主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
 
 ## 最近更新
 
@@ -29,7 +29,6 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
     * **页签栏（不是顶栏）**
     * **面包屑**
     * **侧栏面板标题及上部**
-  * 📌 如需顶栏常驻，请前往 `设置 - 外观 - 代码片段`，在 `JS` 选项卡下添加这段代码并启用：`document.body.classList.add("hadeeth-pin-toolbar");`。重新隐藏顶栏需要关闭这段代码并重新载入页面或重启应用。
 * 🚥 调整 Mac 端红绿灯位置，优化版面节奏
 
   * 📌 切换至其他主题后需要重启应用才能将红绿灯恢复至默认位置
@@ -49,8 +48,8 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
 
 ## 如何使用
 
-* **应用内下载更新（推荐）**：进入思源笔记应用，在 `设置 - 集市 - 主题` 中搜索下载「Hadeeth」并应用
-* GitHub 下载更新：下载 release 中的 `package.zip`，手动解压至思源笔记工作空间下的 `conf/appearance/themes`，重启思源，在应用 `设置 - 外观` 中选择 Hadeeth 主题
+* **应用内下载更新（推荐）**：进入思源笔记应用，在 `设置 - 集市 - 主题` 中搜索下载「Asri」并应用
+* GitHub 下载更新：下载 release 中的 `package.zip`，手动解压至思源笔记工作空间下的 `conf/appearance/themes`，重启思源，在应用 `设置 - 外观` 中选择 Asri 主题
 
 ## 计划
 
@@ -78,7 +77,7 @@ Hadeeth 是一款极富现代感的类 macOS [思源笔记](https://github.com/s
 * [苹果人机界面指南 - 基础 - 颜色](https://developer.apple.com/cn/design/human-interface-guidelines/color)
 
 ## 反馈和建议
-- [项目主页](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues)提交 issue 或 PR
+- [项目主页](https://github.com/mustakshif/Asri-for-SiYuan/issues)提交 issue 或 PR
 - 发送邮件至 mustakshif@icloud.com
 
 ## 其他

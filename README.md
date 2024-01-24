@@ -1,10 +1,10 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Hadeeth@main/assets/banner_v12.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v13.png)
 
 <br/>
 
-[简体中文](https://github.com/mustakshif/Hadeeth-for-SiYuan/blob/main/README_zh_CN.md) | English
+[简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main/README_zh_CN.md) | English
 
-# Hadeeth - theme for SiYuan
+# Asri - theme for SiYuan
 
 An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), provides an elegant and efficient note-taking experience with its lightweight and minimalistic style.
 
@@ -27,7 +27,6 @@ Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
     * **Tab bar (not toolbar/top bar)**
     * **Breadcrumb**
     * **Sidebar panel title and above**
-  * 📌 If you need the top bar pinned, please go to `Settings - Appearance - Code Snippet`, then add and enable this code line under `JS` tab: `document.body.classList.add("hadeeth-pin-toolbar");`. To hide the top bar again, you need to disable this snippet and reload the page or restart the app.
 * 🚥 Position of traffic lights on macOS adjusted, optimizing the layout rhythm.
 
   * 📌 You will need to restart the application after switching to another theme to restore the traffic light to its default position.
@@ -47,8 +46,8 @@ Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
 
 ## How to use
 
-* **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Hadeeth" to download and apply.
-* Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Hadeeth" in your theme list in `Settings - Appearance`.
+* **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
+* Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
 
 ## Plans
 
@@ -77,7 +76,7 @@ Other reference materials:
 * [Apple's Human Interface Guidelines - Foundations - Color](https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/)
 
 ## Feedbacks & suggestions
-- Create an issue or PR at [the project page](https://github.com/mustakshif/Hadeeth-for-SiYuan/issues)
+- Create an issue or PR at [the project page](https://github.com/mustakshif/Asri-for-SiYuan/issues)
 - Send an email to mustakshif@icloud.com
 
 ## Notes

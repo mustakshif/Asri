@@ -1,12 +1,12 @@
 {
-  "name": "Hadeeth",
+  "name": "Asri",
   "author": "MUSTAKSHIF",
   "url": "https://github.com/mustakshif/Hadeeth",
   "version": "1.1.19",
   "displayName": {
-    "default": "Hadeeth",
-    "zh_CN": "Hadeeth",
-    "en_US": "Hadeeth"
+    "default": "Asri",
+    "zh_CN": "Asri",
+    "en_US": "Asri"
   },
   "description": {
     "default": "极富现代感的类 macOS 主题，以轻量、极简的风格，带来优雅、高效的笔记体验。ps：如需顶栏常驻请查看「主题特性」👇",
@@ -31,6 +31,6 @@
     "dark"
   ],
   "keywords": [
-    "Hadeeth"
+    "Asri"
   ]
 }
