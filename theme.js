@@ -45,7 +45,7 @@ const doms = {
     layoutDockl: document.querySelector('.layout__dockl'),
     layoutDockr: document.querySelector('.layout__dockr'),
     layoutDockb: document.querySelector('.layout__dockb'),
-    toolbarWindow: document.querySelector('.toolbar__window'),
+    // toolbarWindow: document.querySelector('.toolbar__window'),
     toolbar: document.getElementById('toolbar'),
     barSync: document.getElementById('barSync'),
     barForward: document.getElementById('barForward'),
@@ -63,6 +63,7 @@ const isLinux = navigator.platform.indexOf("Linux") === 0;
 
 const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
 const isInBrowser = doms.toolbar && doms.toolbar.classList.contains('toolbar--browser');
+const isMiniWindow = document.body.classList.contains('body--window') > 0;
 
 // function isFullScreen() {
 //     ipcRenderer.invoke('siyuan-get', { cmd: 'isFullScreen' })
@@ -85,6 +86,7 @@ function setTrafficLightPosition(x, y = x) {
 }
 
 if (isMacOS && !isInBrowser && !isMobile) setTrafficLightPosition(16);
+if (isMiniWindow && isMacOS) setTrafficLightPosition(14);
 
 function useSysScrollbar() {
     if (isMacOS) {
@@ -227,8 +229,8 @@ function handleWinResize() {
     });
 }
 
-let dragRectLeftInitial = doms.drag.getBoundingClientRect().left,
-    dragRectRightInitial = doms.drag.getBoundingClientRect().right;
+let dragRectLeftInitial = doms.drag?.getBoundingClientRect().left,
+    dragRectRightInitial = doms.drag?.getBoundingClientRect().right;
 let pluginsContainer, leftSpacing, rightSpacing, topbar,
     layoutsCenterRect, leftSpacingRect, rightSpacingRect, barSyncRect, dragRect;
 
@@ -289,12 +291,11 @@ function calcTopbarSpacings(widthChange) {
             // 横线
             pluginsContainer.style.setProperty('--container-bg', 'var(--b3-list-hover)');
             // pluginsContainer.style.left = dragRectRightInitial + 'px';
-            pluginsContainer.style.left = centerRectRight + 8 + 'px';
+            pluginsContainer.style.left = centerRectRight + 'px';
             // pluginsContainer.style.right = winWidth - rightSpacingRect.right + 'px';
-            pluginsContainer.style.right = '8px';
+            pluginsContainer.style.right = '0';
             pluginsContainer.style.removeProperty('height');
             pluginsContainer.style.removeProperty('top');
-            doms.layouts.style.setProperty('--border-lyt-right','var(--b3-border-color-trans)');
         }
         else {
             // if (isWinResizing) dragRectRightInitial = dragRectRightInitial + widthChange;
@@ -305,11 +306,10 @@ function calcTopbarSpacings(widthChange) {
             pluginsContainer.style.right = winWidth - dragRect.right + 8 + 'px';
             pluginsContainer.style.height = '21px';
             pluginsContainer.style.top = '13.5px';
-            doms.layouts.style.removeProperty('--border-lyt-right');
         }
     })();
 
-    console.log(`drag右\t\t${dragRectRightInitial}\ncenter右\t${centerRectRight}`)
+    // console.log(`drag右\t\t${dragRectRightInitial}\ncenter右\t${centerRectRight}`)
 }
 
 function calcTabbarSpacings() {
@@ -397,11 +397,12 @@ function handleCenterResize(widthChange) {
     calcTopbarSpacings(widthChange);
     calcTabbarSpacings();
     statusPositon();
+    dockBg();
 }
 
-if (!isMobile && !doms.toolbarWindow) {
+if (!isMobile && !isMiniWindow) {
     setTimeout(calcTopbarSpacings, 200);
-    LayoutsCenterResizeObserver(handleCenterResize);
+    LayoutsCenterResizeObserver();
 }
 
 /**
@@ -575,7 +576,9 @@ function statusPositon() {
         // }   
     }
 }
-statusPositon();
+setTimeout(() => {
+    statusPositon();
+}, 200);
 
 function setStatusHeightVar() {
     if (isStatusHidden()) document.body.style.setProperty('--status-height', '0px');
@@ -837,7 +840,7 @@ docBodyObserver(
 )
 
 if (!isMobile) {
-    if (!doms.toolbarWindow) {
+    if (!isMiniWindow) {
         // //顶栏
         // topbarObserver('childList', () => {
         //     topbar.style.setProperty('--topbar-left-spacing', 0);
