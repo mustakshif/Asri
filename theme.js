@@ -2,38 +2,38 @@
 // [cc-baselib/siYuanApi.js at main · leolee9086/cc-baselib](https://github.com/leolee9086/cc-baselib/blob/main/src/siYuanApi.js)
 // Rem Craft/util/api.js
 
-async function getFile(path) {
-    const response = await fetch('/api/file/getFile', {
-        method: 'POST',
-        headers: {
-            Authorization: `Token ''`,
-        },
-        body: JSON.stringify({
-            path: path,
-        }),
-    });
-    if (response.status === 200) return response;
-    else return null;
-}
+// async function getFile(path) {
+//     const response = await fetch('/api/file/getFile', {
+//         method: 'POST',
+//         headers: {
+//             Authorization: `Token ''`,
+//         },
+//         body: JSON.stringify({
+//             path: path,
+//         }),
+//     });
+//     if (response.status === 200) return response;
+//     else return null;
+// }
 
-async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
-    let blob = new Blob([filedata]);
-    let file = new File([blob], path.split('/').pop());
-    let formdata = new FormData();
-    formdata.append('path', path);
-    formdata.append('file', file);
-    formdata.append('isDir', isDir);
-    formdata.append('modTime', modTime);
-    const response = await fetch('/api/file/putFile', {
-        body: formdata,
-        method: 'POST',
-        headers: {
-            Authorization: `Token ''`,
-        },
-    });
-    if (response.status === 200) return await response.json();
-    else return null;
-}
+// async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
+//     let blob = new Blob([filedata]);
+//     let file = new File([blob], path.split('/').pop());
+//     let formdata = new FormData();
+//     formdata.append('path', path);
+//     formdata.append('file', file);
+//     formdata.append('isDir', isDir);
+//     formdata.append('modTime', modTime);
+//     const response = await fetch('/api/file/putFile', {
+//         body: formdata,
+//         method: 'POST',
+//         headers: {
+//             Authorization: `Token ''`,
+//         },
+//     });
+//     if (response.status === 200) return await response.json();
+//     else return null;
+// }
 
 // 界面 ————————————
 const doms = {
@@ -124,49 +124,49 @@ function useSysScrollbar() {
 
 useSysScrollbar();
 
-function handleToolbarHover() {
-    let toolbarDrag = document.getElementById('drag');
-    if (toolbarDrag) {
-        toolbarDrag.addEventListener('mouseenter', () => {
-            doms.toolbar.classList.add('no-hover');
-        });
-        toolbarDrag.addEventListener('mouseleave', () => {
-            doms.toolbar.classList.remove('no-hover');
-        });
-    }
-}
+// function handleToolbarHover() {
+//     let toolbarDrag = document.getElementById('drag');
+//     if (toolbarDrag) {
+//         toolbarDrag.addEventListener('mouseenter', () => {
+//             doms.toolbar.classList.add('no-hover');
+//         });
+//         toolbarDrag.addEventListener('mouseleave', () => {
+//             doms.toolbar.classList.remove('no-hover');
+//         });
+//     }
+// }
 
-// handleToolbarHover();
+// // handleToolbarHover();
 
-async function toolbarTutorial() {
-    let toolbar = doms.toolbar;
+// async function toolbarTutorial() {
+//     let toolbar = doms.toolbar;
 
-    let hasPlayedToolbarTutorial = await getFile("/data/snippets/Hadeeth.config.json")
-        .then((response) => {
-            if (response && response.status === 200) {
-                return response.json();
-            }
-            return null;
-        })
-        .then((data) => {
-            if (data && data.hasPlayedToolbarTutorial === "1") {
-                return true;
-            }
-            return false;
-        });
+//     let hasPlayedToolbarTutorial = await getFile("/data/snippets/Hadeeth.config.json")
+//         .then((response) => {
+//             if (response && response.status === 200) {
+//                 return response.json();
+//             }
+//             return null;
+//         })
+//         .then((data) => {
+//             if (data && data.hasPlayedToolbarTutorial === "1") {
+//                 return true;
+//             }
+//             return false;
+//         });
 
-    if (toolbar && !hasPlayedToolbarTutorial) {
-        toolbar.classList.add("hadeeth-toolbar-tutorial");
+//     if (toolbar && !hasPlayedToolbarTutorial) {
+//         toolbar.classList.add("hadeeth-toolbar-tutorial");
 
-        await putFile("/data/snippets/Hadeeth.config.json", JSON.stringify({ hasPlayedToolbarTutorial: "1" }, undefined, 4));
+//         await putFile("/data/snippets/Hadeeth.config.json", JSON.stringify({ hasPlayedToolbarTutorial: "1" }, undefined, 4));
 
-        setTimeout(() => {
-            toolbar.classList.remove("hadeeth-toolbar-tutorial");
-        }, 7000);
-    }
-}
+//         setTimeout(() => {
+//             toolbar.classList.remove("hadeeth-toolbar-tutorial");
+//         }, 7000);
+//     }
+// }
 
-// toolbarTutorial();
+// // toolbarTutorial();
 
 /**
  * 
@@ -290,9 +290,7 @@ function calcTopbarSpacings(widthChange) {
             // dragRectRightInitial = doms.drag.getBoundingClientRect().right;
             // 横线
             pluginsContainer.style.setProperty('--container-bg', 'var(--b3-list-hover)');
-            // pluginsContainer.style.left = dragRectRightInitial + 'px';
             pluginsContainer.style.left = centerRectRight + 'px';
-            // pluginsContainer.style.right = winWidth - rightSpacingRect.right + 'px';
             pluginsContainer.style.right = '0';
             pluginsContainer.style.removeProperty('height');
             pluginsContainer.style.removeProperty('top');
@@ -938,7 +936,6 @@ if (!isMobile) {
 //         } else runWhenIdle(func)
 //     })
 // }
-
 
 function getDblClickMouseXY() {
     window.addEventListener('dblclick', handleDblClick);
