@@ -1,7 +1,7 @@
 {
   "name": "Asri",
   "author": "MUSTAKSHIF",
-  "url": "https://github.com/mustakshif/Hadeeth",
+  "url": "https://github.com/mustakshif/Asri-for-SiYuan",
   "version": "2.0.1",
   "displayName": {
     "default": "Asri",
@@ -31,6 +31,7 @@
     "dark"
   ],
   "keywords": [
-    "Asri"
+    "Asri",
+    "Hadeeth"
   ]
 }
