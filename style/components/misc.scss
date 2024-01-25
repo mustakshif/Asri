@@ -230,6 +230,9 @@ textarea {
 .tooltip--memo#tooltip {
     --property-percentage: 0%;
 
+    text-wrap: wrap;
+    min-width: unset;
+
     font-size: 14px;
     padding: 8px;
     margin: 0 -8px;

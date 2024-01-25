@@ -331,17 +331,18 @@ function calcTabbarSpacings() {
                 tabbarContainer.style.paddingRight = paddingRightValue;
 
                 doms.drag = document.getElementById('drag');
-            } else {
-                tabbarContainer.style.paddingLeft = 0;
-                tabbarContainer.style.paddingRight = 0;
-            }
 
-            if (tabbarContainerRect.right - 60 < dragRect.left) {
-                tabbarContainer.style.paddingTop = '42px';
+                if (tabbarContainerRect.right - 200 < dragRect.left || tabbarContainerRect.left + 200 > dragRect.right) {
+                    tabbarContainer.style.paddingTop = '42px';
+                    tabbarContainer.style.paddingLeft = 0;
+                    tabbarContainer.style.paddingRight = 0;
+                } else {
+                    tabbarContainer.style.removeProperty('padding-top');
+                }
+
+            } else {
                 tabbarContainer.style.paddingLeft = 0;
                 tabbarContainer.style.paddingRight = 0;
-            } else {
-                tabbarContainer.style.removeProperty('padding-top');
             }
         }
     }
