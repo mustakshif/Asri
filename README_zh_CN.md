@@ -10,6 +10,13 @@ Asri 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyu
 
 ## 最近更新
 
+### v2.0.1
+
+* 提升顶栏融合的适应性，确保页签在极小宽度下的展示
+* [优化提示条样式，提示条文本不自动换行](https://github.com/mustakshif/Asri-for-SiYuan/pull/14)
+* 修复 Mac 端切换全屏后顶栏图标错位的问题
+* [适配 `自定义块样式` 插件导图视图中连接线段的颜色](https://github.com/mustakshif/Asri-for-SiYuan/issues/13)
+
 ### v2.0.0
 
 * 🎉 全新顶栏设计，与标签栏无缝融合，兼顾美感与效率

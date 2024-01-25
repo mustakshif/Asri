@@ -10,6 +10,14 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
+### v2.0.1
+
+* Improved the adaptability of the top bar fusion to ensure the display of tabs at extremely small widths.
+* [Optimized the style of tooltips, no wrap for the tooltip text](https://github.com/mustakshif/Asri-for-SiYuan/pull/14).
+* Fixed the issue of misalignment of top bar icons after switching from / to full screen on Mac.
+* [Adapted the color of the connecting lines in the mind map view of the `Custom Block Style` plugin](https://github.com/mustakshif/Asri-for-SiYuan/issues/13).
+
+
 ### v2.0.0
 
 * 🎉 Introduced a new top bar design seamlessly integrated with the tab bar, balancing aesthetics and efficiency.

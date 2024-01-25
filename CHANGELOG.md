@@ -1,3 +1,19 @@
+### v2.0.1
+
+* 提升顶栏融合的适应性，确保页签在极小宽度下的展示
+* [优化提示条样式，提示条文本不自动换行](https://github.com/mustakshif/Asri-for-SiYuan/pull/14)
+* 修复 Mac 端切换全屏后顶栏图标错位的问题
+* [适配 `自定义块样式` 插件导图视图中连接线段的颜色](https://github.com/mustakshif/Asri-for-SiYuan/issues/13)
+
+<br />
+
+* Improved the adaptability of the top bar fusion to ensure the display of tabs at extremely small widths.
+* [Optimized the style of tooltips, no wrap for the tooltip text](https://github.com/mustakshif/Asri-for-SiYuan/pull/14).
+* Fixed the issue of misalignment of top bar icons after switching from / to full screen on Mac.
+* [Adapted the color of the connecting lines in the mind map view of the `Custom Block Style` plugin](https://github.com/mustakshif/Asri-for-SiYuan/issues/13).
+
+---
+
 ### v2.0.0
 
 * 🎉 全新顶栏设计，与标签栏无缝融合，兼顾美感与效率
