@@ -2606,6 +2606,8 @@ html[data-theme-mode=dark] .b3-slider:hover:not(.b3-slider:focus)::-webkit-slide
 .tooltip, .b3-tooltips:hover::after {
   pointer-events: none;
   text-wrap: nowrap;
+  overflow: hidden;
+  min-width: max-content;
   box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.1), 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
   border: none;
 }
