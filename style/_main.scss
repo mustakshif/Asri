@@ -1,25 +1,16 @@
-@use 'layout/dock';
-@use 'layout/status';
-@use 'layout/toolbar';
-@use 'layout/tab-bar';
-@use 'layout/editor';
-@use 'layout/shrink';
+@use 'layout';
 
-@use 'components/misc';
-@use 'components/breadcrumb';
-@use 'components/menu';
-@use 'components/dialog';
+@use 'components';
 
 // @use 'customizable/hide-toolbar';
 @use 'customizable/cover-image-fading';
 @use 'customizable/blur';
 @use 'customizable/topbar-fusion.scss';
-
 // @use 'customizable/scroll-divider';
 
-@use 'platforms/mobile';
-@use 'platforms/windows';
-@use 'platforms/linux';
+@use 'platforms';
+
+@use 'plugins';
 
 @property --property-percentage {
     syntax: '<percentage>';

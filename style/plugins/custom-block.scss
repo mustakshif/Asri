@@ -1,0 +1,3 @@
+:root:not([plugin-custom-block-disabled~=list-view-map]) .protyle-content [custom-block-list-view=map] [data-node-id].li:before {
+    opacity: 1;
+}
