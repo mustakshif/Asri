@@ -79,7 +79,6 @@ isLinux && document.body.classList.add('body--linux');
 isMobile && document.body.classList.add('body--mobile');
 isInBrowser && document.body.classList.add("body--browser");
 
-handleWinResize();
 
 function setTrafficLightPosition(x, y = x) {
     require("@electron/remote").getCurrentWindow().setWindowButtonPosition({ x: x, y: y });
@@ -210,21 +209,24 @@ function handleWinResize() {
     //         }, 200);
     //     })
     // } 
+    let fromFullscreen;
 
     window.addEventListener('resize', function () {
         isWinResizing = true;
-
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(function () {
             isWinResizing = false;
-
-            if (isFullScreen()) {
+            if (isMacOS && isFullScreen() && !isInBrowser) {
                 document.body.classList.add('body--fullscreen');
+                dragRectLeftInitial = dragRectLeftInitial - 80;
+                fromFullscreen = true;
             } else {
                 document.body.classList.remove('body--fullscreen');
+                dragRectLeftInitial = fromFullscreen ? doms.drag?.getBoundingClientRect().left : dragRectLeftInitial;
+                fromFullscreen = false;
             }
-            // calcTopbarSpacings();
-            // calcTabbarSpacings();
+            calcTopbarSpacings();
+            calcTabbarSpacings();
         }, 200);
     });
 }
@@ -251,14 +253,16 @@ function calcTopbarSpacings(widthChange) {
     barSyncRect = doms.barSync.getBoundingClientRect();
 
     let winWidth = window.innerWidth,
-        centerRectRight = layoutsCenterRect.right;
+        centerRectLeft = layoutsCenterRect.left
+    centerRectRight = layoutsCenterRect.right;
 
     function calcAndApply() {
         // 左侧
-        if (layoutsCenterRect.left > dragRectLeftInitial + 8) topbar.style.setProperty('--topbar-left-spacing', 0),
+        if (centerRectLeft > dragRectLeftInitial + 8)
+            topbar.style.setProperty('--topbar-left-spacing', 0),
             dragRectLeftInitial = doms.drag.getBoundingClientRect().left;
-        // 每次重新计算 initial
-        else topbar.style.setProperty('--topbar-left-spacing', layoutsCenterRect.left - barSyncRect.right + 4 + 'px');
+            // 每次重新计算 initial
+        else topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
 
         // 右侧
         if (centerRectRight < dragRectRightInitial - 8) {
@@ -307,7 +311,7 @@ function calcTopbarSpacings(widthChange) {
         }
     })();
 
-    // console.log(`drag右\t\t${dragRectRightInitial}\ncenter右\t${centerRectRight}`)
+    // console.log(`drag左\t\t${dragRectLeftInitial}\ncenter左\t${centerRectLeft}`)
 }
 
 function calcTabbarSpacings() {
@@ -402,6 +406,8 @@ if (!isMobile && !isMiniWindow) {
     setTimeout(calcTopbarSpacings, 200);
     LayoutsCenterResizeObserver();
 }
+
+handleWinResize();
 
 /**
  * 新小窗页签栏左右边距控制
