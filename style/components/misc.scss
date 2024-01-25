@@ -220,6 +220,9 @@ textarea {
 // 提示条
 .tooltip {
     pointer-events: none;
+    text-wrap: nowrap;
+    overflow: hidden;
+    min-width: max-content;
     @include tooltip-shadow;
     @include border-or-not($outline:false);
 }
