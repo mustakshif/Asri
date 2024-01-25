@@ -77,6 +77,8 @@
 }
 
 //——————————————————————————————————————
+
+// 主要用于设置面板的大按钮
 @mixin button-primary {
     background-color: var(--b3-list-hover);
     border-radius: 99px;
@@ -107,9 +109,7 @@
         opacity: 0.8;
     }
 }
-
-// 主要用于设置面板的大按钮
-
+// 普通按钮
 @mixin button-action($type) {
     border-radius: 99px;
     padding: 4px 12px;
