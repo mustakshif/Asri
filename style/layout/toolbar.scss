@@ -9,40 +9,23 @@
     #barWorkspace {
         background-color: transparent;
         color:var(--b3-theme-on-surface);
-        font-weight: 600;
-        height: var(--toolbar-height);
+        font-weight: 500;
+        height: 28px;
         position: relative;
-        transition: color 0.2s;
+        outline: 1px solid var(--b3-border-color-trans);
+        outline-offset: -1px;
 
-        &::before {
-            --outline-clr: var(--b3-border-color-trans);
-            content: '';
-            display: block;
-            height: 28px;
-            width: 100%;
-            position: absolute;
-            z-index: 0;
-            transform: translate(-5px, 5px);
-            border-radius: 6px;
-            transition: background-color 0.2s, outline 0.2s, box-shadow 0.2s;
-            outline: 1.5px solid var(--outline-clr);
-            outline-offset: -1.5px;
-        }
-
-        &:hover{
+        &:hover {
+            background-color: var(--b3-theme-primary);
+            outline-color: transparent;
             color: var(--b3-theme-on-primary);
-
-            &::before{
-                --outline-clr:transparent;
-                background-color: var(--b3-theme-primary);
-                // @include menu-shadow(map-get($theme-light, primary), map-get($theme-dark, primary), 0.3, 0.4, 0px);
-            }
         }
 
         .toolbar__text {
             font-size: 14px;
             align-self: center;
             z-index: 1;
+            line-height: normal;
         }
 
         svg.toolbar__svg{
