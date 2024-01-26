@@ -238,8 +238,8 @@ let pluginsContainer, leftSpacing, rightSpacing, topbar,
 
 if (!isMobile && doms.toolbar) {
     createTopbarElementById('AsriPluginIconsContainer', undefined, doms.drag);
-    createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barSync);
-    isMacOS ? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
+    (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barSync) : createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barForward);
+    (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
 }
 
 function calcTopbarSpacings(widthChange) {
@@ -251,6 +251,7 @@ function calcTopbarSpacings(widthChange) {
     layoutsCenterRect = doms.layouts.querySelector('.layout__center').getBoundingClientRect();
     rightSpacingRect = rightSpacing.getBoundingClientRect();
     barSyncRect = doms.barSync.getBoundingClientRect();
+    barForwardRect = doms.barForward.getBoundingClientRect();
 
     let winWidth = window.innerWidth,
         centerRectLeft = layoutsCenterRect.left,
@@ -262,7 +263,8 @@ function calcTopbarSpacings(widthChange) {
             topbar.style.setProperty('--topbar-left-spacing', 0),
                 dragRectLeftInitial = doms.drag.getBoundingClientRect().left;
         // 每次重新计算 initial
-        else topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
+        else if (isMacOS && !isInBrowser) topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
+        else topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barForwardRect.right + 4 + 'px');
 
         // 右侧
         if (centerRectRight < dragRectRightInitial - 8) {
