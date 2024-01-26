@@ -10,6 +10,14 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
+### v2.0.2
+
+* Adjusted the flexible spacing element on the left side of the top bar on Windows to be after the "Forward" button, making better use of the top bar space.
+* Adjusted the left margin of the sidebar panel title.
+* Adjusted the border thickness and text font weight of the `Workspace` button.
+* Fixed an issue where the letter descenders in the `Workspace` button was being clipped.
+* Fixed the issue of overlapping icons on the right side of the top bar and the icons in the sidebar when using in a browser.
+
 ### v2.0.1
 
 * Improved the adaptability of the top bar fusion to ensure the display of tabs at extremely small widths.

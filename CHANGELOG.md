@@ -1,3 +1,21 @@
+### v2.0.2
+
+* 调整 Windows 端顶栏左侧的可调间距位置到「前进」按钮后，更加充分利用顶栏空间
+* 调整侧栏面板标题左边距
+* 调整 `工作空间` 按钮边框粗细和文字字重
+* 修复 `工作空间` 按钮文字中字母降部被裁切的问题
+* 修复在浏览器中使用时顶栏右侧图标和侧栏图标重叠的问题
+
+<br />
+
+* Adjusted the flexible spacing element on the left side of the top bar on Windows to be after the "Forward" button, making better use of the top bar space.
+* Adjusted the left margin of the sidebar panel title.
+* Adjusted the border thickness and text font weight of the `Workspace` button.
+* Fixed an issue where the letter descenders in the `Workspace` button was being clipped.
+* Fixed the issue of overlapping icons on the right side of the top bar and the icons in the sidebar when using in a browser.
+
+---
+
 ### v2.0.1
 
 * 提升顶栏融合的适应性，确保页签在极小宽度下的展示
