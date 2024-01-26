@@ -71,7 +71,7 @@ const isMiniWindow = document.body.classList.contains('body--window') > 0;
 // }
 
 function isFullScreen() {
-    return require("@electron/remote").getCurrentWindow().isFullScreen()
+    return !isInBrowser && require("@electron/remote").getCurrentWindow().isFullScreen()
 }
 
 isMacOS && document.body.classList.add('body--mac');
@@ -216,7 +216,7 @@ function handleWinResize() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(function () {
             isWinResizing = false;
-            if (isMacOS && isFullScreen() && !isInBrowser) {
+            if (isMacOS && isFullScreen()) {
                 document.body.classList.add('body--fullscreen');
                 dragRectLeftInitial = dragRectLeftInitial - 80;
                 fromFullscreen = true;
@@ -239,7 +239,7 @@ let pluginsContainer, leftSpacing, rightSpacing, topbar,
 if (!isMobile && doms.toolbar) {
     createTopbarElementById('AsriPluginIconsContainer', undefined, doms.drag);
     (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barSync) : createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barForward);
-    (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
+    (isMacOS || isInBrowser) ? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
 }
 
 function calcTopbarSpacings(widthChange) {
