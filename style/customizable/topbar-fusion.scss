@@ -179,7 +179,7 @@ body:not(.body--mobile, .body--window) {
         }
     }
 
-    &:not(.body--mac){
+    &{
         .layout__dockl.layout--float{
             &::before {
                 content: '';

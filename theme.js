@@ -253,15 +253,15 @@ function calcTopbarSpacings(widthChange) {
     barSyncRect = doms.barSync.getBoundingClientRect();
 
     let winWidth = window.innerWidth,
-        centerRectLeft = layoutsCenterRect.left
-    centerRectRight = layoutsCenterRect.right;
+        centerRectLeft = layoutsCenterRect.left,
+        centerRectRight = layoutsCenterRect.right;
 
     function calcAndApply() {
         // 左侧
         if (centerRectLeft > dragRectLeftInitial + 8)
             topbar.style.setProperty('--topbar-left-spacing', 0),
-            dragRectLeftInitial = doms.drag.getBoundingClientRect().left;
-            // 每次重新计算 initial
+                dragRectLeftInitial = doms.drag.getBoundingClientRect().left;
+        // 每次重新计算 initial
         else topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
 
         // 右侧
@@ -464,7 +464,7 @@ function isSideDockHidden() {
     return doms.dockl && doms.dockl.classList.contains('fn__none') > 0
 }
 function hasDockb() {
-    return doms.dockb && !doms.dockb.classList.contains('fn__none') > 0;
+    return doms.dockb && !doms.dockb.classList.contains('fn__none');
 }
 function addDockbClassName() {
     if (hasDockb()) {
