@@ -233,17 +233,17 @@ function handleWinResize() {
 
 let dragRectLeftInitial = doms.drag?.getBoundingClientRect().left,
     dragRectRightInitial = doms.drag?.getBoundingClientRect().right;
-let pluginsContainer, leftSpacing, rightSpacing, topbar,
+let pluginsDivider, leftSpacing, rightSpacing, topbar,
     layoutsCenterRect, leftSpacingRect, rightSpacingRect, barSyncRect, dragRect;
 
 if (!isMobile && doms.toolbar) {
-    createTopbarElementById('AsriPluginIconsContainer', undefined, doms.drag);
+    createTopbarElementById('AsriPluginsIconsDivider', undefined, doms.drag);
     (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barSync) : createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barForward);
     (isMacOS || isInBrowser) ? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
 }
 
 function calcTopbarSpacings(widthChange) {
-    pluginsContainer = document.getElementById('AsriPluginIconsContainer');
+    pluginsDivider = document.getElementById('AsriPluginsIconsDivider');
     leftSpacing = document.getElementById('AsriTopbarLeftSpacing');
     rightSpacing = document.getElementById('AsriTopbarRightSpacing');
     topbar = doms.toolbar;
@@ -288,28 +288,28 @@ function calcTopbarSpacings(widthChange) {
         }
     }
 
-    if (!isWinResizing) calcAndApply()
+    if (!isWinResizing) calcAndApply(); // 窗口resizing时不计算，不然会导致dragRectRightInitial变动，使顶栏右侧图标位置变动
     else dragRectRightInitial = dragRectRightInitial + widthChange;
 
-    (function barLineSwitch() {
+    (function dividerSwitch() {
         if (centerRectRight < dragRectRightInitial - 8) {
             // dragRectRightInitial = doms.drag.getBoundingClientRect().right;
             // 横线
-            pluginsContainer.style.setProperty('--container-bg', 'var(--b3-list-hover)');
-            pluginsContainer.style.left = centerRectRight + 'px';
-            pluginsContainer.style.right = '0';
-            pluginsContainer.style.removeProperty('height');
-            pluginsContainer.style.removeProperty('top');
+            pluginsDivider.style.setProperty('--container-bg', 'var(--b3-list-hover)');
+            pluginsDivider.style.left = centerRectRight + 'px';
+            pluginsDivider.style.right = '0';
+            pluginsDivider.style.removeProperty('height');
+            pluginsDivider.style.removeProperty('top');
         }
         else {
             // if (isWinResizing) dragRectRightInitial = dragRectRightInitial + widthChange;
             // 竖线
             dragRect = doms.drag.getBoundingClientRect();
-            pluginsContainer.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
-            pluginsContainer.style.left = dragRect.right - 10 + 'px';
-            pluginsContainer.style.right = winWidth - dragRect.right + 8 + 'px';
-            pluginsContainer.style.height = '21px';
-            pluginsContainer.style.top = '13.5px';
+            pluginsDivider.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
+            pluginsDivider.style.left = dragRect.right - 10 + 'px';
+            pluginsDivider.style.right = winWidth - dragRect.right + 8 + 'px';
+            pluginsDivider.style.height = '21px';
+            pluginsDivider.style.top = '13.5px';
         }
     })();
 

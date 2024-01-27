@@ -27,7 +27,7 @@ body:not(.body--mobile, .body--window) {
             height: auto;
         }
 
-        #AsriPluginIconsContainer {
+        #AsriPluginsIconsDivider {
             width: auto;
             height: 1px;
             border-radius: 6px;
@@ -154,6 +154,7 @@ body:not(.body--mobile, .body--window) {
         }
 
         &::before {
+            //遮挡侧栏边线
             content: '';
             height: var(--toolbar-height);
             position: fixed;
@@ -179,31 +180,41 @@ body:not(.body--mobile, .body--window) {
         }
     }
 
-    &{
-        .layout__dockl.layout--float{
+    & {
+        .layout__dockl.layout--float {
             &::before {
                 content: '';
                 width: 41px;
                 height: var(--toolbar-height);
                 position: fixed;
                 left: 0;
-                background-color:var(--b3-theme-background);
+                background-color: var(--b3-theme-background);
             }
         }
     }
 
-    &.body--win32,
-    &.body--browser {
-        .layout--float {
+    .layout--float {
 
+        >.fn__flex:not(.fn__none):first-child,
+        >.fn__flex.fn__none~.fn__flex {
+            .layout-tab-container {
+                padding-top: 4px;
+            }
+        }
+    }
+
+    &.body--mac:not(.body--browser) {
+        .layout__dockl.layout--float {
             >.fn__flex:not(.fn__none):first-child,
             >.fn__flex.fn__none~.fn__flex {
                 .layout-tab-container {
-                    padding-top: 4px;
+                    padding-top: calc(var(--toolbar-height) - 6px);
                 }
             }
         }
+    
     }
+
 
     .fn__flex-1.has-dockb {
 
@@ -211,7 +222,6 @@ body:not(.body--mobile, .body--window) {
         .layout__dockl,
         .layout__dockr {
 
-            // 浮动布局
             &.layout--float {
                 height: calc(100% - 42px - var(--status-height, 32px));
                 top: 0;
