@@ -1,3 +1,21 @@
+### v2.0.3
+
+* 优化文本编辑工具条和 `数据库` 标签的内边距
+* 取消 `数据库` 视图切换区域多余边距
+* 取消 Mac 端全屏幕状态和浏览器中全屏视图下面包屑等元素的多余左边距
+* [修复右侧停靠栏无图标时状态栏仍保留右侧间距的问题](https://github.com/mustakshif/Asri-for-SiYuan/issues/16)
+* 修复 Mac 端右侧浮动面板上方偶现多余间距的问题
+
+<br />
+
+* Optimized the inner padding of the text editing toolbar and the `Database` tab.
+* Removed the extra margin in the `Database` views area.
+* Removed the extra left margin of elements such as breadcrumbs in full-screen view in the browser and in Mac's full-screen mode
+* [Fixed the issue where the status bar retains the right margin even when there were no icons in the right dock](https://github.com/mustakshif/Asri-for-SiYuan/issues/16).
+* Fixed the occasional extra spacing issue above the right floating panel on Mac.
+
+---
+
 ### v2.0.2
 
 * 调整 Windows 端顶栏左侧的可调间距位置到「前进」按钮后，更加充分利用顶栏空间

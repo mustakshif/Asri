@@ -10,21 +10,15 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
-### v2.0.2
+### v2.0.3
 
-* Adjusted the flexible spacing element on the left side of the top bar on Windows to be after the "Forward" button, making better use of the top bar space.
-* Adjusted the left margin of the sidebar panel title.
-* Adjusted the border thickness and text font weight of the `Workspace` button.
-* Fixed an issue where the letter descenders in the `Workspace` button was being clipped.
-* Fixed the issue of overlapping icons on the right side of the top bar and the icons in the sidebar when using in a browser.
+* Optimized the inner padding of the text editing toolbar and the `Database` tab.
+* Removed the extra margin in the `Database` views area.
+* Removed the extra left margin of elements such as breadcrumbs in full-screen view in the browser and in Mac's full-screen mode
+* [Fixed the issue where the status bar retains the right margin even when there were no icons in the right dock](https://github.com/mustakshif/Asri-for-SiYuan/issues/16).
+* Fixed the occasional extra spacing issue above the right floating panel on Mac.
 
-### v2.0.1
-
-* Improved the adaptability of the top bar fusion to ensure the display of tabs at extremely small widths.
-* [Optimized the style of tooltips, no wrap for the tooltip text](https://github.com/mustakshif/Asri-for-SiYuan/pull/14).
-* Fixed the issue of misalignment of top bar icons after switching from / to full screen on Mac.
-* [Adapted the color of the connecting lines in the mind map view of the `Custom Block Style` plugin](https://github.com/mustakshif/Asri-for-SiYuan/issues/13).
-
+...
 
 ### v2.0.0
 
