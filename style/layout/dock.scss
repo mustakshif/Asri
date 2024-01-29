@@ -57,7 +57,7 @@
         background-color: var(--b3-theme-surface);
 
         &#dockLeft, &#dockRight {
-            --border-clr:var(--b3-border-color)
+            --border-clr:transparent;
         }
     }
 }

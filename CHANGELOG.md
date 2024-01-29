@@ -35,7 +35,7 @@
 ### v2.0.0
 
 * 🎉 全新顶栏设计，与标签栏无缝融合，兼顾美感与效率
-* 主题更名为 Asri，更具现代气息
+* 主题更名为 Asri，简洁凝练，更具现代气息
 * [修复自定义字体 CSS 代码失效的问题](https://github.com/mustakshif/Asri-for-SiYuan/issues/11)
 * 其他细节优化
 

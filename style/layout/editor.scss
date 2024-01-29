@@ -865,7 +865,7 @@
     animation: toolbar 0.2s ease-in-out;
     border: none;
     border-radius: 40px;
-    padding: 4px 6px;
+    padding: 4px;
     // transform: translateY(-12px);
     background-color: var(--b3-theme-surface);
     @include menu-shadow;
@@ -1137,38 +1137,46 @@
 
     // 数据库视图切换、标题
     &__header {
-        .layout-tab-bar {
-            @include dialog-tabbar;
-
-            .item:not(.item--focus) {
-                .item__graphic {
-                    color: var(--b3-theme-on-surface);
-                }
-
-                &:hover {
+        .av__views {
+            .layout-tab-bar {
+                @include dialog-tabbar;
+                margin: 8px auto !important;
+    
+                .item:not(.item--focus) {
                     .item__graphic {
-                        color: var(--b3-theme-on-background);
+                        color: var(--b3-theme-on-surface);
+                    }
+    
+                    &:hover {
+                        .item__graphic {
+                            color: var(--b3-theme-on-background);
+                        }
+                    }
+                }
+    
+                .item--focus {
+                    &:hover {
+                        @include theme-variant-color(background-color, light-components, 1, 0.2, $important: true);
                     }
                 }
             }
-
-            .item--focus {
+    
+            .block__icon {
                 &:hover {
-                    @include theme-variant-color(background-color, light-components, 1, 0.2, $important: true);
+                    background-color: transparent !important;
+                }
+    
+                &--active {
+                    color: var(--b3-theme-primary);
+                    background-color: transparent;
                 }
             }
-        }
 
-        .block__icon {
-            &:hover {
-                background-color: transparent !important;
-            }
-
-            &--active {
-                color: var(--b3-theme-primary);
-                background-color: transparent;
+            > .fn__space:last-child {
+                width: 0;
             }
         }
+
 
         .av__title {
             font-size: 1.2em;
@@ -1429,9 +1437,9 @@
     .b3-chip {
         border-radius: 4px;
 
-        &[style*="background-color"] {
-            padding: 4px 8px;
-        }
+        // &[style*="background-color"] {
+        //     padding: 4px 8px;
+        // }
 
         .icon {
             font-family: var(--b3-font-family-emoji);

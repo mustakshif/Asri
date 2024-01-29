@@ -62,7 +62,7 @@ const isLinux = navigator.platform.indexOf("Linux") === 0;
 // Safari 不支持 navigator.UserAgentData.platform；浏览器不支持 process.platform
 
 const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
-const isInBrowser = doms.toolbar && doms.toolbar.classList.contains('toolbar--browser');
+const isInBrowser = doms.toolbar?.classList.contains('toolbar--browser') > 0;
 const isMiniWindow = document.body.classList.contains('body--window') > 0;
 
 // function isFullScreen() {
@@ -84,8 +84,8 @@ function setTrafficLightPosition(x, y = x) {
     require("@electron/remote").getCurrentWindow().setWindowButtonPosition({ x: x, y: y });
 }
 
-if (isMacOS && !isInBrowser && !isMobile) setTrafficLightPosition(16);
-if (isMiniWindow && isMacOS) setTrafficLightPosition(14);
+if (isMacOS && !isInBrowser) setTrafficLightPosition(16);
+if (isMacOS && isMiniWindow) setTrafficLightPosition(14);
 
 function useSysScrollbar() {
     if (isMacOS) {
@@ -334,6 +334,7 @@ function calcTabbarSpacings() {
 
                 doms.drag = document.getElementById('drag');
 
+                // 极窄宽度下添加上边距
                 if (tabbarContainerRect.right - 200 < dragRect.left || tabbarContainerRect.left + 200 > dragRect.right) {
                     tabbarContainer.style.paddingTop = '42px';
                     tabbarContainer.style.paddingLeft = 0;
@@ -341,7 +342,6 @@ function calcTabbarSpacings() {
                 } else {
                     tabbarContainer.style.removeProperty('padding-top');
                 }
-
             } else {
                 tabbarContainer.style.paddingLeft = 0;
                 tabbarContainer.style.paddingRight = 0;
@@ -408,9 +408,8 @@ function handleCenterResize(widthChange) {
 if (!isMobile && !isMiniWindow) {
     setTimeout(calcTopbarSpacings, 200);
     LayoutsCenterResizeObserver();
+    handleWinResize();
 }
-
-handleWinResize();
 
 /**
  * 新小窗页签栏左右边距控制
@@ -462,8 +461,14 @@ handleWinResize();
 //     }
 // } // 弃用，采用思源自动避让
 
-function isSideDockHidden() {
-    return doms.dockl && doms.dockl.classList.contains('fn__none') > 0
+/**
+ * 
+ * @param {'l' | 'r'} dir
+ */
+function isSideDockHidden(dir='l') {
+    return doms[`dock${dir}`] && doms[`dock${dir}`].classList.contains('fn__none')
+    // 使用右侧停靠栏计算状态栏位置
+    // https://github.com/mustakshif/Asri-for-SiYuan/issues/16
 }
 function hasDockb() {
     return doms.dockb && !doms.dockb.classList.contains('fn__none');
@@ -507,7 +512,7 @@ function isFloatDockLytHidden(node) {
 }
 
 /**
- * 边栏面板展开时边栏的背景变化
+ * 边栏面板展开时边栏的背景、边框线变化
  */
 function dockBg() {
 
@@ -544,7 +549,7 @@ function dockBg() {
 dockBg();
 
 /**
- * 边栏和边栏面板展开/收起时状态栏的位置
+ * 计算dock和dock layout展开/收起时状态栏的位置
  */
 function statusPositon() {
     if (!isMobile) {
@@ -565,10 +570,13 @@ function statusPositon() {
 
                 doms.status.style.maxWidth = layoutCenterWidth - 12 + 'px';
 
-                if (isSideDockHidden() && isLayoutDockHidden('r')) setStatusTransform(0, y);
-                else if (!isSideDockHidden() && isLayoutDockHidden('r')) setStatusTransform(-40, y);
-                else if (!isSideDockHidden() && !isLayoutDockHidden('r')) setStatusTransform((layoutDockrWidth + 40) * -1, y);
-                else if (isSideDockHidden() && !isLayoutDockHidden('r')) setStatusTransform(layoutDockrWidth * -1, y);
+                let isDockRightHidden = isSideDockHidden('r'),
+                    isLayoutDockRightHidden = isLayoutDockHidden('r');
+
+                if (isDockRightHidden && isLayoutDockRightHidden) setStatusTransform(0, y);
+                else if (!isDockRightHidden && isLayoutDockRightHidden) setStatusTransform(-40, y);
+                else if (!isDockRightHidden && !isLayoutDockRightHidden) setStatusTransform((layoutDockrWidth + 40) * -1, y);
+                else if (isDockRightHidden && !isLayoutDockRightHidden) setStatusTransform(layoutDockrWidth * -1, y);
 
                 doms.status = document.getElementById('status');
             }
@@ -650,7 +658,7 @@ function avoidOverlappingWithStatus() {
 avoidOverlappingWithStatus();
 
 /**
- * 判断两个元素是否有重合。传入两个rec, 参照 getBoundingClientRect() 的属性标准
+ * 判断两个元素是否有重叠部分。传入两个rect, 参照 getBoundingClientRect() 的属性标准
  * @param {*} elementRect 
  * @param {*} targetRect 
  */

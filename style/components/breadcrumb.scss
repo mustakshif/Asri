@@ -15,7 +15,7 @@
         height: var(--toolbar-height);
         padding-right: 10px;
 
-        >.protyle-breadcrumb__space:hover{
+        >.protyle-breadcrumb__space:hover {
             background-color: transparent;
         }
     }
@@ -59,7 +59,7 @@
 
         &--active {
             background-color: transparent;
-            
+
 
             &:hover {
                 background-color: var(--b3-list-hover);
@@ -82,10 +82,20 @@
 }
 
 // 覆盖 webview 插件
-.layout__center .layout-tab-container .fn__flex-column > .protyle-breadcrumb {
+.layout__center .layout-tab-container .fn__flex-column>.protyle-breadcrumb {
     height: 42px;
 
     .address-field {
         margin: 8px 4px;
+    }
+}
+
+body.body--fullscreen,
+body.body--browser {
+    .fullscreen> {
+        .protyle-breadcrumb,
+        .block__icons {
+            padding-left: 10px;
+        }
     }
 }

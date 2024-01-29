@@ -1,4 +1,4 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v14.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v15.png)
 
 <br/>
 
@@ -28,7 +28,7 @@ Asri 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyu
 ### v2.0.0
 
 * 🎉 全新顶栏设计，与标签栏无缝融合，兼顾美感与效率
-* 主题更名为 Asri，更具现代气息
+* 主题更名为 Asri，简洁凝练，更具现代气息
 * [修复自定义字体 CSS 代码失效的问题](https://github.com/mustakshif/Asri-for-SiYuan/issues/11)
 * 其他细节优化
 
