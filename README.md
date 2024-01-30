@@ -30,9 +30,9 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 Check all updates [here](./CHANGELOG.md).
 
 
-> ## Attention
-> 
-> Asri has not been fully adapted for mobile and tablet devices. Please use it cautiously on these platforms.
+## Attention
+
+Asri has not been fully adapted for mobile and tablet devices. Please use it cautiously on these platforms.
 
 ## Theme Features
 
