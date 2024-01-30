@@ -181,6 +181,15 @@
     @include menu-shadow;
     @include border-or-not($border:false);
 
+    .block__icons {
+        .resize__move {
+            font-weight: 600;
+        }
+    }
+    .block__icons,
+    textarea {
+        background-color: transparent;
+    }
     textarea {
         resize: both;
     }

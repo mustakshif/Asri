@@ -336,7 +336,7 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
 
 .protyle-util {
     @include theme-variant-color(background-color, menu-background, $medium-transparency);
-    @include bg-blur;
+    @include bg-blur($saturate-value:3);
 }
 
 #searchHistoryList {

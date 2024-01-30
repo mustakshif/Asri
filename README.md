@@ -27,7 +27,12 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 * [Fixed the issue where custom font CSS code was not working](https://github.com/mustakshif/Asri-for-SiYuan/issues/11).
 * Other minor optimizations and improvements.
 
-Check all updates here 👉 [CHANGELOG](./CHANGELOG.md)
+Check all updates [here](./CHANGELOG.md).
+
+
+> ## Attention
+> 
+> Asri has not been fully adapted for mobile and tablet devices. Please use it cautiously on these platforms.
 
 ## Theme Features
 

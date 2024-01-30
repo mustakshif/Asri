@@ -27,7 +27,11 @@ Asri 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyu
 * [修复自定义字体 CSS 代码失效的问题](https://github.com/mustakshif/Asri-for-SiYuan/issues/11)
 * 其他细节优化
 
-查看全部日志 👉 [更新日志](./CHANGELOG.md)
+点击[这里](./CHANGELOG.md)查看全部更新日志。
+
+> ## 注意
+> 
+> Asri 主题尚未完全适配手机和平板端，请在以上平台谨慎使用
 
 ## 主题特性
 

@@ -25,11 +25,11 @@
             width: 0;
         }
 
-        &,
-        &~* {
-            @content;
-            // 指定背景颜色
-        }
+        // &,
+        // &~* {
+        //     @content;
+        //     // 指定背景颜色
+        // }
 
         &~.fn__flex-1 {
             margin-bottom: 0 !important;
@@ -113,9 +113,7 @@
         // background-color: transparent;
         background-color: var(--b3-theme-surface);
 
-        @include layout-tab-container-contents {
-            // @include theme-variant-color(background-color, surface);
-        }
+        @include layout-tab-container-contents;
     }
 }
 
@@ -166,9 +164,7 @@
         // background-color: transparent;
         background-color: var(--b3-theme-surface);
 
-        @include layout-tab-container-contents {
-            // @include theme-variant-color(background-color, surface);
-        }
+        @include layout-tab-container-contents;
     }
 
     &.layout--float {
@@ -416,9 +412,7 @@
 
 // 作为页签打开时
 .layout__center {
-    @include layout-tab-container-contents {
-        background-color: var(--b3-theme-background);
-    }
+    @include layout-tab-container-contents
 }
 
 
