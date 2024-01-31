@@ -57,10 +57,10 @@ const doms = {
     // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
 }
 
-const isMacOS = navigator.platform.indexOf("Mac") === 0;
-const isLinux = navigator.platform.indexOf("Linux") === 0;
+const isMacOS = navigator.platform.indexOf("Mac") > -1;
+const isLinux = navigator.platform.indexOf("Linux") > -1;
 // Safari 不支持 navigator.UserAgentData.platform；浏览器不支持 process.platform
-
+const isIpad = navigator.userAgent.indexOf("iPad") > -1;
 const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
 const isInBrowser = doms.toolbar?.classList.contains('toolbar--browser') > 0;
 const isMiniWindow = document.body.classList.contains('body--window') > 0;
@@ -239,7 +239,7 @@ let pluginsDivider, leftSpacing, rightSpacing, topbar,
 if (!isMobile && doms.toolbar) {
     createTopbarElementById('AsriPluginsIconsDivider', undefined, doms.drag);
     (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barSync) : createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barForward);
-    (isMacOS || isInBrowser) ? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
+    (isMacOS || isInBrowser || isIpad) ? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
 }
 
 function calcTopbarSpacings(widthChange) {
@@ -278,7 +278,7 @@ function calcTopbarSpacings(widthChange) {
         } else {
             topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 7 + 'px');
 
-            if (isMacOS || isInBrowser) {
+            if (isMacOS || isInBrowser || isIpad) {
                 doms.dockr?.style.setProperty('--avoid-topbar', '4px');
                 doms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
             } else {

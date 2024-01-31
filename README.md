@@ -29,11 +29,6 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 Check all updates [here](./CHANGELOG.md).
 
-
-## Attention
-
-Asri has not been fully adapted for mobile and tablet devices. Please use it cautiously on these platforms.
-
 ## Theme Features
 
 * ⚖️ Introducing top-bar fusion, striking a balance between aesthetics and efficiency.
@@ -61,6 +56,11 @@ Asri has not been fully adapted for mobile and tablet devices. Please use it cau
 
 * **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
 * Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
+
+
+### ⚠️ Attention
+
+Asri has not been fully adapted for mobile and tablet devices. Please use it cautiously on these platforms.
 
 ## Plans
 
