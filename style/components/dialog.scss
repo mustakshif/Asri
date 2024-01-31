@@ -17,7 +17,7 @@
         }
 
         .b3-dialog__container {
-            // overflow: hidden; // 导致搜索窗口上部溢出
+            overflow: hidden;
             background-color: var(--b3-theme-background);
 
             @include border-or-not;
@@ -27,9 +27,9 @@
                 visibility: hidden;
             }
 
-            .b3-dialog__body {
-                border-radius: 12px;
-            }
+            // .b3-dialog__body {
+            //     border-radius: 12px;
+            // }
 
             // 命令面板 ——————————————————————————
 
@@ -240,6 +240,10 @@
             }
 
             // 数据历史 ————————————————————————————————————————
+            .history__repo {
+                background-color: unset;
+            }
+
             .history__panel {
 
                 &>.b3-list,
@@ -247,6 +251,14 @@
                     width: min(256px, 30%);
                     min-width: fit-content;
                     background-color: var(--b3-theme-surface);
+                }
+            }
+
+            :not(.b3-dialog__body)>.history__panel {
+                border-top: 1px solid var(--b3-border-color-trans);
+
+                .b3-list--background {
+                    border-right: 1px solid var(--b3-border-color);
                 }
             }
         }
@@ -323,6 +335,10 @@
     &[data-key="dialog-recentdocs"] {
         .b3-form__icon.fn__size200 {
             transform: translateX(16px)
+        }
+
+        .b3-list--background:first-child {
+            background-color: var(--b3-theme-surface)
         }
     }
 
@@ -719,33 +735,35 @@ div[id*=configBazaar] {
 }
 
 // 随机题头图列表
-.b3-dialog__body {
-    position: relative;
-    z-index: 0;
+[data-key="dialog-backgroundrandom"] {
+    .b3-dialog__body {
+        position: relative;
+        z-index: 0;
 
-    &>.b3-cards {
-        grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
-        margin: 0;
-        padding: 32px;
-        gap: 32px;
-        display: grid;
-
-        .b3-card {
-            width: auto !important;
+        &>.b3-cards {
+            grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
             margin: 0;
-            border-radius: $border-rd-card;
-            padding: 0;
-            box-shadow: none;
-            top: 0;
-            // transform: scale(0.9);
+            padding: 32px;
+            gap: 32px;
+            display: grid;
 
-            &:hover {
-                transform: scale(1.05);
-                // box-shadow: 0 4px 18px -8px #0000001b;
-                @include menu-shadow;
+            .b3-card {
+                width: auto !important;
+                margin: 0;
+                border-radius: $border-rd-card;
+                padding: 0;
+                box-shadow: none;
+                top: 0;
+                // transform: scale(0.9);
 
-                @include darkmode-counterpart {
-                    box-shadow: 0 8px 28px -8px #00000062;
+                &:hover {
+                    transform: scale(1.05);
+                    // box-shadow: 0 4px 18px -8px #0000001b;
+                    @include menu-shadow;
+
+                    @include darkmode-counterpart {
+                        box-shadow: 0 8px 28px -8px #00000062;
+                    }
                 }
             }
         }
@@ -853,7 +871,7 @@ body.body--window {
     padding: 4px 8px;
     background-color: var(--b3-theme-surface);
     border-radius: 99px;
-    @include border-or-not($border:false);
+    @include border-or-not($border: false);
 }
 
 .viewer-toolbar {
@@ -861,7 +879,7 @@ body.body--window {
         background-color: var(--b3-theme-surface);
         padding: 8px;
         border-radius: 99px;
-        @include border-or-not($border:false);
+        @include border-or-not($border: false);
 
         >li {
             background-color: transparent;
@@ -1020,7 +1038,7 @@ body[style*="-webkit-print-color-adjust"] {
     #action {
         padding-bottom: 8px;
 
-        .b3-label{
+        .b3-label {
             border-bottom: none;
             display: flex;
 
@@ -1038,9 +1056,10 @@ body[style*="-webkit-print-color-adjust"] {
             }
         }
 
-        .b3-button--cancel{
+        .b3-button--cancel {
             @include button-action('normal')
         }
+
         .b3-button--text {
             @include button-action('primary')
         }

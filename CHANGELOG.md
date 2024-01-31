@@ -1,3 +1,21 @@
+### v2.0.4
+
+* 为嵌入块、html 块、公式块、备注等的编辑器添加毛玻璃效果
+* 优化 `数据历史`、`最近文档` 对话框 UI
+* 尝试修复 iPad 端顶栏右侧图标与右停靠栏图标重合的问题
+* 修复 `对话框` 窗口主体的多余圆角
+* 修复部分 `对话框` 窗口滚动条抖动的问题
+
+<br />
+
+* Added glassmorphism for editors of embedded blocks, HTML blocks, formula blocks, and inline memos etc.
+* Optimized the UI of the `Data History` and `Recent Documents` dialogs.
+* Attempted to fix the issue on iPad, where icons in the top bar and icons in the right dock overlapped.
+* Fixed the redundant rounded corners of some `Dialog` bodies.
+* Fixed the problem of the scrollbar shaking in some `Dialog` windows.
+
+---
+
 ### v2.0.3
 
 * 优化文本编辑工具条和 `数据库` 标签的内边距

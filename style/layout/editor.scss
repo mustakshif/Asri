@@ -258,15 +258,14 @@
         border-bottom: none;
         text-decoration: underline;
         text-decoration-color: var(--b3-font-color5);
-        transition: all 150ms;
+        transition-property: background-color, text-decoration-color, box-shadow, color;
+        transition-duration: .15s;
         box-decoration-break: clone;
 
         &:hover {
             --memo-bg: #{mix(map-get($theme-light, font-color5), map-get($theme-light, background))};
-
             background-color: var(--memo-bg);
             box-shadow: 0 0 0 8px var(--memo-bg);
-            transition: all 0.15s;
             text-decoration-color: var(--memo-bg);
             color: var(--b3-theme-on-background) !important;
             border-radius: 1px;
@@ -288,6 +287,7 @@
 }
 
 @mixin blockquote {
+
     .bq,
     blockquote {
         border-radius: 10px;
@@ -544,7 +544,7 @@
 
     // 表格 ——————————————————————————————————————
     @include table;
-    
+
     [data-node-id].table table {
         display: inline-block;
     }
@@ -813,7 +813,7 @@
 &-icons {
     // 工具条
     @include protyle-icons;
-    @include border-or-not($border:false);
+    @include border-or-not($border: false);
 }
 
 &-action {
@@ -869,7 +869,7 @@
     // transform: translateY(-12px);
     background-color: var(--b3-theme-surface);
     @include menu-shadow;
-    @include border-or-not($border:false);
+    @include border-or-not($border: false);
 
     &__item {
         height: 30px;
@@ -957,6 +957,7 @@
 }
 
 .b3-typography {
+
     // @extend .protyle-wysiwyg;
     >* {
         border-radius: 10px;
@@ -990,7 +991,8 @@
         border: 1px solid var(--b3-border-color-trans);
     }
 
-    video, iframe {
+    video,
+    iframe {
         border-radius: 4px;
         border-color: transparent;
     }
@@ -1141,38 +1143,38 @@
             .layout-tab-bar {
                 @include dialog-tabbar;
                 margin: 8px auto !important;
-    
+
                 .item:not(.item--focus) {
                     .item__graphic {
                         color: var(--b3-theme-on-surface);
                     }
-    
+
                     &:hover {
                         .item__graphic {
                             color: var(--b3-theme-on-background);
                         }
                     }
                 }
-    
+
                 .item--focus {
                     &:hover {
                         @include theme-variant-color(background-color, light-components, 1, 0.2, $important: true);
                     }
                 }
             }
-    
+
             .block__icon {
                 &:hover {
                     background-color: transparent !important;
                 }
-    
+
                 &--active {
                     color: var(--b3-theme-primary);
                     background-color: transparent;
                 }
             }
 
-            > .fn__space:last-child {
+            >.fn__space:last-child {
                 width: 0;
             }
         }

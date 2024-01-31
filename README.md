@@ -10,15 +10,15 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 
 ## Latest Updates
 
-### v2.0.3
+### v2.0.4
 
-* Optimized the inner padding of the text editing toolbar and the `Database` tab.
-* Removed the extra margin in the `Database` views area.
-* Removed the extra left margin of elements such as breadcrumbs in full-screen view in the browser and in Mac's full-screen mode
-* [Fixed the issue where the status bar retains the right margin even when there were no icons in the right dock](https://github.com/mustakshif/Asri-for-SiYuan/issues/16).
-* Fixed the occasional extra spacing issue above the right floating panel on Mac.
+* Added glassmorphism for editors of embedded blocks, HTML blocks, formula blocks, and inline memos etc.
+* Optimized the UI of the `Data History` and `Recent Documents` dialogs.
+* Attempted to fix the issue on iPad, where icons in the top bar and icons in the right dock overlapped.
+* Fixed the redundant rounded corners of some `Dialog` bodies.
+* Fixed the problem of the scrollbar shaking in some `Dialog` windows.
 
-...
+### ...
 
 ### v2.0.0
 
