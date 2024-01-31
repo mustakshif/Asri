@@ -60,7 +60,7 @@ const doms = {
 const isMacOS = navigator.platform.indexOf("Mac") > -1;
 const isLinux = navigator.platform.indexOf("Linux") > -1;
 // Safari 不支持 navigator.UserAgentData.platform；浏览器不支持 process.platform
-const isIpad = navigator.userAgent.indexOf("iPad") > -1;
+// const isIpad = navigator.userAgent.indexOf("iPad") > -1; // ipad适用isBrowser的情况
 const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
 const isInBrowser = doms.toolbar?.classList.contains('toolbar--browser') > 0;
 const isMiniWindow = document.body.classList.contains('body--window') > 0;
@@ -239,7 +239,7 @@ let pluginsDivider, leftSpacing, rightSpacing, topbar,
 if (!isMobile && doms.toolbar) {
     createTopbarElementById('AsriPluginsIconsDivider', undefined, doms.drag);
     (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barSync) : createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barForward);
-    (isMacOS || isInBrowser || isIpad) ? createTopbarElementById('AsriTopbarRightSpacing') : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
+    (isMacOS || isInBrowser) ? createTopbarElementById('AsriTopbarRightSpacing') : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
 }
 
 function calcTopbarSpacings(widthChange) {
@@ -276,9 +276,10 @@ function calcTopbarSpacings(widthChange) {
             doms.dockr?.style.removeProperty('--avoid-topbar');
             doms.layoutDockr?.style.removeProperty('--avoid-topbar');
         } else {
-            topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 5 + 'px');
+            if (isMacOS || isInBrowser) topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 5 + 'px');
+            else topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 7 + 'px');
 
-            if (isMacOS || isInBrowser || isIpad) {
+            if (isMacOS || isInBrowser) {
                 doms.dockr?.style.setProperty('--avoid-topbar', '4px');
                 doms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
             } else {
