@@ -239,7 +239,7 @@ let pluginsDivider, leftSpacing, rightSpacing, topbar,
 if (!isMobile && doms.toolbar) {
     createTopbarElementById('AsriPluginsIconsDivider', undefined, doms.drag);
     (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barSync) : createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barForward);
-    (isMacOS || isInBrowser || isIpad) ? createTopbarElementById('AsriTopbarRightSpacing', undefined, doms.barMode) : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
+    (isMacOS || isInBrowser || isIpad) ? createTopbarElementById('AsriTopbarRightSpacing') : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
 }
 
 function calcTopbarSpacings(widthChange) {
@@ -276,7 +276,7 @@ function calcTopbarSpacings(widthChange) {
             doms.dockr?.style.removeProperty('--avoid-topbar');
             doms.layoutDockr?.style.removeProperty('--avoid-topbar');
         } else {
-            topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 7 + 'px');
+            topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 5 + 'px');
 
             if (isMacOS || isInBrowser || isIpad) {
                 doms.dockr?.style.setProperty('--avoid-topbar', '4px');
