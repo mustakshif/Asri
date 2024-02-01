@@ -711,6 +711,10 @@
 }
 
 .protyle {
+    font-feature-settings: "ss07" on;
+    //启用备忘录字体变体，如单层的“a”
+    // font-variant-emoji: emoji; // 不受支持
+
     // background-color: transparent; // 全屏视图下是透明的
 
     // 题头图区域
@@ -957,6 +961,8 @@
 }
 
 .b3-typography {
+    font-feature-settings: "ss07" on; //启用 mac 备忘录字体变体，如单层的“a”
+    // font-variant-emoji: emoji; // 不受支持
 
     // @extend .protyle-wysiwyg;
     >* {
