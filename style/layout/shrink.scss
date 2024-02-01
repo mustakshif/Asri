@@ -306,13 +306,18 @@
                 }
 
                 &:not(.b3-list--empty) {
-                    margin: 0;
+                    // margin: 0;
                     padding: 2px 8px;
-                    border-radius: 0;
+                    font-weight: 500;
+                    // border-radius: 0;
                     background-color: change-color($color: pickThemeColor($theme-light, surface), $lightness: 90%);
 
                     @include darkmode-counterpart {
                         background-color: change-color($color: pickThemeColor($theme-dark, surface), $lightness: 28%);
+                    }
+
+                    &:first-child {
+                        margin-top: 0;
                     }
 
                     .layout--float &,
