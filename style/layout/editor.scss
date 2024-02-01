@@ -306,9 +306,11 @@
     $selector: matchSelector($protyle, '[data-node-id].table table', $typography, 'table');
 
     #{$selector} {
+        width: auto;
+        font-feature-settings: "ss06" on;
+        font-variant-numeric: tabular-nums;
         border-radius: 6px;
         border: 1px solid var(--b3-border-color-trans);
-        width: auto;
 
         td,
         th {
@@ -706,13 +708,13 @@
 }
 
 .layout-tab-container {
+    font-feature-settings: "ss06" on;
+    //启用高可读性字形变体
     background-color: transparent;
     transition: padding 0.2s;
 }
 
 .protyle {
-    font-feature-settings: "ss07" on;
-    //启用备忘录字体变体，如单层的“a”
     // font-variant-emoji: emoji; // 不受支持
 
     // background-color: transparent; // 全屏视图下是透明的
