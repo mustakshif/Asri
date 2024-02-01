@@ -1,3 +1,19 @@
+### v2.0.5
+
+* 优化 `反链面板` 文档条目样式
+* 调整 `搜索列表` 按文档分组时的文档名和 `反链面板` 文档名的字重
+* 为苹果设备上笔记相关的主题默认字体启用高可读性字形变体（如区分 I/l、0/O 等）、`表格` 的主题默认字体启用等宽数字特性
+* 尝试修复 iPad 端顶栏右侧图标与右停靠栏图标重合的问题
+
+<br />
+
+* Optimized the document entry style of the `Backlink Panel`.
+* Adjusted the font weight of the document name in the `Search List` when grouped by document and the document name in the `Backlink Panel`.
+* Enabled high readability font variants (such as distinguishing I/l, 0/O, etc.) for note-related contents and enabled tabular number features for `tables` on Apple devices.
+* Attempted to fix the issue on iPad, where icons in the top bar and icons in the right dock overlapped.
+
+---
+
 ### v2.0.4
 
 * 为嵌入块、html 块、公式块、备注等的编辑器添加毛玻璃效果
