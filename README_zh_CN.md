@@ -6,7 +6,7 @@
 
 # Asri - theme for SiYuan
 
-Asri 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyuan-note/siyuan)主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
+Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/siyuan)主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
 
 ## 最近更新
 
@@ -18,7 +18,7 @@ Asri 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyu
 * 修复 `对话框` 窗口主体的多余圆角
 * 修复部分 `对话框` 窗口滚动条抖动的问题
 
-### ……
+……
 
 ### v2.0.0
 
@@ -58,9 +58,8 @@ Asri 是一款极富现代感的类 macOS [思源笔记](https://github.com/siyu
 * GitHub 下载更新：下载 release 中的 `package.zip`，手动解压至思源笔记工作空间下的 `conf/appearance/themes`，重启思源，在应用 `设置 - 外观` 中选择 Asri 主题
 
 
-### ⚠️ 注意
-
-Asri 主题尚未完全适配手机和平板端，在这些平台上请谨慎使用
+> [!NOTE]
+> Asri 主题尚未完全适配手机和平板端，在这些平台上请谨慎使用
 
 ## 计划
 

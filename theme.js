@@ -276,13 +276,15 @@ function calcTopbarSpacings(widthChange) {
             doms.dockr?.style.removeProperty('--avoid-topbar');
             doms.layoutDockr?.style.removeProperty('--avoid-topbar');
         } else {
-            if (isMacOS || isInBrowser) topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 5 + 'px');
-            else topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 7 + 'px');
-
             if (isMacOS || isInBrowser) {
+                topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 5 + 'px');
+                // windowControls 占据 2px
+
                 doms.dockr?.style.setProperty('--avoid-topbar', '4px');
                 doms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
             } else {
+                topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 7 + 'px');
+
                 doms.dockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
                 doms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
             };

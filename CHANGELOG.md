@@ -12,7 +12,7 @@
 * Optimized the UI of the `Data History` and `Recent Documents` dialogs.
 * Attempted to fix the issue on iPad, where icons in the top bar and icons in the right dock overlapped.
 * Fixed the redundant rounded corners of some `Dialog` bodies.
-* Fixed the problem of the scrollbar shaking in some `Dialog` windows.
+* Fixed the problem of the scrollbar flickering in some `Dialog` windows.
 
 ---
 

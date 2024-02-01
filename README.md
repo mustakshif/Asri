@@ -6,7 +6,7 @@
 
 # Asri - theme for SiYuan
 
-An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), provides an elegant and efficient note-taking experience with its lightweight and minimalistic style.
+An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), provides an elegant and efficient note-taking experience with its lightweight and minimalistic style.
 
 ## Latest Updates
 
@@ -16,9 +16,9 @@ An ultra-modern macOS-like theme for [SiYuan Note](https://github.com/siyuan-not
 * Optimized the UI of the `Data History` and `Recent Documents` dialogs.
 * Attempted to fix the issue on iPad, where icons in the top bar and icons in the right dock overlapped.
 * Fixed the redundant rounded corners of some `Dialog` bodies.
-* Fixed the problem of the scrollbar shaking in some `Dialog` windows.
+* Fixed the problem of the scrollbar flickering in some `Dialog` windows.
 
-### ...
+...
 
 ### v2.0.0
 
@@ -58,9 +58,8 @@ Check all updates [here](./CHANGELOG.md).
 * Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
 
 
-### ⚠️ Attention
-
-Asri has not been fully adapted for mobile and tablet devices. Please use it cautiously on these platforms.
+> [!NOTE]
+> Asri has not been fully adapted for mobile and tablet devices. Please use it cautiously on these platforms.
 
 ## Plans
 

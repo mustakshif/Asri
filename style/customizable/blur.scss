@@ -265,7 +265,7 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
             position: absolute;
             z-index: -1;
             @include bg-blur;
-        }
+        } // 在不影响反链面板中块标元素定位的情况下使用模糊
 
         .sy__graph.fullscreen {
             @include theme-variant-color(background-color, background,$medium-transparency)
