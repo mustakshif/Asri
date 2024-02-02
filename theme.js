@@ -233,8 +233,6 @@ function handleWinResize() {
 
 let dragRectLeftInitial = doms.drag?.getBoundingClientRect().left,
     dragRectRightInitial = doms.drag?.getBoundingClientRect().right;
-let pluginsDivider, leftSpacing, rightSpacing, topbar,
-    layoutsCenterRect, leftSpacingRect, rightSpacingRect, barSyncRect, dragRect;
 
 if (!isMobile && doms.toolbar) {
     createTopbarElementById('AsriPluginsIconsDivider', undefined, doms.drag);
@@ -243,6 +241,9 @@ if (!isMobile && doms.toolbar) {
 }
 
 function calcTopbarSpacings(widthChange) {
+    let pluginsDivider, leftSpacing, rightSpacing, topbar,
+        layoutsCenterRect, leftSpacingRect, rightSpacingRect, barSyncRect, dragRect;
+
     pluginsDivider = document.getElementById('AsriPluginsIconsDivider');
     leftSpacing = document.getElementById('AsriTopbarLeftSpacing');
     rightSpacing = document.getElementById('AsriTopbarRightSpacing');
@@ -322,35 +323,33 @@ function calcTopbarSpacings(widthChange) {
 function calcTabbarSpacings() {
     let wndElements = doms.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
 
-    if (wndElements) {
-        for (let wnd of wndElements) {
-            let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
-            let tabbarContainerRect = tabbarContainer.getBoundingClientRect();
-            let dragRect = doms.drag.getBoundingClientRect();
+    wndElements.forEach(wnd => {
+        let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
+        let tabbarContainerRect = tabbarContainer.getBoundingClientRect();
+        let dragRect = doms.drag.getBoundingClientRect();
 
-            if (isOverlapping(tabbarContainerRect, dragRect)) {
-                let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 6 + 'px' : '';
-                let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 + 'px' : '';
+        if (isOverlapping(tabbarContainerRect, dragRect)) {
+            let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 6 + 'px' : '';
+            let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 + 'px' : '';
 
-                tabbarContainer.style.paddingLeft = paddingLeftValue;
-                tabbarContainer.style.paddingRight = paddingRightValue;
+            tabbarContainer.style.paddingLeft = paddingLeftValue;
+            tabbarContainer.style.paddingRight = paddingRightValue;
 
-                doms.drag = document.getElementById('drag');
+            doms.drag = document.getElementById('drag');
 
-                // 极窄宽度下添加上边距
-                if (tabbarContainerRect.right - 200 < dragRect.left || tabbarContainerRect.left + 200 > dragRect.right) {
-                    tabbarContainer.style.paddingTop = '42px';
-                    tabbarContainer.style.paddingLeft = 0;
-                    tabbarContainer.style.paddingRight = 0;
-                } else {
-                    tabbarContainer.style.removeProperty('padding-top');
-                }
-            } else {
+            // 极窄宽度下添加上边距
+            if (tabbarContainerRect.right - 200 < dragRect.left || tabbarContainerRect.left + 200 > dragRect.right) {
+                tabbarContainer.style.paddingTop = '42px';
                 tabbarContainer.style.paddingLeft = 0;
                 tabbarContainer.style.paddingRight = 0;
+            } else {
+                tabbarContainer.style.removeProperty('padding-top');
             }
+        } else {
+            tabbarContainer.style.paddingLeft = 0;
+            tabbarContainer.style.paddingRight = 0;
         }
-    }
+    })
 }
 
 function LayoutsCenterResizeObserver() {
@@ -468,7 +467,7 @@ if (!isMobile && !isMiniWindow) {
  * 
  * @param {'l' | 'r'} dir
  */
-function isSideDockHidden(dir='l') {
+function isSideDockHidden(dir = 'l') {
     return doms[`dock${dir}`] && doms[`dock${dir}`].classList.contains('fn__none')
     // 使用右侧停靠栏计算状态栏位置
     // https://github.com/mustakshif/Asri-for-SiYuan/issues/16

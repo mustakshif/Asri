@@ -308,7 +308,6 @@
                 &:not(.b3-list--empty) {
                     // margin: 0;
                     padding: 2px 8px;
-                    font-weight: 500;
                     // border-radius: 0;
                     background-color: change-color($color: pickThemeColor($theme-light, surface), $lightness: 90%);
 
@@ -318,6 +317,10 @@
 
                     &:first-child {
                         margin-top: 0;
+                    }
+
+                    >.b3-list-item__text {
+                        font-weight: 500;
                     }
 
                     .layout--float &,

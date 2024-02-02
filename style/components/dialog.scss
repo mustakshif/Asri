@@ -302,7 +302,7 @@
                                 }
                             }
 
-                            .b3-list-item__text.ariaLabel{
+                            .b3-list-item__text.ariaLabel {
                                 font-weight: 500;
                             }
                         }
@@ -351,6 +351,17 @@
     // 对话框中的 tab-bar ——————————————————————————————
     .layout-tab-bar {
         @include dialog-tabbar;
+    }
+
+    // 笔记本设置 ————————————————————
+    &[data-key="dialog-notebookconf"] {
+        .b3-dialog__header {
+            .b3-button {
+                @include button-action('primary');
+                padding: 0 8px;
+                background-color: transparent;
+            }
+        }
     }
 }
 

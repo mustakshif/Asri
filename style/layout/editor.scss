@@ -307,7 +307,6 @@
 
     #{$selector} {
         width: auto;
-        font-feature-settings: "ss06" on;
         font-variant-numeric: tabular-nums;
         border-radius: 6px;
         border: 1px solid var(--b3-border-color-trans);
@@ -719,6 +718,10 @@
 
     // background-color: transparent; // 全屏视图下是透明的
 
+    &-content {
+        font-feature-settings: "ss06" on;
+    }
+
     // 题头图区域
     &-background {
 
@@ -855,9 +858,9 @@
     // 折叠块--标题块
     div[fold="1"] {
         &[data-type=NodeHeading] {
-            background-color: var(--b3-theme-surface-lighter);
-            outline: 1.5px solid var(--b3-border-color-trans);
-            opacity: 0.6;
+            background-color: var(--b3-theme-surface-light);
+            outline: 1px solid var(--b3-border-color-trans);
+            opacity: .6;
 
             &::before {
                 display: none;

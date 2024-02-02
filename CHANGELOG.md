@@ -9,7 +9,7 @@
 
 * Optimized the document entry style of the `Backlink Panel`.
 * Adjusted the font weight of the document name in the `Search List` when grouped by document and the document name in the `Backlink Panel`.
-* Enabled high readability font variants (such as distinguishing I/l, 0/O, etc.) for note-related contents and enabled tabular number features for `tables` on Apple devices.
+* Enabled high readability font variants (such as distinguishing I/l, 0/O, etc.) for note-related contents and enabled tabular number features for `tables` under Asri's default fonts on Apple devices.
 * Attempted to fix the issue on iPad, where icons in the top bar and icons in the right dock overlapped.
 
 ---
