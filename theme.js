@@ -100,7 +100,7 @@ isInBrowser && document.body.classList.add("body--browser"), AsriClassNames.push
  *
  * @param {any} item - 要添加到数组中的元素。
  */
-Array.prototype.pushUnique = function(item) {
+Array.prototype.pushUnique = function (item) {
     if (!this.includes(item)) {
         this.push(item);
     }
@@ -125,10 +125,11 @@ if (isMacOS && isMiniWindow) setTrafficLightPosition(14);
                 for (let j = 0; j < styleSheet.cssRules.length; j++) {
                     let rule = styleSheet.cssRules[j];
                     if (rule.selectorText && rule.selectorText.includes('::-webkit-scrollbar')) {
-                        // 在删除规则之前将其保存
-                        AsriDeletedRules.push({ styleSheet: styleSheet, rule: rule.cssText });
-                        styleSheet.deleteRule(j);
-                        j--;
+                        if (rule.style.width || rule.style.height || rule.style.backgroundColor){ // 在删除规则之前将其保存
+                            AsriDeletedRules.push({ styleSheet: styleSheet, rule: rule.cssText });
+                            styleSheet.deleteRule(j);
+                            j--;
+                        }
                     }
                 }
             } catch (e) {
@@ -350,7 +351,7 @@ function calcTabbarSpacings() {
             AsriDom.drag = document.getElementById('drag');
 
             // 极窄宽度下添加上边距
-            if (tabbarContainerRect.right - 200 < dragRect.left || tabbarContainerRect.left + 200 > dragRect.right) {
+            if ((tabbarContainerRect.right - 200 < dragRect.left && tabbarContainerRect.left < dragRect.left) || (tabbarContainerRect.left + 200 > dragRect.right && tabbarContainerRect.right > dragRect.right)) {
                 tabbarContainer.style.paddingTop = '42px';
                 tabbarContainer.style.paddingLeft = 0;
                 tabbarContainer.style.paddingRight = 0;
@@ -538,7 +539,7 @@ function dockBg() {
 
             if (isDockLytPinned(lyt) && isDockLytExpanded(lyt)) {
                 dock.classList.add('dock-layout-expanded'),
-                AsriClassNames.pushUnique('.dock-layout-expanded');
+                    AsriClassNames.pushUnique('.dock-layout-expanded');
             } else {
                 dock.classList.remove('dock-layout-expanded');
             }
@@ -700,7 +701,7 @@ function formatIndentGuidesForFocusedItems() {
         for (let li of listItemsFocus) {
             if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
                 li.parentNode.classList.add('has-focus'),
-                AsriClassNames.pushUnique('.has-focus');
+                    AsriClassNames.pushUnique('.has-focus');
             }
         }
     }
@@ -713,7 +714,7 @@ function formatProtyleWithBgImageOnly() {
     protyleBgs.forEach(protyleBg => {
         if (!protyleBg.querySelector('.protyle-background__img img')?.classList.contains('fn__none') && protyleBg.querySelector('.protyle-background__icon.fn__none')) {
             protyleBg.classList.add('without-icon'),
-            AsriClassNames.pushUnique('.without-icon');
+                AsriClassNames.pushUnique('.without-icon');
         } else {
             protyleBg.classList.remove('without-icon')
         }
@@ -979,58 +980,74 @@ function handleDblClick(event) {
 
 window.addEventListener('dblclick', handleDblClick);
 
-window.destroyTheme = () => {
-    // 取消事件监听
-    window.removeEventListener('dblclick', handleDblClick);
-    window.removeEventListener('resize', handleWinResize);
+// window.destroyTheme = () => {
 
-    // 取消所有变动观察
-    AsriObservers.forEach(observer => observer.disconnect());
+//     let htmlElement = document.documentElement;
+//     let themeMode = htmlElement.getAttribute('data-theme-mode');
+//     let lightTheme = htmlElement.getAttribute('data-light-theme');
+//     let darkTheme = htmlElement.getAttribute('data-dark-theme');
 
-    // 恢复 traffic light 位置
-    if (isMacOS && !isInBrowser) setTrafficLightPosition(8);
-    if (isMacOS && isMiniWindow) setTrafficLightPosition(8, 13);
+//     let switchBetweenAsriThemes = (themeMode === 'light' && (darkTheme === 'Asri-for-SiYuan' || darkTheme === 'Asri')) || (themeMode === 'dark' && (lightTheme === "Asri-for-SiYuan" || lightTheme === 'Asri'));
 
-    // 删除添加的类名和元素
-    AsriClassNames.forEach(className => {
-        document.querySelectorAll(className).forEach(el => el.classList.remove(className.slice(1)));
-    })
-    document.querySelector('#AsriTopbarLeftSpacing')?.remove();
-    document.querySelector('#AsriTopbarRightSpacing')?.remove();
-    document.querySelector('#AsriPluginsIconsDivider')?.remove();
+//     // let toDiffTheme = (themeMode === 'light' && (darkTheme !== "Asri-for-SiYuan" || darkTheme !== 'Asri')) || (themeMode === 'dark' && (lightTheme !== "Asri-for-SiYuan" || lightTheme !== 'Asri'));
 
-    // 移除 js 样式属性
-    AsriDom.topbar?.style.removeProperty('--topbar-left-spacing');
-    AsriDom.topbar?.style.removeProperty('--topbar-right-spacing');
-    AsriDom.topbar?.style.removeProperty('--avoid-topbar');
-    AsriDom.status?.style.removeProperty('max-width');
-    AsriDom.status?.style.removeProperty('transform');
-    AsriDom.status?.style.removeProperty('--status-height');
+//     if (!switchBetweenAsriThemes) {
+//         // 取消事件监听
+//         window.removeEventListener('dblclick', handleDblClick);
+//         window.removeEventListener('resize', handleWinResize);
 
-    let wndElements = AsriDom.layouts?.querySelectorAll('[data-type="wnd"]');
-    wndElements.forEach(wnd => {
-        let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
-        tabbarContainer.style.removeProperty('padding-left');
-        tabbarContainer.style.removeProperty('padding-right');
-    })
+//         // 取消所有变动观察
+//         AsriObservers.forEach(observer => observer.disconnect());
 
-    let layoutTabContainers = AsriDom.layouts?.querySelectorAll('.layout__center .layout-tab-container');
-    layoutTabContainers.forEach(tabContainer => {
-        tabContainer.style.removeProperty('padding-bottom');
-    })
+//         // 恢复 traffic light 位置
+//         if (isMacOS && !isInBrowser) setTrafficLightPosition(8);
+//         if (isMacOS && isMiniWindow) setTrafficLightPosition(8, 13);
 
-    document.getElementById('searchList')?.style.removeProperty('padding-bottom');
-    document.getElementById('searchPreview')?.style.removeProperty('padding-bottom');
-    document.getElementById('viewerContainer')?.style.removeProperty('padding-bottom');
-    document.querySelectorAll('.dock').forEach(dock => {
-        dock.style.removeProperty('--border-clr');
-    })
+//         // 删除添加的类名和元素
+//         AsriClassNames.forEach(className => {
+//             document.querySelectorAll(className).forEach(el => el.classList.remove(className.slice(1)));
+//         })
+//         document.querySelector('#AsriTopbarLeftSpacing')?.remove();
+//         document.querySelector('#AsriTopbarRightSpacing')?.remove();
+//         document.querySelector('#AsriPluginsIconsDivider')?.remove();
 
-    // 还原被删除的规则
-    if (AsriDeletedRules) {
-        for (let i = 0; i < AsriDeletedRules.length; i++) {
-            let rule = AsriDeletedRules[i];
-            rule.styleSheet.insertRule(rule.rule, rule.styleSheet.cssRules.length);
-        }
-    }
-}
+//         // 移除 js 样式属性
+//         document.body.style.removeProperty('--mouseX');
+//         document.body.style.removeProperty('--mouseY');
+//         AsriDom.topbar?.style.removeProperty('--topbar-left-spacing');
+//         AsriDom.topbar?.style.removeProperty('--topbar-right-spacing');
+//         AsriDom.topbar?.style.removeProperty('--avoid-topbar');
+//         AsriDom.status?.style.removeProperty('max-width');
+//         AsriDom.status?.style.removeProperty('transform');
+//         AsriDom.status?.style.removeProperty('--status-height');
+
+//         let wndElements = AsriDom.layouts?.querySelectorAll('[data-type="wnd"]');
+//         wndElements.forEach(wnd => {
+//             let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
+//             tabbarContainer.style.removeProperty('padding-left');
+//             tabbarContainer.style.removeProperty('padding-right');
+//         })
+
+//         let layoutTabContainers = AsriDom.layouts?.querySelectorAll('.layout__center .layout-tab-container');
+//         layoutTabContainers.forEach(tabContainer => {
+//             tabContainer.style.removeProperty('padding-bottom');
+//         })
+
+//         document.getElementById('searchList')?.style.removeProperty('padding-bottom');
+//         document.getElementById('searchPreview')?.style.removeProperty('padding-bottom');
+//         document.getElementById('viewerContainer')?.style.removeProperty('padding-bottom');
+//         document.querySelectorAll('.dock').forEach(dock => {
+//             dock.style.removeProperty('--border-clr');
+//         })
+
+//         // 还原被删除的规则
+//         if (AsriDeletedRules) {
+//             for (let i = 0; i < AsriDeletedRules.length; i++) {
+//                 let rule = AsriDeletedRules[i];
+//                 rule.styleSheet.insertRule(rule.rule, rule.styleSheet.cssRules.length);
+//             }
+//         }
+
+//         console.log('Asri theme destroyed!');
+//     }
+// }
