@@ -36,49 +36,79 @@
 // }
 
 // 界面 ————————————
-const doms = {
-    layouts: document.getElementById('layouts'),
-    status: document.getElementById('status'),
-    dockl: document.getElementById('dockLeft'),
-    dockr: document.getElementById('dockRight'),
-    dockb: document.getElementById('dockBottom'),
-    layoutDockl: document.querySelector('.layout__dockl'),
-    layoutDockr: document.querySelector('.layout__dockr'),
-    layoutDockb: document.querySelector('.layout__dockb'),
-    // toolbarWindow: document.querySelector('.toolbar__window'),
-    toolbar: document.getElementById('toolbar'),
-    barSync: document.getElementById('barSync'),
-    barForward: document.getElementById('barForward'),
-    toolbarVIP: document.getElementById('toolbarVIP'),
-    drag: document.getElementById('drag'),
-    barPlugins: document.getElementById('barPlugins'),
-    barSearch: document.getElementById('barSearch'),
-    barMode: document.getElementById('barMode')
-    // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
-}
 
-const isMacOS = navigator.platform.indexOf("Mac") > -1;
-const isLinux = navigator.platform.indexOf("Linux") > -1;
-// Safari 不支持 navigator.UserAgentData.platform；浏览器不支持 process.platform
-// const isIpad = navigator.userAgent.indexOf("iPad") > -1; // ipad适用isBrowser的情况
-const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
-const isInBrowser = doms.toolbar?.classList.contains('toolbar--browser') > 0;
-const isMiniWindow = document.body.classList.contains('body--window') > 0;
 
 // function isFullScreen() {
 //     ipcRenderer.invoke('siyuan-get', { cmd: 'isFullScreen' })
 //         .then(isFullscreen => isFullscreen ? true : false);
 // }
 
-function isFullScreen() {
-    return !isInBrowser && require("@electron/remote").getCurrentWindow().isFullScreen()
+class Asri {
+    constructor() {
+        this.doms = {
+            layouts: document.getElementById('layouts'),
+            status: document.getElementById('status'),
+            dockl: document.getElementById('dockLeft'),
+            dockr: document.getElementById('dockRight'),
+            dockb: document.getElementById('dockBottom'),
+            layoutDockl: document.querySelector('.layout__dockl'),
+            layoutDockr: document.querySelector('.layout__dockr'),
+            layoutDockb: document.querySelector('.layout__dockb'),
+            // toolbarWindow: document.querySelector('.toolbar__window'),
+            toolbar: document.getElementById('toolbar'),
+            barSync: document.getElementById('barSync'),
+            barForward: document.getElementById('barForward'),
+            toolbarVIP: document.getElementById('toolbarVIP'),
+            drag: document.getElementById('drag'),
+            barPlugins: document.getElementById('barPlugins'),
+            barSearch: document.getElementById('barSearch'),
+            barMode: document.getElementById('barMode')
+            // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
+        };
+
+        this.isMacOS = navigator.platform.indexOf("Mac") > -1;
+        this.isLinux = navigator.platform.indexOf("Linux") > -1;
+        // Safari 不支持 navigator.UserAgentData.platform；浏览器不支持 process.platform
+        // this.isIpad = navigator.userAgent.indexOf("iPad") > -1; // ipad适用isBrowser的情况
+        this.isMobile = document.getElementById('sidebar') && document.getElementById('editor');
+        this.isInBrowser = this.doms.toolbar?.classList.contains('toolbar--browser') > 0;
+        this.isMiniWindow = document.body.classList.contains('body--window') > 0;
+    }
 }
 
-isMacOS && document.body.classList.add('body--mac');
-isLinux && document.body.classList.add('body--linux');
-isMobile && document.body.classList.add('body--mobile');
-isInBrowser && document.body.classList.add("body--browser");
+let AsriEnv = new Asri();
+let AsriDom = AsriEnv.doms;
+let isMacOS = AsriEnv.isMacOS,
+    isLinux = AsriEnv.isLinux,
+    isMobile = AsriEnv.isMobile,
+    isInBrowser = AsriEnv.isInBrowser,
+    isMiniWindow = AsriEnv.isMiniWindow;
 
+let AsriClassNames = [],
+    AsriDeletedRules = [],
+    AsriObservers = [];
+
+isMacOS && document.body.classList.add('body--mac'), AsriClassNames.push('.body--mac');
+isLinux && document.body.classList.add('body--linux'), AsriClassNames.push('.body--linux');
+isMobile && document.body.classList.add('body--mobile'), AsriClassNames.push('.body--mobile');
+isInBrowser && document.body.classList.add("body--browser"), AsriClassNames.push('.body--browser');
+
+/**
+ * pushUnique 方法用于向数组中添加一个唯一的元素。
+ * 如果元素已经存在于数组中，那么这个方法不会做任何事情。
+ * 如果元素不存在于数组中，那么这个方法会将其添加到数组的末尾。
+ *
+ * @param {any} item - 要添加到数组中的元素。
+ */
+Array.prototype.pushUnique = function(item) {
+    if (!this.includes(item)) {
+        this.push(item);
+    }
+}
+
+function isFullScreen() {
+    return !isInBrowser && require("@electron/remote").getCurrentWindow().isFullScreen();
+}
 
 function setTrafficLightPosition(x, y = x) {
     require("@electron/remote").getCurrentWindow().setWindowButtonPosition({ x: x, y: y });
@@ -87,50 +117,35 @@ function setTrafficLightPosition(x, y = x) {
 if (isMacOS && !isInBrowser) setTrafficLightPosition(16);
 if (isMacOS && isMiniWindow) setTrafficLightPosition(14);
 
-function useSysScrollbar() {
+(function useSysScrollbar() {
     if (isMacOS) {
-        let HadeethWebkitScrollbar = document.getElementById('HadeethWebkitScrollbar');
-
-        if (!document.body.classList.contains('hadeeth-use-webkit-scrollbar')) {
-            HadeethWebkitScrollbar?.remove();
-
-            for (let i = 0; i < document.styleSheets.length; i++) {
-                let styleSheet = document.styleSheets[i];
-                try {
-                    for (let j = 0; j < styleSheet.cssRules.length; j++) {
-                        let rule = styleSheet.cssRules[j];
-                        if (rule.selectorText && rule.selectorText.includes('::-webkit-scrollbar')) {
-                            if (rule.style.width || rule.style.height || rule.style.backgroundColor) {
-                                styleSheet.deleteRule(j);
-                            }
-                        }
+        for (let i = 0; i < document.styleSheets.length; i++) {
+            let styleSheet = document.styleSheets[i];
+            try {
+                for (let j = 0; j < styleSheet.cssRules.length; j++) {
+                    let rule = styleSheet.cssRules[j];
+                    if (rule.selectorText && rule.selectorText.includes('::-webkit-scrollbar')) {
+                        // 在删除规则之前将其保存
+                        AsriDeletedRules.push({ styleSheet: styleSheet, rule: rule.cssText });
+                        styleSheet.deleteRule(j);
+                        j--;
                     }
-                } catch (e) { }
+                }
+            } catch (e) {
+                console.log(e);
             }
-        } else {
-            function addWebkitScrollbar() {
-                HadeethWebkitScrollbar?.remove();
-
-                var style = document.createElement('style');
-                style.setAttribute('id', 'HadeethWebkitScrollbar');
-                style.innerHTML = "::-webkit-scrollbar {width: 10px;height: 10px;}";
-                document.head.appendChild(style);
-            }
-            addWebkitScrollbar();
         }
     }
-}
-
-useSysScrollbar();
+})();
 
 // function handleToolbarHover() {
 //     let toolbarDrag = document.getElementById('drag');
 //     if (toolbarDrag) {
 //         toolbarDrag.addEventListener('mouseenter', () => {
-//             doms.toolbar.classList.add('no-hover');
+//             AsriDom.toolbar.classList.add('no-hover');
 //         });
 //         toolbarDrag.addEventListener('mouseleave', () => {
-//             doms.toolbar.classList.remove('no-hover');
+//             AsriDom.toolbar.classList.remove('no-hover');
 //         });
 //     }
 // }
@@ -138,7 +153,7 @@ useSysScrollbar();
 // // handleToolbarHover();
 
 // async function toolbarTutorial() {
-//     let toolbar = doms.toolbar;
+//     let toolbar = AsriDom.toolbar;
 
 //     let hasPlayedToolbarTutorial = await getFile("/data/snippets/Hadeeth.config.json")
 //         .then((response) => {
@@ -178,11 +193,11 @@ function createTopbarElementById(newId, before = undefined, after = undefined) {
     newDiv.id = newId;
 
     if (before) {
-        doms.toolbar.insertBefore(newDiv, before);
+        AsriDom.toolbar.insertBefore(newDiv, before);
     } else if (after) {
-        doms.toolbar.insertBefore(newDiv, after.nextSibling);
+        AsriDom.toolbar.insertBefore(newDiv, after.nextSibling);
     } else {
-        doms.toolbar.appendChild(newDiv);
+        AsriDom.toolbar.appendChild(newDiv);
     }
 }
 
@@ -210,34 +225,31 @@ function handleWinResize() {
     //     })
     // } 
     let fromFullscreen;
-
-    window.addEventListener('resize', function () {
-        isWinResizing = true;
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function () {
-            isWinResizing = false;
-            if (isMacOS && isFullScreen()) {
-                document.body.classList.add('body--fullscreen');
-                dragRectLeftInitial = dragRectLeftInitial - 80;
-                fromFullscreen = true;
-            } else {
-                document.body.classList.remove('body--fullscreen');
-                dragRectLeftInitial = fromFullscreen ? doms.drag?.getBoundingClientRect().left : dragRectLeftInitial;
-                fromFullscreen = false;
-            }
-            calcTopbarSpacings();
-            calcTabbarSpacings();
-        }, 200);
-    });
+    isWinResizing = true;
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function () {
+        isWinResizing = false;
+        if (isMacOS && isFullScreen()) {
+            document.body.classList.add('body--fullscreen');
+            dragRectLeftInitial = dragRectLeftInitial - 80;
+            fromFullscreen = true;
+        } else {
+            document.body.classList.remove('body--fullscreen');
+            dragRectLeftInitial = fromFullscreen ? AsriDom.drag?.getBoundingClientRect().left : dragRectLeftInitial;
+            fromFullscreen = false;
+        }
+        calcTopbarSpacings();
+        calcTabbarSpacings();
+    }, 200);
 }
 
-let dragRectLeftInitial = doms.drag?.getBoundingClientRect().left,
-    dragRectRightInitial = doms.drag?.getBoundingClientRect().right;
+let dragRectLeftInitial = AsriDom.drag?.getBoundingClientRect().left,
+    dragRectRightInitial = AsriDom.drag?.getBoundingClientRect().right;
 
-if (!isMobile && doms.toolbar) {
-    createTopbarElementById('AsriPluginsIconsDivider', undefined, doms.drag);
-    (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barSync) : createTopbarElementById('AsriTopbarLeftSpacing', undefined, doms.barForward);
-    (isMacOS || isInBrowser) ? createTopbarElementById('AsriTopbarRightSpacing') : createTopbarElementById('AsriTopbarRightSpacing', doms.barSearch);
+if (!isMobile && AsriDom.toolbar) {
+    createTopbarElementById('AsriPluginsIconsDivider', undefined, AsriDom.drag);
+    (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarLeftSpacing', undefined, AsriDom.barSync) : createTopbarElementById('AsriTopbarLeftSpacing', undefined, AsriDom.barForward);
+    (isMacOS || isInBrowser) ? createTopbarElementById('AsriTopbarRightSpacing') : createTopbarElementById('AsriTopbarRightSpacing', AsriDom.barSearch);
 }
 
 function calcTopbarSpacings(widthChange) {
@@ -247,12 +259,12 @@ function calcTopbarSpacings(widthChange) {
     pluginsDivider = document.getElementById('AsriPluginsIconsDivider');
     leftSpacing = document.getElementById('AsriTopbarLeftSpacing');
     rightSpacing = document.getElementById('AsriTopbarRightSpacing');
-    topbar = doms.toolbar;
+    topbar = AsriDom.toolbar;
 
-    layoutsCenterRect = doms.layouts.querySelector('.layout__center').getBoundingClientRect();
+    layoutsCenterRect = AsriDom.layouts.querySelector('.layout__center').getBoundingClientRect();
     rightSpacingRect = rightSpacing.getBoundingClientRect();
-    barSyncRect = doms.barSync.getBoundingClientRect();
-    barForwardRect = doms.barForward.getBoundingClientRect();
+    barSyncRect = AsriDom.barSync.getBoundingClientRect();
+    barForwardRect = AsriDom.barForward.getBoundingClientRect();
 
     let winWidth = window.innerWidth,
         centerRectLeft = layoutsCenterRect.left,
@@ -262,7 +274,7 @@ function calcTopbarSpacings(widthChange) {
         // 左侧
         if (centerRectLeft > dragRectLeftInitial + 8)
             topbar.style.setProperty('--topbar-left-spacing', 0),
-                dragRectLeftInitial = doms.drag.getBoundingClientRect().left;
+                dragRectLeftInitial = AsriDom.drag.getBoundingClientRect().left;
         // 每次重新计算 initial
         else if (isMacOS && !isInBrowser) topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
         else topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barForwardRect.right + 4 + 'px');
@@ -271,23 +283,23 @@ function calcTopbarSpacings(widthChange) {
         if (centerRectRight < dragRectRightInitial - 8) {
             topbar.style.setProperty('--topbar-right-spacing', 0);
 
-            dragRectRightInitial = doms.drag.getBoundingClientRect().right;
+            dragRectRightInitial = AsriDom.drag.getBoundingClientRect().right;
 
             //使用 CSS
-            doms.dockr?.style.removeProperty('--avoid-topbar');
-            doms.layoutDockr?.style.removeProperty('--avoid-topbar');
+            AsriDom.dockr?.style.removeProperty('--avoid-topbar');
+            AsriDom.layoutDockr?.style.removeProperty('--avoid-topbar');
         } else {
             if (isMacOS || isInBrowser) {
                 topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 5 + 'px');
                 // windowControls 占据 2px
 
-                doms.dockr?.style.setProperty('--avoid-topbar', '4px');
-                doms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
+                AsriDom.dockr?.style.setProperty('--avoid-topbar', '4px');
+                AsriDom.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
             } else {
                 topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 7 + 'px');
 
-                doms.dockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
-                doms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
+                AsriDom.dockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
+                AsriDom.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
             };
         }
     }
@@ -297,7 +309,7 @@ function calcTopbarSpacings(widthChange) {
 
     (function dividerSwitch() {
         if (centerRectRight < dragRectRightInitial - 8) {
-            // dragRectRightInitial = doms.drag.getBoundingClientRect().right;
+            // dragRectRightInitial = AsriDom.drag.getBoundingClientRect().right;
             // 横线
             pluginsDivider.style.setProperty('--container-bg', 'var(--b3-list-hover)');
             pluginsDivider.style.left = centerRectRight + 'px';
@@ -308,7 +320,7 @@ function calcTopbarSpacings(widthChange) {
         else {
             // if (isWinResizing) dragRectRightInitial = dragRectRightInitial + widthChange;
             // 竖线
-            dragRect = doms.drag.getBoundingClientRect();
+            dragRect = AsriDom.drag.getBoundingClientRect();
             pluginsDivider.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
             pluginsDivider.style.left = dragRect.right - 10 + 'px';
             pluginsDivider.style.right = winWidth - dragRect.right + 8 + 'px';
@@ -321,12 +333,12 @@ function calcTopbarSpacings(widthChange) {
 }
 
 function calcTabbarSpacings() {
-    let wndElements = doms.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
+    let wndElements = AsriDom.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
 
     wndElements.forEach(wnd => {
         let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
         let tabbarContainerRect = tabbarContainer.getBoundingClientRect();
-        let dragRect = doms.drag.getBoundingClientRect();
+        let dragRect = AsriDom.drag.getBoundingClientRect();
 
         if (isOverlapping(tabbarContainerRect, dragRect)) {
             let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 6 + 'px' : '';
@@ -335,7 +347,7 @@ function calcTabbarSpacings() {
             tabbarContainer.style.paddingLeft = paddingLeftValue;
             tabbarContainer.style.paddingRight = paddingRightValue;
 
-            doms.drag = document.getElementById('drag');
+            AsriDom.drag = document.getElementById('drag');
 
             // 极窄宽度下添加上边距
             if (tabbarContainerRect.right - 200 < dragRect.left || tabbarContainerRect.left + 200 > dragRect.right) {
@@ -353,7 +365,7 @@ function calcTabbarSpacings() {
 }
 
 function LayoutsCenterResizeObserver() {
-    let lytCenter = doms.layouts.querySelector('.layout__center');
+    let lytCenter = AsriDom.layouts.querySelector('.layout__center');
     const ro = new ResizeObserver(entries => {
         for (let entry of entries) {
             // 获取当前元素的大小
@@ -378,20 +390,20 @@ function LayoutsCenterResizeObserver() {
         }
     });
 
-    if (lytCenter) ro.observe(lytCenter);
+    if (lytCenter) ro.observe(lytCenter), AsriObservers.push(ro);
     else {
         let count = 0,
             maxCount = 10;
         let tryGetLytCenter;
 
         function updateLytCenter() {
-            doms.layouts = document.getElementById('layouts');
-            lytCenter = doms.layouts.querySelector('.layout__center');
+            AsriDom.layouts = document.getElementById('layouts');
+            lytCenter = AsriDom.layouts.querySelector('.layout__center');
             count++;
             if (count === maxCount || lytCenter) {
                 clearInterval(tryGetLytCenter);
-                // doms.layouts = document.getElementById('layouts');
-                ro.observe(lytCenter);
+                // AsriDom.layouts = document.getElementById('layouts');
+                ro.observe(lytCenter), AsriObservers.push(ro);
             }
         }
         setTimeout(() => {
@@ -410,14 +422,14 @@ function handleCenterResize(widthChange) {
 if (!isMobile && !isMiniWindow) {
     setTimeout(calcTopbarSpacings, 200);
     LayoutsCenterResizeObserver();
-    handleWinResize();
+    window.addEventListener('resize', handleWinResize);
 }
 
 /**
  * 新小窗页签栏左右边距控制
  */
 // function tabbarSpacinginMiniWindow() {
-//     var toolbarWindowRec = doms.toolbarWindow?.getBoundingClientRect();
+//     var toolbarWindowRec = AsriDom.toolbarWindow?.getBoundingClientRect();
 //     var topRightRect = toolbarWindowRec && {
 //         left: toolbarWindowRec.left,
 //         top: 0,
@@ -432,7 +444,7 @@ if (!isMobile && !isMiniWindow) {
 //         height: 48
 //     };
 
-//     let wndElements = doms.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
+//     let wndElements = AsriDom.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
 
 //     if (wndElements) {
 //         for (let element of wndElements) {
@@ -468,30 +480,30 @@ if (!isMobile && !isMiniWindow) {
  * @param {'l' | 'r'} dir
  */
 function isSideDockHidden(dir = 'l') {
-    return doms[`dock${dir}`] && doms[`dock${dir}`].classList.contains('fn__none')
+    return AsriDom[`dock${dir}`] && AsriDom[`dock${dir}`].classList.contains('fn__none')
     // 使用右侧停靠栏计算状态栏位置
     // https://github.com/mustakshif/Asri-for-SiYuan/issues/16
 }
 function hasDockb() {
-    return doms.dockb && !doms.dockb.classList.contains('fn__none');
+    return AsriDom.dockb && !AsriDom.dockb.classList.contains('fn__none');
 }
 function addDockbClassName() {
     if (hasDockb()) {
-        doms.toolbar?.nextElementSibling.classList.add('has-dockb')
+        AsriDom.toolbar?.nextElementSibling.classList.add('has-dockb')
     } else {
-        doms.toolbar?.nextElementSibling.classList.remove('has-dockb');
+        AsriDom.toolbar?.nextElementSibling.classList.remove('has-dockb');
     }
 }
 
 function isStatusHidden() {
-    return doms.status && doms.status.classList.contains('fn__none');
+    return AsriDom.status && AsriDom.status.classList.contains('fn__none');
 }
 
 function addEmojiDialogClassName() {
     // emoji dialog
     let dialogs = document.querySelectorAll('.b3-dialog--open .b3-dialog');
     dialogs.forEach(dialog => {
-        dialog.querySelector('.emojis') && dialog.classList.add('emojis-container');
+        dialog.querySelector('.emojis') && (dialog.classList.add('emojis-container'), AsriClassNames.pushUnique('.emojis-container'));
     })
 }
 /**
@@ -499,7 +511,7 @@ function addEmojiDialogClassName() {
  * @param {'l' | 'r' | 'b'} direction
  */
 function isLayoutDockHidden(direction) {
-    let layoutDockNew = doms[`layoutDock${direction}`];
+    let layoutDockNew = AsriDom[`layoutDock${direction}`];
     return layoutDockNew && (layoutDockNew.classList.contains('layout--float') || layoutDockNew.style.cssText.includes('width: 0px'))
 }
 
@@ -518,14 +530,15 @@ function isFloatDockLytHidden(node) {
  */
 function dockBg() {
 
-    if (doms.dockl && !isMobile) {
+    if (AsriDom.dockl && !isMobile) {
         for (let dir of ['l', 'r']) {
 
-            let lyt = doms[`layoutDock${dir}`],
-                dock = doms[`dock${dir}`];
+            let lyt = AsriDom[`layoutDock${dir}`],
+                dock = AsriDom[`dock${dir}`];
 
             if (isDockLytPinned(lyt) && isDockLytExpanded(lyt)) {
-                dock.classList.add('dock-layout-expanded');
+                dock.classList.add('dock-layout-expanded'),
+                AsriClassNames.pushUnique('.dock-layout-expanded');
             } else {
                 dock.classList.remove('dock-layout-expanded');
             }
@@ -557,20 +570,20 @@ function statusPositon() {
     if (!isMobile) {
         if (!hasDockb()) {
             function setStatusTransform(x, y) {
-                doms.status.style.transform = `translate(${x}px, ${y}px)`;
+                AsriDom.status.style.transform = `translate(${x}px, ${y}px)`;
             }
 
-            let layoutCenter = doms.layouts.querySelector('.layout__center');
+            let layoutCenter = AsriDom.layouts.querySelector('.layout__center');
 
-            if (layoutCenter && doms.layoutDockr && !doms.status.classList.contains('.fn__none')) {
-                let layoutDockrWidth = doms.layoutDockr.clientWidth;
+            if (layoutCenter && AsriDom.layoutDockr && !AsriDom.status.classList.contains('.fn__none')) {
+                let layoutDockrWidth = AsriDom.layoutDockr.clientWidth;
                 let layoutCenterWidth = layoutCenter.clientWidth;
 
-                doms.layoutDockb = doms.layouts.querySelector('.layout__dockb');
-                if (doms.layoutDockb && isDockLytPinned(doms.layoutDockb)) var y = doms.layoutDockb.clientHeight * -1;
+                AsriDom.layoutDockb = AsriDom.layouts.querySelector('.layout__dockb');
+                if (AsriDom.layoutDockb && isDockLytPinned(AsriDom.layoutDockb)) var y = AsriDom.layoutDockb.clientHeight * -1;
                 else y = 0;
 
-                doms.status.style.maxWidth = layoutCenterWidth - 12 + 'px';
+                AsriDom.status.style.maxWidth = layoutCenterWidth - 12 + 'px';
 
                 let isDockRightHidden = isSideDockHidden('r'),
                     isLayoutDockRightHidden = isLayoutDockHidden('r');
@@ -580,16 +593,16 @@ function statusPositon() {
                 else if (!isDockRightHidden && !isLayoutDockRightHidden) setStatusTransform((layoutDockrWidth + 40) * -1, y);
                 else if (isDockRightHidden && !isLayoutDockRightHidden) setStatusTransform(layoutDockrWidth * -1, y);
 
-                doms.status = document.getElementById('status');
+                AsriDom.status = document.getElementById('status');
             }
         } else {
-            doms.status?.style.removeProperty('max-width');
-            doms.status?.style.removeProperty('transform');
+            AsriDom.status?.style.removeProperty('max-width');
+            AsriDom.status?.style.removeProperty('transform');
         }
 
         // if (!hasDockb() && !isLayoutDockHidden('b')) {
-        //     let layoutDockbHeight = doms.layoutDockb?.clientHeight;
-        //     doms.status.style.transform = `translateY(-${layoutDockbHeight + 42}px)`;
+        //     let layoutDockbHeight = AsriDom.layoutDockb?.clientHeight;
+        //     AsriDom.status.style.transform = `translateY(-${layoutDockbHeight + 42}px)`;
         // }   
     }
 }
@@ -608,10 +621,10 @@ setStatusHeightVar();
  * 大纲、反链、搜索列表等在作为标签页显示时，避免被status遮住底部
  */
 function avoidOverlappingWithStatus() {
-    if (!doms.status.classList.contains('.fn__none')) {
+    if (!AsriDom.status.classList.contains('.fn__none')) {
 
-        let layoutTabContainers = doms.layouts?.querySelectorAll('.layout__center .layout-tab-container');
-        let statusRect = doms.status.getBoundingClientRect();
+        let layoutTabContainers = AsriDom.layouts?.querySelectorAll('.layout__center .layout-tab-container');
+        let statusRect = AsriDom.status.getBoundingClientRect();
 
         layoutTabContainers?.forEach(layoutTabContainer => {
             if (layoutTabContainer.querySelector('.file-tree')) {
@@ -680,13 +693,14 @@ function isOverlapping(elementRect, targetRect) {
  */
 function formatIndentGuidesForFocusedItems() {
     if (!isMobile) {
-        let listItemsFocus = doms.layouts.querySelectorAll('.file-tree .b3-list-item--focus');
+        let listItemsFocus = AsriDom.layouts.querySelectorAll('.file-tree .b3-list-item--focus');
 
-        doms.layouts.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
+        AsriDom.layouts.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
 
         for (let li of listItemsFocus) {
             if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
-                li.parentNode.classList.add('has-focus');
+                li.parentNode.classList.add('has-focus'),
+                AsriClassNames.pushUnique('.has-focus');
             }
         }
     }
@@ -694,11 +708,12 @@ function formatIndentGuidesForFocusedItems() {
 formatIndentGuidesForFocusedItems();
 
 function formatProtyleWithBgImageOnly() {
-    let protyleBgs = doms.layouts?.querySelectorAll('.protyle .protyle-background');
+    let protyleBgs = AsriDom.layouts?.querySelectorAll('.protyle .protyle-background');
 
     protyleBgs.forEach(protyleBg => {
         if (!protyleBg.querySelector('.protyle-background__img img')?.classList.contains('fn__none') && protyleBg.querySelector('.protyle-background__icon.fn__none')) {
-            protyleBg.classList.add('without-icon')
+            protyleBg.classList.add('without-icon'),
+            AsriClassNames.pushUnique('.without-icon');
         } else {
             protyleBg.classList.remove('without-icon')
         }
@@ -743,11 +758,10 @@ function setCompoundMutationObserver(funcChildList, funcAttr = undefined, funcCh
 }
 
 // observers ————————————————————————————————————————————————
-let AsriMutationObservers = [];
 function topbarObserver(type, func) {
-    let topbar = doms.toolbar;
+    let topbar = AsriDom.toolbar;
     let topObserver = setSimpleMutationObserver(type, func);
-    if (topbar) topObserver.observe(topbar, { [type]: true }), AsriMutationObservers.push(topObserver);
+    if (topbar) topObserver.observe(topbar, { [type]: true }), AsriObservers.push(topObserver);
 }
 
 /**
@@ -764,13 +778,13 @@ function docBodyObserver(funcChildList, funcAttr = undefined, subTree = false) {
 
     let bodyObserver = setCompoundMutationObserver(funcChildList, funcAttr);
     bodyObserver.observe(document.body, config);
-    AsriMutationObservers.push(bodyObserver); 
+    AsriObservers.push(bodyObserver);
 }
 
 function statusObsever(type, func) {
-    let status = doms.status;
+    let status = AsriDom.status;
     let statusObsever = setSimpleMutationObserver(type, func);
-    if (status) statusObsever.observe(status, { [type]: true }), AsriMutationObservers.push(statusObsever);
+    if (status) statusObsever.observe(status, { [type]: true }), AsriObservers.push(statusObsever);
 }
 
 /**
@@ -780,9 +794,9 @@ function statusObsever(type, func) {
  * @param {*} func 
  */
 function dockObserver(direction, type, func) {
-    let dock = doms[`dock${direction}`];
+    let dock = AsriDom[`dock${direction}`];
     let dockObserver = setSimpleMutationObserver(type, func);
-    if(dock) dockObserver.observe(dock, { [type]: true }), AsriMutationObservers.push(dockObserver);
+    if (dock) dockObserver.observe(dock, { [type]: true }), AsriObservers.push(dockObserver);
 } // {[type]: true} 使用了计算属性名（computed property name）的语法
 
 /**
@@ -800,26 +814,26 @@ function dockLayoutObserver(direction, funcChildList, funcAttr = undefined, fucn
     if (fucnCharacterData) config.characterData = true;
     if (funcChildList && subTree) config.subtree = true;
 
-    let dockLayout = doms[`layoutDock${direction}`];
+    let dockLayout = AsriDom[`layoutDock${direction}`];
     let dockLytObserver = setCompoundMutationObserver(funcChildList, funcAttr, fucnCharacterData);
 
     // 解决部分情况下layoutDock元素加载滞后于此js而出现无法启动监视的情况
-    if (dockLayout) dockLytObserver.observe(dockLayout, config),AsriMutationObservers.push(dockLytObserver);
+    if (dockLayout) dockLytObserver.observe(dockLayout, config), AsriObservers.push(dockLytObserver);
     else {
         let count = 0,
             maxCount = 10;
         let tryGetLayoutDock;
 
         function updateDockLayout() {
-            dockLayout = doms.layouts.querySelector(`.layout__dock${direction}`);
+            dockLayout = AsriDom.layouts.querySelector(`.layout__dock${direction}`);
             count++;
 
             if (count === maxCount || dockLayout) {
                 clearInterval(tryGetLayoutDock);
-                doms[`layoutDock${direction}`] = dockLayout;
+                AsriDom[`layoutDock${direction}`] = dockLayout;
                 dockBg();
                 dockLytObserver.observe(dockLayout, config);
-                AsriMutationObservers.push(dockLytObserver);
+                AsriObservers.push(dockLytObserver);
             }
         }
 
@@ -843,9 +857,9 @@ function layoutsObserver(funcChildList, funcAttr = undefined, fucnCharacterData 
     if (fucnCharacterData) config.characterData = true;
     if (funcChildList && subTree) config.subtree = true;
 
-    let layouts = doms.layouts;
+    let layouts = AsriDom.layouts;
     let lytsObserver = setCompoundMutationObserver(funcChildList, funcAttr, fucnCharacterData);
-    lytsObserver.observe(layouts, config); AsriMutationObservers.push(lytsObserver);
+    lytsObserver.observe(layouts, config); AsriObservers.push(lytsObserver);
 }
 
 // 开始监视变化
@@ -865,18 +879,18 @@ if (!isMobile) {
         //     topbar.style.setProperty('--topbar-left-spacing', 0);
         //     topbar.style.setProperty('--topbar-right-spacing', 0);
 
-        //     dragleftRectRightInitial = doms.drag.getBoundingClientRect().left;
-        //     dragRectRightInitial = doms.drag.getBoundingClientRect().right;
+        //     dragleftRectRightInitial = AsriDom.drag.getBoundingClientRect().left;
+        //     dragRectRightInitial = AsriDom.drag.getBoundingClientRect().right;
         // })
 
         // // 左栏dock
         // dockObserver('l', 'attributes', () => {
-        //     doms.dockl = document.getElementById('dockLeft');
+        //     AsriDom.dockl = document.getElementById('dockLeft');
         //     // tabbarSpacing();
         // });
         // // 右栏dock
         // dockObserver('r', 'attributes', () => {
-        //     doms.dockr = document.getElementById('dockRight');
+        //     AsriDom.dockr = document.getElementById('dockRight');
         //     // statusPositon();
         //     avoidOverlappingWithStatus();
         // });
@@ -887,7 +901,7 @@ if (!isMobile) {
             undefined,
             () => {
                 setTimeout(() => {
-                    doms.layoutDockl = document.querySelector('.layout__dockl');
+                    AsriDom.layoutDockl = document.querySelector('.layout__dockl');
                     // tabbarSpacing();
                     avoidOverlappingWithStatus();
                 }, 200); // 动画之后
@@ -902,7 +916,7 @@ if (!isMobile) {
             undefined,
             () => {
                 setTimeout(() => {
-                    doms.layoutDockr = document.querySelector('.layout__dockr');
+                    AsriDom.layoutDockr = document.querySelector('.layout__dockr');
                     // statusPositon();
                     avoidOverlappingWithStatus();
                 }, 200);
@@ -918,7 +932,7 @@ if (!isMobile) {
         layoutsObserver(
             // childList mutation func
             () => {
-                doms.layouts = document.getElementById('layouts');
+                AsriDom.layouts = document.getElementById('layouts');
                 setTimeout(() => {
                     calcTabbarSpacings(); // 适用于分屏操作时
                     // statusPositon();
@@ -958,20 +972,65 @@ if (!isMobile) {
 //     })
 // }
 
-function getDblClickMouseXY() {
-    window.addEventListener('dblclick', handleDblClick);
-    function handleDblClick(event) {
-        document.body.style.setProperty('--mouseX', event.clientX + 'px');
-        document.body.style.setProperty('--mouseY', event.clientY + 'px');
-    }
+function handleDblClick(event) {
+    document.body.style.setProperty('--mouseX', event.clientX + 'px');
+    document.body.style.setProperty('--mouseY', event.clientY + 'px');
 }
 
-getDblClickMouseXY();
+window.addEventListener('dblclick', handleDblClick);
 
 window.destroyTheme = () => {
-    // 取消双击事件
+    // 取消事件监听
     window.removeEventListener('dblclick', handleDblClick);
+    window.removeEventListener('resize', handleWinResize);
 
     // 取消所有变动观察
-    AsriMutationObservers.forEach(observer => observer.disconnect()); 
+    AsriObservers.forEach(observer => observer.disconnect());
+
+    // 恢复 traffic light 位置
+    if (isMacOS && !isInBrowser) setTrafficLightPosition(8);
+    if (isMacOS && isMiniWindow) setTrafficLightPosition(8, 13);
+
+    // 删除添加的类名和元素
+    AsriClassNames.forEach(className => {
+        document.querySelectorAll(className).forEach(el => el.classList.remove(className.slice(1)));
+    })
+    document.querySelector('#AsriTopbarLeftSpacing')?.remove();
+    document.querySelector('#AsriTopbarRightSpacing')?.remove();
+    document.querySelector('#AsriPluginsIconsDivider')?.remove();
+
+    // 移除 js 样式属性
+    AsriDom.topbar?.style.removeProperty('--topbar-left-spacing');
+    AsriDom.topbar?.style.removeProperty('--topbar-right-spacing');
+    AsriDom.topbar?.style.removeProperty('--avoid-topbar');
+    AsriDom.status?.style.removeProperty('max-width');
+    AsriDom.status?.style.removeProperty('transform');
+    AsriDom.status?.style.removeProperty('--status-height');
+
+    let wndElements = AsriDom.layouts?.querySelectorAll('[data-type="wnd"]');
+    wndElements.forEach(wnd => {
+        let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
+        tabbarContainer.style.removeProperty('padding-left');
+        tabbarContainer.style.removeProperty('padding-right');
+    })
+
+    let layoutTabContainers = AsriDom.layouts?.querySelectorAll('.layout__center .layout-tab-container');
+    layoutTabContainers.forEach(tabContainer => {
+        tabContainer.style.removeProperty('padding-bottom');
+    })
+
+    document.getElementById('searchList')?.style.removeProperty('padding-bottom');
+    document.getElementById('searchPreview')?.style.removeProperty('padding-bottom');
+    document.getElementById('viewerContainer')?.style.removeProperty('padding-bottom');
+    document.querySelectorAll('.dock').forEach(dock => {
+        dock.style.removeProperty('--border-clr');
+    })
+
+    // 还原被删除的规则
+    if (AsriDeletedRules) {
+        for (let i = 0; i < AsriDeletedRules.length; i++) {
+            let rule = AsriDeletedRules[i];
+            rule.styleSheet.insertRule(rule.rule, rule.styleSheet.cssRules.length);
+        }
+    }
 }
