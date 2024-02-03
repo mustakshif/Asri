@@ -7,31 +7,37 @@ $headingContent: "";
 
     .h#{$i},
     h#{$i} {
-        &::before {
+        &:before {
             content: "##{$i}";
             // content:$headingContent;
-            display: block;
-            overflow: visible;
-            font-weight: 900;
-            font-size: 2.4em;
-            // font-style: italic;
-            position: absolute;
-            top: -0.36em;
-            right: 8px;
-            // left: 0;
-            color: inherit;
-            opacity: 0.15;
-            pointer-events: none;
-            user-select: none;
-            mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
-
-            @include darkmode-counterpart {
-                opacity: 0.2;
-            }
         }
     }
+}
 
-    h#{$i} {
-        position: relative;
+.h1, .h2, .h3, .h4, .h5, .h6,
+h1, h2, h3, h4, h5, h6 {
+    &::before {
+        display: block;
+        overflow: visible;
+        font-weight: 900;
+        font-size: 2.4em;
+        // font-style: italic;
+        position: absolute;
+        top: -0.36em;
+        right: 8px;
+        // left: 0;
+        color: inherit;
+        opacity: 0.15;
+        pointer-events: none;
+        user-select: none;
+        mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
+    
+        // @include darkmode-counterpart {
+        //     opacity: 0.2;
+        // }
     }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    position: relative;
 }

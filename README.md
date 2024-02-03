@@ -33,6 +33,7 @@ Check all updates [here](./CHANGELOG.md).
 * ⚖️ Introducing top-bar fusion, striking a balance between aesthetics and efficiency.
 
     * 📌 All blank areas of the top bar can be used to drag the window (except for the gap between tabs)
+    * 📌 If top bar icons or dividers appear misaligned or overlapped, resizing the edit area or app window may fix it.
     * 📌 The code for pinning the top bar in previous versions is no longer effective and can be manually deleted.
 * 🚥 Position of traffic lights on macOS adjusted, optimizing the layout rhythm.
 

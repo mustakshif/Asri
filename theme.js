@@ -743,11 +743,11 @@ function setCompoundMutationObserver(funcChildList, funcAttr = undefined, funcCh
 }
 
 // observers ————————————————————————————————————————————————
-
+let AsriMutationObservers = [];
 function topbarObserver(type, func) {
     let topbar = doms.toolbar;
-    let observer = setSimpleMutationObserver(type, func);
-    if (topbar) observer.observe(topbar, { [type]: true })
+    let topObserver = setSimpleMutationObserver(type, func);
+    if (topbar) topObserver.observe(topbar, { [type]: true }), AsriMutationObservers.push(topObserver);
 }
 
 /**
@@ -762,14 +762,15 @@ function docBodyObserver(funcChildList, funcAttr = undefined, subTree = false) {
     if (funcAttr) config.attributes = true;
     if (funcChildList && subTree) config.subtree = true;
 
-    let observer = setCompoundMutationObserver(funcChildList, funcAttr);
-    observer.observe(document.body, config);
+    let bodyObserver = setCompoundMutationObserver(funcChildList, funcAttr);
+    bodyObserver.observe(document.body, config);
+    AsriMutationObservers.push(bodyObserver); 
 }
 
 function statusObsever(type, func) {
     let status = doms.status;
-    let observer = setSimpleMutationObserver(type, func);
-    if (status) observer.observe(status, { [type]: true });
+    let statusObsever = setSimpleMutationObserver(type, func);
+    if (status) statusObsever.observe(status, { [type]: true }), AsriMutationObservers.push(statusObsever);
 }
 
 /**
@@ -780,8 +781,8 @@ function statusObsever(type, func) {
  */
 function dockObserver(direction, type, func) {
     let dock = doms[`dock${direction}`];
-    let observer = setSimpleMutationObserver(type, func);
-    dock && observer.observe(dock, { [type]: true });
+    let dockObserver = setSimpleMutationObserver(type, func);
+    if(dock) dockObserver.observe(dock, { [type]: true }), AsriMutationObservers.push(dockObserver);
 } // {[type]: true} 使用了计算属性名（computed property name）的语法
 
 /**
@@ -800,10 +801,10 @@ function dockLayoutObserver(direction, funcChildList, funcAttr = undefined, fucn
     if (funcChildList && subTree) config.subtree = true;
 
     let dockLayout = doms[`layoutDock${direction}`];
-    let observer = setCompoundMutationObserver(funcChildList, funcAttr, fucnCharacterData);
+    let dockLytObserver = setCompoundMutationObserver(funcChildList, funcAttr, fucnCharacterData);
 
     // 解决部分情况下layoutDock元素加载滞后于此js而出现无法启动监视的情况
-    if (dockLayout) observer.observe(dockLayout, config);
+    if (dockLayout) dockLytObserver.observe(dockLayout, config),AsriMutationObservers.push(dockLytObserver);
     else {
         let count = 0,
             maxCount = 10;
@@ -817,7 +818,8 @@ function dockLayoutObserver(direction, funcChildList, funcAttr = undefined, fucn
                 clearInterval(tryGetLayoutDock);
                 doms[`layoutDock${direction}`] = dockLayout;
                 dockBg();
-                observer.observe(dockLayout, config);
+                dockLytObserver.observe(dockLayout, config);
+                AsriMutationObservers.push(dockLytObserver);
             }
         }
 
@@ -842,8 +844,8 @@ function layoutsObserver(funcChildList, funcAttr = undefined, fucnCharacterData 
     if (funcChildList && subTree) config.subtree = true;
 
     let layouts = doms.layouts;
-    let observer = setCompoundMutationObserver(funcChildList, funcAttr, fucnCharacterData);
-    observer.observe(layouts, config);
+    let lytsObserver = setCompoundMutationObserver(funcChildList, funcAttr, fucnCharacterData);
+    lytsObserver.observe(layouts, config); AsriMutationObservers.push(lytsObserver);
 }
 
 // 开始监视变化
@@ -965,3 +967,11 @@ function getDblClickMouseXY() {
 }
 
 getDblClickMouseXY();
+
+window.destroyTheme = () => {
+    // 取消双击事件
+    window.removeEventListener('dblclick', handleDblClick);
+
+    // 取消所有变动观察
+    AsriMutationObservers.forEach(observer => observer.disconnect()); 
+}
