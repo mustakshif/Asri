@@ -517,7 +517,8 @@
             filter: none;
 
             img {
-                filter: brightness(0.8);
+                // filter: brightness(0.8);
+                opacity: .8;
             }
         }
 
@@ -855,7 +856,7 @@
         margin-top: 0;
     }
 
-    // 折叠块--标题块
+    // 折叠块--标题块、列表块
     div[fold="1"] {
         &[data-type=NodeHeading] {
             background-color: var(--b3-theme-surface-light);
@@ -865,6 +866,12 @@
             &::before {
                 display: none;
             }
+        }
+
+        &:not(.li):not([data-type=NodeHeading]).list {
+            background-color: var(--b3-theme-surface-light);
+            outline: 1px solid var(--b3-border-color-trans);
+            opacity: .6;
         }
     }
 }

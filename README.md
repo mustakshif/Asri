@@ -59,7 +59,7 @@ Check all updates [here](./CHANGELOG.md).
 
 
 > [!NOTE]
-> Asri has not been fully adapted for mobile and tablet devices. Please use it cautiously on these platforms.
+> Asri has not been fully adapted for mobile devices.
 
 ## Plans
 

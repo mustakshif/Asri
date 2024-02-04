@@ -14,6 +14,10 @@
                     transition: none;
                 }
             }
+
+            .b3-dialog__container {
+                outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
+            }
         }
 
         .b3-dialog__container {
@@ -791,6 +795,11 @@ div[id*=configBazaar] {
 .block__popover {
     @include dialog-shadow;
     @include border-or-not;
+    outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
+
+    .block__icons--menu {
+        background-color: var(--b3-theme-background);
+    }
 
     .block__icons {
         .block__icon {
