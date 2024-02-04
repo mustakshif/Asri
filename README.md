@@ -10,12 +10,15 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.0.5
+### v2.0.6
 
-* Optimized the document entry style of the `Backlink Panel`.
-* Adjusted the font weight of the document name in the `Search List` when grouped by document and the document name in the `Backlink Panel`.
-* Enabled high readability font variants (such as distinguishing I/l, 0/O, etc.) for note-related contents and enabled tabular number features for `tables` under Asri's default fonts on Apple devices.
-* Attempted to fix the issue on iPad, where icons in the top bar and icons in the right dock overlapped.
+* Added borders to `block quote preview window` and `emoji dialog`  in light mode
+* Optimized the tab avoidance algorithm in the top bar under extremely narrow widths
+* Optimized the style of the `block quote preview window`
+* Optimized the button style of the `document settings` dialog box
+* Optimized the style of folded heading blocks and list blocks
+* Fine-tuned the shadow style of `dialog boxes`
+* Fine-tuned the style when image elements are selected by clicking
 
 ...
 

@@ -1,3 +1,25 @@
+### v2.0.6
+
+* 浅色模式下增加 `块引用悬浮窗` 和 `emoji对话框` 边框
+* 优化极窄宽度下顶栏页签避让逻辑
+* 优化 `块引用悬浮窗` 样式
+* 优化 `文档设置` 对话框按钮样式
+* 优化标题块和列表块折叠后的样式
+* 微调 `对话框` 阴影样式
+* 微调图片元素点击选中时的样式
+
+<br />
+
+* Added borders to `block quote preview window` and `emoji dialog`  in light mode
+* Optimized the tab avoidance algorithm in the top bar under extremely narrow widths
+* Optimized the style of the `block quote preview window`
+* Optimized the button style of the `document settings` dialog box
+* Optimized the style of folded heading blocks and list blocks
+* Fine-tuned the shadow style of `dialog boxes`
+* Fine-tuned the style when image elements are selected by clicking
+
+---
+
 ### v2.0.5
 
 * 优化 `反链面板` 文档条目样式
