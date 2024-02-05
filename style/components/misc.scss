@@ -223,6 +223,7 @@ textarea {
     text-wrap: nowrap;
     overflow: hidden;
     min-width: max-content;
+    // overflow-wrap: normal;
     @include tooltip-shadow;
     @include border-or-not($outline:false);
 }

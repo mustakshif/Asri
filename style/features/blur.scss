@@ -10,7 +10,7 @@ $medium-blur-rd: 20px;
 $thin-transparency: 0.75;
 $thin-blur-rd: 12px;
 
-body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
+body:not(.body--blur, .asri-disable-backdrop-blur) {
 
     // .layout__wnd--active,
     [data-type="wnd"] {
@@ -95,7 +95,7 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
         // ————————————————————————————————————
 
         // pdf
-        .pdf__outer#outerContainer {
+        #outerContainer {
             // #sidebarContainer {
             //     top: 84px;
             // }
@@ -115,6 +115,11 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
             //     transition: none;
             // }
 
+            #findbar:not(.fn__hidden),
+            .pdf__util {
+                @include theme-variant-color(background-color, menu-background, $medium-transparency);
+                @include bg-blur;
+            }
             #dialogContainer {
                 .dialog {
                     @include theme-variant-color(background-color, menu-background, $thick-transparency);
@@ -298,7 +303,7 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
     background-color: transparent;
     overflow: hidden;
 
-    &:not(#searchHistoryList)::before {
+    &:not(#searchHistoryListm, #findbar, .pdf__util)::before {
         content: "";
         position: absolute;
         inset: 0;
@@ -338,6 +343,11 @@ body:not(.body--blur, .hadeeth-disable-backdrop-blur) {
     @include theme-variant-color(background-color, menu-background, $medium-transparency);
     @include bg-blur($saturate-value:3);
 }
+
+.block__popover .block__content .protyle-util {
+    background-color: var(--b3-menu-background);
+    backdrop-filter: none;
+} // 解决模糊透明像素的问题
 
 #searchHistoryList {
     @include theme-variant-color(background-color, menu-background, $medium-transparency);

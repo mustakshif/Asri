@@ -37,3 +37,35 @@ body {
 .body--linux {
     @extend .body--win32;
 }
+
+
+.protyle-wysiwyg {
+    > .av {
+        .av__container {
+            margin: 0 calc(var(--protyle-spacing) * -1 - 4px);
+
+            .av__header, .av__scroll{
+                padding: 0 var(--protyle-spacing);
+            }
+
+            .av__colsticky {
+                left: calc(var(--protyle-spacing) * -1);
+            }
+
+            .av__firstcol {
+                border-right: 1px solid var(--b3-border-color-trans);
+                opacity: 0;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+// .protyle-gutters {
+//     [data-type="NodeAttributeViewRow"],
+//     [data-type="NodeAttributeViewRowMenu"] {
+//         transform: translateX(min(calc(var(--protyle-spacing) * -1 + 72px), 0px));
+//     }
+// }

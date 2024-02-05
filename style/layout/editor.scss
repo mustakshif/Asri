@@ -608,7 +608,7 @@
         margin: 0.2em 0;
     }
 
-    .sb[data-sb-layout=row]>:where(.bq, .sb, blockquote)+ :where(.bq, blockquote) {
+    .sb[data-sb-layout=row] > :where(.bq, .sb, blockquote) + :where(.bq, blockquote) {
         margin-top: $sb-gap;
     }
 
@@ -849,6 +849,7 @@
 // 正文内容
 &-wysiwyg {
     @include wysiwyg-elements;
+    font-variant-ligatures: normal;
 
     // 正文紧挨文档标题的标题块
     &>div[data-type="NodeHeading"]:first-child,
@@ -974,6 +975,7 @@
 
 .b3-typography {
     font-feature-settings: "ss06" on; 
+    font-variant-ligatures: normal;
     // font-variant-emoji: emoji; // 不受支持
 
     // @extend .protyle-wysiwyg;
@@ -1059,6 +1061,7 @@
         padding: 4px 8px;
         right: 8px;
         overflow: visible !important;
+        background-color: var(--b3-menu-background);
 
         &> :is(input, button, label.b3-button) {
             margin-top: 4px;
@@ -1066,7 +1069,7 @@
         }
 
         .b3-button {
-            transition: 0.2s;
+            transition: background-color .2s;
 
             // 选中样式
             @include button-action('primary') {
@@ -1108,6 +1111,7 @@
 
             @include dialog-shadow;
             @include border-or-not;
+            outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
 
             #documentPropertiesClose {
                 @include button-action('primary') {
@@ -1212,6 +1216,8 @@
 
     // 数据库主体
     &__scroll {
+        font-variant-numeric: tabular-nums;
+        
         .av__row--header {
             color: var(--b3-theme-on-surface);
             font-weight: 500;

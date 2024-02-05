@@ -221,7 +221,7 @@ function handleWinResize() {
     //                 document.body.classList.remove('body--fullscreen');
     //             }
     //             // calcTopbarSpacings();
-    //             // calcTabbarSpacings();
+    //             // calcTabbarAndProtyleSpacings();
     //         }, 200);
     //     })
     // } 
@@ -240,7 +240,7 @@ function handleWinResize() {
             fromFullscreen = false;
         }
         calcTopbarSpacings();
-        calcTabbarSpacings();
+        calcTabbarAndProtyleSpacings();
     }, 200);
 }
 
@@ -333,7 +333,7 @@ function calcTopbarSpacings(widthChange) {
     // console.log(`drag左\t\t${dragRectLeftInitial}\ncenter左\t${centerRectLeft}`)
 }
 
-function calcTabbarSpacings() {
+function calcTabbarAndProtyleSpacings() {
     let wndElements = AsriDom.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
 
     wndElements.forEach(wnd => {
@@ -341,6 +341,7 @@ function calcTabbarSpacings() {
         let tabbarContainerRect = tabbarContainer.getBoundingClientRect();
         let dragRect = AsriDom.drag.getBoundingClientRect();
 
+        // calc & apply tabbarSpacing
         if (isOverlapping(tabbarContainerRect, dragRect)) {
             let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 6 + 'px' : '';
             let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 + 'px' : '';
@@ -362,6 +363,18 @@ function calcTabbarSpacings() {
             tabbarContainer.style.paddingLeft = 0;
             tabbarContainer.style.paddingRight = 0;
         }
+
+        // calc & apply protyleSpacing
+        let protyles = wnd.querySelectorAll('.protyle-wysiwyg');
+        protyles.forEach(protyle => {
+            let protylePadding = window.getComputedStyle(protyle).paddingLeft;
+            protyle?.style.setProperty('--protyle-spacing', protylePadding);
+        })
+        // let protyle = wnd.querySelector('.protyle-wysiwyg');
+        // if (protyle) {
+        //     let protylePadding = window.getComputedStyle(protyle).paddingLeft;
+        //     wnd?.style.setProperty('--protyle-spacing', protylePadding);
+        // }
     })
 }
 
@@ -415,7 +428,7 @@ function LayoutsCenterResizeObserver() {
 
 function handleCenterResize(widthChange) {
     calcTopbarSpacings(widthChange);
-    calcTabbarSpacings();
+    calcTabbarAndProtyleSpacings();
     statusPositon();
     dockBg();
 }
@@ -935,7 +948,7 @@ if (!isMobile) {
             () => {
                 AsriDom.layouts = document.getElementById('layouts');
                 setTimeout(() => {
-                    calcTabbarSpacings(); // 适用于分屏操作时
+                    calcTabbarAndProtyleSpacings(); // 适用于分屏操作时
                     // statusPositon();
                 }, 1);
                 // runWhenIdle(formatSyBacklinkItemsLayout);
@@ -1024,8 +1037,11 @@ window.addEventListener('dblclick', handleDblClick);
 //         let wndElements = AsriDom.layouts?.querySelectorAll('[data-type="wnd"]');
 //         wndElements.forEach(wnd => {
 //             let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
+//             let protyles = wnd.querySelectorAll('.protyle-wysiwyg');
+
 //             tabbarContainer.style.removeProperty('padding-left');
 //             tabbarContainer.style.removeProperty('padding-right');
+//             protyles.forEach(protyle => protyle.style.removeProperty('--protyle-spacing'));
 //         })
 
 //         let layoutTabContainers = AsriDom.layouts?.querySelectorAll('.layout__center .layout-tab-container');

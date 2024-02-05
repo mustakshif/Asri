@@ -1,0 +1,25 @@
+body:not([style*='-webkit-print-color-adjust'])
+{
+    .protyle-wysiwyg {
+        > .p {
+            .img {
+                margin: 0 calc(-1 * var(--protyle-spacing) - 9px);
+                max-width: unset !important;
+                display: block !important;
+                transition: margin .2s;
+    
+                > span:nth-child(2) {
+                    width: 100%;
+                    img {
+                        width: 100% !important;
+                        max-width: unset;
+                        border-radius: 0;
+                    }
+                    .protyle-action__drag {
+                        display: none;
+                    }
+                }            
+            }
+        }
+    }
+}
