@@ -1,4 +1,4 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v15.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v16.png)
 
 <br/>
 
@@ -12,7 +12,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ### v2.1.0
 
-* Added a custom attribute `asri-full-width-display` to implement full-page width display of main text images, iframes, super blocks, and database blocks. For details, please check 'Custom Attributes’ below👇
+* Added a custom attribute `asri-full-width-display` to implement full-page width display of images, iframes, super blocks, and database blocks. For details, please check 'Custom Attributes’ below👇
 * Optimized the style of the marketplace panel title bar
 * Enabled tabular number feature in `database` blocks under the theme's default font on Apple devices
 * Fixed issues such as Chinese dashes breaking off under the theme's default font on Apple devices
@@ -48,6 +48,8 @@ Check all updates [here](./CHANGELOG.md).
 ## Custom Attributes
 
 ### `asri-full-width-display`
+
+![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v1.gif)
 
 This attribute allows the block to which it is applied to span the full width of the page (full-width display). It can be used to emphasize specific content or beautify the layout. It can be applied to document blocks and certain content blocks (paragraph blocks that contains images, database blocks, super blocks, and iframe blocks).
 
@@ -92,7 +94,7 @@ The above configuration adds two options for document blocks and content blocks 
 
 After changing the custom attributes of a block, you can view and change the added attributes:
 
-![custom-attribute](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attribute_en_US.png)
+![custom-attribute](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attribute_en_US_v1.png)
 
 You can manually delete this attribute to restore the block to its default state.
 

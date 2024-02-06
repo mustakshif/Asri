@@ -1,4 +1,4 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v15.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v16.png)
 
 <br/>
 
@@ -49,6 +49,8 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### `asri-full-width-display`
 
+![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v1.gif)
+
 使应用了此属性的块撑满页面宽度显示（全宽显示），可用于强调特定内容或美化排版等。支持应用于文档块和部分内容块（图片段落块、数据库块、超级块和 iframe 块）。
 
 #### 应用于文档块
@@ -57,7 +59,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 * `all`：使文档中支持此属性的块全部全宽显示。
 * `p`（paragraph）：使文档中所有**包含图片**的段落块全宽显示。
-* `db`（attributes view）：使文档中所有数据库块全宽显示。
+* `db`（database）：使文档中所有数据库块全宽显示。
 * `sb`（super block）：使文档中所有超级块全宽显示。
 * `iframe`：使文档中所有 iframe 块全宽显示，包括视频、嵌入的网页
 
@@ -92,7 +94,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 对块的自定义属性进行更改后，可以查看和更改已添加的属性：
 
-![custom-attribute](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attribute_zh_CN.png)
+![custom-attribute](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attribute_zh_CN_v1.png)
 
 可以通过手动删除此属性恢复块的默认状态。
 
