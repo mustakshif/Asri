@@ -138,33 +138,29 @@
                             }
                         }
 
-                        .bazaarPanel {
-                            padding-bottom: 8px;
+                        // 集市面板
+                        .config-bazaar__panel {
+                            // padding-bottom: 8px;
 
-                            .fn__hr--b {
-                                height: 4px;
+                            .config-bazaar__title {
+                                position: sticky;
+                                top: 0;
+                                z-index: 2;
+                                align-items: center;
+                                backdrop-filter: none;
+                                padding: 8px 16px;
+                                background-color: var(--b3-theme-background);
 
-                                +.fn__flex:nth-child(2) {
-                                    position: sticky;
-                                    top: 4px;
-                                    z-index: 2;
-
-                                    &::before {
-                                        content: '';
-                                        background-color: var(--b3-theme-background);
-                                        width: 100%;
-                                        height: 40px;
-                                        display: block;
-                                        position: absolute;
-                                        top: -4px;
-                                        z-index: -1;
-                                    }
+                                .b3-switch {
+                                    transform: translateX(10px);
+                                    margin: 0 !important;
                                 }
                             }
 
                             .counter {
                                 background-color: transparent !important;
                             }
+
 
                             &[data-type='downloaded'] {
                                 .b3-button {
@@ -202,6 +198,10 @@
                                 [data-type="myPlugin"]:not(.b3-button--outline)~.counter {
                                     transform: translateX(-64px);
                                 }
+                            }
+
+                            .config-bazaar__content {
+                                margin-top: 0;
                             }
                         }
 
@@ -377,17 +377,6 @@
     gap: 20px;
     margin: 20px;
     width: auto;
-
-    >.fn__flex:first-child {
-        grid-column: 1 / -1;
-
-        >input.b3-switch {
-            position: absolute;
-            top: 60px;
-            z-index: 2;
-            right: 4px;
-        }
-    }
 
     .b3-list--empty {
         padding: 0;
@@ -797,7 +786,7 @@ div[id*=configBazaar] {
     @include border-or-not;
     outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
 
-    > .block__icons--menu {
+    >.block__icons--menu {
         background-color: var(--b3-theme-background);
     }
 

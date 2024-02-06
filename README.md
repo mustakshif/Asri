@@ -33,7 +33,7 @@ Check all updates [here](./CHANGELOG.md).
 
 ## Theme Features
 
-* ⚖️ Introducing top-bar fusion, striking a balance between aesthetics and efficiency.
+* ⚖️ Introducing Top-Bar Fusion, seamlessly integrating the top bar and the tab bar to strike a harmonious balance between aesthetics and efficiency.
 
     * 📌 All blank areas of the top bar can be used to drag the window (except for the gap between tabs)
     * 📌 If top bar icons or dividers appear misaligned or overlapped, resizing the edit area or app window may fix it.

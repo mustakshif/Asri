@@ -1,25 +1,135 @@
-body:not([style*='-webkit-print-color-adjust'])
-{
+@use '../base' as *;
+
+// fullwidth display ——————————————————
+
+body:not([style*='-webkit-print-color-adjust']) {
+
     .protyle-wysiwyg {
-        > .p {
+
+        // 图片 ——————————————————————
+        &[custom-asri-fullwidth-display="all"]>.p:not([custom-asri-fullwidth-display="off"]),
+        &[custom-asri-fullwidth-display~="p"]>.p:not([custom-asri-fullwidth-display="off"]),
+        >.p[custom-asri-fullwidth-display="on"] {
             .img {
                 margin: 0 calc(-1 * var(--protyle-spacing) - 9px);
                 max-width: unset !important;
                 display: block !important;
                 transition: margin .2s;
-    
-                > span:nth-child(2) {
+
+                >span:nth-child(2) {
                     width: 100%;
+
                     img {
                         width: 100% !important;
                         max-width: unset;
                         border-radius: 0;
                     }
+
                     .protyle-action__drag {
                         display: none;
                     }
-                }            
+                }
             }
+        }
+
+        // iframe ———————————————————
+        &[custom-asri-fullwidth-display="all"]>.iframe:not([custom-asri-fullwidth-display="off"]),
+        &[custom-asri-fullwidth-display~="iframe"]>.iframe:not([custom-asri-fullwidth-display="off"]),
+        >.iframe[custom-asri-fullwidth-display="on"] {
+            .iframe-content {
+                margin: 0 calc(var(--protyle-spacing) * -1 - 5px);
+
+                video,
+                iframe {
+                    max-height: unset;
+                    border-radius: 0;
+                }
+
+                .protyle-action__drag {
+                    display: none !important;
+                }
+            }
+        }
+
+
+        // 数据库 ——————————————————
+        &[custom-asri-fullwidth-display="all"]>.av:not([custom-asri-fullwidth-display="off"]),
+        &[custom-asri-fullwidth-display~="av"]>.av:not([custom-asri-fullwidth-display="off"]),
+        >.av[custom-asri-fullwidth-display="on"] {
+            .av__container {
+                margin: 0 calc(var(--protyle-spacing) * -1 - 4px);
+
+                .av__header,
+                .av__scroll {
+                    padding: 0 var(--protyle-spacing);
+                }
+
+                // 「添加行」按钮
+                .av__colsticky {
+                    left: calc(var(--protyle-spacing) * -1);
+                }
+
+                .av__firstcol {
+                    border-right: 1px solid var(--b3-border-color-trans);
+                    opacity: 0;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+
+                .av__row--select {
+                    .av__firstcol {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+
+        // .protyle-gutters {
+        //     [data-type="NodeAttributeViewRow"],
+        //     [data-type="NodeAttributeViewRowMenu"] {
+        //         transform: translateX(min(calc(var(--protyle-spacing) * -1 + 72px), 0px));
+        //     }
+        // }
+
+
+        // 超级块 ————————————————————
+        &[custom-asri-fullwidth-display="all"]>.sb[data-sb-layout="col"]:not([custom-asri-fullwidth-display="off"]),
+        &[custom-asri-fullwidth-display~="sb"]>.sb[data-sb-layout="col"]:not([custom-asri-fullwidth-display="off"]),
+        >.sb[data-sb-layout="col"][custom-asri-fullwidth-display="on"] {
+            > :first-child {
+                margin-left: calc(var(--protyle-spacing)*-1);
+
+                >*,
+                .sb,
+                .bq,
+                .render-node {
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                }
+            }
+
+            > :nth-last-child(1 of [data-node-id]) {
+                margin-right: calc(var(--protyle-spacing)*-1);
+
+                >*,
+                .sb,
+                .bq,
+                .render-node {
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+            }
+
+            // > .sb:first-child {
+            //     margin-left: calc(var(--protyle-spacing)*-1);
+            // }
+
+            // > .sb:nth-last-child(2) {
+            //     margin-right: calc(var(--protyle-spacing)*-1);
+            // }
         }
     }
 }
