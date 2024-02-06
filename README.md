@@ -12,7 +12,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ### v2.1.0
 
-* Added a custom attribute `asri-full-width-display` to implement full-page width display of images, iframes, super blocks, and database blocks. For details, please check 'Custom Attributes’ below👇
+* Added a custom attribute `asri-full-width-display` to implement full-page width display of images, iframes, super blocks, and database blocks. For details, please check *Custom Attributes* below👇
 * Optimized the style of the marketplace panel title bar
 * Enabled tabular number feature in `database` blocks under the theme's default font on Apple devices
 * Fixed issues such as Chinese dashes breaking off under the theme's default font on Apple devices
