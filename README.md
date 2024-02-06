@@ -10,24 +10,14 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.0.6
+### v2.1.0
 
-* Added borders to `block quote preview window` and `emoji dialog`  in light mode
-* Optimized the tab avoidance algorithm in the top bar under extremely narrow widths
-* Optimized the style of the `block quote preview window`
-* Optimized the button style of the `document settings` dialog box
-* Optimized the style of folded heading blocks and list blocks
-* Fine-tuned the shadow style of `dialog boxes`
-* Fine-tuned the style when image elements are selected by clicking
-
-...
-
-### v2.0.0
-
-* 🎉 Introduced a new top bar design seamlessly integrated with the tab bar, balancing aesthetics and efficiency.
-* Renamed the theme to Asri, giving it a more modern touch.
-* [Fixed the issue where custom font CSS code was not working](https://github.com/mustakshif/Asri-for-SiYuan/issues/11).
-* Other minor optimizations and improvements.
+* Added a custom attribute `asri-full-width-display` to implement full-page width display of main text images, iframes, super blocks, and database blocks. For details, please check 'Custom Attributes’ below👇
+* Optimized the style of the marketplace panel title bar
+* Enabled tabular number feature in `database` blocks under the theme's default font on Apple devices
+* Fixed issues such as Chinese dashes breaking off under the theme's default font on Apple devices
+* Fixed issues with abnormal background display of PDF search menu and annotation menu
+* Fixed issues with menu items lingering when closing the PDF search menu
 
 Check all updates [here](./CHANGELOG.md).
 
@@ -55,7 +45,64 @@ Check all updates [here](./CHANGELOG.md).
 * 🚀 High level of performance maintained.
 * ...
 
-## How to use
+## Custom Attributes
+
+### `asri-full-width-display`
+
+This attribute allows the block to which it is applied to span the full width of the page (full-width display). It can be used to emphasize specific content or beautify the layout. It can be applied to document blocks and certain content blocks (paragraph blocks that contains images, database blocks, super blocks, and iframe blocks).
+
+#### Applied to Document Blocks
+
+When applied to document blocks, the accepted attribute values are: `all`, `p`, `db`, `sb`, and `iframe`. Among them, `all` can only be used alone, while `p`, `db`, `sb`, and `iframe` can be used simultaneously, and the attribute values should be separated by **spaces**.
+
+* `all`: Makes all blocks in the document that support this attribute display in full width.
+* `p` (paragraph block): Makes all **image-containing** paragraph blocks in the document display in full width.
+* `db` (database): Makes all database blocks in the document display in full width.
+* `sb` (super block): Makes all super blocks in the document display in full width.
+* `iframe`: Makes all iframe blocks in the document display in full width, including videos, embedded web pages.
+
+#### Applied to Content Blocks
+
+When applied to image paragraph blocks, database blocks, super blocks, or iframe blocks, it only accepts the attribute values `on` and `off`, which are used to individually enable and disable the block’s full-width display.
+
+#### Usage
+
+In addition to adding custom attributes by <kbd>shift + click</kbd> on the block icon, you can also use the `Attribute Quick Add` plugin to quickly add this attribute to document blocks and supported content blocks. A possible `Attribute Quick Add` plugin configuration is as follows:
+
+```json
+{
+    "@type/d": {
+        "display all supported blocks in full width": {
+            "asri-full-width-display": "all"
+        },
+        "display all database blocks and images in full width": {
+            "asri-full-width-display": "db p"
+        }
+    },
+    "Individually enable full-width display": {
+        "asri-full-width-display": "on"
+    },
+    "Individually disable full-width display": {
+        "asri-full-width-display": "off"
+    }
+}
+```
+
+The above configuration adds two options for document blocks and content blocks in the plugin menu, respectively, for quickly enabling and disabling the full-width display attribute of related content.
+
+After changing the custom attributes of a block, you can view and change the added attributes:
+
+![custom-attribute](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attribute_en_US.png)
+
+You can manually delete this attribute to restore the block to its default state.
+
+#### Precautions
+
+1. Full-width display only applies to the first-level blocks in the document. If a block is nested in other content blocks, applying this attribute to it will not produce any effect. For example, applying this attribute to an image paragraph block in a quote block will not change the style of the paragraph block unless the external quote block is cancelled.
+2. Full-width display is temporarily only effective in the main window editing area, and does not work in block reference preview windows, small windows, export previews, etc.
+3. Enabling full-width display may cause the page to feel more jumpy when the editing area's size changes and automatically returns to the cursor position.
+
+## How to use Asri
 
 * **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
 * Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.

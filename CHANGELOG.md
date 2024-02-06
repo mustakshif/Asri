@@ -1,3 +1,23 @@
+### v2.1.0
+
+* 新增自定义属性 `asri-full-width-display`，实现正文图片、iframe、超级块、数据库块撑满页宽显示，详情请查看「自定义属性」一节👇
+* 优化集市项目面板标题栏样式
+* 在苹果端的主题默认字体下， `数据库` 块内启用等宽数字特性
+* 修复苹果端主题默认字体下中文破折号断开等问题
+* 修复 PDF 搜索菜单和标注菜单背景显示异常的问题
+* 修复关闭 PDF 搜索菜单时菜单项目滞留的问题
+
+<br />
+
+* Added a custom attribute `asri-full-width-display` to implement full-page width display of main text images, iframes, super blocks, and database blocks. For details, please check 'Custom Attributes’ below👇
+* Optimized the style of the marketplace panel title bar
+* Enabled tabular number feature in `database` blocks under the theme's default font on Apple devices
+* Fixed issues such as Chinese dashes breaking off under the theme's default font on Apple devices
+* Fixed issues with abnormal background display of PDF search menu and annotation menu
+* Fixed issues with menu items lingering when closing the PDF search menu
+
+---
+
 ### v2.0.6
 
 * 浅色模式下增加 `块引用悬浮窗` 和 `emoji对话框` 边框
@@ -11,7 +31,7 @@
 <br />
 
 * Added borders to `block quote preview window` and `emoji dialog`  in light mode
-* Optimized the tab avoidance algorithm in the top bar under extremely narrow widths
+* Optimized the tab spacing algorithm in the top bar under extremely narrow widths
 * Optimized the style of the `block quote preview window`
 * Optimized the button style of the `document settings` dialog box
 * Optimized the style of folded heading blocks and list blocks
