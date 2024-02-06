@@ -49,7 +49,7 @@ Check all updates [here](./CHANGELOG.md).
 
 ### `asri-full-width-display`
 
-![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v2.gif)
+![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v3.gif)
 
 This attribute allows the block to which it is applied to span the full width of the page (full-width display). It can be used to emphasize specific content or beautify the layout. It can be applied to document blocks and certain content blocks (paragraph blocks that contains images, database blocks, super blocks, and iframe blocks).
 
