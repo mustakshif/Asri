@@ -49,9 +49,9 @@ Check all updates [here](./CHANGELOG.md).
 
 ### `asri-full-width-display`
 
-![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v3.gif)
+![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview.gif)
 
-This attribute allows the block to which it is applied to span the full width of the page (full-width display). It can be used to emphasize specific content or beautify the layout. It can be applied to document blocks and certain content blocks (paragraph blocks that contains images, database blocks, super blocks, and iframe blocks).
+This attribute allows the block to which it is applied to span the full width of the page (full-width display). It can be used to emphasize specific content or beautify the layout. It can be applied to document blocks and certain content blocks (paragraph blocks that contains images, database blocks, horizontal-layout super blocks, and iframe blocks).
 
 #### Applied to Document Blocks
 
@@ -60,12 +60,12 @@ When applied to document blocks, the accepted attribute values are: `all`, `p`, 
 * `all`: Makes all blocks in the document that support this attribute display in full width.
 * `p` (paragraph block): Makes all **image-containing** paragraph blocks in the document display in full width.
 * `db` (database): Makes all database blocks in the document display in full width.
-* `sb` (super block): Makes all super blocks in the document display in full width.
+* `sb` (super block): Makes all **horizontal-layout** super blocks in the document display in full width.
 * `iframe`: Makes all iframe blocks in the document display in full width, including videos, embedded web pages.
 
 #### Applied to Content Blocks
 
-When applied to image paragraph blocks, database blocks, super blocks, or iframe blocks, it only accepts the attribute values `on` and `off`, which are used to individually enable and disable the block’s full-width display.
+When applied to image paragraph blocks, database blocks, horizontal-layout super blocks, or iframe blocks, it only accepts the attribute values `on` and `off`, which are used to individually enable and disable the block’s full-width display.
 
 #### Usage
 
@@ -94,7 +94,7 @@ The above configuration adds two options for document blocks and content blocks 
 
 After changing the custom attributes of a block, you can view and change the added attributes:
 
-![custom-attribute](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attribute_en_US_v1.png)
+![custom-attribute](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attribute_en_US_v2.png)
 
 You can manually delete this attribute to restore the block to its default state.
 
