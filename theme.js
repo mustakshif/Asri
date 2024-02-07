@@ -374,7 +374,7 @@
                     if (protylePadding !== protyle.dataset.prevPadding) {
                         protyle.style.setProperty('--protyle-spacing', protylePadding);
                         protyle.dataset.prevPadding = protylePadding;
-                        console.log(protylePadding);
+                        // console.log(protylePadding);
                     }
                 })
             }
@@ -996,76 +996,78 @@
 
     window.addEventListener('dblclick', handleDblClick);
 
-    window.destroyTheme = () => {
+    // window.destroyTheme = () => {
 
-        let htmlElement = document.documentElement;
-        let themeMode = htmlElement.getAttribute('data-theme-mode');
-        let lightTheme = htmlElement.getAttribute('data-light-theme');
-        let darkTheme = htmlElement.getAttribute('data-dark-theme');
+    //     let htmlElement = document.documentElement;
+    //     let themeMode = htmlElement.getAttribute('data-theme-mode');
+    //     let lightTheme = htmlElement.getAttribute('data-light-theme');
+    //     let darkTheme = htmlElement.getAttribute('data-dark-theme');
 
-        // let switchBetweenAsriThemes = (themeMode === 'light' && (darkTheme === 'Asri-for-SiYuan' || darkTheme === 'Asri')) || (themeMode === 'dark' && (lightTheme === "Asri-for-SiYuan" || lightTheme === 'Asri'));
+    //     // let switchBetweenAsriThemes = (themeMode === 'light' && (darkTheme === 'Asri-for-SiYuan' || darkTheme === 'Asri')) || (themeMode === 'dark' && (lightTheme === "Asri-for-SiYuan" || lightTheme === 'Asri'));
 
-        // let toDiffTheme = (themeMode === 'light' && (darkTheme !== "Asri-for-SiYuan" || darkTheme !== 'Asri')) || (themeMode === 'dark' && (lightTheme !== "Asri-for-SiYuan" || lightTheme !== 'Asri'));
+    //     // let toDiffTheme = (themeMode === 'light' && (darkTheme !== "Asri-for-SiYuan" || darkTheme !== 'Asri')) || (themeMode === 'dark' && (lightTheme !== "Asri-for-SiYuan" || lightTheme !== 'Asri'));
 
-        // 取消事件监听
-        window.removeEventListener('dblclick', handleDblClick);
-        window.removeEventListener('resize', handleWinResize);
+    //     // 取消事件监听
+    //     window.removeEventListener('dblclick', handleDblClick);
+    //     window.removeEventListener('resize', handleWinResize);
 
-        // 取消所有变动观察
-        AsriObservers.forEach(observer => observer.disconnect());
+    //     // 取消所有变动观察
+    //     AsriObservers.forEach(observer => observer.disconnect());
 
-        // 恢复 traffic light 位置
-        if (isMacOS && !isInBrowser) setTrafficLightPosition(8);
-        if (isMacOS && isMiniWindow) setTrafficLightPosition(8, 13);
+    //     // 恢复 traffic light 位置
+    //     if (isMacOS && !isInBrowser) setTrafficLightPosition(8);
+    //     if (isMacOS && isMiniWindow) setTrafficLightPosition(8, 13);
 
-        // 删除添加的类名和元素
-        AsriClassNames.forEach(className => {
-            document.querySelectorAll(className).forEach(el => el.classList.remove(className.slice(1)));
-        })
-        document.querySelector('#AsriTopbarLeftSpacing')?.remove();
-        document.querySelector('#AsriTopbarRightSpacing')?.remove();
-        document.querySelector('#AsriPluginsIconsDivider')?.remove();
+    //     // 删除添加的类名和元素
+    //     AsriClassNames.forEach(className => {
+    //         document.querySelectorAll(className).forEach(el => el.classList.remove(className.slice(1)));
+    //     })
+    //     document.querySelector('#AsriTopbarLeftSpacing')?.remove();
+    //     document.querySelector('#AsriTopbarRightSpacing')?.remove();
+    //     document.querySelector('#AsriPluginsIconsDivider')?.remove();
 
-        // 移除 js 样式属性
-        document.body.style.removeProperty('--mouseX');
-        document.body.style.removeProperty('--mouseY');
-        AsriDom.topbar?.style.removeProperty('--topbar-left-spacing');
-        AsriDom.topbar?.style.removeProperty('--topbar-right-spacing');
-        AsriDom.topbar?.style.removeProperty('--avoid-topbar');
-        AsriDom.status?.style.removeProperty('max-width');
-        AsriDom.status?.style.removeProperty('transform');
-        AsriDom.status?.style.removeProperty('--status-height');
+    //     // 移除 js 样式属性
+    //     document.body.style.removeProperty('--mouseX');
+    //     document.body.style.removeProperty('--mouseY');
+    //     AsriDom.topbar?.style.removeProperty('--topbar-left-spacing');
+    //     AsriDom.topbar?.style.removeProperty('--topbar-right-spacing');
+    //     AsriDom.topbar?.style.removeProperty('--avoid-topbar');
+    //     AsriDom.status?.style.removeProperty('max-width');
+    //     AsriDom.status?.style.removeProperty('transform');
+    //     AsriDom.status?.style.removeProperty('--status-height');
 
-        let wndElements = AsriDom.layouts?.querySelectorAll('[data-type="wnd"]');
-        wndElements.forEach(wnd => {
-            let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
-            let protyles = wnd.querySelectorAll('.protyle-wysiwyg');
+    //     let wndElements = AsriDom.layouts?.querySelectorAll('[data-type="wnd"]');
+    //     wndElements.forEach(wnd => {
+    //         let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
+    //         let protyles = wnd.querySelectorAll('.protyle-wysiwyg');
 
-            tabbarContainer.style.removeProperty('padding-left');
-            tabbarContainer.style.removeProperty('padding-right');
-            protyles.forEach(protyle => protyle.style.removeProperty('--protyle-spacing'));
-        })
+    //         tabbarContainer.style.removeProperty('padding-left');
+    //         tabbarContainer.style.removeProperty('padding-right');
+    //         protyles.forEach(protyle => {
+    //             protyle.style.removeProperty('--protyle-spacing');
+    //             protyle.dataset.prevPadding = undefined;
+    //         });
+    //     })
 
-        let layoutTabContainers = AsriDom.layouts?.querySelectorAll('.layout__center .layout-tab-container');
-        layoutTabContainers.forEach(tabContainer => {
-            tabContainer.style.removeProperty('padding-bottom');
-        })
+    //     let layoutTabContainers = AsriDom.layouts?.querySelectorAll('.layout__center .layout-tab-container');
+    //     layoutTabContainers.forEach(tabContainer => {
+    //         tabContainer.style.removeProperty('padding-bottom');
+    //     })
 
-        document.getElementById('searchList')?.style.removeProperty('padding-bottom');
-        document.getElementById('searchPreview')?.style.removeProperty('padding-bottom');
-        document.getElementById('viewerContainer')?.style.removeProperty('padding-bottom');
-        document.querySelectorAll('.dock').forEach(dock => {
-            dock.style.removeProperty('--border-clr');
-        })
+    //     document.getElementById('searchList')?.style.removeProperty('padding-bottom');
+    //     document.getElementById('searchPreview')?.style.removeProperty('padding-bottom');
+    //     document.getElementById('viewerContainer')?.style.removeProperty('padding-bottom');
+    //     document.querySelectorAll('.dock').forEach(dock => {
+    //         dock.style.removeProperty('--border-clr');
+    //     })
 
-        // 还原被删除的规则
-        if (AsriDeletedRules) {
-            for (let i = 0; i < AsriDeletedRules.length; i++) {
-                let rule = AsriDeletedRules[i];
-                rule.styleSheet.insertRule(rule.rule, rule.styleSheet.cssRules.length);
-            }
-        }
-        console.log('Asri theme destroyed!');
-
-    }
+    //     // 还原被删除的规则
+    //     if (AsriDeletedRules) {
+    //         for (let i = 0; i < AsriDeletedRules.length; i++) {
+    //             let rule = AsriDeletedRules[i];
+    //             rule.styleSheet.insertRule(rule.rule, rule.styleSheet.cssRules.length);
+    //         }
+    //     }
+    //     console.log('Asri theme destroyed!');
+    // }
 })();
