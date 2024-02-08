@@ -12,7 +12,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ### v2.1.0
 
-* Added a custom attribute `asri-full-width-display` to implement full-page width display of images, iframes, super blocks, and database blocks. For details, please check *Custom Attributes* below👇
+* Added a custom attribute `asri-full-width-display` to implement full-page width display of images, iframes, superblocks, and database blocks. For details, please check *Custom Attributes* below👇
 * Optimized the style of the marketplace panel title bar
 * Enabled tabular number feature in `database` blocks under the theme's default font on Apple devices
 * Fixed issues such as Chinese dashes breaking off under the theme's default font on Apple devices
@@ -25,12 +25,11 @@ Check all updates [here](./CHANGELOG.md).
 
 * 🪄 Aesthetically Enhanced Efficiency
 
-  * ⚖️ Seamless integration of the top bar and tab bar
+  * ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar
 
     * 📌 The blank area of the top bar can be used to drag the window (except for the gap between tabs)
     * 📌 If top bar icons or dividers appear misaligned or overlapped, resizing the edit area or app window may fix it.
-    * 📌 The code for pinning the top bar in previous versions is no longer effective and can be manually deleted.
-  * 🧊 Introduction of glassmorphism, bringing a layered visual experience
+  * 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
   * 🌅 Removal of unnecessary spacing between app's layout blocks, expanding the display range
   * 🌓 Support for light and dark modes
 * 📐 Flexible and Elegant Layout
@@ -42,7 +41,7 @@ Check all updates [here](./CHANGELOG.md).
   * 🚥 Adjusted the position of macOS traffic lights, optimizing the layout rhythm
 * 🧭 Convenient and Clear Navigation
 
-  * 🗂️ Added indent guides for the file tree and outline
+  * 🗂️ Added indent guides for file tree and outline
   * 🔍 Optimized the display of search lists and backlink lists
   * ↕️ Applied system scrollbar on macOS, which can be hidden automatically and reduce visual interference
 * 👆 Delicate and Smooth Interaction
@@ -57,7 +56,7 @@ Check all updates [here](./CHANGELOG.md).
 
 ![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v4.gif)
 
-This attribute allows the block to which it is applied to span the full width of the page (full-width display). It can be used to emphasize specific content or beautify the layout. It can be applied to document blocks and certain content blocks (paragraph blocks that contains images, database blocks, horizontal-layout super blocks, and iframe blocks).
+This attribute allows the block to which it is applied to span the full width of the page (full-width display). It can be used to emphasize specific content, beautify the layout, etc. It can be applied to document blocks and certain content blocks (paragraph blocks that contains images, database blocks, horizontal-layout superblocks, and iframe blocks).
 
 #### Applied to Document Blocks
 
@@ -66,12 +65,12 @@ When applied to document blocks, the accepted attribute values are: `all`, `p`, 
 * `all`: Makes all blocks in the document that support this attribute display in full width.
 * `p` (paragraph block): Makes all **image-containing** paragraph blocks in the document display in full width.
 * `db` (database): Makes all database blocks in the document display in full width.
-* `sb` (super block): Makes all **horizontal-layout** super blocks in the document display in full width.
-* `iframe`: Makes all iframe blocks in the document display in full width, including videos, embedded web pages.
+* `sb` (superblock): Makes all **horizontal-layout** superblocks in the document display in full width.
+* `iframe`: Makes all iframe blocks in the document display in full width, including videos, widgets and embedded web pages.
 
 #### Applied to Content Blocks
 
-When applied to image paragraph blocks, database blocks, horizontal-layout super blocks, or iframe blocks, it only accepts the attribute values `on` and `off`, which are used to individually enable and disable the block’s full-width display.
+When applied to image paragraph blocks, database blocks, horizontal-layout superblocks, or iframe blocks, it only accepts the attribute values `on` and `off`, which are used to individually enable and disable the block’s full-width display.
 
 #### Usage
 
@@ -96,7 +95,7 @@ In addition to adding custom attributes by <kbd>shift + click</kbd> on the block
 }
 ```
 
-The above configuration adds two options for document blocks and content blocks in the plugin menu, respectively, for quickly enabling and disabling the full-width display attribute of related content.
+The above configuration adds two options for document blocks and content blocks in the plugin menu, respectively, for quickly enabling and disabling the full-width display attribute for related content.
 
 After changing the custom attributes of a block, you can view and change the added attributes:
 
