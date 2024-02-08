@@ -10,6 +10,7 @@ body:not([style*='-webkit-print-color-adjust']) {
         &[custom-asri-full-width-display="all"]>.p:not([custom-asri-full-width-display="off"]),
         &[custom-asri-full-width-display~="p"]>.p:not([custom-asri-full-width-display="off"]),
         >.p[custom-asri-full-width-display="on"] {
+
             .img {
                 margin: 0 calc(-1 * var(--protyle-spacing) - 9px);
                 max-width: unset !important;
@@ -36,17 +37,40 @@ body:not([style*='-webkit-print-color-adjust']) {
         &[custom-asri-full-width-display="all"]>.iframe:not([custom-asri-full-width-display="off"]),
         &[custom-asri-full-width-display~="iframe"]>.iframe:not([custom-asri-full-width-display="off"]),
         >.iframe[custom-asri-full-width-display="on"] {
+
+            margin: calc(-12em / 17) 0;
             .iframe-content {
-                margin: 0 calc(var(--protyle-spacing) * -1 - 5px);
+                display: block;
+                margin: calc(20em / 17) calc(var(--protyle-spacing) * -1 - 5px);
 
                 video,
                 iframe {
                     max-height: unset;
                     border-radius: 0;
+                    width: 100% !important;
                 }
 
                 .protyle-action__drag {
-                    display: none !important;
+                    background-color: var(--b3-theme-surface);
+                    width: 30%;
+                    height: 4px;
+                    left: 50%;
+                    right: unset;
+                    transform: translateX(-50%);
+                    transition-property: transform, background-color, opacity;
+                    transition-duration: .15s;
+                    border-radius: 4px;
+                    mask-image: none;
+
+                    cursor: ns-resize;
+
+                    &:hover {
+                        transform: scale(1.1) translateX(-50% * 1 / 1.1);
+                    }
+
+                    @include darkmode-counterpart {
+                        background-color: var(--b3-theme-on-surface);
+                    }
                 }
             }
         }

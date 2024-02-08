@@ -1,6 +1,24 @@
+### v2.1.1
+
+* 优化 `asri-full-width-display`（全宽显示）属性实现算法
+* 恢复全宽显示的 iframe 块（包括视频、挂件、嵌入的网页等）的尺寸调整功能，重新设计尺寸调整控件样式
+* 优化全宽显示的 iframe 块的上下间距，修复块标落入内容之中的问题
+* 将块滚动条的触发显示区域缩小至可见元素的区域，减少对全宽显示挂件的干扰
+* 修复行内备注的鼠标悬浮动画异常的问题
+
+<br />
+
+* Optimized the algorithm for the `asri-full-width-display` property.
+* Restored the resizability of iframe blocks (including videos, widgets, embedded webpages, etc.) in full-width display, and redesigned the style of the resize control element.
+* Optimized the top and bottom spacing of iframe blocks in full-width display, and fixed the issue of block icons falling into the content.
+* Reduced the hover-to-display area of block slider to visible elements' box only, minimizing interference with widgets in full-width display.
+* Fixed the issue of abnormal mouse hover animation for inline memos.
+
+---
+
 ### v2.1.0
 
-* 新增自定义属性 `asri-full-width-display`，实现正文图片、iframe、超级块、数据库块撑满页宽显示，详情请查看「自定义属性」一节👇
+* 新增自定义属性 `asri-full-width-display`，实现正文图片、视频、挂件、超级块、数据库块等撑满页宽显示，详情请查看「自定义属性」一节👇
 * 优化集市项目面板标题栏样式
 * 在苹果端的主题默认字体下， `数据库` 块内启用等宽数字特性
 * 修复苹果端主题默认字体下中文破折号断开等问题
@@ -9,7 +27,7 @@
 
 <br />
 
-* Added a custom attribute `asri-full-width-display` to implement full-page width display of images, iframes, super blocks, and database blocks. For details, please check *Custom Attributes* below👇
+* Added a custom attribute `asri-full-width-display` to implement full-page width display of images, videos, widgets, superblocks, and database blocks, etc. For details, please check *Custom Attributes* below👇
 * Optimized the style of the marketplace panel title bar
 * Enabled tabular number feature in `database` blocks under the theme's default font on Apple devices
 * Fixed issues such as Chinese dashes breaking off under the theme's default font on Apple devices

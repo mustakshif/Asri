@@ -260,6 +260,7 @@
         text-decoration-color: var(--b3-font-color5);
         transition-property: background-color, text-decoration-color, box-shadow, color, border-radius;
         transition-duration: .15s;
+        // transition: .15s;
         box-decoration-break: clone;
 
         &:hover {
@@ -529,8 +530,6 @@
         .protyle-action__drag {
             top: 50%;
             transform: translateY(-50%);
-
-
         }
 
         &:hover {
@@ -923,7 +922,12 @@
     transform: scale(0.95, 0.9);
     transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1),
         transform 0.2s cubic-bezier(0, 0, 0.2, 1);
-    transition-delay: 0.5s;
+    transition-delay: 1s;
+    pointer-events: none;
+
+    > * {
+        pointer-events: all;
+    }
 
     &:hover {
         opacity: 1;
