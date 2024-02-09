@@ -502,6 +502,12 @@ div[id*=configBazaar] {
         .b3-typography {
             padding: 0 32px;
 
+            @media (min-width: 1292px) {
+                padding: 1px; //显示表格左右边框
+                width: min(42em, calc(100% - 48px));
+                margin: 24px auto 0;
+            }
+
             .bq {
                 border: none;
                 padding: 0;
