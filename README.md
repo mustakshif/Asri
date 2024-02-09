@@ -31,32 +31,35 @@ Check all updates [here](./CHANGELOG.md).
 
 ## Theme Features
 
-* 🪄 Aesthetically Enhanced Efficiency
+### 🪄 Aesthetically Enhanced Efficiency
 
-  * ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar
+* ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar
 
-    * 📌 The blank area of the top bar can be used to drag the window (except for the gap between tabs)
-    * 📌 If top bar icons or dividers appear misaligned or overlapped, resizing the edit area or app window may fix it.
-  * 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
-  * 🌅 Removal of unnecessary spacing between app's layout blocks, expanding the display range
-  * 🌓 Support for light and dark modes
-* 📐 Flexible and Elegant Layout
+  * 📌 The blank area of the top bar can be used to drag the window (except for the gap between tabs)
+  * 📌 If top bar icons or dividers appear misaligned or overlapped, resizing the edit area or app window may fix it.
+* 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
+* 🌅 Removal of unnecessary spacing between app's layout blocks, expanding the display range
+* 🌓 Support for light and dark modes
 
-  * 🧩 Optimized internal and external spacing of superblocks, making it easy to achieve grid and masonry layouts
-  * ↔️ Support for full-width display of images, videos, databases, superblocks, providing diverse typesetting effects
-  * ➖ Simplified dividers, creating an integrated, refreshing and tidy layout style
-  * 🔛 Width-adaptive layout, making full use of screen space
-  * 🚥 Adjusted the position of macOS traffic lights, optimizing the layout rhythm
-* 🧭 Convenient and Clear Navigation
+### 📐 Flexible and Elegant Layout
 
-  * 🗂️ Added indent guides for file tree and outline
-  * 🔍 Optimized the display of search lists and backlink lists
-  * ↕️ Applied system scrollbar on macOS, which can be hidden automatically and reduce visual interference
-* 👆 Delicate and Smooth Interaction
+* 🧩 Optimized internal and external spacing of superblocks, making it easy to achieve grid and masonry layouts
+* ↔️ Support for full-width display of images, videos, widgets, databases, superblocks, providing diverse typesetting effects
+* ➖ Simplified dividers, creating an integrated, refreshing and tidy layout style
+* 🔛 Width-adaptive layout, making full use of screen space
+* 🚥 Adjusted the position of macOS traffic lights, optimizing the layout rhythm
 
-  * ⚙️ Redesigned the styles of controls for iFrame, videos, images, etc.
-  * 💫 Appropriately added lively animations, enriching the interactive experience
-  * 🚀 Maintained a high level of smooth performance
+### 🧭 Convenient and Clear Navigation
+
+* 🗂️ Added indent guides for file tree and outline
+* 🔍 Optimized the display of search lists and backlink lists
+* ↕️ Applied system scrollbar on macOS, which can be hidden automatically and reduce visual interference
+
+### 👆 Delicate and Smooth Interaction
+
+* ⚙️ Redesigned the styles of controls for iFrame, videos, images, etc.
+* 💫 Appropriately added lively animations, enriching the interactive experience
+* 🚀 Maintained a high level of smooth performance
 
 ## Custom Attributes
 
