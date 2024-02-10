@@ -114,7 +114,7 @@ After changing the custom attributes of a block, you can view and change the add
 
 You can manually delete this attribute to restore the block to its default state.
 
-#### Precautions
+#### <em>Precautions</em>
 
 1. Full-width display only applies to the first-level blocks in the document. If a block is nested in other content blocks, applying this attribute to it will not produce any effect. For example, applying this attribute to an image paragraph block in a quote block will not change the style of the paragraph block unless the external quote block is cancelled.
 2. Full-width display is temporarily only effective in the main window editing area, and does not work in block reference preview windows, small windows, export previews, etc.
