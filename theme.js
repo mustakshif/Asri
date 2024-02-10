@@ -403,7 +403,17 @@
                 // 保存当前宽度作为下一次的上一次宽度
                 entry.target.dataset.prevWidth = inlineSize;
 
-                handleCenterResize(widthChange);
+                // handle center resize
+                let handleCenterResizeTimeout;
+                clearTimeout(handleCenterResizeTimeout);
+                handleCenterResizeTimeout = setTimeout(() => {
+                    requestAnimationFrame(() => {
+                        statusPosition();
+                    }); // resize过程中持续运行造成卡顿，改在resize结束后运行   
+                }, 200);
+                calcTopbarSpacings(widthChange);
+                calcTabbarAndProtyleSpacings();
+                dockBg();
             }
         });
 
@@ -427,17 +437,6 @@
                 tryGetLytCenter = setInterval(updateLytCenter, 1000);
             }, 0);
         }
-    }
-
-    function handleCenterResize(widthChange) {
-        let handleCenterResizeTimeout;
-        clearTimeout(handleCenterResizeTimeout);
-        handleCenterResizeTimeout = setTimeout(() => {
-            requestAnimationFrame(statusPosition); // resize过程中持续运行造成卡顿，改在resize结束后运行   
-        }, 200);
-        calcTopbarSpacings(widthChange);
-        calcTabbarAndProtyleSpacings();
-        dockBg();
     }
 
     if (!isMobile && !isMiniWindow) {
