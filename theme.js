@@ -42,7 +42,7 @@
 //     ipcRenderer.invoke('siyuan-get', { cmd: 'isFullScreen' })
 //         .then(isFullscreen => isFullscreen ? true : false);
 // }
-(async function () {
+(function () {
     class Asri {
         constructor() {
             this.doms = {
@@ -202,7 +202,7 @@
         }
     }
 
-    let isWinResizing = false, resizeTimeout;
+    let isWinResizing = false;
 
     function handleWinResize() {
         // if (!isInBrowser && !isMobile) {
@@ -225,7 +225,7 @@
         //         }, 200);
         //     })
         // } 
-        let fromFullscreen;
+        let fromFullscreen, resizeTimeout;
         isWinResizing = true;
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(function () {
@@ -430,9 +430,13 @@
     }
 
     function handleCenterResize(widthChange) {
+        let handleCenterResizeTimeout;
+        clearTimeout(handleCenterResizeTimeout);
+        handleCenterResizeTimeout = setTimeout(() => {
+            requestAnimationFrame(statusPosition); // resize过程中持续运行造成卡顿，改在resize结束后运行   
+        }, 200);
         calcTopbarSpacings(widthChange);
         calcTabbarAndProtyleSpacings();
-        statusPositon();
         dockBg();
     }
 
@@ -583,7 +587,7 @@
     /**
      * 计算dock和dock layout展开/收起时状态栏的位置
      */
-    function statusPositon() {
+    function statusPosition() {
         if (!isMobile) {
             if (!hasDockb()) {
                 function setStatusTransform(x, y) {
@@ -623,8 +627,9 @@
             // }   
         }
     }
+
     setTimeout(() => {
-        statusPositon();
+        statusPosition();
     }, 200);
 
     function setStatusHeightVar() {
@@ -885,7 +890,7 @@
         () => {
             addEmojiDialogClassName();
             addDockbClassName();
-            // statusPositon();
+            // statusPosition();
         }
     )
 
@@ -908,7 +913,7 @@
             // // 右栏dock
             // dockObserver('r', 'attributes', () => {
             //     AsriDom.dockr = document.getElementById('dockRight');
-            //     // statusPositon();
+            //     // statusPosition();
             //     avoidOverlappingWithStatus();
             // });
 
@@ -934,7 +939,7 @@
                 () => {
                     setTimeout(() => {
                         AsriDom.layoutDockr = document.querySelector('.layout__dockr');
-                        // statusPositon();
+                        // statusPosition();
                         avoidOverlappingWithStatus();
                     }, 200);
                     //右栏dock背景
@@ -952,7 +957,7 @@
                     AsriDom.layouts = document.getElementById('layouts');
                     setTimeout(() => {
                         calcTabbarAndProtyleSpacings(); // 适用于分屏操作时
-                        // statusPositon();
+                        // statusPosition();
                     }, 1);
                     // runWhenIdle(formatSyBacklinkItemsLayout);
                     formatIndentGuidesForFocusedItems();

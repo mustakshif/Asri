@@ -44,7 +44,7 @@ Check all updates [here](./CHANGELOG.md).
 ### 📐 Flexible and Elegant Layout
 
 * 🧩 Optimized internal and external spacing of superblocks, making it easy to achieve grid and masonry layouts
-* ↔️ Support for full-width display of images, videos, widgets, databases, superblocks, providing diverse typesetting effects
+* ↔️ Support for full-width display of images, videos, widgets, databases, superblocks and more, providing diverse formatting layouts
 * ➖ Simplified dividers, creating an integrated, refreshing and tidy layout style
 * 🔛 Width-adaptive layout, making full use of screen space
 * 🚥 Adjusted the position of macOS traffic lights, optimizing the layout rhythm
