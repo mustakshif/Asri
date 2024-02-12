@@ -607,7 +607,7 @@
                     let layoutCenterWidth = layoutCenter.clientWidth;
 
                     asriDoms.layoutDockb = asriDoms.layouts.querySelector('.layout__dockb');
-                    if (asriDoms.layoutDockb && isDockLytPinned(asriDoms.layoutDockb)) var y = asriDoms.layoutDockb.clientHeight * -1;
+                    if (asriDoms.layoutDockb && !asriDoms.layoutDockb.classList.contains('.fn__none') &&isDockLytPinned(asriDoms.layoutDockb)) var y = asriDoms.layoutDockb.clientHeight * -1;
                     else y = 0;
 
                     asriDoms.status.style.maxWidth = layoutCenterWidth - 12 + 'px';
