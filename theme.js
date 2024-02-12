@@ -143,50 +143,6 @@
         }
     })();
 
-    // function handleToolbarHover() {
-    //     let toolbarDrag = document.getElementById('drag');
-    //     if (toolbarDrag) {
-    //         toolbarDrag.addEventListener('mouseenter', () => {
-    //             asriDoms.toolbar.classList.add('no-hover');
-    //         });
-    //         toolbarDrag.addEventListener('mouseleave', () => {
-    //             asriDoms.toolbar.classList.remove('no-hover');
-    //         });
-    //     }
-    // }
-
-    // // handleToolbarHover();
-
-    // async function toolbarTutorial() {
-    //     let toolbar = asriDoms.toolbar;
-
-    //     let hasPlayedToolbarTutorial = await getFile("/data/snippets/Hadeeth.config.json")
-    //         .then((response) => {
-    //             if (response && response.status === 200) {
-    //                 return response.json();
-    //             }
-    //             return null;
-    //         })
-    //         .then((data) => {
-    //             if (data && data.hasPlayedToolbarTutorial === "1") {
-    //                 return true;
-    //             }
-    //             return false;
-    //         });
-
-    //     if (toolbar && !hasPlayedToolbarTutorial) {
-    //         toolbar.classList.add("hadeeth-toolbar-tutorial");
-
-    //         await putFile("/data/snippets/Hadeeth.config.json", JSON.stringify({ hasPlayedToolbarTutorial: "1" }, undefined, 4));
-
-    //         setTimeout(() => {
-    //             toolbar.classList.remove("hadeeth-toolbar-tutorial");
-    //         }, 7000);
-    //     }
-    // }
-
-    // // toolbarTutorial();
-
     /**
      * 
      * @param {string} newid 
@@ -607,7 +563,7 @@
                     let layoutCenterWidth = layoutCenter.clientWidth;
 
                     asriDoms.layoutDockb = asriDoms.layouts.querySelector('.layout__dockb');
-                    if (asriDoms.layoutDockb && !asriDoms.layoutDockb.classList.contains('.fn__none') &&isDockLytPinned(asriDoms.layoutDockb)) var y = asriDoms.layoutDockb.clientHeight * -1;
+                    if (asriDoms.layoutDockb && !asriDoms.layoutDockb.classList.contains('.fn__none') && isDockLytPinned(asriDoms.layoutDockb)) var y = asriDoms.layoutDockb.clientHeight * -1;
                     else y = 0;
 
                     asriDoms.status.style.maxWidth = layoutCenterWidth - 12 + 'px';
@@ -696,6 +652,20 @@
                     viewerContainer.style.removeProperty('padding-bottom')
                 }
             }
+
+            // flashcard in tabbar
+            asriDoms.layouts.querySelectorAll('.card__main').forEach(card => {
+                if (card) {
+                    let cardRect = card.getBoundingClientRect();
+
+                    if (isOverlapping(cardRect, statusRect)) {
+                        card.style.paddingBottom = '35px';
+                    } else {
+                        card.style.removeProperty('padding-bottom')
+                    }
+                }
+            });
+
         }
     }
     avoidOverlappingWithStatus();
@@ -1068,6 +1038,9 @@
     //     document.getElementById('searchList')?.style.removeProperty('padding-bottom');
     //     document.getElementById('searchPreview')?.style.removeProperty('padding-bottom');
     //     document.getElementById('viewerContainer')?.style.removeProperty('padding-bottom');
+    //     asriDoms.layouts.querySelectorAll('.card__main').forEach(card => {
+    //         card.style.removeProperty('padding-bottom');
+    //     })
     //     document.querySelectorAll('.dock').forEach(dock => {
     //         dock.style.removeProperty('--border-clr');
     //     })
