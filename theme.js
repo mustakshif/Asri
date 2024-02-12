@@ -404,13 +404,13 @@
                 entry.target.dataset.prevWidth = inlineSize;
 
                 // handle center resize
-                let handleCenterResizeTimeout;
-                clearTimeout(handleCenterResizeTimeout);
-                handleCenterResizeTimeout = setTimeout(() => {
-                    requestAnimationFrame(() => {
-                        statusPosition();
-                    }); // resize过程中持续运行造成卡顿，改在resize结束后运行   
-                }, 200);
+                // let handleCenterResizeTimeout;
+                // clearTimeout(handleCenterResizeTimeout);
+                // handleCenterResizeTimeout = setTimeout(() => {
+                //     requestAnimationFrame(() => {
+                //         statusPosition();
+                //     }); // resize过程中持续运行造成卡顿，改在resize结束后运行   
+                // }, 200);
                 calcTopbarSpacings(widthChange);
                 calcTabbarAndProtyleSpacings();
                 dockBg();
