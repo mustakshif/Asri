@@ -931,6 +931,10 @@ body.body--window {
 
 // 闪卡复习 ————————————————————————————————————
 .card__main {
+    .layout-tab-container & {
+        border-radius: 0;
+    }
+
     .card__action {
         >div {
             margin: 0 12px 8px;
