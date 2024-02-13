@@ -1,3 +1,17 @@
+### v2.1.2
+
+* 优化宽屏下集市项目说明信息的显示
+* 优化在页签中打开的 `闪卡` 复习界面样式，修复底部被状态栏遮挡的问题
+* [修复 `替换图片背景` 插件图片缓存被删除的问题](https://ld246.com/article/1707547966037)
+
+<br />
+
+* Optimized the display of item's readme in the marketplace on wide screens.
+* Optimized the style of the flashcard review interface when opened in a tab, and fixed the issue of the bottom being covered by the status bar.
+* [Fixed the problem where the `Background Cover` plugin's image cache was deleted when switching to other themes.](https://ld246.com/article/1707547966037)
+
+---
+
 ### v2.1.1
 
 * 优化 `asri-full-width-display`（全宽显示）属性实现算法

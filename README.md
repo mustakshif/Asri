@@ -10,22 +10,11 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.1
+### v2.1.2
 
-* Optimized the algorithm for the `asri-full-width-display` property.
-* Restored the resizability of iframe blocks (including videos, widgets, embedded webpages, etc.) in full-width display, and redesigned the style of the resize control element.
-* Optimized the top and bottom spacing of iframe blocks in full-width display, and fixed the issue of block icons falling into the content.
-* Reduced the hover-to-display area of block slider to visible elements' box only, minimizing interference with widgets in full-width display.
-* Fixed the issue of abnormal mouse hover animation for inline memos.
-
-### v2.1.0
-
-* Added a custom attribute `asri-full-width-display` to implement full-page width display of images, videos, widgets, superblocks, and database blocks, etc. For details, please check *Custom Attributes* below👇
-* Optimized the style of the marketplace panel title bar
-* Enabled tabular number feature in `database` blocks under the theme's default font on Apple devices
-* Fixed issues such as Chinese dashes breaking off under the theme's default font on Apple devices
-* Fixed issues with abnormal background display of PDF search menu and annotation menu
-* Fixed issues with menu items lingering when closing the PDF search menu
+* Optimized the display of item's readme in the marketplace on wide screens.
+* Optimized the style of the flashcard review interface when opened in a tab, and fixed the issue of the bottom being covered by the status bar.
+* [Fixed the problem where the `Background Cover` plugin's image cache was deleted when switching to other themes.](https://ld246.com/article/1707547966037)
 
 Check all updates [here](./CHANGELOG.md).
 

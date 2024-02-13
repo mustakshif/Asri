@@ -43,46 +43,34 @@
 //         .then(isFullscreen => isFullscreen ? true : false);
 // }
 (function () {
-    class Asri {
-        constructor() {
-            this.doms = {
-                layouts: document.getElementById('layouts'),
-                status: document.getElementById('status'),
-                dockl: document.getElementById('dockLeft'),
-                dockr: document.getElementById('dockRight'),
-                dockb: document.getElementById('dockBottom'),
-                layoutDockl: document.querySelector('.layout__dockl'),
-                layoutDockr: document.querySelector('.layout__dockr'),
-                layoutDockb: document.querySelector('.layout__dockb'),
-                // toolbarWindow: document.querySelector('.toolbar__window'),
-                toolbar: document.getElementById('toolbar'),
-                barSync: document.getElementById('barSync'),
-                barForward: document.getElementById('barForward'),
-                toolbarVIP: document.getElementById('toolbarVIP'),
-                drag: document.getElementById('drag'),
-                barPlugins: document.getElementById('barPlugins'),
-                barSearch: document.getElementById('barSearch'),
-                barMode: document.getElementById('barMode')
-                // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
-            };
+    const asriDoms = {
+        layouts: document.getElementById('layouts'),
+        status: document.getElementById('status'),
+        dockl: document.getElementById('dockLeft'),
+        dockr: document.getElementById('dockRight'),
+        dockb: document.getElementById('dockBottom'),
+        layoutDockl: document.querySelector('.layout__dockl'),
+        layoutDockr: document.querySelector('.layout__dockr'),
+        layoutDockb: document.querySelector('.layout__dockb'),
+        // toolbarWindow: document.querySelector('.toolbar__window'),
+        toolbar: document.getElementById('toolbar'),
+        barSync: document.getElementById('barSync'),
+        barForward: document.getElementById('barForward'),
+        toolbarVIP: document.getElementById('toolbarVIP'),
+        drag: document.getElementById('drag'),
+        barPlugins: document.getElementById('barPlugins'),
+        barSearch: document.getElementById('barSearch'),
+        barMode: document.getElementById('barMode')
+        // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
+    };
 
-            this.isMacOS = navigator.platform.indexOf("Mac") > -1;
-            this.isLinux = navigator.platform.indexOf("Linux") > -1;
-            // Safari 不支持 navigator.UserAgentData.platform；浏览器不支持 process.platform
-            // this.isIpad = navigator.userAgent.indexOf("iPad") > -1; // ipad适用isBrowser的情况
-            this.isMobile = document.getElementById('sidebar') && document.getElementById('editor');
-            this.isInBrowser = this.doms.toolbar?.classList.contains('toolbar--browser') > 0;
-            this.isMiniWindow = document.body.classList.contains('body--window') > 0;
-        }
-    }
-
-    let AsriEnv = new Asri();
-    let asriDoms = AsriEnv.doms;
-    let isMacOS = AsriEnv.isMacOS,
-        isLinux = AsriEnv.isLinux,
-        isMobile = AsriEnv.isMobile,
-        isInBrowser = AsriEnv.isInBrowser,
-        isMiniWindow = AsriEnv.isMiniWindow;
+    const isMacOS = navigator.platform.indexOf("Mac") > -1;
+    const isLinux = navigator.platform.indexOf("Linux") > -1;
+    // Safari 不支持 navigator.UserAgentData.platform；浏览器不支持 process.platform
+    // this.isIpad = navigator.userAgent.indexOf("iPad") > -1; // ipad适用isBrowser的情况
+    const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
+    const isInBrowser = asriDoms.toolbar?.classList.contains('toolbar--browser') > 0;
+    const isMiniWindow = document.body.classList.contains('body--window') > 0;
 
     let AsriClassNames = [],
         AsriDeletedRules = [],
@@ -364,13 +352,13 @@
                 entry.target.dataset.prevWidth = inlineSize;
 
                 // handle center resize
-                // let handleCenterResizeTimeout;
-                // clearTimeout(handleCenterResizeTimeout);
-                // handleCenterResizeTimeout = setTimeout(() => {
-                //     requestAnimationFrame(() => {
-                //         statusPosition();
-                //     }); // resize过程中持续运行造成卡顿，改在resize结束后运行   
-                // }, 200);
+                let handleCenterResizeTimeout;
+                clearTimeout(handleCenterResizeTimeout);
+                handleCenterResizeTimeout = setTimeout(() => {
+                    requestAnimationFrame(() => {
+                        statusPosition();
+                    }); // resize过程中持续运行造成卡顿，改在resize结束后运行   
+                }, 200);
                 calcTopbarSpacings(widthChange);
                 calcTabbarAndProtyleSpacings();
                 dockBg();
