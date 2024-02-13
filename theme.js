@@ -138,9 +138,10 @@
      * @param {node} after 
      */
     function createTopbarElementById(newId, before = undefined, after = undefined) {
+        if (document.getElementById(newId)) return;
+
         let newDiv = document.createElement('div');
         newDiv.id = newId;
-
         if (before) {
             asriDoms.toolbar.insertBefore(newDiv, before);
         } else if (after) {
