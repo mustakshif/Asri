@@ -14,6 +14,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 * Optimized the display of item's readme in the marketplace on wide screens.
 * Optimized the style of the flashcard review interface when opened in a tab, and fixed the issue of the bottom being covered by the status bar.
+* Optimized the display of the random cover image list.
 * [Fixed the problem where the `Background Cover` plugin's image cache was deleted when switching to other themes.](https://ld246.com/article/1707547966037)
 
 Check all updates [here](./CHANGELOG.md).

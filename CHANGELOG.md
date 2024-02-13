@@ -2,12 +2,14 @@
 
 * 优化宽屏下集市项目说明信息的显示
 * 优化在页签中打开的 `闪卡` 复习界面样式，修复底部被状态栏遮挡的问题
+* 优化随机题头图列表展示
 * [修复 `替换图片背景` 插件图片缓存被删除的问题](https://ld246.com/article/1707547966037)
 
 <br />
 
 * Optimized the display of item's readme in the marketplace on wide screens.
 * Optimized the style of the flashcard review interface when opened in a tab, and fixed the issue of the bottom being covered by the status bar.
+* Optimized the display of the random cover image list.
 * [Fixed the problem where the `Background Cover` plugin's image cache was deleted when switching to other themes.](https://ld246.com/article/1707547966037)
 
 ---
