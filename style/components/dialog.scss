@@ -765,6 +765,7 @@ div[id*=configBazaar] {
 
             .b3-card {
                 width: auto !important;
+                min-width: unset;
                 margin: 0;
                 border-radius: $border-rd-card;
                 padding: 0;
