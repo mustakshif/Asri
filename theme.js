@@ -343,7 +343,8 @@
             // 仅在protylePadding有变化时才应用样式
             if (protyles.length > 0) {
                 protyles.forEach(protyle => {
-                    let protylePadding = window.getComputedStyle(protyle).paddingLeft;
+                    // let protylePadding = window.getComputedStyle(protyle).paddingLeft;
+                    let protylePadding = protyle.style.paddingLeft;
                     if (protylePadding !== protyle.dataset.prevPadding) {
                         protyle.style.setProperty('--protyle-spacing', protylePadding);
                         protyle.dataset.prevPadding = protylePadding;
@@ -1086,6 +1087,6 @@
     //             rule.styleSheet.insertRule(rule.rule, rule.styleSheet.cssRules.length);
     //         }
     //     }
-    //     console.log('Asri theme destroyed!');
+    //     // console.log('Asri theme destroyed!');
     // }
 })();

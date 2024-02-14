@@ -106,8 +106,8 @@ You can manually delete this attribute to restore the block to its default state
 
 #### <em>Precautions</em>
 
-1. Full-width display only applies to the first-level blocks in the document. If a block is nested in other content blocks, applying this attribute to it will not produce any effect. For example, applying this attribute to an image paragraph block in a quote block will not change the style of the paragraph block unless the external quote block is cancelled.
-2. Full-width display is temporarily only effective in the main window editing area, and does not work in block reference preview windows, small windows, export previews, etc.
+1. Full-width display only applies to the **first-level** blocks in the document. If a block is nested in other content blocks, applying this attribute to it will not produce any effect. For example, applying this attribute to an image paragraph block in a quote block will not change the style of the paragraph block unless the external quote block is cancelled.
+2. Full-width display is only effective in the editing area of the main window and small windows, and does not work in block reference preview windows, export previews, backlink panel, search result previews, etc.
 3. Enabling full-width display may cause the page to feel more jumpy when the editing area's size changes and automatically returns to the cursor position.
 
 ## How to use Asri
