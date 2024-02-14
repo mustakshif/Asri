@@ -67,7 +67,7 @@
     const isMacOS = navigator.platform.indexOf("Mac") > -1;
     const isLinux = navigator.platform.indexOf("Linux") > -1;
     // Safari 不支持 navigator.UserAgentData.platform；浏览器不支持 process.platform
-    // this.isIpad = navigator.userAgent.indexOf("iPad") > -1; // ipad适用isBrowser的情况
+    // const isIpad = navigator.userAgent.indexOf("iPad") > -1; // ipad适用isBrowser的情况
     const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
     const isInBrowser = asriDoms.toolbar?.classList.contains('toolbar--browser') > 0;
     const isMiniWindow = document.body.classList.contains('body--window') > 0;
@@ -170,27 +170,36 @@
         //                 document.body.classList.remove('body--fullscreen');
         //             }
         //             // calcTopbarSpacings();
-        //             // calcTabbarAndProtyleSpacings();
+        //             // calcTabbarSpacings();
         //         }, 200);
         //     })
         // } 
+
         let fromFullscreen, resizeTimeout;
         isWinResizing = true;
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(function () {
-            isWinResizing = false;
-            if (isMacOS && isFullScreen()) {
-                document.body.classList.add('body--fullscreen');
-                dragRectLeftInitial = dragRectLeftInitial - 80;
-                fromFullscreen = true;
+            if (!isMiniWindow) {
+                isWinResizing = false;
+                if (isMacOS && isFullScreen()) {
+                    document.body.classList.add('body--fullscreen');
+                    dragRectLeftInitial = dragRectLeftInitial - 80;
+                    fromFullscreen = true;
+                } else {
+                    document.body.classList.remove('body--fullscreen');
+                    dragRectLeftInitial = fromFullscreen ? asriDoms.drag?.getBoundingClientRect().left : dragRectLeftInitial;
+                    fromFullscreen = false;
+                }
+                calcTopbarSpacings();
+                updateWndEls();
+                calcTabbarSpacings();
+                calcProtyleSpacings();
             } else {
-                document.body.classList.remove('body--fullscreen');
-                dragRectLeftInitial = fromFullscreen ? asriDoms.drag?.getBoundingClientRect().left : dragRectLeftInitial;
-                fromFullscreen = false;
+                updateWndEls();
+                calcProtyleSpacings();
             }
-            calcTopbarSpacings();
-            calcTabbarAndProtyleSpacings();
         }, 200);
+
     }
 
     let dragRectLeftInitial = asriDoms.drag?.getBoundingClientRect().left,
@@ -203,117 +212,132 @@
     }
 
     function calcTopbarSpacings(widthChange) {
-        let pluginsDivider, leftSpacing, rightSpacing, topbar,
-            layoutsCenterRect, leftSpacingRect, rightSpacingRect, barSyncRect, dragRect;
+        if (!isMiniWindow) {
+            let pluginsDivider, leftSpacing, rightSpacing, topbar,
+                layoutsCenterRect, leftSpacingRect, rightSpacingRect, barSyncRect, dragRect;
 
-        pluginsDivider = document.getElementById('AsriPluginsIconsDivider');
-        leftSpacing = document.getElementById('AsriTopbarLeftSpacing');
-        rightSpacing = document.getElementById('AsriTopbarRightSpacing');
-        topbar = asriDoms.toolbar;
+            pluginsDivider = document.getElementById('AsriPluginsIconsDivider');
+            leftSpacing = document.getElementById('AsriTopbarLeftSpacing');
+            rightSpacing = document.getElementById('AsriTopbarRightSpacing');
+            topbar = asriDoms.toolbar;
 
-        layoutsCenterRect = asriDoms.layouts.querySelector('.layout__center').getBoundingClientRect();
-        rightSpacingRect = rightSpacing.getBoundingClientRect();
-        barSyncRect = asriDoms.barSync.getBoundingClientRect();
-        barForwardRect = asriDoms.barForward.getBoundingClientRect();
+            layoutsCenterRect = asriDoms.layouts.querySelector('.layout__center').getBoundingClientRect();
+            rightSpacingRect = rightSpacing.getBoundingClientRect();
+            barSyncRect = asriDoms.barSync.getBoundingClientRect();
+            barForwardRect = asriDoms.barForward.getBoundingClientRect();
 
-        let winWidth = window.innerWidth,
-            centerRectLeft = layoutsCenterRect.left,
-            centerRectRight = layoutsCenterRect.right;
+            let winWidth = window.innerWidth,
+                centerRectLeft = layoutsCenterRect.left,
+                centerRectRight = layoutsCenterRect.right;
 
-        function calcAndApply() {
-            // 左侧
-            if (centerRectLeft > dragRectLeftInitial + 8)
-                topbar.style.setProperty('--topbar-left-spacing', 0),
-                    dragRectLeftInitial = asriDoms.drag.getBoundingClientRect().left;
-            // 每次重新计算 initial
-            else if (isMacOS && !isInBrowser) topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
-            else topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barForwardRect.right + 4 + 'px');
+            function calcAndApply() {
+                // 左侧
+                if (centerRectLeft > dragRectLeftInitial + 8)
+                    topbar.style.setProperty('--topbar-left-spacing', 0),
+                        dragRectLeftInitial = asriDoms.drag.getBoundingClientRect().left;
+                // 每次重新计算 initial
+                else if (isMacOS && !isInBrowser) topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
+                else topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barForwardRect.right + 4 + 'px');
 
-            // 右侧
-            if (centerRectRight < dragRectRightInitial - 8) {
-                topbar.style.setProperty('--topbar-right-spacing', 0);
+                // 右侧
+                if (centerRectRight < dragRectRightInitial - 8) {
+                    topbar.style.setProperty('--topbar-right-spacing', 0);
 
-                dragRectRightInitial = asriDoms.drag.getBoundingClientRect().right;
+                    dragRectRightInitial = asriDoms.drag.getBoundingClientRect().right;
 
-                //使用 CSS
-                asriDoms.dockr?.style.removeProperty('--avoid-topbar');
-                asriDoms.layoutDockr?.style.removeProperty('--avoid-topbar');
-            } else {
-                if (isMacOS || isInBrowser) {
-                    topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 5 + 'px');
-                    // windowControls 占据 2px
-
-                    asriDoms.dockr?.style.setProperty('--avoid-topbar', '4px');
-                    asriDoms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
+                    //使用 CSS
+                    asriDoms.dockr?.style.removeProperty('--avoid-topbar');
+                    asriDoms.layoutDockr?.style.removeProperty('--avoid-topbar');
                 } else {
-                    topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 7 + 'px');
+                    if (isMacOS || isInBrowser) {
+                        topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 5 + 'px');
+                        // windowControls 占据 2px
 
-                    asriDoms.dockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
-                    asriDoms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
-                };
+                        asriDoms.dockr?.style.setProperty('--avoid-topbar', '4px');
+                        asriDoms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
+                    } else {
+                        topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 7 + 'px');
+
+                        asriDoms.dockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
+                        asriDoms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
+                    };
+                }
             }
+
+            if (!isWinResizing) calcAndApply(); // 窗口resizing时不计算，不然会导致dragRectRightInitial变动，使顶栏右侧图标位置变动
+            else dragRectRightInitial = dragRectRightInitial + widthChange;
+
+            (function dividerSwitch() {
+                if (centerRectRight < dragRectRightInitial - 8) {
+                    // dragRectRightInitial = asriDoms.drag.getBoundingClientRect().right;
+                    // 横线
+                    pluginsDivider.style.setProperty('--container-bg', 'var(--b3-list-hover)');
+                    pluginsDivider.style.left = centerRectRight + 'px';
+                    pluginsDivider.style.right = '0';
+                    pluginsDivider.style.removeProperty('height');
+                    pluginsDivider.style.removeProperty('top');
+                }
+                else {
+                    // if (isWinResizing) dragRectRightInitial = dragRectRightInitial + widthChange;
+                    // 竖线
+                    dragRect = asriDoms.drag.getBoundingClientRect();
+                    pluginsDivider.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
+                    pluginsDivider.style.left = dragRect.right - 10 + 'px';
+                    pluginsDivider.style.right = winWidth - dragRect.right + 8 + 'px';
+                    pluginsDivider.style.height = '21px';
+                    pluginsDivider.style.top = '13.5px';
+                }
+            })();
+
+            // console.log(`drag左\t\t${dragRectLeftInitial}\ncenter左\t${centerRectLeft}`)
         }
-
-        if (!isWinResizing) calcAndApply(); // 窗口resizing时不计算，不然会导致dragRectRightInitial变动，使顶栏右侧图标位置变动
-        else dragRectRightInitial = dragRectRightInitial + widthChange;
-
-        (function dividerSwitch() {
-            if (centerRectRight < dragRectRightInitial - 8) {
-                // dragRectRightInitial = asriDoms.drag.getBoundingClientRect().right;
-                // 横线
-                pluginsDivider.style.setProperty('--container-bg', 'var(--b3-list-hover)');
-                pluginsDivider.style.left = centerRectRight + 'px';
-                pluginsDivider.style.right = '0';
-                pluginsDivider.style.removeProperty('height');
-                pluginsDivider.style.removeProperty('top');
-            }
-            else {
-                // if (isWinResizing) dragRectRightInitial = dragRectRightInitial + widthChange;
-                // 竖线
-                dragRect = asriDoms.drag.getBoundingClientRect();
-                pluginsDivider.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
-                pluginsDivider.style.left = dragRect.right - 10 + 'px';
-                pluginsDivider.style.right = winWidth - dragRect.right + 8 + 'px';
-                pluginsDivider.style.height = '21px';
-                pluginsDivider.style.top = '13.5px';
-            }
-        })();
-
-        // console.log(`drag左\t\t${dragRectLeftInitial}\ncenter左\t${centerRectLeft}`)
     }
 
-    function calcTabbarAndProtyleSpacings() {
-        let wndElements = asriDoms.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
+    let wndElements = [];
+    function updateWndEls() {
+        wndElements = asriDoms.layouts.querySelectorAll('[data-type="wnd"]');
+        // let tabWndElements = asriDoms.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
+        // let popoverWndElements = document.querySelectorAll('.block__popover--open .protyle');
 
-        wndElements.forEach(wnd => {
-            let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
-            let tabbarContainerRect = tabbarContainer.getBoundingClientRect();
-            let dragRect = asriDoms.drag.getBoundingClientRect();
+        // tabWndElements.forEach(tabWnd => pushUnique(wndElements, tabWnd));
+        // popoverWndElements.forEach(popoverWnd => pushUnique(wndElements, popoverWnd));
+    }
+    function calcTabbarSpacings() {
+        if (!isMiniWindow) {
+            wndElements.forEach(wnd => {
+                let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
+                let tabbarContainerRect = tabbarContainer.getBoundingClientRect();
+                let dragRect = asriDoms.drag.getBoundingClientRect();
 
-            // calc & apply tabbarSpacing
-            if (isOverlapping(tabbarContainerRect, dragRect)) {
-                let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 6 + 'px' : '';
-                let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 + 'px' : '';
+                // calc & apply tabbarSpacing
+                if (isOverlapping(tabbarContainerRect, dragRect)) {
+                    let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 6 + 'px' : '';
+                    let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 + 'px' : '';
 
-                tabbarContainer.style.paddingLeft = paddingLeftValue;
-                tabbarContainer.style.paddingRight = paddingRightValue;
+                    tabbarContainer.style.paddingLeft = paddingLeftValue;
+                    tabbarContainer.style.paddingRight = paddingRightValue;
 
-                asriDoms.drag = document.getElementById('drag');
+                    asriDoms.drag = document.getElementById('drag');
 
-                // 极窄宽度下添加上边距
-                if ((tabbarContainerRect.right - 200 < dragRect.left && tabbarContainerRect.left < dragRect.left) || (tabbarContainerRect.left + 200 > dragRect.right && tabbarContainerRect.right > dragRect.right)) {
-                    tabbarContainer.style.paddingTop = '42px';
+                    // 极窄宽度下添加上边距
+                    if ((tabbarContainerRect.right - 200 < dragRect.left && tabbarContainerRect.left < dragRect.left) || (tabbarContainerRect.left + 200 > dragRect.right && tabbarContainerRect.right > dragRect.right)) {
+                        tabbarContainer.style.paddingTop = '42px';
+                        tabbarContainer.style.paddingLeft = 0;
+                        tabbarContainer.style.paddingRight = 0;
+                    } else {
+                        tabbarContainer.style.removeProperty('padding-top');
+                    }
+                } else {
                     tabbarContainer.style.paddingLeft = 0;
                     tabbarContainer.style.paddingRight = 0;
-                } else {
-                    tabbarContainer.style.removeProperty('padding-top');
                 }
-            } else {
-                tabbarContainer.style.paddingLeft = 0;
-                tabbarContainer.style.paddingRight = 0;
-            }
+            })
+        }
+    }
 
-            // calc & apply protyleSpacing
+    function calcProtyleSpacings() {
+        // calc & apply protyleSpacing
+        wndElements.forEach(wnd => {
             let protyles = wnd.querySelector('.file-tree') ? [] : wnd.querySelectorAll('.protyle-wysiwyg');
 
             // 仅在protylePadding有变化时才应用样式
@@ -361,7 +385,9 @@
                     }); // resize过程中持续运行造成卡顿，改在resize结束后运行   
                 }, 200);
                 calcTopbarSpacings(widthChange);
-                calcTabbarAndProtyleSpacings();
+                updateWndEls();
+                calcTabbarSpacings();
+                calcProtyleSpacings();
                 dockBg();
             }
         });
@@ -388,9 +414,9 @@
         }
     }
 
-    if (!isMobile && !isMiniWindow) {
+    if (!isMobile) {
         setTimeout(calcTopbarSpacings, 200);
-        LayoutsCenterResizeObserver();
+        !isMiniWindow && LayoutsCenterResizeObserver();
         window.addEventListener('resize', handleWinResize);
     }
 
@@ -502,7 +528,7 @@
      */
     function dockBg() {
 
-        if (asriDoms.dockl && !isMobile) {
+        if (asriDoms.dockl && !isMobile && !isMiniWindow) {
             for (let dir of ['l', 'r']) {
 
                 let lyt = asriDoms[`layoutDock${dir}`],
@@ -539,7 +565,7 @@
      * 计算dock和dock layout展开/收起时状态栏的位置
      */
     function statusPosition() {
-        if (!isMobile) {
+        if (!isMobile && !isMiniWindow) {
             if (!hasDockb()) {
                 function setStatusTransform(x, y) {
                     asriDoms.status.style.transform = `translate(${x}px, ${y}px)`;
@@ -919,9 +945,13 @@
             layoutsObserver(
                 // childList mutation func
                 () => {
-                    asriDoms.layouts = document.getElementById('layouts');
+                    // asriDoms.layouts = document.getElementById('layouts');
                     setTimeout(() => {
-                        calcTabbarAndProtyleSpacings(); // 适用于分屏操作时
+                        updateWndEls();
+                        calcTabbarSpacings();
+                        calcProtyleSpacings(); 
+                        // 适用于分屏操作时
+
                         // statusPosition();
                     }, 1);
                     // runWhenIdle(formatSyBacklinkItemsLayout);
@@ -929,6 +959,21 @@
                     formatProtyleWithBgImageOnly();
                     avoidOverlappingWithStatus();
                     addDockbClassName();
+                },
+                undefined,
+                undefined,
+                true
+            )
+        } else {
+            layoutsObserver(
+                () => {
+                    setTimeout(() => {
+                        updateWndEls();
+                        calcProtyleSpacings(); 
+                        // 适用于分屏操作时
+                    }, 1);
+                    avoidOverlappingWithStatus();
+                    formatProtyleWithBgImageOnly();
                 },
                 undefined,
                 undefined,

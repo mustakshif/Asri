@@ -94,20 +94,26 @@
 
     [data-node-id] span[data-type~=block-ref]:not(.av__celltext),
     [data-node-id] span[data-type~=file-annotation-ref] {
+        --bg-clr: var(--b3-theme-primary-lightest);
         color: inherit;
         text-decoration: underline dashed;
         text-decoration-color: var(--b3-theme-primary);
         text-decoration-thickness: 0.1em;
-        background: linear-gradient(90deg, var(--b3-theme-primary-lightest) 100%, transparent 0%) center right;
+        background: linear-gradient(90deg, var(--bg-clr) 100%, transparent 0%) center right;
         background-size: 0;
         background-repeat: no-repeat;
         opacity: 1;
-        transition: background-size 0.2s;
+        transition: background-size .2s;
 
         &:hover {
             background-position: center left;
             text-decoration-style: solid !important;
             background-size: 100% !important;
+            transition-delay: .125s; // 优化鼠标划过时的闪烁
+        }
+
+        @include darkmode-counterpart {
+            --bg-clr: var(--b3-theme-primary-lighter);
         }
     }
 }
@@ -259,7 +265,7 @@
         text-decoration: underline;
         text-decoration-color: var(--b3-font-color5);
         transition-property: background-color, text-decoration-color, box-shadow, color, border-radius;
-        transition-duration: .15s;
+        transition-duration: .2s;
         // transition: .15s;
         box-decoration-break: clone;
 
@@ -272,6 +278,8 @@
             border-radius: 1px;
             z-index: 1;
             position: relative;
+            transition-duration: .15s;
+            transition-delay: .125s; // 优化鼠标划过时的闪烁
             // padding-left: 8px;
             // padding-right: 8px;
             // margin-left: -8px;

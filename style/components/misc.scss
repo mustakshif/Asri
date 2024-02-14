@@ -245,6 +245,7 @@ textarea {
     outline: none;
     border: none;
     transform-origin: 40px top;
+    animation-delay: .125s; // 优化鼠标划过时的闪烁
     // transform: scale(0.9);
 
     @include darkmode-counterpart {
