@@ -53,7 +53,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 自定义属性
 
-### `asri-full-width-display`
+### `asri-full-width-display`（全宽显示）
 
 ![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v5.gif)
 
@@ -69,13 +69,26 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * `sb`（superblock）：使文档中所有**水平布局**的超级块全宽显示。
 * `iframe`：使文档中所有 iframe 块全宽显示，包括视频、挂件和嵌入的网页
 
+示例：
+
+| 属性名 | 属性值 |
+| --- | --- |
+| `asri-full-width-display` | `all` |
+| `asri-full-width-display` | `p sb iframe` |
+| `asri-full-width-display` | `db` |
+
 #### 应用于内容块
 
 应用于图片段落块、数据库块、水平布局的超级块、iframe 块时，仅接受属性值 `on` 和 `off`，分别用于单独启用和关闭块的全宽显示。
 
+| 属性名 | 属性值 |
+| --- | --- |
+| `asri-full-width-display` | `on` |
+| `asri-full-width-display` | `off` |
+
 #### 使用方法
 
-除了通过 <kbd>shift + 点击</kbd> 块标添加自定义属性，也可以使用 `快速添加块属性` 插件快速为文档块和受支持的块添加此属性。一个可能的 `快速添加块属性` 插件配置如下：
+除了通过 <kbd>shift + 点击</kbd> 块标添加自定义属性，也可以使用 `快速添加块属性` 插件快速为文档块和受支持的块添加此属性。以下是一个 `快速添加块属性` 插件的配置示例：
 
 ```json
 {

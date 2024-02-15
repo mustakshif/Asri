@@ -70,9 +70,22 @@ When applied to document blocks, the accepted attribute values are: `all`, `p`, 
 * `sb` (superblock): Makes all **horizontal-layout** superblocks in the document display in full width.
 * `iframe`: Makes all iframe blocks in the document display in full width, including videos, widgets and embedded web pages.
 
+Example:
+
+| Attribute key | Attribute value |
+| --- | --- |
+| `asri-full-width-display` | `all` |
+| `asri-full-width-display` | `p sb iframe` |
+| `asri-full-width-display` | `db` |
+
 #### Applied to Content Blocks
 
 When applied to image paragraph blocks, database blocks, horizontal-layout superblocks, or iframe blocks, it only accepts the attribute values `on` and `off`, which are used to individually enable and disable the block’s full-width display.
+
+| Attribute key | Attribute value |
+| --- | --- |
+| `asri-full-width-display` | `on` |
+| `asri-full-width-display` | `off` |
 
 #### Usage
 
