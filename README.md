@@ -1,4 +1,4 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v16.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v17.png)
 
 <br/>
 
@@ -10,12 +10,13 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.2
+### v2.1.3
 
-* Optimized the display of item's readme in the marketplace on wide screens.
-* Optimized the style of the flashcard review interface when opened in a tab, and fixed the issue of the bottom being covered by the status bar.
-* Optimized the display of the random cover image list.
-* [Fixed the problem where the `Background Cover` plugin's image cache was deleted when switching to other themes.](https://ld246.com/article/1707547966037)
+* Added `asri-full-width-display` attribute's support for small windows.
+* Optimized the animation trigger timing for `inline memos` and `block quotes` to avoid flickering when the mouse hovers over them.
+* Adjusted the margin of the full-width displayed `superblocks`.
+* Fixed the scrolling lag in the `tab bar` and the animation lag when hovering over `inline memeos`.
+* Fixed the link to the English version of the theme instructions in the Chinese version.
 
 Check all updates [here](./CHANGELOG.md).
 
@@ -51,7 +52,7 @@ Check all updates [here](./CHANGELOG.md).
 * 💫 Appropriately added lively animations, enriching the interactive experience
 * 🚀 Maintained a high level of smooth performance
 
-## Custom Attributes
+## Custom Attribute
 
 ### `asri-full-width-display`
 

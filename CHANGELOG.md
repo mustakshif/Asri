@@ -1,3 +1,21 @@
+### v2.1.3
+
+* `asri-full-width-display`（全宽显示）属性新增对小窗的支持
+* 优化 `行内备注` 和 `块引用` 的动画触发时机，避免鼠标划过时闪烁
+* 调整全宽显示 `超级块` 的外边距
+* 修复 `页签栏` 滚动卡顿和 `行内备注` 鼠标悬浮动画卡顿的问题
+* 修复中文主题说明里英文版说明的链接
+
+<br />
+
+* Added `asri-full-width-display` attribute's support for small windows.
+* Optimized the animation trigger timing for `inline memos` and `block quotes` to avoid flickering when the mouse hovers over them.
+* Adjusted the margin of the full-width displayed `superblocks`.
+* Fixed the scrolling lag in the `tab bar` and the animation lag when hovering over `inline memeos`.
+* Fixed the link to the English version of the theme instructions in the Chinese version.
+
+---
+
 ### v2.1.2
 
 * 优化宽屏下集市项目说明信息的显示

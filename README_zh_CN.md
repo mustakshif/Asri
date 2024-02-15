@@ -1,4 +1,4 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v16.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v17.png)
 
 <br/>
 
@@ -10,12 +10,13 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
-### v2.1.2
+### v2.1.3
 
-* 优化宽屏下集市项目说明信息的显示
-* 优化在页签中打开的 `闪卡` 复习界面样式，修复底部被状态栏遮挡的问题
-* 优化随机题头图列表展示
-* [修复 `替换图片背景` 插件图片缓存被删除的问题](https://ld246.com/article/1707547966037)
+* `asri-full-width-display`（全宽显示）属性新增对小窗的支持
+* 优化 `行内备注` 和 `块引用` 的动画触发时机，避免鼠标划过时闪烁
+* 调整全宽显示 `超级块` 的外边距
+* 修复 `页签栏` 滚动卡顿和 `行内备注` 鼠标悬浮动画卡顿的问题
+* 修复中文主题说明里英文版说明的链接
 
 点击[这里](./CHANGELOG.md)查看全部更新日志。
 

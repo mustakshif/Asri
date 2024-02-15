@@ -265,7 +265,7 @@
         text-decoration: underline;
         text-decoration-color: var(--b3-font-color5);
         transition-property: background-color, text-decoration-color, box-shadow, color, border-radius;
-        transition-duration: .2s;
+        transition-duration: .15s;
         // transition: .15s;
         box-decoration-break: clone;
 
@@ -278,7 +278,6 @@
             border-radius: 1px;
             z-index: 1;
             position: relative;
-            transition-duration: .15s;
             transition-delay: .125s; // 优化鼠标划过时的闪烁
             // padding-left: 8px;
             // padding-right: 8px;

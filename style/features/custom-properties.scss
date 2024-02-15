@@ -132,19 +132,19 @@ body:not([style*='-webkit-print-color-adjust']) {
                 // .render-node {
                 //     border-top-left-radius: 0;
                 //     border-bottom-left-radius: 0;
-                // } // ❓ 为什么这里又没事？？
+                // }
             }
 
             > :nth-last-child(1 of [data-node-id]) {
                 margin-right: calc(var(--protyle-spacing)*-1 + min(24px, var(--protyle-spacing)));
 
-                // >*,
+                // >*, // 这个选择器导致 tabbar 滚动卡顿 + 行内备注 hover 状态取消时动画卡顿
                 // .sb,
                 // .bq,
                 // .render-node {
                 //     border-top-right-radius: 0;
                 //     border-bottom-right-radius: 0;
-                // } // ❓ 为什么这个声明会导致 tabbar 滚动卡顿 + 行内备注 hover 状态取消时动画卡顿？？
+                // } 
             }
 
             // > .sb:first-child {
