@@ -223,6 +223,7 @@ textarea {
     text-wrap: nowrap;
     overflow: hidden;
     min-width: max-content;
+    animation-delay: .75s;
     // overflow-wrap: normal;
     @include tooltip-shadow;
     @include border-or-not($outline:false);
@@ -279,6 +280,7 @@ textarea {
         margin-top: 0;
         // margin-bottom: 0;
         @extend .tooltip;
+        transition-delay: .75s;
     }
 }
 

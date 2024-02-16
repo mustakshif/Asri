@@ -231,6 +231,7 @@
             flex-wrap: wrap;
             grid-template-columns: repeat(auto-fill, minmax(36px, 4fr));
             gap: 6px;
+            min-height: unset !important;
 
             .emojis__item {
                 padding: 0;

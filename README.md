@@ -48,6 +48,7 @@ Check all updates [here](./CHANGELOG.md).
 
 ### 👆 Delicate and Smooth Interaction
 
+* 🧭 Improved animation's responding timing, enhancing interface feedback frequency and reducing distraction
 * ⚙️ Redesigned the styles of controls for iFrame, videos, images, etc.
 * 💫 Appropriately added lively animations, enriching the interactive experience
 * 🚀 Maintained a high level of smooth performance
@@ -89,7 +90,7 @@ When applied to image paragraph blocks, database blocks, horizontal-layout super
 
 #### Usage
 
-In addition to adding custom attributes by <kbd>shift + click</kbd> on the block icon, you can also use the `Attribute Quick Add` plugin to quickly add this attribute to document blocks and supported content blocks. A possible `Attribute Quick Add` plugin configuration is as follows:
+In addition to adding custom attributes by <kbd>shift + click block icon</kbd> - <kbd>Custom</kbd>, you can also use the `Attribute Quick Add` plugin to quickly add this attribute to supported blocks. A possible `Attribute Quick Add` plugin configuration is as follows:
 
 ```json
 {

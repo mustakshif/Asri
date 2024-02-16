@@ -151,8 +151,9 @@
         }
     }
 
-    let isWinResizing = false;
-
+    let isWinResizing = false, winResizeTimeout, centerResizeTimeout, fromFullscreen;
+    let dragRectLeftInitial = asriDoms.drag?.getBoundingClientRect().left,
+    dragRectRightInitial = asriDoms.drag?.getBoundingClientRect().right;
     function handleWinResize() {
         // if (!isInBrowser && !isMobile) {
         //     let currentWindow = require("@electron/remote").getCurrentWindow();
@@ -175,35 +176,46 @@
         //     })
         // } 
 
-        let fromFullscreen, resizeTimeout;
         isWinResizing = true;
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function () {
+        clearTimeout(winResizeTimeout);
+        winResizeTimeout = setTimeout(function () {
             if (!isMiniWindow) {
                 isWinResizing = false;
-                if (isMacOS && isFullScreen()) {
-                    document.body.classList.add('body--fullscreen');
-                    dragRectLeftInitial = dragRectLeftInitial - 80;
-                    fromFullscreen = true;
-                } else {
-                    document.body.classList.remove('body--fullscreen');
-                    dragRectLeftInitial = fromFullscreen ? asriDoms.drag?.getBoundingClientRect().left : dragRectLeftInitial;
-                    fromFullscreen = false;
+                if (isMacOS) {
+                    let AsriTopbarLeftSpacing = document.querySelector('#AsriTopbarLeftSpacing');
+                    if (isFullScreen()) {
+                        document.body.classList.add('body--fullscreen');
+                        // AsriTopbarLeftSpacing?.style.setProperty('width', '0px');
+                        // dragRectLeftInitial = asriDoms.drag?.getBoundingClientRect().left;
+                        // AsriTopbarLeftSpacing?.style.removeProperty('width');
+                        dragRectLeftInitial = fromFullscreen ? dragRectLeftInitial : dragRectLeftInitial - (80 - 8);
+                        fromFullscreen = true;
+                    } else {
+                        document.body.classList.remove('body--fullscreen');
+                        AsriTopbarLeftSpacing?.style.setProperty('width', '0px');
+                        dragRectLeftInitial = asriDoms.drag?.getBoundingClientRect().left;
+                        AsriTopbarLeftSpacing.style.removeProperty('width');
+                        // dragRectLeftInitial = fromFullscreen ? dragRectLeftInitial + 80 : dragRectLeftInitial;
+                        fromFullscreen = false;
+                    }
+
+                    console.log(dragRectLeftInitial);
                 }
                 calcTopbarSpacings();
                 updateWndEls();
                 calcTabbarSpacings();
-                calcProtyleSpacings();
+                setTimeout(() => {
+                    calcProtyleSpacings();
+                }, 200); 
             } else {
                 updateWndEls();
-                calcProtyleSpacings();
+                setTimeout(() => {
+                    calcProtyleSpacings();
+                }, 200); 
             }
         }, 200);
 
     }
-
-    let dragRectLeftInitial = asriDoms.drag?.getBoundingClientRect().left,
-        dragRectRightInitial = asriDoms.drag?.getBoundingClientRect().right;
 
     if (!isMobile && asriDoms.toolbar) {
         createTopbarElementById('AsriPluginsIconsDivider', undefined, asriDoms.drag);
@@ -234,10 +246,12 @@
                 // 左侧
                 if (centerRectLeft > dragRectLeftInitial + 8)
                     topbar.style.setProperty('--topbar-left-spacing', 0),
-                        dragRectLeftInitial = asriDoms.drag.getBoundingClientRect().left;
+                        dragRectLeftInitial = fromFullscreen ? dragRectLeftInitial : asriDoms.drag.getBoundingClientRect().left;
                 // 每次重新计算 initial
                 else if (isMacOS && !isInBrowser) topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
                 else topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barForwardRect.right + 4 + 'px');
+
+                console.log('center '+centerRectLeft, 'drag '+dragRectLeftInitial)
 
                 // 右侧
                 if (centerRectRight < dragRectRightInitial - 8) {
@@ -354,7 +368,6 @@
             }
         })
     }
-
     function LayoutsCenterResizeObserver() {
         let lytCenter = asriDoms.layouts.querySelector('.layout__center');
         const ro = new ResizeObserver(entries => {
@@ -378,17 +391,15 @@
                 entry.target.dataset.prevWidth = inlineSize;
 
                 // handle center resize
-                let handleCenterResizeTimeout;
-                clearTimeout(handleCenterResizeTimeout);
-                handleCenterResizeTimeout = setTimeout(() => {
-                    requestAnimationFrame(() => {
-                        statusPosition();
-                    }); // resize过程中持续运行造成卡顿，改在resize结束后运行   
+                updateWndEls();
+                clearTimeout(centerResizeTimeout);
+                centerResizeTimeout = setTimeout(() => {
+                    statusPosition();
+                    // resize过程中持续运行造成卡顿，改在resize结束后运行   
+                    calcProtyleSpacings();
                 }, 200);
                 calcTopbarSpacings(widthChange);
-                updateWndEls();
                 calcTabbarSpacings();
-                calcProtyleSpacings();
                 dockBg();
             }
         });
@@ -950,11 +961,11 @@
                     setTimeout(() => {
                         updateWndEls();
                         calcTabbarSpacings();
-                        calcProtyleSpacings(); 
+                        calcProtyleSpacings();
                         // 适用于分屏操作时
 
                         // statusPosition();
-                    }, 1);
+                    }, 200);
                     // runWhenIdle(formatSyBacklinkItemsLayout);
                     formatIndentGuidesForFocusedItems();
                     formatProtyleWithBgImageOnly();
@@ -970,9 +981,9 @@
                 () => {
                     setTimeout(() => {
                         updateWndEls();
-                        calcProtyleSpacings(); 
+                        calcProtyleSpacings();
                         // 适用于分屏操作时
-                    }, 1);
+                    }, 200);
                     avoidOverlappingWithStatus();
                     formatProtyleWithBgImageOnly();
                 },

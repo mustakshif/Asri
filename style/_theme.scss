@@ -3,24 +3,24 @@
 :root {
     @include font-family;
     @include cssvars;
-}
 
-html[data-theme-mode="light"]:root {
-    color-scheme: light;
-    // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
+    &[data-theme-mode="light"] {
+        color-scheme: light;
+        // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
 
-    @include theme-root($theme-light);
+        @include theme-root($theme-light);
 
-    body {
-        ::selection {
-            background-color: var(--b3-theme-primary-lightest);
+        body {
+            ::selection {
+                background-color: var(--b3-theme-primary-lightest);
+            }
         }
     }
-}
 
-html[data-theme-mode="dark"]:root {
-    color-scheme: dark;
-    @include theme-root($theme-dark);
+    &[data-theme-mode="dark"] {
+        color-scheme: dark;
+        @include theme-root($theme-dark);
+    }
 }
 
 body {
