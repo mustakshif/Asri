@@ -1,3 +1,21 @@
+### v2.1.4
+
+* 优化提示文本的出现时机，改善界面元素反馈频率，减少注意力分散
+* 优化侧栏面板宽度调整的流畅度
+* 提高 `asri-full-width-display` 属性样式响应效率
+* 修复 Mac 端部分情况下切换全屏幕后 `顶栏` 左侧图标错位的问题
+* 修复 `emoji 面板` 行间距不一致的问题
+
+<br />
+
+* Improved the timing of tooltips appearance to optimize interface feedback frequency and reduce distraction.
+* Optimized the smoothness of adjusting the sidebar panel width.
+* Improved the responsiveness of `asri-full-width-display` attribute style.
+* Fixed the issue of icon misalignments in the left `top bar` on some situations when switching from/to full screen on Mac.
+* Fixed the inconsistent row spacing issue in the `emoji panel`.
+
+---
+
 ### v2.1.3
 
 * `asri-full-width-display`（全宽显示）属性新增对小窗的支持

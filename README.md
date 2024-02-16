@@ -10,13 +10,13 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.3
+### v2.1.4
 
-* Added `asri-full-width-display` attribute's support for small windows.
-* Optimized the animation trigger timing for `inline memos` and `block quotes` to avoid flickering when the mouse hovers over them.
-* Adjusted the margin of the full-width displayed `superblocks`.
-* Fixed the scrolling lag in the `tab bar` and the animation lag when hovering over `inline memeos`.
-* Fixed the link to the English version of the theme instructions in the Chinese version.
+* Improved the timing of tooltips appearance to optimize interface feedback frequency and reduce distraction.
+* Optimized the smoothness of adjusting the sidebar panel width.
+* Improved the responsiveness of `asri-full-width-display` attribute style.
+* Fixed the issue of icon misalignments in the left `top bar` on some situations when switching from/to full screen on Mac.
+* Fixed the inconsistent row spacing issue in the `emoji panel`.
 
 Check all updates [here](./CHANGELOG.md).
 
@@ -48,7 +48,7 @@ Check all updates [here](./CHANGELOG.md).
 
 ### 👆 Delicate and Smooth Interaction
 
-* 🧭 Improved animation's responding timing, enhancing interface feedback frequency and reducing distraction
+* 🧭 Improved animation responding timing to optimize interface feedback frequency and reduce distraction
 * ⚙️ Redesigned the styles of controls for iFrame, videos, images, etc.
 * 💫 Appropriately added lively animations, enriching the interactive experience
 * 🚀 Maintained a high level of smooth performance

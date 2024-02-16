@@ -198,8 +198,6 @@
                         // dragRectLeftInitial = fromFullscreen ? dragRectLeftInitial + 80 : dragRectLeftInitial;
                         fromFullscreen = false;
                     }
-
-                    console.log(dragRectLeftInitial);
                 }
                 calcTopbarSpacings();
                 updateWndEls();
@@ -233,7 +231,7 @@
             rightSpacing = document.getElementById('AsriTopbarRightSpacing');
             topbar = asriDoms.toolbar;
 
-            layoutsCenterRect = asriDoms.layouts.querySelector('.layout__center').getBoundingClientRect();
+            layoutsCenterRect = asriDoms.layouts.querySelector('.layout__center')?.getBoundingClientRect();
             rightSpacingRect = rightSpacing.getBoundingClientRect();
             barSyncRect = asriDoms.barSync.getBoundingClientRect();
             barForwardRect = asriDoms.barForward.getBoundingClientRect();
@@ -250,8 +248,6 @@
                 // 每次重新计算 initial
                 else if (isMacOS && !isInBrowser) topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
                 else topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barForwardRect.right + 4 + 'px');
-
-                console.log('center '+centerRectLeft, 'drag '+dragRectLeftInitial)
 
                 // 右侧
                 if (centerRectRight < dragRectRightInitial - 8) {
