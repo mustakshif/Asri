@@ -4,7 +4,7 @@
 
 [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main/README_zh_CN.md) | English
 
-# Asri - theme for SiYuan
+# Asri, a theme for SiYuan
 
 An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), provides an elegant and efficient note-taking experience with its lightweight and minimalistic style.
 
@@ -59,7 +59,7 @@ Check all updates [here](./CHANGELOG.md).
 
 ![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v5.gif)
 
-This attribute allows the block to which it is applied to span the full width of the page (full-width display). It can be used to emphasize specific content, beautify the layout, etc. It can be applied to document blocks and certain content blocks (paragraph blocks that contains images, database blocks, horizontal-layout superblocks, and iframe blocks).
+This attribute allows the block to which it is applied to span the full width of the page (full-width display). It can be used to emphasize specific content, beautify the layout, etc. It can be applied to document blocks and certain content blocks (paragraph blocks that contains images, database blocks, iframe blocks, and horizontal-layout superblocks).
 
 #### Applied to Document Blocks
 
@@ -73,20 +73,20 @@ When applied to document blocks, the accepted attribute values are: `all`, `p`, 
 
 Example:
 
-| Attribute key | Attribute value |
-| --- | --- |
-| `asri-full-width-display` | `all` |
-| `asri-full-width-display` | `p sb iframe` |
-| `asri-full-width-display` | `db` |
+| Attribute key             | Attribute value |
+| ------------------------- | --------------- |
+| `asri-full-width-display` | `all`           |
+| `asri-full-width-display` | `p sb iframe`   |
+| `asri-full-width-display` | `db`            |
 
 #### Applied to Content Blocks
 
-When applied to image paragraph blocks, database blocks, horizontal-layout superblocks, or iframe blocks, it only accepts the attribute values `on` and `off`, which are used to individually enable and disable the block’s full-width display.
+When applied to image paragraph blocks, database blocks, iframe blocks, or horizontal-layout superblocks, it only accepts the attribute values `on` and `off`, which are used to individually enable and disable the block’s full-width display.
 
-| Attribute key | Attribute value |
-| --- | --- |
-| `asri-full-width-display` | `on` |
-| `asri-full-width-display` | `off` |
+| Attribute key             | Attribute value |
+| ------------------------- | --------------- |
+| `asri-full-width-display` | `on`            |
+| `asri-full-width-display` | `off`           |
 
 #### Usage
 
@@ -128,6 +128,8 @@ You can manually delete this attribute to restore the block to its default state
 ## How to use Asri
 
 * **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
+    > [!IMPORTANT]
+    > If you encounter any issues while updating the theme in `Marketplace - Downloaded - Themes`, you can try updating on the `Marketplace - Themes` page or delete the theme and then redownload it.
 * Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
 
 
@@ -147,11 +149,11 @@ You can manually delete this attribute to restore the block to its default state
 
 The theme development process drew inspiration from the following themes, and I would like to express my gratitude to their developers 🙏:
 
-| Reference Content                                                 | From Theme | Developer |
-| ---------------------------------------------------------- | ---------- | ------ |
-|- Menu background blur                                             | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark)         | [Crowds21](https://github.com/chenshinshi)     |
-|- Toolbar hiding<br />- Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)     |
-|- Topbar-tabbar mergence<br />- File tree indent guides<br />- MutationObserver related functions                                     | [Rem Craft](https://github.com/svchord/Rem-Craft)         | [Seven Chord](https://github.com/svchord)     |
+| Reference Content                                                                                                                                                                      | From Theme                                              | Developer                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------ |
+| - Menu background blur                                                                                                                                                                 | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark) | [Crowds21](https://github.com/chenshinshi) |
+| - Toolbar hiding<br />- Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)           |
+| - Topbar-tabbar mergence<br />- File tree indent guides<br />- MutationObserver related functions                                                                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)       | [Seven Chord](https://github.com/svchord)  |
 
 （The order in the list above does not imply any ranking）
 
