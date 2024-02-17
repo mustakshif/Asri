@@ -128,13 +128,11 @@ You can manually delete this attribute to restore the block to its default state
 ## How to use Asri
 
 * **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
-    > [!IMPORTANT]
-    > If you encounter any issues while updating the theme in `Marketplace - Downloaded - Themes`, you can try updating on the `Marketplace - Themes` page or delete the theme and then redownload it.
 * Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
 
-
-> [!NOTE]
-> Asri has not been fully adapted for mobile devices.
+> [!IMPORTANT]
+> - If you encounter any issues while updating the theme in `Marketplace - Downloaded - Themes`, you can try updating on the `Marketplace - Themes` page or delete the theme and then redownload it.
+> - Asri has not been fully adapted for mobile devices.
 
 ## Plans
 
