@@ -1241,7 +1241,7 @@
                 opacity: 1;
             }
 
-            .av__cell {
+            .av__cell:not(.av__cell--header) {
                 border-right-color: var(--b3-border-color-trans);
 
                 .b3-chip {

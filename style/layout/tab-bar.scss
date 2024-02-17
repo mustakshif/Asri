@@ -4,6 +4,7 @@
 .fn__flex-column[data-type='wnd'] {
     >.fn__flex:first-child {
         height: 42px;
+        background-color: var(--b3-theme-background); // 适配 `替换图片背景` 插件
     }
 }
 

@@ -57,7 +57,7 @@ Check all updates [here](./CHANGELOG.md).
 
 ### `asri-full-width-display`
 
-![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v5.gif)
+![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v6.gif)
 
 This attribute allows the block to which it is applied to span the full width of the page (full-width display). It can be used to emphasize specific content, beautify the layout, etc. It can be applied to document blocks and certain content blocks (paragraph blocks that contains images, database blocks, iframe blocks, and horizontal-layout superblocks).
 
@@ -147,11 +147,11 @@ You can manually delete this attribute to restore the block to its default state
 
 The theme development process drew inspiration from the following themes, and I would like to express my gratitude to their developers 🙏:
 
-| Reference Content                                                                                                                                                                      | From Theme                                              | Developer                                  |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------ |
-| - Menu background blur                                                                                                                                                                 | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark) | [Crowds21](https://github.com/chenshinshi) |
+| Reference Content | From Theme | Developer |
+| --- | --- | --- |
+| - Menu background blur | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark) | [Crowds21](https://github.com/chenshinshi) |
 | - Toolbar hiding<br />- Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)           |
-| - Topbar-tabbar mergence<br />- File tree indent guides<br />- MutationObserver related functions                                                                                      | [Rem Craft](https://github.com/svchord/Rem-Craft)       | [Seven Chord](https://github.com/svchord)  |
+| - Topbar-tabbar mergence<br />- File tree indent guides<br />- MutationObserver related functions | [Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
 
 （The order in the list above does not imply any ranking）
 

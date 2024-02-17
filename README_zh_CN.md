@@ -56,7 +56,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### `asri-full-width-display`（全宽显示）
 
-![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v5.gif)
+![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v6.gif)
 
 使应用了此属性的块撑满页面宽度显示，可用于强调特定内容或美化排版等。支持应用于文档块和部分内容块（图片段落块、数据库块、 iframe 块和水平布局的超级块）。
 
@@ -72,8 +72,8 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 示例：
 
-| 属性名                    | 属性值        |
-| ------------------------- | ------------- |
+| 属性名 | 属性值 |
+| --- | --- |
 | `asri-full-width-display` | `all`         |
 | `asri-full-width-display` | `p sb iframe` |
 | `asri-full-width-display` | `db`          |
@@ -82,8 +82,8 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 应用于图片段落块、数据库块、iframe 块和水平布局的超级块时，仅接受属性值 `on` 和 `off`，分别用于单独启用和关闭块的全宽显示。
 
-| 属性名                    | 属性值 |
-| ------------------------- | ------ |
+| 属性名 | 属性值 |
+| --- | --- |
 | `asri-full-width-display` | `on`   |
 | `asri-full-width-display` | `off`  |
 
@@ -146,11 +146,11 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 主题制作过程中参考借鉴了以下主题的思路，在此对各位主题开发者表示感谢 🙏：
 
-| 借鉴内容                                                                                                                             | 来自主题                                                | 开发者                                     |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- | ------------------------------------------ |
-| - 菜单背景模糊                                                                                                                       | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark) | [Crowds21](https://github.com/chenshinshi) |
-| - 隐藏顶栏<br />- 侧栏面板列表项前圆点<br />- 大纲列表标题图标<br />- 状态栏<br />- 搜索列表<br />- 表格列宽<br />- `/` 菜单多栏布局 | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)           |
-| - 顶栏页签栏合并<br />- 文档树缩进线<br />- DOM 变动观察相关函数                                                                     | [Rem Craft](https://github.com/svchord/Rem-Craft)       | [Seven Chord](https://github.com/svchord)  |
+| 借鉴内容 | 来自主题 | 开发者 |
+|--- | --- | --- |
+| - 菜单背景模糊 | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark) | [Crowds21](https://github.com/chenshinshi) |
+| - 隐藏顶栏<br />- 侧栏面板列表项前圆点<br />- 大纲列表标题图标<br />- 状态栏<br />- 搜索列表<br />- 表格列宽<br />- `/` 菜单多栏布局 | [Savor](https://github.com/royc01/notion-theme) | [Roy](https://github.com/royc01) |
+| - 顶栏页签栏合并<br />- 文档树缩进线<br />- DOM 变动观察相关函数 | [Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
 
 (以上排名不分先后)
 
