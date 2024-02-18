@@ -12,6 +12,7 @@ body:not(.body--mobile, .body--window) {
         app-region: drag;
 
         #drag {
+            min-width: unset;
             opacity: 0;
             // background-color: aqua;
         }

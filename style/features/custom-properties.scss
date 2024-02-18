@@ -39,6 +39,7 @@ body:not([style*='-webkit-print-color-adjust']) {
         >.iframe[custom-asri-full-width-display="on"] {
 
             margin: calc(-12em / 17) 0;
+
             .iframe-content {
                 display: block;
                 margin: calc(20em / 17) calc(var(--protyle-spacing) * -1 - 5px);
@@ -51,11 +52,12 @@ body:not([style*='-webkit-print-color-adjust']) {
                 }
 
                 .protyle-action__drag {
-                    background-color: var(--b3-theme-surface);
+                    background-color: transparent;
                     width: 30%;
-                    height: 4px;
+                    height: 20px;
                     left: 50%;
                     right: unset;
+                    bottom: -16px;
                     transform: translateX(-50%);
                     transition-property: transform, background-color, opacity;
                     transition-duration: .15s;
@@ -64,12 +66,22 @@ body:not([style*='-webkit-print-color-adjust']) {
 
                     cursor: ns-resize;
 
-                    &:hover {
-                        transform: scale(1.1) translateX(-50% * 1 / 1.1);
+                    &::before {
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        height: 4px;
+                        margin: 8px 0;
+                        background-color: var(--b3-theme-surface);
+                        border-radius: 4px;
+
+                        @include darkmode-counterpart {
+                            background-color: var(--b3-theme-on-surface);
+                        }
                     }
 
-                    @include darkmode-counterpart {
-                        background-color: var(--b3-theme-on-surface);
+                    &:hover {
+                        transform: scale(1.1) translateX(-50% * 1 / 1.1);
                     }
                 }
             }
