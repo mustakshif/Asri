@@ -1,3 +1,21 @@
+### v2.1.5
+
+* 去除 `数据库` 表头和选择框右边框
+* 扩大全宽显示 iframe 的大小调节控件响应区域
+* 垂直方向上对齐 Mac 端 `页签` 图标和文本
+* 修复极窄宽度下 `顶栏` 图标错位的问题
+* 页签栏适配 `替换图片背景` 插件
+
+<br />
+
+* Removed the right border of the `database` header and selection box
+* Enlarged the responsive area for the resizing control of iframes in full-width display
+* Vertically aligned the icon and text of the `tab` on Mac
+* Fixed the issue of icon misalignment in the `top bar` in extremely narrow width
+* Adapted the tab bar for the `Background Cover` plugin
+
+---
+
 ### v2.1.4
 
 * 优化提示文本的出现时机，改善界面元素反馈频率，减少注意力分散

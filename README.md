@@ -10,13 +10,13 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.4
+### v2.1.5
 
-* Improved the timing of tooltips appearance to optimize interface feedback frequency and reduce distraction.
-* Optimized the smoothness of adjusting the sidebar panel width.
-* Improved the responsiveness of `asri-full-width-display` attribute style.
-* Fixed the issue of icon misalignments in the left `top bar` on some situations when switching from/to full screen on Mac.
-* Fixed the inconsistent row spacing issue in the `emoji panel`.
+* Removed the right border of the `database` header and selection box
+* Enlarged the responsive area for the resizing control of iframes in full-width display
+* Vertically aligned the icon and text of the `tab` on Mac
+* Fixed the issue of icon misalignment in the `top bar` in extremely narrow width
+* Adapted the tab bar for the `Background Cover` plugin
 
 Check all updates [here](./CHANGELOG.md).
 
