@@ -81,7 +81,7 @@ body:not([style*='-webkit-print-color-adjust']) {
         &[custom-asri-full-width-display~="db"]>.av:not([custom-asri-full-width-display="off"]),
         >.av[custom-asri-full-width-display="on"] {
             .av__container {
-                margin: 0 calc(var(--protyle-spacing) * -1 - 4px);
+                margin: 0 calc(var(--protyle-spacing) * -1 - 3px);
 
                 .av__header,
                 .av__scroll {
@@ -94,7 +94,7 @@ body:not([style*='-webkit-print-color-adjust']) {
                 }
 
                 .av__firstcol {
-                    border-right: 1px solid var(--b3-border-color-trans);
+                    // border-right: 1px solid var(--b3-border-color-trans);
                     opacity: 0;
 
                     &:hover {

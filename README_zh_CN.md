@@ -56,7 +56,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### `asri-full-width-display`（全宽显示）
 
-![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v6.gif)
+![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v7.gif)
 
 使应用了此属性的块撑满页面宽度显示，可用于强调特定内容或美化排版等。支持应用于文档块和部分内容块（图片段落块、数据库块、 iframe 块和水平布局的超级块）。
 
