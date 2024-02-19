@@ -130,10 +130,6 @@ You can manually delete this attribute to restore the block to its default state
 * **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
 * Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
 
-> [!IMPORTANT]
-> - If you encounter any issues while updating the theme in `Marketplace - Downloaded - Themes`, you can try updating on the `Marketplace - Themes` page or delete the theme and then redownload it.
-> - Asri has not been fully adapted for mobile devices.
-
 ## Plans
 
 * Adapt to mobile platform.
@@ -145,7 +141,7 @@ You can manually delete this attribute to restore the block to its default state
 
 ## Acknowledgements
 
-The theme development process drew inspiration from the following themes, and I would like to express my gratitude to their developers 🙏:
+The theme development process drew inspiration from the following themes, and I would like to express my gratitude to their developers:
 
 | Reference Content | From Theme | Developer |
 | --- | --- | --- |

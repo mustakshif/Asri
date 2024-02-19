@@ -52,11 +52,12 @@
 
     .item {
         // transition: none;
-        margin-right: 8px;
-        border-radius: 6px !important;
+        height: 28px;
         min-width: unset;
         min-height: unset;
         line-height: 24px;
+        margin-right: 8px;
+        border-radius: 6px !important;
         overflow: visible;
         background-color: var(--b3-list-hover);
         // transition-property: max-width, width, backdrop-filter, background-color, color;
