@@ -1191,7 +1191,9 @@
                 margin: 8px auto !important;
 
                 .item__graphic {
-                    font-size: 16px;
+                    .body--mac & {
+                        font-size: 16px;
+                    }
                 }
 
                 .item:not(.item--focus) {
@@ -1214,9 +1216,9 @@
             }
 
             .block__icon {
-                &:hover {
-                    background-color: transparent !important;
-                }
+                // &:hover {
+                //     background-color: transparent !important;
+                // }
 
                 &--active {
                     color: var(--b3-theme-primary);
@@ -1342,11 +1344,13 @@
                         }
 
                         .block__icon[style*="font-size: 14px;"] {
-                            font-size: 16px !important;
-                            width: 16px !important;
-                            line-height: 16px;
-                            margin-right: 0 !important;
-                            margin-left: 3px; //视觉对齐下方svg图标
+                            .body--mac & {
+                                font-size: 16px !important;
+                                width: 16px !important;
+                                line-height: 16px;
+                                margin-right: 4px !important;
+                                margin-left: 3px; //视觉对齐下方svg图标
+                            }
                         }
 
                         // ~.b3-menu__item {

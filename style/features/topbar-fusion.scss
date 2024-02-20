@@ -78,18 +78,6 @@ body:not(.body--mobile, .body--window) {
         margin: 8px auto;
     }
 
-    .layout__center {
-        .protyle-breadcrumb {
-            .fn__space {
-                width: 0;
-            }
-
-            .block__icon {
-                margin: 1.5px;
-            }
-        }
-    }
-
     // 侧栏、侧栏面板 ——————————————————————————
     #dockLeft {
         padding-top: calc(var(--avoid-topbar) - 6px);
@@ -204,8 +192,9 @@ body:not(.body--mobile, .body--window) {
         }
     }
 
-    &.body--mac:not(.body--browser,.body--fullscreen) {
+    &.body--mac:not(.body--browser, .body--fullscreen) {
         .layout__dockl.layout--float {
+
             >.fn__flex:not(.fn__none):first-child,
             >.fn__flex.fn__none~.fn__flex {
                 .layout-tab-container {
@@ -213,7 +202,7 @@ body:not(.body--mobile, .body--window) {
                 }
             }
         }
-    
+
     }
 
 
@@ -280,4 +269,14 @@ body:not(.body--mobile, .body--window) {
 
 .body--window .protyle-breadcrumb {
     height: 32px;
+}
+
+.protyle-breadcrumb {
+    .fn__space {
+        width: 0;
+    }
+
+    .block__icon {
+        margin: 1.5px;
+    }
 }

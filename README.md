@@ -131,15 +131,6 @@ You can manually delete this attribute to restore the block to its default state
 * **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
 * Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
 
-## Plans
-
-* Adapt to mobile platform.
-* Continuous performance improvement.
-* Optimize database element styles.
-* Optimize flashcards styles.
-* Improve user experience of the top bar
-* Optimize numbering of ordered lists
-
 ## Acknowledgements
 
 The theme development process drew inspiration from the following themes, and I would like to express my gratitude to their developers:

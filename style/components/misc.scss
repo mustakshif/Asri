@@ -374,3 +374,13 @@ textarea {
         }
     }
 }
+
+
+// 图标
+.block__icon:hover:not([disabled]):not(.ft__primary), .block__icon--active,
+
+.b3-list-item__icon:hover,
+
+.b3-list-item__toggle--hl:hover {
+    background-color: transparent;
+}
