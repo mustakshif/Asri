@@ -1,3 +1,23 @@
+### v2.1.6
+
+* 适配切换主题不重载
+* 优化 `虚拟引用` 元素样式
+* 调整 `pdf 阅读器` 侧栏和顶部工具栏样式
+* 调整 `文件历史` 面板侧栏上下内边距，修复侧栏宽度频繁变动的问题
+* 修复 Mac 端带图标的 `页签` 上下被裁切的问题
+* 适配 `思源笔记增强` 插件，避免被状态栏遮挡
+
+<br />
+
+* Adapted switch-theme-without-reloading feature.
+* Optimized the style of the `virtual reference` element.
+* Adjusted the side panel and top toolbar styles of the `PDF reader`.
+* Adjusted the top and bottom padding of the sidebar in the `document history` panel, and fixed the issue of frequent changes in sidebar width.
+* Fixed the issue where `tabs` with icon were cropped on the top and bottom on Mac.
+* Adapted the `sy-plugin-enhance` plugin to avoid being obscured by the status bar.
+
+---
+
 ### v2.1.5
 
 * 去除 `数据库` 表头和选择框右边框

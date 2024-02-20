@@ -98,7 +98,7 @@
         color: inherit;
         text-decoration: underline dashed;
         text-decoration-color: var(--b3-theme-primary);
-        text-decoration-thickness: 0.1em;
+        text-decoration-thickness: .1em;
         background: linear-gradient(90deg, var(--bg-clr) 100%, transparent 0%) center right;
         background-size: 0;
         background-repeat: no-repeat;
@@ -122,18 +122,20 @@
     [data-node-id] span[data-type=virtual-block-ref] {
         border-bottom: none;
         text-decoration: underline;
-        text-decoration-thickness: 0.1em;
+        text-decoration-thickness: .1em;
         text-decoration-color: var(--b3-theme-on-surface-light);
         text-decoration-style: dashed;
         background: linear-gradient(90deg, var(--b3-border-color) 100%, transparent 0%) center right;
         background-size: 0;
         background-repeat: no-repeat;
-        transition: background-size 0.2s;
+        transition: background-size .2s;
 
         &:hover {
             background-position: center left;
+            text-decoration-style: solid !important;
             border: none;
             background-size: 100% !important;
+            transition-delay: .125s;
         }
     }
 }
@@ -423,6 +425,14 @@
     // 标签 ——————————————————————————————————————
     @include tag;
 
+    [data-node-id] span[data-type~="tag"] {
+        &[data-type~="block-ref"] {
+            box-shadow: none;
+            border: .08em solid var(--b3-theme-primary);
+            text-decoration: none;
+        }
+    }
+
     // 行级代码 ————————————————————————————————————
     @include inline-code;
 
@@ -614,7 +624,7 @@
         margin: 0.2em 0;
     }
 
-    .sb[data-sb-layout=row] > :where(.bq, .sb, blockquote) + :where(.bq, blockquote) {
+    .sb[data-sb-layout=row]> :where(.bq, .sb, blockquote)+ :where(.bq, blockquote) {
         margin-top: $sb-gap;
     }
 
@@ -932,7 +942,7 @@
     transition-delay: 1s;
     pointer-events: none;
 
-    > * {
+    >* {
         pointer-events: all;
     }
 
@@ -985,7 +995,7 @@
 }
 
 .b3-typography {
-    font-feature-settings: "ss06" on; 
+    font-feature-settings: "ss06" on;
     font-variant-ligatures: normal;
     // font-variant-emoji: emoji; // 不受支持
 
@@ -1034,6 +1044,8 @@
     #sidebarContainer {
         top: 42px;
         z-index: 1;
+        background-color: var(--b3-theme-background);
+        border-right: 1px solid var(--b3-border-color-trans);
 
         #sidebarResizer {
             right: -3px;
@@ -1060,6 +1072,7 @@
             #toolbarViewer {
                 height: 42px;
                 align-items: center;
+                border-bottom: 1px solid var(--b3-border-color-trans);
 
                 .dropdownToolbarButton {
                     margin: 4px 8px 4px 0;
@@ -1228,7 +1241,7 @@
     // 数据库主体
     &__scroll {
         font-variant-numeric: tabular-nums;
-        
+
         .av__row--header {
             color: var(--b3-theme-on-surface);
             font-weight: 500;

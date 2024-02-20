@@ -252,8 +252,9 @@
 
                 &>.b3-list,
                 &>.history__diff {
-                    width: min(256px, 30%);
-                    min-width: fit-content;
+                    // width: min(256px, 30%);
+                    // min-width: fit-content; // 导致宽度根据条目长度频繁变动
+                    padding: 8px 0;
                     background-color: var(--b3-theme-surface);
                 }
             }

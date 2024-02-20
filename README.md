@@ -10,13 +10,14 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.5
+### v2.1.6
 
-* Removed the right border of the `database` header and selection box
-* Enlarged the responsive area for the resizing control of iframes in full-width display
-* Vertically aligned the icon and text of the `tab` on Mac
-* Fixed the issue of icon misalignment in the `top bar` in extremely narrow width
-* Adapted the tab bar for the `Background Cover` plugin
+* Adapted switch-theme-without-reloading feature.
+* Optimized the style of the `virtual reference` element.
+* Adjusted the side panel and top toolbar styles of the `PDF reader`.
+* Adjusted the top and bottom padding of the sidebar in the `document history` panel, and fixed the issue of frequent changes in sidebar width.
+* Fixed the issue where `tabs` with icon were cropped on the top and bottom on Mac.
+* Adapted the `sy-plugin-enhance` plugin to avoid being obscured by the status bar.
 
 Check all updates [here](./CHANGELOG.md).
 
