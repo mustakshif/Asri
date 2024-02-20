@@ -1021,15 +1021,6 @@
 
     window.destroyTheme = () => {
 
-        let htmlElement = document.documentElement;
-        let themeMode = htmlElement.getAttribute('data-theme-mode');
-        let lightTheme = htmlElement.getAttribute('data-light-theme');
-        let darkTheme = htmlElement.getAttribute('data-dark-theme');
-
-        // let switchBetweenAsriThemes = (themeMode === 'light' && (darkTheme === 'Asri-for-SiYuan' || darkTheme === 'Asri')) || (themeMode === 'dark' && (lightTheme === "Asri-for-SiYuan" || lightTheme === 'Asri'));
-
-        // let toDiffTheme = (themeMode === 'light' && (darkTheme !== "Asri-for-SiYuan" || darkTheme !== 'Asri')) || (themeMode === 'dark' && (lightTheme !== "Asri-for-SiYuan" || lightTheme !== 'Asri'));
-
         // 取消事件监听
         window.removeEventListener('dblclick', handleDblClick);
         window.removeEventListener('resize', handleWinResize);

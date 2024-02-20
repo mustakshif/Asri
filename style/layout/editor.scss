@@ -1190,6 +1190,10 @@
                 @include dialog-tabbar;
                 margin: 8px auto !important;
 
+                .item__graphic {
+                    font-size: 16px;
+                }
+
                 .item:not(.item--focus) {
                     .item__graphic {
                         color: var(--b3-theme-on-surface);
@@ -1325,6 +1329,7 @@
                         cursor: default;
                         align-items: center;
                         height: 30px;
+                        padding: 0;
 
                         .b3-menu__label {
                             font-weight: 500;
@@ -1334,6 +1339,14 @@
                         &:first-child>.block__icon+.ft__center {
                             transform: translateX(-15px);
                             pointer-events: none;
+                        }
+
+                        .block__icon[style*="font-size: 14px;"] {
+                            font-size: 16px !important;
+                            width: 16px !important;
+                            line-height: 16px;
+                            margin-right: 0 !important;
+                            margin-left: 3px; //视觉对齐下方svg图标
                         }
 
                         // ~.b3-menu__item {
