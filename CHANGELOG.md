@@ -1,3 +1,21 @@
+### v2.1.7
+
+* 更新全宽显示的属性名为 `afwd`，更新主题说明。**旧版本的 `asri-full-width-display` 属性名将在后续更新中失效**
+* 新增标签嵌套引用时的样式
+* 调整数据库视图标签和标签编辑菜单中的图标大小（macOS）和间距
+* 统一全局图标元素的鼠标悬停样式
+* 统一全局面包屑文档操作图标间距
+
+<br />
+
+* Updated the property name for full-width display to `afwd` and updated the theme description. **The previous version's attribute name `asri-full-width-display` will be deprecated in future updates.**
+* Added the style for nested tag references.
+* Adjusted the icon size (macOS) and spacing in the database view tabs and tab editing menu.
+* Unified the hover style for all icon elements.
+* Unified the spacing between document operation icons in breadcrumb bar.
+
+---
+
 ### v2.1.6
 
 * 适配切换主题不重载

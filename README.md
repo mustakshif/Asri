@@ -10,14 +10,13 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.6
+### v2.1.7
 
-* Adapted switch-theme-without-reloading feature.
-* Optimized the style of the `virtual reference` element.
-* Adjusted the side panel and top toolbar styles of the `PDF reader`.
-* Adjusted the top and bottom padding of the sidebar in the `document history` panel, and fixed the issue of frequent changes in sidebar width.
-* Fixed the issue where `tabs` with icon were cropped on the top and bottom on Mac.
-* Adapted the `sy-plugin-enhance` plugin to avoid being obscured by the status bar.
+* Updated the property name for full-width display to `afwd` and updated the theme description. **The previous version's attribute name `asri-full-width-display` will be deprecated in future updates.**
+* Added the style for nested tag references.
+* Adjusted the icon size (macOS) and spacing in the database view tabs and tab editing menu.
+* Unified the hover style for all icon elements.
+* Unified the spacing between document operation icons in breadcrumb bar.
 
 Check all updates [here](./CHANGELOG.md).
 
@@ -120,7 +119,7 @@ To restore the default state of the block, manually delete this custom attribute
 * Full-width display only applies to the **first-level** blocks in the document. If a block is nested in other content blocks, applying this attribute to it will not produce any effect. For example, applying this attribute to an image paragraph block in a quote block will not change the style of the paragraph block unless the external quote block is cancelled.
 * Full-width display is only effective in the editing area of the main window and small windows, and does not work in block reference preview windows, export previews, backlink panel, search result previews, etc.
 * Enabling full-width display may cause the page to feel more jumpy when the editing area's size changes and automatically returns to the cursor position.
-* The `asri-full-width-display` attribute name in old versions will be invalid in subsequent updates, please change to the new `afwd` in time.
+* The previous version's attribute name `asri-full-width-display` will be deprecated in future updates.
 
 ## Acknowledgements
 
