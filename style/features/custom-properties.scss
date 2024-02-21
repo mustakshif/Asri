@@ -9,7 +9,11 @@ body:not([style*='-webkit-print-color-adjust']) {
         // 图片 ——————————————————————
         &[custom-asri-full-width-display="all"]>.p:not([custom-asri-full-width-display="off"]),
         &[custom-asri-full-width-display~="p"]>.p:not([custom-asri-full-width-display="off"]),
-        >.p[custom-asri-full-width-display="on"] {
+        >.p[custom-asri-full-width-display="on"],
+        
+        &[custom-afwd="all"]>.p:not([custom-afwd="off"]),
+        &[custom-afwd~="p"]>.p:not([custom-afwd="off"]),
+        >.p[custom-afwd="on"]{
 
             .img {
                 margin: 0 calc(-1 * var(--protyle-spacing) - 9px);
@@ -36,7 +40,11 @@ body:not([style*='-webkit-print-color-adjust']) {
         // iframe ———————————————————
         &[custom-asri-full-width-display="all"]>.iframe:not([custom-asri-full-width-display="off"]),
         &[custom-asri-full-width-display~="iframe"]>.iframe:not([custom-asri-full-width-display="off"]),
-        >.iframe[custom-asri-full-width-display="on"] {
+        >.iframe[custom-asri-full-width-display="on"],
+        
+        &[custom-afwd="all"]>.iframe:not([custom-afwd="off"]),
+        &[custom-afwd~="iframe"]>.iframe:not([custom-afwd="off"]),
+        >.iframe[custom-afwd="on"]{
 
             margin: calc(-12em / 17) 0;
 
@@ -91,7 +99,11 @@ body:not([style*='-webkit-print-color-adjust']) {
         // 数据库 ——————————————————
         &[custom-asri-full-width-display="all"]>.av:not([custom-asri-full-width-display="off"]),
         &[custom-asri-full-width-display~="db"]>.av:not([custom-asri-full-width-display="off"]),
-        >.av[custom-asri-full-width-display="on"] {
+        >.av[custom-asri-full-width-display="on"],
+        
+        &[custom-afwd="all"]>.av:not([custom-afwd="off"]),
+        &[custom-afwd~="db"]>.av:not([custom-afwd="off"]),
+        >.av[custom-afwd="on"]{
             .av__container {
                 margin: 0 calc(var(--protyle-spacing) * -1 - 3px);
 
@@ -134,7 +146,11 @@ body:not([style*='-webkit-print-color-adjust']) {
         // 超级块 ————————————————————
         &[custom-asri-full-width-display="all"]>.sb[data-sb-layout="col"]:not([custom-asri-full-width-display="off"]),
         &[custom-asri-full-width-display~="sb"]>.sb[data-sb-layout="col"]:not([custom-asri-full-width-display="off"]),
-        >.sb[data-sb-layout="col"][custom-asri-full-width-display="on"] {
+        >.sb[data-sb-layout="col"][custom-asri-full-width-display="on"],
+        
+        &[custom-afwd="all"]>.sb[data-sb-layout="col"]:not([custom-afwd="off"]),
+        &[custom-afwd~="sb"]>.sb[data-sb-layout="col"]:not([custom-afwd="off"]),
+        >.sb[data-sb-layout="col"][custom-afwd="on"]{
             > :first-child {
                 margin-left: calc(var(--protyle-spacing)*-1 + min(24px, var(--protyle-spacing)));
 

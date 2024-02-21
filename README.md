@@ -61,75 +61,66 @@ Check all updates [here](./CHANGELOG.md).
 
 ## Custom Attribute
 
-### `asri-full-width-display`
+### Asri full-width display (`afwd`)
 
 ![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v7.gif)
 
-This attribute allows the block to which it is applied to span the full width of the page (full-width display). It can be used to emphasize specific content, beautify the layout, etc. It can be applied to document blocks and certain content blocks (paragraph blocks that contains images, database blocks, iframe blocks, and horizontal-layout superblocks).
+This attribute allows blocks to be displayed in full page width, which can be used to emphasize specific content or beautify the layout. The full-width display style applies to images, databases, iframes, and horizontal-layout superblocks.
 
-#### Applied to Document Blocks
+| Attribute | Value | Description |
+| --- | --- | --- |
+| `afwd`　　 | - `all` (Makes all blocks that support this attribute in the document display in full width)<br />- `p` (Makes all images in the document display in full width)<br />- `db` (Makes all database blocks in the document display in full width)<br />- `iframe` (Makes all iframe blocks in the document display in full width, including videos, widgets, and embedded web pages)<br />- `sb` (Makes all **horizontal-layout** superblocks in the document display in full width) | Applied to document blocks.<br />All attribute values except `all` can be used simultaneously, separated by **spaces** |
+| `afwd` | - `on` (Enable full-width display of the block individually)<br />- `off` (Disable full-width display of the block individually) | Applied to paragraph blocks, database blocks, iframe blocks, superblocks.|
 
-When applied to document blocks, the accepted attribute values are: `all`, `p`, `db`, `sb`, and `iframe`. Among them, `all` can only be used alone, while `p`, `db`, `sb`, and `iframe` can be used simultaneously, and the attribute values should be separated by **spaces**.
+#### Usage Examples
 
-* `all`: Makes all blocks in the document that support this attribute display in full width.
-* `p` (paragraph block): Makes all **image-containing** paragraph blocks in the document display in full width.
-* `db` (database): Makes all database blocks in the document display in full width.
-* `sb` (superblock): Makes all **horizontal-layout** superblocks in the document display in full width.
-* `iframe`: Makes all iframe blocks in the document display in full width, including videos, widgets and embedded web pages.
+Applied to document blocks:
 
-Example:
+| Attribute | Value |
+| --- | --- |
+| `afwd` | `all`         |
+| `afwd` | `p sb iframe` |
+| `afwd` | `db`          |
+| `afwd` | ...   |
 
-| Attribute key             | Attribute value |
-| ------------------------- | --------------- |
-| `asri-full-width-display` | `all`           |
-| `asri-full-width-display` | `p sb iframe`   |
-| `asri-full-width-display` | `db`            |
+Applied to supported content blocks:
 
-#### Applied to Content Blocks
+| Attribute | Value |
+| --- | --- |
+| `afwd` | `on`   |
+| `afwd` | `off`  |
 
-When applied to image paragraph blocks, database blocks, iframe blocks, or horizontal-layout superblocks, it only accepts the attribute values `on` and `off`, which are used to individually enable and disable the block’s full-width display.
-
-| Attribute key             | Attribute value |
-| ------------------------- | --------------- |
-| `asri-full-width-display` | `on`            |
-| `asri-full-width-display` | `off`           |
-
-#### Usage
-
-In addition to adding custom attributes by <kbd>shift + click block icon</kbd> - <kbd>Custom</kbd>, you can also use the `Attribute Quick Add` plugin to quickly add this attribute to supported blocks. A possible `Attribute Quick Add` plugin configuration is as follows:
+In addition to adding custom attributes through <kbd>shift + click block icon</kbd> - <kbd>Custom</kbd>, you can also use the `Attribute Quick Add` plugin to quickly add this attribute to supported blocks. Here is a configuration example of the `Attribute Quick Add` plugin:
 
 ```json
 {
     "@type/d": {
-        "display all supported blocks in full width": {
-            "asri-full-width-display": "all"
+        "Full-width display for all supported blocks": {
+            "afwd": "all"
         },
-        "display all database blocks and images in full width": {
-            "asri-full-width-display": "db p"
+        "Full-width display for all database blocks and images": {
+            "afwd": "db p"
         }
     },
-    "Individually enable full-width display": {
-        "asri-full-width-display": "on"
+    "Enable full-width display individually": {
+        "afwd": "on"
     },
-    "Individually disable full-width display": {
-        "asri-full-width-display": "off"
+    "Disable full-width display individually": {
+        "afwd": "off"
     }
 }
 ```
 
 The above configuration adds two options for document blocks and content blocks in the plugin menu, respectively, for quickly enabling and disabling the full-width display attribute for related content.
 
-After changing the custom attributes of a block, you can view and change the added attributes:
-
-![custom-attribute](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attribute_en_US_v2.png)
-
-You can manually delete this attribute to restore the block to its default state.
+To restore the default state of the block, manually delete this custom attribute in the block property.
 
 #### <em>Precautions</em>
 
-1. Full-width display only applies to the **first-level** blocks in the document. If a block is nested in other content blocks, applying this attribute to it will not produce any effect. For example, applying this attribute to an image paragraph block in a quote block will not change the style of the paragraph block unless the external quote block is cancelled.
-2. Full-width display is only effective in the editing area of the main window and small windows, and does not work in block reference preview windows, export previews, backlink panel, search result previews, etc.
-3. Enabling full-width display may cause the page to feel more jumpy when the editing area's size changes and automatically returns to the cursor position.
+* Full-width display only applies to the **first-level** blocks in the document. If a block is nested in other content blocks, applying this attribute to it will not produce any effect. For example, applying this attribute to an image paragraph block in a quote block will not change the style of the paragraph block unless the external quote block is cancelled.
+* Full-width display is only effective in the editing area of the main window and small windows, and does not work in block reference preview windows, export previews, backlink panel, search result previews, etc.
+* Enabling full-width display may cause the page to feel more jumpy when the editing area's size changes and automatically returns to the cursor position.
+* The `asri-full-width-display` attribute name in old versions will be invalid in subsequent updates, please change to the new `afwd` in time.
 
 ## Acknowledgements
 

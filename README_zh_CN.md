@@ -56,44 +56,38 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 ## 如何使用 Asri
 
 * **应用内下载更新（推荐）**  ：进入思源笔记应用，在 `设置 - 集市 - 主题` 中搜索下载「Asri」并应用
-* GitHub 下载更新：下载 release 中的 `package.zip`，手动解压至思源笔记工作空间下的 `conf/appearance/themes`，重启思源，在应用 `设置 - 外观` 中选择 Hadeeth 主题
+* GitHub 下载更新：下载 release 中的 `package.zip`，手动解压至思源笔记工作空间下的 `conf/appearance/themes`，重启思源，在应用 `设置 - 外观` 中选择 Asri 主题
 
 ## 自定义属性
 
-### `asri-full-width-display`（全宽显示）
+### 全宽显示（Asri full-width display, `afwd`）
 
 ![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v7.gif)
 
-使应用了此属性的块撑满页面宽度显示，可用于强调特定内容或美化排版等。支持应用于文档块和部分内容块（图片段落块、数据库块、 iframe 块和水平布局的超级块）。
+使应用了此属性的块撑满页面宽度显示，可用于强调特定内容或美化排版等。全宽显示的样式对段落块中的图片、数据库、 iframe 和水平布局的超级块生效。
 
-#### 应用于文档块
+| 属性名 | 属性值 | 说明 |
+| --- | --- | --- |
+| `afwd`　　 |- `all`（使文档中支持此属性的块全部全宽显示）<br />- `p`（使文档中所有图片全宽显示）<br />- `db`（使文档中所有数据库块全宽显示）<br />- `iframe`（使文档中所有 iframe 块全宽显示，包括视频、挂件和嵌入的网页）<br />- `sb`（使文档中所有**水平布局的**超级块全宽显示） | 应用于文档块。<br />除 `all` 以外的属性值均可以多个同时使用，用**空格**分隔 |
+| `afwd` | - `on`（单独启用块的全宽显示）<br />- `off`（单独关闭块的全宽显示） | 应用于段落块、数据库块、 iframe 块、超级块。|
 
-应用于文档块时，接受的属性值有：`all`、`p`、`db`、`sb` 和 `iframe`。其中 `all` 只能单独使用，`p`、`db`、`sb` 和 `iframe` 可以多个同时使用，属性值之间用**空格**分隔。
+#### 用法示例
 
-* `all`：使文档中支持此属性的块全部全宽显示。
-* `p`（paragraph）：使文档中所有**图片**段落块全宽显示。
-* `db`（database）：使文档中所有数据库块全宽显示。
-* `sb`（superblock）：使文档中所有**水平布局**的超级块全宽显示。
-* `iframe`：使文档中所有 iframe 块全宽显示，包括视频、挂件和嵌入的网页
-
-示例：
+应用于文档块：
 
 | 属性名 | 属性值 |
 | --- | --- |
-| `asri-full-width-display` | `all`         |
-| `asri-full-width-display` | `p sb iframe` |
-| `asri-full-width-display` | `db`          |
+| `afwd` | `all`         |
+| `afwd` | `p sb iframe` |
+| `afwd` | `db`          |
+| `afwd` | ...       |
 
-#### 应用于内容块
-
-应用于图片段落块、数据库块、iframe 块和水平布局的超级块时，仅接受属性值 `on` 和 `off`，分别用于单独启用和关闭块的全宽显示。
+应用于支持的内容块：
 
 | 属性名 | 属性值 |
 | --- | --- |
-| `asri-full-width-display` | `on`   |
-| `asri-full-width-display` | `off`  |
-
-#### 使用方法
+| `afwd` | `on`   |
+| `afwd` | `off`  |
 
 除了通过 <kbd>shift + 点击块标</kbd> - <kbd>自定义</kbd> 添加自定义属性，也可以使用 `快速添加块属性` 插件快速为受支持的块添加此属性。以下是一个 `快速添加块属性` 插件的配置示例：
 
@@ -101,34 +95,31 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 {
     "@type/d": {
         "全宽显示所有受支持的块": {
-            "asri-full-width-display": "all"
+            "afwd": "all"
         },
-        "全宽显示所有一级数据库块和图片": {
-            "asri-full-width-display": "db p"
+        "全宽显示所有数据库块和图片": {
+            "afwd": "db p"
         }
     },
     "单独启用全宽显示": {
-        "asri-full-width-display": "on"
+        "afwd": "on"
     },
     "单独关闭全宽显示": {
-        "asri-full-width-display": "off"
+        "afwd": "off"
     }
 }
 ```
 
 上述配置分别为文档块和内容块添加了两个插件选项，用于快速启用和关闭相关内容的全宽显示属性。
 
-对块的自定义属性进行更改后，可以查看和更改已添加的属性：
-
-![custom-attribute](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attribute_zh_CN_v2.png)
-
-可手动删除此属性来恢复块的默认状态。
+要恢复块的默认状态，请在块属性中手动删除此自定义属性。
 
 #### <em>注意事项</em>
 
-1. 全宽显示仅对文档中**第一层级**的块生效。如果一个块被嵌套在其他内容块中，对其应用此属性不会产生任何效果。例如，对引用块中的图片段落块应用此属性，该段落块不会有样式变化，除非将外部引用块取消。
-2. 全宽显示仅在主窗口和小窗编辑区有效，块引用预览窗、导出预览、反链面板和搜索结果预览等场景均不生效。
-3. 启用全宽显示可能导致编辑区大小改变后，自动返回光标所在位置时页面的跳动感增强。
+* 全宽显示仅对文档中**第一层级**的块生效。如果一个块被嵌套在其他内容块中，对其应用此属性不会产生任何效果。例如，对引用块中的图片段落块应用此属性，该段落块不会有样式变化，除非将外部引用块取消。
+* 全宽显示仅在主窗口和小窗编辑区有效，块引用预览窗、导出预览、反链面板和搜索结果预览等场景均不生效。
+* 启用全宽显示可能导致编辑区大小改变后，自动返回光标所在位置时页面的跳动感增强。
+* 旧版本的 `asri-full-width-display` 属性名将在后续更新中失效，请及时更换为 `afwd` 属性名。
 
 ## 鸣谢
 
