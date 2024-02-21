@@ -1331,7 +1331,6 @@
                         cursor: default;
                         align-items: center;
                         height: 30px;
-                        padding: 0;
 
                         .b3-menu__label {
                             font-weight: 500;
@@ -1343,13 +1342,16 @@
                             pointer-events: none;
                         }
 
-                        .block__icon[style*="font-size: 14px;"] {
+                        // 视图标签编辑菜单emoji
+                        > .block__icon[style*="font-size: 14px;"] {
+                            padding-left: 0 !important;
+                            margin-left: 0; 
+
                             .body--mac & {
                                 font-size: 16px !important;
                                 width: 16px !important;
                                 line-height: 16px;
                                 margin-right: 4px !important;
-                                margin-left: 3px; //视觉对齐下方svg图标
                             }
                         }
 

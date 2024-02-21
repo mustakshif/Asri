@@ -54,6 +54,11 @@ Check all updates [here](./CHANGELOG.md).
 * 💫 Appropriately added lively animations, enriching the interactive experience
 * 🚀 Maintained a high level of smooth performance
 
+## How to use Asri
+
+* **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
+* Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
+
 ## Custom Attribute
 
 ### `asri-full-width-display`
@@ -125,11 +130,6 @@ You can manually delete this attribute to restore the block to its default state
 1. Full-width display only applies to the **first-level** blocks in the document. If a block is nested in other content blocks, applying this attribute to it will not produce any effect. For example, applying this attribute to an image paragraph block in a quote block will not change the style of the paragraph block unless the external quote block is cancelled.
 2. Full-width display is only effective in the editing area of the main window and small windows, and does not work in block reference preview windows, export previews, backlink panel, search result previews, etc.
 3. Enabling full-width display may cause the page to feel more jumpy when the editing area's size changes and automatically returns to the cursor position.
-
-## How to use Asri
-
-* **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
-* Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
 
 ## Acknowledgements
 
