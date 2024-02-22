@@ -10,13 +10,15 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.7
+### v2.1.8
 
-* Updated the property name for full-width display to `afwd` and updated the theme description. **The previous version's attribute name `asri-full-width-display` will be deprecated in future updates.**
-* Added the style for nested tag references.
-* Adjusted the icon size (macOS) and spacing in the database view tabs and tab editing menu.
-* Unified the hover style for all icon elements.
-* Unified the spacing between document operation icons in breadcrumb bar.
+ℹ️ The attribute name for full-width display has been changed to `afwd`. Check theme documentation for details. The previous version's attribute name `asri-full-width-display` will be deprecated in future updates.
+
+* Adjusted the inner padding of the database blocks in full-width display to eliminate jitter when toggling full-width display.
+* Optimized line wrapping rules for text input fields and tooltips.
+* Fixed the issue where the add and drag buttons of database items disappeared when displayed in full width, preventing corresponding operations.
+* [Fixed the issue where the first tab of the database view tabs was being clipped on the left side.](https://github.com/mustakshif/Asri/issues/22)
+* [Fixed the problem where the color differentiation of activated icons was insufficient.](https://github.com/mustakshif/Asri/issues/22)
 
 Check all updates [here](./CHANGELOG.md).
 

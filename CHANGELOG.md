@@ -1,3 +1,25 @@
+### v2.1.8
+
+ℹ️ 全宽显示的属性名已更改为 `afwd`，详见主题说明。旧版本的 `asri-full-width-display` 属性名将在后续更新中失效
+
+* 调整全宽显示的数据库块内边距，消除切换全宽显示时的抖动
+* 优化文本输入框和文本提示条换行规则
+* 修复全宽显示的数据库添加和拖移按钮消失而无法进行对应操作的问题
+* [修复数据库第一个视图页签左侧被裁切的问题](https://github.com/mustakshif/Asri/issues/22)
+* [修复激活状态的图标颜色区分度不够的问题](https://github.com/mustakshif/Asri/issues/22)
+
+<br />
+
+ℹ️ The attribute name for full-width display has been changed to `afwd`. Check theme documentation for details. The previous version's attribute name `asri-full-width-display` will be deprecated in future updates.
+
+* Adjusted the inner padding of the database blocks in full-width display to eliminate jitter when toggling full-width display.
+* Optimized line wrapping rules for text input fields and tooltips.
+* Fixed the issue where the add and drag buttons of database items disappeared when displayed in full width, preventing corresponding operations.
+* [Fixed the issue where the first tab of the database view tabs was being clipped on the left side.](https://github.com/mustakshif/Asri/issues/22)
+* [Fixed the problem where the color differentiation of activated icons was insufficient.](https://github.com/mustakshif/Asri/issues/22)
+
+---
+
 ### v2.1.7
 
 * 更新全宽显示的属性名为 `afwd`，更新主题说明。**旧版本的 `asri-full-width-display` 属性名将在后续更新中失效**
