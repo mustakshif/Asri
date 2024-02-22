@@ -384,3 +384,7 @@ textarea {
 .b3-list-item__toggle--hl:hover {
     background-color: transparent;
 }
+
+.block__icon--active {
+    color: var(--b3-theme-primary);
+}

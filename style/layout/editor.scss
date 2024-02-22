@@ -1188,13 +1188,9 @@
         .av__views {
             .layout-tab-bar {
                 @include dialog-tabbar;
-                margin: 8px auto !important;
-
-                .item__graphic {
-                    .body--mac & {
-                        font-size: 16px;
-                    }
-                }
+                margin: 8px 0 !important;
+                padding: 0;
+                border: 2px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
 
                 .item:not(.item--focus) {
                     .item__graphic {
@@ -1209,8 +1205,17 @@
                 }
 
                 .item--focus {
+                    box-shadow: 0 -1px .5px 0 rgba(0,0,0,.12) inset;
+                    // box-shadow: none;
+
                     &:hover {
                         @include theme-variant-color(background-color, light-components, 1, 0.2, $important: true);
+                    }
+                }
+
+                .item__graphic {
+                    .body--mac & {
+                        font-size: 16px;
                     }
                 }
             }
@@ -1343,9 +1348,9 @@
                         }
 
                         // 视图标签编辑菜单emoji
-                        > .block__icon[style*="font-size: 14px;"] {
+                        >.block__icon[style*="font-size: 14px;"] {
                             padding-left: 0 !important;
-                            margin-left: 0; 
+                            margin-left: 0;
 
                             .body--mac & {
                                 font-size: 16px !important;

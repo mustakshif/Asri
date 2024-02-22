@@ -109,7 +109,7 @@ body:not([style*='-webkit-print-color-adjust']) {
 
                 .av__header,
                 .av__scroll {
-                    padding: 0 var(--protyle-spacing);
+                    padding: 0 calc(var(--protyle-spacing) + 3px);
                 }
 
                 // 「添加行」按钮
@@ -133,14 +133,6 @@ body:not([style*='-webkit-print-color-adjust']) {
                 }
             }
         }
-
-
-        // .protyle-gutters {
-        //     [data-type="NodeAttributeViewRow"],
-        //     [data-type="NodeAttributeViewRowMenu"] {
-        //         transform: translateX(min(calc(var(--protyle-spacing) * -1 + 72px), 0px));
-        //     }
-        // }
 
 
         // 超级块 ————————————————————
@@ -183,5 +175,14 @@ body:not([style*='-webkit-print-color-adjust']) {
             //     margin-right: calc(var(--protyle-spacing)*-1);
             // }
         }
+    }
+}
+
+// 数据库添加、拖移按钮
+.protyle-gutters {
+    [data-type="NodeAttributeViewRow"],
+    [data-type="NodeAttributeViewRowMenu"] {
+        // transform: translateX(min(calc(var(--protyle-spacing) * -1 + 72px), 0px));
+        transform: translateX(4px); // 防止按钮在鼠标移出数据库项后消失
     }
 }
