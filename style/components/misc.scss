@@ -168,6 +168,7 @@ select.b3-select {
 
 textarea {
     resize: vertical;
+    word-break: normal;
 
     &::placeholder {
         color: var(--b3-empty-color);
@@ -220,19 +221,24 @@ textarea {
 // 提示条
 .tooltip {
     pointer-events: none;
-    text-wrap: nowrap;
-    overflow: hidden;
-    min-width: max-content;
+    // text-wrap: nowrap;
+    // overflow: hidden;
+    // min-width: max-content;
+
+    overflow-wrap: break-word; // 宽度计算考虑文本长度
+    word-break: keep-all; // 保持CJK字符不换行
+
     animation-delay: .75s;
-    // overflow-wrap: normal;
     @include tooltip-shadow;
     @include border-or-not($outline:false);
 }
 
 .tooltip--memo#tooltip {
     --property-percentage: 0%;
-    text-wrap: wrap;
-    min-width: unset;
+    // text-wrap: wrap;
+    // min-width: unset;
+    word-break: normal;
+    overflow-wrap: normal;
     font-size: 14px;
     padding: 8px;
     margin: 0 -8px;

@@ -617,6 +617,7 @@
         statusPosition();
     }, 200);
 
+
     function setStatusHeightVar() {
         if (isStatusHidden()) document.body.style.setProperty('--status-height', '0px');
         else document.body.style.setProperty('--status-height', '32px');
@@ -628,7 +629,7 @@
      * 大纲、反链、搜索列表等在作为标签页显示时，避免被status遮住底部
      */
     function avoidOverlappingWithStatus() {
-        if (!asriDoms.status.classList.contains('.fn__none')) {
+        if (!isStatusHidden()) {
 
             let layoutTabContainers = asriDoms.layouts?.querySelectorAll('.layout__center .layout-tab-container');
             let statusRect = asriDoms.status.getBoundingClientRect();
@@ -688,7 +689,6 @@
                     }
                 }
             });
-
         }
     }
     avoidOverlappingWithStatus();
