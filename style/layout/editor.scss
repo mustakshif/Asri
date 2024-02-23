@@ -1325,6 +1325,11 @@
             // z-index: 3;
             border-radius: 0;
         }
+
+        // 勾选框
+        .av__cell-check > .av__checkbox {
+            color: var(--b3-theme-primary);
+        }
     }
 
     // 菜单
