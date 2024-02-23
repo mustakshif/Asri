@@ -321,13 +321,13 @@
 
                 // calc & apply tabbarSpacing
                 if (isOverlapping(tabbarContainerRect, dragRect)) {
-                    let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 6 + 'px' : '';
+                    let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 4 + 'px' : '';
                     let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 + 'px' : '';
 
                     tabbarContainer.style.paddingLeft = paddingLeftValue;
                     tabbarContainer.style.paddingRight = paddingRightValue;
 
-                    asriDoms.drag = document.getElementById('drag');
+                    // asriDoms.drag = document.getElementById('drag');
 
                     // 极窄宽度下添加上边距
                     if ((tabbarContainerRect.right - 200 < dragRect.left && tabbarContainerRect.left < dragRect.left) || (tabbarContainerRect.left + 200 > dragRect.right && tabbarContainerRect.right > dragRect.right)) {
