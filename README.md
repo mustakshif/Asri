@@ -26,7 +26,7 @@ Check all updates [here](./CHANGELOG.md).
 
 ### 🪄 Aesthetically Enhanced Efficiency
 
-* ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar[^1]<sup>,</sup>[^2]
+* ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar[^1]<sup>, </sup>[^2]
 * 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
 * 🌅 Removal of unnecessary spacing between app's layout blocks, expanding the display range
 * 🌓 Support for light and dark modes
