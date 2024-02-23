@@ -1330,6 +1330,14 @@
     // 菜单
     &__panel {
         .b3-menu {
+            >.fn__flex-column >.b3-menu__item[data-type="nobg"]:first-child {
+                border-radius: 0;
+                margin: 0;
+                +.fn__hr {
+                    background-color: var(--b3-menu-background);
+                }
+            } // v2.1.9: fix关联主键编辑菜单
+
             .b3-menu__items {
                 .b3-menu__item {
                     &[data-type="nobg"] {

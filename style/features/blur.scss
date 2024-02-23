@@ -120,6 +120,7 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
                 @include theme-variant-color(background-color, menu-background, $medium-transparency);
                 @include bg-blur;
             }
+
             #dialogContainer {
                 .dialog {
                     @include theme-variant-color(background-color, menu-background, $thick-transparency);
@@ -270,10 +271,12 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
             position: absolute;
             z-index: -1;
             @include bg-blur;
-        } // 在不影响反链面板中块标元素定位的情况下使用模糊
+        }
+
+        // 在不影响反链面板中块标元素定位的情况下使用模糊
 
         .sy__graph.fullscreen {
-            @include theme-variant-color(background-color, background,$medium-transparency)
+            @include theme-variant-color(background-color, background, $medium-transparency)
         }
     }
 }
@@ -341,13 +344,15 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 
 .protyle-util {
     @include theme-variant-color(background-color, menu-background, $medium-transparency);
-    @include bg-blur($saturate-value:3);
+    @include bg-blur($saturate-value: 3);
 }
 
 .block__popover .block__content .protyle-util {
     background-color: var(--b3-menu-background);
     backdrop-filter: none;
-} // 解决模糊透明像素的问题
+}
+
+// 解决模糊透明像素的问题
 
 #searchHistoryList {
     @include theme-variant-color(background-color, menu-background, $medium-transparency);
@@ -507,4 +512,18 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
         mix-blend-mode: luminosity;
     }
 }
+
+// 数据库菜单 ——————————————————————
+.av__panel {
+    .b3-menu {
+        >.fn__flex-column>.b3-menu__item[data-type="nobg"]:first-child {
+            @include theme-variant-color(background-color, menu-background, $medium-transparency);
+
+            +.fn__hr {
+                @include theme-variant-color(background-color, menu-background, $medium-transparency);
+            }
+        } // v2.1.9: fix关联主键编辑菜单
+    }
+}
+
 }

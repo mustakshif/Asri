@@ -635,13 +635,16 @@
             let statusRect = asriDoms.status.getBoundingClientRect();
 
             layoutTabContainers?.forEach(layoutTabContainer => {
-                if (layoutTabContainer.querySelector('.file-tree')) {
+                let fileTree = layoutTabContainer.querySelector('.file-tree');
+                if (fileTree && !fileTree.classList.contains('fn__none')) {
                     let containerRect = layoutTabContainer.getBoundingClientRect();
                     if (isOverlapping(containerRect, statusRect)) {
                         layoutTabContainer.style.paddingBottom = '35px'
                     } else {
                         layoutTabContainer.style.removeProperty('padding-bottom');
                     }
+                } else {
+                    layoutTabContainer.style.removeProperty('padding-bottom');
                 }
             })
 
