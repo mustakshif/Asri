@@ -1,8 +1,8 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v17.png)
-
-<br/>
-
 简体中文 ｜ [English](https://github.com/mustakshif/Asri-for-SiYuan/blob/main/README.md)
+
+<br />
+
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v17.png)
 
 # Asri, a theme for SiYuan
 
@@ -26,13 +26,14 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### 🪄 美感加持的高效
 
-* ⚖️ 顶栏融合，实现顶栏与标签栏的无缝整合
-
-  * 📌 顶栏空白区域均可用于拖动窗口（页签间隙除外）
-  * 📌 如果顶栏图标或分割线显示异常，如错位、重叠等，可尝试调整编辑区或应用窗口的大小来恢复
+* ⚖️ 顶栏融合，实现顶栏与标签栏的无缝整合[^1]<sup>,</sup>[^2]
 * 🧊 引入毛玻璃材质，带来富有层次感的视觉体验
 * 🌅 取消页面区块间的多余间距，扩大展示范围
 * 🌓 支持亮色模式和暗色模式
+
+[^1]: 顶栏空白区域均可用于拖动窗口（页签间隙除外）
+
+[^2]: 如果顶栏图标或分割线显示异常，如错位、重叠等，可尝试调整编辑区或应用窗口的大小来恢复
 
 ### 📐 灵活优雅的布局
 

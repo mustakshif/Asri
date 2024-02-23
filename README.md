@@ -1,8 +1,8 @@
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v17.png)
+English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main/README_zh_CN.md)
 
 <br/>
 
-[简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main/README_zh_CN.md) | English
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v17.png)
 
 # Asri, a theme for SiYuan
 
@@ -26,13 +26,14 @@ Check all updates [here](./CHANGELOG.md).
 
 ### 🪄 Aesthetically Enhanced Efficiency
 
-* ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar
-
-  * 📌 The blank area of the top bar can be used to drag the window (except for the gap between tabs)
-  * 📌 If top bar icons or dividers appear misaligned or overlapped, resizing the edit area or app window may fix it.
+* ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar[^1]<sup>,</sup>[^2]
 * 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
 * 🌅 Removal of unnecessary spacing between app's layout blocks, expanding the display range
 * 🌓 Support for light and dark modes
+
+[^1]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
+
+[^2]: If top bar icons or dividers appear misaligned or overlapped, resizing the edit area or app window may fix it.
 
 ### 📐 Flexible and Elegant Layout
 
