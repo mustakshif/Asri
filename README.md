@@ -51,14 +51,14 @@ Check all updates [here](./CHANGELOG.md).
 
 ### 👆 Delicate and Smooth Interaction
 
-* 🧭 Improved animation responding timing to optimize interface feedback frequency and reduce distraction
+* ⏱️ Improved animation responding timing to optimize interface feedback frequency and reduce distraction
 * ⚙️ Redesigned the styles of controls for iFrame, videos, images, etc.
 * 💫 Appropriately added lively animations, enriching the interactive experience
 * 🚀 Maintained a high level of smooth performance
 
 ## Getting Started
 
-* **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
+* **Download & update in SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
 * Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
 
 ## Custom Attribute
@@ -71,8 +71,8 @@ This attribute allows blocks to be displayed in full page width, which can be us
 
 | Attribute | Value | Description |
 | --- | --- | --- |
-| `afwd`　　 | - `all` (Makes all blocks that support this attribute in the document display in full width)<br />- `p` (Makes all images in the document display in full width)<br />- `db` (Makes all database blocks in the document display in full width)<br />- `iframe` (Makes all iframe blocks in the document display in full width, including videos, widgets, and embedded web pages)<br />- `sb` (Makes all **horizontal-layout** superblocks in the document display in full width) | Applied to document blocks.<br />All attribute values except `all` can be used simultaneously, and should be separated by **spaces** |
-| `afwd` | - `on` (Enable full-width display of the block individually)<br />- `off` (Disable full-width display of the block individually) | Applied to paragraph blocks, database blocks, iframe blocks, superblocks.|
+| `afwd`　　 | - `all` (Makes all blocks that support this attribute in the document display in full width)<br />- `p` (Makes all images in the document display in full width)<br />- `db` (Makes all database blocks in the document display in full width)<br />- `iframe` (Makes all iframe blocks in the document display in full width, including videos, widgets, and embedded web pages)<br />- `sb` (Makes all **horizontal-layout** superblocks in the document display in full width) | Applies to document blocks.<br />All attribute values except `all` can be used simultaneously, and should be separated by **spaces** |
+| `afwd` | - `on` (Enable full-width display of the block individually)<br />- `off` (Disable full-width display of the block individually) | Applies to paragraph blocks, database blocks, iframe blocks, superblocks.|
 
 #### Usage Examples
 
@@ -142,7 +142,7 @@ Other reference materials:
 * [Apple's Human Interface Guidelines - Foundations - Color](https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/)
 
 ## Feedbacks & suggestions
-- Create an issue or PR at [the project page](https://github.com/mustakshif/Asri-for-SiYuan/issues)
+- Create an issue or PR at [the project page](https://github.com/mustakshif/Asri/)
 - Send an email to mustakshif@icloud.com
 
 ## Notes

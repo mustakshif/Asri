@@ -140,7 +140,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * [苹果人机界面指南 - 基础 - 颜色](https://developer.apple.com/cn/design/human-interface-guidelines/color)
 
 ## 反馈和建议
-- [项目主页](https://github.com/mustakshif/Asri-for-SiYuan/issues)提交 issue 或 PR
+- [项目主页](https://github.com/mustakshif/Asri/)提交 issue 或 PR
 - 发送邮件至 mustakshif@icloud.com
 
 ## 其他
