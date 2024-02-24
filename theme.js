@@ -154,6 +154,7 @@
     let isWinResizing = false, winResizeTimeout, centerResizeTimeout, fromFullscreen;
     let dragRectLeftInitial = asriDoms.drag?.getBoundingClientRect().left,
     dragRectRightInitial = asriDoms.drag?.getBoundingClientRect().right;
+    let topbarRect = asriDoms.toolbar?.getBoundingClientRect();
     function handleWinResize() {
         // if (!isInBrowser && !isMobile) {
         //     let currentWindow = require("@electron/remote").getCurrentWindow();
@@ -320,7 +321,7 @@
                 let dragRect = asriDoms.drag.getBoundingClientRect();
 
                 // calc & apply tabbarSpacing
-                if (isOverlapping(tabbarContainerRect, dragRect)) {
+                if (isOverlapping(tabbarContainerRect, dragRect) || isOverlapping(tabbarContainerRect, topbarRect)) {
                     let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 4 + 'px' : '';
                     let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 + 'px' : '';
 
@@ -338,8 +339,8 @@
                         tabbarContainer.style.removeProperty('padding-top');
                     }
                 } else {
-                    tabbarContainer.style.paddingLeft = 0;
-                    tabbarContainer.style.paddingRight = 0;
+                    tabbarContainer.style.removeProperty('padding-left');
+                    tabbarContainer.style.removeProperty('padding-right');
                 }
             })
         }
