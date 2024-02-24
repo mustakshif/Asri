@@ -55,7 +55,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * 💫 适当加入鲜活动效，丰富交互体验
 * 🚀 保持较高的流畅度表现
 
-## 如何使用 Asri
+## 开始使用
 
 * **应用内下载更新（推荐）**  ：进入思源笔记应用，在 `设置 - 集市 - 主题` 中搜索下载「Asri」并应用
 * GitHub 下载更新：下载 release 中的 `package.zip`，手动解压至思源笔记工作空间下的 `conf/appearance/themes`，重启思源，在应用 `设置 - 外观` 中选择 Asri 主题

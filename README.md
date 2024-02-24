@@ -56,7 +56,7 @@ Check all updates [here](./CHANGELOG.md).
 * 💫 Appropriately added lively animations, enriching the interactive experience
 * 🚀 Maintained a high level of smooth performance
 
-## How to use Asri
+## Getting Started
 
 * **Download & update within SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
 * Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
@@ -71,7 +71,7 @@ This attribute allows blocks to be displayed in full page width, which can be us
 
 | Attribute | Value | Description |
 | --- | --- | --- |
-| `afwd`　　 | - `all` (Makes all blocks that support this attribute in the document display in full width)<br />- `p` (Makes all images in the document display in full width)<br />- `db` (Makes all database blocks in the document display in full width)<br />- `iframe` (Makes all iframe blocks in the document display in full width, including videos, widgets, and embedded web pages)<br />- `sb` (Makes all **horizontal-layout** superblocks in the document display in full width) | Applied to document blocks.<br />All attribute values except `all` can be used simultaneously, separated by **spaces** |
+| `afwd`　　 | - `all` (Makes all blocks that support this attribute in the document display in full width)<br />- `p` (Makes all images in the document display in full width)<br />- `db` (Makes all database blocks in the document display in full width)<br />- `iframe` (Makes all iframe blocks in the document display in full width, including videos, widgets, and embedded web pages)<br />- `sb` (Makes all **horizontal-layout** superblocks in the document display in full width) | Applied to document blocks.<br />All attribute values except `all` can be used simultaneously, and should be separated by **spaces** |
 | `afwd` | - `on` (Enable full-width display of the block individually)<br />- `off` (Disable full-width display of the block individually) | Applied to paragraph blocks, database blocks, iframe blocks, superblocks.|
 
 #### Usage Examples
@@ -92,7 +92,7 @@ Applied to supported content blocks:
 | `afwd` | `on`   |
 | `afwd` | `off`  |
 
-In addition to adding custom attributes through <kbd>shift + click block icon</kbd> - <kbd>Custom</kbd>, you can also use the `Attribute Quick Add` plugin to quickly add this attribute to supported blocks. Here is a configuration example of the `Attribute Quick Add` plugin:
+In addition to adding custom attributes by <kbd>shift + click block icon</kbd> - <kbd>Custom</kbd>, you can also use the `Attribute Quick Add` plugin to quickly add this attribute to supported blocks. Here is a configuration example of the plugin:
 
 ```json
 {
@@ -115,7 +115,7 @@ In addition to adding custom attributes through <kbd>shift + click block icon</k
 
 The above configuration adds two options for document blocks and content blocks in the plugin menu, respectively, for quickly enabling and disabling the full-width display attribute for related content.
 
-To restore the default state of the block, manually delete this custom attribute in the block property.
+To restore the default state of the block, manually delete this custom attribute in the block attribute.
 
 #### <em>Precautions</em>
 
