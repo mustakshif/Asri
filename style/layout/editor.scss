@@ -540,6 +540,15 @@
             }
         }
 
+        &__net {
+            top: 0;
+            left: 0;
+            padding: 5px;
+            color: var(--b3-theme-on-surface);
+            mix-blend-mode: luminosity;
+            border-radius: 6px 0 6px 0;
+        }
+
         .protyle-action {
             opacity: 0;
         }

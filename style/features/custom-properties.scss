@@ -34,6 +34,10 @@ body:not([style*='-webkit-print-color-adjust']) {
                         display: none;
                     }
                 }
+
+                &__net {
+                    border-radius: 0 0 6px 0;
+                }
             }
         }
 
