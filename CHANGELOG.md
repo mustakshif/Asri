@@ -1,3 +1,29 @@
+### v2.1.9
+
+ℹ️ 全宽显示的属性名已更改为 `afwd`，详见主题说明。旧版本的 `asri-full-width-display` 属性名将在后续更新中失效
+
+* 优化网络图片角标样式
+* 统一集市卡片容器外边距
+* 调整数据库视图页签内边距
+* 调整数据库勾选框属性已勾选状态颜色为强调色
+* 修复隐藏停靠栏和侧栏面板时打开的大纲页签与顶栏重叠的问题
+* 修复部分情况下搜索结果高亮关键词显示异常
+* 修复数据库关联列中主键的编辑菜单背景色异常
+
+<br />
+
+ℹ️ The attribute name for full-width display has been changed to `afwd`. Check theme documentation for details. The previous version's attribute name `asri-full-width-display` will be deprecated in future updates.
+
+* Optimized the style of the network image badge.
+* Unified the margin of the marketplace item cards container.
+* Adjusted the inner padding of the database view tab.
+* Changed the color of the checked state of the database checkbox attribute to the primary color.
+* Fixed the issue where the outline tab overlapped with the top bar when the docks and side panels were hidden.
+* Fixed the abnormal display of highlighted keywords in search results in some cases.
+* Fixed the abnormal background color of the edit menu for keys in the database relation columns.
+
+---
+
 ### v2.1.8
 
 ℹ️ 全宽显示的属性名已更改为 `afwd`，详见主题说明。旧版本的 `asri-full-width-display` 属性名将在后续更新中失效

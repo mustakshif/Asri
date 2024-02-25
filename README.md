@@ -10,15 +10,17 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.8
+### v2.1.9
 
 ℹ️ The attribute name for full-width display has been changed to `afwd`. Check theme documentation for details. The previous version's attribute name `asri-full-width-display` will be deprecated in future updates.
 
-* Adjusted the inner padding of the database blocks in full-width display to eliminate jitter when toggling full-width display.
-* Optimized line wrapping rules for text input fields and tooltips.
-* Fixed the issue where the add and drag buttons of database items disappeared when displayed in full width, preventing corresponding operations.
-* [Fixed the issue where the first tab of the database view tabs was being clipped on the left side.](https://github.com/mustakshif/Asri/issues/22)
-* [Fixed the problem where the color differentiation of activated icons was insufficient.](https://github.com/mustakshif/Asri/issues/22)
+* Optimized the style of the network image badge.
+* Unified the margin of the marketplace item cards container.
+* Adjusted the inner padding of the database view tab.
+* Changed the color of the checked state of the database checkbox attribute to the primary color.
+* Fixed the issue where the outline tab overlapped with the top bar when the docks and side panels were hidden.
+* Fixed the abnormal display of highlighted keywords in search results in some cases.
+* Fixed the abnormal background color of the edit menu for keys in the database relation columns.
 
 Check all updates [here](./CHANGELOG.md).
 
