@@ -1201,6 +1201,10 @@
                 padding: 0;
                 border: 2px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
 
+                .item {
+                    padding: 2px 6px;
+                }
+
                 .item:not(.item--focus) {
                     .item__graphic {
                         color: var(--b3-theme-on-surface);
