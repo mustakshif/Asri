@@ -118,7 +118,7 @@ body:not([style*='-webkit-print-color-adjust']) {
 
                 // 「添加行」按钮
                 .av__colsticky {
-                    left: calc(var(--protyle-spacing) * -1);
+                    left: calc(var(--protyle-spacing) * -1 - 3px);
                 }
 
                 .av__firstcol {
