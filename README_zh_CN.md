@@ -66,14 +66,14 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### 全宽显示（Asri full-width display, `afwd`）
 
-![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v7.gif)
+![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v8.gif)
 
 使应用了此属性的块撑满页面宽度显示，可用于强调特定内容或美化排版等。全宽显示的样式对段落块中的图片、数据库、 iframe 和水平布局的超级块生效。
 
 | 属性名 | 属性值 | 说明 |
 | --- | --- | --- |
 | `afwd`　　 |- `all`（使文档中支持此属性的块全部全宽显示）<br />- `p`（使文档中所有图片全宽显示）<br />- `db`（使文档中所有数据库块全宽显示）<br />- `iframe`（使文档中所有 iframe 块全宽显示，包括视频、挂件和嵌入的网页）<br />- `sb`（使文档中所有**水平布局的**超级块全宽显示） | 应用于文档块。<br />除 `all` 以外的属性值均可以多个同时使用，用**空格**分隔 |
-| `afwd` | - `on`（单独启用块的全宽显示）<br />- `off`（单独关闭块的全宽显示） | 应用于段落块、数据库块、 iframe 块、超级块。|
+| `afwd`　　 |- `on`（单独启用块的全宽显示）<br />- `off`（单独关闭块的全宽显示） | 应用于段落块、数据库块、 iframe 块、超级块。|
 
 #### 用法示例
 
