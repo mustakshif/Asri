@@ -382,12 +382,15 @@ textarea {
 }
 
 
-// 图标
+// 图标 ——————————————————————————————
 .block__icon:hover:not([disabled]):not(.ft__primary), .block__icon--active,
 
 .b3-list-item__icon:hover,
 
-.b3-list-item__toggle--hl:hover {
+.b3-list-item__toggle--hl:hover,
+
+//闪卡管理条目操作图标
+.b3-list-item__action:hover {
     background-color: transparent;
 }
 

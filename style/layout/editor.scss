@@ -1313,6 +1313,14 @@
                     border-bottom: none;
                     text-decoration: underline var(--b3-border-color-trans);
                     text-decoration-thickness: 0.1em;
+
+                    transition-property: color, text-decoration-color;
+                    transition-duration: .2s;
+
+                    &:hover {
+                        text-decoration-color: var(--b3-theme-primary-lighter);
+                        color: var(--b3-theme-primary)
+                    }
                 }
 
                 // 复制按钮
