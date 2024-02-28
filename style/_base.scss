@@ -420,6 +420,9 @@ $theme-dark: (
     /* 所见即所得行内元素颜色 */
     --b3-protyle-inline-link-color: #{map-get($theme-map,inline-link-color)};
     --b3-protyle-inline-mark-background: #{map-get($theme-map,inline-mark-background)};
+
+    // 占位符
+    --b3-empty-color: #{rgba(map-get($theme-map,on-background), 0.45)};
 }
 
 @mixin theme-variant-color($property, $theme-key, $opacity-light: 1, $opacity-dark: $opacity-light, $important: false) {
