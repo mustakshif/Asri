@@ -116,6 +116,10 @@ body:not([style*='-webkit-print-color-adjust']) {
                     padding: 0 calc(var(--protyle-spacing) + 3px);
                 }
 
+                .av__scroll::-webkit-scrollbar {
+                   display: none;
+                }
+
                 // 「添加行」按钮
                 .av__colsticky {
                     left: calc(var(--protyle-spacing) * -1 - 3px);
