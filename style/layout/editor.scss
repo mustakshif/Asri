@@ -1219,7 +1219,7 @@
                 }
 
                 .item--focus {
-                    box-shadow: 0 -1px .5px 0 rgba(0,0,0,.12) inset;
+                    box-shadow: 0 -1px .5px 0 rgba(0, 0, 0, .12) inset;
                     // box-shadow: none;
 
                     &:hover {
@@ -1350,7 +1350,7 @@
         }
 
         // 勾选框
-        .av__cell-check > .av__checkbox {
+        .av__cell-check>.av__checkbox {
             color: var(--b3-theme-primary);
         }
     }
@@ -1358,13 +1358,27 @@
     // 菜单
     &__panel {
         .b3-menu {
-            >.fn__flex-column >.b3-menu__item[data-type="nobg"]:first-child {
+            >.fn__flex-column>.b3-menu__item[data-type="nobg"]:first-child {
                 border-radius: 0;
                 margin: 0;
+
                 +.fn__hr {
                     background-color: var(--b3-menu-background);
                 }
-            } // v2.1.9: fix关联主键编辑菜单
+                // v2.1.9: fix关联主键编辑菜单背景差异
+
+                @include darkmode-counterpart {
+                    border-top: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
+                    background-clip: padding-box;
+                    border-left: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
+                    border-right: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
+                    border-radius: 10px 10px 0 0;
+                }
+                // v2.1.10: fix暗色模式下边框差异
+            }
+
+
+            // v2.
 
             .b3-menu__items {
                 .b3-menu__item {
