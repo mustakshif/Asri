@@ -115,6 +115,7 @@ body:not([style*='-webkit-print-color-adjust']) {
                 .av__colsticky {
                     left: calc(var(--protyle-spacing) * -1 - 3px);
 
+                    // 固定列左侧勾选框
                     .av__firstcol {
                         opacity: 1;
                     }
