@@ -1,6 +1,24 @@
-### v2.1.9
+### v2.1.10
 
-ℹ️ 全宽显示的属性名已更改为 `afwd`，详见主题说明。旧版本的 `asri-full-width-display` 属性名将在后续更新中失效
+* 新增数据库已关联块的主键的鼠标悬停样式
+* 调整文本框提示文字颜色
+* 修复全宽显示的数据库选中条目勾选框的位置偏移
+* 修复暗色模式下数据库关联列中主键的编辑菜单边框差异
+* 修复全宽显示的数据库中固定列左侧的空隙
+* 移除全宽显示数据库的横向滚动条
+* 移除对 `asri-full-width-display` 属性名的支持，改用 `afwd`
+
+* Added mouse hover style for the primary key that referred to a block in the database.
+* Adjusted the placeholder text color.
+* Fixed the position offset of the checkbox for the selected entries in the database when displayed in full width.
+* Fixed the border difference of the edit menu for the primary key in the database relation column in dark mode.
+* Fixed the gap on the left side of the frozen columns in the database when displayed in full width.
+* Removed the horizontal scrollbar for database in full-width display.
+* Removed support for the property name `asri-full-width-display` and replaced it with `afwd`.
+
+---
+
+### v2.1.9
 
 * 优化网络图片角标样式
 * 统一集市卡片容器外边距
@@ -11,8 +29,6 @@
 * 修复数据库关联列中主键的编辑菜单背景色异常
 
 <br />
-
-ℹ️ The attribute name for full-width display has been changed to `afwd`. Check theme documentation for details. The previous version's attribute name `asri-full-width-display` will be deprecated in future updates.
 
 * Optimized the style of the network image badge.
 * Unified the margin of the marketplace item cards container.

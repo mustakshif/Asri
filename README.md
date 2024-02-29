@@ -10,17 +10,15 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.9
+### v2.1.10
 
-ℹ️ The attribute name for full-width display has been changed to `afwd`. Check theme documentation for details. The previous version's attribute name `asri-full-width-display` will be deprecated in future updates.
-
-* Optimized the style of the network image badge.
-* Unified the margin of the marketplace item cards container.
-* Adjusted the inner padding of the database view tab.
-* Changed the color of the checked state of the database checkbox attribute to the primary color.
-* Fixed the issue where the outline tab overlapped with the top bar when the docks and side panels were hidden.
-* Fixed the abnormal display of highlighted keywords in search results in some cases.
-* Fixed the abnormal background color of the edit menu for keys in the database relation columns.
+* Added mouse hover style for the primary key that referred to a block in the database.
+* Adjusted the placeholder text color.
+* Fixed the position offset of the checkbox for the selected entries in the database when displayed in full width.
+* Fixed the border difference of the edit menu for the primary key in the database relation column in dark mode.
+* Fixed the gap on the left side of the frozen columns in the database when displayed in full width.
+* Removed the horizontal scrollbar for database in full-width display.
+* Removed support for the property name `asri-full-width-display` and replaced it with `afwd`.
 
 Check all updates [here](./CHANGELOG.md).
 
@@ -124,7 +122,6 @@ To restore the default state of the block, manually delete this custom attribute
 * Full-width display only applies to the **first-level** blocks in the document. If a block is nested in other content blocks, applying this attribute to it will not produce any effect. For example, applying this attribute to an image paragraph block in a blockquote will not change the style of the paragraph block unless the external blockquote is cancelled.
 * Full-width display is only effective in the editing area of the main window and small windows, and does not work in block reference preview windows, export previews, backlink panel, search result previews, etc.
 * Enabling full-width display may cause the page to feel more jumpy when the editing area's size changes and automatically returns to the cursor position.
-* The previous version's attribute name `asri-full-width-display` will be deprecated in future updates.
 
 ## Acknowledgements
 
