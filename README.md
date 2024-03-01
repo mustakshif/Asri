@@ -29,12 +29,19 @@ Check all updates [here](./CHANGELOG.md).
 * ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar[^1]<sup>, </sup>[^2]
 * 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
 * 🌅 Removal of unnecessary spacing between app's layout blocks, expanding the display range
-* 👁️ Enabled high readability glyph variants for note-taking scenarios `# macOS` `#iOS` `#iPadOS`
+* 👁️ Enabled high readability glyph variants for note-taking scenarios[^3] `# macOS` `#iOS` `#iPadOS`
 * 🌓 Support for light and dark modes
 
 [^1]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
 
 [^2]: If top bar icons or dividers appear misaligned or overlapped, resizing the edit area or app window may fix it.
+
+[^3]: If encountering glyph abnormalities when using custom fonts, please add the following CSS code snippet to fix the issue:
+    ```CSS
+    layout-tab-container, .protyle-content, .b3-typography {
+        font-feature-settings: normal !important;
+    }
+    ```
 
 ### 📐 Flexible and Elegant Layout
 
