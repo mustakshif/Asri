@@ -38,7 +38,7 @@ Check all updates [here](./CHANGELOG.md).
 
 [^3]: If encountering glyph abnormalities when using custom fonts, please add the following CSS code snippet to fix the issue:
     ```CSS
-    layout-tab-container, .protyle-content, .b3-typography {
+    .layout-tab-container, .protyle-content, .b3-typography {
         font-feature-settings: normal !important;
     }
     ```

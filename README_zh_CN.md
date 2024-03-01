@@ -38,7 +38,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 [^3]: 如果使用自定义字体时发现字形错误，请在代码片段中添加以下 CSS 代码修复：
     ```CSS
-    layout-tab-container, .protyle-content, .b3-typography {
+    .layout-tab-container, .protyle-content, .b3-typography {
         font-feature-settings: normal !important;
     }
     ```
