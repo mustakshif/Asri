@@ -823,9 +823,9 @@ div[id*=configBazaar] {
 
 //导出窗口 ——————————————————————————
 
-#preview {
-    font-feature-settings: "ss06" on;
-}
+// #preview {
+//     font-feature-settings: "ss06" on;
+// } //避免在非苹果设备上出现意外的字形渲染结果
 
 #aciton {
     .b3-button--cancel {

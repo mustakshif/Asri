@@ -71,6 +71,7 @@
     const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
     const isInBrowser = asriDoms.toolbar?.classList.contains('toolbar--browser') > 0;
     const isMiniWindow = document.body.classList.contains('body--window') > 0;
+    const isAndroid = window.siyuan.config.system.container === "android";
 
     let AsriClassNames = [],
         AsriDeletedRules = [],
@@ -80,6 +81,7 @@
     isLinux && document.body.classList.add('body--linux'), AsriClassNames.push('.body--linux');
     isMobile && document.body.classList.add('body--mobile'), AsriClassNames.push('.body--mobile');
     isInBrowser && document.body.classList.add("body--browser"), AsriClassNames.push('.body--browser');
+    isAndroid && document.body.classList.add("body--android"), AsriClassNames.push('.body--android');
 
     // Array.prototype.pushUnique = function (item) {
     //     if (!this.includes(item)) {

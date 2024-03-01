@@ -734,8 +734,6 @@
 }
 
 .layout-tab-container {
-    font-feature-settings: "ss06" on;
-    //启用高可读性字形变体
     background-color: transparent;
     transition: padding 0.2s;
 }
@@ -744,10 +742,6 @@
     // font-variant-emoji: emoji; // 不受支持
 
     // background-color: transparent; // 全屏视图下是透明的
-
-    &-content {
-        font-feature-settings: "ss06" on;
-    }
 
     // 题头图区域
     &-background {
@@ -1005,7 +999,6 @@
 }
 
 .b3-typography {
-    font-feature-settings: "ss06" on;
     font-variant-ligatures: normal;
     // font-variant-emoji: emoji; // 不受支持
 

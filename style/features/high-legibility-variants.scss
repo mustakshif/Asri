@@ -1,0 +1,7 @@
+body:not(.body--android, .body--win32, .body--linux) {
+    .layout-tab-container,
+    .protyle-content,
+    .b3-typography {
+        font-feature-settings: "ss06" on;
+    }
+}
