@@ -29,6 +29,7 @@ Check all updates [here](./CHANGELOG.md).
 * ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar[^1]<sup>, </sup>[^2]
 * 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
 * 🌅 Removal of unnecessary spacing between app's layout blocks, expanding the display range
+* 👁️ Enabled high readability glyph variants for note-taking scenarios `# macOS` `#iOS` `#iPadOS`
 * 🌓 Support for light and dark modes
 
 [^1]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
@@ -47,7 +48,7 @@ Check all updates [here](./CHANGELOG.md).
 
 * 🗂️ Added indent guides for file tree and outline
 * 🔍 Optimized the display of search lists and backlink lists
-* ↕️ Applied system scrollbar on macOS, which can be hidden automatically and reduce visual interference
+* ↕️ Enabled native scrollbar, which can auto-hide to reduce visual clutter `# macOS`
 
 ### 👆 Delicate and Smooth Interaction
 
