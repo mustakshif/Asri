@@ -98,8 +98,8 @@
             }
     
             &:hover {
-                max-width: 400px;
-                transition: max-width 300ms;
+                max-width: 90vw;
+                transition: max-width 300ms .125s;
             }
         }
     
