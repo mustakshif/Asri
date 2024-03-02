@@ -559,6 +559,10 @@
             transform: translateY(-50%);
         }
 
+        .protyle-action__title {
+            padding: .5em 0 0;
+        }
+
         &:hover {
             .protyle-action__drag {
                 box-shadow: 0 0 0 1px var(--b3-theme-on-surface);

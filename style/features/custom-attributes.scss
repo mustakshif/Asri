@@ -39,7 +39,7 @@ body:not([style*='-webkit-print-color-adjust']) {
                 // 图片标题
                 .protyle-action__title {
                     width: auto;
-                    padding: 0 var(--protyle-spacing);
+                    padding: .5em var(--protyle-spacing) 0;
                 }
             }
         }
