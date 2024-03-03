@@ -194,7 +194,7 @@ body:not([style*='-webkit-print-color-adjust']) {
     }
 }
 
-// rtl mode ———————————————————————
+// text direction ———————————————————————
 .protyle-wysiwyg {
     &[custom-tdir=rtl] {
         direction: rtl;

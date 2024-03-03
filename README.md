@@ -28,8 +28,9 @@ Check all updates [here](./CHANGELOG.md).
 
 * ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar[^1]<sup>, </sup>[^2]
 * 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
-* 🌅 Removal of unnecessary spacing between app's layout blocks, expanding the display range
 * 👁️ Enabled high readability glyph variants for note-taking scenarios[^3] `#macOS` `#iOS` `#iPadOS`
+* 🚏 Support for document-level text direction settings to meet typesetting needs for various languages
+
 * 🌓 Support for light and dark modes
 
 [^1]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
@@ -137,8 +138,10 @@ This attribute applies only to document blocks to uniformly render content from 
 
 | Attribute | Value | Description |
 | ------ | ------ | ------ |
-| `tdir`               | `ltr`                | Renders document content from left to right, suitable for languages like Chinese and English. |
-| `tdir`               | `rtl`                | Renders document content from right to left, suitable for languages like Arabic.        |
+| `tdir`               | `ltr`                | Renders document content from left to right, ideal for left-to-right languages like Chinese and English. |
+| `tdir`               | `rtl`                | Renders document content from right to left, ideal for right-to-left languages like Arabic.        |
+
+This attribute does not take effect in the backlink panel.
 
 ## Acknowledgements
 
