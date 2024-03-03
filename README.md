@@ -131,6 +131,15 @@ To restore the default state of the block, manually delete this custom attribute
 * Full-width display is only effective in the editing area of the main window and small windows, and does not work in block reference preview windows, export previews, backlink panel, search result previews, etc.
 * Enabling full-width display may cause the page to feel more jumpy when the editing area's size changes and automatically returns to the cursor position.
 
+### Document Text Direction (`tdir`)
+
+This attribute applies only to document blocks to uniformly render content from left-to-right or right-to-left. It is independent of global settings and does not override individual layout settings for blocks within the document.
+
+| Attribute | Value | Description |
+| ------ | ------ | ------ |
+| `tdir`               | `ltr`                | Renders document content from left to right, suitable for languages like Chinese and English. |
+| `tdir`               | `rtl`                | Renders document content from right to left, suitable for languages like Arabic.        |
+
 ## Acknowledgements
 
 The theme development process drew inspiration from the following themes, and I would like to express my gratitude to their developers:
@@ -142,11 +151,6 @@ The theme development process drew inspiration from the following themes, and I 
 | - Topbar-tabbar mergence<br />- File tree indent guides<br />- MutationObserver related functions | [Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
 
 （The order in the list above does not imply any ranking）
-
-Other reference materials:
-
-* macOS Sonoma system applications
-* [Apple's Human Interface Guidelines - Foundations - Color](https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/)
 
 ## Feedbacks & suggestions
 - Create an issue or PR at [the project page](https://github.com/mustakshif/Asri/)

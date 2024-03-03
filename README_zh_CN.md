@@ -131,6 +131,15 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * 全宽显示仅在主窗口和小窗编辑区有效，块引用预览窗、导出预览、反链面板和搜索结果预览等场景均不生效。
 * 启用全宽显示可能导致编辑区大小改变后，自动返回光标所在位置时页面的跳动感增强。
 
+### 文档文字方向（`tdir`）
+
+仅应用于文档块，使文档内容统一从左至右或从右至左渲染。该属性不受全局设置影响，不会覆盖文档中块的单独布局设置。
+
+| 属性名 | 属性值 | 说明 |
+| -------- | -------- | --------- |
+| `tdir`       | `ltr`       | 使文档内容从左至右渲染，适合中文、英文等 |
+| `tdir`       | `rtl`       | 使文档内容从右向左渲染，适合阿拉伯文等 |
+
 ## 鸣谢
 
 主题制作过程中参考借鉴了以下主题的思路，在此对各位主题开发者表示感谢：
@@ -142,10 +151,6 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 | - 顶栏页签栏合并<br />- 文档树缩进线<br />- DOM 变动观察相关函数 | [Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
 
 (以上排名不分先后)
-
-其他参考内容：
-* macOS Sonoma 系统应用样式
-* [苹果人机界面指南 - 基础 - 颜色](https://developer.apple.com/cn/design/human-interface-guidelines/color)
 
 ## 反馈和建议
 - [项目主页](https://github.com/mustakshif/Asri/)提交 issue 或 PR
