@@ -30,7 +30,6 @@ Check all updates [here](./CHANGELOG.md).
 * 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
 * 👁️ Enabled high readability glyph variants for note-taking scenarios[^3] `#macOS` `#iOS` `#iPadOS`
 * 🚏 Support for document-level text direction settings to meet typesetting needs for various languages
-
 * 🌓 Support for light and dark modes
 
 [^1]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).

@@ -155,7 +155,7 @@
 
     let isWinResizing = false, winResizeTimeout, centerResizeTimeout, fromFullscreen;
     let dragRectLeftInitial = asriDoms.drag?.getBoundingClientRect().left,
-    dragRectRightInitial = asriDoms.drag?.getBoundingClientRect().right;
+        dragRectRightInitial = asriDoms.drag?.getBoundingClientRect().right;
     let topbarRect = asriDoms.toolbar?.getBoundingClientRect();
     function handleWinResize() {
         // if (!isInBrowser && !isMobile) {
@@ -207,12 +207,12 @@
                 calcTabbarSpacings();
                 setTimeout(() => {
                     calcProtyleSpacings();
-                }, 200); 
+                }, 200);
             } else {
                 updateWndEls();
                 setTimeout(() => {
                     calcProtyleSpacings();
-                }, 200); 
+                }, 200);
             }
         }, 200);
 
@@ -324,16 +324,16 @@
 
                 // calc & apply tabbarSpacing
                 if (isOverlapping(tabbarContainerRect, dragRect) || isOverlapping(tabbarContainerRect, topbarRect)) {
-                    let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 4 + 'px' : '';
-                    let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 + 'px' : '';
+                    let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 4 : 0;
+                    let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 : 0;
 
-                    tabbarContainer.style.paddingLeft = paddingLeftValue;
-                    tabbarContainer.style.paddingRight = paddingRightValue;
+                    tabbarContainer.style.paddingLeft = paddingLeftValue + 'px';
+                    tabbarContainer.style.paddingRight = paddingRightValue + 'px';
 
                     // asriDoms.drag = document.getElementById('drag');
 
                     // 极窄宽度下添加上边距
-                    if ((tabbarContainerRect.right - 200 < dragRect.left && tabbarContainerRect.left < dragRect.left) || (tabbarContainerRect.left + 200 > dragRect.right && tabbarContainerRect.right > dragRect.right)) {
+                    if ((tabbarContainerRect.right - paddingRightValue - 240 < dragRect.left && tabbarContainerRect.left < dragRect.left) || (tabbarContainerRect.left + paddingLeftValue + 240 > dragRect.right && tabbarContainerRect.right > dragRect.right)) {
                         tabbarContainer.style.paddingTop = '42px';
                         tabbarContainer.style.paddingLeft = 0;
                         tabbarContainer.style.paddingRight = 0;
