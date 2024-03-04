@@ -10,15 +10,14 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.10
+### v2.1.11
 
-* Added mouse hover style for the primary key that referred to a block in the database.
-* Adjusted the placeholder text color.
-* Fixed the position offset of the checkbox for the selected entries in the database when displayed in full width.
-* Fixed the border difference of the edit menu for the primary key in the database relation column in dark mode.
-* Fixed the gap on the left side of the frozen columns in the database when displayed in full width.
-* Removed the horizontal scrollbar for database in full-width display.
-* Removed support for the property name `asri-full-width-display` and replaced it with `afwd`.
+* Added custom attribute `tdir` to control the overall text direction of the document content. Please refer to the theme instructions for details.
+* Increased the top spacing of image titles, and the left and right spacings when displayed in full width.
+* Optimized the display of the tab bar under extremely narrow widths.
+* Optimized the line height of search results in the `Move` window.
+* Increased the maximum width limit of of the status bar messages on hovering.
+* Fixed an issue where the capital letter "M" would change to the "MIUI" font on Xiaomi mobile devices with the default font.
 
 Check all updates [here](./CHANGELOG.md).
 
@@ -60,7 +59,7 @@ Check all updates [here](./CHANGELOG.md).
 ### 👆 Delicate and Smooth Interaction
 
 * ⏱️ Improved animation responding timing to optimize interface feedback frequency and reduce distraction
-* ⚙️ Redesigned the styles of controls for iFrame, videos, images, etc.
+* ⚙️ Redesigned the styles for controls of iFrames, images, embedded blocks etc.
 * 💫 Appropriately added lively animations, enriching the interactive experience
 * 🚀 Maintained a high level of smooth performance
 
@@ -71,7 +70,7 @@ Check all updates [here](./CHANGELOG.md).
 
 ## Custom Attribute
 
-### Asri full-width display (`afwd`)
+### `afwd`: Asri full-width display
 
 ![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v7.gif)
 
@@ -131,7 +130,7 @@ To restore the default state of the block, manually delete this custom attribute
 * Full-width display is only effective in the editing area of the main window and small windows, and does not work in block reference preview windows, export previews, backlink panel, search result previews, etc.
 * Enabling full-width display may cause the page to feel more jumpy when the editing area's size changes and automatically returns to the cursor position.
 
-### Document Text Direction (`tdir`)
+### `tdir`: Document text direction
 
 This attribute applies only to document blocks to uniformly render content from left-to-right or right-to-left. It is independent of global settings and does not override individual layout settings for blocks within the document.
 

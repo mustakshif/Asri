@@ -1,3 +1,21 @@
+### v2.1.11
+
+*  新增自定义属性 `tdir`，用于整体控制文档内容的文字方向，详见主题说明
+* 增加图片标题的上边距和全宽显示下的左右边距
+* 优化极窄宽度下页签栏的显示
+* 优化 `移动` 窗口搜索结果的行高
+* 提高状态栏消息部分悬停展示的宽度上限
+* 修复小米移动端默认字体下大写 M 变为 MIUI 字样的问题
+
+* Added custom attribute `tdir` to control the overall text direction of the document content. Please refer to the theme instructions for details.
+* Increased the top spacing of image titles, and the left and right spacings when displayed in full width.
+* Optimized the display of the tab bar under extremely narrow widths.
+* Optimized the line height of search results in the `Move` window.
+* Increased the maximum width limit of of the status bar messages on hovering.
+* Fixed an issue where the capital letter "M" would change to the "MIUI" font on Xiaomi mobile devices with the default font.
+
+---
+
 ### v2.1.10
 
 * 新增数据库已关联块的主键的鼠标悬停样式
