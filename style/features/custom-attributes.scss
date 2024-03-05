@@ -7,10 +7,10 @@ body:not([style*='-webkit-print-color-adjust']) {
     .protyle-wysiwyg {
 
         // 图片 ——————————————————————
-       
+
         &[custom-afwd="all"]>.p:not([custom-afwd="off"]),
         &[custom-afwd~="p"]>.p:not([custom-afwd="off"]),
-        >.p[custom-afwd="on"]{
+        >.p[custom-afwd="on"] {
 
             .img {
                 margin: 0 calc(-1 * var(--protyle-spacing) - 9px);
@@ -45,10 +45,10 @@ body:not([style*='-webkit-print-color-adjust']) {
         }
 
         // iframe ———————————————————
-        
+
         &[custom-afwd="all"]>.iframe:not([custom-afwd="off"]),
         &[custom-afwd~="iframe"]>.iframe:not([custom-afwd="off"]),
-        >.iframe[custom-afwd="on"]{
+        >.iframe[custom-afwd="on"] {
 
             margin: calc(-12em / 17) 0;
 
@@ -101,10 +101,10 @@ body:not([style*='-webkit-print-color-adjust']) {
 
 
         // 数据库 ——————————————————
-        
+
         &[custom-afwd="all"]>.av:not([custom-afwd="off"]),
         &[custom-afwd~="db"]>.av:not([custom-afwd="off"]),
-        >.av[custom-afwd="on"]{
+        >.av[custom-afwd="on"] {
             .av__container {
                 margin: 0 calc(var(--protyle-spacing) * -1 - 3px);
 
@@ -114,7 +114,7 @@ body:not([style*='-webkit-print-color-adjust']) {
                 }
 
                 .av__scroll::-webkit-scrollbar {
-                   display: none;
+                    display: none;
                 }
 
                 // 「添加行」按钮
@@ -146,10 +146,10 @@ body:not([style*='-webkit-print-color-adjust']) {
 
 
         // 超级块 ————————————————————
-       
+
         &[custom-afwd="all"]>.sb[data-sb-layout="col"]:not([custom-afwd="off"]),
         &[custom-afwd~="sb"]>.sb[data-sb-layout="col"]:not([custom-afwd="off"]),
-        >.sb[data-sb-layout="col"][custom-afwd="on"]{
+        >.sb[data-sb-layout="col"][custom-afwd="on"] {
             > :first-child {
                 margin-left: calc(var(--protyle-spacing)*-1 + min(24px, var(--protyle-spacing)));
 
@@ -187,6 +187,7 @@ body:not([style*='-webkit-print-color-adjust']) {
 
 // 数据库添加、拖移按钮
 .protyle-gutters {
+
     [data-type="NodeAttributeViewRow"],
     [data-type="NodeAttributeViewRowMenu"] {
         // transform: translateX(min(calc(var(--protyle-spacing) * -1 + 72px), 0px));
@@ -195,11 +196,10 @@ body:not([style*='-webkit-print-color-adjust']) {
 }
 
 // text direction ———————————————————————
-.protyle-wysiwyg {
-    &[custom-tdir=rtl] {
-        direction: rtl;
-    }
-    &[custom-tdir=ltr] {
-        direction: ltr;
-    }
+[custom-tdir=rtl] {
+    direction: rtl;
+}
+
+[custom-tdir=ltr] {
+    direction: ltr;
 }

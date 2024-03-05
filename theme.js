@@ -1018,6 +1018,34 @@
     //     })
     // }
 
+    /**
+     * 获取当前活动节点。
+     * 如果提供了目标节点选择器，则会向上遍历DOM直到找到匹配的目标节点。
+     * 
+     * @param {string} targetNodeSelector 可选，目标节点的选择器字符串。
+     * @returns {Element|null} 返回匹配的目标节点或当前活动节点的父元素；如果没有匹配或活动节点不在指定类名下，则返回null。
+     */
+    function getActiveTargetNode(targetNodeSelector = '') {
+        if (document.activeElement.classList.contains('protyle-wysiwyg')) {
+            let node = window.getSelection()?.focusNode?.parentElement;
+
+            if (node && !targetNodeSelector) return node;
+
+            // If a target node selector is provided, traverse up the DOM until we find a match
+            if (node && targetNodeSelector) {
+                while (node && !node.parentElement.matches(targetNodeSelector)) {
+                    node = node.parentElement;
+                }
+
+                // Return the matched node or null if no match found
+                return node ? node : null;
+            }
+        }
+
+        // If no active element within the 'protyle-wysiwyg' class, return null
+        return null;
+    }
+
     function handleDblClick(event) {
         document.body.style.setProperty('--mouseX', event.clientX + 'px');
         document.body.style.setProperty('--mouseY', event.clientY + 'px');

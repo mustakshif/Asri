@@ -35,7 +35,7 @@ Check all updates [here](./CHANGELOG.md).
 
 [^2]: If top bar icons or dividers appear misaligned or overlapped, resizing the edit area or app window may fix it.
 
-[^3]: If encountering glyph abnormalities when using custom fonts, please add the following CSS code snippet to fix the issue:
+[^3]: To disable this feature or address glyph errors when using custom fonts, you can use the following CSS code snippet:
     ```CSS
     .layout-tab-container, .protyle-content, .b3-typography {
         font-feature-settings: normal !important;
@@ -134,12 +134,14 @@ To restore the default state of the block, manually delete this custom attribute
 
 This attribute applies only to document blocks to uniformly render content from left-to-right or right-to-left. It is independent of global settings and does not override individual layout settings for blocks within the document.
 
+Applies exclusively to document blocks, ensuring that content within the block is consistently rendered from left-to-right or right-to-left for ease of writing and reading. This property is independent of global settings and does not override individual layout settings of blocks within the document.
+
 | Attribute | Value | Description |
 | ------ | ------ | ------ |
 | `tdir`               | `ltr`                | Renders document content from left to right, ideal for left-to-right languages like Chinese and English. |
 | `tdir`               | `rtl`                | Renders document content from right to left, ideal for right-to-left languages like Arabic.        |
 
-This attribute does not take effect in the backlink panel.
+This attribute does not take effect in backlink lists and export previews.
 
 ## Acknowledgements
 

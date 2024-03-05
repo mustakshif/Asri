@@ -22,12 +22,14 @@
                 background-color: var(--b3-menu-item-background-hover);
                 color: var(--b3-menu-item-background-hover-text);
 
-                &>.b3-menu__icon {
+                &>.b3-menu__icon,
+                &>.b3-menu__label>.b3-menu__icon{
                     color: var(--b3-menu-item-background-hover-text) !important;
                 }
 
                 &>.b3-menu__accelerator {
-                    @extend .b3-menu__icon;
+                    // @extend .b3-menu__icon;
+                    color: var(--b3-menu-item-background-hover-text);
                     opacity: 0.8;
                 }
 
@@ -66,6 +68,7 @@
 
         .b3-menu__icon {
             color: var(--b3-theme-on-surface);
+            font-family: var(--b3-font-family-emoji);
         }
 
         .b3-menu__separator {
@@ -149,6 +152,11 @@
     .b3-list-item--two {
         .b3-list-item__text {
             font-weight: 500;
+
+            > mark {
+                color: var(--b3-theme-primary);
+                background-color: transparent;
+            }
         }
     }
 
