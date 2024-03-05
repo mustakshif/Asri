@@ -397,7 +397,7 @@ div[id*=configBazaar] {
         gap: 20px;
         margin: 10px 20px 20px;
 
-        > .fn__flex-1 {
+        >.fn__flex-1 {
             display: none;
         }
     }
@@ -1102,6 +1102,12 @@ body[style*="-webkit-print-color-adjust"] {
 }
 
 // 移动块窗口 ———————————————————————————————————————
-#foldList .b3-list-item__showall {
-    line-height: 1.5;
+[data-key="dialog-movepathto"] {
+    .b3-dialog__header > div {
+        text-wrap: nowrap;
+        overflow-x: auto;
+    }
+    #foldList .b3-list-item__showall {
+        line-height: 1.5;
+    }
 }

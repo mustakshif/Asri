@@ -39,9 +39,11 @@
 
                 &>.b3-menu__action {
                     color: var(--b3-theme-on-primary);
-
+                    opacity: .8;
                     &:hover {
                         opacity: 1;
+                        color: inherit;
+                        background-color: transparent;
                     }
                 }
             }
