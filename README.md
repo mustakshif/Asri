@@ -48,7 +48,6 @@ Check all updates [here](./CHANGELOG.md).
 * 🦋 Support for full-width display of images, videos, widgets, databases, superblocks and more, providing diverse formatting layouts
 * ➖ Simplified dividers, creating an integrated, refreshing and tidy layout style
 * 🔛 Width-adaptive layout, making full use of screen space
-* 🚥 Adjusted the position of window controls, optimizing the layout rhythm `#macOS`
 
 ### 🧭 Convenient and Clear Navigation
 

@@ -151,6 +151,12 @@
                                 padding: 8px 16px;
                                 background-color: var(--b3-theme-background);
 
+
+                                .b3-form__icon .b3-text-field {
+                                    @media (max-width: 830px) {width: calc(100% - 32px)};
+                                }
+
+
                                 .b3-switch {
                                     transform: translateX(11px);
                                     margin: 0 !important;
@@ -407,12 +413,12 @@
             //     flex-grow: 1;
             // }
 
-            > [data-type="setting"] {
+            >[data-type="setting"] {
                 margin-left: auto;
                 justify-content: end;
                 flex-grow: 1;
-                
-                &.fn__none ~ [data-type="uninstall"] {
+
+                &.fn__none~[data-type="uninstall"] {
                     margin-left: auto;
                     justify-content: end;
                     flex-grow: 1;
