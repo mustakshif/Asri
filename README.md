@@ -132,8 +132,6 @@ To restore the default state of the block, manually delete this custom attribute
 
 ### `tdir`: Document text direction
 
-This attribute applies only to document blocks to uniformly render content from left-to-right or right-to-left. It is independent of global settings and does not override individual layout settings for blocks within the document.
-
 Applies exclusively to document blocks, ensuring that content within the block is consistently rendered from left-to-right or right-to-left for ease of writing and reading. This property is independent of global settings and does not override individual layout settings of blocks within the document.
 
 | Attribute | Value | Description |
