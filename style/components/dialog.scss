@@ -153,7 +153,11 @@
 
 
                                 .b3-form__icon .b3-text-field {
-                                    @media (max-width: 830px) {width: calc(100% - 32px)};
+                                    @media (max-width: 830px) {
+                                        width: calc(100% - 32px)
+                                    }
+
+                                    ;
                                 }
 
 
@@ -418,10 +422,22 @@
                 justify-content: end;
                 flex-grow: 1;
 
+                // tooltip
+                &::after {
+                    right: 0;
+                    margin-right: 0;
+                }
+
                 &.fn__none~[data-type="uninstall"] {
                     margin-left: auto;
                     justify-content: end;
                     flex-grow: 1;
+
+                    // tooltip
+                    &::after {
+                        right: 0;
+                        margin-right: 0;
+                    }
                 }
             }
 
