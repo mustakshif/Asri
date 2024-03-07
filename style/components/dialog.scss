@@ -384,7 +384,7 @@
 #configBazaarDownloaded {
     // padding: 0 0 16px 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(342px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
     gap: 20px;
     margin: 10px 20px 20px;
     width: auto;
@@ -412,37 +412,23 @@
         >.b3-card__actions {
             grid-area: buttons;
             padding: 0 16px 14px;
+            align-self: flex-end;
 
-            // >.fn__space {
-            //     flex-grow: 1;
-            // }
-
-            >[data-type="setting"] {
+            >[data-type="setting"],
+            >[data-type="setting"].fn__none~[data-type="uninstall"] {
                 margin-left: auto;
                 justify-content: end;
-                flex-grow: 1;
+                // flex-grow: 1; // 鼠标移至空白区域时也会激活图标
 
                 // tooltip
                 &::after {
                     right: 0;
                     margin-right: 0;
                 }
-
-                &.fn__none~[data-type="uninstall"] {
-                    margin-left: auto;
-                    justify-content: end;
-                    flex-grow: 1;
-
-                    // tooltip
-                    &::after {
-                        right: 0;
-                        margin-right: 0;
-                    }
-                }
             }
 
-
-            &--right .block__icon:nth-child(1 of :not(.fn__none)) {
+            // 爱发电图标
+            &--right a {
                 margin-left: 0;
             }
         }
@@ -463,7 +449,7 @@ div[id*=configBazaar] {
 
     .b3-cards {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(342px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
         gap: 20px;
         margin: 10px 20px 20px;
 
@@ -488,6 +474,10 @@ div[id*=configBazaar] {
             @include darkmode-counterpart {
                 outline-color: var(--b3-theme-primary-light);
             }
+        }
+
+        &--wrap {
+            min-width: 330px;
         }
 
         &__info {
