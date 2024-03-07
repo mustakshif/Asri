@@ -10,14 +10,16 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.11
+### v2.1.12
 
-* Added custom attribute `tdir` to control the overall text direction of the document content. Please refer to the theme instructions for details.
-* Increased the top spacing of image titles, and the left and right spacings when displayed in full width.
-* Optimized the display of the tab bar under extremely narrow widths.
-* Optimized the line height of search results in the `Move` window.
-* Increased the maximum width limit of of the status bar messages on hovering.
-* Fixed an issue where the capital letter "M" would change to the "MIUI" font on Xiaomi mobile devices with the default font.
+* Unified the layout style of the downloaded page and other pages in Marketplace.
+* Unified the highlighted text style for blockquote search lists.
+* Unified the interface style for the `List Blocks with Invalid References` interface and the search interface.
+* Unified the style of the reference search menu and external menu in the `List Blocks with Invalid References` interface.
+* Optimized the display of the marketplace search bar and project descriptions on small viewport widths.
+* Fine-tuned the mouse hover style of the operational icons in menu items.
+* Modified the path under the title of the `Move` window to be displayed without line breaks and with horizontal scrolling.
+* Fixed the color of the icon in the highlighted option from the database menu.
 
 Check all updates [here](./CHANGELOG.md).
 

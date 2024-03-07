@@ -1,3 +1,25 @@
+### v2.1.12
+
+* 统一集市已下载和其他页面的布局样式
+* 统一块引用搜索列表高亮文字样式
+* 统一 `列出引用失效的块` 界面和搜索界面样式
+* 统一 `列出引用失效的块` 界面中引用搜索菜单和外部同类菜单的样式
+* 优化小视口宽度下集市搜索框和和已下载项目说明内容的显示
+* 微调菜单项目右侧可操作图标的鼠标悬停样式
+* 修改 `移动` 窗口标题下的路径为不换行、横向滚动
+* 修复数据库菜单高亮选项中图标的颜色
+
+* Unified the layout style of the downloaded page and other pages in Marketplace.
+* Unified the highlighted text style for blockquote search lists.
+* Unified the interface style for the `List Blocks with Invalid References` interface and the search interface.
+* Unified the style of the reference search menu and external menu in the `List Blocks with Invalid References` interface.
+* Optimized the display of the marketplace search bar and project descriptions on small viewport widths.
+* Fine-tuned the mouse hover style of the operational icons in menu items.
+* Modified the path under the title of the `Move` window to be displayed without line breaks and with horizontal scrolling.
+* Fixed the color of the icon in the highlighted option from the database menu.
+
+---
+
 ### v2.1.11
 
 *  新增自定义属性 `tdir`，用于整体控制文档内容的文字方向，详见主题说明
