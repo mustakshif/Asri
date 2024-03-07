@@ -805,6 +805,27 @@ div[id*=configBazaar] {
     }
 }
 
+// 引用失效面板
+#searchUnRefList {
+    @extend #searchList;
+}
+
+#searchUnRefPreview {
+    padding: 0 !important;
+
+    .protyle-breadcrumb {
+        font-size: 14px;
+    }
+
+    .protyle-hint {
+        font-size: 14px !important;
+        
+        mark {
+            box-shadow: none;
+        }
+    }
+}
+
 // 随机题头图列表
 [data-key="dialog-backgroundrandom"] {
     .b3-dialog__body {

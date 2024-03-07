@@ -167,6 +167,15 @@
         opacity: 0.8;
     }
 
+    .b3-list-item--two .b3-list-item__meta {
+        padding: 4px 3px;
+
+        mark {
+            color: var(--b3-theme-primary);
+            background-color: transparent;
+        }
+    }
+
     // emojis
     .emojis {
         .fn__flex:last-child {

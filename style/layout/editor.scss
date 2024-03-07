@@ -1007,7 +1007,7 @@
     // font-variant-emoji: emoji; // 不受支持
 
     // @extend .protyle-wysiwyg;
-    >* {
+    &:not(#searchUnRefPreview) > * {
         border-radius: 10px;
     }
 
