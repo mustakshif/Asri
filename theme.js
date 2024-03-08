@@ -307,6 +307,10 @@
     }
 
     let wndElements = [];
+
+    /**
+     * 更新窗口元素, 跟calcTabbarSpacings()搭配使用
+     */
     function updateWndEls() {
         wndElements = asriDoms.layouts.querySelectorAll('[data-type="wnd"]');
         // let tabWndElements = asriDoms.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
@@ -315,6 +319,10 @@
         // tabWndElements.forEach(tabWnd => pushUnique(wndElements, tabWnd));
         // popoverWndElements.forEach(popoverWnd => pushUnique(wndElements, popoverWnd));
     }
+
+    /**
+     * 计算tabbar的间距，每次计算前使用一次updateWndEls()
+     */
     function calcTabbarSpacings() {
         if (!isMiniWindow) {
             wndElements.forEach(wnd => {
@@ -720,18 +728,21 @@
      */
     function formatIndentGuidesForFocusedItems() {
         if (!isMobile) {
-            let listItemsFocus = asriDoms.layouts.querySelectorAll('.file-tree .b3-list-item--focus');
+            setTimeout(() => {
+                let listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
 
-            asriDoms.layouts.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
+                document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
 
-            for (let li of listItemsFocus) {
-                if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
-                    li.parentNode.classList.add('has-focus');
-                    pushUnique(AsriClassNames, '.has-focus');
-                }
-            }
+                listItemsFocus.forEach(li => {
+                    if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
+                        li.parentNode.classList.add('has-focus');
+                        pushUnique(AsriClassNames, '.has-focus');
+                    }
+                })
+            }, 200);
         }
     }
+
     formatIndentGuidesForFocusedItems();
 
     function formatProtyleWithBgImageOnly() {
@@ -886,7 +897,8 @@
 
         let layouts = asriDoms.layouts;
         let lytsObserver = setCompoundMutationObserver(funcChildList, funcAttr, fucnCharacterData);
-        lytsObserver.observe(layouts, config); AsriObservers.push(lytsObserver);
+        lytsObserver.observe(layouts, config);
+        AsriObservers.push(lytsObserver);
     }
 
     // 开始监视变化
@@ -955,29 +967,8 @@
             // 状态栏
             statusObsever('attributes', setStatusHeightVar);
 
-            // 中心布局
-            layoutsObserver(
-                // childList mutation func
-                () => {
-                    // asriDoms.layouts = document.getElementById('layouts');
-                    setTimeout(() => {
-                        updateWndEls();
-                        calcTabbarSpacings();
-                        calcProtyleSpacings();
-                        // 适用于分屏操作时
 
-                        // statusPosition();
-                    }, 200);
-                    // runWhenIdle(formatSyBacklinkItemsLayout);
-                    formatIndentGuidesForFocusedItems();
-                    formatProtyleWithBgImageOnly();
-                    avoidOverlappingWithStatus();
-                    addDockbClassName();
-                },
-                undefined,
-                undefined,
-                true
-            )
+
         } else {
             layoutsObserver(
                 () => {
@@ -1046,16 +1037,41 @@
         return null;
     }
 
+    function handleLowFreqTasks() {
+        if (!isMobile) {
+            updateWndEls();
+            calcTabbarSpacings();
+            calcProtyleSpacings();
+
+            formatIndentGuidesForFocusedItems();
+            formatProtyleWithBgImageOnly();
+            avoidOverlappingWithStatus();
+            addDockbClassName();
+        }
+    }
+
+
+    function handleKeyUp(event) {
+        if (event.isComposing || event.keyCode === 229) {
+            return;
+        }
+        handleLowFreqTasks();
+    }
+
     function handleDblClick(event) {
         document.body.style.setProperty('--mouseX', event.clientX + 'px');
         document.body.style.setProperty('--mouseY', event.clientY + 'px');
     }
 
+    window.addEventListener('mouseup', handleLowFreqTasks, true);
+    window.addEventListener('keyup', handleKeyUp, true);
     window.addEventListener('dblclick', handleDblClick);
 
     window.destroyTheme = () => {
 
         // 取消事件监听
+        window.removeEventListener('mouseup', handleLowFreqTasks, true);
+        window.removeEventListener('keyup', handleLowFreqTasks, true);
         window.removeEventListener('dblclick', handleDblClick);
         window.removeEventListener('resize', handleWinResize);
 
