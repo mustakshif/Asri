@@ -55,6 +55,7 @@ body:not([style*='-webkit-print-color-adjust']) {
             .iframe-content {
                 display: block;
                 margin: calc(20em / 17) calc(var(--protyle-spacing) * -1 - 5px);
+                transition: margin .2s;
 
                 video,
                 iframe {
@@ -107,10 +108,12 @@ body:not([style*='-webkit-print-color-adjust']) {
         >.av[custom-afwd="on"] {
             .av__container {
                 margin: 0 calc(var(--protyle-spacing) * -1 - 3px);
+                transition: margin .2s;
 
                 .av__header,
                 .av__scroll {
                     padding: 0 calc(var(--protyle-spacing) + 3px);
+                    transition: padding .2s;
                 }
 
                 .av__scroll::-webkit-scrollbar {
@@ -152,6 +155,7 @@ body:not([style*='-webkit-print-color-adjust']) {
         >.sb[data-sb-layout="col"][custom-afwd="on"] {
             > :first-child {
                 margin-left: calc(var(--protyle-spacing)*-1 + min(24px, var(--protyle-spacing)));
+                transition: margin .2s;
 
                 // >*,
                 // .sb,

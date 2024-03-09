@@ -318,7 +318,7 @@
     #{$selector} {
         width: auto;
         font-variant-numeric: tabular-nums;
-        border-radius: 6px;
+        border-radius: 8px;
         border: 1px solid var(--b3-border-color-trans);
 
         td,
@@ -1008,7 +1008,7 @@
 
     // @extend .protyle-wysiwyg;
     &:not(#searchUnRefPreview) > * {
-        border-radius: 10px;
+        border-radius: 8px;
     }
 
     @include headings;
@@ -1028,6 +1028,7 @@
         // width: max-content;
         border: none;
         box-shadow: 0 0 0 1px var(--b3-border-color-trans);
+        overflow: hidden;
     }
 
     img {

@@ -307,6 +307,10 @@
     }
 
     let wndElements = [];
+
+    /**
+     * 更新窗口元素, 跟calcTabbarSpacings()和calcProtyleSpacings()搭配使用
+     */
     function updateWndEls() {
         wndElements = asriDoms.layouts.querySelectorAll('[data-type="wnd"]');
         // let tabWndElements = asriDoms.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
@@ -315,6 +319,10 @@
         // tabWndElements.forEach(tabWnd => pushUnique(wndElements, tabWnd));
         // popoverWndElements.forEach(popoverWnd => pushUnique(wndElements, popoverWnd));
     }
+
+    /**
+     * 计算tabbar的间距，每次计算前使用一次updateWndEls()
+     */
     function calcTabbarSpacings() {
         if (!isMiniWindow) {
             wndElements.forEach(wnd => {
@@ -355,15 +363,17 @@
 
             // 仅在protylePadding有变化时才应用样式
             if (protyles.length > 0) {
-                protyles.forEach(protyle => {
-                    // let protylePadding = window.getComputedStyle(protyle).paddingLeft;
-                    let protylePadding = protyle.style.paddingLeft;
-                    if (protylePadding !== protyle.dataset.prevPadding) {
-                        protyle.style.setProperty('--protyle-spacing', protylePadding);
-                        protyle.dataset.prevPadding = protylePadding;
-                        // console.log(protylePadding);
-                    }
-                })
+                setTimeout(() => {
+                    protyles.forEach(protyle => {
+                        // let protylePadding = Math.round(parseFloat(window.getComputedStyle(protyle).paddingLeft)) + 'px';
+                        let protylePadding = protyle.style.paddingLeft;
+                        if (protylePadding !== protyle.dataset.prevPadding) {
+                            protyle.style.setProperty('--protyle-spacing', protylePadding);
+                            protyle.dataset.prevPadding = protylePadding;
+                            // console.log(protylePadding);
+                        }
+                    })
+                }, 300); // protyle 过渡动画时间
             }
         })
     }
@@ -616,10 +626,6 @@
         }
     }
 
-    setTimeout(() => {
-        statusPosition();
-    }, 200);
-
 
     function setStatusHeightVar() {
         if (isStatusHidden()) document.body.style.setProperty('--status-height', '0px');
@@ -684,7 +690,7 @@
             }
 
             // flashcard in tabbar
-            asriDoms.layouts.querySelectorAll('.card__main').forEach(card => {
+            asriDoms.layouts?.querySelectorAll('.card__main').forEach(card => {
                 if (card) {
                     let cardRect = card.getBoundingClientRect();
 
@@ -720,18 +726,19 @@
      */
     function formatIndentGuidesForFocusedItems() {
         if (!isMobile) {
-            let listItemsFocus = asriDoms.layouts.querySelectorAll('.file-tree .b3-list-item--focus');
+            let listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
 
-            asriDoms.layouts.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
+            document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
 
-            for (let li of listItemsFocus) {
+            listItemsFocus.forEach(li => {
                 if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
                     li.parentNode.classList.add('has-focus');
                     pushUnique(AsriClassNames, '.has-focus');
                 }
-            }
+            })
         }
     }
+
     formatIndentGuidesForFocusedItems();
 
     function formatProtyleWithBgImageOnly() {
@@ -886,7 +893,8 @@
 
         let layouts = asriDoms.layouts;
         let lytsObserver = setCompoundMutationObserver(funcChildList, funcAttr, fucnCharacterData);
-        lytsObserver.observe(layouts, config); AsriObservers.push(lytsObserver);
+        lytsObserver.observe(layouts, config);
+        AsriObservers.push(lytsObserver);
     }
 
     // 开始监视变化
@@ -901,34 +909,12 @@
 
     if (!isMobile) {
         if (!isMiniWindow) {
-            // //顶栏
-            // topbarObserver('childList', () => {
-            //     topbar.style.setProperty('--topbar-left-spacing', 0);
-            //     topbar.style.setProperty('--topbar-right-spacing', 0);
-
-            //     dragleftRectRightInitial = asriDoms.drag.getBoundingClientRect().left;
-            //     dragRectRightInitial = asriDoms.drag.getBoundingClientRect().right;
-            // })
-
-            // // 左栏dock
-            // dockObserver('l', 'attributes', () => {
-            //     asriDoms.dockl = document.getElementById('dockLeft');
-            //     // tabbarSpacing();
-            // });
-            // // 右栏dock
-            // dockObserver('r', 'attributes', () => {
-            //     asriDoms.dockr = document.getElementById('dockRight');
-            //     // statusPosition();
-            //     avoidOverlappingWithStatus();
-            // });
-
             // 左栏面板
             dockLayoutObserver(
                 'l',
                 undefined,
                 () => {
                     setTimeout(() => {
-                        asriDoms.layoutDockl = document.querySelector('.layout__dockl');
                         // tabbarSpacing();
                         avoidOverlappingWithStatus();
                     }, 200); // 动画之后
@@ -943,7 +929,6 @@
                 undefined,
                 () => {
                     setTimeout(() => {
-                        asriDoms.layoutDockr = document.querySelector('.layout__dockr');
                         // statusPosition();
                         avoidOverlappingWithStatus();
                     }, 200);
@@ -955,44 +940,21 @@
             // 状态栏
             statusObsever('attributes', setStatusHeightVar);
 
-            // 中心布局
-            layoutsObserver(
-                // childList mutation func
-                () => {
-                    // asriDoms.layouts = document.getElementById('layouts');
-                    setTimeout(() => {
-                        updateWndEls();
-                        calcTabbarSpacings();
-                        calcProtyleSpacings();
-                        // 适用于分屏操作时
+            // layoutsObserver(
+            //     () => {
+            //         setTimeout(() => {
+            //             updateWndEls();
+            //             calcTabbarSpacings();
+            //             calcProtyleSpacings();
+            //             avoidOverlappingWithStatus();
+            //             console.log('1')
+            //         }, 200); // 动画之后
+            //     },
+            //     undefined,
+            //     undefined,
+            //     true
+            // )
 
-                        // statusPosition();
-                    }, 200);
-                    // runWhenIdle(formatSyBacklinkItemsLayout);
-                    formatIndentGuidesForFocusedItems();
-                    formatProtyleWithBgImageOnly();
-                    avoidOverlappingWithStatus();
-                    addDockbClassName();
-                },
-                undefined,
-                undefined,
-                true
-            )
-        } else {
-            layoutsObserver(
-                () => {
-                    setTimeout(() => {
-                        updateWndEls();
-                        calcProtyleSpacings();
-                        // 适用于分屏操作时
-                    }, 200);
-                    avoidOverlappingWithStatus();
-                    formatProtyleWithBgImageOnly();
-                },
-                undefined,
-                undefined,
-                true
-            )
         }
     }
 
@@ -1046,16 +1008,46 @@
         return null;
     }
 
+    function handleLowFreqTasks() {
+        if (!isMobile) {
+            setTimeout(() => {
+                updateWndEls();
+                calcTabbarSpacings();
+                calcProtyleSpacings();
+                formatIndentGuidesForFocusedItems();
+                formatProtyleWithBgImageOnly();
+                avoidOverlappingWithStatus();
+                addDockbClassName();
+                statusPosition();
+            }, 200);
+        }
+    }
+    handleLowFreqTasks();
+
+    function handleKeyUp(event) {
+        if (event.isComposing || event.keyCode === 229) {
+            // 忽略CJK输入法的输入事件
+            return;
+        }
+        handleLowFreqTasks();
+    }
+
     function handleDblClick(event) {
         document.body.style.setProperty('--mouseX', event.clientX + 'px');
         document.body.style.setProperty('--mouseY', event.clientY + 'px');
     }
 
+    window.addEventListener('mouseup', handleLowFreqTasks, true);
+    window.addEventListener('dragend', handleLowFreqTasks, true);
+    window.addEventListener('keyup', handleKeyUp, true);
     window.addEventListener('dblclick', handleDblClick);
 
     window.destroyTheme = () => {
 
         // 取消事件监听
+        window.removeEventListener('mouseup', handleLowFreqTasks, true);
+        window.removeEventListener('keyup', handleKeyUp, true);
+        window.removeEventListener('dragend', handleLowFreqTasks, true);
         window.removeEventListener('dblclick', handleDblClick);
         window.removeEventListener('resize', handleWinResize);
 

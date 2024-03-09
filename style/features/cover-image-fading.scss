@@ -28,35 +28,38 @@
     //             rgba(0, 0, 0, 0.05) 92%,
     //             transparent 99%);
     // }
-}    
+}
 
 //有题头图时
-.protyle-background[style="min-height: 30vh;"] {
-    margin-bottom: -48px;
+.protyle-background {
 
-    // &.without-icon {
-    //     min-height: calc(30vh - 80px) !important;
-    // }
+    &[style="min-height: 30vh;"] {
+        margin-bottom: -48px;
 
-    // 无文档图标时
-    &.without-icon {
-        // -> js
-        
-        margin-bottom: -120px;
+        // &.without-icon {
+        //     min-height: calc(30vh - 80px) !important;
+        // }
 
-        .protyle-icons:not(:nth-of-type(2)) {
-            transform: translateY(-48px);
-            z-index: 1;
+        // 无文档图标时
+        &.without-icon {
+            // -> js
+            transition: margin .2s 0s;
+            margin-bottom: -120px;
+
+            .protyle-icons:not(:nth-of-type(2)) {
+                transform: translateY(-48px);
+                z-index: 1;
+            }
+
+            .protyle-background__iconw {
+                transform: translateY(-96px);
+                z-index: 1;
+            }
         }
 
+        // 有文档图标
         .protyle-background__iconw {
-            transform: translateY(-96px);
-            z-index: 1;
+            transform: translateY(-48px);
         }
-    } 
-
-    // 有文档图标
-    .protyle-background__iconw {
-        transform: translateY(-48px);
     }
 }
