@@ -1047,6 +1047,7 @@
         // 取消事件监听
         window.removeEventListener('mouseup', handleLowFreqTasks, true);
         window.removeEventListener('keyup', handleKeyUp, true);
+        window.removeEventListener('dragend', handleLowFreqTasks, true);
         window.removeEventListener('dblclick', handleDblClick);
         window.removeEventListener('resize', handleWinResize);
 
