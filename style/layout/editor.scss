@@ -10,8 +10,6 @@
     }
 }
 
-;
-
 // 页面小工具条
 @mixin protyle-icons {
     border-radius: 99px;
@@ -265,7 +263,8 @@
         background-color: transparent;
         border-bottom: none;
         text-decoration: underline;
-        text-decoration-color: var(--b3-font-color5);
+        @include theme-variant-color(text-decoration-color, font-color5);
+        // text-decoration-color: var(--b3-font-color5);
         transition-property: background-color, text-decoration-color, box-shadow, color, border-radius;
         transition-duration: .15s;
         // transition: .15s;

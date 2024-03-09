@@ -417,6 +417,8 @@ $theme-dark: (
         --b3-font-background#{$i}:#{$font-background};
     };
 
+    --b3-font-color5: var(--b3-card-warning-color);
+
     /* 所见即所得行内元素颜色 */
     --b3-protyle-inline-link-color: #{map-get($theme-map,inline-link-color)};
     --b3-protyle-inline-mark-background: #{map-get($theme-map,inline-mark-background)};
