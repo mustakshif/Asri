@@ -87,7 +87,7 @@
     //     if (!this.includes(item)) {
     //         this.push(item);
     //     }
-    // } // 更改原型方法会导致背景图插件图片缓存被清除 https://ld246.com/article/1707547966037
+    // } // 更改原型方法导致背景图插件图片缓存被清除 https://ld246.com/article/1707547966037
 
     /**
      * Pushes an item to the array if it is not already present.
@@ -158,27 +158,6 @@
         dragRectRightInitial = asriDoms.drag?.getBoundingClientRect().right;
     let topbarRect = asriDoms.toolbar?.getBoundingClientRect();
     function handleWinResize() {
-        // if (!isInBrowser && !isMobile) {
-        //     let currentWindow = require("@electron/remote").getCurrentWindow();
-
-        //     currentWindow.on('resize', () => {
-        //         isWinResizing = true;
-
-        //         clearTimeout(resizeTimeout);
-        //         resizeTimeout = setTimeout(function () {
-        //             isWinResizing = false;
-
-        //             if (isFullScreen()) {
-        //                 document.body.classList.add('body--fullscreen');
-        //             } else {
-        //                 document.body.classList.remove('body--fullscreen');
-        //             }
-        //             // calcTopbarSpacings();
-        //             // calcTabbarSpacings();
-        //         }, 200);
-        //     })
-        // } 
-
         isWinResizing = true;
         clearTimeout(winResizeTimeout);
         winResizeTimeout = setTimeout(function () {
@@ -188,17 +167,13 @@
                     let AsriTopbarLeftSpacing = document.querySelector('#AsriTopbarLeftSpacing');
                     if (isFullScreen()) {
                         document.body.classList.add('body--fullscreen');
-                        // AsriTopbarLeftSpacing?.style.setProperty('width', '0px');
-                        // dragRectLeftInitial = asriDoms.drag?.getBoundingClientRect().left;
-                        // AsriTopbarLeftSpacing?.style.removeProperty('width');
-                        dragRectLeftInitial = fromFullscreen ? dragRectLeftInitial : dragRectLeftInitial - (80 - 8);
+                        dragRectLeftInitial -= fromFullscreen ? 0 :  80 + 8;
                         fromFullscreen = true;
                     } else {
                         document.body.classList.remove('body--fullscreen');
                         AsriTopbarLeftSpacing?.style.setProperty('width', '0px');
                         dragRectLeftInitial = asriDoms.drag?.getBoundingClientRect().left;
                         AsriTopbarLeftSpacing.style.removeProperty('width');
-                        // dragRectLeftInitial = fromFullscreen ? dragRectLeftInitial + 80 : dragRectLeftInitial;
                         fromFullscreen = false;
                     }
                 }
@@ -215,7 +190,6 @@
                 }, 200);
             }
         }, 200);
-
     }
 
     if (!isMobile && asriDoms.toolbar) {
@@ -1008,10 +982,24 @@
         return null;
     }
 
+    function recalcDragInitials() {
+        let asriTopbarLeftSpacing = document.querySelector('#AsriTopbarLeftSpacing');
+        let asriTopbarRightSpacing = document.querySelector('#AsriTopbarRightSpacing');
+        
+        asriTopbarLeftSpacing.style?.setProperty('width', '0px');
+        asriTopbarRightSpacing.style?.setProperty('width', '0px');
+        dragRectLeftInitial = asriDoms.drag?.getBoundingClientRect().left;
+        dragRectRightInitial = asriDoms.drag?.getBoundingClientRect().right;
+        asriTopbarLeftSpacing?.style.removeProperty('width');
+        asriTopbarRightSpacing?.style.removeProperty('width');
+    }
+
     function handleLowFreqTasks() {
         if (!isMobile) {
             setTimeout(() => {
                 updateWndEls();
+                recalcDragInitials();
+                calcTopbarSpacings();
                 calcTabbarSpacings();
                 calcProtyleSpacings();
                 formatIndentGuidesForFocusedItems();
