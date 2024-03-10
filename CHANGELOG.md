@@ -1,3 +1,27 @@
+### v2.1.13
+
+* 新增顶栏钉住图标数量变化时自动更新布局
+* 优化部分 js 功能的执行频率，减少性能消耗
+* 新增页面宽度变化时全宽显示块的过渡动画
+* 调整外观样式中黄色的文字颜色，增强可读性
+* 调整标题块的行高，提高多行文本可读性
+* [修复行内备注内容较多时鼠标无法移入并滚动的问题](https://ld246.com/article/1709825939240)
+* 修复表格圆角处背景超出的问题
+* 修复状态栏被数据库表头遮挡的问题
+* 修复搜索预览中高亮文本遮挡左右普通文本的问题
+
+* Added automatic layout update for the top bar when the number of icons change
+* Optimized the execution frequency of certain JavaScript functions to reduce performance consumption
+* Added transition animation for full-width display blocks when the page width changes
+* Adjusted the text color of yellow in the appearance style to enhance readability
+* Adjusted the line height of the title block to improve readability of multi-line text
+* [Fixed the issue where the mouse could not enter and scroll when there is a lot of inline memo content](https://ld246.com/article/1709825939240)
+* Fixed the issue of background exceeding the rounded corners in tables
+* Fixed the issue of the status bar being covered by the database header
+* Fixed the issue where highlighted text in search preview would cover normal text on the left and right
+
+---
+
 ### v2.1.12
 
 * 统一集市已下载和其他页面的布局样式

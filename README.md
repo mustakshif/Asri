@@ -10,16 +10,17 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.12
+### v2.1.13
 
-* Unified the layout style of the downloaded page and other pages in Marketplace.
-* Unified the highlighted text style for blockquote search lists.
-* Unified the interface style for the `List Blocks with Invalid References` interface and the search interface.
-* Unified the style of the reference search menu and external menu in the `List Blocks with Invalid References` interface.
-* Optimized the display of the marketplace search bar and project descriptions on small viewport widths.
-* Fine-tuned the mouse hover style of the operational icons in menu items.
-* Modified the path under the title of the `Move` window to be displayed without line breaks and with horizontal scrolling.
-* Fixed the color of the icon in the highlighted option from the database menu.
+* Added automatic layout update for the top bar when the number of icons change
+* Optimized the execution frequency of certain JavaScript functions to reduce performance consumption
+* Added transition animation for full-width display blocks when the page width changes
+* Adjusted the text color of yellow in the appearance style to enhance readability
+* Adjusted the line height of the title block to improve readability of multi-line text
+* [Fixed the issue where the mouse could not enter and scroll when there is a lot of inline memo content](https://ld246.com/article/1709825939240)
+* Fixed the issue of background exceeding the rounded corners in tables
+* Fixed the issue of the status bar being covered by the database header
+* Fixed the issue where highlighted text in search preview would cover normal text on the left and right
 
 Check all updates [here](./CHANGELOG.md).
 
