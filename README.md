@@ -35,7 +35,7 @@ Check all updates [here](./CHANGELOG.md).
 * 🌓 Support for light and dark modes
 
 [^1]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
-[^2]: To disable this feature, or address glyph errors when using custom fonts, you can use the following CSS code snippet to restore to standard glyphs:
+[^2]: To disable this feature, or if you address glyph errors when using custom fonts, you can use the following CSS code snippet to restore to standard glyphs:
     ```CSS
     .layout-tab-container, .protyle-content, .b3-typography {
         font-feature-settings: normal !important;
