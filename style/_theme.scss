@@ -2,13 +2,13 @@
 
 :root {
     @include font-family;
-    @include cssvars;
-
+    
     &[data-theme-mode="light"] {
         color-scheme: light;
         // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
 
         @include theme-root($theme-light);
+        
 
         body {
             ::selection {
@@ -25,6 +25,7 @@
 
 body {
     -webkit-font-smoothing: auto;
+    @include cssvars; // 防止被其他主题覆盖
 
     @include darkmode-counterpart {
         -webkit-font-smoothing: antialiased;

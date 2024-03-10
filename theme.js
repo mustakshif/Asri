@@ -986,8 +986,8 @@
         let asriTopbarLeftSpacing = document.querySelector('#AsriTopbarLeftSpacing');
         let asriTopbarRightSpacing = document.querySelector('#AsriTopbarRightSpacing');
         
-        asriTopbarLeftSpacing.style?.setProperty('width', '0px');
-        asriTopbarRightSpacing.style?.setProperty('width', '0px');
+        asriTopbarLeftSpacing?.style.setProperty('width', '0px');
+        asriTopbarRightSpacing?.style.setProperty('width', '0px');
         dragRectLeftInitial = asriDoms.drag?.getBoundingClientRect().left;
         dragRectRightInitial = asriDoms.drag?.getBoundingClientRect().right;
         asriTopbarLeftSpacing?.style.removeProperty('width');
@@ -1028,7 +1028,7 @@
     window.addEventListener('mouseup', handleLowFreqTasks, true);
     window.addEventListener('dragend', handleLowFreqTasks, true);
     window.addEventListener('keyup', handleKeyUp, true);
-    window.addEventListener('dblclick', handleDblClick);
+    window.addEventListener('dblclick', handleDblClick);    
 
     window.destroyTheme = () => {
 

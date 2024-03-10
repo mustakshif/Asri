@@ -27,17 +27,14 @@ Check all updates [here](./CHANGELOG.md).
 
 ### 🪄 Aesthetically Enhanced Efficiency
 
-* ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar[^1]<sup>, </sup>[^2]
+* ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar[^1]
 * 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
-* 👁️ Enabled high readability glyph variants for note-taking scenarios[^3] `#macOS` `#iOS` `#iPadOS`
+* 👁️ Enabled high readability glyph variants for note-taking scenarios[^2] `#macOS` `#iOS` `#iPadOS`
 * 🚏 Support for document-level text direction settings to meet typesetting needs for various languages
 * 🌓 Support for light and dark modes
 
 [^1]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
-
-[^2]: If top bar icons or dividers appear misaligned or overlapped, resizing the edit area or app window may fix it.
-
-[^3]: To disable this feature or address glyph errors when using custom fonts, you can use the following CSS code snippet:
+[^2]: To disable this feature, or address glyph errors when using custom fonts, you can use the following CSS code snippet to restore to standard glyphs:
     ```CSS
     .layout-tab-container, .protyle-content, .b3-typography {
         font-feature-settings: normal !important;
