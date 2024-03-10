@@ -779,10 +779,10 @@ div[id*=configBazaar] {
 // 高亮
 .protyle-wysiwyg [data-node-id] span[data-type~=search-mark] {
     border-radius: 4px;
-    padding: 2px;
-    margin: 0 -2px;
-    // mix-blend-mode: multiply; 有时会出现显示异常
-    -webkit-box-decoration-break: clone;
+    // padding: 2px;
+    // margin: 0 -2px;
+    // mix-blend-mode: multiply; //有时会出现显示异常
+    box-decoration-break: clone;
     background-color: var(--b3-protyle-inline-mark-background) !important;
     color: var(--b3-theme-on-background) !important;
 

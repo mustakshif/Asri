@@ -66,6 +66,7 @@
         .h#{$i},
         h#{$i} {
             margin-top: 1.2em;
+            line-height: 1.5;
         }
 
         @for $j from 2 through 6 {
@@ -77,6 +78,11 @@
                 }
             }
         }
+    }
+
+    .h1, h1 {
+        padding: 0 4px; // 修复 gutter 错位
+        margin-bottom: calc(.1em + 4px);
     }
 
     // .h1+.h2,
@@ -1264,13 +1270,13 @@
     &__scroll {
         font-variant-numeric: tabular-nums;
 
-        .av__row--header {
-            color: var(--b3-theme-on-surface);
-            font-weight: 500;
-        }
-
         .av__row {
             border-bottom-color: var(--b3-border-color-trans);
+
+            &--header {
+                color: var(--b3-theme-on-surface);
+                font-weight: 500;
+            }
 
             &:hover .b3-chip[data-type=block-more] {
                 opacity: 1;
