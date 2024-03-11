@@ -14,7 +14,7 @@
 * Optimized the execution frequency of certain JavaScript functions to reduce performance consumption
 * Added transition animation for full-width display blocks when the page width changes
 * Adjusted the text color of yellow in the appearance style to enhance readability
-* Adjusted the line height of the title block to improve readability of multi-line text
+* Adjusted the line height of the heading blocks to improve readability of multi-line text
 * [Fixed the issue where the mouse could not enter and scroll when there is a lot of inline memo content](https://ld246.com/article/1709825939240)
 * Fixed the issue of background exceeding the rounded corners in tables
 * Fixed the issue of the status bar being covered by the database header

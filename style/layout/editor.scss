@@ -1260,8 +1260,7 @@
         }
 
         .av__counter {
-            display: inline-block;
-            width: 100%;
+            width: calc(100% - 8px);
             padding: 4px;
         }
     }
