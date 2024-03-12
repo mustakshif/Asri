@@ -1,4 +1,4 @@
-// 思源 API
+// SiYuan API
 // [cc-baselib/siYuanApi.js at main · leolee9086/cc-baselib](https://github.com/leolee9086/cc-baselib/blob/main/src/siYuanApi.js)
 // Rem Craft/util/api.js
 
@@ -35,9 +35,6 @@
 //     else return null;
 // }
 
-// 界面 ————————————
-
-
 // function isFullScreen() {
 //     ipcRenderer.invoke('siyuan-get', { cmd: 'isFullScreen' })
 //         .then(isFullscreen => isFullscreen ? true : false);
@@ -66,28 +63,27 @@
 
     const isMacOS = navigator.platform.indexOf("Mac") > -1;
     const isLinux = navigator.platform.indexOf("Linux") > -1;
-    // Safari 不支持 navigator.UserAgentData.platform；浏览器不支持 process.platform
-    // const isIpad = navigator.userAgent.indexOf("iPad") > -1; // ipad适用isBrowser的情况
     const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
-    const isInBrowser = asriDoms.toolbar?.classList.contains('toolbar--browser') > 0;
+    const isInBrowser = asriDoms.toolbar?.classList.contains('toolbar--browser') > 0; // iPad uses this too
     const isMiniWindow = document.body.classList.contains('body--window') > 0;
     const isAndroid = window.siyuan.config.system.container === "android";
 
-    let AsriClassNames = [],
-        AsriDeletedRules = [],
-        AsriObservers = [];
+    let asriClassNames = [],
+        asriDeletedRules = [],
+        asriObservers = [];
 
-    isMacOS && document.body.classList.add('body--mac'), AsriClassNames.push('.body--mac');
-    isLinux && document.body.classList.add('body--linux'), AsriClassNames.push('.body--linux');
-    isMobile && document.body.classList.add('body--mobile'), AsriClassNames.push('.body--mobile');
-    isInBrowser && document.body.classList.add("body--browser"), AsriClassNames.push('.body--browser');
-    isAndroid && document.body.classList.add("body--android"), AsriClassNames.push('.body--android');
+    isMacOS && (document.body.classList.add('body--mac'), asriClassNames.push('.body--mac'));
+    isLinux && (document.body.classList.add('body--linux'), asriClassNames.push('.body--linux'));
+    isMobile && (document.body.classList.add('body--mobile'), asriClassNames.push('.body--mobile'));
+    isInBrowser && (document.body.classList.add("body--browser"), asriClassNames.push('.body--browser'));
+    isAndroid && (document.body.classList.add("body--android"), asriClassNames.push('.body--android'));
 
+    console.log(asriClassNames);
     // Array.prototype.pushUnique = function (item) {
     //     if (!this.includes(item)) {
     //         this.push(item);
     //     }
-    // } // 更改原型方法导致背景图插件图片缓存被清除 https://ld246.com/article/1707547966037
+    // } // may cause errors for other plugins  https://ld246.com/article/1707547966037
 
     /**
      * Pushes an item to the array if it is not already present.
@@ -119,8 +115,8 @@
                     for (let j = 0; j < styleSheet.cssRules.length; j++) {
                         let rule = styleSheet.cssRules[j];
                         if (rule.selectorText && rule.selectorText.includes('::-webkit-scrollbar')) {
-                            if (rule.style.width || rule.style.height || rule.style.backgroundColor) { // 在删除规则之前将其保存
-                                AsriDeletedRules.push({ styleSheet: styleSheet, rule: rule.cssText });
+                            if (rule.style.width || rule.style.height || rule.style.backgroundColor) {
+                                asriDeletedRules.push({ styleSheet: styleSheet, rule: rule.cssText });
                                 styleSheet.deleteRule(j);
                                 j--;
                             }
@@ -218,27 +214,28 @@
                 centerRectRight = layoutsCenterRect.right;
 
             function calcAndApply() {
-                // 左侧
+                // left side
                 if (centerRectLeft > dragRectLeftInitial + 8)
                     topbar.style.setProperty('--topbar-left-spacing', 0),
                         dragRectLeftInitial = fromFullscreen ? dragRectLeftInitial : asriDoms.drag.getBoundingClientRect().left;
-                // 每次重新计算 initial
+                // recalc initial everytime
+
                 else if (isMacOS && !isInBrowser) topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
                 else topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barForwardRect.right + 4 + 'px');
 
-                // 右侧
+                // right side
                 if (centerRectRight < dragRectRightInitial - 8) {
                     topbar.style.setProperty('--topbar-right-spacing', 0);
 
                     dragRectRightInitial = asriDoms.drag.getBoundingClientRect().right;
 
-                    //使用 CSS
+                    // css related 
                     asriDoms.dockr?.style.removeProperty('--avoid-topbar');
                     asriDoms.layoutDockr?.style.removeProperty('--avoid-topbar');
                 } else {
                     if (isMacOS || isInBrowser) {
                         topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 5 + 'px');
-                        // windowControls 占据 2px
+                        // windowControls element takes up 2px
 
                         asriDoms.dockr?.style.setProperty('--avoid-topbar', '4px');
                         asriDoms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
@@ -251,13 +248,12 @@
                 }
             }
 
-            if (!isWinResizing) calcAndApply(); // 窗口resizing时不计算，不然会导致dragRectRightInitial变动，使顶栏右侧图标位置变动
+            if (!isWinResizing) calcAndApply(); // otherwise would cause dragRightInitial to be at unexpected position 
             else dragRectRightInitial = dragRectRightInitial + widthChange;
 
             (function dividerSwitch() {
                 if (centerRectRight < dragRectRightInitial - 8) {
-                    // dragRectRightInitial = asriDoms.drag.getBoundingClientRect().right;
-                    // 横线
+                    // horisontal divider
                     pluginsDivider.style.setProperty('--container-bg', 'var(--b3-list-hover)');
                     pluginsDivider.style.left = centerRectRight + 'px';
                     pluginsDivider.style.right = '0';
@@ -265,8 +261,7 @@
                     pluginsDivider.style.removeProperty('top');
                 }
                 else {
-                    // if (isWinResizing) dragRectRightInitial = dragRectRightInitial + widthChange;
-                    // 竖线
+                    // vertical divider
                     dragRect = asriDoms.drag.getBoundingClientRect();
                     pluginsDivider.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
                     pluginsDivider.style.left = dragRect.right - 10 + 'px';
@@ -276,26 +271,21 @@
                 }
             })();
 
-            // console.log(`drag左\t\t${dragRectLeftInitial}\ncenter左\t${centerRectLeft}`)
+            // console.log(`dragL\t\t${dragRectLeftInitial}\ncenterL\t${centerRectLeft}`)
         }
     }
 
     let wndElements = [];
 
     /**
-     * 更新窗口元素, 跟calcTabbarSpacings()和calcProtyleSpacings()搭配使用
+     * update wnd elements, use before calcTabbarSpacings() and calcProtyleSpacings()
      */
     function updateWndEls() {
         wndElements = asriDoms.layouts.querySelectorAll('[data-type="wnd"]');
-        // let tabWndElements = asriDoms.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
-        // let popoverWndElements = document.querySelectorAll('.block__popover--open .protyle');
-
-        // tabWndElements.forEach(tabWnd => pushUnique(wndElements, tabWnd));
-        // popoverWndElements.forEach(popoverWnd => pushUnique(wndElements, popoverWnd));
     }
 
     /**
-     * 计算tabbar的间距，每次计算前使用一次updateWndEls()
+     * calculate tabbar left & right & top paddings, use after updateWndEls()
      */
     function calcTabbarSpacings() {
         if (!isMiniWindow) {
@@ -314,7 +304,7 @@
 
                     // asriDoms.drag = document.getElementById('drag');
 
-                    // 极窄宽度下添加上边距
+                    // add top padding in extremely narrow width
                     if ((tabbarContainerRect.right - paddingRightValue - 240 < dragRect.left && tabbarContainerRect.left < dragRect.left) || (tabbarContainerRect.left + paddingLeftValue + 240 > dragRect.right && tabbarContainerRect.right > dragRect.right)) {
                         tabbarContainer.style.paddingTop = '42px';
                         tabbarContainer.style.paddingLeft = 0;
@@ -335,7 +325,6 @@
         wndElements.forEach(wnd => {
             let protyles = wnd.querySelector('.file-tree') ? [] : wnd.querySelectorAll('.protyle-wysiwyg');
 
-            // 仅在protylePadding有变化时才应用样式
             if (protyles.length > 0) {
                 setTimeout(() => {
                     protyles.forEach(protyle => {
@@ -347,7 +336,7 @@
                             // console.log(protylePadding);
                         }
                     })
-                }, 300); // protyle 过渡动画时间
+                }, 300); // protyle transition time
             }
         })
     }
@@ -355,22 +344,20 @@
         let lytCenter = asriDoms.layouts.querySelector('.layout__center');
         const ro = new ResizeObserver(entries => {
             for (let entry of entries) {
-                // 获取当前元素的大小
+                // get current element's size
                 const { inlineSize } = entry.contentBoxSize[0];
-
-                // 检查是否是第一次触发resize事件，如果是则跳过计算
+  
+                // check if it's the first time to trigger resize event, if so, skip the calculation
                 if (!entry.target.dataset.prevWidth) {
                     entry.target.dataset.prevWidth = inlineSize;
                     continue;
                 }
 
-                // 获取上一次的宽度
+                // get previous width
                 const prevWidth = parseFloat(entry.target.dataset.prevWidth);
 
-                // 计算宽度变化量
                 const widthChange = inlineSize - prevWidth;
 
-                // 保存当前宽度作为下一次的上一次宽度
                 entry.target.dataset.prevWidth = inlineSize;
 
                 // handle center resize
@@ -378,7 +365,7 @@
                 clearTimeout(centerResizeTimeout);
                 centerResizeTimeout = setTimeout(() => {
                     statusPosition();
-                    // resize过程中持续运行造成卡顿，改在resize结束后运行   
+                    // change it to run after resize, otherwise, it will cause lagging
                     calcProtyleSpacings();
                 }, 200);
                 calcTopbarSpacings(widthChange);
@@ -387,7 +374,7 @@
             }
         });
 
-        if (lytCenter) ro.observe(lytCenter), AsriObservers.push(ro);
+        if (lytCenter) ro.observe(lytCenter), asriObservers.push(ro);
         else {
             let count = 0,
                 maxCount = 10;
@@ -400,7 +387,7 @@
                 if (count === maxCount || lytCenter) {
                     clearInterval(tryGetLytCenter);
                     // asriDoms.layouts = document.getElementById('layouts');
-                    ro.observe(lytCenter), AsriObservers.push(ro);
+                    ro.observe(lytCenter), asriObservers.push(ro);
                 }
             }
             setTimeout(() => {
@@ -416,63 +403,12 @@
     }
 
     /**
-     * 新小窗页签栏左右边距控制
-     */
-    // function tabbarSpacinginMiniWindow() {
-    //     var toolbarWindowRec = asriDoms.toolbarWindow?.getBoundingClientRect();
-    //     var topRightRect = toolbarWindowRec && {
-    //         left: toolbarWindowRec.left,
-    //         top: 0,
-    //         width: toolbarWindowRec.width,
-    //         height: toolbarWindowRec.height
-    //     }
-
-    //     var topLeftRect = {
-    //         left: 0,
-    //         top: 0,
-    //         width: 80,
-    //         height: 48
-    //     };
-
-    //     let wndElements = asriDoms.layouts.querySelectorAll('[data-type="wnd"]'); // 考虑分屏的情况
-
-    //     if (wndElements) {
-    //         for (let element of wndElements) {
-    //             var elementRect = element.getBoundingClientRect();
-    //             var layoutTabbar = element.querySelector('.layout-tab-bar:not(.layout-tab-bar--readonly)');
-
-    //             var isOverlappingTopLeft = topLeftRect && isOverlapping(elementRect, topLeftRect);
-
-    //             var isOverlappingTopRight = toolbarWindowRec && isOverlapping(elementRect, topRightRect);
-
-
-    //             // 左侧红绿灯
-    //             if (!isInBrowser && !isMobile && isMacOS) {
-    //                 if (isOverlappingTopLeft) {
-    //                     layoutTabbar.style.marginLeft = 'var(--b3-toolbar-left-mac)';
-    //                 } else {
-    //                     layoutTabbar.style.removeProperty('margin-left');
-    //                 }
-    //             }
-
-    //             // 右侧图标区域
-    //             if (isOverlappingTopRight) {
-    //                 layoutTabbar.parentNode.style.marginRight = topRightRect.width - 8 + 'px';
-    //             } else {
-    //                 layoutTabbar.parentNode.style.removeProperty('margin-right');
-    //             }
-    //         }
-    //     }
-    // } // 弃用，采用思源自动避让
-
-    /**
      * 
      * @param {'l' | 'r'} dir
      */
     function isSideDockHidden(dir = 'l') {
         return asriDoms[`dock${dir}`] && asriDoms[`dock${dir}`].classList.contains('fn__none')
-        // 使用右侧停靠栏计算状态栏位置
-        // https://github.com/mustakshif/Asri-for-SiYuan/issues/16
+        // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri-for-SiYuan/issues/16
     }
     function hasDockb() {
         return asriDoms.dockb && !asriDoms.dockb.classList.contains('fn__none');
@@ -495,12 +431,12 @@
         dialogs.forEach(dialog => {
             dialog.querySelector('.emojis') && (
                 dialog.classList.add('emojis-container'),
-                pushUnique(AsriClassNames, '.emojis-container')
+                pushUnique(asriClassNames, '.emojis-container')
             )
         })
     }
     /**
-     * 判断 .layout__dock 是否隐藏或浮动
+     * Check if the dock is hidden/floating or not
      * @param {'l' | 'r' | 'b'} direction
      */
     function isLayoutDockHidden(direction) {
@@ -519,7 +455,7 @@
     }
 
     /**
-     * 边栏面板展开时边栏的背景、边框线变化
+     * Control the display of docks background and borders
      */
     function dockBg() {
 
@@ -531,7 +467,7 @@
 
                 if (isDockLytPinned(lyt) && isDockLytExpanded(lyt)) {
                     dock.classList.add('dock-layout-expanded');
-                    pushUnique(AsriClassNames, '.dock-layout-expanded');
+                    pushUnique(asriClassNames, '.dock-layout-expanded');
                 } else {
                     dock.classList.remove('dock-layout-expanded');
                 }
@@ -557,7 +493,7 @@
     dockBg();
 
     /**
-     * 计算dock和dock layout展开/收起时状态栏的位置
+     * Calculate the position of status bar when there is a change of the display of docks and their layouts.
      */
     function statusPosition() {
         if (!isMobile && !isMiniWindow) {
@@ -608,9 +544,6 @@
 
     setStatusHeightVar();
 
-    /**
-     * 大纲、反链、搜索列表等在作为标签页显示时，避免被status遮住底部
-     */
     function avoidOverlappingWithStatus() {
         if (!isStatusHidden()) {
 
@@ -680,9 +613,10 @@
     avoidOverlappingWithStatus();
 
     /**
-     * 判断两个元素是否有重叠部分。传入两个rect, 参照 getBoundingClientRect() 的属性标准
-     * @param {*} elementRect 
-     * @param {*} targetRect 
+     * Check if two elements have overlapping parts.
+     * @param {object} elementRect 
+     * @param {object} targetRect 
+     * @returns {boolean}
      */
     function isOverlapping(elementRect, targetRect) {
         if (elementRect && targetRect) {
@@ -695,9 +629,6 @@
         }
     }
 
-    /**
-     * 文档树聚焦条目参考线
-     */
     function formatIndentGuidesForFocusedItems() {
         if (!isMobile) {
             let listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
@@ -707,7 +638,7 @@
             listItemsFocus.forEach(li => {
                 if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
                     li.parentNode.classList.add('has-focus');
-                    pushUnique(AsriClassNames, '.has-focus');
+                    pushUnique(asriClassNames, '.has-focus');
                 }
             })
         }
@@ -721,7 +652,7 @@
         protyleBgs.forEach(protyleBg => {
             if (!protyleBg.querySelector('.protyle-background__img img')?.classList.contains('fn__none') && protyleBg.querySelector('.protyle-background__icon.fn__none')) {
                 protyleBg.classList.add('without-icon');
-                pushUnique(AsriClassNames, '.without-icon');
+                pushUnique(asriClassNames, '.without-icon');
             } else {
                 protyleBg.classList.remove('without-icon')
             }
@@ -729,8 +660,8 @@
     }
 
     /**
-     * 设置单个类型变动的监视
-     * @param {String} type mutation type 
+     * Set a simple mutation observer for a single type of mutation.
+     * @param {'childList' | 'attributes' | 'characterData'} type mutation type 
      * @param {Function} func 
      */
     function setSimpleMutationObserver(type, func) {
@@ -745,7 +676,7 @@
         return new MutationObserver(callback);
     }
     /**
-     * 设置多种类型变动的监视
+     * Set mutation observer for multiple types of mutation.
      * @param {Function | undefined} funcChildList 
      * @param {Function | undefined} funcAttr default: undefined
      * @param {Function | undefined} funcCharacterData default: undefined
@@ -769,7 +700,7 @@
     function topbarObserver(type, func) {
         let topbar = asriDoms.toolbar;
         let topObserver = setSimpleMutationObserver(type, func);
-        if (topbar) topObserver.observe(topbar, { [type]: true }), AsriObservers.push(topObserver);
+        if (topbar) topObserver.observe(topbar, { [type]: true }), asriObservers.push(topObserver);
     }
 
     /**
@@ -786,13 +717,13 @@
 
         let bodyObserver = setCompoundMutationObserver(funcChildList, funcAttr);
         bodyObserver.observe(document.body, config);
-        AsriObservers.push(bodyObserver);
+        asriObservers.push(bodyObserver);
     }
 
     function statusObsever(type, func) {
         let status = asriDoms.status;
         let statusObsever = setSimpleMutationObserver(type, func);
-        if (status) statusObsever.observe(status, { [type]: true }), AsriObservers.push(statusObsever);
+        if (status) statusObsever.observe(status, { [type]: true }), asriObservers.push(statusObsever);
     }
 
     /**
@@ -804,8 +735,8 @@
     function dockObserver(direction, type, func) {
         let dock = asriDoms[`dock${direction}`];
         let dockObserver = setSimpleMutationObserver(type, func);
-        if (dock) dockObserver.observe(dock, { [type]: true }), AsriObservers.push(dockObserver);
-    } // {[type]: true} 使用了计算属性名（computed property name）的语法
+        if (dock) dockObserver.observe(dock, { [type]: true }), asriObservers.push(dockObserver);
+    } // {[type]: true} uses computed property name syntax
 
     /**
      * 
@@ -825,8 +756,8 @@
         let dockLayout = asriDoms[`layoutDock${direction}`];
         let dockLytObserver = setCompoundMutationObserver(funcChildList, funcAttr, fucnCharacterData);
 
-        // 解决部分情况下layoutDock元素加载滞后于此js而出现无法启动监视的情况
-        if (dockLayout) dockLytObserver.observe(dockLayout, config), AsriObservers.push(dockLytObserver);
+        // handle cases where layoutDock element is not loaded
+        if (dockLayout) dockLytObserver.observe(dockLayout, config), asriObservers.push(dockLytObserver);
         else {
             let count = 0,
                 maxCount = 10;
@@ -841,7 +772,7 @@
                     asriDoms[`layoutDock${direction}`] = dockLayout;
                     dockBg();
                     dockLytObserver.observe(dockLayout, config);
-                    AsriObservers.push(dockLytObserver);
+                    asriObservers.push(dockLytObserver);
                 }
             }
 
@@ -868,10 +799,10 @@
         let layouts = asriDoms.layouts;
         let lytsObserver = setCompoundMutationObserver(funcChildList, funcAttr, fucnCharacterData);
         lytsObserver.observe(layouts, config);
-        AsriObservers.push(lytsObserver);
+        asriObservers.push(lytsObserver);
     }
 
-    // 开始监视变化
+    // Start observers ————————————————————————————————————————————————
     docBodyObserver(
         // childList mutations func
         () => {
@@ -883,7 +814,6 @@
 
     if (!isMobile) {
         if (!isMiniWindow) {
-            // 左栏面板
             dockLayoutObserver(
                 'l',
                 undefined,
@@ -891,13 +821,12 @@
                     setTimeout(() => {
                         // tabbarSpacing();
                         avoidOverlappingWithStatus();
-                    }, 200); // 动画之后
-                    // 左栏dock背景
+                    }, 200); // after animation
+                    // left dock background
                     dockBg();
                 }
             )
 
-            // 右栏面板
             dockLayoutObserver(
                 'r',
                 undefined,
@@ -906,12 +835,10 @@
                         // statusPosition();
                         avoidOverlappingWithStatus();
                     }, 200);
-                    //右栏dock背景
+                    // right dock background
                     dockBg();
                 }
             )
-
-            // 状态栏
             statusObsever('attributes', setStatusHeightVar);
 
             // layoutsObserver(
@@ -928,39 +855,16 @@
             //     undefined,
             //     true
             // )
-
         }
     }
 
-    // /**
-    //  * 根据当前帧是否还有剩余的空闲时间选择是否执行任务
-    //  * @param {Function} task 
-    //  * @param {Function} callback 
-    //  */
-    // function _runTask(task, callback) {
-    //     requestIdleCallback((idle) => {
-    //         if (idle.timeRemaining() > 0) {
-    //             task();
-    //             callback()
-    //         } else _runTask(task, callback)
-    //     })
-    // }
-
-    // function runWhenIdle(func) {
-    //     requestIdleCallback((idle) => {
-    //         if (idle.timeRemaining() > 0) {
-    //             func();
-    //         } else runWhenIdle(func)
-    //     })
-    // }
-
-    /**
-     * 获取当前活动节点。
-     * 如果提供了目标节点选择器，则会向上遍历DOM直到找到匹配的目标节点。
+     /**
+     * Retrieves the currently active node.
+     * If a target node selector is provided, traverses up the DOM until it finds a matching target node.
      * 
-     * @param {string} targetNodeSelector 可选，目标节点的选择器字符串。
-     * @returns {Element|null} 返回匹配的目标节点或当前活动节点的父元素；如果没有匹配或活动节点不在指定类名下，则返回null。
-     */
+     * @param {string} targetNodeSelector Optional, a CSS selector string for the target node.
+     * @returns {Element|null} Returns the matched target node or the parent element of the currently active node; if no match is found or the active node is not within the specified class name, returns null.
+     */ 
     function getActiveTargetNode(targetNodeSelector = '') {
         if (document.activeElement.classList.contains('protyle-wysiwyg')) {
             let node = window.getSelection()?.focusNode?.parentElement;
@@ -1014,7 +918,7 @@
 
     function handleKeyUp(event) {
         if (event.isComposing || event.keyCode === 229) {
-            // 忽略CJK输入法的输入事件
+            // ignore CJK IME input event
             return;
         }
         handleLowFreqTasks();
@@ -1032,29 +936,29 @@
 
     window.destroyTheme = () => {
 
-        // 取消事件监听
+        // remove event listeners
         window.removeEventListener('mouseup', handleLowFreqTasks, true);
         window.removeEventListener('keyup', handleKeyUp, true);
         window.removeEventListener('dragend', handleLowFreqTasks, true);
         window.removeEventListener('dblclick', handleDblClick);
         window.removeEventListener('resize', handleWinResize);
 
-        // 取消所有变动观察
-        AsriObservers.forEach(observer => observer.disconnect());
+        // disconnect all observers
+        asriObservers.forEach(observer => observer.disconnect());
 
-        // 恢复 traffic light 位置
+        // restore traffic light to default position
         if (isMacOS && !isInBrowser) setTrafficLightPosition(8);
         if (isMacOS && isMiniWindow) setTrafficLightPosition(8, 13);
 
-        // 删除添加的类名和元素
-        AsriClassNames.forEach(className => {
+        // remove added class names and elements
+        asriClassNames.forEach(className => {
             document.querySelectorAll(className).forEach(el => el.classList.remove(className.slice(1)));
         })
         document.querySelector('#AsriTopbarLeftSpacing')?.remove();
         document.querySelector('#AsriTopbarRightSpacing')?.remove();
         document.querySelector('#AsriPluginsIconsDivider')?.remove();
 
-        // 移除 js 样式属性
+        // remove js calculated properties
         document.body.style.removeProperty('--mouseX');
         document.body.style.removeProperty('--mouseY');
         asriDoms.topbar?.style.removeProperty('--topbar-left-spacing');
@@ -1092,10 +996,10 @@
             dock.style.removeProperty('--border-clr');
         })
 
-        // 还原被删除的规则
-        if (AsriDeletedRules) {
-            for (let i = 0; i < AsriDeletedRules.length; i++) {
-                let rule = AsriDeletedRules[i];
+        // restore deleted css rules
+        if (asriDeletedRules) {
+            for (let i = 0; i < asriDeletedRules.length; i++) {
+                let rule = asriDeletedRules[i];
                 rule.styleSheet.insertRule(rule.rule, rule.styleSheet.cssRules.length);
             }
         }

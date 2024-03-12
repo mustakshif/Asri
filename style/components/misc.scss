@@ -63,6 +63,10 @@
     }
 }
 
+.protyle-attr--av:hover > :is(svg, span) {
+    color: var(--b3-theme-primary);
+}
+
 //开关
 .b3-switch {
     height: 20px;
