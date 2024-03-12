@@ -78,7 +78,6 @@
     isInBrowser && (document.body.classList.add("body--browser"), asriClassNames.push('.body--browser'));
     isAndroid && (document.body.classList.add("body--android"), asriClassNames.push('.body--android'));
 
-    console.log(asriClassNames);
     // Array.prototype.pushUnique = function (item) {
     //     if (!this.includes(item)) {
     //         this.push(item);
