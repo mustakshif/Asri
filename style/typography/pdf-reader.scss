@@ -1,0 +1,141 @@
+@use '../base' as *;
+
+.pdf__outer#outerContainer {
+    #sidebarContainer {
+        top: 42px;
+        z-index: 1;
+        background-color: var(--b3-theme-background);
+        border-right: 1px solid var(--b3-border-color-trans);
+
+        #sidebarResizer {
+            right: -3px;
+
+            &::after {
+                background-color: transparent;
+            }
+
+            &:hover::after {
+                background-color: var(--b3-theme-primary-light);
+            }
+        }
+
+        #sidebarContent {
+            .treeItem>a {
+                line-height: 1.5;
+            }
+        }
+    }
+
+    .pdf__toolbar {
+        #toolbarContainer {
+
+            #toolbarViewer {
+                height: 42px;
+                align-items: center;
+                border-bottom: 1px solid var(--b3-border-color-trans);
+
+                .dropdownToolbarButton {
+                    margin: 4px 8px 4px 0;
+                }
+            }
+        }
+    }
+
+    .findbar {
+        padding: 4px 8px;
+        right: 8px;
+        overflow: visible !important;
+        background-color: var(--b3-menu-background);
+
+        &> :is(input, button, label.b3-button) {
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+
+        .b3-button {
+            transition: background-color .2s;
+
+            // 选中样式
+            @include button-action('primary') {
+                margin: 0;
+                background-color: transparent;
+
+                &:hover {
+                    box-shadow: none;
+                }
+            }
+
+            // 默认样式
+            &--outline {
+                @include button-action('normal')
+            }
+
+        }
+
+        #findResultsCount {
+            pointer-events: none;
+            font-weight: 400;
+        }
+    }
+
+    #viewerContainer {
+        top: 42px;
+        transition: none;
+
+        body.body-status-shown & {
+            padding-bottom: 42px;
+        }
+
+        // -> js
+    }
+
+    #dialogContainer {
+        .dialog {
+            padding: 16px;
+
+            @include dialog-shadow;
+            @include border-or-not;
+            outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
+
+            #documentPropertiesClose {
+                @include button-action('primary') {
+                    background-color: transparent;
+                    transition: 0.2s;
+
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .pdf__util {
+        padding: 6px;
+
+        .color__square {
+            height: 14px;
+            width: 14px;
+            margin-right: 6px;
+            box-shadow: none;
+            border-radius: 50%;
+
+            &:hover {
+                box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+                transform: scale(1.2);
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        .b3-menu__item {
+            &:not(:hover) {
+                background-color: transparent;
+            }
+        }
+    }
+}
