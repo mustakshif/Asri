@@ -281,7 +281,7 @@
             --memo-bg: #{mix(map-get($theme-light, font-color5), map-get($theme-light, background))};
             background-color: var(--memo-bg);
             box-shadow: 0 0 0 8px var(--memo-bg);
-            text-decoration-color: var(--memo-bg);
+            text-decoration-color: var(--memo-bg) !important;
             color: var(--b3-theme-on-background) !important;
             border-radius: 1px;
             z-index: 1;
