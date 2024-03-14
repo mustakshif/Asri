@@ -289,6 +289,7 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 .protyle-background__iconw {
     .protyle-icons {
         mix-blend-mode: normal;
+        @include bg-blur($medium-blur-rd, $brightness-light: 1);
     }
 }
 
