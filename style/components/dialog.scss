@@ -348,6 +348,19 @@
                 height: inherit;
 
                 .config-account {
+                    background-color: var(--b3-theme-surface);
+
+                    &__center:not(.config-account__center--text) {
+                        margin: 40px 20px;
+                        border-radius: 20px;
+                        overflow: hidden;
+                        background-color: var(--b3-theme-background);
+                        @include menu-shadow($opacity-light: .05, $opacity-dark: 0.15, $border-light: .5px, $border-dark: 0px);
+
+                        @media (max-width: 750px) {
+                            margin: 20px 20px 40px;
+                        }
+                    }
 
                     &__cover {
                         &::before {
@@ -366,9 +379,9 @@
                             }
                         }
 
-                        // &[style="background-image: url()"] {
-                        //     background-color: var(--b3-theme-primary-lighter);
-                        // }
+                        &[style="background-image: url()"] {
+                            background-color: var(--b3-theme-primary-light);
+                        }
                     }
 
                     &__bg {
@@ -376,14 +389,14 @@
                     }
 
                     &__avatar {
-                        top: 25%;
+                        top: 20%;
                         bottom: unset;
                         box-shadow: none;
                         border: none;
                     }
 
                     &__name {
-                        top: calc(25% + 150px);
+                        top: calc(20% + 200px);
                         bottom: unset;
                         mix-blend-mode: luminosity;
 
@@ -394,6 +407,8 @@
 
                     &__info {
                         margin-top: 0;
+                        background-color: var(--b3-theme-background);
+                        z-index: 1;
 
                         @media (min-width: 750px) {
                             >.fn__flex {
@@ -474,16 +489,24 @@
                         transform: scale(1.05);
                     }
 
+
                     // 右侧面板
                     &__center--text {
                         padding: 24px;
 
-                        .b3-form__icon-input:placeholder-shown+#activationCode {
-                            display: none;
+                        .b3-form__icon-icon {
+                            margin: 8px 0;
+                        }
+                        .b3-form__icon-input {
+                            margin: 8px 0 16px;
+                            &:placeholder-shown + #activationCode {
+                                display: none;
+                            }
                         }
                     }
 
                     #activationCode {
+                        margin: 8px 0;
                         transition: .1s;
                         font-weight: 600;
 

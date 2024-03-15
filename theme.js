@@ -78,6 +78,17 @@
     isInBrowser && (document.body.classList.add("body--browser"), asriClassNames.push('.body--browser'));
     isAndroid && (document.body.classList.add("body--android"), asriClassNames.push('.body--android'));
 
+    if (!isMobile && asriDoms.toolbar) {
+        createTopbarElementById('AsriPluginsIconsDivider', undefined, asriDoms.drag);
+        (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarLeftSpacing', undefined, asriDoms.barSync) : createTopbarElementById('AsriTopbarLeftSpacing', undefined, asriDoms.barForward);
+        (isMacOS || isInBrowser) ? createTopbarElementById('AsriTopbarRightSpacing') : createTopbarElementById('AsriTopbarRightSpacing', asriDoms.barSearch);
+    }
+
+    const pluginsDivider = document.getElementById('AsriPluginsIconsDivider');
+    // const leftSpacing = document.getElementById('AsriTopbarLeftSpacing');
+    const rightSpacing = document.getElementById('AsriTopbarRightSpacing');
+    const topbar = asriDoms.toolbar;
+
     // Array.prototype.pushUnique = function (item) {
     //     if (!this.includes(item)) {
     //         this.push(item);
@@ -162,7 +173,7 @@
                     let AsriTopbarLeftSpacing = document.querySelector('#AsriTopbarLeftSpacing');
                     if (isFullScreen()) {
                         document.body.classList.add('body--fullscreen');
-                        dragRectLeftInitial -= fromFullscreen ? 0 :  80 + 8;
+                        dragRectLeftInitial -= fromFullscreen ? 0 : 80 + 8;
                         fromFullscreen = true;
                     } else {
                         document.body.classList.remove('body--fullscreen');
@@ -187,21 +198,9 @@
         }, 200);
     }
 
-    if (!isMobile && asriDoms.toolbar) {
-        createTopbarElementById('AsriPluginsIconsDivider', undefined, asriDoms.drag);
-        (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarLeftSpacing', undefined, asriDoms.barSync) : createTopbarElementById('AsriTopbarLeftSpacing', undefined, asriDoms.barForward);
-        (isMacOS || isInBrowser) ? createTopbarElementById('AsriTopbarRightSpacing') : createTopbarElementById('AsriTopbarRightSpacing', asriDoms.barSearch);
-    }
-
     function calcTopbarSpacings(widthChange) {
         if (!isMiniWindow) {
-            let pluginsDivider, leftSpacing, rightSpacing, topbar,
-                layoutsCenterRect, leftSpacingRect, rightSpacingRect, barSyncRect, dragRect;
-
-            pluginsDivider = document.getElementById('AsriPluginsIconsDivider');
-            leftSpacing = document.getElementById('AsriTopbarLeftSpacing');
-            rightSpacing = document.getElementById('AsriTopbarRightSpacing');
-            topbar = asriDoms.toolbar;
+            let layoutsCenterRect, leftSpacingRect, rightSpacingRect, barSyncRect, dragRect;
 
             layoutsCenterRect = asriDoms.layouts.querySelector('.layout__center')?.getBoundingClientRect();
             rightSpacingRect = rightSpacing.getBoundingClientRect();
@@ -345,7 +344,7 @@
             for (let entry of entries) {
                 // get current element's size
                 const { inlineSize } = entry.contentBoxSize[0];
-  
+
                 // check if it's the first time to trigger resize event, if so, skip the calculation
                 if (!entry.target.dataset.prevWidth) {
                     entry.target.dataset.prevWidth = inlineSize;
@@ -857,13 +856,13 @@
         }
     }
 
-     /**
-     * Retrieves the currently active node.
-     * If a target node selector is provided, traverses up the DOM until it finds a matching target node.
-     * 
-     * @param {string} targetNodeSelector Optional, a CSS selector string for the target node.
-     * @returns {Element|null} Returns the matched target node or the parent element of the currently active node; if no match is found or the active node is not within the specified class name, returns null.
-     */ 
+    /**
+    * Retrieves the currently active node.
+    * If a target node selector is provided, traverses up the DOM until it finds a matching target node.
+    * 
+    * @param {string} targetNodeSelector Optional, a CSS selector string for the target node.
+    * @returns {Element|null} Returns the matched target node or the parent element of the currently active node; if no match is found or the active node is not within the specified class name, returns null.
+    */
     function getActiveTargetNode(targetNodeSelector = '') {
         if (document.activeElement.classList.contains('protyle-wysiwyg')) {
             let node = window.getSelection()?.focusNode?.parentElement;
@@ -888,7 +887,7 @@
     function recalcDragInitials() {
         let asriTopbarLeftSpacing = document.querySelector('#AsriTopbarLeftSpacing');
         let asriTopbarRightSpacing = document.querySelector('#AsriTopbarRightSpacing');
-        
+
         asriTopbarLeftSpacing?.style.setProperty('width', '0px');
         asriTopbarRightSpacing?.style.setProperty('width', '0px');
         dragRectLeftInitial = asriDoms.drag?.getBoundingClientRect().left;
@@ -931,7 +930,7 @@
     window.addEventListener('mouseup', handleLowFreqTasks, true);
     window.addEventListener('dragend', handleLowFreqTasks, true);
     window.addEventListener('keyup', handleKeyUp, true);
-    window.addEventListener('dblclick', handleDblClick);    
+    window.addEventListener('dblclick', handleDblClick);
 
     window.destroyTheme = () => {
 
