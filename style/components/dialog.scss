@@ -56,203 +56,6 @@
                 }
             }
 
-            // 设置面板 ————————————————————————————————
-            .config__panel {
-                .b3-tab-bar {
-                    background-color: var(--b3-theme-surface);
-                    padding: 16px 8px;
-
-                    .config__tab-hr {
-                        background-color: var(--b3-border-color-trans);
-                    }
-
-                    .b3-list-item {
-                        height: 32px;
-                        line-height: 30px;
-                        margin: 4px 8px;
-
-                        &:hover:not(.b3-list-item--focus) {
-                            background-color: transparent;
-
-                            .b3-list-item__graphic,
-                            .b3-list-item__text {
-                                color: var(--b3-theme-on-background);
-                            }
-                        }
-
-                        &__graphic,
-                        &__text {
-                            color: var(--b3-theme-on-surface);
-                        }
-
-                        &--focus {
-
-                            .b3-list-item__graphic,
-                            .b3-list-item__text {
-                                color: var(--b3-theme-on-background);
-                                font-weight: 600;
-                            }
-                        }
-                    }
-
-                    @media (max-width: 750px) {
-
-                        .config__tab-title,
-                        .b3-list-item {
-                            justify-content: center;
-                        }
-
-                        .b3-list-item {
-                            margin: 4px 6px !important;
-                        }
-
-                        .b3-list-item__graphic {
-                            padding: 0 4px;
-                        }
-                    }
-                }
-
-                .config__tab-wrap {
-                    padding: 0;
-
-                    .config__tab-container {
-                        padding: 8px 0;
-                        background-color: var(--b3-theme-background);
-
-                        .layout-tab-bar+.fn__flex-1 {
-                            background-color: var(--b3-theme-background);
-                        }
-
-                        &--top {
-                            margin-top: 0;
-                            height: 100%;
-                            padding: 8px 0 0;
-                        }
-
-                        .b3-label {
-                            box-shadow: none;
-
-                            // 表单元素溢出显示
-                            >.fn__flex-1 {
-                                overflow: visible;
-                            }
-                        }
-
-                        // 集市面板
-                        .config-bazaar__panel {
-                            // padding-bottom: 8px;
-
-                            .config-bazaar__title {
-                                position: sticky;
-                                top: 0;
-                                z-index: 2;
-                                align-items: center;
-                                backdrop-filter: none;
-                                padding: 8px 16px;
-                                background-color: var(--b3-theme-background);
-
-
-                                .b3-form__icon .b3-text-field {
-                                    @media (max-width: 830px) {
-                                        width: calc(100% - 32px)
-                                    }
-
-                                    ;
-                                }
-
-
-                                .b3-switch {
-                                    transform: translateX(11px);
-                                    margin: 0 !important;
-                                }
-                            }
-
-                            .counter {
-                                background-color: transparent !important;
-                            }
-
-
-                            &[data-type='downloaded'] {
-                                .b3-button {
-                                    @include button-action(1) {
-                                        padding: 4px;
-                                    }
-
-                                    &:not(.b3-button--outline) {
-                                        background-color: transparent;
-                                        color: var(--b3-theme-primary);
-                                        font-weight: 600;
-
-                                        &:hover,
-                                        &:focus {
-                                            box-shadow: none;
-                                        }
-                                    }
-
-                                    &.b3-button--outline {
-                                        background-color: transparent;
-                                        color: var(--b3-theme-on-surface);
-                                        font-weight: normal;
-
-                                        &:hover {
-                                            color: var(--b3-theme-on-background);
-                                            box-shadow: none;
-                                        }
-                                    }
-
-                                    &+.fn__space+.b3-form__icon {
-                                        margin-left: 8px;
-                                    }
-                                }
-
-                                [data-type="myPlugin"]:not(.b3-button--outline)~.counter {
-                                    transform: translateX(-64px);
-                                }
-                            }
-
-                            .config-bazaar__content {
-                                margin-top: 0;
-                            }
-                        }
-
-                        &[data-name="account"] {
-                            padding: 0;
-
-                            .config-account {
-                                &__avatar {
-                                    box-shadow: none;
-                                    border: none;
-                                }
-
-                                &__name {
-                                    bottom: -72px;
-
-                                    &>.fn__a {
-                                        display: block;
-                                    }
-                                }
-
-                                .b3-button--text {
-                                    @include button-action('primary');
-                                }
-
-                                .b3-button--cancel {
-                                    @include button-action('normal');
-                                }
-                            }
-                        }
-                    }
-
-                    &>.fn__hr--b {
-                        display: none;
-                    }
-                }
-
-                .config-keymap__key {
-                    font-family: SF Pro, Consolas, "Liberation Mono", Menlo, Courier, monospace, var(--b3-font-family);
-                }
-            }
-
             // 数据历史 ————————————————————————————————————————
             .history__repo {
                 background-color: unset;
@@ -377,6 +180,336 @@
                 background-color: transparent;
             }
         }
+    }
+}
+
+// 设置面板 ————————————————————————————————
+.config__panel {
+    .b3-tab-bar {
+        background-color: var(--b3-theme-surface);
+        padding: 16px 8px;
+
+        .config__tab-hr {
+            background-color: var(--b3-border-color-trans);
+        }
+
+        .b3-list-item {
+            height: 32px;
+            line-height: 30px;
+            margin: 4px 8px;
+
+            &:hover:not(.b3-list-item--focus) {
+                background-color: transparent;
+
+                .b3-list-item__graphic,
+                .b3-list-item__text {
+                    color: var(--b3-theme-on-background);
+                }
+            }
+
+            &__graphic,
+            &__text {
+                color: var(--b3-theme-on-surface);
+            }
+
+            &--focus {
+
+                .b3-list-item__graphic,
+                .b3-list-item__text {
+                    color: var(--b3-theme-on-background);
+                    font-weight: 600;
+                }
+            }
+        }
+
+        @media (max-width: 750px) {
+
+            .config__tab-title,
+            .b3-list-item {
+                justify-content: center;
+            }
+
+            .b3-list-item {
+                margin: 4px 6px !important;
+            }
+
+            .b3-list-item__graphic {
+                padding: 0 4px;
+            }
+        }
+    }
+
+    .config__tab-wrap {
+        padding: 0;
+
+        .config__tab-container {
+            padding: 8px 0;
+            background-color: var(--b3-theme-background);
+
+            .layout-tab-bar+.fn__flex-1 {
+                background-color: var(--b3-theme-background);
+            }
+
+            &--top {
+                margin-top: 0;
+                height: 100%;
+                padding: 8px 0 0;
+            }
+
+            .b3-label {
+                box-shadow: none;
+
+                // 表单元素溢出显示
+                >.fn__flex-1 {
+                    overflow: visible;
+                }
+            }
+
+            // 集市面板
+            .config-bazaar__panel {
+                // padding-bottom: 8px;
+
+                .config-bazaar__title {
+                    position: sticky;
+                    top: 0;
+                    z-index: 2;
+                    align-items: center;
+                    backdrop-filter: none;
+                    padding: 8px 16px;
+                    background-color: var(--b3-theme-background);
+
+
+                    .b3-form__icon .b3-text-field {
+                        @media (max-width: 830px) {
+                            width: calc(100% - 32px)
+                        }
+
+                        ;
+                    }
+
+
+                    .b3-switch {
+                        transform: translateX(11px);
+                        margin: 0 !important;
+                    }
+                }
+
+                .counter {
+                    background-color: transparent !important;
+                }
+
+
+                &[data-type='downloaded'] {
+                    .b3-button {
+                        @include button-action(1) {
+                            padding: 4px;
+                        }
+
+                        &:not(.b3-button--outline) {
+                            background-color: transparent;
+                            color: var(--b3-theme-primary);
+                            font-weight: 600;
+
+                            &:hover,
+                            &:focus {
+                                box-shadow: none;
+                            }
+                        }
+
+                        &.b3-button--outline {
+                            background-color: transparent;
+                            color: var(--b3-theme-on-surface);
+                            font-weight: normal;
+
+                            &:hover {
+                                color: var(--b3-theme-on-background);
+                                box-shadow: none;
+                            }
+                        }
+
+                        &+.fn__space+.b3-form__icon {
+                            margin-left: 8px;
+                        }
+                    }
+
+                    [data-type="myPlugin"]:not(.b3-button--outline)~.counter {
+                        transform: translateX(-64px);
+                    }
+                }
+
+                .config-bazaar__content {
+                    margin-top: 0;
+                }
+            }
+
+            &[data-name="account"] {
+                padding: 0;
+                margin-top: 0;
+                height: inherit;
+
+                .config-account {
+
+                    &__cover {
+                        &::before {
+                            content: "";
+                            display: inline-block;
+                            width: -webkit-fill-available;
+                            height: 90%;
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            background: linear-gradient(to top, pickThemeColor($theme-light, background) 2%, pickThemeColor($theme-light, background, 0.97) 10%, pickThemeColor($theme-light, background, 0.9) 18%, pickThemeColor($theme-light, background, 0.75) 33%, pickThemeColor($theme-light, background, 0.05) 92%, transparent 99%);
+                            pointer-events: none;
+
+                            @include darkmode-counterpart {
+                                background: linear-gradient(to top, pickThemeColor($theme-dark, background) 2%, pickThemeColor($theme-dark, background, 0.97) 10%, pickThemeColor($theme-dark, background, 0.9) 18%, pickThemeColor($theme-dark, background, 0.75) 33%, pickThemeColor($theme-dark, background, 0.05) 92%, transparent 99%);
+                            }
+                        }
+
+                        // &[style="background-image: url()"] {
+                        //     background-color: var(--b3-theme-primary-lighter);
+                        // }
+                    }
+
+                    &__bg {
+                        margin-bottom: 0;
+                    }
+
+                    &__avatar {
+                        top: 25%;
+                        bottom: unset;
+                        box-shadow: none;
+                        border: none;
+                    }
+
+                    &__name {
+                        top: calc(25% + 150px);
+                        bottom: unset;
+                        mix-blend-mode: luminosity;
+
+                        &>.fn__a {
+                            display: block;
+                        }
+                    }
+
+                    &__info {
+                        margin-top: 0;
+
+                        @media (min-width: 750px) {
+                            >.fn__flex {
+                                margin: 0 8% 8px;
+                                flex-direction: column;
+
+                                #refresh {
+                                    min-height: 28px;
+                                }
+
+                                &:last-child {
+                                    label {
+                                        display: flex;
+
+                                        >input {
+                                            margin-left: auto;
+                                        }
+                                    }
+
+                                    .fn__flex-1 {
+                                        min-height: 8px;
+                                    }
+
+                                }
+
+                                .fn__space {
+                                    height: 8px
+                                }
+                            }
+                        }
+                    }
+
+                    .b3-button--text:not(#activationCode),
+                    button#login {
+                        @include button-primary;
+                    }
+
+                    .b3-button--cancel {
+                        @include button-action('normal');
+                    }
+
+                    // 订阅按钮
+                    .b3-button--big {
+                        color: var(--b3-theme-primary);
+                        font-weight: 600;
+                        padding: 24px 16px;
+                        background-color: transparent;
+                        outline: 2px solid var(--b3-theme-primary);
+                        transition: .2s;
+                        border-radius: 99px;
+
+                        &:hover {
+                            background-color: var(--b3-theme-primary-lightest);
+                            box-shadow: none;
+                            transform: scale(1.05);
+                        }
+
+                        &:active {
+                            transform: scale(.95);
+                            opacity: .8;
+                            box-shadow: none;
+                            transition: .1s;
+                        }
+
+                        &:active,
+                        &:focus {
+                            background-color: var(--b3-theme-primary);
+                            color: var(--b3-theme-on-primary);
+                            transition: .1s;
+                            outline-color: transparent;
+                            box-shadow: none;
+                        }
+                    }
+
+                    // 捐赠按钮
+                    .b3-chip--hover:hover {
+                        box-shadow: none;
+                        transform: scale(1.05);
+                    }
+
+                    // 右侧面板
+                    &__center--text {
+                        padding: 24px;
+
+                        .b3-form__icon-input:placeholder-shown+#activationCode {
+                            display: none;
+                        }
+                    }
+
+                    #activationCode {
+                        transition: .1s;
+                        font-weight: 600;
+
+                        &:hover {
+                            background-color: transparent;
+                            transform: scale(1.05);
+                        }
+
+                        &:active,
+                        &:focus {
+                            background-color: transparent;
+                            transform: scale(.95);
+                            color: var(--b3-theme-primary);
+                        }
+                    }
+                }
+            }
+        }
+
+        &>.fn__hr--b {
+            display: none;
+        }
+    }
+
+    .config-keymap__key {
+        font-family: SF Pro, Consolas, "Liberation Mono", Menlo, Courier, monospace, var(--b3-font-family);
     }
 }
 
@@ -1067,76 +1200,6 @@ body.body--window {
         }
     }
 }
-}
-
-// 数据库
-.custom-attr .block__logo.custom-attr__avheader {
-    color: var(--b3-theme-primary);
-    font-weight: 500;
-    margin-right: 0;
-    margin-bottom: 4px;
-    opacity: 1;
-    position: sticky;
-    top: 0;
-    background-color: var(--b3-theme-background);
-    z-index: 1;
-}
-
-.custom-attr[data-type="NodeAttributeView"] {
-    padding-bottom: 16px;
-
-    .block__icons {
-        height: auto;
-        min-height: unset;
-        padding: 4px 16px;
-    }
-
-    .av__row {
-        .block__logo {
-            font-weight: 500;
-        }
-
-        .block__logo~.fn__flex-1 {
-            overflow: visible;
-        }
-
-        .custom-attr__avvalue {
-            padding: 4px 0;
-        }
-
-        input,
-        select,
-        [data-type=text] .b3-text-field {
-            min-height: unset;
-            height: 28px;
-            padding: 4px;
-
-            &:hover {
-                background-color: var(--b3-theme-surface);
-            }
-
-            &:focus {
-                background-color: var(--b3-theme-surface);
-                outline: 3px solid var(--b3-theme-primary-light);
-            }
-        }
-
-        [data-type=text] {
-            align-self: flex-start;
-        }
-
-        .b3-chip {
-            border-radius: 20px;
-            padding: 2px 6px;
-        }
-
-        .av__celltext--url,
-        .av__celltext--ref {
-            border-bottom: none;
-            text-decoration: underline var(--b3-border-color-trans);
-            text-decoration-thickness: 0.1em;
-        }
-    }
 }
 
 // 导出界面

@@ -409,3 +409,73 @@
         }
     }
 }
+
+// 属性面板视图
+.custom-attr .block__logo.custom-attr__avheader {
+    color: var(--b3-theme-primary);
+    font-weight: 500;
+    margin-right: 0;
+    margin-bottom: 4px;
+    opacity: 1;
+    position: sticky;
+    top: 0;
+    background-color: var(--b3-theme-background);
+    z-index: 1;
+}
+
+.custom-attr[data-type="NodeAttributeView"] {
+    padding-bottom: 16px;
+
+    .block__icons {
+        height: auto;
+        min-height: unset;
+        padding: 4px 16px;
+    }
+
+    .av__row {
+        .block__logo {
+            font-weight: 500;
+        }
+
+        .block__logo~.fn__flex-1 {
+            overflow: visible;
+        }
+
+        .custom-attr__avvalue {
+            padding: 4px 0;
+        }
+
+        input,
+        select,
+        [data-type=text] .b3-text-field {
+            min-height: unset;
+            height: 28px;
+            padding: 4px;
+
+            &:hover {
+                background-color: var(--b3-theme-surface);
+            }
+
+            &:focus {
+                background-color: var(--b3-theme-surface);
+                outline: 3px solid var(--b3-theme-primary-light);
+            }
+        }
+
+        [data-type=text] {
+            align-self: flex-start;
+        }
+
+        .b3-chip {
+            border-radius: 20px;
+            padding: 2px 6px;
+        }
+
+        .av__celltext--url,
+        .av__celltext--ref {
+            border-bottom: none;
+            text-decoration: underline var(--b3-border-color-trans);
+            text-decoration-thickness: 0.1em;
+        }
+    }
+}

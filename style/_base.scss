@@ -110,6 +110,7 @@
     &:active {
         transform: scale(0.95);
         opacity: 0.8;
+        transition: .1s;
     }
 }
 // 普通按钮
@@ -125,6 +126,7 @@
         transform: scale(0.95);
         opacity: 0.8;
         box-shadow: none;
+        transition: .1s;
     }
 
     &:focus {
@@ -143,6 +145,7 @@
         &:focus {
             @include theme-variant-color(background-color, list-hover, 0.1);
             color: var(--b3-theme-on-background);
+            transition: .1s;
         }
     }
 
@@ -158,6 +161,7 @@
         &:focus {
             background-color: var(--b3-theme-primary);
             color: var(--b3-theme-on-primary);
+            transition: .1s;
         }
     }
 
@@ -174,6 +178,7 @@
         &:focus {
             background-color: var(--b3-theme-error);
             color: var(--b3-theme-on-error);
+            transition: .1s;
         }
     }
 
