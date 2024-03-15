@@ -355,7 +355,12 @@
                         border-radius: 20px;
                         overflow: hidden;
                         background-color: var(--b3-theme-background);
+                        
                         @include menu-shadow($opacity-light: .05, $opacity-dark: 0.15, $border-light: .5px, $border-dark: 0px);
+
+                        @include darkmode-counterpart {
+                            outline: .5px solid var(--b3-border-color-trans);
+                        }
 
                         @media (max-width: 750px) {
                             margin: 20px 20px 40px;
@@ -497,9 +502,11 @@
                         .b3-form__icon-icon {
                             margin: 8px 0;
                         }
+
                         .b3-form__icon-input {
                             margin: 8px 0 16px;
-                            &:placeholder-shown + #activationCode {
+
+                            &:placeholder-shown+#activationCode {
                                 display: none;
                             }
                         }
