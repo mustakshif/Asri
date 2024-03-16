@@ -38,7 +38,7 @@
             }
             .resize__l {
                 left: -4px;
-            } 
+            }
 
             .b3-dialog__close {
                 visibility: hidden;
@@ -432,15 +432,6 @@
                                     box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
                                 }
 
-                                .b3-button--text:not(#activationCode) {
-                                    box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
-                                    background-color: transparent;
-
-                                    @include darkmode-counterpart {
-                                        background-color: transparent;
-                                    }
-                                }
-
                                 #refresh {
                                     height: 28px;
 
@@ -492,7 +483,14 @@
                     .b3-button--text:not(#activationCode),
                     button#login {
                         // @include button-action('primary');
-                        @include button-primary;
+                        @include button-primary {
+                            background-color: var(--b3-theme-primary);
+                            color: var(--b3-theme-on-primary);
+                        };
+
+                        @include darkmode-counterpart {
+                            background-color: var(--b3-theme-primary);
+                        }
                     }
 
                     .b3-button--cancel {
