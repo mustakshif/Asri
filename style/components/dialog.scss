@@ -27,6 +27,19 @@
             @include border-or-not;
             @include dialog-shadow;
 
+            .resize__r {
+                right: -4px;
+            }
+            .resize__d {
+                bottom: -4px;
+            }
+            .resize__t {
+                top: -4px;
+            }
+            .resize__l {
+                left: -4px;
+            } 
+
             .b3-dialog__close {
                 visibility: hidden;
             }
@@ -411,16 +424,19 @@
 
                         @media (min-width: 750px) {
                             >.fn__flex {
-                                margin: 0 8% 8px;
+                                margin: 0 24px 24px;
                                 flex-direction: column;
 
-                                #logout, #refresh {
+                                #logout,
+                                #refresh {
                                     box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
                                 }
 
                                 .b3-button--text:not(#activationCode) {
+                                    box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+                                    background-color: transparent;
+
                                     @include darkmode-counterpart {
-                                        box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
                                         background-color: transparent;
                                     }
                                 }
@@ -428,7 +444,7 @@
                                 #refresh {
                                     height: 28px;
 
-                                    > svg {
+                                    >svg {
                                         display: none;
                                     }
 
