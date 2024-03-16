@@ -283,8 +283,6 @@
                         @media (max-width: 830px) {
                             width: calc(100% - 32px)
                         }
-
-                        ;
                     }
 
 
@@ -355,15 +353,11 @@
                         border-radius: 20px;
                         overflow: hidden;
                         background-color: var(--b3-theme-background);
-                        
+
                         @include menu-shadow($opacity-light: .05, $opacity-dark: 0.15, $border-light: .5px, $border-dark: 0px);
 
-                        @include darkmode-counterpart {
-                            outline: .5px solid var(--b3-border-color-trans);
-                        }
-
                         @media (max-width: 750px) {
-                            margin: 20px 20px 40px;
+                            margin: 40px 20px;
                         }
                     }
 
@@ -420,8 +414,41 @@
                                 margin: 0 8% 8px;
                                 flex-direction: column;
 
+                                #logout, #refresh {
+                                    box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+                                }
+
+                                .b3-button--text:not(#activationCode) {
+                                    @include darkmode-counterpart {
+                                        box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+                                        background-color: transparent;
+                                    }
+                                }
+
                                 #refresh {
-                                    min-height: 28px;
+                                    height: 28px;
+
+                                    > svg {
+                                        display: none;
+                                    }
+
+                                    &::after {
+                                        opacity: 1;
+                                        transform: none;
+                                        right: unset;
+                                        bottom: unset;
+                                        margin-bottom: 0;
+                                        background-color: transparent;
+                                        box-shadow: none;
+                                        font-size: 14px;
+                                        color: var(--b3-theme-on-surface);
+                                        transition: color .1s;
+                                    }
+
+                                    &:hover::after {
+                                        color: var(--b3-theme-on-background);
+                                        border: none;
+                                    }
                                 }
 
                                 &:last-child {
@@ -448,6 +475,7 @@
 
                     .b3-button--text:not(#activationCode),
                     button#login {
+                        // @include button-action('primary');
                         @include button-primary;
                     }
 
