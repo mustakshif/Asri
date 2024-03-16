@@ -1030,6 +1030,10 @@
     @include hljs;
     @include table(false, true);
 
+    a {
+        transition: var(--b3-transition);
+    }
+
     table {
         // width: max-content;
         border: none;

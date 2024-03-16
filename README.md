@@ -67,7 +67,7 @@ Check all updates [here](./CHANGELOG.md).
 * **Download & update in SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
 * Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
 
-## Custom Attribute
+## Custom Attributes
 
 ### `afwd`: Asri full-width display
 

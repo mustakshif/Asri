@@ -357,7 +357,7 @@
                         @include menu-shadow($opacity-light: .05, $opacity-dark: 0.15, $border-light: .5px, $border-dark: 0px);
 
                         @media (max-width: 750px) {
-                            margin: 40px 20px;
+                            margin: 40px;
                         }
                     }
 
