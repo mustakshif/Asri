@@ -30,12 +30,15 @@
             .resize__r {
                 right: -4px;
             }
+
             .resize__d {
                 bottom: -4px;
             }
+
             .resize__t {
                 top: -4px;
             }
+
             .resize__l {
                 left: -4px;
             }
@@ -363,6 +366,7 @@
 
                     &__center:not(.config-account__center--text) {
                         height: min(100% - 80px, 650px);
+                        max-width: min(100%, 400px);
                         margin: auto 20px;
                         border-radius: 20px;
                         overflow: hidden;
@@ -372,6 +376,7 @@
 
                         @media (max-width: 750px) {
                             margin: 40px;
+                            max-width: unset;
                         }
                     }
 
@@ -406,6 +411,11 @@
                         bottom: unset;
                         box-shadow: none;
                         border: none;
+                        transition: box-shadow .2s;
+
+                        &:hover {
+                            box-shadow: 0 0 0 2px #fffa;
+                        }
                     }
 
                     &__name {
@@ -419,6 +429,7 @@
 
                         &>.fn__a {
                             display: block;
+                            transition: color .2s;
                         }
                     }
 
@@ -484,14 +495,17 @@
                             }
                         }
                     }
-                    
+
                     .b3-button--text:not(#activationCode),
                     button#login {
+
                         // @include button-action('primary');
                         @include button-primary {
                             background-color: var(--b3-theme-primary);
                             color: var(--b3-theme-on-primary);
-                        };
+                        }
+
+                        ;
 
                         @include darkmode-counterpart {
                             background-color: var(--b3-theme-primary);
