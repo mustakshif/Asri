@@ -1,3 +1,25 @@
+### v2.1.14
+
+* 重新设计账号页面
+* 统一超链接元素过渡动画
+* 缩小数据库资源列图像内容圆角
+* 修改数据库角标鼠标悬停时的颜色
+* 修改数据库关联列编辑菜单高亮条目的引用文字颜色和样式
+* 修复数据库有选中条目时导致整体横向位移的问题
+* [修复文档无图标有题头图时文档属性被题头图控件遮挡的问题](https://github.com/mustakshif/Asri/issues/26)
+* 修复对话框边缘难以触发大小调节的问题
+
+* Redesigned the account page
+* Unified the transition animation of hyperlinks
+* Shrunk the rounded corners of the image content in the database assets column
+* Modified the color of the database badge's style when hovered on
+* Modified the color and style of the reference text in the highlighted item of the database relation column editing menu
+* Fixed the issue where selecting an item in the database caused overall horizontal displacement
+* [Fixed the problem where the document properties were covered by the header image controls when there was no icon and only a header image](https://github.com/mustakshif/Asri/issues/26)
+* Fixed the issue where it was difficult to trigger resizing at the edges of the dialogs
+
+---
+
 ### v2.1.13
 
 * 新增顶栏钉住图标数量变化时自动更新布局
