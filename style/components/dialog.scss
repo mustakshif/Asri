@@ -362,7 +362,8 @@
                     background-color: var(--b3-theme-surface);
 
                     &__center:not(.config-account__center--text) {
-                        margin: 40px 20px;
+                        height: min(100% - 80px, 650px);
+                        margin: auto 20px;
                         border-radius: 20px;
                         overflow: hidden;
                         background-color: var(--b3-theme-background);
@@ -411,6 +412,10 @@
                         top: calc(20% + 200px);
                         bottom: unset;
                         mix-blend-mode: luminosity;
+
+                        @media (max-width: 750px) {
+                            display: none;
+                        }
 
                         &>.fn__a {
                             display: block;
@@ -479,7 +484,7 @@
                             }
                         }
                     }
-
+                    
                     .b3-button--text:not(#activationCode),
                     button#login {
                         // @include button-action('primary');
@@ -490,6 +495,15 @@
 
                         @include darkmode-counterpart {
                             background-color: var(--b3-theme-primary);
+                        }
+
+                        @media (max-width: 750px) {
+                            @include button-action('primary');
+                            color: var(--b3-theme-on-primary);
+
+                            &:hover {
+                                background-color: var(--b3-theme-primary)
+                            }
                         }
                     }
 
