@@ -466,6 +466,11 @@
                                         font-size: 14px;
                                         color: var(--b3-theme-on-surface);
                                         transition: color .1s;
+                                        -webkit-font-smoothing: auto;
+
+                                        @include darkmode-counterpart {
+                                            -webkit-font-smoothing: antialiased;
+                                        }
                                     }
 
                                     &:hover::after {
