@@ -28,6 +28,20 @@
     //             rgba(0, 0, 0, 0.05) 92%,
     //             transparent 99%);
     // }
+
+    &::after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+        height: 13.5vh;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        backdrop-filter: blur(4px);
+        mask-image: linear-gradient(to top, black 50%, transparent);
+        transform: translateZ(0);
+        pointer-events: none;
+    }
 }
 
 //有题头图时
@@ -47,12 +61,12 @@
             margin-bottom: -120px;
 
             .protyle-icons:not(:nth-of-type(2)) {
-                transform: translateY(-48px);
+                transform: translateY(-72px);
                 z-index: 1;
             }
 
             .protyle-background__iconw {
-                transform: translateY(-96px);
+                transform: translateY(-120px);
                 z-index: 1;
             }
         }

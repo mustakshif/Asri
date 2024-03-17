@@ -136,21 +136,6 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 
         // 题头图区域
         &-background {
-            &__img {
-                &::after {
-                    content: "";
-                    display: inline-block;
-                    width: -webkit-fill-available;
-                    height: 13.5vh;
-                    position: absolute;
-                    bottom: 0;
-                    right: 0;
-                    backdrop-filter: blur(4px);
-                    mask-image: linear-gradient(to top, black 50%, transparent);
-                    transform: translateZ(0);
-                    pointer-events: none;
-                }
-            }
 
             .b3-chips {
                 $chip-colors: (
@@ -289,6 +274,7 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 .protyle-background__iconw {
     .protyle-icons {
         mix-blend-mode: normal;
+        @include bg-blur($medium-blur-rd, $brightness-light: 1);
     }
 }
 

@@ -63,6 +63,10 @@
     }
 }
 
+.protyle-attr--av:hover > :is(svg, span) {
+    color: var(--b3-theme-primary);
+}
+
 //开关
 .b3-switch {
     height: 20px;
@@ -151,11 +155,13 @@ select.b3-select {
         outline: 3px solid var(--b3-theme-primary-light);
         box-shadow: none;
     }
+}
 
-    // 以下解决文本框聚焦时外框被裁切的情况
-    // .config__panel .config__tab-container .fn__flex-1:has(>&) {
-    //     overflow: visible;
-    // }
+// 密码输入框、API输入框
+.b3-form__icona {
+    &-icon:hover {
+        background-color: transparent;
+    }
 }
 
 select.b3-select {
@@ -225,7 +231,7 @@ textarea {
     // overflow: hidden;
     // min-width: max-content;
 
-    overflow-wrap: break-word; // 宽度计算考虑文本长度
+    overflow-wrap: break-word; // 单个长单词换行
     word-break: keep-all; // 保持CJK字符不换行
 
     animation-delay: .75s;

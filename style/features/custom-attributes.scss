@@ -7,7 +7,6 @@ body:not([style*='-webkit-print-color-adjust']) {
     .protyle-wysiwyg {
 
         // 图片 ——————————————————————
-
         &[custom-afwd="all"]>.p:not([custom-afwd="off"]),
         &[custom-afwd~="p"]>.p:not([custom-afwd="off"]),
         >.p[custom-afwd="on"] {
@@ -109,6 +108,10 @@ body:not([style*='-webkit-print-color-adjust']) {
             .av__container {
                 margin: 0 calc(var(--protyle-spacing) * -1 - 3px);
                 transition: margin .2s;
+
+                .av__header .av__counter {
+                    width: calc(100% - 2 * var(--protyle-spacing) - 6px);
+                }
 
                 .av__header,
                 .av__scroll {

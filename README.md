@@ -10,17 +10,16 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.13
+### v2.1.14
 
-* Added automatic layout update for the top bar when the number of icons change
-* Optimized the execution frequency of certain JavaScript functions to reduce performance consumption
-* Added transition animation for full-width display blocks when the page width changes
-* Adjusted the text color of yellow in the appearance style to enhance readability
-* Adjusted the line height of the title block to improve readability of multi-line text
-* [Fixed the issue where the mouse could not enter and scroll when there is a lot of inline memo content](https://ld246.com/article/1709825939240)
-* Fixed the issue of background exceeding the rounded corners in tables
-* Fixed the issue of the status bar being covered by the database header
-* Fixed the issue where highlighted text in search preview would cover normal text on the left and right
+* Redesigned the account page
+* Unified the transition animation of hyperlinks
+* Shrunk the rounded corners of the image content in the database assets column
+* Modified the color of the database badge's style when hovered on
+* Modified the color and style of the reference text in the highlighted item of the database relation column editing menu
+* Fixed the issue where selecting an item in the database caused overall horizontal displacement
+* [Fixed the problem where the document properties were covered by the header image controls when there was no icon and only a header image](https://github.com/mustakshif/Asri/issues/26)
+* Fixed the issue where it was difficult to trigger resizing at the edges of the dialogs
 
 Check all updates [here](./CHANGELOG.md).
 
@@ -67,7 +66,7 @@ Check all updates [here](./CHANGELOG.md).
 * **Download & update in SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
 * Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
 
-## Custom Attribute
+## Custom Attributes
 
 ### `afwd`: Asri full-width display
 
