@@ -160,10 +160,6 @@
         .av__cell-check>.av__checkbox {
             color: var(--b3-theme-primary);
         }
-
-        .av__cellassetimg {
-            border-radius: 2px;
-        }
     }
 
     // 菜单
@@ -311,6 +307,10 @@
             background-color: var(--b3-theme-surface);
         }
     }
+}
+
+img.av__cellassetimg {
+    border-radius: 2px;
 }
 
 .b3-menu {

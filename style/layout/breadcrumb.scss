@@ -20,18 +20,6 @@
         }
     }
 
-    // 以下代码影响页面滚动性能
-    // ————————————————————————————————————————
-    // border-bottom: 1px solid var(--b3-border-color);
-    // transition: 0.2s border-bottom;
-
-    // // 页面滚动时才显示下边界，借鉴 @TinkMingKing 的 VSCode Lite 主题 
-    // .protyle:has(.protyle-content[data-scrolltop="0"], .protyle-content:not([data-scrolltop])) & {
-    //     border-bottom: 1px solid transparent;
-    //     transition: 0.2s border-bottom;
-    // }
-    // end ——————————————————————————————————
-
     &__item {
         // &:first-child {
         //     padding: 0;
