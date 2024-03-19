@@ -216,6 +216,30 @@ body:not([style*='-webkit-print-color-adjust']) {
 
             table {
                 width: max-content;
+            }
+
+            table[contenteditable=true]+.protyle-action__table .table__resize,
+            table[contenteditable=true]+.protyle-action__table .table__select {
+                transform: translateY(calc(20em/17 + 1px));
+            }
+        }
+
+        // plan B. for test only. can't handle small-width tables; can't make tables centered without maintaining normal positioning of table resizing and selecting controls.
+        >.table[custom-afwd="fit"] {
+
+            margin: calc(-12em / 17) 0;
+
+            .protyle-attr {
+                top: 8px;
+            }
+
+            >div:first-child {
+                margin: calc(20em / 17) calc(var(--protyle-spacing) * -1 - 4px);
+                padding: 0 !important;
+            }
+
+            table {
+                width: auto !important;
                 border-left: none;
                 border-right: none;
                 border-radius: 0;
@@ -226,31 +250,6 @@ body:not([style*='-webkit-print-color-adjust']) {
                 transform: translateY(calc(20em/17 + 1px));
             }
         }
-
-        // >.table[custom-afwd="fit"] {
-        //     margin: calc(-12em / 17) 0;
-
-        //     .protyle-attr {
-        //         top: 8px;
-        //     }
-
-        //     >div:first-child {
-        //         margin: calc(20em / 17) calc(var(--protyle-spacing) * -1 - 4px);
-        //         padding: 0 !important;
-        //     }
-
-        //     table {
-        //         width: auto !important;
-        //         border-left: none;
-        //         border-right: none;
-        //         border-radius: 0;
-        //     }
-
-        //     table[contenteditable=true]+.protyle-action__table .table__resize,
-        //     table[contenteditable=true]+.protyle-action__table .table__select {
-        //         transform: translateY(calc(20em/17 + 1px));
-        //     }
-        // }
     }
 }
 
