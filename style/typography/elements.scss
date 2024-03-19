@@ -582,10 +582,6 @@
     // 表格 ——————————————————————————————————————
     @include table;
 
-    [data-node-id].table table {
-        display: inline-block;
-    }
-
     [data-node-id].table[custom-pinthead=true] thead {
         position: sticky;
         z-index: 1;

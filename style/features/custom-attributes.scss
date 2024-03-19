@@ -51,6 +51,10 @@ body:not([style*='-webkit-print-color-adjust']) {
 
             margin: calc(-12em / 17) 0;
 
+            .protyle-attr {
+                top: 8px;
+            }
+
             .iframe-content {
                 display: block;
                 margin: calc(20em / 17) calc(var(--protyle-spacing) * -1 - 5px);
@@ -172,7 +176,7 @@ body:not([style*='-webkit-print-color-adjust']) {
             > :nth-last-child(1 of [data-node-id]) {
                 margin-right: calc(var(--protyle-spacing)*-1 + min(24px, var(--protyle-spacing)));
 
-                // >*, // 这个选择器导致 tabbar 滚动卡顿 + 行内备注 hover 状态取消时动画卡顿
+                // >*, // 导致 tabbar 滚动卡顿 + 行内备注 hover 状态取消时动画卡顿
                 // .sb,
                 // .bq,
                 // .render-node {
@@ -189,6 +193,64 @@ body:not([style*='-webkit-print-color-adjust']) {
             //     margin-right: calc(var(--protyle-spacing)*-1);
             // }
         }
+
+        // 表格块 ————————————————————
+
+        &[custom-afwd="all"]>.table:not([custom-afwd="off"]),
+        &[custom-afwd~="t"]>.table:not([custom-afwd="off"]),
+        >.table[custom-afwd="on"] {
+            margin: calc(-12em / 17) 0;
+
+            .protyle-attr {
+                top: 8px;
+            }
+
+            >div:first-child {
+                margin: calc(20em / 17) calc(var(--protyle-spacing) * -1 - 4px);
+                padding: 0 calc(var(--protyle-spacing));
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+
+            table {
+                width: max-content;
+                border-left: none;
+                border-right: none;
+                border-radius: 0;
+            }
+
+            table[contenteditable=true]+.protyle-action__table .table__resize,
+            table[contenteditable=true]+.protyle-action__table .table__select {
+                transform: translateY(calc(20em/17 + 1px));
+            }
+        }
+
+        // >.table[custom-afwd="fit"] {
+        //     margin: calc(-12em / 17) 0;
+
+        //     .protyle-attr {
+        //         top: 8px;
+        //     }
+
+        //     >div:first-child {
+        //         margin: calc(20em / 17) calc(var(--protyle-spacing) * -1 - 4px);
+        //         padding: 0 !important;
+        //     }
+
+        //     table {
+        //         width: auto !important;
+        //         border-left: none;
+        //         border-right: none;
+        //         border-radius: 0;
+        //     }
+
+        //     table[contenteditable=true]+.protyle-action__table .table__resize,
+        //     table[contenteditable=true]+.protyle-action__table .table__select {
+        //         transform: translateY(calc(20em/17 + 1px));
+        //     }
+        // }
     }
 }
 
