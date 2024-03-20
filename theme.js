@@ -1001,7 +1001,6 @@
                 rule.styleSheet.insertRule(rule.rule, rule.styleSheet.cssRules.length);
             }
         }
-        // console.log('Asri theme destroyed!');
 
         document.body.classList.add('asri-mode-transition');
         setTimeout(() => {

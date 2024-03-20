@@ -46,7 +46,6 @@ Check all updates [here](./CHANGELOG.md).
 * 🧩 Optimized internal and external spacing of superblocks, making it easy to achieve grid and masonry layouts
 * 🦋 Support for full-width display of images, videos, widgets, databases, superblocks and more, providing diverse formatting layouts
 * ➖ Simplified dividers, creating an integrated, refreshing and tidy layout style
-* 🔛 Width-adaptive layout, making full use of screen space
 
 ### 🧭 Convenient and Clear Navigation
 

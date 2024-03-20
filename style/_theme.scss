@@ -36,7 +36,8 @@ body {
 
 .asri-mode-transition >.fn__flex-1 *,
 .asri-mode-transition > [id] *,
-.asri-mode-transition > [data-key] * {
+.asri-mode-transition > [data-key] *,
+.asri-mode-transition > .block__popover * {
     transition-property: background-color, color, border-color, outline-color;
     transition-duration: .5s;
     transition-delay: .1s;

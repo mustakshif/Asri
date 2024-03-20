@@ -3,31 +3,43 @@
 .protyle-background__img {
 
     //遮罩层
-    &::before {
-        content: "";
-        display: inline-block;
-        width: -webkit-fill-available;
-        height: 90%;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        background: linear-gradient(to top, pickThemeColor($theme-light, background) 2%, pickThemeColor($theme-light, background, 0.97) 10%, pickThemeColor($theme-light, background, 0.9) 18%, pickThemeColor($theme-light, background, 0.75) 33%, pickThemeColor($theme-light, background, 0.05) 92%, transparent 99%);
-        pointer-events: none;
+    // &::before {
+    //     content: "";
+    //     display: inline-block;
+    //     width: -webkit-fill-available;
+    //     height: 90%;
+    //     position: absolute;
+    //     bottom: 0;
+    //     right: 0;
+    //     background: linear-gradient(to top, pickThemeColor($theme-light, background) 2%, pickThemeColor($theme-light, background, 0.97) 10%, pickThemeColor($theme-light, background, 0.9) 18%, pickThemeColor($theme-light, background, 0.75) 33%, pickThemeColor($theme-light, background, 0.05) 92%, transparent 99%);
+    //     pointer-events: none;
 
-        @include darkmode-counterpart {
-            background: linear-gradient(to top, pickThemeColor($theme-dark, background) 2%, pickThemeColor($theme-dark, background, 0.97) 10%, pickThemeColor($theme-dark, background, 0.9) 18%, pickThemeColor($theme-dark, background, 0.75) 33%, pickThemeColor($theme-dark, background, 0.05) 92%, transparent 99%);
-        }
-    }
-
-    // img {
-    //     mask-image: linear-gradient(to bottom,
-    //             black 2%,
-    //             rgba(0, 0, 0, 0.97) 10%,
-    //             rgba(0, 0, 0, 0.9) 18%,
-    //             rgba(0, 0, 0, 0.75) 33%,
-    //             rgba(0, 0, 0, 0.05) 92%,
-    //             transparent 99%);
+    //     @include darkmode-counterpart {
+    //         background: linear-gradient(to top, pickThemeColor($theme-dark, background) 2%, pickThemeColor($theme-dark, background, 0.97) 10%, pickThemeColor($theme-dark, background, 0.9) 18%, pickThemeColor($theme-dark, background, 0.75) 33%, pickThemeColor($theme-dark, background, 0.05) 92%, transparent 99%);
+    //     }
     // }
+
+    img {
+        // mask-image: linear-gradient(to bottom,
+        //         black 2%,
+        //         rgba(0, 0, 0, 0.97) 10%,
+        //         rgba(0, 0, 0, 0.9) 18%,
+        //         rgba(0, 0, 0, 0.75) 33%,
+        //         rgba(0, 0, 0, 0.05) 92%,
+        //         transparent 99%);
+
+        mask-image: linear-gradient(to top,
+                transparent 2%,
+                rgba(0, 0, 0, 0.03) 10%,
+                rgba(0, 0, 0, 0.1) 18%,
+                rgba(0, 0, 0, 0.25) 33%,
+                rgba(0, 0, 0, 0.95) 92%,
+                black 99%), 
+                linear-gradient(to top, black, black);
+        mask-size: auto 90%, auto 10%;
+        mask-position: bottom, top;
+        mask-repeat: no-repeat;
+    }
 
     &::after {
         content: "";

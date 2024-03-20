@@ -9,6 +9,8 @@
 * [修复文档无图标有题头图时文档属性被题头图控件遮挡的问题](https://github.com/mustakshif/Asri/issues/26)
 * 修复对话框边缘难以触发大小调节的问题
 
+<br />
+
 * Redesigned the account page
 * Unified the transition animation of hyperlinks
 * Shrunk the rounded corners of the image content in the database assets column
@@ -31,6 +33,8 @@
 * 修复表格圆角处背景超出的问题
 * 修复状态栏被数据库表头遮挡的问题
 * 修复搜索预览中高亮文本遮挡左右普通文本的问题
+
+<br />
 
 * Added automatic layout update for the top bar when the number of icons change
 * Optimized the execution frequency of certain JavaScript functions to reduce performance consumption
@@ -55,6 +59,8 @@
 * 修改 `移动` 窗口标题下的路径为不换行、横向滚动
 * 修复数据库菜单高亮选项中图标的颜色
 
+<br />
+
 * Unified the layout style of the downloaded page and other pages in Marketplace.
 * Unified the highlighted text style for blockquote search lists.
 * Unified the interface style for the `List Blocks with Invalid References` interface and the search interface.
@@ -75,6 +81,8 @@
 * 提高状态栏消息部分悬停展示的宽度上限
 * 修复小米移动端默认字体下大写 M 变为 MIUI 字样的问题
 
+<br />
+
 * Added custom attribute `tdir` to control the overall text direction of the document content. Please refer to the theme instructions for details.
 * Increased the top spacing of image titles, and the left and right spacings when displayed in full width.
 * Optimized the display of the tab bar under extremely narrow widths.
@@ -93,6 +101,8 @@
 * 修复全宽显示的数据库中固定列左侧的空隙
 * 移除全宽显示数据库的横向滚动条
 * 移除对 `asri-full-width-display` 属性名的支持，改用 `afwd`
+
+<br />
 
 * Added mouse hover style for the primary key that referred to a block in the database.
 * Adjusted the placeholder text color.
