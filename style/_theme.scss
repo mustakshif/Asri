@@ -34,8 +34,11 @@ body {
     }
 }
 
-.asri-mode-transition :where([id], [data-key]) * {
+.asri-mode-transition >.fn__flex-1 *,
+.asri-mode-transition > [id] *,
+.asri-mode-transition > [data-key] * {
     transition-property: background-color, color, border-color, outline-color;
     transition-duration: .5s;
+    transition-delay: .1s;
     transition-timing-function: cubic-bezier(.2,0,0,1);
 }
