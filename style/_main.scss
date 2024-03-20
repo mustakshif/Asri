@@ -10,11 +10,11 @@
 
 @use 'plugins';
 
-@property --property-percentage {
-    syntax: '<percentage>';
-    inherits: false;
-    initial-value: 0%;
-}
+// @property --property-percentage {
+//     syntax: '<percentage>';
+//     inherits: false;
+//     initial-value: 0%;
+// }
 
 @keyframes click {
     0% {
@@ -31,17 +31,17 @@
     }
 }
 
-@keyframes scroll-fadein {
-    0% {
-        opacity: 0;
-    }
-    // 2% {
-    //     opacity: 1;
-    // }
-    100% {
-        opacity: 1;
-    }
-}
+// @keyframes scroll-fadein {
+//     0% {
+//         opacity: 0;
+//     }
+//     // 2% {
+//     //     opacity: 1;
+//     // }
+//     100% {
+//         opacity: 1;
+//     }
+// }
 
 // @property --property-length {
 //     syntax: '<length>';

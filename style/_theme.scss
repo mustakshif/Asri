@@ -2,13 +2,12 @@
 
 :root {
     @include font-family;
-    
+
     &[data-theme-mode="light"] {
         color-scheme: light;
         // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
 
         @include theme-root($theme-light);
-        
 
         body {
             ::selection {
@@ -25,12 +24,18 @@
 
 body {
     -webkit-font-smoothing: auto;
-    @include cssvars; // 防止被其他主题覆盖
+    text-underline-position: under;
+    text-decoration-skip-ink: all; // not supported yet
+
+    @include cssvars; // fix being overridden by other themes
 
     @include darkmode-counterpart {
         -webkit-font-smoothing: antialiased;
     }
+}
 
-    text-underline-position: under;
-    text-decoration-skip-ink: all;
+.asri-mode-transition :where([id], [data-key]) * {
+    transition-property: background-color, color, border-color, outline-color;
+    transition-duration: .5s;
+    transition-timing-function: cubic-bezier(.2,0,0,1);
 }
