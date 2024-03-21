@@ -973,6 +973,7 @@
 
             tabbarContainer.style.removeProperty('padding-left');
             tabbarContainer.style.removeProperty('padding-right');
+            tabbarContainer.style.removeProperty('padding-top');
             protyles.forEach(protyle => {
                 protyle.style.removeProperty('--protyle-spacing');
                 protyle.dataset.prevPadding = undefined;
@@ -1005,6 +1006,6 @@
         document.body.classList.add('asri-mode-transition');
         setTimeout(() => {
             document.body.classList.remove('asri-mode-transition');
-        }, 400);
+        }, 350);
     }
 })();
