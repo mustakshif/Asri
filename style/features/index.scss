@@ -1,8 +1,9 @@
+@use 'mode-transition';
 // @use 'hide-toolbar';
 @use 'cover-image-fading';
 @use 'blur';
 @use 'topbar-fusion';
 @use 'custom-attributes';
-@use 'high-readability-variants'
+@use 'high-readability-variants';
 // @use 'heading-indicators';
-// @use 'scroll-divider';
+@use 'scroll-divider';

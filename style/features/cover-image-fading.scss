@@ -1,5 +1,46 @@
 @use '../base' as *;
 
+/*
+source: https://toward.studio/latest/making-css-gradients-smooth
+*/
+/*
+A simple little SCSS mixin for creating scrim gradients
+Inspired by Andreas Larson - https://github.com/larsenwork
+https://css-tricks.com/easing-linear-gradients/
+*/
+@mixin scrimGradient($startColor: $color-black, $direction: 'to bottom') {
+
+    $scrimCoordinates: (
+        0: 1,
+        19: 0.738,
+        34: 0.541,
+        47: 0.382,
+        56.5: 0.278,
+        65: 0.194,
+        73: 0.126,
+        80.2: 0.075,
+        86.1: 0.042,
+        91: 0.021,
+        95.2: 0.008,
+        98.2: 0.002,
+        100: 0
+    );
+
+$hue: hue($startColor);
+$saturation: saturation($startColor);
+$lightness: lightness($startColor);
+$stops: (
+);
+
+@each $colorStop, $alphaValue in $scrimCoordinates {
+    $stop: hsla($hue, $saturation, $lightness, $alphaValue) percentage($colorStop/100);
+    $stops: append($stops, $stop, comma);
+}
+
+background: linear-gradient(unquote($direction), $stops);
+
+}
+
 .protyle-background__img {
 
     //遮罩层
@@ -34,11 +75,15 @@
                 rgba(0, 0, 0, 0.1) 18%,
                 rgba(0, 0, 0, 0.25) 33%,
                 rgba(0, 0, 0, 0.95) 92%,
-                black 99%), 
-                linear-gradient(to top, black, black);
+                black 99%),
+            linear-gradient(to top, black, black);
         mask-size: auto 90%, auto 11%;
         mask-position: bottom, top;
         mask-repeat: no-repeat;
+
+        // mask-image: linear-gradient(to bottom, hsl(0, 0%, 0%) 0%, hsl(0, 0%, 0%, .96) 11%, hsla(0, 0%, 0%, 0.9) 16%, hsla(0, 0%, 0%, 0.738) 27.1%, hsla(0, 0%, 0%, 0.541) 40.6%, hsla(0, 0%, 0%, 0.382) 52.3%, hsla(0, 0%, 0%, 0.278) 60.85%, hsla(0, 0%, 0%, 0.194) 68.5%, hsla(0, 0%, 0%, 0.126) 75.7%, hsla(0, 0%, 0%, 0.075) 82.18%, hsla(0, 0%, 0%, 0.042) 87.49%, hsla(0, 0%, 0%, 0.021) 91.9%, hsla(0, 0%, 0%, 0.008) 95.68%, hsla(0, 0%, 0%, 0.002) 98.38%, hsla(0, 0%, 0%, 0) 100%);
+        // mask-position: bottom;
+        // mask-repeat: no-repeat;
     }
 
     &::after {

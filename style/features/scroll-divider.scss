@@ -1,38 +1,146 @@
+@use '../base' as *;
 
-@mixin scroll-divider {
+@mixin scroll-divider-line($height: 1px) {
     &::before {
-        --dividerHeight: 1px;
+        content: '';
         display: block;
         position: sticky;
         top: 0;
-        content: '';
-        height: var(--dividerHeight);
-        // background-image: linear-gradient(to bottom, var(--b3-border-color-trans), transparent) ;
-        background-color: var(--b3-border-color-trans);
         width: 100%;
-        animation-name: dividerAppear;
-        animation-timeline: scroll();
-        margin-bottom: calc(-1 * var(--dividerHeight));
+        height: $height;
         z-index: 1;
         opacity: 0;
+        background-color: var(--b3-border-color-trans);
+
+        animation-name: dividerAppear;
+        animation-timeline: scroll();
+        animation-range: 2px 100%;
+
+        margin-bottom: calc(-1 * $height);
+
+        pointer-events: none;
     }
 }
 
-.protyle-content,
-[data-name="bazaar"] .layout-tab-bar + .fn__flex-1,
-.file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
-    @include scroll-divider();
+@mixin scroll-divider-fadein($size: 12px, $bg-clr: var(--b3-theme-background), $range: 'top') {
+    $range-dir: (
+        'top': 'to bottom',
+        'bottom': 'to top',
+        'left': 'to right',
+        'right': 'to left',
+    );
+
+    @if str-index($range, 'top') or str-index($range, 'left') {
+        $dir: map-get($range-dir, $range);
+
+        &::before {
+            content: '';
+            display: block;
+            position: sticky;
+            z-index: 1;
+            opacity: 0;
+
+            animation-name: dividerAppear;
+            animation-range: 1px 100%;
+
+            background-image: linear-gradient(#{$dir}, $bg-clr, transparent);
+
+            margin-#{str-slice($dir, 4)}: calc(-1 * $size);
+
+            pointer-events: none;
+
+            @if $dir =='to bottom' {
+                top: 0;
+                width: 100%;
+                height: $size;
+                animation-timeline: scroll();            
+            }
+
+            @else {
+                left: 0;
+                min-width: $size;
+                height: 100%;
+                animation-timeline: scroll(x);
+            }
+        }
+    }
+
+    @if str-index($range, 'bottom') or str-index($range, 'right') {
+        $dir: map-get($range-dir, $range);
+
+        &::after {
+            content: '';
+            display: block;
+            position: sticky;
+            z-index: 1;
+            opacity: 0;
+
+            animation-name: dividerAppear;
+            animation-range: 0% calc(100% - 1px);
+            animation-direction: alternate-reverse;
+
+            background-image: linear-gradient(#{$dir}, $bg-clr, transparent);
+
+            margin-#{str-slice($dir, 4)}: calc(-1 * $size);
+
+            pointer-events: none;
+
+            @if $dir =='to top' {
+                bottom: 0;
+                width: 100%;
+                height: $size;
+                animation-timeline: scroll();            
+            }
+
+            @else {
+                right: 0;
+                min-width: $size;
+                height: 100%;
+                animation-timeline: scroll(x);
+            }
+        }
+    }
 }
 
-.file-tree:not(.sy__backlink) .block__icons~.fn__flex-1::before {
-    width: calc(100% + 6px);
-    margin-left: -2px;
-    margin-right: -2px;
+// .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
+//     @include scroll-divider-fadein($bg-clr: var(--b3-theme-surface));
+// }
+
+// .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1::before {
+//     width: calc(100% + 6px);
+//     margin-left: -2px;
+//     margin-right: -2px;
+// }
+
+[data-name="bazaar"] .config-bazaar__panel {
+    @include scroll-divider-fadein(16px);
+
+    &::before {
+        top: 44px;
+        z-index: 2;
+    }
 }
 
-[data-name="bazaar"] .layout-tab-bar + .fn__flex-1::before {
-    top: 40px;
-    z-index: 2;
+[data-name="AI"] .layout-tab-bar+.fn__flex-1 {
+    @include scroll-divider-fadein(16px);
+}
+
+// [data-key="dialog-snippets"] .b3-dialog__body .layout-tab-bar+.fn__flex-1 {
+//     @include scroll-divider-fadein(16px);
+
+//     &::before {
+//         top: -16px;
+//     }
+// }
+
+.b3-dialog .emojis__panel {
+    @include scroll-divider-line;
+
+    &::before {
+        width: calc(100% + 16px);
+        margin-left: -8px;
+        margin-right: -8px;
+    }
 }
 
 @keyframes dividerAppear {

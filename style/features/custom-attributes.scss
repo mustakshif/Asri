@@ -94,7 +94,7 @@
                 }
 
                 &:hover {
-                    transform: scale(1.1) translateX(-50% * 1 / 1.1);
+                    transform: scale(1.1) translateX(calc(-50% * 1 / 1.1));
                 }
             }
         }

@@ -11,7 +11,7 @@
         border: 0;
         padding: 0 26px 0 0;
         margin: 0 0 12px 0;
-        transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: transform .2s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color .2s;
         overflow: hidden;
         z-index: 3; // 等于数据库 sticky header，不会其被覆盖
 
