@@ -244,12 +244,18 @@
     &__panel {
         padding: 0 8px;
 
-        .emojis__content:not([style="min-height:28px"]) {
+        .emojis__content {
             display: grid;
             flex-wrap: wrap;
             grid-template-columns: repeat(auto-fill, minmax(36px, 4fr));
             gap: 6px;
             min-height: unset !important;
+
+            &:nth-child(2 of .emojis__content) {
+                > div:first-child {
+                    grid-column: 1 / -1;
+                }
+            } // 保证自定义表情为空时正常显示
 
             .emojis__item {
                 padding: 0;
@@ -279,6 +285,13 @@
             }
         }
     }
+
+    &__item img, 
+    &__item svg {
+        height: 28px;
+        width: 28px;
+        margin: 0 auto;
+    } // 自定义表情内容
 }
 
 
