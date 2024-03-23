@@ -363,6 +363,8 @@
 
                 .config-account {
                     background-color: var(--b3-theme-surface);
+                    
+                    backdrop-filter: opacity(1); // fix .b3-dialog__scrim's backdrop-filter loss caused by child element &__name's mix-blend-mode. See https://stackoverflow.com/questions/66204563/backdrop-filter-not-working-when-mix-blend-mode-of-another-element-on-the-page-i
 
                     &__center:not(.config-account__center--text) {
                         height: min(100% - 80px, 650px);

@@ -158,9 +158,3 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 * 设置菜单拖移区域仅保留左栏顶部区域
 * 隐藏了对话框右上角的关闭按钮，可通过点击对话框外部区域关闭对话框
-
-## 项目依赖
-
-* [GitHub - siyuan-note/siyuan: A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.](https://github.com/siyuan-note/siyuan)
-* [GitHub - sass/sass: Sass makes CSS fun!](https://github.com/sass/sass)
-

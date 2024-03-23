@@ -53,7 +53,7 @@
                 top: 0;
                 width: 100%;
                 height: $size;
-                animation-timeline: scroll();            
+                animation-timeline: scroll();
             }
 
             @else {
@@ -89,7 +89,7 @@
                 bottom: 0;
                 width: 100%;
                 height: $size;
-                animation-timeline: scroll();            
+                animation-timeline: scroll();
             }
 
             @else {
@@ -121,8 +121,9 @@
     }
 }
 
-[data-name="AI"] .layout-tab-bar+.fn__flex-1 {
-    @include scroll-divider-fadein(16px);
+[data-name="AI"] .layout-tab-bar+.fn__flex-1,
+.history__repo[data-type="repo"] .b3-list--background {
+    @include scroll-divider-fadein(20px);
 }
 
 // [data-key="dialog-snippets"] .b3-dialog__body .layout-tab-bar+.fn__flex-1 {

@@ -915,11 +915,15 @@
     handleLowFreqTasks();
 
     function handleKeyUp(event) {
-        if (event.isComposing || event.keyCode === 229) {
-            // ignore CJK IME input event
-            return;
-        }
-        handleLowFreqTasks();
+        // if (event.isComposing || event.keyCode === 229) {
+        //     // ignore CJK IME input event
+        //     return;
+        // }
+        const isModifierKey = event.key==='Control' || event.key === 'Alt' || event.key === 'Shift' || event.key === 'Meta';
+
+        if (isModifierKey) {
+            handleLowFreqTasks();
+        }        
     }
 
     function handleDblClick(event) {
@@ -927,17 +931,17 @@
         document.body.style.setProperty('--mouseY', event.clientY + 'px');
     }
 
-    window.addEventListener('mouseup', handleLowFreqTasks, true);
-    window.addEventListener('dragend', handleLowFreqTasks, true);
-    window.addEventListener('keyup', handleKeyUp, true);
+    window.addEventListener('mouseup', handleLowFreqTasks);
+    window.addEventListener('dragend', handleLowFreqTasks);
+    window.addEventListener('keyup', handleKeyUp);
     window.addEventListener('dblclick', handleDblClick);
 
     window.destroyTheme = () => {
 
         // remove event listeners
-        window.removeEventListener('mouseup', handleLowFreqTasks, true);
-        window.removeEventListener('keyup', handleKeyUp, true);
-        window.removeEventListener('dragend', handleLowFreqTasks, true);
+        window.removeEventListener('mouseup', handleLowFreqTasks);
+        window.removeEventListener('keyup', handleKeyUp);
+        window.removeEventListener('dragend', handleLowFreqTasks);
         window.removeEventListener('dblclick', handleDblClick);
         window.removeEventListener('resize', handleWinResize);
 

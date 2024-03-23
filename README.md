@@ -158,7 +158,3 @@ The theme development process drew inspiration from the following themes, and I 
 
 * Setting menu's dragable area is cut to the top area of the left column.
 * The close button in the upper right corner of the dialog box is hidden. To close the dialog box, click anywhere outside the dialog box.
-
-## Project Dependencies
-* [GitHub - siyuan-note/siyuan: A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.](https://github.com/siyuan-note/siyuan)
-* [GitHub - sass/sass: Sass makes CSS fun!](https://github.com/sass/sass)
