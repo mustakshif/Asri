@@ -113,7 +113,7 @@
 // }
 
 [data-name="bazaar"] .config-bazaar__panel {
-    @include scroll-divider-fadein(16px);
+    @include scroll-divider-fadein(18px);
 
     &::before {
         top: 44px;

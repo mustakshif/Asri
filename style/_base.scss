@@ -210,11 +210,11 @@
 
         &--focus {
             max-width: unset;
-            box-shadow: 0 1px 4px -1px #0003;
+            box-shadow: 0 1px 4px -1px #0003, 0 0.3px 0 0 #0002;
             animation: none;
 
             @include darkmode-counterpart {
-                box-shadow: 0 1px 0 0 inset rgba(255, 255, 255, 0.1), 0 1px 4px -1px #0003;
+                box-shadow: 0 1px 0 0 inset rgba(255, 255, 255, 0.1), 0 1px 4px -1px #0003, 0 0.3px 0 0 #0002;
             }
 
             @include theme-variant-color(background-color, light-components, 1, 0.2);

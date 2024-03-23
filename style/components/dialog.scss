@@ -115,6 +115,10 @@
                 }
             }
         }
+
+        &__content {
+            word-break: normal;
+        }
     }
 
     // 搜索 ————————————————————————————————————
@@ -916,6 +920,9 @@ div[id*=configBazaar] {
         }
 
         .b3-list-item__text {
+            
+            word-break: normal;
+
             @include theme-variant-color(color, on-background, 0.9);
 
             // font-weight: 500;
