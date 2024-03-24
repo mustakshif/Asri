@@ -1,3 +1,31 @@
+### v2.1.15
+
+* 新增支持 `表格块` 全宽显示
+* 新增 Asri 亮暗主题间切换时的过渡
+* 新增部分容器顶部溢出时显示渐隐效果或分割线
+* 优化部分 js 功能执行频率
+* 统一自定义表情和常规表情的样式
+* 统一编辑区和块属性窗口中数据库资源列图像内容圆角
+* 调整全宽显示下的 iframe 块和表格块角标位置，避免重叠
+* 调整文档设置窗口和搜索列表条目的断字规则
+* 去除开关元素不必要的过渡属性
+* [修复账号页面文字显示不全的问题](https://github.com/mustakshif/Asri/issues/29)
+* 修复某些情况下切换至其他主题时页签栏仍残留上边距的问题
+
+* Added full-width display support for `table blocks`.
+* Added transitions when switching between Asri light and dark themes.
+* Added fading effect or separation lines when the top of certain containers overflows.
+* Optimized the frequency of executing certain JavaScript functions.
+* Unified the style of custom emojis and regular emojis.
+* Unified the rounded corners of database assets column images in the editing area and block attribute dialog.
+* Adjusted the position of badges of iframe block and table block in full width display to avoid overlapping.
+* Adjusted the word break rules for the document settings dialog and search list items.
+* Removed unnecessary transition properties for switchs.
+* [Fixed the issue of incomplete text display on the account page](https://github.com/mustakshif/Asri/issues/29).
+* Fixed the problem of remaining top padding in the tab bar when switching to other themes in certain situations.
+
+---
+
 ### v2.1.14
 
 * 重新设计账号页面

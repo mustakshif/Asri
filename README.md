@@ -2,7 +2,7 @@ English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main
 
 <br/>
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v18.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v17.png)
 
 # Asri, a theme for SiYuan
 
@@ -10,16 +10,19 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.14
+### v2.1.15
 
-* Redesigned the account page
-* Unified the transition animation of hyperlinks
-* Shrunk the rounded corners of the image content in the database assets column
-* Modified the color of the database badge's style when hovered on
-* Modified the color and style of the reference text in the highlighted item of the database relation column editing menu
-* Fixed the issue where selecting an item in the database caused overall horizontal displacement
-* [Fixed the problem where the document properties were covered by the header image controls when there was no icon and only a header image](https://github.com/mustakshif/Asri/issues/26)
-* Fixed the issue where it was difficult to trigger resizing at the edges of the dialogs
+* Added full-width display support for `table blocks`.
+* Added transitions when switching between Asri light and dark themes.
+* Added fading effect or separation lines when the top of certain containers overflows.
+* Optimized the frequency of executing certain JavaScript functions.
+* Unified the style of custom emojis and regular emojis.
+* Unified the rounded corners of database assets column images in the editing area and block attribute dialog.
+* Adjusted the position of badges of iframe block and table block in full width display to avoid overlapping.
+* Adjusted the word break rules for the document settings dialog and search list items.
+* Removed unnecessary transition properties for switchs.
+* [Fixed the issue of incomplete text display on the account page](https://github.com/mustakshif/Asri/issues/29).
+* Fixed the problem of remaining top padding in the tab bar when switching to other themes in certain situations.
 
 Check all updates [here](./CHANGELOG.md).
 

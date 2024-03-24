@@ -2,7 +2,7 @@
 
 <br />
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v18.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v17.png)
 
 # Asri, a theme for SiYuan
 
@@ -10,16 +10,19 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
-### v2.1.14
+### v2.1.15
 
-* 重新设计账号页面
-* 统一超链接元素过渡动画
-* 缩小数据库资源列图像内容圆角
-* 修改数据库角标鼠标悬停时的颜色
-* 修改数据库关联列编辑菜单高亮条目的引用文字颜色和样式
-* 修复数据库有选中条目时导致整体横向位移的问题
-* [修复文档无图标有题头图时文档属性被题头图控件遮挡的问题](https://github.com/mustakshif/Asri/issues/26)
-* 修复对话框边缘难以触发大小调节的问题
+* 新增支持 `表格块` 全宽显示
+* 新增 Asri 亮暗主题间切换时的过渡
+* 新增部分容器顶部溢出时显示渐隐效果或分割线
+* 优化部分 js 功能执行频率
+* 统一自定义表情和常规表情的样式
+* 统一编辑区和块属性窗口中数据库资源列图像内容圆角
+* 调整全宽显示下的 iframe 块和表格块角标位置，避免重叠
+* 调整文档设置窗口和搜索列表条目的断字规则
+* 去除开关元素不必要的过渡属性
+* [修复账号页面文字显示不全的问题](https://github.com/mustakshif/Asri/issues/29)
+* 修复某些情况下切换至其他主题时页签栏仍残留上边距的问题
 
 点击[这里](./CHANGELOG.md)查看全部更新日志。
 
