@@ -74,7 +74,7 @@ Check all updates [here](./CHANGELOG.md).
 
 ![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v7.gif)
 
-This attribute allows blocks to be displayed in full page width, which can be used to emphasize specific content or beautify the layout. The full-width display style applies to images, databases, iframes, and horizontal-layout superblocks.
+This attribute allows blocks to be displayed in full page width, which can be used to emphasize specific content or beautify the layout. The full-width display style applies to images, databases, iframes, tables<sup>✨</sup> and horizontal-layout superblocks.
 
 | Attribute | Value | Description |
 | --- | --- | --- |
