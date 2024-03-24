@@ -410,11 +410,21 @@
 
                     &__bg {
                         margin-bottom: 0;
+
+                        .b3-chips {
+                            mix-blend-mode: luminosity;
+
+                            .b3-chip {
+                                background-color: var(--b3-theme-surface);
+                                padding: 4px 8px;
+                                opacity: .9;
+                            }
+                        }
                     }
 
                     &__avatar {
-                        top: 20%;
-                        bottom: unset;
+                        // top: 20%;
+                        bottom: 108px;
                         box-shadow: none;
                         border: none;
                         transition: box-shadow .2s;
@@ -422,11 +432,16 @@
                         &:hover {
                             box-shadow: 0 0 0 2px #fffa;
                         }
+
+                        @media (max-width: 750px) {
+                            top: 20%;
+                            bottom: unset;
+                        }
                     }
 
                     &__name {
-                        top: calc(20% + 200px);
-                        bottom: unset;
+                        // top: calc(20% + 200px);
+                        bottom: 12px;
                         mix-blend-mode: luminosity;
 
                         @media (max-width: 750px) {
