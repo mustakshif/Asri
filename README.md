@@ -34,7 +34,7 @@ Check all updates [here](./CHANGELOG.md).
 * 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
 * 👁️ Enabled high readability glyph variants for note-taking scenarios[^2] `#macOS` `#iOS` `#iPadOS`
 * 🚏 Support for document-level text direction settings to meet typesetting needs for various languages
-* 🌓 Support for light and dark modes
+* 🌓 Support for light and dark modes and smooth transition between them
 
 [^1]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
 [^2]: To disable this feature or address glyph errors when using custom fonts, you can use the following CSS code snippet to restore to standard glyphs:
@@ -159,5 +159,5 @@ The theme development process drew inspiration from the following themes, and I 
 
 ## Notes
 
-* Setting menu's dragable area is cut to the top area of the left column.
+* Settings window's dragable area is cut to the top area of the left column.
 * The close button in the upper right corner of the dialog box is hidden. To close the dialog box, click anywhere outside the dialog box.

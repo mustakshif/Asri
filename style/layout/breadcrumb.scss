@@ -62,28 +62,19 @@
         }
     }
 
+    &__arrow {
+        color: transparent;
+        margin: 0 6px;
+        background-color: var(--b3-theme-on-surface-light);
+        width: 2px;
+        height: 1em;
+        border-radius: 2px;
+        transform: rotate(20deg);
+    }
+
     // 退出聚焦按钮
     & &__icon {
         @include button-primary;
         padding: 0 8px;
-    }
-}
-
-// 覆盖 webview 插件
-.layout__center .layout-tab-container .fn__flex-column>.protyle-breadcrumb {
-    height: 42px;
-
-    .address-field {
-        margin: 8px 4px;
-    }
-}
-
-body.body--fullscreen,
-body.body--browser {
-    .fullscreen> {
-        .protyle-breadcrumb,
-        .block__icons {
-            padding-left: 10px;
-        }
     }
 }

@@ -1,0 +1,17 @@
+.layout__center .layout-tab-container .fn__flex-column>.protyle-breadcrumb {
+    height: 42px;
+
+    .address-field {
+        margin: 8px 4px;
+    }
+}
+
+body.body--fullscreen,
+body.body--browser {
+    .fullscreen> {
+        .protyle-breadcrumb,
+        .block__icons {
+            padding-left: 10px;
+        }
+    }
+}
