@@ -121,6 +121,10 @@
                     background-color: transparent
                 }
             }
+
+            &>.emojis {
+                min-width: 50vw;
+            } // https://github.com/mustakshif/Asri/issues/30
         }
     }
 
