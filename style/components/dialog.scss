@@ -285,81 +285,6 @@
                 }
             }
 
-            // 集市面板
-            .config-bazaar__panel {
-                // padding-bottom: 8px;
-
-                .config-bazaar__title {
-                    position: sticky;
-                    top: 0;
-                    z-index: 2;
-                    align-items: center;
-                    backdrop-filter: none;
-                    padding: 8px 16px;
-                    background-color: var(--b3-theme-background);
-
-
-                    .b3-form__icon .b3-text-field {
-                        @media (max-width: 830px) {
-                            width: calc(100% - 32px)
-                        }
-                    }
-
-
-                    .b3-switch {
-                        transform: translateX(11px);
-                        margin: 0 !important;
-                    }
-                }
-
-                .counter {
-                    background-color: transparent !important;
-                }
-
-
-                &[data-type='downloaded'] {
-                    .b3-button {
-                        @include button-action(1) {
-                            padding: 4px;
-                        }
-
-                        &:not(.b3-button--outline) {
-                            background-color: transparent;
-                            color: var(--b3-theme-primary);
-                            font-weight: 600;
-
-                            &:hover,
-                            &:focus {
-                                box-shadow: none;
-                            }
-                        }
-
-                        &.b3-button--outline {
-                            background-color: transparent;
-                            color: var(--b3-theme-on-surface);
-                            font-weight: normal;
-
-                            &:hover {
-                                color: var(--b3-theme-on-background);
-                                box-shadow: none;
-                            }
-                        }
-
-                        &+.fn__space+.b3-form__icon {
-                            margin-left: 8px;
-                        }
-                    }
-
-                    [data-type="myPlugin"]:not(.b3-button--outline)~.counter {
-                        transform: translateX(-64px);
-                    }
-                }
-
-                .config-bazaar__content {
-                    margin-top: 0;
-                }
-            }
-
             &[data-name="account"] {
                 padding: 0;
                 margin-top: 0;
@@ -367,7 +292,7 @@
 
                 .config-account {
                     background-color: var(--b3-theme-surface);
-                    
+
                     backdrop-filter: opacity(1); // fix .b3-dialog__scrim's backdrop-filter loss caused by child element &__name's mix-blend-mode. See https://stackoverflow.com/questions/66204563/backdrop-filter-not-working-when-mix-blend-mode-of-another-element-on-the-page-i
 
                     &__center:not(.config-account__center--text) {
@@ -639,127 +564,218 @@
     }
 }
 
-// 集市卡片
-#configBazaarDownloaded {
-    // padding: 0 0 16px 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-    gap: 20px;
-    margin: 10px 20px 20px;
-    width: auto;
+// 集市面板
+.config-bazaar__panel {
+    // padding-bottom: 8px;
 
-    .b3-list--empty {
-        padding: 0;
-        position: absolute;
-        left: 240px;
-        top: 108px;
-    }
+    .config-bazaar__title {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        align-items: center;
+        backdrop-filter: none;
+        padding: 8px 16px;
+        background-color: var(--b3-theme-background);
 
-    .b3-card {
-        display: grid;
-        grid-template-areas: "img info" "img buttons";
-        grid-template-columns: 90px 1fr;
 
-        >.b3-card__img {
-            grid-area: img;
-
-            +div {
-                grid-area: info;
+        .b3-form__icon .b3-text-field {
+            @media (max-width: 830px) {
+                width: calc(100% - 32px)
             }
         }
 
-        >.b3-card__actions {
-            grid-area: buttons;
-            padding: 0 16px 14px;
-            align-self: flex-end;
 
-            >[data-type="setting"],
-            >[data-type="setting"].fn__none~[data-type="uninstall"] {
-                margin-left: auto;
-                justify-content: end;
-                // flex-grow: 1; // 鼠标移至空白区域时也会激活图标
+        .b3-switch {
+            transform: translateX(11px);
+            margin: 0 !important;
+        }
+    }
 
-                // tooltip
-                &::after {
-                    right: 0;
-                    margin-right: 0;
+    .counter {
+        background-color: transparent !important;
+    }
+
+    &[data-type='downloaded'] {
+        .b3-button {
+            @include button-action(1) {
+                padding: 4px;
+            }
+
+            &:not(.b3-button--outline) {
+                background-color: transparent;
+                color: var(--b3-theme-primary);
+                font-weight: 600;
+
+                &:hover,
+                &:focus {
+                    box-shadow: none;
                 }
             }
 
-            // 爱发电图标
-            &--right a {
-                margin-left: 0;
-            }
-        }
-
-        .b3-card__info--left {
-            padding: 16px 16px 8px;
-
-            @media (max-width: 750px) {
-                display: block;
-            }
-        }
-    }
-}
-
-div[id*=configBazaar] {
-    width: 100%;
-    // 网格布局要求父容器的宽度不固定
-
-    .b3-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-        gap: 20px;
-        margin: 10px 20px 20px;
-
-        >.fn__flex-1 {
-            display: none;
-        }
-    }
-
-    .b3-card {
-        border-radius: $border-rd-card;
-        background-color: var(--b3-theme-background);
-        outline: 1.5px solid var(--b3-border-color-trans);
-        border: none;
-        box-shadow: none;
-        margin: 0;
-        transition-property: outline, box-shadow, transform;
-        transition-duration: 0.2s;
-
-        &--current {
-            outline: 3px solid var(--b3-theme-primary-lighter);
-
-            @include darkmode-counterpart {
-                outline-color: var(--b3-theme-primary-light);
-            }
-        }
-
-        &--wrap {
-            min-width: 330px;
-        }
-
-        &__info {
-            font-weight: 500;
-            padding: 16px 16px 8px;
-
-            >* {
+            &.b3-button--outline {
+                background-color: transparent;
+                color: var(--b3-theme-on-surface);
                 font-weight: normal;
+
+                &:hover {
+                    color: var(--b3-theme-on-background);
+                    box-shadow: none;
+                }
+            }
+
+            &+.fn__space+.b3-form__icon {
+                margin-left: 8px;
             }
         }
 
-        &__desc {
-            word-break: initial;
+        [data-type="myPlugin"]:not(.b3-button--outline)~.counter {
+            transform: translateX(-64px);
         }
 
-        &:hover {
-            transform: scale(1.01);
-            outline: 2px solid var(--b3-theme-primary-light);
-            z-index: 1;
-            @include menu-shadow(map-get($theme-light, primary), map-get($theme-dark, primary));
+        // 统一更新的卡片
+        [data-type="downloaded-update"] {
+            .config-bazaar__content {
+                margin: 10px 20px;
 
-            @include darkmode-counterpart {
-                outline: 2px solid var(--b3-theme-primary);
+                .b3-card:hover {
+                    box-shadow: none;
+                }
+            }
+
+            // 有统一更新时的插件开关
+            &:not(:empty)~.config-bazaar__title {
+                .b3-switch {
+                    transform: translateX(-20px);
+                }
+            }
+        }
+
+        // 已下载卡片容器
+        .config-bazaar__content {
+            // padding: 0 0 16px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 20px;
+            margin: 10px 20px 20px;
+            width: auto;
+
+            .b3-list--empty {
+                padding: 0;
+                position: absolute;
+                left: 240px;
+                top: 108px;
+            }
+
+            .b3-card {
+                display: grid;
+                grid-template-areas: "img info" "img buttons";
+                grid-template-columns: 90px 1fr;
+
+                >.b3-card__img {
+                    grid-area: img;
+
+                    +div {
+                        grid-area: info;
+                    }
+                }
+
+                >.b3-card__actions {
+                    grid-area: buttons;
+                    padding: 0 16px 14px;
+                    align-self: flex-end;
+
+                    >[data-type="setting"],
+                    >[data-type="setting"].fn__none~[data-type="uninstall"],
+                    >[data-type="open"]:first-child {
+                        margin-left: auto;
+                        justify-content: end;
+                        // flex-grow: 1; // 鼠标移至空白区域时也会激活图标
+
+                        // tooltip
+                        &::after {
+                            right: 0;
+                            margin-right: 0;
+                        }
+                    }
+
+                    // 爱发电图标
+                    &--right a {
+                        margin-left: 0;
+                    }
+                }
+
+                .b3-card__info--left {
+                    padding: 16px 16px 8px;
+
+                    @media (max-width: 750px) {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    // 未下载项目容器
+    .config-bazaar__content {
+        margin-top: 0;
+        width: 100%;
+        // 网格布局要求父容器的宽度不固定
+
+        .b3-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 20px;
+            margin: 10px 20px 20px;
+
+            >.fn__flex-1 {
+                display: none;
+            }
+        }
+
+        .b3-card {
+            border-radius: $border-rd-card;
+            background-color: var(--b3-theme-background);
+            outline: 1.5px solid var(--b3-border-color-trans);
+            border: none;
+            box-shadow: none;
+            margin: 0;
+            transition-property: outline, box-shadow, transform;
+            transition-duration: 0.2s;
+
+            &--current {
+                outline: 3px solid var(--b3-theme-primary-lighter);
+
+                @include darkmode-counterpart {
+                    outline-color: var(--b3-theme-primary-light);
+                }
+            }
+
+            &--wrap {
+                min-width: 330px;
+            }
+
+            &__info {
+                font-weight: 500;
+                padding: 16px 16px 8px;
+
+                >* {
+                    font-weight: normal;
+                }
+            }
+
+            &__desc {
+                word-break: initial;
+            }
+
+            &:hover {
+                transform: scale(1.01);
+                outline: 2px solid var(--b3-theme-primary-light);
+                z-index: 1;
+                @include menu-shadow(map-get($theme-light, primary), map-get($theme-dark, primary));
+
+                @include darkmode-counterpart {
+                    outline: 2px solid var(--b3-theme-primary);
+                }
             }
         }
     }
@@ -935,7 +951,7 @@ div[id*=configBazaar] {
         }
 
         .b3-list-item__text {
-            
+
             word-break: normal;
 
             @include theme-variant-color(color, on-background, 0.9);
