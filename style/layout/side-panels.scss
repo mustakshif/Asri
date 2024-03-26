@@ -10,6 +10,14 @@
                 padding: 0;
             }
 
+            &.fn__pointer {
+                .block__logoicon {
+                    visibility: visible;
+                    width: 16px;
+                    padding: 4px;
+                }
+            } // fix https://github.com/mustakshif/Asri/issues/31
+
             font-weight: 600;
 
             @include theme-variant-color(color, on-background, 0.5);
