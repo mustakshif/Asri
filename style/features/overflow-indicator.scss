@@ -12,7 +12,7 @@
         opacity: 0;
         background-color: var(--b3-border-color-trans);
 
-        animation-name: dividerAppear;
+        animation-name: dividerAppear-bgClr;
         animation-timeline: scroll();
         animation-range: 2px 100%;
 
@@ -22,7 +22,7 @@
     }
 }
 
-@mixin scroll-divider-fadein($size: 12px, $bg-clr: var(--b3-theme-background), $range: 'top') {
+@mixin scroll-divider-fadein-bgClr($size: 12px, $bg-clr: var(--b3-theme-background), $range: 'top') {
     $range-dir: (
         'top': 'to bottom',
         'bottom': 'to top',
@@ -40,7 +40,7 @@
             z-index: 1;
             opacity: 0;
 
-            animation-name: dividerAppear;
+            animation-name: dividerAppear-bgClr;
             animation-range: 1px 100%;
 
             background-image: linear-gradient(#{$dir}, $bg-clr, transparent);
@@ -75,7 +75,7 @@
             z-index: 1;
             opacity: 0;
 
-            animation-name: dividerAppear;
+            animation-name: dividerAppear-bgClr;
             animation-range: 0% calc(100% - 1px);
             animation-direction: alternate-reverse;
 
@@ -113,7 +113,7 @@
 // }
 
 [data-name="bazaar"] .config-bazaar__panel {
-    @include scroll-divider-fadein(18px);
+    @include scroll-divider-fadein-bgClr(18px);
 
     &::before {
         top: 44px;
@@ -123,7 +123,7 @@
 
 [data-name="AI"] .layout-tab-bar+.fn__flex-1,
 .history__repo[data-type="repo"] .b3-list--background {
-    @include scroll-divider-fadein(20px);
+    @include scroll-divider-fadein-bgClr(20px);
 }
 
 // [data-key="dialog-snippets"] .b3-dialog__body .layout-tab-bar+.fn__flex-1 {
@@ -144,7 +144,12 @@
     }
 }
 
-@keyframes dividerAppear {
+.layout__center .protyle-breadcrumb__bar {
+    @include scroll-divider-fadein-bgClr($range:'left');
+    @include scroll-divider-fadein-bgClr($range:'right');
+}
+
+@keyframes dividerAppear-bgClr {
     0% {
         opacity: 0;
     }

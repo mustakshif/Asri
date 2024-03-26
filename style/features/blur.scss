@@ -447,7 +447,7 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 }
 
 .emojis__panel {
-    .emojis__content:not([style="min-height:28px"]) .emojis__item:hover {
+    .emojis__content .emojis__item:hover {
         animation: lighten 0.3s ease-in-out;
 
         @keyframes lighten {

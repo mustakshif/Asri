@@ -48,7 +48,6 @@
         &--active {
             background-color: transparent;
 
-
             &:hover {
                 background-color: var(--b3-list-hover);
             }
@@ -66,10 +65,10 @@
         color: transparent;
         margin: 0 6px;
         background-color: var(--b3-theme-on-surface-light);
-        width: 2px;
+        width: 1.5px;
         height: 1em;
         border-radius: 2px;
-        transform: rotate(20deg);
+        transform: rotate(27deg);
     }
 
     // 退出聚焦按钮
