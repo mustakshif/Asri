@@ -103,20 +103,20 @@
     }
 }
 
-// @mixin scroll-divider-fadein-mask($size: 12px, $range: 'top bottom') {
-//     $range-dir: (
-//         'top': 'to bottom',
-//         'bottom': 'to top',
-//         'left': 'to right',
-//         'right': 'to left',
-//     );
+@mixin scroll-divider-fadein-mask($size: 12px, $range: 'top bottom') {
+    $range-dir: (
+        'top': 'to bottom',
+        'bottom': 'to top',
+        'left': 'to right',
+        'right': 'to left',
+    );
 
-//     @if str-index($range, 'top') or str-index($range, 'left') {
-//         $dir: map-get($range-dir, nth(string.split($range, ' '), 1));
+    @if str-index($range, 'top') or str-index($range, 'left') {
+        $dir: map-get($range-dir, nth(string.split($range, ' '), 1));
 
         
-//    }
-// }
+   }
+}
 
 // .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
 //     @include scroll-divider-fadein($bg-clr: var(--b3-theme-surface));
@@ -160,9 +160,9 @@
     }
 }
 
-// .layout__center .protyle-breadcrumb__bar {
-//     @include scroll-divider-fadein-bgClr($range:'left right');
-// }
+.layout__center .protyle-breadcrumb__bar {
+    @include scroll-divider-fadein-bgClr($range:'left right');
+}
 
 @keyframes dividerAppear-bgClr {
     0% {

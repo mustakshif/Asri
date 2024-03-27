@@ -68,9 +68,9 @@
     const isMiniWindow = document.body.classList.contains('body--window') > 0;
     const isAndroid = window.siyuan.config.system.container === "android";
 
-    let asriClassNames = [],
-        asriDeletedRules = [],
-        asriObservers = [];
+    const asriClassNames = [];
+    const asriDeletedRules = [];
+    const asriObservers = [];
 
     isMacOS && (document.body.classList.add('body--mac'), asriClassNames.push('.body--mac'));
     isLinux && (document.body.classList.add('body--linux'), asriClassNames.push('.body--linux'));
@@ -104,6 +104,63 @@
         if (!arr.includes(item)) {
             arr.push(item);
         }
+    }
+
+    function getSystemAccentColor() {
+        if (!isInBrowser || !isAndroid) {
+            const accent = require("@electron/remote").systemPreferences.getAccentColor();
+            const accentHex = '#' + accent;
+            const accentHSLObj = hexToHSL(accentHex);
+
+            document.documentElement.style.setProperty('--asri-sys-accent', accentHex);
+
+            if (accentHSLObj.s < 0.3) {
+                document.documentElement.style.setProperty('--asri-sys-accessible-accent', 'rgb(52, 120, 246)');
+            } else {
+                document.documentElement.style.setProperty('--asri-sys-accessible-accent', accentHex);
+            }
+        }
+    }
+    getSystemAccentColor();
+    function hexToHSL(hex) {
+        const r = parseInt(hex.substring(1, 3), 16) / 255;
+        const g = parseInt(hex.substring(3, 5), 16) / 255;
+        const b = parseInt(hex.substring(5, 7), 16) / 255;
+
+        const max = Math.max(r, g, b);
+        const min = Math.min(r, g, b);
+
+        const lightness = (max + min) / 2;
+
+        if (max === min) {
+            return {
+                h: 0,
+                s: 0,
+                l: lightness
+            };
+        }
+
+        let hue;
+        const delta = max - min;
+        const saturation = lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min);
+        switch (max) {
+            case r:
+                hue = (g - b) / delta + (g < b ? 6 : 0);
+                break;
+            case g:
+                hue = (b - r) / delta + 2;
+                break;
+            case b:
+                hue = (r - g) / delta + 4;
+                break;
+        }
+        hue /= 6;
+
+        return {
+            h: hue,
+            s: saturation,
+            l: lightness
+        };
     }
 
     function isFullScreen() {
@@ -909,6 +966,7 @@
                 avoidOverlappingWithStatus();
                 addDockbClassName();
                 statusPosition();
+                getSystemAccentColor();
             }, 200);
         }
     }
@@ -919,11 +977,11 @@
         //     // ignore CJK IME input event
         //     return;
         // }
-        const isModifierKey = event.key==='Control' || event.key === 'Alt' || event.key === 'Shift' || event.key === 'Meta';
+        const isModifierKey = event.key === 'Control' || event.key === 'Alt' || event.key === 'Shift' || event.key === 'Meta';
 
         if (isModifierKey) {
             handleLowFreqTasks();
-        }        
+        }
     }
 
     function handleDblClick(event) {
@@ -969,6 +1027,8 @@
         asriDoms.status?.style.removeProperty('max-width');
         asriDoms.status?.style.removeProperty('transform');
         asriDoms.status?.style.removeProperty('--status-height');
+        document.documentElement.style.removeProperty('--asri-sys-accent');
+        document.documentElement.style.removeProperty('--asri-sys-accessible-accent');
 
         let wndElements = asriDoms.layouts?.querySelectorAll('[data-type="wnd"]');
         wndElements.forEach(wnd => {

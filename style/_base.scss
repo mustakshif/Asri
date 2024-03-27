@@ -351,10 +351,15 @@ $theme-dark: (
 );
 
 @mixin theme-root($theme-map) {
-    --b3-theme-primary: #{map-get($theme-map,primary)};
+    // --b3-theme-primary: #{map-get($theme-map,primary)};
+    --b3-theme-primary: var(--asri-sys-accent, rgb(52, 120, 246));
     --b3-theme-primary-light: #{rgba(map-get($theme-map, primary), 0.56)};
+    --b3-theme-primary-light: color-mix(in srgb, var(--b3-theme-primary), #0000 44%);
     --b3-theme-primary-lighter: #{rgba(map-get($theme-map,primary), 0.38)};
+    --b3-theme-primary-lighter: color-mix(in srgb, var(--b3-theme-primary), #0000 62%);
     --b3-theme-primary-lightest: #{rgba(map-get($theme-map,primary), 0.2)};
+    --b3-theme-primary-lightest: color-mix(in srgb, var(--b3-theme-primary), #0000 80%);
+    --b3-theme-accent: var(--asri-sys-accessible-accent);
     --b3-theme-secondary: #{map-get($theme-map,secondary)};
     --b3-theme-background: #{map-get($theme-map, background)};
     --b3-theme-background-light: #{rgb(map-get($theme-map,background),0.1)};
