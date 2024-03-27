@@ -28,19 +28,19 @@
             @include dialog-shadow;
 
             .resize__r {
-                right: -4px;
+                transform: translateX(-4px);
             }
 
             .resize__d {
-                bottom: -4px;
+                transform: translateY(-4px);
             }
 
             .resize__t {
-                top: -4px;
+                transform: translateY(4px);
             }
 
             .resize__l {
-                left: -4px;
+                transform: translateX(4px);
             }
 
             .b3-dialog__close {

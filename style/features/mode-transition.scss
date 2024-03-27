@@ -1,14 +1,13 @@
-.asri-mode-transition >.fn__flex-1 *,
-.asri-mode-transition > [id] *,
-.asri-mode-transition > [data-key] *,
-.asri-mode-transition > .block__popover *,
-body.asri-mode-transition {
-    transition-property: background-color, color, border-color;
-    transition-duration: .5s;
-    transition-delay: .1s;
-    transition-timing-function: cubic-bezier(.2,0,0,1);
-}
+.asri-mode-transition {
+    &,
+    > :where(.fn__flex-1, [id], [data-key], .block__popover) * {
+        transition-property: background-color, color, border-color;
+        transition-duration: .5s;
+        transition-delay: .1s;
+        transition-timing-function: cubic-bezier(.2, 0, 0, 1);
+    }
 
-.asri-mode-transition #status {
-    transition-duration: .5s !important;
+    #status {
+        transition-duration: .5s !important;
+    }
 }

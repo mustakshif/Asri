@@ -1,4 +1,5 @@
 @use '../base' as *;
+@use "sass:string";
 
 @mixin scroll-divider-line($height: 1px) {
     &::before {
@@ -22,7 +23,7 @@
     }
 }
 
-@mixin scroll-divider-fadein-bgClr($size: 12px, $bg-clr: var(--b3-theme-background), $range: 'top') {
+@mixin scroll-divider-fadein-bgClr($size: 12px, $bg-clr: var(--b3-theme-background), $range: 'top bottom') {
     $range-dir: (
         'top': 'to bottom',
         'bottom': 'to top',
@@ -31,7 +32,7 @@
     );
 
     @if str-index($range, 'top') or str-index($range, 'left') {
-        $dir: map-get($range-dir, $range);
+        $dir: map-get($range-dir, nth(string.split($range, ' '), 1));
 
         &::before {
             content: '';
@@ -66,7 +67,7 @@
     }
 
     @if str-index($range, 'bottom') or str-index($range, 'right') {
-        $dir: map-get($range-dir, $range);
+        $dir: map-get($range-dir, nth(string.split($range, ' '), -1));
 
         &::after {
             content: '';
@@ -102,6 +103,21 @@
     }
 }
 
+// @mixin scroll-divider-fadein-mask($size: 12px, $range: 'top bottom') {
+//     $range-dir: (
+//         'top': 'to bottom',
+//         'bottom': 'to top',
+//         'left': 'to right',
+//         'right': 'to left',
+//     );
+
+//     @if str-index($range, 'top') or str-index($range, 'left') {
+//         $dir: map-get($range-dir, nth(string.split($range, ' '), 1));
+
+        
+//    }
+// }
+
 // .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
 //     @include scroll-divider-fadein($bg-clr: var(--b3-theme-surface));
 // }
@@ -113,7 +129,7 @@
 // }
 
 [data-name="bazaar"] .config-bazaar__panel {
-    @include scroll-divider-fadein-bgClr(18px);
+    @include scroll-divider-fadein-bgClr(18px, $range:'top');
 
     &::before {
         top: 44px;
@@ -123,7 +139,7 @@
 
 [data-name="AI"] .layout-tab-bar+.fn__flex-1,
 .history__repo[data-type="repo"] .b3-list--background {
-    @include scroll-divider-fadein-bgClr(20px);
+    @include scroll-divider-fadein-bgClr(20px, $range:'top');
 }
 
 // [data-key="dialog-snippets"] .b3-dialog__body .layout-tab-bar+.fn__flex-1 {
@@ -144,10 +160,9 @@
     }
 }
 
-.layout__center .protyle-breadcrumb__bar {
-    @include scroll-divider-fadein-bgClr($range:'left');
-    @include scroll-divider-fadein-bgClr($range:'right');
-}
+// .layout__center .protyle-breadcrumb__bar {
+//     @include scroll-divider-fadein-bgClr($range:'left right');
+// }
 
 @keyframes dividerAppear-bgClr {
     0% {
@@ -161,4 +176,10 @@
     100% {
         opacity: 1;
     }
+}
+
+@property --mask-stop-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
 }

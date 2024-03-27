@@ -1,3 +1,21 @@
+### v2.1.16
+
+* 优化集市「全部更新」板块样式
+* 修改面包屑路径指示为斜线样式
+* 微调 emoji 鼠标悬停动效
+* [修复收集箱返回按钮丢失的问题](https://github.com/mustakshif/Asri/issues/31)
+* [修复宽屏下表情菜单过窄的问题](https://github.com/mustakshif/Asri/issues/30)
+
+<br />
+
+* Optimized style for the "All Updates" section in the marketplace.
+* Changed breadcrumb path indicator to use slash style.
+* Adjusted mouse hover animation for emojis.
+* [Fixed the issue of missing return button in the Inbox panel](https://github.com/mustakshif/Asri/issues/31).
+* [Fixed the issue of narrow emoji menu in wide screens](https://github.com/mustakshif/Asri/issues/30).
+
+---
+
 ### v2.1.15
 
 * 新增支持 `表格块` 全宽显示
@@ -11,6 +29,8 @@
 * 去除开关元素不必要的过渡属性
 * [修复账号页面文字显示不全的问题](https://github.com/mustakshif/Asri/issues/29)
 * 修复某些情况下切换至其他主题时页签栏仍残留上边距的问题
+
+<br />
 
 * Added full-width display support for `table blocks`.
 * Added transitions when switching between Asri light and dark themes.

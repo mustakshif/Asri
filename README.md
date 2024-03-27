@@ -10,6 +10,14 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v2.1.16
+
+* Optimized style for the "All Updates" section in the marketplace.
+* Changed breadcrumb path indicator to use slash style.
+* Adjusted mouse hover animation for emojis.
+* [Fixed the issue of missing return button in the Inbox panel](https://github.com/mustakshif/Asri/issues/31).
+* [Fixed the issue of narrow emoji menu in wide screens](https://github.com/mustakshif/Asri/issues/30).
+
 ### v2.1.15
 
 * Added full-width display support for `table blocks`.
@@ -34,7 +42,7 @@ Check all updates [here](./CHANGELOG.md).
 * 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
 * 👁️ Enabled high readability glyph variants for note-taking scenarios[^2] `#macOS` `#iOS` `#iPadOS`
 * 🚏 Support for document-level text direction settings to meet typesetting needs for various languages
-* 🌓 Support for light and dark modes and smooth transition between them
+* 🌓 Support for light and dark modes and smooth transition between them<sup>✨</sup>
 
 [^1]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
 [^2]: To disable this feature or address glyph errors when using custom fonts, you can use the following CSS code snippet to restore to standard glyphs:
