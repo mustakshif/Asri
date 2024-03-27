@@ -106,18 +106,26 @@
         }
     }
 
+    let sysAccentClr;
+
     function getSystemAccentColor() {
-        if (!isInBrowser || !isAndroid) {
+        if (!(isInBrowser || isMobile || isLinux)) {
             const accent = require("@electron/remote").systemPreferences.getAccentColor();
             const accentHex = '#' + accent;
             const accentHSLObj = hexToHSL(accentHex);
 
-            document.documentElement.style.setProperty('--asri-sys-accent', accentHex);
+            if (sysAccentClr !== accentHex) {
+                document.documentElement.style.setProperty('--asri-sys-accent', accentHex);
 
-            if (accentHSLObj.s < 0.3) {
-                document.documentElement.style.setProperty('--asri-sys-accessible-accent', 'rgb(52, 120, 246)');
-            } else {
-                document.documentElement.style.setProperty('--asri-sys-accessible-accent', accentHex);
+                if (accentHSLObj.s < 0.3) {
+                    document.documentElement.style.setProperty('--asri-sys-accessible-accent-light', 'rgb(52, 120, 246)');
+                    document.documentElement.style.setProperty('--asri-sys-accessible-accent-dark', 'rgb(17, 139, 255)');
+                } else {
+                    document.documentElement.style.setProperty('--asri-sys-accessible-accent-light', accentHex);
+                    document.documentElement.style.setProperty('--asri-sys-accessible-accent-dark', accentHex);
+                }
+
+                sysAccentClr = accentHex;
             }
         }
     }
@@ -1028,7 +1036,8 @@
         asriDoms.status?.style.removeProperty('transform');
         asriDoms.status?.style.removeProperty('--status-height');
         document.documentElement.style.removeProperty('--asri-sys-accent');
-        document.documentElement.style.removeProperty('--asri-sys-accessible-accent');
+        document.documentElement.style.removeProperty('--asri-sys-accessible-accent-light');
+        document.documentElement.style.removeProperty('--asri-sys-accessible-accent-dark');
 
         let wndElements = asriDoms.layouts?.querySelectorAll('[data-type="wnd"]');
         wndElements.forEach(wnd => {
