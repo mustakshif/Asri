@@ -1,19 +1,23 @@
 :root[data-theme-mode='light'] {
-    --b3-theme-primary: oklch(from var(--asri-sys-accent, rgb(52, 120, 246)) 67% c h);
-    --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
-    --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
-    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
-    --b3-theme-accent: oklch(from var(--asri-sys-accessible-accent, oklch(from var(--b3-theme-primary) l 0.2 h)) 67% c h);
-    --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, rgb(52, 120, 246)) 62% c h / 0.8);
+    --asri-accent-fallback: rgb(52, 120, 246);
+    // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h); // complex calculation not supported yet
+    --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) .67 c h);
+    --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
+    --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
+    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
+    --b3-theme-accent: oklch(from var(--asri-sys-accessible-accent, oklch(from var(--b3-theme-primary) l .2 h)) .67 c h);
+    --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) .62 c h / .8);
 }
 
 :root[data-theme-mode='dark'] {
-    --b3-theme-primary: oklch(from var(--asri-sys-accent, rgb(17, 139, 255)) 65% c h);
-    --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
-    --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
-    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
-    --b3-theme-accent: oklch(from var(--asri-sys-accessible-accent, oklch(from var(--b3-theme-primary) l 0.2 h)) 65% c h);
-    --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, rgb(52, 120, 246)) 60% c h / 0.7);
+    --asri-accent-fallback: rgb(17, 139, 255);
+    // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h);
+    --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) .65 c h);
+    --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
+    --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
+    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
+    --b3-theme-accent: oklch(from var(--asri-sys-accessible-accent, oklch(from var(--b3-theme-primary) l 0.2 h)) .65 c h);
+    --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) .6 c h / .7);
 }
 
 .block__icon--active,
