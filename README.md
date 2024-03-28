@@ -36,13 +36,33 @@ Check all updates [here](./CHANGELOG.md).
 
 ## Theme Features
 
-### 🪄 Aesthetically Enhanced Efficiency
+### 🪄 Sleek and Modern Design
 
 * ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar[^1]
 * 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
-* 👁️ Enabled high readability glyph variants for note-taking scenarios[^2] `#macOS` `#iOS` `#iPadOS`
-* 🚏 Support for document-level text direction settings to meet typesetting needs for various languages
 * 🌓 Support for light and dark modes and smooth transition between them<sup>✨</sup>
+* ➖ Minimized dividers to create an integrated, cohesive interface style
+* ⚙️ Modernized designs for multiple kinds of controls
+
+### 📐 Elegant and Efficient Layout
+
+* 🔢 Use of tabular and database-friendly monospaced numerals for improved readability
+* 👁️ High readability glyph variants adopted, tailored for note-taking scenarios[^2] `#macOS` `#iOS` `#iPadOS`
+* 🦋 Support for full-width display of images, videos, widgets, databases, superblocks and more, providing diverse layout options
+* 🚏 Document-level text direction settings cater to different language layout needs
+* 🧩 Optimized internal and external spacing of superblocks, making it easy to achieve grid and masonry layouts
+
+### 🧭 Convenient and Clear Navigation
+
+* 🗂️ Added indent guides for file tree and outline
+* 🔍 Clear presentation of search results and backlinks lists
+* ↕️ Enabled native scrollbar, which can auto-hide to minimize visual clutter `#macOS`
+
+### 👆 Nimble and Smooth Interaction
+
+* ⏱️ Optimized timing of animations for better interface feedback, reducing user distraction
+* 💫 Appropriately added lively animations, enriching the interactive experience
+* 🚀 Maintained a high level of smooth performance
 
 [^1]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
 [^2]: To disable this feature or address glyph errors when using custom fonts, you can use the following CSS code snippet to restore to standard glyphs:
@@ -51,25 +71,6 @@ Check all updates [here](./CHANGELOG.md).
         font-feature-settings: normal !important;
     }
     ```
-
-### 📐 Flexible and Elegant Layout
-
-* 🧩 Optimized internal and external spacing of superblocks, making it easy to achieve grid and masonry layouts
-* 🦋 Support for full-width display of images, videos, widgets, databases, superblocks and more, providing diverse formatting layouts
-* ➖ Simplified dividers, creating an integrated, refreshing and tidy layout style
-
-### 🧭 Convenient and Clear Navigation
-
-* 🗂️ Added indent guides for file tree and outline
-* 🔍 Optimized the display of search lists and backlink lists
-* ↕️ Enabled native scrollbar, which can auto-hide to reduce visual clutter `#macOS`
-
-### 👆 Delicate and Smooth Interaction
-
-* ⏱️ Improved animation responding timing to optimize interface feedback frequency and reduce distraction
-* ⚙️ Redesigned the styles for controls of iFrames, images, embedded blocks etc.
-* 💫 Appropriately added lively animations, enriching the interactive experience
-* 🚀 Maintained a high level of smooth performance
 
 ## Getting Started
 
