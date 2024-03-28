@@ -1,17 +1,41 @@
 :root[data-theme-mode='light'] {
     --b3-theme-primary: oklch(from var(--asri-sys-accent, rgb(52, 120, 246)) 67% c h);
-    --b3-theme-primary-light: color-mix(in srgb, var(--b3-theme-primary), #0000 44%);
-    --b3-theme-primary-lighter: color-mix(in srgb, var(--b3-theme-primary), #0000 62%);
-    --b3-theme-primary-lightest: color-mix(in srgb, var(--b3-theme-primary), #0000 80%);
-    --b3-theme-accent: var(--asri-sys-accessible-accent, rgb(52, 120, 246));
+    --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
+    --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
+    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
+    --b3-theme-accent: oklch(from var(--asri-sys-accessible-accent, oklch(from var(--b3-theme-primary) l 0.2 h)) 67% c h);
     --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, rgb(52, 120, 246)) 62% c h / 0.8);
 }
 
 :root[data-theme-mode='dark'] {
     --b3-theme-primary: oklch(from var(--asri-sys-accent, rgb(17, 139, 255)) 65% c h);
-    --b3-theme-primary-light: color-mix(in srgb, var(--b3-theme-primary), #0000 44%);
-    --b3-theme-primary-lighter: color-mix(in srgb, var(--b3-theme-primary), #0000 62%);
-    --b3-theme-primary-lightest: color-mix(in srgb, var(--b3-theme-primary), #0000 80%);
-    --b3-theme-accent: var(--asri-sys-accessible-accent, rgb(17, 139, 255));
+    --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
+    --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
+    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
+    --b3-theme-accent: oklch(from var(--asri-sys-accessible-accent, oklch(from var(--b3-theme-primary) l 0.2 h)) 65% c h);
     --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, rgb(52, 120, 246)) 60% c h / 0.7);
+}
+
+.block__icon--active,
+.b3-menu__item--selected,
+.protyle-toolbar__item--current,
+.protyle-attr--refcount:hover,
+.protyle-attr--av:hover>:is(svg,span),
+.custom-attr .block__logo.custom-attr__avheader {
+    color: var(--b3-theme-accent);
+}
+
+.b3-menu__icon[style="color:var(--b3-theme-primary)"],
+.dock .dock__item--activefocus,
+.dock .dock__item--active,
+.b3-list-item__text mark {
+    color: var(--b3-theme-accent) !important;
+}
+
+.av__drag-fill {
+    border-color: rgb(from var(--b3-theme-accent) r g b / 0.5);
+}
+
+.config-account__cover[style="background-image: url()"] {
+    background-color: rgb(from var(--b3-theme-accent) r g b / 0.2) !important;
 }

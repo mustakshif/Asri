@@ -456,8 +456,6 @@
                             color: var(--b3-theme-on-primary);
                         }
 
-                        ;
-
                         @include darkmode-counterpart {
                             background-color: var(--b3-theme-primary);
                         }
@@ -771,7 +769,7 @@
                 transform: scale(1.01);
                 outline: 2px solid var(--b3-theme-primary-light);
                 z-index: 1;
-                @include menu-shadow(map-get($theme-light, primary), map-get($theme-dark, primary));
+                @include menu-shadow(var(--b3-theme-primary));
 
                 @include darkmode-counterpart {
                     outline: 2px solid var(--b3-theme-primary);

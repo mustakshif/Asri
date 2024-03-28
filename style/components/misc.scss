@@ -310,7 +310,7 @@ textarea {
         &__content {
             border-radius: 16px;
 
-            @include menu-shadow(pickThemeColor($theme-light, primary), pickThemeColor($theme-dark, primary));
+            @include menu-shadow(var(--b3-theme-primary));
 
             &--close {
                 padding-right: 16px;

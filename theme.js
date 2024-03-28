@@ -117,7 +117,8 @@
             if (sysAccentClr !== accentHex) {
                 document.documentElement.style.setProperty('--asri-sys-accent', accentHex);
 
-                accentHSLObj.s > 0.3 && document.documentElement.style.setProperty('--asri-sys-accessible-accent', accentHex);
+                if(accentHSLObj.s > 0.28) document.documentElement.style.setProperty('--asri-sys-accessible-accent', accentHex);
+                else document.documentElement.style.removeProperty('--asri-sys-accessible-accent');
 
                 sysAccentClr = accentHex;
             }
