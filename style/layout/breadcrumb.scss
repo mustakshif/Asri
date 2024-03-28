@@ -75,5 +75,6 @@
     & &__icon {
         @include button-primary;
         padding: 0 8px;
+        margin-right: 4px;
     }
 }

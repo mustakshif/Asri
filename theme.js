@@ -117,13 +117,7 @@
             if (sysAccentClr !== accentHex) {
                 document.documentElement.style.setProperty('--asri-sys-accent', accentHex);
 
-                if (accentHSLObj.s < 0.3) {
-                    document.documentElement.style.setProperty('--asri-sys-accessible-accent-light', 'rgb(52, 120, 246)');
-                    document.documentElement.style.setProperty('--asri-sys-accessible-accent-dark', 'rgb(17, 139, 255)');
-                } else {
-                    document.documentElement.style.setProperty('--asri-sys-accessible-accent-light', accentHex);
-                    document.documentElement.style.setProperty('--asri-sys-accessible-accent-dark', accentHex);
-                }
+                accentHSLObj.s > 0.3 && document.documentElement.style.setProperty('--asri-sys-accessible-accent', accentHex);
 
                 sysAccentClr = accentHex;
             }
@@ -1036,8 +1030,7 @@
         asriDoms.status?.style.removeProperty('transform');
         asriDoms.status?.style.removeProperty('--status-height');
         document.documentElement.style.removeProperty('--asri-sys-accent');
-        document.documentElement.style.removeProperty('--asri-sys-accessible-accent-light');
-        document.documentElement.style.removeProperty('--asri-sys-accessible-accent-dark');
+        document.documentElement.style.removeProperty('--asri-sys-accessible-accent');
 
         let wndElements = asriDoms.layouts?.querySelectorAll('[data-type="wnd"]');
         wndElements.forEach(wnd => {
