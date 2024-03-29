@@ -117,8 +117,11 @@
             if (sysAccentClr !== accentHex) {
                 document.documentElement.style.setProperty('--asri-sys-accent', accentHex);
 
-                if(accentHSLObj.s > 0.28) document.documentElement.style.setProperty('--asri-sys-accessible-accent', accentHex);
-                else document.documentElement.style.removeProperty('--asri-sys-accessible-accent');
+                if (accentHSLObj.s > 0.28) document.documentElement.style.setProperty('--asri-sys-accent-accessible', accentHex);
+                else document.documentElement.style.removeProperty('--asri-sys-accent-accessible');
+
+                if (accentHSLObj.s == 0) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', accentHex);
+                else document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
 
                 sysAccentClr = accentHex;
             }
@@ -1031,7 +1034,8 @@
         asriDoms.status?.style.removeProperty('transform');
         asriDoms.status?.style.removeProperty('--status-height');
         document.documentElement.style.removeProperty('--asri-sys-accent');
-        document.documentElement.style.removeProperty('--asri-sys-accessible-accent');
+        document.documentElement.style.removeProperty('--asri-sys-accent-accessible');
+        document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
 
         let wndElements = asriDoms.layouts?.querySelectorAll('[data-type="wnd"]');
         wndElements.forEach(wnd => {

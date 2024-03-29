@@ -160,8 +160,15 @@
     }
 }
 
-.layout__center .protyle-breadcrumb__bar {
+.protyle-breadcrumb__bar {
     @include scroll-divider-fadein-bgClr($range:'left right');
+
+    .layout__dockl &::before, 
+    .layout__dockl &::after, 
+    .layout__dockr &::before, 
+    .layout__dockr &::after  {
+        display: none;
+    }
 }
 
 @keyframes dividerAppear-bgClr {

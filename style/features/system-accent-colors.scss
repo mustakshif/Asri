@@ -1,30 +1,69 @@
+// --asri-sys-accent、 --asri-sys-accent-accessible 和 --asri-sys-accent-grayscale 是用 JavaScript 中获取的三种基础颜色
+// accent-accessible 跟 accent 相同，但仅当系统强调色（在 HSL 色彩空间中）的饱和度大于 0.3 时可用，否则使用备选颜色；
+// accent-grayscale 仅在系统强调色饱和度为 0 时可用
+// --b3-theme-accent 是一个新的 UI 色，用于突出元素（如激活状态图标）；
+
+// --asri-sys-accent, --asri-sys-accent-accessible and --asri-sys-accent-grayscale are 3 base colors gotten from js
+// accent-accessible is the same as accent, but is available only when the saturation of system accent color is greater than 0.3 (in hsl); otherwise, a fallback color is used;
+// accent-grayscale is available only when the saturation of system accent color is 0 (in hsl);
+// --b3-theme-accent is a new UI color for accented elements, like activated icons;
+
 :root[data-theme-mode='light'] {
-    --asri-accent-fallback: rgb(52, 120, 246);
+    --asri-fallback-accent: #3478f6;
+    --asri-fallback-background: #fff;
+    --asri-fallback-surface: #f0f0f0;
+    --asri-fallback-on-background: #454545;
+    --asri-composite-background: oklch(from var(--asri-sys-accent-accessible) .99 .005 h);
+    --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) 1 0 0);
+    --asri-composite-surface: oklch(from var(--asri-sys-accent-accessible) .95 .01 h);
+    --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .96 0 0);
+    --asri-composite-on-background: oklch(from var(--asri-sys-accent-accessible) .39 .03 h);
+    --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .39 0 0);
+
+    // UI colors
     // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h); // complex calculation not supported yet
-    --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) .67 c h);
+    --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-fallback-accent)) .67 c h);
     --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
     --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
     --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
-    --b3-theme-accent: oklch(from var(--asri-sys-accessible-accent, oklch(from var(--b3-theme-primary) l .2 h)) .67 c h);
-    --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) .62 c h / .8);
+    --b3-theme-accent: oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l .2 h)) .67 c h);
+    --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, var(--asri-fallback-accent)) .62 c h / .8);
+    --b3-theme-background: var(--asri-composite-background, var(--asri-composite-background-grayscale, var(--asri-fallback-background)));
+    --b3-theme-surface: var(--asri-composite-surface, var(--asri-composite-surface-grayscale, var(--asri-fallback-surface)));
+    --b3-theme-on-background: var(--asri-composite-on-background, var(--asri-composite-on-background-grayscale, var(--asri-fallback-on-background)));
+    --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
 }
 
 :root[data-theme-mode='dark'] {
-    --asri-accent-fallback: rgb(17, 139, 255);
+    --asri-fallback-accent: #118bff;
+    --asri-fallback-background: #1e1e1e;
+    --asri-fallback-surface: #383838;
+    --asri-fallback-on-background: #dcdcdc;
+    --asri-composite-background: oklch(from var(--asri-sys-accent-accessible) .24 .005 h);
+    --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .24 0 0);
+    --asri-composite-surface: oklch(from var(--asri-sys-accent-accessible) .34 .01 h);
+    --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .34 0 0);
+    --asri-composite-on-background: oklch(from var(--asri-sys-accent-accessible) .89 .01 h);
+    --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .89 0 0);
+
     // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h);
-    --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) .65 c h);
+    --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-fallback-accent)) .65 c h);
     --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
     --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
     --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
-    --b3-theme-accent: oklch(from var(--asri-sys-accessible-accent, oklch(from var(--b3-theme-primary) l 0.2 h)) .65 c h);
-    --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) .6 c h / .7);
+    --b3-theme-accent: oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .65 c h);
+    --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, var(--asri-fallback-accent)) .6 c h / .7);
+    --b3-theme-background: var(--asri-composite-background, var(--asri-composite-background-grayscale, var(--asri-fallback-background)));
+    --b3-theme-surface: var(--asri-composite-surface, var(--asri-composite-surface-grayscale, var(--asri-fallback-surface)));
+    --b3-theme-on-background: var(--asri-composite-on-background, var(--asri-composite-on-background-grayscale, var(--asri-fallback-on-background)));
+    --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
 }
 
 .block__icon--active,
 .b3-menu__item--selected,
 .protyle-toolbar__item--current,
 .protyle-attr--refcount:hover,
-.protyle-attr--av:hover>:is(svg,span),
+.protyle-attr--av:hover>:is(svg, span),
 .custom-attr .block__logo.custom-attr__avheader {
     color: var(--b3-theme-accent);
 }
@@ -41,5 +80,5 @@
 }
 
 .config-account__cover[style="background-image: url()"] {
-    background-color: rgb(from var(--b3-theme-accent) r g b / 0.2) !important;
+    background-color: rgb(from var(--b3-theme-accent) r g b / 0.3) !important;
 }

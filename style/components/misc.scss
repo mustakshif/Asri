@@ -206,11 +206,10 @@ textarea {
 
     &:hover:not(&:focus)::-webkit-slider-thumb {
         transform: none;
-        outline: 2px solid lighten(map-get($map: $theme-light, $key: primary), 20%);
+        outline: 2px solid oklch(from var(--b3-theme-primary) .83 .1 h);
 
         @include darkmode-counterpart {
-            outline: 2px solid darken(map-get($map: $theme-dark, $key: primary), 10%);
-            ;
+            outline: 2px solid oklch(from var(--b3-theme-primary) .65 .15 h);
         }
     }
 
