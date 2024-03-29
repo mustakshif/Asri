@@ -49,6 +49,9 @@
     --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
 
     --b3-av-background-hl: oklch(from var(--b3-theme-primary) .95 .02 h);
+
+    --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / .09);
+    --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / .18);
 }
 
 :root[data-theme-mode='dark'] {
@@ -90,6 +93,9 @@
     --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
 
     --b3-av-background-hl: oklch(from var(--b3-theme-primary) .32 .05 h);
+
+    --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / .09);
+    --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / .18);
 }
 
 .block__icon--active,
@@ -124,5 +130,9 @@
 
 .layout-tab-bar .item:not(.item--readonly,.item--full.item--focus):hover,
 .layout-tab-bar .item--focus {
-    background-color: oklch(from var(--b3-theme-on-background) l c h / .15);
+    background-color: oklch(from var(--b3-theme-on-background) l c h / .2);
+
+    @include darkmode-counterpart {
+        background-color: oklch(from var(--b3-theme-on-background) l c h / .25);
+    }
 }
