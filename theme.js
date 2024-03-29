@@ -123,6 +123,11 @@
                 if (accentHSLObj.s == 0) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', accentHex);
                 else document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
 
+                document.body.classList.add('asri-mode-transition');
+                setTimeout(() => {
+                    document.body.classList.remove('asri-mode-transition');
+                }, 350);
+
                 sysAccentClr = accentHex;
             }
         }

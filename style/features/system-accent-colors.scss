@@ -9,15 +9,15 @@
 // --b3-theme-accent is a new UI color for accented elements, like activated icons;
 
 :root[data-theme-mode='light'] {
-    --asri-fallback-accent: #3478f6;
+    --asri-fallback-accent: #3478f6; //oklch(0.6 0.2 261.37)
     --asri-fallback-background: #fff;
     --asri-fallback-surface: #f0f0f0;
     --asri-fallback-on-background: #454545;
-    --asri-composite-background: oklch(from var(--asri-sys-accent-accessible) .99 .005 h);
+    --asri-composite-background: oklch(from var(--asri-sys-accent) .99 .005 h);
     --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) 1 0 0);
-    --asri-composite-surface: oklch(from var(--asri-sys-accent-accessible) .95 .01 h);
+    --asri-composite-surface: oklch(from var(--asri-sys-accent) .95 .01 h);
     --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .96 0 0);
-    --asri-composite-on-background: oklch(from var(--asri-sys-accent-accessible) .39 .03 h);
+    --asri-composite-on-background: oklch(from var(--asri-sys-accent) .39 .03 h);
     --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .39 0 0);
 
     // UI colors
@@ -28,34 +28,38 @@
     --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
     --b3-theme-accent: oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l .2 h)) .67 c h);
     --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, var(--asri-fallback-accent)) .62 c h / .8);
-    --b3-theme-background: var(--asri-composite-background, var(--asri-composite-background-grayscale, var(--asri-fallback-background)));
-    --b3-theme-surface: var(--asri-composite-surface, var(--asri-composite-surface-grayscale, var(--asri-fallback-surface)));
-    --b3-theme-on-background: var(--asri-composite-on-background, var(--asri-composite-on-background-grayscale, var(--asri-fallback-on-background)));
+    
+    --b3-theme-background: var(--asri-composite-background-grayscale, var(--asri-composite-background, var(--asri-fallback-background)));
+    --b3-theme-surface: var(--asri-composite-surface-grayscale, var(--asri-composite-surface, var(--asri-fallback-surface)));
+
+    --b3-theme-on-background: var(--asri-composite-on-background-grayscale, var(--asri-composite-on-background, var(--asri-fallback-on-background)));
     --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
 }
 
 :root[data-theme-mode='dark'] {
-    --asri-fallback-accent: #118bff;
+    --asri-fallback-accent: #118bff; // oklch(0.64 0.2 253.9)
     --asri-fallback-background: #1e1e1e;
     --asri-fallback-surface: #383838;
     --asri-fallback-on-background: #dcdcdc;
-    --asri-composite-background: oklch(from var(--asri-sys-accent-accessible) .24 .005 h);
+    --asri-composite-background: oklch(from var(--asri-sys-accent) .24 .005 h);
     --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .24 0 0);
-    --asri-composite-surface: oklch(from var(--asri-sys-accent-accessible) .34 .01 h);
+    --asri-composite-surface: oklch(from var(--asri-sys-accent) .34 .01 h);
     --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .34 0 0);
-    --asri-composite-on-background: oklch(from var(--asri-sys-accent-accessible) .89 .01 h);
+    --asri-composite-on-background: oklch(from var(--asri-sys-accent) .89 .01 h);
     --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .89 0 0);
 
     // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h);
     --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-fallback-accent)) .65 c h);
     --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
     --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
-    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
+    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);    
     --b3-theme-accent: oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .65 c h);
     --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, var(--asri-fallback-accent)) .6 c h / .7);
-    --b3-theme-background: var(--asri-composite-background, var(--asri-composite-background-grayscale, var(--asri-fallback-background)));
-    --b3-theme-surface: var(--asri-composite-surface, var(--asri-composite-surface-grayscale, var(--asri-fallback-surface)));
-    --b3-theme-on-background: var(--asri-composite-on-background, var(--asri-composite-on-background-grayscale, var(--asri-fallback-on-background)));
+
+    --b3-theme-background: var(--asri-composite-background-grayscale, var(--asri-composite-background, var(--asri-fallback-background)));
+    --b3-theme-surface: var(--asri-composite-surface-grayscale, var(--asri-composite-surface, var(--asri-fallback-surface)));
+    
+    --b3-theme-on-background: var(--asri-composite-on-background-grayscale, var(--asri-composite-on-background, var(--asri-fallback-on-background)));
     --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
 }
 
