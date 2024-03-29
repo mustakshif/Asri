@@ -133,10 +133,10 @@
 
                         >.b3-list-item {
                             &:not([data-type="search-item"]) {
-                                background-color: change-color(pickThemeColor($theme-light, surface), $lightness: 90%);
+                                background-color: oklch(from var(--b3-theme-surface) .91 c h);
 
                                 @include darkmode-counterpart {
-                                    background-color: change-color(pickThemeColor($theme-dark, surface), $lightness: 28%);
+                                    background-color: oklch(from var(--b3-theme-surface) .41 c h);
                                 }
                             }
 
@@ -312,21 +312,26 @@
                     }
 
                     &__cover {
-                        &::before {
-                            content: "";
-                            display: inline-block;
-                            width: -webkit-fill-available;
-                            height: 90%;
-                            position: absolute;
-                            bottom: 0;
-                            right: 0;
-                            background: linear-gradient(to top, pickThemeColor($theme-light, background) 2%, pickThemeColor($theme-light, background, 0.97) 10%, pickThemeColor($theme-light, background, 0.9) 18%, pickThemeColor($theme-light, background, 0.75) 33%, pickThemeColor($theme-light, background, 0.05) 92%, transparent 99%);
-                            pointer-events: none;
+                        // &::before {
+                        //     content: "";
+                        //     display: inline-block;
+                        //     width: -webkit-fill-available;
+                        //     height: 90%;
+                        //     position: absolute;
+                        //     bottom: 0;
+                        //     right: 0;
+                        //     background: linear-gradient(to top, pickThemeColor($theme-light, background) 2%, pickThemeColor($theme-light, background, 0.97) 10%, pickThemeColor($theme-light, background, 0.9) 18%, pickThemeColor($theme-light, background, 0.75) 33%, pickThemeColor($theme-light, background, 0.05) 92%, transparent 99%);
+                        //     pointer-events: none;
 
-                            @include darkmode-counterpart {
-                                background: linear-gradient(to top, pickThemeColor($theme-dark, background) 2%, pickThemeColor($theme-dark, background, 0.97) 10%, pickThemeColor($theme-dark, background, 0.9) 18%, pickThemeColor($theme-dark, background, 0.75) 33%, pickThemeColor($theme-dark, background, 0.05) 92%, transparent 99%);
-                            }
-                        }
+                        //     @include darkmode-counterpart {
+                        //         background: linear-gradient(to top, pickThemeColor($theme-dark, background) 2%, pickThemeColor($theme-dark, background, 0.97) 10%, pickThemeColor($theme-dark, background, 0.9) 18%, pickThemeColor($theme-dark, background, 0.75) 33%, pickThemeColor($theme-dark, background, 0.05) 92%, transparent 99%);
+                        //     }
+                        // }
+
+                        mask-image: linear-gradient(to top, transparent 2%, rgba(0, 0, 0, 0.03) 10%, rgba(0, 0, 0, 0.1) 18%, rgba(0, 0, 0, 0.25) 33%, rgba(0, 0, 0, 0.95) 92%, black 99%), linear-gradient(to top, black, black);
+                        mask-size: auto 90%, auto 11%;
+                        mask-position: bottom, top;
+                        mask-repeat: no-repeat;
 
                         &[style="background-image: url()"] {
                             background-color: var(--b3-theme-primary-light);
@@ -1074,7 +1079,7 @@
     }
 
     &.search-mark--hl {
-        @include menu-shadow(map-get($theme-light, primary), $opacity-light: 0.15, $opacity-dark: 0.4);
+        @include menu-shadow(var(--b3-theme-primary), $opacity-light: 0.15, $opacity-dark: 0.4);
         // mix-blend-mode: normal;
         background-color: var(--b3-theme-primary-lighter) !important;
         color: var(--b3-theme-on-background) !important;

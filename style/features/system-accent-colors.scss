@@ -1,3 +1,5 @@
+@use '../base' as *;
+
 // --asri-sys-accent、 --asri-sys-accent-accessible 和 --asri-sys-accent-grayscale 是用 JavaScript 中获取的三种基础颜色
 // accent-accessible 跟 accent 相同，但仅当系统强调色（在 HSL 色彩空间中）的饱和度大于 0.3 时可用，否则使用备选颜色；
 // accent-grayscale 仅在系统强调色饱和度为 0 时可用
@@ -31,9 +33,22 @@
     
     --b3-theme-background: var(--asri-composite-background-grayscale, var(--asri-composite-background, var(--asri-fallback-background)));
     --b3-theme-surface: var(--asri-composite-surface-grayscale, var(--asri-composite-surface, var(--asri-fallback-surface)));
-
     --b3-theme-on-background: var(--asri-composite-on-background-grayscale, var(--asri-composite-on-background, var(--asri-fallback-on-background)));
     --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
+
+    --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / .1);
+    --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / .5);
+
+    --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
+
+    --b3-border-color: oklch(from var(--b3-theme-on-background) .92 .01 h);
+    --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
+
+    --b3-menu-background: oklch(from var(--b3-theme-background) .94 c h);
+
+    --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
+
+    --b3-av-background-hl: oklch(from var(--b3-theme-primary) .95 .02 h);
 }
 
 :root[data-theme-mode='dark'] {
@@ -41,7 +56,7 @@
     --asri-fallback-background: #1e1e1e;
     --asri-fallback-surface: #383838;
     --asri-fallback-on-background: #dcdcdc;
-    --asri-composite-background: oklch(from var(--asri-sys-accent) .24 .005 h);
+    --asri-composite-background: oklch(from var(--asri-sys-accent) .24 .007 h);
     --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .24 0 0);
     --asri-composite-surface: oklch(from var(--asri-sys-accent) .34 .01 h);
     --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .34 0 0);
@@ -61,6 +76,20 @@
     
     --b3-theme-on-background: var(--asri-composite-on-background-grayscale, var(--asri-composite-on-background, var(--asri-fallback-on-background)));
     --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
+
+    --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / .1);
+    --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / .5);
+
+    --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
+
+    --b3-border-color: oklch(from var(--b3-theme-on-background) .38 .01 h);
+    --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
+    
+    --b3-menu-background: oklch(from var(--b3-theme-background) .36 c h);
+
+    --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
+
+    --b3-av-background-hl: oklch(from var(--b3-theme-primary) .32 .05 h);
 }
 
 .block__icon--active,
@@ -85,4 +114,15 @@
 
 .config-account__cover[style="background-image: url()"] {
     background-color: rgb(from var(--b3-theme-accent) r g b / 0.3) !important;
+}
+
+.protyle-wysiwyg [data-node-id] span[data-type~=search-mark].search-mark--hl {
+    background-color: oklch(from var(--b3-theme-accent) l c h / .38) !important;
+
+    @include menu-shadow(var(--b3-theme-accent), $opacity-light: 0.15, $opacity-dark: 0.4);
+}
+
+.layout-tab-bar .item:not(.item--readonly,.item--full.item--focus):hover,
+.layout-tab-bar .item--focus {
+    background-color: oklch(from var(--b3-theme-on-background) l c h / .15);
 }

@@ -337,8 +337,8 @@
         thead {
             tr {
                 th {
-                    // background-color: var(--b3-theme-surface);
-                    @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
+                    background-color: oklch(from var(--b3-theme-surface) .6 0 0 / .09);
+                    // @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
                     border-top: none;
 
                     &:first-child {
@@ -356,8 +356,8 @@
             tr {
                 &:nth-child(2n) {
                     td {
-                        // background-color: var(--b3-theme-surface);
-                        @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
+                        background-color: oklch(from var(--b3-theme-surface) .7 c h / .09);
+                        // @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
                     }
                 }
 

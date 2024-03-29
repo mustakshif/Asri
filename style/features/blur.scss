@@ -117,13 +117,15 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 
             #findbar:not(.fn__hidden),
             .pdf__util {
-                @include theme-variant-color(background-color, menu-background, $medium-transparency);
+                // @include theme-variant-color(background-color, menu-background, $medium-transparency);
+                background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
                 @include bg-blur;
             }
 
             #dialogContainer {
                 .dialog {
-                    @include theme-variant-color(background-color, menu-background, $thick-transparency);
+                    // @include theme-variant-color(background-color, menu-background, $thick-transparency);
+                    background-color: oklch(from var(--b3-menu-background) l c h / $thick-transparency);
 
                     @include bg-blur($brightness-dark: 0.95);
                 }
@@ -160,7 +162,8 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 
     //文字格式工具条
     &-toolbar {
-        @include theme-variant-color(background-color, surface, $medium-transparency);
+        // @include theme-variant-color(background-color, surface, $medium-transparency);
+        background-color: oklch(from var(--b3-theme-surface) l c h / $medium-transparency);
         @include bg-blur;
         // z-index: 1;
     }
@@ -217,9 +220,10 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 }
 
 .fn__flex-1:not(.has-dockb)~#status {
-    @include theme-variant-color(background-color, surface, $medium-transparency);
-    @include bg-blur($saturate-value: 1);
-    mix-blend-mode: luminosity;
+    // @include theme-variant-color(background-color, surface, $medium-transparency);
+    background-color: oklch(from var(--b3-theme-surface) l c h / $medium-transparency);
+    @include bg-blur;
+    // mix-blend-mode: luminosity;
 }
 
 .layout__dockl,
@@ -234,15 +238,8 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
         // }
 
         .layout-tab-container {
-            @include theme-variant-color(background-color, background, $thick-transparency);
-
-            .block__icons {
-
-                &,
-                &~* {
-                    // @include theme-variant-color(background-color, background, $thick-transparency);
-                }
-            }
+            // @include theme-variant-color(background-color, background, $thick-transparency);
+            background-color: oklch(from var(--b3-theme-background) l c h / $thick-transparency);
 
             .graph {
                 background-color: transparent;
@@ -296,7 +293,8 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 .graph__panel {
     @include bg-blur(20px);
     opacity: 1;
-    @include theme-variant-color(background-color, background, $medium-transparency);
+    // @include theme-variant-color(background-color, background, $medium-transparency);
+    background-color: oklch(from var(--b3-theme-background) l c h / $medium-transparency);
 }
 
 // 菜单
@@ -318,7 +316,8 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
     }
 
     .b3-menu__items {
-        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        // @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
     }
 
     // 数据库菜单
@@ -333,16 +332,19 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
     @include bg-blur;
 
     >div:not(.emojis) {
-        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        // @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
     }
 
     >.emojis>.emojis__panel {
-        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        // @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
     }
 }
 
 .protyle-util {
-    @include theme-variant-color(background-color, menu-background, $medium-transparency);
+    // @include theme-variant-color(background-color, menu-background, $medium-transparency);
+    background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
     @include bg-blur($saturate-value: 3);
 }
 
@@ -354,7 +356,8 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 // 解决模糊透明像素的问题
 
 #searchHistoryList {
-    @include theme-variant-color(background-color, menu-background, $medium-transparency);
+    // @include theme-variant-color(background-color, menu-background, $medium-transparency);
+    background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
     @include bg-blur;
     overflow: auto;
 }
@@ -442,7 +445,8 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
     // ->js
     .b3-dialog__container {
         @include bg-blur();
-        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        // @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
     }
 }
 
@@ -475,7 +479,8 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 }
 
 .tooltip {
-    @include theme-variant-color(background-color, menu-background, 0.8);
+    // @include theme-variant-color(background-color, menu-background, 0.8);
+    background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
     @include bg-blur($medium-blur-rd);
 }
 
@@ -516,7 +521,8 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 .av__panel {
     .b3-menu {
         >.fn__flex-column>.b3-menu__item[data-type="nobg"]:first-child {
-            @include theme-variant-color(background-color, menu-background, $medium-transparency);
+            // @include theme-variant-color(background-color, menu-background, $medium-transparency);
+            background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
 
             +.fn__hr {
                 @include theme-variant-color(background-color, menu-background, $medium-transparency);

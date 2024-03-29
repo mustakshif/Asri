@@ -111,7 +111,7 @@
     function getSystemAccentColor() {
         if (!(isInBrowser || isMobile || isLinux)) {
             const accent = require("@electron/remote").systemPreferences.getAccentColor();
-            const accentHex = '#' + accent;
+            const accentHex = '#' + accent.slice(0, 6);
             const accentHSLObj = hexToHSL(accentHex);
 
             if (sysAccentClr !== accentHex) {
