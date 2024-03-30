@@ -1,45 +1,41 @@
-// SiYuan API
-// [cc-baselib/siYuanApi.js at main · leolee9086/cc-baselib](https://github.com/leolee9086/cc-baselib/blob/main/src/siYuanApi.js)
-// Rem Craft/util/api.js
-
-// async function getFile(path) {
-//     const response = await fetch('/api/file/getFile', {
-//         method: 'POST',
-//         headers: {
-//             Authorization: `Token ''`,
-//         },
-//         body: JSON.stringify({
-//             path: path,
-//         }),
-//     });
-//     if (response.status === 200) return response;
-//     else return null;
-// }
-
-// async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
-//     let blob = new Blob([filedata]);
-//     let file = new File([blob], path.split('/').pop());
-//     let formdata = new FormData();
-//     formdata.append('path', path);
-//     formdata.append('file', file);
-//     formdata.append('isDir', isDir);
-//     formdata.append('modTime', modTime);
-//     const response = await fetch('/api/file/putFile', {
-//         body: formdata,
-//         method: 'POST',
-//         headers: {
-//             Authorization: `Token ''`,
-//         },
-//     });
-//     if (response.status === 200) return await response.json();
-//     else return null;
-// }
-
-// function isFullScreen() {
-//     ipcRenderer.invoke('siyuan-get', { cmd: 'isFullScreen' })
-//         .then(isFullscreen => isFullscreen ? true : false);
-// }
 (function () {
+    // SiYuan API
+    // [cc-baselib/siYuanApi.js at main · leolee9086/cc-baselib](https://github.com/leolee9086/cc-baselib/blob/main/src/siYuanApi.js)
+    // Rem Craft/util/api.js
+
+    async function getFile(path) {
+        const response = await fetch('/api/file/getFile', {
+            method: 'POST',
+            headers: {
+                Authorization: `Token ''`,
+            },
+            body: JSON.stringify({
+                path: path,
+            }),
+        });
+        if (response.status === 200) return response;
+        else return null;
+    }
+
+    async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
+        let blob = new Blob([filedata]);
+        let file = new File([blob], path.split('/').pop());
+        let formdata = new FormData();
+        formdata.append('path', path);
+        formdata.append('file', file);
+        formdata.append('isDir', isDir);
+        formdata.append('modTime', modTime);
+        const response = await fetch('/api/file/putFile', {
+            body: formdata,
+            method: 'POST',
+            headers: {
+                Authorization: `Token ''`,
+            },
+        });
+        if (response.status === 200) return await response.json();
+        else return null;
+    }
+
     const asriDoms = {
         layouts: document.getElementById('layouts'),
         status: document.getElementById('status'),
@@ -67,6 +63,8 @@
     const isInBrowser = asriDoms.toolbar?.classList.contains('toolbar--browser') > 0; // iPad uses this too
     const isMiniWindow = document.body.classList.contains('body--window') > 0;
     const isAndroid = window.siyuan.config.system.container === "android";
+
+    const lang = window.siyuan.config.lang;
 
     const asriClassNames = [];
     const asriDeletedRules = [];
@@ -106,7 +104,172 @@
         }
     }
 
-    let sysAccentClr;
+    const asriConfigs = {
+        followSysAccentColor: "1",
+        useGrayScale: "0",
+        userCustomColor: ""
+    };
+    // 有的变量先从本地读取
+    let sysAccentColor, followSysAccentColor, useGrayScale, userCustomColor;
+
+    async function getAsriConfigs() {
+        await getFile("/data/snippets/Asri.config.json")
+            .then((response) => {
+                if (response && response.status === 200) {
+                    return response.json();
+                }
+                return null;
+            })
+            .then((data) => {
+                console.log(data);
+                followSysAccentColor = data?.followSysAccentColor || asriConfigs.followSysAccentColor;
+                useGrayScale = data?.useGrayScale || asriConfigs.useGrayScale;
+                userCustomColor = data?.userCustomColor || asriConfigs.userCustomColor;
+
+                console.log(followSysAccentColor,userCustomColor, useGrayScale);
+            });
+    }
+
+    getAsriConfigs().then(() => {
+        // console.log(followSysAccentColor, useGrayScale, userCustomColor);
+        customizeThemeColor();
+    });
+
+    async function updateAsriConfigs() {
+        await putFile("/data/snippets/Asri.config.json", JSON.stringify(asriConfigs, undefined, 4));
+    }
+
+    function customizeThemeColor() {
+        let followSysAccentBtn, pickColorBtn, useGrayScaleBtn;
+        const i18nMenuItems = {
+            'zh_CN': {
+                'followSysAccent': '跟随系统强调色',
+                'pickColor': '自定义主题色',
+                'useGrayScale': '启用纯灰度中性色'
+            },
+            'zh_CHT': {
+                'followSysAccent': '跟隨系統強調色',
+                'pickColor': '自定義主題色',
+                'useGrayScale': '啟用純灰階中性色'
+            },
+            'en_US': {
+                'followSysAccent': 'Follow system accent color',
+                'pickColor': 'Pick theme color',
+                'useGrayScale': 'Use gray scale neutral colors'
+            },
+        }
+
+        if (followSysAccentColor) document.documentElement.style.removeProperty('--asri-user-custom-accent');
+        else document.documentElement.style.setProperty('--asri-user-custom-accent', userCustomColor);
+
+        if (userCustomColor) document.documentElement.style.setProperty('--asri-user-custom-accent', userCustomColor);
+        else document.documentElement.style.removeProperty('--asri-user-custom-accent');
+
+        if (useGrayScale) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
+        else document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
+
+        setTimeout(() => {
+            // create menu items
+            const barModeMenuItems = document.querySelector('#commonMenu[data-name="barmode"] .b3-menu__items');
+            if (!barModeMenuItems) return;
+            const asriConfigElId = ['followSysAccent', 'pickColor', 'useGrayScale'];
+            const separator = document.createElement('button');
+            const asriConfigFrag = new DocumentFragment();
+            asriConfigElId.forEach(id => {
+                const btn = document.createElement('button');
+                btn.id = id;
+                btn.classList.add('b3-menu__item', 'asri-config');
+                btn.innerHTML = `
+                        <svg class="b3-menu__icon"></svg>
+                        <label class="b3-menu__label">${(lang === 'zh_CN' || lang === 'zh_CHT') ? i18nMenuItems[lang][id] : i18nMenuItems['en_US'][id]}</label>
+                        <input type="color" value="${userCustomColor || "#3478f6"}">
+                    `;//input 默认值可以设为最后一次用户选取的颜色
+                asriConfigFrag.append(btn);
+            });
+
+            separator.classList.add('b3-menu__separator', 'asri-config');
+            asriConfigFrag.insertBefore(separator, asriConfigFrag.firstChild);
+            barModeMenuItems.append(asriConfigFrag);
+            pushUnique(asriClassNames, '.asri-config');
+
+            // set funcitons for menu items
+            followSysAccentBtn = document.getElementById('followSysAccent');
+            pickColorBtn = document.getElementById('pickColor');
+            useGrayScaleBtn = document.getElementById('useGrayScale');
+            colorPicker = pickColorBtn.querySelector('input');
+
+            pickColorBtn.querySelector('label').setAttribute('for', 'asriColorPicker');
+            colorPicker.id = 'asriColorPicker';
+
+            // 先从本地读取的值确定项目是否是被选中
+            // ……
+            if (followSysAccentColor) followSysAccentBtn.classList.add('b3-menu__item--selected');
+            else followSysAccentBtn.classList.remove('b3-menu__item--selected');
+
+            if (useGrayScale) useGrayScaleBtn.classList.add('b3-menu__item--selected');
+            else useGrayScaleBtn.classList.remove('b3-menu__item--selected');
+
+            // user updates the color
+            if (isInBrowser || isMobile || isLinux) {
+                // followSysAccentColor = false;
+                followSysAccentBtn.classList.add('fn__none');
+            } else {
+                followSysAccentBtn.addEventListener('click', () => {
+                    if (!followSysAccentColor) {
+                        followSysAccentBtn.classList.add('b3-menu__item--selected');
+                        document.documentElement.style.removeProperty('--asri-user-custom-accent');
+                        getSystemAccentColor();
+                        followSysAccentColor = true;
+                        asriConfigs.followSysAccentColor = '1';
+                        // 存储到本地
+                        updateAsriConfigs();
+                    } else {
+                        followSysAccentBtn.classList.remove('b3-menu__item--selected');
+                        document.documentElement.style.setProperty('--asri-user-custom-accent', userCustomColor || sysAccentColor || '#3478f6'); // 从本地读取颜色，系统色作为候补
+                        // 并储存到本地
+                        followSysAccentColor = false;
+                        asriConfigs.followSysAccentColor = '0';
+                        updateAsriConfigs();
+                    }
+                });
+            }
+
+            colorPicker.addEventListener('input', () => {
+                document.documentElement.style.setProperty('--asri-user-custom-accent', colorPicker.value);
+            });
+            colorPicker.addEventListener('change', () => {
+                // document.documentElement.style.setProperty('--asri-user-custom-accent', colorPicker.value);
+                followSysAccentBtn.classList.remove('b3-menu__item--selected');
+                // 并将值储存到本地
+                userCustomColor = colorPicker.value;
+                asriConfigs.userCustomColor = colorPicker.value;
+
+                // 并储存到本地
+                followSysAccentColor = false;
+                asriConfigs.followSysAccentColor = '0';
+                updateAsriConfigs();
+            });
+
+            useGrayScaleBtn.addEventListener('click', () => {
+                if (!useGrayScale) {
+                    useGrayScaleBtn.classList.add('b3-menu__item--selected');
+                    document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
+                    useGrayScale = true;
+                    asriConfigs.useGrayScale = '1';
+                    // 并储存到本地
+                    updateAsriConfigs();
+                } else {
+                    useGrayScaleBtn.classList.remove('b3-menu__item--selected');
+                    document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
+                    useGrayScale = false;
+                    asriConfigs.useGrayScale = '0';
+                    updateAsriConfigs();
+                }
+            });
+        }, 0);
+    }
+
+    asriDoms.barMode.addEventListener("click", customizeThemeColor);
 
     function getSystemAccentColor() {
         if (!(isInBrowser || isMobile || isLinux)) {
@@ -114,7 +277,7 @@
             const accentHex = '#' + accent.slice(0, 6);
             const accentHSLObj = hexToHSL(accentHex);
 
-            if (sysAccentClr !== accentHex) {
+            if (sysAccentColor !== accentHex) {
                 document.documentElement.style.setProperty('--asri-sys-accent', accentHex);
 
                 if (accentHSLObj.s > 0.28) document.documentElement.style.setProperty('--asri-sys-accent-accessible', accentHex);
@@ -128,7 +291,7 @@
                     document.body.classList.remove('asri-mode-transition');
                 }, 350);
 
-                sysAccentClr = accentHex;
+                sysAccentColor = accentHex;
             }
         }
     }
@@ -977,7 +1140,7 @@
                 avoidOverlappingWithStatus();
                 addDockbClassName();
                 statusPosition();
-                getSystemAccentColor();
+                followSysAccentColor && getSystemAccentColor();
             }, 200);
         }
     }
@@ -1013,6 +1176,7 @@
         window.removeEventListener('dragend', handleLowFreqTasks);
         window.removeEventListener('dblclick', handleDblClick);
         window.removeEventListener('resize', handleWinResize);
+        asriDoms.barMode.removeEventListener("click", customizeThemeColor);
 
         // disconnect all observers
         asriObservers.forEach(observer => observer.disconnect());
@@ -1041,6 +1205,7 @@
         document.documentElement.style.removeProperty('--asri-sys-accent');
         document.documentElement.style.removeProperty('--asri-sys-accent-accessible');
         document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
+        document.documentElement.style.removeProperty('--asri-user-custom-accent');
 
         let wndElements = asriDoms.layouts?.querySelectorAll('[data-type="wnd"]');
         wndElements.forEach(wnd => {

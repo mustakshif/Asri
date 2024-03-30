@@ -337,7 +337,11 @@
         thead {
             tr {
                 th {
-                    background-color: oklch(from var(--b3-theme-surface) .6 0 0 / .09);
+                    background-color: oklch(from var(--b3-theme-surface) .96 c h / .8);
+
+                    @include darkmode-counterpart {
+                        background-color: oklch(from var(--b3-theme-surface) .35 c h / .7);
+                    }
                     // @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
                     border-top: none;
 
@@ -356,7 +360,10 @@
             tr {
                 &:nth-child(2n) {
                     td {
-                        background-color: oklch(from var(--b3-theme-surface) .7 c h / .09);
+                        background-color: oklch(from var(--b3-theme-surface) .96 c h / .8);
+                        @include darkmode-counterpart {
+                            background-color: oklch(from var(--b3-theme-surface) .35 c h / .7);
+                        }
                         // @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
                     }
                 }

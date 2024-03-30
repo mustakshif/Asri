@@ -11,26 +11,29 @@
 // --b3-theme-accent is a new UI color for accented elements, like activated icons;
 
 :root[data-theme-mode='light'] {
+    --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
+    --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .67 .2 h);
+
     --asri-fallback-accent: #3478f6; //oklch(0.6 0.2 261.37)
     --asri-fallback-background: #fff;
     --asri-fallback-surface: #f0f0f0;
     --asri-fallback-on-background: #454545;
-    --asri-composite-background: oklch(from var(--asri-sys-accent) .99 .005 h);
+    --asri-composite-background: oklch(from var(--asri-base-color) .99 .005 h);
     --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) 1 0 0);
-    --asri-composite-surface: oklch(from var(--asri-sys-accent) .95 .01 h);
+    --asri-composite-surface: oklch(from var(--asri-base-color) .95 .01 h);
     --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .96 0 0);
-    --asri-composite-on-background: oklch(from var(--asri-sys-accent) .39 .03 h);
+    --asri-composite-on-background: oklch(from var(--asri-base-color) .39 .03 h);
     --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .39 0 0);
 
     // UI colors
     // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h); // complex calculation not supported yet
-    --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-fallback-accent)) .67 c h);
+    --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .67 c h);
     --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
     --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
     --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
-    --b3-theme-accent: oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l .2 h)) .67 c h);
-    --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, var(--asri-fallback-accent)) .62 c h / .8);
-    
+    --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .67 c h));
+    --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .62 c h / .8);
+
     --b3-theme-background: var(--asri-composite-background-grayscale, var(--asri-composite-background, var(--asri-fallback-background)));
     --b3-theme-surface: var(--asri-composite-surface-grayscale, var(--asri-composite-surface, var(--asri-fallback-surface)));
     --b3-theme-on-background: var(--asri-composite-on-background-grayscale, var(--asri-composite-on-background, var(--asri-fallback-on-background)));
@@ -38,6 +41,7 @@
 
     --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / .1);
     --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / .5);
+    --b3-theme-on-surface-light: oklch(from var(--b3-theme-on-surface) .65 c h / .68);
 
     --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
 
@@ -52,52 +56,90 @@
 
     --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / .09);
     --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / .18);
+
+    --b3-protyle-code-background: oklch(from var(--b3-theme-surface) .9 c h / .5);
 }
 
 :root[data-theme-mode='dark'] {
+    --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
+    --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .65 .2 h);
+
     --asri-fallback-accent: #118bff; // oklch(0.64 0.2 253.9)
     --asri-fallback-background: #1e1e1e;
     --asri-fallback-surface: #383838;
     --asri-fallback-on-background: #dcdcdc;
-    --asri-composite-background: oklch(from var(--asri-sys-accent) .24 .007 h);
+    --asri-composite-background: oklch(from var(--asri-base-color) .24 .007 h);
     --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .24 0 0);
-    --asri-composite-surface: oklch(from var(--asri-sys-accent) .34 .01 h);
+    --asri-composite-surface: oklch(from var(--asri-base-color) .34 .01 h);
     --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .34 0 0);
-    --asri-composite-on-background: oklch(from var(--asri-sys-accent) .89 .01 h);
+    --asri-composite-on-background: oklch(from var(--asri-base-color) .89 .01 h);
     --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .89 0 0);
 
     // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h);
-    --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-fallback-accent)) .65 c h);
+    --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .65 c h);
     --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
     --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
-    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);    
-    --b3-theme-accent: oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .65 c h);
-    --b3-menu-item-background-hover: oklch(from var(--asri-sys-accent, var(--asri-fallback-accent)) .6 c h / .7);
+    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
+    --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .65 c h));
+    --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .6 c h / .7);
 
     --b3-theme-background: var(--asri-composite-background-grayscale, var(--asri-composite-background, var(--asri-fallback-background)));
     --b3-theme-surface: var(--asri-composite-surface-grayscale, var(--asri-composite-surface, var(--asri-fallback-surface)));
-    
+
     --b3-theme-on-background: var(--asri-composite-on-background-grayscale, var(--asri-composite-on-background, var(--asri-fallback-on-background)));
     --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
 
     --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / .1);
     --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / .5);
+    --b3-theme-on-surface-light: oklch(from var(--b3-theme-on-surface) .6 c h / .68);
 
     --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
 
     --b3-border-color: oklch(from var(--b3-theme-on-background) .38 .01 h);
     --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
-    
-    --b3-menu-background: oklch(from var(--b3-theme-background) .36 c h);
+
+    --b3-menu-background: oklch(from var(--b3-theme-background) .3 c h);
 
     --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
 
-    --b3-av-background-hl: oklch(from var(--b3-theme-primary) .32 .05 h);
+    --b3-av-background-hl: oklch(from var(--b3-theme-primary) .32 .03 h);
 
     --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / .09);
     --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / .18);
+
+    --b3-protyle-code-background: oklch(from var(--b3-theme-surface) .4 c h / .6);
 }
 
+// asri config menu
+#commonMenu[data-name="barmode"] {
+    right: 20px;
+    left: unset !important;
+
+    .body--mac &, .body--browser & {
+        right: 8px;
+    }
+
+    #followSysAccent, #useGrayScale {
+        input {
+            display: none;
+        }
+    }
+
+    #pickColor input {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        padding: 0;
+    }
+
+    #followSysAccent, #useGrayScale, #pickColor {
+        label {
+            cursor: pointer;
+        }
+    }
+}
+
+// adapt elements
 .block__icon--active,
 .b3-menu__item--selected,
 .protyle-toolbar__item--current,
@@ -128,11 +170,19 @@
     @include menu-shadow(var(--b3-theme-accent), $opacity-light: 0.15, $opacity-dark: 0.4);
 }
 
-.layout-tab-bar .item:not(.item--readonly,.item--full.item--focus):hover,
+.layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
 .layout-tab-bar .item--focus {
     background-color: oklch(from var(--b3-theme-on-background) l c h / .2);
 
     @include darkmode-counterpart {
-        background-color: oklch(from var(--b3-theme-on-background) l c h / .25);
+        background-color: oklch(from var(--b3-theme-on-background) l c h / .2);
+    }
+}
+
+.b3-dialog__scrim {
+    background-color: oklch(from var(--b3-theme-background) .6 c h / .5);
+
+    @include darkmode-counterpart {
+        background-color: oklch(from var(--b3-theme-background) l c h / .5);
     }
 }
