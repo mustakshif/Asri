@@ -159,13 +159,18 @@
             },
         }
 
-        if (followSysAccentColor) document.documentElement.style.removeProperty('--asri-user-custom-accent');
-        else document.documentElement.style.setProperty('--asri-user-custom-accent', userCustomColor);
+        if (!(isInBrowser || isMobile || isLinux)) {
+            if (followSysAccentColor) document.documentElement.style.removeProperty('--asri-user-custom-accent');
+            else document.documentElement.style.setProperty('--asri-user-custom-accent', userCustomColor);
 
-        // if (userCustomColor) document.documentElement.style.setProperty('--asri-user-custom-accent', userCustomColor);
-
-        if (useGrayScale || hexToHSL(sysAccentColor).s == 0) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
-        else document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
+            if (useGrayScale || hexToHSL(sysAccentColor).s == 0) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
+            else document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
+        } else {
+            document.documentElement.style.setProperty('--asri-user-custom-accent', userCustomColor);
+            
+            if (useGrayScale) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
+            else document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
+        }
 
         setTimeout(() => {
             // create menu items

@@ -112,7 +112,7 @@
 
 // asri config menu
 #commonMenu[data-name="barmode"] {
-    right: 20px;
+    right: 40px;
     left: unset !important;
 
     .body--mac &, .body--browser & {
@@ -183,6 +183,6 @@
     background-color: oklch(from var(--b3-theme-background) .6 c h / .5);
 
     @include darkmode-counterpart {
-        background-color: oklch(from var(--b3-theme-background) l c h / .5);
+        background-color: oklch(from var(--b3-theme-background) .1 c h / .65);
     }
 }
