@@ -155,7 +155,7 @@
             'en_US': {
                 'followSysAccent': 'Follow system accent color',
                 'pickColor': 'Pick theme color',
-                'useGrayScale': 'Use gray scale neutral colors'
+                'useGrayScale': 'Use grayscale neutral colors'
             },
         }
 
@@ -164,7 +164,7 @@
 
         // if (userCustomColor) document.documentElement.style.setProperty('--asri-user-custom-accent', userCustomColor);
 
-        if (useGrayScale) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
+        if (useGrayScale || hexToHSL(sysAccentColor).s == 0) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
         else document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
 
         setTimeout(() => {
@@ -201,7 +201,6 @@
             colorPicker.id = 'asriColorPicker';
 
             // 先从本地读取的值确定项目是否是被选中
-            // ……
             if (followSysAccentColor) followSysAccentBtn.classList.add('b3-menu__item--selected');
             else followSysAccentBtn.classList.remove('b3-menu__item--selected');
 
@@ -283,7 +282,7 @@
                 else document.documentElement.style.removeProperty('--asri-sys-accent-accessible');
 
                 if (accentHSLObj.s == 0) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', accentHex);
-                else document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
+                else if (!useGrayScale) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
 
                 document.body.classList.add('asri-mode-transition');
                 setTimeout(() => {
