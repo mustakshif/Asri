@@ -6,7 +6,7 @@
 
 # Asri, a theme for SiYuan
 
-Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/siyuan)主题，以轻量、极简的风格，带来优雅、高效的笔记体验。
+Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/siyuan)主题，以简洁、符合直觉的设计，带来优雅、高效、个性化的笔记体验。
 
 ## 最近更新
 
@@ -14,7 +14,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ![theme config](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/theme-cofig_zh_CN.gif)
 
-🎨 采用基于感知亮度的色彩系统重构主题配色，全局色调支持无级调节，也可跟随系统强调色（`#Windows` `#macOS`），带来完全个性化的笔记体验
+🎨 采用基于感知亮度的色彩系统重构主题配色，全局色调支持无级调节，也可跟随系统强调色（`#Windows` `#macOS`），带来完全个性化的笔记体验。（配置选项信息见下方「主题配置」一节）
 
 点击[这里](./CHANGELOG.md)查看全部更新日志。
 

@@ -252,6 +252,8 @@
                 followSysAccentBtn.classList.remove('b3-menu__item--selected');
                 pickColorBtn.classList.add('b3-menu__item--selected');
 
+                if(!useGrayScale) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
+
                 userCustomColor = colorPicker.value;
                 asriConfigs.userCustomColor = colorPicker.value;
                 followSysAccentColor = false;

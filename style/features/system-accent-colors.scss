@@ -18,9 +18,9 @@
     --asri-fallback-background: #fff;
     --asri-fallback-surface: #f0f0f0;
     --asri-fallback-on-background: #454545;
-    --asri-composite-background: oklch(from var(--asri-base-color) .99 .005 h);
+    --asri-composite-background: oklch(from var(--asri-base-color) .985 .005 h);
     --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) 1 0 0);
-    --asri-composite-surface: oklch(from var(--asri-base-color) .95 .01 h);
+    --asri-composite-surface: oklch(from var(--asri-base-color) .94 .01 h);
     --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .96 0 0);
     --asri-composite-on-background: oklch(from var(--asri-base-color) .39 .03 h);
     --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .39 0 0);
@@ -49,7 +49,7 @@
     --b3-border-color: oklch(from var(--b3-theme-on-background) .92 .01 h);
     --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
 
-    --b3-menu-background: oklch(from var(--b3-theme-background) .94 c h);
+    --b3-menu-background: oklch(from var(--b3-theme-background) .95 c h);
 
     --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
 
@@ -63,13 +63,13 @@
 
 :root[data-theme-mode='dark'] {
     --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
-    --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .65 .2 h);
+    --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .7 .2 h);
 
     --asri-fallback-accent: #118bff; // oklch(0.64 0.2 253.9)
     --asri-fallback-background: #1e1e1e;
     --asri-fallback-surface: #383838;
     --asri-fallback-on-background: #dcdcdc;
-    --asri-composite-background: oklch(from var(--asri-base-color) .24 .007 h);
+    --asri-composite-background: oklch(from var(--asri-base-color) .25 .007 h);
     --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .24 0 0);
     --asri-composite-surface: oklch(from var(--asri-base-color) .34 .01 h);
     --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .34 0 0);

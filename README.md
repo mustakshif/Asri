@@ -6,7 +6,7 @@ English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main
 
 # Asri, a theme for SiYuan
 
-An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), provides an elegant and efficient note-taking experience with its lightweight and minimalistic style.
+An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), delivers an elegant, efficient, and personalized note-taking experience through its clean, intuitive design.
 
 ## Latest Updates
 
@@ -14,7 +14,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ![theme config](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/theme-cofig_en_US.gif)
 
-🎨 Refactored theme colors using a perceptual lightness-based color system, added supports for seamless adjustment of global color tones which can also follow system accent color (`#Windows` `#macOS`), providing a fully personalized note-taking experience.
+🎨 Refactored theme colors using a perceptual lightness-based color system, added supports for seamless adjustment of global color tones which can also follow system accent color (`#Windows` `#macOS`), providing a fully personalized note-taking experience. (Check *Theme Configurations* below for configuration options information)
 
 Check all updates [here](./CHANGELOG.md).
 
@@ -68,7 +68,7 @@ Check all updates [here](./CHANGELOG.md).
 
 Click on the `Appearance Mode` icon in the top right corner to open the Asri theme configuration menu and customize the theme colors:
 
-* `Customize theme color`: Use a selected color as the base color for the theme and apply a corresponding color scheme directly based on it.
+* `Customize theme color`: Use a custom color as the base color for the theme and apply a corresponding color scheme directly based on it.
 * `Follow system accent color`: Use the system's accent color as the base theme color. This option is enabled by default on `Windows` and `macOS` desktop platforms, and not visible on other platforms.
 * `Use grayscale neutral colors`: Use pure grayscale colors (black, white, and shades of gray) for the background and regular text color, without any hue shift based on the theme color. This option is not enabled by default.
 
