@@ -271,7 +271,7 @@
                     updateAsriConfigs();
                 } else {
                     useGrayScaleBtn.classList.remove('b3-menu__item--selected');
-                    if (!(followSysAccentColor && hexToHSL(sysAccentColor).s == 0)) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
+                    if (!(followSysAccentColor && hexToHSL(sysAccentColor)?.s === 0)) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
 
                     useGrayScale = false;
                     asriConfigs.useGrayScale = '0';
@@ -295,7 +295,7 @@
                 if (accentHSLObj.s > 0.28) document.documentElement.style.setProperty('--asri-sys-accent-accessible', accentHex);
                 else document.documentElement.style.removeProperty('--asri-sys-accent-accessible');
 
-                if (accentHSLObj.s == 0) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', accentHex);
+                if (accentHSLObj.s === 0) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', accentHex);
                 else if (!useGrayScale) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
 
                 document.body.classList.add('asri-mode-transition');
@@ -309,6 +309,9 @@
     }
     getSystemAccentColor();
     function hexToHSL(hex) {
+        if (!hex) {
+            return;
+        }
         const r = parseInt(hex.substring(1, 3), 16) / 255;
         const g = parseInt(hex.substring(3, 5), 16) / 255;
         const b = parseInt(hex.substring(5, 7), 16) / 255;
