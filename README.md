@@ -82,6 +82,8 @@ Check all updates [here](./CHANGELOG.md).
 
 ### 🌈 Customizing Theme Colors
 
+![theme config](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/theme-cofig_en_US.gif)
+
 Click on the `Appearance Mode` icon in the top right corner to open the Asri theme configuration menu and customize the theme colors:
 
 * `Customize theme color`: Use a selected color as the base color for the theme and apply a corresponding color scheme directly based on it.
@@ -90,7 +92,7 @@ Click on the `Appearance Mode` icon in the top right corner to open the Asri the
 
 ### Custom Attributes
 
-#### `afwd`: Asri full-width display
+#### 1. `afwd`: Asri full-width display
 
 ![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v7.gif)
 
@@ -150,7 +152,7 @@ To restore the default state of the block, manually delete this custom attribute
 * Full-width display is only effective in the editing area of the main window and small windows, and does not work in block reference preview windows, export previews, backlink panel, search result previews, etc.
 * Enabling full-width display may cause the page to feel more jumpy when the editing area's size changes and automatically returns to the cursor position.
 
-#### `tdir`: Document text direction
+#### 2. `tdir`: Document text direction
 
 Applies exclusively to document blocks, ensuring that content within the block is consistently rendered from left-to-right or right-to-left for ease of writing and reading. This property is independent of global settings and does not override individual layout settings of blocks within the document.
 
