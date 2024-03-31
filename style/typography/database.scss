@@ -360,7 +360,7 @@ img.av__cellassetimg {
             @include button-primary;
         }
 
-        .block__icon {
+        .block__icon:not([data-type="hideAllCol"]) {
             font-family: var(--b3-font-family-emoji);
         }
     }

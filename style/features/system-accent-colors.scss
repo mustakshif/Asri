@@ -115,24 +115,54 @@
     right: 40px;
     left: unset !important;
 
-    .body--mac &, .body--browser & {
+    .body--mac &,
+    .body--browser & {
         right: 8px;
     }
 
-    #followSysAccent, #useGrayScale {
+    #followSysAccent,
+    #useGrayScale {
         input {
             display: none;
         }
     }
 
-    #pickColor input {
-        visibility: hidden;
-        width: 0;
-        height: 0;
-        padding: 0;
+    #followSysAccent {
+        &.b3-menu__item--selected {
+            svg {
+                background-color: var(--asri-sys-accent);
+                border-radius: 15px;
+            }
+
+            &.b3-menu__item--current svg{
+                outline: 1px solid #fff8;
+            }
+        }        
     }
 
-    #followSysAccent, #useGrayScale, #pickColor {
+    #pickColor {
+        &.b3-menu__item--selected {
+            svg {
+                background-color: var(--asri-user-custom-accent, var(--b3-theme-primary));
+                border-radius: 15px;
+            }
+
+            &.b3-menu__item--current svg {
+                outline: 1px solid #fff8;
+            }
+        }
+
+        input {
+            visibility: hidden;
+            width: 0;
+            height: 0;
+            padding: 0;
+        }
+    }
+
+    #followSysAccent,
+    #useGrayScale,
+    #pickColor {
         label {
             cursor: pointer;
         }
@@ -185,4 +215,9 @@
     @include darkmode-counterpart {
         background-color: oklch(from var(--b3-theme-background) .1 c h / .65);
     }
+}
+
+.toolbarButton.toggled,
+.secondaryToolbarButton.toggled {
+    color: var(--b3-theme-accent);
 }

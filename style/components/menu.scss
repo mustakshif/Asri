@@ -73,6 +73,12 @@
         .b3-menu__separator {
             background-color: var(--b3-border-color-trans);
         }
+
+        .b3-menu__item--selected {
+            svg {
+                color: inherit;
+            }
+        }
     }
 }
 
@@ -84,6 +90,13 @@
     font-family: var(--b3-font-family);
 }
 
+// pdf
+.toolbarButton.toggled, 
+.secondaryToolbarButton.toggled {
+    svg {
+        color: inherit !important;
+    }
+}
 
 // '/'菜单
 .protyle-hint {
