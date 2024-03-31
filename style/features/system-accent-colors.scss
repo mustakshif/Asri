@@ -69,7 +69,7 @@
     --asri-fallback-background: #1e1e1e;
     --asri-fallback-surface: #383838;
     --asri-fallback-on-background: #dcdcdc;
-    --asri-composite-background: oklch(from var(--asri-base-color) .25 .007 h);
+    --asri-composite-background: oklch(from var(--asri-base-color) .25 .01 h);
     --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .24 0 0);
     --asri-composite-surface: oklch(from var(--asri-base-color) .34 .01 h);
     --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .34 0 0);
