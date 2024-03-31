@@ -1,3 +1,13 @@
+### v3.0.0
+
+* 🎨 采用基于感知亮度的色彩系统重构主题配色，全局色调支持无级调节，也可跟随系统强调色（`#Windows` `#macOS`），带来完全个性化的笔记体验
+
+<br />
+
+* 🎨 Refactored theme colors using a perceptual lightness-based color system, added supports for seamless adjustment of global color tones which can also follow system accent color (`#Windows` `#macOS`), providing a fully personalized note-taking experience.
+
+---
+
 ### v2.1.16
 
 * 优化集市「全部更新」板块样式

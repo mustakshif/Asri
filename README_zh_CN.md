@@ -10,27 +10,11 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
-### v2.1.16
+### v3.0.0
 
-* 优化集市「全部更新」板块样式
-* 修改面包屑路径指示为斜线样式
-* 微调 emoji 鼠标悬停动效
-* [修复收集箱返回按钮丢失的问题](https://github.com/mustakshif/Asri/issues/31)
-* [修复宽屏下表情菜单过窄的问题](https://github.com/mustakshif/Asri/issues/30)
+![theme config](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/theme-cofig_zh_CN.gif)
 
-### v2.1.15
-
-* 新增支持 `表格块` 全宽显示
-* 新增 Asri 亮暗主题间切换时的过渡
-* 新增部分容器顶部溢出时显示渐隐效果或分割线
-* 优化部分 js 功能执行频率
-* 统一自定义表情和常规表情的样式
-* 统一编辑区和块属性窗口中数据库资源列图像内容圆角
-* 调整全宽显示下的 iframe 块和表格块角标位置，避免重叠
-* 调整文档设置窗口和搜索列表条目的断字规则
-* 去除开关元素不必要的过渡属性
-* [修复账号页面文字显示不全的问题](https://github.com/mustakshif/Asri/issues/29)
-* 修复某些情况下切换至其他主题时页签栏仍残留上边距的问题
+🎨 采用基于感知亮度的色彩系统重构主题配色，全局色调支持无级调节，也可跟随系统强调色（`#Windows` `#macOS`），带来完全个性化的笔记体验
 
 点击[这里](./CHANGELOG.md)查看全部更新日志。
 

@@ -10,27 +10,11 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v2.1.16
+### v3.0.0
 
-* Optimized style for the "All Updates" section in the marketplace.
-* Changed breadcrumb path indicator to use slash style.
-* Adjusted mouse hover animation for emojis.
-* [Fixed the issue of missing return button in the Inbox panel](https://github.com/mustakshif/Asri/issues/31).
-* [Fixed the issue of narrow emoji menu in wide screens](https://github.com/mustakshif/Asri/issues/30).
+![theme config](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/theme-cofig_en_US.gif)
 
-### v2.1.15
-
-* Added full-width display support for `table blocks`.
-* Added transitions when switching between Asri light and dark themes.
-* Added fading effect or separation lines when the top of certain containers overflows.
-* Optimized the frequency of executing certain JavaScript functions.
-* Unified the style of custom emojis and regular emojis.
-* Unified the rounded corners of database assets column images in the editing area and block attribute dialog.
-* Adjusted the position of badges of iframe block and table block in full width display to avoid overlapping.
-* Adjusted the word break rules for the document settings dialog and search list items.
-* Removed unnecessary transition properties for switchs.
-* [Fixed the issue of incomplete text display on the account page](https://github.com/mustakshif/Asri/issues/29).
-* Fixed the problem of remaining top padding in the tab bar when switching to other themes in certain situations.
+🎨 Refactored theme colors using a perceptual lightness-based color system, added supports for seamless adjustment of global color tones which can also follow system accent color (`#Windows` `#macOS`), providing a fully personalized note-taking experience.
 
 Check all updates [here](./CHANGELOG.md).
 
@@ -81,8 +65,6 @@ Check all updates [here](./CHANGELOG.md).
 ## Theme Configurations
 
 ### 🌈 Customizing Theme Colors
-
-![theme config](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/theme-cofig_en_US.gif)
 
 Click on the `Appearance Mode` icon in the top right corner to open the Asri theme configuration menu and customize the theme colors:
 
