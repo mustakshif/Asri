@@ -160,16 +160,16 @@
     }
 }
 
-.protyle-breadcrumb__bar {
-    @include scroll-divider-fadein-bgClr($range:'left right');
+// .protyle-breadcrumb__bar {
+//     @include scroll-divider-fadein-bgClr($range:'left right');
 
-    .layout__dockl &::before, 
-    .layout__dockl &::after, 
-    .layout__dockr &::before, 
-    .layout__dockr &::after  {
-        display: none;
-    }
-}
+//     .layout__dockl &::before, 
+//     .layout__dockl &::after, 
+//     .layout__dockr &::before, 
+//     .layout__dockr &::after  {
+//         display: none;
+//     }
+// }
 
 @keyframes dividerAppear-bgClr {
     0% {

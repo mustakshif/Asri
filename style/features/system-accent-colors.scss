@@ -41,6 +41,7 @@
 
     --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / .1);
     --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / .5);
+    --b3-theme-surface-lighter: oklch(from var(--b3-theme-surface) .9 c h);
     --b3-theme-on-surface-light: oklch(from var(--b3-theme-on-surface) .65 c h / .68);
 
     --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
@@ -135,7 +136,7 @@
             }
 
             &.b3-menu__item--current svg{
-                outline: 1px solid #fff8;
+                outline: 1px solid #fffa;
             }
         }        
     }
@@ -148,7 +149,7 @@
             }
 
             &.b3-menu__item--current svg {
-                outline: 1px solid #fff8;
+                outline: 1px solid #fffa;
             }
         }
 

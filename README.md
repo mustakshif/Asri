@@ -38,31 +38,32 @@ Check all updates [here](./CHANGELOG.md).
 
 ### 🪄 Sleek and Modern Design
 
-* ⚖️ Introducing Top-bar Fusion, seamlessly integrating the top bar and the tab bar[^1]
-* 🧊 Introduction of glassmorphism, enhancing the visual hierarchy
-* 🌓 Support for light and dark modes and smooth transition between them<sup>✨</sup>
-* ➖ Minimized dividers to create an integrated, cohesive interface style
-* ⚙️ Modernized designs for multiple kinds of controls
+ * 👨‍🎨 Unlimited theme color options allow for a fully personalized note-taking experience
+* ⚖️ Top-bar Fusion seamlessly integrates the top bar and the tab bar[^1]
+* 🧊 Glassmorphism enhances the visual hierarchy
+* 🌓 Support for light and dark modes and smooth transition between them
+* ➖ Minimized dividers create an integrated, cohesive interface style
+* ⚙️ Modernized designs for multiple kinds of components
 
 ### 📐 Elegant and Efficient Layout
 
-* 🔢 Use of tabular and database-friendly monospaced numerals for improved readability
-* 👁️ High readability glyph variants adopted, tailored for note-taking scenarios[^2] `#macOS` `#iOS` `#iPadOS`
+* 🔢 Tabular and database-friendly monospaced numerals improve reading efficiency
+* 👁️ High readability glyph variants tailored for note-taking scenarios[^2] `#macOS` `#iOS` `#iPadOS`
 * 🦋 Support for full-width display of images, videos, widgets, databases, superblocks and more, providing diverse layout options
 * 🚏 Document-level text direction settings cater to different language layout needs
-* 🧩 Optimized internal and external spacing of superblocks, making it easy to achieve grid and masonry layouts
+ * 🧩 Streamlined superblock margins for simplified creation of grid and masonry layouts
 
 ### 🧭 Convenient and Clear Navigation
 
-* 🗂️ Added indent guides for file tree and outline
+* 🗂️ Indent guides for file tree and outline
 * 🔍 Clear presentation of search results and backlinks lists
 * ↕️ Enabled native scrollbar, which can auto-hide to minimize visual clutter `#macOS`
 
 ### 👆 Nimble and Smooth Interaction
 
 * ⏱️ Optimized timing of animations for better interface feedback, reducing user distraction
-* 💫 Appropriately added lively animations, enriching the interactive experience
-* 🚀 Maintained a high level of smooth performance
+* 💫 Appropriate and lively animations enrich the interactive experience
+* 🚀 A high level of smooth performance maintained
 
 [^1]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
 [^2]: To disable this feature or address glyph errors when using custom fonts, you can use the following CSS code snippet to restore to standard glyphs:
@@ -77,20 +78,30 @@ Check all updates [here](./CHANGELOG.md).
 * **Download & update in SiYuan (recommended)**: Go to `Settings - Marketplace - Themes` in SiYuan and search for "Asri" to download and apply.
 * Download & update from GitHub: Download the `package.zip` from releases, extract it to `conf/appearance/themes` in your SiYuan workspace, and restart SiYuan. Then choose "Asri" in your theme list in `Settings - Appearance`.
 
-## Custom Attributes
+## Theme Configurations
 
-### `afwd`: Asri full-width display
+### 🌈 Customizing Theme Colors
+
+Click on the `Appearance Mode` icon in the top right corner to open the Asri theme configuration menu and customize the theme colors:
+
+* `Customize theme color`: Use a selected color as the base color for the theme and apply a corresponding color scheme directly based on it.
+* `Follow system accent color`: Use the system's accent color as the base theme color. This option is enabled by default on `Windows` and `macOS` desktop platforms, and not visible on other platforms.
+* `Use grayscale neutral colors`: Use pure grayscale colors (black, white, and shades of gray) for the background and regular text color, without any hue shift based on the theme color. This option is not enabled by default.
+
+### Custom Attributes
+
+#### `afwd`: Asri full-width display
 
 ![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v7.gif)
 
-This attribute allows blocks to be displayed in full page width, which can be used to emphasize specific content or beautify the layout. The full-width display style applies to images, databases, iframes, tables<sup>✨</sup> and horizontal-layout superblocks.
+This attribute allows blocks to be displayed in full page width, which can be used to emphasize specific content or beautify the layout. The full-width display style applies to images, databases, iframes, tables and horizontal-layout superblocks.
 
 | Attribute | Value | Description |
 | --- | --- | --- |
-| `afwd`　　 | - `all` (Makes all blocks that support this attribute in the document display in full width)<br />- `p` (Makes all images in the document display in full width)<br />- `db` (Makes all database blocks in the document display in full width)<br />- `iframe` (Makes all iframe blocks in the document display in full width, including videos, widgets, and embedded web pages)<br />- `sb` (Makes all **horizontal-layout** superblocks in the document display in full width)<br />- `t` (Makes all table blocks in the document display in full width)<sup>✨</sup> | Applies to document blocks.<br />All attribute values except `all` can be used simultaneously, and should be separated by **spaces** |
-| `afwd`　　 |- `on` (Enable full-width display of the block individually)<br />- `off` (Disable full-width display of the block individually) | Applies to paragraph blocks, database blocks, iframe blocks, superblocks and table blocks<sup>✨</sup>.|
+| `afwd`　　 | - `all` (Makes all blocks that support this attribute in the document display in full width)<br />- `p` (Makes all images in the document display in full width)<br />- `db` (Makes all database blocks in the document display in full width)<br />- `iframe` (Makes all iframe blocks in the document display in full width, including videos, widgets, and embedded web pages)<br />- `sb` (Makes all **horizontal-layout** superblocks in the document display in full width)<br />- `t` (Makes all table blocks in the document display in full width) | Applies to document blocks.<br />All attribute values except `all` can be used simultaneously, and should be separated by **spaces** |
+| `afwd`　　 |- `on` (Enable full-width display of the block individually)<br />- `off` (Disable full-width display of the block individually) | Applies to paragraph blocks, database blocks, iframe blocks, superblocks and table blocks.|
 
-#### Usage Examples
+##### Usage Examples
 
 Applied to document blocks:
 
@@ -133,13 +144,13 @@ The above configuration adds two options for document blocks and content blocks 
 
 To restore the default state of the block, manually delete this custom attribute in the block attribute.
 
-#### <em>Precautions</em>
+##### <em>Precautions</em>
 
 * Full-width display only applies to the **first-level** blocks in the document. If a block is nested in other content blocks, applying this attribute to it will not produce any effect. For example, applying this attribute to an image paragraph block in a blockquote will not change the style of the paragraph block unless the external blockquote is cancelled.
 * Full-width display is only effective in the editing area of the main window and small windows, and does not work in block reference preview windows, export previews, backlink panel, search result previews, etc.
 * Enabling full-width display may cause the page to feel more jumpy when the editing area's size changes and automatically returns to the cursor position.
 
-### `tdir`: Document text direction
+#### `tdir`: Document text direction
 
 Applies exclusively to document blocks, ensuring that content within the block is consistently rendered from left-to-right or right-to-left for ease of writing and reading. This property is independent of global settings and does not override individual layout settings of blocks within the document.
 
