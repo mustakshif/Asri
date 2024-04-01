@@ -774,7 +774,7 @@
                 transform: scale(1.01);
                 outline: 2px solid var(--b3-theme-primary-light);
                 z-index: 1;
-                @include menu-shadow(var(--b3-theme-primary));
+                @include menu-shadow(var(--b3-theme-primary), $opacity-light: 0.2);
 
                 @include darkmode-counterpart {
                     outline: 2px solid var(--b3-theme-primary);

@@ -109,7 +109,7 @@
         useGrayScale: "0",
         userCustomColor: ""
     };
-    // 有的变量先从本地读取
+
     let sysAccentColor, followSysAccentColor, useGrayScale, userCustomColor;
 
     async function getAsriConfigs() {
@@ -190,7 +190,7 @@
                         <svg class="b3-menu__icon"></svg>
                         <label class="b3-menu__label">${(lang === 'zh_CN' || lang === 'zh_CHT') ? i18nMenuItems[lang][id] : i18nMenuItems['en_US'][id]}</label>
                         <input type="color" value="${userCustomColor || "#3478f6"}">
-                    `;//input 默认值可以设为最后一次用户选取的颜色
+                    `;
                 asriConfigFrag.append(btn);
             });
 
@@ -281,7 +281,7 @@
         }, 0);
     }
 
-    asriDoms.barMode.addEventListener("click", customizeThemeColor);
+    asriDoms.barMode?.addEventListener("click", customizeThemeColor);
 
     function getSystemAccentColor() {
         if (!(isInBrowser || isMobile || isLinux)) {

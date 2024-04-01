@@ -72,7 +72,7 @@ Click on the `Appearance Mode` icon in the top right corner to open the Asri the
 * `Follow system accent color`: Use the system's accent color as the base theme color. This option is enabled by default on `Windows` and `macOS` desktop platforms, and not visible on other platforms.
 * `Use grayscale neutral colors`: Use pure grayscale colors (black, white, and shades of gray) for the background and regular text color, without any hue shift based on the theme color. This option is not enabled by default.
 
-### Custom Attributes
+### 📐 Custom Attributes
 
 #### 1. `afwd`: Asri full-width display
 
