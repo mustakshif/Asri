@@ -19,8 +19,7 @@
             } // fix https://github.com/mustakshif/Asri/issues/31
 
             font-weight: 600;
-
-            @include theme-variant-color(color, on-background, 0.5);
+            color: oklch(from var(--b3-theme-on-surface) l c h / .5);
         }
 
         .block__icon {
@@ -101,7 +100,7 @@
         }
 
         .b3-list-item__icon {
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .b3-list-item__action {

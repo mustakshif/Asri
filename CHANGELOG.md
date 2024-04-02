@@ -146,7 +146,7 @@
 * Optimized the display of the tab bar under extremely narrow widths.
 * Optimized the line height of search results in the `Move` window.
 * Increased the maximum width limit of of the status bar messages on hovering.
-* Fixed an issue where the capital letter "M" would change to the "MIUI" font on Xiaomi mobile devices with the default font.
+* Fixed an issue where the capital letter "M" would change to the "MIUI" glyph on Xiaomi mobile devices with the default font.
 
 ---
 

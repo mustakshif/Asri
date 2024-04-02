@@ -2,7 +2,7 @@
 
 .b3-menu,
 .b3-menu__submenu {
-    @include menu-shadow($opacity-light: .13);
+    @include menu-shadow($opacity-light: .15);
     @include border-or-not($border:false);
     border-radius: $border-rd-menu;
     padding: 0;

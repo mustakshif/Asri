@@ -2,6 +2,7 @@
 
 
 body:not(.body--mobile, .body--window) {
+    // --toolbar-height: 48px;
     --topbar-z-index: 2;
     --avoid-topbar: calc(var(--toolbar-height));
 
