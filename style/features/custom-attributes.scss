@@ -262,14 +262,14 @@
 }
 
 // 数据库添加、拖移按钮
-.protyle-gutters {
+// .protyle-gutters {
 
-    [data-type="NodeAttributeViewRow"],
-    [data-type="NodeAttributeViewRowMenu"] {
-        // transform: translateX(min(calc(var(--protyle-spacing) * -1 + 72px), 0px));
-        transform: translateX(4px); // 防止按钮在鼠标移出数据库项后消失
-    }
-}
+//     [data-type="NodeAttributeViewRow"],
+//     [data-type="NodeAttributeViewRowMenu"] {
+//         // transform: translateX(min(calc(var(--protyle-spacing) * -1 + 72px), 0px));
+//         transform: translateX(4px); // 防止按钮在鼠标移出数据库项后消失
+//     }
+// }// 思源 3.0.6 已修复
 
 // text direction ———————————————————————
 [custom-tdir=rtl] {

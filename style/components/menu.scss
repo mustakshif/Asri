@@ -38,7 +38,7 @@
                     }
                 }
 
-                &>.b3-menu__action {
+                &>:where(.b3-menu__action, .b3-menu__checked) {
                     color: var(--b3-theme-on-primary);
                     opacity: .8;
                     &:hover {

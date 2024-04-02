@@ -799,6 +799,16 @@
     .item__side {
         padding: 16px;
         background-color: var(--b3-theme-surface);
+        justify-content: center;
+
+        > div:first-child {
+            position: absolute;
+            top: 16px;
+        }
+
+        > div:last-child {
+            flex-grow: 0;
+        }
 
         .item__title {
             font-weight: 600;
