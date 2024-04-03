@@ -662,12 +662,17 @@
             margin: 10px 20px 20px;
             width: auto;
 
-            .b3-list--empty {
-                padding: 0;
-                position: absolute;
-                left: 240px;
-                top: 108px;
+            &[data-loading="true"] {
+                >div:first-child {
+                    grid-column: 1 / -1;
+                    transform: translateY(-44px);
+                } // loading svg
             }
+
+            >ul.b3-list {
+                grid-column: 1 / -1;
+                text-align: center;
+            } // when empty
 
             .b3-card {
                 display: grid;
@@ -801,12 +806,12 @@
         background-color: var(--b3-theme-surface);
         justify-content: center;
 
-        > div:first-child {
+        >div:first-child {
             position: absolute;
             top: 16px;
         }
 
-        > div:last-child {
+        >div:last-child {
             flex-grow: 0;
         }
 
