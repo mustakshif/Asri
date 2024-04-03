@@ -75,7 +75,7 @@
         --asri-composite-background: oklch(from var(--asri-base-color) .25 .01 h);
         --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .24 0 0);
         --asri-composite-tab-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .44 0 0);
-        --asri-composite-surface: oklch(from var(--asri-base-color) .34 .01 h);
+        --asri-composite-surface: oklch(from var(--asri-base-color) .34 .012 h);
         --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .34 0 0);
         --asri-composite-on-background: oklch(from var(--asri-base-color) .89 .01 h);
         --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .89 0 0);
