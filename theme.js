@@ -65,6 +65,8 @@
     const isAndroid = window.siyuan.config.system.container === "android";
 
     const lang = window.siyuan.config.lang;
+    
+    const supportsOklch = CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)');
 
     const asriClassNames = [];
     const asriDeletedRules = [];
@@ -132,7 +134,7 @@
     }
 
     getAsriConfigs().then(() => {
-        customizeThemeColor();
+        supportsOklch && customizeThemeColor();
     });
 
     async function updateAsriConfigs() {
@@ -226,6 +228,7 @@
                         pickColorBtn.classList.remove('b3-menu__item--selected');
                         document.documentElement.style.removeProperty('--asri-user-custom-accent');
                         getSystemAccentColor();
+                        
                         if (hexToHSL(sysAccentColor).s == 0) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
                         else if (!useGrayScale) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
 
@@ -281,7 +284,7 @@
         }, 0);
     }
 
-    asriDoms.barMode?.addEventListener("click", customizeThemeColor);
+    supportsOklch && asriDoms.barMode?.addEventListener("click", customizeThemeColor);
 
     function getSystemAccentColor() {
         if (!(isInBrowser || isMobile || isLinux)) {
@@ -307,7 +310,7 @@
             }
         }
     }
-    getSystemAccentColor();
+    supportsOklch && getSystemAccentColor();
     function hexToHSL(hex) {
         if (!hex) {
             return;
@@ -1155,7 +1158,7 @@
                 avoidOverlappingWithStatus();
                 addDockbClassName();
                 statusPosition();
-                followSysAccentColor && getSystemAccentColor();
+                followSysAccentColor && supportsOklch && getSystemAccentColor();
             }, 200);
         }
     }
@@ -1191,7 +1194,7 @@
         window.removeEventListener('dragend', handleLowFreqTasks);
         window.removeEventListener('dblclick', handleDblClick);
         window.removeEventListener('resize', handleWinResize);
-        asriDoms.barMode.removeEventListener("click", customizeThemeColor);
+        asriDoms.barMode?.removeEventListener("click", customizeThemeColor);
 
         // disconnect all observers
         asriObservers.forEach(observer => observer.disconnect());

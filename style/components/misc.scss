@@ -42,7 +42,7 @@
 
     .block__icons & {
         background-color: transparent;
-        pointer-events: none;        
+        pointer-events: none;
         padding-left: 0;
     }
 }
@@ -54,6 +54,7 @@
 .protyle-attr--refcount {
     @extend .counter;
     background-color: transparent;
+
     &:hover {
         color: var(--b3-theme-primary);
 
@@ -63,7 +64,7 @@
     }
 }
 
-.protyle-attr--av:hover > :is(svg, span) {
+.protyle-attr--av:hover> :is(svg, span) {
     color: var(--b3-theme-primary);
 }
 
@@ -167,10 +168,12 @@ select.b3-select {
 }
 
 select.b3-select {
+
     &:hover,
     &:focus {
         background-color: var(--b3-menu-background);
     }
+
     //focus 修复暗色模式下 Windows 端选单背景颜色异常
 }
 
@@ -187,7 +190,7 @@ textarea {
 // 滑动条
 .b3-slider {
     height: 24px;
-    
+
     &::-webkit-slider-runnable-track {
         height: 6px;
         border-radius: 9px;
@@ -210,6 +213,15 @@ textarea {
 
         @include darkmode-counterpart {
             outline: 2px solid oklch(from var(--b3-theme-primary) .65 .15 h);
+        }
+
+        @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+            outline: 2px solid lighten(map-get($map: $theme-light, $key: primary), 20%);
+
+            @include darkmode-counterpart {
+                outline: 2px solid darken(map-get($map: $theme-dark, $key: primary), 10%);
+                ;
+            }
         }
     }
 
@@ -237,7 +249,7 @@ textarea {
 
     animation-delay: .75s;
     @include tooltip-shadow;
-    @include border-or-not($outline:false);
+    @include border-or-not($outline: false);
 }
 
 .tooltip--memo#tooltip {
@@ -267,10 +279,11 @@ textarea {
         background-color: mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%);
         color: pickThemeColor($theme-dark, background, 0.7);
     }
-    
+
     body.body--win32 & {
         font-family: var(--b3-font-family);
     }
+
     // mask-image: linear-gradient(90deg, black var(--property-percentage), transparent var(--property-percentage));
     // mask-image: radial-gradient(circle at 0% 0%,black var(--property-percentage), transparent var(--property-percentage));
 
@@ -284,6 +297,7 @@ textarea {
 }
 
 .b3-tooltips {
+
     // 三角形
     &:hover::before {
         display: none;
@@ -361,6 +375,7 @@ textarea {
                 color: var(--b3-theme-on-background);
                 transform: scale(1.2) translateY(-35px);
             }
+
             &:active {
                 transform: scale(0.95) translateY(-42px);
             }
@@ -380,6 +395,7 @@ textarea {
             &:hover {
                 transform: scale(1.1);
             }
+
             &:active {
                 color: var(--b3-theme-primary);
                 transform: scale(0.95);
@@ -391,7 +407,8 @@ textarea {
 
 
 // 图标 ——————————————————————————————
-.block__icon:hover:not([disabled]):not(.ft__primary), .block__icon--active,
+.block__icon:hover:not([disabled]):not(.ft__primary),
+.block__icon--active,
 
 .b3-list-item__icon:hover,
 

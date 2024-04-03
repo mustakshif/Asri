@@ -127,30 +127,36 @@
     &[data-key="dialog-replace"] {
         .b3-dialog__container {
             .b3-dialog__body {
-                .search__layout {
-                    #searchList {
-                        background-color: var(--b3-theme-surface);
-
-                        >.b3-list-item {
-                            &:not([data-type="search-item"]) {
-                                background-color: oklch(from var(--b3-theme-surface) .91 c h);
-
-                                @include darkmode-counterpart {
-                                    background-color: oklch(from var(--b3-theme-surface) .41 c h);
-                                }
-                            }
-
-                            .b3-list-item__text.ariaLabel {
-                                font-weight: 500;
-                            }
-                        }
-                    }
-                }
-
                 .search__tip {
                     padding: 4px 8px;
                     margin: 0;
                     color: var(--b3-theme-on-surface);
+                }
+            }
+        }
+
+        #searchList {
+            background-color: var(--b3-theme-surface);
+
+            >.b3-list-item {
+                &:not([data-type="search-item"]) {
+                    background-color: oklch(from var(--b3-theme-surface) .91 c h);
+
+                    @include darkmode-counterpart {
+                        background-color: oklch(from var(--b3-theme-surface) .41 c h);
+                    }
+
+                    @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+                        background-color: change-color(pickThemeColor($theme-light, surface), $lightness: 90%);
+
+                        @include darkmode-counterpart {
+                            background-color: change-color(pickThemeColor($theme-dark, surface), $lightness: 28%);
+                        }
+                    }
+                }
+
+                .b3-list-item__text.ariaLabel {
+                    font-weight: 500;
                 }
             }
         }
@@ -663,7 +669,7 @@
             width: auto;
 
             &[data-loading="true"] {
-                >div:first-child {
+                >div:not(.b3-card):first-child {
                     grid-column: 1 / -1;
                     transform: translateY(-44px);
                 } // loading svg
@@ -672,7 +678,9 @@
             >ul.b3-list {
                 grid-column: 1 / -1;
                 text-align: center;
-            } // when empty
+            }
+
+            // when empty
 
             .b3-card {
                 display: grid;

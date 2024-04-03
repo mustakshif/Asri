@@ -22,8 +22,8 @@ Check all updates [here](./CHANGELOG.md).
 
 ### 🪄 Sleek and Modern Design
 
- * 👨‍🎨 Unlimited theme color options allow for a fully personalized note-taking experience
-* ⚖️ Top-bar Fusion seamlessly integrates the top bar and the tab bar[^1]
+ * 👨‍🎨 Unlimited theme color options allow for a fully personalized note-taking experience[^1]
+* ⚖️ Top-bar Fusion seamlessly integrates the top bar and the tab bar[^2]
 * 🧊 Glassmorphism enhances the visual hierarchy
 * 🌓 Support for light and dark modes and smooth transition between them
 * ➖ Minimized dividers create an integrated, cohesive interface style
@@ -32,7 +32,7 @@ Check all updates [here](./CHANGELOG.md).
 ### 📐 Elegant and Efficient Layout
 
 * 🔢 Tabular and database-friendly monospaced numerals improve reading efficiency
-* 👁️ High readability glyph variants tailored for note-taking scenarios[^2] `#macOS` `#iOS` `#iPadOS`
+* 👁️ High readability glyph variants tailored for note-taking scenarios[^3] `#macOS` `#iOS` `#iPadOS`
 * 🦋 Support for full-width display of images, videos, widgets, databases, superblocks and more, providing diverse layout options
 * 🚏 Document-level text direction settings cater to different language layout needs
  * 🧩 Streamlined superblock margins for simplified creation of grid and masonry layouts
@@ -49,8 +49,9 @@ Check all updates [here](./CHANGELOG.md).
 * 💫 Appropriate and lively animations enrich the interactive experience
 * 🚀 A high level of smooth performance maintained
 
-[^1]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
-[^2]: To disable this feature or address glyph errors when using custom fonts, you can use the following CSS code snippet to restore to standard glyphs:
+[^1]: This new feature is only available on platforms that support `oklch()` and its relative color syntax. Some devices will still use color schemes in previous versions due to lower browser kernel versions.
+[^2]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
+[^3]: To disable this feature or address glyph errors when using custom fonts, you can use the following CSS code snippet to restore to standard glyphs:
     ```CSS
     .layout-tab-container, .protyle-content, .b3-typography {
         font-feature-settings: normal !important;
