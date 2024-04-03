@@ -10,219 +10,221 @@
 // accent-grayscale is available only when the saturation of system accent color is 0 (in hsl);
 // --b3-theme-accent is a new UI color for accented elements, like activated icons;
 
-:root[data-theme-mode='light'] {
-    --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
-    --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .67 .2 h);
+@supports (color: oklch(from red calc(l * 0.5) 0 h)) {
+    :root[data-theme-mode='light'] {
+        --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
+        --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .67 .2 h);
 
-    --asri-fallback-accent: #3478f6; //oklch(0.6 0.2 261.37)
-    --asri-fallback-background: #fff;
-    --asri-fallback-surface: #f0f0f0;
-    --asri-fallback-on-background: #454545;
-    --asri-composite-background: oklch(from var(--asri-base-color) .985 .005 h);
-    --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) 1 0 0);
-    --asri-composite-tab-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .9 0 0);
-    --asri-composite-surface: oklch(from var(--asri-base-color) .94 .01 h);
-    --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .96 0 0);
-    --asri-composite-on-background: oklch(from var(--asri-base-color) .39 .03 h);
-    --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .39 0 0);
+        --asri-fallback-accent: #3478f6; //oklch(0.6 0.2 261.37)
+        --asri-fallback-background: #fff;
+        --asri-fallback-surface: #f0f0f0;
+        --asri-fallback-on-background: #454545;
+        --asri-composite-background: oklch(from var(--asri-base-color) .985 .005 h);
+        --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) 1 0 0);
+        --asri-composite-tab-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .9 0 0);
+        --asri-composite-surface: oklch(from var(--asri-base-color) .94 .01 h);
+        --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .96 0 0);
+        --asri-composite-on-background: oklch(from var(--asri-base-color) .39 .03 h);
+        --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .39 0 0);
 
-    // UI colors
-    // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h); // complex calculation not supported yet
-    --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .67 c h);
-    --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
-    --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
-    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
-    --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .67 c h));
-    --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .62 c h / .8);
+        // UI colors
+        // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h); // complex calculation not supported yet
+        --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .67 c h);
+        --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
+        --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
+        --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
+        --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .67 c h));
+        --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .62 c h / .8);
 
-    --b3-theme-background: var(--asri-composite-background-grayscale, var(--asri-composite-background, var(--asri-fallback-background)));
-    --b3-theme-surface: var(--asri-composite-surface-grayscale, var(--asri-composite-surface, var(--asri-fallback-surface)));
-    --b3-theme-on-background: var(--asri-composite-on-background-grayscale, var(--asri-composite-on-background, var(--asri-fallback-on-background)));
-    --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
+        --b3-theme-background: var(--asri-composite-background-grayscale, var(--asri-composite-background, var(--asri-fallback-background)));
+        --b3-theme-surface: var(--asri-composite-surface-grayscale, var(--asri-composite-surface, var(--asri-fallback-surface)));
+        --b3-theme-on-background: var(--asri-composite-on-background-grayscale, var(--asri-composite-on-background, var(--asri-fallback-on-background)));
+        --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
 
-    --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / .1);
-    --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / .5);
-    --b3-theme-surface-lighter: oklch(from var(--b3-theme-surface) .9 c h);
-    --b3-theme-on-surface-light: oklch(from var(--b3-theme-on-surface) .65 c h / .68);
+        --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / .1);
+        --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / .5);
+        --b3-theme-surface-lighter: oklch(from var(--b3-theme-surface) .9 c h);
+        --b3-theme-on-surface-light: oklch(from var(--b3-theme-on-surface) .65 c h / .68);
 
-    --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
+        --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
 
-    --b3-border-color: oklch(from var(--b3-theme-on-background) .92 .01 h);
-    --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
+        --b3-border-color: oklch(from var(--b3-theme-on-background) .92 .01 h);
+        --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
 
-    --b3-menu-background: oklch(from var(--b3-theme-background) .95 c h);
+        --b3-menu-background: oklch(from var(--b3-theme-background) .95 c h);
 
-    --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
+        --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
 
-    --b3-av-background-hl: oklch(from var(--b3-theme-primary) .95 .02 h);
-    --b3-av-hover: oklch(from var(--b3-theme-on-background) .93 .02 h);
+        --b3-av-background-hl: oklch(from var(--b3-theme-primary) .95 .02 h);
+        --b3-av-hover: oklch(from var(--b3-theme-on-background) .93 .02 h);
 
-    --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / .09);
-    --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / .18);
+        --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / .09);
+        --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / .18);
 
-    --b3-protyle-code-background: oklch(from var(--b3-theme-surface) .9 c h / .5);
-}
-
-:root[data-theme-mode='dark'] {
-    --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
-    --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .7 .2 h);
-
-    --asri-fallback-accent: #118bff; // oklch(0.64 0.2 253.9)
-    --asri-fallback-background: #1e1e1e;
-    --asri-fallback-surface: #383838;
-    --asri-fallback-on-background: #dcdcdc;
-    --asri-composite-background: oklch(from var(--asri-base-color) .25 .01 h);
-    --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .24 0 0);
-    --asri-composite-tab-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .44 0 0);
-    --asri-composite-surface: oklch(from var(--asri-base-color) .34 .01 h);
-    --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .34 0 0);
-    --asri-composite-on-background: oklch(from var(--asri-base-color) .89 .01 h);
-    --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .89 0 0);
-
-    // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h);
-    --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .65 c h);
-    --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
-    --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
-    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
-    --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .65 c h));
-    --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .6 c h / .7);
-
-    --b3-theme-background: var(--asri-composite-background-grayscale, var(--asri-composite-background, var(--asri-fallback-background)));
-    --b3-theme-surface: var(--asri-composite-surface-grayscale, var(--asri-composite-surface, var(--asri-fallback-surface)));
-
-    --b3-theme-on-background: var(--asri-composite-on-background-grayscale, var(--asri-composite-on-background, var(--asri-fallback-on-background)));
-    --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
-
-    --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / .1);
-    --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / .5);
-    --b3-theme-on-surface-light: oklch(from var(--b3-theme-on-surface) .6 c h / .68);
-
-    --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
-
-    --b3-border-color: oklch(from var(--b3-theme-on-background) .38 .01 h);
-    --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
-
-    --b3-menu-background: oklch(from var(--b3-theme-background) .3 c h);
-
-    --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
-
-    --b3-av-background-hl: oklch(from var(--b3-theme-primary) .32 .03 h);
-    --b3-av-hover: oklch(from var(--b3-theme-on-background) .35 .02 h);// database header hover
-
-    --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / .09);
-    --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / .18);
-
-    --b3-protyle-code-background: oklch(from var(--b3-theme-surface) .4 c h / .6);
-}
-
-// asri config menu
-#commonMenu[data-name="barmode"] {
-    right: 40px;
-    left: unset !important;
-
-    .body--mac &,
-    .body--browser & {
-        right: 8px;
+        --b3-protyle-code-background: oklch(from var(--b3-theme-surface) .9 c h / .5);
     }
 
-    #followSysAccent,
-    #useGrayScale {
-        input {
-            display: none;
+    :root[data-theme-mode='dark'] {
+        --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
+        --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .7 .2 h);
+
+        --asri-fallback-accent: #118bff; // oklch(0.64 0.2 253.9)
+        --asri-fallback-background: #1e1e1e;
+        --asri-fallback-surface: #383838;
+        --asri-fallback-on-background: #dcdcdc;
+        --asri-composite-background: oklch(from var(--asri-base-color) .25 .01 h);
+        --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .24 0 0);
+        --asri-composite-tab-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .44 0 0);
+        --asri-composite-surface: oklch(from var(--asri-base-color) .34 .01 h);
+        --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .34 0 0);
+        --asri-composite-on-background: oklch(from var(--asri-base-color) .89 .01 h);
+        --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .89 0 0);
+
+        // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h);
+        --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .65 c h);
+        --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
+        --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
+        --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
+        --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .65 c h));
+        --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .6 c h / .7);
+
+        --b3-theme-background: var(--asri-composite-background-grayscale, var(--asri-composite-background, var(--asri-fallback-background)));
+        --b3-theme-surface: var(--asri-composite-surface-grayscale, var(--asri-composite-surface, var(--asri-fallback-surface)));
+
+        --b3-theme-on-background: var(--asri-composite-on-background-grayscale, var(--asri-composite-on-background, var(--asri-fallback-on-background)));
+        --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
+
+        --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / .1);
+        --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / .5);
+        --b3-theme-on-surface-light: oklch(from var(--b3-theme-on-surface) .6 c h / .68);
+
+        --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
+
+        --b3-border-color: oklch(from var(--b3-theme-on-background) .38 .01 h);
+        --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
+
+        --b3-menu-background: oklch(from var(--b3-theme-background) .3 c h);
+
+        --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
+
+        --b3-av-background-hl: oklch(from var(--b3-theme-primary) .32 .03 h);
+        --b3-av-hover: oklch(from var(--b3-theme-on-background) .35 .02 h); // database header hover
+
+        --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / .09);
+        --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / .18);
+
+        --b3-protyle-code-background: oklch(from var(--b3-theme-surface) .4 c h / .6);
+    }
+
+    // asri config menu
+    #commonMenu[data-name="barmode"] {
+        right: 40px;
+        left: unset !important;
+
+        .body--mac &,
+        .body--browser & {
+            right: 8px;
         }
-    }
 
-    #followSysAccent {
-        &.b3-menu__item--selected {
-            svg {
-                background-color: var(--asri-sys-accent);
-                border-radius: 15px;
-            }
-
-            &.b3-menu__item--current svg{
-                outline: 1px solid #fffa;
-            }
-        }        
-    }
-
-    #pickColor {
-        &.b3-menu__item--selected {
-            svg {
-                background-color: var(--asri-user-custom-accent, var(--b3-theme-primary));
-                border-radius: 15px;
-            }
-
-            &.b3-menu__item--current svg {
-                outline: 1px solid #fffa;
+        #followSysAccent,
+        #useGrayScale {
+            input {
+                display: none;
             }
         }
 
-        input {
-            visibility: hidden;
-            width: 0;
-            height: 0;
-            padding: 0;
+        #followSysAccent {
+            &.b3-menu__item--selected {
+                svg {
+                    background-color: var(--asri-sys-accent);
+                    border-radius: 15px;
+                }
+
+                &.b3-menu__item--current svg {
+                    outline: 1px solid #fffa;
+                }
+            }
+        }
+
+        #pickColor {
+            &.b3-menu__item--selected {
+                svg {
+                    background-color: var(--asri-user-custom-accent, var(--b3-theme-primary));
+                    border-radius: 15px;
+                }
+
+                &.b3-menu__item--current svg {
+                    outline: 1px solid #fffa;
+                }
+            }
+
+            input {
+                visibility: hidden;
+                width: 0;
+                height: 0;
+                padding: 0;
+            }
+        }
+
+        #followSysAccent,
+        #useGrayScale,
+        #pickColor {
+            label {
+                cursor: pointer;
+            }
         }
     }
 
-    #followSysAccent,
-    #useGrayScale,
-    #pickColor {
-        label {
-            cursor: pointer;
+    // adapt elements
+    .block__icon--active,
+    .b3-menu__item--selected,
+    .protyle-toolbar__item--current,
+    .protyle-attr--refcount:hover,
+    .protyle-attr--av:hover>:is(svg, span),
+    .custom-attr .block__logo.custom-attr__avheader {
+        color: var(--b3-theme-accent);
+    }
+
+    .b3-menu__icon[style="color:var(--b3-theme-primary)"],
+    .dock .dock__item--activefocus,
+    .dock .dock__item--active,
+    .b3-list-item__text mark {
+        color: var(--b3-theme-accent) !important;
+    }
+
+    .av__drag-fill {
+        border-color: rgb(from var(--b3-theme-accent) r g b / 0.5);
+    }
+
+    .config-account__cover[style="background-image: url()"] {
+        background-color: rgb(from var(--b3-theme-accent) r g b / 0.3) !important;
+    }
+
+    .protyle-wysiwyg [data-node-id] span[data-type~=search-mark].search-mark--hl {
+        background-color: oklch(from var(--b3-theme-accent) l c h / .38) !important;
+
+        @include menu-shadow(var(--b3-theme-accent), $opacity-light: 0.15, $opacity-dark: 0.4);
+    }
+
+    .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
+    .layout-tab-bar .item--focus {
+        background-color: var(--asri-composite-tab-background-grayscale, oklch(from var(--b3-theme-primary) .43 calc(c * .9) h / .2));
+
+        @include darkmode-counterpart {
+            background-color: var(--asri-composite-tab-background-grayscale, oklch(from var(--b3-theme-primary) .99 calc(c * .9) h / .21));
         }
     }
-}
 
-// adapt elements
-.block__icon--active,
-.b3-menu__item--selected,
-.protyle-toolbar__item--current,
-.protyle-attr--refcount:hover,
-.protyle-attr--av:hover>:is(svg, span),
-.custom-attr .block__logo.custom-attr__avheader {
-    color: var(--b3-theme-accent);
-}
+    .b3-dialog__scrim {
+        background-color: oklch(from var(--b3-theme-background) .6 c h / .5);
 
-.b3-menu__icon[style="color:var(--b3-theme-primary)"],
-.dock .dock__item--activefocus,
-.dock .dock__item--active,
-.b3-list-item__text mark {
-    color: var(--b3-theme-accent) !important;
-}
-
-.av__drag-fill {
-    border-color: rgb(from var(--b3-theme-accent) r g b / 0.5);
-}
-
-.config-account__cover[style="background-image: url()"] {
-    background-color: rgb(from var(--b3-theme-accent) r g b / 0.3) !important;
-}
-
-.protyle-wysiwyg [data-node-id] span[data-type~=search-mark].search-mark--hl {
-    background-color: oklch(from var(--b3-theme-accent) l c h / .38) !important;
-
-    @include menu-shadow(var(--b3-theme-accent), $opacity-light: 0.15, $opacity-dark: 0.4);
-}
-
-.layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
-.layout-tab-bar .item--focus {
-    background-color: var(--asri-composite-tab-background-grayscale, oklch(from var(--b3-theme-primary) .43 calc(c * .9) h / .2));
-
-    @include darkmode-counterpart {
-        background-color: var(--asri-composite-tab-background-grayscale, oklch(from var(--b3-theme-primary) .99 calc(c * .9) h / .21));
+        @include darkmode-counterpart {
+            background-color: oklch(from var(--b3-theme-background) .1 c h / .65);
+        }
     }
-}
 
-.b3-dialog__scrim {
-    background-color: oklch(from var(--b3-theme-background) .6 c h / .5);
-
-    @include darkmode-counterpart {
-        background-color: oklch(from var(--b3-theme-background) .1 c h / .65);
+    .toolbarButton.toggled,
+    .secondaryToolbarButton.toggled {
+        color: var(--b3-theme-accent);
     }
-}
-
-.toolbarButton.toggled,
-.secondaryToolbarButton.toggled {
-    color: var(--b3-theme-accent);
 }
