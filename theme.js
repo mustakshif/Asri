@@ -65,7 +65,7 @@
     const isAndroid = window.siyuan.config.system.container === "android";
 
     const lang = window.siyuan.config.lang;
-    
+
     const supportsOklch = CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)');
 
     const asriClassNames = [];
@@ -109,7 +109,7 @@
     let asriConfigs = {
         followSysAccentColor: "1",
         useGrayScale: "0",
-        userCustomColor: ""
+        userCustomColor: "#3478f6"
     };
 
     let sysAccentColor, followSysAccentColor, useGrayScale, userCustomColor;
@@ -127,9 +127,9 @@
                 useGrayScale = Number(data?.useGrayScale || asriConfigs.useGrayScale);
                 userCustomColor = data?.userCustomColor || asriConfigs.userCustomColor;
 
-                asriConfigs.followSysAccentColor = data?.followSysAccentColor || '1';
-                asriConfigs.useGrayScale = data?.useGrayScale || '0';
-                asriConfigs.userCustomColor = data?.userCustomColor || '';
+                asriConfigs.followSysAccentColor = data?.followSysAccentColor || "1";
+                asriConfigs.useGrayScale = data?.useGrayScale || "0";
+                asriConfigs.userCustomColor = data?.userCustomColor || "#3478f6";
             });
     }
 
@@ -191,7 +191,7 @@
                 btn.innerHTML = `
                         <svg class="b3-menu__icon"></svg>
                         <label class="b3-menu__label">${(lang === 'zh_CN' || lang === 'zh_CHT') ? i18nMenuItems[lang][id] : i18nMenuItems['en_US'][id]}</label>
-                        <input type="color" value="${userCustomColor || "#3478f6"}">
+                        <input type="color" value="${userCustomColor}">
                     `;
                 asriConfigFrag.append(btn);
             });
@@ -228,7 +228,7 @@
                         pickColorBtn.classList.remove('b3-menu__item--selected');
                         document.documentElement.style.removeProperty('--asri-user-custom-accent');
                         getSystemAccentColor();
-                        
+
                         if (hexToHSL(sysAccentColor).s == 0) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
                         else if (!useGrayScale) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
 
@@ -248,6 +248,23 @@
                 });
             }
 
+            pickColorBtn.addEventListener('click', () => {
+                if (!followSysAccentColor) return;
+                else {
+                    followSysAccentBtn.classList.remove('b3-menu__item--selected');
+                    pickColorBtn.classList.add('b3-menu__item--selected');
+
+                    if (!useGrayScale) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
+
+                    document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.userCustomColor);
+
+                    userCustomColor = asriConfigs.userCustomColor;
+                    asriConfigs.userCustomColor = asriConfigs.userCustomColor;
+                    followSysAccentColor = false;
+                    asriConfigs.followSysAccentColor = '0';
+                    updateAsriConfigs();
+                }
+            });
             colorPicker.addEventListener('input', () => {
                 document.documentElement.style.setProperty('--asri-user-custom-accent', colorPicker.value);
             });
@@ -255,7 +272,7 @@
                 followSysAccentBtn.classList.remove('b3-menu__item--selected');
                 pickColorBtn.classList.add('b3-menu__item--selected');
 
-                if(!useGrayScale) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
+                if (!useGrayScale) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
 
                 userCustomColor = colorPicker.value;
                 asriConfigs.userCustomColor = colorPicker.value;
