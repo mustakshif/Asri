@@ -175,7 +175,7 @@
         }
     }
 
-    // adapt elements
+    // adapt elements that need to be accented
     .block__icon--active,
     .b3-menu__item--selected,
     .protyle-toolbar__item--current,
@@ -205,6 +205,12 @@
 
         @include menu-shadow(var(--b3-theme-accent), $opacity-light: 0.15, $opacity-dark: 0.4);
     }
+
+    // other 
+    // .layout__dockl .layout-tab-container .b3-list-item--focus, 
+    // .layout__dockr .layout-tab-container .b3-list-item--focus {
+    //     background-color: oklch(from var(--b3-theme-primary) l c h / .2);
+    // }
 
     .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
     .layout-tab-bar .item--focus {
