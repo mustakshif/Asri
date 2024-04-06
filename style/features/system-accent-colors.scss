@@ -207,10 +207,10 @@
     }
 
     // other 
-    // .layout__dockl .layout-tab-container .b3-list-item--focus, 
-    // .layout__dockr .layout-tab-container .b3-list-item--focus {
-    //     background-color: oklch(from var(--b3-theme-primary) l c h / .2);
-    // }
+    .b3-list-item--focus {
+        // background-color: oklch(from var(--b3-theme-primary) l c h / .2);
+        background-color: var(--asri-composite-tab-background-grayscale, oklch(from var(--b3-theme-primary) .5 calc(c * .9) h / .1)) !important;
+    }
 
     .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
     .layout-tab-bar .item--focus {
