@@ -10,6 +10,19 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.0.1
+
+* Optimized the response logic of the `Custom Theme Color` in Asri configuration menu.
+* Improved the mouse hover effect for links in database.
+* Enlarged the emoji icons in the document tree and menu items.
+* Vertically aligned the custom emoji in tab headers. `#macOS`
+* Adjusted the colors of active tabs, selected list items, and sidebar panel titles.
+* Changed the color of icons on the right side of the database multi-selection menu.
+* Centered the information in the sidebar of marketplace packages.
+* [Centered the loading page and empty list prompt in the marketplace](https://github.com/mustakshif/Asri/issues/35).
+* Fixed compatibility issues caused by the new color space introduced in the theme [[issue #34](https://github.com/mustakshif/Asri/issues/34)][[community post](https://ld246.com/article/1712109653766)].
+* Fixed the issue where the new color scheme for themes was not immediately applied.
+
 ### v3.0.0
 
 ![theme config](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/theme-cofig_en_US.gif)

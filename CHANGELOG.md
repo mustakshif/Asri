@@ -1,3 +1,31 @@
+### v3.0.1
+
+* 优化 Asri 配置菜单 `自定义主题色` 点击响应逻辑
+* 优化数据库链接的鼠标悬停效果
+* 调大文档树和菜单项中的 emoji 图标
+* 垂直居中对齐在页签中的自定义 emoji `#macOS`
+* 调整激活状态页签、列表选中条目、侧栏面板标题等元素的颜色
+* 调整数据库多选项目菜单右侧图标颜色
+* 恢复集市包侧栏信息上下居中
+* [集市加载页面和空列表提示语居中显示](https://github.com/mustakshif/Asri/issues/35)
+* 修复主题新色彩空间造成的兼容性问题 [[issue #34](https://github.com/mustakshif/Asri/issues/34)][[社区帖子](https://ld246.com/article/1712109653766)]
+* 修复首次应用主题时新版配色不立即生效的问题
+
+<br />
+
+* Optimized the response logic of the `Custom Theme Color` in Asri configuration menu.
+* Improved the mouse hover effect for links in database.
+* Enlarged the emoji icons in the document tree and menu items.
+* Vertically aligned the custom emoji in tab headers. `#macOS`
+* Adjusted the colors of active tabs, selected list items, and sidebar panel titles.
+* Changed the color of icons on the right side of the database multi-selection menu.
+* Centered the information in the sidebar of marketplace packages.
+* [Centered the loading page and empty list prompt in the marketplace](https://github.com/mustakshif/Asri/issues/35).
+* Fixed compatibility issues caused by the new color space introduced in the theme [[issue #34](https://github.com/mustakshif/Asri/issues/34)][[community post](https://ld246.com/article/1712109653766)].
+* Fixed the issue where the new color scheme for themes was not immediately applied.
+
+---
+
 ### v3.0.0
 
 * 🎨 采用基于感知亮度的色彩系统重构主题配色，全局色调支持无级调节，也可跟随系统强调色（`#Windows` `#macOS`），带来完全个性化的笔记体验

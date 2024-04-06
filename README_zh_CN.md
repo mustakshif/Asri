@@ -10,6 +10,19 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.0.1
+
+* 优化 Asri 配置菜单 `自定义主题色` 点击响应逻辑
+* 优化数据库链接的鼠标悬停效果
+* 调大文档树和菜单项中的 emoji 图标
+* 垂直居中对齐在页签中的自定义 emoji `#macOS`
+* 调整激活状态页签、列表选中条目、侧栏面板标题等元素的颜色
+* 调整数据库多选项目菜单右侧图标颜色
+* 恢复集市包侧栏信息上下居中
+* [集市加载页面和空列表提示语居中显示](https://github.com/mustakshif/Asri/issues/35)
+* 修复主题新色彩空间造成的兼容性问题 [[issue #34](https://github.com/mustakshif/Asri/issues/34)][[社区帖子](https://ld246.com/article/1712109653766)]
+* 修复首次应用主题时新版配色不立即生效的问题
+
 ### v3.0.0
 
 ![theme config](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/theme-cofig_zh_CN.gif)

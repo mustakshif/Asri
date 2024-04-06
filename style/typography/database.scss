@@ -125,7 +125,12 @@
 
                     &:hover {
                         text-decoration-color: var(--b3-theme-primary-lighter);
-                        color: var(--b3-theme-primary)
+                        color: var(--b3-theme-primary);
+
+                        .ft__on-surface {
+                            color: var(--b3-theme-primary-light);
+                            transition: inherit;
+                        }
                     }
                 }
 
