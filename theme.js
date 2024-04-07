@@ -1184,7 +1184,7 @@
                 avoidOverlappingWithStatus();
                 addDockbClassName();
                 statusPosition();
-                followSysAccentColor && supportsOklch && getSystemAccentColor();
+                !isIOSApp && followSysAccentColor && supportsOklch && getSystemAccentColor();
             }, 200);
         }
     }
