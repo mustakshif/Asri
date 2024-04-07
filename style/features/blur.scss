@@ -179,9 +179,9 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 
     // 图片控件
     [data-node-id] .img {
-        &__net {
-            backdrop-filter: blur(20px);
-        }
+        // &__net {
+        //     backdrop-filter: blur(20px);
+        // } // 和 mix-blend-mode 一起使用导致卡顿、对话框闪烁
 
         &:hover {
             .protyle-action__drag {
@@ -291,7 +291,7 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 .layout--float {
     [data-node-id] .img {
         &__net {
-            mix-blend-mode: normal;
+            // mix-blend-mode: normal;
             background-color: var(--b3-theme-surface-light);
         }
     }

@@ -1,4 +1,5 @@
 @use '../base' as *;
+
 .av {
 
     // 数据库视图切换、标题
@@ -66,6 +67,20 @@
         .av__counter {
             width: calc(100% - 8px);
             padding: 4px;
+        }
+
+        // search bar
+        [data-type="av-search-icon"]+div {
+            >input {
+                font-size: 14px;
+                background-color: transparent;
+            }
+
+            >svg {
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            }
         }
     }
 
@@ -176,6 +191,7 @@
                 +.fn__hr {
                     background-color: var(--b3-menu-background);
                 }
+
                 // v2.1.9: fix关联主键编辑菜单背景差异
 
                 @include darkmode-counterpart {
@@ -185,6 +201,7 @@
                     border-right: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
                     border-radius: 10px 10px 0 0;
                 }
+
                 // v2.1.10: fix暗色模式下边框差异
             }
 
@@ -388,9 +405,10 @@ img.av__cellassetimg {
             text-decoration: underline transparent;
             text-decoration-thickness: .1em;
         }
+
         &.b3-menu__item--current,
         &:hover {
-            > .b3-menu__label.popover__block {
+            >.b3-menu__label.popover__block {
                 color: var(--b3-theme-on-primary) !important;
                 text-decoration-color: #fff8;
             }

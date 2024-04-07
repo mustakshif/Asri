@@ -4,17 +4,22 @@
     // Rem Craft/util/api.js
 
     async function getFile(path) {
-        const response = await fetch('/api/file/getFile', {
-            method: 'POST',
-            headers: {
-                Authorization: `Token ''`,
-            },
-            body: JSON.stringify({
-                path: path,
-            }),
-        });
-        if (response.status === 200) return response;
-        else return null;
+        try {
+            const response = await fetch('/api/file/getFile', {
+                method: 'POST',
+                headers: {
+                    Authorization: `Token ''`,
+                },
+                body: JSON.stringify({
+                    path: path,
+                }),
+            });
+            if (response.status === 200) return response;
+            else return null;
+        } catch (e) {
+            console.error('An error occurred while fetching the file:', e);
+            return null;
+        }
     }
 
     async function putFile(path, filedata, isDir = false, modTime = Date.now()) {

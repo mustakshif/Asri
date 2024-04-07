@@ -21,7 +21,7 @@
         }
 
         .b3-dialog__container {
-            overflow: hidden;
+            overflow: hidden; // 窗口中有元素如果混合使用mix-blend-mode 和 backdrop-filter，会导致窗口布局跳动、窗口闪烁
             background-color: var(--b3-theme-background);
 
             @include border-or-not;
@@ -207,13 +207,26 @@
             }
         }
     }
+
+    // // 仅针对部分对话框的呲边修复 ————————————————————
+    // &[data-key="dialog-setting"],
+    // // 设置
+    // &[data-key="dialog-history"] // 文件历史
+
+    //     {
+    //     .b3-dialog__container {
+    //         overflow: hidden;
+    //     }
+    // }
 }
 
 // 设置面板 ————————————————————————————————
 .config__panel {
     .b3-tab-bar {
+        // 侧栏导航
         background-color: var(--b3-theme-surface);
         padding: 16px 8px;
+        // border-radius: 12px 0 0 12px;
 
         .config__tab-hr {
             background-color: var(--b3-border-color-trans);
@@ -672,7 +685,9 @@
                 >div:not(.b3-card):first-child {
                     grid-column: 1 / -1;
                     transform: translateY(-44px);
-                } // loading svg
+                }
+
+                // loading svg
             }
 
             >ul.b3-list {
