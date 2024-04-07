@@ -6,7 +6,7 @@ body:not(.body--mobile, .body--window) {
     --topbar-z-index: 2;
     --avoid-topbar: calc(var(--toolbar-height));
 
-    .toolbar {
+    >.toolbar {
         margin-bottom: calc(var(--toolbar-height) * -1);
         z-index: var(--topbar-z-index);
         pointer-events: none;
@@ -19,7 +19,7 @@ body:not(.body--mobile, .body--window) {
         }
     }
 
-    #toolbar {
+    >#toolbar {
         background-color: transparent;
         border-bottom-color: transparent;
 
