@@ -84,6 +84,7 @@
     isMobile && (document.body.classList.add('body--mobile'), asriClassNames.push('.body--mobile'));
     isInBrowser && (document.body.classList.add("body--browser"), asriClassNames.push('.body--browser'));
     isAndroid && (document.body.classList.add("body--android"), asriClassNames.push('.body--android'));
+    isIOSApp && (document.body.classList.add("body--iosApp"), asriClassNames.push('.body--iosApp'));
 
     if (!isMobile && asriDoms.toolbar) {
         createTopbarElementById('AsriPluginsIconsDivider', undefined, asriDoms.drag);
@@ -116,7 +117,7 @@
     let asriConfigs = {
         followSysAccentColor: "1",
         useGrayScale: "0",
-        userCustomColor: "#3478f6"
+        userCustomColor: ""
     };
 
     let sysAccentColor, followSysAccentColor, useGrayScale, userCustomColor;
@@ -185,7 +186,11 @@
 
             // create menu items and handle click events
             setTimeout(() => {
-                // create menu items
+                // use existing menu items if any
+                const asriConfigOldItems = document.querySelectorAll('.asri-config');
+                if (asriConfigOldItems.length !== 0) return;
+
+                // create menu items when there is no existing menu items
                 const barModeMenuItems = document.querySelector('#commonMenu[data-name="barmode"] .b3-menu__items');
                 if (!barModeMenuItems) return;
 
@@ -1213,6 +1218,17 @@
     window.addEventListener('dblclick', handleDblClick);
 
     window.destroyTheme = () => {
+        // const isAsriInBothModes = window.siyuan.config.appearance.themeLight === "Asri" && window.siyuan.config.appearance.themeDark === "Asri";
+        // console.log('isAsriInBothModes', isAsriInBothModes)
+
+        // if (isAsriInBothModes) {
+        //     document.body.classList.add('asri-mode-transition');
+        //     setTimeout(() => {
+        //         document.body.classList.remove('asri-mode-transition');
+        //     }, 350);
+
+        //     return;
+        // }
 
         // remove event listeners
         window.removeEventListener('mouseup', handleLowFreqTasks);
