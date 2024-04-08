@@ -608,9 +608,9 @@
                     protyles.forEach(protyle => {
                         // let protylePadding = Math.round(parseFloat(window.getComputedStyle(protyle).paddingLeft)) + 'px';
                         let protylePadding = protyle.style.paddingLeft;
-                        if (protylePadding !== protyle.dataset.prevPadding) {
+                        if (protylePadding !== protyle.dataset.prevpadding) {
                             protyle.style.setProperty('--protyle-spacing', protylePadding);
-                            protyle.dataset.prevPadding = protylePadding;
+                            protyle.dataset.prevpadding = protylePadding;
                             // console.log(protylePadding);
                         }
                     })
@@ -1256,44 +1256,49 @@
         // remove js calculated properties
         document.body.style.removeProperty('--mouseX');
         document.body.style.removeProperty('--mouseY');
-        asriDoms.topbar?.style.removeProperty('--topbar-left-spacing');
-        asriDoms.topbar?.style.removeProperty('--topbar-right-spacing');
-        asriDoms.topbar?.style.removeProperty('--avoid-topbar');
-        asriDoms.status?.style.removeProperty('max-width');
-        asriDoms.status?.style.removeProperty('transform');
-        asriDoms.status?.style.removeProperty('--status-height');
+        document.body.style.removeProperty('--status-height');
         document.documentElement.style.removeProperty('--asri-sys-accent');
         document.documentElement.style.removeProperty('--asri-sys-accent-accessible');
         document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
         document.documentElement.style.removeProperty('--asri-user-custom-accent');
-
-        let wndElements = asriDoms.layouts?.querySelectorAll('[data-type="wnd"]');
-        wndElements.forEach(wnd => {
-            let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
-            let protyles = wnd.querySelectorAll('.protyle-wysiwyg');
-
-            tabbarContainer.style.removeProperty('padding-left');
-            tabbarContainer.style.removeProperty('padding-right');
-            tabbarContainer.style.removeProperty('padding-top');
-            protyles.forEach(protyle => {
-                protyle.style.removeProperty('--protyle-spacing');
-                protyle.dataset.prevPadding = undefined;
-            });
+        document.querySelectorAll('.dock').forEach(dock => {
+            dock.style.removeProperty('--border-clr');
         })
 
-        let layoutTabContainers = asriDoms.layouts?.querySelectorAll('.layout__center .layout-tab-container');
-        layoutTabContainers.forEach(tabContainer => {
-            tabContainer.style.removeProperty('padding-bottom');
-        })
+        // fix remaining properties
+        setTimeout(() => {
+            asriDoms.toolbar?.style.removeProperty('--topbar-left-spacing');
+            asriDoms.toolbar?.style.removeProperty('--topbar-right-spacing');
+            asriDoms.dockr?.style.removeProperty('--avoid-topbar');
+            asriDoms.layoutDockr?.style.removeProperty('--avoid-topbar');
+            asriDoms.status?.style.removeProperty('max-width');
+            asriDoms.status?.style.removeProperty('transform');
+            const wndElements = document.body.querySelectorAll('[data-type="wnd"]');
+            // console.log(wndElements);
+            wndElements.forEach(wnd => {
+                const tabbarContainer = wnd.firstElementChild;
+                const protyles = wnd.querySelectorAll('.protyle-wysiwyg');
 
+                tabbarContainer?.style.removeProperty('padding-left');
+                tabbarContainer?.style.removeProperty('padding-right');
+                tabbarContainer?.style.removeProperty('padding-top');
+                protyles.forEach(protyle => {
+                    protyle.style.removeProperty('--protyle-spacing');
+                    protyle.dataset.prevpadding = undefined;
+                });
+            })
+
+            const layoutTabContainers = asriDoms.layouts?.querySelectorAll('.layout__center .layout-tab-container');
+            layoutTabContainers.forEach(tabContainer => {
+                tabContainer.style.removeProperty('padding-bottom');
+            })
+        }, 200);
+        
         document.getElementById('searchList')?.style.removeProperty('padding-bottom');
         document.getElementById('searchPreview')?.style.removeProperty('padding-bottom');
         document.getElementById('viewerContainer')?.style.removeProperty('padding-bottom');
         asriDoms.layouts.querySelectorAll('.card__main').forEach(card => {
             card.style.removeProperty('padding-bottom');
-        })
-        document.querySelectorAll('.dock').forEach(dock => {
-            dock.style.removeProperty('--border-clr');
         })
 
         // restore deleted css rules
