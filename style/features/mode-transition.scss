@@ -7,7 +7,7 @@
         transition-timing-function: cubic-bezier(.2, 0, 0, 1);
     }
 
-    #status {
+    #status, #dockBottom {
         transition-duration: .5s !important;
     }
 }

@@ -43,6 +43,7 @@
     &#dockBottom {
         padding: 0;
         border-top-width: 1px;
+        background-color: var(--b3-theme-background); // fix https://github.com/mustakshif/Asri/issues/37
 
         .fn__flex:first-child,
         .fn__flex:last-child {
