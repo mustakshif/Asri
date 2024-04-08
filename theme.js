@@ -93,7 +93,7 @@
     }
 
     const pluginsDivider = document.getElementById('AsriPluginsIconsDivider');
-    // const leftSpacing = document.getElementById('AsriTopbarLeftSpacing');
+    const leftSpacing = document.getElementById('AsriTopbarLeftSpacing');
     const rightSpacing = document.getElementById('AsriTopbarRightSpacing');
     const topbar = asriDoms.toolbar;
 
@@ -493,13 +493,21 @@
 
             function calcAndApply() {
                 // left side
-                if (centerRectLeft > dragRectLeftInitial + 8)
-                    topbar.style.setProperty('--topbar-left-spacing', 0),
-                        dragRectLeftInitial = fromFullscreen ? dragRectLeftInitial : asriDoms.drag.getBoundingClientRect().left;
-                // recalc initial everytime
+                if (centerRectLeft > dragRectLeftInitial + 8) {
+                    topbar.style.setProperty('--topbar-left-spacing', 0);
+                    dragRectLeftInitial = fromFullscreen ? dragRectLeftInitial : asriDoms.drag.getBoundingClientRect().left;
+                    // recalc initial everytime
+                    leftSpacing.classList.remove('asri-expanded');
+                }
 
-                else if (isMacOS && !isInBrowser) topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
-                else topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barForwardRect.right + 4 + 'px');
+                else if (isMacOS && !isInBrowser) {
+                    topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
+                    leftSpacing.classList.add('asri-expanded');
+                }
+                else {
+                    topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barForwardRect.right + 4 + 'px');
+                    leftSpacing.classList.add('asri-expanded');
+                }
 
                 // right side
                 if (centerRectRight < dragRectRightInitial - 8) {
@@ -1293,7 +1301,7 @@
                 tabContainer.style.removeProperty('padding-bottom');
             })
         }, 200);
-        
+
         document.getElementById('searchList')?.style.removeProperty('padding-bottom');
         document.getElementById('searchPreview')?.style.removeProperty('padding-bottom');
         document.getElementById('viewerContainer')?.style.removeProperty('padding-bottom');

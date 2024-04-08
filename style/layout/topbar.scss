@@ -35,6 +35,7 @@
 
     .toolbar__item {
         height: var(--toolbar-height);
+        color: var(--b3-theme-on-surface);
 
         &:hover{
             background-color: transparent;
@@ -42,6 +43,15 @@
         
         svg {
             align-self: center;
+        }
+
+        &--active {
+            background-color: transparent;
+            color: var(--b3-theme-primary);
+        }
+
+        &--disabled {
+            opacity: .4;
         }
     }
 
