@@ -44,3 +44,6 @@
 //     initial-value: 0px;
 // }
 
+.body--linux {
+    @extend .body--win32;
+}

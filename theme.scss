@@ -1,6 +1,2 @@
 @use 'style/theme';
 @use 'style/main';
-
-.body--linux {
-    @extend .body--win32;
-}

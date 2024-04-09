@@ -33,3 +33,9 @@ body {
         -webkit-font-smoothing: antialiased;
     }
 }
+
+:root[data-theme-mode='light'] {
+    .body--mobile {
+        --b3-theme-background: #fff;
+    }
+} // use hex to fix https://github.com/mustakshif/Asri/issues/39

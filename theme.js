@@ -398,7 +398,7 @@
     if (isMacOS && isMiniWindow) setTrafficLightPosition(14);
 
     (function useSysScrollbar() {
-        if (isMacOS) {
+        if (isMacOS || isMobile) {
             for (let i = 0; i < document.styleSheets.length; i++) {
                 let styleSheet = document.styleSheets[i];
                 try {
