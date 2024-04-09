@@ -12,6 +12,10 @@
             color: var(--b3-theme-on-background);
         }
 
+        &:hover {
+            background-color: transparent;
+        }
+
         &--activefocus,
         &--active {
             color: var(--b3-theme-primary) !important;

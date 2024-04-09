@@ -4,6 +4,8 @@
 
         //[]左停靠栏收起的情况
         //[]列表项目高亮背景颜色
+        //[]分割线颜色
+        //[]反链面板
 
             {
             #dockLeft.dock-layout-expanded,
@@ -16,7 +18,7 @@
                 --l-background-grayscale: .24;
                 --l-surface: .34;
                 --l-surface-grayscale: .34;
-                --l-on-background: .89;
+                --l-on-background: .92;
 
                 --asri-composite-background: oklch(from var(--asri-base-color) var(--l-background) .005 h);
                 --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) var(--l-background-grayscale) 0 0);
