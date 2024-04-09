@@ -5,6 +5,8 @@
     // 数据库视图切换、标题
     &__header {
         .av__views {
+            box-shadow: none;
+
             .layout-tab-bar {
                 @include dialog-tabbar;
                 margin: 8px 0 !important;
@@ -53,9 +55,9 @@
                 }
             }
 
-            >.fn__space:last-child {
-                width: 0;
-            }
+            // >.fn__space:last-child {
+            //     width: 0;
+            // }
         }
 
 
@@ -327,6 +329,11 @@
         select.b3-select {
             background-color: var(--b3-theme-surface);
         }
+    }
+
+    // 图标间距
+    .block__icons .fn__space {
+        width: 8px;
     }
 }
 
