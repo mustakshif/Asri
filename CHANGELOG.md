@@ -1,3 +1,33 @@
+### v3.0.2
+
+* 优化数据库搜索框样式
+* 优化数据库列操作、页签大纲等处图标的间距
+* [视觉平衡引述块、嵌入块内边距](https://github.com/mustakshif/Asri/issues/38)
+* 去除移动端页面右侧空白区域
+* 减弱网络图片角标的视觉效果，减少多图时的页面卡顿
+* 修复某些情况下搜索窗口和文件历史窗口跳动、闪烁的问题
+* 修复切换至其他主题时残留部分 Asri 主题样式属性的问题
+* 修复主题 js 造成的 iOS 和 iPadOS 应用闪退的问题
+* [适配 `Knote` 插件工具栏的布局](https://github.com/mustakshif/Asri/issues/36)
+* [修复底部停靠栏背景色异常](https://github.com/mustakshif/Asri/issues/37)
+* [修复移动端亮色模式下应用界面状态栏颜色异常](https://github.com/mustakshif/Asri/issues/39)
+
+<br />
+
+* Optimized the style of the database search box.
+* Optimized the spacing between icons in database, tab outlines, etc.
+* [Improved the visual balance of block quotes and embedded block padding](https://github.com/mustakshif/Asri/issues/38).
+* Removed the blank area on the right side of the mobile page.
+* Reduced the visual effect of network image badges and decreased page lag when multiple images are present.
+* Fixed the issue of the search window and file history window‘s jumping and flickering in certain situations.
+* Fixed the problem where Asri theme style properties remained when switching to other themes.
+* Fixed the issue of application crashes caused by the theme JavaScript on iOS and iPadOS.
+* [Adapted the layout of the `Knote` plugin toolbar](https://github.com/mustakshif/Asri/issues/36).
+* [Fixed the abnormal background color of the bottom dock](https://github.com/mustakshif/Asri/issues/37).
+* [Fixed the abnormal status bar color in the light mode on mobile.](https://github.com/mustakshif/Asri/issues/39).
+
+---
+
 ### v3.0.1
 
 * 优化 Asri 配置菜单 `自定义主题色` 点击响应逻辑

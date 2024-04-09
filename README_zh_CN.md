@@ -10,18 +10,21 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
-### v3.0.1
+### v3.0.2
 
-* 优化 Asri 配置菜单 `自定义主题色` 点击响应逻辑
-* 优化数据库链接的鼠标悬停效果
-* 调大文档树和菜单项中的 emoji 图标
-* 垂直居中对齐在页签中的自定义 emoji `#macOS`
-* 调整激活状态页签、列表选中条目、侧栏面板标题等元素的颜色
-* 调整数据库多选项目菜单右侧图标颜色
-* 恢复集市包侧栏信息上下居中
-* [集市加载页面和空列表提示语居中显示](https://github.com/mustakshif/Asri/issues/35)
-* 修复主题新色彩空间造成的兼容性问题 [[issue #34](https://github.com/mustakshif/Asri/issues/34)][[社区帖子](https://ld246.com/article/1712109653766)]
-* 修复首次应用主题时新版配色不立即生效的问题
+* 优化数据库搜索框样式
+* 优化数据库列操作、页签大纲等处图标的间距
+* [视觉平衡引述块、嵌入块内边距](https://github.com/mustakshif/Asri/issues/38)
+* 去除移动端页面右侧空白区域
+* 减弱网络图片角标的视觉效果，减少多图时的页面卡顿
+* 修复某些情况下搜索窗口和文件历史窗口跳动、闪烁的问题
+* 修复切换至其他主题时残留部分 Asri 主题样式属性的问题
+* 修复主题 js 造成的 iOS 和 iPadOS 应用闪退的问题
+* [适配 `Knote` 插件工具栏的布局](https://github.com/mustakshif/Asri/issues/36)
+* [修复底部停靠栏背景色异常](https://github.com/mustakshif/Asri/issues/37)
+* [修复移动端亮色模式下应用界面状态栏颜色异常](https://github.com/mustakshif/Asri/issues/39)
+
+### ...
 
 ### v3.0.0
 
