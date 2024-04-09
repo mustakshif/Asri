@@ -1,10 +1,20 @@
 body.body--mobile {
     // -> js
 
+    //编辑区
+    .protyle-wysiwyg {
+
+        .bq,
+        .protyle-wysiwyg blockquote,
+        [data-node-id].render-node[data-type=NodeBlockQueryEmbed] {
+            padding: 4px 8px;
+        }
+    }
+
     //菜单 
     #menu {
         &.b3-menu--fullscreen {
-            box-shadow: none;            
+            box-shadow: none;
         }
     }
 
