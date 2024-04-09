@@ -306,7 +306,7 @@
     .bq,
     blockquote {
         border-radius: 10px;
-        padding: 16px;
+        padding: 12px 16px;
         border: 1.5px solid var(--b3-border-color-trans);
         margin: 1em 0;
         background-color: var(--b3-theme-surface-light);
@@ -658,7 +658,7 @@
     // 嵌入块 ——————————————————————————————————————
     [data-node-id].render-node[data-type=NodeBlockQueryEmbed] {
         border-left: none;
-        padding: 16px;
+        padding: 12px 16px;
         background-color: var(--b3-theme-surface-light);
 
         &>.protyle-wysiwyg__embed {
