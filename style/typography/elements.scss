@@ -444,6 +444,7 @@
 
     [data-node-id] span[data-type~="tag"] {
         &[data-type~="block-ref"] {
+            color: var(--b3-theme-primary);
             box-shadow: none;
             border: .08em solid var(--b3-theme-primary);
             text-decoration: none;
@@ -751,7 +752,7 @@
 }
 
 .layout-tab-container {
-    background-color: transparent;
+    background-color: var(--b3-theme-background);
     transition: padding 0.2s;
 }
 
