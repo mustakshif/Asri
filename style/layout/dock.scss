@@ -46,14 +46,41 @@
     }
 
     &#dockBottom {
-        padding: 0;
+        padding: 0 0 0 34px;
         border-top-width: 1px;
         background-color: var(--b3-theme-background); // fix https://github.com/mustakshif/Asri/issues/37
 
-        .fn__flex:first-child,
-        .fn__flex:last-child {
-            .dock__item:not(:first-child){
-                margin-left: 0;
+        // .fn__flex:first-child,
+        // .fn__flex:last-child {
+        //     .dock__item:not(:first-child){
+        //         margin-left: 0;
+        //     }
+        // }
+
+        .dock__item {
+            margin: 7px 3.5px;
+        }
+
+        .fn__flex-1 {
+            flex: 0 0 15px;
+        }
+
+        .dock__item--pin {
+            position: fixed;
+            left: 3.5px;
+            opacity: 1;
+        }
+
+        .fn__flex:last-child:not(:empty) {
+            &::before {
+                content: "";
+                display: block;
+                background-color: var(--b3-border-color-trans);
+                height: 20px;
+                width: 2px;
+                margin-top: 10px;
+                transform: translateX(-7.5px);
+                border-radius: 2px;
             }
         }
     }

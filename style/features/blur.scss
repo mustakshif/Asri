@@ -116,7 +116,7 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
             // }
 
             #findbar:not(.fn__hidden),
-            .pdf__util {                
+            .pdf__util {
                 background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
                 @include bg-blur;
 
@@ -126,7 +126,7 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
             }
 
             #dialogContainer {
-                .dialog {                    
+                .dialog {
                     background-color: oklch(from var(--b3-menu-background) l c h / $thick-transparency);
 
                     @include bg-blur($brightness-dark: 0.95);
@@ -167,7 +167,7 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
     }
 
     //文字格式工具条
-    &-toolbar {        
+    &-toolbar {
         background-color: oklch(from var(--b3-theme-surface) l c h / $medium-transparency);
         @include bg-blur;
         // z-index: 1;
@@ -228,9 +228,10 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
     }
 }
 
-.fn__flex-1:not(.has-dockb)~#status {    
+#dockBottom.fn__none~#status {
     background-color: oklch(from var(--b3-theme-surface) l c h / $medium-transparency);
     @include bg-blur;
+
     // mix-blend-mode: luminosity;
     @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
         @include theme-variant-color(background-color, surface, $medium-transparency);
@@ -248,12 +249,13 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
         //     @include theme-variant-color(background-color, background, $thick-transparency, $important: true);
         // }
 
-        .layout-tab-container {            
+        .layout-tab-container {
             background-color: oklch(from var(--b3-theme-background) l c h / $thick-transparency);
 
             @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
                 @include theme-variant-color(background-color, background, $thick-transparency);
             }
+
             .graph {
                 background-color: transparent;
 
@@ -305,8 +307,9 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 
 .graph__panel {
     @include bg-blur(20px);
-    opacity: 1;    
+    opacity: 1;
     background-color: oklch(from var(--b3-theme-background) l c h / $medium-transparency);
+
     @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
         @include theme-variant-color(background-color, background, $medium-transparency);
     }
@@ -330,8 +333,9 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
         @include bg-blur;
     }
 
-    .b3-menu__items {        
+    .b3-menu__items {
         background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+
         @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
             @include theme-variant-color(background-color, menu-background, $medium-transparency);
         }
@@ -348,24 +352,27 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
     background-color: transparent;
     @include bg-blur;
 
-    >div:not(.emojis) {        
+    >div:not(.emojis) {
         background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+
         @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
             @include theme-variant-color(background-color, menu-background, $medium-transparency);
         }
     }
 
-    >.emojis>.emojis__panel {        
+    >.emojis>.emojis__panel {
         background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+
         @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
             @include theme-variant-color(background-color, menu-background, $medium-transparency);
         }
     }
 }
 
-.protyle-util {    
+.protyle-util {
     background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
     @include bg-blur($saturate-value: 3);
+
     @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
         @include theme-variant-color(background-color, menu-background, $medium-transparency);
     }
@@ -378,10 +385,11 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 
 // 解决模糊透明像素的问题
 
-#searchHistoryList {    
+#searchHistoryList {
     background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
     @include bg-blur;
     overflow: auto;
+
     @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
         @include theme-variant-color(background-color, menu-background, $medium-transparency);
     }
@@ -470,8 +478,9 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
     // ->js
     .b3-dialog__container {
         @include bg-blur();
-        
+
         background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+
         @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
             @include theme-variant-color(background-color, menu-background, $medium-transparency);
         }
@@ -506,9 +515,10 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
     }
 }
 
-.tooltip {    
+.tooltip {
     background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
     @include bg-blur($medium-blur-rd);
+
     @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
         @include theme-variant-color(background-color, menu-background, 0.8);
     }
@@ -550,15 +560,19 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
 // 数据库菜单 ——————————————————————
 .av__panel {
     .b3-menu {
-        >.fn__flex-column>.b3-menu__item[data-type="nobg"]:first-child {            
-            &, 
+        >.fn__flex-column>.b3-menu__item[data-type="nobg"]:first-child {
+
+            &,
             &+.fn__hr {
                 background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+
                 @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
                     @include theme-variant-color(background-color, menu-background, $medium-transparency);
                 }
             }
-        }  // v2.1.9: fix关联主键编辑菜单
+        }
+
+        // v2.1.9: fix关联主键编辑菜单
     }
 }
 

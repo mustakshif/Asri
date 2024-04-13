@@ -1,8 +1,12 @@
 @use '../base' as *;
 
-.fn__flex-1:not(.has-dockb) ~ #status {
+#status {
+    transition: transform .2s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color .2s;
+    position: fixed;
+}
+
+#dockBottom.fn__none~#status {
     body:not(.body--mobile) & {
-        position: fixed;
         background-color: var(--b3-theme-surface);
         right: 8px;
         bottom: -4px;
@@ -11,69 +15,65 @@
         border: 0;
         padding: 0 26px 0 0;
         margin: 0 0 12px 0;
-        transition: transform .2s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color .2s;
         overflow: hidden;
         z-index: 3; // 等于数据库 sticky header，不会其被覆盖
 
-        @include border-or-not($border:false);
-    
-        #dockBottom:not(.fn__none)+& {
-            background-color: transparent;
-        }
-    
+        @include border-or-not($border: false);
+
         .toolbar__item {
             height: 26px;
-    
+
             span {
                 margin: 3px;
                 font-size: 12px;
             }
-    
+
             &:not(.toolbar__item--close) {
                 margin: 3px !important;
                 padding: 3px;
                 background-color: rgb(0, 0, 0, 0);
             }
-    
+
             svg {
                 padding: 3px 4px;
                 color: var(--b3-dockright-color);
                 width: 12px;
             }
         }
-    
+
         &>.fn__flex-1 {
             position: relative !important;
             width: 0px !important;
             right: 0px;
             flex: 0;
         }
-    
+
         #barDock {
             position: absolute;
             right: 0px;
             z-index: 8;
             color: var(--b3-theme-on-background);
-    
+
             &::before {
                 right: unset !important;
                 left: 0px;
                 transform: rotateY(180deg);
             }
-    
+
             &::after {
                 left: unset !important;
                 right: 100%;
             }
-    
+
             svg {
                 color: var(--b3-theme-on-surface);
+
                 &:hover {
                     color: var(--b3-theme-on-background);
                 }
             }
         }
-    
+
         .status__msg:not(:empty) {
             // animation: statusmsg 5s ease-in-out;
             max-width: 140px;
@@ -85,19 +85,19 @@
             position: relative;
             height: 26px;
             line-height: 26px;
-    
+
             &::before {
                 content: "";
                 font-size: 12px;
                 padding-right: 6px;
             }
-    
+
             &:hover {
                 max-width: 90vw;
                 transition: max-width 300ms .125s;
             }
         }
-    
+
         .status__backgroundtask {
             margin: 0px 0px 7px 0px;
             padding: 0px 0px 0px 8px;
@@ -105,7 +105,7 @@
             height: 26px;
             line-height: 26px;
         }
-    
+
         .status__counter:not(:empty) {
             border-radius: 5px;
             padding: 0px 0px 0 8px;
@@ -113,26 +113,27 @@
             height: 26px;
             line-height: 26px;
         }
-    
+
         #statusHelp {
             position: relative;
-    
+
             svg {
                 color: var(--b3-theme-on-surface);
+
                 &:hover {
                     color: var(--b3-theme-on-background);
                 }
             }
         }
-    }    
+    }
 }
 
-.fn__flex-1.has-dockb ~ #status {
-    // -> js
-    
-    background-color: var(--b3-theme-background);
+#dockBottom:not(.fn__none)~#status {
+    background-color: transparent;
     border-top-color: transparent;
-    padding: 0 32px 4px 6px;
+    padding: 0 32px 0 6px;
+    bottom: 5px;
+    right: 2px;
 
     #barDock {
         position: absolute;
@@ -153,6 +154,7 @@
 
         svg {
             color: var(--b3-theme-on-surface);
+
             &:hover {
                 color: var(--b3-theme-on-background);
             }

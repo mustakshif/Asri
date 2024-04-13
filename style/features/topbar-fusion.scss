@@ -6,7 +6,9 @@ body:not(.body--mobile, .body--window) {
     --topbar-z-index: 2;
     --avoid-topbar: calc(var(--toolbar-height));
 
-    >.toolbar {
+    >#toolbar {                
+        background-color: transparent;
+        border-bottom-color: transparent;
         margin-bottom: calc(var(--toolbar-height) * -1);
         z-index: var(--topbar-z-index);
         pointer-events: none;
@@ -15,13 +17,8 @@ body:not(.body--mobile, .body--window) {
         #drag {
             min-width: unset;
             opacity: 0;
-            // background-color: aqua;
         }
-    }
 
-    >#toolbar {
-        background-color: transparent;
-        border-bottom-color: transparent;
 
         .toolbar__item {
             pointer-events: visibleFill;
