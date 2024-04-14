@@ -107,7 +107,7 @@
 
                 .b3-chip {
                     border-radius: 20px;
-                    padding: 2px 6px;
+                    // padding: 2px 6px;
                     color: var(--b3-theme-on-surface);
                     background-color: var(--b3-theme-surface);
 
@@ -271,6 +271,12 @@
                             background-color: var(--b3-menu-background);
                         }
                     }
+                }
+            }
+
+            .b3-menu__item {
+                .b3-chip {
+                    border-radius: 99px;
                 }
             }
 
