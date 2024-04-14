@@ -10,19 +10,16 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.0.2
+### v3.0.3
 
-* Optimized the style of the database search box.
-* Optimized the spacing between icons in database, tab outlines, etc.
-* [Improved the visual balance of block quotes and embedded block padding](https://github.com/mustakshif/Asri/issues/38).
-* Removed the blank area on the right side of the mobile page.
-* Reduced the visual effect of network image badges and decreased page lag when multiple images are present.
-* Fixed the issue of the search window and file history window‘s jumping and flickering in certain situations.
-* Fixed the problem where Asri theme style properties remained when switching to other themes.
-* Fixed the issue of application crashes caused by the theme JavaScript on iOS and iPadOS.
-* [Adapted the layout of the `Knote` plugin toolbar](https://github.com/mustakshif/Asri/issues/36).
-* [Fixed the abnormal background color of the bottom dock](https://github.com/mustakshif/Asri/issues/37).
-* [Fixed the abnormal status bar color in the light mode on mobile.](https://github.com/mustakshif/Asri/issues/39).
+* [Redesigned the bottom bar, merging it with the status bar](https://github.com/mustakshif/Asri/issues/37)
+* [Redesigned the database tag color and appearance color combinations, maintaining consistent perceived lightness](https://github.com/mustakshif/Asri/issues/44)
+* Adjusted the style of block reference elements wrapped in the tag span element
+* Fine-tuned the background color of focused list items in pure grayscale mode
+* Optimized the display of highlighted text when search results are empty
+* Unified the border radius of database tags gloabally
+* [Fixed the background color missing in areas like PDF when using the `Background Cover` plugin](https://github.com/mustakshif/Asri/issues/37)
+* [Fixed the issue of the relation graph search bar not covering other icons](https://github.com/mustakshif/Asri/issues/41)
 
 ### ...
 

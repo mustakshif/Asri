@@ -10,19 +10,16 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
-### v3.0.2
+### v3.0.3
 
-* 优化数据库搜索框样式
-* 优化数据库列操作、页签大纲等处图标的间距
-* [视觉平衡引述块、嵌入块内边距](https://github.com/mustakshif/Asri/issues/38)
-* 去除移动端页面右侧空白区域
-* 减弱网络图片角标的视觉效果，减少多图时的页面卡顿
-* 修复某些情况下搜索窗口和文件历史窗口跳动、闪烁的问题
-* 修复切换至其他主题时残留部分 Asri 主题样式属性的问题
-* 修复主题 js 造成的 iOS 和 iPadOS 应用闪退的问题
-* [适配 `Knote` 插件工具栏的布局](https://github.com/mustakshif/Asri/issues/36)
-* [修复底部停靠栏背景色异常](https://github.com/mustakshif/Asri/issues/37)
-* [修复移动端亮色模式下应用界面状态栏颜色异常](https://github.com/mustakshif/Asri/issues/39)
+* [重新设计底栏，合并底栏和状态栏](https://github.com/mustakshif/Asri/issues/37)
+* [重新设计数据库标签配色和外观颜色组合，保持感知亮度一致](https://github.com/mustakshif/Asri/issues/44)
+* 调整标签包裹块引用行内元素的样式
+* 微调纯灰度模式下聚焦列表项的背景色
+* 优化搜索结果为空时高亮文字的显示
+* 统一各处数据库标签的圆角样式
+* [修复使用`替换图片背景` 插件时 pdf 等区域背景颜色异常](https://github.com/mustakshif/Asri/issues/37)
+* [修复关系图搜索框不遮盖其余图标的问题](https://github.com/mustakshif/Asri/issues/41)
 
 ### ...
 

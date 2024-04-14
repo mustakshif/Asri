@@ -1,3 +1,27 @@
+### v3.0.3
+
+* [重新设计底栏，合并底栏和状态栏](https://github.com/mustakshif/Asri/issues/37)
+* [重新设计数据库标签配色和外观颜色组合，保持感知亮度一致](https://github.com/mustakshif/Asri/issues/44)
+* 调整标签包裹块引用行内元素的样式
+* 微调纯灰度模式下聚焦列表项的背景色
+* 优化搜索结果为空时高亮文字的显示
+* 统一各处数据库标签的圆角样式
+* [修复使用`替换图片背景` 插件时 pdf 等区域背景颜色异常](https://github.com/mustakshif/Asri/issues/37)
+* [修复关系图搜索框不遮盖其余图标的问题](https://github.com/mustakshif/Asri/issues/41)
+
+<br />
+
+* [Redesigned the bottom bar, merging it with the status bar](https://github.com/mustakshif/Asri/issues/37)
+* [Redesigned the database tag color and appearance color combinations, maintaining consistent perceived lightness](https://github.com/mustakshif/Asri/issues/44)
+* Adjusted the style of block reference elements wrapped in the tag span element
+* Fine-tuned the background color of focused list items in pure grayscale mode
+* Optimized the display of highlighted text when search results are empty
+* Unified the border radius of database tags gloabally
+* [Fixed the background color missing in areas like PDF when using the `Background Cover` plugin](https://github.com/mustakshif/Asri/issues/37)
+* [Fixed the issue of the relation graph search bar not covering other icons](https://github.com/mustakshif/Asri/issues/41)
+
+---
+
 ### v3.0.2
 
 * 优化数据库搜索框样式
