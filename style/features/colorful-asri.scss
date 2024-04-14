@@ -22,6 +22,7 @@
         --asri-composite-background: oklch(from var(--asri-base-color) .985 .005 h);
         --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) 1 0 0);
         --asri-composite-tab-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .9 0 0);
+        --asri-composite-focusedlistitem-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) 0 0 0 / .07);
         --asri-composite-surface: oklch(from var(--asri-base-color) .94 .01 h);
         --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .96 0 0);
         --asri-composite-on-background: oklch(from var(--asri-base-color) .39 .03 h);
@@ -75,6 +76,7 @@
         --asri-composite-background: oklch(from var(--asri-base-color) .25 .01 h);
         --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .24 0 0);
         --asri-composite-tab-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .44 0 0);
+        --asri-composite-focusedlistitem-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) 1 0 0 / .1);
         --asri-composite-surface: oklch(from var(--asri-base-color) .34 .012 h);
         --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .34 0 0);
         --asri-composite-on-background: oklch(from var(--asri-base-color) .89 .01 h);
@@ -201,8 +203,9 @@
         border-color: rgb(from var(--b3-theme-accent) r g b / 0.5);
     }
 
+    // 账号背景图
     .config-account__cover[style="background-image: url()"] {
-        background-color: rgb(from var(--b3-theme-accent) r g b / 0.3) !important;
+        background-color: oklch(from var(--b3-theme-accent) l c h / 0.3) !important;
     }
 
     .protyle-wysiwyg [data-node-id] span[data-type~=search-mark].search-mark--hl {
@@ -214,10 +217,10 @@
     // other 
     .b3-list-item--focus {
         // background-color: oklch(from var(--b3-theme-primary) l c h / .2);
-        background-color: var(--asri-composite-tab-background-grayscale, oklch(from var(--b3-theme-primary) .5 calc(c * .9) h / .1)) !important;
+        background-color: var(--asri-composite-focusedlistitem-background-grayscale, oklch(from var(--b3-theme-primary) .5 calc(c * .9) h / .1)) !important;
 
         @include darkmode-counterpart {
-            background-color: var(--asri-composite-tab-background-grayscale, oklch(from var(--b3-theme-primary) .9 calc(c * .9) h / .13)) !important;
+            background-color: var(--asri-composite-focusedlistitem-background-grayscale, oklch(from var(--b3-theme-primary) .9 calc(c * .9) h / .13)) !important;
         }
     }
 
