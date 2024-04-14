@@ -262,7 +262,7 @@
             background-color: oklch(from var(--b3-font-background#{$i + 3}) 0.95 c h) !important;
 
             @include darkmode-counterpart {
-                color: oklch(0.89 0.08 calc(360 / 10 * #{ $i } + 30)) !important;
+                color: oklch(0.89 0.05 calc(360 / 10 * #{ $i } + 30)) !important;
                 background-color: oklch(from var(--b3-font-background#{$i + 3}) 0.35 c h) !important;
             }
         }        

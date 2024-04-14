@@ -701,22 +701,24 @@
     }
 
     function DoesLytDockbFloat() {
-        const layouts = asriDoms.layouts;
-        const lytDockb = layouts.querySelector('.layout__dockb');
+        if (!isMobile) {
+            const layouts = asriDoms.layouts;
+            const lytDockb = layouts.querySelector('.layout__dockb');
 
-        return layouts && lytDockb?.classList.contains('layout--float') && lytDockb?.style.height !== "0px";
+            return layouts && lytDockb?.classList.contains('layout--float') && lytDockb?.style.height !== "0px";
+        }
     }
     function addDockbClassName() {
         const dockbExist = hasDockb();
         const dockbFloat = DoesLytDockbFloat();
 
         asriDoms.toolbar?.nextElementSibling.classList.toggle('has-dockb', dockbExist);
-        asriDoms.toolbar?.nextElementSibling.classList.toggle('has-layout-dockb-float', (dockbFloat));
-        asriDoms.dockb.classList.toggle('has-layout-dockb-float', (dockbFloat));
+        asriDoms.toolbar?.nextElementSibling.classList.toggle('has-layout-dockb-float', dockbFloat);
+        asriDoms.dockb?.classList.toggle('has-layout-dockb-float', dockbFloat);
 
         pushUnique(asriClassNames, '.has-dockb');
         pushUnique(asriClassNames, '.has-layout-dockb-float');
-    }    
+    }
 
     addDockbClassName();
 
