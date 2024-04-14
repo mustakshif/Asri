@@ -980,6 +980,10 @@
 }
 
 #searchList {
+    mark {
+        background-color: transparent;
+    }
+
     [data-type="search-item"] {
         flex-wrap: wrap;
         padding: 4px;

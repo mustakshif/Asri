@@ -269,15 +269,18 @@
         background-color: transparent;
         border-bottom: none;
         text-decoration: underline;
-        @include theme-variant-color(text-decoration-color, font-color5);
-        // text-decoration-color: var(--b3-font-color5);
         transition-property: background-color, text-decoration-color, box-shadow, color, border-radius;
         transition-duration: .15s;
         // transition: .15s;
         box-decoration-break: clone;
+        text-decoration-color: #FFCC02;
+
+        @include darkmode-counterpart {
+            text-decoration-color: #FED709;
+        }
 
         &:hover {
-            --memo-bg: #{mix(map-get($theme-light, font-color5), map-get($theme-light, background))};
+            --memo-bg: #FFE680;
             background-color: var(--memo-bg);
             box-shadow: 0 0 0 8px var(--memo-bg);
             text-decoration-color: var(--memo-bg) !important;
@@ -293,7 +296,7 @@
 
             @include darkmode-counterpart {
                 // box-shadow: 0 -1.2em 0 0 inset mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%);
-                --memo-bg: #{mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%)};
+                --memo-bg: #DDBA0D;
 
                 color: var(--b3-theme-background) !important;
             }

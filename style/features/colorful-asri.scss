@@ -63,6 +63,11 @@
         --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / .18);
 
         --b3-protyle-code-background: oklch(from var(--b3-theme-surface) .9 c h / .5);
+
+        @for $i from 1 through 10 {
+            --b3-font-color#{$i + 3}: oklch(0.6 0.23 calc(360 / 10 * #{ $i } + 30));
+            --b3-font-background#{$i + 3}: oklch(0.97 0.05 calc(360 / 10 * #{ $i } + 30));
+        }
     }
 
     :root[data-theme-mode='dark'] {
@@ -116,6 +121,11 @@
         --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / .18);
 
         --b3-protyle-code-background: oklch(from var(--b3-theme-surface) .4 c h / .6);
+
+        @for $i from 1 through 10 {
+            --b3-font-color#{$i + 3}: oklch(0.83 0.17 calc(360 / 10 * #{ $i } + 30));
+            --b3-font-background#{$i + 3}: oklch(0.35 0.05 calc(360 / 10 * #{ $i } + 30));
+        }
     }
 
     // asri config menu
@@ -203,7 +213,6 @@
         border-color: rgb(from var(--b3-theme-accent) r g b / 0.5);
     }
 
-    // 账号背景图
     .config-account__cover[style="background-image: url()"] {
         background-color: oklch(from var(--b3-theme-accent) l c h / 0.3) !important;
     }
@@ -244,5 +253,33 @@
     .toolbarButton.toggled,
     .secondaryToolbarButton.toggled {
         color: var(--b3-theme-accent);
+    }
+    
+    // database chips
+    @for $i from 1 through 10 {
+        .b3-chip[style="background-color:var(--b3-font-background#{$i + 3});color:var(--b3-font-color#{$i + 3})"] {
+            color: oklch(0.4 0.1 calc(360 / 10 * #{ $i } + 30)) !important;
+            background-color: oklch(from var(--b3-font-background#{$i + 3}) 0.95 c h) !important;
+
+            @include darkmode-counterpart {
+                color: oklch(0.89 0.08 calc(360 / 10 * #{ $i } + 30)) !important;
+                background-color: oklch(from var(--b3-font-background#{$i + 3}) 0.35 c h) !important;
+            }
+        }        
+    }
+
+    @for $i from 1 through 3 {
+        .b3-chip[style="background-color:var(--b3-font-background#{$i});color:var(--b3-font-color#{$i})"] {
+            color: oklch(from var(--b3-font-color#{$i}) 0.4 c h) !important;
+
+            @include darkmode-counterpart {
+                color: oklch(from var(--b3-font-color#{$i}) 0.89 c h) !important;
+            }
+        }
+    }
+
+    .b3-chip[style="background-color:var(--b3-font-background1);color:var(--b3-font-color1)"] {
+        outline: 1px solid var(--b3-border-color-trans);
+        outline-offset: -1px;
     }
 }

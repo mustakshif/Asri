@@ -263,7 +263,7 @@ textarea {
     margin: 0 -8px;
     line-height: 1.5;
     font-family: var(--b3-font-family-code);
-    background-color: mix(map-get($theme-light, font-color5), map-get($theme-light, background));
+    background-color: #FFE680;
     border-radius: 4px;
     backdrop-filter: none;
     color: pickThemeColor($theme-light, on-background, 0.7);
@@ -276,7 +276,7 @@ textarea {
     pointer-events: all; // https://ld246.com/article/1709825939240
 
     @include darkmode-counterpart {
-        background-color: mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%);
+        background-color: #DDBA0D;
         color: pickThemeColor($theme-dark, background, 0.7);
     }
 

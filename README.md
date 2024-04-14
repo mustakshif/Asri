@@ -108,17 +108,13 @@ Applied to document blocks:
 
 | Attribute | Value |
 | --- | --- |
-| `afwd` | `all`         |
-| `afwd` | `p sb iframe` |
-| `afwd` | `db`          |
-| `afwd` | ...   |
+| `afwd` | `all` / `p sb iframe` / `db t` / ... |
 
 Applied to supported content blocks:
 
 | Attribute | Value |
 | --- | --- |
-| `afwd` | `on`   |
-| `afwd` | `off`  |
+| `afwd` | `on` / `off` |
 
 In addition to adding custom attributes by <kbd>shift + click block icon</kbd> - <kbd>Custom</kbd>, you can also use the `Attribute Quick Add` plugin to quickly add this attribute to supported blocks. Here is a configuration example of the plugin:
 
@@ -169,7 +165,7 @@ The theme development process drew inspiration from the following themes, and I 
 | Reference Content | From Theme | Developer |
 | --- | --- | --- |
 | - Menu background blur | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark) | [Crowds21](https://github.com/chenshinshi) |
-| - Toolbar hiding<br />- Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)           |
+| - Toolbar hiding<br />- Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu<br />- bottom dock & status bar mergence | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)           |
 | - Topbar-tabbar mergence<br />- File tree indent guides<br />- MutationObserver related functions | [Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
 
 （The order in the list above does not imply any ranking）
