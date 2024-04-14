@@ -24,7 +24,7 @@
     }
 
     &#dockLeft {
-        --border-clr:var(--b3-border-color);
+        --border-clr: var(--b3-border-color);
         // box-shadow: 1px var(--toolbar-height) 0 var(--border-clr);
         // border:none;
         // padding-left: 1px;
@@ -33,7 +33,7 @@
     }
 
     &#dockRight {
-        --border-clr:var(--b3-border-color);
+        --border-clr: var(--b3-border-color);
         // box-shadow: -1px var(--toolbar-height) 0 var(--border-clr);
         // border: none;
         border-left-width: 1px;
@@ -61,26 +61,35 @@
             margin: 7px 3.5px;
         }
 
-        .fn__flex-1 {
-            flex: 0 0 15px;
-        }
-
         .dock__item--pin {
             position: fixed;
             left: 3.5px;
             opacity: 1;
         }
 
-        .fn__flex:last-child:not(:empty) {
-            &::before {
-                content: "";
-                display: block;
-                background-color: var(--b3-border-color-trans);
-                height: 20px;
-                width: 2px;
-                margin-top: 10px;
-                transform: translateX(-7.5px);
-                border-radius: 2px;
+        &.has-layout-dockb-float {
+            .fn__flex:last-child .dock__item:last-child {
+                margin-right: 8px;
+            }
+        }
+
+        &:not(.has-layout-dockb-float) {
+            .fn__flex-1 {
+                flex: 0 0 15px;
+            }
+
+            .fn__flex:last-child:not(:empty) {
+
+                &::before {
+                    content: "";
+                    display: block;
+                    background-color: var(--b3-border-color-trans);
+                    height: 20px;
+                    width: 2px;
+                    margin-top: 10px;
+                    transform: translateX(-7.5px);
+                    border-radius: 2px;
+                }
             }
         }
     }
@@ -89,8 +98,9 @@
         // -> js
         background-color: var(--b3-theme-surface);
 
-        &#dockLeft, &#dockRight {
-            --border-clr:transparent;
+        &#dockLeft,
+        &#dockRight {
+            --border-clr: transparent;
         }
     }
 }

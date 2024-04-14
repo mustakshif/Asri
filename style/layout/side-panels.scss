@@ -164,19 +164,19 @@
     }
 }
 
-.fn__flex-1.has-dockb {
+// .fn__flex-1.has-dockb {
 
-    // -> js
-    .layout__dockl,
-    .layout__dockr {
+//     // -> js
+//     .layout__dockl,
+//     .layout__dockr {
 
-        // 浮动布局
-        &.layout--float {
-            height: calc(100% - var(--toolbar-height) - 42px - var(--status-height, 32px));
-            top: var(--toolbar-height);
-        }
-    }
-}
+//         // 浮动布局
+//         &.layout--float {
+//             height: calc(100% - var(--toolbar-height) - 42px - var(--status-height, 32px));
+//             top: var(--toolbar-height);
+//         }
+//     }
+// }
 
 .layout__dockb {
     .layout-tab-container {
@@ -190,13 +190,15 @@
         box-shadow: none;
         opacity: 1 !important;
 
-        .fn__flex-1.has-dockb &:not([style*="transform"]) {
-            bottom: calc(10px + max(var(--status-height, 32px), 32px) - 1px) !important;
+        .fn__flex-1:not(has-dockb).has-layout-dockb-float &:not([style*="transform"]) {
+            bottom: calc(var(--status-height, 32px) - 1px) !important;
+        }
+        .fn__flex-1.has-dockb.has-layout-dockb-float &:not([style*="transform"]) {
+            bottom: calc(42px + var(--status-height, 32px) - 1px) !important;
         }
 
         &[style*="bottom: 26px"] {
             bottom: 0 !important;
-            z-index: 3 !important;
 
             .layout-tab-container {
                 padding-bottom: 32px;
@@ -547,4 +549,9 @@
     // body.body--win32:not(.hadeeth-pin-toolbar) & {
     //     padding-right: 10px;
     // }
+}
+
+//侧栏搜索框
+.block__icons .search__label:not(.fn__none)~.block__icon {
+    opacity: 0 !important;
 }

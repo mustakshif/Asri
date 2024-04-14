@@ -5,7 +5,7 @@
     position: fixed;
 }
 
-#dockBottom.fn__none~#status {
+#dockBottom.fn__none:not(.has-layout-dockb-float)~#status {
     body:not(.body--mobile) & {
         background-color: var(--b3-theme-surface);
         right: 8px;
@@ -128,7 +128,8 @@
     }
 }
 
-#dockBottom:not(.fn__none)~#status {
+#dockBottom:not(.fn__none)~#status,
+#dockBottom.fn__none.has-layout-dockb-float~#status {
     background-color: transparent;
     border-top-color: transparent;
     padding: 0 32px 0 6px;
@@ -140,6 +141,7 @@
         right: 6px;
         z-index: 8;
         color: var(--b3-theme-on-background);
+        transition: none;
 
         &::before {
             right: unset !important;
@@ -166,6 +168,24 @@
     .status__backgroundtask {
         align-self: center;
     }
+}
+
+#dockBottom.has-layout-dockb-float~#status {
+    // background-color: var(--b3-theme-background);
+    position: static;
+    padding-right: 34px;
+    max-width: unset !important;
+    transform: none !important;
+
+    #barDock {
+        right: 8px;
+        transition: none;
+    }
+}
+
+#dockBottom.has-layout-dockb-float.fn__none ~ #status {
+    border-top-color: var(--b3-border-color);
+    border-top-width: 1px;
 }
 
 body.body--window #status {
