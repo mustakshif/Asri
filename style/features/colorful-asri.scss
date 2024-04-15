@@ -257,7 +257,7 @@
     
     // database chips
     @for $i from 1 through 10 {
-        .b3-chip[style="background-color:var(--b3-font-background#{$i + 3});color:var(--b3-font-color#{$i + 3})"] {
+        .b3-chip[style*="background-color:var(--b3-font-background#{$i + 3});color:var(--b3-font-color#{$i + 3})"] {
             color: oklch(0.4 0.1 calc(360 / 10 * #{ $i } + 30)) !important;
             background-color: oklch(from var(--b3-font-background#{$i + 3}) 0.95 c h) !important;
 
@@ -278,7 +278,7 @@
         }
     }
 
-    .b3-chip[style="background-color:var(--b3-font-background1);color:var(--b3-font-color1)"] {
+    .b3-chip[style*="background-color:var(--b3-font-background1);color:var(--b3-font-color1)"] {
         outline: 1px solid var(--b3-border-color-trans);
         outline-offset: -1px;
     }

@@ -368,6 +368,10 @@ img.av__cellassetimg {
     .b3-menu__label {
         .b3-chip {
             border-radius: 4px;
+
+            &[data-color] {
+                border-radius: 99px;
+            } // 筛选菜单中的数据库标签
         }
     }
 
