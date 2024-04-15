@@ -77,13 +77,13 @@
         --asri-fallback-background: #1e1e1e;
         --asri-fallback-surface: #383838;
         --asri-fallback-on-background: #dcdcdc;
-        --asri-composite-background: oklch(from var(--asri-base-color) .25 calc(.01 * var(--asri-c-factor)) h);
+        --asri-composite-background: oklch(from var(--asri-base-color) .25 calc(.01 * var(--asri-c-factor, 1)) h);
         --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .24 0 0);
         --asri-composite-tab-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .44 0 0);
         --asri-composite-focusedlistitem-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) 1 0 0 / .1);
-        --asri-composite-surface: oklch(from var(--asri-base-color) .34 calc(.012 * var(--asri-c-factor)) h);
+        --asri-composite-surface: oklch(from var(--asri-base-color) .34 calc(.012 * var(--asri-c-factor, 1)) h);
         --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .34 0 0);
-        --asri-composite-on-background: oklch(from var(--asri-base-color) .89 calc(.01 * var(--asri-c-factor)) h);
+        --asri-composite-on-background: oklch(from var(--asri-base-color) .89 calc(.01 * var(--asri-c-factor, 1)) h);
         --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .89 0 0);
 
         // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h);

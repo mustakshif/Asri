@@ -224,11 +224,10 @@
                 colorPicker.id = 'asriColorPicker';
 
                 // check local configs to determine the initial state of the menu items
-                if (followSysAccentColor) followSysAccentBtn.classList.add('b3-menu__item--selected'), pickColorBtn.classList.remove('b3-menu__item--selected');
-                else followSysAccentBtn.classList.remove('b3-menu__item--selected'), pickColorBtn.classList.add('b3-menu__item--selected');
+                followSysAccentBtn.classList.toggle('b3-menu__item--selected', followSysAccentColor);
+                pickColorBtn.classList.toggle('b3-menu__item--selected', !followSysAccentColor);
 
-                if (useGrayScale) useGrayScaleBtn.classList.add('b3-menu__item--selected');
-                else useGrayScaleBtn.classList.remove('b3-menu__item--selected');
+                useGrayScaleBtn.classList.toggle('b3-menu__item--selected', useGrayScale);
 
                 // handle click events
                 if (isInBrowser || isMobile || isLinux) {
@@ -236,28 +235,19 @@
                     followSysAccentBtn.classList.add('fn__none');
                 } else {
                     followSysAccentBtn.addEventListener('click', () => {
-                        if (!followSysAccentColor) {
-                            followSysAccentBtn.classList.add('b3-menu__item--selected');
-                            pickColorBtn.classList.remove('b3-menu__item--selected');
-                            document.documentElement.style.removeProperty('--asri-user-custom-accent');
-                            getSystemAccentColor();
+                        const accentColor = followSysAccentColor ? sysAccentColor : userCustomColor || '#3478f6';
+                        const shouldUseGrayscale = hexToHSL(sysAccentColor).s === 0 && !useGrayScale;
 
-                            if (hexToHSL(sysAccentColor).s == 0) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
-                            else if (!useGrayScale) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
+                        document.documentElement.style.setProperty('--asri-user-custom-accent', accentColor);
+                        if (shouldUseGrayscale) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
+                        else document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
 
-                            followSysAccentColor = true;
-                            asriConfigs.followSysAccentColor = '1';
-                            updateAsriConfigs();
-                        } else {
-                            followSysAccentBtn.classList.remove('b3-menu__item--selected');
-                            pickColorBtn.classList.add('b3-menu__item--selected');
-                            document.documentElement.style.setProperty('--asri-user-custom-accent', userCustomColor || sysAccentColor || '#3478f6');
-                            if (!useGrayScale) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
+                        followSysAccentBtn.classList.toggle('b3-menu__item--selected', followSysAccentColor);
+                        pickColorBtn.classList.toggle('b3-menu__item--selected', !followSysAccentColor);
 
-                            followSysAccentColor = false;
-                            asriConfigs.followSysAccentColor = '0';
-                            updateAsriConfigs();
-                        }
+                        followSysAccentColor = followSysAccentBtn.classList.contains('b3-menu__item--selected');
+                        asriConfigs.followSysAccentColor = followSysAccentColor ? '1' : '0';
+                        updateAsriConfigs();
                     });
                 }
 
