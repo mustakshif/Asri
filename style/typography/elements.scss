@@ -245,11 +245,6 @@
             //     color: change-color($color: pickThemeColor($theme-dark, secondary), $lightness: 70%);
             // }
         }
-
-        @include darkmode-counterpart {
-            // --tag-color: #{mix(map-get($theme-dark, background), map-get($theme-dark, font-color4), 20%)};
-            --tag-color: #{change-color(map-get($theme-dark, font-color4), $lightness: 40%)};
-        }
     }
 }
 

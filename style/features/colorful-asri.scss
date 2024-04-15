@@ -5,12 +5,11 @@
 // accent-grayscale 仅在系统强调色饱和度为 0 时可用
 // --b3-theme-accent 是一个新的 UI 色，用于突出元素（如激活状态图标）；
 
-// --asri-sys-accent, --asri-sys-accent-accessible and --asri-sys-accent-grayscale are 3 base colors gotten from js
-// accent-accessible is the same as accent, but is available only when the saturation of system accent color is greater than 0.3 (in hsl); otherwise, a fallback color is used;
-// accent-grayscale is available only when the saturation of system accent color is 0 (in hsl);
-// --b3-theme-accent is a new UI color for accented elements, like activated icons;
+// --asri-c-factor: [0, 5], 面板色饱和度倍数，默认为1；
+// --asri-h-shift: [-180, 180], 主题色色相偏移，默认为0；
 
-@supports (color: oklch(from red calc(l * 0.5) 0 h)) {
+
+@supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
     :root[data-theme-mode='light'] {
         --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
         --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .67 .2 h);
@@ -19,13 +18,13 @@
         --asri-fallback-background: #fff;
         --asri-fallback-surface: #f0f0f0;
         --asri-fallback-on-background: #454545;
-        --asri-composite-background: oklch(from var(--asri-base-color) .985 .005 h);
+        --asri-composite-background: oklch(from var(--asri-base-color) .985 calc(.005 * var(--asri-c-factor, 1)) h);
         --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) 1 0 0);
         --asri-composite-tab-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .9 0 0);
         --asri-composite-focusedlistitem-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) 0 0 0 / .07);
-        --asri-composite-surface: oklch(from var(--asri-base-color) .94 .01 h);
+        --asri-composite-surface: oklch(from var(--asri-base-color) .94 calc(.01 * var(--asri-c-factor, 1)) h);
         --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .96 0 0);
-        --asri-composite-on-background: oklch(from var(--asri-base-color) .39 .03 h);
+        --asri-composite-on-background: oklch(from var(--asri-base-color) .39 calc(.03 * var(--asri-c-factor, 1)) h);
         --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .39 0 0);
 
         // UI colors
@@ -78,13 +77,13 @@
         --asri-fallback-background: #1e1e1e;
         --asri-fallback-surface: #383838;
         --asri-fallback-on-background: #dcdcdc;
-        --asri-composite-background: oklch(from var(--asri-base-color) .25 .01 h);
+        --asri-composite-background: oklch(from var(--asri-base-color) .25 calc(.01 * var(--asri-c-factor)) h);
         --asri-composite-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .24 0 0);
         --asri-composite-tab-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .44 0 0);
         --asri-composite-focusedlistitem-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) 1 0 0 / .1);
-        --asri-composite-surface: oklch(from var(--asri-base-color) .34 .012 h);
+        --asri-composite-surface: oklch(from var(--asri-base-color) .34 calc(.012 * var(--asri-c-factor)) h);
         --asri-composite-surface-grayscale: oklch(from var(--asri-sys-accent-grayscale) .34 0 0);
-        --asri-composite-on-background: oklch(from var(--asri-base-color) .89 .01 h);
+        --asri-composite-on-background: oklch(from var(--asri-base-color) .89 calc(.01 * var(--asri-c-factor)) h);
         --asri-composite-on-background-grayscale: oklch(from var(--asri-sys-accent-grayscale) .89 0 0);
 
         // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h);

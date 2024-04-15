@@ -189,6 +189,7 @@
             >.fn__flex-column>.b3-menu__item[data-type="nobg"]:first-child {
                 border-radius: 0;
                 margin: 0;
+                padding: 8px 8px 0; // v3.0.4
 
                 +.fn__hr {
                     background-color: var(--b3-menu-background);
