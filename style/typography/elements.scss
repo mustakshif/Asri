@@ -881,9 +881,8 @@
         }
     }
 
-
     &__icon {
-        top: 50% !important;
+        top: calc(1.2em + 16px) !important; // fix https://github.com/mustakshif/Asri/issues/45 
     }
 }
 
