@@ -141,13 +141,6 @@
             cursor: default;
         }
 
-        #followSysAccent,
-        #useGrayScale {
-            input {
-                display: none;
-            }
-        }
-
         #followSysAccent {
             &.b3-menu__item--selected {
                 svg {
@@ -182,11 +175,19 @@
         }
 
         #followSysAccent,
-        #useGrayScale,
         #pickColor {
             label {
                 cursor: pointer;
             }
+        }
+
+        #asriChroma {
+
+            
+        }
+
+        #asriChromaSlider {
+            cursor: pointer;
         }
     }
 
