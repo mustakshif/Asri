@@ -78,7 +78,7 @@
     box-sizing: border-box;
     border: 1px solid transparent;
 
-    .b3-menu__item--current & {
+    .b3-menu__item--current>.b3-menu__label & {
         border: 1px solid #ffffff90;
     }
 
@@ -86,7 +86,7 @@
         border: 1px solid var(--b3-border-color-trans);
     }
 
-    @include theme-variant-color(background-color, on-surface-gray, 0.5);
+    background-color: #7f7f7f66;
 
     // 关闭状态指示点
     &::after {

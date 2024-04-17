@@ -114,13 +114,13 @@
         }
     }
 
-    let asriConfigs = {
+    const asriConfigs = {
         followSysAccentColor: "1",
         chroma: "1",
         userCustomColor: ""
     };
 
-    let sysAccentColor, followSysAccentColor;
+    let sysAccentColor, followSysAccentColor, isGrayScale;
 
     if (!isIOSApp) { // fix crash on iPad
         async function getAsriConfigs() {
@@ -141,7 +141,22 @@
         }
 
         getAsriConfigs().then(() => {
-            supportsOklch && customizeThemeColor();
+            if (supportsOklch) {
+                // check local configs to set initial theme color
+                if (!(isInBrowser || isMobile || isLinux)) {
+                    if (followSysAccentColor) document.documentElement.style.removeProperty('--asri-user-custom-accent');
+                    else document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.userCustomColor);
+                } else {
+                    document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.userCustomColor);
+                }
+
+                document.documentElement.style.setProperty('--asri-c-factor', asriConfigs.chroma);
+
+                handleGrayScale(asriConfigs.chroma);
+
+                customizeThemeColor();
+                getSystemAccentColor();
+            }
         });
 
         async function updateAsriConfigs() {
@@ -168,22 +183,6 @@
                 },
             }
 
-            // check local configs to set initial theme color
-            if (!(isInBrowser || isMobile || isLinux)) {
-                if (followSysAccentColor) document.documentElement.style.removeProperty('--asri-user-custom-accent');
-                else document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.userCustomColor);
-
-                // if (asriChroma || (hexToHSL(sysAccentColor).s == 0 && followSysAccentColor)) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
-                // else document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
-            } else {
-                document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.userCustomColor);
-
-                // if (asriChroma) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
-                // else document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
-            }
-
-            document.documentElement.style.setProperty('--asri-c-factor', asriConfigs.chroma);
-
             // create menu items and handle click events
             setTimeout(() => {
                 // use existing menu items if any
@@ -192,23 +191,6 @@
                 const barModeMenuItems = document.querySelector('#commonMenu[data-name="barmode"] .b3-menu__items');
                 if (!barModeMenuItems) return;
 
-                // const asriConfigElId = ['pickColor', 'followSysAccent', 'asriChroma'];
-                // const separator = document.createElement('button');
-                // const asriConfigFrag = new DocumentFragment();
-                // asriConfigElId.forEach(id => {
-                //     const btn = document.createElement('button');
-                //     btn.id = id;
-                //     btn.classList.add('b3-menu__item', 'asri-config');
-                //     btn.innerHTML = `
-                //         <svg class="b3-menu__icon"></svg>
-                //         <label class="b3-menu__label">${(lang === 'zh_CN' || lang === 'zh_CHT') ? i18nMenuItems[lang][id] : i18nMenuItems['en_US'][id]}</label>
-                //         <input type="color" value="${userCustomColor}">
-                //     `;
-                //     asriConfigFrag.append(btn);
-                // });
-
-                // separator.classList.add('b3-menu__separator', 'asri-config');
-                // asriConfigFrag.insertBefore(separator, asriConfigFrag.firstChild);
                 const asriConfigMenuHTML = `<button class="b3-menu__separator asri-config"></button>
                 <button class="b3-menu__item asri-config" id="pickColor">
                     <svg class="b3-menu__icon"></svg>
@@ -228,7 +210,6 @@
                     <input style="box-sizing: border-box" type="range" id="asriChromaSlider" class="b3-slider fn__block" min="0" max="5" step="0.1" value="1">
                 </div>
                 </button>`;
-                // asriConfigFrag.append(asriConfigMenuHTML);
                 const asriConfigFrag = document.createRange().createContextualFragment(asriConfigMenuHTML);
                 const asriChromaAriaLabelPrefix = (lang === 'zh_CN' || lang === 'zh_CHT') ?
                     i18nMenuItems[lang]['asriChroma'] : i18nMenuItems['en_US']['asriChroma'];
@@ -241,16 +222,11 @@
                 asriChromaSlider = document.getElementById('asriChromaSlider');
                 colorPicker = pickColorBtn.lastElementChild;
 
-                // pickColorBtn.querySelector('label').setAttribute('for', 'asriColorPicker');
-                // colorPicker.id = 'asriColorPicker';
-
                 // check local configs to determine the initial state of the menu items
                 followSysAccentBtn.classList.toggle('b3-menu__item--selected', followSysAccentColor);
                 pickColorBtn.classList.toggle('b3-menu__item--selected', !followSysAccentColor);
                 asriChromaSlider.value = asriConfigs.chroma || "1";
                 asriChromaSlider.parentElement.ariaLabel = asriChromaAriaLabelPrefix + asriConfigs.chroma;
-
-                // asriChromaSlider.classList.toggle('b3-menu__item--selected', asriChroma);
 
                 // handle click events
                 if (isInBrowser || isMobile || isLinux) {
@@ -262,15 +238,17 @@
                             followSysAccentBtn.classList.add('b3-menu__item--selected');
                             pickColorBtn.classList.remove('b3-menu__item--selected');
                             document.documentElement.style.removeProperty('--asri-user-custom-accent');
-                            getSystemAccentColor();
 
                             followSysAccentColor = true;
                             asriConfigs.followSysAccentColor = '1';
+                            getSystemAccentColor();
                             updateAsriConfigs();
                         } else {
                             followSysAccentBtn.classList.remove('b3-menu__item--selected');
                             pickColorBtn.classList.add('b3-menu__item--selected');
                             document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.userCustomColor || sysAccentColor || '#3478f6');
+
+                            handleGrayScale(asriConfigs.chroma);
 
                             followSysAccentColor = false;
                             asriConfigs.followSysAccentColor = '0';
@@ -286,6 +264,8 @@
                         pickColorBtn.classList.add('b3-menu__item--selected');
 
                         document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.userCustomColor);
+
+                        handleGrayScale(asriConfigs.chroma);
 
                         asriConfigs.userCustomColor = asriConfigs.userCustomColor;
                         followSysAccentColor = false;
@@ -311,25 +291,11 @@
                     document.documentElement.style.setProperty('--asri-c-factor', chromaValue);
                     this.parentElement.ariaLabel = asriChromaAriaLabelPrefix + chromaValue;
                     asriConfigs.chroma = chromaValue;
+
+                    handleGrayScale(chromaValue);
+
                     debounceChramaValueSaving();
                 });
-                // asriChromaSlider.addEventListener('click', () => {
-                //     if (!asriChroma) {
-                //         asriChromaSlider.classList.add('b3-menu__item--selected');
-                //         document.documentElement.style.setProperty('--asri-sys-accent-grayscale', '#000000');
-
-                //         asriChroma = true;
-                //         asriConfigs.asriChroma = '1';
-                //         updateAsriConfigs();
-                //     } else {
-                //         asriChromaSlider.classList.remove('b3-menu__item--selected');
-                //         if (!(followSysAccentColor && hexToHSL(sysAccentColor)?.s === 0)) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
-
-                //         asriChroma = false;
-                //         asriConfigs.asriChroma = '0';
-                //         updateAsriConfigs();
-                //     }
-                // });
             }, 0);
         }
 
@@ -347,9 +313,6 @@
                     if (accentHSLObj.s > 0.28) document.documentElement.style.setProperty('--asri-sys-accent-accessible', accentHex);
                     else document.documentElement.style.removeProperty('--asri-sys-accent-accessible');
 
-                    // if (accentHSLObj.s === 0) document.documentElement.style.setProperty('--asri-sys-accent-grayscale', accentHex);
-                    // else if (!asriChroma) document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
-
                     document.body.classList.add('asri-mode-transition');
                     setTimeout(() => {
                         document.body.classList.remove('asri-mode-transition');
@@ -357,9 +320,10 @@
 
                     sysAccentColor = accentHex;
                 }
+
+                followSysAccentColor && !isGrayScale && handleGrayScale(accentHSLObj.s);
             }
         }
-        supportsOklch && getSystemAccentColor();
         function hexToHSL(hex) {
             if (!hex) {
                 return;
@@ -402,6 +366,25 @@
                 s: saturation,
                 l: lightness
             };
+        }
+    }
+
+    /**
+     * decide if use grayscale or not, if so return true, otherwise return false
+     * @param {string | number} chroma 
+     * @returns boolean
+     */
+    function handleGrayScale(chroma) {
+        chromaValue = String(chroma);
+        if (chromaValue === '0') {
+            document.documentElement.style.setProperty('--asri-c-0', '0');
+            isGrayScale = true;
+            return true;
+        }
+        else {
+            document.documentElement.style.removeProperty('--asri-c-0');
+            isGrayScale = false;
+            return false;
         }
     }
 
@@ -1322,6 +1305,8 @@
         document.documentElement.style.removeProperty('--asri-sys-accent-accessible');
         document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
         document.documentElement.style.removeProperty('--asri-user-custom-accent');
+        document.documentElement.style.removeProperty('--asri-c-factor');
+        document.documentElement.style.removeProperty('--asri-c-0');
         document.querySelectorAll('.dock').forEach(dock => {
             dock.style.removeProperty('--border-clr');
         })

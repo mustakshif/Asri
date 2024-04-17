@@ -144,21 +144,18 @@
                             height: 1em;
                             display: inline-block;
                             background-color: var(--b3-theme-on-surface);
+                            mask-image: url(img/assetIcon.svg);
                             mask-size: 100% 100%;
                             vertical-align: -2px;
                             margin-right: 0.2em;
                         }
 
                         &[data-url^="http"]::before {
-                            mask-image: url(img/linkIcon.svg);
-                        }
-
-                        &[data-url^="assets"]::before {
-                            mask-image: url(img/assetIcon.svg);
+                            mask-image: url(img/outerLinkIcon.svg);
                         }
 
                         &[data-url^="siyuan"]::before {
-                            display: none;
+                            mask-image: url(img/syLinkIcon.svg);
                         }
                     }
                 }
