@@ -79,12 +79,13 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 ## 主题配置
 
 ### 🌈 自定义主题色
+![asri config menu](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/asri-config-menu_zh_CN.png)
 
 点击右上角 `外观模式` 图标即可弹出 Asri 主题配置菜单，定制主题配色：
 
 * `自定义主题色`：使用自选色作为主题基准色，生成相应配色方案并直接应用
 * `跟随系统强调色`：使用系统强调色作为主题基准色，`Windows` 和 `macOS` 桌面端默认启用，其他平台此选项不可见
-* `启用纯灰度中性色`：页面背景和普通文本的颜色使用纯灰度色（即黑白灰），不随主题色进行色相偏移，默认不启用
+* `色度滑块`：调整背景和普通文本的色彩浓度，取值范围为 0-5，0 表示纯灰度色，默认值为 1
 
 ### 📐 自定义属性
 

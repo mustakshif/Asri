@@ -79,12 +79,13 @@ Check all updates [here](./CHANGELOG.md).
 ## Theme Configurations
 
 ### 🌈 Customizing Theme Colors
+![asri config menu](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/asri-config-menu_en_US.png)
 
 Click on the `Appearance Mode` icon in the top right corner to open the Asri theme configuration menu and customize the theme colors:
 
 * `Customize theme color`: Use a custom color as the base color for the theme and apply a corresponding color scheme directly based on it.
 * `Follow system accent color`: Use the system's accent color as the base theme color. This option is enabled by default on `Windows` and `macOS` desktop platforms, and not visible on other platforms.
-* `Use grayscale neutral colors`: Use pure grayscale colors (black, white, and shades of gray) for the background and regular text color, without any hue shift based on the theme color. This option is not enabled by default.
+* `Chroma slider`: Adjust the chroma of backgrounds and regular texts, with a range of 0-5, where 0 represents pure grayscale. The default value is 1.
 
 ### 📐 Custom Attributes
 
