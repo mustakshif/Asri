@@ -1,12 +1,12 @@
 @use '../base' as *;
 
-// --asri-sys-accent、 --asri-sys-accent-accessible 和 --asri-sys-accent-grayscale 是用 JavaScript 中获取的三种基础颜色
+// --asri-sys-accent、 --asri-sys-accent-accessible是用 JavaScript 获取的基础颜色
 // accent-accessible 跟 accent 相同，但仅当系统强调色（在 HSL 色彩空间中）的饱和度大于 0.3 时可用，否则使用备选颜色；
-// accent-grayscale 仅在系统强调色饱和度为 0 时可用
-// --b3-theme-accent 是一个新的 UI 色，用于突出元素（如激活状态图标）；
+// --b3-theme-accent 是一个新的 UI 色，用于突出和区分元素（如激活状态的图标）；
 
-// --asri-c-factor: [0, 5], 面板色饱和度倍数，默认为1；
-// --asri-h-shift: [-180, 180], 主题色色相偏移，默认为0；
+// --asri-c-factor: [0, 5], 面板色色度系数，默认为 1；
+// --asri-c-0: =0/1，色度为 0 时为 0，默认为 1；
+// --asri-h-shift: [-180, 180], 主题色色相偏移，默认为 0；
 
 
 @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
@@ -222,19 +222,19 @@
     // other 
     .b3-list-item--focus {
         // background-color: oklch(from var(--b3-theme-primary) l c h / .2);
-        background-color: oklch(from var(--b3-theme-primary) .5 calc(c * .9) h / .1) !important;
+        background-color: oklch(from var(--b3-theme-primary) .5 calc(c * .9 * var(--asri-c-0, 1)) h / .1) !important;
 
         @include darkmode-counterpart {
-            background-color: oklch(from var(--b3-theme-primary) .9 calc(c * .9) h / .13) !important;
+            background-color: oklch(from var(--b3-theme-primary) .9 calc(c * .9 * var(--asri-c-0, 1)) h / .13) !important;
         }
     }
 
     .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
     .layout-tab-bar .item--focus {
-        background-color: oklch(from var(--b3-theme-primary) .43 calc(c * .9) h / .2);
+        background-color: oklch(from var(--b3-theme-primary) .43 calc(c * .9 * var(--asri-c-0, 1)) h / .2);
 
         @include darkmode-counterpart {
-            background-color: oklch(from var(--b3-theme-primary) .99 calc(c * .9) h / .21);
+            background-color: oklch(from var(--b3-theme-primary) .99 calc(c * .9 * var(--asri-c-0, 1)) h / .21);
         }
     }
 
@@ -277,5 +277,9 @@
     .b3-chip[style*="background-color:var(--b3-font-background1);color:var(--b3-font-color1)"] {
         outline: 1px solid var(--b3-border-color-trans);
         outline-offset: -1px;
+    }
+
+    .b3-switch {
+        background-color: oklch(from var(--b3-theme-on-background) .6 c h / .5);
     }
 }

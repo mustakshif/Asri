@@ -40,6 +40,7 @@
 
                 .item__graphic {
                     line-height: unset;
+
                     .body--mac & {
                         font-size: 15px;
                     }
@@ -120,6 +121,45 @@
 
                     &:hover {
                         color: var(--b3-theme-on-background);
+                    }
+
+                    &.av__celltext--url {
+                        // 资源列超链接或资源链接
+                        text-decoration: none;
+                        background-color: transparent;
+                        outline: 1px solid var(--b3-border-color-trans);
+                        outline-offset: -1px;
+
+                        &:hover {
+                            outline-color: var(--b3-theme-primary-lighter);
+
+                            &::before {
+                                background-color: var(--b3-theme-primary);
+                            }
+                        }
+
+                        &::before {
+                            content: "";
+                            width: 1em;
+                            height: 1em;
+                            display: inline-block;
+                            background-color: var(--b3-theme-on-surface);
+                            mask-size: 100% 100%;
+                            vertical-align: -2px;
+                            margin-right: 0.2em;
+                        }
+
+                        &[data-url^="http"]::before {
+                            mask-image: url(img/linkIcon.svg);
+                        }
+
+                        &[data-url^="assets"]::before {
+                            mask-image: url(img/assetIcon.svg);
+                        }
+
+                        &[data-url^="siyuan"]::before {
+                            display: none;
+                        }
                     }
                 }
 
@@ -379,7 +419,9 @@ img.av__cellassetimg {
 
             &[data-color] {
                 border-radius: 99px;
-            } // 筛选菜单中的数据库标签
+            }
+
+            // 筛选菜单中的数据库标签
         }
     }
 

@@ -184,11 +184,10 @@
 
             document.documentElement.style.setProperty('--asri-c-factor', asriConfigs.chroma);
 
-            // use existing menu items if any
-            if (document.querySelector('.asri-config')) return;
-
             // create menu items and handle click events
             setTimeout(() => {
+                // use existing menu items if any
+                if (document.querySelector('.asri-config')) return;
                 // create menu items when there is no existing menu items
                 const barModeMenuItems = document.querySelector('#commonMenu[data-name="barmode"] .b3-menu__items');
                 if (!barModeMenuItems) return;
