@@ -128,7 +128,9 @@
                         text-decoration: none;
                         background-color: transparent;
                         outline: 1px solid var(--b3-border-color-trans);
-                        outline-offset: -1px;
+                        // outline-offset: -1.5px;
+                        font-size: 100%;
+                        border-radius: 4px;
 
                         &:hover {
                             outline-color: var(--b3-theme-primary-lighter);
@@ -144,18 +146,18 @@
                             height: 1em;
                             display: inline-block;
                             background-color: var(--b3-theme-on-surface);
-                            mask-image: url(img/assetIcon.svg);
+                            mask-image: url(img/icon-assets.svg);
                             mask-size: 100% 100%;
                             vertical-align: -2px;
                             margin-right: 0.2em;
                         }
 
                         &[data-url^="http"]::before {
-                            mask-image: url(img/outerLinkIcon.svg);
+                            mask-image: url(img/icon-outerLink.svg);
                         }
 
                         &[data-url^="siyuan"]::before {
-                            mask-image: url(img/syLinkIcon.svg);
+                            mask-image: url(img/icon-syLink.svg);
                         }
                     }
                 }
@@ -224,6 +226,16 @@
         // 勾选框
         .av__cell-check>.av__checkbox {
             color: var(--b3-theme-primary);
+        }
+    }
+
+    &__cell[data-wrap=true] {
+        // 列开启换行时
+        .b3-chip.av__celltext--url,
+        .av__cellassetimg {
+            // 资源列标签
+            margin: 2px;
+            font-size: calc(1em - 2px) !important;
         }
     }
 
@@ -389,7 +401,7 @@
 }
 
 img.av__cellassetimg {
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .b3-menu {
