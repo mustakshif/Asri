@@ -79,7 +79,7 @@ Check all updates [here](./CHANGELOG.md).
 ## Theme Configurations
 
 ### 🌈 Customizing Theme Colors
-![asri config menu](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/asri-config-menu_en_US.png)
+![asri config menu](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/asri-config-menu_en_US_v2.png)
 
 Click on the `Appearance Mode` icon in the top right corner to open the Asri theme configuration menu and customize the theme colors:
 

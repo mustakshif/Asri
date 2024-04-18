@@ -79,7 +79,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 ## 主题配置
 
 ### 🌈 自定义主题色
-![asri config menu](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/asri-config-menu_zh_CN.png)
+![asri config menu](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/asri-config-menu_zh_CN_v2.png)
 
 点击右上角 `外观模式` 图标即可弹出 Asri 主题配置菜单，定制主题配色：
 
