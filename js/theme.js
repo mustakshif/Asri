@@ -185,7 +185,7 @@
         }
 
         function customizeThemeColor() {
-            let followSysAccentBtn, pickColorBtn, asriChromaSlider;
+            let followSysAccentBtn, pickColorBtn, asriChromaSlider, asriHueShiftSlider;
 
             // create menu items and handle click events
             setTimeout(() => {
@@ -195,7 +195,20 @@
                 const barModeMenuItems = document.querySelector('#commonMenu[data-name="barmode"] .b3-menu__items');
                 if (!barModeMenuItems) return;
 
-                const asriConfigMenuHTML = `<button class="b3-menu__separator asri-config"></button><button class="b3-menu__item asri-config" id="pickColor"><svg class="b3-menu__icon"></svg><label for="asriColorPicker" class="be-menu__label">${(lang === 'zh_CN' || lang === 'zh_CHT') ? i18nMenuItems[lang]['pickColor'] : i18nMenuItems['en_US']['pickColor']}</label><input id="asriColorPicker" type="color" value="${asriConfigs.userCustomColor}"></button><button class="b3-menu__item asri-config" id="followSysAccent"><svg class="b3-menu__icon"></svg><label for="" class="be-menu__label">${(lang === 'zh_CN' || lang === 'zh_CHT') ? i18nMenuItems[lang]['followSysAccent'] : i18nMenuItems['en_US']['followSysAccent']}</label></button><button class="b3-menu__item asri-config" data-type="nobg" id="asriChroma"><svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"d="m19 11l-8-8l-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0zM5 2l5 5m-8 6h15m5 7a2 2 0 1 1-4 0c0-1.6 1.7-2.4 2-4c.3 1.6 2 2.4 2 4" /></svg><div aria-label="${asriChromaAriaLabelPrefix + asriChromaSlider?.value || '1'}"class="b3-tooltips b3-tooltips__n"><input style="box-sizing: border-box" type="range" id="asriChromaSlider" class="b3-slider fn__block" min="0"max="5" step="0.1" value="1"></div></button>`;
+                const asriConfigMenuHTML = `<button class="b3-menu__separator asri-config"></button><button class="b3-menu__item asri-config" id="pickColor"><svg class="b3-menu__icon"></svg><label for="asriColorPicker" class="be-menu__label">${(lang === 'zh_CN' || lang === 'zh_CHT') ? i18nMenuItems[lang]['pickColor'] : i18nMenuItems['en_US']['pickColor']}</label><input id="asriColorPicker" type="color" value="${asriConfigs.userCustomColor}"></button><button class="b3-menu__item asri-config" id="followSysAccent"><svg class="b3-menu__icon"></svg><label for="" class="be-menu__label">${(lang === 'zh_CN' || lang === 'zh_CHT') ? i18nMenuItems[lang]['followSysAccent'] : i18nMenuItems['en_US']['followSysAccent']}</label></button><button class="b3-menu__item asri-config" data-type="nobg" id="asriChroma"><svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"d="m19 11l-8-8l-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0zM5 2l5 5m-8 6h15m5 7a2 2 0 1 1-4 0c0-1.6 1.7-2.4 2-4c.3 1.6 2 2.4 2 4" /></svg><div aria-label="${asriChromaAriaLabelPrefix + asriChromaSlider?.value || '1'}"class="b3-tooltips b3-tooltips__n"><input style="box-sizing: border-box" type="range" id="asriChromaSlider" class="b3-slider fn__block" min="0"max="5" step="0.1" value="1"></div></button><button class="b3-menu__item asri-config" data-type="nobg" id="asriHueShift">
+                <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                        <path d="M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z" />
+                        <path d="M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7m0-4h.01" />
+                        <path d="m11 8l2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8" />
+                    </g>
+                </svg>
+                <div aria-label="${asriHueShiftSlider?.value || '0'}"
+                    class="b3-tooltips b3-tooltips__n">
+                    <input style="box-sizing: border-box" type="range" id="asriHueShiftSlider" class="b3-slider fn__block" min="0"
+                        max="360" step="1" value="0">
+                </div>
+            </button>`;
                 const asriConfigFrag = document.createRange().createContextualFragment(asriConfigMenuHTML);
 
                 barModeMenuItems.appendChild(asriConfigFrag);
@@ -206,6 +219,7 @@
                 pickColorBtn = document.getElementById('pickColor');
                 asriChromaSlider = document.getElementById('asriChromaSlider');
                 colorPicker = pickColorBtn.lastElementChild;
+                asriHueShiftSlider = document.getElementById('asriHueShiftSlider');
 
                 // check local configs to determine the initial state of the menu items
                 followSysAccentBtn.classList.toggle('b3-menu__item--selected', followSysAccentColor);
@@ -271,7 +285,7 @@
                     asriConfigs.followSysAccentColor = '0';
                     updateAsriConfigs();
                 });
-                const debounceChramaValueSaving = debounce(() => updateAsriConfigs(), 200);
+                const debounceConfigSaving = debounce(() => updateAsriConfigs(), 200);
                 asriChromaSlider.addEventListener('input', function () {
                     let chromaValue = this.value;
                     document.documentElement.style.setProperty('--asri-c-factor', chromaValue);
@@ -282,7 +296,13 @@
 
                     handleGrayScale(chromaValue);
 
-                    debounceChramaValueSaving();
+                    debounceConfigSaving();
+                });
+
+                asriHueShiftSlider.addEventListener('input', function () {
+                    let hueShiftValue = this.value;
+                    document.documentElement.style.setProperty('--asri-h-shift', hueShiftValue);
+                    this.parentElement.ariaLabel = hueShiftValue;
                 });
             }, 0);
         }
