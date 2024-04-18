@@ -25,7 +25,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ### v3.0.0
 
-![custom theme color preview](/assets/theme-config_en_US.gif)
+![custom theme color preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/assets/theme-config_en_US.gif)
 
 🎨 Refactored theme colors using a perceptual lightness-based color system, added supports for seamless adjustment of global color tones which can also follow system accent color (`#Windows` `#macOS`), providing a fully personalized note-taking experience. (Check *Theme Configurations* below for configuration options information)
 

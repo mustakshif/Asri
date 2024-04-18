@@ -25,7 +25,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### v3.0.0
 
-![custom theme color preview](/assets/theme-config_zh_CN.gif)
+![custom theme color preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/assets/theme-config_zh_CN.gif)
 
 🎨 采用基于感知亮度的色彩系统重构主题配色，全局色调支持无级调节，也可跟随系统强调色（`#Windows` `#macOS`），带来完全个性化的笔记体验。（配置选项信息见下方「主题配置」一节）
 
