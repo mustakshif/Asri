@@ -6,13 +6,13 @@
 
 // --asri-c-factor: [0, 5], 面板色色度系数，默认为 1；
 // --asri-c-0: 色度为 0 时为 0，否则不可用；
-// --asri-h-shift: [-180, 180], 主题色色相偏移，默认为 0；
+// --asri-h-shift: [0, 360], 主题色色相偏移，默认为 0；
 
 
 @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
     :root[data-theme-mode='light'] {
         --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
-        --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .67 .2 h);
+        --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .67 .2 calc(h + var(--asri-h-shift, 0)));
 
         --asri-fallback-accent: #3478f6; //oklch(0.6 0.2 261.37)
         --asri-fallback-background: #fff;
@@ -20,16 +20,16 @@
         --asri-fallback-on-background: #454545;
         --asri-composite-background: oklch(from var(--asri-base-color) calc(1 - var(--asri-c-0, .015)) calc(.005 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
         --asri-composite-surface: oklch(from var(--asri-base-color) calc(.96 - var(--asri-c-0, .02)) calc(.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-        --asri-composite-on-background: oklch(from var(--asri-base-color) .39 clamp(0, .03 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .06) h);
+        --asri-composite-on-background: oklch(from var(--asri-base-color) .39 clamp(0, .03 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .06) calc(h + var(--asri-h-shift, 0)));
 
         // UI colors
         // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h); // complex calculation not supported yet
-        --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .67 c h);
+        --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .67 c calc(h + var(--asri-h-shift, 0)));
         --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
         --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
         --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
-        --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .67 c h));
-        --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .62 c h / .8);
+        --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .67 c calc(h + var(--asri-h-shift, 0))));
+        --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .62 c calc(h + var(--asri-h-shift, 0)) / .8);
 
         --b3-theme-background: var(--asri-composite-background, var(--asri-fallback-background));
         --b3-theme-surface: var(--asri-composite-surface, var(--asri-fallback-surface));
@@ -66,7 +66,7 @@
 
     :root[data-theme-mode='dark'] {
         --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
-        --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .7 .2 h);
+        --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .7 .2 calc(h + var(--asri-h-shift, 0)));
 
         --asri-fallback-accent: #118bff; // oklch(0.64 0.2 253.9)
         --asri-fallback-background: #1e1e1e;
@@ -74,14 +74,14 @@
         --asri-fallback-on-background: #dcdcdc;
         --asri-composite-background: oklch(from var(--asri-base-color) .25 calc(.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
         --asri-composite-surface: oklch(from var(--asri-base-color) .34 calc(.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-        --asri-composite-on-background: oklch(from var(--asri-base-color) .89 clamp(0, .01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) h);
+        --asri-composite-on-background: oklch(from var(--asri-base-color) .89 clamp(0, .01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) calc(h + var(--asri-h-shift, 0)));
 
-        --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .65 c h);
+        --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .65 c calc(h + var(--asri-h-shift, 0)));
         --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
         --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
         --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
-        --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .65 c h));
-        --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .6 c h / .7);
+        --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .65 c calc(h + var(--asri-h-shift, 0))));
+        --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .6 c calc(h + var(--asri-h-shift, 0)) / .7);
 
         --b3-theme-background: var(--asri-composite-background, var(--asri-fallback-background));
         --b3-theme-surface: var(--asri-composite-surface, var(--asri-fallback-surface));
