@@ -30,9 +30,9 @@
             <path d="m11 8l2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8" />
         </g>
     </svg>
-    <div aria-label="${asriHueShiftSlider.value || '0'}"
+    <div aria-label="${asriHueShiftSlider?.value || '0'}"
         class="b3-tooltips b3-tooltips__n">
-        <input style="box-sizing: border-box" type="range" id="asriHueShiftSlider" class="b3-slider fn__block" min="0"
-            max="360" step="1" value="0">
+        <input style="box-sizing: border-box" type="range" id="asriHueShiftSlider" class="b3-slider fn__block" min="-180"
+            max="180" step="1" value="0">
     </div>
 </button>
