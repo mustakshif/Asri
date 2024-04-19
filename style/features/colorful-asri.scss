@@ -12,7 +12,7 @@
 @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
     :root[data-theme-mode='light'] {
         --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
-        --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .67 .2 calc(h + var(--asri-h-shift, 0)));
+        --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .67 .18 calc(h + var(--asri-h-shift, 0)));
 
         --asri-fallback-accent: #3478f6; //oklch(0.6 0.2 261.37)
         --asri-fallback-background: #fff;
@@ -66,7 +66,7 @@
 
     :root[data-theme-mode='dark'] {
         --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
-        --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .7 .2 calc(h + var(--asri-h-shift, 0)));
+        --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .7 .17 calc(h + var(--asri-h-shift, 0)));
 
         --asri-fallback-accent: #118bff; // oklch(0.64 0.2 253.9)
         --asri-fallback-background: #1e1e1e;
@@ -184,8 +184,15 @@
             }
         }
 
-        #asriChromaSlider {
+        #asriChromaSlider,
+        #asriHueShiftSlider {
             cursor: pointer;
+        }
+
+        #asriHueShift {
+            > svg {
+                transform: scale(1.1) rotate(calc(var(--asri-h-shift, 0) * 1deg));
+            }
         }
 
         .asri-config {
