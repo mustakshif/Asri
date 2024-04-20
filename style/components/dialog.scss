@@ -665,11 +665,11 @@
             }
 
             // 有统一更新时的插件开关
-            &:not(:empty)~.config-bazaar__title {
-                .b3-switch {
-                    transform: translateX(-20px);
-                }
-            }
+            // &:not(:empty)~.config-bazaar__title {
+            //     .b3-switch {
+            //         transform: translateX(-20px);
+            //     }
+            // }
         }
 
         // 已下载卡片容器
@@ -813,7 +813,7 @@
 }
 
 #configBazaarReadme {
-    transition: transform $timing-function-accelerate 0.2s, filter linear 0.2s;
+    transition: transform $timing-function-accelerate 0.2s;
     opacity: 1;
     z-index: 2;
     padding: 0;

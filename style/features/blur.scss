@@ -508,13 +508,13 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
     }
 }
 
-.config-bazaar__readme {
-    filter: saturate(0);
+// .config-bazaar__readme {
+//     filter: saturate(0);
 
-    &--show {
-        filter: none;
-    }
-}
+//     &--show {
+//         filter: none;
+//     }
+// }
 
 .tooltip {
     background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
