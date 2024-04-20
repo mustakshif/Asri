@@ -321,6 +321,13 @@ $theme-light: (
     font-background11:#FFE4FF,
     font-background12:#FFE0F5,
     font-background13:#FFE2D7,
+    pdf-background1: #FFC3D3,
+    pdf-background2: #FFD18D,
+    pdf-background3: #FDE57A,
+    pdf-background4: #A7FDB4,
+    pdf-background5: #A3F4FF,
+    pdf-background6: #BDE2FF,
+    pdf-background7: #FFC9FF,
     inline-link-color: #4285f4,
     inline-mark-background: rgb(168, 251, 172),
     light-components:#fff
@@ -377,6 +384,13 @@ $theme-dark: (
     font-background11:#54345D,
     font-background12:#632E46,
     font-background13:#663028,
+    pdf-background1: #9F3D53,
+    pdf-background2: #935000,
+    pdf-background3: #786100,
+    pdf-background4: #1C7736,
+    pdf-background5: #14707A,
+    pdf-background6: #415EAC,
+    pdf-background7: #814893,
     inline-link-color: #8ab4f8,
     inline-mark-background: #00d95964,
     light-components:#e0e0e0,
@@ -449,11 +463,12 @@ $theme-dark: (
         --b3-font-color#{$i}: #{$font-color};
 
         --b3-font-background#{$i}:#{$font-background};
+    };
+
+    @for $i from 1 through 7 {
+        $pdf-background: map-get($theme-map, pdf-background#{$i});
+        --b3-pdf-background#{$i}: #{$pdf-background}; 
     }
-
-    ;
-
-    --b3-font-color5: var(--b3-card-warning-color);
 
     /* 所见即所得行内元素颜色 */
     --b3-protyle-inline-link-color: #{map-get($theme-map,inline-link-color)};
