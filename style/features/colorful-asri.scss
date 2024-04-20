@@ -130,6 +130,22 @@
             cursor: default;
         }
 
+        #useSeparateScheme {
+   
+            &.b3-menu__item--selected-alt {
+                // 色彩模式分开设置时不填充图形
+                svg path {
+                    fill: none;
+                    stroke-width: 0;
+                }
+            }
+
+            svg {
+                margin-right: 8px;
+                transform: scale(1.1);
+            }
+        }
+
         #followSysAccent {
             &.b3-menu__item--selected {
                 svg {
@@ -164,7 +180,8 @@
         }
 
         #followSysAccent,
-        #pickColor {
+        #pickColor,
+        #useSeparateScheme {
             label {
                 cursor: pointer;
             }
@@ -190,7 +207,7 @@
         }
 
         #asriHueShift {
-            > svg {
+            >svg {
                 transform: scale(1.1) rotate(calc(var(--asri-h-shift, 0) * 1deg));
             }
         }
@@ -267,7 +284,7 @@
     .secondaryToolbarButton.toggled {
         color: var(--b3-theme-accent);
     }
-    
+
     // database chips
     @for $i from 1 through 10 {
         .b3-chip[style*="background-color:var(--b3-font-background#{$i + 3});color:var(--b3-font-color#{$i + 3})"] {
@@ -278,7 +295,7 @@
                 color: oklch(0.89 0.05 calc(360 / 10 * #{ $i } + 30)) !important;
                 background-color: oklch(from var(--b3-font-background#{$i + 3}) 0.35 c h) !important;
             }
-        }        
+        }
     }
 
     @for $i from 1 through 3 {

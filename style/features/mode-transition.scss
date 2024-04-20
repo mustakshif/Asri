@@ -10,4 +10,8 @@
     #status, #dockBottom {
         transition-duration: .5s !important;
     }
+
+    .asri-config > svg {
+        transition: none;
+    }
 }
