@@ -10,16 +10,16 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.0.3
+### v3.0.4
 
-* [Redesigned the bottom bar, merging it with the status bar](https://github.com/mustakshif/Asri/issues/37)
-* [Redesigned the database tag color and appearance color combinations, maintaining consistent perceived lightness](https://github.com/mustakshif/Asri/issues/44)
-* Adjusted the style of block reference elements wrapped in the tag span element
-* Fine-tuned the background color of focused list items in pure grayscale mode
-* Optimized the display of highlighted text when search results are empty
-* Unified the border radius of database tags gloabally
-* [Fixed the background color missing in areas like PDF when using the `Background Cover` plugin](https://github.com/mustakshif/Asri/issues/37)
-* [Fixed the issue of the relation graph search bar not covering other icons](https://github.com/mustakshif/Asri/issues/41)
+* Added `Chroma slider` to replace the `Use grayscale neutral colors` option for customizing the background and text color intensity
+* Optimized PDF highlight annotation colors
+* Optimized the style of hyperlinks and resource links in the database assets columns
+* Adapted the switch button and document counter colors to the new color system
+* Reduced the size of database tags and icons
+* Restored vertically centered emoji icons in the database view
+* [Keep document block tags vertically aligned with document titles](https://github.com/mustakshif/Asri/issues/45)
+* Fixed layout issue with the cell edit menu in the database relation column
 
 ### ...
 
@@ -85,7 +85,7 @@ Click on the `Appearance Mode` icon in the top right corner to open the Asri the
 
 * `Customize theme color`: Use a custom color as the base color for the theme and apply a corresponding color scheme directly based on it.
 * `Follow system accent color`: Use the system's accent color as the base theme color. This option is enabled by default on `Windows` and `macOS` desktop platforms, and not visible on other platforms.
-* `Chroma slider`: Adjust the chroma of backgrounds and regular texts, with a range of 0-5, where 0 represents pure grayscale. The default value is 1.
+* `Chroma slider`: Adjust the chroma of backgrounds and regular texts, with a range of 0-5, where 0 represents pure grayscale,  and the default is 1.
 
 ### 📐 Custom Attributes
 
