@@ -43,7 +43,7 @@
 
         --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
 
-        --b3-border-color: oklch(from var(--b3-theme-on-background) .92 clamp(0, .01 * var(--asri-c-factor, 1), .04) h);
+        --b3-border-color: oklch(from var(--b3-theme-on-background) .92 clamp(0, .005 * var(--asri-c-factor, 1), .02) h);
         --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
 
         --b3-menu-background: oklch(from var(--b3-theme-background) .95 c h);
@@ -95,7 +95,7 @@
 
         --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
 
-        --b3-border-color: oklch(from var(--b3-theme-on-background) .38 clamp(0, .01 * var(--asri-c-factor, 1), .04) h);
+        --b3-border-color: oklch(from var(--b3-theme-on-background) .38 clamp(0, .005 * var(--asri-c-factor, 1), .01) h);
         --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
 
         --b3-menu-background: oklch(from var(--b3-theme-background) .3 c h);

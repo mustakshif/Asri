@@ -944,10 +944,10 @@
         }
 
         &:not(.protyle-toolbar__item--current) {
-            @include theme-variant-color(color, on-background, 0.8);
+            color: var(--b3-theme-on-surface);
 
             &:hover {
-                @include theme-variant-color(color, on-background, 1);
+                color: var(--b3-theme-on-background);
             }
         }
     }
