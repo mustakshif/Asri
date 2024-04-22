@@ -17,7 +17,7 @@
 * Adapted the switch button and document counter colors to the new color system
 * Reduced the size of database tags and icons
 * Restored vertically centered emoji icons in the database view
-* [Keep document block tags vertically aligned with document titles](https://github.com/mustakshif/Asri/issues/45)
+* [Keep document block icons vertically aligned with document titles](https://github.com/mustakshif/Asri/issues/45)
 * Fixed layout issue with the cell edit menu in the database relation column
 
 ---

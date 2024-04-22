@@ -1,4 +1,32 @@
 <button class="b3-menu__separator asri-config"></button>
+<button class="b3-menu__item asri-config" id="useSeparateScheme">
+    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+        <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+            <circle cx="12" cy="12" r="10" fill="none" />
+            <path d="M12 18a6 6 0 0 0 0-12z" stroke-width="2" fill="currentColor" />
+        </g>
+    </svg>
+    <label for="" class="be-menu__label">${getConfigDisplayContent('useSeparateScheme') +
+        getConfigDisplayContent(asriConfigs.curScheme)}
+    </label>
+</button>
+<button class="b3-menu__item asri-config" id="asriPresetPalettes">
+    <svg class="b3-menu__icon"></svg>
+    <span class="b3-menu__label">预置配色</span>
+    <svg class="b3-menu__icon b3-menu__icon--small">
+        <use xlink:href="#iconRight"></use>
+    </svg>
+    <div class="b3-menu__submenu">
+        <div class="b3-menu__items">
+            <div class="b3-menu__item">
+                <svg class="b3-menu__icon">
+                    <use xlink:href="#iconFormat"></use>
+                </svg>
+                <span class="b3-menu__label">默认</span>
+            </div>
+        </div>
+    </div>
+</button>
 <button class="b3-menu__item asri-config" id="pickColor">
     <svg class="b3-menu__icon"></svg>
     <label for="asriColorPicker" class="be-menu__label">${getConfigDisplayContent('pickColor')}</label>
@@ -7,11 +35,6 @@
 <button class="b3-menu__item asri-config" id="followSysAccent">
     <svg class="b3-menu__icon"></svg>
     <label for="" class="be-menu__label">${getConfigDisplayContent('followSysAccent')}</label>
-</button>
-<button class="b3-menu__item asri-config" id="useSeparateScheme">
-    <svg class="b3-menu__icon"></svg>
-    <label for="" class="be-menu__label">${getConfigDisplayContent('useSeparateScheme')}
-    </label>
 </button>
 <button class="b3-menu__item asri-config" data-type="nobg" id="asriChroma">
     <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24">

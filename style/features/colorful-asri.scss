@@ -146,6 +146,12 @@
             }
         }
 
+        #asriPresetPalettes {
+            > svg {
+                transform: scale(1.1);
+            }
+        }
+
         #followSysAccent {
             &.b3-menu__item--selected {
                 svg {
