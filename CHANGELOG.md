@@ -1,3 +1,27 @@
+### v3.0.4
+
+* 新增色度调节，替换 `启用纯灰度中性色` 选项，用于自定义背景和普通文本色彩浓度
+* 优化 PDF 高亮标注颜色
+* 优化数据库资源列中超链接和资源链接的样式
+* 开关按钮、文档计数器颜色适配新色彩系统
+* 缩小数据库标签和图标尺寸
+* 恢复数据库视图 emoji 图标的垂直居中
+* [保持文档块标垂直居中于文档标题](https://github.com/mustakshif/Asri/issues/45)
+* 修复数据库关联列单元格编辑菜单布局问题
+
+<br />
+
+* Added `Chroma slider` to replace the `Use grayscale neutral colors` option for customizing the background and text color intensity
+* Optimized PDF highlight annotation colors
+* Optimized the style of hyperlinks and resource links in the database assets columns
+* Adapted the switch button and document counter colors to the new color system
+* Reduced the size of database tags and icons
+* Restored vertically centered emoji icons in the database view
+* [Keep document block tags vertically aligned with document titles](https://github.com/mustakshif/Asri/issues/45)
+* Fixed layout issue with the cell edit menu in the database relation column
+
+---
+
 ### v3.0.3
 
 * [重新设计底栏，合并底栏和状态栏](https://github.com/mustakshif/Asri/issues/37)

@@ -33,7 +33,9 @@
     font-family: var(--b3-font-family-code);
     margin-left: 0;
     transition: 0.2s;
-    @include theme-variant-color(color, on-background, 0.5);
+    transition: .2s;
+    color: rgb(from var(--b3-theme-on-background) r g b / .5);
+    // @include theme-variant-color(color, on-background, 0.5);
 
     &:hover {
         background-color: transparent !important;
