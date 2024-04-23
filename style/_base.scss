@@ -414,6 +414,7 @@ $theme-dark: (
     --b3-theme-on-background: #{map-get($theme-map,on-background)};
     --b3-theme-on-surface:#{rgb(map-get($theme-map, on-background), 0.65)};
     --b3-theme-on-surface-light: #{rgb(map-get($theme-map,on-surface-gray), 0.68)};
+    --b3-theme-surface-lighter:var(--b3-border-color);
     --b3-theme-on-error: #{map-get($theme-map,on-primary)};
 
     /* 线条 */
@@ -473,6 +474,7 @@ $theme-dark: (
     /* 所见即所得行内元素颜色 */
     --b3-protyle-inline-link-color: #{map-get($theme-map,inline-link-color)};
     --b3-protyle-inline-mark-background: #{map-get($theme-map,inline-mark-background)};
+    --b3-protyle-code-background: var(--b3-theme-surface);
 
     // 占位符
     --b3-empty-color: #{rgba(map-get($theme-map,on-background), 0.45)};

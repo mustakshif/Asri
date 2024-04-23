@@ -1,6 +1,9 @@
 @use '../base' as *;
 
 .av {
+    &__container[style="--av-background:var(--b3-theme-surface)"] {
+        --av-background: color-mix(in lch, var(--b3-theme-surface), var(--b3-theme-background)) !important;
+    }
 
     // 数据库视图切换、标题
     &__header {
@@ -402,6 +405,11 @@
 
 img.av__cellassetimg {
     border-radius: 4px;
+}
+
+.b3-chip[style*="background-color:var(--b3-font-background1);color:var(--b3-font-color1)"] {
+    outline: 1px solid var(--b3-border-color-trans);
+    outline-offset: -1px;
 }
 
 .b3-menu {

@@ -66,14 +66,14 @@
     const isLinux = navigator.platform.indexOf("Linux") > -1;
     const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
     const isInBrowser = asriDoms.toolbar?.classList.contains('toolbar--browser') > 0; // iPad uses this too
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     const isMiniWindow = document.body.classList.contains('body--window') > 0;
     const isAndroid = window.siyuan.config.system.container === "android";
     const userAgent = navigator.userAgent;
     const isIOSApp = (/iOS/i.test(userAgent) || /iPad/i.test(userAgent)) && /AppleWebKit/i.test(userAgent);
+    const isSafari = /^((?!chrome|android).)*safari/i.test(userAgent);
 
     const lang = window.siyuan.config.lang;
-    const schemeMode = window.siyuan.config.appearance.mode > 0 ? 'dark' : 'light';
+    const appSchemeMode = window.siyuan.config.appearance.mode > 0 ? 'dark' : 'light';
 
     const supportsOklch = CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)');
 
@@ -418,7 +418,7 @@
                 .then((data) => {
                     // initialize configs
                     asriConfigs.useSeparateScheme = data?.useSeparateScheme ?? false;
-                    asriConfigs.curScheme = asriConfigs.useSeparateScheme ? schemeMode : "universal";
+                    asriConfigs.curScheme = asriConfigs.useSeparateScheme ? appSchemeMode : "universal";
 
                     for (let mode of ['light', 'dark', 'universal']) {
                         asriConfigs.schemes[mode].followSysAccentColor = data?.schemes ? data.schemes[mode].followSysAccentColor ?? true : true;
@@ -560,7 +560,7 @@
                     }
                 }
                 addPresetHTMLItems('universal');
-                addPresetHTMLItems(schemeMode);
+                addPresetHTMLItems(appSchemeMode);
                 presetPalettesItemsEl.appendChild(asriPresetsSubmenuFrag);
 
                 // check local configs to determine the initial state of the menu items
@@ -606,7 +606,7 @@
                         asriConfigs.useSeparateScheme = true;
                         this.classList.add('b3-menu__item--selected-alt');
 
-                        asriConfigs.curScheme = schemeMode;
+                        asriConfigs.curScheme = appSchemeMode;
                     } else {
                         asriConfigs.useSeparateScheme = false;
                         this.classList.remove('b3-menu__item--selected-alt');
@@ -1179,6 +1179,11 @@
             )
         })
     }
+
+    function addExportImgClassName() {
+        document.body.classList.toggle('has-exportimg', document.querySelector('[data-key="dialog-exportimage"]'))
+        pushUnique(asriClassNames, '.has-exportimg');
+    }
     /**
      * Check if the dock is hidden/floating or not
      * @param {'l' | 'r' | 'b'} direction
@@ -1552,6 +1557,7 @@
         () => {
             addEmojiDialogClassName();
             addDockbClassName();
+            addExportImgClassName();
             // statusPosition();
         }
     )

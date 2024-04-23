@@ -80,7 +80,8 @@
         }
     }
 
-    .h1, h1 {
+    .h1,
+    h1 {
         padding: 0 4px; // 修复 gutter 错位
         margin-bottom: calc(.1em + 4px);
     }
@@ -335,15 +336,8 @@
         thead {
             tr {
                 th {
-                    background-color: oklch(from var(--b3-theme-surface) .95 c h / .8);
+                    @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
 
-                    @include darkmode-counterpart {
-                        background-color: oklch(from var(--b3-theme-surface) .36 c h / .7);
-                    }
-                    @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-                        @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
-                    }
-                    
                     border-top: none;
 
                     &:first-child {
@@ -361,13 +355,7 @@
             tr {
                 &:nth-child(2n) {
                     td {
-                        background-color: oklch(from var(--b3-theme-surface) .95 c h / .8);
-                        @include darkmode-counterpart {
-                            background-color: oklch(from var(--b3-theme-surface) .36 c h / .7);
-                        }
-                        @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-                            @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
-                        }
+                        @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
                     }
                 }
 
@@ -1023,7 +1011,7 @@
     // font-variant-emoji: emoji; // 不受支持
 
     // @extend .protyle-wysiwyg;
-    &:not(#searchUnRefPreview) > * {
+    &:not(#searchUnRefPreview)>* {
         border-radius: 8px;
     }
 

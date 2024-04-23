@@ -7,7 +7,10 @@
         color-scheme: light;
         // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
 
-        @include theme-root($theme-light);
+        &,
+        body.has-exportimg {
+            @include theme-root($theme-light)
+        }
 
         body {
             ::selection {
@@ -18,7 +21,11 @@
 
     &[data-theme-mode="dark"] {
         color-scheme: dark;
-        @include theme-root($theme-dark);
+
+        &,
+        body.has-exportimg {
+            @include theme-root($theme-dark);
+        }
     }
 }
 
@@ -38,4 +45,6 @@ body {
     .body--mobile {
         --b3-theme-background: #fff;
     }
-} // use hex to fix https://github.com/mustakshif/Asri/issues/39
+}
+
+// use hex to fix https://github.com/mustakshif/Asri/issues/39
