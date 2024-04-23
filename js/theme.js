@@ -66,6 +66,7 @@
     const isLinux = navigator.platform.indexOf("Linux") > -1;
     const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
     const isInBrowser = asriDoms.toolbar?.classList.contains('toolbar--browser') > 0; // iPad uses this too
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     const isMiniWindow = document.body.classList.contains('body--window') > 0;
     const isAndroid = window.siyuan.config.system.container === "android";
     const userAgent = navigator.userAgent;
@@ -86,6 +87,7 @@
     isInBrowser && (document.body.classList.add("body--browser"), asriClassNames.push('.body--browser'));
     isAndroid && (document.body.classList.add("body--android"), asriClassNames.push('.body--android'));
     isIOSApp && (document.body.classList.add("body--iosApp"), asriClassNames.push('.body--iosApp'));
+    isSafari && (document.documentElement.dataset.ua = "safari");
 
     if (!isMobile && asriDoms.toolbar) {
         createTopbarElementById('AsriPluginsIconsDivider', undefined, asriDoms.drag);
@@ -1714,6 +1716,7 @@
         document.querySelector('#AsriTopbarLeftSpacing')?.remove();
         document.querySelector('#AsriTopbarRightSpacing')?.remove();
         document.querySelector('#AsriPluginsIconsDivider')?.remove();
+        document.documentElement.dataset.ua = '';
 
         // remove js calculated properties
         document.body.style.removeProperty('--mouseX');
