@@ -2,7 +2,7 @@
 
 .av {
     &__container[style="--av-background:var(--b3-theme-surface)"] {
-        --av-background: color-mix(in lch, var(--b3-theme-surface), var(--b3-theme-background)) !important;
+        --av-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background)) !important;
     }
 
     // 数据库视图切换、标题

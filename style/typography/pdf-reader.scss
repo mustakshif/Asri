@@ -1,6 +1,20 @@
 @use '../base' as *;
 
 .pdf__outer#outerContainer {
+    &:not(.pdf__outer--dark) {
+        @for $i from 1 through 7 {
+            $pdf-background: map-get($theme-light, pdf-background#{$i});
+            --b3-pdf-background#{$i}: #{$pdf-background};
+        }
+    }
+
+    &.pdf__outer--dark {
+        @for $i from 1 through 7 {
+            $pdf-background: map-get($theme-dark, pdf-background#{$i});
+            --b3-pdf-background#{$i}: #{$pdf-background};
+        }
+    }
+
     #sidebarContainer {
         top: 42px;
         z-index: 1;

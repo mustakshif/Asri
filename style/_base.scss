@@ -466,11 +466,6 @@ $theme-dark: (
         --b3-font-background#{$i}:#{$font-background};
     };
 
-    @for $i from 1 through 7 {
-        $pdf-background: map-get($theme-map, pdf-background#{$i});
-        --b3-pdf-background#{$i}: #{$pdf-background}; 
-    }
-
     /* 所见即所得行内元素颜色 */
     --b3-protyle-inline-link-color: #{map-get($theme-map,inline-link-color)};
     --b3-protyle-inline-mark-background: #{map-get($theme-map,inline-mark-background)};

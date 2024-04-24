@@ -119,7 +119,7 @@
 
     const asriConfigs = {
         useSeparateScheme: false,
-        curScheme: "universal",
+        curScheme: appSchemeMode,
         schemes: {
             light: {
                 followSysAccentColor: true,
@@ -155,7 +155,35 @@
             'asriHueShift': '色相偏移：',
             'light': '亮色',
             'dark': '暗色',
-            'universal': '全局'
+            'universal': '全局',
+            'asriprst-asri3': 'Asri 3.0+',
+            'asriprst-obsidian': 'Obsidian',
+            'asriprst-asri2': 'Asri 2.0+',
+            'asriprst-materialdesign3': 'Material Design 3',
+            'asriprst-neutral': '中性',
+            'asriprst-redsand': '赤砂',
+            'asriprst-minimal': '极简',
+            'asriprst-vintage': '复古',
+            'asriprst-wisteria': '紫藤',
+            'asriprst-lightdream': '浅梦',
+            'asriprst-notion': 'Notion',
+            'asriprst-vacation': '假日',
+            'asriprst-foam': '泡沫',
+            'asriprst-morningmist': '晨雾',
+            'asriprst-mint': '薄荷',
+            'asriprst-canyon': '峡谷',
+            'asriprst-newyear': '新年',
+            'asriprst-dawn': '破晓',
+            'asriprst-nightglamour': '夜魅',
+            'asriprst-nord': 'Nord',
+            'asriprst-logseq': 'Logseq',
+            'asriprst-extraterrestrial': '异星',
+            'asriprst-cyberpunk': '赛博朋克',
+            'asriprst-ivy': '常春藤',
+            'asriprst-lighthouse': '灯塔',
+            'asriprst-coffee': '咖啡',
+            'asriprst-redwine': '红酒',
+            'asriprst-violet': '紫罗兰'
         },
         'zh_CHT': {
             'followSysAccent': '跟隨系統強調色',
@@ -165,7 +193,35 @@
             'asriHueShift': '色相偏移：',
             'light': '淺色',
             'dark': '深色',
-            'universal': '全局'
+            'universal': '全局',
+            'asriprst-asri3': 'Asri 3.0+',
+            'asriprst-obsidian': 'Obsidian',
+            'asriprst-asri2': 'Asri 2.0+',
+            'asriprst-materialdesign3': 'Material Design 3',
+            'asriprst-neutral': '中性',
+            'asriprst-redsand': '赤砂',
+            'asriprst-minimal': '極簡',
+            'asriprst-vintage': '復古',
+            'asriprst-wisteria': '紫藤',
+            'asriprst-lightdream': '淺夢',
+            'asriprst-notion': 'Notion',
+            'asriprst-vacation': '假日',
+            'asriprst-foam': '泡沫',
+            'asriprst-morningmist': '晨霧',
+            'asriprst-mint': '薄荷',
+            'asriprst-canyon': '峽谷',
+            'asriprst-newyear': '新年',
+            'asriprst-dawn': '破曉',
+            'asriprst-nightglamour': '夜魅',
+            'asriprst-nord': 'Nord',
+            'asriprst-logseq': 'Logseq',
+            'asriprst-extraterrestrial': '異星',
+            'asriprst-cyberpunk': '賽博朋克',
+            'asriprst-ivy': '常春藤',
+            'asriprst-lighthouse': '燈塔',
+            'asriprst-coffee': '咖啡',
+            'asriprst-redwine': '紅酒',
+            'asriprst-violet': '紫羅蘭'
         },
         'en_US': {
             'followSysAccent': 'Follow system accent color',
@@ -175,7 +231,35 @@
             'asriHueShift': 'Hue shift: ',
             'light': 'Light mode',
             'dark': 'Dark mode',
-            'universal': 'Universal'
+            'universal': 'Universal',
+            'asriprst-asri3': 'Asri 3.0+',
+            'asriprst-obsidian': 'Obsidian',
+            'asriprst-asri2': 'Asri 2.0+',
+            'asriprst-materialdesign3': 'Material Design 3',
+            'asriprst-neutral': 'Neutral',
+            'asriprst-redsand': 'Red Sand',
+            'asriprst-minimal': 'Minimal',
+            'asriprst-vintage': 'Vintage',
+            'asriprst-wisteria': 'Wisteria',
+            'asriprst-lightdream': 'Light Dream',
+            'asriprst-notion': 'Notion',
+            'asriprst-vacation': 'Vacation',
+            'asriprst-foam': 'Foam',
+            'asriprst-morningmist': 'Morning Mist',
+            'asriprst-mint': 'Mint',
+            'asriprst-canyon': 'Canyon',
+            'asriprst-newyear': 'New Year',
+            'asriprst-dawn': 'Dawn',
+            'asriprst-nightglamour': 'Night Glamour',
+            'asriprst-nord': 'Nord',
+            'asriprst-logseq': 'Logseq',
+            'asriprst-extraterrestrial': 'Extraterrestrial',
+            'asriprst-cyberpunk': 'Cyberpunk',
+            'asriprst-ivy': 'Ivy',
+            'asriprst-lighthouse': 'Lighthouse',
+            'asriprst-coffee': 'Coffee',
+            'asriprst-redwine': 'Red Wine',
+            'asriprst-violet': 'Violet'
         },
     };
     const presetPalettes = {
@@ -189,14 +273,6 @@
                 }
             },
             {
-                "paletteId": "asriprst-obsidian",
-                "configs": {
-                    "userCustomColor": "#6831f2",
-                    "chroma": "0",
-                    "hueShift": "0"
-                }
-            },
-            {
                 "paletteId": "asriprst-asri2",
                 "configs": {
                     "userCustomColor": "#3478f6",
@@ -204,6 +280,14 @@
                     "hueShift": "0"
                 }
             },
+            {
+                "paletteId": "asriprst-obsidian",
+                "configs": {
+                    "userCustomColor": "#6831f2",
+                    "chroma": "0",
+                    "hueShift": "0"
+                }
+            },            
             {
                 "paletteId": "asriprst-materialdesign3",
                 "configs": {
@@ -271,7 +355,7 @@
                 }
             },
             {
-                "paletteId": "asriprst-sunnybeach",
+                "paletteId": "asriprst-vacation",
                 "configs": {
                     "userCustomColor": "#ecde41",
                     "chroma": "2.1",
@@ -315,7 +399,15 @@
                 "configs": {
                     "userCustomColor": "#ffdf0f",
                     "chroma": "2.5",
-                    "hueShift": "-60"
+                    "hueShift": "-70"
+                }
+            },
+            {
+                "paletteId": "asriprst-dawn",
+                "configs": {
+                    "userCustomColor": "#dfa895",
+                    "chroma": "1",
+                    "hueShift": "-140"
                 }
             }
         ],
@@ -361,7 +453,7 @@
                 }
             },
             {
-                "paletteId": "asriprst-eveningforest",
+                "paletteId": "asriprst-ivy",
                 "configs": {
                     "userCustomColor": "#52cb93",
                     "chroma": "2.9",
@@ -553,15 +645,16 @@
                                 presetItem.innerHTML = `<svg class="b3-menu__icon">
                                 <use xlink:href="#iconFormat"></use>
                             </svg>
-                            <span class="b3-menu__label">${paletteId}</span>`
+                            <span class="b3-menu__label">${getConfigDisplayContent(paletteId)}</span>`
                                 asriPresetsSubmenuFrag.appendChild(presetItem);
                             });
                         }
                     }
+
+                    presetPalettesItemsEl.appendChild(asriPresetsSubmenuFrag);
                 }
                 addPresetHTMLItems('universal');
-                addPresetHTMLItems(appSchemeMode);
-                presetPalettesItemsEl.appendChild(asriPresetsSubmenuFrag);
+                asriConfigs.useSeparateScheme && addPresetHTMLItems(appSchemeMode);
 
                 // check local configs to determine the initial state of the menu items
                 followSysAccentBtn.classList.toggle('b3-menu__item--selected', followSysAccentColor);
@@ -607,11 +700,15 @@
                         this.classList.add('b3-menu__item--selected-alt');
 
                         asriConfigs.curScheme = appSchemeMode;
+
+                        if (document.querySelectorAll(`[data-mode=${appSchemeMode}]`).length === 0) addPresetHTMLItems(appSchemeMode)
                     } else {
                         asriConfigs.useSeparateScheme = false;
                         this.classList.remove('b3-menu__item--selected-alt');
 
                         asriConfigs.curScheme = 'universal';
+
+                        document.querySelectorAll(`[data-mode=${appSchemeMode}]`).forEach(item => item.remove());
                     }
 
                     followSysAccentColor = asriConfigs.schemes[asriConfigs.curScheme].followSysAccentColor;
@@ -639,15 +736,28 @@
 
                     if (paletteId.indexOf('asriprst-') !== 0) return
 
-                    const chosenPaletteConfigs = presetPalettes[chosenPaletteMode].find(item => item.paletteId === paletteId).configs
+                    if (followSysAccentColor) {
+                        followSysAccentColor = false;
+                        followSysAccentBtn.classList.remove('b3-menu__item--selected');
+                        pickColorBtn.classList.add('b3-menu__item--selected');
+                        document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.schemes[asriConfigs.curScheme].userCustomColor || sysAccentColor || '#3478f6');
 
-                    const result = Object.assign(asriConfigs.schemes[chosenPaletteMode], chosenPaletteConfigs);
+                        asriConfigs.schemes[asriConfigs.curScheme].followSysAccentColor = false;
+                    }
 
-                    applyAsriTheme(chosenPaletteMode);
+                    const chosenPaletteConfigs = presetPalettes[chosenPaletteMode].find(item => item.paletteId === paletteId).configs;
+
+                    if (asriConfigs.useSeparateScheme) {
+                        Object.assign(asriConfigs.schemes[appSchemeMode], chosenPaletteConfigs);
+                        applyAsriTheme(appSchemeMode);
+                    } else {
+                        Object.assign(asriConfigs.schemes.universal, chosenPaletteConfigs);
+                        applyAsriTheme('universal');
+                    }
+
+                    isUserAccentGray = asriConfigs.schemes[asriConfigs.curScheme].chroma === '0' ? true : false;
+                    handleGrayScale(asriConfigs.schemes[asriConfigs.curScheme].chroma);
                     updateAsriConfigs();
-
-                    console.log(paletteMenuItem);
-                    console.log(result);
                 });
 
                 pickColorBtn.addEventListener('click', () => {
@@ -726,7 +836,7 @@
 
                     isSysAccentGray = accentHSLObj.s === 0 ? true : false;
 
-                    addModeTransition();
+                    addAppModeTransition();
 
                     sysAccentColor = accentHex;
                 }
@@ -789,11 +899,11 @@
         document.documentElement.style.setProperty('--asri-c-factor', asriConfigs.schemes[mode].chroma);
         document.documentElement.style.setProperty('--asri-h-shift', asriConfigs.schemes[mode].hueShift);
 
-        addModeTransition();
+        addAppModeTransition();
     }
 
 
-    function addModeTransition() {
+    function addAppModeTransition() {
         document.body.classList.add('asri-mode-transition');
         setTimeout(() => {
             document.body.classList.remove('asri-mode-transition');
@@ -1783,6 +1893,6 @@
         }
 
         // add transition
-        addModeTransition();
+        addAppModeTransition();
     }
 })();
