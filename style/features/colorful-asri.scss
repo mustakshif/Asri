@@ -219,7 +219,7 @@
                 flex-grow: 1;
             }
 
-            svg {
+            svg:first-child {
                 margin-right: 4px;
                 transform: scale(1.1);
             }
@@ -231,18 +231,29 @@
         }
 
         #asriHueShift {
-            >svg {
+            >svg:first-child {
                 transform: scale(1.1) rotate(calc(var(--asri-h-shift-compatible) * 1deg));
             }
         }
 
-        .asri-config {
-            &[disabled] {
-                opacity: 0.5;
-                pointer-events: none;
-                cursor: not-allowed;
-            }
+        .asri-separator {
+            background-color: var(--b3-border-color-trans);
+            height: 1.2em;
+            width: 2px;
+            margin: 0 8px 0 6px;
         }
+
+        #textHueShiftBtn {
+            margin-right: 0;
+        }
+
+        // .asri-config {
+        //     &[disabled] {
+        //         opacity: 0.5;
+        //         pointer-events: none;
+        //         cursor: not-allowed;
+        //     }
+        // }
     }
 
     // protyle-related elements 

@@ -870,7 +870,7 @@
     }
 
     &__icon {
-        top: calc(1.2em + 16px) !important; // fix https://github.com/mustakshif/Asri/issues/45 
+        top: calc(2.4em * 1.4 / 2 + 8px) !important; // fix https://github.com/mustakshif/Asri/issues/45 
     }
 }
 

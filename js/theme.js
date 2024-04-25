@@ -149,10 +149,11 @@
     const i18nMenuItems = {
         'zh_CN': {
             'followSysAccent': '跟随系统强调色',
-            'useSeparateScheme': '当前配色主题：',
+            'useSeparateScheme': '当前主题配置：',
             'pickColor': '自定义主题色',
             'asriChroma': '色度：',
             'asriHueShift': '色相偏移：',
+            'asriPresetPalettes': '预置配色方案',
             'light': '亮色',
             'dark': '暗色',
             'universal': '全局',
@@ -187,10 +188,11 @@
         },
         'zh_CHT': {
             'followSysAccent': '跟隨系統強調色',
-            'useSeparateScheme': '當前配色主题：',
+            'useSeparateScheme': '當前主题配置：',
             'pickColor': '自定義主題色',
             'asriChroma': '色度：',
             'asriHueShift': '色相偏移：',
+            'asriPresetPalettes': '預置配色方案',
             'light': '淺色',
             'dark': '深色',
             'universal': '全局',
@@ -229,8 +231,9 @@
             'pickColor': 'Customize theme color',
             'asriChroma': 'Chroma: ',
             'asriHueShift': 'Hue shift: ',
-            'light': 'Light mode',
-            'dark': 'Dark mode',
+            'asriPresetPalettes': 'Preset palettes',
+            'light': 'Light',
+            'dark': 'Dark',
             'universal': 'Universal',
             'asriprst-asri3': 'Asri 3.0+',
             'asriprst-obsidian': 'Obsidian',
@@ -287,7 +290,7 @@
                     "chroma": "0",
                     "hueShift": "0"
                 }
-            },            
+            },
             {
                 "paletteId": "asriprst-materialdesign3",
                 "configs": {
@@ -326,7 +329,7 @@
                 "paletteId": "asriprst-vintage",
                 "configs": {
                     "userCustomColor": "#eeb61b",
-                    "chroma": "2",
+                    "chroma": "1",
                     "hueShift": "180"
                 }
             },
@@ -342,7 +345,7 @@
                 "paletteId": "asriprst-lightdream",
                 "configs": {
                     "userCustomColor": "#e576dc",
-                    "chroma": "1.5",
+                    "chroma": "1.2",
                     "hueShift": "-70"
                 }
             },
@@ -358,8 +361,8 @@
                 "paletteId": "asriprst-vacation",
                 "configs": {
                     "userCustomColor": "#ecde41",
-                    "chroma": "2.1",
-                    "hueShift": "100"
+                    "chroma": "1.5",
+                    "hueShift": "118"
                 }
             },
             {
@@ -517,6 +520,7 @@
                         asriConfigs.schemes[mode].userCustomColor = data?.schemes ? data.schemes[mode].userCustomColor : "#3478f6";
                         asriConfigs.schemes[mode].chroma = data?.schemes ? data.schemes[mode].chroma : "1";
                         asriConfigs.schemes[mode].hueShift = data?.schemes ? data.schemes[mode].hueShift : "0";
+                        asriConfigs.userPreferredPresets[mode] = data?.userPreferredPresets[mode] ? data.userPreferredPresets[mode] : "";
                     }
 
                     followSysAccentColor = data?.schemes ? data.schemes[asriConfigs.curScheme].followSysAccentColor ?? true : true;
@@ -577,7 +581,7 @@
                 </button>
                 <button class="b3-menu__item asri-config" id="asriPresetPalettes">
                     <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z"/><path d="M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7m0-4h.01"/><path d="m11 8l2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8"/></g></svg>
-                    <span class="b3-menu__label">预置配色方案</span>
+                    <span class="b3-menu__label">${getConfigDisplayContent('asriPresetPalettes')}</span>
                     <svg class="b3-menu__icon b3-menu__icon--small"><use xlink:href="#iconRight"></use></svg>
                     <div class="b3-menu__submenu">
                         <div class="b3-menu__items"></div>
@@ -612,10 +616,12 @@
                                 d="M12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8m0-14v6m0 8v6M2 12h6m8 0h6M4.929 4.929L9.172 9.17m5.656 5.659l4.243 4.242m-14.142 0l4.243-4.242m5.656-5.658l4.243-4.242" />
                         </g>
                     </svg>
-                    <div aria-label="${getConfigDisplayContent('asriHueShift') + asriHueShiftSlider?.value || '0'}"
+                    <div aria-label="${getConfigDisplayContent('asriHueShift') + asriHueShiftSlider?.value + 'º' || '0º'}"
                         class="b3-tooltips b3-tooltips__n"><input style="box-sizing: border-box" type="range" id="asriHueShiftSlider"
                             class="b3-slider fn__block" min="-180" max="180" step="1" value="0">
                     </div>
+                    <div class="asri-separator"></div>
+                    <svg class="b3-menu__icon" id="textHueShiftBtn"><use xlink:href="#iconFont"></use></svg>
                 </button>`;
 
                 const asriConfigMainMenuFrag = document.createRange().createContextualFragment(asriConfigMenuHTML);
@@ -663,7 +669,8 @@
                 asriChromaSlider.value = asriConfigs.schemes[asriConfigs.curScheme].chroma || "1";
                 asriChromaSlider.parentElement.ariaLabel = getConfigDisplayContent('asriChroma') + asriChromaSlider.value;
                 asriHueShiftSlider.value = asriConfigs.schemes[asriConfigs.curScheme].hueShift || "0";
-                asriHueShiftSlider.parentElement.ariaLabel = getConfigDisplayContent('asriHueShift') + asriHueShiftSlider.value;
+                asriHueShiftSlider.parentElement.ariaLabel = getConfigDisplayContent('asriHueShift') + asriHueShiftSlider.value + "°";
+                asriConfigs.userPreferredPresets[asriConfigs.curScheme] && document.querySelector('#' + `${asriConfigs.userPreferredPresets[asriConfigs.curScheme]}`)?.classList.add('b3-menu__item--selected');
 
                 // handle click events
                 if (isInBrowser || isMobile || isLinux) {
@@ -722,7 +729,10 @@
                     asriChromaSlider.value = asriConfigs.schemes[asriConfigs.curScheme].chroma || "1";
                     asriChromaSlider.parentElement.ariaLabel = getConfigDisplayContent('asriChroma') + asriChromaSlider.value;
                     asriHueShiftSlider.value = asriConfigs.schemes[asriConfigs.curScheme].hueShift || "0";
-                    asriHueShiftSlider.parentElement.ariaLabel = getConfigDisplayContent('asriHueShift') + asriHueShiftSlider.value;
+                    asriHueShiftSlider.parentElement.ariaLabel = getConfigDisplayContent('asriHueShift') + asriHueShiftSlider.value + "°";
+
+                    document.querySelector('#asriPresetPalettes .b3-menu__item--selected')?.classList.remove('b3-menu__item--selected');
+                    document.querySelector('#' + `${asriConfigs.userPreferredPresets[asriConfigs.curScheme]}`)?.classList.add('b3-menu__item--selected');
 
                     applyAsriTheme(asriConfigs.curScheme);
                     handleGrayScale(asriConfigs.schemes[asriConfigs.curScheme].chroma);
@@ -732,9 +742,21 @@
                 presetPalettesItemsEl.addEventListener('click', (event) => {
                     const paletteMenuItem = event.target.closest('.b3-menu__item');
                     const paletteId = paletteMenuItem.id;
-                    const chosenPaletteMode = paletteMenuItem.dataset.mode;
+                    if (paletteId.indexOf('asriprst-') !== 0) return;
 
-                    if (paletteId.indexOf('asriprst-') !== 0) return
+                    const chosenPaletteMode = paletteMenuItem.dataset.mode;
+                    if (!chosenPaletteMode) return;
+                    
+                    const chosenPaletteConfigs = presetPalettes[chosenPaletteMode].find(item => item.paletteId === paletteId).configs;
+
+                    if (paletteId === asriConfigs.userPreferredPresets[asriConfigs.curScheme]) return;
+
+                    asriConfigs.userPreferredPresets[asriConfigs.curScheme] = paletteId;
+                    Object.assign(asriConfigs.schemes[asriConfigs.curScheme], chosenPaletteConfigs);
+                    applyAsriTheme(asriConfigs.curScheme);
+
+                    document.querySelector('#asriPresetPalettes .b3-menu__item--selected')?.classList.remove('b3-menu__item--selected');
+                    document.querySelector('#' + `${asriConfigs.userPreferredPresets[asriConfigs.curScheme]}`)?.classList.add('b3-menu__item--selected');
 
                     if (followSysAccentColor) {
                         followSysAccentColor = false;
@@ -743,16 +765,6 @@
                         document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.schemes[asriConfigs.curScheme].userCustomColor || sysAccentColor || '#3478f6');
 
                         asriConfigs.schemes[asriConfigs.curScheme].followSysAccentColor = false;
-                    }
-
-                    const chosenPaletteConfigs = presetPalettes[chosenPaletteMode].find(item => item.paletteId === paletteId).configs;
-
-                    if (asriConfigs.useSeparateScheme) {
-                        Object.assign(asriConfigs.schemes[appSchemeMode], chosenPaletteConfigs);
-                        applyAsriTheme(appSchemeMode);
-                    } else {
-                        Object.assign(asriConfigs.schemes.universal, chosenPaletteConfigs);
-                        applyAsriTheme('universal');
                     }
 
                     isUserAccentGray = asriConfigs.schemes[asriConfigs.curScheme].chroma === '0' ? true : false;
@@ -812,7 +824,7 @@
                         this.value = 0;
                     }
                     document.documentElement.style.setProperty('--asri-h-shift', hueShiftValue);
-                    this.parentElement.ariaLabel = getConfigDisplayContent('asriHueShift') + hueShiftValue;
+                    this.parentElement.ariaLabel = getConfigDisplayContent('asriHueShift') + hueShiftValue + '°';
 
                     asriConfigs.schemes[asriConfigs.curScheme].hueShift = hueShiftValue;
                     debounceConfigSaving();
