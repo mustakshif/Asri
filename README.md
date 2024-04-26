@@ -85,7 +85,7 @@ Click on the `Appearance Mode` icon in the top right corner to open the Asri the
 
 * `Customize theme color`: Use a custom color as the base color for the theme and apply a corresponding color scheme directly based on it.
 * `Follow system accent color`: Use the system's accent color as the base theme color. This option is enabled by default on `Windows` and `macOS` desktop platforms, and not visible on other platforms.
-* `Chroma slider`: Adjust the chroma of backgrounds and regular texts, with a range of 0-5, where 0 represents pure grayscale,  and the default is 1.
+* `Chroma slider`: Adjust the chroma of backgrounds and regular texts, with a range of `0 - 5`, where `0` represents pure grayscale, and the default is `1`.
 
 ### 📐 Custom Attributes
 

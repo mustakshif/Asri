@@ -224,7 +224,7 @@
 
 @mixin tag {
     [data-node-id] span[data-type~="tag"] {
-        --tag-color: var(--b3-font-color4);
+        --tag-color: #df8300;
 
         font-size: 90%;
         border-radius: 1em;
@@ -235,6 +235,10 @@
         color: var(--tag-color);
         box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
+
+        @include darkmode-counterpart {
+            --tag-color: #ffa444;
+        }
 
         &:hover {
             // box-shadow: 0 0 0 0.8em inset var(--tag-color);

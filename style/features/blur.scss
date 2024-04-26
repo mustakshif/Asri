@@ -214,9 +214,9 @@ body:not(.body--blur, .asri-disable-backdrop-blur) {
     &-action {
 
         // 代码块
-        &:hover {
-            backdrop-filter: blur(20px);
-        }
+        // &:hover {
+        //     backdrop-filter: blur(20px);
+        // } // fix https://github.com/mustakshif/Asri/issues/52
 
         .protyle-icon {
             &--only {

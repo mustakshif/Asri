@@ -329,7 +329,7 @@
 
         &+.fn__flex-1 {
             li {
-                z-index: 1;
+                z-index: 4; // 避免被嵌入块数据库表头覆盖
 
                 &:not(.b3-list--empty) {
                     position: sticky;
