@@ -77,4 +77,9 @@
         padding: 0 8px;
         margin-right: 4px;
     }
+
+    .card__main & {
+        min-height: 42px;
+        height: auto;
+    } // fix https://github.com/mustakshif/Asri/issues/53
 }
