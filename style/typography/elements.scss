@@ -710,20 +710,6 @@
 }
 
 @mixin protyle-font {
-    .color__square {
-        width: 20px;
-        height: 20px;
-        box-shadow: none;
-        border-radius: 50%;
-        line-height: 20px;
-        font-size: 14px;
-
-        &:hover {
-            box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
-            transform: scale(1.2);
-            font-weight: bold;
-        }
-    }
 
     .protyle-font__style {
         font-size: 14px;
@@ -738,6 +724,40 @@
 
     .b3-button {
         @include button-action('normal');
+    }
+}
+
+.color__square {
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+    border-radius: 50%;
+    line-height: 20px;
+    font-size: 14px;
+
+    // &[data-type="backgroundColor"] {
+    //     box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+    // }
+
+    &:hover {
+        box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+        transform: scale(1.2);
+        font-weight: bold;
+    }
+
+    .b3-menu__label & {
+        width: 12px;
+        height: 12px;
+
+        &:hover {
+            transform: none;
+            font-weight: normal;
+        }
+    }
+
+    .protyle-hint &:hover {
+        transform: none;
+        font-weight: normal;
     }
 }
 

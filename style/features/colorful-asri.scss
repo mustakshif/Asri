@@ -245,7 +245,8 @@
             @include menu-shadow(var(--b3-theme-accent), $opacity-light: 0.15, $opacity-dark: 0.4);
         }
 
-        .protyle-wysiwyg [data-node-id].table table thead tr th {
+        .protyle-wysiwyg [data-node-id].table table thead tr th,
+        .b3-typography table thead tr th {
             background-color: oklch(from var(--b3-theme-surface) 0.95 c h/0.8);
             border-top: none;
 
@@ -254,7 +255,8 @@
             }
         }
 
-        .protyle-wysiwyg [data-node-id].table table tbody tr:nth-child(2n) td {
+        .protyle-wysiwyg [data-node-id].table table tbody tr:nth-child(2n) td,
+        .b3-typography table tbody tr:nth-child(2n) td {
             background-color: oklch(from var(--b3-theme-surface) 0.95 c h/0.8);
 
             @include darkmode-counterpart {

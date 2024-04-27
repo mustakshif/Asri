@@ -192,15 +192,15 @@ animation-direction: #{$anim-dir};
     initial-value: 0px;
 }
 
-.file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
+.file-tree:not(.sy__backlink) .block__icons~.fn__flex-1,
+.sy__file>.b3-list>.fn__flex-1  {
     @include scroll-divider-fadein-mask(18px, 'top');
 }
 .file-tree.sy__file .block__icons~.fn__flex-1 {
     @include scroll-divider-fadein-mask(18px, 'top bottom');
 }
 
-.layout__dockb.layout--float .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1,
-.sy__file>.b3-list>.fn__flex-1 {
+.layout__dockb.layout--float .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
     @include scroll-divider-fadein-mask(18px, 'top bottom');
 }
 
@@ -224,17 +224,17 @@ animation-direction: #{$anim-dir};
 }
 
 [data-name="AI"] .layout-tab-bar+.fn__flex-1,
-.history__repo[data-type="repo"] .b3-list--background {
+.history__repo[data-type="repo"] .b3-list--background,
+[data-key="dialog-snippets"] .b3-dialog__body>.fn__flex-1 {
     @include scroll-divider-fadein-bgClr(20px, $range: 'top');
 }
 
-// [data-key="dialog-snippets"] .b3-dialog__body .layout-tab-bar+.fn__flex-1 {
-//     @include scroll-divider-fadein(16px);
+[data-key="dialog-snippets"] .b3-dialog__body>.fn__flex-1 {
 
-//     &::before {
-//         top: -16px;
-//     }
-// }
+    &::before {
+        top: -16px;
+    }
+}
 
 .b3-dialog .emojis__panel {
     @include scroll-divider-line;
