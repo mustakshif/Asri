@@ -513,7 +513,7 @@ $theme-dark: (
 }
 
 @mixin darkmode-counterpart {
-    html[data-theme-mode="dark"] & {
+    [data-theme-mode="dark"] & {
         @content;
     }
 }

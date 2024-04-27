@@ -193,9 +193,10 @@ animation-direction: #{$anim-dir};
 }
 
 .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1,
-.sy__file>.b3-list>.fn__flex-1  {
+.sy__file>.b3-list>.fn__flex-1 {
     @include scroll-divider-fadein-mask(18px, 'top');
 }
+
 .file-tree.sy__file .block__icons~.fn__flex-1 {
     @include scroll-divider-fadein-mask(18px, 'top bottom');
 }
@@ -215,7 +216,7 @@ animation-direction: #{$anim-dir};
 }
 
 [data-name="bazaar"] .config-bazaar__panel {
-    @include scroll-divider-fadein-bgClr(18px, $range: 'top');
+    @include scroll-divider-fadein-bgClr(30px, $range: 'top');
 
     &::before {
         top: 44px;
@@ -249,7 +250,6 @@ animation-direction: #{$anim-dir};
 .protyle-breadcrumb__bar {
     @include scroll-divider-fadein-mask($range: 'left right');
 }
-
 
 @keyframes maskAppear-bgClr {
     0% {

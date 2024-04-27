@@ -6,7 +6,6 @@
 
 // --asri-c-factor: [0, 5], 面板色色度系数，默认为 1；
 // --asri-c-0: 色度为 0 时为 0，否则不可用；
-// --asri-h-shift: [0, 360], 主题色色相偏移，默认为 0；
 
 
 @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
@@ -14,7 +13,7 @@
         --b3-protyle-inline-blockref-color: var(--b3-theme-accent);
     }
 
-    :root[data-theme-mode='light'] {
+    [data-theme-mode='light'] {
         --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
         --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .67 .18 h);
 
@@ -72,7 +71,7 @@
         }
     }
 
-    :root[data-theme-mode='dark'] {
+    [data-theme-mode='dark'] {
         --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
         --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .7 .17 h);
 

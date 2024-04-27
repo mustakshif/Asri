@@ -2,30 +2,38 @@
 
 :root {
     @include font-family;
+}
 
-    &[data-theme-mode="light"] {
-        color-scheme: light;
-        // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
+[data-theme-mode="light"] {
 
-        &,
-        body.has-exportimg {
-            @include theme-root($theme-light)
-        }
+    &,
+    body.has-exportimg {
+        @include theme-root($theme-light)
+    }
 
-        body {
-            ::selection {
-                background-color: var(--b3-theme-primary-lightest);
-            }
+    body {
+        ::selection {
+            background-color: var(--b3-theme-primary-lightest);
         }
     }
 
-    &[data-theme-mode="dark"] {
-        color-scheme: dark;
 
-        &,
-        body.has-exportimg {
-            @include theme-root($theme-dark);
-        }
+    .body--mobile {
+        --b3-theme-background: #fff;
+    }
+
+    // use hex to fix https://github.com/mustakshif/Asri/issues/39
+}
+
+[data-theme-mode="dark"] {
+    &:root {
+        color-scheme: dark;
+        // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
+    }
+
+    &,
+    body.has-exportimg {
+        @include theme-root($theme-dark);
     }
 }
 
@@ -40,11 +48,3 @@ body {
         -webkit-font-smoothing: antialiased;
     }
 }
-
-:root[data-theme-mode='light'] {
-    .body--mobile {
-        --b3-theme-background: #fff;
-    }
-}
-
-// use hex to fix https://github.com/mustakshif/Asri/issues/39
