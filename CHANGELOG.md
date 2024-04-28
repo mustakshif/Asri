@@ -1,3 +1,35 @@
+### v3.0.5
+
+* 新增侧栏面板、面包屑、代码片段滚动区域的溢出渐隐
+* 外观样式颜色、PDF 高亮色选项添加边框
+* 减少块高亮时和嵌入块中的数据库表头与块背景色的色差
+* 文本框提示文字、文本格式工具条图标、表格斑马条纹背景颜色适配新色彩系统
+* PDF 标注颜色跟随 PDF 阅读器亮暗色模式
+* 调整行内标签元素颜色
+* 调整消息框中的按钮样式
+* 修复 Safari 上色彩系统兼容性问题
+* [修复无法导出文档为图片的问题](https://github.com/mustakshif/Asri/issues/47)
+* [移除代码块语言类型区域背景模糊](https://github.com/mustakshif/Asri/issues/52)
+* [移除闪卡界面面包屑固定高度](https://github.com/mustakshif/Asri/issues/53)
+* [修复 Safari 上集市包信息页面渲染错误的问题](https://github.com/mustakshif/Asri/issues/55)
+
+<br />
+
+* Added overflow fade-out to side panels, breadcrumbs, and code snippet dialog.
+* Added border for appearance colors and PDF highlighting colors.
+* Reduced color difference between database headers and block backgrounds when highlighted.
+* Adapted placeholder text, text format toolbar icons, and table zebra stripe background color to the new color system.
+* PDF annotation colors now follow the light/dark mode of the PDF reader.
+* Adjusted color of inline tags.
+* Adjusted button style in message boxes.
+* Fixed compatibility issue with color system on Safari browser.
+* [Fixed issue where document cannot be exported as an image](https://github.com/mustakshif/Asri/issues/47).
+* [Removed background blur in code block language section](https://github.com/mustakshif/Asri/issues/52).
+* [Removed fixed height of breadcrumb in flashcard interface](https://github.com/mustakshif/Asri/issues/53).
+* [Fixed rendering error on marketplace package information page in Safari browser](https://github.com/mustakshif/Asri/issues/55).
+
+---
+
 ### v3.0.4
 
 * 新增色度调节，替换 `启用纯灰度中性色` 选项，用于自定义背景和普通文本色彩浓度

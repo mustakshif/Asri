@@ -10,16 +10,20 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.0.4
+### v3.0.5
 
-* Added `Chroma slider` to replace the `Use grayscale neutral colors` option for customizing the background and text color intensity
-* Optimized PDF highlight annotation colors
-* Optimized the style of hyperlinks and resource links in the database assets columns
-* Adapted the switch button and document counter colors to the new color system
-* Reduced the size of database tags and icons
-* Restored vertically centered emoji icons in the database view
-* [Keep document block tags vertically aligned with document titles](https://github.com/mustakshif/Asri/issues/45)
-* Fixed layout issue with the cell edit menu in the database relation column
+* Added overflow fade-out to side panels, breadcrumbs, and code snippet dialog.
+* Added border for appearance colors and PDF highlighting colors.
+* Reduced color difference between database headers and block backgrounds when highlighted.
+* Adapted placeholder text, text format toolbar icons, and table zebra stripe background color to the new color system.
+* PDF annotation colors now follow the light/dark mode of the PDF reader.
+* Adjusted color of inline tags.
+* Adjusted button style in message boxes.
+* Fixed compatibility issue with color system on Safari browser.
+* [Fixed issue where document cannot be exported as an image](https://github.com/mustakshif/Asri/issues/47).
+* [Removed background blur in code block language section](https://github.com/mustakshif/Asri/issues/52).
+* [Removed fixed height of breadcrumb in flashcard interface](https://github.com/mustakshif/Asri/issues/53).
+* [Fixed rendering error on marketplace package information page in Safari browser](https://github.com/mustakshif/Asri/issues/55).
 
 ### ...
 

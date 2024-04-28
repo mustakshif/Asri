@@ -10,16 +10,20 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
-### v3.0.4
+### v3.0.5
 
-* 新增色度调节，替换 `启用纯灰度中性色` 选项，用于自定义背景和普通文本色彩浓度
-* 优化 PDF 高亮标注颜色
-* 优化数据库资源列中超链接和资源链接的样式
-* 开关按钮、文档计数器颜色适配新色彩系统
-* 缩小数据库标签和图标尺寸
-* 恢复数据库视图 emoji 图标的垂直居中
-* [保持文档块标垂直居中于文档标题](https://github.com/mustakshif/Asri/issues/45)
-* 修复数据库关联列单元格编辑菜单布局问题
+* 新增侧栏面板、面包屑、代码片段滚动区域的溢出渐隐
+* 外观样式颜色、PDF 高亮色选项添加边框
+* 减少块高亮时和嵌入块中的数据库表头与块背景色的色差
+* 文本框提示文字、文本格式工具条图标、表格斑马条纹背景颜色适配新色彩系统
+* PDF 标注颜色跟随 PDF 阅读器亮暗色模式
+* 调整行内标签元素颜色
+* 调整消息框中的按钮样式
+* 修复 Safari 上色彩系统兼容性问题
+* [修复无法导出文档为图片的问题](https://github.com/mustakshif/Asri/issues/47)
+* [移除代码块语言类型区域背景模糊](https://github.com/mustakshif/Asri/issues/52)
+* [移除闪卡界面面包屑固定高度](https://github.com/mustakshif/Asri/issues/53)
+* [修复 Safari 上集市包信息页面渲染错误的问题](https://github.com/mustakshif/Asri/issues/55)
 
 ### ...
 
