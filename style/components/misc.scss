@@ -393,9 +393,12 @@ textarea {
             font-weight: 600;
             color: var(--b3-theme-on-primary);
             box-shadow: 0 0 1px inset var(--b3-theme-on-primary);
+            display: block;
+            margin: 4px 0 4px auto;
 
             &:hover {
                 transform: scale(1.1);
+                box-shadow: 0 0 1px inset var(--b3-theme-on-primary);
             }
 
             &:active {

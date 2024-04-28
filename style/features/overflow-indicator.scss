@@ -216,7 +216,7 @@ animation-direction: #{$anim-dir};
 }
 
 [data-name="bazaar"] .config-bazaar__panel {
-    @include scroll-divider-fadein-bgClr(30px, $range: 'top');
+    @include scroll-divider-fadein-bgClr(24px, $range: 'top');
 
     &::before {
         top: 44px;
@@ -250,6 +250,10 @@ animation-direction: #{$anim-dir};
 .protyle-breadcrumb__bar {
     @include scroll-divider-fadein-mask($range: 'left right');
 }
+
+// .protyle-content {
+//     @include scroll-divider-fadein-bgClr(40px, $range: 'top');
+// }
 
 @keyframes maskAppear-bgClr {
     0% {
