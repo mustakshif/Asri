@@ -101,36 +101,117 @@ background: linear-gradient(unquote($direction), $stops);
     }
 }
 
-//有题头图时
 .protyle-background {
+    .protyle-background__img {
+        position: relative;
 
-    &[style="min-height: 30vh;"] {
-        margin-bottom: -48px;
+        &:not(.fn__none) {
+            margin-bottom: -24px;
 
-        // &.without-icon {
-        //     min-height: calc(30vh - 80px) !important;
-        // }
+            +.protyle-background__ia .protyle-background__icon.fn__none~.protyle-background__action {
+                @include theme-variant-color(background-color, surface, 0.8, 0.6);
+                @include theme-variant-color(color, on-background, 0.6, 1);
 
-        // 无文档图标时
-        &.without-icon {
-            // -> js
-            transition: margin .2s 0s;
-            margin-bottom: -120px;
+                padding: 2px;
+                width: fit-content;
+                border-radius: 99px;
+                mix-blend-mode: luminosity;
 
-            .protyle-icons:not(:nth-of-type(2)) {
-                transform: translateY(-72px);
-                z-index: 1;
-            }
+                &:hover {
+                    @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+                }
 
-            .protyle-background__iconw {
-                transform: translateY(-120px);
-                z-index: 1;
+                .b3-button {
+                    margin-top: 0;
+
+                    &:hover {
+                        background-color: unset;
+                        color: var(--b3-theme-on-background);
+                    }
+                }
             }
         }
 
-        // 有文档图标
-        .protyle-background__iconw {
-            transform: translateY(-48px);
+        &.fn__none {
+            +.protyle-background__ia {
+                margin-top: 48px;
+            }
+        }
+    }
+
+    &.without-icon {
+        .protyle-background__img {
+            margin-bottom: -100px;
+        }
+
+        .protyle-background__ia {
+            flex-direction: column-reverse;
+        }
+    }
+
+    &:not(.without-icon) {
+        .protyle-background__img+.protyle-background__ia .protyle-background__action {
+            position: absolute;
+            top: auto;
+            transform: translateX(88px);
+        }
+
+        .protyle-background__img.fn__none+.protyle-background__ia .protyle-background__action {
+            top: 48px;
+        }
+    }
+}
+
+.protyle-background__ia {
+    display: flex;
+    flex-direction: column;
+
+    .b3-chips {
+        padding: 4px 0;
+    }
+
+    .b3-chip--middle {
+        $chip-colors: (
+            secondary: font-color4,
+            primary: font-color5,
+            info: font-color6,
+            success: font-color8,
+            warning:font-color9,
+            error: font-color10,
+            "pink": font-color12
+        );
+
+    @each $chip-type, $chip-color in $chip-colors {
+        &.b3-chip--#{$chip-type} {
+            // @include theme-variant-color(background-color, $chip-color, 1);
+            font-weight: 500;
+            mix-blend-mode: luminosity;
+            // @include theme-variant-color(background-color, surface, 1);
+            // @include theme-variant-color(color, on-background, 0.8, 1);
+            // color: rgba(128, 128, 128, .8);
+            // background-color: #fffd;
+            // @include darkmode-counterpart {
+            //     background-color: rgba(112, 112, 112, .5);
+            //     color: #fffd;
+            // }
+
+            @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+            @include theme-variant-color(background-color, surface, 0.8, 0.6);
+            @include theme-variant-color(color, on-background, 0.6, 1);
+        }
+    }
+}
+}
+
+.protyle-background__action {
+    &:hover {
+        opacity: 1 !important;
+    }
+
+    .b3-button {
+        &:hover {
+            background-color: unset;
+            color: var(--b3-theme-on-background);
         }
     }
 }
