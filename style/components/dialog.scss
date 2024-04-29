@@ -676,7 +676,7 @@
         .config-bazaar__content {
             // padding: 0 0 16px 0;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(327px, 1fr));
             gap: 20px;
             margin: 10px 20px 20px;
             width: auto;
@@ -754,7 +754,7 @@
 
         .b3-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(327px, 1fr));
             gap: 20px;
             margin: 10px 20px 20px;
 
@@ -782,7 +782,7 @@
             }
 
             &--wrap {
-                min-width: 330px;
+                min-width: 327px;
             }
 
             &__info {
