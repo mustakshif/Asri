@@ -818,6 +818,8 @@
     z-index: 2;
     padding: 0;
 
+    will-change: transform; // fix https://github.com/mustakshif/Asri/issues/55
+
     // transform: scale(1.08);
     // right: 0;
     // opacity: 0;
