@@ -11,7 +11,7 @@
         padding: 5px;
 
         .b3-menu__item {
-            // padding: 0 8px; //用默认主题的声明
+            // padding: 0 8px; //用默认主题样式
             background-color: transparent;
             line-height: 24px;
             border-radius: 5px;
@@ -46,6 +46,10 @@
                         color: inherit;
                         background-color: transparent;
                     }
+                }
+
+                .b3-text-field {
+                    background-color: var(--b3-menu-background);
                 }
             }
 

@@ -162,12 +162,31 @@ background: linear-gradient(unquote($direction), $stops);
     }
 }
 
+.protyle-top {
+    &:hover {
+        .b3-chips .b3-button {
+            opacity: 1;
+        }
+    }
+}
+
 .protyle-background__ia {
     display: flex;
     flex-direction: column;
 
     .b3-chips {
         padding: 4px 0;
+
+        .b3-button {
+            mix-blend-mode: luminosity;
+            opacity: 0;
+            transition: opacity .2s, color .2s;
+
+            &:hover {
+                background-color: unset;
+                color: var(--b3-theme-on-background);
+            }
+        }
     }
 
     .b3-chip--middle {
@@ -195,9 +214,13 @@ background: linear-gradient(unquote($direction), $stops);
             //     color: #fffd;
             // }
 
-            @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
-            @include theme-variant-color(background-color, surface, 0.8, 0.6);
-            @include theme-variant-color(color, on-background, 0.6, 1);
+            // @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+            // @include theme-variant-color(background-color, surface, 0.8, 0.6);
+            // @include theme-variant-color(color, on-background, 0.6, 1);
+            background-color: unset;
+            color: var(--b3-theme-on-surface);
+            outline: .12em solid var(--b3-border-color-trans);
+            outline-offset: -.12em;
         }
     }
 }
