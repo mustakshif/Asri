@@ -845,6 +845,16 @@
             flex-grow: 0;
         }
 
+        > .ft__on-surface {
+            font-weight: 500;
+            font-size: 1em;
+    
+            &::first-line {
+                font-weight: normal;
+                font-size: calc(1em / 1.2);
+            }
+        }
+
         .item__title {
             font-weight: 600;
             word-break: normal;

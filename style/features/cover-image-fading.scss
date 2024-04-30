@@ -137,6 +137,11 @@ background: linear-gradient(unquote($direction), $stops);
                 margin-top: 48px;
             }
         }
+
+        .protyle-icons:nth-last-child(2) {
+            width: fit-content;
+            top: calc(15vh - 24px);
+        }
     }
 
     &.without-icon {
@@ -196,7 +201,7 @@ background: linear-gradient(unquote($direction), $stops);
         success: font-color8,
         warning:font-color9,
         error: font-color10,
-        "": font-color12
+        "pink": font-color12
     );
 
 @each $chip-type, $chip-color in $chip-colors {
