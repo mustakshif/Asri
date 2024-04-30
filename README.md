@@ -17,6 +17,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Filled the background color of the input box in the database menu highlight item.
 * [Fine-tuned dynamic width of marketplace item cards](https://github.com/mustakshif/Asri/issues/57).
 * Fixed the issue where the icon of the database view tab was not centered.
+* Fixed the issue where the footnote for search type was not fully displayed.
 * Fixed the issue where the table on the market package details page could not be scrolled horizontally.
 
 ### ...

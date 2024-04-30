@@ -5,6 +5,7 @@
 * 填充数据库菜单高亮项目中文本框的背景色
 * [微调集市卡片动态宽度](https://github.com/mustakshif/Asri/issues/57)
 * 修复数据库视图页签图标不居中的问题
+* 修复搜索类型脚注显示不全的问题
 * 修复集市包详情页面表格无法横向滚动的问题
 
 <br />
@@ -14,6 +15,7 @@
 * Filled the background color of the input box in the database menu highlight item.
 * [Fine-tuned dynamic width of marketplace item cards](https://github.com/mustakshif/Asri/issues/57).
 * Fixed the issue where the icon of the database view tab was not centered.
+* Fixed the issue where the footnote for search type was not fully displayed.
 * Fixed the issue where the table on the market package details page could not be scrolled horizontally.
 
 ---

@@ -17,6 +17,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * 填充数据库菜单高亮项目中文本框的背景色
 * [微调集市卡片动态宽度](https://github.com/mustakshif/Asri/issues/57)
 * 修复数据库视图页签图标不居中的问题
+* 修复搜索类型脚注显示不全的问题
 * 修复集市包详情页面表格无法横向滚动的问题
 
 ### ...
