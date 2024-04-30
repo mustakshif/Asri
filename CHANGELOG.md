@@ -1,3 +1,23 @@
+### v3.0.6
+
+* 适配思源 v3.0.12 文档标题区域新布局
+* 优化文档标签、查询条件标签的样式
+* 填充数据库菜单高亮项目中文本框的背景色
+* [微调集市卡片动态宽度](https://github.com/mustakshif/Asri/issues/57)
+* 修复数据库视图页签图标不居中的问题
+* 修复集市包详情页面表格无法横向滚动的问题
+
+<br />
+
+* Adapted the layout of the document title area in SiYuan v3.0.12.
+* Optimized the styles of document tags and saved query criteria condition tags.
+* Filled the background color of the input box in the database menu highlight item.
+* [Fine-tuned dynamic width of marketplace item cards](https://github.com/mustakshif/Asri/issues/57).
+* Fixed the issue where the icon of the database view tab was not centered.
+* Fixed the issue where the table on the market package details page could not be scrolled horizontally.
+
+---
+
 ### v3.0.5
 
 * 新增侧栏面板、面包屑、代码片段滚动区域的溢出渐隐
