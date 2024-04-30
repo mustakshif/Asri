@@ -173,6 +173,11 @@
                     padding: 0;
                     height: 28px;
                 }
+
+                div:last-child {
+                    grid-column: 1 / -1;
+                    grid-row: 10 / span 2;
+                }
             }
         }
     }
