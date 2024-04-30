@@ -426,3 +426,40 @@ textarea {
 .block__icon--active {
     color: var(--b3-theme-primary);
 }
+
+
+.b3-chip--middle {
+    padding: 4px 8px;
+
+    &::before {
+        content: '';
+        width: 8px;
+        transition: var(--b3-transition);
+    }
+
+    &:hover::before {
+        width: 0px;
+    }
+
+    .b3-chip__close {
+        width: 8px;
+        opacity: 0;
+        // transform: scale(0);
+        margin-right: -4px;
+    }
+
+    &:hover .b3-chip__close {
+        width: 16px;
+        opacity: 0.7;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    [data-type="NodeAttributeView"] &{
+        &::before {
+            display: none;
+        }
+    }
+}

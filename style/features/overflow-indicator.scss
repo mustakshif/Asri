@@ -248,7 +248,7 @@ animation-direction: #{$anim-dir};
 }
 
 .protyle-breadcrumb__bar {
-    @include scroll-divider-fadein-mask($range: 'left right');
+    @include scroll-divider-fadein-mask(18px, $range: 'left right');
 }
 
 // .protyle-content {

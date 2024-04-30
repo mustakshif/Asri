@@ -970,6 +970,37 @@
             box-shadow: none;
         }
     }
+
+    .b3-chips {
+        $chip-colors: (
+            secondary: font-color4,
+            primary: font-color5,
+            info: font-color6,
+            success: font-color8,
+            warning:font-color9,
+            error: font-color10,
+            "": font-color12
+        );
+
+    @each $chip-type, $chip-color in $chip-colors {
+        .b3-chip--#{$chip-type} {
+            background-color: unset;
+            color: var(--b3-theme-on-surface);
+            outline: .12em solid var(--b3-border-color-trans);
+            outline-offset: -.12em;
+
+            &.b3-chip--current {
+                box-shadow: none;
+                color: var(--b3-theme-primary);
+                outline-color: var(--b3-theme-primary-lighter);
+            }
+        }
+    }
+
+    .b3-chip {
+        font-weight: 500;
+    }
+}
 }
 
 #replaceBtn,
