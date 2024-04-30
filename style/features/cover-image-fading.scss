@@ -101,84 +101,101 @@ background: linear-gradient(unquote($direction), $stops);
     }
 }
 
-.protyle-background {
-    .protyle-background__img {
-        position: relative;
+body:not(.body--mobile) {
+    .protyle-background {
+        .protyle-background__img {
+            position: relative;
 
-        &:not(.fn__none) {
-            margin-bottom: -24px;
+            &:not(.fn__none) {
+                margin-bottom: -24px;
 
-            +.protyle-background__ia .protyle-background__icon.fn__none~.protyle-background__action {
-                @include theme-variant-color(background-color, surface, 0.8, 0.6);
-                @include theme-variant-color(color, on-background, 0.6, 1);
+                +.protyle-background__ia .protyle-background__icon.fn__none~.protyle-background__action {
+                    @include theme-variant-color(background-color, surface, 0.8, 0.6);
+                    @include theme-variant-color(color, on-background, 0.6, 1);
 
-                padding: 2px;
-                width: fit-content;
-                border-radius: 99px;
-                mix-blend-mode: luminosity;
-
-                &:hover {
-                    @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
-                }
-
-                .b3-button {
-                    margin-top: 0;
+                    padding: 2px;
+                    width: fit-content;
+                    border-radius: 99px;
+                    mix-blend-mode: luminosity;
 
                     &:hover {
-                        background-color: unset;
-                        color: var(--b3-theme-on-background);
+                        @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+                    }
+
+                    .b3-button {
+                        margin-top: 0;
+
+                        &:hover {
+                            background-color: unset;
+                            color: var(--b3-theme-on-background);
+                        }
                     }
                 }
             }
-        }
 
-        &.fn__none {
-            +.protyle-background__ia {
-                margin-top: 48px;
+            &.fn__none {
+                +.protyle-background__ia {
+                    margin-top: 48px;
+                }
+            }
+
+            .protyle-icons:nth-last-child(2) {
+                width: fit-content;
+                top: calc(15vh - 24px);
             }
         }
 
-        .protyle-icons:nth-last-child(2) {
-            width: fit-content;
-            top: calc(15vh - 24px);
+        &.without-icon {
+            .protyle-background__img {
+                margin-bottom: -100px;
+            }
+
+            .protyle-background__ia {
+                flex-direction: column-reverse;
+            }
+        }
+
+        &:not(.without-icon) {
+            .protyle-background__img+.protyle-background__ia .protyle-background__action {
+                position: absolute;
+                top: auto;
+                transform: translateX(88px);
+            }
+
+            .protyle-background__img.fn__none+.protyle-background__ia .protyle-background__action {
+                top: 48px;
+            }
         }
     }
 
-    &.without-icon {
-        .protyle-background__img {
-            margin-bottom: -100px;
-        }
-
-        .protyle-background__ia {
-            flex-direction: column-reverse;
+    .protyle-top {
+        &:hover {
+            .b3-chips .b3-button {
+                opacity: 1;
+            }
         }
     }
 
-    &:not(.without-icon) {
-        .protyle-background__img+.protyle-background__ia .protyle-background__action {
-            position: absolute;
-            top: auto;
-            transform: translateX(88px);
-        }
-
-        .protyle-background__img.fn__none+.protyle-background__ia .protyle-background__action {
-            top: 48px;
-        }
+    .protyle-background__ia {
+        display: flex;
+        flex-direction: column;
     }
-}
 
-.protyle-top {
-    &:hover {
-        .b3-chips .b3-button {
-            opacity: 1;
+    .protyle-background__action {
+        &:hover {
+            opacity: 1 !important;
+        }
+
+        .b3-button {
+            &:hover {
+                background-color: unset;
+                color: var(--b3-theme-on-background);
+            }
         }
     }
 }
 
 .protyle-background__ia {
-    display: flex;
-    flex-direction: column;
-
     .b3-chips {
         padding: 4px 0;
 
@@ -227,17 +244,4 @@ background: linear-gradient(unquote($direction), $stops);
         outline-offset: -.12em;
     }
 }
-}
-
-.protyle-background__action {
-    &:hover {
-        opacity: 1 !important;
-    }
-
-    .b3-button {
-        &:hover {
-            background-color: unset;
-            color: var(--b3-theme-on-background);
-        }
-    }
 }
