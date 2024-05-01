@@ -159,7 +159,7 @@ body:not(.body--mobile) {
             .protyle-background__img+.protyle-background__ia .protyle-background__action {
                 position: absolute;
                 top: auto;
-                transform: translateX(88px);
+                transform: translateX(88px); // 可能是导致 https://github.com/mustakshif/Asri/issues/58 的原因
             }
 
             .protyle-background__img.fn__none+.protyle-background__ia .protyle-background__action {

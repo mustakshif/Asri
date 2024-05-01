@@ -101,7 +101,8 @@
     [data-node-id] span[data-type~=file-annotation-ref] {
         --bg-clr: var(--b3-theme-primary-lightest);
         color: inherit;
-        text-decoration: underline dashed;
+        text-decoration-line: underline;
+        text-decoration-style: dashed;
         text-decoration-color: var(--b3-theme-primary);
         text-decoration-thickness: .1em;
         background: linear-gradient(90deg, var(--bg-clr) 100%, transparent 0%) center right;
@@ -117,6 +118,10 @@
             transition-delay: .125s; // 优化鼠标划过时的闪烁
         }
 
+        &[data-type~=s] {
+            text-decoration-line: underline line-through;
+        }
+
         @include darkmode-counterpart {
             --bg-clr: var(--b3-theme-primary-lighter);
         }
@@ -126,7 +131,7 @@
 @mixin v-block-ref {
     [data-node-id] span[data-type=virtual-block-ref] {
         border-bottom: none;
-        text-decoration: underline;
+        text-decoration-line: underline;
         text-decoration-thickness: .1em;
         text-decoration-color: var(--b3-theme-on-surface-light);
         text-decoration-style: dashed;
@@ -134,6 +139,10 @@
         background-size: 0;
         background-repeat: no-repeat;
         transition: background-size .2s;
+
+        &[data-type~=s] {
+            text-decoration-line: underline line-through;
+        }
 
         &:hover {
             background-position: center left;
@@ -150,9 +159,13 @@
 
     #{$selector} {
         color: inherit;
-        text-decoration: underline solid;
+        text-decoration-line: underline;        
         text-decoration-thickness: 0.1em;
         text-decoration-color: var(--b3-theme-primary);
+
+        &[data-type~=s] {
+            text-decoration-line: underline line-through;
+        }
 
         &:hover {
             color: var(--b3-theme-primary);
@@ -184,6 +197,10 @@
         text-decoration: underline;
         text-decoration-thickness: 0.1em;
         border-bottom: none;
+
+        &[data-type~=s] {
+            text-decoration-line: underline line-through;
+        }
     }
 }
 
@@ -268,7 +285,7 @@
     span[data-type~=inline-memo] {
         background-color: transparent;
         border-bottom: none;
-        text-decoration: underline;
+        text-decoration-line: underline;
         transition-property: background-color, text-decoration-color, box-shadow, color, border-radius;
         transition-duration: .15s;
         // transition: .15s;
@@ -277,6 +294,10 @@
 
         @include darkmode-counterpart {
             text-decoration-color: #FED709;
+        }
+
+        &[data-type~=s] {
+            text-decoration-line: underline line-through;
         }
 
         &:hover {
@@ -438,6 +459,10 @@
             box-shadow: none;
             border: .1em solid var(--b3-theme-primary);
             text-decoration: none;
+
+            &[data-type~=s] {
+                text-decoration-line: line-through; 
+            }
         }
     }
 
