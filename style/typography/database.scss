@@ -3,6 +3,18 @@
 .av {
     &__container[style="--av-background:var(--b3-theme-surface)"] {
         --av-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background)) !important;
+
+        [data-type="NodeBlockQueryEmbed"][style*="var(--b3-font-background1)"] & {
+            --av-background: var(--b3-theme-background) !important;
+        }
+    }
+
+    .bq &__container[style="--av-background:var(--b3-theme-background)"] {
+        --av-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background)) !important;
+    }
+
+    .bq[style*="var(--b3-font-background1)"] &__container[style="--av-background:var(--b3-theme-background)"] {
+        --av-background: var(--b3-theme-background) !important;
     }
 
     // 数据库视图切换、标题
@@ -232,6 +244,7 @@
     }
 
     &__cell[data-wrap=true] {
+
         // 列开启换行时
         .b3-chip.av__celltext--url,
         .av__cellassetimg {
@@ -243,6 +256,8 @@
 
     // 菜单
     &__panel {
+        --b3-font-background1: var(--b3-theme-background);
+
         .b3-menu {
             >.fn__flex-column>.b3-menu__item[data-type="nobg"]:first-child {
                 border-radius: 0;

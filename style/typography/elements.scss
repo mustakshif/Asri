@@ -457,7 +457,7 @@
         &[data-type~="block-ref"] {
             color: var(--b3-theme-primary);
             box-shadow: none;
-            border: .1em solid var(--b3-theme-primary);
+            border: .1em solid var(--b3-theme-primary-light);
             text-decoration: none;
 
             &[data-type~=s] {
@@ -476,7 +476,9 @@
     @include blockquote;
 
     .sb .bq,
-    .sb blockquote {
+    .sb blockquote,
+    .bq[style*="var(--b3-font-background1)"],
+    blockquote[style*="var(--b3-font-background1)"] {
         border: none;
     }
 
@@ -1040,4 +1042,9 @@
         border-radius: 4px;
         border-color: transparent;
     }
+}
+
+[data-node-id][style*="var(--b3-font-background1)"] {
+    outline: 1.5px solid var(--b3-border-color-trans);
+    outline-offset: -1.5px;
 }
