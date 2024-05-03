@@ -1,103 +1,109 @@
+$li-types: ".li[data-subtype=o]", ".li[data-subtype=u]";
+
+.list[data-subtype=o] {
+    counter-reset: olcounter1 0 olcounter2 0 olcounter3 0;
+}
+
 .protyle-wysiwyg {
-    >[data-node-id].list {
-        $list-html-level: ">.li>.list";
-        $level: 1;
 
-        // counter styles
-        @for $i from 1 through 3 {
-            #{$list-html-level} {
-                // set counters
-                $level: $i * 3 - 1;
-
-                counter-reset: olcounter#{$level};
-
-                // level 2, 5, 8
-                >.li {
-                    counter-increment: olcounter#{$level};
-
-                    // level 3, 6 ,9
-                    >.list {
-                        counter-reset: olcounter#{$level + 1};
-
-                        >.li {
-                            counter-increment: olcounter#{$level + 1};
-                        }
-                    }
-                }
-
-                $list-html-level: $list-html-level + ">.li>.list>.li>.list>.li>.list";
-
-            }
-        }
-
-        // set display
-        $list-html-level: ">.li>.list";
+    @each $type in $li-types {
+        $start: $type;
+        $j: 1;
 
         @for $i from 1 through 3 {
+            @if $type ==".li[data-subtype=o]" {
+                #{$start} {
 
-            // 2, 5, 8
-            #{$list-html-level}[data-subtype=o] {
-                >.li {
-                    >.protyle-action {
-                        color: transparent !important;
+                    counter-increment: olcounter1;
 
-                        &::after {
-                            content: counter(olcounter#{$i * 3 - 1}, lower-alpha) '.';
+                    @if $j >3 {
+                        >.protyle-action::after {
+                            content: counter(olcounter1) ".";
+                        }
+                    }
+
+                    #{$type} {
+
+                        counter-increment: olcounter2;
+
+                        >.protyle-action::after {
+                            content: counter(olcounter2, lower-alpha) ".";
+                        }
+
+                        #{$type} {
+
+                            counter-increment: olcounter3;
+
+                            >.protyle-action::after {
+                                content: counter(olcounter3, lower-roman) ".";
+                            }
                         }
                     }
                 }
-
             }
 
-            // #{$list-html-level}[data-subtype=u] {
-            //     >.li {
-            //         >.protyle-action {
-            //             color: transparent !important;
+            @else {
+                #{$start} {
 
-            //             &::after {
-            //                 content: '◦';
-            //                 font-size: 1.5em;
-            //                 font-family: Arial;
-            //             }
-            //         }
-            //     }
-            // }
+                    >.protyle-action::after {
+                        content: "•";
+                    }
 
-            // 3, 6, 9
-            #{$list-html-level + ">.li>.list"}[data-subtype=o] {
-                >.li {
-                    >.protyle-action {
-                        color: transparent !important;
+                    #{$type} {
 
-                        &::after {
-                            content: counter(olcounter#{$i * 3}, lower-roman) '.';
+                        >.protyle-action::after {
+                            content: "◦";
+                        }
+
+                        #{$type} {
+
+                            >.protyle-action::after {
+                                content: "▪";
+                            }
                         }
                     }
                 }
-
             }
 
-            $list-html-level: $list-html-level + ">.li>.list>.li>.list>.li>.list";
+            $start: $start + " " + $type + " " + $type + " " + $type;
+            $j: $j + 3;
         }
+    }
 
-        // other styles
-        .protyle-action::after {
+    // other styles
+    // ordered list starting from 2nd level li
+    .li .li:not([data-subtype=t])>.protyle-action {
+        color: transparent !important;
+
+        &::after {
             color: var(--b3-theme-on-background);
             white-space: nowrap;
             line-height: 1;
             // text-align: end;
         }
+    }
 
-        .li[fold="1"] {
-            .protyle-action {
-                &::after {
-                    transform: none;
-                    outline: .3em solid rgb(from var(--b3-theme-on-background) r g b / .1);
-                }
+    // unordered list
+    .li[data-subtype=u]>.protyle-action {
+        color: transparent !important;
 
-                &:hover::after {
-                    background-color: rgb(from var(--b3-theme-on-background) r g b / .1);
-                }
+        &::after {
+            font-family: Arial;
+            font-size: 1.5em;
+            color: var(--b3-theme-on-background);
+        }
+    }
+
+    // folded list
+    .li[fold="1"]:not([data-subtype=t]) {
+        .protyle-action {
+            &::after {
+                transform: none;
+                outline: .3em solid rgb(from var(--b3-theme-on-background) r g b / .1);
+            }
+
+            &:hover::after {
+                background-color: rgb(from var(--b3-theme-on-background) r g b / .1);
             }
         }
     }
