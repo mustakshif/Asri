@@ -1,0 +1,104 @@
+.protyle-wysiwyg {
+    >[data-node-id].list {
+        $list-html-level: ">.li>.list";
+        $level: 1;
+
+        // counter styles
+        @for $i from 1 through 3 {
+            #{$list-html-level} {
+                // set counters
+                $level: $i * 3 - 1;
+
+                counter-reset: olcounter#{$level};
+
+                // level 2, 5, 8
+                >.li {
+                    counter-increment: olcounter#{$level};
+
+                    // level 3, 6 ,9
+                    >.list {
+                        counter-reset: olcounter#{$level + 1};
+
+                        >.li {
+                            counter-increment: olcounter#{$level + 1};
+                        }
+                    }
+                }
+
+                $list-html-level: $list-html-level + ">.li>.list>.li>.list>.li>.list";
+
+            }
+        }
+
+        // set display
+        $list-html-level: ">.li>.list";
+
+        @for $i from 1 through 3 {
+
+            // 2, 5, 8
+            #{$list-html-level}[data-subtype=o] {
+                >.li {
+                    >.protyle-action {
+                        color: transparent !important;
+
+                        &::after {
+                            content: counter(olcounter#{$i * 3 - 1}, lower-alpha) '.';
+                        }
+                    }
+                }
+
+            }
+
+            // #{$list-html-level}[data-subtype=u] {
+            //     >.li {
+            //         >.protyle-action {
+            //             color: transparent !important;
+
+            //             &::after {
+            //                 content: '◦';
+            //                 font-size: 1.5em;
+            //                 font-family: Arial;
+            //             }
+            //         }
+            //     }
+            // }
+
+            // 3, 6, 9
+            #{$list-html-level + ">.li>.list"}[data-subtype=o] {
+                >.li {
+                    >.protyle-action {
+                        color: transparent !important;
+
+                        &::after {
+                            content: counter(olcounter#{$i * 3}, lower-roman) '.';
+                        }
+                    }
+                }
+
+            }
+
+            $list-html-level: $list-html-level + ">.li>.list>.li>.list>.li>.list";
+        }
+
+        // other styles
+        .protyle-action::after {
+            color: var(--b3-theme-on-background);
+            white-space: nowrap;
+            line-height: 1;
+            // text-align: end;
+        }
+
+        .li[fold="1"] {
+            .protyle-action {
+                &::after {
+                    transform: none;
+                    outline: .3em solid rgb(from var(--b3-theme-on-background) r g b / .1);
+                }
+
+                &:hover::after {
+                    background-color: rgb(from var(--b3-theme-on-background) r g b / .1);
+                }
+            }
+        }
+    }
+}

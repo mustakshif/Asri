@@ -49,7 +49,12 @@
                     // box-shadow: none;
 
                     &:hover {
-                        @include theme-variant-color(background-color, light-components, 1, 0.2, $important: true);
+                        // @include theme-variant-color(background-color, light-components, 1, 0.2, $important: true);
+                        background-color: #fff !important;
+                        
+                        @include darkmode-counterpart{
+                            background-color: #ffffff23 !important;
+                        }
                     }
                 }
 

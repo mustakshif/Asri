@@ -543,7 +543,7 @@
         &[fold="1"]>.protyle-action:after {
             border-radius: 99px;
             transform: scale(1.5);
-            @include theme-variant-color(background-color, on-background, 0.1);
+            background-color: rgb(from var(--b3-theme-on-background) r g b / .1);
         }
     }
 
