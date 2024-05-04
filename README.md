@@ -162,7 +162,7 @@ The theme development process drew inspiration from the following themes, and I 
 | Reference Content | From Theme | Developer |
 | --- | --- | --- |
 | - Menu background blur | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark) | [Crowds21](https://github.com/chenshinshi) |
-| - Toolbar hiding<br />- Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu<br />- Bottom dock & status bar mergence | [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)           |
+| - Toolbar hiding<br />- Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu<br />- Bottom dock & status bar mergence<br />- Multilevel list style| [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)           |
 | - Topbar-tabbar mergence<br />- File tree indent guides<br />- MutationObserver related functions | [Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
 
 （The order in the list above does not imply any ranking）

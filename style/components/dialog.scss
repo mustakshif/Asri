@@ -846,12 +846,12 @@
         }
 
         > .ft__on-surface {
-            font-weight: 500;
-            font-size: 1em;
+            font-weight: 600;
+            // font-size: 1em;
     
             &::first-line {
                 font-weight: normal;
-                font-size: calc(1em / 1.2);
+                // font-size: calc(1em / 1.2);
             }
         }
 

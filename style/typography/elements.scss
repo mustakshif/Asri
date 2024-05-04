@@ -524,14 +524,14 @@
         &::before {
             border-left: 1px solid;
             border-left-color: inherit;
-            mask-image: linear-gradient(to bottom, transparent 1px, black 1px); // 隐藏原有的1px 剩余
-            opacity: 0.1;
+            // mask-image: linear-gradient(to bottom, transparent 1px, black 1px); // 隐藏原有的1px 剩余
+            opacity: .1;
             transition: opacity 0.2s;
         }
 
         &:hover::before {
             border-left-color: inherit;
-            opacity: 0.3;
+            opacity: .2;
         }
 
         // 引用块 
