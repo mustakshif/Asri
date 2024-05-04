@@ -17,8 +17,12 @@ $li-types: ".li[data-subtype=o]", ".li[data-subtype=u]";
                     counter-increment: olcounter1;
 
                     @if $j >3 {
-                        >.protyle-action::after {
-                            content: counter(olcounter1) ".";
+                        >.protyle-action {
+                            color: transparent !important;
+
+                            &::after {
+                                content: counter(olcounter1) ".";
+                            }
                         }
                     }
 
@@ -26,16 +30,24 @@ $li-types: ".li[data-subtype=o]", ".li[data-subtype=u]";
 
                         counter-increment: olcounter2;
 
-                        >.protyle-action::after {
-                            content: counter(olcounter2, lower-alpha) ".";
+                        >.protyle-action {
+                            color: transparent !important;
+
+                            &::after {
+                                content: counter(olcounter2, lower-alpha) ".";
+                            }
                         }
 
                         #{$type} {
 
                             counter-increment: olcounter3;
 
-                            >.protyle-action::after {
-                                content: counter(olcounter3, lower-roman) ".";
+                            >.protyle-action {
+                                color: transparent !important;
+
+                                &::after {
+                                    content: counter(olcounter3, lower-roman) ".";
+                                }
                             }
                         }
                     }
@@ -73,8 +85,6 @@ $li-types: ".li[data-subtype=o]", ".li[data-subtype=u]";
     // other styles
     // ordered list starting from 2nd level li
     .li .li:not([data-subtype=t])>.protyle-action {
-        color: transparent !important;        
-
         &::after {
             color: var(--b3-theme-on-background);
             white-space: nowrap;
@@ -88,7 +98,7 @@ $li-types: ".li[data-subtype=o]", ".li[data-subtype=u]";
 
     // unordered list
     .li[data-subtype=u]>.protyle-action {
-        color: transparent !important;       
+        color: transparent !important;
 
         &::after {
             font-family: Arial;

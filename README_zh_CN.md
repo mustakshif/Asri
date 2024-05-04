@@ -10,15 +10,15 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
-### v3.0.6
+### v3.0.7
 
-* 适配思源 v3.0.12 文档标题区域新布局
-* 优化文档标签、查询条件标签的样式
-* 填充数据库菜单高亮项目中文本框的背景色
-* [微调集市卡片动态宽度](https://github.com/mustakshif/Asri/issues/57)
-* 修复数据库视图页签图标不居中的问题
-* 修复搜索类型脚注显示不全的问题
-* 修复集市包详情页面表格无法横向滚动的问题
+* 采用 Notion 多级列表序号样式
+* `背景颜色1` 改为无色 + 边框
+* 添加文档标签背景色，增加与题头图的区分度
+* 优化题头图位置调整提示条的定位
+* 集市包侧栏信息数据部分加粗
+* 优化引述块中数据库表头的颜色
+* [修复删除线样式无法叠加其他行内样式的问题](https://github.com/mustakshif/Asri/issues/59)
 
 ### ...
 
@@ -162,7 +162,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 | 借鉴内容 | 来自主题 | 开发者 |
 |--- | --- | --- |
 | - 菜单背景模糊 | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark) | [Crowds21](https://github.com/chenshinshi) |
-| - 隐藏顶栏<br />- 侧栏面板列表项前圆点<br />- 大纲列表标题图标<br />- 状态栏<br />- 搜索列表<br />- 表格列宽<br />- `/` 菜单多栏布局<br />- 底栏和状态栏合并<br />- 多级列表序号 | [Savor](https://github.com/royc01/notion-theme) | [Roy](https://github.com/royc01) |
+| - 侧栏面板列表项前圆点<br />- 大纲列表标题图标<br />- 状态栏<br />- 搜索列表<br />- 表格列宽<br />- `/` 菜单多栏布局<br />- 底栏和状态栏合并<br />- 多级列表序号 | [Savor](https://github.com/royc01/notion-theme) | [Roy](https://github.com/royc01) |
 | - 顶栏页签栏合并<br />- 文档树缩进线<br />- DOM 变动观察相关函数 | [Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
 
 (以上排名不分先后)

@@ -1,3 +1,25 @@
+### v3.0.7
+
+* 采用 Notion 多级列表序号样式
+* `背景颜色1` 改为无色 + 边框
+* 添加文档标签背景色，增加与题头图的区分度
+* 优化题头图位置调整提示条的定位
+* 集市包侧栏信息数据部分加粗
+* 优化引述块中数据库表头的颜色
+* [修复删除线样式无法叠加其他行内样式的问题](https://github.com/mustakshif/Asri/issues/59)
+
+<br />
+
+* Implemented the Notion multi-level list numbering style.
+* Set `background color 1` to transparent with a border.
+* Added background color to document tags for better differentiation from cover images.
+* Improved the positioning of the prompt bar for adjusting the header image position.
+* Made the sidebar information data in the marketplace package bold.
+* Optimized the background color of the database header in the quote block.
+* [Fixed the issue where the strikethrough style couldn&apos;t be combined with other inline styles](https://github.com/mustakshif/Asri/issues/59).
+
+---
+
 ### v3.0.6
 
 * 适配思源 v3.0.12 文档标题区域新布局

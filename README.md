@@ -10,15 +10,15 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.0.6
+### v3.0.7
 
-* Adapted the layout of the document title area in SiYuan v3.0.12.
-* Optimized the styles of document tags and saved query criteria condition tags.
-* Filled the background color of the input box in the database menu highlight item.
-* [Fine-tuned dynamic width of marketplace item cards](https://github.com/mustakshif/Asri/issues/57).
-* Fixed the issue where the icon of the database view tab was not centered.
-* Fixed the issue where the footnote for search type was not fully displayed.
-* Fixed the issue where the table on the market package details page could not be scrolled horizontally.
+* Implemented the Notion multi-level list numbering style.
+* Set `background color 1` to transparent with a border.
+* Added background color to document tags for better differentiation from cover images.
+* Improved the positioning of the prompt bar for adjusting the header image position.
+* Made the sidebar information data in the marketplace package bold.
+* Optimized the background color of the database header in the quote block.
+* [Fixed the issue where the strikethrough style couldn&apos;t be combined with other inline styles](https://github.com/mustakshif/Asri/issues/59).
 
 ### ...
 
@@ -162,7 +162,7 @@ The theme development process drew inspiration from the following themes, and I 
 | Reference Content | From Theme | Developer |
 | --- | --- | --- |
 | - Menu background blur | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark) | [Crowds21](https://github.com/chenshinshi) |
-| - Toolbar hiding<br />- Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu<br />- Bottom dock & status bar mergence<br />- Multilevel list style| [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)           |
+| - Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu<br />- Bottom dock & status bar mergence<br />- Multilevel list style| [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)           |
 | - Topbar-tabbar mergence<br />- File tree indent guides<br />- MutationObserver related functions | [Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
 
 （The order in the list above does not imply any ranking）

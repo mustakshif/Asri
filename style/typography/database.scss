@@ -436,6 +436,13 @@ img.av__cellassetimg {
         .b3-menu__item {
             .color__square {
                 box-shadow: none;
+
+                &[style*="var(--b3-font-background1)"] {
+                    outline: 1px solid var(--b3-border-color-trans);
+                    outline-offset: -1px;
+                    background-color: var(--b3-theme-background) !important;
+                    color: var(--b3-theme-on-background) !important;
+                }
             }
         }
     }
