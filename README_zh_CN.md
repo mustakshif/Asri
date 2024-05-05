@@ -18,6 +18,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * 优化题头图位置调整提示条的定位
 * 集市包侧栏信息数据部分加粗
 * 优化引述块中数据库表头的颜色
+* 数据库视图页签区域适配编辑器字号
 * [修复删除线样式无法叠加其他行内样式的问题](https://github.com/mustakshif/Asri/issues/59)
 
 ### ...

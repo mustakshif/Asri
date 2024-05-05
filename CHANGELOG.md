@@ -6,6 +6,7 @@
 * 优化题头图位置调整提示条的定位
 * 集市包侧栏信息数据部分加粗
 * 优化引述块中数据库表头的颜色
+* 数据库视图页签区域适配编辑器字号
 * [修复删除线样式无法叠加其他行内样式的问题](https://github.com/mustakshif/Asri/issues/59)
 
 <br />
@@ -16,6 +17,7 @@
 * Improved the positioning of the prompt bar for adjusting the header image position.
 * Made the sidebar information data in the marketplace package bold.
 * Optimized the background color of the database header in the quote block.
+* Adapted the size of the database view tab area to the editor font size.
 * [Fixed the issue where the strikethrough style couldn&apos;t be combined with other inline styles](https://github.com/mustakshif/Asri/issues/59).
 
 ---

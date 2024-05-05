@@ -24,12 +24,14 @@
 
             .layout-tab-bar {
                 @include dialog-tabbar;
+                height: auto;
                 margin: 8px 0 !important;
                 padding: 0;
                 border: 2px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
 
                 .item {
                     padding: 2px 6px;
+                    height: auto;
                 }
 
                 .item:not(.item--focus) {
@@ -60,8 +62,10 @@
 
                 .item__graphic {
 
+                    padding: .5em 5px .5em 8px;
+
                     .body--mac & {
-                        font-size: 15px;
+                        font-size: calc(1em / .875 * 15 / 17);
                     }
                 }
             }
@@ -75,10 +79,10 @@
                     background-color: transparent;
                 }
 
-                svg {
-                    width: 14px;
-                    height: 14px;
-                }
+                // svg {
+                //     width: calc(14em / 17);
+                //     height: calc(14em / 17);
+                // }
             }
 
             // >.fn__space:last-child {

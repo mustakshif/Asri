@@ -18,6 +18,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Improved the positioning of the prompt bar for adjusting the header image position.
 * Made the sidebar information data in the marketplace package bold.
 * Optimized the background color of the database header in the quote block.
+* Adapted the size of the database view tab area to the editor font size.
 * [Fixed the issue where the strikethrough style couldn&apos;t be combined with other inline styles](https://github.com/mustakshif/Asri/issues/59).
 
 ### ...
