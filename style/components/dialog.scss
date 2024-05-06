@@ -372,6 +372,10 @@
                                 background-color: var(--b3-theme-surface);
                                 padding: 4px 8px;
                                 opacity: .9;
+
+                                &::before {
+                                    display: none;
+                                }
                             }
                         }
                     }
@@ -1047,7 +1051,8 @@
 
             word-break: normal;
 
-            @include theme-variant-color(color, on-background, 0.9);
+            // @include theme-variant-color(color, on-background, 0.9);
+            color: rgb(from var(--b3-theme-on-background) r g b/.9);
 
             // font-weight: 500;
             line-height: 1.5;
