@@ -845,10 +845,10 @@
             flex-grow: 0;
         }
 
-        > .ft__on-surface {
+        >.ft__on-surface {
             font-weight: 600;
             // font-size: 1em;
-    
+
             &::first-line {
                 font-weight: normal;
                 // font-size: calc(1em / 1.2);
@@ -1385,7 +1385,9 @@ body.body--window {
 
     .card__action {
         >div {
-            margin: 0 12px 8px;
+            body:not(.body--mobile) & {
+                margin: 0 12px 8px;
+            } // fix https://github.com/mustakshif/Asri/issues/61
         }
 
         .b3-button {
