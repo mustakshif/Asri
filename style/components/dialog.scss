@@ -65,7 +65,7 @@
             }
 
             #commands {
-                padding: 0 8px 8px;
+                padding: 8px;
 
                 ~.fn__hr {
                     display: none;
@@ -125,16 +125,6 @@
     &[data-key="dialog-globalsearch"],
     &[data-key="dialog-search"],
     &[data-key="dialog-replace"] {
-        .b3-dialog__container {
-            .b3-dialog__body {
-                .search__tip {
-                    padding: 4px 8px;
-                    margin: 0;
-                    color: var(--b3-theme-on-surface);
-                }
-            }
-        }
-
         #searchList {
             background-color: var(--b3-theme-surface);
 
@@ -223,6 +213,12 @@
     //         overflow: hidden;
     //     }
     // }
+}
+
+.search__tip {
+    padding: 4px 8px;
+    margin: 0;
+    color: var(--b3-theme-on-surface);
 }
 
 // 设置面板 ————————————————————————————————

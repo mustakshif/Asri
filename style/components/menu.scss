@@ -22,23 +22,24 @@
                 background-color: var(--b3-menu-item-background-hover);
                 color: var(--b3-menu-item-background-hover-text);
 
-                &>.b3-menu__icon,
-                &>.b3-menu__label>.b3-menu__icon{
+                >.b3-menu__icon,
+                >.b3-menu__label>.b3-menu__icon{
                     color: var(--b3-menu-item-background-hover-text) !important;
                 }
 
-                &>.b3-menu__accelerator {
+                >.b3-menu__accelerator,
+                >.b3-menu__label>.ft__on-surface {
                     color: var(--b3-menu-item-background-hover-text);
                     opacity: 0.8;
                 }
 
-                &>.b3-menu__label>.b3-tooltips .b3-slider {
+                >.b3-menu__label>.b3-tooltips .b3-slider {
                     &::-webkit-slider-runnable-track {
                         background-color: #fff4;
                     }
                 }
 
-                &>:where(.b3-menu__action, .b3-menu__checked) {
+                >:where(.b3-menu__action, .b3-menu__checked) {
                     color: var(--b3-theme-on-primary);
                     opacity: .8;
                     &:hover {
