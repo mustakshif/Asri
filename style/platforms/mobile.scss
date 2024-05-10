@@ -1,8 +1,10 @@
-body.body--mobile {
+.body--mobile {
     // -> js
 
     //编辑区
     .protyle-wysiwyg {
+
+        padding-right: 24px !important;
 
         .bq,
         .protyle-wysiwyg blockquote,

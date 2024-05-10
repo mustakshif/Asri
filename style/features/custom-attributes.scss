@@ -1,7 +1,13 @@
 @use '../base' as *;
 
 // full-width display ——————————————————
-.layout__center .protyle-wysiwyg {
+
+.protyle-wysiwyg {
+    --protyle-spacing-compatible: var(--protyle-spacing, 24px);
+}
+
+.layout__center .protyle-wysiwyg,
+.body--mobile .protyle-wysiwyg {
 
     // 图片 ——————————————————————
     &[custom-afwd="all"]>.p:not([custom-afwd="off"]),
@@ -9,7 +15,7 @@
     >.p[custom-afwd="on"] {
 
         .img {
-            margin: 0 calc(-1 * var(--protyle-spacing) - 9px);
+            margin: 0 calc(-1 * var(--protyle-spacing-compatible) - 9px);
             max-width: unset !important;
             display: block !important;
             transition: margin .2s;
@@ -35,7 +41,7 @@
             // 图片标题
             .protyle-action__title {
                 width: auto;
-                padding: .5em var(--protyle-spacing) 0;
+                padding: .5em var(--protyle-spacing-compatible) 0;
             }
         }
     }
@@ -54,8 +60,12 @@
 
         .iframe-content {
             display: block;
-            margin: calc(20em / 17) calc(var(--protyle-spacing) * -1 - 5px);
+            margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 5px);
             transition: margin .2s;
+
+            .body--mobile & {
+                margin: 0 -16px;
+            }
 
             video,
             iframe {
@@ -111,16 +121,20 @@
     &[custom-afwd~="db"]>.av:not([custom-afwd="off"]),
     >.av[custom-afwd="on"] {
         .av__container {
-            margin: 0 calc(var(--protyle-spacing) * -1 - 3px);
+            margin: 0 calc(var(--protyle-spacing-compatible) * -1 - 3px);
             transition: margin .2s;
 
+            .body--mobile & {
+                margin: 0 -16px;
+            }
+
             .av__header .av__counter {
-                width: calc(100% - 2 * var(--protyle-spacing) - 6px);
+                width: calc(100% - 2 * var(--protyle-spacing-compatible) - 6px);
             }
 
             .av__header,
             .av__scroll {
-                padding: 0 calc(var(--protyle-spacing) + 3px);
+                padding: 0 calc(var(--protyle-spacing-compatible) + 3px);
                 transition: padding .2s;
             }
 
@@ -130,7 +144,7 @@
 
             // 「添加行」按钮
             .av__colsticky {
-                left: calc(var(--protyle-spacing) * -1 - 3px);
+                left: calc(var(--protyle-spacing-compatible) * -1 - 3px);
 
                 // 固定列左侧勾选框
                 .av__firstcol {
@@ -162,8 +176,9 @@
     &[custom-afwd~="sb"]>.sb[data-sb-layout="col"]:not([custom-afwd="off"]),
     >.sb[data-sb-layout="col"][custom-afwd="on"] {
         > :first-child {
-            margin-left: calc(var(--protyle-spacing)*-1 + min(24px, var(--protyle-spacing)));
+            margin-left: calc(var(--protyle-spacing-compatible)*-1 + min(24px, var(--protyle-spacing-compatible)));
             transition: margin .2s;
+            
 
             // >*,
             // .sb,
@@ -175,7 +190,7 @@
         }
 
         > :nth-last-child(1 of [data-node-id]) {
-            margin-right: calc(var(--protyle-spacing)*-1 + min(24px, var(--protyle-spacing)));
+            margin-right: calc(var(--protyle-spacing-compatible)*-1 + min(24px, var(--protyle-spacing-compatible)));
 
             // >*, // 导致 tabbar 滚动卡顿 + 行内备注 hover 状态取消时动画卡顿
             // .sb,
@@ -187,11 +202,11 @@
         }
 
         // > .sb:first-child {
-        //     margin-left: calc(var(--protyle-spacing)*-1);
+        //     margin-left: calc(var(--protyle-spacing-compatible)*-1);
         // }
 
         // > .sb:nth-last-child(2) {
-        //     margin-right: calc(var(--protyle-spacing)*-1);
+        //     margin-right: calc(var(--protyle-spacing-compatible)*-1);
         // }
     }
 
@@ -207,8 +222,12 @@
         }
 
         >div:first-child {
-            margin: calc(20em / 17) calc(var(--protyle-spacing) * -1 - 4px);
-            padding: 0 calc(var(--protyle-spacing));
+            margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 4px);
+            padding: 0 calc(var(--protyle-spacing-compatible));
+
+            .body--mobile & {
+                margin: 0 -16px;
+            }
 
             &::-webkit-scrollbar {
                 display: none;
@@ -239,7 +258,7 @@
         }
 
         >div:first-child {
-            margin: calc(20em / 17) calc(var(--protyle-spacing) * -1 - 4px);
+            margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 4px);
             padding: 0 !important;
         }
 
@@ -266,7 +285,7 @@
 
 //     [data-type="NodeAttributeViewRow"],
 //     [data-type="NodeAttributeViewRowMenu"] {
-//         // transform: translateX(min(calc(var(--protyle-spacing) * -1 + 72px), 0px));
+//         // transform: translateX(min(calc(var(--protyle-spacing-compatible) * -1 + 72px), 0px));
 //         transform: translateX(4px); // 防止按钮在鼠标移出数据库项后消失
 //     }
 // }// 思源 3.0.6 已修复
