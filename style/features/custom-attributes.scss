@@ -63,10 +63,6 @@
             margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 5px);
             transition: margin .2s;
 
-            .body--mobile & {
-                margin: 0 -16px;
-            }
-
             video,
             iframe {
                 max-height: unset;
@@ -123,10 +119,6 @@
         .av__container {
             margin: 0 calc(var(--protyle-spacing-compatible) * -1 - 3px);
             transition: margin .2s;
-
-            .body--mobile & {
-                margin: 0 -16px;
-            }
 
             .av__header .av__counter {
                 width: calc(100% - 2 * var(--protyle-spacing-compatible) - 6px);
@@ -224,10 +216,6 @@
         >div:first-child {
             margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 4px);
             padding: 0 calc(var(--protyle-spacing-compatible));
-
-            .body--mobile & {
-                margin: 0 -16px;
-            }
 
             &::-webkit-scrollbar {
                 display: none;

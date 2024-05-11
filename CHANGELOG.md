@@ -1,3 +1,25 @@
+### v3.0.8
+
+* [移动端支持全宽显示](https://github.com/mustakshif/Asri/issues/63)
+* [优化不同视口宽度下的表格显示](https://github.com/mustakshif/Asri/issues/62)
+* 优化命令面板样式
+* 优化布局菜单中高亮条目时间部分的颜色
+* 优化账号页面头衔标识的显示
+* 搜索列表文字颜色适配新色彩系统
+* [修复移动端闪卡复习界面按钮间距过大的问题](https://github.com/mustakshif/Asri/issues/61)
+
+<br />
+
+* [Support full-width display on mobile devices](https://github.com/mustakshif/Asri/issues/63)
+* [Optimized table display in different viewport widths](https://github.com/mustakshif/Asri/issues/62)
+* Improved styling of the command panel
+* Enhanced the color of the date & time for highlighted items in the `Layout` menu
+* Improved the display of title badges in the account page
+* Adapted the text color in the search list to the new color system
+* [Fixed the issue of excessive button spacing in the flashcard review interface on mobile devices](https://github.com/mustakshif/Asri/issues/61)
+
+---
+
 ### v3.0.7
 
 * 采用 Notion 多级列表序号样式

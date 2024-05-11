@@ -10,16 +10,15 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.0.7
+### v3.0.8
 
-* Implemented the Notion multi-level list numbering style.
-* Set `background color 1` to transparent with a border.
-* Added background color to document tags for better differentiation from cover images.
-* Improved the positioning of the prompt bar for adjusting the header image position.
-* Made the sidebar information data in the marketplace package bold.
-* Optimized the background color of the database header in the quote block.
-* Adapted the size of the database view tab area to the editor font size.
-* [Fixed the issue where the strikethrough style couldn&apos;t be combined with other inline styles](https://github.com/mustakshif/Asri/issues/59).
+* [Support full-width display on mobile devices](https://github.com/mustakshif/Asri/issues/63)
+* [Optimized table display in different viewport widths](https://github.com/mustakshif/Asri/issues/62)
+* Improved styling of the command panel
+* Enhanced the color of the date & time for highlighted items in the `Layout` menu
+* Improved the display of title badges in the account page
+* Adapted the text color in the search list to the new color system
+* [Fixed the issue of excessive button spacing in the flashcard review interface on mobile devices](https://github.com/mustakshif/Asri/issues/61)
 
 ### ...
 

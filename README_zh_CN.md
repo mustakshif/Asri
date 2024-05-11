@@ -10,16 +10,15 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
-### v3.0.7
+### v3.0.8
 
-* 采用 Notion 多级列表序号样式
-* `背景颜色1` 改为无色 + 边框
-* 添加文档标签背景色，增加与题头图的区分度
-* 优化题头图位置调整提示条的定位
-* 集市包侧栏信息数据部分加粗
-* 优化引述块中数据库表头的颜色
-* 数据库视图页签区域适配编辑器字号
-* [修复删除线样式无法叠加其他行内样式的问题](https://github.com/mustakshif/Asri/issues/59)
+* [移动端支持全宽显示](https://github.com/mustakshif/Asri/issues/63)
+* [优化不同视口宽度下的表格显示](https://github.com/mustakshif/Asri/issues/62)
+* 优化命令面板样式
+* 优化布局菜单中高亮条目时间部分的颜色
+* 优化账号页面头衔标识的显示
+* 搜索列表文字颜色适配新色彩系统
+* [修复移动端闪卡复习界面按钮间距过大的问题](https://github.com/mustakshif/Asri/issues/61)
 
 ### ...
 
