@@ -118,6 +118,8 @@ body:not(.body--mobile) {
                     border-radius: 99px;
                     mix-blend-mode: luminosity;
 
+                    @include border-or-not($border: false);
+
                     &:hover {
                         @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
                     }

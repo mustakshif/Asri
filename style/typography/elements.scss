@@ -833,6 +833,14 @@
                 opacity: 1;
             }
         }
+
+        &__img {
+            .protyle-icons {
+                @include darkmode-counterpart {
+                    outline-offset: unset;
+                }
+            }
+        }
     }
 
     &-icons {

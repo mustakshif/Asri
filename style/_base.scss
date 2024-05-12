@@ -69,6 +69,7 @@
 }
 
 //————————————————————————————————————————
+// 用于暗黑模式模式下给部分元素添加边框
 @mixin border-or-not($outline: true, $border: true, $outline-width: 1px) {
     border: none;
 
