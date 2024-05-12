@@ -2,6 +2,7 @@
 
 * [移动端支持全宽显示](https://github.com/mustakshif/Asri/issues/63)
 * [优化不同视口宽度下的表格显示](https://github.com/mustakshif/Asri/issues/62)
+* 优化集市卡片渲染性能
 * 优化命令面板样式
 * 优化布局菜单中高亮条目时间部分的颜色
 * 优化账号页面头衔标识的显示
@@ -12,6 +13,7 @@
 
 * [Support full-width display on mobile devices](https://github.com/mustakshif/Asri/issues/63)
 * [Optimized table display in different viewport widths](https://github.com/mustakshif/Asri/issues/62)
+* Optimized rendering performance of marketplace cards
 * Improved styling of the command panel
 * Enhanced the color of the date & time for highlighted items in the `Layout` menu
 * Improved the display of title badges in the account page

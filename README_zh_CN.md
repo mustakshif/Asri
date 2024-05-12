@@ -14,6 +14,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 * [移动端支持全宽显示](https://github.com/mustakshif/Asri/issues/63)
 * [优化不同视口宽度下的表格显示](https://github.com/mustakshif/Asri/issues/62)
+* 优化集市卡片渲染性能
 * 优化命令面板样式
 * 优化布局菜单中高亮条目时间部分的颜色
 * 优化账号页面头衔标识的显示

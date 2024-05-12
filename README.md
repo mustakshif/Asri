@@ -14,6 +14,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 * [Support full-width display on mobile devices](https://github.com/mustakshif/Asri/issues/63)
 * [Optimized table display in different viewport widths](https://github.com/mustakshif/Asri/issues/62)
+* Optimized rendering performance of marketplace cards
 * Improved styling of the command panel
 * Enhanced the color of the date & time for highlighted items in the `Layout` menu
 * Improved the display of title badges in the account page
