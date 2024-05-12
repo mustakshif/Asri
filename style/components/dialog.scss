@@ -775,8 +775,8 @@
             border: none;
             box-shadow: none;
             margin: 0;
-            transition-property: outline, box-shadow, transform;
-            transition-duration: 0.2s;
+            transition-property: outline, transform;
+            transition-duration: .2s;
 
             &--current {
                 outline: 3px solid var(--b3-theme-primary-lighter);
@@ -807,11 +807,26 @@
                 transform: scale(1.01);
                 outline: 2px solid var(--b3-theme-primary-light);
                 z-index: 1;
-                @include menu-shadow(var(--b3-theme-primary), $opacity-light: 0.2);
+            }
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: inherit;
+                opacity: 0;
+                transition: opacity .2s;
+                @include menu-shadow(var(--b3-theme-primary), $opacity-light: .2);
 
                 @include darkmode-counterpart {
                     outline: 2px solid var(--b3-theme-primary);
                 }
+            }
+
+            &:hover::after {
+                opacity: 1;
             }
         }
     }
