@@ -664,8 +664,14 @@
             .config-bazaar__content {
                 margin: 10px 20px;
 
-                .b3-card:hover {
-                    box-shadow: none;
+                .b3-card {
+                    &::after {
+                        box-shadow: 0 0 0 1.5px inset var(--b3-theme-primary-light);
+    
+                        @include darkmode-counterpart {
+                            box-shadow: 0 0 0 1.5px inset var(--b3-theme-primary);
+                        }
+                    }
                 }
             }
 
@@ -771,19 +777,22 @@
         .b3-card {
             border-radius: $border-rd-card;
             background-color: var(--b3-theme-background);
-            outline: 1.5px solid var(--b3-border-color-trans);
+            // outline: 1.5px solid var(--b3-border-color-trans);
             border: none;
-            box-shadow: none;
+            box-shadow: 0 0 0 1.5px inset var(--b3-border-color-trans);
             margin: 0;
             transition-property: outline, transform;
             transition-duration: .2s;
+            overflow: visible;
 
             &--current {
-                outline: 3px solid var(--b3-theme-primary-lighter);
+                background-color: rgb(from var(--b3-theme-primary) r g b / .1);
+                box-shadow: 0 0 0 1.5px inset var(--b3-theme-primary-lighter);
+                // outline: 3px solid var(--b3-theme-primary-lighter);
 
-                @include darkmode-counterpart {
-                    outline-color: var(--b3-theme-primary-light);
-                }
+                // @include darkmode-counterpart {
+                //     outline-color: var(--b3-theme-primary-light);
+                // }
             }
 
             &--wrap {
@@ -805,8 +814,12 @@
 
             &:hover {
                 transform: scale(1.01);
-                outline: 2px solid var(--b3-theme-primary-light);
+                // outline: 2px solid var(--b3-theme-primary-light);
                 z-index: 1;
+
+                // @include darkmode-counterpart {
+                //     outline: 2px solid var(--b3-theme-primary);
+                // }
             }
 
             &::after {
@@ -818,10 +831,13 @@
                 border-radius: inherit;
                 opacity: 0;
                 transition: opacity .2s;
-                @include menu-shadow(var(--b3-theme-primary), $opacity-light: .2);
+                pointer-events: none;
+                // @include menu-shadow(var(--b3-theme-primary), $opacity-light: .2);
+
+                box-shadow: 0 0 0 1.5px inset var(--b3-theme-primary-light), 0 0 0 1px rgb(from var(--b3-theme-primary) r g b/0.1), 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.1), 0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.1);
 
                 @include darkmode-counterpart {
-                    outline: 2px solid var(--b3-theme-primary);
+                    box-shadow: 0 0 0 1.5px inset var(--b3-theme-primary), 0 0 0 .5px rgb(from var(--b3-theme-primary) r g b/1), 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.3), 0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.15);
                 }
             }
 
@@ -1403,7 +1419,9 @@ body.body--window {
         >div {
             body:not(.body--mobile) & {
                 margin: 0 12px 8px;
-            } // fix https://github.com/mustakshif/Asri/issues/61
+            }
+
+            // fix https://github.com/mustakshif/Asri/issues/61
         }
 
         .b3-button {
