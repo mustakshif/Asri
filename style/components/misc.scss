@@ -79,6 +79,7 @@
     transition-duration: .3s;
     box-sizing: border-box;
     border: 1px solid transparent;
+    box-sizing: border-box !important; // fix conflict with enhance plugin's arco css styles
 
     .b3-menu__item--current>.b3-menu__label & {
         border: 1px solid #ffffff90;
