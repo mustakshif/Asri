@@ -191,13 +191,15 @@ textarea {
 
 
 // 滑动条
-.b3-slider {
+.b3-slider,
+.protyle-scroll__bar .b3-slider {
     height: 24px;
 
     &::-webkit-slider-runnable-track {
         height: 6px;
         border-radius: 9px;
         transition: all 0.1s ease-out;
+        background-color: var(--b3-theme-primary-lighter);
     }
 
     &::-webkit-slider-thumb {
@@ -208,6 +210,7 @@ textarea {
         width: 16px;
         margin-top: -5px;
         transition: all 0.1s ease-out;
+        box-shadow: none;
     }
 
     &:hover:not(&:focus)::-webkit-slider-thumb {
