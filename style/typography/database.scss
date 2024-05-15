@@ -27,7 +27,7 @@
                 height: auto;
                 margin: 8px 0 !important;
                 padding: 0;
-                border: 2px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
+                border: 2.5px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
 
                 .item {
                     padding: 2px 6px;
@@ -47,8 +47,8 @@
                 }
 
                 .item--focus {
-                    box-shadow: 0 -1px .5px 0 rgba(0, 0, 0, .12) inset;
-                    // box-shadow: none;
+                    // box-shadow: 0 -1px .5px 0 rgba(0, 0, 0, .12) inset;
+                    box-shadow: none;
 
                     &:hover {
                         // @include theme-variant-color(background-color, light-components, 1, 0.2, $important: true);
@@ -61,8 +61,7 @@
                 }
 
                 .item__graphic {
-
-                    padding: .5em 5px .5em 8px;
+                    padding: .42em 4px .42em 8px;
 
                     .body--mac & {
                         font-size: calc(1em / .875 * 15 / 17);
