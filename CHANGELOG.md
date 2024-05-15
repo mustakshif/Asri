@@ -11,8 +11,8 @@
 
 * Optimized Japanese interface font.
 * Restored dynamic scrollbar style in the editing area.
-* Fine-tuned database view page tab styles.
-* Fixed the issue of text box display in the database template editing.
+* Fine-tuned database view tabs' style.
+* Fixed the issue of input box display in the database template editing menu.
 * Fixed the problem of misalignment in the database line break switch.
 * Resolved some plugin style conflicts.
 

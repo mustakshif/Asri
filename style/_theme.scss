@@ -51,4 +51,8 @@ body {
     @include darkmode-counterpart {
         -webkit-font-smoothing: antialiased;
     }
+
+    &[arco-theme] {
+        font-family: var(--b3-font-family);
+    }
 }

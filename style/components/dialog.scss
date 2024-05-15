@@ -957,14 +957,15 @@
 #addCodeSnippetJS {
     right: 93px;
 
-    &~.b3-switch {
-        right: 24px;
-    }
-
     &,
-    &~.b3-switch {
+    ~.b3-switch {
         position: absolute;
         top: 16px;
+    }
+
+    ~.b3-switch {
+        right: 24px;
+        top: 19px;
     }
 }
 
