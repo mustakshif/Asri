@@ -1,3 +1,23 @@
+### v3.0.9
+
+* 优化日语界面字体
+* 恢复编辑区动态滚动条样式
+* 微调数据库视图页签样式
+* 修复数据库模版编辑文本框显示问题
+* 修复数据库换行开关不居中的问题
+* 解决部分插件样式冲突
+
+<br />
+
+* Optimized Japanese interface font.
+* Restored dynamic scrollbar style in the editing area.
+* Fine-tuned database view page tab styles.
+* Fixed the issue of text box display in the database template editing.
+* Fixed the problem of misalignment in the database line break switch.
+* Resolved some plugin style conflicts.
+
+---
+
 ### v3.0.8
 
 * [移动端支持全宽显示](https://github.com/mustakshif/Asri/issues/63)

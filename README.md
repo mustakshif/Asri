@@ -10,16 +10,14 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.0.8
+### v3.0.9
 
-* [Support full-width display on mobile devices](https://github.com/mustakshif/Asri/issues/63)
-* [Optimized table display in different viewport widths](https://github.com/mustakshif/Asri/issues/62)
-* Optimized rendering performance of marketplace cards
-* Improved styling of the command panel
-* Enhanced the color of the date & time for highlighted items in the `Layout` menu
-* Improved the display of title badges in the account page
-* Adapted the text color in the search list to the new color system
-* [Fixed the issue of excessive button spacing in the flashcard review interface on mobile devices](https://github.com/mustakshif/Asri/issues/61)
+* 优化日语界面字体
+* 恢复编辑区动态滚动条样式
+* 微调数据库视图页签样式
+* 修复数据库模版编辑文本框显示问题
+* 修复数据库换行开关不居中的问题
+* 解决部分插件样式冲突
 
 ### ...
 
