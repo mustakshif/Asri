@@ -76,10 +76,6 @@
             font-size: 15px;
         }
 
-        .b3-menu__separator {
-            background-color: var(--b3-border-color-trans);
-        }
-
         .b3-menu__item--selected {
             svg {
                 color: inherit;
@@ -94,6 +90,10 @@
 
 .b3-menu__accelerator {
     font-family: var(--b3-font-family);
+}
+
+.b3-menu__separator {
+    background-color: var(--b3-border-color-trans);
 }
 
 // pdf
@@ -112,9 +112,6 @@
     background-color: var(--b3-menu-background);
 
     &.hint--menu {
-        .b3-menu__separator {
-            background-color: var(--b3-border-color-trans);
-        }
 
         @media screen and (min-width: 1292px) {
 

@@ -927,7 +927,8 @@
             }
 
             &:hover {
-                @include theme-variant-color(background-color, on-background, 0.1);
+                // @include theme-variant-color(background-color, on-background, 0.1);
+                background-color: rgb(from var(--b3-theme-on-background) r g b / .1);
             }
 
             &:not(.protyle-toolbar__item--current) {

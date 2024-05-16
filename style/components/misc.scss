@@ -244,8 +244,7 @@ textarea {
     }
 }
 
-// 提示条
-.tooltip {
+@mixin tooltip-styles {
     pointer-events: none;
     // text-wrap: nowrap;
     // overflow: hidden;
@@ -253,10 +252,20 @@ textarea {
 
     overflow-wrap: break-word; // 单个长单词换行
     word-break: keep-all; // 保持CJK字符不换行
-
-    animation-delay: .75s;
+    
     @include tooltip-shadow;
     @include border-or-not($outline: false);
+}
+
+// 提示条
+.tooltip {
+    @include tooltip-styles;
+
+    animation-delay: .75s;
+
+    .ft__on-surface {
+        color: var(--b3-theme-on-surface);
+    }
 }
 
 .tooltip--memo#tooltip {
@@ -312,9 +321,11 @@ textarea {
 
     // 主体
     &:hover::after {
+
+        @include tooltip-styles;
+
         margin-top: 0;
         // margin-bottom: 0;
-        @extend .tooltip;
         transition-delay: .75s;
     }
 }
@@ -462,7 +473,7 @@ textarea {
         }
     }
 
-    [data-type="NodeAttributeView"] &{
+    [data-type="NodeAttributeView"] & {
         &::before {
             display: none;
         }

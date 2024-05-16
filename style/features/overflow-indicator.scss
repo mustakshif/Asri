@@ -230,6 +230,15 @@ animation-direction: #{$anim-dir};
     @include scroll-divider-fadein-bgClr(20px, $range: 'top');
 }
 
+// pdf 侧边导航
+#thumbnailView, #outlineView {
+    @include scroll-divider-fadein-bgClr(20px, $range: 'top');
+
+    &::before {
+        top: -8px;
+    }
+}
+
 [data-key="dialog-snippets"] .b3-dialog__body>.fn__flex-1 {
 
     &::before {
