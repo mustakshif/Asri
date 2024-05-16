@@ -53,6 +53,10 @@
         &--disabled {
             opacity: .4;
         }
+
+        &:not(.toolbar__item--disabled):not(.toolbar__item--close):hover {
+            color: var(--b3-theme-on-background);
+        }
     }
 
     &.toolbar--browser,

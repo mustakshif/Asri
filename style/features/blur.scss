@@ -10,7 +10,7 @@ $medium-blur-rd: 20px;
 $thin-transparency: 0.75;
 $thin-blur-rd: 12px;
 
-body:not(.body--blur, .asri-disable-backdrop-blur) {
+body:not(.asri-disable-backdrop-blur) {
 
     // .layout__wnd--active,
     [data-type="wnd"] {
