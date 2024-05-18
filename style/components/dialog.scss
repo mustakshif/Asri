@@ -286,6 +286,17 @@
             padding: 8px 0;
             background-color: var(--b3-theme-background);
 
+            .b3-label :where(.fn__flex-1, .fn__block, .fn__flex-center):not(.ft__on-surface, .b3-button, .b3-form__icon, .fn__size200):first-child,
+            :where(.b3-label, .config__ite)::first-line {
+                font-weight: 600;
+            }
+
+            .config-query .fn__flex-1,
+            .b3-label__text,
+            .b3-label :where(a, code, .ft__on-surface) {
+                font-weight: 400 !important;
+            }
+
             .layout-tab-bar+.fn__flex-1 {
                 background-color: var(--b3-theme-background);
             }
@@ -667,7 +678,7 @@
                 .b3-card {
                     &::after {
                         box-shadow: 0 0 0 1.5px inset var(--b3-theme-primary-light);
-    
+
                         @include darkmode-counterpart {
                             box-shadow: 0 0 0 1.5px inset var(--b3-theme-primary);
                         }

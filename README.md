@@ -44,6 +44,7 @@ Check all updates [here](./CHANGELOG.md).
 
 * 🔢 Tabular and database-friendly monospaced numerals improve reading efficiency
 * 👁️ High readability glyph variants tailored for note-taking scenarios[^3] `#macOS` `#iOS` `#iPadOS`
+* 🛋️ Different font smoothing for light and dark modes to maintain visual consistency in font weight `#macOS` `#iOS` `#iPadOS`
 * 🦋 Support for full-width display of images, videos, widgets, databases, superblocks and more, providing diverse layout options
 * 🚏 Document-level text direction settings cater to different language layout needs
  * 🧩 Streamlined superblock margins for simplified creation of grid and masonry layouts
