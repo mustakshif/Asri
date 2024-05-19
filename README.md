@@ -10,14 +10,17 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.0.9
+### v3.0.10
 
-* Optimized Japanese interface font.
-* Restored dynamic scrollbar style in the editing area.
-* Fine-tuned database view tabs' style.
-* Fixed the issue of input box display in the database template editing menu.
-* Fixed the problem of misalignment in the database line break switch.
-* Resolved some plugin style conflicts.
+* Added a overflow fade-out of the side navigation of the PDF reader.
+* [Improved adaptability of document tree item to font size and line height adjustments](https://github.com/mustakshif/Asri/issues/65).
+* Optimized font weight for settings panel items.
+* Optimized color of divider in the sidebar panel.
+* Optimized color of secondary text in tooltips.
+* Removed the feature to disable the blur effect when the window loses focus.
+* Restored mouse hover effect for icons in the top bar.
+
+---
 
 ### ...
 

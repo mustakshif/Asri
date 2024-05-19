@@ -1,3 +1,25 @@
+### v3.0.10
+
+* 添加 PDF 阅读器侧边导航列表的溢出渐隐效果
+* [提高文档树条目对字号和行高调整的适应性](https://github.com/mustakshif/Asri/issues/65)
+* 优化设置面板设置项字重
+* 优化侧栏面板分割线颜色
+* 优化提示条中次要文本颜色
+* 移除窗口失焦时停用模糊效果的特性
+* 恢复顶栏图标鼠标悬停效果
+
+<br />
+
+* Added a overflow fade-out of the side navigation of the PDF reader.
+* [Improved adaptability of document tree item to font size and line height adjustments](https://github.com/mustakshif/Asri/issues/65).
+* Optimized font weight for settings panel items.
+* Optimized color of divider in the sidebar panel.
+* Optimized color of secondary text in tooltips.
+* Removed the feature to disable the blur effect when the window loses focus.
+* Restored mouse hover effect for icons in the top bar.
+
+---
+
 ### v3.0.9
 
 * 优化日语界面字体
