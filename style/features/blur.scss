@@ -15,105 +15,8 @@ body:not(.asri-disable-backdrop-blur) {
     // .layout__wnd--active,
     [data-type="wnd"] {
 
-        // 以下breadcrumb 相关代码导致：
-        // 1. 块拖动至页面顶部时无法触发自动滚动
-        // 2. 页面块进度条（.protyle-scroll）无法自动定位；点击时跳转到块的位置，但溢出页面顶部
-        // ——————————————————————————————
-        // &:not(.shrink-in-tab)>.fn__flex:first-child {
-        //     background-color: transparent;
-        //     margin-bottom: -42px;
-        //     z-index: 3;
-        // }
-
-        // // -> js
-
-        // :not(.av__views) > .layout-tab-bar {
-        //     .item {
-        //         // backdrop-filter: brightness(1) saturate(1);
-
-        //         &--focus {
-        //             // background-color: transparent;
-        //             backdrop-filter: brightness(1) saturate(1.8);
-
-        //             @include darkmode-counterpart {
-        //                 background-color: #ffffff20;
-        //                 backdrop-filter: brightness(1.2) saturate(1.8);
-        //             }
-        //         }
-        //     }
-        // }
-
-        // .layout-tab-container {
-        //     &>.protyle[data-loading="finished"]::before {
-        //         --blur-block-height: 84px;
-        //         --blur-radius-main: 40px;
-        //         content: "";
-        //         display: block;
-        //         width: 100%;
-        //         height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
-        //         position: absolute;
-        //         top: 0;
-        //         z-index: 2;
-        //         pointer-events: none;
-        //         // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
-        //         mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 0.5px), transparent calc(var(--blur-block-height) + 1px));
-
-        //         @include bg-blur($brightness-dark: 0.95);
-        //     }
-
-        //     :not(#searchPreview)>.protyle-breadcrumb {
-        //         padding-top: 42px;
-        //         margin-bottom: -84px;
-        //         height: 84px;
-        //         @include theme-variant-color(background-color, background, $thick-transparency);
-        //         z-index: 2;
-        //     }
-
-        //     .protyle[data-loading="finished"].fullscreen::before {
-        //         --blur-block-height: var(--toolbar-height);
-        //     }
-
-        //     .fullscreen>.protyle-breadcrumb {
-        //         height: var(--toolbar-height) !important;
-        //         padding-top: 0 !important;
-        //     }
-
-        //     :not(#searchPreview)>.protyle-content {
-        //         padding-top: 84px;
-        //     }
-
-        //     &>.file-tree .protyle-content {
-        //         padding-top: 0 !important;
-        //     }
-
-        //     .block__icons.search {
-        //         padding-top: 42px;
-        //     }
-
-        //     // -> js
-        // }
-        // ————————————————————————————————————
-
         // pdf
         #outerContainer {
-            // #sidebarContainer {
-            //     top: 84px;
-            // }
-
-            // .pdf__toolbar {
-            //     #toolbarContainer {
-            //         padding-top: 42px;
-            //     }
-            // }
-
-            // .findbar {
-            //     top: 78px;
-            // }
-
-            // #viewerContainer {
-            //     top: 84px;
-            //     transition: none;
-            // }
 
             #findbar:not(.fn__hidden),
             .pdf__util {
@@ -139,442 +42,435 @@ body:not(.asri-disable-backdrop-blur) {
         }
     }
 
-
     .protyle {
 
-    //     // 题头图区域
-    //     &-background {
+        //     // 题头图区域
+        //     &-background {
 
-    //         .b3-chips {
-    //             $chip-colors: (
-    //                 secondary: font-color4,
-    //                 primary: font-color5,
-    //                 info: font-color6,
-    //                 success: font-color8,
-    //                 warning:font-color9,
-    //                 error: font-color10,
-    //                 "pink": font-color12
-    //             );
+        //         .b3-chips {
+        //             $chip-colors: (
+        //                 secondary: font-color4,
+        //                 primary: font-color5,
+        //                 info: font-color6,
+        //                 success: font-color8,
+        //                 warning:font-color9,
+        //                 error: font-color10,
+        //                 "pink": font-color12
+        //             );
 
-    //         @each $chip-type, $chip-color in $chip-colors {
-    //             .b3-chip--middle.b3-chip--#{$chip-type} {
-    //                 @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
-    //                 @include theme-variant-color(background-color, surface, 0.8, 0.6);
-    //                 @include theme-variant-color(color, on-background, 0.6, 1);
-    //             }
-    //         }
-    //     }
-    // }
+        //         @each $chip-type, $chip-color in $chip-colors {
+        //             .b3-chip--middle.b3-chip--#{$chip-type} {
+        //                 @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+        //                 @include theme-variant-color(background-color, surface, 0.8, 0.6);
+        //                 @include theme-variant-color(color, on-background, 0.6, 1);
+        //             }
+        //         }
+        //     }
+        // }
 
-    //文字格式工具条
-    &-toolbar {
+        //文字格式工具条
+        &-toolbar {
+            background-color: oklch(from var(--b3-theme-surface) l c h / $medium-transparency);
+            @include bg-blur;
+            // z-index: 1;
+
+            @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+                @include theme-variant-color(background-color, surface, $medium-transparency);
+            }
+        }
+
+        // 图片控件
+        [data-node-id] .img {
+            // &__net {
+            //     backdrop-filter: blur(20px);
+            // } // 和 mix-blend-mode 一起使用导致卡顿、对话框闪烁
+
+            &:hover {
+                .protyle-action__drag {
+                    background-color: transparent;
+                    backdrop-filter: invert(1) blur(200px) saturate(0) contrast(0.5) brightness(1.15);
+                    filter: contrast(10) invert(0.1) opacity(0.9);
+                    box-shadow: none;
+                    transition: transform 50ms;
+                }
+            }
+        }
+
+        &-icons {
+            mix-blend-mode: luminosity;
+
+            // 工具条
+            &:hover {
+                backdrop-filter: blur(20px);
+            }
+
+            .protyle-icon {
+                &--only {
+                    &:hover {
+                        backdrop-filter: blur(20px);
+                    }
+                }
+            }
+        }
+
+        &-action {
+
+            // 代码块
+            // &:hover {
+            //     backdrop-filter: blur(20px);
+            // } // fix https://github.com/mustakshif/Asri/issues/52
+
+            .protyle-icon {
+                &--only {
+                    &:hover {
+                        backdrop-filter: blur(20px);
+                    }
+                }
+            }
+        }
+    }
+
+    #dockBottom.fn__none:not(.has-layout-dockb-float)~#status,
+    &.body--mobile #status {
         background-color: oklch(from var(--b3-theme-surface) l c h / $medium-transparency);
         @include bg-blur;
-        // z-index: 1;
 
+        // mix-blend-mode: luminosity;
         @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
             @include theme-variant-color(background-color, surface, $medium-transparency);
         }
     }
 
-    // 图片控件
-    [data-node-id] .img {
-        // &__net {
-        //     backdrop-filter: blur(20px);
-        // } // 和 mix-blend-mode 一起使用导致卡顿、对话框闪烁
+    .layout__dockl,
+    .layout__dockr {
+        &.layout--float {
+            margin-top: 0;
 
-        &:hover {
-            .protyle-action__drag {
-                background-color: transparent;
-                backdrop-filter: invert(1) blur(200px) saturate(0) contrast(0.5) brightness(1.15);
-                filter: contrast(10) invert(0.1) opacity(0.9);
-                box-shadow: none;
-                transition: transform 50ms;
-            }
-        }
-    }
+            // 与 topbar fusion 冲突
+            // &::before,
+            // &>.fn__flex-1:first-child::before {
+            //     @include theme-variant-color(background-color, background, $thick-transparency, $important: true);
+            // }
 
-    &-icons {
-        mix-blend-mode: luminosity;
+            .layout-tab-container {
+                background-color: oklch(from var(--b3-theme-background) l c h / $thick-transparency);
 
-        // 工具条
-        &:hover {
-            backdrop-filter: blur(20px);
-        }
+                @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+                    @include theme-variant-color(background-color, background, $thick-transparency);
+                }
 
-        .protyle-icon {
-            &--only {
-                &:hover {
-                    backdrop-filter: blur(20px);
+                .graph {
+                    background-color: transparent;
+
+                    &.fullscreen {
+                        @include bg-blur;
+                    }
                 }
             }
-        }
-    }
 
-    &-action {
+            &::after {
+                content: '';
+                width: inherit;
+                height: 100%;
+                position: absolute;
+                z-index: -1;
+                @include bg-blur;
+            }
 
-        // 代码块
-        // &:hover {
-        //     backdrop-filter: blur(20px);
-        // } // fix https://github.com/mustakshif/Asri/issues/52
+            // 在不影响反链面板中块标元素定位的情况下使用模糊
 
-        .protyle-icon {
-            &--only {
-                &:hover {
-                    backdrop-filter: blur(20px);
-                }
+            .sy__graph.fullscreen {
+                @include theme-variant-color(background-color, background, $medium-transparency)
             }
         }
     }
-}
 
-#dockBottom.fn__none:not(.has-layout-dockb-float)~#status,
-&.body--mobile #status {
-    background-color: oklch(from var(--b3-theme-surface) l c h / $medium-transparency);
-    @include bg-blur;
-
-    // mix-blend-mode: luminosity;
-    @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-        @include theme-variant-color(background-color, surface, $medium-transparency);
+    .layout--float,
+    .protyle-background__iconw {
+        .protyle-icons {
+            mix-blend-mode: normal;
+            @include bg-blur($medium-blur-rd, $brightness-light: 1);
+        }
     }
-}
 
-.layout__dockl,
-.layout__dockr {
-    &.layout--float {
-        margin-top: 0;
-
-        // 与 topbar fusion 冲突
-        // &::before,
-        // &>.fn__flex-1:first-child::before {
-        //     @include theme-variant-color(background-color, background, $thick-transparency, $important: true);
-        // }
-
-        .layout-tab-container {
-            background-color: oklch(from var(--b3-theme-background) l c h / $thick-transparency);
-
-            @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-                @include theme-variant-color(background-color, background, $thick-transparency);
-            }
-
-            .graph {
-                background-color: transparent;
-
-                &.fullscreen {
-                    @include bg-blur;
-                }
+    .layout--float {
+        [data-node-id] .img {
+            &__net {
+                // mix-blend-mode: normal;
+                background-color: var(--b3-theme-surface-light);
             }
         }
+    }
 
-        &::after {
-            content: '';
-            width: inherit;
-            height: 100%;
+    // .layout__dockb {
+    //     &.layout--float {
+
+    //     }
+    // }
+
+    .graph__panel {
+        @include bg-blur(20px);
+        opacity: 1;
+        background-color: oklch(from var(--b3-theme-background) l c h / $medium-transparency);
+
+        @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+            @include theme-variant-color(background-color, background, $medium-transparency);
+        }
+    }
+
+    // 菜单
+    .b3-menu,
+    .b3-menu__submenu {
+        background-color: transparent;
+        overflow: hidden;
+
+        &:not(#searchHistoryListm, #findbar, .pdf__util)::before {
+            content: "";
             position: absolute;
+            inset: 0;
             z-index: -1;
+            // background-position: center top;
+            // background-size: cover;
+            // background-attachment: fixed;
+            border-radius: 8px;
             @include bg-blur;
         }
 
-        // 在不影响反链面板中块标元素定位的情况下使用模糊
+        .b3-menu__items {
+            background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
 
-        .sy__graph.fullscreen {
-            @include theme-variant-color(background-color, background, $medium-transparency)
+            @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+                @include theme-variant-color(background-color, menu-background, $medium-transparency);
+            }
+        }
+
+        // 数据库菜单
+        .protyle-icons {
+            mix-blend-mode: normal;
         }
     }
-}
 
-.layout--float,
-.protyle-background__iconw {
-    .protyle-icons {
-        mix-blend-mode: normal;
-        @include bg-blur($medium-blur-rd, $brightness-light: 1);
-    }
-}
-
-.layout--float {
-    [data-node-id] .img {
-        &__net {
-            // mix-blend-mode: normal;
-            background-color: var(--b3-theme-surface-light);
-        }
-    }
-}
-
-// .layout__dockb {
-//     &.layout--float {
-
-//     }
-// }
-
-.graph__panel {
-    @include bg-blur(20px);
-    opacity: 1;
-    background-color: oklch(from var(--b3-theme-background) l c h / $medium-transparency);
-
-    @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-        @include theme-variant-color(background-color, background, $medium-transparency);
-    }
-}
-
-// 菜单
-.b3-menu,
-.b3-menu__submenu {
-    background-color: transparent;
-    overflow: hidden;
-
-    &:not(#searchHistoryListm, #findbar, .pdf__util)::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        // background-position: center top;
-        // background-size: cover;
-        // background-attachment: fixed;
-        border-radius: 8px;
+    // '/'菜单
+    .protyle-hint {
+        background-color: transparent;
         @include bg-blur;
-    }
 
-    .b3-menu__items {
-        background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+        >div:not(.emojis) {
+            background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
 
-        @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-            @include theme-variant-color(background-color, menu-background, $medium-transparency);
-        }
-    }
-
-    // 数据库菜单
-    .protyle-icons {
-        mix-blend-mode: normal;
-    }
-}
-
-// '/'菜单
-.protyle-hint {
-    background-color: transparent;
-    @include bg-blur;
-
-    >div:not(.emojis) {
-        background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
-
-        @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-            @include theme-variant-color(background-color, menu-background, $medium-transparency);
-        }
-    }
-
-    >.emojis>.emojis__panel {
-        background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
-
-        @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-            @include theme-variant-color(background-color, menu-background, $medium-transparency);
-        }
-    }
-}
-
-.protyle-util {
-    background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
-    @include bg-blur($saturate-value: 3);
-
-    @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-        @include theme-variant-color(background-color, menu-background, $medium-transparency);
-    }
-}
-
-.block__popover .block__content .protyle-util {
-    background-color: var(--b3-menu-background);
-    backdrop-filter: none;
-}
-
-// 解决模糊透明像素的问题
-
-#searchHistoryList {
-    background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
-    @include bg-blur;
-    overflow: auto;
-
-    @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-        @include theme-variant-color(background-color, menu-background, $medium-transparency);
-    }
-}
-
-// 顶栏
-// .toolbar {
-//     z-index: 4;
-// }
-
-// 题头图列表
-// .b3-dialog__body {
-//     >.b3-cards {
-//         .b3-card {
-//             // 闪光效果
-//             &:hover {
-//                 animation: card-hover 0.3s;
-
-//                 @keyframes card-hover {
-//                     50% {
-//                         filter: brightness(1.1);
-//                     }
-
-//                     100% {
-//                         filter: none;
-//                     }
-//                 }
-//             }
-
-//             &::before {
-//                 --glow-offset: 50%;
-//                 --glow-dir: 135deg;
-//                 --glow-brightness: 1.2;
-//                 --property-percentage: calc(var(--glow-offset) * -1);
-
-//                 content: '';
-//                 width: 100%;
-//                 height: 100%;
-//                 background: inherit;
-//                 border-radius: inherit;
-//                 filter: brightness(var(--glow-brightness)) blur(3px);
-//                 mask-image: linear-gradient(var(--glow-dir),
-//                         transparent calc(var(--property-percentage) - var(--glow-offset)),
-//                         black var(--property-percentage),
-//                         transparent calc(var(--property-percentage) + var(--glow-offset)));
-//             }
-
-//             &:hover::before {
-//                 --property-percentage: calc(100% + var(--glow-offset));
-//                 transition: --property-percentage 0.5s $timing-function-decelerate;
-//             }
-
-//             // 图片色阴影
-//             // &::before {
-//             //     content: "";
-//             //     background: inherit;
-//             //     background-size: inherit;
-//             //     width: 100%;
-//             //     height: 100%;
-//             //     position: absolute;
-//             //     top: 0;
-//             //     left: 0;
-//             //     // transform: none;
-//             //     z-index: -1;
-//             //     filter: blur(0px) opacity(0);
-//             //     transition: top 0.2s, left 0.2s, filter 0.2s, width 0.2s, height 0.2s;
-//             // }
-
-//             // &:hover::before {
-//             //     top: 20px;
-//             //     left: 5%;
-//             //     width: 90%;
-//             //     height: 90%;
-//             //     filter: blur(20px) opacity(0.8) saturate(0.8) brightness(0.9);
-
-//             //     @include darkmode-counterpart {
-//             //         filter: blur(20px) opacity(1) saturate(2) brightness(0.65);
-//             //     }
-//             // }
-//         }
-//     }
-// }
-
-.b3-dialog.emojis-container {
-
-    // ->js
-    .b3-dialog__container {
-        @include bg-blur();
-
-        background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
-
-        @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-            @include theme-variant-color(background-color, menu-background, $medium-transparency);
-        }
-    }
-}
-
-.emojis__panel {
-    .emojis__content .emojis__item:hover {
-        animation: lighten 0.3s ease-in-out;
-
-        @keyframes lighten {
-            0% {
-                filter: brightness(1);
+            @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+                @include theme-variant-color(background-color, menu-background, $medium-transparency);
             }
+        }
 
-            50% {
-                filter: brightness(1.15);
-            }
+        >.emojis>.emojis__panel {
+            background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
 
-            100% {
-                filter: brightness(1);
+            @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+                @include theme-variant-color(background-color, menu-background, $medium-transparency);
             }
         }
     }
-}
 
-// .config-bazaar__readme {
-//     filter: saturate(0);
+    .protyle-util {
+        background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+        @include bg-blur($saturate-value: 3);
 
-//     &--show {
-//         filter: none;
-//     }
-// }
-
-.tooltip {
-    background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
-    @include bg-blur($medium-blur-rd);
-
-    @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-        @include theme-variant-color(background-color, menu-background, 0.8);
+        @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+            @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        }
     }
-}
 
-.protyle-toolbar__item,
-.protyle-icon {
-    ::after {
-        background-color: var(--b3-tooltips-background);
+    .block__popover .block__content .protyle-util {
+        background-color: var(--b3-menu-background);
         backdrop-filter: none;
     }
-}
 
-// 图片预览 ——————————————————————
-.viewer-backdrop {
-    @include bg-blur($saturate-value: 1);
-    backdrop-filter: blur(40px);
-    background-color: #80808080;
+    // 解决模糊透明像素的问题
 
-    @include darkmode-counterpart {
-        background-color: #00000080;
+    #searchHistoryList {
+        background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+        @include bg-blur;
+        overflow: auto;
+
+        @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+            @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        }
     }
-}
 
-.viewer-title {
-    backdrop-filter: blur($medium-blur-rd);
-    @include theme-variant-color(background-color, surface, 0.6);
-    mix-blend-mode: luminosity;
-}
+    // 题头图列表
+    // .b3-dialog__body {
+    //     >.b3-cards {
+    //         .b3-card {
+    //             // 闪光效果
+    //             &:hover {
+    //                 animation: card-hover 0.3s;
 
-.viewer-toolbar {
-    >ul {
-        backdrop-filter: blur($medium-blur-rd);
-        @include theme-variant-color(background-color, surface, $medium-transparency);
-        mix-blend-mode: luminosity;
+    //                 @keyframes card-hover {
+    //                     50% {
+    //                         filter: brightness(1.1);
+    //                     }
+
+    //                     100% {
+    //                         filter: none;
+    //                     }
+    //                 }
+    //             }
+
+    //             &::before {
+    //                 --glow-offset: 50%;
+    //                 --glow-dir: 135deg;
+    //                 --glow-brightness: 1.2;
+    //                 --property-percentage: calc(var(--glow-offset) * -1);
+
+    //                 content: '';
+    //                 width: 100%;
+    //                 height: 100%;
+    //                 background: inherit;
+    //                 border-radius: inherit;
+    //                 filter: brightness(var(--glow-brightness)) blur(3px);
+    //                 mask-image: linear-gradient(var(--glow-dir),
+    //                         transparent calc(var(--property-percentage) - var(--glow-offset)),
+    //                         black var(--property-percentage),
+    //                         transparent calc(var(--property-percentage) + var(--glow-offset)));
+    //             }
+
+    //             &:hover::before {
+    //                 --property-percentage: calc(100% + var(--glow-offset));
+    //                 transition: --property-percentage 0.5s $timing-function-decelerate;
+    //             }
+
+    //             // 图片色阴影
+    //             // &::before {
+    //             //     content: "";
+    //             //     background: inherit;
+    //             //     background-size: inherit;
+    //             //     width: 100%;
+    //             //     height: 100%;
+    //             //     position: absolute;
+    //             //     top: 0;
+    //             //     left: 0;
+    //             //     // transform: none;
+    //             //     z-index: -1;
+    //             //     filter: blur(0px) opacity(0);
+    //             //     transition: top 0.2s, left 0.2s, filter 0.2s, width 0.2s, height 0.2s;
+    //             // }
+
+    //             // &:hover::before {
+    //             //     top: 20px;
+    //             //     left: 5%;
+    //             //     width: 90%;
+    //             //     height: 90%;
+    //             //     filter: blur(20px) opacity(0.8) saturate(0.8) brightness(0.9);
+
+    //             //     @include darkmode-counterpart {
+    //             //         filter: blur(20px) opacity(1) saturate(2) brightness(0.65);
+    //             //     }
+    //             // }
+    //         }
+    //     }
+    // }
+
+    .b3-dialog.emojis-container {
+
+        // ->js
+        .b3-dialog__container {
+            @include bg-blur();
+
+            background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+
+            @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+                @include theme-variant-color(background-color, menu-background, $medium-transparency);
+            }
+        }
     }
-}
 
-// 数据库菜单 ——————————————————————
-.av__panel {
-    .b3-menu {
-        >.fn__flex-column>.b3-menu__item[data-type="nobg"]:first-child {
+    .emojis__panel {
+        .emojis__content .emojis__item:hover {
+            animation: lighten 0.3s ease-in-out;
 
-            &,
-            &+.fn__hr {
-                background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+            @keyframes lighten {
+                0% {
+                    filter: brightness(1);
+                }
 
-                @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-                    @include theme-variant-color(background-color, menu-background, $medium-transparency);
+                50% {
+                    filter: brightness(1.15);
+                }
+
+                100% {
+                    filter: brightness(1);
                 }
             }
         }
-
-        // v2.1.9: fix关联主键编辑菜单
     }
-}
 
+    // .config-bazaar__readme {
+    //     filter: saturate(0);
+
+    //     &--show {
+    //         filter: none;
+    //     }
+    // }
+
+    .tooltip {
+        background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+        @include bg-blur($medium-blur-rd);
+
+        @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+            @include theme-variant-color(background-color, menu-background, 0.8);
+        }
+    }
+
+    .protyle-toolbar__item,
+    .protyle-icon {
+        ::after {
+            background-color: var(--b3-tooltips-background);
+            backdrop-filter: none;
+        }
+    }
+
+    // 图片预览 ——————————————————————
+    .viewer-backdrop {
+        @include bg-blur($saturate-value: 1);
+        backdrop-filter: blur(40px);
+        background-color: #80808080;
+
+        @include darkmode-counterpart {
+            background-color: #00000080;
+        }
+    }
+
+    .viewer-title {
+        backdrop-filter: blur($medium-blur-rd);
+        @include theme-variant-color(background-color, surface, 0.6);
+        mix-blend-mode: luminosity;
+    }
+
+    .viewer-toolbar {
+        >ul {
+            backdrop-filter: blur($medium-blur-rd);
+            @include theme-variant-color(background-color, surface, $medium-transparency);
+            mix-blend-mode: luminosity;
+        }
+    }
+
+    // 数据库菜单 ——————————————————————
+    .av__panel {
+        .b3-menu {
+            >.fn__flex-column>.b3-menu__item[data-type="nobg"]:first-child {
+
+                &,
+                &+.fn__hr {
+                    background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+
+                    @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+                        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+                    }
+                }
+            }
+
+            // v2.1.9: fix关联主键编辑菜单
+        }
+    }
 }
