@@ -10,6 +10,10 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.0.11
+
+* Fixed font and background color issues with PDF exports.
+
 ### v3.0.10
 
 * Added a overflow fade-out of the side navigation of the PDF reader.
@@ -19,8 +23,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Optimized color of secondary text in tooltips.
 * Removed the feature to disable the blur effect when the window loses focus.
 * Restored mouse hover effect for icons in the top bar.
-
----
 
 ### ...
 

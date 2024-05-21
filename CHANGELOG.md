@@ -1,3 +1,9 @@
+### v3.0.11
+
+* 修复 pdf 导出结果的字体和背景色问题
+
+* Fixed font and background color issues with PDF exports.
+
 ### v3.0.10
 
 * 添加 PDF 阅读器侧边导航列表的溢出渐隐效果
