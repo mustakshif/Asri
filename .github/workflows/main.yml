@@ -25,18 +25,9 @@ jobs:
               echo "Error: $CHANGELOG_FILE does not exist."
               exit 1
             fi
-
-            CHANGELOG_CONTENT=$(awk '/^## / {print; getline; while ($0 !~ /^### / && $0 != "") {print; getline}}' "$CHANGELOG_FILE")
-
+            CHANGELOG_CONTENT=$(awk '/^### / {if (p) exit; p=1} p' "$CHANGELOG_FILE")
             if [ -z "$CHANGELOG_CONTENT" ]; then
               echo "Error: Could not extract the latest changelog entry."
-              echo "::error::Extracted content is empty."
-              exit 1
-            fi
-
-            echo "Extracted changelog content:"
-            echo "$CHANGELOG_CONTENT"
-            echo "::set-output name=content::$CHANGELOG_CONTENT"
 
         - name: Create or update annotated tag with changelog
           run: |
