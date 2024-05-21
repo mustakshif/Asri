@@ -12,7 +12,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ### v3.0.11
 
-* Fixed font and background color issues with PDF exports.
+* Fixed font color and background color issues with PDF exports.
 
 ### v3.0.10
 

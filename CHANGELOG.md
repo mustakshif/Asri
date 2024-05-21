@@ -1,8 +1,8 @@
 ### v3.0.11
 
-* 修复 pdf 导出结果的字体和背景色问题
+* 修复 pdf 导出结果的字体色和背景色问题
 
-* Fixed font and background color issues with PDF exports.
+* Fixed font color and background color issues with PDF exports.
 
 ### v3.0.10
 
