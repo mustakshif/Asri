@@ -26,7 +26,7 @@ jobs:
               exit 1
             fi
 
-            CHANGELOG_CONTENT=$(awk '/^## / {if (p) exit; p=1} p' "$CHANGELOG_FILE")
+            CHANGELOG_CONTENT=$(awk '/^### / {if (p) exit; p=1} p' "$CHANGELOG_FILE")
 
             if [ -z "$CHANGELOG_CONTENT" ]; then
               echo "Error: Could not extract the latest changelog entry."
