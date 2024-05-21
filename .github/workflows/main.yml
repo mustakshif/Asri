@@ -1,67 +1,78 @@
 name: Release
 
 on:
-    push:
-        tags:
-            - 'v*'
+  push:
+    tags:
+      - 'v*'
 
 jobs:
-    release:
-        runs-on: ubuntu-latest
-        steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-        - name: Set up Git
-          run: |
-            git config --global user.name "${{ github.actor }}"
-            git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+      - name: Set up Git
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
-        - name: Extract latest changelog entry
-          id: changelog
-          run: |
-            CHANGELOG_FILE="CHANGELOG.md"
-            if [ ! -f "$CHANGELOG_FILE" ]; then
-              echo "Error: $CHANGELOG_FILE does not exist."
-              exit 1
-            fi
+      - name: Extract latest changelog entry
+        id: changelog
+        run: |
+          CHANGELOG_FILE="CHANGELOG.md"
+          if [ ! -f "$CHANGELOG_FILE" ]; then
+            echo "Error: $CHANGELOG_FILE does not exist."
+            exit 1
+          fi
 
-            CHANGELOG_CONTENT=$(awk '/^### / {if (p) exit; p=1} p' "$CHANGELOG_FILE")
+          # Use awk to extract the latest changelog entry
+          CHANGELOG_CONTENT=$(awk '/^### / {if (found) exit; found=1} found' "$CHANGELOG_FILE")
 
-            if [ -z "$CHANGELOG_CONTENT" ]; then
-              echo "Error: Could not extract the latest changelog entry."
-              exit 1
-            fi
+          if [ -z "$CHANGELOG_CONTENT" ]; then
+            echo "Error: Could not extract the latest changelog entry."
+            exit 1
+          fi
 
-            echo "::set-output name=content::$CHANGELOG_CONTENT"
+          echo "Extracted changelog content:"
+          echo "$CHANGELOG_CONTENT"
 
-        - name: Create or update annotated tag with changelog
-          run: |
-            TAG_NAME="${{ github.ref_name }}"
-            CHANGELOG_CONTENT="${{ steps.changelog.outputs.content }}"
+          # Save the changelog content to the environment file using the multi-line syntax
+          echo "CHANGELOG_CONTENT<<EOF" >> $GITHUB_ENV
+          echo "$CHANGELOG_CONTENT" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
-            if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
-              echo "Tag $TAG_NAME already exists. Updating tag message."
-              git tag -d "$TAG_NAME"
-              git push origin :"$TAG_NAME"
-            fi
+      - name: Debug changelog content
+        run: |
+          echo "DEBUG: ${{ env.CHANGELOG_CONTENT }}"
 
+      - name: Create or update annotated tag with changelog
+        run: |
+          TAG_NAME="${{ github.ref_name }}"
+          CHANGELOG_CONTENT="${{ env.CHANGELOG_CONTENT }}"
+
+          if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+            echo "Tag $TAG_NAME already exists. Updating tag message."
+            git tag -f -a "$TAG_NAME" -m "$CHANGELOG_CONTENT"
+            git push origin -f "$TAG_NAME"
+          else
             git tag -a "$TAG_NAME" -m "$CHANGELOG_CONTENT"
             git push origin "$TAG_NAME"
+          fi
 
-        - name: Zip Release
-          uses: thedoctor0/zip-release@0.7.6
-          with:
-            type: 'zip'
-            filename: 'package.zip'
-            exclusions: '*.git* *.scss /*style/* /*assets/* /*js/*'
-    
-        - name: Create Release
-          uses: ncipollo/release-action@v1.13.0
-          with:
-            allowUpdates: true
-            artifactErrorsFailBuild: true
-            artifacts: "package.zip"
-            token: ${{ secrets.GITHUB_TOKEN }}
-            tag: ${{ github.ref_name }}
-            body: ${{ steps.changelog.outputs.content }}
+      - name: Zip Release
+        uses: thedoctor0/zip-release@0.7.6
+        with:
+          type: 'zip'
+          filename: 'package.zip'
+          exclusions: '*.git* *.scss /*style/* /*assets/* /*js/*'
+  
+      - name: Create Release
+        uses: ncipollo/release-action@v1.13.0
+        with:
+          allowUpdates: true
+          artifactErrorsFailBuild: true
+          artifacts: "package.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+          body: ${{ env.CHANGELOG_CONTENT }}
