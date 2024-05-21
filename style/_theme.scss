@@ -8,6 +8,19 @@
     }
 }
 
+// dark first to fix font color and background color abnormality in pdf export 
+[data-theme-mode="dark"] {
+    &:root {
+        color-scheme: dark;
+        // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
+    }
+
+    &:root,
+    body.has-exportimg {
+        @include theme-root($theme-dark);
+    }
+}
+
 [data-theme-mode="light"] {
 
     &:root, // fix being overridden by other themes
@@ -27,18 +40,6 @@
     }
 
     // use hex to fix https://github.com/mustakshif/Asri/issues/39
-}
-
-[data-theme-mode="dark"] {
-    &:root {
-        color-scheme: dark;
-        // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
-    }
-
-    &:root,
-    body.has-exportimg {
-        @include theme-root($theme-dark);
-    }
 }
 
 body {
