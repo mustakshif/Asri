@@ -6,10 +6,43 @@ on:
             - 'v*'
 
 jobs:
-    build:
+    release:
         runs-on: ubuntu-latest
         steps:
-        - uses: actions/checkout@master
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: Set up Git
+          run: |
+            git config --global user.name "${{ github.actor }}"
+            git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+        - name: Extract latest changelog entry
+          id: changelog
+          run: |
+            CHANGELOG_FILE="CHANGELOG.md"
+            if [ ! -f "$CHANGELOG_FILE" ]; then
+              echo "Error: $CHANGELOG_FILE does not exist."
+              exit 1
+            fi
+
+            CHANGELOG_CONTENT=$(awk '/^## / {if (p) exit; p=1} p' "$CHANGELOG_FILE")
+
+            if [ -z "$CHANGELOG_CONTENT" ]; then
+              echo "Error: Could not extract the latest changelog entry."
+              exit 1
+            fi
+
+            echo "::set-output name=content::$CHANGELOG_CONTENT"
+
+        - name: Create annotated tag with changelog
+          run: |
+            TAG_NAME="${{ github.ref_name }}"
+            CHANGELOG_CONTENT="${{ steps.changelog.outputs.content }}"
+
+            git tag -a "$TAG_NAME" -m "$CHANGELOG_CONTENT"
+            git push origin "$TAG_NAME"
+
         - name: Zip Release
           uses: thedoctor0/zip-release@0.7.6
           with:
@@ -24,3 +57,5 @@ jobs:
             artifactErrorsFailBuild: true
             artifacts: "package.zip"
             token: ${{ secrets.GITHUB_TOKEN }}
+            tag: ${{ github.ref_name }}
+            body: ${{ steps.changelog.outputs.content }}
