@@ -53,9 +53,9 @@ body:not(.asri-disable-backdrop-blur) {
                 z-index: 2;
                 pointer-events: none;
                 // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
-                mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 0.5px), transparent calc(var(--blur-block-height) + 1px));
+                mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 15px), transparent calc(var(--blur-block-height) + 15px));
 
-                @include bg-blur($brightness-dark: 0.95);
+                @include bg-blur($blur-radius: 12px, $saturate-value: 1, $brightness-light: 1.02, $brightness-dark: 1);
             }
 
             :not(#searchPreview)>.protyle-breadcrumb {
@@ -64,7 +64,8 @@ body:not(.asri-disable-backdrop-blur) {
                 height: 84px;
                 // @include theme-variant-color(background-color, background, $thick-transparency);
                 z-index: 2;
-                background-color: rgb(from var(--b3-theme-background) r g b / $thick-transparency);
+                // background-color: rgb(from var(--b3-theme-background) r g b / $thick-transparency);
+                background: linear-gradient(rgb(from var(--b3-theme-background) r g b / $thick-transparency), rgb(from var(--b3-theme-background) r g b / .5) 60%, transparent);
             }
 
             .protyle[data-loading="finished"].fullscreen::before {

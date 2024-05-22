@@ -1,0 +1,130 @@
+@use '../base' as *;
+
+$thick-transparency: 0.85;
+$thick-blur-rd: 40px;
+$medium-transparency: 0.8;
+$medium-blur-rd: 20px;
+$thin-transparency: 0.75;
+$thin-blur-rd: 12px;
+
+body:not(.asri-disable-backdrop-blur) {
+
+    // 以下breadcrumb 相关代码导致：
+    // 1. 块拖动至页面顶部时无法触发自动滚动
+    // 2. 页面块进度条（.protyle-scroll）无法自动定位；点击时跳转到块的位置，但溢出页面顶部
+
+    .layout__wnd--active,
+    [data-type="wnd"] {
+        
+        &>.fn__flex:first-child {
+            background-color: transparent;
+            margin-bottom: -42px;
+            z-index: 3;
+        }
+
+        // -> js
+
+        :not(.av__views) > .layout-tab-bar {
+            .item {
+                // backdrop-filter: brightness(1) saturate(1);
+
+                &--focus {
+                    // background-color: transparent;
+                    backdrop-filter: brightness(1) saturate(1.8);
+
+                    @include darkmode-counterpart {
+                        background-color: #ffffff20;
+                        backdrop-filter: brightness(1.2) saturate(1.8);
+                    }
+                }
+            }
+        }
+
+        .layout-tab-container {
+            &>.protyle[data-loading="finished"]::before {
+                --blur-block-height: 84px;
+                --blur-radius-main: 40px;
+                content: "";
+                display: block;
+                width: 100%;
+                height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
+                position: absolute;
+                top: 0;
+                z-index: 2;
+                pointer-events: none;
+                // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
+                mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 0.5px), transparent calc(var(--blur-block-height) + 1px));
+
+                @include bg-blur($brightness-dark: 0.95);
+            }
+
+            :not(#searchPreview)>.protyle-breadcrumb {
+                padding-top: 42px;
+                margin-bottom: -84px;
+                height: 84px;
+                // @include theme-variant-color(background-color, background, $thick-transparency);
+                z-index: 2;
+                background-color: rgb(from var(--b3-theme-background) r g b / $thick-transparency);
+            }
+
+            .protyle[data-loading="finished"].fullscreen::before {
+                --blur-block-height: var(--toolbar-height);
+            }
+
+            .fullscreen>.protyle-breadcrumb {
+                height: var(--toolbar-height) !important;
+                padding-top: 0 !important;
+            }
+
+            :not(#searchPreview)>.protyle-content {
+                padding-top: 84px;
+            }
+
+            &>.file-tree .protyle-content {
+                padding-top: 0 !important;
+            }
+
+            .block__icons.search {
+                padding-top: 42px;
+            }
+
+            // -> js
+        }
+        // ————————————————————————————————————
+
+        // pdf
+        #outerContainer {
+            #sidebarContainer {
+                top: 84px;
+            }
+
+            .pdf__toolbar {
+                #toolbarContainer {
+                    padding-top: 42px;
+                }
+            }
+
+            .findbar {
+                top: 78px;
+            }
+
+            #viewerContainer {
+                top: 84px;
+                transition: none;
+            }
+
+        }
+    }
+
+    &:not(.body--mobile,.body--window)>#toolbar {
+        z-index: 4;
+    }
+
+    .av__row--header,.av__colsticky,.av__row--footer {
+        z-index: 1;
+    }
+
+    iframe[src="/widgets/Whiteboard/"] {
+        margin-top: 48px;
+    }
+}

@@ -64,11 +64,12 @@
     &__arrow {
         color: transparent;
         margin: 0 6px;
-        background-color: var(--b3-theme-on-surface-light);
+        background-color: var(--b3-theme-on-surface);
         width: 1.5px;
         height: 1em;
         border-radius: 2px;
         transform: rotate(27deg);
+        opacity: .8;
     }
 
     // 退出聚焦按钮
