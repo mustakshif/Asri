@@ -2,6 +2,10 @@
 
 .b3-dialog--open {
     .b3-dialog {
+        &__header {
+            text-align: center;
+        }
+
         &.emojis-container {
 
             // -> js

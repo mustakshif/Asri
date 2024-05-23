@@ -273,6 +273,21 @@ textarea {
     }
 }
 
+// 提示条动画关键帧
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(.8);
+        pointer-events: none; // 防止鼠标划过窗口边缘按钮（如显示/隐藏停靠栏）时闪烁
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+    }
+}
+
 .tooltip--memo#tooltip {
     --property-percentage: 0%;
     // text-wrap: wrap;
