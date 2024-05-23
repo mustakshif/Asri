@@ -13,9 +13,11 @@ body:not(.asri-disable-backdrop-blur) {
     // 1. 块拖动至页面顶部时无法触发自动滚动
     // 2. 页面块进度条（.protyle-scroll）无法自动定位；点击时跳转到块的位置，但溢出页面顶部
 
+    --blur-block-height: 84px;
+
     .layout__wnd--active,
     [data-type="wnd"] {
-        
+
         &>.fn__flex:first-child {
             background-color: transparent;
             margin-bottom: -42px;
@@ -24,7 +26,7 @@ body:not(.asri-disable-backdrop-blur) {
 
         // -> js
 
-        :not(.av__views) > .layout-tab-bar {
+        :not(.av__views)>.layout-tab-bar {
             .item {
                 // backdrop-filter: brightness(1) saturate(1);
 
@@ -33,7 +35,7 @@ body:not(.asri-disable-backdrop-blur) {
                     backdrop-filter: brightness(1) saturate(1.8);
 
                     @include darkmode-counterpart {
-                        background-color: #ffffff20;
+                        // background-color: #ffffff20;
                         backdrop-filter: brightness(1.2) saturate(1.8);
                     }
                 }
@@ -42,7 +44,6 @@ body:not(.asri-disable-backdrop-blur) {
 
         .layout-tab-container {
             &>.protyle[data-loading="finished"]::before {
-                --blur-block-height: 84px;
                 --blur-radius-main: 40px;
                 content: "";
                 display: block;
@@ -58,10 +59,10 @@ body:not(.asri-disable-backdrop-blur) {
                 @include bg-blur($brightness-dark: 0.95);
             }
 
-            :not(#searchPreview)>.protyle-breadcrumb {
+            :not(#searchPreview, .card__block)>.protyle-breadcrumb {
                 padding-top: 42px;
-                margin-bottom: -84px;
-                height: 84px;
+                margin-bottom: calc(var(--blur-block-height) * -1);
+                height: var(--blur-block-height);
                 // @include theme-variant-color(background-color, background, $thick-transparency);
                 z-index: 2;
                 background-color: rgb(from var(--b3-theme-background) r g b / $thick-transparency);
@@ -77,7 +78,7 @@ body:not(.asri-disable-backdrop-blur) {
             }
 
             :not(#searchPreview)>.protyle-content {
-                padding-top: 84px;
+                padding-top: var(--blur-block-height);
             }
 
             &>.file-tree .protyle-content {
@@ -87,9 +88,8 @@ body:not(.asri-disable-backdrop-blur) {
             .block__icons.search {
                 padding-top: 42px;
             }
-
-            // -> js
         }
+
         // ————————————————————————————————————
 
         // pdf
@@ -116,15 +116,53 @@ body:not(.asri-disable-backdrop-blur) {
         }
     }
 
-    &:not(.body--mobile,.body--window)>#toolbar {
+    &:not(.body--mobile, .body--window)>#toolbar {
         z-index: 4;
     }
 
-    .av__row--header,.av__colsticky,.av__row--footer {
+    .layout__resize {
+        z-index: 3;
+    }
+
+    .av__row--header,
+    .av__colsticky,
+    .av__row--footer {
         z-index: 1;
     }
 
+    &.body--window {
+        --blur-block-height: 74px;
+    }
+
+    .layout__center {
+
+        // 大纲、反链面板
+        .file-tree,
+        // 搜索面板
+        .layout-tab-container>[data-timeout] {
+            margin-top: 42px;
+            min-height: calc(100% - 42px);
+        }
+
+        [data-key="dialog-opencard"] {
+            padding-top: 42px;
+
+            // >.card__main>.block__icons {
+            //     background-color: var(--b3-theme-background);
+            // }
+        }
+    }
+
+    // 适配插件、挂件
     iframe[src="/widgets/Whiteboard/"] {
         margin-top: 48px;
+    }
+
+    .enhanceProtyleBottomContainer .protyle-content {
+        padding-top: 0 !important;
+    }
+
+    .backlinkArea.arco-collapse[data-v-db8488aa] .backlinkAreaCollapse>.arco-collapse-item-header {
+        z-index: 1;
     }
 }

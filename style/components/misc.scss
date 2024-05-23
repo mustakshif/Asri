@@ -278,7 +278,7 @@ textarea {
     0% {
         opacity: 0;
         transform: scale(.8);
-        pointer-events: none; // 防止鼠标划过窗口边缘按钮（如显示/隐藏停靠栏）时闪烁
+        pointer-events: none; // 配合动画延迟防止鼠标划过窗口边缘按钮（如显示/隐藏停靠栏）时闪烁
     }
 
     100% {

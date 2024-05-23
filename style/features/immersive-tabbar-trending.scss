@@ -56,10 +56,10 @@ body:not(.asri-disable-backdrop-blur) {
                 z-index: 2;
                 pointer-events: none;
                 // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
-                mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 20px), transparent calc(var(--blur-block-height) + 20px));
+                mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 20px), transparent calc(var(--blur-block-height) + 10px));
                 background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / .6), transparent);
 
-                @include bg-blur($blur-radius: 10px, $saturate-value: 1, $brightness-light: 1.02, $brightness-dark: 1);
+                @include bg-blur($blur-radius: 10px, $saturate-value: 1.5, $brightness-light: 1.02, $brightness-dark: 1);
             }
 
             :not(#searchPreview)>.protyle-breadcrumb {
