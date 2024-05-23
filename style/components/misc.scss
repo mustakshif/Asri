@@ -250,7 +250,7 @@ textarea {
 }
 
 @mixin tooltip-styles {
-    pointer-events: none;
+    // pointer-events: none; // 导致长内容无法滚动
     // text-wrap: nowrap;
     // overflow: hidden;
     // min-width: max-content;
@@ -294,7 +294,7 @@ textarea {
     transform-origin: 40px top;
     animation-delay: .125s; // 优化鼠标划过时的闪烁
     // transform: scale(0.9);
-    pointer-events: all; // https://ld246.com/article/1709825939240
+    pointer-events: auto; // https://ld246.com/article/1709825939240
 
     @include darkmode-counterpart {
         background-color: #DDBA0D;
