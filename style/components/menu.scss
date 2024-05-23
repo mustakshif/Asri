@@ -115,11 +115,13 @@
 
         @media screen and (min-width: 1292px) {
 
-            width: auto !important;
+            width: 75vw !important;
+            max-width: calc(12em * 7);
             max-height: 65vh;
 
             &>div {
-                column-count: 5;
+                // column-count: 5;
+                column-width: 12em;
                 column-gap: 4px;
                 column-rule: 1px solid var(--b3-border-color-trans);
 
