@@ -301,6 +301,12 @@
                 font-family: Dejavu Sans;
             }
         }
+        
+        .b3-list-item__text:empty {
+            &::after {
+                content: "　";
+            }
+        } // 兼顾 https://github.com/mustakshif/Asri/issues/69 和 https://github.com/mustakshif/Asri/issues/65
 
         &>svg {
             color: transparent !important;
