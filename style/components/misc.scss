@@ -87,11 +87,12 @@
     box-sizing: border-box !important; // fix conflict with enhance plugin's arco css styles
 
     .b3-menu__item--current>.b3-menu__label & {
-        border: 1px solid #ffffff90;
+        outline: 1px solid #ffffff60;
     }
 
-    html[data-theme-mode="dark"] & {
-        border: 1px solid var(--b3-border-color-trans);
+    @include darkmode-counterpart {
+        outline: 1px solid var(--b3-border-color-trans);
+        outline-offset: -1px;
     }
 
     background-color: #7f7f7f66;
@@ -111,7 +112,7 @@
 
     //开启状态
     &:checked {
-        background-color: var(--b3-theme-primary) !important;
+        background-color: var(--b3-theme-primary);
 
         &::after {
             transform: translateX(12px);
