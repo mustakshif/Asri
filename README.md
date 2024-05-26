@@ -10,19 +10,16 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.0.11
+### v3.0.12
 
-* Fixed font color and background color issues with PDF exports.
-
-### v3.0.10
-
-* Added a overflow fade-out of the side navigation of the PDF reader.
-* [Improved adaptability of document tree item to font size and line height adjustments](https://github.com/mustakshif/Asri/issues/65).
-* Optimized font weight for settings panel items.
-* Optimized color of divider in the sidebar panel.
-* Optimized color of secondary text in tooltips.
-* Removed the feature to disable the blur effect when the window loses focus.
-* Restored mouse hover effect for icons in the top bar.
+* Standardized the resource file search list style in dialogs and tabs.
+* Centered dialog titles.
+* Optimized the layout of the `Settings - Search` page.
+* Removed the separator line below dialog titles.
+* [Adjusted the `/` menu width and column count under wide viewports](https://github.com/mustakshif/Asri/issues/68).
+* [Fixed the issue with outline level indicators being misaligned when titles were empty](https://github.com/mustakshif/Asri/issues/69).
+* Fixed the issue where long text in tooltips could not be scrolled.
+* Fixed the issue where the toggle handle was not centered under certain scaling ratios.
 
 ### ...
 

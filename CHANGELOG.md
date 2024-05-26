@@ -1,3 +1,23 @@
+### v3.0.12
+
+* 统一对话框和页签中资源文件搜索列表样式
+* 对话框标题改为居中
+* 优化 `设置 - 搜索` 页面布局
+* 去除对话框标题下的分割线
+* [调整宽视口下 `/` 菜单宽度和栏数](https://github.com/mustakshif/Asri/issues/68)
+* [修复标题为空时大纲层级标识位置偏移的问题](https://github.com/mustakshif/Asri/issues/69)
+* 修复提示条内容为长文本时无法滚动的问题
+* 修复在部分缩放比例下开关把手不居中的问题
+
+* Standardized the resource file search list style in dialogs and tabs.
+* Centered dialog titles.
+* Optimized the layout of the `Settings - Search` page.
+* Removed the separator line below dialog titles.
+* [Adjusted the `/` menu width and column count under wide viewports](https://github.com/mustakshif/Asri/issues/68).
+* [Fixed the issue with outline level indicators being misaligned when titles were empty](https://github.com/mustakshif/Asri/issues/69).
+* Fixed the issue where long text in tooltips could not be scrolled.
+* Fixed the issue where the toggle handle was not centered under certain scaling ratios.
+
 ### v3.0.11
 
 * 修复 pdf 导出结果的字体色和背景色问题
