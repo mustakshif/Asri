@@ -75,4 +75,4 @@ jobs:
           artifacts: "package.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
-          body: ${{ env.CHANGELOG_CONTENT }}
+          body: ${{ env.CHANGELOG_FILE_PATH }}
