@@ -264,6 +264,10 @@ animation-direction: #{$anim-dir};
 //     @include scroll-divider-fadein-bgClr(40px, $range: 'top');
 // }
 
+[data-key="dialog-searchtype"] .b3-dialog__content {
+    @include scroll-divider-fadein-mask(20px, $range: 'top');
+}
+
 @keyframes maskAppear-bgClr {
     0% {
         opacity: 0;

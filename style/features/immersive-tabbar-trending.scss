@@ -71,7 +71,7 @@ body:not(.asri-disable-backdrop-blur) {
                 // background-color: rgb(from var(--b3-theme-background) r g b / $thick-transparency);
                 background: linear-gradient(rgb(from var(--b3-theme-background) r g b / $thick-transparency), transparent);
 
-                // mix-blend-mode: luminosity;
+                mix-blend-mode: luminosity;
 
                 // &__bar {
                 //     backdrop-filter: blur($medium-blur-rd);

@@ -616,6 +616,22 @@
     .config-keymap__key {
         font-family: SF Pro, Consolas, "Liberation Mono", Menlo, Courier, monospace, var(--b3-font-family);
     }
+
+    .config-query {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+        gap: 12px 15%;
+        margin-top: 12px;
+
+        .label, label {
+            width: auto;
+            margin: 0;
+        }
+
+        .label>div{
+            flex: 1;
+        }
+    }
 }
 
 // 集市面板
