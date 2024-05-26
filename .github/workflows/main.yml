@@ -52,9 +52,9 @@ jobs:
           CHANGELOG_CONTENT="${{ env.CHANGELOG_CONTENT }}"
 
           # Save the changelog content to a temporary file using heredoc
-          cat <<EOF > CHANGELOG_TEMP.txt
-          $CHANGELOG_CONTENT
-          EOF
+cat <<EOF > CHANGELOG_TEMP.txt
+$CHANGELOG_CONTENT
+EOF
 
           if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
             echo "Tag $TAG_NAME already exists. Updating tag message."
