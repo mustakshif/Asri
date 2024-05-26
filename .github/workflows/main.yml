@@ -25,16 +25,27 @@ jobs:
             echo "Error: $CHANGELOG_FILE does not exist."
             exit 1
           fi
+      
           # Use awk to extract the latest changelog entry
           CHANGELOG_CONTENT=$(awk '/^### / {if (found) exit; found=1} found' "$CHANGELOG_FILE")
+      
           if [ -z "$CHANGELOG_CONTENT" ]; then
             echo "Error: Could not extract the latest changelog entry."
             exit 1
           fi
+      
           echo "Extracted changelog content:"
           echo "$CHANGELOG_CONTENT"
-          # Save the changelog content to the environment file using the multi-line syntax
-          echo "CHANGELOG_CONTENT='$CHANGELOG_CONTENT'" >> $GITHUB_ENV
+      
+          # Save the changelog content to a temporary file
+          cat <<EOF > changelog.txt
+          $CHANGELOG_CONTENT
+          EOF
+      
+          # Save the changelog content file path to an environment variable
+          echo "CHANGELOG_FILE_PATH=$(realpath changelog.txt)" >> $GITHUB_ENV
+        shell: bash
+        
 
       - name: Create or update annotated tag with changelog
         run: |
