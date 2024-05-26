@@ -64,9 +64,9 @@
 
     const isMacOS = navigator.platform.indexOf("Mac") > -1;
     const isLinux = navigator.platform.indexOf("Linux") > -1;
-    const isMobile = document.getElementById('sidebar') && document.getElementById('editor');
-    const isInBrowser = asriDoms.toolbar?.classList.contains('toolbar--browser') > 0; // iPad uses this too
-    const isMiniWindow = document.body.classList.contains('body--window') > 0;
+    const isMobile = !!document.getElementById('sidebar');
+    const isInBrowser = asriDoms.toolbar?.classList.contains('toolbar--browser'); // iPad uses this too
+    const isMiniWindow = document.body.classList.contains('body--window');
     const isAndroid = window.siyuan.config.system.container === "android";
     const userAgent = navigator.userAgent;
     const isIOSApp = (/iOS/i.test(userAgent) || /iPad/i.test(userAgent)) && /AppleWebKit/i.test(userAgent);
@@ -88,7 +88,9 @@
 
     if (!isMobile && asriDoms.toolbar) {
         createTopbarElementById('AsriPluginsIconsDivider', undefined, asriDoms.drag);
+        
         (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarLeftSpacing', undefined, asriDoms.barSync) : createTopbarElementById('AsriTopbarLeftSpacing', undefined, asriDoms.barForward);
+
         (isMacOS || isInBrowser) ? createTopbarElementById('AsriTopbarRightSpacing') : createTopbarElementById('AsriTopbarRightSpacing', asriDoms.barSearch);
     }
 
