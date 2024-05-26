@@ -51,12 +51,15 @@ jobs:
           TAG_NAME="${{ github.ref_name }}"
           CHANGELOG_CONTENT="${{ env.CHANGELOG_CONTENT }}"
 
+          # Save the changelog content to a temporary file
+          echo "$CHANGELOG_CONTENT" > CHANGELOG_TEMP.txt
+
           if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
             echo "Tag $TAG_NAME already exists. Updating tag message."
-            git tag -f -a "$TAG_NAME" -m "$CHANGELOG_CONTENT"
+            git tag -f -a "$TAG_NAME" -F CHANGELOG_TEMP.txt
             git push origin -f "$TAG_NAME"
           else
-            git tag -a "$TAG_NAME" -m "$CHANGELOG_CONTENT"
+            git tag -a "$TAG_NAME" -F CHANGELOG_TEMP.txt
             git push origin "$TAG_NAME"
           fi
 
