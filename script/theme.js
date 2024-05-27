@@ -187,7 +187,7 @@
         }
 
         function customizeThemeColor() {
-            let followSysAccentBtn, pickColorBtn, asriChromaSlider;
+            let followSysAccentBtn, pickColorBtn, asriChromaSlider, colorPicker;
 
             // create menu items and handle click events
             setTimeout(() => {
@@ -367,7 +367,7 @@
      * @returns boolean
      */
     function handleGrayScale(chroma) {
-        chromaValue = String(chroma);
+        const chromaValue = String(chroma);
         if (chromaValue === '0' || (followSysAccentColor && isSysAccentGray) || isUserAccentGray) {
             document.documentElement.style.setProperty('--asri-c-0', '0');
             return true;
@@ -472,7 +472,7 @@
 
     function calcTopbarSpacings(widthChange) {
         if (!isMiniWindow) {
-            let layoutsCenterRect, leftSpacingRect, rightSpacingRect, barSyncRect, dragRect;
+            let layoutsCenterRect, leftSpacingRect, barForwardRect, rightSpacingRect, barSyncRect, dragRect;
 
             layoutsCenterRect = asriDoms.layouts.querySelector('.layout__center')?.getBoundingClientRect();
             rightSpacingRect = rightSpacing.getBoundingClientRect();
@@ -1345,5 +1345,8 @@
         setTimeout(() => {
             document.body.classList.remove('asri-mode-transition');
         }, 350);
+
+        document.getElementById('asriMainjs').remove();
+        document.getElementById('asriFastdom').remove();
     }
 })();
