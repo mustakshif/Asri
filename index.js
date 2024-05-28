@@ -1,4 +1,4 @@
-import { root, checkVersion, addURLParam, loadScript } from './util/rsc.js';
+import { root, checkVersion, addURLParam, loadScript } from './src/util/rsc.js';
 
 export async function main() {
     let version = await checkVersion();
