@@ -7,7 +7,7 @@ export {
     putFile,
 }
 
-async function getFile(path) {
+async function getFile(path:string) {
     const response = await fetch('/api/file/getFile', {
         method: 'POST',
         headers: {
@@ -17,18 +17,19 @@ async function getFile(path) {
             path: path,
         }),
     });
-    if (response.status === 200) return response;
+    if (response.ok) return response;
     else return null;
 }
 
-async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
+async function putFile(path:string, filedata: BlobPart, isDir = false, modTime = Date.now()) {
     let blob = new Blob([filedata]);
-    let file = new File([blob], path.split('/').pop());
+    let fileName = path.split('/').pop() as string;
+    let file = new File([blob], fileName);
     let formdata = new FormData();
     formdata.append('path', path);
     formdata.append('file', file);
-    formdata.append('isDir', isDir);
-    formdata.append('modTime', modTime);
+    formdata.append('isDir', String(isDir));
+    formdata.append('modTime', String(modTime));
     const response = await fetch('/api/file/putFile', {
         body: formdata,
         method: 'POST',
@@ -36,7 +37,7 @@ async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
             Authorization: `Token ''`,
         },
     });
-    if (response.status === 200) return await response.json();
+    if (response.ok) return await response.json();
     else return null;
 }
 

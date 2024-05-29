@@ -1,19 +1,18 @@
 {
   "compilerOptions": {
-    "target": "ES6",                       // 编译后的 JavaScript 版本
-    "module": "commonjs",                  // 模块系统
-    "strict": true,                        // 启用所有严格类型检查选项
-    "outDir": "./dist",                    // 输出目录
-    "allowJs": true,                       // 允许编译 JavaScript 文件
-    "checkJs": true,                       // 检查 JavaScript 文件中的错误
-    "esModuleInterop": true,               // 允许 CommonJS 和 ES 模块之间的互操作性
-    "skipLibCheck": true,                  // 跳过库文件检查
+    "target": "ES6", 
+    "module": "commonjs", 
+    "strict": true, 
+    "outDir": "./dist", 
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true, 
+    "skipLibCheck": true, 
     "forceConsistentCasingInFileNames": true,
-    "noImplicitAny":false
+    "typeRoots": ["node_modules/@types"],
   },
   "include": [
-    "src/theme.ts",
-    // "src/**/*.js"
+    "src/**/*.ts",
   ],
   "exclude": [
     "node_modules",

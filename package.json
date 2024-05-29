@@ -2,7 +2,6 @@
   "name": "asri",
   "version": "3.1.0",
   "private": true,
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mustakshif/Asri.git"
@@ -14,11 +13,20 @@
   "description": "An ultra-modern theme that delivers an elegant, efficient, and personalized note-taking experience through its clean, intuitive design.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "tsc ./src/theme.ts --outFile ../theme.js"
+    "cmpl": "tsc ./src/main.ts --outDir ./",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "author": "mustakshif",
   "license": "MIT",
   "dependencies": {
     "fastdom": "^1.0.12"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.56.10",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
   }
 }
