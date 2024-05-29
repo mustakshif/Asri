@@ -57,6 +57,10 @@
             }
         }
     }
+
+    .protyle-icon.fn__none:first-child+.protyle-icon:last-child {
+        border-radius: 99px;
+    } // 只读模式下HTML块工具条
 }
 
 // 排版元素
