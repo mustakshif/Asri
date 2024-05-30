@@ -13,8 +13,19 @@ jobs:
 
         - name: Package
           run: |
-              zip -r package.zip icons icon.png preview.png README_en_US.md README.md theme.css theme.js theme.json
-    
+              cd ..
+              mkdir temp_package
+              cp icons/* temp_package/
+              cp icon.png temp_package/
+              cp preview.png temp_package/
+              cp README_en_US.md temp_package/
+              cp README.md temp_package/
+              cp theme.css temp_package/
+              cp theme.js temp_package/
+              cp theme.json temp_package/
+              zip -r package.zip temp_package/
+              rm -rf temp_package
+
         - name: Create Release
           uses: ncipollo/release-action@v1.13.0
           with:
