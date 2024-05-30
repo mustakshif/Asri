@@ -1,13 +1,17 @@
 export const asriDoms = {
-    layouts: document.getElementById('layouts'),
+    // get as needed
+    layouts: () => document.getElementById('layouts'),
+    layoutCenter: () => document.getElementsByClassName('layout__center'),
+    toolbar: () => document.getElementById('toolbar'),
+
+    // load once at init
     status: document.getElementById('status'),
     dockl: document.getElementById('dockLeft'),
     dockr: document.getElementById('dockRight'),
     dockb: document.getElementById('dockBottom'),
-    layoutDockl: document.querySelector('.layout__dockl'),
-    layoutDockr: document.querySelector('.layout__dockr'),
-    layoutDockb: document.querySelector('.layout__dockb'),
-    toolbar: document.getElementById('toolbar'),
+    layoutDockl: document.getElementsByClassName('.layout__dockl'),
+    layoutDockr: document.getElementsByClassName('.layout__dockr'),
+    layoutDockb: document.getElementsByClassName('.layout__dockb'),   
     barSync: document.getElementById('barSync'),
     barForward: document.getElementById('barForward'),
     toolbarVIP: document.getElementById('toolbarVIP'),
@@ -21,7 +25,7 @@ export const environment = {
     isMacOS: navigator.platform.indexOf("Mac") > -1,
     isLinux: navigator.platform.indexOf("Linux") > -1,
     isMobile: !!document.getElementById('sidebar'),
-    isInBrowser: asriDoms.toolbar?.classList.contains('toolbar--browser'), // iPad uses this too
+    isInBrowser: asriDoms.toolbar()?.classList.contains('toolbar--browser'), // also applies to iPadOS
     isMiniWindow: document.body.classList.contains('body--window'),
     isAndroid: window.siyuan.config.system.container === "android",
     isIOSApp: (/iOS/i.test(navigator.userAgent) || /iPad/i.test(navigator.userAgent)) && /AppleWebKit/i.test(navigator.userAgent),
