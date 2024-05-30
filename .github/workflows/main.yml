@@ -11,21 +11,13 @@ jobs:
         steps:
         - uses: actions/checkout@master
 
-        - name: Package
-          run: |
-              cd ..
-              mkdir temp_package
-              cp icons/* temp_package/
-              cp icon.png temp_package/
-              cp preview.png temp_package/
-              cp README_en_US.md temp_package/
-              cp README.md temp_package/
-              cp theme.css temp_package/
-              cp theme.js temp_package/
-              cp theme.json temp_package/
-              zip -r package.zip temp_package/
-              rm -rf temp_package
-
+        - name: Zip Release
+          uses: thedoctor0/zip-release@0.7.6
+          with:
+            type: 'zip'
+            filename: 'package.zip'
+            exclusions: '*.git* *.scss /*style/* /*assets/* /*src/* *config* *package*'
+    
         - name: Create Release
           uses: ncipollo/release-action@v1.13.0
           with:
