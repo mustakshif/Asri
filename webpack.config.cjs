@@ -9,6 +9,18 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      // 添加处理.html文件的规则
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              minimize: true, // 可选，用于压缩HTML
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {

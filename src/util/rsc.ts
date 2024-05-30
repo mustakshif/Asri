@@ -32,5 +32,3 @@ export const environment = {
     lang: window.siyuan.config.lang as string,
     supportsOklch: CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)'),
 };
-
-export const prefix = 'asri';
