@@ -13,7 +13,7 @@
   "description": "An ultra-modern theme that delivers an elegant, efficient, and personalized note-taking experience through its clean, intuitive design.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cmpl": "tsc ./src/main.ts --outDir ./",
+    "cmpl": "tsc ./src/main.ts",
     "build": "webpack",
     "watch": "webpack --watch"
   },
@@ -23,6 +23,7 @@
     "fastdom": "^1.0.12"
   },
   "devDependencies": {
+    "@types/cssom": "^0.4.3",
     "@types/eslint": "^8.56.10",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",

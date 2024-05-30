@@ -1,5 +1,17 @@
 // import fastdom from "fastdom";
 import { asriDoms as doms, environment as env } from "./util/rsc";
+import { addEnvClassNames, removeEnvClassNames } from "./modules/envClassifiers";
+import { useSysScrollbar, restoreDeletedRules } from "./modules/scrollbar";
+import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./modules/trafficLights";
 
-console.log(doms.barMode);
-console.log(env.isAndroid);
+setTimeout(async () => {
+    addEnvClassNames();
+    useSysScrollbar();
+    applyTrafficLightPosition();
+
+    window.destroyTheme = () => {
+        removeEnvClassNames();
+        restoreDeletedRules(); // restore scrollbar styles
+        restoreTrafficLightPosition();
+    }
+}, 0);

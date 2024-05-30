@@ -23,10 +23,10 @@ export const environment = {
     isMobile: !!document.getElementById('sidebar'),
     isInBrowser: asriDoms.toolbar?.classList.contains('toolbar--browser'), // iPad uses this too
     isMiniWindow: document.body.classList.contains('body--window'),
-    // @ts-ignore
     isAndroid: window.siyuan.config.system.container === "android",
     isIOSApp: (/iOS/i.test(navigator.userAgent) || /iPad/i.test(navigator.userAgent)) && /AppleWebKit/i.test(navigator.userAgent),
-    // @ts-ignore
     lang: window.siyuan.config.lang as string,
     supportsOklch: CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)'),
 };
+
+export const prefix = 'asri';

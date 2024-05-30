@@ -19,7 +19,10 @@ module.exports = {
     path: path.resolve(__dirname), // 输出目录
   },
   mode: 'production',
-  optimization: {
-    minimize: false,
-  },
+  // optimization: {
+  //   minimize: false, // 禁用压缩，调试时使用
+  // },
+  externals: {
+    '@electron/remote': 'commonjs @electron/remote', // 将 @electron/remote 模块作为外部依赖
+  }
 };

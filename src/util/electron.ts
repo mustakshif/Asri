@@ -1,0 +1,1 @@
+export const remote = require("@electron/remote");
