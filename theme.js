@@ -277,13 +277,12 @@ const env_1 = __webpack_require__(261);
 const scrollbar_1 = __webpack_require__(832);
 const trafficLights_1 = __webpack_require__(130);
 setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
     (0, env_1.addEnvClassNames)();
     (0, scrollbar_1.useSysScrollbar)();
     (0, trafficLights_1.applyTrafficLightPosition)();
-    
-    const centerWidth = (_a = rsc_1.asriDoms.layoutCenter()) === null || _a === void 0 ? void 0 : _a.clientWidth;
     fastdom_1.default.measure(() => {
+        var _a;
+        const centerWidth = (_a = rsc_1.asriDoms.drag) === null || _a === void 0 ? void 0 : _a.clientWidth;
         if (centerWidth) {
             console.log(`centerWidth: ${centerWidth}`);
         }
@@ -347,9 +346,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.restoreDefaultScrollbar = exports.useSysScrollbar = exports.asriDeletedRules = void 0;
+exports.restoreDefaultScrollbar = exports.useSysScrollbar = void 0;
 const rsc_1 = __webpack_require__(49);
-exports.asriDeletedRules = [];
+const asriDeletedRules = [];
 function useSysScrollbar() {
     return __awaiter(this, void 0, void 0, function* () {
         if (rsc_1.environment.isMacOS || rsc_1.environment.isMobile) {
@@ -360,7 +359,7 @@ function useSysScrollbar() {
                         let rule = styleSheet.cssRules[j];
                         if (rule.selectorText && rule.selectorText.includes('::-webkit-scrollbar')) {
                             if (rule.style.width || rule.style.height || rule.style.backgroundColor) {
-                                exports.asriDeletedRules.push({ styleSheet: styleSheet, rule: rule.cssText });
+                                asriDeletedRules.push({ styleSheet: styleSheet, rule: rule.cssText });
                                 styleSheet.deleteRule(j);
                                 j--;
                             }
@@ -377,9 +376,9 @@ function useSysScrollbar() {
 exports.useSysScrollbar = useSysScrollbar;
 function restoreDefaultScrollbar() {
     return __awaiter(this, void 0, void 0, function* () {
-        if (exports.asriDeletedRules) {
-            for (let i = 0; i < exports.asriDeletedRules.length; i++) {
-                let rule = exports.asriDeletedRules[i];
+        if (asriDeletedRules) {
+            for (let i = 0; i < asriDeletedRules.length; i++) {
+                let rule = asriDeletedRules[i];
                 rule.styleSheet.insertRule(rule.rule, rule.styleSheet.cssRules.length);
             }
         }
@@ -396,15 +395,14 @@ exports.restoreDefaultScrollbar = restoreDefaultScrollbar;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.restoreTrafficLightPosition = exports.applyTrafficLightPosition = exports.setTrafficLightPosition = void 0;
+exports.restoreTrafficLightPosition = exports.applyTrafficLightPosition = void 0;
 const electron_1 = __webpack_require__(571);
 const rsc_1 = __webpack_require__(49);
 function setTrafficLightPosition(x, y = x) {
-    if (electron_1.remote === null)
-        return;
-    electron_1.remote.getCurrentWindow().setWindowButtonPosition({ x: x, y: y });
+    if (electron_1.remote) {
+        electron_1.remote.getCurrentWindow().setWindowButtonPosition({ x: x, y: y });
+    }
 }
-exports.setTrafficLightPosition = setTrafficLightPosition;
 function applyTrafficLightPosition() {
     if (rsc_1.environment.isMacOS && !rsc_1.environment.isInBrowser)
         setTrafficLightPosition(16);
@@ -447,16 +445,16 @@ exports.environment = exports.asriDoms = void 0;
 exports.asriDoms = {
     // get as needed
     layouts: () => document.getElementById('layouts'),
-    layoutCenter: () => document.getElementsByClassName('layout__center')[0],
+    layoutCenter: () => document.querySelector('layout__center'),
     toolbar: () => document.getElementById('toolbar'),
     // load once at init
     status: document.getElementById('status'),
     dockl: document.getElementById('dockLeft'),
     dockr: document.getElementById('dockRight'),
     dockb: document.getElementById('dockBottom'),
-    layoutDockl: document.getElementsByClassName('.layout__dockl'),
-    layoutDockr: document.getElementsByClassName('.layout__dockr'),
-    layoutDockb: document.getElementsByClassName('.layout__dockb'),
+    layoutDockl: document.querySelector('.layout__dockl'),
+    layoutDockr: document.querySelector('.layout__dockr'),
+    layoutDockb: document.querySelector('.layout__dockb'),
     barSync: document.getElementById('barSync'),
     barForward: document.getElementById('barForward'),
     toolbarVIP: document.getElementById('toolbarVIP'),
