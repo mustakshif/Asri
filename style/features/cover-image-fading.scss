@@ -158,7 +158,7 @@ body:not(.body--mobile) {
         }
 
         &:not(.without-icon) {
-            .protyle-background__img+.protyle-background__ia .protyle-background__action {
+            .protyle-background__img+.protyle-background__ia :not(.b3-chips)>.protyle-background__action {
                 position: absolute;
                 top: auto;
                 transform: translateX(88px); // 可能是导致 https://github.com/mustakshif/Asri/issues/58 的原因
