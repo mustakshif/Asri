@@ -147,6 +147,7 @@ body:not(.body--mobile) {
             }
         }
 
+        // 无图标
         &.without-icon {
             .protyle-background__img {
                 margin-bottom: -100px;
@@ -157,13 +158,26 @@ body:not(.body--mobile) {
             }
         }
 
+        // 有图标
         &:not(.without-icon) {
-            .protyle-background__img+.protyle-background__ia :not(.b3-chips)>.protyle-background__action {
-                position: absolute;
-                top: auto;
-                transform: translateX(88px); // 可能是导致 https://github.com/mustakshif/Asri/issues/58 的原因
+
+            // 有题头图
+            .protyle-background__img+.protyle-background__ia {
+                // 无标签
+                .protyle-background__action {
+                    position: absolute;
+                    top: auto;
+                    transform: translateX(88px); // 可能是导致 https://github.com/mustakshif/Asri/issues/58 的原因
+                }
+
+                // 有标签 
+                .b3-chips .fn__space:not(:first-child)+.protyle-background__action {
+                    position: static;
+                    transform: none;
+                }
             }
 
+            // 无题头图
             .protyle-background__img.fn__none+.protyle-background__ia .protyle-background__action {
                 top: 48px;
             }
