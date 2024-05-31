@@ -23,7 +23,7 @@ export async function useSysScrollbar() {
     }
 }
 
-export async function restoreDeletedRules() {
+export async function restoreDefaultScrollbar() {
     if (asriDeletedRules) {
         for (let i = 0; i < asriDeletedRules.length; i++) {
             let rule = asriDeletedRules[i];
