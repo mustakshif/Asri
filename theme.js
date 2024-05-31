@@ -1,48 +1,263 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 13:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 551:
+/***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-// Module
-var code = "<button class=\"b3-menu__separator asri-config\"></button> <button class=\"b3-menu__item asri-config\" id=\"pickColor\"> <svg class=\"b3-menu__icon\"></svg> <label for=\"asriColorPicker\" class=\"be-menu__label\">${(lang === 'zh_CN' || lang === 'zh_CHT') ? i18nMenuItems[lang]['pickColor'] : i18nMenuItems['en_US']['pickColor']} </label> <input id=\"asriColorPicker\" type=\"color\" value=\"${asriConfigs.userCustomColor}\"> </button> <button class=\"b3-menu__item asri-config\" id=\"followSysAccent\"> <svg class=\"b3-menu__icon\"></svg> <label for=\"\" class=\"be-menu__label\">${(lang === 'zh_CN' || lang === 'zh_CHT') ? i18nMenuItems[lang]['followSysAccent'] : i18nMenuItems['en_US']['followSysAccent']} </label> </button> <button class=\"b3-menu__item asri-config\" data-type=\"nobg\" id=\"asriChroma\"> <svg class=\"b3-menu__icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"1em\" height=\"1em\" viewBox=\"0 0 24 24\"> <path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 11l-8-8l-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0zM5 2l5 5m-8 6h15m5 7a2 2 0 1 1-4 0c0-1.6 1.7-2.4 2-4c.3 1.6 2 2.4 2 4\"/> </svg> <div aria-label=\"${asriChromaAriaLabelPrefix + asriChromaSlider?.value || '1'}\" class=\"b3-tooltips b3-tooltips__n\"> <input style=\"box-sizing:border-box\" type=\"range\" id=\"asriChromaSlider\" class=\"b3-slider fn__block\" min=\"0\" max=\"5\" step=\"0.1\" value=\"1\"> </div> </button>";
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
+var __WEBPACK_AMD_DEFINE_RESULT__;!(function(win) {
+
+/**
+ * FastDom
+ *
+ * Eliminates layout thrashing
+ * by batching DOM read/write
+ * interactions.
+ *
+ * @author Wilson Page <wilsonpage@me.com>
+ * @author Kornel Lesinski <kornel.lesinski@ft.com>
+ */
+
+'use strict';
+
+/**
+ * Mini logger
+ *
+ * @return {Function}
+ */
+var debug =  false ? 0 : function() {};
+
+/**
+ * Normalized rAF
+ *
+ * @type {Function}
+ */
+var raf = win.requestAnimationFrame
+  || win.webkitRequestAnimationFrame
+  || win.mozRequestAnimationFrame
+  || win.msRequestAnimationFrame
+  || function(cb) { return setTimeout(cb, 16); };
+
+/**
+ * Initialize a `FastDom`.
+ *
+ * @constructor
+ */
+function FastDom() {
+  var self = this;
+  self.reads = [];
+  self.writes = [];
+  self.raf = raf.bind(win); // test hook
+  debug('initialized', self);
+}
+
+FastDom.prototype = {
+  constructor: FastDom,
+
+  /**
+   * We run this inside a try catch
+   * so that if any jobs error, we
+   * are able to recover and continue
+   * to flush the batch until it's empty.
+   *
+   * @param {Array} tasks
+   */
+  runTasks: function(tasks) {
+    debug('run tasks');
+    var task; while (task = tasks.shift()) task();
+  },
+
+  /**
+   * Adds a job to the read batch and
+   * schedules a new frame if need be.
+   *
+   * @param  {Function} fn
+   * @param  {Object} ctx the context to be bound to `fn` (optional).
+   * @public
+   */
+  measure: function(fn, ctx) {
+    debug('measure');
+    var task = !ctx ? fn : fn.bind(ctx);
+    this.reads.push(task);
+    scheduleFlush(this);
+    return task;
+  },
+
+  /**
+   * Adds a job to the
+   * write batch and schedules
+   * a new frame if need be.
+   *
+   * @param  {Function} fn
+   * @param  {Object} ctx the context to be bound to `fn` (optional).
+   * @public
+   */
+  mutate: function(fn, ctx) {
+    debug('mutate');
+    var task = !ctx ? fn : fn.bind(ctx);
+    this.writes.push(task);
+    scheduleFlush(this);
+    return task;
+  },
+
+  /**
+   * Clears a scheduled 'read' or 'write' task.
+   *
+   * @param {Object} task
+   * @return {Boolean} success
+   * @public
+   */
+  clear: function(task) {
+    debug('clear', task);
+    return remove(this.reads, task) || remove(this.writes, task);
+  },
+
+  /**
+   * Extend this FastDom with some
+   * custom functionality.
+   *
+   * Because fastdom must *always* be a
+   * singleton, we're actually extending
+   * the fastdom instance. This means tasks
+   * scheduled by an extension still enter
+   * fastdom's global task queue.
+   *
+   * The 'super' instance can be accessed
+   * from `this.fastdom`.
+   *
+   * @example
+   *
+   * var myFastdom = fastdom.extend({
+   *   initialize: function() {
+   *     // runs on creation
+   *   },
+   *
+   *   // override a method
+   *   measure: function(fn) {
+   *     // do extra stuff ...
+   *
+   *     // then call the original
+   *     return this.fastdom.measure(fn);
+   *   },
+   *
+   *   ...
+   * });
+   *
+   * @param  {Object} props  properties to mixin
+   * @return {FastDom}
+   */
+  extend: function(props) {
+    debug('extend', props);
+    if (typeof props != 'object') throw new Error('expected object');
+
+    var child = Object.create(this);
+    mixin(child, props);
+    child.fastdom = this;
+
+    // run optional creation hook
+    if (child.initialize) child.initialize();
+
+    return child;
+  },
+
+  // override this with a function
+  // to prevent Errors in console
+  // when tasks throw
+  catch: null
+};
+
+/**
+ * Schedules a new read/write
+ * batch if one isn't pending.
+ *
+ * @private
+ */
+function scheduleFlush(fastdom) {
+  if (!fastdom.scheduled) {
+    fastdom.scheduled = true;
+    fastdom.raf(flush.bind(null, fastdom));
+    debug('flush scheduled');
+  }
+}
+
+/**
+ * Runs queued `read` and `write` tasks.
+ *
+ * Errors are caught and thrown by default.
+ * If a `.catch` function has been defined
+ * it is called instead.
+ *
+ * @private
+ */
+function flush(fastdom) {
+  debug('flush');
+
+  var writes = fastdom.writes;
+  var reads = fastdom.reads;
+  var error;
+
+  try {
+    debug('flushing reads', reads.length);
+    fastdom.runTasks(reads);
+    debug('flushing writes', writes.length);
+    fastdom.runTasks(writes);
+  } catch (e) { error = e; }
+
+  fastdom.scheduled = false;
+
+  // If the batch errored we may still have tasks queued
+  if (reads.length || writes.length) scheduleFlush(fastdom);
+
+  if (error) {
+    debug('task errored', error.message);
+    if (fastdom.catch) fastdom.catch(error);
+    else throw error;
+  }
+}
+
+/**
+ * Remove an item from an Array.
+ *
+ * @param  {Array} array
+ * @param  {*} item
+ * @return {Boolean}
+ */
+function remove(array, item) {
+  var index = array.indexOf(item);
+  return !!~index && !!array.splice(index, 1);
+}
+
+/**
+ * Mixin own properties of source
+ * object into the target.
+ *
+ * @param  {Object} target
+ * @param  {Object} source
+ */
+function mixin(target, source) {
+  for (var key in source) {
+    if (source.hasOwnProperty(key)) target[key] = source[key];
+  }
+}
+
+// There should never be more than
+// one instance of `FastDom` in an app
+var exports = win.fastdom = (win.fastdom || new FastDom()); // jshint ignore:line
+
+// Expose to CJS & AMD
+if (true) !(__WEBPACK_AMD_DEFINE_RESULT__ = (function() { return exports; }).call(exports, __webpack_require__, exports, module),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+else {}
+
+})( typeof window !== 'undefined' ? window : typeof this != 'undefined' ? this : globalThis);
+
 
 /***/ }),
 
 /***/ 927:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
+"use strict";
 
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -52,18 +267,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+const fastdom_1 = __importDefault(__webpack_require__(551));
+const rsc_1 = __webpack_require__(49);
 const env_1 = __webpack_require__(261);
-const sysScrollbar = __importStar(__webpack_require__(832));
+const scrollbar_1 = __webpack_require__(832);
 const trafficLights_1 = __webpack_require__(130);
-__webpack_require__(129);
 setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     (0, env_1.addEnvClassNames)();
-    sysScrollbar.useSysScrollbar();
+    (0, scrollbar_1.useSysScrollbar)();
     (0, trafficLights_1.applyTrafficLightPosition)();
+    
+    const centerWidth = (_a = rsc_1.asriDoms.layoutCenter()) === null || _a === void 0 ? void 0 : _a.clientWidth;
+    fastdom_1.default.measure(() => {
+        if (centerWidth) {
+            console.log(`centerWidth: ${centerWidth}`);
+        }
+    });
     window.destroyTheme = () => {
         (0, env_1.removeEnvClassNames)();
-        sysScrollbar.restoreDeletedRules(); // restore scrollbar styles
+        (0, scrollbar_1.restoreDefaultScrollbar)();
         (0, trafficLights_1.restoreTrafficLightPosition)();
     };
 }), 0);
@@ -71,23 +298,10 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
 
 /***/ }),
 
-/***/ 129:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const index_html_1 = __importDefault(__webpack_require__(13));
-console.log(index_html_1.default);
-
-
-/***/ }),
-
 /***/ 261:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.removeEnvClassNames = exports.addEnvClassNames = void 0;
@@ -121,6 +335,7 @@ exports.removeEnvClassNames = removeEnvClassNames;
 /***/ 832:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
+"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -132,7 +347,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.restoreDeletedRules = exports.useSysScrollbar = exports.asriDeletedRules = void 0;
+exports.restoreDefaultScrollbar = exports.useSysScrollbar = exports.asriDeletedRules = void 0;
 const rsc_1 = __webpack_require__(49);
 exports.asriDeletedRules = [];
 function useSysScrollbar() {
@@ -160,7 +375,7 @@ function useSysScrollbar() {
     });
 }
 exports.useSysScrollbar = useSysScrollbar;
-function restoreDeletedRules() {
+function restoreDefaultScrollbar() {
     return __awaiter(this, void 0, void 0, function* () {
         if (exports.asriDeletedRules) {
             for (let i = 0; i < exports.asriDeletedRules.length; i++) {
@@ -170,7 +385,7 @@ function restoreDeletedRules() {
         }
     });
 }
-exports.restoreDeletedRules = restoreDeletedRules;
+exports.restoreDefaultScrollbar = restoreDefaultScrollbar;
 
 
 /***/ }),
@@ -178,6 +393,7 @@ exports.restoreDeletedRules = restoreDeletedRules;
 /***/ 130:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.restoreTrafficLightPosition = exports.applyTrafficLightPosition = exports.setTrafficLightPosition = void 0;
@@ -210,6 +426,7 @@ exports.restoreTrafficLightPosition = restoreTrafficLightPosition;
 /***/ 571:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.remote = void 0;
@@ -222,6 +439,7 @@ exports.remote = (rsc_1.environment.isMobile || rsc_1.environment.isInBrowser) ?
 /***/ 49:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -229,7 +447,7 @@ exports.environment = exports.asriDoms = void 0;
 exports.asriDoms = {
     // get as needed
     layouts: () => document.getElementById('layouts'),
-    layoutCenter: () => document.getElementsByClassName('layout__center'),
+    layoutCenter: () => document.getElementsByClassName('layout__center')[0],
     toolbar: () => document.getElementById('toolbar'),
     // load once at init
     status: document.getElementById('status'),
@@ -265,6 +483,7 @@ exports.environment = {
 /***/ 21:
 /***/ ((module) => {
 
+"use strict";
 module.exports = require("@electron/remote");
 
 /***/ })
@@ -294,35 +513,6 @@ module.exports = require("@electron/remote");
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
 /******/ 	
 /************************************************************************/
 /******/ 	

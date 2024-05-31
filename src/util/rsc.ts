@@ -1,7 +1,7 @@
 export const asriDoms = {
     // get as needed
     layouts: () => document.getElementById('layouts'),
-    layoutCenter: () => document.getElementsByClassName('layout__center'),
+    layoutCenter: () => document.querySelector('layout__center'),
     toolbar: () => document.getElementById('toolbar'),
 
     // load once at init
@@ -9,9 +9,9 @@ export const asriDoms = {
     dockl: document.getElementById('dockLeft'),
     dockr: document.getElementById('dockRight'),
     dockb: document.getElementById('dockBottom'),
-    layoutDockl: document.getElementsByClassName('.layout__dockl'),
-    layoutDockr: document.getElementsByClassName('.layout__dockr'),
-    layoutDockb: document.getElementsByClassName('.layout__dockb'),   
+    layoutDockl: document.querySelector('.layout__dockl'),
+    layoutDockr: document.querySelector('.layout__dockr'),
+    layoutDockb: document.querySelector('.layout__dockb'),   
     barSync: document.getElementById('barSync'),
     barForward: document.getElementById('barForward'),
     toolbarVIP: document.getElementById('toolbarVIP'),
