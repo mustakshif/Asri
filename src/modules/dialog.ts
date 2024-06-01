@@ -1,7 +1,12 @@
 import { AsriMutationObserver } from "../util/observers";
 
-export const docBodyObserver = new AsriMutationObserver(docBodyCallback);
+export const watchImgExportMo = new AsriMutationObserver(docBodyMoCallback);
 
-function docBodyCallback(mutationList: MutationRecord[], observer: MutationObserver) {
-    console.log(mutationList);
+function docBodyMoCallback(mutationList: MutationRecord[], observer: MutationObserver) {
+    // console.log(mutationList);
+    addExportImgClassName();
+}
+
+function addExportImgClassName() {
+    document.body.classList.toggle('has-exportimg', !!document.querySelector('[data-key="dialog-exportimage"]'));
 }

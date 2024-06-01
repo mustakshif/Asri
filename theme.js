@@ -282,7 +282,7 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
     (0, env_1.addEnvClassNames)();
     (0, scrollbar_1.useSysScrollbar)();
     (0, trafficLights_1.applyTrafficLightPosition)();
-    dialog_1.docBodyObserver.observe(document.body, { childList: true });
+    dialog_1.watchImgExportMo.observe(document.body, { childList: true });
     fastdom_1.default.measure(() => {
         var _a;
         const centerWidth = (_a = rsc_1.asriDoms.layoutCenter()) === null || _a === void 0 ? void 0 : _a.clientWidth;
@@ -298,7 +298,7 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
         (0, scrollbar_1.restoreDefaultScrollbar)();
         (0, trafficLights_1.restoreTrafficLightPosition)();
         (0, modeTransition_1.modeTransition)();
-        dialog_1.docBodyObserver.disconnect();
+        dialog_1.watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
     };
 }), 0);
 
@@ -311,20 +311,15 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.docBodyObserver = void 0;
+exports.watchImgExportMo = void 0;
 const observers_1 = __webpack_require__(766);
-exports.docBodyObserver = new observers_1.AsriMutationObserver(docBodyCallback);
-function docBodyCallback(mutationList, observer) {
-    // addEmojiDialogClassName(mutationList);
-    console.log(mutationList);
+exports.watchImgExportMo = new observers_1.AsriMutationObserver(docBodyMoCallback);
+function docBodyMoCallback(mutationList, observer) {
+    // console.log(mutationList);
+    addExportImgClassName();
 }
-function addEmojiDialogClassName(mutationList) {
-    let dialogs = document.querySelectorAll('.b3-dialog--open .b3-dialog');
-    dialogs.forEach(dialog => {
-        if (dialog.querySelector('.emojis')) {
-            dialog.classList.add('emojis-container');
-        }
-    });
+function addExportImgClassName() {
+    document.body.classList.toggle('has-exportimg', !!document.querySelector('[data-key="dialog-exportimage"]'));
 }
 
 
@@ -505,12 +500,14 @@ class AsriMutationObserver {
     observe(target, options) {
         this.mo.observe(target, options);
     }
-    disconnect() {
+    disconnect(fn) {
         const mutations = this.mo.takeRecords();
         if (mutations) {
             this.callback(mutations, this.mo);
         }
         this.mo.disconnect();
+        if (!!fn)
+            fn();
     }
 }
 exports.AsriMutationObserver = AsriMutationObserver;
@@ -524,7 +521,7 @@ exports.AsriMutationObserver = AsriMutationObserver;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.asriClassNames = exports.environment = exports.asriDoms = void 0;
+exports.environment = exports.asriDoms = void 0;
 exports.asriDoms = {
     layouts: () => document.getElementById('layouts'),
     layoutCenter: () => document.querySelector('layout__center'),
@@ -555,7 +552,7 @@ exports.environment = {
     lang: window.siyuan.config.lang,
     supportsOklch: CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)'),
 };
-exports.asriClassNames = [];
+// export const asriClassNames: string[] = [];
 
 
 /***/ }),

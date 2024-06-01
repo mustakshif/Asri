@@ -4,14 +4,14 @@ import { addEnvClassNames, removeEnvClassNames } from "./modules/env";
 import { useSysScrollbar, restoreDefaultScrollbar } from "./modules/scrollbar";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./modules/trafficLights";
 import { modeTransition } from "./modules/modeTransition";
-import { docBodyObserver } from "./modules/dialog";
+import { watchImgExportMo } from "./modules/dialog";
 
 setTimeout(async () => {
 
     addEnvClassNames();
     useSysScrollbar();
     applyTrafficLightPosition();
-    docBodyObserver.observe(document.body, { childList: true });
+    watchImgExportMo.observe(document.body, { childList: true });
 
     fastdom.measure(() => {
         const centerWidth = doms.layoutCenter()?.clientWidth;
@@ -27,6 +27,6 @@ setTimeout(async () => {
         restoreDefaultScrollbar();
         restoreTrafficLightPosition();
         modeTransition();
-        docBodyObserver.disconnect();
+        watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
     }
 }, 0);

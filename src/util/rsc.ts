@@ -30,4 +30,4 @@ export const environment = {
     supportsOklch: CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)'),
 };
 
-export const asriClassNames = [];
+// export const asriClassNames: string[] = [];
