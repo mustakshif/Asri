@@ -371,9 +371,7 @@ body:not(.asri-disable-backdrop-blur) {
     //     }
     // }
 
-    .b3-dialog.emojis-container {
-
-        // ->js
+    [data-key="dialog-emojis"]{
         .b3-dialog__container {
             @include bg-blur();
 

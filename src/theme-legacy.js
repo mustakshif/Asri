@@ -1114,7 +1114,7 @@
     docBodyObserver(
         // childList mutations func
         () => {
-            addEmojiDialogClassName();
+            // addEmojiDialogClassName();
             addDockbClassName();
             addExportImgClassName();
             // statusPosition();
