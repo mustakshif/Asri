@@ -1,8 +1,9 @@
 import { environment as env } from "../util/rsc";
 
+const { isMacOS, isMobile } = env;
 const asriDeletedRules: { styleSheet: CSSStyleSheet, rule: string }[] = [];
 export async function useSysScrollbar() {
-    if (env.isMacOS || env.isMobile) {
+    if (isMacOS || isMobile) {
         for (let i = 0; i < document.styleSheets.length; i++) {
             let styleSheet = document.styleSheets[i];
             try {

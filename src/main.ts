@@ -3,16 +3,22 @@ import { asriDoms as doms, environment as env } from "./util/rsc";
 import { addEnvClassNames, removeEnvClassNames } from "./modules/env";
 import { useSysScrollbar, restoreDefaultScrollbar } from "./modules/scrollbar";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./modules/trafficLights";
+import { modeTransition } from "./modules/modeTransition";
+import { docBodyObserver } from "./modules/dialog";
 
 setTimeout(async () => {
+
     addEnvClassNames();
     useSysScrollbar();
     applyTrafficLightPosition();
-    
+    docBodyObserver.observe(document.body, { childList: true });
+
     fastdom.measure(() => {
         const centerWidth = doms.layoutCenter()?.clientWidth;
         if (centerWidth) {
             console.log(`centerWidth: ${centerWidth}`);
+        } else {
+            console.log("centerWidth: undefined");
         }
     });
 
@@ -20,5 +26,7 @@ setTimeout(async () => {
         removeEnvClassNames();
         restoreDefaultScrollbar();
         restoreTrafficLightPosition();
+        modeTransition();
+        docBodyObserver.disconnect();
     }
 }, 0);

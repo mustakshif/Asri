@@ -276,23 +276,56 @@ const rsc_1 = __webpack_require__(49);
 const env_1 = __webpack_require__(261);
 const scrollbar_1 = __webpack_require__(832);
 const trafficLights_1 = __webpack_require__(130);
+const modeTransition_1 = __webpack_require__(288);
+const dialog_1 = __webpack_require__(344);
 setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
     (0, env_1.addEnvClassNames)();
     (0, scrollbar_1.useSysScrollbar)();
     (0, trafficLights_1.applyTrafficLightPosition)();
+    dialog_1.docBodyObserver.observe(document.body, { childList: true });
     fastdom_1.default.measure(() => {
         var _a;
-        const centerWidth = (_a = rsc_1.asriDoms.drag) === null || _a === void 0 ? void 0 : _a.clientWidth;
+        const centerWidth = (_a = rsc_1.asriDoms.layoutCenter()) === null || _a === void 0 ? void 0 : _a.clientWidth;
         if (centerWidth) {
             console.log(`centerWidth: ${centerWidth}`);
+        }
+        else {
+            console.log("centerWidth: undefined");
         }
     });
     window.destroyTheme = () => {
         (0, env_1.removeEnvClassNames)();
         (0, scrollbar_1.restoreDefaultScrollbar)();
         (0, trafficLights_1.restoreTrafficLightPosition)();
+        (0, modeTransition_1.modeTransition)();
+        dialog_1.docBodyObserver.disconnect();
     };
 }), 0);
+
+
+/***/ }),
+
+/***/ 344:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.docBodyObserver = void 0;
+const observers_1 = __webpack_require__(766);
+exports.docBodyObserver = new observers_1.AsriMutationObserver(docBodyCallback);
+function docBodyCallback(mutationList, observer) {
+    // addEmojiDialogClassName(mutationList);
+    console.log(mutationList);
+}
+function addEmojiDialogClassName(mutationList) {
+    let dialogs = document.querySelectorAll('.b3-dialog--open .b3-dialog');
+    dialogs.forEach(dialog => {
+        if (dialog.querySelector('.emojis')) {
+            dialog.classList.add('emojis-container');
+        }
+    });
+}
 
 
 /***/ }),
@@ -331,6 +364,24 @@ exports.removeEnvClassNames = removeEnvClassNames;
 
 /***/ }),
 
+/***/ 288:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.modeTransition = void 0;
+function modeTransition() {
+    document.body.classList.add('asri-mode-transition');
+    setTimeout(() => {
+        document.body.classList.remove('asri-mode-transition');
+    }, 350);
+}
+exports.modeTransition = modeTransition;
+
+
+/***/ }),
+
 /***/ 832:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -348,10 +399,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.restoreDefaultScrollbar = exports.useSysScrollbar = void 0;
 const rsc_1 = __webpack_require__(49);
+const { isMacOS, isMobile } = rsc_1.environment;
 const asriDeletedRules = [];
 function useSysScrollbar() {
     return __awaiter(this, void 0, void 0, function* () {
-        if (rsc_1.environment.isMacOS || rsc_1.environment.isMobile) {
+        if (isMacOS || isMobile) {
             for (let i = 0; i < document.styleSheets.length; i++) {
                 let styleSheet = document.styleSheets[i];
                 try {
@@ -398,22 +450,23 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.restoreTrafficLightPosition = exports.applyTrafficLightPosition = void 0;
 const electron_1 = __webpack_require__(571);
 const rsc_1 = __webpack_require__(49);
+const { isMacOS, isInBrowser, isMiniWindow } = rsc_1.environment;
 function setTrafficLightPosition(x, y = x) {
     if (electron_1.remote) {
         electron_1.remote.getCurrentWindow().setWindowButtonPosition({ x: x, y: y });
     }
 }
 function applyTrafficLightPosition() {
-    if (rsc_1.environment.isMacOS && !rsc_1.environment.isInBrowser)
+    if (isMacOS && !isInBrowser)
         setTrafficLightPosition(16);
-    if (rsc_1.environment.isMacOS && rsc_1.environment.isMiniWindow)
+    if (isMacOS && isMiniWindow)
         setTrafficLightPosition(14);
 }
 exports.applyTrafficLightPosition = applyTrafficLightPosition;
 function restoreTrafficLightPosition() {
-    if (rsc_1.environment.isMacOS && !rsc_1.environment.isInBrowser)
+    if (isMacOS && !isInBrowser)
         setTrafficLightPosition(8);
-    if (rsc_1.environment.isMacOS && rsc_1.environment.isMiniWindow)
+    if (isMacOS && isMiniWindow)
         setTrafficLightPosition(8, 13);
 }
 exports.restoreTrafficLightPosition = restoreTrafficLightPosition;
@@ -429,7 +482,38 @@ exports.restoreTrafficLightPosition = restoreTrafficLightPosition;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.remote = void 0;
 const rsc_1 = __webpack_require__(49);
-exports.remote = (rsc_1.environment.isMobile || rsc_1.environment.isInBrowser) ? null : __webpack_require__(21);
+exports.remote = (rsc_1.environment.isInBrowser || rsc_1.environment.isMobile) ? null : __webpack_require__(21);
+
+
+/***/ }),
+
+/***/ 766:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AsriMutationObserver = exports.AsriResizeObserver = void 0;
+class AsriResizeObserver {
+}
+exports.AsriResizeObserver = AsriResizeObserver;
+class AsriMutationObserver {
+    constructor(callback) {
+        this.callback = (mutationList, observer) => callback(mutationList, observer);
+        this.mo = new MutationObserver(this.callback);
+    }
+    observe(target, options) {
+        this.mo.observe(target, options);
+    }
+    disconnect() {
+        const mutations = this.mo.takeRecords();
+        if (mutations) {
+            this.callback(mutations, this.mo);
+        }
+        this.mo.disconnect();
+    }
+}
+exports.AsriMutationObserver = AsriMutationObserver;
 
 
 /***/ }),
@@ -439,15 +523,12 @@ exports.remote = (rsc_1.environment.isMobile || rsc_1.environment.isInBrowser) ?
 
 "use strict";
 
-var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.environment = exports.asriDoms = void 0;
+exports.asriClassNames = exports.environment = exports.asriDoms = void 0;
 exports.asriDoms = {
-    // get as needed
     layouts: () => document.getElementById('layouts'),
     layoutCenter: () => document.querySelector('layout__center'),
     toolbar: () => document.getElementById('toolbar'),
-    // load once at init
     status: document.getElementById('status'),
     dockl: document.getElementById('dockLeft'),
     dockr: document.getElementById('dockRight'),
@@ -467,13 +548,14 @@ exports.environment = {
     isMacOS: navigator.platform.indexOf("Mac") > -1,
     isLinux: navigator.platform.indexOf("Linux") > -1,
     isMobile: !!document.getElementById('sidebar'),
-    isInBrowser: (_a = exports.asriDoms.toolbar()) === null || _a === void 0 ? void 0 : _a.classList.contains('toolbar--browser'), // also applies to iPadOS
+    isInBrowser: navigator.userAgent.toLowerCase().indexOf('electron') === -1, // also applies to iPadOS
     isMiniWindow: document.body.classList.contains('body--window'),
     isAndroid: window.siyuan.config.system.container === "android",
     isIOSApp: (/iOS/i.test(navigator.userAgent) || /iPad/i.test(navigator.userAgent)) && /AppleWebKit/i.test(navigator.userAgent),
     lang: window.siyuan.config.lang,
     supportsOklch: CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)'),
 };
+exports.asriClassNames = [];
 
 
 /***/ }),

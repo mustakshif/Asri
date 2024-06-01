@@ -1,3 +1,3 @@
 import { environment as env } from "./rsc";
 
-export const remote = (env.isMobile || env.isInBrowser) ? null : require("@electron/remote");
+export const remote = (env.isInBrowser || env.isMobile) ? null : require("@electron/remote");

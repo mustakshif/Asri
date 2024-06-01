@@ -1,5 +1,8 @@
 import { remote } from "../util/electron";
 import { environment as env } from "../util/rsc";
+
+const { isMacOS, isInBrowser, isMiniWindow } = env;
+
 function setTrafficLightPosition(x: number, y = x) {
     if (remote) {
         remote.getCurrentWindow().setWindowButtonPosition({ x: x, y: y });
@@ -7,11 +10,11 @@ function setTrafficLightPosition(x: number, y = x) {
 }
 
 export function applyTrafficLightPosition() {
-    if (env.isMacOS && !env.isInBrowser) setTrafficLightPosition(16);
-    if (env.isMacOS && env.isMiniWindow) setTrafficLightPosition(14);
+    if (isMacOS && !isInBrowser) setTrafficLightPosition(16);
+    if (isMacOS && isMiniWindow) setTrafficLightPosition(14);
 }
 
 export function restoreTrafficLightPosition() {
-    if (env.isMacOS && !env.isInBrowser) setTrafficLightPosition(8);
-    if (env.isMacOS && env.isMiniWindow) setTrafficLightPosition(8, 13);
+    if (isMacOS && !isInBrowser) setTrafficLightPosition(8);
+    if (isMacOS && isMiniWindow) setTrafficLightPosition(8, 13);
 }
