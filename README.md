@@ -10,16 +10,12 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.0.12
+### v3.0.13
 
-* Standardized the resource file search list style in dialogs and tabs.
-* Centered dialog titles.
-* Optimized the layout of the `Settings - Search` page.
-* Removed the separator line below dialog titles.
-* [Adjusted the `/` menu width and column count under wide viewports](https://github.com/mustakshif/Asri/issues/68).
-* [Fixed the issue with outline level indicators being misaligned when titles were empty](https://github.com/mustakshif/Asri/issues/69).
-* Fixed the issue where long text in tooltips could not be scrolled.
-* Fixed the issue where the toggle handle was not centered under certain scaling ratios.
+* Optimized the toolbar style of HTML blocks in read-only mode.
+* Adopted SiYuan's built-in emojis dialog properties as selectors.
+* Removed some redundant JavaScript functionalities.
+* Fixed the misalignment issue of the "Add Tag" button at the top of the document.
 
 ### ...
 
