@@ -1,3 +1,19 @@
+### v3.0.13
+
+* 优化只读模式下 HTML 块工具条样式
+* 采用思源自带的 emojis 对话框属性作为选择器
+* 移除部分多余 js 功能
+* 修复文档顶部 `添加标签` 按钮错位问题
+
+<br />
+
+* Optimized the toolbar style of HTML blocks in read-only mode.
+* Adopted SiYuan's built-in emojis dialog properties as selectors.
+* Removed some redundant JavaScript functionalities.
+* Fixed the misalignment issue of the "Add Tag" button at the top of the document.
+
+---
+
 ### v3.0.12
 
 * 统一对话框和页签中资源文件搜索列表样式
@@ -9,6 +25,8 @@
 * 修复提示条内容为长文本时无法滚动的问题
 * 修复在部分缩放比例下开关把手不居中的问题
 
+<br />
+
 * Standardized the resource file search list style in dialogs and tabs.
 * Centered dialog titles.
 * Optimized the layout of the `Settings - Search` page.
@@ -18,11 +36,17 @@
 * Fixed the issue where long text in tooltips could not be scrolled.
 * Fixed the issue where the toggle handle was not centered under certain scaling ratios.
 
+---
+
 ### v3.0.11
 
 * 修复 pdf 导出结果的字体色和背景色问题
 
+<br/>
+
 * Fixed font color and background color issues with PDF exports.
+
+---
 
 ### v3.0.10
 

@@ -1115,7 +1115,7 @@
         // childList mutations func
         () => {
             // addEmojiDialogClassName();
-            addDockbClassName();
+            // addDockbClassName();
             addExportImgClassName();
             // statusPosition();
         }
