@@ -13,7 +13,7 @@ async function loadI18n() {
     }
 }
 
-async () => {
+async function makeItems() {
     const configTexts = await loadI18n();
     console.log(configTexts);
 }

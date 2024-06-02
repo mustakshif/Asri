@@ -1,10 +1,10 @@
+import { debounce } from "../util/debounce";
 import { AsriMutationObserver } from "../util/observers";
 
-export const watchImgExportMo = new AsriMutationObserver(docBodyMoCallback);
+export const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback, 200));
 
 function docBodyMoCallback(mutationList: MutationRecord[], observer: MutationObserver) {
-    // console.log(mutationList);
-    addExportImgClassName();
+    addExportImgClassName()
 }
 
 function addExportImgClassName() {

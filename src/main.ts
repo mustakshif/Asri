@@ -26,7 +26,7 @@ setTimeout(async () => {
         removeEnvClassNames();
         restoreDefaultScrollbar();
         restoreTrafficLightPosition();
-        modeTransition();
         watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
+        modeTransition();
     }
 }, 0);

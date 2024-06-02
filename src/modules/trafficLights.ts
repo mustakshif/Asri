@@ -10,11 +10,15 @@ function setTrafficLightPosition(x: number, y = x) {
 }
 
 export function applyTrafficLightPosition() {
-    if (isMacOS && !isInBrowser) setTrafficLightPosition(16);
-    if (isMacOS && isMiniWindow) setTrafficLightPosition(14);
+    if (isMacOS) {
+        if (!isInBrowser) setTrafficLightPosition(16);
+        else if (isMiniWindow) setTrafficLightPosition(14);
+    }
 }
 
 export function restoreTrafficLightPosition() {
-    if (isMacOS && !isInBrowser) setTrafficLightPosition(8);
-    if (isMacOS && isMiniWindow) setTrafficLightPosition(8, 13);
+    if (isMacOS) {
+        if (!isInBrowser) setTrafficLightPosition(8);
+        else if (isMiniWindow) setTrafficLightPosition(8, 13);
+    }
 }

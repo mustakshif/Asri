@@ -17,11 +17,11 @@ export class AsriMutationObserver {
     }
 
     disconnect(fn?: () => void) {
-        const mutations = this.mo.takeRecords();
-        if (mutations) {
-            this.callback(mutations, this.mo);
-        }
+        // const mutations = this.mo.takeRecords();
+        // if (mutations) {
+        //     this.callback(mutations, this.mo);
+        // }
         this.mo.disconnect();
-        if(!!fn) fn();
+        if(fn) fn();
     }
 }

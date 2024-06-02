@@ -297,8 +297,8 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
         (0, env_1.removeEnvClassNames)();
         (0, scrollbar_1.restoreDefaultScrollbar)();
         (0, trafficLights_1.restoreTrafficLightPosition)();
-        (0, modeTransition_1.modeTransition)();
         dialog_1.watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
+        (0, modeTransition_1.modeTransition)();
     };
 }), 0);
 
@@ -312,14 +312,15 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.watchImgExportMo = void 0;
+const debounce_1 = __webpack_require__(846);
 const observers_1 = __webpack_require__(766);
-exports.watchImgExportMo = new observers_1.AsriMutationObserver(docBodyMoCallback);
+exports.watchImgExportMo = new observers_1.AsriMutationObserver((0, debounce_1.debounce)(docBodyMoCallback, 200));
 function docBodyMoCallback(mutationList, observer) {
-    // console.log(mutationList);
     addExportImgClassName();
 }
 function addExportImgClassName() {
     document.body.classList.toggle('has-exportimg', !!document.querySelector('[data-key="dialog-exportimage"]'));
+    console.log('addExportImgClassName');
 }
 
 
@@ -469,6 +470,30 @@ exports.restoreTrafficLightPosition = restoreTrafficLightPosition;
 
 /***/ }),
 
+/***/ 846:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.debounce = void 0;
+function debounce(func, delay) {
+    let timeoutId = null;
+    return ((...args) => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        timeoutId = setTimeout(() => {
+            func(...args);
+            timeoutId = null;
+        }, delay);
+    });
+}
+exports.debounce = debounce;
+
+
+/***/ }),
+
 /***/ 571:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
@@ -501,10 +526,10 @@ class AsriMutationObserver {
         this.mo.observe(target, options);
     }
     disconnect(fn) {
-        const mutations = this.mo.takeRecords();
-        if (mutations) {
-            this.callback(mutations, this.mo);
-        }
+        // const mutations = this.mo.takeRecords();
+        // if (mutations) {
+        //     this.callback(mutations, this.mo);
+        // }
         this.mo.disconnect();
         if (!!fn)
             fn();
