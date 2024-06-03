@@ -20,7 +20,8 @@
   "author": "mustakshif",
   "license": "MIT",
   "dependencies": {
-    "fastdom": "^1.0.12"
+    "fastdom": "^1.0.12",
+    "siyuan": "^0.9.9"
   },
   "devDependencies": {
     "@types/cssom": "^0.4.3",
