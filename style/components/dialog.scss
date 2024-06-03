@@ -5,6 +5,29 @@
         &__header {
             text-align: center;
             border-bottom: none;
+
+            &:not(.fn__none)+.b3-dialog__body {
+                >div>.config__panel {
+                    .b3-tab-bar {
+                        margin: 0 8px 8px;
+                        padding: 4px 0;
+                        border-radius: 8px;
+                    }
+
+                    .config__tab-container {
+                        padding: 0;
+
+                        .layout-tab-bar {
+                            margin-top: 0;
+                        }
+                    }
+                }
+
+                .history__panel .history__diff {
+                    margin: 0 8px 8px;
+                    border-radius: 8px;
+                }
+            }
         }
 
         &__container {
@@ -279,6 +302,7 @@
 
     .config__tab-wrap {
         padding: 0;
+        border-radius: 0;
 
         .config__tab-container {
             padding: 8px 0;
@@ -605,12 +629,13 @@
         gap: 12px 15%;
         margin-top: 12px;
 
-        .label, label {
+        .label,
+        label {
             width: auto;
             margin: 0;
         }
 
-        .label>div{
+        .label>div {
             flex: 1;
         }
     }

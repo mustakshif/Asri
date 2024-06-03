@@ -231,11 +231,25 @@ animation-direction: #{$anim-dir};
 }
 
 // pdf 侧边导航
-#thumbnailView, #outlineView {
+#thumbnailView, #outlineView{
     @include scroll-divider-fadein-bgClr(20px, $range: 'top');
 
     &::before {
         top: -8px;
+    }
+}
+
+// 部分插件配置窗口，移动文档窗口
+.b3-dialog__header:not(.fn__none)+.b3-dialog__body :where(.config__tab-container, .layout-tab-bar+.fn__flex-1),
+#foldTree {
+    @include scroll-divider-fadein-bgClr(20px, $range: 'top');
+}
+
+.b3-dialog__header:not(.fn__none)+.b3-dialog__body .b3-dialog__content {
+    @include scroll-divider-fadein-bgClr(20px, $range: 'top');
+
+    &::before {
+        top: -16px;
     }
 }
 
