@@ -8,7 +8,7 @@ async function loadI18n() {
         const res = await fetch(`/appearance/themes/Asri/i18n/${lang}.json`);
         return res.json();
     } else {
-        const res = await fetch(`/appearance/themes/Asri/i18n/en_US.json`);
+        const res = await fetch('/appearance/themes/Asri/i18n/en_US.json');
         return res.json();
     }
 }

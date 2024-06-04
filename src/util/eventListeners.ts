@@ -1,16 +1,18 @@
-export class AsriClickEventListener {
+type EventListenerTarget = HTMLElement | Document | Window;
 
-    public callback: (e: MouseEvent) => void
-    constructor(callback: (e: MouseEvent) => void) {
-        this.callback = callback.bind(this);
+export class AsriClickEventListener<T extends Event> {
+
+    public callback: (e: T) => void
+    constructor(callback: (e: T) => void) {
+        this.callback = callback;
     }
 
-    start() {
-        document.addEventListener('click', this.callback);
+    start<E extends EventListenerTarget>(target: E, eventName: string) {
+        target.addEventListener(eventName, this.callback as (e: Event) => void);
     }
 
-    stop() {
-        document.removeEventListener('click', this.callback);
+    stop<E extends EventListenerTarget>(target: E, eventName: string) {
+        target.removeEventListener(eventName, this.callback as (e: Event) => void);
     }
     // init() {
     //     document.addEventListener('click', (e) => {
