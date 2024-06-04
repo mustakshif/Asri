@@ -213,7 +213,7 @@ textarea {
     &::-webkit-slider-thumb {
         @include theme-variant-color(background-color, light-components);
         // @include tooltip-shadow;
-        outline: 1px solid var(--b3-border-color-trans);
+        outline: 1px solid color-mix(in srgb, var(--b3-theme-on-background) 12%, var(--b3-theme-background));
         height: 16px;
         width: 16px;
         margin-top: -5px;
@@ -223,20 +223,20 @@ textarea {
 
     &:hover:not(&:focus)::-webkit-slider-thumb {
         transform: none;
-        outline: 2px solid oklch(from var(--b3-theme-primary) .83 .08 h);
+        outline: 2px solid color-mix(in srgb, var(--b3-theme-primary) 38%, var(--b3-theme-background));
 
-        @include darkmode-counterpart {
-            outline: 2px solid oklch(from var(--b3-theme-primary) .65 .15 h);
-        }
+        // @include darkmode-counterpart {
+        //     outline: 2px solid oklch(from var(--b3-theme-primary) .65 .15 h);
+        // }
 
-        @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-            outline: 2px solid lighten(map-get($map: $theme-light, $key: primary), 20%);
+        // @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+        //     outline: 2px solid lighten(map-get($map: $theme-light, $key: primary), 20%);
 
-            @include darkmode-counterpart {
-                outline: 2px solid darken(map-get($map: $theme-dark, $key: primary), 10%);
-                ;
-            }
-        }
+        //     @include darkmode-counterpart {
+        //         outline: 2px solid darken(map-get($map: $theme-dark, $key: primary), 10%);
+        //         ;
+        //     }
+        // }
     }
 
     &:focus::-webkit-slider-thumb {
