@@ -1,4 +1,4 @@
-import { debounce } from "../util/debounce";
+import { debounce } from "../util/functions";
 import { AsriMutationObserver } from "../util/observers";
 
 export const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback, 200));

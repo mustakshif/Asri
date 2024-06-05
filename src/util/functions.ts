@@ -1,3 +1,27 @@
+/**
+ * Pushes an item to the array if it is not already present.
+ * @param {Array} arr - The array to push the item to.
+ * @param {*} item - The item to push to the array.
+ */
+export function pushUnique(arr: any[], item: any) {
+    if (!arr.includes(item)) {
+        arr.push(item);
+    }
+}
+export function debounce<T extends (...args: any[]) => any>(func: T, delay: number): T {
+    let timeoutId: NodeJS.Timeout | null = null;
+
+    return ((...args: Parameters<T>) => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        timeoutId = setTimeout(() => {
+            func(...args);
+            timeoutId = null;
+        }, delay);
+    }) as T;
+}
+
 export function hexToHSL(hex: string) {
     if (!hex) {
         return;
