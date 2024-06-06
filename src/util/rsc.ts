@@ -15,7 +15,7 @@ export const asriDoms = {
     drag: document.getElementById('drag'),
     barPlugins: document.getElementById('barPlugins'),
     barSearch: document.getElementById('barSearch'),
-    barMode: document.getElementById('barMode')
+    barMode: document.getElementById('barMode'),
 };
 
 export const environment = {

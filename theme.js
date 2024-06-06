@@ -278,11 +278,13 @@ const scrollbar_1 = __webpack_require__(832);
 const trafficLights_1 = __webpack_require__(130);
 const modeTransition_1 = __webpack_require__(288);
 const dialog_1 = __webpack_require__(344);
+const modules_1 = __webpack_require__(2);
 setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
     (0, env_1.addEnvClassNames)();
     (0, scrollbar_1.useSysScrollbar)();
     (0, trafficLights_1.applyTrafficLightPosition)();
     dialog_1.watchImgExportMo.observe(document.body, { childList: true });
+    modules_1.asriClickEventListener.start(document.body, "click");
     fastdom_1.default.measure(() => {
         var _a;
         const centerWidth = (_a = rsc_1.asriDoms.layoutCenter()) === null || _a === void 0 ? void 0 : _a.clientWidth;
@@ -312,15 +314,14 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.watchImgExportMo = void 0;
-const debounce_1 = __webpack_require__(846);
+const functions_1 = __webpack_require__(428);
 const observers_1 = __webpack_require__(766);
-exports.watchImgExportMo = new observers_1.AsriMutationObserver((0, debounce_1.debounce)(docBodyMoCallback, 200));
+exports.watchImgExportMo = new observers_1.AsriMutationObserver((0, functions_1.debounce)(docBodyMoCallback, 200));
 function docBodyMoCallback(mutationList, observer) {
     addExportImgClassName();
 }
 function addExportImgClassName() {
     document.body.classList.toggle('has-exportimg', !!document.querySelector('[data-key="dialog-exportimage"]'));
-    console.log('addExportImgClassName');
 }
 
 
@@ -356,6 +357,22 @@ function removeEnvClassNames() {
     });
 }
 exports.removeEnvClassNames = removeEnvClassNames;
+
+
+/***/ }),
+
+/***/ 2:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.asriClickEventListener = void 0;
+const eventListeners_1 = __webpack_require__(796);
+exports.asriClickEventListener = new eventListeners_1.AsriEventListener(listenClickEvents);
+function listenClickEvents(e) {
+    console.log(e);
+}
 
 
 /***/ }),
@@ -453,43 +470,23 @@ function setTrafficLightPosition(x, y = x) {
     }
 }
 function applyTrafficLightPosition() {
-    if (isMacOS && !isInBrowser)
-        setTrafficLightPosition(16);
-    if (isMacOS && isMiniWindow)
-        setTrafficLightPosition(14);
+    if (isMacOS) {
+        if (!isInBrowser)
+            setTrafficLightPosition(16);
+        else if (isMiniWindow)
+            setTrafficLightPosition(14);
+    }
 }
 exports.applyTrafficLightPosition = applyTrafficLightPosition;
 function restoreTrafficLightPosition() {
-    if (isMacOS && !isInBrowser)
-        setTrafficLightPosition(8);
-    if (isMacOS && isMiniWindow)
-        setTrafficLightPosition(8, 13);
+    if (isMacOS) {
+        if (!isInBrowser)
+            setTrafficLightPosition(8);
+        else if (isMiniWindow)
+            setTrafficLightPosition(8, 13);
+    }
 }
 exports.restoreTrafficLightPosition = restoreTrafficLightPosition;
-
-
-/***/ }),
-
-/***/ 846:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.debounce = void 0;
-function debounce(func, delay) {
-    let timeoutId = null;
-    return ((...args) => {
-        if (timeoutId) {
-            clearTimeout(timeoutId);
-        }
-        timeoutId = setTimeout(() => {
-            func(...args);
-            timeoutId = null;
-        }, delay);
-    });
-}
-exports.debounce = debounce;
 
 
 /***/ }),
@@ -503,6 +500,103 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.remote = void 0;
 const rsc_1 = __webpack_require__(49);
 exports.remote = (rsc_1.environment.isInBrowser || rsc_1.environment.isMobile) ? null : __webpack_require__(21);
+
+
+/***/ }),
+
+/***/ 796:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AsriEventListener = void 0;
+class AsriEventListener {
+    constructor(callback) {
+        this.callback = callback;
+    }
+    start(target, eventName) {
+        target.addEventListener(eventName, this.callback);
+    }
+    stop(target, eventName) {
+        target.removeEventListener(eventName, this.callback);
+    }
+}
+exports.AsriEventListener = AsriEventListener;
+
+
+/***/ }),
+
+/***/ 428:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.hexToHSL = exports.debounce = exports.pushUnique = void 0;
+/**
+ * Pushes an item to the array if it is not already present.
+ * @param {Array} arr - The array to push the item to.
+ * @param {*} item - The item to push to the array.
+ */
+function pushUnique(arr, item) {
+    if (!arr.includes(item)) {
+        arr.push(item);
+    }
+}
+exports.pushUnique = pushUnique;
+function debounce(func, delay) {
+    let timeoutId = null;
+    return ((...args) => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        timeoutId = setTimeout(() => {
+            func(...args);
+            timeoutId = null;
+        }, delay);
+    });
+}
+exports.debounce = debounce;
+function hexToHSL(hex) {
+    if (!hex) {
+        return;
+    }
+    const r = parseInt(hex.substring(1, 3), 16) / 255;
+    const g = parseInt(hex.substring(3, 5), 16) / 255;
+    const b = parseInt(hex.substring(5, 7), 16) / 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    const lightness = (max + min) / 2;
+    if (max === min) {
+        return {
+            h: 0,
+            s: 0,
+            l: lightness
+        };
+    }
+    let hue = 0;
+    const delta = max - min;
+    const saturation = lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min);
+    switch (max) {
+        case r:
+            hue = (g - b) / delta + (g < b ? 6 : 0);
+            break;
+        case g:
+            hue = (b - r) / delta + 2;
+            break;
+        case b:
+            hue = (r - g) / delta + 4;
+            break;
+    }
+    hue /= 6;
+    return {
+        h: hue,
+        s: saturation,
+        l: lightness
+    };
+}
+exports.hexToHSL = hexToHSL;
 
 
 /***/ }),
@@ -531,7 +625,7 @@ class AsriMutationObserver {
         //     this.callback(mutations, this.mo);
         // }
         this.mo.disconnect();
-        if (!!fn)
+        if (fn)
             fn();
     }
 }

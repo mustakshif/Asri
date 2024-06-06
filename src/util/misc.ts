@@ -65,3 +65,10 @@ export function hexToHSL(hex: string) {
         l: lightness
     };
 }
+
+export function modeTransition() {
+    document.body.classList.add('asri-mode-transition');
+    setTimeout(() => {
+        document.body.classList.remove('asri-mode-transition');
+    }, 350);
+}

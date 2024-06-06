@@ -1,10 +1,11 @@
 import fastdom from "fastdom";
-import { asriDoms as doms, environment as env } from "./util/rsc"; 
+import { asriDoms as doms, environment as env } from "./util/rsc";
 import { addEnvClassNames, removeEnvClassNames } from "./modules/env";
 import { useSysScrollbar, restoreDefaultScrollbar } from "./modules/scrollbar";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./modules/trafficLights";
-import { modeTransition } from "./modules/modeTransition";
+import { modeTransition } from "./util/misc";
 import { watchImgExportMo } from "./modules/dialog";
+import { asriClickEventListener } from "./modules";
 
 setTimeout(async () => {
 
@@ -12,13 +13,16 @@ setTimeout(async () => {
     useSysScrollbar();
     applyTrafficLightPosition();
     watchImgExportMo.observe(document.body, { childList: true });
+    asriClickEventListener.start(document.body, "click");
 
     fastdom.measure(() => {
-        const centerWidth = doms.layoutCenter()?.clientWidth;
-        if (centerWidth) {
-            console.log(`centerWidth: ${centerWidth}`);
-        } else {
-            console.log("centerWidth: undefined");
+        if (doms.layoutCenter()) {
+            const centerWidth = doms.layoutCenter()?.clientWidth;
+            if (centerWidth) {
+                console.log(`centerWidth: ${centerWidth}`);
+            } else {
+                console.log("centerWidth: undefined");
+            }
         }
     });
 

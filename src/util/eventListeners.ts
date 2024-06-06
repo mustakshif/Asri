@@ -1,6 +1,6 @@
 type EventListenerTarget = HTMLElement | Document | Window;
 
-export class AsriClickEventListener<T extends Event> {
+export class AsriEventListener<T extends Event> {
 
     public callback: (e: T) => void
     constructor(callback: (e: T) => void) {
