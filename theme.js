@@ -276,7 +276,7 @@ const rsc_1 = __webpack_require__(49);
 const env_1 = __webpack_require__(261);
 const scrollbar_1 = __webpack_require__(832);
 const trafficLights_1 = __webpack_require__(130);
-const modeTransition_1 = __webpack_require__(288);
+const misc_1 = __webpack_require__(629);
 const dialog_1 = __webpack_require__(344);
 const modules_1 = __webpack_require__(2);
 setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
@@ -287,12 +287,14 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
     modules_1.asriClickEventListener.start(document.body, "click");
     fastdom_1.default.measure(() => {
         var _a;
-        const centerWidth = (_a = rsc_1.asriDoms.layoutCenter()) === null || _a === void 0 ? void 0 : _a.clientWidth;
-        if (centerWidth) {
-            console.log(`centerWidth: ${centerWidth}`);
-        }
-        else {
-            console.log("centerWidth: undefined");
+        if (rsc_1.asriDoms.layoutCenter()) {
+            const centerWidth = (_a = rsc_1.asriDoms.layoutCenter()) === null || _a === void 0 ? void 0 : _a.clientWidth;
+            if (centerWidth) {
+                console.log(`centerWidth: ${centerWidth}`);
+            }
+            else {
+                console.log("centerWidth: undefined");
+            }
         }
     });
     window.destroyTheme = () => {
@@ -300,7 +302,7 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
         (0, scrollbar_1.restoreDefaultScrollbar)();
         (0, trafficLights_1.restoreTrafficLightPosition)();
         dialog_1.watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
-        (0, modeTransition_1.modeTransition)();
+        (0, misc_1.modeTransition)();
     };
 }), 0);
 
@@ -314,14 +316,72 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.watchImgExportMo = void 0;
-const functions_1 = __webpack_require__(428);
+const misc_1 = __webpack_require__(629);
 const observers_1 = __webpack_require__(766);
-exports.watchImgExportMo = new observers_1.AsriMutationObserver((0, functions_1.debounce)(docBodyMoCallback, 200));
+exports.watchImgExportMo = new observers_1.AsriMutationObserver((0, misc_1.debounce)(docBodyMoCallback, 200));
 function docBodyMoCallback(mutationList, observer) {
     addExportImgClassName();
 }
 function addExportImgClassName() {
     document.body.classList.toggle('has-exportimg', !!document.querySelector('[data-key="dialog-exportimage"]'));
+}
+
+
+/***/ }),
+
+/***/ 818:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.dockBg = void 0;
+const rsc_1 = __webpack_require__(49);
+const { isMobile, isMiniWindow } = rsc_1.environment;
+const doms = rsc_1.asriDoms;
+function dockBg() {
+    if (doms.dockl && !isMobile && !isMiniWindow) {
+        for (let dir of ['l', 'r']) {
+            const lyt = doms['layoutDock' + dir];
+            const dock = doms['dock' + dir];
+            if (isDockLytPinned(lyt) && isDockLytExpanded(lyt)) {
+                dock.classList.add('dock-layout-expanded');
+                // pushUnique(asriClassNames, '.dock-layout-expanded');
+            }
+            else {
+                dock.classList.remove('dock-layout-expanded');
+            }
+            if (!isSideDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
+                switch (dir) {
+                    case 'l':
+                        // dock.style.borderRightColor = 'transparent';
+                        dock.style.setProperty('--border-clr', 'transparent');
+                        break;
+                    case 'r':
+                        // dock.style.borderLeftColor = 'transparent';
+                        dock.style.setProperty('--border-clr', 'transparent');
+                        break;
+                }
+            }
+            else {
+                dock.style.removeProperty('--border-clr');
+            }
+        }
+    }
+}
+exports.dockBg = dockBg;
+function isDockLytPinned(el) {
+    return el && !el.classList.contains('layout--float');
+}
+function isDockLytExpanded(el) {
+    return (el === null || el === void 0 ? void 0 : el.style.width) !== '0px';
+}
+function isSideDockHidden(dir = 'l') {
+    return doms[`dock${dir}`] && doms[`dock${dir}`].classList.contains('fn__none');
+    // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri-for-SiYuan/issues/16
+}
+function isFloatDockLytHidden(el) {
+    return !isDockLytPinned(el) && (el === null || el === void 0 ? void 0 : el.style.cssText.includes('transform: translate'));
 }
 
 
@@ -369,28 +429,12 @@ exports.removeEnvClassNames = removeEnvClassNames;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.asriClickEventListener = void 0;
 const eventListeners_1 = __webpack_require__(796);
+const docks_1 = __webpack_require__(818);
 exports.asriClickEventListener = new eventListeners_1.AsriEventListener(listenClickEvents);
 function listenClickEvents(e) {
     console.log(e);
+    (0, docks_1.dockBg)();
 }
-
-
-/***/ }),
-
-/***/ 288:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.modeTransition = void 0;
-function modeTransition() {
-    document.body.classList.add('asri-mode-transition');
-    setTimeout(() => {
-        document.body.classList.remove('asri-mode-transition');
-    }, 350);
-}
-exports.modeTransition = modeTransition;
 
 
 /***/ }),
@@ -527,13 +571,13 @@ exports.AsriEventListener = AsriEventListener;
 
 /***/ }),
 
-/***/ 428:
+/***/ 629:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.hexToHSL = exports.debounce = exports.pushUnique = void 0;
+exports.modeTransition = exports.hexToHSL = exports.debounce = exports.pushUnique = void 0;
 /**
  * Pushes an item to the array if it is not already present.
  * @param {Array} arr - The array to push the item to.
@@ -597,6 +641,13 @@ function hexToHSL(hex) {
     };
 }
 exports.hexToHSL = hexToHSL;
+function modeTransition() {
+    document.body.classList.add('asri-mode-transition');
+    setTimeout(() => {
+        document.body.classList.remove('asri-mode-transition');
+    }, 350);
+}
+exports.modeTransition = modeTransition;
 
 
 /***/ }),
@@ -658,7 +709,7 @@ exports.asriDoms = {
     drag: document.getElementById('drag'),
     barPlugins: document.getElementById('barPlugins'),
     barSearch: document.getElementById('barSearch'),
-    barMode: document.getElementById('barMode')
+    barMode: document.getElementById('barMode'),
 };
 exports.environment = {
     isMacOS: navigator.platform.indexOf("Mac") > -1,
