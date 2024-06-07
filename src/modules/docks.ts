@@ -1,7 +1,8 @@
 import { asriDoms, environment as env } from "../util/rsc";
+import { isDockLytPinned, isDockLytExpanded, isSideDockHidden, isFloatDockLytHidden } from "../util/styles";
 
 const { isMobile, isMiniWindow } = env;
-const doms: AsriDomsExtended = asriDoms as AsriDomsExtended;
+export const doms: AsriDomsExtended = asriDoms as AsriDomsExtended;
 export function dockBg() {
     if (doms.dockl && !isMobile && !isMiniWindow) {
         for (let dir of ['l', 'r']) {
@@ -32,22 +33,4 @@ export function dockBg() {
             }
         }
     }
-
-}
-
-function isDockLytPinned(el: HTMLElement) {
-    return el && !el.classList.contains('layout--float');
-}
-
-function isDockLytExpanded(el: HTMLElement) {
-    return el?.style.width !== '0px';
-}
-
-function isSideDockHidden(dir: 'l' | 'r' = 'l') {
-    return doms[`dock${dir}`] && doms[`dock${dir}`]!.classList.contains('fn__none')
-    // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri-for-SiYuan/issues/16
-}
-
-function isFloatDockLytHidden(el: HTMLElement) {
-    return !isDockLytPinned(el) && el?.style.cssText.includes('transform: translate');
 }

@@ -1,19 +1,10 @@
 import fastdom from "fastdom";
-import { asriDoms as doms, environment as env } from "./util/rsc";
-import { addEnvClassNames, removeEnvClassNames } from "./modules/env";
-import { useSysScrollbar, restoreDefaultScrollbar } from "./modules/scrollbar";
-import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./modules/trafficLights";
-import { modeTransition } from "./util/misc";
-import { watchImgExportMo } from "./modules/dialog";
-import { asriClickEventListener } from "./modules";
+import { asriDoms as doms } from "./util/rsc";
+import { modeTransition } from "./util/styles";
+import { destroyModules, initModules } from "./modules";
 
 setTimeout(async () => {
-
-    addEnvClassNames();
-    useSysScrollbar();
-    applyTrafficLightPosition();
-    watchImgExportMo.observe(document.body, { childList: true });
-    asriClickEventListener.start(document.body, "click");
+    initModules();
 
     fastdom.measure(() => {
         if (doms.layoutCenter()) {
@@ -27,10 +18,7 @@ setTimeout(async () => {
     });
 
     window.destroyTheme = () => {
-        removeEnvClassNames();
-        restoreDefaultScrollbar();
-        restoreTrafficLightPosition();
-        watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
+        destroyModules();
         modeTransition();
     }
 }, 0);

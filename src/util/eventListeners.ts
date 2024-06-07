@@ -11,7 +11,7 @@ export class AsriEventListener<T extends Event> {
         target.addEventListener(eventName, this.callback as (e: Event) => void);
     }
 
-    stop<E extends EventListenerTarget>(target: E, eventName: string) {
+    remove<E extends EventListenerTarget>(target: E, eventName: string) {
         target.removeEventListener(eventName, this.callback as (e: Event) => void);
     }
     // init() {

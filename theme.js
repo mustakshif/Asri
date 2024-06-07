@@ -273,18 +273,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const fastdom_1 = __importDefault(__webpack_require__(551));
 const rsc_1 = __webpack_require__(49);
-const env_1 = __webpack_require__(261);
-const scrollbar_1 = __webpack_require__(832);
-const trafficLights_1 = __webpack_require__(130);
-const misc_1 = __webpack_require__(629);
-const dialog_1 = __webpack_require__(344);
+const styles_1 = __webpack_require__(495);
 const modules_1 = __webpack_require__(2);
 setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
-    (0, env_1.addEnvClassNames)();
-    (0, scrollbar_1.useSysScrollbar)();
-    (0, trafficLights_1.applyTrafficLightPosition)();
-    dialog_1.watchImgExportMo.observe(document.body, { childList: true });
-    modules_1.asriClickEventListener.start(document.body, "click");
+    (0, modules_1.initModules)();
     fastdom_1.default.measure(() => {
         var _a;
         if (rsc_1.asriDoms.layoutCenter()) {
@@ -298,11 +290,8 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
         }
     });
     window.destroyTheme = () => {
-        (0, env_1.removeEnvClassNames)();
-        (0, scrollbar_1.restoreDefaultScrollbar)();
-        (0, trafficLights_1.restoreTrafficLightPosition)();
-        dialog_1.watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
-        (0, misc_1.modeTransition)();
+        (0, modules_1.destroyModules)();
+        (0, styles_1.modeTransition)();
     };
 }), 0);
 
@@ -335,23 +324,24 @@ function addExportImgClassName() {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.dockBg = void 0;
+exports.dockBg = exports.doms = void 0;
 const rsc_1 = __webpack_require__(49);
+const styles_1 = __webpack_require__(495);
 const { isMobile, isMiniWindow } = rsc_1.environment;
-const doms = rsc_1.asriDoms;
+exports.doms = rsc_1.asriDoms;
 function dockBg() {
-    if (doms.dockl && !isMobile && !isMiniWindow) {
+    if (exports.doms.dockl && !isMobile && !isMiniWindow) {
         for (let dir of ['l', 'r']) {
-            const lyt = doms['layoutDock' + dir];
-            const dock = doms['dock' + dir];
-            if (isDockLytPinned(lyt) && isDockLytExpanded(lyt)) {
+            const lyt = exports.doms['layoutDock' + dir];
+            const dock = exports.doms['dock' + dir];
+            if ((0, styles_1.isDockLytPinned)(lyt) && (0, styles_1.isDockLytExpanded)(lyt)) {
                 dock.classList.add('dock-layout-expanded');
                 // pushUnique(asriClassNames, '.dock-layout-expanded');
             }
             else {
                 dock.classList.remove('dock-layout-expanded');
             }
-            if (!isSideDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
+            if (!(0, styles_1.isSideDockHidden)() && !(0, styles_1.isFloatDockLytHidden)(lyt) && (0, styles_1.isDockLytExpanded)(lyt)) {
                 switch (dir) {
                     case 'l':
                         // dock.style.borderRightColor = 'transparent';
@@ -370,19 +360,6 @@ function dockBg() {
     }
 }
 exports.dockBg = dockBg;
-function isDockLytPinned(el) {
-    return el && !el.classList.contains('layout--float');
-}
-function isDockLytExpanded(el) {
-    return (el === null || el === void 0 ? void 0 : el.style.width) !== '0px';
-}
-function isSideDockHidden(dir = 'l') {
-    return doms[`dock${dir}`] && doms[`dock${dir}`].classList.contains('fn__none');
-    // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri-for-SiYuan/issues/16
-}
-function isFloatDockLytHidden(el) {
-    return !isDockLytPinned(el) && (el === null || el === void 0 ? void 0 : el.style.cssText.includes('transform: translate'));
-}
 
 
 /***/ }),
@@ -427,10 +404,31 @@ exports.removeEnvClassNames = removeEnvClassNames;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.asriClickEventListener = void 0;
+exports.destroyModules = exports.initModules = void 0;
 const eventListeners_1 = __webpack_require__(796);
+const dialog_1 = __webpack_require__(344);
 const docks_1 = __webpack_require__(818);
-exports.asriClickEventListener = new eventListeners_1.AsriEventListener(listenClickEvents);
+const env_1 = __webpack_require__(261);
+const scrollbar_1 = __webpack_require__(832);
+const trafficLights_1 = __webpack_require__(130);
+const asriClickEventListener = new eventListeners_1.AsriEventListener(listenClickEvents);
+function initModules() {
+    (0, env_1.addEnvClassNames)();
+    (0, scrollbar_1.useSysScrollbar)();
+    (0, trafficLights_1.applyTrafficLightPosition)();
+    (0, docks_1.dockBg)();
+    asriClickEventListener.start(document, 'click');
+    dialog_1.watchImgExportMo.observe(document.body, { childList: true });
+}
+exports.initModules = initModules;
+function destroyModules() {
+    (0, env_1.removeEnvClassNames)();
+    (0, scrollbar_1.restoreDefaultScrollbar)();
+    (0, trafficLights_1.restoreTrafficLightPosition)();
+    asriClickEventListener.remove(document, 'click');
+    dialog_1.watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
+}
+exports.destroyModules = destroyModules;
 function listenClickEvents(e) {
     console.log(e);
     (0, docks_1.dockBg)();
@@ -562,7 +560,7 @@ class AsriEventListener {
     start(target, eventName) {
         target.addEventListener(eventName, this.callback);
     }
-    stop(target, eventName) {
+    remove(target, eventName) {
         target.removeEventListener(eventName, this.callback);
     }
 }
@@ -577,7 +575,7 @@ exports.AsriEventListener = AsriEventListener;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.modeTransition = exports.hexToHSL = exports.debounce = exports.pushUnique = void 0;
+exports.hexToHSL = exports.debounce = exports.pushUnique = void 0;
 /**
  * Pushes an item to the array if it is not already present.
  * @param {Array} arr - The array to push the item to.
@@ -641,13 +639,6 @@ function hexToHSL(hex) {
     };
 }
 exports.hexToHSL = hexToHSL;
-function modeTransition() {
-    document.body.classList.add('asri-mode-transition');
-    setTimeout(() => {
-        document.body.classList.remove('asri-mode-transition');
-    }, 350);
-}
-exports.modeTransition = modeTransition;
 
 
 /***/ }),
@@ -723,6 +714,42 @@ exports.environment = {
     supportsOklch: CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)'),
 };
 // export const asriClassNames: string[] = [];
+
+
+/***/ }),
+
+/***/ 495:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.isFloatDockLytHidden = exports.isSideDockHidden = exports.isDockLytExpanded = exports.isDockLytPinned = exports.modeTransition = void 0;
+const rsc_1 = __webpack_require__(49);
+function modeTransition() {
+    document.body.classList.add('asri-mode-transition');
+    setTimeout(() => {
+        document.body.classList.remove('asri-mode-transition');
+    }, 350);
+}
+exports.modeTransition = modeTransition;
+function isDockLytPinned(el) {
+    return el && !el.classList.contains('layout--float');
+}
+exports.isDockLytPinned = isDockLytPinned;
+function isDockLytExpanded(el) {
+    return (el === null || el === void 0 ? void 0 : el.style.width) !== '0px';
+}
+exports.isDockLytExpanded = isDockLytExpanded;
+function isSideDockHidden(dir = 'l') {
+    return rsc_1.asriDoms[`dock${dir}`] && rsc_1.asriDoms[`dock${dir}`].classList.contains('fn__none');
+    // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri-for-SiYuan/issues/16
+}
+exports.isSideDockHidden = isSideDockHidden;
+function isFloatDockLytHidden(el) {
+    return !isDockLytPinned(el) && (el === null || el === void 0 ? void 0 : el.style.cssText.includes('transform: translate'));
+}
+exports.isFloatDockLytHidden = isFloatDockLytHidden;
 
 
 /***/ }),
