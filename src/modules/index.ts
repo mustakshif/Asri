@@ -7,7 +7,7 @@ import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./traffi
 
 const asriClickEventListener = new AsriEventListener(listenClickEvents);
 
-export function initModules() {
+export function loadModules() {
     addEnvClassNames();
     useSysScrollbar();
     applyTrafficLightPosition();   
@@ -16,7 +16,7 @@ export function initModules() {
     watchImgExportMo.observe(document.body, { childList: true });
 }
 
-export function destroyModules() {
+export function unloadModules() {
     removeEnvClassNames();
     restoreDefaultScrollbar();
     restoreTrafficLightPosition();

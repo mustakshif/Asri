@@ -330,32 +330,30 @@ const styles_1 = __webpack_require__(495);
 const { isMobile, isMiniWindow } = rsc_1.environment;
 exports.doms = rsc_1.asriDoms;
 function dockBg() {
-    if (exports.doms.dockl && !isMobile && !isMiniWindow) {
-        for (let dir of ['l', 'r']) {
-            const lyt = exports.doms['layoutDock' + dir];
-            const dock = exports.doms['dock' + dir];
-            if ((0, styles_1.isDockLytPinned)(lyt) && (0, styles_1.isDockLytExpanded)(lyt)) {
-                dock.classList.add('dock-layout-expanded');
-                // pushUnique(asriClassNames, '.dock-layout-expanded');
+    for (let dir of ['l', 'r']) {
+        const lyt = exports.doms['layoutDock' + dir];
+        const dock = exports.doms['dock' + dir];
+        if ((0, styles_1.isDockLytPinned)(lyt) && (0, styles_1.isDockLytExpanded)(lyt)) {
+            dock.classList.add('dock-layout-expanded');
+            // pushUnique(asriClassNames, '.dock-layout-expanded');
+        }
+        else {
+            dock.classList.remove('dock-layout-expanded');
+        }
+        if (!(0, styles_1.isSideDockHidden)() && !(0, styles_1.isFloatDockLytHidden)(lyt) && (0, styles_1.isDockLytExpanded)(lyt)) {
+            switch (dir) {
+                case 'l':
+                    // dock.style.borderRightColor = 'transparent';
+                    dock.style.setProperty('--border-clr', 'transparent');
+                    break;
+                case 'r':
+                    // dock.style.borderLeftColor = 'transparent';
+                    dock.style.setProperty('--border-clr', 'transparent');
+                    break;
             }
-            else {
-                dock.classList.remove('dock-layout-expanded');
-            }
-            if (!(0, styles_1.isSideDockHidden)() && !(0, styles_1.isFloatDockLytHidden)(lyt) && (0, styles_1.isDockLytExpanded)(lyt)) {
-                switch (dir) {
-                    case 'l':
-                        // dock.style.borderRightColor = 'transparent';
-                        dock.style.setProperty('--border-clr', 'transparent');
-                        break;
-                    case 'r':
-                        // dock.style.borderLeftColor = 'transparent';
-                        dock.style.setProperty('--border-clr', 'transparent');
-                        break;
-                }
-            }
-            else {
-                dock.style.removeProperty('--border-clr');
-            }
+        }
+        else {
+            dock.style.removeProperty('--border-clr');
         }
     }
 }
