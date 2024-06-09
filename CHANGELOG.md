@@ -1,3 +1,17 @@
+### v3.0.14
+
+* 优化部分对话框侧栏导航样式
+* 为更多对话框引入溢出渐隐
+* 微调滑块样式
+
+<br />
+
+* Optimized the sidebar navigation style of some dialogs
+* Introduced overflow fadeout for more dialogs
+* Refined the slider style
+
+---
+
 ### v3.0.13
 
 * 优化只读模式下 HTML 块工具条样式
