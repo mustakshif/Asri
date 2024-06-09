@@ -10,12 +10,11 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.0.13
+### v3.0.14
 
-* Optimized the toolbar style of HTML blocks in read-only mode.
-* Adopted SiYuan's built-in emojis dialog properties as selectors.
-* Removed some redundant JavaScript functionalities.
-* Fixed the misalignment issue of the "Add Tag" button at the top of the document.
+* Optimized the sidebar navigation style of some dialogs
+* Introduced overflow fadeout for more dialogs
+* Refined the slider style
 
 ### ...
 
