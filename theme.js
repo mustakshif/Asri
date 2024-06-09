@@ -276,7 +276,7 @@ const rsc_1 = __webpack_require__(49);
 const styles_1 = __webpack_require__(495);
 const modules_1 = __webpack_require__(2);
 setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
-    (0, modules_1.initModules)();
+    (0, modules_1.loadModules)();
     fastdom_1.default.measure(() => {
         var _a;
         if (rsc_1.asriDoms.layoutCenter()) {
@@ -290,7 +290,7 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
         }
     });
     window.destroyTheme = () => {
-        (0, modules_1.destroyModules)();
+        (0, modules_1.unloadModules)();
         (0, styles_1.modeTransition)();
     };
 }), 0);
@@ -340,21 +340,20 @@ function dockBg() {
         else {
             dock.classList.remove('dock-layout-expanded');
         }
-        if (!(0, styles_1.isSideDockHidden)() && !(0, styles_1.isFloatDockLytHidden)(lyt) && (0, styles_1.isDockLytExpanded)(lyt)) {
-            switch (dir) {
-                case 'l':
-                    // dock.style.borderRightColor = 'transparent';
-                    dock.style.setProperty('--border-clr', 'transparent');
-                    break;
-                case 'r':
-                    // dock.style.borderLeftColor = 'transparent';
-                    dock.style.setProperty('--border-clr', 'transparent');
-                    break;
-            }
-        }
-        else {
-            dock.style.removeProperty('--border-clr');
-        }
+        // if (!isSideDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
+        //     switch (dir) {
+        //         case 'l':
+        //             // dock.style.borderRightColor = 'transparent';
+        //             dock.style.setProperty('--border-clr', 'transparent');
+        //             break;
+        //         case 'r':
+        //             // dock.style.borderLeftColor = 'transparent';
+        //             dock.style.setProperty('--border-clr', 'transparent');
+        //             break;
+        //     }
+        // } else {
+        //     dock.style.removeProperty('--border-clr');
+        // }
     }
 }
 exports.dockBg = dockBg;
@@ -402,7 +401,7 @@ exports.removeEnvClassNames = removeEnvClassNames;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.destroyModules = exports.initModules = void 0;
+exports.unloadModules = exports.loadModules = void 0;
 const eventListeners_1 = __webpack_require__(796);
 const dialog_1 = __webpack_require__(344);
 const docks_1 = __webpack_require__(818);
@@ -410,7 +409,7 @@ const env_1 = __webpack_require__(261);
 const scrollbar_1 = __webpack_require__(832);
 const trafficLights_1 = __webpack_require__(130);
 const asriClickEventListener = new eventListeners_1.AsriEventListener(listenClickEvents);
-function initModules() {
+function loadModules() {
     (0, env_1.addEnvClassNames)();
     (0, scrollbar_1.useSysScrollbar)();
     (0, trafficLights_1.applyTrafficLightPosition)();
@@ -418,15 +417,15 @@ function initModules() {
     asriClickEventListener.start(document, 'click');
     dialog_1.watchImgExportMo.observe(document.body, { childList: true });
 }
-exports.initModules = initModules;
-function destroyModules() {
+exports.loadModules = loadModules;
+function unloadModules() {
     (0, env_1.removeEnvClassNames)();
     (0, scrollbar_1.restoreDefaultScrollbar)();
     (0, trafficLights_1.restoreTrafficLightPosition)();
     asriClickEventListener.remove(document, 'click');
     dialog_1.watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
 }
-exports.destroyModules = destroyModules;
+exports.unloadModules = unloadModules;
 function listenClickEvents(e) {
     console.log(e);
     (0, docks_1.dockBg)();

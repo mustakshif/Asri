@@ -1,6 +1,6 @@
 import { AsriEventListener } from "../util/eventListeners";
 import { watchImgExportMo } from "./dialog";
-import { dockBg } from "./docks";
+import { destroyDockBg, dockBg } from "./docks";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { restoreDefaultScrollbar, useSysScrollbar } from "./scrollbar";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
@@ -20,6 +20,7 @@ export function unloadModules() {
     removeEnvClassNames();
     restoreDefaultScrollbar();
     restoreTrafficLightPosition();
+    destroyDockBg();
     asriClickEventListener.remove(document, 'click');
     watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
 }

@@ -16,7 +16,7 @@ export function isSideDockHidden(dir: 'l' | 'r' = 'l') {
     return doms[`dock${dir}`] && doms[`dock${dir}`]!.classList.contains('fn__none');
     // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri-for-SiYuan/issues/16
 }
-export function isFloatDockLytHidden(el: HTMLElement): boolean {
-    return !isDockLytPinned(el) && el?.style.cssText.includes('transform: translate');
-}
+// export function isFloatDockLytHidden(el: HTMLElement): boolean {
+//     return !isDockLytPinned(el) && el?.style.cssText.includes('transform: translate');
+// }
 
