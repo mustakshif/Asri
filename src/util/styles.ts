@@ -1,4 +1,6 @@
 import { asriDoms as doms } from "./rsc";
+import { environment as env } from "./rsc";
+import { remote } from "./electron";
 
 export function modeTransition() {
     document.body.classList.add('asri-mode-transition');
@@ -20,3 +22,10 @@ export function isSideDockHidden(dir: 'l' | 'r' = 'l') {
 //     return !isDockLytPinned(el) && el?.style.cssText.includes('transform: translate');
 // }
 
+export function isFullScreen() {
+    return !env.isInBrowser && remote.getCurrentWindow().isFullScreen();
+}
+
+export function isStatusHidden() {
+    return doms.status && doms.status.classList.contains('fn__none');
+}
