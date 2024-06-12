@@ -7,7 +7,7 @@ $medium-blur-rd: 20px;
 $thin-transparency: 0.75;
 $thin-blur-rd: 12px;
 
-body:not(.asri-disable-backdrop-blur) {
+body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
 
     // 以下breadcrumb 相关代码导致：
     // 1. 块拖动至页面顶部时无法触发自动滚动
@@ -54,9 +54,6 @@ body:not(.asri-disable-backdrop-blur) {
                 z-index: 2;
                 pointer-events: none;
                 // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
-                mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 0.5px), transparent calc(var(--blur-block-height) + 1px));
-
-                @include bg-blur($brightness-dark: 0.95);
             }
 
             :not(#searchPreview, .card__block)>.protyle-breadcrumb {
@@ -65,7 +62,6 @@ body:not(.asri-disable-backdrop-blur) {
                 height: var(--blur-block-height);
                 // @include theme-variant-color(background-color, background, $thick-transparency);
                 z-index: 2;
-                background-color: rgb(from var(--b3-theme-background) r g b / $thick-transparency);
             }
 
             .protyle[data-loading="finished"].fullscreen::before {
@@ -111,6 +107,82 @@ body:not(.asri-disable-backdrop-blur) {
             #viewerContainer {
                 top: 84px;
                 transition: none;
+            }
+
+        }
+    }
+
+    // two types of immersive tabbar
+    &.asri-imsvtb-classic {
+
+        .layout__wnd--active,
+        [data-type="wnd"] {
+
+            .layout-tab-container {
+                &>.protyle[data-loading="finished"]::before {
+                    mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 0.5px), transparent calc(var(--blur-block-height) + 1px));
+
+                    @include bg-blur($brightness-dark: 0.95);
+                }
+            }
+
+            :not(#searchPreview, .card__block)>.protyle-breadcrumb {
+                background-color: rgb(from var(--b3-theme-background) r g b / $thick-transparency);
+            }
+        }
+    }
+
+    &.asri-imsvtb-trending {
+
+        .layout__wnd--active,
+        [data-type="wnd"] {
+
+            :not(.av__views)>.layout-tab-bar {
+
+                &:not(.layout-tab-bar--readonly) .item {
+                    backdrop-filter: blur($medium-blur-rd);
+                }
+
+                .item {
+                    &--focus {
+                        // background-color: transparent;
+                        backdrop-filter: blur($medium-blur-rd) brightness(1) saturate(1.8);
+
+                        @include darkmode-counterpart {
+                            // background-color: #ffffff20;
+                            backdrop-filter: blur($medium-blur-rd) brightness(1.2) saturate(1.1);
+                        }
+                    }
+                }
+            }
+
+            .layout-tab-container {
+                &>.protyle[data-loading="finished"] {
+                    &::before {
+                        mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 25px), transparent calc(var(--blur-block-height) - 5px));
+
+                        @include bg-blur($blur-radius: 5px, $saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+                    }
+
+                    &::after {
+                        --blur-radius-main: 40px;
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
+                        position: absolute;
+                        top: 0;
+                        pointer-events: none;
+                        background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / .6), transparent var(--blur-block-height));
+                        backdrop-filter: blur(2px);
+                        mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 15px), transparent calc(var(--blur-block-height) + 0px));
+                    }
+                }
+            }
+
+            :not(#searchPreview, .card__block)>.protyle-breadcrumb {
+                background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / $thick-transparency), transparent);
+                mix-blend-mode: luminosity;
             }
 
         }
