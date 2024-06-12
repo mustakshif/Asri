@@ -1,3 +1,1 @@
-type AsriDomsExtended = typeof asriDoms & {
-    [key: string]: HTMLElement | null;
-};
+type AsriDomsExtended = HTMLElement | Element | null;

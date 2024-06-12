@@ -1,6 +1,6 @@
 import { AsriEventListener } from "../util/eventListeners";
 import { watchImgExportMo } from "./dialog";
-import { destroyDockBg, dockBg } from "./docks";
+import { destroyDockBg, docklBg } from "./docks";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { restoreDefaultScrollbar, useSysScrollbar } from "./scrollbar";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
@@ -11,7 +11,7 @@ export function loadModules() {
     addEnvClassNames();
     useSysScrollbar();
     applyTrafficLightPosition();   
-    dockBg();
+    docklBg();
     asriClickEventListener.start(document, 'click');
     watchImgExportMo.observe(document.body, { childList: true });
 }
@@ -26,5 +26,5 @@ export function unloadModules() {
 }
 function listenClickEvents(e: Event) {
     console.log(e);
-    dockBg();
+    docklBg();
 }

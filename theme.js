@@ -324,39 +324,40 @@ function addExportImgClassName() {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.dockBg = exports.doms = void 0;
+exports.destroyDockBg = exports.docklBg = void 0;
 const rsc_1 = __webpack_require__(49);
 const styles_1 = __webpack_require__(495);
 const { isMobile, isMiniWindow } = rsc_1.environment;
-exports.doms = rsc_1.asriDoms;
-function dockBg() {
-    for (let dir of ['l', 'r']) {
-        const lyt = exports.doms['layoutDock' + dir];
-        const dock = exports.doms['dock' + dir];
-        if ((0, styles_1.isDockLytPinned)(lyt) && (0, styles_1.isDockLytExpanded)(lyt)) {
-            dock.classList.add('dock-layout-expanded');
-            // pushUnique(asriClassNames, '.dock-layout-expanded');
-        }
-        else {
-            dock.classList.remove('dock-layout-expanded');
-        }
-        // if (!isSideDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
-        //     switch (dir) {
-        //         case 'l':
-        //             // dock.style.borderRightColor = 'transparent';
-        //             dock.style.setProperty('--border-clr', 'transparent');
-        //             break;
-        //         case 'r':
-        //             // dock.style.borderLeftColor = 'transparent';
-        //             dock.style.setProperty('--border-clr', 'transparent');
-        //             break;
-        //     }
-        // } else {
-        //     dock.style.removeProperty('--border-clr');
-        // }
+function docklBg() {
+    const lyt = rsc_1.asriDoms.layoutDockl;
+    const dock = rsc_1.asriDoms.dockl;
+    if ((0, styles_1.isDockLytPinned)(lyt) && (0, styles_1.isDockLytExpanded)(lyt)) {
+        dock === null || dock === void 0 ? void 0 : dock.classList.add('dock-layout-expanded');
+        // pushUnique(asriClassNames, '.dock-layout-expanded');
     }
+    else {
+        dock === null || dock === void 0 ? void 0 : dock.classList.remove('dock-layout-expanded');
+    }
+    // if (!isSideDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
+    //     switch (dir) {
+    //         case 'l':
+    //             // dock.style.borderRightColor = 'transparent';
+    //             dock.style.setProperty('--border-clr', 'transparent');
+    //             break;
+    //         case 'r':
+    //             // dock.style.borderLeftColor = 'transparent';
+    //             dock.style.setProperty('--border-clr', 'transparent');
+    //             break;
+    //     }
+    // } else {
+    //     dock.style.removeProperty('--border-clr');
+    // }
 }
-exports.dockBg = dockBg;
+exports.docklBg = docklBg;
+function destroyDockBg() {
+    document.querySelectorAll('.dock-layout-expanded').forEach(el => el.classList.remove('dock-layout-expanded'));
+}
+exports.destroyDockBg = destroyDockBg;
 
 
 /***/ }),
@@ -413,7 +414,7 @@ function loadModules() {
     (0, env_1.addEnvClassNames)();
     (0, scrollbar_1.useSysScrollbar)();
     (0, trafficLights_1.applyTrafficLightPosition)();
-    (0, docks_1.dockBg)();
+    (0, docks_1.docklBg)();
     asriClickEventListener.start(document, 'click');
     dialog_1.watchImgExportMo.observe(document.body, { childList: true });
 }
@@ -422,13 +423,14 @@ function unloadModules() {
     (0, env_1.removeEnvClassNames)();
     (0, scrollbar_1.restoreDefaultScrollbar)();
     (0, trafficLights_1.restoreTrafficLightPosition)();
+    (0, docks_1.destroyDockBg)();
     asriClickEventListener.remove(document, 'click');
     dialog_1.watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
 }
 exports.unloadModules = unloadModules;
 function listenClickEvents(e) {
     console.log(e);
-    (0, docks_1.dockBg)();
+    (0, docks_1.docklBg)();
 }
 
 
@@ -721,8 +723,10 @@ exports.environment = {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isFloatDockLytHidden = exports.isSideDockHidden = exports.isDockLytExpanded = exports.isDockLytPinned = exports.modeTransition = void 0;
+exports.isStatusHidden = exports.isFullScreen = exports.isSideDockHidden = exports.isDockLytExpanded = exports.isDockLytPinned = exports.modeTransition = void 0;
 const rsc_1 = __webpack_require__(49);
+const rsc_2 = __webpack_require__(49);
+const electron_1 = __webpack_require__(571);
 function modeTransition() {
     document.body.classList.add('asri-mode-transition');
     setTimeout(() => {
@@ -735,7 +739,7 @@ function isDockLytPinned(el) {
 }
 exports.isDockLytPinned = isDockLytPinned;
 function isDockLytExpanded(el) {
-    return (el === null || el === void 0 ? void 0 : el.style.width) !== '0px';
+    return el && el.style.width !== '0px';
 }
 exports.isDockLytExpanded = isDockLytExpanded;
 function isSideDockHidden(dir = 'l') {
@@ -743,10 +747,17 @@ function isSideDockHidden(dir = 'l') {
     // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri-for-SiYuan/issues/16
 }
 exports.isSideDockHidden = isSideDockHidden;
-function isFloatDockLytHidden(el) {
-    return !isDockLytPinned(el) && (el === null || el === void 0 ? void 0 : el.style.cssText.includes('transform: translate'));
+// export function isFloatDockLytHidden(el: HTMLElement): boolean {
+//     return !isDockLytPinned(el) && el?.style.cssText.includes('transform: translate');
+// }
+function isFullScreen() {
+    return !rsc_2.environment.isInBrowser && electron_1.remote.getCurrentWindow().isFullScreen();
 }
-exports.isFloatDockLytHidden = isFloatDockLytHidden;
+exports.isFullScreen = isFullScreen;
+function isStatusHidden() {
+    return rsc_1.asriDoms.status && rsc_1.asriDoms.status.classList.contains('fn__none');
+}
+exports.isStatusHidden = isStatusHidden;
 
 
 /***/ }),
