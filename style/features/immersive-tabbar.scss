@@ -64,8 +64,11 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                 z-index: 2;
             }
 
-            .protyle[data-loading="finished"].fullscreen::before {
-                --blur-block-height: var(--toolbar-height);
+            .protyle[data-loading="finished"].fullscreen {
+                &::before,
+                &::after {
+                    --blur-block-height: var(--toolbar-height);
+                }
             }
 
             .fullscreen>.protyle-breadcrumb {
@@ -177,12 +180,18 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                         backdrop-filter: blur(2px);
                         mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 15px), transparent calc(var(--blur-block-height) + 0px));
                     }
+
+                    &.fullscreen::after {
+                        background: unset;
+                    }
                 }
             }
 
             :not(#searchPreview, .card__block)>.protyle-breadcrumb {
                 background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / $thick-transparency), transparent);
                 mix-blend-mode: luminosity;
+
+                // text-shadow: 0 0 5px var(--b3-theme-background);
             }
 
         }
