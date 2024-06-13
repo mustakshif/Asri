@@ -192,6 +192,11 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                 mix-blend-mode: luminosity;
 
                 // text-shadow: 0 0 5px var(--b3-theme-background);
+                &__text,
+                .popover__block {
+                    // color: var(--b3-theme-on-background);
+                    font-weight: 600;
+                }
             }
 
         }
