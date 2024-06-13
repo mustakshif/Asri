@@ -93,8 +93,8 @@
     &--menu {
         margin: 0;
         align-self: center;
-    
-        html[data-theme-mode="light"] .b3-menu__item:hover>& {
+
+        .b3-menu__item:hover>& {
             outline: 1px solid #ffffff60;
         }
     }
@@ -258,7 +258,7 @@ textarea {
 
     overflow-wrap: break-word; // 单个长单词换行
     word-break: keep-all; // 保持CJK字符不换行
-    
+
     @include tooltip-shadow;
     @include border-or-not($outline: false);
 }
