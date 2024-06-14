@@ -18,6 +18,8 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
     .layout__wnd--active,
     [data-type="wnd"] {
 
+        --blur-radius-main: 40px;
+
         &>.fn__flex:first-child {
             background-color: transparent;
             margin-bottom: -42px;
@@ -44,7 +46,6 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
 
         .layout-tab-container {
             &>.protyle[data-loading="finished"]::before {
-                --blur-radius-main: 40px;
                 content: "";
                 display: block;
                 width: 100%;
@@ -153,7 +154,7 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
 
                         @include darkmode-counterpart {
                             // background-color: #ffffff20;
-                            backdrop-filter: blur($medium-blur-rd) brightness(1.2) saturate(1.1);
+                            backdrop-filter: blur($medium-blur-rd) brightness(1) saturate(1.2);
                         }
                     }
                 }
@@ -168,7 +169,6 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                     }
 
                     &::after {
-                        --blur-radius-main: 40px;
                         content: "";
                         display: block;
                         width: 100%;
@@ -176,7 +176,7 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                         position: absolute;
                         top: 0;
                         pointer-events: none;
-                        background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / .6), transparent var(--blur-block-height));
+                        // background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / .6), transparent var(--blur-block-height));
                         backdrop-filter: blur(2px);
                         mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 15px), transparent calc(var(--blur-block-height) + 0px));
                     }
@@ -184,18 +184,60 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                     &.fullscreen::after {
                         background: unset;
                     }
+
+                    .protyle-content::before {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        height: min(calc(var(--blur-block-height) + 40px), 100%);
+                        // height: var(--blur-block-height);
+                        z-index: 1;
+                        pointer-events: none;
+
+                        @include smoothGradientVar(var(--b3-theme-background), .85);
+                    }
                 }
             }
 
             :not(#searchPreview, .card__block)>.protyle-breadcrumb {
-                background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / $thick-transparency), transparent);
+                // background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / $thick-transparency), transparent);
+                background-color: transparent;
                 mix-blend-mode: luminosity;
+                // mix-blend-mode: difference;
 
-                // text-shadow: 0 0 5px var(--b3-theme-background);
+                // text-shadow: 0 0 10px var(--b3-theme-background);
+
+                &__item {
+                    overflow: auto;
+                    // color: rgb(from var(--b3-theme-on-background) r g b / .85);
+
+                    // svg {
+                    //     color: rgb(from var(--b3-theme-on-background) r g b / .85);
+                    // }
+
+                    &:not(:first-child){
+                        @include overflow-indicator-fadein-mask($range: 'left right');
+                    }
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+                }
+                
                 &__text,
                 .popover__block {
                     // color: var(--b3-theme-on-background);
                     font-weight: 600;
+                    overflow: visible;
+                    filter: drop-shadow(0 0 4px var(--b3-theme-background));
+                    // color: #fffa;
+                }
+
+                .block__icon,
+                &__arrow {
+                    filter: drop-shadow(0 0 4px var(--b3-theme-background));
                 }
             }
 
