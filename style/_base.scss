@@ -588,7 +588,7 @@ background: linear-gradient(unquote($direction), $stops);
     $stops: ();
 
     @each $colorStop, $alphaValue in $scrimCoordinates {
-        $stop: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactor)) percentage($colorStop/100);
+        $stop: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactor)) percentage(calc($colorStop/100));
         $stops: append($stops, $stop, comma);
     }
     
