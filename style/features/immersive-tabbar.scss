@@ -187,7 +187,6 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
 
                     .protyle-content::before {
                         content: '';
-                        display: block;
                         position: absolute;
                         top: 0;
                         width: 100%;
@@ -226,7 +225,7 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                     }
                 }
                 
-                &__text,
+                .protyle-breadcrumb__text,
                 .popover__block {
                     // color: var(--b3-theme-on-background);
                     font-weight: 600;
@@ -236,11 +235,14 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                 }
 
                 .block__icon,
-                &__arrow {
+                .protyle-breadcrumb__arrow {
                     filter: drop-shadow(0 0 4px var(--b3-theme-background));
                 }
             }
 
+            .protyle-background__icon {
+                z-index: auto;
+            }
         }
     }
 
@@ -288,6 +290,10 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
 
     .enhanceProtyleBottomContainer .protyle-content {
         padding-top: 0 !important;
+
+        &::before {
+            display: none;
+        }
     }
 
     .backlinkArea.arco-collapse .backlinkAreaCollapse>.arco-collapse-item-header {
