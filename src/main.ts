@@ -7,8 +7,8 @@ setTimeout(async () => {
     loadModules();
 
     fastdom.measure(() => {
-        if (doms.layoutCenter()) {
-            const centerWidth = doms.layoutCenter()?.clientWidth;
+        if (doms.layoutCenter) {
+            const centerWidth = doms.layoutCenter?.clientWidth;
             if (centerWidth) {
                 console.log(`centerWidth: ${centerWidth}`);
             } else {

@@ -11,11 +11,12 @@ export function modeTransition() {
 export function isDockLytPinned(el: AsriDomsExtended): boolean {
     return !!(el && !el.classList.contains('layout--float'));
 }
-export function isDockLytExpanded(el: HTMLElement | null): boolean {
+export function isDockLytExpanded(el: AsriDomsExtended): boolean {
     return !!(el && el.style.width !== '0px');
 }
-export function isSideDockHidden(dir: 'l' | 'r' = 'l'):boolean {
-    return !!(doms[`dock${dir}`] && doms[`dock${dir}`]!.classList.contains('fn__none'));
+export function isSideDockHidden(dir: 'L' | 'R' = 'L'):boolean {
+    const dock = doms[`dock${dir}`] as AsriDomsExtended;
+    return !!(dock && dock.classList.contains('fn__none'));
     // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri-for-SiYuan/issues/16
 }
 // export function isFloatDockLytHidden(el: HTMLElement): boolean {

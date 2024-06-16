@@ -1,1 +1,1 @@
-type AsriDomsExtended = HTMLElement | Element | null;
+type AsriDomsExtended = HTMLElement | null;

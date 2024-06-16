@@ -2,9 +2,9 @@ import { asriDoms as doms, environment as env } from "../util/rsc";
 import { isDockLytPinned, isDockLytExpanded } from "../util/styles";
 
 const { isMobile, isMiniWindow } = env;
-export function docklBg() {
-    const lyt = doms.layoutDockl as HTMLElement | null;
-    const dock = doms.dockl as HTMLElement | null;
+export function dockLBg() {
+    const lyt = doms.layoutDockL;
+    const dock = doms.dockL;
 
     if (isDockLytPinned(lyt) && isDockLytExpanded(lyt)) {
         dock?.classList.add('dock-layout-expanded');
@@ -31,5 +31,5 @@ export function docklBg() {
 }
 
 export function destroyDockBg() {
-    document.querySelectorAll('.dock-layout-expanded').forEach(el => el.classList.remove('dock-layout-expanded'));
+    document.querySelector('.dock-layout-expanded')?.classList.remove('dock-layout-expanded');
 }

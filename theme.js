@@ -279,8 +279,8 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
     (0, modules_1.loadModules)();
     fastdom_1.default.measure(() => {
         var _a;
-        if (rsc_1.asriDoms.layoutCenter()) {
-            const centerWidth = (_a = rsc_1.asriDoms.layoutCenter()) === null || _a === void 0 ? void 0 : _a.clientWidth;
+        if (rsc_1.asriDoms.layoutCenter) {
+            const centerWidth = (_a = rsc_1.asriDoms.layoutCenter) === null || _a === void 0 ? void 0 : _a.clientWidth;
             if (centerWidth) {
                 console.log(`centerWidth: ${centerWidth}`);
             }
@@ -329,8 +329,8 @@ const rsc_1 = __webpack_require__(49);
 const styles_1 = __webpack_require__(495);
 const { isMobile, isMiniWindow } = rsc_1.environment;
 function docklBg() {
-    const lyt = rsc_1.asriDoms.layoutDockl;
-    const dock = rsc_1.asriDoms.dockl;
+    const lyt = rsc_1.asriDoms.layoutDockL;
+    const dock = rsc_1.asriDoms.dockL;
     if ((0, styles_1.isDockLytPinned)(lyt) && (0, styles_1.isDockLytExpanded)(lyt)) {
         dock === null || dock === void 0 ? void 0 : dock.classList.add('dock-layout-expanded');
         // pushUnique(asriClassNames, '.dock-layout-expanded');
@@ -355,7 +355,8 @@ function docklBg() {
 }
 exports.docklBg = docklBg;
 function destroyDockBg() {
-    document.querySelectorAll('.dock-layout-expanded').forEach(el => el.classList.remove('dock-layout-expanded'));
+    var _a;
+    (_a = document.querySelector('.dock-layout-expanded')) === null || _a === void 0 ? void 0 : _a.classList.remove('dock-layout-expanded');
 }
 exports.destroyDockBg = destroyDockBg;
 
@@ -682,24 +683,41 @@ exports.AsriMutationObserver = AsriMutationObserver;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.environment = exports.asriDoms = void 0;
+let _layouts = null;
+let _layoutCenter = null;
+let _toolbar = null;
+let _dockL = null;
+let _dockR = null;
+let _dockB = null;
+let _status = null;
+let _layoutDockL = null;
+let _layoutDockR = null;
+let _layoutDockB = null;
+let _barSync = null;
+let _barForward = null;
+let _toolbarVIP = null;
+let _drag = null;
+let _barPlugins = null;
+let _barSearch = null;
+let _barMode = null;
 exports.asriDoms = {
-    layouts: () => document.getElementById('layouts'),
-    layoutCenter: () => document.querySelector('layout__center'),
-    toolbar: () => document.getElementById('toolbar'),
-    status: document.getElementById('status'),
-    dockl: document.getElementById('dockLeft'),
-    dockr: document.getElementById('dockRight'),
-    dockb: document.getElementById('dockBottom'),
-    layoutDockl: document.querySelector('.layout__dockl'),
-    layoutDockr: document.querySelector('.layout__dockr'),
-    layoutDockb: document.querySelector('.layout__dockb'),
-    barSync: document.getElementById('barSync'),
-    barForward: document.getElementById('barForward'),
-    toolbarVIP: document.getElementById('toolbarVIP'),
-    drag: document.getElementById('drag'),
-    barPlugins: document.getElementById('barPlugins'),
-    barSearch: document.getElementById('barSearch'),
-    barMode: document.getElementById('barMode'),
+    get layouts() { return _layouts !== null && _layouts !== void 0 ? _layouts : (_layouts = document.getElementById('layouts')); },
+    get layoutCenter() { return _layoutCenter !== null && _layoutCenter !== void 0 ? _layoutCenter : (_layoutCenter = document.querySelector('.layout__center')); },
+    get toolbar() { return _toolbar !== null && _toolbar !== void 0 ? _toolbar : (_toolbar = document.getElementById('toolbar')); },
+    get dockL() { return _dockL !== null && _dockL !== void 0 ? _dockL : (_dockL = document.getElementById('dockLeft')); },
+    get dockR() { return _dockR !== null && _dockR !== void 0 ? _dockR : (_dockR = document.getElementById('dockRight')); },
+    get dockB() { return _dockB !== null && _dockB !== void 0 ? _dockB : (_dockB = document.getElementById('dockBottom')); },
+    get status() { return _status !== null && _status !== void 0 ? _status : (_status = document.getElementById('status')); },
+    get layoutDockL() { return _layoutDockL !== null && _layoutDockL !== void 0 ? _layoutDockL : (_layoutDockL = document.querySelector('.layout__dockl')); },
+    get layoutDockR() { return _layoutDockR !== null && _layoutDockR !== void 0 ? _layoutDockR : (_layoutDockR = document.querySelector('.layout__dockr')); },
+    get layoutDockB() { return _layoutDockB !== null && _layoutDockB !== void 0 ? _layoutDockB : (_layoutDockB = document.querySelector('.layout__dockb')); },
+    get barSync() { return _barSync !== null && _barSync !== void 0 ? _barSync : (_barSync = document.getElementById('barSync')); },
+    get barForward() { return _barForward !== null && _barForward !== void 0 ? _barForward : (_barForward = document.getElementById('barForward')); },
+    get toolbarVIP() { return _toolbarVIP !== null && _toolbarVIP !== void 0 ? _toolbarVIP : (_toolbarVIP = document.getElementById('toolbarVIP')); },
+    get drag() { return _drag !== null && _drag !== void 0 ? _drag : (_drag = document.getElementById('drag')); },
+    get barPlugins() { return _barPlugins !== null && _barPlugins !== void 0 ? _barPlugins : (_barPlugins = document.getElementById('barPlugins')); },
+    get barSearch() { return _barSearch !== null && _barSearch !== void 0 ? _barSearch : (_barSearch = document.getElementById('barSearch')); },
+    get barMode() { return _barMode !== null && _barMode !== void 0 ? _barMode : (_barMode = document.getElementById('barMode')); },
 };
 exports.environment = {
     isMacOS: navigator.platform.indexOf("Mac") > -1,
@@ -735,15 +753,16 @@ function modeTransition() {
 }
 exports.modeTransition = modeTransition;
 function isDockLytPinned(el) {
-    return el && !el.classList.contains('layout--float');
+    return !!(el && !el.classList.contains('layout--float'));
 }
 exports.isDockLytPinned = isDockLytPinned;
 function isDockLytExpanded(el) {
-    return el && el.style.width !== '0px';
+    return !!(el && el.style.width !== '0px');
 }
 exports.isDockLytExpanded = isDockLytExpanded;
-function isSideDockHidden(dir = 'l') {
-    return rsc_1.asriDoms[`dock${dir}`] && rsc_1.asriDoms[`dock${dir}`].classList.contains('fn__none');
+function isSideDockHidden(dir = 'L') {
+    const dock = rsc_1.asriDoms[`dock${dir}`];
+    return !!(dock && dock.classList.contains('fn__none'));
     // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri-for-SiYuan/issues/16
 }
 exports.isSideDockHidden = isSideDockHidden;
