@@ -1,3 +1,17 @@
+### v3.0.15
+
+* 适配代码块行号高亮背景色
+* 修复数据库菜单中开关把手错位问题
+* [更新设备平台检测相关的 body 元素类名](https://github.com/mustakshif/Asri/issues/75)
+
+<br />
+
+* Adapted code block line number highlighting background color
+* Fixed the misalignment issue of the toggle handle in some database menus
+* [Updated the device platform detection related body element class names](https://github.com/mustakshif/Asri/issues/75)
+
+---
+
 ### v3.0.14
 
 * 优化部分对话框侧栏导航样式

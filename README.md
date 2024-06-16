@@ -10,6 +10,12 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.0.15
+
+* Adapted code block line number highlighting background color
+* Fixed the misalignment issue of the toggle handle in some database menus
+* [Updated the device platform detection related body element class names](https://github.com/mustakshif/Asri/issues/75)
+
 ### v3.0.14
 
 * Optimized the sidebar navigation style of some dialogs
