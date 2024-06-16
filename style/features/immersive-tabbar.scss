@@ -201,21 +201,11 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
             }
 
             :not(#searchPreview, .card__block)>.protyle-breadcrumb {
-                // background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / $thick-transparency), transparent);
                 background-color: transparent;
                 mix-blend-mode: luminosity;
                 // mix-blend-mode: difference;
 
-                // text-shadow: 0 0 10px var(--b3-theme-background);
-
                 .protyle-breadcrumb__item {
-                    overflow: auto;
-                    // color: rgb(from var(--b3-theme-on-background) r g b / .85);
-
-                    // svg {
-                    //     color: rgb(from var(--b3-theme-on-background) r g b / .85);
-                    // }
-
                     &:not(:first-child){
                         @include overflow-indicator-fadein-mask($range: 'left right');
                     }
@@ -229,7 +219,7 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                 .popover__block {
                     // color: var(--b3-theme-on-background);
                     font-weight: 600;
-                    overflow: visible;
+                    // overflow: visible;
                     filter: drop-shadow(0 0 4px var(--b3-theme-background));
                     // color: #fffa;
                 }
