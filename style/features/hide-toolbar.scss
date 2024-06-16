@@ -226,7 +226,7 @@ body.body--window {
         }
     }
 
-    &:not(.body--mobile) {
+    &:not(.body-asri--mobile) {
         // -> js
 
         .toolbar {
@@ -263,7 +263,7 @@ body.body--window {
         @include hide-toolbar-for-mac;
 
         &.body--win32,
-        &.body--browser,
+        &.body-asri--browser,
         &.body--fullscreen {
             // -> js
             @include hide-toolbar-common;

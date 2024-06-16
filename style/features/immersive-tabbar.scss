@@ -247,7 +247,7 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
         }
     }
 
-    &:not(.body--mobile, .body--window)>#toolbar {
+    &:not(.body-asri--mobile, .body--window)>#toolbar {
         z-index: 4;
     }
 

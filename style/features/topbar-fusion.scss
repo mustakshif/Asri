@@ -1,7 +1,7 @@
 @use '../base' as *;
 
 
-body:not(.body--mobile, .body--window) {
+body:not(.body-asri--mobile, .body--window) {
     // --toolbar-height: 48px;
     --topbar-z-index: 2;
     --avoid-topbar: calc(var(--toolbar-height));
@@ -155,13 +155,13 @@ body:not(.body--mobile, .body--window) {
         right: 0;
     }
 
-    &.body--mac {
+    &.body-asri--mac {
         #dockRight {
             padding-top: var(--avoid-topbar);
         }
     }
 
-    &:where(.body--mac, .body--browser) {
+    &:where(.body-asri--mac, .body-asri--browser) {
         #dockRight::before {
             display: none;
         }
@@ -190,7 +190,7 @@ body:not(.body--mobile, .body--window) {
         }
     }
 
-    &.body--mac:not(.body--browser, .body--fullscreen) {
+    &.body-asri--mac:not(.body-asri--browser, .body--fullscreen) {
         .layout__dockl.layout--float {
 
             >.fn__flex:not(.fn__none):first-child,

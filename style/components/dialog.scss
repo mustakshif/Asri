@@ -1385,7 +1385,7 @@ body.body--window {
         }
     }
 
-    // &.body--mac {
+    // &.body-asri--mac {
     //     .fn__flex:first-child>[data-type="wnd"] {
     //         .layout-tab-bar:not(.layout-tab-bar--readonly) {
     //             margin-left: var(--b3-toolbar-left-mac);
@@ -1469,7 +1469,7 @@ body.body--window {
 
     .card__action {
         >div {
-            body:not(.body--mobile) & {
+            body:not(.body-asri--mobile) & {
                 margin: 0 12px 8px;
             }
 

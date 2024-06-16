@@ -127,7 +127,7 @@
 }
 
 #dockBottom.fn__none:not(.has-layout-dockb-float)~#status {
-    body:not(.body--mobile) & {
+    body:not(.body-asri--mobile) & {
         @include floating-status();
     }
 }

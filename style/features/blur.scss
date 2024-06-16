@@ -131,7 +131,7 @@ body:not(.asri-disable-backdrop-blur) {
     }
 
     #dockBottom.fn__none:not(.has-layout-dockb-float)~#status,
-    &.body--mobile #status {
+    &.body-asri--mobile #status {
         background-color: oklch(from var(--b3-theme-surface) l c h / $medium-transparency);
         @include bg-blur;
 

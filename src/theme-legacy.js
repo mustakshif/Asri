@@ -67,8 +67,8 @@
     const isLinux = navigator.platform.indexOf("Linux") > -1;
     const isAndroid = /Android/.test(ua);
     const isAndroidTablet = isAndroid && !/(?:Mobile)/.test(ua);
-    const isMobile = !!document.getElementById('sidebar') && !isAndroidTablet; // only phones, try fixing https://github.com/mustakshif/Asri/issues/75
-    const isInBrowser = !ua.startsWith("SiYuan/") || ua.indexOf("iPad") > -1; // iPad uses this too
+    const isMobile = !!document.getElementById('sidebar') && !isAndroidTablet; // only phones, fix https://github.com/mustakshif/Asri/issues/75
+    const isInBrowser = !ua.startsWith("SiYuan") || ua.indexOf("iPad") > -1 || isAndroidTablet; // tablets use this too
     const isMiniWindow = document.body.classList.contains('body--window');
     const isIOSApp = (/iOS/i.test(ua) || /iPad/i.test(ua)) && /AppleWebKit/i.test(ua) && ua.startsWith("SiYuan/");
 
@@ -80,12 +80,12 @@
     const asriDeletedRules = [];
     const asriObservers = [];
 
-    isMacOS && (document.body.classList.add('body--mac'), asriClassNames.push('.body--mac'));
-    isLinux && (document.body.classList.add('body--linux'), asriClassNames.push('.body--linux'));
-    isMobile && (document.body.classList.add('body--mobile'), asriClassNames.push('.body--mobile'));
-    isInBrowser && (document.body.classList.add("body--browser"), asriClassNames.push('.body--browser'));
-    isAndroid && (document.body.classList.add("body--android"), asriClassNames.push('.body--android'));
-    isIOSApp && (document.body.classList.add("body--iosApp"), asriClassNames.push('.body--iosApp'));
+    isMacOS && (document.body.classList.add('body-asri--mac'), asriClassNames.push('.body-asri--mac'));
+    isLinux && (document.body.classList.add('body-asri--linux'), asriClassNames.push('.body-asri--linux'));
+    isMobile && (document.body.classList.add('body-asri--mobile'), asriClassNames.push('.body-asri--mobile'));
+    isInBrowser && (document.body.classList.add('body-asri--browser'), asriClassNames.push('.body-asri--browser'));
+    isAndroid && (document.body.classList.add('body-asri--android'), asriClassNames.push('.body-asri--android'));
+    isIOSApp && (document.body.classList.add('body-asri--iosApp'), asriClassNames.push('.body-asri--iosApp'));
 
     if (!isMobile && asriDoms.toolbar) {
         createTopbarElementById('AsriPluginsIconsDivider', undefined, asriDoms.drag);
