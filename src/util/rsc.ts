@@ -1,3 +1,5 @@
+const ua = navigator.userAgent;
+
 let _layouts: AsriDomsExtended = null;
 let _layoutCenter: AsriDomsExtended = null;
 let _toolbar: AsriDomsExtended = null;
@@ -39,13 +41,11 @@ export const asriDoms = {
 export const environment = {
     isMacOS: navigator.platform.indexOf("Mac") > -1,
     isLinux: navigator.platform.indexOf("Linux") > -1,
+    isAndroid: /Android/.test(ua),
     isMobile: !!document.getElementById('sidebar'),
-    isInBrowser: navigator.userAgent.toLowerCase().indexOf('electron') === -1, // also applies to iPadOS
+    isInBrowser: !ua.startsWith("SiYuan") || ua.indexOf("iPad") > -1 || (/Android/.test(ua) && !/(?:Mobile)/.test(ua)), // tablets use this too
     isMiniWindow: document.body.classList.contains('body--window'),
-    isAndroid: window.siyuan.config.system.container === "android",
-    isIOSApp: (/iOS/i.test(navigator.userAgent) || /iPad/i.test(navigator.userAgent)) && /AppleWebKit/i.test(navigator.userAgent),
+    isIOSApp: (/iOS/i.test(ua) || /iPad/i.test(ua)) && /AppleWebKit/i.test(ua) && ua.startsWith("SiYuan/"),
     lang: window.siyuan.config.lang as string,
     supportsOklch: CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)'),
 };
-
-// export const asriClassNames: string[] = [];

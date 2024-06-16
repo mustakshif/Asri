@@ -6,12 +6,12 @@ type EnvClassifier = {
 };
 
 const envClassifiers: EnvClassifier[] = [
-  { condition: env.isMacOS, className: 'body--mac' },
-  { condition: env.isLinux, className: 'body--linux' },
-  { condition: env.isMobile, className: 'body--mobile' },
-  { condition: env.isInBrowser, className: 'body--browser' },
-  { condition: env.isAndroid, className: 'body--android' },
-  { condition: env.isIOSApp, className: 'body--iosApp' },
+  { condition: env.isMacOS, className: 'body-asri--mac' },
+  { condition: env.isLinux, className: 'body-asri--linux' },
+  { condition: env.isMobile, className: 'body-asri--mobile' },
+  { condition: env.isInBrowser, className: 'body-asri--browser' },
+  { condition: env.isAndroid, className: 'body-asri--android' },
+  { condition: env.isIOSApp, className: 'body-asri--iosApp' },
 ];
 
 export function addEnvClassNames() {

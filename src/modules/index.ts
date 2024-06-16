@@ -1,18 +1,20 @@
 import { AsriEventListener } from "../util/eventListeners";
-import { watchImgExportMo } from "./dialog";
+import { debounce } from "../util/misc";
+import { AsriMutationObserver } from "../util/observers";
+import { docBodyMoCallback } from "./dialog";
 import { destroyDockBg, dockLBg } from "./docks";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { restoreDefaultScrollbar, useSysScrollbar } from "./scrollbar";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
-const asriClickEventListener = new AsriEventListener(listenClickEvents);
-
+const clickEventListener = new AsriEventListener(clickEvents);
+const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback, 200));
 export function loadModules() {
     addEnvClassNames();
     useSysScrollbar();
     applyTrafficLightPosition();   
     dockLBg();
-    asriClickEventListener.start(document, 'click');
+    clickEventListener.start(document, 'click');
     watchImgExportMo.observe(document.body, { childList: true });
 }
 
@@ -21,10 +23,10 @@ export function unloadModules() {
     restoreDefaultScrollbar();
     restoreTrafficLightPosition();
     destroyDockBg();
-    asriClickEventListener.remove(document, 'click');
+    clickEventListener.remove(document, 'click');
     watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
 }
-function listenClickEvents(e: Event) {
+function clickEvents(e: Event) {
     console.log(e);
     dockLBg();
 }
