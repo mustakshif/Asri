@@ -62,14 +62,15 @@
         // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
     };
 
+    const ua = navigator.userAgent;
     const isMacOS = navigator.platform.indexOf("Mac") > -1;
     const isLinux = navigator.platform.indexOf("Linux") > -1;
-    const isMobile = !!document.getElementById('sidebar');
-    const isInBrowser = asriDoms.toolbar?.classList.contains('toolbar--browser'); // iPad uses this too
+    const isAndroid = /Android/.test(ua);
+    const isAndroidTablet = isAndroid && !/(?:Mobile)/.test(ua);
+    const isMobile = !!document.getElementById('sidebar') && !isAndroidTablet; // only phones, try fixing https://github.com/mustakshif/Asri/issues/75
+    const isInBrowser = !ua.startsWith("SiYuan/") || ua.indexOf("iPad") > -1; // iPad uses this too
     const isMiniWindow = document.body.classList.contains('body--window');
-    const isAndroid = window.siyuan.config.system.container === "android";
-    const userAgent = navigator.userAgent;
-    const isIOSApp = (/iOS/i.test(userAgent) || /iPad/i.test(userAgent)) && /AppleWebKit/i.test(userAgent);
+    const isIOSApp = (/iOS/i.test(ua) || /iPad/i.test(ua)) && /AppleWebKit/i.test(ua) && ua.startsWith("SiYuan/");
 
     const lang = window.siyuan.config.lang;
 
