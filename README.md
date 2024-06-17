@@ -1,5 +1,8 @@
 English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main/README_zh_CN.md)
 
+<!-- [![Releases](https://img.shields.io/github/downloads/mustakshif/Asri/total?label=Downloads&color=477BF9&style=flat)](https://github.com/mustakshif/Asri/releases/latest)
+[![Stars](https://img.shields.io/github/stars/mustakshif/Asri?style=flat)](https://star-history.com/#mustakshif/Asri) -->
+
 <br/>
 
 ![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v20.png)
@@ -178,3 +181,7 @@ The theme development process drew inspiration from the following themes, and I 
 
 * Settings window's dragable area is cut to the top area of the left column.
 * The close button in the upper right corner of the dialog box is hidden. To close the dialog box, click anywhere outside the dialog box.
+
+<!--## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=mustakshif/Asri&type=Date)](https://star-history.com/#mustakshif/Asri&Date)-->
