@@ -37,7 +37,7 @@
 }
 
 [data-name="bazaar"] .config-bazaar__panel {
-    @include overflow-indicator-fadein-bgClr(24px, $range: 'top');
+    @include overflow-indicator-fadein-bgClr(40px, $range: 'top');
 
     &::before {
         top: 44px;
@@ -52,7 +52,8 @@
 }
 
 // pdf 侧边导航
-#thumbnailView, #outlineView{
+#thumbnailView,
+#outlineView {
     @include overflow-indicator-fadein-bgClr(20px, $range: 'top');
 
     &::before {
@@ -78,6 +79,16 @@
 
     &::before {
         top: -16px;
+    }
+}
+
+[data-key="dialog-backgroundrandom"] .b3-dialog__body>.b3-cards {
+    @include overflow-indicator-fadein-bgClr(50px, $range: 'top');
+
+    padding-top: 0;
+
+    &::before {
+        grid-column: 1/-1;
     }
 }
 

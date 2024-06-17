@@ -638,7 +638,8 @@ background: linear-gradient(unquote($direction), $stops);
         animation-name: maskAppear-bgClr;
         animation-range: 1px 100%;
 
-        background-image: linear-gradient(#{$dir}, $bg-clr, transparent);
+        // background-image: linear-gradient(#{$dir}, $bg-clr, transparent);
+        @include smoothGradientVar($bg-clr,$direction: #{$dir});
 
         margin-#{str-slice($dir, 4)}: calc(-1 * $size);
 
@@ -674,7 +675,8 @@ background: linear-gradient(unquote($direction), $stops);
         animation-range: 0% calc(100% - 1px);
         animation-direction: alternate-reverse;
 
-        background-image: linear-gradient(#{$dir}, $bg-clr, transparent);
+        // background-image: linear-gradient(#{$dir}, $bg-clr, transparent);
+        @include smoothGradientVar($bg-clr,$direction: #{$dir});
 
         margin-#{str-slice($dir, 4)}: calc(-1 * $size);
 
