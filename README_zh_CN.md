@@ -1,5 +1,8 @@
 简体中文 ｜ [English](https://github.com/mustakshif/Asri-for-SiYuan/blob/main/README.md)
 
+<!-- [![Releases](https://img.shields.io/github/downloads/mustakshif/Asri/total?label=Downloads&color=477BF9&style=flat)](https://github.com/mustakshif/Asri/releases/latest)
+[![Stars](https://img.shields.io/github/stars/mustakshif/Asri?style=flat)](https://star-history.com/#mustakshif/Asri) -->
+
 <br />
 
 ![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v20.png)
@@ -178,3 +181,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 * 设置窗口拖移区域仅保留左栏顶部区域
 * 隐藏了对话框右上角的关闭按钮，可通过点击对话框外部区域关闭对话框
+
+<!--## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=mustakshif/Asri&type=Date)](https://star-history.com/#mustakshif/Asri&Date)-->
