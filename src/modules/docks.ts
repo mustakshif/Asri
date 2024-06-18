@@ -1,5 +1,5 @@
 import { asriDoms as doms, environment as env } from "../util/rsc";
-import { isDockLytPinned, isDockLytExpanded } from "../util/styles";
+import { isDockLytPinned, isDockLytExpanded } from "../util/state";
 
 const { isMobile, isMiniWindow } = env;
 export function dockLBg() {

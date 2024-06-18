@@ -1,6 +1,6 @@
 import fastdom from "fastdom";
 import { asriDoms as doms } from "./util/rsc";
-import { modeTransition } from "./util/styles";
+import { modeTransition } from "./util/misc";
 import { unloadModules, loadModules } from "./modules";
 
 setTimeout(async () => {

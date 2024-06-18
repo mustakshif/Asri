@@ -7,12 +7,12 @@ export class AsriEventListener<T extends Event> {
         this.callback = callback;
     }
 
-    start<E extends EventListenerTarget>(target: E, eventName: string) {
-        target.addEventListener(eventName, this.callback as (e: Event) => void);
+    start<E extends EventListenerTarget>(target: E, eventName: string, option?: false) {
+        target.addEventListener(eventName, this.callback as (e: Event) => void, option);
     }
 
-    remove<E extends EventListenerTarget>(target: E, eventName: string) {
-        target.removeEventListener(eventName, this.callback as (e: Event) => void);
+    remove<E extends EventListenerTarget>(target: E, eventName: string, option?: false) {
+        target.removeEventListener(eventName, this.callback as (e: Event) => void, option);
     }
     // init() {
     //     document.addEventListener('click', (e) => {

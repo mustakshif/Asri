@@ -1,0 +1,22 @@
+import { environment } from "../util/rsc";
+
+const { isMobile } = environment;
+export async function formatIndentGuidesForFocusedItems() {
+    if (!isMobile) {
+        let listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
+
+        document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
+
+        listItemsFocus.forEach(li => {
+            if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
+                if (li.parentNode instanceof Element) {
+                    li.parentNode.classList.add('has-focus');
+                }
+            }
+        })
+    }
+}
+
+export async function removeIndentGuidesFormatClassName() {
+    document.querySelectorAll('.file-tree .has-focus').forEach(el => el.classList.remove('has-focus'));
+}

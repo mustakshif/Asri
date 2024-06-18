@@ -1,3 +1,5 @@
+import fastdom from "fastdom";
+
 /**
  * Pushes an item to the array if it is not already present.
  * @param {Array} arr - The array to push the item to.
@@ -66,3 +68,75 @@ export function hexToHSL(hex: string) {
     };
 }
 
+export function modeTransition() {
+    document.body.classList.add('asri-mode-transition');
+    setTimeout(() => {
+        document.body.classList.remove('asri-mode-transition');
+    }, 350);
+}
+
+/**
+* Check if two elements have overlapping parts.
+*/
+export function isOverlapping(el1: HTMLElement | null, el2: HTMLElement | null): boolean {
+    if (!el1 || !el2) {
+        console.warn('isOverlapping called with null element');
+        return false;
+    }
+
+    let el1Rect: DOMRect | undefined, el2Rect: DOMRect | undefined;
+    if (typeof fastdom !== 'undefined') {
+        fastdom.measure(() => {
+            el1Rect = el1.getBoundingClientRect();
+            el2Rect = el2.getBoundingClientRect();
+        });
+    } else {
+        el1Rect = el1.getBoundingClientRect();
+        el2Rect = el2.getBoundingClientRect();
+    }
+
+    if (!el1Rect || !el2Rect) {
+        console.error('Failed to get boundingClientRect for one or both elements');
+        return false;
+    }
+
+    try {
+        return isRectOverlapping(el1Rect, el2Rect);
+    } catch (error) {
+        console.error('Error checking if rectangles are overlapping:', error);
+        return false;
+    }
+}
+function isRectOverlapping(elementRect: DOMRect, targetRect: DOMRect): boolean {
+    let result = false;
+    if (elementRect && targetRect) {
+        result = (
+            elementRect.right > targetRect.left &&
+            elementRect.bottom > targetRect.top &&
+            elementRect.left < targetRect.left + targetRect.width &&
+            elementRect.top < targetRect.top + targetRect.height
+        )
+    }
+    return result;
+}
+
+export function nodeListsHaveSameElements(list1: NodeListOf<Element> | undefined, list2: NodeListOf<Element> | undefined): boolean {
+    if (!list1 || !list2) {
+        return false;
+    }
+
+    const set1 = new Set(list1);
+    const set2 = new Set(list2);
+
+    if (set1.size !== set2.size) {
+        return false;
+    }
+
+    for (const item of set1) {
+        if (!set2.has(item)) {
+            return false;
+        }
+    }
+    console.log(list1+' and '+list2 + ' have same elements');
+    return true;
+}
