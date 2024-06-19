@@ -5,28 +5,32 @@ import { docBodyMoCallback } from "./dialog";
 import { destroyDockBg, dockLBg } from "./docks";
 import { formatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClassName } from "./editor";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
-import { restoreDefaultScrollbar, useSysScrollbar } from "./scrollbar";
+import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { formatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
 import { removeStatusHeightVar, setStatusHeightVar } from "./status";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
 const clickEventListener = new AsriEventListener(clickEvents);
 const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback, 200));
-export function loadModules() {
+export function loadAsriModules() {
     addEnvClassNames();
-    useSysScrollbar();
-    applyTrafficLightPosition();   
-    dockLBg();
+    useMacSysScrollbar();
+    applyTrafficLightPosition();
     setStatusHeightVar();
-    formatIndentGuidesForFocusedItems();
-    formatProtyleWithBgImageOnly();
+    setTimeout(() => {
+        dockLBg();
+    }, 0);
+    setTimeout(() => {
+        formatIndentGuidesForFocusedItems();
+        formatProtyleWithBgImageOnly();
+    }, 200);
     clickEventListener.start(document, 'mouseup');
     watchImgExportMo.observe(document.body, { childList: true });
 }
 
-export function unloadModules() {
+export function unloadAsriModules() {
     removeEnvClassNames();
-    restoreDefaultScrollbar();
+    restoreDefaultSiyuanScrollbar();
     restoreTrafficLightPosition();
     destroyDockBg();
     removeStatusHeightVar();
@@ -37,7 +41,10 @@ export function unloadModules() {
 }
 function clickEvents(e: Event) {
     // console.log(e);
-    dockLBg();
+    setTimeout(() => {
+        dockLBg();
+    }, 0);
+
     setTimeout(() => {
         formatIndentGuidesForFocusedItems();
         formatProtyleWithBgImageOnly();

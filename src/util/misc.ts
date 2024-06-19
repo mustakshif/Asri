@@ -137,6 +137,6 @@ export function nodeListsHaveSameElements(list1: NodeListOf<Element> | undefined
             return false;
         }
     }
-    console.log(list1+' and '+list2 + ' have same elements');
+    // console.log(list1+' and '+list2 + ' have same elements');
     return true;
 }

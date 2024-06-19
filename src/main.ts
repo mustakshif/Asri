@@ -1,10 +1,10 @@
 import fastdom from "fastdom";
 import { asriDoms as doms } from "./util/rsc";
 import { modeTransition } from "./util/misc";
-import { unloadModules, loadModules } from "./modules";
+import { unloadAsriModules, loadAsriModules } from "./modules";
 
 setTimeout(async () => {
-    loadModules();
+    loadAsriModules();
 
     fastdom.measure(() => {
         if (doms.layoutCenter) {
@@ -18,7 +18,7 @@ setTimeout(async () => {
     });
 
     window.destroyTheme = () => {
-        unloadModules();
+        unloadAsriModules();
         modeTransition();
     }
 }, 0);

@@ -2,7 +2,7 @@ import { environment as env } from "../util/rsc";
 
 const { isMacOS, isMobile } = env;
 const asriDeletedRules: { styleSheet: CSSStyleSheet, rule: string }[] = [];
-export async function useSysScrollbar() {
+export async function useMacSysScrollbar() {
     if (isMacOS || isMobile) {
         for (let i = 0; i < document.styleSheets.length; i++) {
             let styleSheet = document.styleSheets[i];
@@ -24,7 +24,7 @@ export async function useSysScrollbar() {
     }
 }
 
-export async function restoreDefaultScrollbar() {
+export async function restoreDefaultSiyuanScrollbar() {
     if (asriDeletedRules) {
         for (let i = 0; i < asriDeletedRules.length; i++) {
             let rule = asriDeletedRules[i];

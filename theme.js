@@ -276,7 +276,7 @@ const rsc_1 = __webpack_require__(49);
 const misc_1 = __webpack_require__(629);
 const modules_1 = __webpack_require__(2);
 setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
-    (0, modules_1.loadModules)();
+    (0, modules_1.loadAsriModules)();
     fastdom_1.default.measure(() => {
         var _a;
         if (rsc_1.asriDoms.layoutCenter) {
@@ -290,7 +290,7 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
         }
     });
     window.destroyTheme = () => {
-        (0, modules_1.unloadModules)();
+        (0, modules_1.unloadAsriModules)();
         (0, misc_1.modeTransition)();
     };
 }), 0);
@@ -326,16 +326,20 @@ exports.destroyDockBg = exports.dockLBg = void 0;
 const rsc_1 = __webpack_require__(49);
 const state_1 = __webpack_require__(216);
 const { isMobile, isMiniWindow } = rsc_1.environment;
+let isDockLLytPinnedOld = false, isDockLLytExpandedOld = false;
 function dockLBg() {
-    const lyt = rsc_1.asriDoms.layoutDockL;
     const dock = rsc_1.asriDoms.dockL;
-    if ((0, state_1.isDockLytPinned)(lyt) && (0, state_1.isDockLytExpanded)(lyt)) {
+    let isDockLLytPinned = (0, state_1.isDockLytPinned)('L'), isDockLLytExpanded = (0, state_1.isDockLytExpanded)('L');
+    if (isDockLLytExpanded === isDockLLytExpandedOld && isDockLLytPinned === isDockLLytPinnedOld)
+        return;
+    if (isDockLLytPinned && isDockLLytExpanded) {
         dock === null || dock === void 0 ? void 0 : dock.classList.add('dock-layout-expanded');
-        // pushUnique(asriClassNames, '.dock-layout-expanded');
     }
     else {
         dock === null || dock === void 0 ? void 0 : dock.classList.remove('dock-layout-expanded');
     }
+    isDockLLytExpandedOld = isDockLLytExpanded;
+    isDockLLytPinnedOld = isDockLLytPinned;
     // if (!isSideDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
     //     switch (dir) {
     //         case 'l':
@@ -446,7 +450,7 @@ exports.removeEnvClassNames = removeEnvClassNames;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.unloadModules = exports.loadModules = void 0;
+exports.unloadAsriModules = exports.loadAsriModules = void 0;
 const eventListeners_1 = __webpack_require__(796);
 const misc_1 = __webpack_require__(629);
 const observers_1 = __webpack_require__(766);
@@ -460,21 +464,25 @@ const status_1 = __webpack_require__(414);
 const trafficLights_1 = __webpack_require__(130);
 const clickEventListener = new eventListeners_1.AsriEventListener(clickEvents);
 const watchImgExportMo = new observers_1.AsriMutationObserver((0, misc_1.debounce)(dialog_1.docBodyMoCallback, 200));
-function loadModules() {
+function loadAsriModules() {
     (0, env_1.addEnvClassNames)();
-    (0, scrollbar_1.useSysScrollbar)();
+    (0, scrollbar_1.useMacSysScrollbar)();
     (0, trafficLights_1.applyTrafficLightPosition)();
-    (0, docks_1.dockLBg)();
     (0, status_1.setStatusHeightVar)();
-    (0, sidepanels_1.formatIndentGuidesForFocusedItems)();
-    (0, editor_1.formatProtyleWithBgImageOnly)();
+    setTimeout(() => {
+        (0, docks_1.dockLBg)();
+    }, 0);
+    setTimeout(() => {
+        (0, sidepanels_1.formatIndentGuidesForFocusedItems)();
+        (0, editor_1.formatProtyleWithBgImageOnly)();
+    }, 200);
     clickEventListener.start(document, 'mouseup');
     watchImgExportMo.observe(document.body, { childList: true });
 }
-exports.loadModules = loadModules;
-function unloadModules() {
+exports.loadAsriModules = loadAsriModules;
+function unloadAsriModules() {
     (0, env_1.removeEnvClassNames)();
-    (0, scrollbar_1.restoreDefaultScrollbar)();
+    (0, scrollbar_1.restoreDefaultSiyuanScrollbar)();
     (0, trafficLights_1.restoreTrafficLightPosition)();
     (0, docks_1.destroyDockBg)();
     (0, status_1.removeStatusHeightVar)();
@@ -483,10 +491,12 @@ function unloadModules() {
     clickEventListener.remove(document, 'mouseup');
     watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
 }
-exports.unloadModules = unloadModules;
+exports.unloadAsriModules = unloadAsriModules;
 function clickEvents(e) {
-    console.log(e);
-    (0, docks_1.dockLBg)();
+    // console.log(e);
+    setTimeout(() => {
+        (0, docks_1.dockLBg)();
+    }, 0);
     setTimeout(() => {
         (0, sidepanels_1.formatIndentGuidesForFocusedItems)();
         (0, editor_1.formatProtyleWithBgImageOnly)();
@@ -511,11 +521,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.restoreDefaultScrollbar = exports.useSysScrollbar = void 0;
+exports.restoreDefaultSiyuanScrollbar = exports.useMacSysScrollbar = void 0;
 const rsc_1 = __webpack_require__(49);
 const { isMacOS, isMobile } = rsc_1.environment;
 const asriDeletedRules = [];
-function useSysScrollbar() {
+function useMacSysScrollbar() {
     return __awaiter(this, void 0, void 0, function* () {
         if (isMacOS || isMobile) {
             for (let i = 0; i < document.styleSheets.length; i++) {
@@ -539,8 +549,8 @@ function useSysScrollbar() {
         }
     });
 }
-exports.useSysScrollbar = useSysScrollbar;
-function restoreDefaultScrollbar() {
+exports.useMacSysScrollbar = useMacSysScrollbar;
+function restoreDefaultSiyuanScrollbar() {
     return __awaiter(this, void 0, void 0, function* () {
         if (asriDeletedRules) {
             for (let i = 0; i < asriDeletedRules.length; i++) {
@@ -550,7 +560,7 @@ function restoreDefaultScrollbar() {
         }
     });
 }
-exports.restoreDefaultScrollbar = restoreDefaultScrollbar;
+exports.restoreDefaultSiyuanScrollbar = restoreDefaultSiyuanScrollbar;
 
 
 /***/ }),
@@ -573,11 +583,14 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.removeIndentGuidesFormatClassName = exports.formatIndentGuidesForFocusedItems = void 0;
 const rsc_1 = __webpack_require__(49);
 const { isMobile } = rsc_1.environment;
+// 可尝试点击后启动 MutationObserver，监测到相关变动后再执行，然后 disconnect
 function formatIndentGuidesForFocusedItems() {
     return __awaiter(this, void 0, void 0, function* () {
         if (!isMobile) {
             let listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
             document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
+            if (listItemsFocus.length === 0)
+                return;
             listItemsFocus.forEach(li => {
                 if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
                     if (li.parentNode instanceof Element) {
@@ -764,7 +777,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.nodeListsHaveSameElements = exports.isRectOverlapping = exports.isOverlapping = exports.modeTransition = exports.hexToHSL = exports.debounce = exports.pushUnique = void 0;
+exports.nodeListsHaveSameElements = exports.isOverlapping = exports.modeTransition = exports.hexToHSL = exports.debounce = exports.pushUnique = void 0;
 const fastdom_1 = __importDefault(__webpack_require__(551));
 /**
  * Pushes an item to the array if it is not already present.
@@ -878,7 +891,6 @@ function isRectOverlapping(elementRect, targetRect) {
     }
     return result;
 }
-exports.isRectOverlapping = isRectOverlapping;
 function nodeListsHaveSameElements(list1, list2) {
     if (!list1 || !list2) {
         return false;
@@ -893,7 +905,7 @@ function nodeListsHaveSameElements(list1, list2) {
             return false;
         }
     }
-    console.log(list1 + ' and ' + list2 + ' have same elements');
+    // console.log(list1+' and '+list2 + ' have same elements');
     return true;
 }
 exports.nodeListsHaveSameElements = nodeListsHaveSameElements;
@@ -1003,18 +1015,27 @@ exports.isLytDockbFloating = exports.hasDockb = exports.isStatusHidden = exports
 const electron_1 = __webpack_require__(571);
 const rsc_1 = __webpack_require__(49);
 // side panels
-function isDockLytPinned(dockLayoutEl) {
+function isDockLytPinned(dir) {
+    const dockLayoutEl = rsc_1.asriDoms[`layoutDock${dir}`];
     return !!(dockLayoutEl && !dockLayoutEl.classList.contains('layout--float'));
 }
 exports.isDockLytPinned = isDockLytPinned;
-function isDockLytExpanded(dockLayoutEl) {
-    return !!(dockLayoutEl && dockLayoutEl.style.width !== '0px');
+function isDockLytExpanded(dir) {
+    const dockLayoutEl = rsc_1.asriDoms[`layoutDock${dir}`];
+    let size;
+    if (dir === 'B') {
+        size = dockLayoutEl === null || dockLayoutEl === void 0 ? void 0 : dockLayoutEl.style.height;
+    }
+    else {
+        size = dockLayoutEl === null || dockLayoutEl === void 0 ? void 0 : dockLayoutEl.style.width;
+    }
+    return !!(size && size !== '0px');
 }
 exports.isDockLytExpanded = isDockLytExpanded;
 function isSideDockHidden(dir = 'L') {
     const dock = rsc_1.asriDoms[`dock${dir}`];
     return !!(dock && dock.classList.contains('fn__none'));
-    // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri-for-SiYuan/issues/16
+    // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri/issues/16
 }
 exports.isSideDockHidden = isSideDockHidden;
 // export function isFloatDockLytHidden(el: HTMLElement): boolean {
