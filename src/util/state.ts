@@ -1,7 +1,7 @@
 import { remote } from "./electron";
 import { asriDoms as doms, environment as env } from "./rsc";
 
-// side panels
+// docks and panels
 export function isDockLytPinned(dir: ElDir) {
     const dockLayoutEl = doms[`layoutDock${dir}`] as AsriDomsExtended;
     
@@ -11,15 +11,18 @@ export function isDockLytExpanded(dir: ElDir) {
     const dockLayoutEl = doms[`layoutDock${dir}`] as AsriDomsExtended;
     let size: string | undefined;
 
+    if (!dockLayoutEl) return false;
+
     if (dir === 'B') {
-        size = dockLayoutEl?.style.height;
+        size = dockLayoutEl.style.height;
     } else {
-        size = dockLayoutEl?.style.width;
+        size = dockLayoutEl.style.width;
     }
 
     return !!(size && size !== '0px');
 }
-export function isSideDockHidden(dir: ElDir = 'L') {
+
+export function isDockHidden(dir: ElDir = 'L') {
     const dock = doms[`dock${dir}`] as AsriDomsExtended;
     return !!(dock && dock.classList.contains('fn__none'));
     // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri/issues/16
@@ -28,15 +31,6 @@ export function isSideDockHidden(dir: ElDir = 'L') {
 //     return !isDockLytPinned(el) && el?.style.cssText.includes('transform: translate');
 // }
 
-// fullscreen state in macOS
-export function isFullScreen() {
-    return !!(!env.isInBrowser && remote.getCurrentWindow().isFullScreen());
-}
-
-// status bar
-export function isStatusHidden() {
-    return !!(doms.status && doms.status.classList.contains('fn__none'));
-}
 
 // bottom dock
 export function hasDockb() {
@@ -53,3 +47,13 @@ export function hasDockb() {
 //     }
 //     return result;
 // }
+
+// fullscreen state in macOS
+export function isFullScreen() {
+    return !!(remote && remote.getCurrentWindow().isFullScreen());
+}
+
+// status bar
+export function isStatusHidden() {
+    return !!(doms.status && doms.status.classList.contains('fn__none'));
+}
