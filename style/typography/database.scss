@@ -27,12 +27,25 @@
                 height: auto;
                 margin: 8px 0 !important;
                 padding: 0;
+                border-radius: calc(1em / 0.875 * 8 / 17) !important;
                 border: 2.5px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
 
                 .item {
-                    padding: 2px 6px;
+                    padding: 2px 4px;
                     height: auto;
-                    border-radius: 5.5px !important;
+                    border-radius: calc(1em / 0.875 * 8 / 17 - 2.5px) !important;
+
+                    &__graphic {
+                        padding: .42em 4px .42em 8px;
+
+                        .body-asri--mac & {
+                            font-size: calc(1em / .875 * 15 / 17);
+                        }
+                    }
+
+                    &__text {
+                        padding-right: 8px;
+                    }
                 }
 
                 .item:not(.item--focus) {
@@ -54,18 +67,10 @@
                     &:hover {
                         // @include theme-variant-color(background-color, light-components, 1, 0.2, $important: true);
                         background-color: #fff !important;
-                        
-                        @include darkmode-counterpart{
+
+                        @include darkmode-counterpart {
                             background-color: #ffffff23 !important;
                         }
-                    }
-                }
-
-                .item__graphic {
-                    padding: .42em 4px .42em 8px;
-
-                    .body-asri--mac & {
-                        font-size: calc(1em / .875 * 15 / 17);
                     }
                 }
             }
