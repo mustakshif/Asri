@@ -1,6 +1,8 @@
 .asri-mode-transition {
     &,
-    > :where(.fn__flex-1, [id], [data-key], .block__popover) * {
+    > :where(.fn__flex-1, [id], [data-key], .block__popover) *,
+    ::before,
+    ::after {
         transition-property: background-color, color, border-color;
         transition-duration: .5s;
         transition-delay: .1s;
