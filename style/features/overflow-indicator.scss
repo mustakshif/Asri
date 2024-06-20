@@ -106,13 +106,15 @@
     @include overflow-indicator-fadein-mask(18px, $range: 'left right');
 }
 
-.protyle-content {
-    @include overflow-indicator-fadein-bgClr(50px, $range: 'top');
+// body:not(.asri-immersive-tabbar) {
+//     .protyle-content {
+//         @include overflow-indicator-fadein-bgClr(50px, $range: 'top');
 
-    .protyle-background__icon {
-        z-index: auto;
-    }
-}
+//         .protyle-background__icon {
+//             z-index: auto;
+//         }
+//     }
+// }
 
 [data-key="dialog-searchtype"] .b3-dialog__content {
     @include overflow-indicator-fadein-mask(20px, $range: 'top');
