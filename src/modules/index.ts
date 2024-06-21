@@ -10,20 +10,14 @@ import { formatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } 
 import { removeStatusHeightVar, setStatusHeightVar } from "./status";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
-const clickEventListener = new AsriEventListener(clickEvents);
+const clickEventListener = new AsriEventListener(mouseupEvents);
 const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback, 200));
 export function loadAsriModules() {
     addEnvClassNames();
     useMacSysScrollbar();
     applyTrafficLightPosition();
     setStatusHeightVar();
-    setTimeout(() => {
-        dockLBg();
-    }, 0);
-    setTimeout(() => {
-        formatIndentGuidesForFocusedItems();
-        formatProtyleWithBgImageOnly();
-    }, 200);
+    updateStyle();
     clickEventListener.start(document, 'mouseup');
     watchImgExportMo.observe(document.body, { childList: true });
 }
@@ -32,15 +26,17 @@ export function unloadAsriModules() {
     removeEnvClassNames();
     restoreDefaultSiyuanScrollbar();
     restoreTrafficLightPosition();
-    destroyDockBg();
     removeStatusHeightVar();
-    removeIndentGuidesFormatClassName();
-    removeProtyleWithBgImageOnlyClassName();
+    destroyStyleUpdates();
     clickEventListener.remove(document, 'mouseup');
     watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
 }
-function clickEvents(e: Event) {
+function mouseupEvents(e: Event) {
     // console.log(e);
+    updateStyle();
+}
+
+function updateStyle() {
     setTimeout(() => {
         dockLBg();
     }, 0);
@@ -49,4 +45,10 @@ function clickEvents(e: Event) {
         formatIndentGuidesForFocusedItems();
         formatProtyleWithBgImageOnly();
     }, 200);
+}
+
+function destroyStyleUpdates() {
+    destroyDockBg();
+    removeIndentGuidesFormatClassName();
+    removeProtyleWithBgImageOnlyClassName();
 }

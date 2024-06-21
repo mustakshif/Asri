@@ -462,20 +462,14 @@ const scrollbar_1 = __webpack_require__(832);
 const sidepanels_1 = __webpack_require__(844);
 const status_1 = __webpack_require__(414);
 const trafficLights_1 = __webpack_require__(130);
-const clickEventListener = new eventListeners_1.AsriEventListener(clickEvents);
+const clickEventListener = new eventListeners_1.AsriEventListener(mouseupEvents);
 const watchImgExportMo = new observers_1.AsriMutationObserver((0, misc_1.debounce)(dialog_1.docBodyMoCallback, 200));
 function loadAsriModules() {
     (0, env_1.addEnvClassNames)();
     (0, scrollbar_1.useMacSysScrollbar)();
     (0, trafficLights_1.applyTrafficLightPosition)();
     (0, status_1.setStatusHeightVar)();
-    setTimeout(() => {
-        (0, docks_1.dockLBg)();
-    }, 0);
-    setTimeout(() => {
-        (0, sidepanels_1.formatIndentGuidesForFocusedItems)();
-        (0, editor_1.formatProtyleWithBgImageOnly)();
-    }, 200);
+    updateStyle();
     clickEventListener.start(document, 'mouseup');
     watchImgExportMo.observe(document.body, { childList: true });
 }
@@ -484,23 +478,29 @@ function unloadAsriModules() {
     (0, env_1.removeEnvClassNames)();
     (0, scrollbar_1.restoreDefaultSiyuanScrollbar)();
     (0, trafficLights_1.restoreTrafficLightPosition)();
-    (0, docks_1.destroyDockBg)();
     (0, status_1.removeStatusHeightVar)();
-    (0, sidepanels_1.removeIndentGuidesFormatClassName)();
-    (0, editor_1.removeProtyleWithBgImageOnlyClassName)();
+    destroyStyleUpdates();
     clickEventListener.remove(document, 'mouseup');
     watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
 }
 exports.unloadAsriModules = unloadAsriModules;
-function clickEvents(e) {
+function mouseupEvents(e) {
     // console.log(e);
+    updateStyle();
+}
+function updateStyle() {
     setTimeout(() => {
         (0, docks_1.dockLBg)();
+        (0, sidepanels_1.formatIndentGuidesForFocusedItems)();
     }, 0);
     setTimeout(() => {
-        (0, sidepanels_1.formatIndentGuidesForFocusedItems)();
         (0, editor_1.formatProtyleWithBgImageOnly)();
     }, 200);
+}
+function destroyStyleUpdates() {
+    (0, docks_1.destroyDockBg)();
+    (0, sidepanels_1.removeIndentGuidesFormatClassName)();
+    (0, editor_1.removeProtyleWithBgImageOnlyClassName)();
 }
 
 
@@ -581,27 +581,49 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.removeIndentGuidesFormatClassName = exports.formatIndentGuidesForFocusedItems = void 0;
+const observers_1 = __webpack_require__(766);
 const rsc_1 = __webpack_require__(49);
 const { isMobile } = rsc_1.environment;
-// 可尝试点击后启动 MutationObserver，监测到相关变动后再执行，然后 disconnect
+const fileTreeFocusedItemMO = new observers_1.AsriMutationObserver(fileTreeFocusedItemMOCallback);
 function formatIndentGuidesForFocusedItems() {
-    return __awaiter(this, void 0, void 0, function* () {
-        if (!isMobile) {
-            let listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
-            document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
-            if (listItemsFocus.length === 0)
-                return;
-            listItemsFocus.forEach(li => {
-                if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
-                    if (li.parentNode instanceof Element) {
-                        li.parentNode.classList.add('has-focus');
-                    }
-                }
-            });
-        }
-    });
+    if (isMobile)
+        return;
+    fileTreeFocusedItemMO.observe(rsc_1.asriDoms.layouts, observers_1.MOConfigForClassNames);
 }
 exports.formatIndentGuidesForFocusedItems = formatIndentGuidesForFocusedItems;
+function fileTreeFocusedItemMOCallback(mutationsList, _observer) {
+    var _a;
+    for (const mutation of mutationsList) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            if (mutation.target instanceof HTMLElement) {
+                console.log('mo');
+                const oldValueClasses = ((_a = mutation.oldValue) === null || _a === void 0 ? void 0 : _a.split(' ')) || [];
+                const newValueClasses = mutation.target.className.split(' ');
+                const focusClassAdded = !oldValueClasses.includes('b3-list-item--focus') && newValueClasses.includes('b3-list-item--focus');
+                if (focusClassAdded) {
+                    // console.log(`类名变化：元素 ${mutation.target.tagName.toLowerCase()} 的类名 'b3-list-item--focus' ${focusClassAdded ? '被添加' : '被移除'}`);
+                    addHasFocusClassNames();
+                    return;
+                }
+            }
+        }
+    }
+    fileTreeFocusedItemMO.disconnect();
+}
+function addHasFocusClassNames() {
+    const listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
+    document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
+    if (listItemsFocus.length === 0)
+        return;
+    listItemsFocus.forEach(li => {
+        if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
+            if (li.parentNode instanceof Element) {
+                li.parentNode.classList.add('has-focus');
+            }
+        }
+    });
+    fileTreeFocusedItemMO.disconnect();
+}
 function removeIndentGuidesFormatClassName() {
     return __awaiter(this, void 0, void 0, function* () {
         document.querySelectorAll('.file-tree .has-focus').forEach(el => el.classList.remove('has-focus'));
@@ -919,7 +941,7 @@ exports.nodeListsHaveSameElements = nodeListsHaveSameElements;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AsriMutationObserver = exports.AsriResizeObserver = void 0;
+exports.MOConfigForClassNames = exports.AsriMutationObserver = exports.AsriResizeObserver = void 0;
 class AsriResizeObserver {
 }
 exports.AsriResizeObserver = AsriResizeObserver;
@@ -942,6 +964,11 @@ class AsriMutationObserver {
     }
 }
 exports.AsriMutationObserver = AsriMutationObserver;
+exports.MOConfigForClassNames = {
+    attributes: true, // 监视属性变化
+    subtree: true, // 包含目标节点的后代节点
+    attributeFilter: ['class'] // 只关注"class"属性的变化
+};
 
 
 /***/ }),
@@ -1011,10 +1038,10 @@ exports.environment = {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isLytDockbFloating = exports.hasDockb = exports.isStatusHidden = exports.isFullScreen = exports.isSideDockHidden = exports.isDockLytExpanded = exports.isDockLytPinned = void 0;
+exports.isStatusHidden = exports.isFullScreen = exports.hasDockb = exports.isDockHidden = exports.isDockLytExpanded = exports.isDockLytPinned = void 0;
 const electron_1 = __webpack_require__(571);
 const rsc_1 = __webpack_require__(49);
-// side panels
+// docks and panels
 function isDockLytPinned(dir) {
     const dockLayoutEl = rsc_1.asriDoms[`layoutDock${dir}`];
     return !!(dockLayoutEl && !dockLayoutEl.classList.contains('layout--float'));
@@ -1023,27 +1050,43 @@ exports.isDockLytPinned = isDockLytPinned;
 function isDockLytExpanded(dir) {
     const dockLayoutEl = rsc_1.asriDoms[`layoutDock${dir}`];
     let size;
+    if (!dockLayoutEl)
+        return false;
     if (dir === 'B') {
-        size = dockLayoutEl === null || dockLayoutEl === void 0 ? void 0 : dockLayoutEl.style.height;
+        size = dockLayoutEl.style.height;
     }
     else {
-        size = dockLayoutEl === null || dockLayoutEl === void 0 ? void 0 : dockLayoutEl.style.width;
+        size = dockLayoutEl.style.width;
     }
     return !!(size && size !== '0px');
 }
 exports.isDockLytExpanded = isDockLytExpanded;
-function isSideDockHidden(dir = 'L') {
+function isDockHidden(dir = 'L') {
     const dock = rsc_1.asriDoms[`dock${dir}`];
     return !!(dock && dock.classList.contains('fn__none'));
     // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri/issues/16
 }
-exports.isSideDockHidden = isSideDockHidden;
+exports.isDockHidden = isDockHidden;
 // export function isFloatDockLytHidden(el: HTMLElement): boolean {
 //     return !isDockLytPinned(el) && el?.style.cssText.includes('transform: translate');
 // }
+// bottom dock
+function hasDockb() {
+    return !!(rsc_1.asriDoms.dockB && !rsc_1.asriDoms.dockB.classList.contains('fn__none'));
+}
+exports.hasDockb = hasDockb;
+// export function isLytDockbFloating() {
+//     let result = false;
+//     if (!env.isMobile) {
+//         const layouts = doms.layouts;
+//         const lytDockb = layouts?.querySelector('.layout__dockb') as AsriDomsExtended;
+//         result = !!(layouts && lytDockb?.classList.contains('layout--float') && lytDockb?.style.height !== "0px");
+//     }
+//     return result;
+// }
 // fullscreen state in macOS
 function isFullScreen() {
-    return !!(!rsc_1.environment.isInBrowser && electron_1.remote.getCurrentWindow().isFullScreen());
+    return !!(electron_1.remote && electron_1.remote.getCurrentWindow().isFullScreen());
 }
 exports.isFullScreen = isFullScreen;
 // status bar
@@ -1051,21 +1094,6 @@ function isStatusHidden() {
     return !!(rsc_1.asriDoms.status && rsc_1.asriDoms.status.classList.contains('fn__none'));
 }
 exports.isStatusHidden = isStatusHidden;
-// bottom dock
-function hasDockb() {
-    return !!(rsc_1.asriDoms.dockB && !rsc_1.asriDoms.dockB.classList.contains('fn__none'));
-}
-exports.hasDockb = hasDockb;
-function isLytDockbFloating() {
-    let result = false;
-    if (!rsc_1.environment.isMobile) {
-        const layouts = rsc_1.asriDoms.layouts;
-        const lytDockb = layouts === null || layouts === void 0 ? void 0 : layouts.querySelector('.layout__dockb');
-        result = !!(layouts && (lytDockb === null || lytDockb === void 0 ? void 0 : lytDockb.classList.contains('layout--float')) && (lytDockb === null || lytDockb === void 0 ? void 0 : lytDockb.style.height) !== "0px");
-    }
-    return result;
-}
-exports.isLytDockbFloating = isLytDockbFloating;
 
 
 /***/ }),
