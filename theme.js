@@ -491,9 +491,9 @@ function mouseupEvents(e) {
 function updateStyle() {
     setTimeout(() => {
         (0, docks_1.dockLBg)();
-        (0, sidepanels_1.formatIndentGuidesForFocusedItems)();
     }, 0);
     setTimeout(() => {
+        (0, sidepanels_1.formatIndentGuidesForFocusedItems)();
         (0, editor_1.formatProtyleWithBgImageOnly)();
     }, 200);
 }
@@ -581,49 +581,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.removeIndentGuidesFormatClassName = exports.formatIndentGuidesForFocusedItems = void 0;
-const observers_1 = __webpack_require__(766);
 const rsc_1 = __webpack_require__(49);
 const { isMobile } = rsc_1.environment;
-const fileTreeFocusedItemMO = new observers_1.AsriMutationObserver(fileTreeFocusedItemMOCallback);
+// 可尝试点击后启动 MutationObserver，监测到相关变动后再执行，然后 disconnect
 function formatIndentGuidesForFocusedItems() {
-    if (isMobile)
-        return;
-    fileTreeFocusedItemMO.observe(rsc_1.asriDoms.layouts, observers_1.MOConfigForClassNames);
-}
-exports.formatIndentGuidesForFocusedItems = formatIndentGuidesForFocusedItems;
-function fileTreeFocusedItemMOCallback(mutationsList, _observer) {
-    var _a;
-    for (const mutation of mutationsList) {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-            if (mutation.target instanceof HTMLElement) {
-                console.log('mo');
-                const oldValueClasses = ((_a = mutation.oldValue) === null || _a === void 0 ? void 0 : _a.split(' ')) || [];
-                const newValueClasses = mutation.target.className.split(' ');
-                const focusClassAdded = !oldValueClasses.includes('b3-list-item--focus') && newValueClasses.includes('b3-list-item--focus');
-                if (focusClassAdded) {
-                    // console.log(`类名变化：元素 ${mutation.target.tagName.toLowerCase()} 的类名 'b3-list-item--focus' ${focusClassAdded ? '被添加' : '被移除'}`);
-                    addHasFocusClassNames();
-                    return;
+    return __awaiter(this, void 0, void 0, function* () {
+        if (!isMobile) {
+            let listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
+            document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
+            if (listItemsFocus.length === 0)
+                return;
+            listItemsFocus.forEach(li => {
+                if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
+                    if (li.parentNode instanceof Element) {
+                        li.parentNode.classList.add('has-focus');
+                    }
                 }
-            }
-        }
-    }
-    fileTreeFocusedItemMO.disconnect();
-}
-function addHasFocusClassNames() {
-    const listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
-    document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
-    if (listItemsFocus.length === 0)
-        return;
-    listItemsFocus.forEach(li => {
-        if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
-            if (li.parentNode instanceof Element) {
-                li.parentNode.classList.add('has-focus');
-            }
+            });
         }
     });
-    fileTreeFocusedItemMO.disconnect();
 }
+exports.formatIndentGuidesForFocusedItems = formatIndentGuidesForFocusedItems;
 function removeIndentGuidesFormatClassName() {
     return __awaiter(this, void 0, void 0, function* () {
         document.querySelectorAll('.file-tree .has-focus').forEach(el => el.classList.remove('has-focus'));
