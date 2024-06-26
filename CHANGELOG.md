@@ -1,3 +1,19 @@
+### v3.0.16
+
+* 内置题头图对话框添加溢出渐隐
+* 优化溢出渐隐的渐变流畅性
+* 平衡数据库视图页签左右边距
+* 数据库视图页签栏圆角适应正文字号
+
+<br />
+
+* Incorporated overflow fadeout for the built-in header images dialog.
+* Optimized the gradient smoothness of the overflow fadeout.
+* Balanced the left and right paddings of the database view tabs.
+* Adjusted the rounded corners of the database view tabs to match the main text size.
+
+---
+
 ### v3.0.15
 
 * 适配代码块行号高亮背景色

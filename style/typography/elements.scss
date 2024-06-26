@@ -958,11 +958,11 @@
         transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1),
             transform 0.2s cubic-bezier(0, 0, 0.2, 1);
         transition-delay: 1s;
-        pointer-events: none;
+        // pointer-events: none;
 
-        >* {
-            pointer-events: all;
-        }
+        // >* {
+        //     pointer-events: all;
+        // }
 
         &:hover {
             opacity: 1;
