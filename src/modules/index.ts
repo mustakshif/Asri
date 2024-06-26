@@ -45,6 +45,10 @@ function updateStyle(e?: Event) {
         formatIndentGuidesForFocusedItems();
         formatProtyleWithBgImageOnly();
     }, 200);
+
+    if (e) {
+        console.log(e);
+    }
 }
 
 function destroyStyleUpdates() {

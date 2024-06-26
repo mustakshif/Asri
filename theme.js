@@ -486,9 +486,9 @@ function unloadAsriModules() {
 exports.unloadAsriModules = unloadAsriModules;
 function mouseupEvents(e) {
     // console.log(e);
-    updateStyle();
+    updateStyle(e);
 }
-function updateStyle() {
+function updateStyle(e) {
     setTimeout(() => {
         (0, docks_1.dockLBg)();
     }, 0);
@@ -496,6 +496,9 @@ function updateStyle() {
         (0, sidepanels_1.formatIndentGuidesForFocusedItems)();
         (0, editor_1.formatProtyleWithBgImageOnly)();
     }, 200);
+    if (e) {
+        console.log(e);
+    }
 }
 function destroyStyleUpdates() {
     (0, docks_1.destroyDockBg)();
