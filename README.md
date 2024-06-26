@@ -125,23 +125,23 @@ In addition to adding custom attributes by <kbd>shift + click block icon</kbd> -
 ```json
 {
     "@type/d": {
-        "Full-width display for all supported blocks": {
-            "afwd": "all"
-        },
-        "Full-width display for all database blocks and images": {
-            "afwd": "db p"
+        "Full-width block type(s) in current doc": {
+            "@slash": "afwd",
+            "afwd": "@value/input"
         }
     },
-    "Enable full-width display individually": {
+    "Enable full-width for current block": {
+        "@slash": "afwdon",
         "afwd": "on"
     },
-    "Disable full-width display individually": {
+    "Disable full-width for current block": {
+        "@slash": "afwdoff",
         "afwd": "off"
     }
 }
 ```
 
-The above configuration adds two options for document blocks and content blocks in the plugin menu, respectively, for quickly enabling and disabling the full-width display attribute for related content.
+This configuration adds full-width display controls to the `/` menu, enabling quick management of document and block full-width display features via commands like `/afwd`, `/afwdon`, and `/afwdoff` in the editor.
 
 To restore the default state of the block, manually delete this custom attribute in the block attribute.
 
