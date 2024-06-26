@@ -33,10 +33,10 @@ export function unloadAsriModules() {
 }
 function mouseupEvents(e: Event) {
     // console.log(e);
-    updateStyle();
+    updateStyle(e);
 }
 
-function updateStyle() {
+function updateStyle(e?: Event) {
     setTimeout(() => {
         dockLBg();
     }, 0);
