@@ -5,7 +5,7 @@
 
 <br />
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v20.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v21.png)
 
 # Asri, a theme for SiYuan
 

@@ -4,7 +4,8 @@
 $fadeout-size-s: 18px;
 $fadeout-size-m: 24px;
 $fadeout-size-l: 36px;
-$fadeout-size-xl: 48px;
+$fadeout-size-xl: 40px;
+$fadeout-size-xxl: 50px;
 
 @property --mask-stop-start {
     syntax: '<length>';
@@ -88,7 +89,7 @@ $fadeout-size-xl: 48px;
 }
 
 [data-key="dialog-backgroundrandom"] .b3-dialog__body>.b3-cards {
-    @include overflow-indicator-fadein-bgClr($fadeout-size-xl, $range: 'top');
+    @include overflow-indicator-fadein-bgClr($fadeout-size-xxl, $range: 'top');
 
     padding-top: 0;
 
@@ -113,7 +114,7 @@ $fadeout-size-xl: 48px;
 
 // body:not(.asri-immersive-tabbar) {
 //     .protyle-content {
-//         @include overflow-indicator-fadein-bgClr($fadeout-size-xl, $range: 'top');
+//         @include overflow-indicator-fadein-bgClr($fadeout-size-xxl, $range: 'top');
 
 //         .protyle-background__icon {
 //             z-index: auto;
