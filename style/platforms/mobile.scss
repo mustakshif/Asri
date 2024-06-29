@@ -13,6 +13,16 @@
         }
     }
 
+    .protyle-scroll {
+        opacity: 1;
+        transform: none;
+        z-index: 4; // 高于数据库表头
+
+        &__bar {
+            right: calc(8px - var(--b3-dynamicscroll-width)/2);
+        }
+    }
+
     //菜单 
     #menu {
         &.b3-menu--fullscreen {
