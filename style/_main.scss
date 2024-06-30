@@ -47,3 +47,16 @@
 .body-asri--linux {
     @extend .body--win32;
 }
+
+// for overflow indicator
+@property --mask-stop-start {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 0px;
+}
+
+@property --mask-stop-end {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 0px;
+}

@@ -7,18 +7,6 @@ $fadeout-size-l: 36px;
 $fadeout-size-xl: 40px;
 $fadeout-size-xxl: 50px;
 
-@property --mask-stop-start {
-    syntax: '<length>';
-    inherits: false;
-    initial-value: 0px;
-}
-
-@property --mask-stop-end {
-    syntax: '<length>';
-    inherits: false;
-    initial-value: 0px;
-}
-
 .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1,
 .sy__file>.b3-list>.fn__flex-1 {
     @include overflow-indicator-fadein-mask($fadeout-size-s, 'top');
