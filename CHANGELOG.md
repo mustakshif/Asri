@@ -1,3 +1,23 @@
+### v3.0.17
+
+* 优化移动端设置主菜单样式
+* 更新全宽显示属性的文档示例
+* 还原编辑区动态滚动条触发显示的范围
+* [移动端编辑区动态滚动条改为常显](https://github.com/mustakshif/Asri/issues/78)
+* 加粗对话框标题
+* 减少数据库标题字重
+
+<br />
+
+* Optimized the main settings menu for mobile platform
+* Updated documentation examples for full-width display properties
+* Reverted the range for triggering the dynamic scrollbar display in the editing area
+* [Changed the editing area dynamic scrollbar to always visible on mobile](https://github.com/mustakshif/Asri/issues/78)
+* Bolded the dialog box titles
+* Reduced the font weight of database titles
+
+---
+
 ### v3.0.16
 
 * 内置题头图对话框添加溢出渐隐

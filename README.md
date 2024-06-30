@@ -13,18 +13,21 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.0.17
+
+* Optimized the main settings menu for mobile platform
+* Updated documentation examples for full-width display properties
+* Reverted the range for triggering the dynamic scrollbar display in the editing area
+* [Changed the editing area dynamic scrollbar to always visible on mobile](https://github.com/mustakshif/Asri/issues/78)
+* Bolded the dialog box titles
+* Reduced the font weight of database titles
+
 ### v3.0.16
 
 * Incorporated overflow fadeout for the built-in header images dialog.
 * Optimized the gradient smoothness of the overflow fadeout.
 * Balanced the left and right paddings of the database view tabs.
 * Adjusted the rounded corners of the database view tabs to match the main text size.
-
-### v3.0.15
-
-* Adapted code block line number highlighting background color
-* Fixed the misalignment issue of the toggle handle in some database menus
-* [Updated the device platform detection related body element class names](https://github.com/mustakshif/Asri/issues/75)
 
 ### ...
 
