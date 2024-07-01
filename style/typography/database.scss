@@ -63,6 +63,7 @@
                 .item--focus {
                     // box-shadow: 0 -1px .5px 0 rgba(0, 0, 0, .12) inset;
                     box-shadow: none;
+                    color: var(--b3-theme-on-background);
 
                     &:hover {
                         // @include theme-variant-color(background-color, light-components, 1, 0.2, $important: true);
@@ -130,8 +131,17 @@
             border-bottom-color: var(--b3-border-color-trans);
 
             &--header {
-                color: var(--b3-theme-on-surface);
+                // color: var(--b3-theme-on-surface);
                 font-weight: 500;
+
+                .av__cellheadericon {
+                    color: inherit;
+                }
+
+                svg.av__cellheadericon, 
+                .av__celltext {
+                    opacity: .68;
+                }
             }
 
             &:hover .b3-chip[data-type=block-more] {
