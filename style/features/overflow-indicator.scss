@@ -1,43 +1,37 @@
 @use '../base' as *;
 @use "sass:string";
 
-@property --mask-stop-start {
-    syntax: '<length>';
-    inherits: false;
-    initial-value: 0px;
-}
-
-@property --mask-stop-end {
-    syntax: '<length>';
-    inherits: false;
-    initial-value: 0px;
-}
+$fadeout-size-s: 18px;
+$fadeout-size-m: 24px;
+$fadeout-size-l: 36px;
+$fadeout-size-xl: 40px;
+$fadeout-size-xxl: 50px;
 
 .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1,
 .sy__file>.b3-list>.fn__flex-1 {
-    @include overflow-indicator-fadein-mask(18px, 'top');
+    @include overflow-indicator-fadein-mask($fadeout-size-s, 'top');
 }
 
 .file-tree.sy__file .block__icons~.fn__flex-1 {
-    @include overflow-indicator-fadein-mask(18px, 'top bottom');
+    @include overflow-indicator-fadein-mask($fadeout-size-s, 'top bottom');
 }
 
 .layout__dockb.layout--float .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
-    @include overflow-indicator-fadein-mask(18px, 'top bottom');
+    @include overflow-indicator-fadein-mask($fadeout-size-s, 'top bottom');
 }
 
 // .file-tree.sy__backlink .backlinkList {
-//     @include overflow-indicator-fadein-mask(18px, 'bottom');
+//     @include overflow-indicator-fadein-mask($fadeout-size-s, 'bottom');
 // } //文字编辑工具条会被裁切
 
 .layout__dockb {
     .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
-        @include overflow-indicator-fadein-mask(18px, 'top');
+        @include overflow-indicator-fadein-mask($fadeout-size-s, 'top');
     }
 }
 
 [data-name="bazaar"] .config-bazaar__panel {
-    @include overflow-indicator-fadein-bgClr(40px, $range: 'top');
+    @include overflow-indicator-fadein-bgClr($fadeout-size-xl, $range: 'top');
 
     &::before {
         top: 44px;
@@ -48,13 +42,13 @@
 [data-name="AI"] .layout-tab-bar+.fn__flex-1,
 .history__repo[data-type="repo"] .b3-list--background,
 [data-key="dialog-snippets"] .b3-dialog__body>.fn__flex-1 {
-    @include overflow-indicator-fadein-bgClr(20px, $range: 'top');
+    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');
 }
 
 // pdf 侧边导航
 #thumbnailView,
 #outlineView {
-    @include overflow-indicator-fadein-bgClr(20px, $range: 'top');
+    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');
 
     &::before {
         top: -8px;
@@ -64,11 +58,11 @@
 // 部分插件配置窗口，移动文档窗口
 .b3-dialog__header:not(.fn__none)+.b3-dialog__body :where(.config__tab-container, .layout-tab-bar+.fn__flex-1),
 #foldTree {
-    @include overflow-indicator-fadein-bgClr(20px, $range: 'top');
+    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');
 }
 
 .b3-dialog__header:not(.fn__none)+.b3-dialog__body .b3-dialog__content {
-    @include overflow-indicator-fadein-bgClr(20px, $range: 'top');
+    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');
 
     &::before {
         top: -16px;
@@ -83,7 +77,7 @@
 }
 
 [data-key="dialog-backgroundrandom"] .b3-dialog__body>.b3-cards {
-    @include overflow-indicator-fadein-bgClr(50px, $range: 'top');
+    @include overflow-indicator-fadein-bgClr($fadeout-size-xxl, $range: 'top');
 
     padding-top: 0;
 
@@ -103,12 +97,12 @@
 }
 
 .protyle-breadcrumb__bar {
-    @include overflow-indicator-fadein-mask(18px, $range: 'left right');
+    @include overflow-indicator-fadein-mask($fadeout-size-s, $range: 'left right');
 }
 
 // body:not(.asri-immersive-tabbar) {
 //     .protyle-content {
-//         @include overflow-indicator-fadein-bgClr(50px, $range: 'top');
+//         @include overflow-indicator-fadein-bgClr($fadeout-size-xxl, $range: 'top');
 
 //         .protyle-background__icon {
 //             z-index: auto;
@@ -117,7 +111,7 @@
 // }
 
 [data-key="dialog-searchtype"] .b3-dialog__content {
-    @include overflow-indicator-fadein-mask(20px, $range: 'top');
+    @include overflow-indicator-fadein-mask($fadeout-size-m, $range: 'top');
 }
 
 @keyframes maskAppear-bgClr {

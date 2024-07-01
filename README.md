@@ -5,7 +5,7 @@ English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main
 
 <br/>
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v20.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v21.png)
 
 # Asri, a theme for SiYuan
 
@@ -13,18 +13,21 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.0.17
+
+* Optimized the main settings menu for mobile platform
+* Updated documentation examples for full-width display properties
+* Reverted the range for triggering the dynamic scrollbar display in the editing area
+* [Changed the editing area dynamic scrollbar to always visible on mobile](https://github.com/mustakshif/Asri/issues/78)
+* Bolded the dialog box titles
+* Reduced the font weight of database titles
+
 ### v3.0.16
 
 * Incorporated overflow fadeout for the built-in header images dialog.
 * Optimized the gradient smoothness of the overflow fadeout.
 * Balanced the left and right paddings of the database view tabs.
 * Adjusted the rounded corners of the database view tabs to match the main text size.
-
-### v3.0.15
-
-* Adapted code block line number highlighting background color
-* Fixed the misalignment issue of the toggle handle in some database menus
-* [Updated the device platform detection related body element class names](https://github.com/mustakshif/Asri/issues/75)
 
 ### ...
 
@@ -125,23 +128,23 @@ In addition to adding custom attributes by <kbd>shift + click block icon</kbd> -
 ```json
 {
     "@type/d": {
-        "Full-width display for all supported blocks": {
-            "afwd": "all"
-        },
-        "Full-width display for all database blocks and images": {
-            "afwd": "db p"
+        "Full-width block type(s) in current doc": {
+            "@slash": "afwd",
+            "afwd": "@value/input"
         }
     },
-    "Enable full-width display individually": {
+    "Enable full-width for current block": {
+        "@slash": "afwdon",
         "afwd": "on"
     },
-    "Disable full-width display individually": {
+    "Disable full-width for current block": {
+        "@slash": "afwdoff",
         "afwd": "off"
     }
 }
 ```
 
-The above configuration adds two options for document blocks and content blocks in the plugin menu, respectively, for quickly enabling and disabling the full-width display attribute for related content.
+This configuration adds full-width display controls to the `/` menu, enabling quick management of document and block full-width display features via commands like `/afwd`, `/afwdon`, and `/afwdoff` in the editor.
 
 To restore the default state of the block, manually delete this custom attribute in the block attribute.
 

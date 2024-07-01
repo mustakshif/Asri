@@ -5,7 +5,7 @@
 
 <br />
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v20.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v21.png)
 
 # Asri, a theme for SiYuan
 
@@ -13,18 +13,21 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.0.17
+
+* 优化移动端设置主菜单样式
+* 更新全宽显示属性的文档示例
+* 还原编辑区动态滚动条触发显示的范围
+* [移动端编辑区动态滚动条改为常显](https://github.com/mustakshif/Asri/issues/78)
+* 加粗对话框标题
+* 减少数据库标题字重
+
 ### v3.0.16
 
 * 内置题头图对话框添加溢出渐隐
 * 优化溢出渐隐的渐变流畅性
 * 平衡数据库视图页签左右边距
 * 数据库视图页签栏圆角适应正文字号
-
-### v3.0.15
-
-* 适配代码块行号高亮背景色
-* 修复数据库菜单中开关把手错位问题
-* [更新设备平台检测相关的 body 元素类名](https://github.com/mustakshif/Asri/issues/75)
 
 ### ...
 
@@ -125,23 +128,23 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 ```json
 {
     "@type/d": {
-        "全宽显示所有受支持的块": {
-            "afwd": "all"
-        },
-        "全宽显示所有数据库块和图片": {
-            "afwd": "db p"
+        "指定当前文档中全宽显示块的类型": {
+            "@slash": "afwd",
+            "afwd": "@value/input"
         }
     },
-    "单独启用全宽显示": {
+    "启用当前块的全宽显示": {
+        "@slash": "afwdon",
         "afwd": "on"
     },
-    "单独关闭全宽显示": {
+    "关闭当前块的全宽显示": {
+        "@slash": "afwdoff",
         "afwd": "off"
     }
 }
 ```
 
-上述配置分别为文档块和内容块添加了两个插件选项，用于快速启用和关闭相关内容的全宽显示属性。
+上述配置在 `/` 菜单中添加了全宽显示配置项，在编辑器中输入 `/afwd`、`/afwdon`、`/afwdoff` 即可快速控制文档和内容块的全宽显示属性。
 
 要恢复块的默认状态，请在块属性中手动删除此自定义属性。
 
