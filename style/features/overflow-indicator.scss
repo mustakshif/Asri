@@ -111,7 +111,7 @@ $fadeout-size-xxl: 50px;
 // }
 
 [data-key="dialog-exportimage"] .b3-dialog__content::before {
-    display: none; // fix https://github.com/mustakshif/Asri/issues/80
+    display: none !important; // fix https://github.com/mustakshif/Asri/issues/80
 }
 
 [data-key="dialog-searchtype"] .b3-dialog__content {

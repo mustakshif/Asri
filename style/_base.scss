@@ -647,7 +647,7 @@ background: linear-gradient(unquote($direction), $stops);
 
     &::before {
         content: '';
-        // display: block;
+        display: block;
         position: sticky;
         z-index: 1;
         opacity: 0;
