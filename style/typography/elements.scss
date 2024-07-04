@@ -425,7 +425,9 @@
 
     @include headings;
 
-    [data-type='NodeSuperBlock']>[data-type='NodeHeading']:first-child,
+    // [data-type='NodeSuperBlock']>[data-type='NodeHeading']:first-child, https://github.com/mustakshif/Asri/issues/79
+    .sb[data-sb-layout=row]>[data-type=NodeHeading]:first-child,
+    .sb[data-sb-layout=col]>[data-type=NodeHeading],
     .protyle-wysiwyg__embed>[data-type='NodeHeading']:first-child,
     .protyle-wysiwyg__embed>.protyle-breadcrumb__bar+[data-type='NodeHeading'] {
         margin-top: 0;
@@ -667,6 +669,10 @@
     // }
     [data-node-id].sb[data-sb-layout=col]>.sb {
         margin-top: 0;
+    }
+
+    .sb > div {
+        height: fit-content;
     }
 
     .sb>.bq {

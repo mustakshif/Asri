@@ -11,7 +11,7 @@
 
 // common mixins ———————————————————————
 @mixin font-family {
-    --b3-font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+    --b3-font-family: system-ui, ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
 
     --b3-font-family-code: SF Mono, "JetBrains Mono", JetBrainsMono-Regular, Menlo, mononoki, Consolas, "Liberation Mono", Courier, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols", var(--b3-font-family), monospace;
 
@@ -37,15 +37,30 @@
 
 //————————————————————————————————————
 @mixin menu-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $border-light: 1px, $border-dark: 0.5px) {
-    box-shadow: 0 0 0 $border-light rgb(from #{$shadow-clr-light} r g b / calc($opacity-light / 2)),
-    0px 13px 25px -2px rgb(from #{$shadow-clr-light} r g b / calc($opacity-light / 2)),
-    0px 0px 10px 0px rgb(from #{$shadow-clr-light} r g b / calc($opacity-light / 2));
+    @if type-of($shadow-clr-light) !=color {
+        box-shadow: 0 0 0 $border-light rgb(from #{$shadow-clr-light} r g b / calc($opacity-light / 2)),
+        0px 13px 25px -2px rgb(from #{$shadow-clr-light} r g b / calc($opacity-light / 2)),
+        0px 0px 10px 0px rgb(from #{$shadow-clr-light} r g b / calc($opacity-light / 2));
+    }
 
+    @else {
+        box-shadow: 0 0 0 $border-light change-color($shadow-clr-light, $alpha: calc($opacity-light / 2)),
+            0px 13px 25px -2px change-color($shadow-clr-light, $alpha: calc($opacity-light / 2)),
+            0px 0px 10px 0px change-color($shadow-clr-light, $alpha: calc($opacity-light / 2));
+    }
 
     @include darkmode-counterpart {
-        box-shadow: 0 0 0 $border-dark rgb(from #{$shadow-clr-dark} r g b / 1),
-        0px 13px 25px -2px rgb(from #{$shadow-clr-dark} r g b / $opacity-dark),
-        0px 0px 10px 0px rgb(from #{$shadow-clr-dark} r g b / calc($opacity-dark / 2));
+        @if type-of($shadow-clr-dark) !=color {
+            box-shadow: 0 0 0 $border-dark rgb(from #{$shadow-clr-dark} r g b / 1),
+            0px 13px 25px -2px rgb(from #{$shadow-clr-dark} r g b / $opacity-dark),
+            0px 0px 10px 0px rgb(from #{$shadow-clr-dark} r g b / calc($opacity-dark / 2));
+        }
+
+        @else {
+            box-shadow: 0 0 0 $border-dark change-color($shadow-clr-dark, $alpha: 1),
+                0px 13px 25px -2px change-color($shadow-clr-dark, $alpha: $opacity-dark),
+                0px 0px 10px 0px change-color($shadow-clr-dark, $alpha: calc($opacity-dark / 2));
+        }
     }
 }
 
@@ -557,7 +572,8 @@ https://css-tricks.com/easing-linear-gradients/
 $hue: hue($startColor);
 $saturation: saturation($startColor);
 $lightness: lightness($startColor);
-$stops: ();
+$stops: (
+);
 
 @each $colorStop, $alphaValue in $scrimCoordinates {
     $stop: hsla($hue, $saturation, $lightness, $alphaValue) percentage($colorStop/100);
@@ -585,14 +601,15 @@ background: linear-gradient(unquote($direction), $stops);
         100: 0
     );
 
-    $stops: ();
+$stops: (
+);
 
-    @each $colorStop, $alphaValue in $scrimCoordinates {
-        $stop: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactor)) percentage(calc($colorStop/100));
-        $stops: append($stops, $stop, comma);
-    }
-    
-    background: linear-gradient(unquote($direction), $stops);
+@each $colorStop, $alphaValue in $scrimCoordinates {
+    $stop: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactor)) percentage(calc($colorStop/100));
+    $stops: append($stops, $stop, comma);
+}
+
+background: linear-gradient(unquote($direction), $stops);
 }
 
 @mixin overflow-indicator-line($height: 1px) {
@@ -639,7 +656,7 @@ background: linear-gradient(unquote($direction), $stops);
         animation-range: 1px 100%;
 
         // background-image: linear-gradient(#{$dir}, $bg-clr, transparent);
-        @include smoothGradientVar($bg-clr,$direction: #{$dir});
+        @include smoothGradientVar($bg-clr, $direction: #{$dir});
 
         margin-#{str-slice($dir, 4)}: calc(-1 * $size);
 
@@ -676,7 +693,7 @@ background: linear-gradient(unquote($direction), $stops);
         animation-direction: alternate-reverse;
 
         // background-image: linear-gradient(#{$dir}, $bg-clr, transparent);
-        @include smoothGradientVar($bg-clr,$direction: #{$dir});
+        @include smoothGradientVar($bg-clr, $direction: #{$dir});
 
         margin-#{str-slice($dir, 4)}: calc(-1 * $size);
 
@@ -775,6 +792,7 @@ animation-direction: #{$anim-dir};
     }
 }
 }
+
 // other global vars ——————————————————————————
 
 $border-rd-card: 20px;
