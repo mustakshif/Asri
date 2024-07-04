@@ -15,7 +15,8 @@
         }
     }
 
-    .b3-typography,.protyle-wysiwyg {
+    .b3-typography,
+    .protyle-wysiwyg {
         font-family: var(--b3-font-family);
     }
 
@@ -30,62 +31,19 @@
     }
 
     //菜单 
+    #menu {
+        &.b3-menu--fullscreen {
+            box-shadow: none;
+        }
 
-    #menu.b3-menu--fullscreen {
-        box-shadow: none;
         border-radius: 0;
+    }
 
-        .b3-menu {
-            &__items {
-                @include overflow-indicator-line;
-
-                &::before {
-                    top: -5px;
-                }
-
-                padding: 5px 0 12px;
-                overflow-x: hidden;
-            }
-
-            &__title {
-                background-color: oklch(from var(--b3-menu-background) l c h/0.8);
-            }
-
-            &__separator {
-                height: 0;
-                margin: 12px;
-                background-color: transparent;
-            }
-
-            &__item {
-                border-radius: 0;
-                margin: 0 12px;
-                width: calc(100% - 24px);
-
-                &:not(:hover) {
-                    background-color: var(--b3-theme-background);
-                }
-            }
-        }
-
-        .b3-menu__item:first-child,
-        .b3-menu__separator+.b3-menu__item {
-            border-radius: 12px 12px 0 0;
-            padding-top: 4px;
-        }
-
-        .b3-menu__item:last-child,
-        #menuNewNotebook,
-        #menuHistory,
-        #menuPlugin {
-            border-radius: 0 0 12px 12px;
-            padding-bottom: 4px;
-        }
-
-        #menuSafeQuit {
-            border-radius: 12px;
-            padding-top: 0;
-        }
+    .b3-menu__separator {
+        height: 1px;
+        margin: 16px;
+        width: calc(100% - 32px);
+        background-color: var(--b3-border-color-trans);
     }
 
     // 状态栏
