@@ -126,6 +126,10 @@
             text-decoration-line: underline line-through;
         }
 
+        &[data-subtype=d] {
+            text-decoration-style: dotted;
+        }
+
         @include darkmode-counterpart {
             --bg-clr: var(--b3-theme-primary-lighter);
         }
