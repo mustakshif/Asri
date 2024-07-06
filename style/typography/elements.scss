@@ -126,6 +126,15 @@
             text-decoration-line: underline line-through;
         }
 
+        &[data-subtype=d] {
+            text-decoration-style: dotted;
+            text-decoration-thickness: .125em;
+
+            &:hover {
+                text-decoration-thickness: .1em;
+            }
+        }
+
         @include darkmode-counterpart {
             --bg-clr: var(--b3-theme-primary-lighter);
         }
