@@ -13,6 +13,15 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.0.18
+
+* 优化移动端默认字体样式
+* 区分块引用动态和静态锚文本样式
+* 数据库表头字体和图标的颜色跟随块外观样式
+* [修复水平布局的超级块中标题块顶部边距不对齐的问题](https://github.com/mustakshif/Asri/issues/79)
+* [修复无法导出为图片的问题](https://github.com/mustakshif/Asri/issues/80)
+* 回滚移动端设置主菜单样式
+
 ### v3.0.17
 
 * 优化移动端设置主菜单样式
@@ -21,13 +30,6 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * [移动端编辑区动态滚动条改为常显](https://github.com/mustakshif/Asri/issues/78)
 * 加粗对话框标题
 * 减少数据库标题字重
-
-### v3.0.16
-
-* 内置题头图对话框添加溢出渐隐
-* 优化溢出渐隐的渐变流畅性
-* 平衡数据库视图页签左右边距
-* 数据库视图页签栏圆角适应正文字号
 
 ### ...
 
