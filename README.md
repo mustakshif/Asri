@@ -13,6 +13,15 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.0.18
+
+* Optimized default font style for mobile devices.
+* Differentiated dynamic and static anchor text styles in block quotes.
+* Changed database table header font and icon colors to follow block appearance style.
+* [Fixed top margin misalignment issue for heading blocks in horizontal layout of super blocks](https://github.com/mustakshif/Asri/issues/79).
+* [Fixed issue where export to image was not possible](https://github.com/mustakshif/Asri/issues/80).
+* Rolled back setting menu style for mobile devices.
+
 ### v3.0.17
 
 * Optimized the main settings menu for mobile platform
@@ -21,13 +30,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * [Changed the editing area dynamic scrollbar to always visible on mobile](https://github.com/mustakshif/Asri/issues/78)
 * Bolded the dialog box titles
 * Reduced the font weight of database titles
-
-### v3.0.16
-
-* Incorporated overflow fadeout for the built-in header images dialog.
-* Optimized the gradient smoothness of the overflow fadeout.
-* Balanced the left and right paddings of the database view tabs.
-* Adjusted the rounded corners of the database view tabs to match the main text size.
 
 ### ...
 

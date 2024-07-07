@@ -1,3 +1,23 @@
+### v3.0.18
+
+* 优化移动端默认字体样式
+* 区分块引用动态和静态锚文本样式
+* 数据库表头字体和图标的颜色跟随块外观样式
+* [修复水平布局的超级块中标题块顶部边距不对齐的问题](https://github.com/mustakshif/Asri/issues/79)
+* [修复无法导出为图片的问题](https://github.com/mustakshif/Asri/issues/80)
+* 回滚移动端设置主菜单样式
+
+<br />
+
+* Optimized default font style for mobile devices.
+* Differentiated dynamic and static anchor text styles in block quotes.
+* Changed database table header font and icon colors to follow block appearance style.
+* [Fixed top margin misalignment issue for heading blocks in horizontal layout of super blocks](https://github.com/mustakshif/Asri/issues/79).
+* [Fixed issue where export to image was not possible](https://github.com/mustakshif/Asri/issues/80).
+* Rolled back setting menu style for mobile devices.
+
+---
+
 ### v3.0.17
 
 * 优化移动端设置主菜单样式
