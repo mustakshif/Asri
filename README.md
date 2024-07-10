@@ -13,6 +13,12 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.0.19
+
+* Adapted the style of the `Custom Block` plugin list-to-table format
+* Removed the extra whitespace on the right side of the status bar at the bottom of the publication page
+* Fixed the issue of focus state input box border cutting on the publish settings page
+
 ### v3.0.18
 
 * Optimized default font style for mobile devices.
@@ -21,15 +27,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * [Fixed top margin misalignment issue for heading blocks in horizontal layout of super blocks](https://github.com/mustakshif/Asri/issues/79).
 * [Fixed issue where export to image was not possible](https://github.com/mustakshif/Asri/issues/80).
 * Rolled back setting menu style for mobile devices.
-
-### v3.0.17
-
-* Optimized the main settings menu for mobile platform
-* Updated documentation examples for full-width display properties
-* Reverted the range for triggering the dynamic scrollbar display in the editing area
-* [Changed the editing area dynamic scrollbar to always visible on mobile](https://github.com/mustakshif/Asri/issues/78)
-* Bolded the dialog box titles
-* Reduced the font weight of database titles
 
 ### ...
 

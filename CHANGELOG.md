@@ -1,3 +1,17 @@
+### v3.0.19
+
+* 适配 `自定义块样式` 插件列表转表格的样式
+* 移除发布页面底部状态栏右侧多余空白
+* 修复发布设置页面聚焦状态输入框边框裁切问题
+
+<br />
+
+* Adapted the style of the `Custom Block` plugin list-to-table format
+* Removed the extra whitespace on the right side of the status bar at the bottom of the publication page
+* Fixed the issue of focus state input box border cutting on the publish settings page
+
+---
+
 ### v3.0.18
 
 * 优化移动端默认字体样式
