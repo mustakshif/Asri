@@ -71,6 +71,7 @@
     const isInBrowser = !ua.startsWith("SiYuan") || ua.indexOf("iPad") > -1 || isAndroidTablet; // tablets use this too
     const isMiniWindow = document.body.classList.contains('body--window');
     const isIOSApp = (/iOS/i.test(ua) || /iPad/i.test(ua)) && /AppleWebKit/i.test(ua) && ua.startsWith("SiYuan/");
+    const isReadOnly = window.siyuan.config.readonly
 
     const lang = window.siyuan.config.lang;
 
@@ -86,6 +87,7 @@
     isInBrowser && (document.body.classList.add('body-asri--browser'), asriClassNames.push('.body-asri--browser'));
     isAndroid && (document.body.classList.add('body-asri--android'), asriClassNames.push('.body-asri--android'));
     isIOSApp && (document.body.classList.add('body-asri--iosApp'), asriClassNames.push('.body-asri--iosApp'));
+    isReadOnly && (document.body.classList.add('body-asri--readOnly'), asriClassNames.push('.body-asri--readOnly'));
 
     if (!isMobile && asriDoms.toolbar) {
         createTopbarElementById('AsriPluginsIconsDivider', undefined, asriDoms.drag);

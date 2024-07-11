@@ -196,3 +196,7 @@ body.body--window #status {
     @include floating-status();
     padding-right: 0 !important;
 }
+
+.body-asri--readOnly #status {
+    padding-right: 0 !important;
+}
