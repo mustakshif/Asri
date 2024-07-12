@@ -110,11 +110,14 @@ $fadeout-size-xxl: 50px;
 //     }
 // }
 
-[data-key="dialog-exportimage"] .b3-dialog__content::before {
+[data-key="dialog-exportimage"] .b3-dialog__content::before,
+[data-key="dialog-replacetype"] .b3-dialog__content::before,
+[data-key="dialog-searchtype"] .b3-dialog__content::before {
     display: none !important; // fix https://github.com/mustakshif/Asri/issues/80
 }
 
-[data-key="dialog-searchtype"] .b3-dialog__content {
+[data-key="dialog-searchtype"] .b3-dialog__content,
+[data-key="dialog-replacetype"] .b3-dialog__content {
     @include overflow-indicator-fadein-mask($fadeout-size-m, $range: 'top');
 }
 
