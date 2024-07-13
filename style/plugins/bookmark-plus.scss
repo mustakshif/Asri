@@ -1,0 +1,65 @@
+@use '../base' as *;
+
+.custom-bookmark-group {
+    .custom-bookmark-group-header {
+        &.b3-list-item--focus {
+            background-color: var(--b3-theme-surface) !important;
+
+            .layout__dockl:not(.layout--float) & {
+                background-color: var(--b3-theme-background) !important;
+
+                @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
+                    background-color: oklch(from var(--b3-theme-surface) 0.91 c h) !important;
+
+                    @include darkmode-counterpart {
+                        background-color: oklch(from var(--b3-theme-surface) 0.41 c h) !important;
+                    }
+                }
+            }
+        }
+
+        .layout__dockl:not(.layout--float) & {
+            background-color: var(--b3-theme-surface) !important;
+        }
+
+        .layout--float &:not(.b3-list-item--focus):hover,
+        .layout__dockr &:not(.b3-list-item--focus):hover {
+            background-color: var(--b3-theme-background) !important;
+
+        }
+
+        background-color: var(--b3-theme-background);
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .b3-list-item__toggle.fn__hidden::before {
+        left: unset !important;
+    }
+}
+
+.custom-bookmark-body.card-view {
+
+    .layout__dockr &,
+    .layout--float & {
+        background-color: unset !important;
+    }
+
+    .custom-bookmark-group {
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+
+        .layout__dockr &,
+        .layout--float & {
+            outline: 1px solid var(--b3-border-color-trans);
+            outline-offset: -1px;
+        }
+    }
+
+    .custom-bookmark-group-header {
+        &.b3-list-item--focus {
+            background-color: var(--b3-theme-background) !important;
+        }
+    }
+}
