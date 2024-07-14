@@ -13,20 +13,16 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.0.20
+
+* Optimized the color scheme of relationship graph nodes and lines
+* Fixed layout issues in the search and replace filter dialog box
+
 ### v3.0.19
 
 * Adapted the style of the `Custom Block` plugin list-to-table format
 * Removed the extra whitespace on the right side of the status bar at the bottom of the publication page
 * Fixed the issue of focus state input box border cutting on the publish settings page
-
-### v3.0.18
-
-* Optimized default font style for mobile devices.
-* Differentiated dynamic and static anchor text styles in block quotes.
-* Changed database table header font and icon colors to follow block appearance style.
-* [Fixed top margin misalignment issue for heading blocks in horizontal layout of super blocks](https://github.com/mustakshif/Asri/issues/79).
-* [Fixed issue where export to image was not possible](https://github.com/mustakshif/Asri/issues/80).
-* Rolled back setting menu style for mobile devices.
 
 ### ...
 
