@@ -145,6 +145,10 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
 
                 &:not(.layout-tab-bar--readonly) .item {
                     backdrop-filter: blur($medium-blur-rd);
+
+                    // &--focus {
+                    //     backdrop-filter: blur($medium-blur-rd) brightness(1.3);
+                    // }
                 }
 
                 .item {
