@@ -498,6 +498,29 @@ $theme-dark: (
 
     // 占位符
     --b3-empty-color: #{rgba(map-get($theme-map,on-background), 0.45)};
+
+    // 关系图
+    --b3-graph-p-point: #a188fd;
+    --b3-graph-heading-point: #ef6b9a;
+    --b3-graph-math-point: #24a5ff;
+    --b3-graph-code-point: #6a9bff;
+    --b3-graph-table-point: #0abc71;
+    --b3-graph-list-point: #82b025;
+    // --b3-graph-todo-point: #FFBF00;
+    --b3-graph-olist-point: #b3005f;
+    --b3-graph-listitem-point: #00b89f;
+    --b3-graph-bq-point: #de8700;
+    --b3-graph-super-point: #a2a700;
+    --b3-graph-doc-point: var(--b3-theme-on-background);
+    --b3-graph-tag-point: #ef7747;
+    // --b3-graph-asset-point: #05c091;
+    --b3-graph-line: var(--b3-border-color-trans);
+    --b3-graph-ref-line: var(--b3-theme-primary-lighter);
+    // --b3-graph-tag-line: #5f6b06;
+    // --b3-graph-tag-tag-line: #dbf32f;
+    // --b3-graph-asset-line: #037457;
+    --b3-graph-hl-point: #ff5799;
+    --b3-graph-hl-line: #ff5799;
 }
 
 @mixin theme-variant-color($property, $theme-key, $opacity-light: 1, $opacity-dark: $opacity-light, $important: false) {
