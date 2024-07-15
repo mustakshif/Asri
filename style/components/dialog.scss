@@ -27,6 +27,7 @@
                 .history__panel .history__diff {
                     margin: 0 8px 8px;
                     border-radius: 8px;
+                    border-right: none;
                 }
             }
         }
@@ -130,6 +131,7 @@
 
         &__content {
             word-break: normal;
+            line-height: 1.6;
         }
     }
 
@@ -580,6 +582,7 @@
                     // 右侧面板
                     &__center--text {
                         padding: 24px;
+                        line-height: 1.5;
 
                         .b3-form__icon-icon {
                             margin: 8px 0;
