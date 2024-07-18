@@ -476,6 +476,12 @@ img.av__cellassetimg {
         }
     }
 
+    .b3-menu__icon {
+        +.b3-menu__label .b3-chip--middle::before{
+            display: none;
+        }
+    } // 单选、多选列筛选菜单的 chips
+
     .b3-menu__label {
         .b3-chip {
             border-radius: 4px;

@@ -1,3 +1,15 @@
+### v3.0.20
+
+* 优化关系图节点和线条配色
+* 修复搜索和替换筛选对话框布局问题
+
+<br />
+
+* Optimized the color scheme of relationship graph nodes and lines
+* Fixed layout issues in the search and replace filter dialog box
+
+---
+
 ### v3.0.19
 
 * 适配 `自定义块样式` 插件列表转表格的样式
