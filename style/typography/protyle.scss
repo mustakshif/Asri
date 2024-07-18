@@ -60,7 +60,9 @@
 
     .protyle-icon.fn__none:first-child+.protyle-icon:last-child {
         border-radius: 99px;
-    } // 只读模式下HTML块工具条
+    }
+
+    // 只读模式下HTML块工具条
 }
 
 // 排版元素
@@ -172,7 +174,7 @@
 
     #{$selector} {
         color: inherit;
-        text-decoration-line: underline;        
+        text-decoration-line: underline;
         text-decoration-thickness: 0.1em;
         text-decoration-color: var(--b3-theme-primary);
 
@@ -360,7 +362,8 @@
     #{$selector} {
         @media (min-width: 1024px) {
             width: auto;
-        }        
+        }
+
         font-variant-numeric: tabular-nums;
         border-radius: 8px;
         border: 1px solid var(--b3-border-color-trans);
@@ -478,7 +481,7 @@
             text-decoration: none;
 
             &[data-type~=s] {
-                text-decoration-line: line-through; 
+                text-decoration-line: line-through;
             }
         }
     }
@@ -680,7 +683,7 @@
         margin-top: 0;
     }
 
-    .sb > div {
+    .sb>div {
         height: fit-content;
     }
 
@@ -870,161 +873,214 @@
         @include border-or-not($border: false);
     }
 
-    &-action {
-        // 代码块
-        @include protyle-icons;
-    }
 
-    //文档标题
-    &-title {
-        &__input {
-            font-weight: 600;
-            font-size: 2.4em;
-            line-height: 1.4;
-            padding-top: 8px;
-            padding-bottom: 8px;
+    // 文档标签样式
+    &-background__ia {
+        .b3-chips {
+            padding: 4px 0;
 
-            &:empty:after {
-                opacity: 0.6;
-            }
-        }
-
-        &__icon {
-            top: calc(2.4em * 1.4 / 2 + 8px) !important; // fix https://github.com/mustakshif/Asri/issues/45 
-        }
-    }
-
-    // 正文内容
-    &-wysiwyg {
-        @include wysiwyg-elements;
-        font-variant-ligatures: normal;
-
-        // 正文紧挨文档标题的标题块
-        &>div[data-type="NodeHeading"]:first-child,
-        &>[data-node-id].sb:first-child .sb:first-child {
-            margin-top: 0;
-        }
-
-        // 折叠块--标题块、列表块
-        div[fold="1"] {
-            &[data-type=NodeHeading] {
-                background-color: var(--b3-theme-surface-light);
-                outline: 1px solid var(--b3-border-color-trans);
-                opacity: .6;
-
-                &::before {
-                    display: none;
-                }
-            }
-
-            &:not(.li):not([data-type=NodeHeading]).list {
-                background-color: var(--b3-theme-surface-light);
-                outline: 1px solid var(--b3-border-color-trans);
-                opacity: .6;
-            }
-        }
-    }
-
-    //文字格式工具条
-    &-toolbar {
-        animation: toolbar 0.2s ease-in-out;
-        border: none;
-        border-radius: 40px;
-        padding: 4px;
-        // transform: translateY(-12px);
-        background-color: var(--b3-theme-surface);
-        @include menu-shadow;
-        @include border-or-not($border: false);
-
-        &__item {
-            height: 30px;
-            width: 30px;
-            padding-top: 3px;
-            border-radius: 20px;
-
-            &:first-child,
-            &:last-child {
-                border-radius: 20px;
-            }
-
-            &:hover {
-                // @include theme-variant-color(background-color, on-background, 0.1);
-                background-color: rgb(from var(--b3-theme-on-background) r g b / .1);
-            }
-
-            &:not(.protyle-toolbar__item--current) {
-                color: var(--b3-theme-on-surface);
+            .b3-button {
+                mix-blend-mode: luminosity;
+                opacity: 0;
+                transition: opacity .2s, color .2s;
 
                 &:hover {
+                    background-color: unset;
                     color: var(--b3-theme-on-background);
                 }
             }
         }
 
-        &__divider {
-            border-left: 1px solid var(--b3-border-color-trans);
+        $chip-colors: (
+            secondary: font-color4,
+            primary: font-color5,
+            info: font-color6,
+            success: font-color8,
+            warning:font-color9,
+            error: font-color10,
+            "pink": font-color12
+        );
+
+    @each $chip-type, $chip-color in $chip-colors {
+        .b3-chip--#{$chip-type} {
+            // @include theme-variant-color(background-color, $chip-color, 1);
+            font-weight: 500;
+            mix-blend-mode: luminosity;
+            // @include theme-variant-color(background-color, surface, 1);
+            // @include theme-variant-color(color, on-background, 0.8, 1);
+            // color: rgba(128, 128, 128, .8);
+            // background-color: #fffd;
+            // @include darkmode-counterpart {
+            //     background-color: rgba(112, 112, 112, .5);
+            //     color: #fffd;
+            // }
+
+            // @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+            // @include theme-variant-color(background-color, surface, 0.8, 0.6);
+            // @include theme-variant-color(color, on-background, 0.6, 1);
+            background-color: unset;
+            color: var(--b3-theme-on-surface);
+            outline: .12em solid var(--b3-border-color-trans);
+            outline-offset: -.12em;
+        }
+    }
+}
+
+&-action {
+    // 代码块
+    @include protyle-icons;
+}
+
+//文档标题
+&-title {
+    &__input {
+        font-weight: 600;
+        font-size: 2.4em;
+        line-height: 1.4;
+        padding-top: 8px;
+        padding-bottom: 8px;
+
+        &:empty:after {
+            opacity: 0.6;
         }
     }
 
-    // 块定位滚动条
-    &-scroll {
-        opacity: 0;
-        transform: scale(0.95, 0.9);
-        transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1),
-            transform 0.2s cubic-bezier(0, 0, 0.2, 1);
-        transition-delay: 1s;
-        // pointer-events: none;
+    &__icon {
+        top: calc(2.4em * 1.4 / 2 + 8px) !important; // fix https://github.com/mustakshif/Asri/issues/45 
+    }
+}
 
-        // >* {
-        //     pointer-events: all;
-        // }
+// 正文内容
+&-wysiwyg {
+    @include wysiwyg-elements;
+    font-variant-ligatures: normal;
+
+    // 正文紧挨文档标题的标题块
+    &>div[data-type="NodeHeading"]:first-child,
+    &>[data-node-id].sb:first-child .sb:first-child {
+        margin-top: 0;
+    }
+
+    // 折叠块--标题块、列表块
+    div[fold="1"] {
+        &[data-type=NodeHeading] {
+            background-color: var(--b3-theme-surface-light);
+            outline: 1px solid var(--b3-border-color-trans);
+            opacity: .6;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        &:not(.li):not([data-type=NodeHeading]).list {
+            background-color: var(--b3-theme-surface-light);
+            outline: 1px solid var(--b3-border-color-trans);
+            opacity: .6;
+        }
+    }
+}
+
+//文字格式工具条
+&-toolbar {
+    animation: toolbar 0.2s ease-in-out;
+    border: none;
+    border-radius: 40px;
+    padding: 4px;
+    // transform: translateY(-12px);
+    background-color: var(--b3-theme-surface);
+    @include menu-shadow;
+    @include border-or-not($border: false);
+
+    &__item {
+        height: 30px;
+        width: 30px;
+        padding-top: 3px;
+        border-radius: 20px;
+
+        &:first-child,
+        &:last-child {
+            border-radius: 20px;
+        }
 
         &:hover {
-            opacity: 1;
-            transform: none;
-            transition-delay: 0s;
+            // @include theme-variant-color(background-color, on-background, 0.1);
+            background-color: rgb(from var(--b3-theme-on-background) r g b / .1);
         }
 
-        // 溢出显示
-        >.protyle-scroll__bar {
-            overflow: visible
-        }
+        &:not(.protyle-toolbar__item--current) {
+            color: var(--b3-theme-on-surface);
 
-        &__bar {
-            top: calc(50% - 12px);
-        }
-    }
-
-
-    // 文字外观
-    &-font {
-        @include protyle-font();
-    }
-
-    // 框选框
-    // &-select {
-    // outline: 1px solid var(--b3-theme-primary-lighter);
-    // }
-
-    // 预览模式 ————————————————————————————
-    .protyle-preview__action {
-        background-color: var(--b3-theme-background);
-        border-bottom: 1px solid var(--b3-border-color-trans);
-
-        button {
-            background-color: transparent;
-
-            &.protyle-preview__action--current {
-                background-color: transparent;
-                font-weight: 600;
-            }
-
-            &:not(.protyle-preview__action--current):hover {
-                background-color: transparent;
+            &:hover {
                 color: var(--b3-theme-on-background);
             }
         }
     }
+
+    &__divider {
+        border-left: 1px solid var(--b3-border-color-trans);
+    }
+}
+
+// 块定位滚动条
+&-scroll {
+    opacity: 0;
+    transform: scale(0.95, 0.9);
+    transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1),
+        transform 0.2s cubic-bezier(0, 0, 0.2, 1);
+    transition-delay: 1s;
+    // pointer-events: none;
+
+    // >* {
+    //     pointer-events: all;
+    // }
+
+    &:hover {
+        opacity: 1;
+        transform: none;
+        transition-delay: 0s;
+    }
+
+    // 溢出显示
+    >.protyle-scroll__bar {
+        overflow: visible
+    }
+
+    &__bar {
+        top: calc(50% - 12px);
+    }
+}
+
+
+// 文字外观
+&-font {
+    @include protyle-font();
+}
+
+// 框选框
+// &-select {
+// outline: 1px solid var(--b3-theme-primary-lighter);
+// }
+
+// 预览模式 ————————————————————————————
+.protyle-preview__action {
+    background-color: var(--b3-theme-background);
+    border-bottom: 1px solid var(--b3-border-color-trans);
+
+    button {
+        background-color: transparent;
+
+        &.protyle-preview__action--current {
+            background-color: transparent;
+            font-weight: 600;
+        }
+
+        &:not(.protyle-preview__action--current):hover {
+            background-color: transparent;
+            color: var(--b3-theme-on-background);
+        }
+    }
+}
 }
 
 .b3-typography {
