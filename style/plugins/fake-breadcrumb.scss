@@ -1,0 +1,34 @@
+.og-fake-doc-breadcrumb-container {
+
+    // 单行
+    &.og-breadcrumb-oneline {
+        align-self: center;
+        display: flex;
+
+        .protyle-breadcrumb__space {
+            display: none;
+        }
+
+        // &::after {
+        //     content: '';
+        //     display: block;
+        //     min-width: 2px;
+        //     background-color: var(--b3-border-color-trans);
+        //     margin: 0 0.6em;
+        //     height: 1.5em;
+        //     align-self: center;
+        // }
+    }
+
+    // 多行
+    &.protyle-breadcrumb {
+        border-bottom: 1px solid var(--b3-border-color-trans);
+        // >.protyle-breadcrumb__bar {
+        //  border-bottom: 1px solid var(--b3-border-color-trans);
+        // }
+    }
+}
+
+.fullscreen > .og-fake-doc-breadcrumb-container.protyle-breadcrumb + .protyle-breadcrumb {
+    padding-left: 10px;
+}
