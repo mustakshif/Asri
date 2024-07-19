@@ -276,7 +276,7 @@ const rsc_1 = __webpack_require__(49);
 const misc_1 = __webpack_require__(629);
 const modules_1 = __webpack_require__(2);
 setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
-    (0, modules_1.loadAsriModules)();
+    (0, modules_1.loadAsriJSModules)();
     fastdom_1.default.measure(() => {
         var _a;
         if (rsc_1.asriDoms.layoutCenter) {
@@ -290,7 +290,7 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
         }
     });
     window.destroyTheme = () => {
-        (0, modules_1.unloadAsriModules)();
+        (0, modules_1.unloadAsriJSModules)();
         (0, misc_1.modeTransition)();
     };
 }), 0);
@@ -425,6 +425,7 @@ const envClassifiers = [
     { condition: rsc_1.environment.isInBrowser, className: 'body-asri--browser' },
     { condition: rsc_1.environment.isAndroid, className: 'body-asri--android' },
     { condition: rsc_1.environment.isIOSApp, className: 'body-asri--iosApp' },
+    { condition: rsc_1.environment.isReadOnly, className: 'body-asri--readOnly' }
 ];
 function addEnvClassNames() {
     envClassifiers.forEach(({ condition, className }) => {
@@ -450,7 +451,7 @@ exports.removeEnvClassNames = removeEnvClassNames;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.unloadAsriModules = exports.loadAsriModules = void 0;
+exports.unloadAsriJSModules = exports.loadAsriJSModules = void 0;
 const eventListeners_1 = __webpack_require__(796);
 const misc_1 = __webpack_require__(629);
 const observers_1 = __webpack_require__(766);
@@ -462,28 +463,28 @@ const scrollbar_1 = __webpack_require__(832);
 const sidepanels_1 = __webpack_require__(844);
 const status_1 = __webpack_require__(414);
 const trafficLights_1 = __webpack_require__(130);
-const clickEventListener = new eventListeners_1.AsriEventListener(mouseupEvents);
+const globClickEventListener = new eventListeners_1.AsriEventListener(mouseupEvents);
 const watchImgExportMo = new observers_1.AsriMutationObserver((0, misc_1.debounce)(dialog_1.docBodyMoCallback, 200));
-function loadAsriModules() {
+function loadAsriJSModules() {
     (0, env_1.addEnvClassNames)();
     (0, scrollbar_1.useMacSysScrollbar)();
     (0, trafficLights_1.applyTrafficLightPosition)();
     (0, status_1.setStatusHeightVar)();
     updateStyle();
-    clickEventListener.start(document, 'mouseup');
+    globClickEventListener.start(document, 'mouseup');
     watchImgExportMo.observe(document.body, { childList: true });
 }
-exports.loadAsriModules = loadAsriModules;
-function unloadAsriModules() {
+exports.loadAsriJSModules = loadAsriJSModules;
+function unloadAsriJSModules() {
     (0, env_1.removeEnvClassNames)();
     (0, scrollbar_1.restoreDefaultSiyuanScrollbar)();
     (0, trafficLights_1.restoreTrafficLightPosition)();
     (0, status_1.removeStatusHeightVar)();
     destroyStyleUpdates();
-    clickEventListener.remove(document, 'mouseup');
+    globClickEventListener.remove(document, 'mouseup');
     watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
 }
-exports.unloadAsriModules = unloadAsriModules;
+exports.unloadAsriJSModules = unloadAsriJSModules;
 function mouseupEvents(e) {
     // console.log(e);
     updateStyle(e);
@@ -587,6 +588,7 @@ exports.removeIndentGuidesFormatClassName = exports.formatIndentGuidesForFocused
 const rsc_1 = __webpack_require__(49);
 const { isMobile } = rsc_1.environment;
 // 可尝试点击后启动 MutationObserver，监测到相关变动后再执行，然后 disconnect
+// ...
 function formatIndentGuidesForFocusedItems() {
     return __awaiter(this, void 0, void 0, function* () {
         if (!isMobile) {
@@ -1008,6 +1010,7 @@ exports.environment = {
     isIOSApp: (/iOS/i.test(ua) || /iPad/i.test(ua)) && /AppleWebKit/i.test(ua) && ua.startsWith("SiYuan/"),
     lang: window.siyuan.config.lang,
     supportsOklch: CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)'),
+    isReadOnly: window.siyuan.config.readonly
 };
 
 

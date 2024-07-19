@@ -10,25 +10,26 @@ import { formatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } 
 import { removeStatusHeightVar, setStatusHeightVar } from "./status";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
-const clickEventListener = new AsriEventListener(mouseupEvents);
+const globClickEventListener = new AsriEventListener(mouseupEvents);
 const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback, 200));
-export function loadAsriModules() {
+export function loadAsriJSModules() {
     addEnvClassNames();
     useMacSysScrollbar();
     applyTrafficLightPosition();
+    
     setStatusHeightVar();
     updateStyle();
-    clickEventListener.start(document, 'mouseup');
+    globClickEventListener.start(document, 'mouseup');
     watchImgExportMo.observe(document.body, { childList: true });
 }
 
-export function unloadAsriModules() {
+export function unloadAsriJSModules() {
     removeEnvClassNames();
     restoreDefaultSiyuanScrollbar();
     restoreTrafficLightPosition();
     removeStatusHeightVar();
     destroyStyleUpdates();
-    clickEventListener.remove(document, 'mouseup');
+    globClickEventListener.remove(document, 'mouseup');
     watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
 }
 function mouseupEvents(e: Event) {

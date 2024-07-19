@@ -1,8 +1,6 @@
 import { asriDoms as doms, environment as env } from "../util/rsc";
 import { isDockLytPinned, isDockLytExpanded } from "../util/state";
 
-const { isMobile, isMiniWindow } = env;
-
 let isDockLLytPinnedOld = false,
     isDockLLytExpandedOld = false;
 

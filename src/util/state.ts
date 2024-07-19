@@ -14,9 +14,9 @@ export function isDockLytExpanded(dir: ElDir) {
     if (!dockLayoutEl) return false;
 
     if (dir === 'B') {
-        size = dockLayoutEl.style.height;
+        size = (dockLayoutEl as HTMLElement).style.height;
     } else {
-        size = dockLayoutEl.style.width;
+        size = (dockLayoutEl as HTMLElement).style.width;
     }
 
     return !!(size && size !== '0px');

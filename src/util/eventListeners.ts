@@ -2,7 +2,7 @@ type EventListenerTarget = HTMLElement | Document | Window;
 
 export class AsriEventListener<T extends Event> {
 
-    public callback: (e: T) => void
+    callback: (e: T) => void
     constructor(callback: (e: T) => void) {
         this.callback = callback;
     }

@@ -4,8 +4,8 @@ export class AsriResizeObserver {
 
 export class AsriMutationObserver {
 
-    public mo: MutationObserver;
-    public callback: MutationCallback;
+    mo: MutationObserver;
+    callback: MutationCallback;
 
     constructor(callback: MutationCallback) {
         this.callback = (mutationList, observer) => callback(mutationList, observer);
@@ -16,13 +16,13 @@ export class AsriMutationObserver {
         this.mo.observe(target, options);
     }
 
-    disconnect(fn?: () => void) {
+    disconnect(callback?: () => void) {
         // const mutations = this.mo.takeRecords();
         // if (mutations) {
         //     this.callback(mutations, this.mo);
         // }
         this.mo.disconnect();
-        if(fn) fn();
+        if(callback) callback();
     }
 }
 
