@@ -1,3 +1,21 @@
+### v3.0.21
+
+* 优化对话框文本内容的行间距
+* 优化边框色随色度变化的效果
+* 适配「（伪）文档面包屑」插件
+* 修复色度为 0 时按文档分组的搜索结果中高亮条目背景色区分度不够的问题
+* 移除数据库单选和多选列筛选菜单标签前多余空白
+
+<br />
+
+* Optimized the line height of dialog box text content.
+* Improved the effect of border color changing with chroma.
+* Adapted the "fake doc breadcrumb" plugin.
+* Fixed the issue where the highlight entry background color in search results grouped by documents was insufficiently distinguishable when chroma was 0.
+* Removed the extra whitespace before the labels of single and multi-select column filters in the database.
+
+---
+
 ### v3.0.20
 
 * 优化关系图节点和线条配色
