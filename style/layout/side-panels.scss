@@ -219,6 +219,10 @@
     }
 }
 
+.layout--float {
+    transition: transform 0.2s $timing-function-decelerate;
+}
+
 // .layout__dockr {
 //     &.layout--float {
 //         .b3-list--background {
