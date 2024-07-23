@@ -129,13 +129,13 @@
 
     // asri config menu
     #commonMenu[data-name="barmode"] {
-        // right: 40px;
-        // left: unset !important;
+        right: 40px;
+        left: unset !important;
 
-        // .body-asri--mac &,
-        // .body-asri--browser & {
-        //     right: 8px;
-        // }
+        .body-asri--mac &,
+        .body-asri--browser & {
+            right: 8px;
+        }
 
         .b3-menu__separator {
             cursor: default;
