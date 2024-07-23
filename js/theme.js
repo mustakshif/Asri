@@ -450,23 +450,11 @@
     let topbarOverflows = false;
 
     function updateTopbarOverflows() {
-        topbarOverflows = asriDoms.toolbar.scrollWidth > asriDoms.toolbar.clientWidth + 2;
-        if (!asriDoms.barMore.classList.contains('fn__none')) {
-            topbarOverflows = true;
-        };
-
-        console.log("顶栏内容宽度：", asriDoms.toolbar.scrollWidth);
-        console.log("顶栏实际宽度：", asriDoms.toolbar.clientWidth);
-
         (debounce(() => {
-
-            console.log("顶栏溢出：", topbarOverflows);
-
-            if (topbarOverflows) {
-                document.body.classList.add('asri-disable-topbar-fusion');
-            } else {
-                document.body.classList.remove('asri-disable-topbar-fusion');
-            }
+            topbarOverflows = asriDoms.toolbar.scrollWidth > asriDoms.toolbar.clientWidth + 2;
+            if (!asriDoms.barMore.classList.contains('fn__none')) {
+                topbarOverflows = true;
+            };
         }, 200))();
     }
     function handleWinResize() {
@@ -517,28 +505,10 @@
 
             let winWidth = window.innerWidth,
                 centerRectLeft = layoutsCenterRect.left,
-                centerRectRight = layoutsCenterRect.right;
+                centerRectRight = layoutsCenterRect.right,
+                barSearchRectLeft = asriDoms.barSearch.getBoundingClientRect().left;
 
             function calcAndApply() {
-                // if (topbarOverflows) {
-                //     topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barForwardRect.right + 4 + 'px');
-                //     leftSpacing.classList.add('asri-expanded');
-
-                //     if (isMacOS || isInBrowser) {
-                //         topbar.style.setProperty('--topbar-right-spacing', window.innerWidth - centerRectRight + 5 + 'px');
-                //         // windowControls element takes up 2px
-
-                //         asriDoms.dockr?.style.setProperty('--avoid-topbar', '4px');
-                //         asriDoms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
-                //     } else {
-                //         topbar.style.setProperty('--topbar-right-spacing', window.innerWidth - centerRectRight + 7 + 'px');
-
-                //         asriDoms.dockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
-                //         asriDoms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
-                //     };
-
-                //     return;
-                // }
                 // left side
                 if (centerRectLeft > dragRectLeftInitial + 8) {
                     topbar.style.setProperty('--topbar-left-spacing', 0);
@@ -573,7 +543,7 @@
                         asriDoms.dockr?.style.setProperty('--avoid-topbar', '4px');
                         asriDoms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
                     } else {
-                        topbar.style.setProperty('--topbar-right-spacing', window.innerWidth - centerRectRight + 3 + 'px');
+                        topbar.style.setProperty('--topbar-right-spacing', barSearchRectLeft - centerRectRight + 6 + 'px');
 
                         asriDoms.dockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
                         asriDoms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
