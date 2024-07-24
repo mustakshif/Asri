@@ -13,16 +13,18 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.0.21
+
+* Optimized the line height of dialog box text content.
+* Improved the effect of border color changing with chroma.
+* Adapted the "fake doc breadcrumb" plugin.
+* Fixed the issue where the highlight entry background color in search results grouped by documents was insufficiently distinguishable when chroma was 0.
+* Removed the extra whitespace before the labels of single and multi-select column filters in the database.
+
 ### v3.0.20
 
 * Optimized the color scheme of relationship graph nodes and lines
 * Fixed layout issues in the search and replace filter dialog box
-
-### v3.0.19
-
-* Adapted the style of the `Custom Block` plugin list-to-table format
-* Removed the extra whitespace on the right side of the status bar at the bottom of the publication page
-* Fixed the issue of focus state input box border cutting on the publish settings page
 
 ### ...
 

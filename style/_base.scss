@@ -218,6 +218,10 @@
     padding: 2px;
     height: 32px;
 
+    @include darkmode-counterpart {
+        background-color: #0003;
+    }
+
     .item {
         border-radius: 6px !important;
         background-color: transparent;

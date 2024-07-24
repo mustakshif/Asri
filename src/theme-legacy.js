@@ -58,7 +58,8 @@
         drag: document.getElementById('drag'),
         barPlugins: document.getElementById('barPlugins'),
         barSearch: document.getElementById('barSearch'),
-        barMode: document.getElementById('barMode')
+        barMode: document.getElementById('barMode'),
+        barMore: document.getElementById('barMore'),
         // backlinkListItems: layouts.querySelectorAll('.sy__backlink .b3-list-item')
     };
 
@@ -91,7 +92,7 @@
 
     if (!isMobile && asriDoms.toolbar) {
         createTopbarElementById('AsriPluginsIconsDivider', undefined, asriDoms.drag);
-        
+
         (isMacOS && !isInBrowser) ? createTopbarElementById('AsriTopbarLeftSpacing', undefined, asriDoms.barSync) : createTopbarElementById('AsriTopbarLeftSpacing', undefined, asriDoms.barForward);
 
         (isMacOS || isInBrowser) ? createTopbarElementById('AsriTopbarRightSpacing') : createTopbarElementById('AsriTopbarRightSpacing', asriDoms.barSearch);
@@ -101,6 +102,14 @@
     const leftSpacing = document.getElementById('AsriTopbarLeftSpacing');
     const rightSpacing = document.getElementById('AsriTopbarRightSpacing');
     const topbar = asriDoms.toolbar;
+
+    const svgForAddedTopbarEls = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    // const useForAddedSvg = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    // useForAddedSvg.setAttribute("xlink:href", "#iconMore");
+    // svgForAddedTopbarEls.appendChild(useForAddedSvg);
+    rightSpacing?.appendChild(svgForAddedTopbarEls.cloneNode(true));
+    pluginsDivider?.appendChild(svgForAddedTopbarEls.cloneNode(true));
+    leftSpacing?.appendChild(svgForAddedTopbarEls.cloneNode(true));
 
     // Array.prototype.pushUnique = function (item) {
     //     if (!this.includes(item)) {
@@ -438,8 +447,19 @@
     let dragRectLeftInitial = asriDoms.drag?.getBoundingClientRect().left,
         dragRectRightInitial = asriDoms.drag?.getBoundingClientRect().right;
     let topbarRect = asriDoms.toolbar?.getBoundingClientRect();
+    let topbarOverflows = false;
+
+    function updateTopbarOverflows() {
+        (debounce(() => {
+            topbarOverflows = asriDoms.toolbar.scrollWidth > asriDoms.toolbar.clientWidth + 2;
+            if (!asriDoms.barMore.classList.contains('fn__none')) {
+                topbarOverflows = true;
+            };
+        }, 200))();
+    }
     function handleWinResize() {
         isWinResizing = true;
+        updateTopbarOverflows();
         clearTimeout(winResizeTimeout);
         winResizeTimeout = setTimeout(function () {
             if (!isMiniWindow) {
@@ -458,9 +478,9 @@
                         fromFullscreen = false;
                     }
                 }
-                calcTopbarSpacings();
+                calcTopbarSpacings(undefined, topbarOverflows);
                 updateWndEls();
-                calcTabbarSpacings();
+                calcTabbarSpacings(topbarOverflows);
                 setTimeout(() => {
                     calcProtyleSpacings();
                 }, 200);
@@ -473,9 +493,10 @@
         }, 200);
     }
 
-    function calcTopbarSpacings(widthChange) {
+    function calcTopbarSpacings(widthChange, topbarOverflows) {
         if (!isMiniWindow) {
             let layoutsCenterRect, leftSpacingRect, barForwardRect, rightSpacingRect, barSyncRect, dragRect;
+
 
             layoutsCenterRect = asriDoms.layouts.querySelector('.layout__center')?.getBoundingClientRect();
             rightSpacingRect = rightSpacing.getBoundingClientRect();
@@ -484,7 +505,8 @@
 
             let winWidth = window.innerWidth,
                 centerRectLeft = layoutsCenterRect.left,
-                centerRectRight = layoutsCenterRect.right;
+                centerRectRight = layoutsCenterRect.right,
+                barSearchRectLeft = asriDoms.barSearch.getBoundingClientRect().left;
 
             function calcAndApply() {
                 // left side
@@ -505,7 +527,7 @@
                 }
 
                 // right side
-                if (centerRectRight < dragRectRightInitial - 8) {
+                if (centerRectRight < dragRectRightInitial - 8 && !topbarOverflows) {
                     topbar.style.setProperty('--topbar-right-spacing', 0);
 
                     dragRectRightInitial = asriDoms.drag.getBoundingClientRect().right;
@@ -515,13 +537,13 @@
                     asriDoms.layoutDockr?.style.removeProperty('--avoid-topbar');
                 } else {
                     if (isMacOS || isInBrowser) {
-                        topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 5 + 'px');
+                        topbar.style.setProperty('--topbar-right-spacing', window.innerWidth - centerRectRight + 1 + 'px');
                         // windowControls element takes up 2px
 
                         asriDoms.dockr?.style.setProperty('--avoid-topbar', '4px');
                         asriDoms.layoutDockr?.style.setProperty('--avoid-topbar', '4px')
                     } else {
-                        topbar.style.setProperty('--topbar-right-spacing', rightSpacingRect.right - centerRectRight + 7 + 'px');
+                        topbar.style.setProperty('--topbar-right-spacing', barSearchRectLeft - centerRectRight + 6 + 'px');
 
                         asriDoms.dockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
                         asriDoms.layoutDockr?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
@@ -568,7 +590,7 @@
     /**
      * calculate tabbar left & right & top paddings, use after updateWndEls()
      */
-    function calcTabbarSpacings() {
+    function calcTabbarSpacings(topbarOverflows) {
         if (!isMiniWindow) {
             wndElements.forEach(wnd => {
                 let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
@@ -576,6 +598,12 @@
                 let dragRect = asriDoms.drag.getBoundingClientRect();
 
                 // calc & apply tabbarSpacing
+                // if (topbarOverflows) {
+                //     tabbarContainer.style.removeProperty('padding-top');
+                //     tabbarContainer.style.removeProperty('padding-left');
+                //     tabbarContainer.style.removeProperty('padding-right');
+                //     return;
+                // }
                 if (isOverlapping(tabbarContainerRect, dragRect) || isOverlapping(tabbarContainerRect, topbarRect)) {
                     let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 4 : 0;
                     let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 : 0;
@@ -643,14 +671,15 @@
 
                 // handle center resize
                 updateWndEls();
+                updateTopbarOverflows();
                 clearTimeout(centerResizeTimeout);
                 centerResizeTimeout = setTimeout(() => {
                     statusPosition();
                     // change it to run after resize, otherwise, it will cause lagging
                     calcProtyleSpacings();
                 }, 200);
-                calcTopbarSpacings(widthChange);
-                calcTabbarSpacings();
+                calcTopbarSpacings(widthChange, topbarOverflows);
+                calcTabbarSpacings(topbarOverflows);
                 dockBg();
             }
         });
@@ -1222,10 +1251,11 @@
     function handleLowFreqTasks() {
         if (!isMobile) {
             setTimeout(() => {
+                updateTopbarOverflows();
                 updateWndEls();
                 recalcDragInitials();
-                calcTopbarSpacings();
-                calcTabbarSpacings();
+                calcTopbarSpacings(undefined, topbarOverflows);
+                calcTabbarSpacings(topbarOverflows);
                 calcProtyleSpacings();
                 formatIndentGuidesForFocusedItems();
                 formatProtyleWithBgImageOnly();
