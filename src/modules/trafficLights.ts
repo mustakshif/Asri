@@ -1,4 +1,4 @@
-import { remote } from "../util/electron";
+import { remote } from "../util/electronAPI";
 import { environment as env } from "../util/rsc";
 
 const { isMacOS, isInBrowser, isMiniWindow } = env;

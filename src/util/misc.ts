@@ -78,34 +78,22 @@ export function modeTransition() {
 /**
 * Check if two elements have overlapping parts.
 */
-export function isOverlapping(el1: HTMLElement | null, el2: HTMLElement | null): boolean {
+export function isOverlapping(el1: AsriDomsExtended, el2: AsriDomsExtended): boolean {
     if (!el1 || !el2) {
         console.warn('isOverlapping called with null element');
         return false;
     }
 
-    let el1Rect: DOMRect | undefined, el2Rect: DOMRect | undefined;
-    if (typeof fastdom !== 'undefined') {
-        fastdom.measure(() => {
-            el1Rect = el1.getBoundingClientRect();
-            el2Rect = el2.getBoundingClientRect();
-        });
-    } else {
+    let res: boolean = false;
+
+    return res = fastdom.measure(() => {
+        let el1Rect: DOMRect | undefined, el2Rect: DOMRect | undefined;
+
         el1Rect = el1.getBoundingClientRect();
         el2Rect = el2.getBoundingClientRect();
-    }
 
-    if (!el1Rect || !el2Rect) {
-        console.error('Failed to get boundingClientRect for one or both elements');
-        return false;
-    }
-
-    try {
         return isRectOverlapping(el1Rect, el2Rect);
-    } catch (error) {
-        console.error('Error checking if rectangles are overlapping:', error);
-        return false;
-    }
+    })();
 }
 function isRectOverlapping(elementRect: DOMRect, targetRect: DOMRect): boolean {
     let result = false;

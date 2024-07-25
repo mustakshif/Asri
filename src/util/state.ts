@@ -1,4 +1,4 @@
-import { remote } from "./electron";
+import { remote } from "./electronAPI";
 import { asriDoms as doms, environment as env } from "./rsc";
 
 // docks and panels

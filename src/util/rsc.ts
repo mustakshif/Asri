@@ -17,6 +17,7 @@ let _drag: AsriDomsExtended = null;
 let _barPlugins: AsriDomsExtended = null;
 let _barSearch: AsriDomsExtended = null;
 let _barMode: AsriDomsExtended = null;
+let _barMore: AsriDomsExtended = null;
 
 export const asriDoms = {
     get layouts() { return _layouts ??= document.getElementById('layouts'); },
@@ -36,6 +37,7 @@ export const asriDoms = {
     get barPlugins() { return _barPlugins ??= document.getElementById('barPlugins'); },
     get barSearch() { return _barSearch ??= document.getElementById('barSearch'); },
     get barMode() { return _barMode ??= document.getElementById('barMode'); },
+    get barMore() { return _barMore ??= document.getElementById('barMore'); },
 };
 
 export const environment = {

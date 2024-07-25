@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -280,6 +279,7 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
     (0, modules_1.loadAsriJSModules)();
     fastdom_1.default.measure(() => {
         var _a;
+        console.log('measure called: ', rsc_1.asriDoms.layoutCenter);
         if (rsc_1.asriDoms.layoutCenter) {
             const centerWidth = (_a = rsc_1.asriDoms.layoutCenter) === null || _a === void 0 ? void 0 : _a.clientWidth;
             if (centerWidth) {
@@ -290,6 +290,7 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
             }
         }
     });
+    console.log((0, misc_1.isOverlapping)(rsc_1.asriDoms.drag, rsc_1.asriDoms.toolbar));
     window.destroyTheme = () => {
         (0, modules_1.unloadAsriJSModules)();
         (0, misc_1.modeTransition)();
@@ -326,7 +327,6 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.destroyDockBg = exports.dockLBg = void 0;
 const rsc_1 = __webpack_require__(49);
 const state_1 = __webpack_require__(216);
-const { isMobile, isMiniWindow } = rsc_1.environment;
 let isDockLLytPinnedOld = false, isDockLLytExpandedOld = false;
 function dockLBg() {
     const dock = rsc_1.asriDoms.dockL;
@@ -708,12 +708,12 @@ exports.removeStatusHeightVar = removeStatusHeightVar;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.restoreTrafficLightPosition = exports.applyTrafficLightPosition = void 0;
-const electron_1 = __webpack_require__(571);
+const electronAPI_1 = __webpack_require__(951);
 const rsc_1 = __webpack_require__(49);
 const { isMacOS, isInBrowser, isMiniWindow } = rsc_1.environment;
 function setTrafficLightPosition(x, y = x) {
-    if (electron_1.remote) {
-        electron_1.remote.getCurrentWindow().setWindowButtonPosition({ x: x, y: y });
+    if (electronAPI_1.remote) {
+        electronAPI_1.remote.getCurrentWindow().setWindowButtonPosition({ x: x, y: y });
     }
 }
 function applyTrafficLightPosition() {
@@ -738,7 +738,7 @@ exports.restoreTrafficLightPosition = restoreTrafficLightPosition;
 
 /***/ }),
 
-/***/ 571:
+/***/ 951:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -863,28 +863,13 @@ function isOverlapping(el1, el2) {
         console.warn('isOverlapping called with null element');
         return false;
     }
-    let el1Rect, el2Rect;
-    if (typeof fastdom_1.default !== 'undefined') {
-        fastdom_1.default.measure(() => {
-            el1Rect = el1.getBoundingClientRect();
-            el2Rect = el2.getBoundingClientRect();
-        });
-    }
-    else {
+    let res = false;
+    return res = fastdom_1.default.measure(() => {
+        let el1Rect, el2Rect;
         el1Rect = el1.getBoundingClientRect();
         el2Rect = el2.getBoundingClientRect();
-    }
-    if (!el1Rect || !el2Rect) {
-        console.error('Failed to get boundingClientRect for one or both elements');
-        return false;
-    }
-    try {
         return isRectOverlapping(el1Rect, el2Rect);
-    }
-    catch (error) {
-        console.error('Error checking if rectangles are overlapping:', error);
-        return false;
-    }
+    })();
 }
 exports.isOverlapping = isOverlapping;
 function isRectOverlapping(elementRect, targetRect) {
@@ -937,14 +922,14 @@ class AsriMutationObserver {
     observe(target, options) {
         this.mo.observe(target, options);
     }
-    disconnect(fn) {
+    disconnect(callback) {
         // const mutations = this.mo.takeRecords();
         // if (mutations) {
         //     this.callback(mutations, this.mo);
         // }
         this.mo.disconnect();
-        if (fn)
-            fn();
+        if (callback)
+            callback();
     }
 }
 exports.AsriMutationObserver = AsriMutationObserver;
@@ -982,6 +967,7 @@ let _drag = null;
 let _barPlugins = null;
 let _barSearch = null;
 let _barMode = null;
+let _barMore = null;
 exports.asriDoms = {
     get layouts() { return _layouts !== null && _layouts !== void 0 ? _layouts : (_layouts = document.getElementById('layouts')); },
     get layoutCenter() { return _layoutCenter !== null && _layoutCenter !== void 0 ? _layoutCenter : (_layoutCenter = document.querySelector('.layout__center')); },
@@ -1000,6 +986,7 @@ exports.asriDoms = {
     get barPlugins() { return _barPlugins !== null && _barPlugins !== void 0 ? _barPlugins : (_barPlugins = document.getElementById('barPlugins')); },
     get barSearch() { return _barSearch !== null && _barSearch !== void 0 ? _barSearch : (_barSearch = document.getElementById('barSearch')); },
     get barMode() { return _barMode !== null && _barMode !== void 0 ? _barMode : (_barMode = document.getElementById('barMode')); },
+    get barMore() { return _barMore !== null && _barMore !== void 0 ? _barMore : (_barMore = document.getElementById('barMore')); },
 };
 exports.environment = {
     isMacOS: navigator.platform.indexOf("Mac") > -1,
@@ -1024,7 +1011,7 @@ exports.environment = {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.isStatusHidden = exports.isFullScreen = exports.hasDockb = exports.isDockHidden = exports.isDockLytExpanded = exports.isDockLytPinned = void 0;
-const electron_1 = __webpack_require__(571);
+const electronAPI_1 = __webpack_require__(951);
 const rsc_1 = __webpack_require__(49);
 // docks and panels
 function isDockLytPinned(dir) {
@@ -1071,7 +1058,7 @@ exports.hasDockb = hasDockb;
 // }
 // fullscreen state in macOS
 function isFullScreen() {
-    return !!(electron_1.remote && electron_1.remote.getCurrentWindow().isFullScreen());
+    return !!(electronAPI_1.remote && electronAPI_1.remote.getCurrentWindow().isFullScreen());
 }
 exports.isFullScreen = isFullScreen;
 // status bar
@@ -1126,6 +1113,3 @@ module.exports = require("@electron/remote");
 /******/ 	
 /******/ })()
 ;
-=======
-!function(){const u={layouts:document.getElementById("layouts"),status:document.getElementById("status"),dockl:document.getElementById("dockLeft"),dockr:document.getElementById("dockRight"),dockb:document.getElementById("dockBottom"),layoutDockl:document.querySelector(".layout__dockl"),layoutDockr:document.querySelector(".layout__dockr"),layoutDockb:document.querySelector(".layout__dockb"),toolbar:document.getElementById("toolbar"),barSync:document.getElementById("barSync"),barForward:document.getElementById("barForward"),toolbarVIP:document.getElementById("toolbarVIP"),drag:document.getElementById("drag"),barPlugins:document.getElementById("barPlugins"),barSearch:document.getElementById("barSearch"),barMode:document.getElementById("barMode"),barMore:document.getElementById("barMore")},t=navigator.userAgent,d=-1<navigator.platform.indexOf("Mac"),c=-1<navigator.platform.indexOf("Linux");var e=/Android/.test(t),n=e&&!/(?:Mobile)/.test(t);const r=!!document.getElementById("sidebar")&&!n,l=!t.startsWith("SiYuan")||-1<t.indexOf("iPad")||n,a=document.body.classList.contains("body--window"),o=(/iOS/i.test(t)||/iPad/i.test(t))&&/AppleWebKit/i.test(t)&&t.startsWith("SiYuan/");n=window.siyuan.config.readonly;const s=window.siyuan.config.lang,R=CSS.supports("color","oklch(from red calc(l * 0.5) 0 h)"),m=[],i=[],b=[],p=(d&&(document.body.classList.add("body-asri--mac"),m.push(".body-asri--mac")),c&&(document.body.classList.add("body-asri--linux"),m.push(".body-asri--linux")),r&&(document.body.classList.add("body-asri--mobile"),m.push(".body-asri--mobile")),l&&(document.body.classList.add("body-asri--browser"),m.push(".body-asri--browser")),e&&(document.body.classList.add("body-asri--android"),m.push(".body-asri--android")),o&&(document.body.classList.add("body-asri--iosApp"),m.push(".body-asri--iosApp")),n&&(document.body.classList.add("body-asri--readOnly"),m.push(".body-asri--readOnly")),!r&&u.toolbar&&(x("AsriPluginsIconsDivider",void 0,u.drag),d&&!l?x("AsriTopbarLeftSpacing",void 0,u.barSync):x("AsriTopbarLeftSpacing",void 0,u.barForward),d||l?x("AsriTopbarRightSpacing"):x("AsriTopbarRightSpacing",u.barSearch)),document.getElementById("AsriPluginsIconsDivider")),N=document.getElementById("AsriTopbarLeftSpacing"),$=document.getElementById("AsriTopbarRightSpacing"),f=u.toolbar,H=document.createElementNS("http://www.w3.org/2000/svg","svg");function h(t,o){t.includes(o)||t.push(o)}$?.appendChild(H.cloneNode(!0)),p?.appendChild(H.cloneNode(!0)),N?.appendChild(H.cloneNode(!0));const _={followSysAccentColor:"1",chroma:"1",userCustomColor:""},g={zh_CN:{followSysAccent:"跟随系统强调色",pickColor:"自定义主题色",asriChroma:"色度："},zh_CHT:{followSysAccent:"跟隨系統強調色",pickColor:"自定義主題色",asriChroma:"色度："},en_US:{followSysAccent:"Follow system accent color",pickColor:"Customize theme color",asriChroma:"Chroma: "}},Y=("zh_CN"===s||"zh_CHT"===s?g[s]:g.en_US).asriChroma;let j,y,q,B;{async function w(){await async function(t,o,e=!1,n=Date.now()){o=new Blob([o]),o=new File([o],t.split("/").pop());let i=new FormData;i.append("path",t),i.append("file",o),i.append("isDir",e),i.append("modTime",n);const a=await fetch("/api/file/putFile",{body:i,method:"POST",headers:{Authorization:"Token ''"}});return 200===a.status?a.json():null}("/data/snippets/Asri.config.json",JSON.stringify(_,void 0,4))}function V(){let n,i,a;setTimeout(()=>{if(!document.querySelector(".asri-config")){const o=document.querySelector('#commonMenu[data-name="barmode"] .b3-menu__items');if(o){var t=`<button class="b3-menu__separator asri-config"></button><button class="b3-menu__item asri-config" id="pickColor"><svg class="b3-menu__icon"></svg><label for="asriColorPicker" class="be-menu__label">${("zh_CN"===s||"zh_CHT"===s?g[s]:g.en_US).pickColor}</label><input id="asriColorPicker" type="color" value="${_.userCustomColor}"></button><button class="b3-menu__item asri-config" id="followSysAccent"><svg class="b3-menu__icon"></svg><label for="" class="be-menu__label">${("zh_CN"===s||"zh_CHT"===s?g[s]:g.en_US).followSysAccent}</label></button><button class="b3-menu__item asri-config" data-type="nobg" id="asriChroma"><svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"d="m19 11l-8-8l-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0zM5 2l5 5m-8 6h15m5 7a2 2 0 1 1-4 0c0-1.6 1.7-2.4 2-4c.3 1.6 2 2.4 2 4" /></svg><div aria-label="${Y+a?.value||"1"}"class="b3-tooltips b3-tooltips__n"><input style="box-sizing: border-box" type="range" id="asriChromaSlider" class="b3-slider fn__block" min="0"max="5" step="0.1" value="1"></div></button>`,t=document.createRange().createContextualFragment(t);o.appendChild(t),h(m,".asri-config"),n=document.getElementById("followSysAccent"),i=document.getElementById("pickColor"),a=document.getElementById("asriChromaSlider"),colorPicker=i.lastElementChild,n.classList.toggle("b3-menu__item--selected",y),i.classList.toggle("b3-menu__item--selected",!y),a.value=_.chroma||"1",a.parentElement.ariaLabel=Y+_.chroma,l||r||c?n.classList.add("fn__none"):n.addEventListener("click",()=>{y?(y=!1,n.classList.remove("b3-menu__item--selected"),i.classList.add("b3-menu__item--selected"),document.documentElement.style.setProperty("--asri-user-custom-accent",_.userCustomColor||j||"#3478f6"),v(_.chroma),_.followSysAccentColor="0"):(y=!0,n.classList.add("b3-menu__item--selected"),i.classList.remove("b3-menu__item--selected"),document.documentElement.style.removeProperty("--asri-user-custom-accent"),_.followSysAccentColor="1",J()),w()}),i.addEventListener("click",()=>{y&&(y=!1,n.classList.remove("b3-menu__item--selected"),i.classList.add("b3-menu__item--selected"),document.documentElement.style.setProperty("--asri-user-custom-accent",_.userCustomColor),v(_.chroma),_.userCustomColor=_.userCustomColor,_.followSysAccentColor="0",w())}),colorPicker.addEventListener("input",()=>{document.documentElement.style.setProperty("--asri-user-custom-accent",colorPicker.value)}),colorPicker.addEventListener("change",()=>{n.classList.remove("b3-menu__item--selected"),i.classList.add("b3-menu__item--selected"),_.userCustomColor=colorPicker.value,y=!1,_.followSysAccentColor="0",w()});const e=pt(()=>w(),200);a.addEventListener("input",function(){var t=this.value;document.documentElement.style.setProperty("--asri-c-factor",t),this.parentElement.ariaLabel=Y+t,_.chroma=t,q="0"===t,v(t),e()})}}},0)}function J(){if(!(l||r||c)){const e=require("@electron/remote").systemPreferences.getAccentColor();var t="#"+e.slice(0,6),o=function(o){if(o){var e=parseInt(o.substring(1,3),16)/255,n=parseInt(o.substring(3,5),16)/255,i=parseInt(o.substring(5,7),16)/255,o=Math.max(e,n,i),a=Math.min(e,n,i),c=(o+a)/2;if(o===a)return{h:0,s:0,l:c};let t;var r=o-a,a=.5<c?r/(2-o-a):r/(o+a);switch(o){case e:t=(n-i)/r+(n<i?6:0);break;case n:t=(i-e)/r+2;break;case i:t=(e-n)/r+4}return{h:t/=6,s:a,l:c}}}(t);j!==t&&(document.documentElement.style.setProperty("--asri-sys-accent",t),.28<o.s?document.documentElement.style.setProperty("--asri-sys-accent-accessible",t):document.documentElement.style.removeProperty("--asri-sys-accent-accessible"),B=0===o.s,document.body.classList.add("asri-mode-transition"),setTimeout(()=>{document.body.classList.remove("asri-mode-transition")},350),j=t),y&&v(o.s)}}o||(async function(){await async function(t){try{var o=await fetch("/api/file/getFile",{method:"POST",headers:{Authorization:"Token ''"},body:JSON.stringify({path:t})});return 200===o.status?o:null}catch(t){return console.error("An error occurred while fetching the file:",t),null}}("/data/snippets/Asri.config.json").then(t=>t&&200===t.status?t.json():null).then(t=>{y=Number(t?.followSysAccentColor||_.followSysAccentColor),_.followSysAccentColor=t?.followSysAccentColor||"1",_.chroma=t?.chroma||"1",_.userCustomColor=t?.userCustomColor||"#3478f6"})}().then(()=>{R&&(!(l||r||c)&&y?document.documentElement.style.removeProperty("--asri-user-custom-accent"):document.documentElement.style.setProperty("--asri-user-custom-accent",_.userCustomColor),document.documentElement.style.setProperty("--asri-c-factor",_.chroma),q="0"===_.chroma,v(_.chroma),J(),V())}),R&&u.barMode?.addEventListener("click",V))}function v(t){"0"===(chromaValue=String(t))||y&&B||q?document.documentElement.style.setProperty("--asri-c-0","0"):document.documentElement.style.removeProperty("--asri-c-0")}function k(t,o=t){require("@electron/remote").getCurrentWindow().setWindowButtonPosition({x:t,y:o})}if(d&&!l&&k(16),d&&a&&k(14),d||r)for(let t=0;t<document.styleSheets.length;t++){let e=document.styleSheets[t];try{for(let o=0;o<e.cssRules.length;o++){let t=e.cssRules[o];t.selectorText&&t.selectorText.includes("::-webkit-scrollbar")&&(t.style.width||t.style.height||t.style.backgroundColor)&&(i.push({styleSheet:e,rule:t.cssText}),e.deleteRule(o),o--)}}catch(t){console.log(t)}}function x(o,e=void 0,n=void 0){if(!document.getElementById(o)){let t=document.createElement("div");t.id=o,e?u.toolbar.insertBefore(t,e):n?u.toolbar.insertBefore(t,n.nextSibling):u.toolbar.appendChild(t)}}let U=!1,X,K,W,T=u.drag?.getBoundingClientRect().left,S=u.drag?.getBoundingClientRect().right,E=u.toolbar?.getBoundingClientRect(),C=!1;function G(){pt(()=>{C=u.toolbar.scrollWidth>u.toolbar.clientWidth+2,u.barMore.classList.contains("fn__none")||(C=!0)},200)()}function Q(){U=!0,G(),clearTimeout(X),X=setTimeout(function(){if(a)P(),setTimeout(()=>{z()},200);else{if(U=!1,d){let t=document.querySelector("#AsriTopbarLeftSpacing");W=!l&&require("@electron/remote").getCurrentWindow().isFullScreen()?(document.body.classList.add("body--fullscreen"),T-=W?0:88,!0):(document.body.classList.remove("body--fullscreen"),t?.style.setProperty("width","0px"),T=u.drag?.getBoundingClientRect().left,t.style.removeProperty("width"),!1)}A(void 0,C),P(),tt(C),setTimeout(()=>{z()},200)}},200)}function A(r,s){if(!a){let t,o,e,n=(t=u.layouts.querySelector(".layout__center")?.getBoundingClientRect(),$.getBoundingClientRect(),o=u.barSync.getBoundingClientRect(),barForwardRect=u.barForward.getBoundingClientRect(),window.innerWidth),i=t.left,a=t.right,c=u.barSearch.getBoundingClientRect().left;U?S+=r:(i>T+8?(f.style.setProperty("--topbar-left-spacing",0),T=W?T:u.drag.getBoundingClientRect().left,N.classList.remove("asri-expanded")):(d&&!l?f.style.setProperty("--topbar-left-spacing",i-o.right+4+"px"):f.style.setProperty("--topbar-left-spacing",i-barForwardRect.right+4+"px"),N.classList.add("asri-expanded")),a<S-8&&!s?(f.style.setProperty("--topbar-right-spacing",0),S=u.drag.getBoundingClientRect().right,u.dockr?.style.removeProperty("--avoid-topbar"),u.layoutDockr?.style.removeProperty("--avoid-topbar")):d||l?(f.style.setProperty("--topbar-right-spacing",window.innerWidth-a+1+"px"),u.dockr?.style.setProperty("--avoid-topbar","4px"),u.layoutDockr?.style.setProperty("--avoid-topbar","4px")):(f.style.setProperty("--topbar-right-spacing",c-a+6+"px"),u.dockr?.style.setProperty("--avoid-topbar","calc(var(--toolbar-height) - 6px)"),u.layoutDockr?.style.setProperty("--avoid-topbar","calc(var(--toolbar-height) - 6px)"))),a<S-8?(p.style.setProperty("--container-bg","var(--b3-list-hover)"),p.style.left=a+"px",p.style.right="0",p.style.removeProperty("height"),p.style.removeProperty("top")):(e=u.drag.getBoundingClientRect(),p.style.setProperty("--container-bg","var(--b3-border-color-trans)"),p.style.left=e.right-10+"px",p.style.right=n-e.right+8+"px",p.style.height="21px",p.style.top="13.5px")}}let Z=[];function P(){Z=u.layouts.querySelectorAll('[data-type="wnd"]')}function tt(){a||Z.forEach(t=>{let o=t.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');var e,n,t=o.getBoundingClientRect(),i=u.drag.getBoundingClientRect();I(t,i)||I(t,E)?(e=t.left<i.left?i.left-t.left-4:0,n=t.right>i.right?t.right-i.right+8:0,o.style.paddingLeft=e+"px",o.style.paddingRight=n+"px",t.right-n-240<i.left&&t.left<i.left||t.left+e+240>i.right&&t.right>i.right?(o.style.paddingTop="42px",o.style.paddingLeft=0,o.style.paddingRight=0):o.style.removeProperty("padding-top")):(o.style.removeProperty("padding-left"),o.style.removeProperty("padding-right"))})}function z(){Z.forEach(t=>{let o=t.querySelector(".file-tree")?[]:t.querySelectorAll(".protyle-wysiwyg");0<o.length&&setTimeout(()=>{o.forEach(t=>{var o=t.style.paddingLeft;o!==t.dataset.prevpadding&&(t.style.setProperty("--protyle-spacing",o),t.dataset.prevpadding=o)})},300)})}if(!r){if(setTimeout(A,200),!a){let e=u.layouts.querySelector(".layout__center");const O=new ResizeObserver(t=>{for(var o of t){var e,n=o.contentBoxSize[0]["inlineSize"];o.target.dataset.prevWidth?(e=n-parseFloat(o.target.dataset.prevWidth),o.target.dataset.prevWidth=n,P(),G(),clearTimeout(K),K=setTimeout(()=>{st(),z()},200),A(e,C),tt(C),D()):o.target.dataset.prevWidth=n}});if(e)O.observe(e),b.push(O);else{let t=0,o;function ot(){u.layouts=document.getElementById("layouts"),e=u.layouts.querySelector(".layout__center"),10!==++t&&!e||(clearInterval(o),O.observe(e),b.push(O))}setTimeout(()=>{o=setInterval(ot,1e3)},0)}}window.addEventListener("resize",Q)}function et(t="l"){return u["dock"+t]&&u["dock"+t].classList.contains("fn__none")}function nt(){return u.dockb&&!u.dockb.classList.contains("fn__none")}function it(){var t=nt(),o=function(){if(!r){const t=u.layouts,o=t.querySelector(".layout__dockb");return t&&o?.classList.contains("layout--float")&&"0px"!==o?.style.height}}();u.toolbar?.nextElementSibling.classList.toggle("has-dockb",t),u.toolbar?.nextElementSibling.classList.toggle("has-layout-dockb-float",o),u.dockb?.classList.toggle("has-layout-dockb-float",o),h(m,".has-dockb"),h(m,".has-layout-dockb-float")}function at(){return u.status&&u.status.classList.contains("fn__none")}function ct(t){return t&&!t.classList.contains("layout--float")}function rt(t){return"0px"!==t?.style.width}function D(){if(u.dockl&&!r&&!a)for(var e of["l","r"]){let t=u["layoutDock"+e],o=u["dock"+e];if(ct(t)&&rt(t)?(o.classList.add("dock-layout-expanded"),h(m,".dock-layout-expanded")):o.classList.remove("dock-layout-expanded"),!et()&&(ct(n=t)||!n?.style.cssText.includes("transform: translate"))&&rt(t))switch(e){case"l":case"r":o.style.setProperty("--border-clr","transparent")}else o.style.removeProperty("--border-clr")}var n}function st(){function t(t,o){u.status.style.transform=`translate(${t}px, ${o}px)`}var o,e,n,i;r||a||(nt()?(u.status?.style.removeProperty("max-width"),u.status?.style.removeProperty("transform")):(n=u.layouts.querySelector(".layout__center"))&&u.layoutDockr&&!u.status.classList.contains(".fn__none")&&(o=u.layoutDockr.clientWidth,n=n.clientWidth,u.layoutDockb=u.layouts.querySelector(".layout__dockb"),e=u.layoutDockb&&!u.layoutDockb.classList.contains(".fn__none")&&ct(u.layoutDockb)?-1*u.layoutDockb.clientHeight:0,u.status.style.maxWidth=n-12+"px",n=et("r"),i=function(t){let o=u["layoutDock"+t];return o&&(o.classList.contains("layout--float")||o.style.cssText.includes("width: 0px"))}("r"),n&&i?t(0,e):!n&&i?t(-40,e):n||i?n&&!i&&t(-1*o,e):t(-1*(o+40),e),u.status=document.getElementById("status")))}function ut(){at()?document.body.style.setProperty("--status-height","0px"):document.body.style.setProperty("--status-height","32px")}function M(){if(!at()){let t=u.layouts?.querySelectorAll(".layout__center .layout-tab-container"),e=u.status.getBoundingClientRect(),o=(t?.forEach(t=>{let o=t.querySelector(".file-tree");o&&!o.classList.contains("fn__none")&&I(t.getBoundingClientRect(),e)?t.style.paddingBottom="35px":t.style.removeProperty("padding-bottom")}),document.getElementById("searchList")),n=document.getElementById("searchPreview");var a,c;(o||n)&&(a=o.getBoundingClientRect(),c=n.getBoundingClientRect(),I(a,e)?o.style.paddingBottom="35px":o.style.removeProperty("padding-bottom"),I(c,e)?n.style.paddingBottom="35px":n.style.removeProperty("padding-bottom"));let i=document.getElementById("viewerContainer");i&&(I(i.getBoundingClientRect(),e)?i.style.paddingBottom="35px":i.style.removeProperty("padding-bottom")),u.layouts?.querySelectorAll(".card__main").forEach(t=>{t&&(I(t.getBoundingClientRect(),e)?t.style.paddingBottom="35px":t.style.removeProperty("padding-bottom"))})}}function I(t,o){return t&&o&&(t.right>o.left&&t.bottom>o.top&&t.left<o.left+o.width&&t.top<o.top+o.height)}function dt(){if(!r){let t=document.querySelectorAll(".file-tree .b3-list-item--focus");document.querySelectorAll(".file-tree .has-focus").forEach(t=>t.classList.remove("has-focus")),t.forEach(t=>{t.nextElementSibling&&"UL"===t.nextElementSibling.tagName&&!t.nextElementSibling.classList.contains("fn__none")||(t.parentNode.classList.add("has-focus"),h(m,".has-focus"))})}}function lt(e,n){return new MutationObserver(function(t,o){t.forEach(t=>{t.type===e&&n(t,o)})})}function mt(e,n=void 0,i=void 0){return new MutationObserver(function(t,o){t.forEach(t=>{e&&"childList"===t.type?e(t,o):n&&"attributes"===t.type?n(t,o):i&&"characterData"===t.type&&i(t,o)})})}function bt(e,t,o=void 0,n=void 0,i=!1){let a={},c=(t&&(a.childList=!0),o&&(a.attributes=!0),n&&(a.characterData=!0),t&&i&&(a.subtree=!0),u["layoutDock"+e]),r=mt(t,o,n);if(c)r.observe(c,a),b.push(r);else{let t=0,o;function s(){c=u.layouts.querySelector(".layout__dock"+e),10!==++t&&!c||(clearInterval(o),u["layoutDock"+e]=c,D(),r.observe(c,a),b.push(r))}setTimeout(()=>{o=setInterval(s,1e3)},0)}}it(),D(),ut(),M(),dt();{var[e,n=void 0,L=!1]=[()=>{document.body.classList.toggle("has-exportimg",document.querySelector('[data-key="dialog-exportimage"]')),h(m,".has-exportimg")}];let t={},o=(e&&(t.childList=!0),n&&(t.attributes=!0),e&&L&&(t.subtree=!0),mt(e,n));o.observe(document.body,t),b.push(o)}if(!r&&!a){bt("l",void 0,()=>{setTimeout(()=>{M()},200),D()}),bt("r",void 0,()=>{setTimeout(()=>{M()},200),D()});{L="attributes";e=ut;n=u.status;let t=lt(L,e);n&&(t.observe(n,{[L]:!0}),b.push(t))}}function pt(o,e){let n=null;return(...t)=>{n&&clearTimeout(n),n=setTimeout(()=>{o(...t)},e)}}function F(){r||setTimeout(()=>{G(),P();{let t=document.querySelector("#AsriTopbarLeftSpacing"),o=document.querySelector("#AsriTopbarRightSpacing");t?.style.setProperty("width","0px"),o?.style.setProperty("width","0px"),T=u.drag?.getBoundingClientRect().left,S=u.drag?.getBoundingClientRect().right,t?.style.removeProperty("width"),o?.style.removeProperty("width")}A(void 0,C),tt(C),z(),dt();{let t=u.layouts?.querySelectorAll(".protyle .protyle-background");t.forEach(t=>{!t.querySelector(".protyle-background__img img")?.classList.contains("fn__none")&&t.querySelector(".protyle-background__icon.fn__none")?(t.classList.add("without-icon"),h(m,".without-icon")):t.classList.remove("without-icon")})}M(),it(),st(),!o&&y&&R&&J()},200)}function ft(t){"Control"!==t.key&&"Alt"!==t.key&&"Shift"!==t.key&&"Meta"!==t.key||F()}function ht(t){document.body.style.setProperty("--mouseX",t.clientX+"px"),document.body.style.setProperty("--mouseY",t.clientY+"px")}F(),window.addEventListener("mouseup",F),window.addEventListener("dragend",F),window.addEventListener("keyup",ft),window.addEventListener("dblclick",ht),window.destroyTheme=()=>{if(window.removeEventListener("mouseup",F),window.removeEventListener("keyup",ft),window.removeEventListener("dragend",F),window.removeEventListener("dblclick",ht),window.removeEventListener("resize",Q),u.barMode?.removeEventListener("click",V),b.forEach(t=>t.disconnect()),d&&!l&&k(8),d&&a&&k(8,13),m.forEach(o=>{document.querySelectorAll(o).forEach(t=>t.classList.remove(o.slice(1)))}),document.querySelector("#AsriTopbarLeftSpacing")?.remove(),document.querySelector("#AsriTopbarRightSpacing")?.remove(),document.querySelector("#AsriPluginsIconsDivider")?.remove(),document.body.style.removeProperty("--mouseX"),document.body.style.removeProperty("--mouseY"),document.body.style.removeProperty("--status-height"),document.documentElement.style.removeProperty("--asri-sys-accent"),document.documentElement.style.removeProperty("--asri-sys-accent-accessible"),document.documentElement.style.removeProperty("--asri-sys-accent-grayscale"),document.documentElement.style.removeProperty("--asri-user-custom-accent"),document.documentElement.style.removeProperty("--asri-c-factor"),document.documentElement.style.removeProperty("--asri-c-0"),document.querySelectorAll(".dock").forEach(t=>{t.style.removeProperty("--border-clr")}),setTimeout(()=>{u.toolbar?.style.removeProperty("--topbar-left-spacing"),u.toolbar?.style.removeProperty("--topbar-right-spacing"),u.dockr?.style.removeProperty("--avoid-topbar"),u.layoutDockr?.style.removeProperty("--avoid-topbar"),u.status?.style.removeProperty("max-width"),u.status?.style.removeProperty("transform");const t=document.body.querySelectorAll('[data-type="wnd"]'),o=(t.forEach(t=>{const o=t.firstElementChild,e=t.querySelectorAll(".protyle-wysiwyg");o?.style.removeProperty("padding-left"),o?.style.removeProperty("padding-right"),o?.style.removeProperty("padding-top"),e.forEach(t=>{t.style.removeProperty("--protyle-spacing"),t.dataset.prevpadding=void 0})}),u.layouts?.querySelectorAll(".layout__center .layout-tab-container"));o.forEach(t=>{t.style.removeProperty("padding-bottom")})},200),document.getElementById("searchList")?.style.removeProperty("padding-bottom"),document.getElementById("searchPreview")?.style.removeProperty("padding-bottom"),document.getElementById("viewerContainer")?.style.removeProperty("padding-bottom"),u.layouts.querySelectorAll(".card__main").forEach(t=>{t.style.removeProperty("padding-bottom")}),i)for(let o=0;o<i.length;o++){let t=i[o];t.styleSheet.insertRule(t.rule,t.styleSheet.cssRules.length)}document.body.classList.add("asri-mode-transition"),setTimeout(()=>{document.body.classList.remove("asri-mode-transition")},350)}}();
->>>>>>> 20b70a5bd33df9d86e8e29dd83c608b5d29ede64
