@@ -117,7 +117,7 @@
     @content;
 
     @include darkmode-counterpart {
-        background-color: rgb(0, 0, 0, 0.2);
+        background-color: #0004;
 
         &:hover {
             background-color: var(--b3-theme-primary);
@@ -219,7 +219,7 @@
     height: 32px;
 
     @include darkmode-counterpart {
-        background-color: #0003;
+        background-color: #0004;
     }
 
     .item {

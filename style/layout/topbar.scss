@@ -80,3 +80,9 @@
         padding-left: 8px !important;
     }
 }
+
+body:not(.body-asri--browser, .body-asri--mobile) {
+    #barZoom, #barExit {
+        display: none;
+    }
+}
