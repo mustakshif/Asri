@@ -36,5 +36,11 @@ module.exports = {
   },
   externals: {
     '@electron/remote': 'commonjs @electron/remote', // 将 @electron/remote 模块作为外部依赖
-  }
+  },
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
+    aggregateTimeout: 500,
+    poll: 3000 
+  },
 };

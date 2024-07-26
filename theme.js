@@ -267,38 +267,65 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const fastdom_1 = __importDefault(__webpack_require__(551));
-const rsc_1 = __webpack_require__(49);
 const misc_1 = __webpack_require__(629);
 const modules_1 = __webpack_require__(2);
 setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
     (0, modules_1.loadAsriJSModules)();
-    fastdom_1.default.measure(() => {
-        var _a;
-        console.log('measure called: ', rsc_1.asriDoms.layoutCenter);
-        if (rsc_1.asriDoms.layoutCenter) {
-            const centerWidth = (_a = rsc_1.asriDoms.layoutCenter) === null || _a === void 0 ? void 0 : _a.clientWidth;
-            if (centerWidth) {
-                console.log(`centerWidth: ${centerWidth}`);
-            }
-            else {
-                console.log("centerWidth: undefined");
-            }
-        }
-    });
-    console.log((0, misc_1.isOverlapping)(rsc_1.asriDoms.drag, rsc_1.asriDoms.toolbar));
-    // for (let i = 0; i < 1000; i++) {
-    //    isOverlapping(doms.drag, doms.toolbar);
-    // };
     window.destroyTheme = () => {
         (0, modules_1.unloadAsriJSModules)();
         (0, misc_1.modeTransition)();
     };
 }), 0);
+
+
+/***/ }),
+
+/***/ 12:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.removeProtyleSpacings = exports.calcProtyleSpacings = void 0;
+const fastdom_1 = __importDefault(__webpack_require__(551));
+const state_1 = __webpack_require__(216);
+function calcProtyleSpacings(wndElements) {
+    // calc & apply protyleSpacing
+    wndElements.forEach(wnd => {
+        let protyles = wnd.querySelector('.file-tree') ? [] : wnd.querySelectorAll('.protyle-wysiwyg');
+        setTimeout(() => {
+            protyles.forEach(protyle => {
+                let protylePadding;
+                // let protylePadding = Math.round(parseFloat(window.getComputedStyle(protyle).paddingLeft)) + 'px';
+                fastdom_1.default.measure(() => {
+                    protylePadding = protyle.style.paddingLeft;
+                    fastdom_1.default.mutate(() => {
+                        if (protylePadding !== protyle.dataset.prevpadding) {
+                            protyle.style.setProperty('--protyle-spacing', protylePadding);
+                            protyle.dataset.prevpadding = protylePadding;
+                            // console.log(protylePadding);
+                        }
+                    });
+                });
+            });
+        }, 300); // protyle transition time
+    });
+}
+exports.calcProtyleSpacings = calcProtyleSpacings;
+function removeProtyleSpacings() {
+    state_1.wndElements.forEach(wnd => {
+        let protyles = wnd.querySelector('.file-tree') ? [] : wnd.querySelectorAll('.protyle-wysiwyg');
+        protyles.forEach(protyle => {
+            protyle.style.removeProperty('--protyle-spacing');
+            protyle.dataset.prevpadding = undefined;
+        });
+    });
+}
+exports.removeProtyleSpacings = removeProtyleSpacings;
 
 
 /***/ }),
@@ -450,15 +477,26 @@ exports.removeEnvClassNames = removeEnvClassNames;
 /***/ }),
 
 /***/ 2:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.unloadAsriJSModules = exports.loadAsriJSModules = void 0;
 const eventListeners_1 = __webpack_require__(796);
 const misc_1 = __webpack_require__(629);
 const observers_1 = __webpack_require__(766);
+const state_1 = __webpack_require__(216);
+const afwd_1 = __webpack_require__(12);
 const dialog_1 = __webpack_require__(344);
 const docks_1 = __webpack_require__(818);
 const editor_1 = __webpack_require__(937);
@@ -466,16 +504,18 @@ const env_1 = __webpack_require__(261);
 const scrollbar_1 = __webpack_require__(832);
 const sidepanels_1 = __webpack_require__(844);
 const status_1 = __webpack_require__(414);
+const topbarFusion_1 = __webpack_require__(376);
 const trafficLights_1 = __webpack_require__(130);
-const globClickEventListener = new eventListeners_1.AsriEventListener(mouseupEvents);
+const globalClickEventListener = new eventListeners_1.AsriEventListener(mouseupEvents);
 const watchImgExportMo = new observers_1.AsriMutationObserver((0, misc_1.debounce)(dialog_1.docBodyMoCallback, 200));
 function loadAsriJSModules() {
     (0, env_1.addEnvClassNames)();
     (0, scrollbar_1.useMacSysScrollbar)();
     (0, trafficLights_1.applyTrafficLightPosition)();
     (0, status_1.setStatusHeightVar)();
+    (0, topbarFusion_1.loadTopbarFusion)();
     updateStyle();
-    globClickEventListener.start(document, 'mouseup');
+    globalClickEventListener.start(document.body, 'mouseup');
     watchImgExportMo.observe(document.body, { childList: true });
 }
 exports.loadAsriJSModules = loadAsriJSModules;
@@ -484,8 +524,9 @@ function unloadAsriJSModules() {
     (0, scrollbar_1.restoreDefaultSiyuanScrollbar)();
     (0, trafficLights_1.restoreTrafficLightPosition)();
     (0, status_1.removeStatusHeightVar)();
+    (0, topbarFusion_1.unloadTopbarFusion)();
     destroyStyleUpdates();
-    globClickEventListener.remove(document, 'mouseup');
+    globalClickEventListener.remove(document, 'mouseup');
     watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
 }
 exports.unloadAsriJSModules = unloadAsriJSModules;
@@ -494,9 +535,12 @@ function mouseupEvents(e) {
     updateStyle(e);
 }
 function updateStyle(e) {
-    setTimeout(() => {
+    setTimeout(() => __awaiter(this, void 0, void 0, function* () {
         (0, docks_1.dockLBg)();
-    }, 0);
+        const wnds = yield (0, state_1.updateWndEls)();
+        (0, topbarFusion_1.calcTabbarSpacings)(wnds);
+        (0, afwd_1.calcProtyleSpacings)(wnds);
+    }), 0);
     setTimeout(() => {
         (0, sidepanels_1.formatIndentGuidesForFocusedItems)();
         (0, editor_1.formatProtyleWithBgImageOnly)();
@@ -509,6 +553,7 @@ function destroyStyleUpdates() {
     (0, docks_1.destroyDockBg)();
     (0, sidepanels_1.removeIndentGuidesFormatClassName)();
     (0, editor_1.removeProtyleWithBgImageOnlyClassName)();
+    (0, afwd_1.removeProtyleSpacings)();
 }
 
 
@@ -704,6 +749,141 @@ exports.removeStatusHeightVar = removeStatusHeightVar;
 
 /***/ }),
 
+/***/ 376:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.unloadTopbarFusion = exports.loadTopbarFusion = exports.calcTabbarSpacings = void 0;
+const fastdom_1 = __importDefault(__webpack_require__(551));
+const rsc_1 = __webpack_require__(49);
+const misc_1 = __webpack_require__(629);
+const state_1 = __webpack_require__(216);
+// added toolbar elements
+let pluginsDivider, leftSpacing, rightSpacing;
+let topbarRect, dragRect, layoutsCenterRect, leftSpacingRect, rightSpacingRect, barForwardRect, barSyncRect;
+let dragRectInitialLeft, dragRectInitialRight;
+function calcTabbarSpacings(wndElements) {
+    if (rsc_1.environment.isMiniWindow || rsc_1.environment.isMobile)
+        return;
+    fastdom_1.default.measure(() => {
+        var _a, _b, _c;
+        topbarRect = (_a = rsc_1.asriDoms.toolbar) === null || _a === void 0 ? void 0 : _a.getBoundingClientRect();
+        dragRect = (_b = rsc_1.asriDoms.drag) === null || _b === void 0 ? void 0 : _b.getBoundingClientRect();
+        layoutsCenterRect = (_c = rsc_1.asriDoms.layoutCenter) === null || _c === void 0 ? void 0 : _c.getBoundingClientRect();
+    });
+    wndElements.forEach(wnd => {
+        let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
+        let tabbarContainerRect;
+        fastdom_1.default.measure(() => {
+            tabbarContainerRect = tabbarContainer === null || tabbarContainer === void 0 ? void 0 : tabbarContainer.getBoundingClientRect();
+            let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 4 : 0;
+            let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 : 0;
+            fastdom_1.default.mutate(() => __awaiter(this, void 0, void 0, function* () {
+                if ((yield (0, misc_1.isOverlapping)(tabbarContainer, rsc_1.asriDoms.drag)) || (yield (0, misc_1.isOverlapping)(tabbarContainer, rsc_1.asriDoms.toolbar))) {
+                    tabbarContainer.style.paddingLeft = paddingLeftValue + 'px';
+                    tabbarContainer.style.paddingRight = paddingRightValue + 'px';
+                    // asriDoms.drag = document.getElementById('drag');
+                    // add top padding in extremely narrow width
+                    if ((tabbarContainerRect.right - paddingRightValue - 240 < dragRect.left && tabbarContainerRect.left < dragRect.left) || (tabbarContainerRect.left + paddingLeftValue + 240 > dragRect.right && tabbarContainerRect.right > dragRect.right)) {
+                        tabbarContainer.style.paddingTop = '42px';
+                        tabbarContainer.style.paddingLeft = '0';
+                        tabbarContainer.style.paddingRight = '0';
+                    }
+                    else {
+                        tabbarContainer.style.removeProperty('padding-top');
+                    }
+                }
+                else {
+                    tabbarContainer.style.removeProperty('padding-left');
+                    tabbarContainer.style.removeProperty('padding-right');
+                }
+            }));
+        });
+    });
+}
+exports.calcTabbarSpacings = calcTabbarSpacings;
+function loadTopbarFusion() {
+    return __awaiter(this, void 0, void 0, function* () {
+        createTopbarElements();
+    });
+}
+exports.loadTopbarFusion = loadTopbarFusion;
+function unloadTopbarFusion() {
+    removeTopbarElements();
+    state_1.wndElements.forEach(wnd => {
+        let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child');
+        tabbarContainer.style.removeProperty('padding-top');
+        tabbarContainer.style.removeProperty('padding-left');
+        tabbarContainer.style.removeProperty('padding-right');
+    });
+}
+exports.unloadTopbarFusion = unloadTopbarFusion;
+function createTopbarElements() {
+    if (rsc_1.environment.isMobile)
+        return;
+    pluginsDivider = createTopbarElementById('AsriPluginsIconsDivider', undefined, rsc_1.asriDoms.drag);
+    leftSpacing = (rsc_1.environment.isMacOS && !rsc_1.environment.isInBrowser)
+        ? createTopbarElementById('AsriTopbarLeftSpacing', undefined, rsc_1.asriDoms.barSync)
+        : createTopbarElementById('AsriTopbarLeftSpacing', undefined, rsc_1.asriDoms.barForward);
+    rightSpacing = (rsc_1.environment.isMacOS || rsc_1.environment.isInBrowser)
+        ? createTopbarElementById('AsriTopbarRightSpacing')
+        : createTopbarElementById('AsriTopbarRightSpacing', rsc_1.asriDoms.barSearch);
+    // add svg to toolbar elements to fix barMore menu issue
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    rightSpacing === null || rightSpacing === void 0 ? void 0 : rightSpacing.appendChild(svg.cloneNode(true));
+    pluginsDivider === null || pluginsDivider === void 0 ? void 0 : pluginsDivider.appendChild(svg.cloneNode(true));
+    leftSpacing === null || leftSpacing === void 0 ? void 0 : leftSpacing.appendChild(svg.cloneNode(true));
+}
+function createTopbarElementById(newId, before = undefined, after = undefined) {
+    if (document.getElementById(newId))
+        return;
+    if (!rsc_1.asriDoms.toolbar)
+        return;
+    let newDiv = document.createElement('div');
+    newDiv.id = newId;
+    if (before) {
+        rsc_1.asriDoms.toolbar.insertBefore(newDiv, before);
+    }
+    else if (after) {
+        rsc_1.asriDoms.toolbar.insertBefore(newDiv, after.nextSibling);
+    }
+    else {
+        rsc_1.asriDoms.toolbar.appendChild(newDiv);
+    }
+    return newDiv;
+}
+function removeTopbarElements() {
+    if (pluginsDivider) {
+        pluginsDivider.remove();
+        pluginsDivider = undefined;
+    }
+    if (leftSpacing) {
+        leftSpacing.remove();
+        leftSpacing = undefined;
+    }
+    if (rightSpacing) {
+        rightSpacing.remove();
+        rightSpacing = undefined;
+    }
+}
+
+
+/***/ }),
+
 /***/ 130:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
@@ -795,7 +975,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.nodeListsHaveSameElements = exports.isOverlapping = exports.modeTransition = exports.hexToHSL = exports.debounce = exports.pushUnique = void 0;
+exports.querySelectorAllPromise = exports.querySelectorPromise = exports.nodeListsHaveSameElements = exports.isOverlapping = exports.modeTransition = exports.hexToHSL = exports.debounce = exports.pushUnique = void 0;
 const fastdom_1 = __importDefault(__webpack_require__(551));
 /**
  * Pushes an item to the array if it is not already present.
@@ -870,9 +1050,6 @@ exports.modeTransition = modeTransition;
 /**
 * Check if two elements have overlapping parts.
 */
-// export function isOverlapping(el1: AsriDomsExtended, el2: AsriDomsExtended) {
-//     return isOverlappingPromise(el1, el2);
-// }
 function isOverlapping(el1, el2) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!el1 || !el2) {
@@ -884,12 +1061,8 @@ function isOverlapping(el1, el2) {
                 let el1Rect, el2Rect;
                 el1Rect = el1.getBoundingClientRect();
                 el2Rect = el2.getBoundingClientRect();
-                console.log('measured');
-                fastdom_1.default.mutate(() => {
-                    const res = isRectOverlapping(el1Rect, el2Rect);
-                    resolve(res);
-                    console.log('isOverlapping: ', res);
-                });
+                const res = isRectOverlapping(el1Rect, el2Rect);
+                resolve(res);
             });
         });
     });
@@ -923,6 +1096,34 @@ function nodeListsHaveSameElements(list1, list2) {
     return true;
 }
 exports.nodeListsHaveSameElements = nodeListsHaveSameElements;
+function querySelectorPromise(selector_1) {
+    return __awaiter(this, arguments, void 0, function* (selector, trial = 10, timeout = 200) {
+        let n = 0;
+        while (n < trial) {
+            const element = document.querySelector(selector);
+            if (element)
+                return element;
+            yield new Promise(resolve => setTimeout(resolve, timeout));
+            n++;
+        }
+        throw new Error('querySelectorPromise failed');
+    });
+}
+exports.querySelectorPromise = querySelectorPromise;
+function querySelectorAllPromise(selector_1) {
+    return __awaiter(this, arguments, void 0, function* (selector, trial = 10, timeout = 200) {
+        let n = 0;
+        while (n < trial) {
+            const elements = document.querySelectorAll(selector);
+            if (elements.length > 0)
+                return elements;
+            yield new Promise(resolve => setTimeout(resolve, timeout));
+            n++;
+        }
+        throw new Error('querySelectorAllPromise failed');
+    });
+}
+exports.querySelectorAllPromise = querySelectorAllPromise;
 
 
 /***/ }),
@@ -935,6 +1136,21 @@ exports.nodeListsHaveSameElements = nodeListsHaveSameElements;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.MOConfigForClassNames = exports.AsriMutationObserver = exports.AsriResizeObserver = void 0;
 class AsriResizeObserver {
+    constructor(callback) {
+        this.callback = (entries, observer) => callback(entries, observer);
+        this.ro = new ResizeObserver(this.callback);
+    }
+    observe(target, options) {
+        this.ro.observe(target, options);
+    }
+    disconnect(callback) {
+        this.ro.disconnect();
+        if (callback)
+            callback();
+    }
+    unobserve(target) {
+        this.ro.unobserve(target);
+    }
 }
 exports.AsriResizeObserver = AsriResizeObserver;
 class AsriMutationObserver {
@@ -1032,12 +1248,22 @@ exports.environment = {
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isStatusHidden = exports.isFullScreen = exports.hasDockb = exports.isDockHidden = exports.isDockLytExpanded = exports.isDockLytPinned = exports.updateTopBarOverflow = exports.doesTopBarOverflow = void 0;
+exports.updateWndEls = exports.wndElements = exports.isStatusHidden = exports.isFullScreen = exports.hasDockb = exports.isDockHidden = exports.isDockLytExpanded = exports.isDockLytPinned = exports.updateTopBarOverflow = exports.doesTopBarOverflow = void 0;
 const electronAPI_1 = __webpack_require__(951);
+const misc_1 = __webpack_require__(629);
 const rsc_1 = __webpack_require__(49);
 const fastdom_1 = __importDefault(__webpack_require__(551));
 // top bar 
@@ -1108,6 +1334,19 @@ function isStatusHidden() {
     return !!(rsc_1.asriDoms.status && rsc_1.asriDoms.status.classList.contains('fn__none'));
 }
 exports.isStatusHidden = isStatusHidden;
+exports.wndElements = document.querySelectorAll('.layout__center [data-type="wnd"]');
+/**
+ * update wnd elements, use before calcTabbarSpacings() and calcProtyleSpacings()
+ */
+function updateWndEls() {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield (0, misc_1.querySelectorAllPromise)('.layout__center [data-type="wnd"]').then(els => {
+            exports.wndElements = els;
+        });
+        return exports.wndElements;
+    });
+}
+exports.updateWndEls = updateWndEls;
 
 
 /***/ }),

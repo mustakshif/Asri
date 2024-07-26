@@ -1,5 +1,22 @@
 export class AsriResizeObserver {
+    ro: ResizeObserver;
+    callback: ResizeObserverCallback;
+    constructor(callback: ResizeObserverCallback) {
+        this.callback = (entries, observer) => callback(entries, observer);
+        this.ro = new ResizeObserver(this.callback);
+    }
+    observe(target: Element, options?: ResizeObserverOptions) {
+        this.ro.observe(target, options);
+    }
 
+    disconnect(callback?: () => any) {
+        this.ro.disconnect();
+        if (callback) callback();
+    }
+
+    unobserve(target: Element) {
+        this.ro.unobserve(target);
+    }
 }
 
 export class AsriMutationObserver {
@@ -16,13 +33,13 @@ export class AsriMutationObserver {
         this.mo.observe(target, options);
     }
 
-    disconnect(callback?: () => void) {
+    disconnect(callback?: () => any) {
         // const mutations = this.mo.takeRecords();
         // if (mutations) {
         //     this.callback(mutations, this.mo);
         // }
         this.mo.disconnect();
-        if(callback) callback();
+        if (callback) callback();
     }
 }
 
@@ -30,4 +47,4 @@ export const MOConfigForClassNames: MutationObserverInit = {
     attributes: true, // 监视属性变化
     subtree: true, // 包含目标节点的后代节点
     attributeFilter: ['class'] // 只关注"class"属性的变化
-  };
+};

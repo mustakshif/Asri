@@ -90,10 +90,9 @@ export async function isOverlapping(el1: AsriDomsExtended, el2: AsriDomsExtended
 
             el1Rect = el1.getBoundingClientRect();
             el2Rect = el2.getBoundingClientRect();
-            
+
             const res = isRectOverlapping(el1Rect, el2Rect);
             resolve(res);
-            console.log('isOverlapping: ', res);
         });
     });
 }
@@ -130,4 +129,28 @@ export function nodeListsHaveSameElements(list1: NodeListOf<Element> | undefined
     }
     // console.log(list1+' and '+list2 + ' have same elements');
     return true;
+}
+
+export async function querySelectorPromise(selector: string, trial = 10, timeout = 200): Promise<Element | null> {
+    let n = 0;
+    while (n < trial) {
+        const element = document.querySelector<Element>(selector);
+        if (element) return element;
+
+        await new Promise(resolve => setTimeout(resolve, timeout));
+        n++;
+    }
+    throw new Error('querySelectorPromise failed');
+}
+
+export async function querySelectorAllPromise(selector: string, trial = 10, timeout = 200): Promise<NodeListOf<Element>> {
+    let n = 0;
+    while (n < trial) {
+        const elements = document.querySelectorAll<Element>(selector);
+        if (elements.length > 0) return elements;
+
+        await new Promise(resolve => setTimeout(resolve, timeout));
+        n++;
+    }
+    throw new Error('querySelectorAllPromise failed');
 }

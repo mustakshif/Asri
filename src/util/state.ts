@@ -1,6 +1,6 @@
 import { remote } from "./electronAPI";
+import { debounce, querySelectorAllPromise } from "./misc";
 import { asriDoms as doms, environment as env } from "./rsc";
-import { debounce } from "./misc";
 import fastdom from "fastdom";
 
 // top bar 
@@ -8,7 +8,7 @@ export let doesTopBarOverflow = false;
 export function updateTopBarOverflow() {
     fastdom.measure(() => {
         if (!doms.toolbar) return;
-        
+
         doesTopBarOverflow = doms.toolbar?.scrollWidth > doms.toolbar.clientWidth;
         if (!doms.barMore?.classList.contains('fn__none')) {
             doesTopBarOverflow = true;
@@ -71,4 +71,16 @@ export function isFullScreen() {
 // status bar
 export function isStatusHidden() {
     return !!(doms.status && doms.status.classList.contains('fn__none'));
+}
+
+export let wndElements = document.querySelectorAll('.layout__center [data-type="wnd"]');
+
+/**
+ * update wnd elements, use before calcTabbarSpacings() and calcProtyleSpacings()
+ */
+export async function updateWndEls(): Promise<NodeListOf<Element>> {
+    await querySelectorAllPromise('.layout__center [data-type="wnd"]').then(els => {
+        wndElements = els;
+    });
+    return wndElements;
 }

@@ -15,7 +15,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "cmpl": "tsc ./src/main.ts",
     "build": "webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "wphelp": "webpack --help"
   },
   "author": "mustakshif",
   "license": "MIT",
