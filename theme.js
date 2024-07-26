@@ -291,6 +291,9 @@ setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
         }
     });
     console.log((0, misc_1.isOverlapping)(rsc_1.asriDoms.drag, rsc_1.asriDoms.toolbar));
+    // for (let i = 0; i < 1000; i++) {
+    //    isOverlapping(doms.drag, doms.toolbar);
+    // };
     window.destroyTheme = () => {
         (0, modules_1.unloadAsriJSModules)();
         (0, misc_1.modeTransition)();
@@ -779,6 +782,15 @@ exports.AsriEventListener = AsriEventListener;
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -858,18 +870,29 @@ exports.modeTransition = modeTransition;
 /**
 * Check if two elements have overlapping parts.
 */
+// export function isOverlapping(el1: AsriDomsExtended, el2: AsriDomsExtended) {
+//     return isOverlappingPromise(el1, el2);
+// }
 function isOverlapping(el1, el2) {
-    if (!el1 || !el2) {
-        console.warn('isOverlapping called with null element');
-        return false;
-    }
-    let res = false;
-    return res = fastdom_1.default.measure(() => {
-        let el1Rect, el2Rect;
-        el1Rect = el1.getBoundingClientRect();
-        el2Rect = el2.getBoundingClientRect();
-        return isRectOverlapping(el1Rect, el2Rect);
-    })();
+    return __awaiter(this, void 0, void 0, function* () {
+        if (!el1 || !el2) {
+            console.warn('isOverlapping called with null element');
+            return false;
+        }
+        return new Promise((resolve) => {
+            fastdom_1.default.measure(() => {
+                let el1Rect, el2Rect;
+                el1Rect = el1.getBoundingClientRect();
+                el2Rect = el2.getBoundingClientRect();
+                console.log('measured');
+                fastdom_1.default.mutate(() => {
+                    const res = isRectOverlapping(el1Rect, el2Rect);
+                    resolve(res);
+                    console.log('isOverlapping: ', res);
+                });
+            });
+        });
+    });
 }
 exports.isOverlapping = isOverlapping;
 function isRectOverlapping(elementRect, targetRect) {
@@ -1005,14 +1028,33 @@ exports.environment = {
 /***/ }),
 
 /***/ 216:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isStatusHidden = exports.isFullScreen = exports.hasDockb = exports.isDockHidden = exports.isDockLytExpanded = exports.isDockLytPinned = void 0;
+exports.isStatusHidden = exports.isFullScreen = exports.hasDockb = exports.isDockHidden = exports.isDockLytExpanded = exports.isDockLytPinned = exports.updateTopBarOverflow = exports.doesTopBarOverflow = void 0;
 const electronAPI_1 = __webpack_require__(951);
 const rsc_1 = __webpack_require__(49);
+const fastdom_1 = __importDefault(__webpack_require__(551));
+// top bar 
+exports.doesTopBarOverflow = false;
+function updateTopBarOverflow() {
+    fastdom_1.default.measure(() => {
+        var _a, _b;
+        if (!rsc_1.asriDoms.toolbar)
+            return;
+        exports.doesTopBarOverflow = ((_a = rsc_1.asriDoms.toolbar) === null || _a === void 0 ? void 0 : _a.scrollWidth) > rsc_1.asriDoms.toolbar.clientWidth;
+        if (!((_b = rsc_1.asriDoms.barMore) === null || _b === void 0 ? void 0 : _b.classList.contains('fn__none'))) {
+            exports.doesTopBarOverflow = true;
+        }
+        ;
+    });
+}
+exports.updateTopBarOverflow = updateTopBarOverflow;
 // docks and panels
 function isDockLytPinned(dir) {
     const dockLayoutEl = rsc_1.asriDoms[`layoutDock${dir}`];

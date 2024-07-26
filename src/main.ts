@@ -20,6 +20,9 @@ setTimeout(async () => {
     });
 
     console.log(isOverlapping(doms.drag,doms.toolbar))
+    // for (let i = 0; i < 1000; i++) {
+    //    isOverlapping(doms.drag, doms.toolbar);
+    // };
 
     window.destroyTheme = () => {
         unloadAsriJSModules();

@@ -1,10 +1,25 @@
 import { remote } from "./electronAPI";
 import { asriDoms as doms, environment as env } from "./rsc";
+import { debounce } from "./misc";
+import fastdom from "fastdom";
+
+// top bar 
+export let doesTopBarOverflow = false;
+export function updateTopBarOverflow() {
+    fastdom.measure(() => {
+        if (!doms.toolbar) return;
+        
+        doesTopBarOverflow = doms.toolbar?.scrollWidth > doms.toolbar.clientWidth;
+        if (!doms.barMore?.classList.contains('fn__none')) {
+            doesTopBarOverflow = true;
+        };
+    });
+}
 
 // docks and panels
 export function isDockLytPinned(dir: ElDir) {
     const dockLayoutEl = doms[`layoutDock${dir}`] as AsriDomsExtended;
-    
+
     return !!(dockLayoutEl && !dockLayoutEl.classList.contains('layout--float'));
 }
 export function isDockLytExpanded(dir: ElDir) {
