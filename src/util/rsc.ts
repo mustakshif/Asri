@@ -50,5 +50,5 @@ export const environment = {
     isIOSApp: (/iOS/i.test(ua) || /iPad/i.test(ua)) && /AppleWebKit/i.test(ua) && ua.startsWith("SiYuan/"),
     lang: window.siyuan.config.lang as string,
     supportsOklch: CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)'),
-    isReadOnly: window.siyuan.config.readonly
+    isReadOnly: window.siyuan.config.readonly as boolean
 };

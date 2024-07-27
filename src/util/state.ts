@@ -73,12 +73,12 @@ export function isStatusHidden() {
     return !!(doms.status && doms.status.classList.contains('fn__none'));
 }
 
-export let wndElements = document.querySelectorAll('.layout__center [data-type="wnd"]');
+export let wndElements:NodeListOf<Element> | undefined = document.querySelectorAll('.layout__center [data-type="wnd"]');
 
 /**
  * update wnd elements, use before calcTabbarSpacings() and calcProtyleSpacings()
  */
-export async function updateWndEls(): Promise<NodeListOf<Element>> {
+export async function updateWndEls(): Promise<NodeListOf<Element> | undefined> {
     await querySelectorAllPromise('.layout__center [data-type="wnd"]').then(els => {
         wndElements = els;
     });

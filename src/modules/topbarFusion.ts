@@ -9,15 +9,18 @@ let pluginsDivider: AsriDomsExtended, leftSpacing: AsriDomsExtended, rightSpacin
 let topbarRect: DOMRect, dragRect: DOMRect, layoutsCenterRect: DOMRect, leftSpacingRect: DOMRect, rightSpacingRect: DOMRect, barForwardRect: DOMRect, barSyncRect: DOMRect;
 let dragRectInitialLeft: number, dragRectInitialRight: number;
 
+export function calcTopbarSpacings() {
 
-export function calcTabbarSpacings(wndElements: NodeListOf<Element>) {
+}
+
+export function calcTabbarSpacings(wndElements: NodeListOf<Element> | undefined) {
     if (env.isMiniWindow || env.isMobile) return;
     fastdom.measure(() => {
         topbarRect = doms.toolbar?.getBoundingClientRect() as DOMRect;
         dragRect = doms.drag?.getBoundingClientRect() as DOMRect;
         layoutsCenterRect = doms.layoutCenter?.getBoundingClientRect() as DOMRect;
     })
-    wndElements.forEach(wnd => {
+    wndElements?.forEach(wnd => {
         let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child') as HTMLElement;
         let tabbarContainerRect: DOMRect;
 
@@ -58,7 +61,7 @@ export async function loadTopbarFusion() {
 
 export function unloadTopbarFusion() {
     removeTopbarElements();
-    wndElements.forEach(wnd => {
+    wndElements?.forEach(wnd => {
         let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child') as HTMLElement;
 
         tabbarContainer.style.removeProperty('padding-top');

@@ -16,13 +16,29 @@ export function debounce<T extends (...args: any[]) => any>(func: T, delay: numb
     return ((...args: Parameters<T>) => {
         if (timeoutId) {
             clearTimeout(timeoutId);
+            console.log('timeoutId cleared', timeoutId)
         }
         timeoutId = setTimeout(() => {
             func(...args);
+            console.log(timeoutId)
             timeoutId = null;
         }, delay);
     }) as T;
 }
+
+// export function debounce(fn: Function, delay = 200): (...args: any[]) => any {
+//     let timer: any;
+
+//     return function (this: any, ...args: any) {
+//         if (timer) {
+//             clearTimeout(timer)
+//         }
+//         timer = setTimeout(() => {
+//             fn.apply(this, args);
+//             timer = null;
+//         }, delay)
+//     }
+// }
 
 export function hexToHSL(hex: string) {
     if (!hex) {
@@ -131,7 +147,7 @@ export function nodeListsHaveSameElements(list1: NodeListOf<Element> | undefined
     return true;
 }
 
-export async function querySelectorPromise(selector: string, trial = 10, timeout = 200): Promise<Element | null> {
+export async function querySelectorPromise(selector: string, trial = 10, timeout = 200): Promise<Element | undefined> {
     let n = 0;
     while (n < trial) {
         const element = document.querySelector<Element>(selector);
@@ -140,10 +156,10 @@ export async function querySelectorPromise(selector: string, trial = 10, timeout
         await new Promise(resolve => setTimeout(resolve, timeout));
         n++;
     }
-    throw new Error('querySelectorPromise failed');
+    // throw new Error('querySelectorPromise failed');
 }
 
-export async function querySelectorAllPromise(selector: string, trial = 10, timeout = 200): Promise<NodeListOf<Element>> {
+export async function querySelectorAllPromise(selector: string, trial = 10, timeout = 200): Promise<NodeListOf<Element> | undefined> {
     let n = 0;
     while (n < trial) {
         const elements = document.querySelectorAll<Element>(selector);
@@ -152,5 +168,32 @@ export async function querySelectorAllPromise(selector: string, trial = 10, time
         await new Promise(resolve => setTimeout(resolve, timeout));
         n++;
     }
-    throw new Error('querySelectorAllPromise failed');
+    // throw new Error('querySelectorAllPromise failed');
+}
+
+export function areNodeListsEqual(nodelist1: NodeListOf<Element> | undefined, nodelist2: NodeListOf<Element> | undefined) {
+    if (nodelist1 === undefined && nodelist2 === undefined) return true;
+
+    if (!nodelist1 || !nodelist2) return false;
+    // 将NodeList转换为Array
+    const arr1 = Array.from(nodelist1);
+    const arr2 = Array.from(nodelist2);
+
+    // 检查长度是否相等
+    if (arr1.length !== arr2.length) {
+        return false;
+    }
+
+    // 排序数组，以便比较
+    arr1.sort((a, b) => a.compareDocumentPosition(b));
+    arr2.sort((a, b) => a.compareDocumentPosition(b));
+
+    // 比较每个节点
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) {
+            return false;
+        }
+    }
+
+    return true;
 }

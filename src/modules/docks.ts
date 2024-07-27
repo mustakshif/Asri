@@ -1,40 +1,32 @@
-import { asriDoms as doms, environment as env } from "../util/rsc";
-import { isDockLytPinned, isDockLytExpanded } from "../util/state";
+import fastdom from "fastdom";
+import { querySelectorPromise } from "../util/misc";
+import { asriDoms as doms } from "../util/rsc";
+import { isDockLytExpanded, isDockLytPinned } from "../util/state";
 
 let isDockLLytPinnedOld = false,
     isDockLLytExpandedOld = false;
 
-export function dockLBg() {
-    const dock = doms.dockL;
-    let isDockLLytPinned = isDockLytPinned('L'),
-        isDockLLytExpanded = isDockLytExpanded('L');
+export async function dockLBg() {
+    const dock = doms.dockL ? doms.dockL : await querySelectorPromise('#dockLeft');
+    if (!doms.layoutDockL) await querySelectorPromise('.layout__dockl');
 
-    if (isDockLLytExpanded === isDockLLytExpandedOld && isDockLLytPinned === isDockLLytPinnedOld) return;
+    fastdom.measure(() => {
+        let isDockLLytPinned = isDockLytPinned('L'),
+            isDockLLytExpanded = isDockLytExpanded('L');
 
-    if (isDockLLytPinned && isDockLLytExpanded) {
-        dock?.classList.add('dock-layout-expanded');
-    } else {
-        dock?.classList.remove('dock-layout-expanded');
-    }
+        if (isDockLLytExpanded === isDockLLytExpandedOld && isDockLLytPinned === isDockLLytPinnedOld) return;
 
-    isDockLLytExpandedOld = isDockLLytExpanded;
-    isDockLLytPinnedOld = isDockLLytPinned;
+        fastdom.mutate(() => {
+            if (isDockLLytPinned && isDockLLytExpanded) {
+                dock?.classList.add('dock-layout-expanded');
+            } else {
+                dock?.classList.remove('dock-layout-expanded');
+            }
 
-    // if (!isSideDockHidden() && !isFloatDockLytHidden(lyt) && isDockLytExpanded(lyt)) {
-    //     switch (dir) {
-    //         case 'l':
-    //             // dock.style.borderRightColor = 'transparent';
-    //             dock.style.setProperty('--border-clr', 'transparent');
-    //             break;
-    //         case 'r':
-    //             // dock.style.borderLeftColor = 'transparent';
-    //             dock.style.setProperty('--border-clr', 'transparent');
-    //             break;
-    //     }
-    // } else {
-    //     dock.style.removeProperty('--border-clr');
-    // }
-
+            isDockLLytExpandedOld = isDockLLytExpanded;
+            isDockLLytPinnedOld = isDockLLytPinned;
+        });
+    })
 }
 
 export function destroyDockBg() {
