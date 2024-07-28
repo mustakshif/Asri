@@ -13,6 +13,12 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.0.22
+
+* Optimized the animation curve for expanding and collapsing the floating panel.
+* Adjusted the tab background color in dark mode.
+* [Fixed the issue of overlapping between the top bar icons and the sidebar top when the window width is small](https://github.com/mustakshif/Asri/issues/84).
+
 ### v3.0.21
 
 * Optimized the line height of dialog box text content.
@@ -20,11 +26,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Adapted the "fake doc breadcrumb" plugin.
 * Fixed the issue where the highlight entry background color in search results grouped by documents was insufficiently distinguishable when chroma was 0.
 * Removed the extra whitespace before the labels of single and multi-select column filters in the database.
-
-### v3.0.20
-
-* Optimized the color scheme of relationship graph nodes and lines
-* Fixed layout issues in the search and replace filter dialog box
 
 ### ...
 

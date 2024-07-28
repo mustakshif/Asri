@@ -1,3 +1,17 @@
+### v3.0.22
+
+* 优化浮动面板展开和收起时的动画曲线
+* 调整暗色模式下选项卡背景色
+* [修复窗口宽度较小时顶栏图标与侧栏顶部重叠的问题](https://github.com/mustakshif/Asri/issues/84)
+
+<br />
+
+* Optimized the animation curve for expanding and collapsing the floating panel.
+* Adjusted the tab background color in dark mode.
+* [Fixed the issue of overlapping between the top bar icons and the sidebar top when the window width is small](https://github.com/mustakshif/Asri/issues/84).
+
+---
+
 ### v3.0.21
 
 * 优化对话框文本内容的行间距
