@@ -14,7 +14,7 @@ import { calcTabbarSpacings, loadTopbarFusion, unloadTopbarFusion } from "./topb
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
 const globalClickEventListener = new AsriEventListener(mouseupEvents);
-const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback, 1000));
+const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback, 500));
 const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
 
 export async function loadAsriJSModules() {
@@ -38,7 +38,7 @@ export function unloadAsriJSModules() {
     unloadTopbarFusion();
     destroyStyleUpdates();
     globalClickEventListener.remove(document, 'mouseup');
-    // watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
+    watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
 }
 function mouseupEvents(e: Event) {
     // console.log(e);
