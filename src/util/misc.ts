@@ -10,17 +10,17 @@ export function pushUnique(arr: any[], item: any) {
         arr.push(item);
     }
 }
-export function debounce<T extends (...args: any[]) => any>(func: T, delay: number): T {
+export function debounce<T extends (...args: any[]) => any>(func: T, delay: number = 200): T {
     let timeoutId: NodeJS.Timeout | null = null;
 
     return ((...args: Parameters<T>) => {
         if (timeoutId) {
             clearTimeout(timeoutId);
-            console.log('timeoutId cleared', timeoutId)
+            // console.log('timeoutId cleared', timeoutId)
         }
         timeoutId = setTimeout(() => {
             func(...args);
-            console.log(timeoutId)
+            // console.log(timeoutId)
             timeoutId = null;
         }, delay);
     }) as T;

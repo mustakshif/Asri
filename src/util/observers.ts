@@ -1,6 +1,7 @@
 import { addExportImgClassName } from "../modules/dialog";
-import { formatProtyleWithBgImageOnly } from "../modules/editor";
-import { formatIndentGuidesForFocusedItems } from "../modules/sidepanels";
+import { debouncedFormatProtyleWithBgImageOnly, formatProtyleWithBgImageOnly } from "../modules/editor";
+import { debouncedFormatIndentGuidesForFocusedItems, formatIndentGuidesForFocusedItems } from "../modules/sidepanels";
+import { debounce } from "./misc";
 
 export class AsriResizeObserver {
     ro: ResizeObserver;
@@ -53,15 +54,10 @@ export const MOConfigForClassNames: MutationObserverInit = {
     attributeFilter: ['class'] // 只关注"class"属性的变化
 };
 
-export function asriMoCallback(mutationList: MutationRecord[], observer: MutationObserver) {
+export function globalClassNameMoCallback(mutationList: MutationRecord[], observer: MutationObserver) {
     for (let mutation of mutationList) {
-        if ((mutation.target as HTMLElement).classList.contains('b3-list-item--focus')) {
-            formatIndentGuidesForFocusedItems();
-        } else if ((mutation.target as HTMLElement).classList.contains('item--focus')) {
-            formatProtyleWithBgImageOnly();
-        } else if ((mutation.target as HTMLElement).classList.contains('hljs')) {
-            addExportImgClassName();
+        if ((mutation.target as HTMLElement).classList.contains('b3-list-item--focus') ) {
+            debouncedFormatIndentGuidesForFocusedItems();
         }
-        // console.log(mutation.target);
     }
 }

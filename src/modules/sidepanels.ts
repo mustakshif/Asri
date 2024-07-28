@@ -1,9 +1,10 @@
 import fastdom from "fastdom";
-import { querySelectorPromise } from "../util/misc";
+import { debounce, querySelectorPromise } from "../util/misc";
 import { environment, asriDoms as doms } from "../util/rsc";
 
 const { isMobile } = environment;
 
+export const debouncedFormatIndentGuidesForFocusedItems = debounce(formatIndentGuidesForFocusedItems);
 export async function formatIndentGuidesForFocusedItems() {
     if (isMobile) return;
 
@@ -23,8 +24,6 @@ export async function formatIndentGuidesForFocusedItems() {
                 }
             }
         })
-
-        console.log('formatted');
     });
 }
 

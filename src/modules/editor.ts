@@ -1,8 +1,10 @@
 import fastdom from "fastdom";
-import { asriDoms } from "../util/rsc";
-import { querySelectorAllPromise } from "../util/misc";
+import { debounce, querySelectorAllPromise } from "../util/misc";
+import { updateWndEls } from "../util/state";
 
+export const debouncedFormatProtyleWithBgImageOnly = debounce(formatProtyleWithBgImageOnly);
 export async function formatProtyleWithBgImageOnly() {
+    // await updateWndEls();
     let protyleBgs = await querySelectorAllPromise('.protyle-top>.protyle-background');
 
     protyleBgs?.forEach(protyleBg => {
@@ -12,7 +14,7 @@ export async function formatProtyleWithBgImageOnly() {
             } else {
                 protyleBg.classList.remove('without-icon');
             }
-        })        
+        })
     })
 }
 

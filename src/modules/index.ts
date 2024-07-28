@@ -1,33 +1,33 @@
 import { AsriEventListener } from "../util/eventListeners";
 import { debounce } from "../util/misc";
-import { asriMoCallback, AsriMutationObserver, MOConfigForClassNames } from "../util/observers";
+import { AsriMutationObserver, globalClassNameMoCallback, MOConfigForClassNames } from "../util/observers";
 import { updateWndEls } from "../util/state";
 import { calcProtyleSpacings, removeProtyleSpacings } from "./afwd";
+import { docBodyMoCallback } from "./dialog";
 import { destroyDockBg, dockLBg } from "./docks";
-import { formatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClassName } from "./editor";
+import { debouncedFormatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClassName } from "./editor";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
-import { formatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
+import { removeIndentGuidesFormatClassName } from "./sidepanels";
 import { removeStatusHeightVar, setStatusHeightVar } from "./status";
 import { calcTabbarSpacings, loadTopbarFusion, unloadTopbarFusion } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
 const globalClickEventListener = new AsriEventListener(mouseupEvents);
-// const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback, 200));
-// const itemFocusMo = new AsriMutationObserver(itemFocusMoCallback);
-const asriMo = new AsriMutationObserver(debounce(asriMoCallback, 200));
+const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback, 1000));
+const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
 
-export function loadAsriJSModules() {
+export async function loadAsriJSModules() {
     addEnvClassNames();
     useMacSysScrollbar();
     applyTrafficLightPosition();
     setStatusHeightVar();
+    await updateWndEls();
     loadTopbarFusion();
     updateStyle();
     globalClickEventListener.start(document.body, 'mouseup');
-    asriMo.observe(document.body, MOConfigForClassNames);
-    // // watchImgExportMo.observe(document.body, { childList: true });
-    // itemFocusMo.observe(document.body, MOConfigForClassNames);
+    globalClassNameMo.observe(document.body, MOConfigForClassNames);
+    watchImgExportMo.observe(document.body, { childList: true });
 }
 
 export function unloadAsriJSModules() {
@@ -59,6 +59,7 @@ function updateStyle(e?: Event) {
     function mouseTriggeredUpdates() {
         setTimeout(() => {
             dockLBg();
+            debouncedFormatProtyleWithBgImageOnly();
         }, 0);
 
         (async () => {
