@@ -1,2 +1,2 @@
-type AsriDomsExtended = HTMLElement | Element | null | undefined;
+type AsriDomsExtended = HTMLElement | null | undefined;
 type ElDir = 'L' | 'R' | 'B';

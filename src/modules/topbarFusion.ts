@@ -1,7 +1,8 @@
 import fastdom from "fastdom";
-import { asriDoms as doms, environment as env } from "../util/rsc";
 import { isOverlapping, querySelectorPromise } from "../util/misc";
-import { doesTopBarOverflow, updateWndEls, wndElements } from "../util/state";
+import { asriDoms as doms, environment as env } from "../util/rsc";
+import { doesTopBarOverflow, wndElements } from "../util/state";
+import { isWinResizing } from ".";
 
 // added toolbar elements
 let pluginsDivider: AsriDomsExtended, leftSpacing: AsriDomsExtended, rightSpacing: AsriDomsExtended;
@@ -12,41 +13,44 @@ let topbarRect: DOMRect, dragRect: DOMRect, layoutsCenterRect: DOMRect, leftSpac
 let dragRectInitialLeft: number, dragRectInitialRight: number;
 
 export async function updateDragRect(mode: 'rect' | 'initials' = 'rect', ...dir: ElDir[]) {
-    const drag = doms.drag ? doms.drag : await querySelectorPromise('#drag');
-
-    if (!drag) return;
-
-    if (mode === 'initials') {
-        if (!dir.length || dir.includes('L')) {            
-            fastdom.measure(() => {
-                dragRectInitialLeft = drag.getBoundingClientRect().left;
-                console.log('dragRectInitialLeft', dragRectInitialLeft)
-            });
-        }
-        if (!dir.length || dir.includes('R')) {
-            fastdom.measure(() => {
-                dragRectInitialRight = drag.getBoundingClientRect().right;
-                console.log('dragRectInitialRight', dragRectInitialRight)
-            })
-        }
-    } else {
-        fastdom.measure(() => {
-            dragRect = drag.getBoundingClientRect();
-        })
+    const drag = doms.drag || await querySelectorPromise('#drag');
+    if (!drag) {
+        throw new Error('updateDragRect(): drag not found');
     }
+    return new Promise((resolve) => {
+        fastdom.measure(() => {
+            if (mode === 'initials') {
+                if (!dir.length || dir.includes('L')) {
+                    dragRectInitialLeft = drag.getBoundingClientRect().left;
+                    // console.log('dragRectInitialLeft', dragRectInitialLeft)
+                }
+                if (!dir.length || dir.includes('R')) {
+                    dragRectInitialRight = drag.getBoundingClientRect().right;
+                    // console.log('dragRectInitialRight', dragRectInitialRight)
+                }
+            } else {
+                dragRect = drag.getBoundingClientRect();
+            }
+
+            resolve('drag updated');
+        })
+    })
 }
 
-export async function calcTopbarSpacings() {
-    if (env.isMiniWindow || env.isMobile) return;
-
+export async function calcTopbarSpacings(widthChange?: number) {
+    if (env.isMiniWindow || env.isMobile) return false;
     let layoutsCenter = doms.layoutCenter ? doms.layoutCenter : await querySelectorPromise('.layout__center');
 
-    calcAndApply();
+    // calcAndApply();
 
     // if (!isWinResizing) calcAndApply(); // otherwise would cause dragRightInitial to be at unexpected position 
     // else dragRectRightInitial = dragRectRightInitial + widthChange;
 
-    async function calcAndApply() {
+    return new Promise<boolean>(async resolve => {
+        if (isWinResizing) {
+            dragRectInitialRight = dragRectInitialRight + (widthChange || 0);
+        }
+
         if (!dragRectInitialLeft || !dragRectInitialRight) await updateDragRect();
 
         fastdom.measure(() => {
@@ -55,79 +59,86 @@ export async function calcTopbarSpacings() {
             barForwardRect = doms.barForward!.getBoundingClientRect();
 
             let centerRectLeft = layoutsCenterRect.left,
-                centerRectRight = layoutsCenterRect.right,                
+                centerRectRight = layoutsCenterRect.right,
                 barSearchRectLeft = doms.barSearch!.getBoundingClientRect().left,
                 winWidth = window.innerWidth;
-            
+
 
             fastdom.mutate(async () => {
-                // left side
-                if (centerRectLeft > dragRectInitialLeft + 8) {
-                    topbar?.style.setProperty('--topbar-left-spacing', '0');
-                    // dragRectInitialLeft = fromFullscreen ? dragRectLeftInitial : asriDoms.drag.getBoundingClientRect().left;
-                    await updateDragRect('initials', 'L');
-                    // recalc initial everytime
-                    leftSpacing?.classList.remove('asri-expanded');
-                }
+                if (!isWinResizing) {
+                    // left side
+                    if (centerRectLeft > dragRectInitialLeft + 8) {
+                        topbar?.style.setProperty('--topbar-left-spacing', '0');
+                        // dragRectInitialLeft = fromFullscreen ? dragRectLeftInitial : asriDoms.drag.getBoundingClientRect().left;
+                        await updateDragRect('initials', 'L');
+                        // recalc initial everytime
+                        leftSpacing?.classList.remove('asri-expanded');
+                    }
 
-                else if (env.isMacOS && !env.isInBrowser) {
-                    topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
-                    leftSpacing?.classList.add('asri-expanded');
-                }
-                else {
-                    topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barForwardRect.right + 4 + 'px');
-                    leftSpacing?.classList.add('asri-expanded');
-                }
+                    else if (env.isMacOS && !env.isInBrowser) {
+                        topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barSyncRect.right + 4 + 'px');
+                        leftSpacing?.classList.add('asri-expanded');
+                    }
+                    else {
+                        topbar.style.setProperty('--topbar-left-spacing', centerRectLeft - barForwardRect.right + 4 + 'px');
+                        leftSpacing?.classList.add('asri-expanded');
+                    }
 
-                // right side
-                if (centerRectRight < dragRectInitialRight - 8 && !doesTopBarOverflow) {
-                    topbar.style.setProperty('--topbar-right-spacing', '0');
+                    // right side
+                    if (centerRectRight < dragRectInitialRight - 8 && !doesTopBarOverflow) {
+                        topbar.style.setProperty('--topbar-right-spacing', '0');
 
-                    await updateDragRect('initials', 'R');
+                        await updateDragRect('initials', 'R');
 
-                    // css related 
-                    (doms.dockR as HTMLElement)?.style.removeProperty('--avoid-topbar');
-                    (doms.layoutDockR as HTMLElement)?.style.removeProperty('--avoid-topbar');
-                } else {
-                    if (env.isMacOS || env.isInBrowser) {
-                        topbar.style.setProperty('--topbar-right-spacing', window.innerWidth - centerRectRight + 1 + 'px');
-                        // windowControls element takes up 2px
-
-                        (doms.dockR as HTMLElement)?.style.setProperty('--avoid-topbar', '4px');
-                        (doms.layoutDockR as HTMLElement)?.style.setProperty('--avoid-topbar', '4px')
+                        // css related 
+                        (doms.dockR as HTMLElement)?.style.removeProperty('--avoid-topbar');
+                        (doms.layoutDockR as HTMLElement)?.style.removeProperty('--avoid-topbar');
                     } else {
-                        topbar.style.setProperty('--topbar-right-spacing', barSearchRectLeft - centerRectRight + 6 + 'px');
+                        if (env.isMacOS || env.isInBrowser) {
+                            topbar.style.setProperty('--topbar-right-spacing', window.innerWidth - centerRectRight + 1 + 'px');
+                            // windowControls element takes up 2px
 
-                        (doms.dockR as HTMLElement)?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
-                        (doms.layoutDockR as HTMLElement)?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
-                    };
+                            (doms.dockR as HTMLElement)?.style.setProperty('--avoid-topbar', '4px');
+                            (doms.layoutDockR as HTMLElement)?.style.setProperty('--avoid-topbar', '4px')
+                        } else {
+                            topbar.style.setProperty('--topbar-right-spacing', barSearchRectLeft - centerRectRight + 6 + 'px');
+
+                            (doms.dockR as HTMLElement)?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
+                            (doms.layoutDockR as HTMLElement)?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
+                        };
+                    }
                 }
 
                 // set divider style
                 if (centerRectRight < dragRectInitialRight - 8) {
                     // horisontal divider
-                    (pluginsDivider as HTMLElement).style.setProperty('--container-bg', 'var(--b3-list-hover)');
-                    (pluginsDivider as HTMLElement).style.left = centerRectRight + 'px';
-                    (pluginsDivider as HTMLElement).style.right = '0';
-                    (pluginsDivider as HTMLElement).style.removeProperty('height');
-                    (pluginsDivider as HTMLElement).style.removeProperty('top');
+                    pluginsDivider!.style.setProperty('--container-bg', 'var(--b3-list-hover)');
+                    pluginsDivider!.style.left = centerRectRight + 'px';
+                    pluginsDivider!.style.right = '0';
+                    pluginsDivider!.style.removeProperty('height');
+                    pluginsDivider!.style.removeProperty('top');
                 }
                 else {
                     // vertical divider
-                    await updateDragRect('rect');
-                    (pluginsDivider as HTMLElement).style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
-                    (pluginsDivider as HTMLElement).style.left = dragRect.right - 10 + 'px';
-                    (pluginsDivider as HTMLElement).style.right = winWidth - dragRect.right + 8 + 'px';
-                    (pluginsDivider as HTMLElement).style.height = '21px';
-                    (pluginsDivider as HTMLElement).style.top = '13.5px';
+                    await updateDragRect('rect'); // fastdom + async cause update lag, but acceptable
+                    pluginsDivider?.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
+                    pluginsDivider!.style.left = dragRect.right - 10 + 'px';
+                    pluginsDivider!.style.right = winWidth - dragRect.right + 8 + 'px';
+                    pluginsDivider!.style.height = '21px';
+                    pluginsDivider!.style.top = '13.5px';
                 }
+
+                resolve(true);
             })
         })
-    }
+    })
 }
 
-export function calcTabbarSpacings(wndElements: NodeListOf<Element> | undefined) {
-    if (env.isMiniWindow || env.isMobile) return;
+/**
+ * calculates tabbar spacings & positions, always comes after topbar spacings calculation
+ */
+export function calcTabbarSpacings(execute: boolean) {
+    if (!execute) return;
     fastdom.measure(() => {
         topbarRect = doms.toolbar?.getBoundingClientRect() as DOMRect;
         dragRect = doms.drag?.getBoundingClientRect() as DOMRect;
@@ -167,7 +178,6 @@ export function calcTabbarSpacings(wndElements: NodeListOf<Element> | undefined)
     })
 }
 
-
 export async function loadTopbarFusion() {
     createTopbarElements();
 }
@@ -181,6 +191,8 @@ export function unloadTopbarFusion() {
         tabbarContainer.style.removeProperty('padding-left');
         tabbarContainer.style.removeProperty('padding-right');
     })
+
+    doms.layoutCenter.dataset.prevWidth = undefined;
 }
 
 function createTopbarElements() {

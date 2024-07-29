@@ -1,6 +1,6 @@
 import { addExportImgClassName } from "../modules/dialog";
-import { debouncedFormatProtyleWithBgImageOnly, formatProtyleWithBgImageOnly } from "../modules/editor";
-import { debouncedFormatIndentGuidesForFocusedItems, formatIndentGuidesForFocusedItems } from "../modules/sidepanels";
+import { formatProtyleWithBgImageOnly } from "../modules/editor";
+import { formatIndentGuidesForFocusedItems } from "../modules/sidepanels";
 import { debounce } from "./misc";
 
 export class AsriResizeObserver {
@@ -53,11 +53,3 @@ export const MOConfigForClassNames: MutationObserverInit = {
     subtree: true, // 包含目标节点的后代节点
     attributeFilter: ['class'] // 只关注"class"属性的变化
 };
-
-export function globalClassNameMoCallback(mutationList: MutationRecord[], observer: MutationObserver) {
-    for (let mutation of mutationList) {
-        if ((mutation.target as HTMLElement).classList.contains('b3-list-item--focus') ) {
-            debouncedFormatIndentGuidesForFocusedItems();
-        }
-    }
-}

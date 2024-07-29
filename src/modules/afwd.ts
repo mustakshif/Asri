@@ -1,7 +1,7 @@
 import fastdom from "fastdom";
 import { wndElements } from "../util/state";
 
-export function calcProtyleSpacings(wndElements: NodeListOf<Element> | undefined) {
+export function calcProtyleSpacings() {
     // calc & apply protyleSpacing
     wndElements?.forEach(wnd => {
         let protyles = wnd.querySelector('.file-tree') ? [] : wnd.querySelectorAll('.protyle-wysiwyg') as unknown as HTMLElement[];
