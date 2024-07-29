@@ -12,7 +12,7 @@ export async function formatIndentGuidesForFocusedItems() {
 
     let listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
 
-    if (!listItemsFocus) return;
+    if (!listItemsFocus.length) return;
 
     fastdom.mutate(() => {
         document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));

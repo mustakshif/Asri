@@ -126,10 +126,8 @@ function isRectOverlapping(elementRect: DOMRect, targetRect: DOMRect): boolean {
     return result;
 }
 
-export function nodeListsHaveSameElements(list1: NodeListOf<Element> | undefined, list2: NodeListOf<Element> | undefined): boolean {
-    if (!list1 || !list2) {
-        return false;
-    }
+export function nodeListsHaveSameElements(list1: NodeListOf<Element>, list2: NodeListOf<Element>): boolean {
+    if (!list1.length || !list2.length) return false;
 
     const set1 = new Set(list1);
     const set2 = new Set(list2);
@@ -169,31 +167,4 @@ export async function querySelectorAllPromise(selector: string, trial = 10, time
         n++;
     }
     // throw new Error('querySelectorAllPromise failed');
-}
-
-export function areNodeListsEqual(nodelist1: NodeListOf<Element> | undefined, nodelist2: NodeListOf<Element> | undefined) {
-    if (nodelist1 === undefined && nodelist2 === undefined) return true;
-
-    if (!nodelist1 || !nodelist2) return false;
-    // 将NodeList转换为Array
-    const arr1 = Array.from(nodelist1);
-    const arr2 = Array.from(nodelist2);
-
-    // 检查长度是否相等
-    if (arr1.length !== arr2.length) {
-        return false;
-    }
-
-    // 排序数组，以便比较
-    arr1.sort((a, b) => a.compareDocumentPosition(b));
-    arr2.sort((a, b) => a.compareDocumentPosition(b));
-
-    // 比较每个节点
-    for (let i = 0; i < arr1.length; i++) {
-        if (arr1[i] !== arr2[i]) {
-            return false;
-        }
-    }
-
-    return true;
 }

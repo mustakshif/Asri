@@ -10,7 +10,7 @@ import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { removeIndentGuidesFormatClassName } from "./sidepanels";
 import { removeStatusHeightVar, setStatusHeightVar } from "./status";
-import { calcTabbarSpacings, loadTopbarFusion, unloadTopbarFusion } from "./topbarFusion";
+import { calcTabbarSpacings, updateDragRect, loadTopbarFusion, unloadTopbarFusion, calcTopbarSpacings } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
 const globalClickEventListener = new AsriEventListener(mouseupEvents);
@@ -23,6 +23,7 @@ export async function loadAsriJSModules() {
     applyTrafficLightPosition();
     setStatusHeightVar();
     await updateWndEls();
+    updateDragRect('initials');
     loadTopbarFusion();
     updateStyle();
     globalClickEventListener.start(document.body, 'mouseup');
@@ -62,7 +63,9 @@ function updateStyle(e?: Event) {
             debouncedFormatProtyleWithBgImageOnly();
         }, 0);
 
-        (async () => {
+        calcTopbarSpacings();
+
+        (async () => {            
             const wnds = await updateWndEls();
             calcTabbarSpacings(wnds);
             calcProtyleSpacings(wnds);

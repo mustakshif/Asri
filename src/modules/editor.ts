@@ -1,6 +1,5 @@
 import fastdom from "fastdom";
 import { debounce, querySelectorAllPromise } from "../util/misc";
-import { updateWndEls } from "../util/state";
 
 export const debouncedFormatProtyleWithBgImageOnly = debounce(formatProtyleWithBgImageOnly);
 export async function formatProtyleWithBgImageOnly() {
