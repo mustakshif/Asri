@@ -20,7 +20,7 @@ const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
 const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
 const winRo = new AsriResizeObserver(winRoCallback);
 
-export let isWinResizing: boolean, fromFullscreen: boolean;
+export let isWinResizing = false, fromFullscreen: boolean;
 
 export async function loadAsriJSModules() {
     addEnvClassNames();
@@ -54,19 +54,20 @@ function mouseupEventsCallback(e: Event) {
     updateStyles(e);
 }
 
-function updateStyles(e?: Event) {
+async function updateStyles(e?: Event) {
     // run on first load
     if (!e) {
         mouseTriggeredUpdates();
+        calcTopbarSpacings().then(calcTabbarSpacings); // make sure to set the styles right on first load
     }
 
     // run on mouse events
     else if (e.type.startsWith('mouse')) {
         mouseTriggeredUpdates();
+        calcTopbarSpacings().then(calcTabbarSpacings);
     }
 
     function mouseTriggeredUpdates() {
-        calcTopbarSpacings().then(calcTabbarSpacings);
         setTimeout(async () => {
             updateDockLBgAndBorder();
             debouncedFormatProtyleWithBgImageOnly();
@@ -110,9 +111,10 @@ function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObs
             const widthChange = inlineSize - prevWidth;
             entry.target.dataset.prevWidth = inlineSize + '';
 
-            calcTopbarSpacings(widthChange).then(calcTabbarSpacings);
+            calcTopbarSpacings(widthChange, isWinResizing);
+            calcTabbarSpacings(true);
         }
-    }    
+    }
 }
 
 function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {

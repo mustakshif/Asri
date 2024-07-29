@@ -108,6 +108,7 @@ export async function isOverlapping(el1: AsriDomsExtended, el2: AsriDomsExtended
             el2Rect = el2.getBoundingClientRect();
 
             const res = isRectOverlapping(el1Rect, el2Rect);
+            // console.log('measure isOverlapping')
             resolve(res);
         });
     });

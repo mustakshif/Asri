@@ -31,13 +31,13 @@ export async function updateDragRect(mode: 'rect' | 'initials' = 'rect', ...dir:
             } else {
                 dragRect = drag.getBoundingClientRect();
             }
-
+            // console.log('measure: drag rect')
             resolve('drag updated');
         })
     })
 }
 
-export async function calcTopbarSpacings(widthChange?: number) {
+export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false, doesTopBarOverflow = false) {
     if (env.isMiniWindow || env.isMobile) return false;
     let layoutsCenter = doms.layoutCenter ? doms.layoutCenter : await querySelectorPromise('.layout__center');
 
@@ -48,7 +48,7 @@ export async function calcTopbarSpacings(widthChange?: number) {
 
     return new Promise<boolean>(async resolve => {
         if (isWinResizing) {
-            dragRectInitialRight = dragRectInitialRight + (widthChange || 0);
+            dragRectInitialRight = dragRectInitialRight + widthChange;
         }
 
         if (!dragRectInitialLeft || !dragRectInitialRight) await updateDragRect();
@@ -63,7 +63,7 @@ export async function calcTopbarSpacings(widthChange?: number) {
                 barSearchRectLeft = doms.barSearch!.getBoundingClientRect().left,
                 winWidth = window.innerWidth;
 
-
+            // console.log('measure: topbar spacings')
             fastdom.mutate(async () => {
                 if (!isWinResizing) {
                     // left side
@@ -91,20 +91,20 @@ export async function calcTopbarSpacings(widthChange?: number) {
                         await updateDragRect('initials', 'R');
 
                         // css related 
-                        (doms.dockR as HTMLElement)?.style.removeProperty('--avoid-topbar');
-                        (doms.layoutDockR as HTMLElement)?.style.removeProperty('--avoid-topbar');
+                        doms.dockR?.style.removeProperty('--avoid-topbar');
+                        doms.layoutDockR?.style.removeProperty('--avoid-topbar');
                     } else {
                         if (env.isMacOS || env.isInBrowser) {
                             topbar.style.setProperty('--topbar-right-spacing', window.innerWidth - centerRectRight + 1 + 'px');
                             // windowControls element takes up 2px
 
-                            (doms.dockR as HTMLElement)?.style.setProperty('--avoid-topbar', '4px');
-                            (doms.layoutDockR as HTMLElement)?.style.setProperty('--avoid-topbar', '4px')
+                            doms.dockR?.style.setProperty('--avoid-topbar', '4px');
+                            doms.layoutDockR?.style.setProperty('--avoid-topbar', '4px')
                         } else {
                             topbar.style.setProperty('--topbar-right-spacing', barSearchRectLeft - centerRectRight + 6 + 'px');
 
-                            (doms.dockR as HTMLElement)?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
-                            (doms.layoutDockR as HTMLElement)?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
+                            doms.dockR?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)');
+                            doms.layoutDockR?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
                         };
                     }
                 }
@@ -127,7 +127,7 @@ export async function calcTopbarSpacings(widthChange?: number) {
                     pluginsDivider!.style.height = '21px';
                     pluginsDivider!.style.top = '13.5px';
                 }
-
+                // console.log('mutate: topbar spacings')
                 resolve(true);
             })
         })
@@ -143,6 +143,8 @@ export function calcTabbarSpacings(execute: boolean) {
         topbarRect = doms.toolbar?.getBoundingClientRect() as DOMRect;
         dragRect = doms.drag?.getBoundingClientRect() as DOMRect;
         layoutsCenterRect = doms.layoutCenter?.getBoundingClientRect() as DOMRect;
+
+        // console.log('measure: tabbar spacings outer')
     });
     wndElements?.forEach(wnd => {
         let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child') as HTMLElement;
@@ -153,6 +155,8 @@ export function calcTabbarSpacings(execute: boolean) {
 
             let paddingLeftValue = (tabbarContainerRect.left < dragRect.left) ? dragRect.left - tabbarContainerRect.left - 4 : 0;
             let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 : 0;
+
+            // console.log('measure: tabbar spacings inner')
 
             fastdom.mutate(async () => {
                 if (await isOverlapping(tabbarContainer, doms.drag) || await isOverlapping(tabbarContainer, doms.toolbar)) {
@@ -173,6 +177,8 @@ export function calcTabbarSpacings(execute: boolean) {
                     tabbarContainer.style.removeProperty('padding-left');
                     tabbarContainer.style.removeProperty('padding-right');
                 }
+
+                // console.log('mutate: tabbar spacings')
             })
         })
     })

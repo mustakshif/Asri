@@ -13,12 +13,16 @@ export async function updateDockLBgAndBorder() {
             let isDockLLytPinned = isDockLytPinned(dock === dockL ? 'L' : 'R'),
                 isDockLLytExpanded = isDockLytExpanded(dock === dockL ? 'L' : 'R');
 
+            // console.log('measure: dock' , dock)
+
             fastdom.mutate(() => {
                 if (isDockLLytPinned && isDockLLytExpanded) {
                     dock?.classList.add('dock-layout-expanded');
                 } else {
                     dock?.classList.remove('dock-layout-expanded');
                 }
+
+                // console.log('mutate: dock' , dock)
             });
         })
     }

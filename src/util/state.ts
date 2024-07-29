@@ -13,6 +13,7 @@ export function updateTopBarOverflow() {
         if (!doms.barMore?.classList.contains('fn__none')) {
             doesTopBarOverflow = true;
         };
+        // console.log('measure top bar overflow')
     });
 }
 
