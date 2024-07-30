@@ -14,17 +14,15 @@ export async function formatIndentGuidesForFocusedItems() {
 
     if (!listItemsFocus.length) return;
 
-    fastdom.mutate(() => {
-        document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
+    document.querySelectorAll('.file-tree .has-focus').forEach(oldUl => oldUl.classList.remove('has-focus'));
 
-        listItemsFocus.forEach(li => {
-            if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
-                if (li.parentNode instanceof Element) {
-                    li.parentNode.classList.add('has-focus');
-                }
+    listItemsFocus.forEach(li => {
+        if (!li.nextElementSibling || (li.nextElementSibling.tagName !== 'UL' || li.nextElementSibling.classList.contains('fn__none'))) {
+            if (li.parentNode instanceof Element) {
+                li.parentNode.classList.add('has-focus');
             }
-        })
-    });
+        }
+    })
 }
 
 export function removeIndentGuidesFormatClassName() {

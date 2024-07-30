@@ -6,15 +6,13 @@ import fastdom from "fastdom";
 // top bar 
 export let doesTopBarOverflow = false;
 export function updateTopBarOverflow() {
-    fastdom.measure(() => {
-        if (!doms.toolbar) return;
+    if (!doms.toolbar) return;
 
-        doesTopBarOverflow = doms.toolbar?.scrollWidth > doms.toolbar.clientWidth;
-        if (!doms.barMore?.classList.contains('fn__none')) {
-            doesTopBarOverflow = true;
-        };
-        // console.log('measure top bar overflow')
-    });
+    doesTopBarOverflow = doms.toolbar?.scrollWidth > doms.toolbar.clientWidth;
+    if (!doms.barMore?.classList.contains('fn__none')) {
+        doesTopBarOverflow = true;
+    };
+    // console.log('measure top bar overflow')
 }
 
 // docks and panels
@@ -74,7 +72,7 @@ export function isStatusHidden() {
     return !!(doms.status && doms.status.classList.contains('fn__none'));
 }
 
-export let wndElements:NodeListOf<Element> | undefined = document.querySelectorAll('.layout__center [data-type="wnd"]');
+export let wndElements: NodeListOf<Element> | undefined = document.querySelectorAll('.layout__center [data-type="wnd"]');
 
 /**
  * update wnd elements, use before calcTabbarSpacings() and calcProtyleSpacings()

@@ -101,16 +101,14 @@ export async function isOverlapping(el1: AsriDomsExtended, el2: AsriDomsExtended
     }
 
     return new Promise((resolve) => {
-        fastdom.measure(() => {
-            let el1Rect: DOMRect | undefined, el2Rect: DOMRect | undefined;
+        let el1Rect: DOMRect | undefined, el2Rect: DOMRect | undefined;
 
-            el1Rect = el1.getBoundingClientRect();
-            el2Rect = el2.getBoundingClientRect();
+        el1Rect = el1.getBoundingClientRect();
+        el2Rect = el2.getBoundingClientRect();
 
-            const res = isRectOverlapping(el1Rect, el2Rect);
-            // console.log('measure isOverlapping')
-            resolve(res);
-        });
+        const res = isRectOverlapping(el1Rect, el2Rect);
+        // console.log('measure isOverlapping')
+        resolve(res);
     });
 }
 

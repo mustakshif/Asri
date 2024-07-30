@@ -114,6 +114,8 @@ function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObs
             calcTopbarSpacings(widthChange, isWinResizing);
             calcTabbarSpacings(true);
         }
+
+        console.log('lytCenterRoCallback')
     }
 }
 
@@ -125,5 +127,8 @@ function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver)
 const debouncedHandleWinResize = debounce(() => {
     isWinResizing = false;
     updateTopBarOverflow();
+    calcTopbarSpacings(undefined, isWinResizing);
+    calcTabbarSpacings();
+    console.log('winRoCallback');
 }, 200);
 

@@ -9,22 +9,18 @@ export async function updateDockLBgAndBorder() {
     const dockR = doms.dockR;
 
     for (let dock of [dockL, dockR]) {
-        fastdom.measure(() => {
-            let isDockLLytPinned = isDockLytPinned(dock === dockL ? 'L' : 'R'),
-                isDockLLytExpanded = isDockLytExpanded(dock === dockL ? 'L' : 'R');
+        let isDockLLytPinned = isDockLytPinned(dock === dockL ? 'L' : 'R'),
+            isDockLLytExpanded = isDockLytExpanded(dock === dockL ? 'L' : 'R');
 
-            // console.log('measure: dock' , dock)
+        // console.log('measure: dock' , dock)
 
-            fastdom.mutate(() => {
-                if (isDockLLytPinned && isDockLLytExpanded) {
-                    dock?.classList.add('dock-layout-expanded');
-                } else {
-                    dock?.classList.remove('dock-layout-expanded');
-                }
+        if (isDockLLytPinned && isDockLLytExpanded) {
+            dock?.classList.add('dock-layout-expanded');
+        } else {
+            dock?.classList.remove('dock-layout-expanded');
+        }
 
-                // console.log('mutate: dock' , dock)
-            });
-        })
+        // console.log('mutate: dock' , dock)
     }
 }
 
