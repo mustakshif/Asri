@@ -1,7 +1,6 @@
 import { remote } from "./electronAPI";
-import { debounce, querySelectorAllPromise } from "./misc";
-import { asriDoms as doms, environment as env } from "./rsc";
-import fastdom from "fastdom";
+import { querySelectorAllPromise } from "./misc";
+import { asriDoms as doms } from "./rsc";
 
 // top bar 
 export let doesTopBarOverflow = false;

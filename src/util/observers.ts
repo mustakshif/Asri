@@ -1,7 +1,3 @@
-import { addExportImgClassName } from "../modules/dialog";
-import { formatProtyleWithBgImageOnly } from "../modules/editor";
-import { formatIndentGuidesForFocusedItems } from "../modules/sidepanels";
-import { debounce } from "./misc";
 
 export class AsriResizeObserver {
     ro: ResizeObserver;

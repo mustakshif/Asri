@@ -1,4 +1,3 @@
-import fastdom from "fastdom";
 import { querySelectorPromise } from "../util/misc";
 import { asriDoms as doms } from "../util/rsc";
 import { isDockLytExpanded, isDockLytPinned } from "../util/state";

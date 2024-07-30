@@ -1,5 +1,3 @@
-import fastdom from "fastdom";
-
 /**
  * Pushes an item to the array if it is not already present.
  * @param {Array} arr - The array to push the item to.

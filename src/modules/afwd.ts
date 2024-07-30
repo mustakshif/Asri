@@ -1,5 +1,8 @@
-import fastdom from "fastdom";
+import { debounce } from "../util/misc";
 import { wndElements } from "../util/state";
+
+
+export const debouncedCalcProtyleSpacings = debounce(calcProtyleSpacings, 200);
 
 export function calcProtyleSpacings() {
     // calc & apply protyleSpacing

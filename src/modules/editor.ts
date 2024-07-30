@@ -1,4 +1,3 @@
-import fastdom from "fastdom";
 import { debounce, querySelectorAllPromise } from "../util/misc";
 
 export const debouncedFormatProtyleWithBgImageOnly = debounce(formatProtyleWithBgImageOnly);

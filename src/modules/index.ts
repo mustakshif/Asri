@@ -2,8 +2,8 @@ import { AsriEventListener } from "../util/eventListeners";
 import { debounce, querySelectorPromise } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms } from "../util/rsc";
-import { doesTopBarOverflow, updateTopBarOverflow, updateWndEls } from "../util/state";
-import { calcProtyleSpacings, removeProtyleSpacings } from "./afwd";
+import { updateTopBarOverflow, updateWndEls } from "../util/state";
+import { calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
 import { docBodyMoCallback } from "./dialog";
 import { destroyDockBg, updateDockLBgAndBorder } from "./docks";
 import { debouncedFormatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClassName } from "./editor";
@@ -11,7 +11,7 @@ import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
 import { removeStatusHeightVar, setStatusHeightVar } from "./status";
-import { calcTabbarSpacings, updateDragRect, loadTopbarFusion, unloadTopbarFusion, calcTopbarSpacings } from "./topbarFusion";
+import { calcTabbarSpacings, calcTopbarSpacings, handleMacFullScreen, loadTopbarFusion, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
 const globalClickEventListener = new AsriEventListener(mouseupEventsCallback);
@@ -21,6 +21,7 @@ const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
 const winRo = new AsriResizeObserver(winRoCallback);
 
 export let isWinResizing = false, fromFullscreen: boolean;
+export let protyleWidthChange = 0;
 
 export async function loadAsriJSModules() {
     addEnvClassNames();
@@ -47,7 +48,12 @@ export function unloadAsriJSModules() {
     unloadTopbarFusion();
     destroyStyleUpdates();
     globalClickEventListener.remove(document, 'mouseup');
-    watchImgExportMo.disconnect(() => document.body.classList.remove("has-exportimg"));
+    globalClassNameMo.disconnect();
+    lytCenterRo.disconnect();
+    winRo.disconnect();
+    watchImgExportMo.disconnect(() => {
+        document.body.classList.remove("has-exportimg")
+    });
 }
 function mouseupEventsCallback(e: Event) {
     // console.log(e);
@@ -64,7 +70,9 @@ async function updateStyles(e?: Event) {
     // run on mouse events
     else if (e.type.startsWith('mouse')) {
         mouseTriggeredUpdates();
-        calcTopbarSpacings().then(calcTabbarSpacings);
+        setTimeout(() => {
+            calcTopbarSpacings().then(calcTabbarSpacings);
+        }, 0);
     }
 
     function mouseTriggeredUpdates() {
@@ -111,24 +119,28 @@ function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObs
             const widthChange = inlineSize - prevWidth;
             entry.target.dataset.prevWidth = inlineSize + '';
 
-            calcTopbarSpacings(widthChange, isWinResizing);
-            calcTabbarSpacings(true);
+            debouncedHandleWinResize();
+            calcTopbarSpacings(widthChange, isWinResizing).then(calcTabbarSpacings);
+            // calcTabbarSpacings(true);
+            // console.log(widthChange)
+            protyleWidthChange = widthChange;
         }
-
-        console.log('lytCenterRoCallback')
     }
+
+    console.log('lytCenterRoCallback')
 }
 
 function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
     isWinResizing = true;
     debouncedHandleWinResize();
+    console.log('winRoCallback')
 }
 
 const debouncedHandleWinResize = debounce(() => {
     isWinResizing = false;
+    handleMacFullScreen();
     updateTopBarOverflow();
-    calcTopbarSpacings(undefined, isWinResizing);
-    calcTabbarSpacings();
-    console.log('winRoCallback');
+    calcTopbarSpacings(protyleWidthChange, isWinResizing).then(calcTabbarSpacings);
+    // console.log('debouncedwinRoCallback', protyleWidthChange);
 }, 200);
 

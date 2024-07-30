@@ -1,6 +1,5 @@
-import fastdom from "fastdom";
 import { debounce, querySelectorPromise } from "../util/misc";
-import { environment, asriDoms as doms } from "../util/rsc";
+import { asriDoms as doms, environment } from "../util/rsc";
 
 const { isMobile } = environment;
 

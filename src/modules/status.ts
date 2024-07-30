@@ -1,6 +1,5 @@
 import fastdom from "fastdom";
 import { isStatusHidden } from "../util/state";
-import { asriDoms as doms } from "../util/rsc";
 
 export function setStatusHeightVar() {
     const statusHeight = isStatusHidden() ? 0 : 32;
