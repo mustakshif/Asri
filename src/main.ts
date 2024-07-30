@@ -1,6 +1,5 @@
-import { debounce, modeTransition } from "./util/misc";
-import { unloadAsriJSModules, loadAsriJSModules } from "./modules";
-import fastdom from "fastdom";
+import { loadAsriJSModules, unloadAsriJSModules } from "./modules";
+import { modeTransition } from "./util/misc";
 
 setTimeout(async () => {
     loadAsriJSModules();

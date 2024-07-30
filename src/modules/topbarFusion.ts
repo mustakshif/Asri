@@ -50,7 +50,7 @@ export async function handleMacFullScreen() {
         document.body.classList.remove('body--fullscreen');
         leftSpacing?.style.setProperty('width', '0px');
         dragRectInitialLeft = await updateDragRect('initials', 'L');
-        dragRectInitialRight -= protyleWidthChange;
+        // dragRectInitialRight -= protyleWidthChange;
         leftSpacing?.style.removeProperty('width');
         fromFullscreen = false;
     }
