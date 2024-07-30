@@ -1,10 +1,12 @@
 import { remote } from "./electronAPI";
-import { querySelectorAllPromise } from "./misc";
+import { debounce, querySelectorAllPromise } from "./misc";
 import { asriDoms as doms } from "./rsc";
 
 // top bar 
 export let doesTopBarOverflow = false;
-export function updateTopBarOverflow() {
+export const debouncedUpdateTopbarOverflow = debounce(updateTopBarOverflow);
+
+function updateTopBarOverflow() {
     if (!doms.toolbar) return;
 
     doesTopBarOverflow = doms.toolbar?.scrollWidth > doms.toolbar.clientWidth;

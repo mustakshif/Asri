@@ -2,7 +2,7 @@ import { AsriEventListener } from "../util/eventListeners";
 import { debounce, querySelectorPromise } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms } from "../util/rsc";
-import { updateTopBarOverflow, updateWndEls } from "../util/state";
+import { debouncedUpdateTopbarOverflow, updateWndEls } from "../util/state";
 import { calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
 import { docBodyMoCallback } from "./dialog";
 import { destroyDockBg, updateDockLBgAndBorder } from "./docks";
@@ -121,6 +121,7 @@ function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObs
 
             debouncedHandleWinResize();
             calcTopbarSpacings(widthChange, isWinResizing).then(calcTabbarSpacings);
+            debouncedCalcProtyleSpacings();
             // calcTabbarSpacings(true);
             // console.log(widthChange)
             protyleWidthChange = widthChange;
@@ -139,7 +140,7 @@ function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver)
 const debouncedHandleWinResize = debounce(() => {
     isWinResizing = false;
     handleMacFullScreen();
-    updateTopBarOverflow();
+    debouncedUpdateTopbarOverflow();
     calcTopbarSpacings(protyleWidthChange, isWinResizing).then(calcTabbarSpacings);
     // console.log('debouncedwinRoCallback', protyleWidthChange);
 }, 200);

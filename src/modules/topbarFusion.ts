@@ -158,7 +158,7 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
  * calculates tabbar spacings & positions, always comes after topbar spacings calculation
  */
 export function calcTabbarSpacings(execute = true) {
-    console.log('tabbar spacings')
+    // console.log('tabbar spacings')
     if (!execute) return;
     topbarRect = doms.toolbar?.getBoundingClientRect() as DOMRect;
     dragRect = doms.drag?.getBoundingClientRect() as DOMRect;
