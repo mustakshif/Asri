@@ -2,7 +2,7 @@ import { AsriEventListener } from "../util/eventListeners";
 import { debounce, querySelectorPromise } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms } from "../util/rsc";
-import { debouncedUpdateTopbarOverflow, updateWndEls } from "../util/state";
+import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/state";
 import { calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
 import { docBodyMoCallback } from "./dialog";
 import { destroyDockBg, updateDockLBgAndBorder } from "./docks";
@@ -15,6 +15,7 @@ import { calcTabbarSpacings, calcTopbarSpacings, handleMacFullScreen, loadTopbar
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
 const globalClickEventListener = new AsriEventListener(mouseupEventsCallback);
+const globalDragEventListener = new AsriEventListener(mouseupEventsCallback);
 const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback, 500));
 const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
 const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
@@ -32,7 +33,8 @@ export async function loadAsriJSModules() {
     await updateDragRect('initials');
     loadTopbarFusion();
     updateStyles();
-    globalClickEventListener.start(document.body, 'mouseup');
+    globalClickEventListener.start(document, 'mouseup');
+    globalDragEventListener.start(document, 'dragend');
     globalClassNameMo.observe(document.body, MOConfigForClassNames);
     watchImgExportMo.observe(document.body, { childList: true });
     asriDoms.layoutCenter || await querySelectorPromise('.layout__center');
@@ -48,6 +50,7 @@ export function unloadAsriJSModules() {
     unloadTopbarFusion();
     destroyStyleUpdates();
     globalClickEventListener.remove(document, 'mouseup');
+    globalDragEventListener.remove(document, 'dragend');
     globalClassNameMo.disconnect();
     lytCenterRo.disconnect();
     winRo.disconnect();
@@ -68,11 +71,12 @@ async function updateStyles(e?: Event) {
     }
 
     // run on mouse events
-    else if (e.type.startsWith('mouse')) {
+    else if (e.type.startsWith('mouse') || e.type.startsWith('drag')) {
         mouseTriggeredUpdates();
+
         setTimeout(() => {
-            calcTopbarSpacings().then(calcTabbarSpacings);
             recalcDragInitials();
+            calcTopbarSpacings(0, false, doesTopBarOverflow).then(calcTabbarSpacings);
         }, 0);
     }
 
@@ -103,10 +107,18 @@ function globalClassNameMoCallback(mutationList: MutationRecord[], observer: Mut
 }
 
 function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
-    for (let entry of entries) {
-        // get current element's size
-        const { inlineSize } = entry.contentBoxSize[0];
+    // debouncedHandleWinResizeEnd();
+    calcTopbarSpacings(0, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
+    debouncedCalcProtyleSpacings();
+    // console.log('lytCenterRoCallback', isWinResizing)
+}
 
+function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
+    for (let entry of entries) {
+        isWinResizing = true;
+        debouncedHandleWinResizeEnd();
+
+        const { inlineSize } = entry.contentBoxSize[0];
         setTimeout(() => {
             // check if it's the first time to trigger resize event, if so, skip the calculation
             if (entry.target instanceof HTMLElement) {
@@ -118,39 +130,22 @@ function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObs
                 const prevWidth = parseFloat(entry.target.dataset.prevWidth);
                 const widthChange = inlineSize - prevWidth;
                 entry.target.dataset.prevWidth = inlineSize + '';
-
-                debouncedHandleWinResize();
-                calcTopbarSpacings(widthChange, isWinResizing).then(calcTabbarSpacings);
-                debouncedCalcProtyleSpacings();
-                // console.log(widthChange)
                 protyleWidthChange = widthChange;
-            }
-        }, 0); // make sure to capture width change after the size change is completely done
-
+            }            
+            // console.log('winRoCallback', isWinResizing)
+        }, 0);  // make sure to capture width change after the size change is completely done
     }
-
-    console.log('lytCenterRoCallback')
 }
 
-function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
-    isWinResizing = true;
-    debouncedHandleWinResize();
-    console.log('winRoCallback')
-}
-
-const debouncedHandleWinResize = debounce(() => {
+const debouncedHandleWinResizeEnd = debounce(() => {
     isWinResizing = false;
     handleMacFullScreen();
-    debouncedUpdateTopbarOverflow();
-    calcTopbarSpacings(protyleWidthChange, isWinResizing).then(calcTabbarSpacings);
-    // console.log('debouncedwinRoCallback', protyleWidthChange);
+
+    setTimeout(() => {
+        updateTopbarOverflow();
+        if (!doesTopBarOverflow) recalcDragInitials();
+        calcTopbarSpacings(protyleWidthChange, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
+        protyleWidthChange = 0;
+    }, 200);
+    // console.log('debouncedwinRoCallback', isWinResizing);
 }, 200);
-// function debouncedHandleWinResize() {
-//     return debounce(() => {
-//         isWinResizing = false;
-//         handleMacFullScreen();
-//         debouncedUpdateTopbarOverflow();
-//         calcTopbarSpacings(protyleWidthChange, isWinResizing).then(calcTabbarSpacings);
-//         console.log('debouncedwinRoCallback', protyleWidthChange);
-//     }, 200);
-// }

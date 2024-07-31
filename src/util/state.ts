@@ -4,9 +4,9 @@ import { asriDoms as doms } from "./rsc";
 
 // top bar 
 export let doesTopBarOverflow = false;
-export const debouncedUpdateTopbarOverflow = debounce(updateTopBarOverflow);
+export const debouncedUpdateTopbarOverflow = debounce(updateTopbarOverflow);
 
-function updateTopBarOverflow() {
+export function updateTopbarOverflow() {
     if (!doms.toolbar) return;
 
     doesTopBarOverflow = doms.toolbar?.scrollWidth > doms.toolbar.clientWidth;

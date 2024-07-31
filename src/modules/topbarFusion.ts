@@ -13,7 +13,7 @@ let dragRectInitialLeft: number, dragRectInitialRight: number;
 
 let fromFullscreen = false;
 
-export async function updateDragRect(mode: 'rect' | 'initials' = 'rect', ...dir: ElDir[]): Promise<number> {
+export async function updateDragRect(mode: 'rect' | 'initials' = 'rect', ...dir: ElDir[]): Promise<number | DOMRect> {
     const drag = doms.drag || await querySelectorPromise('#drag');
     if (!drag) {
         throw new Error('updateDragRect(): drag not found');
@@ -32,7 +32,7 @@ export async function updateDragRect(mode: 'rect' | 'initials' = 'rect', ...dir:
             }
         } else {
             dragRect = drag.getBoundingClientRect();
-            resolve(-1);
+            resolve(dragRect);
         }
     })
 }
@@ -43,12 +43,12 @@ export async function handleMacFullScreen() {
     if (isFullScreen()) {
         document.body.classList.add('body--fullscreen');
         dragRectInitialLeft -= fromFullscreen ? 0 : 80 + 8;
-        dragRectInitialRight += protyleWidthChange;
+        // dragRectInitialRight += protyleWidthChange;
         fromFullscreen = true;
     } else {
         document.body.classList.remove('body--fullscreen');
         leftSpacing?.style.setProperty('width', '0px');
-        dragRectInitialLeft = await updateDragRect('initials', 'L');
+        dragRectInitialLeft = await updateDragRect('initials', 'L') as number;
         // dragRectInitialRight -= protyleWidthChange;
         leftSpacing?.style.removeProperty('width');
         fromFullscreen = false;
@@ -57,7 +57,7 @@ export async function handleMacFullScreen() {
 
 export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false, doesTopBarOverflow = false) {
     if (env.isMiniWindow || env.isMobile) return false;
-    let layoutsCenter = doms.layoutCenter ? doms.layoutCenter : await querySelectorPromise('.layout__center');
+    let layoutsCenter = doms.layoutCenter || await querySelectorPromise('.layout__center');
 
     // calcAndApply();
 
@@ -65,10 +65,7 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
     // else dragRectRightInitial = dragRectRightInitial + widthChange;
 
     return new Promise<boolean>(async resolve => {
-        if (isWinResizing) {
-            dragRectInitialRight += widthChange;
-        }
-
+        if (isWinResizing) dragRectInitialRight += widthChange;
         if (!dragRectInitialLeft || !dragRectInitialRight) await updateDragRect();
 
         layoutsCenterRect = layoutsCenter!.getBoundingClientRect();
@@ -126,10 +123,7 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
                     doms.layoutDockR?.style.setProperty('--avoid-topbar', 'calc(var(--toolbar-height) - 6px)')
                 };
             }
-
-            console.log("center right:",centerRectRight, 'drag initial right',dragRectInitialRight)
         }
-
         // set divider style
         if (centerRectRight < dragRectInitialRight - 8) {
             // horisontal divider
@@ -141,14 +135,18 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
         }
         else {
             // vertical divider
-            await updateDragRect('rect'); // fastdom + async cause update lag, but acceptable
+            // console.log(dragRect?.right)
+            if (!pluginsDivider) return;
+            if (!dragRect) await updateDragRect('rect') as DOMRect;
             pluginsDivider?.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
-            pluginsDivider!.style.left = dragRect.right - 10 + 'px';
-            pluginsDivider!.style.right = winWidth - dragRect.right + 8 + 'px';
-            pluginsDivider!.style.height = '21px';
-            pluginsDivider!.style.top = '13.5px';
+            pluginsDivider.style.left = dragRect.right - 10 + 'px';
+            pluginsDivider.style.right = winWidth - dragRect.right + 8 + 'px';
+            pluginsDivider.style.height = '21px';
+            pluginsDivider.style.top = '13.5px';
         }
-        // console.log('mutate: topbar spacings')
+
+        // console.log('mutate: topbar spacings'
+        // console.log("center right:", centerRectRight, 'drag initial right', dragRectInitialRight, 'dragrect right:', dragRect?.right, isWinResizing)
         resolve(true);
     })
 }
@@ -156,11 +154,11 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
 /**
  * calculates tabbar spacings & positions, always comes after topbar spacings calculation
  */
-export function calcTabbarSpacings(execute = true) {
+export async function calcTabbarSpacings(execute = true) {
     // console.log('tabbar spacings')
     if (!execute) return;
     topbarRect = doms.toolbar?.getBoundingClientRect() as DOMRect;
-    dragRect = doms.drag?.getBoundingClientRect() as DOMRect;
+    await updateDragRect('rect') as DOMRect;
     layoutsCenterRect = doms.layoutCenter?.getBoundingClientRect() as DOMRect;
 
     wndElements?.forEach(async wnd => {
@@ -209,6 +207,7 @@ export function unloadTopbarFusion() {
     })
 
     doms.layoutCenter.dataset.prevWidth = undefined;
+    document.body.dataset.prevWidth = undefined;
 }
 
 function createTopbarElements() {
@@ -249,11 +248,13 @@ function createTopbarElementById(newId: string, before: AsriDomsExtended = undef
 }
 
 export async function recalcDragInitials() {
-    leftSpacing?.style.setProperty('width', '0px');
-    rightSpacing?.style.setProperty('width', '0px');
+    if (!leftSpacing || !rightSpacing) return;
+    leftSpacing.style.setProperty('width', '0px');
+    rightSpacing.style.setProperty('width', '0px');
     await updateDragRect('initials');
-    leftSpacing?.style.removeProperty('width');
-    rightSpacing?.style.removeProperty('width');
+    leftSpacing.style.removeProperty('width');
+    rightSpacing.style.removeProperty('width');
+    // console.log('recalcDragInitials', dragRectInitialLeft, dragRectInitialRight)
 }
 
 function removeTopbarElements() {

@@ -92,7 +92,23 @@ export function modeTransition() {
 /**
 * Check if two elements have overlapping parts.
 */
-export async function isOverlapping(el1: AsriDomsExtended, el2: AsriDomsExtended): Promise<boolean> {
+
+export function isOverlapping(el1: AsriDomsExtended, el2: AsriDomsExtended): boolean {
+    if (!el1 || !el2) {
+        console.warn('isOverlapping called with null element');
+        return false;
+    }
+
+    let el1Rect: DOMRect, el2Rect: DOMRect;
+
+    el1Rect = el1.getBoundingClientRect();
+    el2Rect = el2.getBoundingClientRect();
+
+    const res = isRectOverlapping(el1Rect, el2Rect);
+    // console.log('measure isOverlapping')
+    return res;
+}
+export async function isOverlappingPromise(el1: AsriDomsExtended, el2: AsriDomsExtended): Promise<boolean> {
     if (!el1 || !el2) {
         console.warn('isOverlapping called with null element');
         return false;
