@@ -1,11 +1,10 @@
-import fastdom from "fastdom";
 import { isStatusHidden } from "../util/state";
 
 export function setStatusHeightVar() {
     const statusHeight = isStatusHidden() ? 0 : 32;
-    fastdom.mutate(() => {
-        document.body.style.setProperty('--status-height', `${statusHeight}px`)
-    })
+    // fastdom.mutate(() => {
+    document.body.style.setProperty('--status-height', `${statusHeight}px`)
+    // })
 }
 
 export function removeStatusHeightVar() {

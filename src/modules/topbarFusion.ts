@@ -34,7 +34,6 @@ export async function updateDragRect(mode: 'rect' | 'initials' = 'rect', ...dir:
             dragRect = drag.getBoundingClientRect();
             resolve(-1);
         }
-        // console.log('measure: drag rect')
     })
 }
 
@@ -247,6 +246,14 @@ function createTopbarElementById(newId: string, before: AsriDomsExtended = undef
     }
 
     return newDiv;
+}
+
+export async function recalcDragInitials() {
+    leftSpacing?.style.setProperty('width', '0px');
+    rightSpacing?.style.setProperty('width', '0px');
+    await updateDragRect('initials');
+    leftSpacing?.style.removeProperty('width');
+    rightSpacing?.style.removeProperty('width');
 }
 
 function removeTopbarElements() {

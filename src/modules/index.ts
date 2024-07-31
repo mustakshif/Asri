@@ -11,7 +11,7 @@ import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
 import { removeStatusHeightVar, setStatusHeightVar } from "./status";
-import { calcTabbarSpacings, calcTopbarSpacings, handleMacFullScreen, loadTopbarFusion, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
+import { calcTabbarSpacings, calcTopbarSpacings, handleMacFullScreen, loadTopbarFusion, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
 const globalClickEventListener = new AsriEventListener(mouseupEventsCallback);
@@ -72,6 +72,7 @@ async function updateStyles(e?: Event) {
         mouseTriggeredUpdates();
         setTimeout(() => {
             calcTopbarSpacings().then(calcTabbarSpacings);
+            recalcDragInitials();
         }, 0);
     }
 
@@ -106,26 +107,26 @@ function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObs
         // get current element's size
         const { inlineSize } = entry.contentBoxSize[0];
 
-        // check if it's the first time to trigger resize event, if so, skip the calculation
-        if (entry.target instanceof HTMLElement) {
-
-            if (!entry.target.dataset.prevWidth) {
+        setTimeout(() => {
+            // check if it's the first time to trigger resize event, if so, skip the calculation
+            if (entry.target instanceof HTMLElement) {
+                if (!entry.target.dataset.prevWidth) {
+                    entry.target.dataset.prevWidth = inlineSize + '';
+                    return;
+                }
+                // get previous width
+                const prevWidth = parseFloat(entry.target.dataset.prevWidth);
+                const widthChange = inlineSize - prevWidth;
                 entry.target.dataset.prevWidth = inlineSize + '';
-                continue;
+
+                debouncedHandleWinResize();
+                calcTopbarSpacings(widthChange, isWinResizing).then(calcTabbarSpacings);
+                debouncedCalcProtyleSpacings();
+                // console.log(widthChange)
+                protyleWidthChange = widthChange;
             }
+        }, 0); // make sure to capture width change after the size change is completely done
 
-            // get previous width
-            const prevWidth = parseFloat(entry.target.dataset.prevWidth);
-            const widthChange = inlineSize - prevWidth;
-            entry.target.dataset.prevWidth = inlineSize + '';
-
-            debouncedHandleWinResize();
-            calcTopbarSpacings(widthChange, isWinResizing).then(calcTabbarSpacings);
-            debouncedCalcProtyleSpacings();
-            // calcTabbarSpacings(true);
-            // console.log(widthChange)
-            protyleWidthChange = widthChange;
-        }
     }
 
     console.log('lytCenterRoCallback')
@@ -144,4 +145,12 @@ const debouncedHandleWinResize = debounce(() => {
     calcTopbarSpacings(protyleWidthChange, isWinResizing).then(calcTabbarSpacings);
     // console.log('debouncedwinRoCallback', protyleWidthChange);
 }, 200);
-
+// function debouncedHandleWinResize() {
+//     return debounce(() => {
+//         isWinResizing = false;
+//         handleMacFullScreen();
+//         debouncedUpdateTopbarOverflow();
+//         calcTopbarSpacings(protyleWidthChange, isWinResizing).then(calcTabbarSpacings);
+//         console.log('debouncedwinRoCallback', protyleWidthChange);
+//     }, 200);
+// }
