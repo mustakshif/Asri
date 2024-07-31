@@ -64,7 +64,7 @@ function mouseupEventsCallback(e: Event) {
 }
 
 async function updateStyles(e?: Event) {
-    // run on first load
+    // run on first load or when no event is triggered
     if (!e) {
         mouseTriggeredUpdates();
         calcTopbarSpacings().then(calcTabbarSpacings); // make sure to set the styles right on first load
@@ -103,6 +103,11 @@ function globalClassNameMoCallback(mutationList: MutationRecord[], observer: Mut
             debouncedFormatIndentGuidesForFocusedItems();
             debouncedFormatProtyleWithBgImageOnly();
         }
+        if (mutation.target === document.body) {
+            updateWndEls().then(()=>{
+                updateStyles();
+            });
+        }
     }
 }
 
@@ -131,7 +136,7 @@ function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver)
                 const widthChange = inlineSize - prevWidth;
                 entry.target.dataset.prevWidth = inlineSize + '';
                 protyleWidthChange = widthChange;
-            }            
+            }
             // console.log('winRoCallback', isWinResizing)
         }, 0);  // make sure to capture width change after the size change is completely done
     }

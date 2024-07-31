@@ -15,8 +15,8 @@ let fromFullscreen = false;
 
 export async function updateDragRect(mode: 'rect' | 'initials' = 'rect', ...dir: ElDir[]): Promise<number | DOMRect> {
     const drag = doms.drag || await querySelectorPromise('#drag');
-    if (!drag) {
-        throw new Error('updateDragRect(): drag not found');
+    if (!drag || env.isMiniWindow) {
+        return -1;
     }
     return new Promise((resolve) => {
         if (mode === 'initials') {
@@ -74,8 +74,7 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
 
         let centerRectLeft = layoutsCenterRect.left,
             centerRectRight = layoutsCenterRect.right,
-            barSearchRectLeft = doms.barSearch!.getBoundingClientRect().left,
-            winWidth = window.innerWidth;
+            barSearchRectLeft = doms.barSearch!.getBoundingClientRect().left;
 
         // console.log('measure: topbar spacings')
 
@@ -132,6 +131,7 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
             pluginsDivider!.style.right = '0';
             pluginsDivider!.style.removeProperty('height');
             pluginsDivider!.style.removeProperty('top');
+            pluginsDivider!.style.removeProperty('width');
         }
         else {
             // vertical divider
@@ -139,8 +139,7 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
             if (!pluginsDivider) return;
             if (!dragRect) await updateDragRect('rect') as DOMRect;
             pluginsDivider?.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
-            pluginsDivider.style.left = dragRect.right - 10 + 'px';
-            pluginsDivider.style.right = winWidth - dragRect.right + 8 + 'px';
+            pluginsDivider.style.left = dragRect.right - 10 + 'px';            pluginsDivider.style.width = '2px';
             pluginsDivider.style.height = '21px';
             pluginsDivider.style.top = '13.5px';
         }
