@@ -64,7 +64,7 @@ function mouseupEventsCallback(e: Event) {
 }
 
 async function updateStyles(e?: Event) {
-    // run on first load or when no event is triggered
+    // run on first load
     if (!e) {
         mouseTriggeredUpdates();
         calcTopbarSpacings().then(calcTabbarSpacings); // make sure to set the styles right on first load
@@ -103,11 +103,13 @@ function globalClassNameMoCallback(mutationList: MutationRecord[], observer: Mut
             debouncedFormatIndentGuidesForFocusedItems();
             debouncedFormatProtyleWithBgImageOnly();
         }
-        if (mutation.target === document.body) {
-            updateWndEls().then(()=>{
+
+        if (mutation.target === document.body && (mutation.oldValue?.includes('body--blur') || (mutation.target as HTMLElement).className.includes('body--blur'))) {
+            updateWndEls().then(() => {
                 updateStyles();
+                console.log(mutation, 'Class changed from', mutation.oldValue?.split(' '), 'to', (mutation.target as HTMLElement).className.split(' '), isWinResizing)
             });
-        }
+        } // make sure to only update styles when the body class changes; don't know why window resizing also cause class mutations on body element
     }
 }
 
@@ -115,7 +117,7 @@ function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObs
     // debouncedHandleWinResizeEnd();
     calcTopbarSpacings(0, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
     debouncedCalcProtyleSpacings();
-    // console.log('lytCenterRoCallback', isWinResizing)
+    console.log('lytCenterRoCallback', isWinResizing)
 }
 
 function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
@@ -137,8 +139,9 @@ function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver)
                 entry.target.dataset.prevWidth = inlineSize + '';
                 protyleWidthChange = widthChange;
             }
-            // console.log('winRoCallback', isWinResizing)
+
         }, 0);  // make sure to capture width change after the size change is completely done
+        console.log('winRoCallback', isWinResizing)
     }
 }
 

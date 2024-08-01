@@ -144,8 +144,10 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
             pluginsDivider.style.top = '13.5px';
         }
 
+        console.log("center right:", centerRectRight, 'drag initial right', dragRectInitialRight, 'dragrect right:', dragRect?.right, isWinResizing)
+
         // console.log('mutate: topbar spacings'
-        // console.log("center right:", centerRectRight, 'drag initial right', dragRectInitialRight, 'dragrect right:', dragRect?.right, isWinResizing)
+
         resolve(true);
     })
 }

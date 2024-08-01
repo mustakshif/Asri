@@ -47,5 +47,6 @@ export class AsriMutationObserver {
 export const MOConfigForClassNames: MutationObserverInit = {
     attributes: true, // 监视属性变化
     subtree: true, // 包含目标节点的后代节点
-    attributeFilter: ['class'] // 只关注"class"属性的变化
+    attributeFilter: ['class'],// 只关注"class"属性的变化
+    attributeOldValue: true
 };
