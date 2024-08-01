@@ -57,6 +57,7 @@ export function unloadAsriJSModules() {
     watchImgExportMo.disconnect(() => {
         document.body.classList.remove("has-exportimg")
     });
+    document.body.classList.remove('body--fullscreen');
 }
 function mouseupEventsCallback(e: Event) {
     // console.log(e);

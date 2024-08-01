@@ -1,4 +1,3 @@
-import { isWinResizing, protyleWidthChange } from ".";
 import { isOverlapping, querySelectorPromise } from "../util/misc";
 import { asriDoms as doms, environment as env } from "../util/rsc";
 import { isFullScreen, wndElements } from "../util/state";
