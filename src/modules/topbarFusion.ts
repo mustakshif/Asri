@@ -1,4 +1,4 @@
-import { protyleWidthChange } from ".";
+import { isWinResizing, protyleWidthChange } from ".";
 import { isOverlapping, querySelectorPromise } from "../util/misc";
 import { asriDoms as doms, environment as env } from "../util/rsc";
 import { isFullScreen, wndElements } from "../util/state";
@@ -148,9 +148,9 @@ export async function calcTabbarSpacings({ execute, centerRectRight } = { execut
 
     // set divider style
     (() => {
+        if (!pluginsDivider) return;
         if (centerRectRight < dragRectInitialRight - 8) {
             // horisontal divider
-            if (!pluginsDivider) return;
             pluginsDivider.style.setProperty('--container-bg', 'var(--b3-list-hover)');
             pluginsDivider.style.left = centerRectRight + 'px';
             pluginsDivider.style.right = '0';
@@ -159,7 +159,6 @@ export async function calcTabbarSpacings({ execute, centerRectRight } = { execut
             pluginsDivider.style.removeProperty('width');
         } else {
             // vertical divider
-            if (!pluginsDivider) return;
             // if (!dragRect) await updateDragRect('rect') as DOMRect;
             // const dragRect = doms.drag?.getBoundingClientRect() as DOMRect;
             pluginsDivider.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
@@ -199,6 +198,7 @@ export async function calcTabbarSpacings({ execute, centerRectRight } = { execut
         } else {
             tabbarContainer.style.removeProperty('padding-left');
             tabbarContainer.style.removeProperty('padding-right');
+            tabbarContainer.style.removeProperty('padding-top');
         }
     })
 }

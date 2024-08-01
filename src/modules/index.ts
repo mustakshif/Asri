@@ -129,21 +129,19 @@ function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver)
         debouncedHandleWinResizeEnd();
 
         const { inlineSize } = entry.contentBoxSize[0];
-        setTimeout(() => {
-            // check if it's the first time to trigger resize event, if so, skip the calculation
-            if (entry.target instanceof HTMLElement) {
-                if (!entry.target.dataset.prevWidth) {
-                    entry.target.dataset.prevWidth = inlineSize + '';
-                    return;
-                }
-                // get previous width
-                const prevWidth = parseFloat(entry.target.dataset.prevWidth);
-                const widthChange = inlineSize - prevWidth;
-                entry.target.dataset.prevWidth = inlineSize + '';
-                protyleWidthChange = widthChange;
-            }
 
-        }, 0);  // make sure to capture width change after the size change is completely done
+        // check if it's the first time to trigger resize event, if so, skip the calculation
+        if (entry.target instanceof HTMLElement) {
+            if (!entry.target.dataset.prevWidth) {
+                entry.target.dataset.prevWidth = inlineSize + '';
+                continue;
+            }
+            // get previous width
+            const prevWidth = parseFloat(entry.target.dataset.prevWidth);
+            const widthChange = inlineSize - prevWidth;
+            entry.target.dataset.prevWidth = inlineSize + '';
+            protyleWidthChange = widthChange;
+        };  // make sure to capture width change after the size change is completely done
         console.log('winRoCallback', isWinResizing)
     }
 }
@@ -152,11 +150,9 @@ const debouncedHandleWinResizeEnd = debounce(() => {
     isWinResizing = false;
     handleMacFullScreen();
 
-    setTimeout(() => {
-        updateTopbarOverflow();
-        if (!doesTopBarOverflow) recalcDragInitials();
-        calcTopbarSpacings(protyleWidthChange, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
-        protyleWidthChange = 0;
-    }, 200);
+    updateTopbarOverflow();
+    if (!doesTopBarOverflow) recalcDragInitials();
+    calcTopbarSpacings(protyleWidthChange, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
+    protyleWidthChange = 0;
     // console.log('debouncedwinRoCallback', isWinResizing);
 }, 200);
