@@ -107,7 +107,7 @@ function globalClassNameMoCallback(mutationList: MutationRecord[], observer: Mut
         if (mutation.target === document.body && (mutation.oldValue?.includes('body--blur') || (mutation.target as HTMLElement).className.includes('body--blur'))) {
             updateWndEls().then(() => {
                 updateStyles();
-                console.log(mutation, 'Class changed from', mutation.oldValue?.split(' '), 'to', (mutation.target as HTMLElement).className.split(' '), isWinResizing)
+                // console.log(mutation, 'Class changed from', mutation.oldValue?.split(' '), 'to', (mutation.target as HTMLElement).className.split(' '), isWinResizing)
             });
         } // make sure to only update styles when the body class changes; don't know why window resizing also cause class mutations on body element
     }
@@ -115,7 +115,10 @@ function globalClassNameMoCallback(mutationList: MutationRecord[], observer: Mut
 
 function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
     // debouncedHandleWinResizeEnd();
-    calcTopbarSpacings(0, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
+    calcTopbarSpacings(0, isWinResizing, doesTopBarOverflow)
+        .then(args => {
+            calcTabbarSpacings(args)
+        });
     debouncedCalcProtyleSpacings();
     console.log('lytCenterRoCallback', isWinResizing)
 }

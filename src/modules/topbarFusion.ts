@@ -56,7 +56,12 @@ export async function handleMacFullScreen() {
 }
 
 export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false, doesTopBarOverflow = false) {
-    if (env.isMiniWindow || env.isMobile) return false;
+    if (env.isMiniWindow || env.isMobile) {
+        return {
+            execute: false,
+            centerRectRight: 0,
+        };
+    }
     let layoutsCenter = doms.layoutCenter || await querySelectorPromise('.layout__center');
 
     // calcAndApply();
@@ -64,9 +69,9 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
     // if (!isWinResizing) calcAndApply(); // otherwise would cause dragRightInitial to be at unexpected position 
     // else dragRectRightInitial = dragRectRightInitial + widthChange;
 
-    return new Promise<boolean>(async resolve => {
+    return new Promise<{ execute: boolean, centerRectRight: number }>(async resolve => {
         if (isWinResizing) dragRectInitialRight += widthChange;
-        if (!dragRectInitialLeft || !dragRectInitialRight) await updateDragRect();
+        if (!dragRectInitialLeft || !dragRectInitialRight) await updateDragRect('initials');
 
         layoutsCenterRect = layoutsCenter!.getBoundingClientRect();
         barSyncRect = doms.barSync!.getBoundingClientRect();
@@ -123,44 +128,49 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
                 };
             }
         }
-        // set divider style
-        if (centerRectRight < dragRectInitialRight - 8) {
-            // horisontal divider
-            pluginsDivider!.style.setProperty('--container-bg', 'var(--b3-list-hover)');
-            pluginsDivider!.style.left = centerRectRight + 'px';
-            pluginsDivider!.style.right = '0';
-            pluginsDivider!.style.removeProperty('height');
-            pluginsDivider!.style.removeProperty('top');
-            pluginsDivider!.style.removeProperty('width');
-        }
-        else {
-            // vertical divider
-            // console.log(dragRect?.right)
-            if (!pluginsDivider) return;
-            if (!dragRect) await updateDragRect('rect') as DOMRect;
-            pluginsDivider?.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
-            pluginsDivider.style.left = dragRect.right - 10 + 'px';            pluginsDivider.style.width = '2px';
-            pluginsDivider.style.height = '21px';
-            pluginsDivider.style.top = '13.5px';
-        }
 
-        console.log("center right:", centerRectRight, 'drag initial right', dragRectInitialRight, 'dragrect right:', dragRect?.right, isWinResizing)
-
-        // console.log('mutate: topbar spacings'
-
-        resolve(true);
+        resolve({
+            execute: true,
+            centerRectRight: centerRectRight
+        });
     })
 }
 
 /**
  * calculates tabbar spacings & positions, always comes after topbar spacings calculation
  */
-export async function calcTabbarSpacings(execute = true) {
+export async function calcTabbarSpacings({ execute, centerRectRight } = { execute: false, centerRectRight: 0 }) {
     // console.log('tabbar spacings')
     if (!execute) return;
     topbarRect = doms.toolbar?.getBoundingClientRect() as DOMRect;
     await updateDragRect('rect') as DOMRect;
     layoutsCenterRect = doms.layoutCenter?.getBoundingClientRect() as DOMRect;
+
+    // set divider style
+    (() => {
+        if (centerRectRight < dragRectInitialRight - 8) {
+            // horisontal divider
+            if (!pluginsDivider) return;
+            pluginsDivider.style.setProperty('--container-bg', 'var(--b3-list-hover)');
+            pluginsDivider.style.left = centerRectRight + 'px';
+            pluginsDivider.style.right = '0';
+            pluginsDivider.style.removeProperty('height');
+            pluginsDivider.style.removeProperty('top');
+            pluginsDivider.style.removeProperty('width');
+        } else {
+            // vertical divider
+            if (!pluginsDivider) return;
+            // if (!dragRect) await updateDragRect('rect') as DOMRect;
+            // const dragRect = doms.drag?.getBoundingClientRect() as DOMRect;
+            pluginsDivider.style.setProperty('--container-bg', 'var(--b3-border-color-trans)');
+            pluginsDivider.style.left = dragRect.right - 10 + 'px';
+            pluginsDivider.style.width = '2px';
+            pluginsDivider.style.height = '21px';
+            pluginsDivider.style.top = '13.5px';
+        }
+    })();
+
+    // console.log("center right:", centerRectRight, 'drag initial right', dragRectInitialRight, 'dragrect right:', dragRect?.right)
 
     wndElements?.forEach(async wnd => {
         let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child') as HTMLElement;
@@ -172,7 +182,7 @@ export async function calcTabbarSpacings(execute = true) {
         let paddingRightValue = (tabbarContainerRect.right > dragRect.right) ? tabbarContainerRect.right - dragRect.right + 8 : 0;
 
         // console.log('measure: tabbar spacings inner')
-        if (await isOverlapping(tabbarContainer, doms.drag) || await isOverlapping(tabbarContainer, doms.toolbar)) {
+        if (isOverlapping(tabbarContainer, doms.drag) || isOverlapping(tabbarContainer, doms.toolbar)) {
             tabbarContainer.style.paddingLeft = paddingLeftValue + 'px';
             tabbarContainer.style.paddingRight = paddingRightValue + 'px';
 
