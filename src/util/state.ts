@@ -1,5 +1,5 @@
 import { remote } from "./electronAPI";
-import { debounce, querySelectorAllPromise } from "./misc";
+import { debounce, querySelectorAllPromise, querySelectorPromise } from "./misc";
 import { asriDoms as doms } from "./rsc";
 
 // top bar 
@@ -48,7 +48,8 @@ export function isDockHidden(dir: ElDir = 'L') {
 
 
 // bottom dock
-export function hasDockb() {
+export async function hasDockb() {
+    if (!doms.dockB) await querySelectorPromise('.layout__dockb')
     return !!(doms.dockB && !doms.dockB.classList.contains('fn__none'));
 }
 

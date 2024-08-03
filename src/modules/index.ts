@@ -1,7 +1,7 @@
 import { AsriEventListener } from "../util/eventListeners";
 import { debounce, querySelectorPromise } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
-import { asriDoms } from "../util/rsc";
+import { asriDoms, environment as env } from "../util/rsc";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/state";
 import { calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
 import { docBodyMoCallback } from "./dialog";
@@ -10,7 +10,7 @@ import { debouncedFormatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClas
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
-import { removeStatusHeightVar, setStatusHeightVar } from "./status";
+import { debouncedStatusPosition, removeStatusHeightVar, setStatusHeightVar } from "./status";
 import { calcTabbarSpacings, calcTopbarSpacings, handleMacFullScreen, loadTopbarFusion, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
@@ -38,8 +38,10 @@ export async function loadAsriJSModules() {
     globalClassNameMo.observe(document.body, MOConfigForClassNames);
     watchImgExportMo.observe(document.body, { childList: true });
     asriDoms.layoutCenter || await querySelectorPromise('.layout__center');
-    lytCenterRo.observe(asriDoms.layoutCenter);
-    winRo.observe(document.body);
+    if (!env.isMobile) {
+        lytCenterRo.observe(asriDoms.layoutCenter);
+        winRo.observe(document.body);
+    }
 }
 
 export function unloadAsriJSModules() {
@@ -52,12 +54,14 @@ export function unloadAsriJSModules() {
     globalClickEventListener.remove(document, 'mouseup');
     globalDragEventListener.remove(document, 'dragend');
     globalClassNameMo.disconnect();
-    lytCenterRo.disconnect();
-    winRo.disconnect();
     watchImgExportMo.disconnect(() => {
         document.body.classList.remove("has-exportimg")
     });
     document.body.classList.remove('body--fullscreen');
+    if (!env.isMobile) {
+        lytCenterRo.disconnect();
+        winRo.disconnect();
+    }
 }
 function mouseupEventsCallback(e: Event) {
     // console.log(e);
@@ -85,8 +89,9 @@ async function updateStyles(e?: Event) {
         setTimeout(async () => {
             updateDockLBgAndBorder();
             debouncedFormatProtyleWithBgImageOnly();
+            debouncedStatusPosition();
             await updateWndEls();
-            calcProtyleSpacings();
+            calcProtyleSpacings();            
         }, 0);
     }
 }
@@ -121,6 +126,7 @@ function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObs
             calcTabbarSpacings(args)
         });
     debouncedCalcProtyleSpacings();
+    debouncedStatusPosition();
     console.log('lytCenterRoCallback', isWinResizing)
 }
 
@@ -131,8 +137,8 @@ function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver)
 
         const { inlineSize } = entry.contentBoxSize[0];
 
-        // check if it's the first time to trigger resize event, if so, skip the calculation
         if (entry.target instanceof HTMLElement) {
+            // check if it's the first time to trigger resize event, if so, skip the calculation
             if (!entry.target.dataset.prevWidth) {
                 entry.target.dataset.prevWidth = inlineSize + '';
                 continue;
