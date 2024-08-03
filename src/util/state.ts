@@ -18,14 +18,13 @@ export function updateTopbarOverflow() {
 
 // docks and panels
 export function isDockLytPinned(dir: ElDir) {
-    const dockLayoutEl = doms[`layoutDock${dir}`] as AsriDomsExtended;
+    const dockLayoutEl = dir === 'B' ? doms.layoutDockB : dir === 'L' ? doms.layoutDockL : doms.layoutDockR; // read properties directly to prevent 'undefined' result after minimizing js
 
     return !!(dockLayoutEl && !dockLayoutEl.classList.contains('layout--float'));
 }
 export function isDockLytExpanded(dir: ElDir) {
-    const dockLayoutEl = doms[`layoutDock${dir}`] as AsriDomsExtended;
+    const dockLayoutEl = dir === 'B' ? doms.layoutDockB : dir === 'L' ? doms.layoutDockL : doms.layoutDockR; // read properties directly to prevent 'undefined' result after minimizing js
     let size: string | undefined;
-
     if (!dockLayoutEl) return false;
 
     if (dir === 'B') {
@@ -38,7 +37,7 @@ export function isDockLytExpanded(dir: ElDir) {
 }
 
 export function isDockHidden(dir: ElDir = 'L') {
-    const dock = doms[`dock${dir}`] as AsriDomsExtended;
+    const dock = dir === 'B' ? doms.dockB : dir === 'L' ? doms.dockL : doms.dockR; // read properties directly to prevent 'undefined' result after minimizing js
     return !!(dock && dock.classList.contains('fn__none'));
     // uses right dock to calculate status bar position: https://github.com/mustakshif/Asri/issues/16
 }

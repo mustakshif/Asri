@@ -9,9 +9,7 @@ export const debouncedStatusPosition = debounce(statusPosition);
  */
 async function statusPosition() {
     if (env.isMobile || env.isMiniWindow) return;
-    
     if (!doms.status) await querySelectorPromise('#status');
-    console.log(3, !await hasDockb())
     if (!await hasDockb()) {
         function setStatusTransform(x: number, y: number) {
             doms.status!.style.transform = `translate(${x}px, ${y}px)`;
@@ -26,7 +24,7 @@ async function statusPosition() {
 
             doms.layoutDockB || await querySelectorPromise('.layout__dockb');
 
-            if (doms.layoutDockB && !doms.layoutDockB.classList.contains('.fn__none') && isDockLytPinned('B')) {
+            if (doms.layoutDockB && !doms.layoutDockB.classList.contains('.fn__none') &&  isDockLytPinned('B')) {
                 y = doms.layoutDockB.clientHeight * -1;
             } else { y = 0; }
 
@@ -34,7 +32,6 @@ async function statusPosition() {
 
             let isDockRightHidden = isDockHidden('R'),
                 isLayoutDockRightHidden = !isDockLytPinned('R') && isDockLytExpanded('R');
-
             if (isDockRightHidden && isLayoutDockRightHidden) setStatusTransform(0, y);
             else if (!isDockRightHidden && isLayoutDockRightHidden) setStatusTransform(-40, y);
             else if (!isDockRightHidden && !isLayoutDockRightHidden) setStatusTransform((layoutDockrWidth + 40) * -1, y);
