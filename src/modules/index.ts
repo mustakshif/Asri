@@ -91,7 +91,7 @@ async function updateStyles(e?: Event) {
             debouncedFormatProtyleWithBgImageOnly();
             debouncedStatusPosition();
             await updateWndEls();
-            calcProtyleSpacings();            
+            calcProtyleSpacings();
         }, 0);
     }
 }
@@ -121,13 +121,10 @@ function globalClassNameMoCallback(mutationList: MutationRecord[], observer: Mut
 
 function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
     // debouncedHandleWinResizeEnd();
-    calcTopbarSpacings(0, isWinResizing, doesTopBarOverflow)
-        .then(args => {
-            calcTabbarSpacings(args)
-        });
+    calcTopbarSpacings(0, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
     debouncedCalcProtyleSpacings();
     debouncedStatusPosition();
-    console.log('lytCenterRoCallback', isWinResizing)
+    // console.log('lytCenterRoCallback', isWinResizing)
 }
 
 function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
@@ -149,7 +146,7 @@ function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver)
             entry.target.dataset.prevWidth = inlineSize + '';
             protyleWidthChange = widthChange;
         };  // make sure to capture width change after the size change is completely done
-        console.log('winRoCallback', isWinResizing)
+        // console.log('winRoCallback', isWinResizing)
     }
 }
 
