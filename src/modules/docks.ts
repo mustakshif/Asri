@@ -1,6 +1,6 @@
 import { querySelectorPromise } from "../util/misc";
-import { asriDoms as doms } from "../util/rsc";
-import { isDockLytExpanded, isDockLytPinned } from "../util/state";
+import { asriDoms as doms, environment } from "../util/rsc";
+import { hasDockb, isDockLytExpanded, isDockLytPinned } from "../util/state";
 
 export async function updateDockLBgAndBorder() {
     const dockL = doms.dockL ? doms.dockL : await querySelectorPromise('#dockLeft');
@@ -21,6 +21,21 @@ export async function updateDockLBgAndBorder() {
 
         // console.log('mutate: dock' , dock)
     }
+}
+
+export async function addDockbClassName() {
+    if (environment.isMobile) return;
+    const dockbExist = await hasDockb();
+    const dockbFloat = !isDockLytPinned('B') && isDockLytExpanded('B');
+
+    doms.toolbar?.nextElementSibling!.classList.toggle('has-dockb', dockbExist);
+    doms.toolbar?.nextElementSibling!.classList.toggle('has-layout-dockb-float', dockbFloat);
+    doms.dockB?.classList.toggle('has-layout-dockb-float', dockbFloat);
+}
+
+export function removeDockbClassName() {
+    doms.toolbar?.nextElementSibling!.classList.remove('has-dockb');
+    doms.toolbar?.nextElementSibling!.classList.remove('has-layout-dockb-float');
 }
 
 export function destroyDockBg() {

@@ -5,7 +5,7 @@ import { asriDoms, environment as env } from "../util/rsc";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/state";
 import { calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
 import { docBodyMoCallback } from "./dialog";
-import { destroyDockBg, updateDockLBgAndBorder } from "./docks";
+import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { debouncedFormatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClassName } from "./editor";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
@@ -33,6 +33,7 @@ export async function loadAsriJSModules() {
     await updateDragRect('initials');
     loadTopbarFusion();
     updateStyles();
+    addDockbClassName();
     globalClickEventListener.start(document, 'mouseup');
     globalDragEventListener.start(document, 'dragend');
     globalClassNameMo.observe(document.body, MOConfigForClassNames);
@@ -51,6 +52,7 @@ export function unloadAsriJSModules() {
     removeStatusHeightVar();
     unloadTopbarFusion();
     destroyStyleUpdates();
+    removeDockbClassName();
     globalClickEventListener.remove(document, 'mouseup');
     globalDragEventListener.remove(document, 'dragend');
     globalClassNameMo.disconnect();
@@ -92,6 +94,7 @@ async function updateStyles(e?: Event) {
             debouncedStatusPosition();
             await updateWndEls();
             calcProtyleSpacings();
+            addDockbClassName();
         }, 0);
     }
 }
