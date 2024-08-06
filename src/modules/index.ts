@@ -10,7 +10,7 @@ import { debouncedFormatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClas
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
-import { debouncedStatusPosition, removeStatusHeightVar, setStatusHeightVar } from "./status";
+import { avoidOverlappingWithStatus, debouncedStatusPosition, removeStatusHeightVar, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
 import { calcTabbarSpacings, calcTopbarSpacings, handleMacFullScreen, loadTopbarFusion, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
@@ -34,6 +34,7 @@ export async function loadAsriJSModules() {
     loadTopbarFusion();
     updateStyles();
     addDockbClassName();
+    avoidOverlappingWithStatus();
     globalClickEventListener.start(document, 'mouseup');
     globalDragEventListener.start(document, 'dragend');
     globalClassNameMo.observe(document.body, MOConfigForClassNames);
@@ -53,6 +54,7 @@ export function unloadAsriJSModules() {
     unloadTopbarFusion();
     destroyStyleUpdates();
     removeDockbClassName();
+    unloadAvoidOverlappingWithStatus();
     globalClickEventListener.remove(document, 'mouseup');
     globalDragEventListener.remove(document, 'dragend');
     globalClassNameMo.disconnect();
@@ -95,6 +97,7 @@ async function updateStyles(e?: Event) {
             await updateWndEls();
             calcProtyleSpacings();
             addDockbClassName();
+            avoidOverlappingWithStatus();
         }, 0);
     }
 }

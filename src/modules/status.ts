@@ -1,6 +1,6 @@
 import { hasDockb, isDockHidden, isDockLytExpanded, isDockLytPinned, isStatusHidden } from "../util/state";
 import { asriDoms as doms, environment as env } from "../util/rsc";
-import { debounce, querySelectorPromise } from "../util/misc";
+import { debounce, isOverlapping, querySelectorPromise } from "../util/misc";
 
 export const debouncedStatusPosition = debounce(statusPosition);
 
@@ -24,7 +24,7 @@ async function statusPosition() {
 
             doms.layoutDockB || await querySelectorPromise('.layout__dockb');
 
-            if (doms.layoutDockB && !doms.layoutDockB.classList.contains('.fn__none') &&  isDockLytPinned('B')) {
+            if (doms.layoutDockB && !doms.layoutDockB.classList.contains('.fn__none') && isDockLytPinned('B')) {
                 y = doms.layoutDockB.clientHeight * -1;
             } else { y = 0; }
 
@@ -61,69 +61,90 @@ export function removeStatusHeightVar() {
     document.body.style.removeProperty('--status-height');
 }
 
-// export function avoidOverlappingWithStatus() {
-//     if (!isStatusHidden()) {
+export function avoidOverlappingWithStatus() {
+    if (!isStatusHidden()) {
 
-//         let layoutTabContainers = doms.layouts?.querySelectorAll('.layout__center .layout-tab-container');
-//         let statusRect = doms.status?.getBoundingClientRect();
+        const layoutTabContainers = doms.layouts?.querySelectorAll('.layout__center .layout-tab-container');
+        const status = doms.status;
+        // let statusRect = doms.status?.getBoundingClientRect();
 
-//         layoutTabContainers?.forEach(layoutTabContainer => {
-//             let fileTree = layoutTabContainer.querySelector('.file-tree');
-//             if (fileTree && !fileTree.classList.contains('fn__none')) {
-//                 let containerRect = layoutTabContainer.getBoundingClientRect();
-//                 if (isOverlapping(containerRect, statusRect)) {
-//                     layoutTabContainer.style.paddingBottom = '35px'
-//                 } else {
-//                     layoutTabContainer.style.removeProperty('padding-bottom');
-//                 }
-//             } else {
-//                 layoutTabContainer.style.removeProperty('padding-bottom');
-//             }
-//         })
+        layoutTabContainers?.forEach(layoutTabContainer => {
+            let fileTree = layoutTabContainer.querySelector('.file-tree');
+            if (fileTree && !fileTree.classList.contains('fn__none')) {
+                // let containerRect = layoutTabContainer.getBoundingClientRect();
+                if (isOverlapping(layoutTabContainer as AsriDomsExtended, status)) {
+                    (layoutTabContainer as AsriDomsExtended)!.style.paddingBottom = '35px'
+                } else {
+                    (layoutTabContainer as AsriDomsExtended)!.style.removeProperty('padding-bottom');
+                }
+            } else {
+                (layoutTabContainer as AsriDomsExtended)!.style.removeProperty('padding-bottom');
+            }
+        })
 
-//         let searchList = document.getElementById('searchList');
-//         let searchPreview = document.getElementById('searchPreview');
-//         if (searchList || searchPreview) {
-//             let searchListRect = searchList.getBoundingClientRect();
-//             let searchPreviewRect = searchPreview.getBoundingClientRect();
+        const searchList = document.getElementById('searchList') as AsriDomsExtended;
+        const searchPreview = document.getElementById('searchPreview') as AsriDomsExtended;
+        if (searchList || searchPreview) {
+            // let searchListRect = searchList.getBoundingClientRect();
+            // let searchPreviewRect = searchPreview.getBoundingClientRect();
 
-//             if (isOverlapping(searchListRect, statusRect)) {
-//                 searchList.style.paddingBottom = '35px'
-//             } else {
-//                 searchList.style.removeProperty('padding-bottom')
-//             }
+            if (isOverlapping(searchList, status)) {
+                searchList!.style.paddingBottom = '35px'
+            } else {
+                searchList!.style.removeProperty('padding-bottom')
+            }
 
-//             if (isOverlapping(searchPreviewRect, statusRect)) {
-//                 searchPreview.style.paddingBottom = '35px'
-//             } else {
-//                 searchPreview.style.removeProperty('padding-bottom')
-//             }
-//         }
+            if (isOverlapping(searchPreview, status)) {
+                searchPreview!.style.paddingBottom = '35px'
+            } else {
+                searchPreview!.style.removeProperty('padding-bottom')
+            }
+        }
 
-//         // pdfviewer
-//         let viewerContainer = document.getElementById('viewerContainer');
+        // pdfviewer
+        const viewerContainer = document.getElementById('viewerContainer');
 
-//         if (viewerContainer) {
-//             let viewerContainerRect = viewerContainer.getBoundingClientRect();
+        if (viewerContainer) {
+            // let viewerContainerRect = viewerContainer.getBoundingClientRect();
 
-//             if (isOverlapping(viewerContainerRect, statusRect)) {
-//                 viewerContainer.style.paddingBottom = '35px';
-//             } else {
-//                 viewerContainer.style.removeProperty('padding-bottom')
-//             }
-//         }
+            if (isOverlapping(viewerContainer, status)) {
+                viewerContainer.style.paddingBottom = '35px';
+            } else {
+                viewerContainer.style.removeProperty('padding-bottom')
+            }
+        }
 
-//         // flashcard in tabbar
-//         asriDoms.layouts?.querySelectorAll('.card__main').forEach(card => {
-//             if (card) {
-//                 let cardRect = card.getBoundingClientRect();
+        // flashcard in tabbar
+        doms.layouts?.querySelectorAll('.card__main').forEach(card => {
+            if (card) {
+                // let cardRect = card.getBoundingClientRect();
 
-//                 if (isOverlapping(cardRect, statusRect)) {
-//                     card.style.paddingBottom = '35px';
-//                 } else {
-//                     card.style.removeProperty('padding-bottom')
-//                 }
-//             }
-//         });
-//     }
-// }
+                if (isOverlapping((card as AsriDomsExtended), status)) {
+                    (card as AsriDomsExtended)!.style.paddingBottom = '35px';
+                } else {
+                    (card as AsriDomsExtended)!.style.removeProperty('padding-bottom')
+                }
+            }
+        });
+    }
+}
+
+export function unloadAvoidOverlappingWithStatus() {
+    doms.layouts?.querySelectorAll('.layout__center .layout-tab-container').forEach(layoutTabContainer => {
+        (layoutTabContainer as AsriDomsExtended)!.style.removeProperty('padding-bottom');
+    })
+
+    doms.layouts?.querySelectorAll('.card__main').forEach(card => {
+        (card as AsriDomsExtended)!.style.removeProperty('padding-bottom');
+    })
+
+    const searchList = document.getElementById('searchList');
+    const searchPreview = document.getElementById('searchPreview');
+    const viewerContainer = document.getElementById('viewerContainer');
+
+    for (const el of [searchList, searchPreview, viewerContainer]) {
+        if (el) {
+            el.style.removeProperty('padding-bottom');
+        }
+    }
+}
