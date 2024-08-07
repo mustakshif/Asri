@@ -14,8 +14,9 @@ import { avoidOverlappingWithStatus, debouncedStatusPosition, removeStatusHeight
 import { calcTabbarSpacings, calcTopbarSpacings, handleMacFullScreen, loadTopbarFusion, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
-const globalClickEventListener = new AsriEventListener(mouseupEventsCallback);
-const globalDragEventListener = new AsriEventListener(mouseupEventsCallback);
+const globalClickEventListener = new AsriEventListener(lowFreqEventsCallback);
+const globalDragEventListener = new AsriEventListener(lowFreqEventsCallback);
+const globalKeyupEventListener = new AsriEventListener(lowFreqEventsCallback);
 const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback, 500));
 const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
 const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
@@ -37,6 +38,7 @@ export async function loadAsriJSModules() {
     avoidOverlappingWithStatus();
     globalClickEventListener.start(document, 'mouseup');
     globalDragEventListener.start(document, 'dragend');
+    globalKeyupEventListener.start(document, 'keyup');
     globalClassNameMo.observe(document.body, MOConfigForClassNames);
     watchImgExportMo.observe(document.body, { childList: true });
     asriDoms.layoutCenter || await querySelectorPromise('.layout__center');
@@ -57,6 +59,7 @@ export function unloadAsriJSModules() {
     unloadAvoidOverlappingWithStatus();
     globalClickEventListener.remove(document, 'mouseup');
     globalDragEventListener.remove(document, 'dragend');
+    globalKeyupEventListener.remove(document, 'keyup');
     globalClassNameMo.disconnect();
     watchImgExportMo.disconnect(() => {
         document.body.classList.remove("has-exportimg")
@@ -67,21 +70,23 @@ export function unloadAsriJSModules() {
         winRo.disconnect();
     }
 }
-function mouseupEventsCallback(e: Event) {
+function lowFreqEventsCallback(e: Event) {
     // console.log(e);
     updateStyles(e);
 }
 
-async function updateStyles(e?: Event) {
+async function updateStyles(e?: Event | KeyboardEvent) {
+
     // run on first load
     if (!e) {
-        mouseTriggeredUpdates();
+        lowFreqStyleUpdates();
         calcTopbarSpacings().then(calcTabbarSpacings); // make sure to set the styles right on first load
     }
 
     // run on mouse events
-    else if (e.type.startsWith('mouse') || e.type.startsWith('drag')) {
-        mouseTriggeredUpdates();
+    else if ((e.type.startsWith('mouse') || e.type.startsWith('drag')) 
+        || (e instanceof KeyboardEvent && (e.key === 'Control' || e.key === 'Alt' || e.key === 'Shift' || e.key === 'Meta'))) {
+        lowFreqStyleUpdates();
 
         setTimeout(() => {
             recalcDragInitials();
@@ -89,11 +94,12 @@ async function updateStyles(e?: Event) {
         }, 0);
     }
 
-    function mouseTriggeredUpdates() {
+    function lowFreqStyleUpdates() {
         setTimeout(async () => {
             updateDockLBgAndBorder();
             debouncedFormatProtyleWithBgImageOnly();
             debouncedStatusPosition();
+            setStatusHeightVar();
             await updateWndEls();
             calcProtyleSpacings();
             addDockbClassName();
