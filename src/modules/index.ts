@@ -4,7 +4,7 @@ import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from 
 import { asriDoms, environment as env } from "../util/rsc";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/state";
 import { calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
-import { makeConfigMenuItems } from "./configsMenu/makeItems";
+import { makeConfigMenuItems, removeConfigMenuItems } from "./configsMenu/makeItems";
 import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { debouncedFormatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClassName } from "./editor";
@@ -47,7 +47,6 @@ export async function loadAsriJSModules() {
         lytCenterRo.observe(asriDoms.layoutCenter);
         winRo.observe(document.body);
     }
-
     makeConfigMenuItems();
 }
 
@@ -72,6 +71,7 @@ export function unloadAsriJSModules() {
         lytCenterRo.disconnect();
         winRo.disconnect();
     }
+    removeConfigMenuItems();
 }
 function lowFreqEventsCallback(e: Event) {
     // console.log(e);
@@ -83,7 +83,7 @@ async function updateStyles(e?: Event | KeyboardEvent) {
     // run on first load
     if (!e) {
         lowFreqStyleUpdates();
-        calcTopbarSpacings().then(calcTabbarSpacings); // make sure to set the styles right on first load
+        calcTopbarSpacings().then(calcTabbarSpacings);
     }
 
     // run on mouse events

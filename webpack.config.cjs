@@ -62,7 +62,7 @@ module.exports = {
               // 是否混淆对象属性名
               regex: /^(?!_)/, // 仅混淆不以下划线开头的属性名
               keep_quoted: true,  // 保留引号中的属性名
-              reserved: ['getCurrentWindow', 'setWindowButtonPosition', 'isFullScreen'],  // 保留不混淆的属性名
+              reserved: ['getCurrentWindow', 'setWindowButtonPosition', 'isFullScreen', 'getAccentColor', 'systemPreferences'],  // 保留不混淆的属性名
             },
           },
           output: {

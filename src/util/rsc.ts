@@ -49,6 +49,6 @@ export const environment = {
     isMiniWindow: document.body.classList.contains('body--window'),
     isIOSApp: (/iOS/i.test(ua) || /iPad/i.test(ua)) && /AppleWebKit/i.test(ua) && ua.startsWith("SiYuan/"),
     lang: window.siyuan.config.lang as string,
-    doesSupportOklch: CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)'),
+    supportOklch: CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)'),
     isReadOnly: window.siyuan.config.readonly as boolean
 };

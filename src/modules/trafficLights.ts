@@ -1,4 +1,4 @@
-import { remote } from "../util/electronAPI";
+import { remote } from "../util/electron";
 import { environment as env } from "../util/rsc";
 
 function setTrafficLightPosition(x: number, y = x) {

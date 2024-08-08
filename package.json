@@ -21,7 +21,6 @@
   "author": "mustakshif",
   "license": "MIT",
   "dependencies": {
-    "fastdom": "^1.0.12",
     "siyuan": "^0.9.9"
   },
   "devDependencies": {

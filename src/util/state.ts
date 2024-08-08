@@ -1,4 +1,4 @@
-import { remote } from "./electronAPI";
+import { remote } from "./electron";
 import { debounce, querySelectorAllPromise, querySelectorPromise } from "./misc";
 import { asriDoms as doms } from "./rsc";
 
