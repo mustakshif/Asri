@@ -4,6 +4,7 @@ import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from 
 import { asriDoms, environment as env } from "../util/rsc";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/state";
 import { calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
+import { makeConfigMenuItems } from "./configsMenu/makeItems";
 import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { debouncedFormatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClassName } from "./editor";
@@ -46,6 +47,8 @@ export async function loadAsriJSModules() {
         lytCenterRo.observe(asriDoms.layoutCenter);
         winRo.observe(document.body);
     }
+
+    makeConfigMenuItems();
 }
 
 export function unloadAsriJSModules() {

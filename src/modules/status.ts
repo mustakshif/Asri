@@ -7,7 +7,7 @@ export const debouncedStatusPosition = debounce(statusPosition);
 /**
  * Calculate the position of status bar when there is a change of the display of docks and their layouts.
  */
-async function statusPosition() {
+export async function statusPosition() {
     if (env.isMobile || env.isMiniWindow) return;
     if (!doms.status) await querySelectorPromise('#status');
     if (!await hasDockb()) {

@@ -31,7 +31,7 @@ export async function getFile(path: string): Promise<any> {
     }
 }
 
-export async function putFile(path: string, isDir: boolean, file: any) {
+export async function putFile(path: string, isDir = false, file: any) {
     let form = new FormData();
     form.append('path', path);
     form.append('isDir', isDir.toString());
