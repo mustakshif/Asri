@@ -110,7 +110,7 @@
     }
 }
 
-body:not(.hadeeth-pin-toolbar, .body--fullscreen),
+body:not(.hadeeth-pin-toolbar, .body-asri--fullscreen),
 body.body--window {
     // -> js
 
@@ -264,7 +264,7 @@ body.body--window {
 
         &.body--win32,
         &.body-asri--browser,
-        &.body--fullscreen {
+        &.body-asri--fullscreen {
             // -> js
             @include hide-toolbar-common;
 
@@ -519,7 +519,7 @@ body.body--window {
     }
 }
 
-body:where(.hadeeth-pin-toolbar, .body--fullscreen):not(.body--window) {
+body:where(.hadeeth-pin-toolbar, .body-asri--fullscreen):not(.body--window) {
     // -> js
 
     --toolbar-height: 40px;

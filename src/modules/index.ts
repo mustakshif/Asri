@@ -31,6 +31,7 @@ export async function loadAsriJSModules() {
     useMacSysScrollbar();
     applyTrafficLightPosition();
     setStatusHeightVar();
+    makeConfigMenuItems(); // https://github.com/mustakshif/Asri/issues/85
     await updateWndEls();
     await updateDragRect('initials');
     loadTopbarFusion();
@@ -47,7 +48,6 @@ export async function loadAsriJSModules() {
         lytCenterRo.observe(asriDoms.layoutCenter);
         winRo.observe(document.body);
     }
-    makeConfigMenuItems();
 }
 
 export async function unloadAsriJSModules() {
@@ -66,7 +66,7 @@ export async function unloadAsriJSModules() {
     watchImgExportMo.disconnect(() => {
         document.body.classList.remove("has-exportimg")
     });
-    document.body.classList.remove('body--fullscreen');
+    document.body.classList.remove('body-asri--fullscreen');
     if (!env.isMobile) {
         lytCenterRo.disconnect();
         winRo.disconnect();
