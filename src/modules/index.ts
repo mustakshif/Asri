@@ -4,14 +4,14 @@ import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from 
 import { asriDoms, environment as env } from "../util/rsc";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/state";
 import { calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
-import { makeConfigMenuItems, removeConfigMenuItems } from "./configsMenu/makeItems";
+import { followSysAccentColor, getSystemAccentColor, makeConfigMenuItems, removeConfigMenuItems } from "./configsMenu/makeItems";
 import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { debouncedFormatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClassName } from "./editor";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
-import { avoidOverlappingWithStatus, debouncedStatusPosition, removeStatusHeightVar, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
+import { avoidOverlappingWithStatus, debouncedStatusPosition, removeStatusStyles, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
 import { calcTabbarSpacings, calcTopbarSpacings, handleMacFullScreen, loadTopbarFusion, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
@@ -50,12 +50,12 @@ export async function loadAsriJSModules() {
     makeConfigMenuItems();
 }
 
-export function unloadAsriJSModules() {
+export async function unloadAsriJSModules() {
     removeEnvClassNames();
     restoreDefaultSiyuanScrollbar();
     restoreTrafficLightPosition();
-    removeStatusHeightVar();
-    unloadTopbarFusion();
+    removeStatusStyles();
+    await unloadTopbarFusion();
     destroyStyleUpdates();
     removeDockbClassName();
     unloadAvoidOverlappingWithStatus();
@@ -107,6 +107,7 @@ async function updateStyles(e?: Event | KeyboardEvent) {
             calcProtyleSpacings();
             addDockbClassName();
             avoidOverlappingWithStatus();
+            !env.isIOSApp && followSysAccentColor && env.supportOklch && getSystemAccentColor();
         }, 0);
     }
 }
@@ -128,6 +129,7 @@ function globalClassNameMoCallback(mutationList: MutationRecord[], observer: Mut
         if (mutation.target === document.body && (mutation.oldValue?.includes('body--blur') || (mutation.target as HTMLElement).className.includes('body--blur'))) {
             updateWndEls().then(() => {
                 updateStyles();
+                !env.isIOSApp && followSysAccentColor && env.supportOklch && getSystemAccentColor();
                 // console.log(mutation, 'Class changed from', mutation.oldValue?.split(' '), 'to', (mutation.target as HTMLElement).className.split(' '), isWinResizing)
             });
         } // make sure to only update styles when the body class changes; don't know why window resizing also cause class mutations on body element

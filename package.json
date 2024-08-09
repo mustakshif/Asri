@@ -14,8 +14,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cmpl": "tsc ./src/main.ts",
-    "build": "webpack --mode production",
-    "watch": "webpack --watch --mode development",
+    "b": "webpack --mode production",
+    "w": "webpack --watch --mode development",
     "wphelp": "webpack --help"
   },
   "author": "mustakshif",

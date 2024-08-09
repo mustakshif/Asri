@@ -11,7 +11,8 @@ const asriConfigs = {
 };
 
 let sysAccentColor: string;
-let followSysAccentColor = true, isSysAccentGray = false, isUserAccentGray = false;
+let isSysAccentGray = false, isUserAccentGray = false;
+export let followSysAccentColor = true; 
 
 
 export async function makeConfigMenuItems() {
@@ -42,9 +43,11 @@ export async function makeConfigMenuItems() {
 
 export function removeConfigMenuItems() {
     document.documentElement.style.removeProperty('--asri-user-custom-accent');
+    document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
     document.documentElement.style.removeProperty('--asri-c-factor');
     document.documentElement.style.removeProperty('--asri-sys-accent');
     document.documentElement.style.removeProperty('--asri-sys-accent-accessible');
+    document.documentElement.style.removeProperty('--asri-c-0');
     asriDoms.barMode?.removeEventListener("click", customizeThemeColor);
     document.querySelectorAll('.asri-config').forEach(el => el.remove());
 }
@@ -214,7 +217,7 @@ async function customizeThemeColor() {
     }
 }
 
-function getSystemAccentColor() {
+export function getSystemAccentColor() {
     if (!(env.isInBrowser || env.isMobile || env.isLinux)) {
         const accent = remote.systemPreferences.getAccentColor();
         const accentHex = '#' + accent.slice(0, 6);

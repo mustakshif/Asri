@@ -57,8 +57,12 @@ export function setStatusHeightVar() {
     // })
 }
 
-export function removeStatusHeightVar() {
+export function removeStatusStyles() {
     document.body.style.removeProperty('--status-height');
+    setTimeout(() => {
+        doms.status?.style.removeProperty('max-width');
+        doms.status?.style.removeProperty('transform');
+    }, 0);
 }
 
 export function avoidOverlappingWithStatus() {

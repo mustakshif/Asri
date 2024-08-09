@@ -1,6 +1,6 @@
 import { isOverlapping, querySelectorPromise } from "../util/misc";
 import { asriDoms as doms, environment as env } from "../util/rsc";
-import { isFullScreen, wndElements } from "../util/state";
+import { isFullScreen, updateWndEls, wndElements } from "../util/state";
 
 // added toolbar elements
 let pluginsDivider: AsriDomsExtended, leftSpacing: AsriDomsExtended, rightSpacing: AsriDomsExtended;
@@ -206,10 +206,11 @@ export async function loadTopbarFusion() {
     createTopbarElements();
 }
 
-export function unloadTopbarFusion() {
+export async function unloadTopbarFusion() {
     removeTopbarElements();
+    await updateWndEls();
     wndElements?.forEach(wnd => {
-        let tabbarContainer = wnd.querySelector('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child') as HTMLElement;
+        let tabbarContainer = wnd.firstElementChild as HTMLElement;
 
         tabbarContainer.style.removeProperty('padding-top');
         tabbarContainer.style.removeProperty('padding-left');
@@ -218,6 +219,9 @@ export function unloadTopbarFusion() {
 
     doms.layoutCenter.dataset.prevWidth = undefined;
     document.body.dataset.prevWidth = undefined;
+
+    doms.dockR?.style.removeProperty('--avoid-topbar');
+    doms.layoutDockR?.style.removeProperty('--avoid-topbar');
 }
 
 function createTopbarElements() {
