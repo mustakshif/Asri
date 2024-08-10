@@ -53,18 +53,19 @@ module.exports = {
           compress: {
             drop_console: true, // 删除所有console.*函数调用
             drop_debugger: true, // 删除所有debugger语句
-            pure_funcs: ['console.log'], // 删除特定函数调用
+            pure_funcs: ['console.log'], // 删除特定函数调用]
           },
           mangle: {
             keep_classnames: false,  // 保留类名
             keep_fnames: false,      // 保留函数名
             toplevel: true,  // 混淆顶级作用域中的变量和函数名
-            // properties: {
-            //   // 是否混淆对象属性名
-            //   regex: /^(?!_)/, // 仅混淆不以下划线开头的属性名
-            //   keep_quoted: true,  // 保留引号中的属性名
-            //   reserved: ['getCurrentWindow', 'setWindowButtonPosition', 'isFullScreen', 'getAccentColor', 'systemPreferences', 'sorted', 'Color', 'named'],  // 保留不混淆的属性名
-            // },
+            properties: {
+              // 是否混淆对象属性名
+              regex: /^(?!_)/, // 混淆不以下划线开头的属性名
+              keep_quoted: true,  // 保留引号中的属性名
+              reserved: ['getCurrentWindow', 'setWindowButtonPosition', 'isFullScreen', 'getAccentColor', 'systemPreferences'],  // 保留不混淆的属性名
+              // regex: /^[a-z]*[A-Z][a-z0-9]*/
+            },
           },
           format: {
             // 输出选项

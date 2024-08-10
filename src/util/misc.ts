@@ -82,6 +82,54 @@ export function hexToHSL(hex: string) {
     };
 }
 
+export function hexToOklchL(hex: string) {
+    if (!hex) return;
+    // 移除可能存在的 '#' 符号
+    hex = hex.replace(/^#/, '');
+
+    if (hex.length === 4) hex.substring(0, 3);
+    else if (hex.length === 8) hex.substring(0, 6);
+
+    if (hex.length === 3) {
+        hex = hex.split('').map(function (c) {
+            return c + c;
+        }).join('');
+    }
+
+    // 将 hex 转换为 RGB
+    let r = parseInt(hex.slice(0, 2), 16) / 255;
+    let g = parseInt(hex.slice(2, 4), 16) / 255;
+    let b = parseInt(hex.slice(4, 6), 16) / 255;
+
+    // 将 RGB 转换为线性 RGB
+    r = r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
+    g = g > 0.04045 ? Math.pow((g + 0.055) / 1.055, 2.4) : g / 12.92;
+    b = b > 0.04045 ? Math.pow((b + 0.055) / 1.055, 2.4) : b / 12.92;
+
+    // 将线性 RGB 转换为 XYZ
+    let x = 0.4124564 * r + 0.3575761 * g + 0.1804375 * b;
+    let y = 0.2126729 * r + 0.7151522 * g + 0.0721750 * b;
+    let z = 0.0193339 * r + 0.1191920 * g + 0.9503041 * b;
+
+    // 将 XYZ 转换为 LMS
+    let l = 0.8189330101 * x + 0.3618667424 * y - 0.1288597137 * z;
+    let m = 0.0329845436 * x + 0.9293118715 * y + 0.0361456387 * z;
+    let s = 0.0482003018 * x + 0.2643662691 * y + 0.6338517070 * z;
+
+    // 应用非线性函数
+    l = Math.cbrt(l);
+    m = Math.cbrt(m);
+    s = Math.cbrt(s);
+
+    // 计算 OKLCH 的 L 值
+    let L = 0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s;
+
+    // 将 L 值范围调整到 0-100
+    // L = L * 100;
+
+    return L;
+}
+
 export function modeTransition() {
     document.body.classList.add('asri-mode-transition');
     setTimeout(() => {

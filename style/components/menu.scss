@@ -78,6 +78,10 @@
         }
 
         .b3-menu__item--selected {
+            // &.b3-menu__item--current > .b3-menu__label {
+            //     text-decoration: underline;
+            // }
+            
             svg {
                 color: inherit;
             }

@@ -2,7 +2,7 @@
 import chroma from 'chroma-js';
 import { getFile, putFile } from '../../util/api';
 import { remote } from '../../util/electron';
-import { debounce, hexToHSL } from '../../util/misc';
+import { debounce, hexToHSL, hexToOklchL } from '../../util/misc';
 import { asriDoms, environment as env } from '../../util/rsc';
 
 const asriConfigs = {
@@ -51,6 +51,7 @@ export function removeConfigMenuItems() {
     document.documentElement.style.removeProperty('--asri-sys-accent');
     document.documentElement.style.removeProperty('--asri-sys-accent-accessible');
     document.documentElement.style.removeProperty('--asri-c-0');
+    document.documentElement.style.removeProperty('--asri-on-primary-reverse');
     asriDoms.barMode?.removeEventListener("click", customizeThemeColor);
     document.querySelectorAll('.asri-config').forEach(el => el.remove());
 }
@@ -271,10 +272,11 @@ function handleGrayScale(chroma: string | number) {
 }
 
 function reverseOnPrimaryLightness(hex: string) {
-    console.log(hex, typeof hex);
-    console.log(chroma.valid(hex));
-    const boundry = env.appSchemeMode === 'light' ? 0.82 : 0.8;
-    if (chroma(hex).get('oklch.l') > boundry) {
+    const lightness = hexToOklchL(hex);
+    console.log(lightness);
+    if (!lightness) return;
+    const threshold = env.appSchemeMode === 'light' ? 0.82 : 0.8;
+    if (lightness > threshold) {
         document.documentElement.style.setProperty('--asri-on-primary-reverse', env.appSchemeMode === 'light' ? '.45' : '.35');
     } else {
         document.documentElement.style.removeProperty('--asri-on-primary-reverse');

@@ -14,21 +14,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cmpl": "tsc ./src/main.ts",
-    "b": "webpack --mode production",
+    "build": "webpack --mode production",
     "w": "webpack --watch --mode development",
     "wphelp": "webpack --help"
   },
   "author": "mustakshif",
   "license": "MIT",
-  "dependencies": {
-    "chroma-js": "^2.6.0",
-    "siyuan": "^0.9.9"
-  },
   "devDependencies": {
     "@types/chroma-js": "^2.4.4",
     "@types/cssom": "^0.4.3",
     "@types/eslint": "^8.56.10",
     "html-loader": "^5.0.0",
+    "siyuan": "^1.0.2",
     "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",
