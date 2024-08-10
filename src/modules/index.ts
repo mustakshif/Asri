@@ -87,8 +87,10 @@ async function updateStyles(e?: Event | KeyboardEvent) {
     }
 
     // run on mouse events
-    else if ((e.type.startsWith('mouse') || e.type.startsWith('drag')) 
-        || (e instanceof KeyboardEvent && (e.key === 'Control' || e.key === 'Alt' || e.key === 'Shift' || e.key === 'Meta'))) {
+    else if (
+        (e.type.startsWith('mouse') || e.type.startsWith('drag')) ||
+        (e instanceof KeyboardEvent && (e.key === 'Control' || e.key === 'Alt' || e.key === 'Shift' || e.key === 'Meta'))
+    ) {
         lowFreqStyleUpdates();
 
         setTimeout(() => {
@@ -126,7 +128,13 @@ function globalClassNameMoCallback(mutationList: MutationRecord[], observer: Mut
             debouncedFormatProtyleWithBgImageOnly();
         }
 
-        if (mutation.target === document.body && (mutation.oldValue?.includes('body--blur') || (mutation.target as HTMLElement).className.includes('body--blur'))) {
+        if (
+            mutation.target === document.body &&
+            (
+                mutation.oldValue?.includes('body--blur') ||
+                (mutation.target as HTMLElement).className.includes('body--blur')
+            )
+        ) {
             updateWndEls().then(() => {
                 updateStyles();
                 !env.isIOSApp && followSysAccentColor && env.supportOklch && getSystemAccentColor();

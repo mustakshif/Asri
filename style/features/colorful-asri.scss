@@ -127,6 +127,32 @@
         }
     }
 
+    // reverse primary colors when theme color is too bright
+    #barWorkspace,
+    #message,
+    .b3-button--outline:hover,
+    .protyle-breadcrumb__icon:hover,
+    .config-account__info .b3-button,
+    .b3-menu,
+    .b3-switch {
+        --b3-theme-primary: var(--asri-base-color, var(--asri-fallback-accent));
+        --b3-theme-on-primary: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, .99) .01 h);
+        --b3-menu-item-background-hover: oklch(from var(--b3-theme-primary) l c h / .8);
+        --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, 1) c h);
+
+        @include darkmode-counterpart {
+            --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, 1) c h / .89);
+        }
+    }
+
+    .b3-switch:checked {
+        background-color: oklch(from var(--b3-theme-primary) min(.85, l) c h);
+
+        @include darkmode-counterpart {
+            background-color: oklch(from var(--b3-theme-primary) min(.65, l) c h);
+        }
+    }
+
     // asri config menu
     #commonMenu[data-name="barmode"] {
         right: 40px;

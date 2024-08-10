@@ -3,12 +3,13 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: './src/main.ts',
+  // devtool: 'source-map',
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
+        exclude: /\/node_modules/,
       },
       // 添加处理.html文件的规则
       {
@@ -58,18 +59,19 @@ module.exports = {
             keep_classnames: false,  // 保留类名
             keep_fnames: false,      // 保留函数名
             toplevel: true,  // 混淆顶级作用域中的变量和函数名
-            properties: {
-              // 是否混淆对象属性名
-              regex: /^(?!_)/, // 仅混淆不以下划线开头的属性名
-              keep_quoted: true,  // 保留引号中的属性名
-              reserved: ['getCurrentWindow', 'setWindowButtonPosition', 'isFullScreen', 'getAccentColor', 'systemPreferences'],  // 保留不混淆的属性名
-            },
+            // properties: {
+            //   // 是否混淆对象属性名
+            //   regex: /^(?!_)/, // 仅混淆不以下划线开头的属性名
+            //   keep_quoted: true,  // 保留引号中的属性名
+            //   reserved: ['getCurrentWindow', 'setWindowButtonPosition', 'isFullScreen', 'getAccentColor', 'systemPreferences', 'sorted', 'Color', 'named'],  // 保留不混淆的属性名
+            // },
           },
-          output: {
+          format: {
             // 输出选项
             comments: false, // 去除所有注释
           },
         },
+        extractComments: false,
         parallel: true, // 启用多进程并行运行以提高构建速度
       }),
     ],

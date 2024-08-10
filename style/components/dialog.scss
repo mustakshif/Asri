@@ -1070,6 +1070,7 @@
 #criteria {
     .b3-button {
         @include button-action('primary') {
+            color: var(--b3-theme-accent, var(--b3-theme-primary));
             background-color: transparent;
             padding: 2px 8px;
             box-shadow: none;

@@ -21,9 +21,11 @@
   "author": "mustakshif",
   "license": "MIT",
   "dependencies": {
+    "chroma-js": "^2.6.0",
     "siyuan": "^0.9.9"
   },
   "devDependencies": {
+    "@types/chroma-js": "^2.4.4",
     "@types/cssom": "^0.4.3",
     "@types/eslint": "^8.56.10",
     "html-loader": "^5.0.0",
