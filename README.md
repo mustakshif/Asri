@@ -13,19 +13,18 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.0.22
+![limitless lightness preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/limitless-lightness.gif)
 
-* Optimized the animation curve for expanding and collapsing the floating panel.
-* Adjusted the tab background color in dark mode.
-* [Fixed the issue of overlapping between the top bar icons and the sidebar top when the window width is small](https://github.com/mustakshif/Asri/issues/84).
+### v3.1.0
 
-### v3.0.21
-
-* Optimized the line height of dialog box text content.
-* Improved the effect of border color changing with chroma.
-* Adapted the "fake doc breadcrumb" plugin.
-* Fixed the issue where the highlight entry background color in search results grouped by documents was insufficiently distinguishable when chroma was 0.
-* Removed the extra whitespace before the labels of single and multi-select column filters in the database.
+* ✨ Removed the lightness limitation for custom theme colors, resulting in richer color representation.
+* Refactored the theme JavaScript.
+* Optimized the response to system accent color changes when enabling the follow system accent color option on Mac.
+* Adjusted the transparency of the menu item shortcut key hints.
+* Removed the double-click event listener.
+* [Fixed the issue of overlapping layout for top bar icons when dragging mini window tabs back to the main interface in split-screen mode](https://github.com/mustakshif/Asri/issues/25).
+* Fixed the occasional delay in refreshing the indentation lines of the document tree.
+* Fixed the occasional overlap of header image area elements when opening or creating documents.
 
 ### ...
 

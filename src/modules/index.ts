@@ -32,9 +32,11 @@ export async function loadAsriJSModules() {
     applyTrafficLightPosition();
     setStatusHeightVar();
     makeConfigMenuItems(); // https://github.com/mustakshif/Asri/issues/85
-    await updateWndEls();
-    await updateDragRect('initials');
-    loadTopbarFusion();
+    if (!env.isMobile) {
+        await updateWndEls();
+        await updateDragRect('initials');
+        loadTopbarFusion();
+    }
     updateStyles();
     addDockbClassName();
     avoidOverlappingWithStatus();
@@ -55,7 +57,7 @@ export async function unloadAsriJSModules() {
     restoreDefaultSiyuanScrollbar();
     restoreTrafficLightPosition();
     removeStatusStyles();
-    await unloadTopbarFusion();
+    if (!env.isMobile) await unloadTopbarFusion();
     destroyStyleUpdates();
     removeDockbClassName();
     unloadAvoidOverlappingWithStatus();

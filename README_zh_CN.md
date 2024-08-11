@@ -13,19 +13,18 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
-### v3.0.22
+### v3.1.0
 
-* 优化浮动面板展开和收起时的动画曲线
-* 调整暗色模式下选项卡背景色
-* [修复窗口宽度较小时顶栏图标与侧栏顶部重叠的问题](https://github.com/mustakshif/Asri/issues/84)
+![limitless lightness preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/limitless-lightness.gif)
 
-### v3.0.21
-
-* 优化对话框文本内容的行间距
-* 优化边框色随色度变化的效果
-* 适配「（伪）文档面包屑」插件
-* 修复色度为 0 时按文档分组的搜索结果中高亮条目背景色区分度不够的问题
-* 移除数据库单选和多选列筛选菜单标签前多余空白
+* ✨ 解除自定义主题色的明度限制，带来更丰富的色彩表现
+* 重构主题 js
+* 优化 Mac 端启用跟随系统强调色时对系统强调色变化的响应
+* 调整菜单条目快捷键提示透明度
+* 移除双击事件监听
+* [修复将小窗页签以分屏形式拖回主界面时顶栏图标布局重叠的问题](https://github.com/mustakshif/Asri/issues/25)
+* 修复文档树缩进线偶现刷新不及时的问题
+* 修复打开或新建文档时偶现题头图区域元素重叠的问题
 
 ### ...
 

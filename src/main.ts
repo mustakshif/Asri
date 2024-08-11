@@ -1,7 +1,7 @@
 import { loadAsriJSModules, unloadAsriJSModules } from "./modules";
 import { modeTransition } from "./util/misc";
 
-setTimeout(loadAsriJSModules, 0);
+loadAsriJSModules();
 
 window.destroyTheme = () => {
     unloadAsriJSModules();

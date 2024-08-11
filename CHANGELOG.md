@@ -1,3 +1,27 @@
+### v3.1.0
+
+* ✨ 解除自定义主题色的明度限制，带来更丰富的色彩表现
+* 重构主题 js
+* 优化 Mac 端启用跟随系统强调色时对系统强调色变化的响应
+* 调整菜单条目快捷键提示透明度
+* 移除双击事件监听
+* [修复将小窗页签以分屏形式拖回主界面时顶栏图标布局重叠的问题](https://github.com/mustakshif/Asri/issues/25)
+* 修复文档树缩进线偶现刷新不及时的问题
+* 修复打开或新建文档时偶现题头图区域元素重叠的问题
+
+<br />
+
+* ✨ Removed the lightness limitation for custom theme colors, resulting in richer color representation.
+* Refactored the theme JavaScript.
+* Optimized the response to system accent color changes when enabling the follow system accent color option on Mac.
+* Adjusted the transparency of the menu item shortcut key hints.
+* Removed the double-click event listener.
+* [Fixed the issue of overlapping layout for top bar icons when dragging mini window tabs back to the main interface in split-screen mode](https://github.com/mustakshif/Asri/issues/25).
+* Fixed the occasional delay in refreshing the indentation lines of the document tree.
+* Fixed the occasional overlap of header image area elements when opening or creating documents.
+
+---
+
 ### v3.0.22
 
 * 优化浮动面板展开和收起时的动画曲线
