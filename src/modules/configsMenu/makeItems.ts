@@ -1,5 +1,4 @@
 // import htmlString from './menuHTML/index.html';
-import chroma from 'chroma-js';
 import { getFile, putFile } from '../../util/api';
 import { remote } from '../../util/electron';
 import { debounce, hexToHSL, hexToOklchL } from '../../util/misc';
@@ -271,13 +270,12 @@ function handleGrayScale(chroma: string | number) {
     }
 }
 
+const reverseThreshold = env.appSchemeMode === 'light' ? 0.82 : 0.8;
 function reverseOnPrimaryLightness(hex: string) {
     const lightness = hexToOklchL(hex);
-    console.log(lightness);
     if (!lightness) return;
-    const threshold = env.appSchemeMode === 'light' ? 0.82 : 0.8;
-    if (lightness > threshold) {
-        document.documentElement.style.setProperty('--asri-on-primary-reverse', env.appSchemeMode === 'light' ? '.45' : '.35');
+    if (lightness > reverseThreshold) {
+        document.documentElement.style.setProperty('--asri-on-primary-reverse', env.appSchemeMode === 'light' ? '.4' : '.3');
     } else {
         document.documentElement.style.removeProperty('--asri-on-primary-reverse');
     }

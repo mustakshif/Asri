@@ -132,6 +132,7 @@
     #message,
     .b3-button--outline:hover,
     .protyle-breadcrumb__icon:hover,
+    .protyle-breadcrumb__item,
     .config-account__info .b3-button,
     .b3-menu,
     .b3-switch {
@@ -141,17 +142,22 @@
         --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, 1) c h);
 
         @include darkmode-counterpart {
+            --b3-theme-on-primary: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, 1) c h);
             --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, 1) c h / .89);
         }
     }
 
     .b3-switch:checked {
-        background-color: oklch(from var(--b3-theme-primary) min(.85, l) c h);
+        background-color: oklch(from var(--b3-theme-primary) min(.82, l) c h);
 
         @include darkmode-counterpart {
             background-color: oklch(from var(--b3-theme-primary) min(.65, l) c h);
         }
     }
+
+    // .b3-menu__item:hover > .b3-switch--menu {
+    //     outline-color: oklch(from var(--b3-theme-on-background) var(--asri-on-primary-reverse, 1) c h / .37);
+    // }
 
     // asri config menu
     #commonMenu[data-name="barmode"] {
