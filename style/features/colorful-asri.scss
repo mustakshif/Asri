@@ -1,11 +1,13 @@
 @use '../base' as *;
 
-// --asri-sys-accent、 --asri-sys-accent-accessible是用 JavaScript 获取的基础颜色
+// --asri-sys-accent、 --asri-sys-accent-accessible 是用 JavaScript 获取的基础颜色
 // accent-accessible 跟 accent 相同，但仅当系统强调色（在 HSL 色彩空间中）的饱和度大于 0.3 时可用，否则使用备选颜色；
 // --b3-theme-accent 是一个新的 UI 色，用于突出和区分元素（如激活状态的图标）；
 
 // --asri-c-factor: [0, 5], 面板色色度系数，默认为 1；
 // --asri-c-0: 色度为 0 时为 0，否则不可用；
+
+// --asri-on-primary-reverse: 用于 primary 颜色亮度较高时反转 on-primary 颜色至深色，亮色模式下为 0.4，暗色模式下为 0.3；primary 亮度正常时不可用
 
 
 @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
@@ -127,7 +129,7 @@
         }
     }
 
-    // reverse primary colors when theme color is too bright
+    // reverse on-primary colors when primary color is too bright
     #barWorkspace,
     #message,
     .b3-button--outline:hover,
@@ -137,17 +139,22 @@
     .b3-menu,
     .b3-switch {
         --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) min(.87, l) c h);
-        --b3-theme-on-primary: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, .99) .01 h);
-        // --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
-        // --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
-        // --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
+        --b3-theme-on-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) var(--asri-on-primary-reverse, .99) calc(c * var(--asri-on-primary-reverse, .01) / var(--asri-on-primary-reverse, 1)) h);
         --b3-menu-item-background-hover: oklch(from var(--b3-theme-primary) l c h / .8);
-        --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, 1) c h);
+        --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, 1) calc(c * var(--asri-on-primary-reverse, 0) / var(--asri-on-primary-reverse, 1)) h);
+
+        /*
+        !!! chroma value calculation for on-primary: 
+            if reversed, use primary color's original chroma; 
+            else use 0 or 0.01. 
+            Same for on-primary color's chroma value.
+
+            This is to fix the issue that the text color is too vivid when not reversed.
+        */
 
         @include darkmode-counterpart {
             --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) max(.45, l) c h);
-            --b3-theme-on-primary: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, 1) c h);
-            --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, 1) c h / .89);
+            --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, 1) calc(c * var(--asri-on-primary-reverse, 0) / var(--asri-on-primary-reverse, 1)) h / .89);
         }
     }
 

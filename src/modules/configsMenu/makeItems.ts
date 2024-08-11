@@ -201,6 +201,7 @@ async function customizeThemeColor() {
         colorPicker.addEventListener('change', () => {
             followSysAccentBtn!.classList.remove('b3-menu__item--selected');
             pickColorBtn!.classList.add('b3-menu__item--selected');
+            reverseOnPrimaryLightness(colorPicker!.value);
 
             asriConfigs.userCustomColor = colorPicker!.value;
             followSysAccentColor = false;
@@ -270,7 +271,7 @@ function handleGrayScale(chroma: string | number) {
     }
 }
 
-const reverseThreshold = env.appSchemeMode === 'light' ? 0.82 : 0.8;
+const reverseThreshold = env.appSchemeMode === 'light' ? 0.81 : 0.79;
 function reverseOnPrimaryLightness(hex: string) {
     const lightness = hexToOklchL(hex);
     if (!lightness) return;
