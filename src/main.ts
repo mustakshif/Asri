@@ -9,7 +9,7 @@ window.destroyTheme = () => {
     setTimeout(() => {
         const appearanceConfig = window.siyuan.config.appearance;
         const fromMode = environment.appSchemeMode;
-        const currMode = window.siyuan.config.appearance.mode > 0 ? 'dark' : 'light';
+        const currMode = appearanceConfig.mode > 0 ? 'dark' : 'light';
         if (
             appearanceConfig.themeDark === appearanceConfig.themeLight || (
                 fromMode === currMode && (
@@ -20,7 +20,6 @@ window.destroyTheme = () => {
         ) {
             return;
         }
-
         unloadAsriJSModules();
     }, 500);
 }

@@ -208,7 +208,7 @@ export async function loadTopbarFusion() {
 
 export async function unloadTopbarFusion() {
     await updateWndEls();
-    setTimeout(removeTopbarElements, 200);
+    removeTopbarElements();
 
     wndElements?.forEach(wnd => {
         let tabbarContainer = wnd.firstElementChild as HTMLElement;
