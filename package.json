@@ -21,7 +21,6 @@
   "author": "mustakshif",
   "license": "MIT",
   "devDependencies": {
-    "@types/chroma-js": "^2.4.4",
     "@types/cssom": "^0.4.3",
     "@types/eslint": "^8.56.10",
     "html-loader": "^5.0.0",

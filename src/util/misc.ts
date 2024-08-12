@@ -130,7 +130,7 @@ export function hexToOklchL(hex: string) {
     return L;
 }
 
-export function modeTransition() {
+export function asriModeTransition() {
     document.body.classList.add('asri-mode-transition');
     setTimeout(() => {
         document.body.classList.remove('asri-mode-transition');

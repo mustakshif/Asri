@@ -138,23 +138,22 @@
     .config-account__info .b3-button,
     .b3-menu,
     .b3-switch {
-        --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) min(.87, l) c h);
-        --b3-theme-on-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) var(--asri-on-primary-reverse, .99) calc(c * var(--asri-on-primary-reverse, .01) / var(--asri-on-primary-reverse, 1)) h);
-        --b3-menu-item-background-hover: oklch(from var(--b3-theme-primary) l c h / .8);
-        --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, 1) calc(c * var(--asri-on-primary-reverse, 0) / var(--asri-on-primary-reverse, 1)) h);
-
         /*
         !!! chroma value calculation for on-primary: 
             if reversed, use primary color's original chroma; 
-            else use 0 or 0.01. 
-            Same for on-primary color's chroma value.
+            else use 0 or 0.01.
 
             This is to fix the issue that the text color is too vivid when not reversed.
         */
 
+        --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) min(.87, l) c h);
+        --b3-theme-on-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) var(--asri-on-primary-reverse, .99) calc(c * var(--asri-on-primary-reverse, .01) / var(--asri-on-primary-reverse, 1)) h);
+        --b3-menu-item-background-hover: oklch(from var(--b3-theme-primary) l c h / .8);
+        --b3-menu-item-background-hover-text: var(--b3-theme-on-primary);
+
         @include darkmode-counterpart {
             --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) max(.45, l) c h);
-            --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-primary) var(--asri-on-primary-reverse, 1) calc(c * var(--asri-on-primary-reverse, 0) / var(--asri-on-primary-reverse, 1)) h / .89);
+            --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-on-primary) l c h / .89);
         }
     }
 

@@ -207,8 +207,9 @@ export async function loadTopbarFusion() {
 }
 
 export async function unloadTopbarFusion() {
-    removeTopbarElements();
     await updateWndEls();
+    setTimeout(removeTopbarElements, 200);
+
     wndElements?.forEach(wnd => {
         let tabbarContainer = wnd.firstElementChild as HTMLElement;
 
@@ -216,7 +217,6 @@ export async function unloadTopbarFusion() {
         tabbarContainer.style.removeProperty('padding-left');
         tabbarContainer.style.removeProperty('padding-right');
     })
-
     doms.layoutCenter.dataset.prevWidth = undefined;
     document.body.dataset.prevWidth = undefined;
 

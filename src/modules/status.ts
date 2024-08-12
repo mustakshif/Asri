@@ -60,9 +60,9 @@ export function setStatusHeightVar() {
 export function removeStatusStyles() {
     document.body.style.removeProperty('--status-height');
     setTimeout(() => {
-        doms.status?.style.removeProperty('max-width');
-        doms.status?.style.removeProperty('transform');
-    }, 0);
+        document.getElementById('status')?.style.removeProperty('max-width');
+        document.getElementById('status')?.style.removeProperty('transform');
+    }, 200);
 }
 
 export function avoidOverlappingWithStatus() {
