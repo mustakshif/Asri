@@ -333,7 +333,9 @@
     }
 
     .config-account__cover[style="background-image: url()"] {
-        background-color: oklch(from var(--b3-theme-primary) l c h / 0.3) !important;
+        // background-color: oklch(from var(--b3-theme-primary) l c h / 0.3) !important;
+        background-color: unset !important;
+        background: radial-gradient(circle at bottom, oklch(from var(--b3-theme-primary) l calc(c * 1.05) calc(h + 30) / .2) 15%, oklch(from var(--b3-theme-primary) l c h / .3) 85%) !important;
     }
 
     // other 
