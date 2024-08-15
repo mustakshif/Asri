@@ -1,9 +1,9 @@
-import { debounce, querySelectorAllPromise } from "../util/misc";
+import { debounce, querySelectorAllAsync } from "../util/misc";
 
 export const debouncedFormatProtyleWithBgImageOnly = debounce(formatProtyleWithBgImageOnly);
 export async function formatProtyleWithBgImageOnly() {
     // await updateWndEls();
-    let protyleBgs = await querySelectorAllPromise('.protyle-top>.protyle-background');
+    let protyleBgs = await querySelectorAllAsync('.protyle-top>.protyle-background');
 
     protyleBgs?.forEach(protyleBg => {
         if (!protyleBg.querySelector('.protyle-background__img img')?.classList.contains('fn__none') && protyleBg.querySelector('.protyle-background__icon.fn__none')) {

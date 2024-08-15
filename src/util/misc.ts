@@ -8,7 +8,7 @@ export function pushUnique(arr: any[], item: any) {
         arr.push(item);
     }
 }
-export function debounce<T extends (...args: any[]) => any>(func: T, delay: number = 200): T {
+export function debounce<T extends (...args: any[]) => any>(func: T, delay = 200): T {
     let timeoutId: NodeJS.Timeout | null = null;
 
     return ((...args: Parameters<T>) => {
@@ -156,7 +156,7 @@ export function isOverlapping(el1: AsriDomsExtended, el2: AsriDomsExtended): boo
     // console.log('measure isOverlapping')
     return res;
 }
-export async function isOverlappingPromise(el1: AsriDomsExtended, el2: AsriDomsExtended): Promise<boolean> {
+export async function isOverlappingAsync(el1: AsriDomsExtended, el2: AsriDomsExtended): Promise<boolean> {
     if (!el1 || !el2) {
         console.warn('isOverlapping called with null element');
         return false;
@@ -206,10 +206,10 @@ export function nodeListsHaveSameElements(list1: NodeListOf<Element>, list2: Nod
     return true;
 }
 
-export async function querySelectorPromise(selector: string, trial = 10, timeout = 200): Promise<Element | undefined> {
+export async function querySelectorAsync(selector: string,scope: Document | HTMLElement | Element = document, trial = 10, timeout = 200): Promise<Element | undefined> {
     let n = 0;
     while (n < trial) {
-        const element = document.querySelector<Element>(selector);
+        const element = scope.querySelector<Element>(selector);
         if (element) return element;
 
         await new Promise(resolve => setTimeout(resolve, timeout));
@@ -218,10 +218,10 @@ export async function querySelectorPromise(selector: string, trial = 10, timeout
     // throw new Error('querySelectorPromise failed');
 }
 
-export async function querySelectorAllPromise(selector: string, trial = 10, timeout = 200): Promise<NodeListOf<Element> | undefined> {
+export async function querySelectorAllAsync(selector: string, scope: Document | HTMLElement | Element = document, trial = 10, timeout = 200): Promise<NodeListOf<Element> | undefined> {
     let n = 0;
     while (n < trial) {
-        const elements = document.querySelectorAll<Element>(selector);
+        const elements = scope.querySelectorAll<Element>(selector);
         if (elements.length > 0) return elements;
 
         await new Promise(resolve => setTimeout(resolve, timeout));

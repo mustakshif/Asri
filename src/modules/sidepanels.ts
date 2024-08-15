@@ -1,4 +1,4 @@
-import { debounce, querySelectorPromise } from "../util/misc";
+import { debounce, querySelectorAsync } from "../util/misc";
 import { asriDoms as doms, environment } from "../util/rsc";
 
 const { isMobile } = environment;
@@ -7,7 +7,7 @@ export const debouncedFormatIndentGuidesForFocusedItems = debounce(formatIndentG
 export async function formatIndentGuidesForFocusedItems() {
     if (isMobile) return;
 
-    if (!doms.layoutDockL) await querySelectorPromise('.layout__dockl');
+    if (!doms.layoutDockL) await querySelectorAsync('.layout__dockl');
 
     let listItemsFocus = document.querySelectorAll('.file-tree .b3-list-item--focus');
 

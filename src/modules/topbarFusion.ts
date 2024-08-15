@@ -1,4 +1,4 @@
-import { isOverlapping, querySelectorPromise } from "../util/misc";
+import { isOverlapping, querySelectorAsync } from "../util/misc";
 import { asriDoms as doms, environment as env } from "../util/rsc";
 import { isFullScreen, updateWndEls, wndElements } from "../util/state";
 
@@ -13,7 +13,7 @@ let dragRectInitialLeft: number, dragRectInitialRight: number;
 let fromFullscreen = false;
 
 export async function updateDragRect(mode: 'rect' | 'initials' = 'rect', ...dir: ElDir[]): Promise<number | DOMRect> {
-    const drag = doms.drag || await querySelectorPromise('#drag');
+    const drag = doms.drag || await querySelectorAsync('#drag');
     if (!drag || env.isMiniWindow) {
         return -1;
     }
@@ -61,7 +61,7 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
             centerRectRight: 0,
         };
     }
-    let layoutsCenter = doms.layoutCenter || await querySelectorPromise('.layout__center');
+    let layoutsCenter = doms.layoutCenter || await querySelectorAsync('.layout__center');
 
     // calcAndApply();
 

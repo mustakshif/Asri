@@ -1,5 +1,5 @@
 import { AsriEventListener } from "../util/eventListeners";
-import { debounce, querySelectorPromise } from "../util/misc";
+import { debounce, querySelectorAsync } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/state";
@@ -45,7 +45,7 @@ export async function loadAsriJSModules() {
     globalKeyupEventListener.start(document, 'keyup');
     globalClassNameMo.observe(document.body, MOConfigForClassNames);
     watchImgExportMo.observe(document.body, { childList: true });
-    asriDoms.layoutCenter || await querySelectorPromise('.layout__center');
+    asriDoms.layoutCenter || await querySelectorAsync('.layout__center');
     if (!env.isMobile) {
         lytCenterRo.observe(asriDoms.layoutCenter);
         winRo.observe(document.body);

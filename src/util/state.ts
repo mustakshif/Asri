@@ -1,5 +1,5 @@
 import { remote } from "./electron";
-import { debounce, querySelectorAllPromise, querySelectorPromise } from "./misc";
+import { debounce, querySelectorAllAsync, querySelectorAsync } from "./misc";
 import { asriDoms as doms } from "./rsc";
 
 // top bar 
@@ -48,7 +48,7 @@ export function isDockHidden(dir: ElDir = 'L') {
 
 // bottom dock
 export async function hasDockb() {
-    if (!doms.dockB) await querySelectorPromise('.layout__dockb')
+    if (!doms.dockB) await querySelectorAsync('.layout__dockb')
     return !!(doms.dockB && !doms.dockB.classList.contains('fn__none'));
 }
 
@@ -79,7 +79,7 @@ export let wndElements: NodeListOf<Element> | undefined = document.querySelector
  * update wnd elements, use before calcTabbarSpacings() and calcProtyleSpacings()
  */
 export async function updateWndEls(): Promise<NodeListOf<Element> | undefined> {
-    await querySelectorAllPromise('.layout__center [data-type="wnd"]').then(els => {
+    await querySelectorAllAsync('.layout__center [data-type="wnd"]').then(els => {
         wndElements = els;
     });
     return wndElements;

@@ -229,15 +229,15 @@ export function getSystemAccentColor() {
     if (!(env.isInBrowser || env.isMobile || env.isLinux)) {
         const accent = remote.systemPreferences.getAccentColor();
         const accentHex = '#' + accent.slice(0, 6);
-        const accentHSLObj = hexToHSL(accentHex);
-        if (!accentHSLObj) return;
+        const accentHsl = hexToHSL(accentHex);
+        if (!accentHsl) return;
 
         if (sysAccentColor !== accentHex) {
             document.documentElement.style.setProperty('--asri-sys-accent', accentHex);
-            if (accentHSLObj.s > 0.28) document.documentElement.style.setProperty('--asri-sys-accent-accessible', accentHex);
+            if (accentHsl.s > 0.28) document.documentElement.style.setProperty('--asri-sys-accent-accessible', accentHex);
             else document.documentElement.style.removeProperty('--asri-sys-accent-accessible');
 
-            isSysAccentGray = accentHSLObj.s === 0 ? true : false;
+            isSysAccentGray = accentHsl.s === 0 ? true : false;
 
             document.body.classList.add('asri-mode-transition');
             setTimeout(() => {
@@ -248,7 +248,7 @@ export function getSystemAccentColor() {
         }
 
         if (followSysAccentColor) {
-            handleGrayScale(accentHSLObj.s)
+            handleGrayScale(accentHsl.s)
             reverseOnPrimaryLightness(accentHex);
         };
     }

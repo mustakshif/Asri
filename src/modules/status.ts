@@ -1,6 +1,6 @@
 import { hasDockb, isDockHidden, isDockLytExpanded, isDockLytPinned, isStatusHidden } from "../util/state";
 import { asriDoms as doms, environment as env } from "../util/rsc";
-import { debounce, isOverlapping, querySelectorPromise } from "../util/misc";
+import { debounce, isOverlapping, querySelectorAsync } from "../util/misc";
 
 export const debouncedStatusPosition = debounce(statusPosition);
 
@@ -9,20 +9,20 @@ export const debouncedStatusPosition = debounce(statusPosition);
  */
 export async function statusPosition() {
     if (env.isMobile || env.isMiniWindow) return;
-    if (!doms.status) await querySelectorPromise('#status');
+    if (!doms.status) await querySelectorAsync('#status');
     if (!await hasDockb()) {
         function setStatusTransform(x: number, y: number) {
             doms.status!.style.transform = `translate(${x}px, ${y}px)`;
         }
 
-        let layoutCenter = (doms.layouts || await querySelectorPromise('#layouts'))!.querySelector('.layout__center');
+        let layoutCenter = (doms.layouts || await querySelectorAsync('#layouts'))!.querySelector('.layout__center');
 
         if (layoutCenter && doms.layoutDockR && !doms.status!.classList.contains('.fn__none')) {
             let layoutDockrWidth = doms.layoutDockR.clientWidth;
             let layoutCenterWidth = layoutCenter.clientWidth;
             let y = 0;
 
-            doms.layoutDockB || await querySelectorPromise('.layout__dockb');
+            doms.layoutDockB || await querySelectorAsync('.layout__dockb');
 
             if (doms.layoutDockB && !doms.layoutDockB.classList.contains('.fn__none') && isDockLytPinned('B')) {
                 y = doms.layoutDockB.clientHeight * -1;

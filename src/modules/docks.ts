@@ -1,10 +1,10 @@
-import { querySelectorPromise } from "../util/misc";
+import { querySelectorAsync } from "../util/misc";
 import { asriDoms as doms, environment } from "../util/rsc";
 import { hasDockb, isDockLytExpanded, isDockLytPinned } from "../util/state";
 
 export async function updateDockLBgAndBorder() {
-    const dockL = doms.dockL ? doms.dockL : await querySelectorPromise('#dockLeft');
-    if (!doms.layoutDockL) await querySelectorPromise('.layout__dockl');
+    const dockL = doms.dockL ? doms.dockL : await querySelectorAsync('#dockLeft');
+    if (!doms.layoutDockL) await querySelectorAsync('.layout__dockl');
     const dockR = doms.dockR;
 
     for (let dock of [dockL, dockR]) {
