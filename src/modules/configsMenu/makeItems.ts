@@ -16,34 +16,35 @@ let isSysAccentGray = false, isUserAccentGray = false;
 export let followSysAccentColor = true;
 
 
-export async function makeConfigMenuItems() {
+export async function loadThemePalette() {
     if (env.isIOSApp) return; // fix app crash
     i18n = await loadI18n();
     getAsriConfigs().then(() => {
         if (env.supportOklch) {
             // check local configs to set initial theme color
             if (!(env.isInBrowser || env.isMobile || env.isLinux)) {
-                if (followSysAccentColor) document.documentElement.style.removeProperty('--asri-user-custom-accent');
-                else document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.userCustomColor);
+                if (followSysAccentColor) {
+                    document.documentElement.style.removeProperty('--asri-user-custom-accent');
+                }
+                else {
+                    document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.userCustomColor); reverseOnPrimaryLightness(asriConfigs.userCustomColor);
+                }
             } else {
                 document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.userCustomColor);
+                reverseOnPrimaryLightness(asriConfigs.userCustomColor);
             }
 
             document.documentElement.style.setProperty('--asri-c-factor', asriConfigs.chroma);
-
             isUserAccentGray = asriConfigs.chroma === '0' ? true : false;
-
-            handleGrayScale(asriConfigs.chroma);            
+            handleGrayScale(asriConfigs.chroma);
             getSystemAccentColor();
-            !asriConfigs.followSysAccentColor && reverseOnPrimaryLightness(asriConfigs.userCustomColor);
-            customizeThemeColor();
         }
     });
 
     env.supportOklch && asriDoms.barMode?.addEventListener("click", customizeThemeColor);
 }
 
-export function removeConfigMenuItems() {
+export function unloadThemePalette() {
     document.documentElement.style.removeProperty('--asri-user-custom-accent');
     document.documentElement.style.removeProperty('--asri-sys-accent-grayscale');
     document.documentElement.style.removeProperty('--asri-c-factor');

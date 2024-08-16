@@ -4,7 +4,7 @@ import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from 
 import { asriDoms, environment as env } from "../util/rsc";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/state";
 import { calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
-import { followSysAccentColor, getSystemAccentColor, makeConfigMenuItems, removeConfigMenuItems } from "./configsMenu/makeItems";
+import { followSysAccentColor, getSystemAccentColor, loadThemePalette, unloadThemePalette } from "./configsMenu/makeItems";
 import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { debouncedFormatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClassName } from "./editor";
@@ -31,7 +31,7 @@ export async function loadAsriJSModules() {
     useMacSysScrollbar();
     applyTrafficLightPosition();
     setStatusHeightVar();
-    makeConfigMenuItems(); // https://github.com/mustakshif/Asri/issues/85
+    loadThemePalette(); // https://github.com/mustakshif/Asri/issues/85
     if (!env.isMobile) {
         await updateWndEls();
         await updateDragRect('initials');
@@ -73,7 +73,7 @@ export async function unloadAsriJSModules() {
         lytCenterRo.disconnect();
         winRo.disconnect();
     }
-    removeConfigMenuItems();
+    unloadThemePalette();
 }
 function lowFreqEventsCallback(e: Event) {
     // console.log(e);

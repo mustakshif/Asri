@@ -1,6 +1,5 @@
 import { loadAsriJSModules, unloadAsriJSModules } from "./modules";
 import { asriModeTransition } from "./util/misc";
-import { environment } from "./util/rsc";
 
 loadAsriJSModules();
 
