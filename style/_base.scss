@@ -820,6 +820,14 @@ animation-direction: #{$anim-dir};
 }
 }
 
+@mixin line-clamp($line-clamp: 1, $orientation: vertical) {
+    @supports (-webkit-line-clamp: 1) {
+        display: -webkit-box;
+        -webkit-line-clamp: $line-clamp;
+        -webkit-box-orient: $orientation;
+    }
+}
+
 // other global vars ——————————————————————————
 
 $border-rd-card: 20px;
