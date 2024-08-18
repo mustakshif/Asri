@@ -1,3 +1,19 @@
+### v3.1.1
+
+* PDF 阅读器背景色适配主题色
+* 调整账号页面背景图样式
+* 修复不同平台色彩差异的问题
+* 修复非客户端上初次加载时高亮度底色上文字色不反转的问题
+
+<br />
+
+* Adapted the background color of the PDF reader to match the theme color.
+* Adjusted the background image style on the account page.
+* Fixed the color discrepancy issue across different platforms.
+* Resolved the issue where text color did not invert on light backgrounds during the initial load on non-client platforms.
+
+---
+
 ### v3.1.0
 
 * ✨ 解除自定义主题色的明度限制，带来更丰富的色彩表现

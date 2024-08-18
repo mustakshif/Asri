@@ -13,18 +13,12 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
-### v3.1.0
+### v3.1.1
 
-![limitless lightness preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/limitless-lightness.gif)
-
-* ✨ 解除自定义主题色的明度限制，带来更丰富的色彩表现
-* 重构主题 js
-* 优化 Mac 端启用跟随系统强调色时对系统强调色变化的响应
-* 调整菜单条目快捷键提示透明度
-* 移除双击事件监听
-* [修复将小窗页签以分屏形式拖回主界面时顶栏图标布局重叠的问题](https://github.com/mustakshif/Asri/issues/25)
-* 修复文档树缩进线偶现刷新不及时的问题
-* 修复打开或新建文档时偶现题头图区域元素重叠的问题
+* PDF 阅读器背景色适配主题色
+* 调整账号页面背景图样式
+* 修复不同平台色彩差异的问题
+* 修复非客户端上初次加载时高亮度底色上文字色不反转的问题
 
 ### ...
 

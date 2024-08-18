@@ -13,18 +13,12 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-![limitless lightness preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/limitless-lightness.gif)
+### v3.1.1
 
-### v3.1.0
-
-* ✨ Removed the lightness limitation for custom theme colors, resulting in richer color representation.
-* Refactored the theme JavaScript.
-* Optimized the response to system accent color changes when enabling the follow system accent color option on Mac.
-* Adjusted the transparency of the menu item shortcut key hints.
-* Removed the double-click event listener.
-* [Fixed the issue of overlapping layout for top bar icons when dragging mini window tabs back to the main interface in split-screen mode](https://github.com/mustakshif/Asri/issues/25).
-* Fixed the occasional delay in refreshing the indentation lines of the document tree.
-* Fixed the occasional overlap of header image area elements when opening or creating documents.
+* Adapted the background color of the PDF reader to match the theme color.
+* Adjusted the background image style on the account page.
+* Fixed the color discrepancy issue across different platforms.
+* Resolved the issue where text color did not invert on light backgrounds during the initial load on non-client platforms.
 
 ### ...
 
