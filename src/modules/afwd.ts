@@ -1,6 +1,6 @@
 import { debounce } from "../util/misc";
 import { wndElements } from "../util/state";
-
+import { i18n, loadI18n } from "./configsMenu/makeItems";
 
 export const debouncedCalcProtyleSpacings = debounce(calcProtyleSpacings, 200);
 
@@ -23,6 +23,28 @@ export function calcProtyleSpacings() {
             })
         }, 300); // protyle transition time
     })
+}
+
+export async function addAfwdMenuItems(e: Event) {
+    const target = e.target as HTMLElement;
+    const targetLabel = target.closest('.ariaLabel') as HTMLElement
+    if (!targetLabel) return;
+    const gutterSubtype = targetLabel.dataset.subtype; // block types, 'u', 'h1'...
+    const nonGutterType = target.closest('.protyle-title__icon')
+        ? 'doc'
+        : targetLabel.dataset.type; // 'doc' | undefined
+    const type = gutterSubtype ?? nonGutterType;
+    if (!type) return;
+    setTimeout(makeItems, 0);
+}
+
+export function makeItems() {
+    const commonMenuEl = document.getElementById('commonMenu');
+    if (!commonMenuEl) return;
+    const commonMenuBtnList = commonMenuEl.lastChild as HTMLUListElement;
+    const menuBtn = `
+        <button class="b3-menu__item">
+    `
 }
 
 export function removeProtyleSpacings() {

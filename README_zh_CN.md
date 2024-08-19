@@ -7,7 +7,7 @@
 
 ![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v21.png)
 
-# Asri, a theme for SiYuan
+# Asri, theme for SiYuan
 
 Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/siyuan)主题，以简洁、符合直觉的设计，带来优雅、高效、个性化的笔记体验。
 

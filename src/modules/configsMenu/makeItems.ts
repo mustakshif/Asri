@@ -10,7 +10,7 @@ const asriConfigs = {
     'userCustomColor': ""
 };
 
-let i18n: any;
+export let i18n: any;
 let sysAccentColor: string;
 let isSysAccentGray = false, isUserAccentGray = false;
 let followSysAccentBtn: AsriDomsExtended, pickColorBtn: AsriDomsExtended, asriChromaSlider: HTMLInputElement | null, colorPicker: HTMLInputElement | null;
@@ -57,13 +57,13 @@ export function unloadThemePalette() {
     document.querySelectorAll('.asri-config').forEach(el => el.remove());
 }
 
-async function loadI18n() {
+export async function loadI18n() {
     if (['zh_CN', 'zh_CHT', 'en_US'].includes(env.lang)) {
         const res = await fetch(`/appearance/themes/Asri/i18n/${env.lang}.json`);
-        return res.json();
+        return i18n = res.json();
     } else {
         const res = await fetch('/appearance/themes/Asri/i18n/en_US.json');
-        return res.json();
+        return i18n = res.json();
     }
 }
 
