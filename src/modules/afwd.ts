@@ -29,12 +29,12 @@ export async function addAfwdMenuItems(e: Event) {
     const target = e.target as HTMLElement;
     const targetLabel = target.closest('.ariaLabel') as HTMLElement
     if (!targetLabel) return;
-    const gutterSubtype = targetLabel.dataset.subtype; // block types, 'u', 'h1'...
+    // const gutterSubtype = targetLabel.dataset.subtype; // block types, 'u', 'h1'...
     const nonGutterType = target.closest('.protyle-title__icon')
         ? 'doc'
-        : targetLabel.dataset.type; // 'doc' | undefined
-    const type = gutterSubtype ?? nonGutterType;
-    if (!type) return;
+        : targetLabel.dataset.type; // 'doc' | 'more' | ... | undefined
+    const type = /* gutterSubtype ?? */ nonGutterType;
+    if (type !== 'doc') return;
     setTimeout(makeItems, 0);
 }
 
@@ -44,6 +44,34 @@ export function makeItems() {
     const commonMenuBtnList = commonMenuEl.lastChild as HTMLUListElement;
     const menuBtn = `
         <button class="b3-menu__item">
+            <svg class="b3-menu__icon"></svg>
+            <span class="b3-menu__label">${i18n['afwdDocMenuLabel']}</span>
+            <svg class="b3-menu__icon b3-menu__icon--small">
+                <use xlink:href="#iconRight"></use>
+            </svg>
+            <div class="b3-menu__submenu">
+                <div class="b3-menu__items">
+                    <button class="b3-menu__item">
+                        <span class="b3-menu__label">${i18n['afwdDocMenuItem-all']}</span>
+                    </button>
+                    <button class="b3-menu__item">
+                        <span class="b3-menu__label">${i18n['afwdDocMenuItem-db']}</span>
+                    </button>
+                    <button class="b3-menu__item">
+                        <span class="b3-menu__label">${i18n['afwdDocMenuItem-t']}</span>
+                    </button>
+                    <button class="b3-menu__item">
+                        <span class="b3-menu__label">${i18n['afwdDocMenuItem-p']}</span>
+                    </button>
+                    <button class="b3-menu__item">
+                        <span class="b3-menu__label">${i18n['afwdDocMenuItem-iframe']}</span>
+                    </button>
+                    <button class="b3-menu__item">
+                        <span class="b3-menu__label">${i18n['afwdDocMenuItem-sb']}</span>
+                    </button>
+                </div>
+            </div>
+        </button>
     `
 }
 
