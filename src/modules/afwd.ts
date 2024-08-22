@@ -5,7 +5,6 @@ import { i18n, loadI18n } from "./configsMenu/makeItems";
 export const debouncedCalcProtyleSpacings = debounce(calcProtyleSpacings, 200);
 
 export function calcProtyleSpacings() {
-    // calc & apply protyleSpacing
     wndElements?.forEach(wnd => {
         let protyles = wnd.querySelector('.file-tree') ? [] : wnd.querySelectorAll('.protyle-wysiwyg') as unknown as HTMLElement[];
 
@@ -38,9 +37,10 @@ export async function addAfwdMenuItems(e: Event) {
     setTimeout(makeItems, 0);
 }
 
-export function makeItems() {
+export async function makeItems() {
     const commonMenuEl = document.getElementById('commonMenu');
     if (!commonMenuEl) return;
+    if (!i18n) await loadI18n();
     const commonMenuBtnList = commonMenuEl.lastChild as HTMLUListElement;
     const menuBtn = `
         <button class="b3-menu__item">
