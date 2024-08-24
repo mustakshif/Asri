@@ -51,24 +51,15 @@ export async function makeItems() {
             </svg>
             <div class="b3-menu__submenu">
                 <div class="b3-menu__items">
-                    <button class="b3-menu__item">
-                        <span class="b3-menu__label">${i18n['afwdDocMenuItem-all']}</span>
-                    </button>
-                    <button class="b3-menu__item">
-                        <span class="b3-menu__label">${i18n['afwdDocMenuItem-db']}</span>
-                    </button>
-                    <button class="b3-menu__item">
-                        <span class="b3-menu__label">${i18n['afwdDocMenuItem-t']}</span>
-                    </button>
-                    <button class="b3-menu__item">
-                        <span class="b3-menu__label">${i18n['afwdDocMenuItem-p']}</span>
-                    </button>
-                    <button class="b3-menu__item">
-                        <span class="b3-menu__label">${i18n['afwdDocMenuItem-iframe']}</span>
-                    </button>
-                    <button class="b3-menu__item">
-                        <span class="b3-menu__label">${i18n['afwdDocMenuItem-sb']}</span>
-                    </button>
+                    <button class="b3-menu__item b3-menu__item--custom">
+                        <span class="b3-menu__label">
+                            <div class="fn__flex">
+                                <span>${i18n['afwdDocMenuItem-all']}</span>
+                                <span class="fn__space fn__flex-1"></span>
+                                <input type="checkbox" class="b3-switch fn__flex-center">
+                            </div>
+                        </span>                        
+                    </button>                    
                 </div>
             </div>
         </button>
