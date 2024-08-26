@@ -34,7 +34,7 @@ export async function addAfwdMenuItems(e: Event) {
         : targetLabel.dataset.type; // 'doc' | 'more' | ... | undefined
     const type = /* gutterSubtype ?? */ nonGutterType;
     if (type !== 'doc') return;
-    setTimeout(makeItems, 0);
+    setTimeout(makeItems, 100);
 }
 
 export function makeItems() {
@@ -71,7 +71,7 @@ export function makeItems() {
     mainBtn.innerHTML = menuBtnHtml;
     console.log('mainBtn:', mainBtn);
 
-    commonMenuBtnList.appendChild(mainBtn);
+    commonMenuBtnList.insertBefore(mainBtn, commonMenuBtnList.lastChild!.previousSibling!);
     console.log('commonMenuBtnList after appendChild:', commonMenuBtnList);
 }
 
