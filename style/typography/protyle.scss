@@ -424,7 +424,6 @@
     .hljs {
         border-radius: 10px;
         background-color: var(--b3-theme-surface-light);
-        padding: 2em 16px;
     }
 }
 
@@ -511,10 +510,6 @@
         .protyle-action .protyle-action__language {
             margin-top: 0;
             padding-left: 12px;
-        }
-
-        .protyle-linenumber__rows {
-            padding: 2em 4px;
         }
 
         @include hljs;

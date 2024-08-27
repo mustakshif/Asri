@@ -71,7 +71,7 @@ export function makeItems() {
     mainBtn.innerHTML = menuBtnHtml;
     console.log('mainBtn:', mainBtn);
 
-    commonMenuBtnList.insertBefore(mainBtn, commonMenuBtnList.lastChild!.previousSibling!);
+    commonMenuBtnList.insertBefore(mainBtn, commonMenuBtnList.lastChild?.previousSibling!);
     console.log('commonMenuBtnList after appendChild:', commonMenuBtnList);
 }
 
