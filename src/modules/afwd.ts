@@ -25,6 +25,7 @@ export function calcProtyleSpacings() {
 }
 
 export async function addAfwdMenuItems(e: Event) {
+    if (e.type !== 'mouseup') return;
     const target = e.target as HTMLElement;
     const targetLabel = target.closest('.ariaLabel') as HTMLElement
     if (!targetLabel) return;
@@ -42,13 +43,16 @@ export function makeItems() {
     if (!commonMenuEl) return;
     
     const commonMenuBtnList = commonMenuEl.lastChild as HTMLDivElement;
-    console.log('commonMenuBtnList:', commonMenuBtnList);
 
     const mainBtn = document.createElement('button');
     mainBtn.className = 'b3-menu__item';
+    const separator = document.createElement('button');
+    separator.className = 'b3-menu__separator';
 
     const menuBtnHtml = `
-        <svg class="b3-menu__icon"></svg>
+        <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 18 18">
+            <path fill="currentColor" d="m15.503 15.003l-.735.71a.75.75 0 1 0 1.042 1.078l1.886-1.82a1 1 0 0 0 0-1.44l-1.886-1.82a.75.75 0 0 0-1.042 1.079l.739.713H12.75a.75.75 0 0 0 0 1.5zM15 3a2 2 0 0 1 2 2v4.25a.75.75 0 0 1-1.5 0V5a.5.5 0 0 0-.5-.5H5a.5.5 0 0 0-.5.5v4.25a.75.75 0 0 1-1.5 0V5a2 2 0 0 1 2-2zM5.234 15.712l-.735-.71h2.752a.75.75 0 1 0 0-1.5H4.495l.739-.713a.75.75 0 0 0-1.042-1.078l-1.886 1.82a1 1 0 0 0 0 1.44l1.886 1.82a.75.75 0 0 0 1.042-1.079"/>
+        </svg>
         <span class="b3-menu__label">${i18n['afwdDocMenuLabel']}</span>
         <svg class="b3-menu__icon b3-menu__icon--small">
             <use xlink:href="#iconRight"></use>
@@ -114,10 +118,8 @@ export function makeItems() {
     `;
 
     mainBtn.innerHTML = menuBtnHtml;
-    console.log('mainBtn:', mainBtn);
-
     commonMenuBtnList.insertBefore(mainBtn, commonMenuBtnList.lastChild?.previousSibling!);
-    console.log('commonMenuBtnList after appendChild:', commonMenuBtnList);
+    commonMenuBtnList.insertBefore(separator, mainBtn);
 }
 
 export function removeProtyleSpacings() {
