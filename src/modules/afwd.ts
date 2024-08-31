@@ -3,6 +3,15 @@ import { wndElements } from "../util/state";
 import { i18n, loadI18n } from "./configsMenu/makeItems";
 
 export const debouncedCalcProtyleSpacings = debounce(calcProtyleSpacings, 200);
+const afwdBlockTypes = [
+    'NodeParagraph',
+    'NodeTable',
+    'NodeAttributeView',
+    'NodeSuperBlock',
+    'NodeVideo',
+    'NodeWidget',
+    'NodeIFrame',
+]
 
 export function calcProtyleSpacings() {
     wndElements?.forEach(wnd => {
@@ -27,27 +36,106 @@ export function calcProtyleSpacings() {
 export async function addAfwdMenuItems(e: Event) {
     if (e.type !== 'mouseup') return;
     const target = e.target as HTMLElement;
-    const targetLabel = target.closest('.ariaLabel') as HTMLElement
-    if (!targetLabel) return;
-    // const gutterSubtype = targetLabel.dataset.subtype; // block types, 'u', 'h1'...
+    const targetLabel = target.closest('.ariaLabel') as HTMLElement;
+    const protyle = target.closest('.protyle') as HTMLElement;
+    if (!targetLabel || !protyle) return;
+    const gutterType = targetLabel.dataset.type; // block types, 'NodeSuperBlock', 'NodeParagraph'...
     const nonGutterType = target.closest('.protyle-title__icon')
         ? 'doc'
-        : targetLabel.dataset.type; // 'doc' | 'more' | ... | undefined
-    const type = /* gutterSubtype ?? */ nonGutterType;
-    if (type !== 'doc') return;
-    setTimeout(makeItems, 100);
+        : targetLabel.dataset.type === 'doc' // 'doc' | 'more' | ... | undefined
+            ? 'doc'
+            : undefined;
+    const type = afwdBlockTypes.includes(gutterType!)
+        ? gutterType
+        : nonGutterType;
+    if (!type) return;
+    // console.log(type);
+
+    setTimeout(() => {
+        loadCurProtyle(protyle);
+        makeItems(type);
+    }, 100);
 }
 
-export function makeItems() {
+function makeItems(blockType: string) {
     const commonMenuEl = document.getElementById('commonMenu');
     if (!commonMenuEl) return;
-    
+
     const commonMenuBtnList = commonMenuEl.lastChild as HTMLDivElement;
 
     const mainBtn = document.createElement('button');
     mainBtn.className = 'b3-menu__item';
     const separator = document.createElement('button');
     separator.className = 'b3-menu__separator';
+
+    const blockMenuItems = `
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-switch">
+            <span class="b3-menu__label">
+                <div class="fn__flex">
+                    <span>${i18n['afwdDocMenuItem-switch']}</span>
+                    <span class="fn__space fn__flex-1"></span>
+                    <input type="checkbox" class="b3-switch fn__flex-center">
+                </div>
+            </span>
+        </button>
+    `
+
+    const docMenuItems = `    
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-all">
+            <span class="b3-menu__label">
+                <div class="fn__flex">
+                    <span>${i18n['afwdDocMenuItem-all']}</span>
+                    <span class="fn__space fn__flex-1"></span>
+                    <input type="checkbox" class="b3-switch fn__flex-center">
+                </div>
+            </span>
+        </button>
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-db">
+            <span class="b3-menu__label">
+                <div class="fn__flex">
+                    <span>${i18n['afwdDocMenuItem-db']}</span>
+                    <span class="fn__space fn__flex-1"></span>
+                    <input type="checkbox" class="b3-switch fn__flex-center">
+                </div>
+            </span>
+        </button>
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-t">
+            <span class="b3-menu__label">
+                <div class="fn__flex">
+                    <span>${i18n['afwdDocMenuItem-t']}</span>
+                    <span class="fn__space fn__flex-1"></span>
+                    <input type="checkbox" class="b3-switch fn__flex-center">
+                </div>
+            </span>
+        </button>
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-p">
+            <span class="b3-menu__label">
+                <div class="fn__flex">
+                    <span>${i18n['afwdDocMenuItem-p']}</span>
+                    <span class="fn__space fn__flex-1"></span>
+                    <input type="checkbox" class="b3-switch fn__flex-center">
+                </div>
+            </span>
+        </button>
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-iframe">
+            <span class="b3-menu__label">
+                <div class="fn__flex">
+                    <span>${i18n['afwdDocMenuItem-iframe']}</span>
+                    <span class="fn__space fn__flex-1"></span>
+                    <input type="checkbox" class="b3-switch fn__flex-center">
+                </div>
+            </span>
+        </button>
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-sb">
+            <span class="b3-menu__label">
+                <div class="fn__flex">
+                    <span>${i18n['afwdDocMenuItem-sb']}</span>
+                    <span class="fn__space fn__flex-1"></span>
+                    <input type="checkbox" class="b3-switch fn__flex-center">
+                </div>
+            </span>
+        </button>
+    `
 
     const menuBtnHtml = `
         <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 18 18">
@@ -59,60 +147,7 @@ export function makeItems() {
         </svg>
         <div class="b3-menu__submenu">
             <div class="b3-menu__items">
-                <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-all">
-                    <span class="b3-menu__label">
-                        <div class="fn__flex">
-                            <span>${i18n['afwdDocMenuItem-all']}</span>
-                            <span class="fn__space fn__flex-1"></span>
-                            <input type="checkbox" class="b3-switch fn__flex-center">
-                        </div>
-                    </span>
-                </button>
-                <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-db">
-                    <span class="b3-menu__label">
-                        <div class="fn__flex">
-                            <span>${i18n['afwdDocMenuItem-db']}</span>
-                            <span class="fn__space fn__flex-1"></span>
-                            <input type="checkbox" class="b3-switch fn__flex-center">
-                        </div>
-                    </span>
-                </button>
-                <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-t">
-                    <span class="b3-menu__label">
-                        <div class="fn__flex">
-                            <span>${i18n['afwdDocMenuItem-t']}</span>
-                            <span class="fn__space fn__flex-1"></span>
-                            <input type="checkbox" class="b3-switch fn__flex-center">
-                        </div>
-                    </span>
-                </button>
-                <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-p">
-                    <span class="b3-menu__label">
-                        <div class="fn__flex">
-                            <span>${i18n['afwdDocMenuItem-p']}</span>
-                            <span class="fn__space fn__flex-1"></span>
-                            <input type="checkbox" class="b3-switch fn__flex-center">
-                        </div>
-                    </span>
-                </button>
-                <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-iframe">
-                    <span class="b3-menu__label">
-                        <div class="fn__flex">
-                            <span>${i18n['afwdDocMenuItem-iframe']}</span>
-                            <span class="fn__space fn__flex-1"></span>
-                            <input type="checkbox" class="b3-switch fn__flex-center">
-                        </div>
-                    </span>
-                </button>
-                <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-sb">
-                    <span class="b3-menu__label">
-                        <div class="fn__flex">
-                            <span>${i18n['afwdDocMenuItem-sb']}</span>
-                            <span class="fn__space fn__flex-1"></span>
-                            <input type="checkbox" class="b3-switch fn__flex-center">
-                        </div>
-                    </span>
-                </button>
+                ${blockType === 'doc' ? docMenuItems : blockMenuItems}
             </div>
         </div>
     `;
@@ -120,6 +155,13 @@ export function makeItems() {
     mainBtn.innerHTML = menuBtnHtml;
     commonMenuBtnList.insertBefore(mainBtn, commonMenuBtnList.lastChild?.previousSibling!);
     commonMenuBtnList.insertBefore(separator, mainBtn);
+}
+
+function loadCurProtyle(curProtyle: HTMLElement) {
+    const id = curProtyle.dataset.id;
+}
+function addMenuItemsFunctionalities() {
+
 }
 
 export function removeProtyleSpacings() {

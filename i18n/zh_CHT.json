@@ -7,6 +7,7 @@
     "afwdDocMenuItem-db": "數據庫",
     "afwdDocMenuItem-t": "表格",
     "afwdDocMenuItem-p": "圖片",
-    "afwdDocMenuItem-iframe": "iframe",
-    "afwdDocMenuItem-sb": "超級塊"
+    "afwdDocMenuItem-iframe": "iFrame",
+    "afwdDocMenuItem-sb": "超級塊",
+    "afwdDocMenuItem-switch": "為當前塊啟用"
 }

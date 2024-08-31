@@ -7,6 +7,6 @@
     "afwdDocMenuItem-db": "Database",
     "afwdDocMenuItem-t": "Table",
     "afwdDocMenuItem-p": "Image",
-    "afwdDocMenuItem-iframe": "Iframe",
-    "afwdDocMenuItem-sb": "Superblock"
+    "afwdDocMenuItem-iframe": "IFrame",
+    "afwdDocMenuItem-sb": "Superblock","afwdDocMenuItem-switch": "Enable for current block"
 }
