@@ -50,9 +50,9 @@ export async function addAfwdMenuItems(e: Event) {
         : nonGutterType;
     if (!type) return;
     // console.log(type);
-
+    const blockId = type === 'doc' ? protyle.dataset.id : targetLabel.dataset.blockId;
     setTimeout(() => {
-        loadCurProtyle(protyle);
+        loadCurBlock(blockId as string);
         makeItems(type);
     }, 100);
 }
@@ -157,8 +157,7 @@ function makeItems(blockType: string) {
     commonMenuBtnList.insertBefore(separator, mainBtn);
 }
 
-function loadCurProtyle(curProtyle: HTMLElement) {
-    const id = curProtyle.dataset.id;
+function loadCurBlock(curBlockId: string) {
 }
 function addMenuItemsFunctionalities() {
 
