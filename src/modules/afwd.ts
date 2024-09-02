@@ -50,10 +50,12 @@ export async function addAfwdMenuItems(e: Event) {
         : nonGutterType;
     if (!type) return;
     // console.log(type);
-    const blockId = type === 'doc' ? protyle.dataset.id : targetLabel.dataset.blockId;
+    const blockId = type === 'doc'
+        ? protyle.dataset.id
+        : targetLabel.dataset.nodeId;
+    console.log(blockId, type);
     setTimeout(() => {
-        loadCurBlock(blockId as string);
-        makeItems(type);
+        loadCurBlock(type, blockId as string);
     }, 100);
 }
 
@@ -68,7 +70,7 @@ function makeItems(blockType: string) {
     const separator = document.createElement('button');
     separator.className = 'b3-menu__separator';
 
-    const blockMenuItems = `
+    const inDocBlockMenuItems = `
         <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-switch">
             <span class="b3-menu__label">
                 <div class="fn__flex">
@@ -79,7 +81,6 @@ function makeItems(blockType: string) {
             </span>
         </button>
     `
-
     const docMenuItems = `    
         <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-all">
             <span class="b3-menu__label">
@@ -147,7 +148,7 @@ function makeItems(blockType: string) {
         </svg>
         <div class="b3-menu__submenu">
             <div class="b3-menu__items">
-                ${blockType === 'doc' ? docMenuItems : blockMenuItems}
+                ${blockType === 'doc' ? docMenuItems : inDocBlockMenuItems}
             </div>
         </div>
     `;
@@ -157,8 +158,18 @@ function makeItems(blockType: string) {
     commonMenuBtnList.insertBefore(separator, mainBtn);
 }
 
-function loadCurBlock(curBlockId: string) {
+function loadCurBlock(curBlockType: string, curBlockId: string) {
+    const curBlockEl = curBlockType === 'doc'
+        ? document.querySelector(`.protyle-wysiwyg[data-node-id="${curBlockId}"]`)
+        : document.querySelector(`.protyle-wysiwyg>[data-node-id="${curBlockId}"]`);
+    if (!curBlockEl) return;
+
+    makeItems(curBlockType);
+    
+    const properties = curBlockEl.getAttribute('custom-afwd');
+    if (!properties) return;
 }
+
 function addMenuItemsFunctionalities() {
 
 }
