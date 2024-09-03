@@ -51,8 +51,8 @@ export async function addAfwdMenuItems(e: Event) {
     if (!type) return;
     // console.log(type);
     const blockId = type === 'doc'
-        ? protyle.dataset.id
-        : targetLabel.dataset.nodeId;
+        ? protyle.dataset['id']
+        : targetLabel.dataset['nodeId'];
     console.log(blockId, type);
     setTimeout(() => {
         loadCurBlock(type, blockId as string);
@@ -159,18 +159,20 @@ function makeItems(blockType: string) {
 }
 
 function loadCurBlock(curBlockType: string, curBlockId: string) {
-    const curBlockEl = curBlockType === 'doc'
-        ? document.querySelector(`.protyle-wysiwyg[data-node-id="${curBlockId}"]`)
-        : document.querySelector(`.protyle-wysiwyg>[data-node-id="${curBlockId}"]`);
+    const isDoc = curBlockType === 'doc';
+    const curBlockEl = isDoc
+        ? document.querySelector(`.protyle[data-id="${curBlockId}"] .protyle-wysiwyg`)
+        : document.querySelector(`.protyle-wysiwyg>[data-node-id="${curBlockId}"]:not([data-sb-layout="row"])`);
     if (!curBlockEl) return;
 
     makeItems(curBlockType);
-    
-    const properties = curBlockEl.getAttribute('custom-afwd');
+
+    const properties = curBlockEl.getAttribute('custom-afwd')?.split(' ');
     if (!properties) return;
+    console.log(properties);
 }
 
-function addMenuItemsFunctionalities() {
+function menuItemsFunctionalities() {
 
 }
 

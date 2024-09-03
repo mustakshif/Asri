@@ -78,7 +78,7 @@ export async function unloadAsriJSModules() {
 function lowFreqEventsCallback(e: Event) {
     // console.log(e);
     updateStyles(e);
-    addAfwdMenuItems(e);
+    // addAfwdMenuItems(e);
 }
 
 async function updateStyles(e?: Event | KeyboardEvent) {
