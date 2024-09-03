@@ -8,5 +8,8 @@
     "afwdDocMenuItem-t": "Table",
     "afwdDocMenuItem-p": "Image",
     "afwdDocMenuItem-iframe": "IFrame",
-    "afwdDocMenuItem-sb": "Superblock","afwdDocMenuItem-switch": "Enable for current block"
+    "afwdDocMenuItem-sb": "Superblock",
+    "afwdDocMenuItem-clear": "Clear attributes",
+    "afwdDocMenuItem-on": "Enable for this block",
+    "afwdDocMenuItem-off": "Disable for this block"
 }

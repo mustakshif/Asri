@@ -9,5 +9,7 @@
     "afwdDocMenuItem-p": "图片",
     "afwdDocMenuItem-iframe": "iFrame",
     "afwdDocMenuItem-sb": "超级块",
-    "afwdDocMenuItem-switch": "为当前块启用"
+    "afwdDocMenuItem-clear": "清除属性",
+    "afwdDocMenuItem-on": "为此块启用",
+    "afwdDocMenuItem-off": "为此块禁用"
 }

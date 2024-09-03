@@ -55,6 +55,12 @@
                 }
             }
 
+            &.b3-menu__item--custom.b3-menu__item--current {
+                > .b3-menu__label > div > .b3-menu__icon {
+                    color: var(--b3-menu-item-background-hover-text);
+                }
+            }
+
             >.b3-menu__label>.fn__flex {
                 margin: 2px 0 !important;
             }

@@ -9,5 +9,7 @@
     "afwdDocMenuItem-p": "圖片",
     "afwdDocMenuItem-iframe": "iFrame",
     "afwdDocMenuItem-sb": "超級塊",
-    "afwdDocMenuItem-switch": "為當前塊啟用"
+    "afwdDocMenuItem-clear": "清除屬性",
+    "afwdDocMenuItem-on": "為此塊啟用",
+    "afwdDocMenuItem-off": "為此塊禁用"
 }

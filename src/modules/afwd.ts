@@ -1,4 +1,4 @@
-import { debounce } from "../util/misc";
+import { debounce, querySelectorAsync } from "../util/misc";
 import { wndElements } from "../util/state";
 import { i18n, loadI18n } from "./configsMenu/makeItems";
 
@@ -11,7 +11,9 @@ const afwdBlockTypes = [
     'NodeVideo',
     'NodeWidget',
     'NodeIFrame',
-]
+];
+
+let commonMenuEl: Element | undefined;
 
 export function calcProtyleSpacings() {
     wndElements?.forEach(wnd => {
@@ -54,14 +56,12 @@ export async function addAfwdMenuItems(e: Event) {
         ? protyle.dataset['id']
         : targetLabel.dataset['nodeId'];
     console.log(blockId, type);
-    setTimeout(() => {
-        loadCurBlock(type, blockId as string);
-    }, 100);
+    commonMenuEl = await querySelectorAsync('#commonMenu[data-name="titleMenu"], #commonMenu[data-name="gutter"]');
+    loadCurBlock(type, blockId as string);
 }
 
 function makeItems(blockType: string) {
-    const commonMenuEl = document.getElementById('commonMenu');
-    if (!commonMenuEl) return;
+    if (!commonMenuEl || document.getElementById('afwdDocMenuItem-clear')) return;
 
     const commonMenuBtnList = commonMenuEl.lastChild as HTMLDivElement;
 
@@ -71,20 +71,26 @@ function makeItems(blockType: string) {
     separator.className = 'b3-menu__separator';
 
     const inDocBlockMenuItems = `
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-switch">
-            <span class="b3-menu__label">
-                <div class="fn__flex">
-                    <span>${i18n['afwdDocMenuItem-switch']}</span>
-                    <span class="fn__space fn__flex-1"></span>
-                    <input type="checkbox" class="b3-switch fn__flex-center">
-                </div>
-            </span>
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-on">
+            <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12l2 2l4-4"/></g>
+            </svg>
+            <span class="b3-menu__label">${i18n['afwdDocMenuItem-on']}</span>
+        </button>
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-off">
+            <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9l-6 6m0-6l6 6"/></g>
+            </svg>
+            <span class="b3-menu__label">${i18n['afwdDocMenuItem-off']}</span>
         </button>
     `
-    const docMenuItems = `    
+    const docMenuItems = `
         <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-all">
             <span class="b3-menu__label">
                 <div class="fn__flex">
+                    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12l2 2l4-4"/></g>
+                    </svg>
                     <span>${i18n['afwdDocMenuItem-all']}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
@@ -94,6 +100,7 @@ function makeItems(blockType: string) {
         <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-db">
             <span class="b3-menu__label">
                 <div class="fn__flex">
+                    <svg class="b3-menu__icon" style=""><use xlink:href="#iconDatabase"></use></svg>
                     <span>${i18n['afwdDocMenuItem-db']}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
@@ -103,6 +110,7 @@ function makeItems(blockType: string) {
         <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-t">
             <span class="b3-menu__label">
                 <div class="fn__flex">
+                    <svg class="b3-menu__icon" style=""><use xlink:href="#iconTable"></use></svg>
                     <span>${i18n['afwdDocMenuItem-t']}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
@@ -112,6 +120,7 @@ function makeItems(blockType: string) {
         <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-p">
             <span class="b3-menu__label">
                 <div class="fn__flex">
+                    <svg class="b3-menu__icon"><use xlink:href="#iconImage"></use></svg>
                     <span>${i18n['afwdDocMenuItem-p']}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
@@ -121,6 +130,7 @@ function makeItems(blockType: string) {
         <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-iframe">
             <span class="b3-menu__label">
                 <div class="fn__flex">
+                    <svg class="b3-menu__icon"><use xlink:href="#iconHTML5"></use></svg>
                     <span>${i18n['afwdDocMenuItem-iframe']}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
@@ -130,6 +140,7 @@ function makeItems(blockType: string) {
         <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-sb">
             <span class="b3-menu__label">
                 <div class="fn__flex">
+                    <svg class="b3-menu__icon"><use xlink:href="#iconSuper"></use></svg>
                     <span>${i18n['afwdDocMenuItem-sb']}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
@@ -137,7 +148,7 @@ function makeItems(blockType: string) {
             </span>
         </button>
     `
-
+    
     const menuBtnHtml = `
         <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 18 18">
             <path fill="currentColor" d="m15.503 15.003l-.735.71a.75.75 0 1 0 1.042 1.078l1.886-1.82a1 1 0 0 0 0-1.44l-1.886-1.82a.75.75 0 0 0-1.042 1.079l.739.713H12.75a.75.75 0 0 0 0 1.5zM15 3a2 2 0 0 1 2 2v4.25a.75.75 0 0 1-1.5 0V5a.5.5 0 0 0-.5-.5H5a.5.5 0 0 0-.5.5v4.25a.75.75 0 0 1-1.5 0V5a2 2 0 0 1 2-2zM5.234 15.712l-.735-.71h2.752a.75.75 0 1 0 0-1.5H4.495l.739-.713a.75.75 0 0 0-1.042-1.078l-1.886 1.82a1 1 0 0 0 0 1.44l1.886 1.82a.75.75 0 0 0 1.042-1.079"/>
@@ -149,6 +160,12 @@ function makeItems(blockType: string) {
         <div class="b3-menu__submenu">
             <div class="b3-menu__items">
                 ${blockType === 'doc' ? docMenuItems : inDocBlockMenuItems}
+                <button class="b3-menu__separator"></button>
+                <button class="b3-menu__item" id="afwdDocMenuItem-clear">
+                    <svg class="b3-menu__icon " style=""><use xlink:href="#iconTrashcan"></use></svg>
+                    <span class="b3-menu__label">${i18n['afwdDocMenuItem-clear']}
+                    </span>
+                </button>
             </div>
         </div>
     `;
