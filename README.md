@@ -13,16 +13,13 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.3
+
+* Adjusted the background color of code blocks
+
 ### v3.1.2
 
 * Adapted code block style of Siyuan v3.1.4
-
-### v3.1.1
-
-* Adapted the background color of the PDF reader to match the theme color.
-* Adjusted the background image style on the account page.
-* Fixed the color discrepancy issue across different platforms.
-* Resolved the issue where text color did not invert on light backgrounds during the initial load on non-client platforms.
 
 ### ...
 

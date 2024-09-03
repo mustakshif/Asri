@@ -1,3 +1,13 @@
+### v3.1.3
+
+* 微调代码块背景色
+
+<br />
+
+* Adjusted the background color of code blocks.
+
+---
+
 ### v3.1.2
 
 * 适配思源 v3.1.4 代码块样式
@@ -5,6 +15,8 @@
 <br />
 
 * Adapted code block style of Siyuan v3.1.4
+
+---
 
 ### v3.1.1
 
