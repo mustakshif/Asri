@@ -3,13 +3,13 @@
     "pickColor": "自定义主题色",
     "asriChroma": "色度：",
     "afwdDocMenuLabel": "全宽显示",
-    "afwdDocMenuItem-all": "所有适用的块",
-    "afwdDocMenuItem-db": "数据库",
-    "afwdDocMenuItem-t": "表格",
-    "afwdDocMenuItem-p": "图片",
-    "afwdDocMenuItem-iframe": "iFrame",
-    "afwdDocMenuItem-sb": "超级块",
-    "afwdDocMenuItem-clear": "清除属性",
-    "afwdDocMenuItem-on": "为此块启用",
-    "afwdDocMenuItem-off": "为此块禁用"
+    "afwdMenuItem-all": "所有适用的块",
+    "afwdMenuItem-db": "数据库",
+    "afwdMenuItem-t": "表格",
+    "afwdMenuItem-p": "图片",
+    "afwdMenuItem-iframe": "iFrame",
+    "afwdMenuItem-sb": "超级块",
+    "afwdMenuItem-clear": "清除属性",
+    "afwdMenuItem-on": "为此块启用",
+    "afwdMenuItem-off": "为此块禁用"
 }

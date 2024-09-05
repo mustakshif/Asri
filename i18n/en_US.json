@@ -3,13 +3,13 @@
     "pickColor": "Customize theme color",
     "asriChroma": "Chroma: ",
     "afwdDocMenuLabel": "Full-width display",
-    "afwdDocMenuItem-all": "All applicable blocks",
-    "afwdDocMenuItem-db": "Database",
-    "afwdDocMenuItem-t": "Table",
-    "afwdDocMenuItem-p": "Image",
-    "afwdDocMenuItem-iframe": "IFrame",
-    "afwdDocMenuItem-sb": "Superblock",
-    "afwdDocMenuItem-clear": "Clear attributes",
-    "afwdDocMenuItem-on": "Enable for this block",
-    "afwdDocMenuItem-off": "Disable for this block"
+    "afwdMenuItem-all": "All applicable blocks",
+    "afwdMenuItem-db": "Database",
+    "afwdMenuItem-t": "Table",
+    "afwdMenuItem-p": "Image",
+    "afwdMenuItem-iframe": "IFrame",
+    "afwdMenuItem-sb": "Superblock",
+    "afwdMenuItem-clear": "Clear attributes",
+    "afwdMenuItem-on": "Enable for this block",
+    "afwdMenuItem-off": "Disable for this block"
 }

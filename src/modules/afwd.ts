@@ -61,7 +61,7 @@ export async function addAfwdMenuItems(e: Event) {
 }
 
 function makeItems(blockType: string) {
-    if (!commonMenuEl || document.getElementById('afwdDocMenuItem-clear')) return;
+    if (!commonMenuEl || document.getElementById('afwdMenuItem-clear')) return;
 
     const commonMenuBtnList = commonMenuEl.lastChild as HTMLDivElement;
 
@@ -71,84 +71,82 @@ function makeItems(blockType: string) {
     separator.className = 'b3-menu__separator';
 
     const inDocBlockMenuItems = `
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-on">
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-on">
             <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
             <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12l2 2l4-4"/></g>
             </svg>
-            <span class="b3-menu__label">${i18n['afwdDocMenuItem-on']}</span>
+            <span class="b3-menu__label">${i18n['afwdMenuItem-on']}</span>
         </button>
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-off">
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-off">
             <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
             <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9l-6 6m0-6l6 6"/></g>
             </svg>
-            <span class="b3-menu__label">${i18n['afwdDocMenuItem-off']}</span>
+            <span class="b3-menu__label">${i18n['afwdMenuItem-off']}</span>
         </button>
     `
     const docMenuItems = `
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-all">
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-all">
             <span class="b3-menu__label">
                 <div class="fn__flex">
-                    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12l2 2l4-4"/></g>
-                    </svg>
-                    <span>${i18n['afwdDocMenuItem-all']}</span>
+                    <svg class="b3-menu__icon" style=""></svg>
+                    <span>${i18n['afwdMenuItem-all']}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
                 </div>
             </span>
         </button>
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-db">
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-db">
             <span class="b3-menu__label">
                 <div class="fn__flex">
                     <svg class="b3-menu__icon" style=""><use xlink:href="#iconDatabase"></use></svg>
-                    <span>${i18n['afwdDocMenuItem-db']}</span>
+                    <span>${i18n['afwdMenuItem-db']}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
                 </div>
             </span>
         </button>
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-t">
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-t">
             <span class="b3-menu__label">
                 <div class="fn__flex">
                     <svg class="b3-menu__icon" style=""><use xlink:href="#iconTable"></use></svg>
-                    <span>${i18n['afwdDocMenuItem-t']}</span>
+                    <span>${i18n['afwdMenuItem-t']}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
                 </div>
             </span>
         </button>
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-p">
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-p">
             <span class="b3-menu__label">
                 <div class="fn__flex">
                     <svg class="b3-menu__icon"><use xlink:href="#iconImage"></use></svg>
-                    <span>${i18n['afwdDocMenuItem-p']}</span>
+                    <span>${i18n['afwdMenuItem-p']}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
                 </div>
             </span>
         </button>
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-iframe">
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-iframe">
             <span class="b3-menu__label">
                 <div class="fn__flex">
                     <svg class="b3-menu__icon"><use xlink:href="#iconHTML5"></use></svg>
-                    <span>${i18n['afwdDocMenuItem-iframe']}</span>
+                    <span>${i18n['afwdMenuItem-iframe']}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
                 </div>
             </span>
         </button>
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdDocMenuItem-sb">
+        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-sb">
             <span class="b3-menu__label">
                 <div class="fn__flex">
                     <svg class="b3-menu__icon"><use xlink:href="#iconSuper"></use></svg>
-                    <span>${i18n['afwdDocMenuItem-sb']}</span>
+                    <span>${i18n['afwdMenuItem-sb']}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
                 </div>
             </span>
         </button>
     `
-    
+
     const menuBtnHtml = `
         <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 18 18">
             <path fill="currentColor" d="m15.503 15.003l-.735.71a.75.75 0 1 0 1.042 1.078l1.886-1.82a1 1 0 0 0 0-1.44l-1.886-1.82a.75.75 0 0 0-1.042 1.079l.739.713H12.75a.75.75 0 0 0 0 1.5zM15 3a2 2 0 0 1 2 2v4.25a.75.75 0 0 1-1.5 0V5a.5.5 0 0 0-.5-.5H5a.5.5 0 0 0-.5.5v4.25a.75.75 0 0 1-1.5 0V5a2 2 0 0 1 2-2zM5.234 15.712l-.735-.71h2.752a.75.75 0 1 0 0-1.5H4.495l.739-.713a.75.75 0 0 0-1.042-1.078l-1.886 1.82a1 1 0 0 0 0 1.44l1.886 1.82a.75.75 0 0 0 1.042-1.079"/>
@@ -161,9 +159,9 @@ function makeItems(blockType: string) {
             <div class="b3-menu__items">
                 ${blockType === 'doc' ? docMenuItems : inDocBlockMenuItems}
                 <button class="b3-menu__separator"></button>
-                <button class="b3-menu__item" id="afwdDocMenuItem-clear">
+                <button class="b3-menu__item" id="afwdMenuItem-clear">
                     <svg class="b3-menu__icon " style=""><use xlink:href="#iconTrashcan"></use></svg>
-                    <span class="b3-menu__label">${i18n['afwdDocMenuItem-clear']}
+                    <span class="b3-menu__label">${i18n['afwdMenuItem-clear']}
                     </span>
                 </button>
             </div>
@@ -175,7 +173,7 @@ function makeItems(blockType: string) {
     commonMenuBtnList.insertBefore(separator, mainBtn);
 }
 
-function loadCurBlock(curBlockType: string, curBlockId: string) {
+async function loadCurBlock(curBlockType: string, curBlockId: string) {
     const isDoc = curBlockType === 'doc';
     const curBlockEl = isDoc
         ? document.querySelector(`.protyle[data-id="${curBlockId}"] .protyle-wysiwyg`)
@@ -185,11 +183,26 @@ function loadCurBlock(curBlockType: string, curBlockId: string) {
     makeItems(curBlockType);
 
     const properties = curBlockEl.getAttribute('custom-afwd')?.split(' ');
-    if (!properties) return;
-    console.log(properties);
+    if (!properties || !isDoc) return;
+    properties.forEach(prop => {
+        const menuItemEl = document.getElementById(`afwdMenuItem-${prop}`);
+        if (menuItemEl) {
+            menuItemEl.querySelector('input')!.checked = true;
+        }
+    })
+
+    if (properties.includes('all')) {
+        const menuItemEls = commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-all, #afwdMenuItem-clear)');
+        menuItemEls?.forEach(el => {
+            el.classList.add('b3-menu__item--disabled');
+            el.querySelector('input')!.disabled = true;
+        });
+    }
+
+    menuItemsFunctionalities(isDoc, curBlockEl, properties);
 }
 
-function menuItemsFunctionalities() {
+function menuItemsFunctionalities(isDoc: boolean, curBlockEl: Element, properties: string[]) {
 
 }
 
