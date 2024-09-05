@@ -1,3 +1,4 @@
+import { getBlockAttrs, setBlockAttrs } from "../util/api";
 import { debounce, querySelectorAsync } from "../util/misc";
 import { wndElements } from "../util/state";
 import { i18n, loadI18n } from "./configsMenu/makeItems";
@@ -39,8 +40,7 @@ export async function addAfwdMenuItems(e: Event) {
     if (e.type !== 'mouseup') return;
     const target = e.target as HTMLElement;
     const targetLabel = target.closest('.ariaLabel') as HTMLElement;
-    const protyle = target.closest('.protyle') as HTMLElement;
-    if (!targetLabel || !protyle) return;
+    if (!targetLabel) return;
     const gutterType = targetLabel.dataset.type; // block types, 'NodeSuperBlock', 'NodeParagraph'...
     const nonGutterType = target.closest('.protyle-title__icon')
         ? 'doc'
@@ -53,7 +53,7 @@ export async function addAfwdMenuItems(e: Event) {
     if (!type) return;
     // console.log(type);
     const blockId = type === 'doc'
-        ? protyle.dataset['id']
+        ? targetLabel.parentElement!.dataset['nodeId']
         : targetLabel.dataset['nodeId'];
     console.log(blockId, type);
     commonMenuEl = await querySelectorAsync('#commonMenu[data-name="titleMenu"], #commonMenu[data-name="gutter"]');
@@ -175,35 +175,48 @@ function makeItems(blockType: string) {
 
 async function loadCurBlock(curBlockType: string, curBlockId: string) {
     const isDoc = curBlockType === 'doc';
-    const curBlockEl = isDoc
-        ? document.querySelector(`.protyle[data-id="${curBlockId}"] .protyle-wysiwyg`)
-        : document.querySelector(`.protyle-wysiwyg>[data-node-id="${curBlockId}"]:not([data-sb-layout="row"])`);
-    if (!curBlockEl) return;
 
     makeItems(curBlockType);
 
-    const properties = curBlockEl.getAttribute('custom-afwd')?.split(' ');
-    if (!properties || !isDoc) return;
-    properties.forEach(prop => {
-        const menuItemEl = document.getElementById(`afwdMenuItem-${prop}`);
-        if (menuItemEl) {
-            menuItemEl.querySelector('input')!.checked = true;
-        }
-    })
+    let attrs = await getBlockAttrs(curBlockId).then(res => res['custom-afwd']);
+    if (!attrs) attrs = '';
+    attrs = attrs.split(' ');
+    console.log('properties', attrs);
+    if (attrs && isDoc) {
+        attrs.forEach((prop: any) => {
+            const menuItemEl = document.getElementById(`afwdMenuItem-${prop}`);
+            if (menuItemEl) {
+                menuItemEl.querySelector('input')!.checked = true;
+            }
+        })
 
-    if (properties.includes('all')) {
-        const menuItemEls = commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-all, #afwdMenuItem-clear)');
-        menuItemEls?.forEach(el => {
-            el.classList.add('b3-menu__item--disabled');
-            el.querySelector('input')!.disabled = true;
-        });
+        if (attrs.includes('all')) {
+            const menuItemEls = commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-all, #afwdMenuItem-clear)');
+            menuItemEls?.forEach(el => {
+                el.classList.add('b3-menu__item--disabled');
+                el.querySelector('input')!.disabled = true;
+            });
+        }
     }
 
-    menuItemsFunctionalities(isDoc, curBlockEl, properties);
+    menuItemsFunctionalities(isDoc, curBlockId, attrs);
 }
 
-function menuItemsFunctionalities(isDoc: boolean, curBlockEl: Element, properties: string[]) {
+function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, properties?: string[]) {
 
+    // functionality of clear button
+    const clearBtn = document.getElementById('afwdMenuItem-clear');
+    if (clearBtn) {
+        clearBtn.onclick = () => {
+            setBlockAttrs(curBlockId, { 'custom-afwd': '' });
+            commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-clear)').forEach(el => {
+                const input = el.querySelector('input');
+                el.classList.remove('b3-menu__item--disabled');
+                input!.disabled = false;
+                input!.checked = false;
+            })
+        }
+    }
 }
 
 export function removeProtyleSpacings() {

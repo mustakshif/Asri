@@ -8,7 +8,6 @@
 
 import { fetchSyncPost, IWebSocketData } from "siyuan";
 
-
 async function request(url: string, data: any) {
     let response: IWebSocketData = await fetchSyncPost(url, data);
     let res = response.code === 0 ? response.data : null;
@@ -50,3 +49,22 @@ export async function removeFile(path: string) {
     let url = '/api/file/removeFile';
     return request(url, data);
 }
+
+// **************************************** Attributes ****************************************
+// export async function setBlockAttrs(id: string, attrs: { [key: string]: string }) {
+//     let data = {
+//         id: id,
+//         attrs: attrs
+//     }
+//     let url = '/api/attr/setBlockAttrs';
+//     return request(url, data);
+// }
+
+
+// export async function getBlockAttrs(id: string): Promise<{ [key: string]: string }> {
+//     let data = {
+//         id: id
+//     }
+//     let url = '/api/attr/getBlockAttrs';
+//     return request(url, data);
+// }

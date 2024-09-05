@@ -5,6 +5,8 @@
 export {
     getFile,
     putFile,
+    setBlockAttrs,
+    getBlockAttrs
 }
 
 async function getFile(path:string) {
@@ -41,9 +43,43 @@ async function putFile(path:string, filedata: BlobPart, isDir = false, modTime =
     else return null;
 }
 
-// 界面 ————————————
+async function setBlockAttrs(内容块id: string, 属性对象: any) {
+    let url = '/api/attr/setBlockAttrs';
+    return 解析响应体(
+        向思源请求数据(url, {
+            id: 内容块id,
+            attrs: 属性对象,
+        })
+    );
+}
 
-// function isFullScreen() {
-//     ipcRenderer.invoke('siyuan-get', { cmd: 'isFullScreen' })
-//         .then(isFullscreen => isFullscreen ? true : false);
-// }
+async function getBlockAttrs(id: string) {
+    let url = '/api/attr/getBlockAttrs';
+    return 解析响应体(
+        向思源请求数据(url, {
+            id: id,
+        })
+    );
+}
+
+
+async function 解析响应体(response: any) {
+    let r = await response;
+    // console.log(r)
+    return r.code === 0 ? r.data : null;
+}
+async function 向思源请求数据(url:any, data:any) {
+    let resData = null;
+    console.log(data);
+    await fetch(url, {
+        body: JSON.stringify(data),
+        method: 'POST',
+        headers: {
+            Authorization: `Token ${''}`,
+        },
+    }).then(function (response) {
+        resData = response.json();
+        console.log(resData);
+    });
+    return resData;
+}
