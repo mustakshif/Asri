@@ -78,6 +78,7 @@ export async function unloadAsriJSModules() {
 function lowFreqEventsCallback(e: Event) {
     // console.log(e);
     updateStyles(e);
+    // if (!env.isIOSApp)
     addAfwdMenuItems(e);
 }
 

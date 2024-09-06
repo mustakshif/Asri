@@ -96,49 +96,14 @@ Click on the `Appearance Mode` icon in the top right corner to open the Asri the
 
 This attribute allows blocks to be displayed in full page width, which can be used to emphasize specific content or beautify the layout. The full-width display style applies to images, databases, iframes, tables and horizontal-layout superblocks.
 
+To enable full-width display, you can click on the block icons for **Document Block** and **the content block mentioned above**, then select `Full-width Display` in the popup menu to configure it accordingly.
+
+This feature relies on the custom attributes of SiYuan, so you can also manually configure the block attributes. The attribute name and values are shown in the table below:
+
 | Attribute | Value | Description |
 | --- | --- | --- |
 | `afwd`　　 | - `all` (Makes all blocks that support this attribute in the document display in full width)<br />- `p` (Makes all images in the document display in full width)<br />- `db` (Makes all database blocks in the document display in full width)<br />- `iframe` (Makes all iframe blocks in the document display in full width, including videos, widgets, and embedded web pages)<br />- `sb` (Makes all **horizontal-layout** superblocks in the document display in full width)<br />- `t` (Makes all table blocks in the document display in full width) | Applies to document blocks.<br />All attribute values except `all` can be used simultaneously, and should be separated by **spaces** |
 | `afwd`　　 |- `on` (Enable full-width display of the block individually)<br />- `off` (Disable full-width display of the block individually) | Applies to paragraph blocks, database blocks, iframe blocks, superblocks and table blocks.|
-
-##### Usage Examples
-
-Applied to document blocks:
-
-| Attribute | Value |
-| --- | --- |
-| `afwd` | `all` / `p sb iframe` / `db t` / ... |
-
-Applied to supported content blocks:
-
-| Attribute | Value |
-| --- | --- |
-| `afwd` | `on` / `off` |
-
-In addition to adding custom attributes by <kbd>shift + click block icon</kbd> - <kbd>Custom</kbd>, you can also use the `Attribute Quick Add` plugin to quickly add this attribute to supported blocks. Here is a configuration example of the plugin:
-
-```json
-{
-    "@type/d": {
-        "Full-width block type(s) in current doc": {
-            "@slash": "afwd",
-            "afwd": "@value/input"
-        }
-    },
-    "Enable full-width for current block": {
-        "@slash": "afwdon",
-        "afwd": "on"
-    },
-    "Disable full-width for current block": {
-        "@slash": "afwdoff",
-        "afwd": "off"
-    }
-}
-```
-
-This configuration adds full-width display controls to the `/` menu, enabling quick management of document and block full-width display features via commands like `/afwd`, `/afwdon`, and `/afwdoff` in the editor.
-
-To restore the default state of the block, manually delete this custom attribute in the block attribute.
 
 ##### <em>Precautions</em>
 

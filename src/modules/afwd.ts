@@ -14,7 +14,7 @@ const afwdBlockTypes = [
     'NodeIFrame',
 ];
 
-let commonMenuEl: Element | undefined;
+let commonMenuEl: Element | undefined, attrsReserved: string[]
 
 export function calcProtyleSpacings() {
     wndElements?.forEach(wnd => {
@@ -53,11 +53,11 @@ export async function addAfwdMenuItems(e: Event) {
     if (!type) return;
     // console.log(type);
     const blockId = type === 'doc'
-        ? targetLabel.parentElement!.dataset['nodeId']
+        ? targetLabel.parentElement!.dataset['nodeId'] ?? (targetLabel.closest('.protyle')?.querySelector('[data-node-id]') as HTMLElement)?.dataset['nodeId']
         : targetLabel.dataset['nodeId'];
-    console.log(blockId, type);
+    // console.log(blockId, type);
     commonMenuEl = await querySelectorAsync('#commonMenu[data-name="titleMenu"], #commonMenu[data-name="gutter"]');
-    loadCurBlock(type, blockId as string);
+    initializeCurBlocksAttrs(type, blockId as string);
 }
 
 function makeItems(blockType: string) {
@@ -173,7 +173,7 @@ function makeItems(blockType: string) {
     commonMenuBtnList.insertBefore(separator, mainBtn);
 }
 
-async function loadCurBlock(curBlockType: string, curBlockId: string) {
+async function initializeCurBlocksAttrs(curBlockType: string, curBlockId: string) {
     const isDoc = curBlockType === 'doc';
 
     makeItems(curBlockType);
@@ -181,10 +181,12 @@ async function loadCurBlock(curBlockType: string, curBlockId: string) {
     let attrs = await getBlockAttrs(curBlockId).then(res => res['custom-afwd']);
     if (!attrs) attrs = '';
     attrs = attrs.split(' ');
-    console.log('properties', attrs);
-    if (attrs && isDoc) {
-        attrs.forEach((prop: any) => {
-            const menuItemEl = document.getElementById(`afwdMenuItem-${prop}`);
+
+    // read & set initial states
+    // for doc blocks
+    if (attrs.length > 0 && isDoc) {
+        attrs.forEach((attr: any) => {
+            const menuItemEl = document.getElementById(`afwdMenuItem-${attr}`);
             if (menuItemEl) {
                 menuItemEl.querySelector('input')!.checked = true;
             }
@@ -198,22 +200,99 @@ async function loadCurBlock(curBlockType: string, curBlockId: string) {
             });
         }
     }
+    // for indoc content blocks
+    else if (attrs.length > 0) {
+        const menuItemEl = document.getElementById(`afwdMenuItem-${attrs[0]}`);
+        if (menuItemEl) {
+            menuItemEl.classList.add('b3-menu__item--selected');
+        }
+    }
 
     menuItemsFunctionalities(isDoc, curBlockId, attrs);
 }
 
-function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, properties?: string[]) {
+function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, attrs: string[]) {
+    const menuItemEls = commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-clear)') as unknown as HTMLButtonElement[];
+    if (!menuItemEls) return;
+    const menuItemElsExceptAll = [...menuItemEls].filter(el => el.id !== 'afwdMenuItem-all');
+
+    // set doc blocks afwd menu funcs
+    if (isDoc) {
+        menuItemEls?.forEach(el => {
+            el.onclick = (ev) => {
+                if (el.classList.contains('b3-menu__item--disabled')) return;
+                const input = el.querySelector('input')!;
+                const curAttr = el['id'].split('-')[1]; // 'all' | 'db' | ...
+                let isOn = input.checked; // check initial state
+
+                // clicking on input itself will toggle the checkbox automatically,
+                // but when clicking on label, we need to toggle it manually
+                if (ev.target === input) isOn = !isOn; // when clicking on input, restore to the state where the checkbox was not clicked
+                else input.checked = !isOn; // this is only used to change the state of the checkbox's appearance when clicking on label
+
+                // when menu item actived
+                if (isOn) {
+                    if (curAttr === 'all') {
+                        menuItemElsExceptAll.forEach(el => {
+                            el.classList.remove('b3-menu__item--disabled');
+                            el.querySelector('input')!.disabled = false;
+                        });
+
+                        if (attrsReserved && !attrsReserved.includes('all')) attrs = attrsReserved;
+                    } else attrs = attrs?.filter(a => a !== curAttr);
+                }
+                // when menu item deactived
+                else {
+                    if (curAttr === 'all') {
+                        attrsReserved = attrs;
+                        attrs = ['all'];
+                        menuItemElsExceptAll.forEach(el => {
+                            el.classList.add('b3-menu__item--disabled');
+                            el.querySelector('input')!.disabled = true;
+                        });
+                    } else attrs?.push(curAttr);
+                };
+
+                setBlockAttrs(curBlockId, { 'custom-afwd': attrs?.join(' ') || '' });
+            }
+        })
+    }
+    // set indoc blocks afwd menu funcs
+    else {
+        menuItemEls?.forEach((el, index, arr) => {
+            el.onclick = () => {
+                const attr = el['id'].split('-')[1]; // 'on' | 'off'
+                const isSelected = el.classList.contains('b3-menu__item--selected');
+
+                if (isSelected) {
+                    attrs = [];
+                    el.classList.remove('b3-menu__item--selected');
+                } else {
+                    attrs = [attr];
+                    el.classList.add('b3-menu__item--selected');
+                    arr[1 - index].classList.remove('b3-menu__item--selected');
+                };
+
+                setBlockAttrs(curBlockId, { 'custom-afwd': attrs?.join(' ') || '' });
+            }
+        })
+    }
 
     // functionality of clear button
     const clearBtn = document.getElementById('afwdMenuItem-clear');
     if (clearBtn) {
         clearBtn.onclick = () => {
+            attrs = [];
+            attrsReserved = [];
             setBlockAttrs(curBlockId, { 'custom-afwd': '' });
-            commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-clear)').forEach(el => {
-                const input = el.querySelector('input');
+            menuItemEls.forEach(el => {
                 el.classList.remove('b3-menu__item--disabled');
-                input!.disabled = false;
-                input!.checked = false;
+                el.classList.remove('b3-menu__item--selected');
+                if (isDoc) {
+                    const inputEl = el.querySelector('input');
+                    inputEl!.disabled = false;
+                    inputEl!.checked = false;
+                }
             })
         }
     }
