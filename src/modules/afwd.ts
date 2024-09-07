@@ -14,7 +14,7 @@ const afwdBlockTypes = [
     'NodeIFrame',
 ];
 
-let commonMenuEl: Element | undefined, attrsReserved: string[]
+let commonMenuEl: Element | undefined;
 
 export function calcProtyleSpacings() {
     wndElements?.forEach(wnd => {
@@ -185,7 +185,7 @@ async function initializeCurBlocksAttrs(curBlockType: string, curBlockId: string
     // read & set initial states
     // for doc blocks
     if (attrs.length > 0 && isDoc) {
-        attrs.forEach((attr: any) => {
+        attrs.forEach((attr: string) => {
             const menuItemEl = document.getElementById(`afwdMenuItem-${attr}`);
             if (menuItemEl) {
                 menuItemEl.querySelector('input')!.checked = true;
@@ -213,6 +213,8 @@ async function initializeCurBlocksAttrs(curBlockType: string, curBlockId: string
 
 function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, attrs: string[]) {
     const menuItemEls = commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-clear)') as unknown as HTMLButtonElement[];
+    let attrsReserved: string[] = []; // save all attrs except 'all', 'on', 'off'
+
     if (!menuItemEls) return;
     const menuItemElsExceptAll = [...menuItemEls].filter(el => el.id !== 'afwdMenuItem-all');
 
@@ -230,7 +232,7 @@ function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, attrs: str
                 if (ev.target === input) isOn = !isOn; // when clicking on input, restore to the state where the checkbox was not clicked
                 else input.checked = !isOn; // this is only used to change the state of the checkbox's appearance when clicking on label
 
-                // when menu item actived
+                // when menu item is actived
                 if (isOn) {
                     if (curAttr === 'all') {
                         menuItemElsExceptAll.forEach(el => {
@@ -238,22 +240,22 @@ function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, attrs: str
                             el.querySelector('input')!.disabled = false;
                         });
 
-                        if (attrsReserved && !attrsReserved.includes('all')) attrs = attrsReserved;
-                    } else attrs = attrs?.filter(a => a !== curAttr);
+                        attrs = attrsReserved.length > 0 ? attrsReserved : [];
+                    } else attrs = attrs.filter(a => a !== curAttr);
                 }
-                // when menu item deactived
+                // when menu item is deactived
                 else {
                     if (curAttr === 'all') {
-                        attrsReserved = attrs;
+                        if (!attrs.includes('all')) attrsReserved = attrs;
                         attrs = ['all'];
                         menuItemElsExceptAll.forEach(el => {
                             el.classList.add('b3-menu__item--disabled');
                             el.querySelector('input')!.disabled = true;
                         });
-                    } else attrs?.push(curAttr);
+                    } else attrs.push(curAttr);
                 };
 
-                setBlockAttrs(curBlockId, { 'custom-afwd': attrs?.join(' ') || '' });
+                setBlockAttrs(curBlockId, { 'custom-afwd': attrs.join(' ') || '' });
             }
         })
     }

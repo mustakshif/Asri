@@ -45,6 +45,7 @@ async function putFile(path:string, filedata: BlobPart, isDir = false, modTime =
 
 async function setBlockAttrs(blockId: string, attrObj: any) {
     let url = '/api/attr/setBlockAttrs';
+    // console.log(url, blockId, attrObj)
     return resolveResponse(
         requestFromSiyuan(url, {
             'id': blockId,
