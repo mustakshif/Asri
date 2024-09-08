@@ -1,3 +1,15 @@
+### v3.1.4
+
+* ✨ 全宽显示支持从文档块和已适配内容块的块菜单中配置
+* 移除已禁用菜单项目的鼠标悬停效果
+
+<br />
+
+* ✨ Full-width display support configured from the block menu of document blocks and compatible content blocks.
+* Removed the hover effect for disabled menu items.
+
+---
+
 ### v3.1.3
 
 * 微调代码块背景色

@@ -13,13 +13,14 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.4
+
+* ✨ Full-width display support configured from the block menu of document blocks and compatible content blocks.
+* Removed the hover effect for disabled menu items.
+
 ### v3.1.3
 
 * Adjusted the background color of code blocks
-
-### v3.1.2
-
-* Adapted code block style of Siyuan v3.1.4
 
 ### ...
 

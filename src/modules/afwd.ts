@@ -53,7 +53,7 @@ export async function addAfwdMenuItems(e: Event) {
     if (!type) return;
     // console.log(type);
     const blockId = type === 'doc'
-        ? targetLabel.parentElement!.dataset['nodeId'] ?? (targetLabel.closest('.protyle')?.querySelector('[data-node-id]') as HTMLElement)?.dataset['nodeId']
+        ? targetLabel.parentElement!.dataset['nodeId'] ?? (targetLabel.closest('.protyle')?.querySelector('.protyle-title') as HTMLElement)?.dataset['nodeId']
         : targetLabel.dataset['nodeId'];
     // console.log(blockId, type);
     commonMenuEl = await querySelectorAsync('#commonMenu[data-name="titleMenu"], #commonMenu[data-name="gutter"]');
