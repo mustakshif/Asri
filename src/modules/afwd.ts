@@ -60,8 +60,10 @@ export async function addAfwdMenuItems(e: Event) {
     initializeCurBlocksAttrs(type, blockId as string);
 }
 
-function makeItems(blockType: string) {
+async function makeItems(blockType: string) {
     if (!commonMenuEl || document.getElementById('afwdMenuItem-clear')) return;
+
+    if (!i18n) await loadI18n();
 
     const commonMenuBtnList = commonMenuEl.lastChild as HTMLDivElement;
 
