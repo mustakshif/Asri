@@ -4,6 +4,10 @@
     box-sizing: border-box;
     background-color: transparent;
 
+    &[style*="z-index"] {
+        z-index: auto !important;
+    }
+
     .dock__item {
         // @include theme-variant-color(color, on-background, 0.6);
         color: var(--b3-theme-on-surface);
