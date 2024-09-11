@@ -39,6 +39,12 @@
         border-radius: 0;
     }
 
+    #commonMenu {
+        [id^=afwd] .b3-menu__label {
+            white-space: unset;
+        }
+    }
+
     .b3-menu__separator {
         height: 1px;
         margin: 16px;
