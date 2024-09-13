@@ -5,7 +5,7 @@ English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main
 
 <br/>
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v21.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v20.png)
 
 # Asri, theme for SiYuan
 
