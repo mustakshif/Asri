@@ -13,14 +13,17 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.5
+
+* Fixed the issue of the full-width display menu showing abnormally on mobile devices.
+* Resolved the display anomaly caused by the stacking layout changes in the side docks.
+* Corrected the problem of the separator lines appearing reddish when the theme color was set to grayscale.
+* Attempted to fix the issue of the full-width display menu entry not showing on iOS.
+
 ### v3.1.4
 
 * ✨ Full-width display support configured from the block menu of document blocks and compatible content blocks.
 * Removed the hover effect for disabled menu items.
-
-### v3.1.3
-
-* Adjusted the background color of code blocks
 
 ### ...
 

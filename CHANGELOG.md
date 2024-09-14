@@ -1,3 +1,19 @@
+### v3.1.5
+
+* 修复移动端全宽显示菜单显示异常的问题
+* 修复侧边停靠栏堆放层叠变动导致的显示异常问题
+* 修复主题色为灰度色是部分分割线颜色偏红的问题
+* 尝试修复 iOS 端全宽显示菜单入口不显示的问题
+
+<br />
+
+* Fixed the issue of the full-width display menu showing abnormally on mobile devices.
+* Resolved the display anomaly caused by the stacking layout changes in the side docks.
+* Corrected the problem of the separator lines appearing reddish when the theme color was set to grayscale.
+* Attempted to fix the issue of the full-width display menu entry not showing on iOS.
+
+---
+
 ### v3.1.4
 
 * ✨ 全宽显示支持从文档块和已适配内容块的块菜单中配置
