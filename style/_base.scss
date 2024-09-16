@@ -117,7 +117,7 @@
     @content;
 
     @include darkmode-counterpart {
-        background-color: #0004;
+        // background-color: #0004;
 
         &:hover {
             background-color: var(--b3-theme-primary);
@@ -218,9 +218,9 @@
     padding: 2px;
     height: 32px;
 
-    @include darkmode-counterpart {
-        background-color: #0004;
-    }
+    // @include darkmode-counterpart {
+    //     background-color: #0004;
+    // }
 
     .item {
         border-radius: 6px !important;

@@ -285,6 +285,18 @@
     }
 }
 
+@mixin code-block {
+    .code-block {
+        [data-theme-mode=light] & {
+            background-color: var(--b3-theme-surface-light);
+        }
+
+        [data-theme-mode=dark]:not([style*="--asri-c-0"]) & {
+            background-color: #0004;
+        }
+    }
+}
+
 @mixin inline-code {
 
     span[data-type~=code],
@@ -501,6 +513,8 @@
     }
 
     //代码块 ——————————————————————————————————————
+    @include code-block;
+
     .code-block {
         --b3-protyle-code-linenumber-hl: color-mix(in srgb, var(--b3-theme-surface) 55%, var(--b3-theme-primary));
 
@@ -1097,6 +1111,7 @@
     @include inline-code;
     @include blockquote;
     @include hljs;
+    @include code-block;
     @include table(false, true);
 
     a {

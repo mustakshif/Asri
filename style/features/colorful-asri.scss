@@ -80,8 +80,8 @@
             --asri-fallback-background: #1e1e1e;
             --asri-fallback-surface: #383838;
             --asri-fallback-on-background: #dcdcdc;
-            --asri-composite-background: oklch(from var(--asri-base-color) .25 calc(.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-            --asri-composite-surface: oklch(from var(--asri-base-color) .34 calc(.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+            --asri-composite-background: oklch(from var(--asri-base-color) .2 calc(.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+            --asri-composite-surface: oklch(from var(--asri-base-color) .29 calc(.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
             --asri-composite-on-background: oklch(from var(--asri-base-color) .89 clamp(0, .01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) h);
 
             --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .65 c h);
@@ -103,10 +103,10 @@
 
             --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
 
-            --b3-border-color: oklch(from var(--b3-theme-on-background) .38 clamp(0, .009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) h);
+            --b3-border-color: oklch(from var(--b3-theme-on-background) .34 clamp(0, .009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) h);
             --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
 
-            --b3-menu-background: oklch(from var(--b3-theme-background) .3 c h);
+            --b3-menu-background: oklch(from var(--b3-theme-background) .25 c h);
 
             --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
 
@@ -301,7 +301,7 @@
             border-top: none;
 
             @include darkmode-counterpart {
-                background-color: oklch(from var(--b3-theme-surface) 0.36 c h/0.7);
+                background-color: oklch(from var(--b3-theme-surface) 0.32 c h/0.7);
             }
         }
 
@@ -310,7 +310,7 @@
             background-color: oklch(from var(--b3-theme-surface) 0.95 c h/0.8);
 
             @include darkmode-counterpart {
-                background-color: oklch(from var(--b3-theme-surface) 0.36 c h/0.7);
+                background-color: oklch(from var(--b3-theme-surface) 0.32 c h/0.7);
             }
         }
     }
