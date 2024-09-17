@@ -1,7 +1,7 @@
 import { getBlockAttrs, setBlockAttrs } from "../util/api";
 import { debounce, querySelectorAsync } from "../util/misc";
 import { wndElements } from "../util/state";
-import { i18n, loadI18n } from "./configsMenu/makeItems";
+import { i18n as i18nExported, loadI18n } from "./configsMenu/makeItems";
 
 export const debouncedCalcProtyleSpacings = debounce(calcProtyleSpacings, 200);
 const afwdBlockTypes = [
@@ -15,6 +15,7 @@ const afwdBlockTypes = [
 ];
 
 let commonMenuEl: Element | undefined;
+let i18n = i18nExported;
 
 export function calcProtyleSpacings() {
     wndElements?.forEach(wnd => {
@@ -38,6 +39,7 @@ export function calcProtyleSpacings() {
 
 export async function addAfwdMenuItems(e: Event) {
     if (e.type !== 'mouseup') return;
+    if (!i18n) i18n = await loadI18n();
     const target = e.target as HTMLElement;
     const targetLabel = target.closest('.ariaLabel') as HTMLElement;
     if (!targetLabel) return;
@@ -62,8 +64,6 @@ export async function addAfwdMenuItems(e: Event) {
 
 async function makeItems(blockType: string) {
     if (!commonMenuEl || document.getElementById('afwdMenuItem-clear')) return;
-
-    if (!i18n) await loadI18n();
 
     const commonMenuBtnList = commonMenuEl.lastChild as HTMLDivElement;
 
