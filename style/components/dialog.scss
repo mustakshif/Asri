@@ -951,6 +951,9 @@
 
         .b3-button {
             @include button-primary;
+            @include darkmode-counterpart{
+                background-color: #0004;
+            }
 
             margin-top: 12px;
 
