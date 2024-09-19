@@ -58,12 +58,19 @@ export function unloadThemePalette() {
 }
 
 export async function loadI18n() {
-    if (['zh_CN', 'zh_CHT', 'en_US'].includes(env.lang)) {
-        const res = await fetch(`/appearance/themes/Asri/i18n/${env.lang}.json`);
-        return i18n = res.json();
-    } else {
-        const res = await fetch('/appearance/themes/Asri/i18n/en_US.json');
-        return i18n = res.json();
+    let res: Response;
+    try {
+        if (['zh_CN', 'zh_CHT', 'en_US'].includes(env.lang)) {
+            res = await fetch(`/appearance/themes/Asri/i18n/${env.lang}.json`);
+        } else {
+            res = await fetch('/appearance/themes/Asri/i18n/en_US.json');
+        }
+
+        i18n = await res.json();
+        return i18n;
+    } catch (error) {
+        console.error('failed to load i18n:', error);
+        throw error;
     }
 }
 
