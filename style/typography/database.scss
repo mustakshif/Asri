@@ -446,9 +446,16 @@ img.av__cellassetimg {
     border-radius: 4px;
 }
 
-.b3-chip[style*="background-color:var(--b3-font-background1);color:var(--b3-font-color1)"] {
-    outline: 1px solid var(--b3-border-color-trans);
-    outline-offset: -1px;
+// .b3-chip[style*="background-color:var(--b3-font-background1);color:var(--b3-font-color1)"] {
+//     outline: 1px solid var(--b3-border-color-trans);
+//     outline-offset: -1px;
+// }
+
+@for $i from 1 through 13 {
+    .b3-chip[style="background-color:var(--b3-font-background#{$i});color:var(--b3-font-color#{$i})"] {
+        outline: .5px solid rgb(from var(--b3-font-color#{$i}) r g b / .3);
+        outline-offset: -.5px;
+    }
 }
 
 .b3-menu {

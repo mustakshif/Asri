@@ -165,7 +165,7 @@
             }
         }
 
-        ~.b3-dialog--open {
+        ~.b3-dialog--open:not([data-key="dialog-savecriterion"]) {
             [onselectstart]+.b3-dialog__body>.b3-dialog__content {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));

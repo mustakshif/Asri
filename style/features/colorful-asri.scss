@@ -274,8 +274,11 @@
         }
     }
 
-    // protyle-related elements 
-
+    /* 
+    !---------------------------------------------------------
+    !------------ Protyle related elements -------------------
+    !---------------------------------------------------------
+    */
     body:not(.has-exportimg) {
 
         .protyle-toolbar__item--current,
@@ -385,10 +388,12 @@
 
     @for $i from 1 through 3 {
         .b3-chip[style="background-color:var(--b3-font-background#{$i});color:var(--b3-font-color#{$i})"] {
-            color: oklch(from var(--b3-font-color#{$i}) 0.4 c h) !important;
+            color: oklch(from var(--b3-font-color#{$i}) 0.6 c h) !important;
+            background-color: oklch(from var(--b3-font-background#{$i}) 0.96 c h) !important;
 
             @include darkmode-counterpart {
-                color: oklch(from var(--b3-font-color#{$i}) 0.89 c h) !important;
+                color: oklch(from var(--b3-font-color#{$i}) 0.85 c h) !important;
+                background-color: oklch(from var(--b3-font-background#{$i}) .3 c h) !important
             }
         }
     }
