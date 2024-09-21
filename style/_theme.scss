@@ -6,6 +6,8 @@
     &:lang(ja_JP) {
         --b3-font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
     }
+
+    // interpolate-size: allow-keywords;  // https://developer.chrome.com/docs/css-ui/animate-to-height-auto/
 }
 
 // dark first to fix font color and background color abnormality in pdf export 
