@@ -6,6 +6,10 @@
         display: flex;
         margin-right: 0;
 
+        body.asri-imsvtb-trending & {
+            margin-right: 6px;
+        }
+
         .protyle-breadcrumb__space {
             display: none;
         }

@@ -96,7 +96,7 @@ $fadeout-size-xxl: 50px;
     }
 }
 
-.protyle-breadcrumb__bar {
+body:not(.asri-imsvtb-trending) .protyle-breadcrumb__bar {
     @include overflow-indicator-fadein-mask($fadeout-size-s, $range: 'left right');
 }
 
