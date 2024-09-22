@@ -1,3 +1,29 @@
+### v3.1.6
+
+* 调整代码块背景色
+* 调整亮色模式下的文字颜色
+* 调整暗色模式的主题背景色
+* 调整设置面板大按钮的颜色
+* 激活页签背景色改为跟随色度调整
+* 调整数据库单选和多选列标签颜色和边框样式
+* 区分编辑器活动和非活动状态下的激活页签样式
+* 修复「保存查询条件」对话框的文本框错位问题
+* 修复部分情况下色度滑块提示条和全宽显示菜单条目显示为「undefined」的问题
+
+<br />
+
+* Adjusted the background color of code blocks.
+* Modified the text color in light mode.
+* Changed the theme background color in dark mode.
+* Altered the color of large buttons in the settings panel.
+* Updated the activated tab background color to follow hue adjustments.
+* Adjusted the color and border style of labels for single and multi-select columns in the database.
+* Distinguished the styles of activated tabs in both active and inactive states of the editor.
+* Fixed the misalignment issue of text boxes in the "Save Query Conditions" dialog.
+* Resolved the issue where the hue slider tooltip and full-width display menu entries displayed as "undefined" in certain cases.
+
+---
+
 ### v3.1.5
 
 * 修复移动端全宽显示菜单显示异常的问题

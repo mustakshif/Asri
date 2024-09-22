@@ -13,17 +13,24 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.6
+
+* Adjusted the background color of code blocks.
+* Modified the text color in light mode.
+* Changed the theme background color in dark mode.
+* Altered the color of large buttons in the settings panel.
+* Updated the activated tab background color to follow hue adjustments.
+* Adjusted the color and border style of labels for single and multi-select columns in the database.
+* Distinguished the styles of activated tabs in both active and inactive states of the editor.
+* Fixed the misalignment issue of text boxes in the "Save Query Conditions" dialog.
+* Resolved the issue where the hue slider tooltip and full-width display menu entries displayed as "undefined" in certain cases.
+
 ### v3.1.5
 
 * Fixed the issue of the full-width display menu showing abnormally on mobile devices.
 * Resolved the display anomaly caused by the stacking layout changes in the side docks.
 * Corrected the problem of the separator lines appearing reddish when the theme color was set to grayscale.
 * Attempted to fix the issue of the full-width display menu entry not showing on iOS.
-
-### v3.1.4
-
-* ✨ Full-width display support configured from the block menu of document blocks and compatible content blocks.
-* Removed the hover effect for disabled menu items.
 
 ### ...
 
