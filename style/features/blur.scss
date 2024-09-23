@@ -132,12 +132,12 @@ body:not(.asri-disable-backdrop-blur) {
 
     #dockBottom.fn__none:not(.has-layout-dockb-float)~#status,
     &.body-asri--mobile #status {
-        background-color: oklch(from var(--b3-theme-surface) l c h / $medium-transparency);
+        background-color: oklch(from var(--b3-theme-surface) l c h / $thin-transparency);
         @include bg-blur;
 
         // mix-blend-mode: luminosity;
         @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-            @include theme-variant-color(background-color, surface, $medium-transparency);
+            @include theme-variant-color(background-color, surface, $thin-transparency);
         }
     }
 
