@@ -106,28 +106,24 @@
 
 // 主要用于设置面板的大按钮
 @mixin button-primary {
-    background-color: var(--b3-list-hover);
-    border-radius: 99px;
+    // background-color: var(--b3-list-hover);
+    background-color: #0000;
+    border-radius: 7px;
     color: var(--b3-theme-primary);
+    // color: var(--b3-theme-on-background);
     font-weight: 600;
     transition: 0.1s all;
     border: none;
     box-shadow: none;
-
-    @content;
-
-    @include darkmode-counterpart {
-        // background-color: #0004;
-
-        &:hover {
-            background-color: var(--b3-theme-primary);
-        }
-    }
+    outline: 1px solid var(--b3-border-color-trans);
+    outline-offset: -1px;
 
     &:hover {
         background-color: var(--b3-theme-primary);
         color: var(--b3-theme-on-primary);
         transition: 0.1s all;
+        outline: none;
+        // border-radius: 6px;
     }
 
     &:active {
@@ -135,11 +131,13 @@
         opacity: 0.8;
         transition: .1s;
     }
+
+    @content;
 }
 
 // 普通按钮
 @mixin button-action($type) {
-    border-radius: 99px;
+    border-radius: 7px;
     padding: 4px 12px;
 
     &:hover {
@@ -158,7 +156,8 @@
     }
 
     @if $type=='normal' {
-        color: var(--b3-theme-on-surface);
+        color: var(--b3-theme-on-background);
+        outline: 1px solid var(--b3-border-color-trans);
 
         &:hover {
             background-color: var(--b3-list-hover);
@@ -174,11 +173,12 @@
     }
 
     @else if $type =='primary' {
-        color: var(--b3-theme-primary);
-        font-weight: 600;
+        color: var(--b3-theme-on-primary);
+        background-color: var(--b3-theme-primary);
+        // font-weight: 600;
 
         &:hover {
-            background-color: var(--b3-theme-primary-lightest);
+            background-color: rgb(from var(--b3-theme-primary) r g b / .8);
         }
 
         &:active,

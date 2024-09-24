@@ -147,25 +147,38 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
         [data-type="wnd"] {
 
             :not(.av__views)>.layout-tab-bar {
+                @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
+                    .item:not(.item--readonly) {
+                        background-color: oklch(from var(--b3-theme-background) .9 c h / .5);
 
-                // &:not(.layout-tab-bar--readonly) .item {
-                //     // backdrop-filter: blur($medium-blur-rd);
-                //     @include bg-blur($medium-blur-rd, $saturate-value: 1.5, $brightness-light: 1);
-                //     // &--focus {
-                //     //     backdrop-filter: blur($medium-blur-rd) brightness(1.3);
-                //     // }
+                        @include darkmode-counterpart {
+                            background-color: oklch(from var(--b3-theme-background) .4 c h / .5);
+                        }
+                    }
 
-                //     &--focus {
-                //         // background-color: transparent;
-                //         @include bg-blur($medium-blur-rd, $brightness-light: 1, $brightness-dark: 1);
-                //         // backdrop-filter: blur($medium-blur-rd) brightness(1) saturate(1.8);
+                    .item:not(.item--readonly, .item--full.item--focus):hover,
+                    .item.item--focus {
+                        background-color: oklch(from var(--b3-theme-primary) .8 clamp(0, calc(.05 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .18) h / .5);
 
-                //         // @include darkmode-counterpart {
-                //         //     // background-color: #ffffff20;
-                //         //     backdrop-filter: blur($medium-blur-rd) brightness(1) saturate(3);
-                //         // }
-                //     }
-                // }
+                        @include darkmode-counterpart {
+                            background-color: oklch(from var(--b3-theme-primary) .6 clamp(0, calc(.06 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .18) h / .5);
+                        }
+                    }
+                }
+
+                .item--focus {
+                    font-weight: 500;
+                }
+
+                &:not(.layout-tab-bar--readonly) .item {
+                    // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
+                    backdrop-filter: saturate(2);
+
+                    &--focus {
+                        // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
+                        backdrop-filter: saturate(2.5);
+                    }
+                }
             }
 
             .layout-tab-container {
@@ -173,7 +186,7 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                     &::before {
                         mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 25px), transparent calc(var(--blur-block-height) - 5px));
 
-                        @include bg-blur($blur-radius: 5px, $saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+                        @include bg-blur($blur-radius: 4px, $saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
                     }
 
                     &::after {
@@ -203,11 +216,11 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                         z-index: 1;
                         pointer-events: none;
 
-                        @include smoothGradientVar(var(--b3-theme-background), .6);
+                        @include smoothGradientVar(var(--b3-theme-background), .7);
 
-                        @include darkmode-counterpart {
-                            @include smoothGradientVar(var(--b3-theme-background), .85);
-                        }
+                        // @include darkmode-counterpart {
+                        //     @include smoothGradientVar(var(--b3-theme-background), .7);
+                        // }
                     }
                 }
             }
@@ -223,9 +236,10 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                     content: '';
                     position: absolute;
                     top: 0;
+                    left: 0;
                     width: 100%;
                     height: 100%;
-                    height: 60%;
+                    height: 80%;
                     // background-color: transparent;
                     backdrop-filter: blur(16px);
                     mask-image: linear-gradient(to bottom, #000, #0000);
@@ -265,7 +279,7 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                     // background: radial-gradient(closest-side,var(--b3-theme-background) 0%, #0000 100%);
                     // background-color: var(--b3-theme-surface-light);
                     border-radius: 6px;
-                    @include bg-blur(8px, 1.8, $brightness-light: 1);
+                    @include bg-blur(8px, 1.5, $brightness-light: 1);
                 }
             }
 

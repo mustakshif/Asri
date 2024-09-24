@@ -40,8 +40,7 @@ $fadeout-size-xxl: 50px;
 }
 
 [data-name="AI"] .layout-tab-bar+.fn__flex-1,
-.history__repo[data-type="repo"] .b3-list--background,
-[data-key="dialog-snippets"] .b3-dialog__body>.fn__flex-1 {
+.history__repo[data-type="repo"] .b3-list--background {
     @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');
 }
 
@@ -56,23 +55,35 @@ $fadeout-size-xxl: 50px;
 }
 
 // 部分插件配置窗口，移动文档窗口
-.b3-dialog__header:not(.fn__none)+.b3-dialog__body :where(.config__tab-container, .layout-tab-bar+.fn__flex-1),
-#foldTree {
+.b3-dialog__header:not(.fn__none)+.b3-dialog__body :where(.config__tab-container, .layout-tab-bar+.fn__flex-1){
     @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');
 }
 
+#foldTree {
+    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top bottom');
+}
+
 .b3-dialog__header:not(.fn__none)+.b3-dialog__body .b3-dialog__content {
-    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');
+    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top bottom');
 
     &::before {
-        top: -16px;
+        top: -12px;
+    }
+    
+    &::after {
+        bottom: -13px;
     }
 }
 
 [data-key="dialog-snippets"] .b3-dialog__body>.fn__flex-1 {
+    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top bottom');
 
     &::before {
         top: -16px;
+    }
+    
+    &::after {
+        bottom: -16px;
     }
 }
 
@@ -114,6 +125,10 @@ body:not(.asri-imsvtb-trending) .protyle-breadcrumb__bar {
 [data-key="dialog-replacetype"] .b3-dialog__content::before,
 [data-key="dialog-searchtype"] .b3-dialog__content::before {
     display: none !important; // fix https://github.com/mustakshif/Asri/issues/80
+}
+
+[data-key="dialog-searchtype"] .b3-dialog__content::after {
+    grid-column: 1 / -1;
 }
 
 [data-key="dialog-searchtype"] .b3-dialog__content,
