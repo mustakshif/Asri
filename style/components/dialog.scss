@@ -6,7 +6,7 @@
             font-weight: 600;
             text-align: center;
             border-bottom: none;
-            padding: 18px 18px 12px;
+            padding: 18px 18px 6px;
 
             &:not(.fn__none)+.b3-dialog__body {
                 >div>.config__panel {
@@ -88,6 +88,10 @@
             // 数据历史 ————————————————————————————————————————
             .history__repo {
                 background-color: unset;
+
+                select.b3-select {
+                    width: auto;
+                }
             }
 
             .history__panel {
@@ -98,6 +102,48 @@
                     // min-width: fit-content; // 导致宽度根据条目长度频繁变动
                     padding: 8px 0;
                     background-color: var(--b3-theme-surface);
+                }
+
+
+                .b3-chip--list {
+                    width: 16px;
+                    height: 16px;
+                }
+
+                // 同步？
+                .b3-chip--success {
+                    background-color: var(--b3-font-background9);
+                    color: var(--b3-font-color9);
+                }
+
+                // 更新
+                .b3-chip--info {
+                    background-color: var(--b3-font-background6);
+                    color: var(--b3-font-color6);
+                }
+
+                // 替换
+                .b3-chip--secondary {
+                    background-color: var(--b3-font-background4);
+                    color: var(--b3-font-color4);
+                }
+
+                // 删除
+                .b3-chip--error {
+                    background-color: var(--b3-font-background13);
+                    color: var(--b3-font-color13);
+                }
+
+                // 排版
+                .b3-chip--pink {
+                    background-color: var(--b3-font-background11);
+                    color: var(--b3-font-color11);
+                }
+
+                // 大纲
+                .b3-chip--warning {
+                    background-color: var(--b3-font-background5);
+                    color: var(--b3-font-color5);
                 }
             }
 
@@ -113,7 +159,7 @@
         // 对话框底部按钮区域 ——————————————————————————————
         &__action {
             // padding: 8px 24px;
-            padding: 12px 18px 18px;
+            padding: 6px 18px 18px;
             border-top: none;
 
             .b3-button {
@@ -196,12 +242,8 @@
     // 最近文档 ——————————————————————————————————
     &[data-key="dialog-recentdocs"] {
         .b3-dialog__header {
-            padding-left: 12px;
+            padding: 12px;
             border-bottom: 1px solid var(--b3-border-color);
-        }
-
-        .b3-form__icon.fn__size200 {
-            transform: translateX(16px)
         }
 
         .b3-list--background:first-child {
