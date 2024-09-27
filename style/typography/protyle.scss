@@ -580,13 +580,13 @@
     // 任务列表项 ————————————————————————————————
     .protyle-task--done {
         &>div[data-node-id].p {
-            opacity: 0.45;
+            opacity: .5;
             color: inherit;
             text-decoration: none;
         }
 
         &>.protyle-action--task {
-            opacity: 0.45;
+            opacity: .5;
         }
     }
 
@@ -986,6 +986,10 @@
             outline: 1px solid var(--b3-border-color-trans);
             opacity: .6;
         }
+    }
+
+    [data-type~=s] {
+        opacity: .5 !important;
     }
 }
 

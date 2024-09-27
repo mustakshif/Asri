@@ -173,6 +173,9 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                 &:not(.layout-tab-bar--readonly) .item {
                     // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
                     backdrop-filter: saturate(2);
+                    // outline: 1px solid rgb(from var(--b3-theme-background) r g b / .2);
+                    // outline-offset: -1px;
+                    // box-shadow: inset 0 0 1px rgb(from var(--b3-theme-background) r g b / .9);
 
                     &--focus {
                         // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
@@ -287,6 +290,12 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
             .img .protyle-action__drag {
                 z-index: auto;
             }
+        }
+
+        //页签栏图标、顶栏图标
+        .item--readonly .block__icon,
+        .toolbar__item:not(#barWorkspace) {
+            filter: drop-shadow(0 0 3px var(--b3-theme-background));
         }
     }
 

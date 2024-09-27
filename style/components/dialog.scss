@@ -162,6 +162,10 @@
             padding: 6px 18px 18px;
             border-top: none;
 
+            .fn__space {
+                width: 12px;
+            }
+
             .b3-button {
                 &--cancel {
                     @include button-action('normal');
@@ -1082,7 +1086,8 @@
 
 // [data-key="dialog-snippets"] {
 //     textarea {
-//         height: 120px;
+//         height: fit-content;
+//         max-height: 8em;
 //     }
 // }
 

@@ -38,7 +38,7 @@
             --b3-theme-background: var(--asri-composite-background, var(--asri-fallback-background));
             --b3-theme-surface: var(--asri-composite-surface, var(--asri-fallback-surface));
             --b3-theme-on-background: var(--asri-composite-on-background, var(--asri-fallback-on-background));
-            --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .6);
+            --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
 
             --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / .1);
             --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / .5);

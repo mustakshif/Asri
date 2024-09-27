@@ -58,8 +58,46 @@ export async function addAfwdMenuItems(e: Event) {
         ? targetLabel.parentElement!.dataset['nodeId'] ?? (targetLabel.closest('.protyle')?.querySelector('.protyle-title') as HTMLElement)?.dataset['nodeId']
         : targetLabel.dataset['nodeId'];
     // console.log(blockId, type);
-    commonMenuEl = await querySelectorAsync('#commonMenu[data-name="titleMenu"], #commonMenu[data-name="gutter"]');
+    commonMenuEl = await querySelectorAsync('#commonMenu:not(.fn__none)');
     initializeCurBlocksAttrs(type, blockId as string);
+}
+
+async function initializeCurBlocksAttrs(curBlockType: string, curBlockId: string) {
+    const isDoc = curBlockType === 'doc';
+
+    makeItems(curBlockType);
+
+    let attrs = await getBlockAttrs(curBlockId).then(res => res['custom-afwd']);
+    if (!attrs) attrs = '';
+    attrs = attrs.split(' ');
+
+    // read & set initial states
+    // for doc blocks
+    if (attrs.length > 0 && isDoc) {
+        attrs.forEach((attr: string) => {
+            const menuItemEl = document.getElementById(`afwdMenuItem-${attr}`);
+            if (menuItemEl) {
+                menuItemEl.querySelector('input')!.checked = true;
+            }
+        })
+
+        if (attrs.includes('all')) {
+            const menuItemEls = commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-all, #afwdMenuItem-clear)');
+            menuItemEls?.forEach(el => {
+                el.classList.add('b3-menu__item--disabled');
+                el.querySelector('input')!.disabled = true;
+            });
+        }
+    }
+    // for indoc content blocks
+    else if (attrs.length > 0) {
+        const menuItemEl = document.getElementById(`afwdMenuItem-${attrs[0]}`);
+        if (menuItemEl) {
+            menuItemEl.classList.add('b3-menu__item--selected');
+        }
+    }
+
+    menuItemsFunctionalities(isDoc, curBlockId, attrs);
 }
 
 async function makeItems(blockType: string) {
@@ -173,44 +211,6 @@ async function makeItems(blockType: string) {
     mainBtn.innerHTML = menuBtnHtml;
     commonMenuBtnList.insertBefore(mainBtn, commonMenuBtnList.lastChild?.previousSibling!);
     commonMenuBtnList.insertBefore(separator, mainBtn);
-}
-
-async function initializeCurBlocksAttrs(curBlockType: string, curBlockId: string) {
-    const isDoc = curBlockType === 'doc';
-
-    makeItems(curBlockType);
-
-    let attrs = await getBlockAttrs(curBlockId).then(res => res['custom-afwd']);
-    if (!attrs) attrs = '';
-    attrs = attrs.split(' ');
-
-    // read & set initial states
-    // for doc blocks
-    if (attrs.length > 0 && isDoc) {
-        attrs.forEach((attr: string) => {
-            const menuItemEl = document.getElementById(`afwdMenuItem-${attr}`);
-            if (menuItemEl) {
-                menuItemEl.querySelector('input')!.checked = true;
-            }
-        })
-
-        if (attrs.includes('all')) {
-            const menuItemEls = commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-all, #afwdMenuItem-clear)');
-            menuItemEls?.forEach(el => {
-                el.classList.add('b3-menu__item--disabled');
-                el.querySelector('input')!.disabled = true;
-            });
-        }
-    }
-    // for indoc content blocks
-    else if (attrs.length > 0) {
-        const menuItemEl = document.getElementById(`afwdMenuItem-${attrs[0]}`);
-        if (menuItemEl) {
-            menuItemEl.classList.add('b3-menu__item--selected');
-        }
-    }
-
-    menuItemsFunctionalities(isDoc, curBlockId, attrs);
 }
 
 function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, attrs: string[]) {
