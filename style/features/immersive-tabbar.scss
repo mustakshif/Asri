@@ -246,6 +246,7 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
                     // background-color: transparent;
                     backdrop-filter: blur(16px);
                     mask-image: linear-gradient(to bottom, #000, #0000);
+                    pointer-events: none;
                 }
 
                 .protyle-breadcrumb__item {
