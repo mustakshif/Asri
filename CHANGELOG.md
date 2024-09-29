@@ -1,3 +1,21 @@
+### v3.1.7
+
+* [删除线文本调整降低透明度](https://github.com/mustakshif/Asri/issues/94)
+* 调整对话框样式
+* 调整全局按钮样式
+* 调整数据历史条目变动类型标识配色
+* 修复内容块菜单不显示全宽显示选项的问题
+
+<br />
+
+* [Adjusted the transparency of strikethrough text.](https://github.com/mustakshif/Asri/issues/94)
+* Modified the dialog box style.
+* Altered the global button style.
+* Changed the color scheme for data history entry change type indicators.
+* Fixed the issue where the content block menu did not display the full-width display option.
+
+---
+
 ### v3.1.6
 
 * 调整代码块背景色

@@ -13,6 +13,14 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.7
+
+* [Adjusted the transparency of strikethrough text.](https://github.com/mustakshif/Asri/issues/94)
+* Modified the dialog box style.
+* Altered the global button style.
+* Changed the color scheme for data history entry change type indicators.
+* Fixed the issue where the content block menu did not display the full-width display option.
+
 ### v3.1.6
 
 * Adjusted the background color of code blocks.
@@ -24,13 +32,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Distinguished the styles of activated tabs in both active and inactive states of the editor.
 * Fixed the misalignment issue of text boxes in the "Save Query Conditions" dialog.
 * Resolved the issue where the hue slider tooltip and full-width display menu entries displayed as "undefined" in certain cases.
-
-### v3.1.5
-
-* Fixed the issue of the full-width display menu showing abnormally on mobile devices.
-* Resolved the display anomaly caused by the stacking layout changes in the side docks.
-* Corrected the problem of the separator lines appearing reddish when the theme color was set to grayscale.
-* Attempted to fix the issue of the full-width display menu entry not showing on iOS.
 
 ### ...
 
