@@ -186,6 +186,10 @@
             line-height: 1.6;
             padding: 12px 18px;
         }
+
+        &__header.fn__none ~ .b3-dialog__body .b3-dialog__content {
+            padding-top: 18px;
+        }
     }
 
     // 搜索 ————————————————————————————————————
