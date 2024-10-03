@@ -23,7 +23,7 @@
             --asri-fallback-surface: #f0f0f0;
             --asri-fallback-on-background: #454545;
             --asri-composite-background: oklch(from var(--asri-base-color) calc(1 - var(--asri-c-0, .015)) calc(.005 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-            --asri-composite-surface: oklch(from var(--asri-base-color) calc(.96 - var(--asri-c-0, .02)) calc(.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+            --asri-composite-surface: oklch(from var(--asri-base-color) calc(.96 - var(--asri-c-0, .02)) calc(.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
             --asri-composite-on-background: oklch(from var(--asri-base-color) .35 clamp(0, .03 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .06) h);
 
             // UI colors
@@ -81,7 +81,7 @@
             --asri-fallback-surface: #383838;
             --asri-fallback-on-background: #dcdcdc;
             --asri-composite-background: oklch(from var(--asri-base-color) .2 calc(.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-            --asri-composite-surface: oklch(from var(--asri-base-color) .29 calc(.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+            --asri-composite-surface: oklch(from var(--asri-base-color) .29 calc(.015 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
             --asri-composite-on-background: oklch(from var(--asri-base-color) .89 clamp(0, .01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) h);
 
             --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .65 c h);
