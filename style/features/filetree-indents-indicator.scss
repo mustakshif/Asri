@@ -4,7 +4,7 @@
 .file-tree>.fn__flex-1 {
     $uls: '>ul';
     $indent: 18px;
-    $indent-start: 22px;
+    // $indent-start: 22px;
 
     @for $i from 1 through 7 {
         $uls: str-insert($string: $uls, $insert: '>ul', $index: 100);
@@ -45,8 +45,6 @@
         }
     }
 
-    // -> js
-
     &:hover li.b3-list-item--focus+ul,
     &:hover ul.has-focus {
         box-shadow: 1px 0 oklch(from var(--b3-theme-on-background) l c h / .3) inset;
@@ -64,8 +62,6 @@
             }
         }
     }
-
-    // -> js
 
     &>ul {
         box-shadow: none !important;
