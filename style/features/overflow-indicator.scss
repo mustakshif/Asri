@@ -99,6 +99,7 @@ $fadeout-size-xxl: 50px;
 
 .b3-dialog .emojis__panel {
     @include overflow-indicator-line;
+    // @include overflow-indicator-fadein-mask($fadeout-size-xl, $range: 'top bottom');
 
     &::before {
         width: calc(100% + 16px);
