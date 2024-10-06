@@ -3,23 +3,27 @@
 .pdf__outer#outerContainer {
     &:not(.pdf__outer--dark) {
         @for $i from 1 through 7 {
-            $pdf-background: map-get($theme-light, pdf-background#{$i});
-            --b3-pdf-background#{$i}: #{$pdf-background};
+            $pdf-highlight-background: map-get($theme-light, pdf-background#{$i});
+            --b3-pdf-background#{$i}: #{$pdf-highlight-background};
         }
     }
 
     &.pdf__outer--dark {
         @for $i from 1 through 7 {
-            $pdf-background: map-get($theme-dark, pdf-background#{$i});
-            --b3-pdf-background#{$i}: #{$pdf-background};
+            $pdf-hightlight-background: map-get($theme-dark, pdf-background#{$i});
+            --b3-pdf-background#{$i}: #{$pdf-hightlight-background};
         }
     }
 
-    .pdfViewer .page .textLayer {
+    :root[data-theme-mode="light"] &:not(.pdf__outer--dark) .pdfViewer .textLayer {
         background-color: var(--b3-theme-background);
     }
 
-    
+
+    :root[data-theme-mode="dark"] &.pdf__outer--dark .pdfViewer .textLayer {
+        background-color: var(--b3-theme-background);
+    }
+
 
     #sidebarContainer {
         top: 42px;
