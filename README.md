@@ -13,6 +13,13 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.8
+
+* Adjusted the saturation of the panel colors.
+* Modified the saturation of the dialog background mask filter in dark mode.
+* Fixed the issue where images displayed abnormally after manually adjusting the height in full-width view.
+* Resolved the background color issue in the PDF reader when using a dark background in light mode or vice versa.
+
 ### v3.1.7
 
 * [Adjusted the transparency of strikethrough text.](https://github.com/mustakshif/Asri/issues/94)
@@ -20,18 +27,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Altered the global button style.
 * Changed the color scheme for data history entry change type indicators.
 * Fixed the issue where the content block menu did not display the full-width display option.
-
-### v3.1.6
-
-* Adjusted the background color of code blocks.
-* Modified the text color in light mode.
-* Changed the theme background color in dark mode.
-* Altered the color of large buttons in the settings panel.
-* Updated the activated tab background color to follow hue adjustments.
-* Adjusted the color and border style of labels for single and multi-select columns in the database.
-* Distinguished the styles of activated tabs in both active and inactive states of the editor.
-* Fixed the misalignment issue of text boxes in the "Save Query Conditions" dialog.
-* Resolved the issue where the hue slider tooltip and full-width display menu entries displayed as "undefined" in certain cases.
 
 ### ...
 

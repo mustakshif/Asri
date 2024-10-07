@@ -1,3 +1,19 @@
+### v3.1.8
+
+* 微调面板色饱和度
+* 调整暗色模式下对话框背景遮罩滤镜饱和度
+* 修复全宽显示的图片手动调整高度后显示异常的问题
+* 修复 PDF 阅读器在亮色模式下使用暗色背景或相反时的背景色问题
+
+<br />
+
+* Adjusted the saturation of the panel colors.
+* Modified the saturation of the dialog background mask filter in dark mode.
+* Fixed the issue where images displayed abnormally after manually adjusting the height in full-width view.
+* Resolved the background color issue in the PDF reader when using a dark background in light mode or vice versa.
+
+---
+
 ### v3.1.7
 
 * [删除线文本调整降低透明度](https://github.com/mustakshif/Asri/issues/94)
