@@ -139,6 +139,11 @@ body:not(.asri-disable-backdrop-blur) {
         @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
             @include theme-variant-color(background-color, surface, $thin-transparency);
         }
+
+        :root[style*="--asri-c-0"] & {
+            mix-blend-mode: luminosity;
+            @include bg-blur($saturate-value: 1.3)
+        }
     }
 
     .layout__dockl,
