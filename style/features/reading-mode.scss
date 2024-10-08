@@ -1,0 +1,17 @@
+.protyle-wysiwyg[custom-rdmd="s"] {
+    font-family: 'Palatino', 'Geeza Pro', 'Songti SC','Times New Roman', Times, serif;
+
+    >div:not(.h1, .h2, .h3, .h4, .h5, .h6),
+    >:where(.h1, .h2, .h3, .h4, .h5, .h6) > div {
+        font-size: 105%;
+    }
+}
+
+.protyle-wysiwyg[custom-rdmd="k"] {
+    font-family: 'EB Garamond', 'Muna', 'Damascus', 'Sakkal Majalla', 'Kaiti SC','Times New Roman', Times, serif;
+    
+    >div:not(.h1, .h2, .h3, .h4, .h5, .h6),
+    >:where(.h1, .h2, .h3, .h4, .h5, .h6) > div {
+        font-size: 110%;
+    }
+}
