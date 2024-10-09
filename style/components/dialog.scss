@@ -896,7 +896,7 @@
             border: none;
             box-shadow: 0 0 0 1.5px inset var(--b3-border-color-trans);
             margin: 0;
-            transition-property: outline, transform;
+            transition-property: outline, transform, box-shadow;
             transition-duration: .2s;
             overflow: visible;
 
@@ -931,6 +931,7 @@
                 transform: scale(1.01);
                 // outline: 2px solid var(--b3-theme-primary-light);
                 z-index: 1;
+                box-shadow: none;
 
                 // @include darkmode-counterpart {
                 //     outline: 2px solid var(--b3-theme-primary);

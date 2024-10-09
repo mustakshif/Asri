@@ -62,7 +62,7 @@ Check all updates [here](./CHANGELOG.md).
 
 * 🗂️ Indent guides for file tree and outline
 * 🔍 Clear presentation of search results and backlinks lists
-* ↕️ Enabled native scrollbar, which can auto-hide to minimize visual clutter `#macOS`
+* ↕️ Enabled native scrollbar, which can auto-hide to minimize visual clutter[^4] `#macOS`
 
 ### 👆 Nimble and Smooth Interaction
 
@@ -78,6 +78,7 @@ Check all updates [here](./CHANGELOG.md).
         font-feature-settings: normal !important;
     }
     ```
+[^4]: To automatically hide the scrollbars, go to "System Settings - Appearance" and set "Show scroll bars" to "When scrolling".
 
 ## Getting Started
 

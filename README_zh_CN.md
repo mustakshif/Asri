@@ -62,7 +62,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 * 🗂️ 添加文档树、大纲缩进参考线
 * 🔍 清晰的搜索列表、反链列表展示
-* ↕️ 采用系统原生滚动条，可自动隐藏，减少视觉干扰 `#macOS`
+* ↕️ 采用系统原生滚动条，可自动隐藏，减少视觉干扰[^4] `#macOS`
 
 ### 👆 灵动流畅的交互
 
@@ -78,6 +78,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
         font-feature-settings: normal !important;
     }
     ```
+[^4]: 自动隐藏滚动条需要在“系统设置-外观”中，将“显示滚动条”设置为“滚动时”。
 
 ## 开始使用
 
