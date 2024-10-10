@@ -410,6 +410,7 @@ textarea {
             transition: transform 0.2s;
             transform: translateY(-42px);
             height: 28px;
+            border-radius: 99px;
 
             &:hover {
                 color: var(--b3-theme-on-background);
