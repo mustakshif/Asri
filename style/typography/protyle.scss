@@ -130,7 +130,7 @@
 
         &[data-subtype=d] {
             text-decoration-style: dotted;
-            text-decoration-thickness: calc($text-underline-thickness * 1.25);
+            text-decoration-thickness: calc($text-underline-thickness * 1.8);
 
             &:hover {
                 text-decoration-thickness: $text-underline-thickness;

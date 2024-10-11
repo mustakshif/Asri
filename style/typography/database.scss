@@ -219,14 +219,18 @@
                 .av__celltext--url,
                 .av__celltext--ref {
                     border-bottom: none;
-                    text-decoration: underline var(--b3-border-color-trans);
-                    text-decoration-thickness: 0.1em;
+                    text-decoration: underline var(--b3-theme-primary-light);
+                    text-decoration-thickness: $text-underline-thickness;
 
                     transition-property: color, text-decoration-color;
                     transition-duration: .2s;
 
+                    @include darkmode-counterpart {
+                        text-decoration-color: var(--b3-theme-primary);
+                    }
+
                     &:hover {
-                        text-decoration-color: var(--b3-theme-primary-lighter);
+                        // text-decoration-color: var(--b3-theme-primary-lighter);
                         color: var(--b3-theme-primary);
 
                         .ft__on-surface {
@@ -546,7 +550,7 @@ img.av__cellassetimg {
         .b3-menu__label.popover__block {
             color: var(--b3-theme-primary) !important;
             text-decoration: underline transparent;
-            text-decoration-thickness: .1em;
+            text-decoration-thickness: $text-underline-thickness;
         }
 
         &.b3-menu__item--current,
@@ -640,7 +644,7 @@ img.av__cellassetimg {
         .av__celltext--ref {
             border-bottom: none;
             text-decoration: underline var(--b3-border-color-trans);
-            text-decoration-thickness: 0.1em;
+            text-decoration-thickness: $text-underline-thickness;
         }
     }
 }
