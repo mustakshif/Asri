@@ -1,8 +1,8 @@
-.protyle-wysiwyg[custom-rdmd="s"] {
-    font-family: 'Palatino', 'Geeza Pro', 'Songti SC','Times New Roman', Times, serif;
+.protyle-wysiwyg:where([custom-rdmd="s"]) {
+    font-family: 'Cardo', 'Charter', 'Palatino', 'Geeza Pro', 'Songti SC','Times New Roman', Times, serif;
 
     >div:not(.h1, .h2, .h3, .h4, .h5, .h6),
-    >:where(.h1, .h2, .h3, .h4, .h5, .h6) > div {
+    >:where(.h1, .h2, .h3, .h4, .h5, .h6) > div:not(.protyle-attr) {
         font-size: 105%;
     }
 }
@@ -11,7 +11,7 @@
     font-family: 'EB Garamond', 'Muna', 'Damascus', 'Sakkal Majalla', 'Kaiti SC','Times New Roman', Times, serif;
     
     >div:not(.h1, .h2, .h3, .h4, .h5, .h6),
-    >:where(.h1, .h2, .h3, .h4, .h5, .h6) > div {
+    >:where(.h1, .h2, .h3, .h4, .h5, .h6) > div:not(.protyle-attr) {
         font-size: 110%;
     }
 }
