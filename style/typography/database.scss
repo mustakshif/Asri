@@ -226,7 +226,7 @@
                     transition-duration: .2s;
 
                     @include darkmode-counterpart {
-                        text-decoration-color: var(--b3-theme-primary);
+                        text-decoration-color: rgb(from var(--b3-theme-primary) r g b / .8);
                     }
 
                     &:hover {

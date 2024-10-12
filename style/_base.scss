@@ -820,6 +820,18 @@ animation-direction: #{$anim-dir};
 }
 }
 
+@property --mask-stop-start {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 0px;
+}
+
+@property --mask-stop-end {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 0px;
+}
+
 @mixin line-clamp($line-clamp: 1, $orientation: vertical) {
     @supports (-webkit-line-clamp: 1) {
         display: -webkit-box;

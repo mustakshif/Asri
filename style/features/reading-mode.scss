@@ -1,5 +1,5 @@
 .protyle-wysiwyg:where([custom-rdmd="s"]) {
-    font-family: 'Cardo', 'Charter', 'Palatino', 'Geeza Pro', 'Songti SC','Times New Roman', Times, serif;
+    font-family: 'Cardo', 'Charter', 'Palatino', 'Geeza Pro', 'Songti', 'Times New Roman', Times, serif;
 
     >div:not(.h1, .h2, .h3, .h4, .h5, .h6),
     >:where(.h1, .h2, .h3, .h4, .h5, .h6) > div:not(.protyle-attr) {
@@ -8,7 +8,7 @@
 }
 
 .protyle-wysiwyg[custom-rdmd="k"] {
-    font-family: 'EB Garamond', 'Muna', 'Damascus', 'Sakkal Majalla', 'Kaiti SC','Times New Roman', Times, serif;
+    font-family: 'EB Garamond', 'Muna', 'Damascus', 'Sakkal Majalla', 'Kaiti','STKaiti','Times New Roman', Times, serif;
     
     >div:not(.h1, .h2, .h3, .h4, .h5, .h6),
     >:where(.h1, .h2, .h3, .h4, .h5, .h6) > div:not(.protyle-attr) {

@@ -132,13 +132,14 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 鸣谢
 
-主题制作过程中参考借鉴了以下主题的思路，在此对各位主题开发者表示感谢：
+主题制作过程中参考借鉴了以下来源，在此对各位作者表示感谢：
 
-| 借鉴内容 | 来自主题 | 开发者 |
+| 借鉴内容 | 来源 | 作者 |
 |--- | --- | --- |
-| - 菜单背景模糊 | [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark) | [Crowds21](https://github.com/chenshinshi) |
-| - 侧栏面板列表项前圆点<br />- 大纲列表标题图标<br />- 状态栏<br />- 搜索列表<br />- 表格列宽<br />- `/` 菜单多栏布局<br />- 底栏和状态栏合并<br />- 多级列表序号 | [Savor](https://github.com/royc01/notion-theme) | [Roy](https://github.com/royc01) |
-| - 顶栏页签栏合并<br />- 文档树缩进线<br />- DOM 变动观察相关函数 | [Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
+| - 菜单背景模糊 | 主题：[Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark) | [Crowds21](https://github.com/chenshinshi) |
+| - 侧栏面板列表项前圆点<br />- 大纲列表标题图标<br />- 状态栏<br />- 搜索列表<br />- 表格列宽<br />- `/` 菜单多栏布局<br />- 底栏和状态栏合并<br />- 多级列表序号 | 主题：[Savor](https://github.com/royc01/notion-theme) | [Roy](https://github.com/royc01) |
+| - 顶栏页签栏合并<br />- 文档树缩进线<br />- DOM 变动观察相关函数 | 主题：[Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
+| - 文档树缩进线 | [链滴帖子](https://ld246.com/article/1724305128590#comments) | [wilsons](https://ld246.com/member/wilsons) |
 
 (以上排名不分先后)
 

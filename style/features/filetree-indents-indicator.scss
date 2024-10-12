@@ -1,69 +1,145 @@
 @use '../base'  as *;
 
-// 文档树缩进参考线 indent guides
+// 文档树缩进参考线 indent guides（方案一）
+// .file-tree>.fn__flex-1 {
+//     $uls: '>ul';
+//     $indent: 18px;
+//     // $indent-start: 22px;
+
+//     @for $i from 1 through 7 {
+//         $uls: str-insert($string: $uls, $insert: '>ul', $index: 100);
+
+//         &#{$uls} {
+//             span.b3-list-item__toggle {
+//                 padding-left: 4px !important;
+//             }
+
+//             // margin-left: $indent-start;
+//             margin-left: $indent;
+//             box-shadow: 1px 0 transparent inset;
+//         }
+
+//         // $indent-start: $indent;
+//     }
+
+//     &>ul ul {
+//         transition: 0.2s;
+//     }
+
+//     &:hover>ul ul,
+//     li.b3-list-item--focus+ul,
+//     ul.has-focus {
+//         box-shadow: 1px 0 oklch(from var(--b3-theme-on-background) l c h / .15) inset;
+
+//         @include darkmode-counterpart {
+//             box-shadow: 1px 0 oklch(from var(--b3-theme-on-background) l c h / .15) inset;
+//         }
+
+//         @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+//             box-shadow: 1px 0 pickThemeColor($theme-light, on-background, 0.15) inset;
+
+
+//             @include darkmode-counterpart {
+//                 box-shadow: 1px 0 pickThemeColor($theme-dark, on-background, 0.15) inset;
+//             }
+//         }
+//     }
+
+//     &:hover li.b3-list-item--focus+ul,
+//     &:hover ul.has-focus {
+//         box-shadow: 1px 0 oklch(from var(--b3-theme-on-background) l c h / .3) inset;
+
+//         @include darkmode-counterpart {
+//             box-shadow: 1px 0 oklch(from var(--b3-theme-on-background) l c h / .3) inset;
+//         }
+
+//         @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+//             box-shadow: 1px 0 pickThemeColor($theme-light, on-background, 0.3) inset;
+
+
+//             @include darkmode-counterpart {
+//                 box-shadow: 1px 0 pickThemeColor($theme-dark, on-background, 0.3) inset;
+//             }
+//         }
+//     }
+
+//     &>ul {
+//         box-shadow: none !important;
+//     }
+// }
+
+// ————————————————————————————————————————————————————————
+// 文档树缩进参考线 indent guides（方案二）
 .file-tree>.fn__flex-1 {
     $uls: '>ul';
     $indent: 18px;
-    // $indent-start: 22px;
+
+    --indent-color-inactive: rgb(from var(--b3-theme-on-background) r g b / .15);
+    --indent-color-active: rgb(from var(--b3-theme-on-background) r g b / .3);
+    
+    --indent-color: #0000;
 
     @for $i from 1 through 7 {
         $uls: str-insert($string: $uls, $insert: '>ul', $index: 100);
 
         &#{$uls} {
-            span.b3-list-item__toggle {
-                padding-left: 4px !important;
-            }
-
-            // margin-left: $indent-start;
-            margin-left: $indent;
-            box-shadow: 1px 0 transparent inset;
+            background-image: linear-gradient(
+                90deg,
+                #0000 0 $indent,
+                var(--indent-color) $indent calc($indent + 1px),
+                #0000 calc($indent + 1px) 100%
+            );
+            
+            $indent: $indent + 18px;
         }
-
-        // $indent-start: $indent;
     }
 
     &>ul ul {
-        transition: 0.2s;
+        transition-duration: 0.2s;
+        transition-property: --indent-color;
     }
-
+    
     &:hover>ul ul,
     li.b3-list-item--focus+ul,
     ul.has-focus {
-        box-shadow: 1px 0 oklch(from var(--b3-theme-on-background) l c h / .15) inset;
+        --indent-color: var(--indent-color-inactive);
+        // box-shadow: 1px 0 oklch(from var(--b3-theme-on-background) l c h / .15) inset;
 
-        @include darkmode-counterpart {
-            box-shadow: 1px 0 oklch(from var(--b3-theme-on-background) l c h / .15) inset;
-        }
-
-        @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-            box-shadow: 1px 0 pickThemeColor($theme-light, on-background, 0.15) inset;
-
-
-            @include darkmode-counterpart {
-                box-shadow: 1px 0 pickThemeColor($theme-dark, on-background, 0.15) inset;
-            }
-        }
+        // @include darkmode-counterpart {
+        //     box-shadow: 1px 0 oklch(from var(--b3-theme-on-background) l c h / .15) inset;
+        // }
     }
 
     &:hover li.b3-list-item--focus+ul,
     &:hover ul.has-focus {
-        box-shadow: 1px 0 oklch(from var(--b3-theme-on-background) l c h / .3) inset;
+        --indent-color: var(--indent-color-active);
+        // box-shadow: 1px 0 oklch(from var(--b3-theme-on-background) l c h / .3) inset;
 
-        @include darkmode-counterpart {
-            box-shadow: 1px 0 oklch(from var(--b3-theme-on-background) l c h / .3) inset;
-        }
-
-        @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-            box-shadow: 1px 0 pickThemeColor($theme-light, on-background, 0.3) inset;
-
-
-            @include darkmode-counterpart {
-                box-shadow: 1px 0 pickThemeColor($theme-dark, on-background, 0.3) inset;
-            }
-        }
+        // @include darkmode-counterpart {
+        //     box-shadow: 1px 0 oklch(from var(--b3-theme-on-background) l c h / .3) inset;
+        // }
     }
 
-    &>ul {
-        box-shadow: none !important;
+}
+
+// 文档树项目小圆点位置
+.layout-tab-container .b3-list-item .b3-list-item__toggle.fn__hidden{
+    position: relative;
+
+    &::before {
+        left: auto !important;
+        right: 7px;
     }
+}
+
+// 大纲数字层级标识
+.sy__outline .b3-list-item[data-type=NodeHeading] .b3-list-item__text::before {
+    transform: translateX(-18px);
+    left: auto;
+}
+
+@property --indent-color {
+    syntax: '<color>';
+    initial-value: #0000;
+    inherits: false;
 }

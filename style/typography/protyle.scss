@@ -130,6 +130,7 @@
 
         &[data-subtype=d] {
             text-decoration-style: dotted;
+            text-underline-offset: -.02em;
             text-decoration-thickness: calc($text-underline-thickness * 1.8);
 
             &:hover {
@@ -305,6 +306,14 @@
         -webkit-box-decoration-break: clone;
         border-radius: 0.4em;
         color: inherit;
+    }
+
+    span[data-type~=code] {
+        &[data-type~=u],
+        &[data-type~=a] {
+            text-decoration-thickness: calc($text-underline-thickness * 1.2);
+            text-underline-offset: .1em;
+        }
     }
 }
 

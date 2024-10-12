@@ -1633,6 +1633,10 @@ body[style*="-webkit-print-color-adjust"] {
         .b3-button--text {
             @include button-action('primary')
         }
+
+        > div:last-child {
+            padding: 8px 16px !important;
+        }
     }
 }
 
