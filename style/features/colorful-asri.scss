@@ -229,7 +229,7 @@
         }
     }
 
-    .body-asri--iosApp #pickColor {
+    body:where(.body-asri--iosApp) #pickColor {
         svg {
             display: none;
         }
