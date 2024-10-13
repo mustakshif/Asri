@@ -115,9 +115,9 @@ function createMenuItems() {
     const asriConfigMenuHTML = `
         <button class="b3-menu__separator asri-config"></button>
         <button class="b3-menu__item asri-config" id="pickColor">
-            <svg class="b3-menu__icon"></svg>
-            <label for="asriColorPicker" class="be-menu__label">${i18n['pickColor']}</label>
             <input id="asriColorPicker" type="color" value="${asriConfigs.userCustomColor}">
+            <svg class="b3-menu__icon"></svg>
+            <label for="asriColorPicker" class="be-menu__label">${i18n['pickColor']}</label>            
         </button>
         <button class="b3-menu__item asri-config" id="followSysAccent">
             <svg class="b3-menu__icon"></svg>

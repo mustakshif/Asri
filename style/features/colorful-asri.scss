@@ -193,87 +193,78 @@
         .b3-menu__separator {
             cursor: default;
         }
+    }
 
-        #useSeparateScheme {
-
-            &.b3-menu__item--selected-alt {
-
-                // 色彩模式分开设置时不填充图形
-                svg path {
-                    fill: none;
-                    stroke-width: 0;
-                }
-            }
-
+    #followSysAccent {
+        &.b3-menu__item--selected {
             svg {
-                margin-right: 8px;
-                transform: scale(1.1);
+                background-color: var(--asri-sys-accent);
+                border-radius: 15px;
+            }
+
+            &.b3-menu__item--current svg {
+                outline: 1px solid oklch(from var(--b3-theme-on-primary) l c h / .5);
+            }
+        }
+    }
+
+    #pickColor {
+        &.b3-menu__item--selected {
+            svg {
+                background-color: var(--asri-user-custom-accent, var(--b3-theme-primary));
+                border-radius: 15px;
+            }
+
+            &.b3-menu__item--current svg {
+                outline: 1px solid oklch(from var(--b3-theme-on-primary) l c h / .5);
             }
         }
 
-        #asriPresetPalettes {
-            >svg:first-child {
-                transform: scale(1.1);
-            }
+        input {
+            visibility: hidden;
+            width: 0;
+            height: 0;
+            padding: 0;
+            margin-left: -2px;
         }
+    }
 
-        #followSysAccent {
-            &.b3-menu__item--selected {
-                svg {
-                    background-color: var(--asri-sys-accent);
-                    border-radius: 15px;
-                }
-
-                &.b3-menu__item--current svg {
-                    outline: 1px solid oklch(from var(--b3-theme-on-primary) l c h / .5);
-                }
-            }
+    .body-asri--iosApp #pickColor {
+        svg {
+            display: none;
         }
-
-        #pickColor {
-            &.b3-menu__item--selected {
-                svg {
-                    background-color: var(--asri-user-custom-accent, var(--b3-theme-primary));
-                    border-radius: 15px;
-                }
-
-                &.b3-menu__item--current svg {
-                    outline: 1px solid oklch(from var(--b3-theme-on-primary) l c h / .5);
-                }
-            }
-
-            input {
-                visibility: hidden;
-                width: 0;
-                height: 0;
-                padding: 0;
-            }
+        
+        input {
+            visibility: visible;
+            width:  20px;
+            height: 20px;
+            margin-right: 2px;
         }
+    }
 
-        #followSysAccent,
-        #pickColor,
-        #useSeparateScheme {
-            label {
-                cursor: pointer;
-            }
-        }
-
-        #asriChroma {
-            cursor: default;
-
-            .b3-tooltips {
-                flex-grow: 1;
-            }
-
-            svg:first-child {
-                margin-right: 4px;
-                transform: scale(1.1);
-            }
-        }
-
-        #asriChromaSlider {
+    #followSysAccent,
+    #pickColor,
+    #useSeparateScheme {
+        label {
             cursor: pointer;
         }
+    }
+
+    #asriChroma {
+        cursor: default;
+
+        .b3-tooltips {
+            flex-grow: 1;
+        }
+
+        svg:first-child {
+            margin-right: 4px;
+            transform: scale(1.1);
+        }
+    }
+
+    #asriChromaSlider {
+        cursor: pointer;
     }
 
     /* 
@@ -363,7 +354,7 @@
     }
 
     [data-type="wnd"]:not(.layout__wnd--active) .item--focus {
-        background-color: oklch(from var(--b3-theme-primary) .5 clamp(0, calc(.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * .5) , .35) h / .2);
+        background-color: oklch(from var(--b3-theme-primary) .5 clamp(0, calc(.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * .5), .35) h / .2);
 
         @include darkmode-counterpart {
             background-color: oklch(from var(--b3-theme-primary) .99 clamp(0, calc(.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * .5), .2) h / .2);
