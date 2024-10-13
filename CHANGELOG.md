@@ -1,3 +1,29 @@
+### v3.1.9
+
+* iOS 端支持自定义主题色功能
+* [优化文档树、大纲缩进样式，扩大可点击区域](https://github.com/mustakshif/Asri/issues/92)
+* [优化数据库主键有引用时的下划线样式](https://github.com/mustakshif/Asri/issues/96)
+* 优化「导出 PDF」窗口按钮边距
+* 优化行内代码下划线偏移
+* 优化删除按钮样式
+* 调整主题色度为 0 时状态栏的颜色混合模式
+* 微调已激活页签的背景色
+* 微调全局下划线粗细
+
+<br />
+
+* Added support for custom theme colors on iOS
+* [Optimized the indentation style of the document tree and outline, expanding the clickable area](https://github.com/mustakshif/Asri/issues/92)
+* [Improved the underline style for database primary keys with references](https://github.com/mustakshif/Asri/issues/96)
+* Adjusted the button margins in the "Export PDF" window
+* Refined the offset of underlines of inline code
+* Enhanced the delete button style
+* Modified the color blending mode for the status bar when the theme color chroma is 0
+* Fine-tuned the background color of active tabs
+* Slightly adjusted the thickness of global underlines
+
+---
+
 ### v3.1.8
 
 * 微调面板色饱和度

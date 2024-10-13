@@ -13,20 +13,24 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.9
+
+* Added support for custom theme colors on iOS
+* [Optimized the indentation style of the document tree and outline, expanding the clickable area](https://github.com/mustakshif/Asri/issues/92)
+* [Improved the underline style for database primary keys with references](https://github.com/mustakshif/Asri/issues/96)
+* Adjusted the button margins in the "Export PDF" window
+* Refined the offset of underlines of inline code
+* Enhanced the delete button style
+* Modified the color blending mode for the status bar when the theme color chroma is 0
+* Fine-tuned the background color of active tabs
+* Slightly adjusted the thickness of global underlines
+
 ### v3.1.8
 
 * Adjusted the saturation of the panel colors.
 * Modified the saturation of the dialog background mask filter in dark mode.
 * Fixed the issue where images displayed abnormally after manually adjusting the height in full-width view.
 * Resolved the background color issue in the PDF reader when using a dark background in light mode or vice versa.
-
-### v3.1.7
-
-* [Adjusted the transparency of strikethrough text.](https://github.com/mustakshif/Asri/issues/94)
-* Modified the dialog box style.
-* Altered the global button style.
-* Changed the color scheme for data history entry change type indicators.
-* Fixed the issue where the content block menu did not display the full-width display option.
 
 ### ...
 

@@ -191,8 +191,8 @@
 
     @else if $type =='danger' {
         color: var(--b3-theme-error);
-        font-weight: 600;
         background-color: transparent;
+        outline: 1px solid rgb(from var(--b3-theme-error) r g b / .2);
 
         &:hover {
             @include theme-variant-color(background-color, error, 0.08)
@@ -203,6 +203,7 @@
             background-color: var(--b3-theme-error);
             color: var(--b3-theme-on-error);
             transition: .1s;
+            outline: none;
         }
     }
 

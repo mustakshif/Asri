@@ -18,7 +18,7 @@ export let followSysAccentColor = true;
 
 
 export async function loadThemePalette() {
-    if (env.isIOSApp) return; // fix app crash
+    // if (env.isIOSApp) return; // fix app crash
     i18n = await loadI18n();
     getAsriConfigs().then(() => {
         if (env.supportOklch) {
