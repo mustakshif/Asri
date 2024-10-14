@@ -74,14 +74,17 @@ Check all updates [here](./CHANGELOG.md).
 * 💫 Appropriate and lively animations enrich the interactive experience
 * 🚀 A high level of smooth performance maintained
 
-[^1]: This new feature is only available on platforms that support `oklch()` and its relative color syntax. Some devices will still use color schemes in previous versions due to lower browser kernel versions. This feature is also disabled on `iOS` and `iPadOS` due to causing app crashes.
+[^1]: This new feature is only available on platforms that support `oklch()` and its relative color syntax. Some devices will still use color schemes in previous versions due to lower browser kernel versions.
+
 [^2]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
+
 [^3]: To disable this feature or address glyph errors when using custom fonts, you can use the following CSS code snippet to restore to standard glyphs:
     ```CSS
     .layout-tab-container, .protyle-content, .b3-typography {
         font-feature-settings: normal !important;
     }
     ```
+
 [^4]: To automatically hide the scrollbars, go to "System Settings - Appearance" and set "Show scroll bars" to "When scrolling".
 
 ## Getting Started

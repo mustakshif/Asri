@@ -12,7 +12,8 @@ const envClassifiers: EnvClassifier[] = [
   { condition: env.isInBrowser, className: 'body-asri--browser' },
   { condition: env.isAndroid, className: 'body-asri--android' },
   { condition: env.isIOSApp, className: 'body-asri--iosApp' },
-  { condition: env.isReadOnly, className: 'body-asri--readOnly' }
+  { condition: env.isReadOnly, className: 'body-asri--readOnly' },
+  { condition: env.isSafari, className: 'body-asri--safari' },
 ];
 
 export function addEnvClassNames() {

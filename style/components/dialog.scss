@@ -1042,13 +1042,14 @@
             }
 
             .bq {
-                border: none;
-                padding: 0;
-                background-color: transparent;
+                // border: none;
+                border-radius: 16px;
+                padding: 12px 20px;
+                color: rgb(from var(--b3-theme-on-background) r g b / .6);
+                background-color: #0000;
                 font-weight: 600;
                 margin: 0;
                 font-size: 120%;
-                opacity: 0.9;
             }
 
             &.item__readme {

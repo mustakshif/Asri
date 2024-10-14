@@ -1,0 +1,14 @@
+.plugin-database-properties-wrapper {
+    .b3-chip--middle {
+        &::before {
+            display: none;
+        }
+    }
+    
+    @for $i from 1 through 13 {
+        .b3-chip[style*="color: var(--b3-font-color#{$i})"] {
+            outline: .5px solid rgb(from var(--b3-font-color#{$i}) r g b / .3);
+            outline-offset: -.5px;
+        }
+    }
+}
