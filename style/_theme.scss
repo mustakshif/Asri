@@ -1,6 +1,8 @@
 @use './base' as *;
 
 :root {
+    --b3-border-radius-b: 16px; // 对话框圆角
+    
     @include font-family;
 
     &:lang(ja_JP) {

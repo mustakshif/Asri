@@ -5,16 +5,16 @@ import { debounce, hexToHSL, hexToOklchL } from '../../util/misc';
 import { asriDoms, environment as env } from '../../util/rsc';
 
 const asriConfigs = {
-    'followSysAccentColor': true,
+    'followSysAccentColor': false,
     'chroma': "1",
-    'userCustomColor': ""
+    'userCustomColor': "#3478f6"
 };
 
 export let i18n: any;
 let sysAccentColor: string;
 let isSysAccentGray = false, isUserAccentGray = false;
 let followSysAccentBtn: AsriDomsExtended, pickColorBtn: AsriDomsExtended, asriChromaSlider: HTMLInputElement | null, colorPicker: HTMLInputElement | null;
-export let followSysAccentColor = true;
+export let followSysAccentColor = false;
 
 
 export async function loadThemePalette() {

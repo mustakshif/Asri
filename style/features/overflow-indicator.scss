@@ -2,10 +2,9 @@
 @use "sass:string";
 
 $fadeout-size-s: 18px;
-$fadeout-size-m: 24px;
-$fadeout-size-l: 36px;
-$fadeout-size-xl: 40px;
-$fadeout-size-xxl: 50px;
+$fadeout-size-m: 32px;
+$fadeout-size-l: 40px;
+$fadeout-size-xl: 50px;
 
 .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1,
 .sy__file>.b3-list>.fn__flex-1 {
@@ -31,7 +30,7 @@ $fadeout-size-xxl: 50px;
 }
 
 [data-name="bazaar"] .config-bazaar__panel {
-    @include overflow-indicator-fadein-bgClr($fadeout-size-xl, $range: 'top');
+    @include overflow-indicator-fadein-bgClr($fadeout-size-l, $range: 'top');
 
     &::before {
         top: 44px;
@@ -65,7 +64,7 @@ $fadeout-size-xxl: 50px;
 
 .b3-dialog__header:not(.fn__none)+.b3-dialog__body .b3-dialog__content {
     @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top bottom');
-
+    
     &::before {
         top: -12px;
     }
@@ -88,7 +87,7 @@ $fadeout-size-xxl: 50px;
 }
 
 [data-key="dialog-backgroundrandom"] .b3-dialog__body>.b3-cards {
-    @include overflow-indicator-fadein-bgClr($fadeout-size-xxl, $range: 'top');
+    @include overflow-indicator-fadein-bgClr($fadeout-size-xl, $range: 'top');
 
     padding-top: 0;
 
