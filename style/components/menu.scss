@@ -118,6 +118,7 @@
 
 // '/'菜单
 .protyle-hint {
+    --b3-border-radius-b: 12px;
     @include menu-shadow;
     @include border-or-not($border: false);
     padding: 0;
@@ -255,6 +256,8 @@
 .b3-dialog--open {
 
     &[data-key="dialog-emojis"] {
+
+        --b3-border-radius-b: 14px; // 对话框圆角
 
         .b3-dialog__scrim {
             backdrop-filter: none;
