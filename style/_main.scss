@@ -10,20 +10,8 @@
 
 @use 'plugins';
 
-
-@keyframes click {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(0.95);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+.body-asri--linux {
+    @extend .body--win32;
 }
 
 // @keyframes scroll-fadein {
@@ -44,6 +32,4 @@
 //     initial-value: 0px;
 // }
 
-.body-asri--linux {
-    @extend .body--win32;
-}
+

@@ -112,7 +112,7 @@
     color: var(--b3-theme-primary);
     // color: var(--b3-theme-on-background);
     font-weight: 600;
-    transition: 0.1s all;
+    transition: .1s all;
     border: none;
     box-shadow: none;
     outline: 1px solid rgb(from var(--b3-theme-on-background) r g b / .2);
@@ -121,14 +121,14 @@
     &:hover {
         background-color: var(--b3-theme-primary);
         color: var(--b3-theme-on-primary);
-        transition: 0.1s all;
+        transition: .1s all;
         outline: none;
         // border-radius: 6px;
     }
 
     &:active {
-        transform: scale(0.95);
-        opacity: 0.8;
+        transform: scale(.95);
+        opacity: .8;
         transition: .1s;
     }
 
@@ -146,7 +146,7 @@
 
     &:active {
         transform: scale(0.95);
-        opacity: 0.8;
+        opacity: .8;
         box-shadow: none;
         transition: .1s;
     }
