@@ -5,7 +5,7 @@ English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main
 
 <br/>
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v20.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v20.png)
 
 # Asri, theme for SiYuan
 
@@ -36,7 +36,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ### v3.0.0
 
-![custom theme color preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/assets/theme-config_en_US.gif)
+![custom theme color preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/theme-config_en_US.gif)
 
 🎨 Refactored theme colors using a perceptual lightness-based color system, added supports for seamless adjustment of global color tones which can also follow system accent color (`#Windows` `#macOS`), providing a fully personalized note-taking experience. (Check *Theme Configurations* below for configuration options information)
 
@@ -95,7 +95,7 @@ Check all updates [here](./CHANGELOG.md).
 ## Theme Configurations
 
 ### 🌈 Customizing Theme Colors
-![asri config menu](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/asri-config-menu_en_US_v2.png)
+![asri config menu](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/asri-config-menu_en_US_v2.png)
 
 Click on the `Appearance Mode` icon in the top right corner to open the Asri theme configuration menu and customize the theme colors:
 
@@ -107,7 +107,7 @@ Click on the `Appearance Mode` icon in the top right corner to open the Asri the
 
 #### 1. `afwd`: Asri full-width display
 
-![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v7.gif)
+![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/custom-attributes-preview_v7.gif)
 
 This attribute allows blocks to be displayed in full page width, which can be used to emphasize specific content or beautify the layout. The full-width display style applies to images, databases, iframes, tables and horizontal-layout superblocks.
 

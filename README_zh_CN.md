@@ -5,7 +5,7 @@
 
 <br />
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/banner_v20.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v20.png)
 
 # Asri, theme for SiYuan
 
@@ -36,7 +36,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### v3.0.0
 
-![custom theme color preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/assets/theme-config_zh_CN.gif)
+![custom theme color preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/theme-config_zh_CN.gif)
 
 🎨 采用基于感知亮度的色彩系统重构主题配色，全局色调支持无级调节，也可跟随系统强调色（`#Windows` `#macOS`），带来完全个性化的笔记体验。（配置选项信息见下方「主题配置」一节）
 
@@ -95,7 +95,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 ## 主题配置
 
 ### 🌈 自定义主题色
-![asri config menu](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/asri-config-menu_zh_CN_v2.png)
+![asri config menu](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/asri-config-menu_zh_CN_v2.png)
 
 点击右上角 `外观模式` 图标即可弹出 Asri 主题配置菜单，定制主题配色。
 
@@ -107,7 +107,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 #### 1. `afwd`：全宽显示（Asri full-width display）
 
-![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/assets/custom-attributes-preview_v7.gif)
+![full-width-display preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/custom-attributes-preview_v7.gif)
 
 使应用了此属性的块撑满页面宽度显示，可用于强调特定内容或美化排版等。全宽显示的样式对图片、数据库、 iframe、表格和水平布局的超级块生效。
 

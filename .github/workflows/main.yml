@@ -16,7 +16,7 @@ jobs:
           with:
             type: 'zip'
             filename: 'package.zip'
-            exclusions: '*.git* *.scss *.txt /*style/* /*assets/* /*src/* *config* *package*'
+            exclusions: '*.git* *.scss *.txt /*style/* /*doc/* /*src/* *config* *package*'
     
         - name: Create Release
           uses: ncipollo/release-action@v1.13.0
