@@ -1,3 +1,19 @@
+### v3.1.10
+
+* 适配「数据库属性面板」插件
+* 增大对话框圆角半径
+* 调整集市包介绍页简介样式
+* 主题色默认不启用跟随系统强调色
+
+<br />
+
+* Adapted the "Database Properties Panel" plugin
+* Increased the border radius of dialog boxes
+* Adjusted the style of package introductions on the marketplace page
+* Disabled the default setting for theme color to follow system accent color
+
+---
+
 ### v3.1.9
 
 * iOS 端支持自定义主题色功能

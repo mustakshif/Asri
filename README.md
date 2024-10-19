@@ -13,6 +13,13 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.10
+
+* Adapted the "Database Properties Panel" plugin
+* Increased the border radius of dialog boxes
+* Adjusted the style of package introductions on the marketplace page
+* Disabled the default setting for theme color to follow system accent color
+
 ### v3.1.9
 
 * Added support for custom theme colors on iOS
@@ -24,13 +31,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Modified the color blending mode for the status bar when the theme color chroma is 0
 * Fine-tuned the background color of active tabs
 * Slightly adjusted the thickness of global underlines
-
-### v3.1.8
-
-* Adjusted the saturation of the panel colors.
-* Modified the saturation of the dialog background mask filter in dark mode.
-* Fixed the issue where images displayed abnormally after manually adjusting the height in full-width view.
-* Resolved the background color issue in the PDF reader when using a dark background in light mode or vice versa.
 
 ### ...
 
