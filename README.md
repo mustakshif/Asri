@@ -13,24 +13,17 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.11
+
+* Updated styles to be compatible with SiYuan v3.1.10
+* Standardized database tag border radius
+
 ### v3.1.10
 
 * Adapted the "Database Properties Panel" plugin
 * Increased the border radius of dialog boxes
 * Adjusted the style of package introductions on the marketplace page
 * Disabled the default setting for theme color to follow system accent color
-
-### v3.1.9
-
-* Added support for custom theme colors on iOS
-* [Optimized the indentation style of the document tree and outline, expanding the clickable area](https://github.com/mustakshif/Asri/issues/92)
-* [Improved the underline style for database primary keys with references](https://github.com/mustakshif/Asri/issues/96)
-* Adjusted the button margins in the "Export PDF" window
-* Refined the offset of underlines of inline code
-* Enhanced the delete button style
-* Modified the color blending mode for the status bar when the theme color chroma is 0
-* Fine-tuned the background color of active tabs
-* Slightly adjusted the thickness of global underlines
 
 ### ...
 

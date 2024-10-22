@@ -1,3 +1,15 @@
+### v3.1.11
+
+* 适配思源 v3.1.10 的样式更新
+* 统一数据库标签圆角
+
+<br />
+
+* Updated styles to be compatible with SiYuan v3.1.10
+* Standardized database tag border radius
+
+---
+
 ### v3.1.10
 
 * 适配「数据库属性面板」插件
