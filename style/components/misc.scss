@@ -107,18 +107,22 @@
 
     // 关闭状态指示点
     &::after {
+        left: 2px;
         top: 2px;
-        left: 2px;        
         @include theme-variant-color(background-color, light-components);
         box-shadow: 0 1px 4px -1px #0003;
         border: none;
         z-index: auto;
+        transform: none;
         transition-property: transform;
         transition-duration: .2s;
         transition-timing-function: $timing-function-decelerate;
     }
-    
-    &::after, &:checked::after, &:checked:active:not(:disabled)::after, &:active:not(:disabled)::after {
+
+    &::after,
+    &:checked::after,
+    &:checked:active:not(:disabled)::after,
+    &:active:not(:disabled)::after {
         width: 16px;
         height: 16px;
     }
@@ -136,6 +140,8 @@
         background-color: var(--b3-theme-primary);
 
         &::after {
+            top: 2px;
+            left: 2px;
             transform: translateX(12px);
             @include theme-variant-color(background-color, light-components);
             box-shadow: 0 1px 4px -1px #0003;
@@ -420,6 +426,7 @@ textarea {
 
         @include menu-shadow(var(--b3-theme-primary));
     }
+
     // 打开文件夹 按钮
     .b3-button--white {
         @include button-action('primary') {
