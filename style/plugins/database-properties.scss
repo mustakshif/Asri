@@ -3,6 +3,8 @@
         &::before {
             display: none;
         }
+        
+        border-radius: 4px;
     }
     
     @for $i from 1 through 13 {

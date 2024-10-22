@@ -82,7 +82,6 @@
     // transition: all 0.3s;
     transition-property: background-color, filter;
     transition-duration: .3s;
-    box-sizing: border-box;
     border: none;
     box-sizing: border-box !important; // fix conflict with enhance plugin's arco css styles
 
@@ -109,11 +108,23 @@
     // 关闭状态指示点
     &::after {
         top: 2px;
-        left: 2px;
+        left: 2px;        
         @include theme-variant-color(background-color, light-components);
         box-shadow: 0 1px 4px -1px #0003;
         border: none;
         z-index: auto;
+        transition-property: transform;
+        transition-duration: .2s;
+        transition-timing-function: $timing-function-decelerate;
+    }
+    
+    &::after, &:checked::after, &:checked:active:not(:disabled)::after, &:active:not(:disabled)::after {
+        width: 16px;
+        height: 16px;
+    }
+
+    &:checked:hover:not(:disabled):after {
+        @include theme-variant-color(background-color, light-components);
     }
 
     &::before {
@@ -362,8 +373,9 @@ textarea {
     .b3-snackbar {
         &__content {
             border-radius: 16px;
+            color: var(--b3-theme-on-background);
 
-            @include menu-shadow(var(--b3-theme-primary));
+            @include menu-shadow();
 
             &--close {
                 padding-right: 16px;
@@ -376,7 +388,7 @@ textarea {
 
         &__close {
             transform: scale(0);
-            color: var(--b3-theme-on-error);
+            color: var(--b3-theme-on-background);
             top: 8px;
             right: 8px;
             transition-duration: 0.2s;
@@ -385,35 +397,19 @@ textarea {
                 transform: scale(1);
             }
         }
-
-        &--error {
-            .b3-snackbar__content {
-                @include menu-shadow(pickThemeColor($theme-light, error), pickThemeColor($theme-dark, error));
-
-                &::after {
-                    content: '';
-                    display: block;
-                    position: absolute;
-                    width: 3px;
-                    height: 100%;
-                    color: var(--b3-theme-error);
-                    left: -4px;
-                    z-index: 1;
-                }
-            }
-        }
     }
 
+    // "已读"按钮
     button:not(.b3-button--white) {
-        @include button-action(1) {
-            background-color: var(--b3-theme-surface);
+        @include button-action('primary') {
+            // background-color: var(--b3-theme-surface);
             transition: transform 0.2s;
             transform: translateY(-42px);
             height: 28px;
             border-radius: 99px;
 
             &:hover {
-                color: var(--b3-theme-on-background);
+                background-color: var(--b3-theme-primary);
                 transform: scale(1.2) translateY(-35px);
             }
 
@@ -422,28 +418,21 @@ textarea {
             }
         }
 
-        @include border-or-not;
+        @include menu-shadow(var(--b3-theme-primary));
     }
-
+    // 打开文件夹 按钮
     .b3-button--white {
-        @include button-action(1) {
-            background-color: transparent;
+        @include button-action('primary') {
             transition: all 0.2s;
-            font-weight: 600;
-            color: var(--b3-theme-on-primary);
-            box-shadow: 0 0 1px inset var(--b3-theme-on-primary);
             display: block;
             margin: 4px 0 4px auto;
 
             &:hover {
                 transform: scale(1.1);
-                box-shadow: 0 0 1px inset var(--b3-theme-on-primary);
             }
 
             &:active {
-                color: var(--b3-theme-primary);
                 transform: scale(0.95);
-                background-color: var(--b3-theme-on-primary);
             }
         }
     }
@@ -466,6 +455,9 @@ textarea {
     color: var(--b3-theme-primary);
 }
 
+.b3-chip {
+    padding: 4px 6px;
+}
 
 .b3-chip--middle {
     padding: 4px 8px;
@@ -500,5 +492,13 @@ textarea {
         &::before {
             display: none;
         }
+    }
+}
+
+.b3-chip--middle {
+    &[style*="background-color:var(--b3-font-background1)"] {
+        background-color: var(--b3-theme-background) !important;
+        outline: .5px solid rgb(from var(--b3-font-color1) r g b / 0.3);
+        outline-offset: -0.5px;
     }
 }

@@ -138,7 +138,7 @@
                     color: inherit;
                 }
 
-                svg.av__cellheadericon, 
+                svg.av__cellheadericon,
                 .av__celltext {
                     opacity: .68;
                 }
@@ -152,7 +152,7 @@
                 border-right-color: var(--b3-border-color-trans);
 
                 .b3-chip {
-                    border-radius: 20px;
+                    border-radius: 4px;
                     // padding: 2px 6px;
                     color: var(--b3-theme-on-surface);
                     background-color: var(--b3-theme-surface);
@@ -241,9 +241,9 @@
                 }
 
                 // 复制按钮
-                .block__icon {
-                    border-radius: 20px;
-                }
+                // .block__icon {
+                //     border-radius: 20px;
+                // }
 
                 &:hover {
                     .block__icon {
@@ -379,7 +379,12 @@
 
             .b3-menu__item {
                 .b3-chip {
-                    border-radius: 99px;
+                    border-radius: 4px;
+
+                    // 筛选菜单 属性图标
+                    .icon {
+                        margin-left: auto;
+                    }
                 }
             }
 
@@ -415,7 +420,7 @@
 
                 .b3-chip--middle,
                 &~div [data-type="addColOptionOrCell"] .b3-chip {
-                    border-radius: 20px;
+                    border-radius: 4px;
                 }
 
                 input {
@@ -488,17 +493,19 @@ img.av__cellassetimg {
     }
 
     .b3-menu__icon {
-        +.b3-menu__label .b3-chip--middle::before{
+        +.b3-menu__label .b3-chip--middle::before {
             display: none;
         }
-    } // 单选、多选列筛选菜单的 chips
+    }
+
+    // 单选、多选列筛选菜单的 chips
 
     .b3-menu__label {
         .b3-chip {
             border-radius: 4px;
 
             &[data-color] {
-                border-radius: 1em;
+                border-radius: 4px;
             }
 
             // 筛选菜单中的数据库标签
@@ -636,7 +643,7 @@ img.av__cellassetimg {
         }
 
         .b3-chip {
-            border-radius: 1em;
+            border-radius: 4px;
             padding: 2px 6px;
         }
 
