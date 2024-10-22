@@ -376,7 +376,7 @@ body:not(.asri-disable-backdrop-blur) {
     //     }
     // }
 
-    [data-key="dialog-emojis"]{
+    [data-key="dialog-emojis"] {
         .b3-dialog__container {
             @include bg-blur();
 
@@ -474,6 +474,16 @@ body:not(.asri-disable-backdrop-blur) {
             }
 
             // v2.1.9: fix关联主键编辑菜单
+        }
+    }
+
+
+    #message.b3-snackbars {
+        .b3-snackbar {
+            &__content {
+                background-color: rgb(from var(--b3-theme-surface) r g b / $medium-transparency);
+                @include bg-blur;
+            }
         }
     }
 }

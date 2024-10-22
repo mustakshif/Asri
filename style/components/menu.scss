@@ -56,7 +56,7 @@
             }
 
             &.b3-menu__item--custom.b3-menu__item--current:not(.b3-menu__item--disabled) {
-                > .b3-menu__label > div > .b3-menu__icon {
+                >.b3-menu__label>div>.b3-menu__icon {
                     color: var(--b3-menu-item-background-hover-text);
                 }
             }
@@ -87,7 +87,7 @@
             // &.b3-menu__item--current > .b3-menu__label {
             //     text-decoration: underline;
             // }
-            
+
             svg {
                 color: inherit;
             }
@@ -250,6 +250,10 @@
     textarea {
         resize: both;
     }
+
+    .protyle-font {
+        padding-bottom: 8px;
+    }
 }
 
 // emoji 面板
@@ -276,7 +280,7 @@
             .b3-dialog__body {
                 border-radius: 11px;
                 z-index: 0;
-            }            
+            }
         }
     }
 }

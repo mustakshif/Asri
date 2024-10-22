@@ -382,6 +382,7 @@ textarea {
             color: var(--b3-theme-on-background);
 
             @include menu-shadow();
+            @include border-or-not();
 
             &--close {
                 padding-right: 16px;

@@ -388,12 +388,20 @@
         }
 
         .protyle-breadcrumb__bar {
+            
+            &:first-child {
+                border-top: none !important;
+            }
+            
             &:not(:first-child) {
                 border-top: 1px solid var(--b3-border-color-trans);
             }
 
             margin-bottom: -8px !important;
-            height: 36px;
+            // height: 36px;
+            .protyle-breadcrumb__item {
+                margin: 6px 0;
+            }
 
             span.protyle-breadcrumb__item,
             svg.protyle-breadcrumb__arrow {
@@ -425,6 +433,10 @@
             .protyle-breadcrumb__item--active svg {
                 background-color: var(--b3-theme-primary);
                 color: var(--b3-theme-on-primary);
+            }
+
+            span:only-child:empty {
+                height: .6em;
             }
         }
 
