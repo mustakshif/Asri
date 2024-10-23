@@ -267,6 +267,7 @@
         height: 1.3em;
         left: -4px;
         border-radius: 9px;
+        pointer-events: none;
 
         @include theme-variant-color(background-color, list-hover, 0.08);
     }

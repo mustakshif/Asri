@@ -465,6 +465,10 @@ textarea {
 
 .b3-chip {
     padding: 4px 6px;
+
+    svg:not(.b3-chip__close){
+        margin-left: auto;
+    }
 }
 
 .b3-chip--middle {
