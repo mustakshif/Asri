@@ -18,7 +18,7 @@ import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./traffi
 const globalClickEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalDragEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalKeyupEventListener = new AsriEventListener(lowFreqEventsCallback);
-const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback, 500));
+const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback));
 const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
 const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
 const winRo = new AsriResizeObserver(winRoCallback);
