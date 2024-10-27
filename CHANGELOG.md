@@ -1,3 +1,21 @@
+### v3.1.12
+
+* 优化通知样式
+* 优化字体样式菜单底部边距
+* 改进反链面板显示
+* [修复特定缩放比例下数据库标签显示不全的问题](https://github.com/mustakshif/Asri/issues/104)
+* [修复无法导出为图片的问题](https://github.com/mustakshif/Asri/issues/106)
+
+<br />
+
+* Optimized notification styles
+* Enhanced bottom margin of font style menu
+* Improved backlink panel display
+* [Fixed an issue where database tags were partially hidden at certain zoom levels](https://github.com/mustakshif/Asri/issues/104)
+* [Fixed an issue where exporting to images was not working](https://github.com/mustakshif/Asri/issues/106)
+
+---
+
 ### v3.1.11
 
 * 适配思源 v3.1.10 的样式更新

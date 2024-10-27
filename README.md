@@ -13,17 +13,18 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.12
+
+* Optimized notification styles
+* Enhanced bottom margin of font style menu
+* Improved backlink panel display
+* [Fixed an issue where database tags were partially hidden at certain zoom levels](https://github.com/mustakshif/Asri/issues/104)
+* [Fixed an issue where exporting to images was not working](https://github.com/mustakshif/Asri/issues/106)
+
 ### v3.1.11
 
 * Updated styles to be compatible with SiYuan v3.1.10
 * Standardized database tag border radius
-
-### v3.1.10
-
-* Adapted the "Database Properties Panel" plugin
-* Increased the border radius of dialog boxes
-* Adjusted the style of package introductions on the marketplace page
-* Disabled the default setting for theme color to follow system accent color
 
 ### ...
 
