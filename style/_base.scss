@@ -1,4 +1,5 @@
 @use "sass:string";
+@use "sass:selector";
 
 // functions ————————————————————
 @function getRgb($color) {
@@ -839,6 +840,51 @@ animation-direction: #{$anim-dir};
         display: -webkit-box;
         -webkit-line-clamp: $line-clamp;
         -webkit-box-orient: $orientation;
+    }
+}
+
+@mixin database-assets-style($level: "non-chip") {
+
+    $selector: if($level == "non-chip", ".av__celltext--url", ".b3-chip.av__celltext--url");
+    #{$selector} {
+        // 资源列超链接或资源链接
+        text-decoration: none;
+        background-color: transparent;
+        outline: 1px solid var(--b3-border-color-trans);
+        // outline-offset: -1.5px;
+        font-size: 100%;
+        border-radius: 4px;
+
+        @content;
+
+        &:hover {
+            outline-color: var(--b3-theme-primary-lighter);
+            color: var(--b3-theme-primary);
+
+            &::before {
+                background-color: var(--b3-theme-primary);
+            }
+        }
+
+        &::before {
+            content: "";
+            width: 1em;
+            height: 1em;
+            display: inline-block;
+            background-color: var(--b3-theme-on-surface);
+            mask-image: url(icons/icon-assets.svg);
+            mask-size: 100% 100%;
+            vertical-align: -2px;
+            margin-right: 0.2em;
+        }
+
+        &[data-url^="http"]::before {
+            mask-image: url(icons/icon-outerLink.svg);
+        }
+
+        &[data-url^="siyuan"]::before {
+            mask-image: url(icons/icon-syLink.svg);
+        }
     }
 }
 

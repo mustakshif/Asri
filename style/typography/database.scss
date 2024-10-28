@@ -161,45 +161,9 @@
                     &:hover {
                         color: var(--b3-theme-on-background);
                     }
-
-                    &.av__celltext--url {
-                        // 资源列超链接或资源链接
-                        text-decoration: none;
-                        background-color: transparent;
-                        outline: 1px solid var(--b3-border-color-trans);
-                        // outline-offset: -1.5px;
-                        font-size: 100%;
-                        border-radius: 4px;
-
-                        &:hover {
-                            outline-color: var(--b3-theme-primary-lighter);
-
-                            &::before {
-                                background-color: var(--b3-theme-primary);
-                            }
-                        }
-
-                        &::before {
-                            content: "";
-                            width: 1em;
-                            height: 1em;
-                            display: inline-block;
-                            background-color: var(--b3-theme-on-surface);
-                            mask-image: url(icons/icon-assets.svg);
-                            mask-size: 100% 100%;
-                            vertical-align: -2px;
-                            margin-right: 0.2em;
-                        }
-
-                        &[data-url^="http"]::before {
-                            mask-image: url(icons/icon-outerLink.svg);
-                        }
-
-                        &[data-url^="siyuan"]::before {
-                            mask-image: url(icons/icon-syLink.svg);
-                        }
-                    }
                 }
+
+                @include database-assets-style('chip');
 
                 // 「更新」按钮
                 .popover__block {
@@ -216,8 +180,7 @@
                     font-weight: 500;
                 }
 
-                .av__celltext--url,
-                .av__celltext--ref {
+                .av__celltext--url {
                     border-bottom: none;
                     text-decoration: underline var(--b3-theme-primary-light);
                     text-decoration-thickness: $text-underline-thickness;
@@ -241,7 +204,15 @@
                 }
 
                 .av__celltext--ref {
-                    text-decoration-style: dashed;
+                    border-bottom: none;
+                    text-decoration: underline rgb(from var(--b3-theme-on-background) r g b / .3);
+                    transition-property: color, text-decoration-color;
+                    transition-duration: .2s;
+
+                    &:hover {
+                        text-decoration-color: var(--b3-theme-primary-light);
+                        color: var(--b3-theme-primary);
+                    }
                 }
 
                 // 复制按钮
@@ -461,6 +432,7 @@
     }
 
     &__cell {
+
         &[data-dtype=mSelect],
         &[data-dtype=select],
         &[data-dtype=mAsset] {
@@ -664,12 +636,10 @@ img.av__cellassetimg {
             border-radius: 4px;
             padding: 2px 6px;
         }
-
-        .av__celltext--url,
-        .av__celltext--ref {
-            border-bottom: none;
-            text-decoration: underline var(--b3-border-color-trans);
-            text-decoration-thickness: $text-underline-thickness;
+        
+        @include database-assets-style(){
+            color: var(--b3-theme-on-surface);
+            margin: 2px;
         }
     }
 }

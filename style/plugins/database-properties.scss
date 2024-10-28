@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 .plugin-database-properties-wrapper {
     .b3-chip--middle {
         &::before {
@@ -13,4 +15,6 @@
             outline-offset: -.5px;
         }
     }
+
+    @include database-assets-style;
 }
