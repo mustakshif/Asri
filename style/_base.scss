@@ -855,8 +855,6 @@ animation-direction: #{$anim-dir};
         font-size: 100%;
         border-radius: 4px;
 
-        @content;
-
         &:hover {
             outline-color: var(--b3-theme-primary-lighter);
             color: var(--b3-theme-primary);
@@ -885,6 +883,8 @@ animation-direction: #{$anim-dir};
         &[data-url^="siyuan"]::before {
             mask-image: url(icons/icon-syLink.svg);
         }
+        
+        @content;
     }
 }
 

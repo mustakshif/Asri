@@ -466,7 +466,7 @@ textarea {
 .b3-chip {
     padding: 4px 6px;
 
-    svg:not(.b3-chip__close){
+    svg:not(.b3-chip__close) {
         margin-left: auto;
     }
 }
@@ -504,6 +504,11 @@ textarea {
         &::before {
             display: none;
         }
+    }
+
+    .protyle-top &,
+    &[data-type="set-criteria"] {
+        border-radius: 99px;
     }
 }
 
