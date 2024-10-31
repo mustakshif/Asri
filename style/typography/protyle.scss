@@ -1110,7 +1110,41 @@
         }
     }
 }
+
+// [style*="background-color"]:is(.p, .list) {
+//     padding: 1em 1.2em;
+// }
+
+// .h1[style*=background-color] {
+//     padding: calc(1em / 1.75) calc(1.2em / 1.75);
+// }
+
+// .h2[style*=background-color] {
+//     padding: calc(1em / 1.55) calc(1.2em / 1.55);
+// }
+
+// .h3[style*=background-color] {
+//     padding: calc(1em / 1.38) calc(1.2em / 1.38);
+// }
+
+// .h4[style*=background-color] {
+//     padding: calc(1em / 1.25) calc(1.2em / 1.25);
+// }
+
+// .h5[style*=background-color] {
+//     padding: calc(1em / 1.13) calc(1.2em / 1.13);
+// }
+
+// .h6[style*=background-color] {
+//     padding: 1em 1.2em;
+// }
+
+// &-wysiwyg>.sb[style*=background-color] {
+//     padding: 1em 1.2em;
+// }
 }
+
+
 
 .b3-typography {
     font-variant-ligatures: normal;
@@ -1169,7 +1203,7 @@
 
 .protyle-gutters {
 
-    > button {
+    >button {
         transform-origin: right center;
     }
 
@@ -1179,7 +1213,7 @@
 
         @for $i from 1 through 7 {
             &:nth-last-child(#{$i + 1}) {
-                animation-delay: $i * .025s;
+                animation-delay: $i * .03s;
             }
         }
     }
