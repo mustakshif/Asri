@@ -309,6 +309,7 @@
     }
 
     span[data-type~=code] {
+
         &[data-type~=u],
         &[data-type~=a] {
             text-decoration-thickness: calc($text-underline-thickness * 1.2);
@@ -965,6 +966,12 @@
 
     &__icon {
         top: calc(2.4em * 1.4 / 2 + 8px) !important; // fix https://github.com/mustakshif/Asri/issues/45 
+        transform: scale(.8);
+        transform-origin: right center;
+    }
+
+    &:hover .protyle-title__icon {
+        transform: none;
     }
 }
 
@@ -1158,4 +1165,54 @@
 [data-node-id][style*="var(--b3-font-background1)"] {
     outline: 1.5px solid var(--b3-border-color-trans);
     outline-offset: -1.5px;
+}
+
+.protyle-gutters {
+
+    > button {
+        transform-origin: right center;
+    }
+
+    >button:not([data-type=NodeAttributeViewRow], [data-type=NodeAttributeViewRowMenu], :only-child) {
+        animation: gutters-appear .2s $timing-function-decelerate forwards;
+        opacity: 0;
+
+        @for $i from 1 through 7 {
+            &:nth-last-child(#{$i + 1}) {
+                animation-delay: $i * .025s;
+            }
+        }
+    }
+
+    >button:where([data-type=NodeAttributeViewRow], [data-type=NodeAttributeViewRowMenu], :only-child) {
+        animation: gutters-appear-simple .2s;
+    }
+
+    button[data-type=fold] svg {
+        transition: transform, .2s;
+    }
+
+    @keyframes gutters-appear {
+        from {
+            opacity: 0;
+            transform: scale(.5) translateX(8px);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    @keyframes gutters-appear-simple {
+        from {
+            opacity: 0;
+            transform: scale(.8);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
 }
