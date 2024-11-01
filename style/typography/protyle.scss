@@ -1213,7 +1213,7 @@
 
         @for $i from 1 through 7 {
             &:nth-last-child(#{$i + 1}) {
-                animation-delay: $i * .03s;
+                animation-delay: $i * 1s / (2 + $i) / 9;
             }
         }
     }
