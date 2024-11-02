@@ -544,7 +544,7 @@
 
         // 列表项序号、图标
         .protyle-action {
-            opacity: 0.8;
+            // opacity: .6;
             color: inherit !important;
 
             //任务列表
@@ -553,7 +553,7 @@
 
                 &:hover {
                     color: var(--b3-theme-primary) !important;
-                    opacity: 1;
+                    // opacity: 1;
                 }
             }
         }
@@ -590,14 +590,72 @@
 
     // 任务列表项 ————————————————————————————————
     .protyle-task--done {
-        &>div[data-node-id].p {
+        &>div[data-node-id]:not(.list) {
             opacity: .5;
             color: inherit;
             text-decoration: none;
         }
+    }
 
-        &>.protyle-action--task {
-            opacity: .5;
+    .li > div[data-node-id]:not(.list) {
+        transition: opacity .3s;
+    }
+
+    $icon-size: 1em;
+    $stroke-offset: .1em;
+
+    .li[data-subtype=t] {
+        .protyle-action--task {
+            &::before {
+                content: '';
+                position: absolute;
+                width: calc($icon-size);
+                height: calc($icon-size);
+                background-color: currentColor;
+                mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="#{$stroke-offset}"><path stroke-linecap="round" stroke-linejoin="round"/><rect width="18.5" height="18.5" x="2.75" y="2.75" rx="6"/></g></svg>');
+                animation: uncheck .3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            }
+        }
+
+        svg {
+            visibility: hidden;
+        }
+    }
+
+    .li.protyle-task--done {
+        >.protyle-action--task {
+            &::before {
+                width: $icon-size;
+                height: $icon-size;
+                background-color: var(--b3-theme-primary);
+                mask-image: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.25 2h-6.5A6.76 6.76 0 0 0 2 8.75v6.5A6.76 6.76 0 0 0 8.75 22h6.5A6.76 6.76 0 0 0 22 15.25v-6.5A6.76 6.76 0 0 0 15.25 2m2.06 8.16l-5.22 5.22a2 2 0 0 1-1.41.59a2 2 0 0 1-.76-.15a2 2 0 0 1-.64-.44l-2.59-2.59a1 1 0 0 1 1.41-1.41l2.59 2.59l5.21-5.23a1.002 1.002 0 0 1 1.41 1.42"/></svg>');
+                animation: check .3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            }
+        }
+    }
+
+    [data-node-id][style]:not([style=""]),
+    .protyle-task--done[style]:not([style=""]) {
+        .protyle-action--task::before {
+            background-color: currentColor;
+        }
+    }
+
+    @keyframes check {
+        0%,100% {
+            transform: none;
+        }
+        5% {
+            transform: scale(1.2);
+        }
+    }
+
+    @keyframes uncheck {
+        0%,100% {
+            transform: none;
+        }
+        5% {
+            transform: scale(1.2);
         }
     }
 
@@ -1213,7 +1271,7 @@
 
         @for $i from 1 through 7 {
             &:nth-last-child(#{$i + 1}) {
-                animation-delay: $i * 1s / (2 + $i) / 9;
+                animation-delay: $i * 1s / (2 + $i) / 8;
             }
         }
     }
@@ -1223,20 +1281,20 @@
     }
 
     button[data-type=fold] svg {
-        transition: transform, .2s;
+        transition: transform, .2s $timing-function-decelerate;
     }
 
     @keyframes gutters-appear {
         from {
             opacity: 0;
             transform: scale(.5) translateX(8px);
-            filter: blur(12px);
+            // filter: blur(12px);
         }
 
         to {
             opacity: 1;
             transform: none;
-            filter: none;
+            // filter: none;
         }
     }
 
@@ -1244,13 +1302,13 @@
         from {
             opacity: 0;
             transform: scale(.8);
-            filter: blur(12px);
+            // filter: blur(12px);
         }
 
         to {
             opacity: 1;
             transform: none;
-            filter: none;
+            // filter: none;
         }
     }
 }
