@@ -90,6 +90,14 @@ $li-types: ".li[data-subtype=o]", ".li[data-subtype=u]";
             white-space: nowrap;
             // text-align: end;
         }
+
+        &:hover {
+            // color: transparent !important;
+
+            &::after {
+                color: var(--b3-theme-primary);
+            }
+        }
     }
 
     .li:not([data-subtype=t])>.protyle-action {
@@ -98,10 +106,12 @@ $li-types: ".li[data-subtype=o]", ".li[data-subtype=u]";
 
     // unordered list
     .li[data-subtype=u]>.protyle-action {
+
         // color: transparent !important;
         svg {
             visibility: hidden;
         }
+
         &::after {
             font-family: Arial;
             font-size: 1.5em;

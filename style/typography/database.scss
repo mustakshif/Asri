@@ -144,10 +144,6 @@
                 }
             }
 
-            &:hover .b3-chip[data-type=block-more] {
-                opacity: 1;
-            }
-
             .av__cell:not(.av__cell--header) {
                 border-right-color: var(--b3-border-color-trans);
 
@@ -244,6 +240,38 @@
         // 勾选框
         .av__cell-check>.av__checkbox {
             color: var(--b3-theme-primary);
+        }
+    }
+
+    &__row {
+        .av__colsticky {
+            transition: opacity .2s;
+        }
+
+        &:not(.av__row--header)>.av__colsticky {
+            svg {
+                visibility: hidden;
+            }
+
+            &::before {
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+        }
+
+        &:not(&--select, .av__row--header) {
+            .av__colsticky {
+                @include bouncy-check-box(false, 1.1em);
+            }
+        }
+
+        &--select:not(.av__row--header) {
+            .av__colsticky {
+                @include bouncy-check-box(true, 1.1em);
+            }
         }
     }
 
@@ -438,6 +466,31 @@
         &[data-dtype=mAsset] {
             padding: 5px 4px;
         }
+
+        &-uncheck,
+        &-check {
+            svg {
+                visibility: hidden;
+            }
+
+            &::before {
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            }
+        }
+
+        &-uncheck {
+            @include bouncy-check-box(false, 1.15em){
+                animation: none;
+            };
+        }
+
+        &-check {
+            @include bouncy-check-box(true, 1.1em){
+                animation: none;
+            };
+        }
     }
 }
 
@@ -554,7 +607,7 @@ img.av__cellassetimg {
         &:hover {
             >.b3-menu__label.popover__block {
                 color: var(--b3-theme-on-primary) !important;
-                text-decoration-color: #fff8;
+                text-decoration-color: currentColor;
             }
         }
     }
@@ -636,8 +689,8 @@ img.av__cellassetimg {
             border-radius: 4px;
             padding: 2px 6px;
         }
-        
-        @include database-assets-style(){
+
+        @include database-assets-style() {
             color: var(--b3-theme-on-surface);
             margin: 2px;
         }
