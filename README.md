@@ -22,6 +22,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Enhanced styling for resource column content in database property panel
 * Adjusted underline style for database primary keys with references
 * Modified border radius for some menus
+* Fixed excessive CPU usage occurring when the application window loses focus
 
 ### v3.1.12
 

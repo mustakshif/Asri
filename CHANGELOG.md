@@ -7,6 +7,7 @@
 * 优化数据库属性面板中资源列内容的样式
 * 调整数据库主键有引用时的下划线样式
 * 调整部分菜单圆角
+* 修复了应用窗口失焦时导致的 CPU 过度占用问题
 
 <br />
 
@@ -17,6 +18,7 @@
 * Enhanced styling for resource column content in database property panel
 * Adjusted underline style for database primary keys with references
 * Modified border radius for some menus
+* Fixed excessive CPU usage occurring when the application window loses focus
 
 ---
 
