@@ -18,6 +18,7 @@ import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./traffi
 const globalClickEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalDragEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalKeyupEventListener = new AsriEventListener(lowFreqEventsCallback);
+const winFocusChangeEventListener = new AsriEventListener(winFocusChangeCallback);
 const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback));
 const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
 const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
@@ -43,6 +44,8 @@ export async function loadAsriJSModules() {
     globalClickEventListener.start(document, 'mouseup');
     globalDragEventListener.start(document, 'dragend');
     globalKeyupEventListener.start(document, 'keyup');
+    winFocusChangeEventListener.start(window, 'focus');
+    winFocusChangeEventListener.start(window, 'blur');
     globalClassNameMo.observe(document.body, MOConfigForClassNames);
     watchImgExportMo.observe(document.body, { childList: true });
     asriDoms.layoutCenter || await querySelectorAsync('.layout__center');
@@ -64,6 +67,8 @@ export async function unloadAsriJSModules() {
     globalClickEventListener.remove(document, 'mouseup');
     globalDragEventListener.remove(document, 'dragend');
     globalKeyupEventListener.remove(document, 'keyup');
+    winFocusChangeEventListener.remove(window, 'focus');
+    winFocusChangeEventListener.remove(window, 'blur');
     globalClassNameMo.disconnect();
     watchImgExportMo.disconnect(() => {
         document.body.classList.remove("has-exportimg")
@@ -80,6 +85,13 @@ function lowFreqEventsCallback(e: Event) {
     updateStyles(e);
     // if (!env.isIOSApp)
     addAfwdMenuItems(e);
+}
+
+function winFocusChangeCallback(e: Event) {
+    updateWndEls().then(() => {
+        updateStyles();
+        !env.isIOSApp && followSysAccentColor && env.supportOklch && getSystemAccentColor();
+    });
 }
 
 async function updateStyles(e?: Event | KeyboardEvent) {
@@ -127,24 +139,13 @@ function destroyStyleUpdates() {
 
 function globalClassNameMoCallback(mutationList: MutationRecord[], observer: MutationObserver) {
     for (let mutation of mutationList) {
+        if ((mutation.target as HTMLElement).classList.contains('body--blur')) return; // ⚠️ ignore constant classname change when app window blurs which cause unnecessary re-render and high cpu usage.
+        // console.log(mutation.target, mutation.type, mutation.attributeName, mutation.oldValue);
         if ((mutation.target as HTMLElement).classList.contains('b3-list-item--focus')) {
             debouncedFormatIndentGuidesForFocusedItems();
             debouncedFormatProtyleWithBgImageOnly();
+            // console.log('focus');
         }
-
-        if (
-            mutation.target === document.body &&
-            (
-                mutation.oldValue?.includes('body--blur') ||
-                (mutation.target as HTMLElement).className.includes('body--blur')
-            )
-        ) {
-            updateWndEls().then(() => {
-                updateStyles();
-                !env.isIOSApp && followSysAccentColor && env.supportOklch && getSystemAccentColor();
-                // console.log(mutation, 'Class changed from', mutation.oldValue?.split(' '), 'to', (mutation.target as HTMLElement).className.split(' '), isWinResizing)
-            });
-        } // make sure to only update styles when the body class changes; don't know why window resizing also cause class mutations on body element
     }
 }
 
