@@ -1,3 +1,25 @@
+### v3.1.13
+
+* [新增块标出现动画](https://github.com/mustakshif/Asri/issues/109)
+* [优化任务列表勾选框图标和动画](https://github.com/mustakshif/Asri/issues/111)
+* 优化数据库勾选框图标和动画
+* 优化数据库单选列、多选列、资源列内边距
+* 优化数据库属性面板中资源列内容的样式
+* 调整数据库主键有引用时的下划线样式
+* 调整部分菜单圆角
+
+<br />
+
+* [Added block icons animation](https://github.com/mustakshif/Asri/issues/109)
+* [Improved task list checkbox icons and animations](https://github.com/mustakshif/Asri/issues/111)
+* Improved database checkbox icons and animations
+* Optimized padding for database single-select, multi-select, and resource columns
+* Enhanced styling for resource column content in database property panel
+* Adjusted underline style for database primary keys with references
+* Modified border radius for some menus
+
+---
+
 ### v3.1.12
 
 * 优化通知样式

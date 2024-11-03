@@ -246,6 +246,7 @@
     &__row {
         .av__colsticky {
             transition: opacity .2s;
+            cursor: pointer;
         }
 
         &:not(.av__row--header)>.av__colsticky {

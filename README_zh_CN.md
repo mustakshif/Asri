@@ -13,6 +13,16 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.1.13
+
+* [新增块标出现动画](https://github.com/mustakshif/Asri/issues/109)
+* [优化任务列表勾选框图标和动画](https://github.com/mustakshif/Asri/issues/111)
+* 优化数据库勾选框图标和动画
+* 优化数据库单选列、多选列、资源列内边距
+* 优化数据库属性面板中资源列内容的样式
+* 调整数据库主键有引用时的下划线样式
+* 调整部分菜单圆角
+
 ### v3.1.12
 
 * 优化通知样式
@@ -20,11 +30,6 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * 改进反链面板显示
 * [修复特定缩放比例下数据库标签显示不全的问题](https://github.com/mustakshif/Asri/issues/104)
 * [修复无法导出为图片的问题](https://github.com/mustakshif/Asri/issues/106)
-
-### v3.1.11
-
-* 适配思源 v3.1.10 的样式更新
-* 统一数据库标签圆角
 
 ### ...
 

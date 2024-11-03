@@ -13,6 +13,16 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.13
+
+* [Added block icons animation](https://github.com/mustakshif/Asri/issues/109)
+* [Improved task list checkbox icons and animations](https://github.com/mustakshif/Asri/issues/111)
+* Improved database checkbox icons and animations
+* Optimized padding for database single-select, multi-select, and resource columns
+* Enhanced styling for resource column content in database property panel
+* Adjusted underline style for database primary keys with references
+* Modified border radius for some menus
+
 ### v3.1.12
 
 * Optimized notification styles
@@ -20,11 +30,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Improved backlink panel display
 * [Fixed an issue where database tags were partially hidden at certain zoom levels](https://github.com/mustakshif/Asri/issues/104)
 * [Fixed an issue where exporting to images was not working](https://github.com/mustakshif/Asri/issues/106)
-
-### v3.1.11
-
-* Updated styles to be compatible with SiYuan v3.1.10
-* Standardized database tag border radius
 
 ### ...
 

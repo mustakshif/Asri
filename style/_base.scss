@@ -890,7 +890,7 @@ animation-direction: #{$anim-dir};
     }
 }
 
-@mixin bouncy-check-box($checked: false, $icon-size: 1em, $stroke-width: .1em) {
+@mixin bouncy-check-box($checked: false, $icon-size: 1.1em, $stroke-width: .1em) {
     &::before {
         content: '';
         position: absolute;
