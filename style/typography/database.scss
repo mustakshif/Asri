@@ -245,7 +245,7 @@
 
     &__row {
         .av__colsticky {
-            transition: opacity .2s;
+            // transition: opacity .2s;
             cursor: pointer;
         }
 
@@ -274,6 +274,20 @@
                 @include bouncy-check-box(true, 1.1em);
             }
         }
+    }
+
+    &__firstcol::before {
+        transition: opacity .2s;
+        opacity: 0;
+    }
+
+    &__firstcol:hover::before {
+        opacity: 1; 
+    }
+
+    &__row--select .av__firstcol::before, 
+    &__row--hl .av__firstcol::before {
+        opacity: 1;
     }
 
     &__cell[data-wrap=true] {

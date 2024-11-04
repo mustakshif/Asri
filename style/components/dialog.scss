@@ -1611,7 +1611,6 @@ body.body--window {
 // 导出界面
 body[style*="-webkit-print-color-adjust"] {
     #action {
-        padding-bottom: 8px;
 
         .b3-label {
             border-bottom: none;
@@ -1639,9 +1638,10 @@ body[style*="-webkit-print-color-adjust"] {
             @include button-action('primary')
         }
 
-        > div:last-child {
-            padding: 8px 16px !important;
-        }
+        // padding-bottom: 8px; // unnecessary, use default value
+        // >:last-child {
+        //     padding: 8px 16px !important;
+        // } // ❓ don't konw why this statement causes large cpu usage on mobile
     }
 }
 

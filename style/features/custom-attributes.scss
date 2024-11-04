@@ -140,24 +140,28 @@
             .av__colsticky {
                 left: calc(var(--protyle-spacing-compatible) * -1 - 3px);
 
-                // 固定列左侧勾选框
-                .av__firstcol {
-                    opacity: 1;
-                }
+                // // 固定列左侧勾选框
+                // .av__firstcol {
+                //     opacity: 1;
+                // }
             }
 
             .av__firstcol {
                 // border-right: 1px solid var(--b3-border-color-trans);
                 opacity: 0;
+                transition-delay: .2s;
+                transition-property: opacity;
 
                 &:hover {
                     opacity: 1;
+                    transition-delay: 0s;
                 }
             }
 
             .av__row--select {
                 .av__firstcol {
                     opacity: 1;
+                    transition-delay: 0s;
                 }
             }
         }
