@@ -1246,8 +1246,8 @@
 
     @keyframes gutters-appear {
         from {
-            opacity: 0;
-            transform: scale(.5) translateX(8px);
+            // opacity: 0;
+            transform: scale(.5) translateX(4px);
             // filter: blur(12px);
         }
 

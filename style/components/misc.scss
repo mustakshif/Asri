@@ -286,6 +286,7 @@ textarea {
     @include tooltip-styles;
 
     animation-delay: .75s;
+    animation-timing-function: $timing-function-decelerate;
 
     .ft__on-surface {
         color: var(--b3-theme-on-surface);

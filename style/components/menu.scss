@@ -6,6 +6,17 @@
     @include border-or-not($border: false);
     border-radius: $border-rd-menu;
     padding: 0;
+    // animation: menu-pop-up .3s $timing-function-bouncy;
+
+    // @keyframes menu-pop-up {
+    //     0%,100% {
+    //         transform: none;
+    //     }
+
+    //     3% {
+    //         transform: scale(1.02);
+    //     }
+    // }
 
     .b3-menu__items {
         padding: 5px;
