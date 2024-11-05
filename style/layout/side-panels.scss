@@ -413,32 +413,32 @@
                 margin: 6px 0;
             }
 
-            span.protyle-breadcrumb__item,
-            svg.protyle-breadcrumb__arrow {
-                display: none;
-            }
+            // span.protyle-breadcrumb__item,
+            // svg.protyle-breadcrumb__arrow {
+            //     display: none;
+            // }
 
-            span.protyle-breadcrumb__item:nth-last-of-type(1),
-            span.protyle-breadcrumb__item:nth-last-of-type(2) {
-                display: flex;
-            }
+            // span.protyle-breadcrumb__item:nth-last-of-type(1),
+            // span.protyle-breadcrumb__item:nth-last-of-type(2) {
+            //     display: flex;
+            // }
 
-            svg.protyle-breadcrumb__arrow:last-of-type {
-                display: block;
-            }
+            // svg.protyle-breadcrumb__arrow:last-of-type {
+            //     display: block;
+            // }
 
-            span.protyle-breadcrumb__item:nth-last-of-type(1) {
-                opacity: 0;
-                transition: opacity 0.2s;
-            }
+            // span.protyle-breadcrumb__item:nth-last-of-type(1) {
+            //     opacity: 0;
+            //     transition: opacity 0.2s;
+            // }
 
-            &:hover span.protyle-breadcrumb__item:nth-last-of-type(1) {
-                opacity: 1;
-            }
+            // &:hover span.protyle-breadcrumb__item:nth-last-of-type(1) {
+            //     opacity: 1;
+            // }
 
-            span.protyle-breadcrumb__item:first-child {
-                opacity: 1;
-            }
+            // span.protyle-breadcrumb__item:first-child {
+            //     opacity: 1;
+            // }
 
             .protyle-breadcrumb__item--active svg {
                 background-color: var(--b3-theme-primary);
