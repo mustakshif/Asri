@@ -13,6 +13,13 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.14
+
+* Adapted style changes for SiYuan v3.1.11
+* Optimized the size and shape of PDF annotation highlights
+* Fixed high CPU usage on mobile devices caused by theme styling
+* Fixed persistent display of database entry checkboxes in non-full-width-display mode
+
 ### v3.1.13
 
 * [Added block icons animation](https://github.com/mustakshif/Asri/issues/109)
@@ -23,14 +30,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Adjusted underline style for database primary keys with references
 * Modified border radius for some menus
 * Fixed excessive CPU usage occurring when the application window loses focus
-
-### v3.1.12
-
-* Optimized notification styles
-* Enhanced bottom margin of font style menu
-* Improved backlink panel display
-* [Fixed an issue where database tags were partially hidden at certain zoom levels](https://github.com/mustakshif/Asri/issues/104)
-* [Fixed an issue where exporting to images was not working](https://github.com/mustakshif/Asri/issues/106)
 
 ### ...
 

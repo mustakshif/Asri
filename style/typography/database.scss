@@ -529,7 +529,7 @@ img.av__cellassetimg {
     &[data-name="av-col-option"] {
         .b3-menu__item {
             .color__square {
-                box-shadow: none;
+                // box-shadow: none;
 
                 &[style*="var(--b3-font-background1)"] {
                     outline: 1px solid var(--b3-border-color-trans);

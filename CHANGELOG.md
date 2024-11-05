@@ -1,3 +1,19 @@
+### v3.1.14
+
+* 适配思源 v3.1.11 的样式改动
+* 优化 PDF 标注色块大小和形状
+* 修复主题样式造成的移动端 CPU 占用过高的问题
+* 修复非全宽显示数据库条目勾选框持续显示的问题
+
+<br />
+
+* Adapted style changes for SiYuan v3.1.11
+* Optimized the size and shape of PDF annotation highlights
+* Fixed high CPU usage on mobile devices caused by theme styling
+* Fixed persistent display of database entry checkboxes in non-full-width-display mode
+
+---
+
 ### v3.1.13
 
 * [新增块标出现动画](https://github.com/mustakshif/Asri/issues/109)

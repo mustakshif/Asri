@@ -385,6 +385,11 @@ textarea {
             @include menu-shadow();
             @include border-or-not();
 
+            a {
+                color: var(--b3-theme-on-background);
+                text-decoration-color: var(--b3-theme-primary);
+            }    
+
             &--close {
                 padding-right: 16px;
 

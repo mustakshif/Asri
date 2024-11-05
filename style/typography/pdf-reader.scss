@@ -140,14 +140,18 @@
         padding: 6px;
 
         .color__square {
-            height: 14px;
-            width: 14px;
+            height: 20px;
+            width: 20px;
             margin-right: 6px;
-            border-radius: 50%;
+            border-radius: 6px;
 
             &:hover {
                 box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
                 transform: scale(1.2);
+            }
+
+            &:first-child {
+                margin-left: 0;
             }
 
             &:last-child {

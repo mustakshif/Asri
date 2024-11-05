@@ -104,10 +104,8 @@
                     background-color: var(--b3-theme-surface);
                 }
 
-
-                .b3-chip--list {
-                    width: 16px;
-                    height: 16px;
+                .b3-chip {
+                    padding: 0 4px;
                 }
 
                 // 同步？
@@ -150,9 +148,19 @@
             :not(.b3-dialog__body)>.history__panel {
                 border-top: 1px solid var(--b3-border-color-trans);
 
-                .b3-list--background {
-                    border-right: 1px solid var(--b3-border-color);
+                // .b3-list--background {
+                //     border-right: 1px solid var(--b3-border-color);
+                // }
+            }
+
+            #historyContainer {
+                [data-type=doc]>div:first-child {
+                    border-bottom: none !important;
                 }
+            }
+
+            .history__resize {
+                box-shadow: none;
             }
         }
 
@@ -187,7 +195,7 @@
             padding: 12px 18px;
         }
 
-        &__header.fn__none ~ .b3-dialog__body .b3-dialog__content {
+        &__header.fn__none~.b3-dialog__body .b3-dialog__content {
             padding-top: 18px;
         }
     }
@@ -573,7 +581,7 @@
                             background-color: var(--b3-theme-primary);
                             color: var(--b3-theme-on-primary);
                             outline: none;
-                            
+
                             &:hover {
                                 background-color: rgb(from var(--b3-theme-primary) r g b / .8);
                             }

@@ -13,6 +13,13 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.1.14
+
+* 适配思源 v3.1.11 的样式改动
+* 优化 PDF 标注色块大小和形状
+* 修复主题样式造成的移动端 CPU 占用过高的问题
+* 修复非全宽显示数据库条目勾选框持续显示的问题
+
 ### v3.1.13
 
 * [新增块标出现动画](https://github.com/mustakshif/Asri/issues/109)
@@ -23,14 +30,6 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * 调整数据库主键有引用时的下划线样式
 * 调整部分菜单圆角
 * 修复了应用窗口失焦时导致的 CPU 过度占用问题
-
-### v3.1.12
-
-* 优化通知样式
-* 优化字体样式菜单底部边距
-* 改进反链面板显示
-* [修复特定缩放比例下数据库标签显示不全的问题](https://github.com/mustakshif/Asri/issues/104)
-* [修复无法导出为图片的问题](https://github.com/mustakshif/Asri/issues/106)
 
 ### ...
 

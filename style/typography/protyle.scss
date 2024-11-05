@@ -803,10 +803,11 @@
 
     .protyle-font__style {
         font-size: 14px;
+        border-radius: 8px;
 
         &:hover {
-            transform: scale(1.1);
-            box-shadow: none;
+            transform: scale(1.08);
+            box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
             border-color: transparent;
             background-color: var(--b3-list-hover);
         }
@@ -814,34 +815,43 @@
 
     .b3-button {
         @include button-action('normal');
+        box-shadow: none;
+    }
+
+    .fn__space--small {
+        display: none;
     }
 }
 
 .color__square {
-    width: 20px;
-    height: 20px;
+    // width: 20px;
+    // height: 20px;
     box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
-    border-radius: 50%;
-    line-height: 20px;
-    font-size: 14px;
+    border-radius: 8px;
+    // line-height: 20px;
+    // font-size: 14px;
 
     // &[data-type="backgroundColor"] {
     //     box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
     // }
 
     &:hover {
-        box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+        // box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
         transform: scale(1.2);
-        font-weight: bold;
+        // font-weight: bold;
+    }
+
+    &:hover:not(.color__square--list) {
+        box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
     }
 
     .b3-menu__label & {
-        width: 12px;
-        height: 12px;
+        width: 26px;
+        height: 26px;
+        font-weight: normal;
 
         &:hover {
             transform: none;
-            font-weight: normal;
         }
     }
 
