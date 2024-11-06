@@ -123,8 +123,9 @@
     &:hover {
         background-color: var(--b3-theme-primary);
         color: var(--b3-theme-on-primary);
-        transition: .1s all;
-        outline: none;
+        transition: .1s;
+        transition-property: color, background-color, outline-color;
+        outline-color: transparent;
         // border-radius: 6px;
     }
 
@@ -141,6 +142,8 @@
 @mixin button-action($type) {
     border-radius: 7px;
     padding: 4px 16px;
+    transition-property: color, background-color, outline;
+    outline-offset: -1px;
 
     &:hover {
         box-shadow: none;
@@ -194,10 +197,11 @@
     @else if $type =='danger' {
         color: var(--b3-theme-error);
         background-color: transparent;
-        outline: 1px solid rgb(from var(--b3-theme-error) r g b / .2);
+        outline: 1px solid rgb(from var(--b3-theme-error) r g b / .3);
+        box-shadow: none;
 
         &:hover {
-            @include theme-variant-color(background-color, error, 0.08)
+            background-color: rgb(from var(--b3-theme-error) r g b / .2);
         }
 
         &:active,
@@ -205,7 +209,7 @@
             background-color: var(--b3-theme-error);
             color: var(--b3-theme-on-error);
             transition: .1s;
-            outline: none;
+            outline-color: transparent;
         }
     }
 

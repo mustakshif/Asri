@@ -183,7 +183,7 @@
                     @include button-action('primary');
                 }
 
-                &--error {
+                &--remove {
                     @include button-action('danger');
                 }
             }
