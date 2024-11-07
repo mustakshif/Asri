@@ -218,6 +218,12 @@
             text-decoration-line: underline line-through;
         }
     }
+
+    span[data-type~=u] .katex .base>span {
+        text-decoration: underline;
+        text-decoration-thickness: $text-underline-thickness;
+        text-underline-offset: -.05em;
+    }
 }
 
 @mixin linethrough {
