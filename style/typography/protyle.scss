@@ -1042,6 +1042,22 @@
     [data-type~=s] {
         opacity: .5 !important;
     }
+
+    [data-node-id] {
+        transition-property: box-shadow, background-color;
+        transition-duration: .2s;
+        transition-timing-function: $timing-function-decelerate;
+    }
+
+    // 块高亮
+    &--hl {
+        box-shadow: 0 0 0 2px var(--b3-theme-primary-light);
+        // background-color: transparent !important;
+    }
+
+    &--select{
+        box-shadow: none;
+    }
 }
 
 //文字格式工具条
