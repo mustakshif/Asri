@@ -13,23 +13,18 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.15
+
+* Enhanced block highlighting state styles and transition animations
+* Improved delete button styling
+* Added underline style support for inline formulas
+
 ### v3.1.14
 
 * Adapted style changes for SiYuan v3.1.11
 * Optimized the size and shape of PDF annotation highlights
 * Fixed high CPU usage on mobile devices caused by theme styling
 * Fixed persistent display of database entry checkboxes in non-full-width-display mode
-
-### v3.1.13
-
-* [Added block icons animation](https://github.com/mustakshif/Asri/issues/109)
-* [Improved task list checkbox icons and animations](https://github.com/mustakshif/Asri/issues/111)
-* Improved database checkbox icons and animations
-* Optimized padding for database single-select, multi-select, and resource columns
-* Enhanced styling for resource column content in database property panel
-* Adjusted underline style for database primary keys with references
-* Modified border radius for some menus
-* Fixed excessive CPU usage occurring when the application window loses focus
 
 ### ...
 

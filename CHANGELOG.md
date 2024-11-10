@@ -1,3 +1,17 @@
+### v3.1.15
+
+* 优化块高亮状态的样式和过渡动画
+* 优化删除按钮样式
+* 行内公式支持应用下划线样式
+
+<br />
+
+* Enhanced block highlighting state styles and transition animations
+* Improved delete button styling
+* Added underline style support for inline formulas
+
+---
+
 ### v3.1.14
 
 * 适配思源 v3.1.11 的样式改动
