@@ -605,11 +605,11 @@
     .li[data-subtype=t] {
         .protyle-action--task {
             @include bouncy-check-box;
-        }
-
-        svg {
-            visibility: hidden;
-        }
+            
+            >svg {
+                visibility: hidden;
+            }
+        }        
     }
 
     .li.protyle-task--done {
