@@ -905,7 +905,7 @@ animation-direction: #{$anim-dir};
             height: calc($icon-size - .05em);
             background-color: currentColor;
             mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round"/><rect width="18.5" height="18.5" x="2.75" y="2.75" rx="6"/></g></svg>');
-            animation: uncheck .3s $timing-function-bouncy forwards;
+            animation: uncheck .3s $timing-function-bouncy forwards; // Animation adds mousewheel event listener to the block and the content in it, which is not good? This can be checked in the render tab of the inspector.
         }
 
         @else {
