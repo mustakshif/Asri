@@ -896,9 +896,9 @@ animation-direction: #{$anim-dir};
 
 @mixin bouncy-check-box($checked: false, $icon-size: 1.1em, $stroke-width: .1em) {
     &::before {
-        content: '';
+        content: '' !important; // fix https://github.com/mustakshif/Asri/issues/113
         position: absolute;
-
+        // display: block !important;
 
         @if $checked==false {
             width: calc($icon-size - .05em);
