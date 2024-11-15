@@ -281,8 +281,8 @@
             }
 
             .b3-button {
-                @include button-action('primary');
-                padding: 0 8px;
+                @include button-action('normal');
+                padding: 4px 8px;
                 background-color: transparent;
             }
         }
