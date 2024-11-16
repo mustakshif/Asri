@@ -1253,6 +1253,12 @@
 
     >button {
         transform-origin: right center;
+
+        &:hover {
+            svg {
+                color: var(--b3-theme-primary);
+            }
+        }
     }
 
     >button:not([data-type=NodeAttributeViewRow], [data-type=NodeAttributeViewRowMenu], :only-child) {
