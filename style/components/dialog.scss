@@ -298,6 +298,10 @@
     //         overflow: hidden;
     //     }
     // }
+
+    #transactionError+.b3-dialog__action button:last-child {
+        @include button-action('primary');
+    }
 }
 
 .search__tip {
@@ -1441,15 +1445,15 @@
 //     font-feature-settings: "ss06" on;
 // } //避免在非苹果设备上出现意外的字形渲染结果
 
-#aciton {
-    .b3-button--cancel {
-        @include button-action('normal');
-    }
+// #aciton {
+//     .b3-button--cancel {
+//         @include button-action('normal');
+//     }
 
-    .b3-button--text {
-        @include button-action('primary');
-    }
-}
+//     .b3-button--text {
+//         @include button-action('primary');
+//     }
+// }
 
 
 // 新窗口 ————————————————————————
