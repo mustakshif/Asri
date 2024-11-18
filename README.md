@@ -13,18 +13,21 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.16
+
+* Adjusted block icon hover color
+* Unified button styles in "Status Error" dialog
+* [Fixed missing code block operation buttons in task list](https://github.com/mustakshif/Asri/issues/112)
+* [Fixed invisible task list checkboxes](https://github.com/mustakshif/Asri/issues/113)
+* Fixed misaligned multi-column slash menu layout
+* Fixed invisible "Copy ID" button in document settings dialog
+
 ### v3.1.15
 
 * Enhanced block highlighting state styles and transition animations
 * Improved delete button styling
 * Added underline style support for inline formulas
 
-### v3.1.14
-
-* Adapted style changes for SiYuan v3.1.11
-* Optimized the size and shape of PDF annotation highlights
-* Fixed high CPU usage on mobile devices caused by theme styling
-* Fixed persistent display of database entry checkboxes in non-full-width-display mode
 
 ### ...
 

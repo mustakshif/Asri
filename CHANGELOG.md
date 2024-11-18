@@ -1,3 +1,23 @@
+### v3.1.16
+
+* 调整块标在鼠标悬停时的颜色
+* 统一「状态异常」对话框按钮样式
+* [修复任务列表中的代码块操作按钮丢失的问题](https://github.com/mustakshif/Asri/issues/112)
+* [修复任务列表勾选框不可见的问题](https://github.com/mustakshif/Asri/issues/113)
+* 修复多列斜杠菜单布局错位
+* 修复文档设置对话框「复制ID」按钮不可见的问题
+
+<br />
+
+* Adjusted block icon hover color
+* Unified button styles in "Status Error" dialog
+* [Fixed missing code block operation buttons in task list](https://github.com/mustakshif/Asri/issues/112)
+* [Fixed invisible task list checkboxes](https://github.com/mustakshif/Asri/issues/113)
+* Fixed misaligned multi-column slash menu layout
+* Fixed invisible "Copy ID" button in document settings dialog
+
+---
+
 ### v3.1.15
 
 * 优化块高亮状态的样式和过渡动画
