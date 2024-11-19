@@ -1,21 +1,29 @@
 @use '../base' as *;
 
+
+// 嵌入块和引用块中的数据库表头等处的背景色
+[data-type=NodeBlockQueryEmbed],
+[data-type=NodeBlockquote] {
+    --b3-parent-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background));
+}
+
 .av {
-    &__container[style="--av-background:var(--b3-theme-surface)"] {
-        --av-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background)) !important;
 
-        [data-type="NodeBlockQueryEmbed"][style*="var(--b3-font-background1)"] & {
-            --av-background: var(--b3-theme-background) !important;
-        }
-    }
+    // &__container[style="--av-background:var(--b3-theme-surface)"] {
+    //     --av-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background)) !important;
 
-    .bq &__container[style="--av-background:var(--b3-theme-background)"] {
-        --av-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background)) !important;
-    }
+    //     [data-type="NodeBlockQueryEmbed"][style*="var(--b3-font-background1)"] & {
+    //         --av-background: var(--b3-theme-background) !important;
+    //     }
+    // }
 
-    .bq[style*="var(--b3-font-background1)"] &__container[style="--av-background:var(--b3-theme-background)"] {
-        --av-background: var(--b3-theme-background) !important;
-    }
+    // .bq &__container[style="--av-background:var(--b3-theme-background)"] {
+    //     --av-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background)) !important;
+    // }
+
+    // .bq[style*="var(--b3-font-background1)"] &__container[style="--av-background:var(--b3-theme-background)"] {
+    //     --av-background: var(--b3-theme-background) !important;
+    // }
 
     // 数据库视图切换、标题
     &__header {
@@ -254,7 +262,7 @@
                 visibility: hidden;
             }
 
-            &::before {
+            .av__firstcol::before {
                 top: 0;
                 bottom: 0;
                 left: 0;
@@ -264,14 +272,14 @@
         }
 
         &:not(&--select, .av__row--header) {
-            .av__colsticky {
-                @include bouncy-check-box(false, 1.1em);
+            .av__colsticky .av__firstcol {
+                @include bouncy-check-box(false, 1.2em);
             }
         }
 
         &--select:not(.av__row--header) {
-            .av__colsticky {
-                @include bouncy-check-box(true, 1.1em);
+            .av__colsticky .av__firstcol {
+                @include bouncy-check-box(true, 1.2em);
             }
         }
     }
@@ -282,10 +290,10 @@
     }
 
     &__firstcol:hover::before {
-        opacity: 1; 
+        opacity: 1;
     }
 
-    &__row--select .av__firstcol::before, 
+    &__row--select .av__firstcol::before,
     &__row--hl .av__firstcol::before {
         opacity: 1;
     }
@@ -496,15 +504,19 @@
         }
 
         &-uncheck {
-            @include bouncy-check-box(false, 1.15em){
+            @include bouncy-check-box(false, 1.15em) {
                 animation: none;
-            };
+            }
+
+            ;
         }
 
         &-check {
-            @include bouncy-check-box(true, 1.1em){
+            @include bouncy-check-box(true, 1.1em) {
                 animation: none;
-            };
+            }
+
+            ;
         }
     }
 }

@@ -353,7 +353,7 @@
             border-radius: 1px;
             z-index: 1;
             position: relative;
-            transition-delay: .125s; // 优化鼠标划过时的闪烁
+            transition-delay: .1s; // 优化鼠标划过时的闪烁
             // padding-left: 8px;
             // padding-right: 8px;
             // margin-left: -8px;
@@ -381,6 +381,10 @@
 
         &>[data-type='NodeHeading']:first-child {
             margin-top: 0;
+        }
+
+        &::before {
+            display: none;
         }
     }
 }
@@ -744,7 +748,7 @@
 
     // 嵌入块 ——————————————————————————————————————
     [data-node-id].render-node[data-type=NodeBlockQueryEmbed] {
-        border-left: none;
+        border: none;
         padding: 12px 16px;
         background-color: var(--b3-theme-surface-light);
 
@@ -904,10 +908,11 @@
 
             .b3-chip {
                 background-color: var(--b3-theme-background);
+                align-self: center;
             }
 
             .b3-chip--pointer {
-                opacity: 1;
+                opacity: unset;
             }
         }
 
@@ -1057,6 +1062,23 @@
 
     &--select{
         box-shadow: none;
+    }
+
+    &--select::after, &--hl::after {
+        border-radius: 10px;
+        // animation: select .3s $timing-function-bouncy forwards;
+
+        // @keyframes select {
+
+        //     0%,
+        //     100% {
+        //         transform: none;
+        //     }
+        
+        //     3% {
+        //         transform: scale(1.01);
+        //     }
+        // }
     }
 }
 

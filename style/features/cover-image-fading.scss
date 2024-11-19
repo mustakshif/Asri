@@ -123,7 +123,7 @@ body:not(.body-asri--mobile) {
             // 有题头图
             .protyle-background__img+.protyle-background__ia {
                 // 无标签
-                .protyle-background__action {
+                >.protyle-background__action {
                     position: absolute;
                     top: auto;
                     transform: translateX(88px); // 可能是导致 https://github.com/mustakshif/Asri/issues/58 的原因

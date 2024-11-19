@@ -136,7 +136,7 @@
     background-color: var(--b3-menu-background);
 
     &.hint--menu {
-        
+
         .color__square {
             width: 20px;
             height: 20px;
@@ -306,13 +306,33 @@
 .emojis {
     padding: 0;
 
-    .fn__flex:first-child {
-        // margin: 8px 0;
-        padding: 8px 0;
+    // .fn__flex:first-child {
+    //     // margin: 8px 0;
+    //     padding: 8px 0;
 
-        // 搜索框
-        span.fn__space+.b3-form__icon {
-            overflow: visible;
+    //     // 搜索框
+    //     span.fn__space+.b3-form__icon {
+    //         overflow: visible;
+    //     }
+    // }
+
+    &__tabheader {
+        padding-top: 8px;
+        border-color: var(--b3-border-color-trans);
+    }
+
+    &__tabbody {
+        [data-type="tab-emoji"] {
+            >.fn__hr {
+                display: none;
+            }
+            >.fn__flex:nth-child(2) {
+                position: absolute;
+                top: 6px;
+                margin-left: 64px;
+                margin-right: 30px;
+                width: -webkit-fill-available;
+            }
         }
     }
 
