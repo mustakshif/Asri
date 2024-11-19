@@ -13,6 +13,10 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.17
+
+* Adapted style changes for SiYuan v3.1.12
+
 ### v3.1.16
 
 * Adjusted block icon hover color
@@ -21,13 +25,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * [Fixed invisible task list checkboxes](https://github.com/mustakshif/Asri/issues/113)
 * Fixed misaligned multi-column slash menu layout
 * Fixed invisible "Copy ID" button in document settings dialog
-
-### v3.1.15
-
-* Enhanced block highlighting state styles and transition animations
-* Improved delete button styling
-* Added underline style support for inline formulas
-
 
 ### ...
 
