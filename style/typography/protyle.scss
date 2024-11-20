@@ -595,14 +595,14 @@
 
     // 任务列表项 ————————————————————————————————
     .protyle-task--done {
-        &>div[data-node-id]:not(.list) {
+        &>div[data-node-id].p {
             opacity: .5;
             color: inherit;
             text-decoration: none;
         }
     }
 
-    .li>div[data-node-id]:not(.list) {
+    .li>div[data-node-id].p {
         transition: opacity .3s;
     }
 
@@ -1049,7 +1049,7 @@
     }
 
     [data-node-id] {
-        transition-property: box-shadow, background-color;
+        transition-property: box-shadow;
         transition-duration: .2s;
         transition-timing-function: $timing-function-decelerate;
     }

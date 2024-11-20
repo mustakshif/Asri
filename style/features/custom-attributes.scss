@@ -136,7 +136,6 @@
                 display: none;
             }
 
-            // 「添加行」按钮
             .av__colsticky {
                 left: calc(var(--protyle-spacing-compatible) * -1 - 3px);
 
@@ -146,9 +145,15 @@
                 // }
             }
 
-            .av__firstcol {
+            // 「添加行」按钮
+            .av__row--util .av__colsticky {
+                opacity: unset;
+            }
+
+            .av__colsticky {
                 // border-right: 1px solid var(--b3-border-color-trans);
                 opacity: 0;
+                transition-duration: .2s;
                 transition-delay: .2s;
                 transition-property: opacity;
 
@@ -159,7 +164,7 @@
             }
 
             .av__row--select {
-                .av__firstcol {
+                .av__colsticky {
                     opacity: 1;
                     transition-delay: 0s;
                 }
@@ -176,7 +181,7 @@
         > :first-child {
             margin-left: calc(var(--protyle-spacing-compatible)*-1 + min(24px, var(--protyle-spacing-compatible)));
             transition: margin .2s;
-            
+
 
             // >*,
             // .sb,
