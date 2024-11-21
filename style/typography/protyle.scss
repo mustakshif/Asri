@@ -551,7 +551,6 @@
 
     // 列表 ——————————————————————————————————————
     .li {
-
         // 列表项序号、图标
         .protyle-action {
             // opacity: .6;
@@ -581,8 +580,13 @@
         }
 
         // 引用块 
-        &>:is(.bq, blockquote) {
+        >:is(.bq, blockquote) {
             padding-right: 16px;
+        }
+
+        >.bq:nth-last-child(2) {
+            margin-top: .5em;
+            margin-bottom: .5em;
         }
 
         //折叠时序号背景
