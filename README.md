@@ -15,6 +15,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ### v3.1.18
 
+* Set bottom margin for "Backlink Panel" plugin
 * Adjusted the color change logic for checked items in checklists
 * Fixed the positioning issue of the "Add Tag" button when document headers contain tags
 * Fixed abnormal top and bottom margin issues of quote blocks within list blocks
