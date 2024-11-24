@@ -1,3 +1,19 @@
+### v3.1.18
+
+* 调整勾选列表中已勾选项目颜色变化逻辑
+* 修复文档头部有标签时「添加标签」按钮位置异常的问题
+* 修复列表块中引用块的上下外边距异常的问题
+* 修复全宽显示下数据库勾选框列一直可见的问题
+
+<br />
+
+* Adjusted the color change logic for checked items in checklists
+* Fixed the positioning issue of the "Add Tag" button when document headers contain tags
+* Fixed abnormal top and bottom margin issues of quote blocks within list blocks
+* Fixed the issue where database checkbox columns remained visible in full-width display
+
+---
+
 ### v3.1.17
 
 * 适配思源 v3.1.12 的样式改动

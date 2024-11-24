@@ -13,18 +13,16 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.18
+
+* Adjusted the color change logic for checked items in checklists
+* Fixed the positioning issue of the "Add Tag" button when document headers contain tags
+* Fixed abnormal top and bottom margin issues of quote blocks within list blocks
+* Fixed the issue where database checkbox columns remained visible in full-width display
+
 ### v3.1.17
 
 * Adapted style changes for SiYuan v3.1.12
-
-### v3.1.16
-
-* Adjusted block icon hover color
-* Unified button styles in "Status Error" dialog
-* [Fixed missing code block operation buttons in task list](https://github.com/mustakshif/Asri/issues/112)
-* [Fixed invisible task list checkboxes](https://github.com/mustakshif/Asri/issues/113)
-* Fixed misaligned multi-column slash menu layout
-* Fixed invisible "Copy ID" button in document settings dialog
 
 ### ...
 
