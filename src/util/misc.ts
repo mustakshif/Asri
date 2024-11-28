@@ -206,7 +206,7 @@ export function nodeListsHaveSameElements(list1: NodeListOf<Element>, list2: Nod
     return true;
 }
 
-export async function querySelectorAsync(selector: string,scope: Document | HTMLElement | Element = document, trial = 10, timeout = 200): Promise<Element | undefined> {
+export async function querySelectorAsync(selector: string, scope: Document | HTMLElement | Element = document, trial = 10, timeout = 200): Promise<Element | undefined> {
     let n = 0;
     while (n < trial) {
         const element = scope.querySelector<Element>(selector);
