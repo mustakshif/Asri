@@ -13,6 +13,12 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.19
+
+* Adjusted database tag background color in light mode
+* Fixed inconsistent database header background color on mobile devices
+* [Fixed overlapping header elements when opening new pages](https://github.com/mustakshif/Asri/issues/117)
+
 ### v3.1.18
 
 * Set bottom margin for "Backlink Panel" plugin
@@ -20,10 +26,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Fixed the positioning issue of the "Add Tag" button when document headers contain tags
 * Fixed abnormal top and bottom margin issues of quote blocks within list blocks
 * Fixed the issue where database checkbox columns remained visible in full-width display
-
-### v3.1.17
-
-* Adapted style changes for SiYuan v3.1.12
 
 ### ...
 

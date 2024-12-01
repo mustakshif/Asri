@@ -1,3 +1,17 @@
+### v3.1.19
+
+* 微调亮色模式下数据库标签背景色
+* 修复移动端数据库表头背景色差异的问题
+* [修复打开新页面时顶栏元素重叠的问题](https://github.com/mustakshif/Asri/issues/117)
+
+<br />
+
+* Adjusted database tag background color in light mode
+* Fixed inconsistent database header background color on mobile devices
+* [Fixed overlapping header elements when opening new pages](https://github.com/mustakshif/Asri/issues/117)
+
+---
+
 ### v3.1.18
 
 * 适配「反链过滤面板」插件底部间距
