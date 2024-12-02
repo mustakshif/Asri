@@ -7,8 +7,9 @@
     overflow: visible;
 
     #barWorkspace {
-        background-color: transparent;
-        color:var(--b3-theme-on-surface);
+        // background-color: var(--b3-theme-primary-lighter);
+        background-color: #0000;
+        color: var(--b3-theme-on-surface);
         font-weight: 500;
         height: 28px;
         position: relative;

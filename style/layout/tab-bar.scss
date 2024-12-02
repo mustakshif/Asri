@@ -26,7 +26,7 @@
         min-height: unset;
         line-height: 24px;
         margin-right: 8px;
-        border-radius: 6px !important;
+        border-radius: 6px;
         overflow: visible;
         background-color: var(--b3-list-hover);
         // transition-property: max-width, width, backdrop-filter, background-color, color;
@@ -107,13 +107,21 @@
             max-width: 21rem;
             // font-weight: 500;
             transition: 0.2s;
+            // border-radius: 7px;
             @include theme-variant-color(background-color, list-hover, 0.12, 0.15);
+            // box-shadow: 0 0 0 1.2px var(--tab-border-clr) inset;
+            // background-color: #0000;
 
             animation: click 0.2s;
 
             &::after {
                 display: none;
             }
+        }
+
+        --tab-border-clr: var(--b3-border-color-trans);
+        @include darkmode-counterpart {
+            --tab-border-clr: rgba(from var(--b3-theme-on-background) r g b / .3);
         }
     }
 }

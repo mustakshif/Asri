@@ -6,6 +6,10 @@ $fadeout-size-m: 32px;
 $fadeout-size-l: 40px;
 $fadeout-size-xl: 50px;
 
+// .layout-tab-bar {
+//     @include overflow-indicator-fadein-mask($fadeout-size-s, $range: 'left right');
+// }
+
 .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1,
 .sy__file>.b3-list>.fn__flex-1 {
     @include overflow-indicator-fadein-mask($fadeout-size-s, 'top');
