@@ -89,6 +89,10 @@
             .history__repo {
                 background-color: unset;
 
+                .history__action {
+                    border-bottom: none;
+                }
+
                 select.b3-select {
                     width: auto;
                 }
@@ -1324,33 +1328,33 @@
 }
 
 // 高亮
-.protyle-wysiwyg [data-node-id] span[data-type~=search-mark] {
-    border-radius: 4px;
-    // padding: 2px;
-    // margin: 0 -2px;
-    // mix-blend-mode: multiply; //有时会出现显示异常
-    box-decoration-break: clone;
-    background-color: var(--b3-protyle-inline-mark-background) !important;
-    color: var(--b3-theme-on-background) !important;
+// .protyle-wysiwyg [data-node-id] span[data-type~=search-mark] {
+//     border-radius: 4px;
+//     // padding: 2px;
+//     // margin: 0 -2px;
+//     // mix-blend-mode: multiply; //有时会出现显示异常
+//     box-decoration-break: clone;
+//     background-color: var(--b3-protyle-inline-mark-background) !important;
+//     color: var(--b3-theme-on-background) !important;
 
-    // @include darkmode-counterpart {
-    //     mix-blend-mode: normal;
-    // }
+//     // @include darkmode-counterpart {
+//     //     mix-blend-mode: normal;
+//     // }
 
-    .file-tree & {
-        border-radius: 0;
-        padding: 0;
-        margin: 0;
-        // mix-blend-mode: normal;
-    }
+//     .file-tree & {
+//         border-radius: 0;
+//         padding: 0;
+//         margin: 0;
+//         // mix-blend-mode: normal;
+//     }
 
-    &.search-mark--hl {
-        @include menu-shadow(var(--b3-theme-primary), $opacity-light: 0.15, $opacity-dark: 0.4);
-        // mix-blend-mode: normal;
-        background-color: var(--b3-theme-primary-lighter) !important;
-        color: var(--b3-theme-on-background) !important;
-    }
-}
+//     &.search-mark--hl {
+//         @include menu-shadow(var(--b3-theme-primary), $opacity-light: 0.15, $opacity-dark: 0.4);
+//         // mix-blend-mode: normal;
+//         background-color: var(--b3-theme-primary-lighter) !important;
+//         color: var(--b3-theme-on-background) !important;
+//     }
+// }
 
 // 引用失效面板
 #searchUnRefList {

@@ -348,7 +348,7 @@
                             color: var(--b3-theme-on-surface)
                         }
 
-                        &:first-child>.block__icon+.ft__center {
+                        &:first-child>.block__icon:not(.fn__none)+.ft__center {
                             transform: translateX(-15px);
                             pointer-events: none;
                         }

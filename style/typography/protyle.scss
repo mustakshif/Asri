@@ -551,6 +551,7 @@
 
     // 列表 ——————————————————————————————————————
     .li {
+
         // 列表项序号、图标
         .protyle-action {
             // opacity: .6;
@@ -613,11 +614,11 @@
     .li[data-subtype=t] {
         .protyle-action--task {
             @include bouncy-check-box;
-            
+
             >svg {
                 visibility: hidden;
             }
-        }        
+        }
     }
 
     .li.protyle-task--done {
@@ -723,11 +724,14 @@
         margin-top: $sb-gap;
     }
 
-    [data-node-id].sb[data-sb-layout=col]>div {
-        margin-right: $sb-gap;
-    }
+    // [data-node-id].sb[data-sb-layout=col]>div {
+    //     margin-right: $sb-gap;
+    // }
 
-    // [data-node-id].sb[data-sb-layout=row]>.sb:first-child {
+    [data-node-id].sb[data-sb-layout=col] {
+        column-gap: $sb-gap;
+    } // [data-node-id].sb[data-sb-layout=row]>.sb:first-child {
+
     //     margin-top: 0;
     // }
     [data-node-id].sb[data-sb-layout=col]>.sb {
@@ -1064,11 +1068,12 @@
         // background-color: transparent !important;
     }
 
-    &--select{
+    &--select {
         box-shadow: none;
     }
 
-    &--select::after, &--hl::after {
+    &--select::after,
+    &--hl::after {
         border-radius: 10px;
         // animation: select .3s $timing-function-bouncy forwards;
 
@@ -1078,7 +1083,7 @@
         //     100% {
         //         transform: none;
         //     }
-        
+
         //     3% {
         //         transform: scale(1.01);
         //     }
