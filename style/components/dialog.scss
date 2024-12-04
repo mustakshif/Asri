@@ -306,6 +306,14 @@
     #transactionError+.b3-dialog__action button:last-child {
         @include button-action('primary');
     }
+
+    // 块属性 ————————————————————
+    &[data-key="dialog-attr"] {
+        button[data-action="addCustom"],
+        button[data-type="addColumn"] {
+            @include button-action('normal');
+        }
+    }
 }
 
 .search__tip {
