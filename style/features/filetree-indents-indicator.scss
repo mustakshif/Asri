@@ -96,7 +96,7 @@
 
     &>ul ul {
         transition-duration: 0.2s;
-        transition-property: --indent-color;
+        transition-property: --indent-color, height;
     }
     
     &:hover>ul ul,
