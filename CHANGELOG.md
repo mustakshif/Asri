@@ -1,3 +1,17 @@
+### v3.1.20
+
+* 适配思源 v3.1.14 样式改动
+* [修复文档树条目展开动画卡顿的问题](https://github.com/mustakshif/Asri/issues/118)
+* 修复 PDF 文档属性面板按钮样式
+
+<br />
+
+* Updated styles to be compatible with SiYuan v3.1.14
+* [Fixed laggy animation when expanding document tree items](https://github.com/mustakshif/Asri/issues/118)
+* Fixed button styles in PDF document properties panel
+
+---
+
 ### v3.1.19
 
 * 微调亮色模式下数据库标签背景色

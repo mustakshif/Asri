@@ -53,7 +53,7 @@ $fadeout-size-xl: 50px;
     @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');
 
     &::before {
-        top: -8px;
+        top: -10px;
     }
 }
 
