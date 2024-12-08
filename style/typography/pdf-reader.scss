@@ -123,8 +123,8 @@
 
             #documentPropertiesClose {
                 @include button-action('primary') {
-                    background-color: transparent;
-                    transition: 0.2s;
+                    // background-color: transparent;
+                    // transition: 0.2s;
 
                     &:hover,
                     &:active,
