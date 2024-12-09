@@ -4,7 +4,7 @@ import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from 
 import { asriDoms, environment as env } from "../util/rsc";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/state";
 import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
-import { followSysAccentColor, getSystemAccentColor, loadThemePalette, unloadThemePalette } from "./configsMenu/makeItems";
+import { createBarModeMenuItems, followSysAccentColor, getSystemAccentColor, loadThemePalette, unloadThemePalette } from "./configsMenu/makeItems";
 import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { debouncedFormatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClassName } from "./editor";
@@ -82,9 +82,10 @@ export async function unloadAsriJSModules() {
 }
 function lowFreqEventsCallback(e: Event) {
     // console.log(e);
+    createBarModeMenuItems(e);
+    addAfwdMenuItems(e);
     updateStyles(e);
     // if (!env.isIOSApp)
-    addAfwdMenuItems(e);
 }
 
 function winFocusChangeCallback(e: Event) {

@@ -119,10 +119,10 @@
             }
         }
 
-        --tab-border-clr: var(--b3-border-color-trans);
-        @include darkmode-counterpart {
-            --tab-border-clr: rgba(from var(--b3-theme-on-background) r g b / .3);
-        }
+        // --tab-border-clr: var(--b3-border-color-trans);
+        // @include darkmode-counterpart {
+        //     --tab-border-clr: rgba(from var(--b3-theme-on-background) r g b / .3);
+        // }
     }
 }
 

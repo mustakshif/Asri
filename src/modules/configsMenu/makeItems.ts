@@ -1,7 +1,7 @@
 // import htmlString from './menuHTML/index.html';
 import { getFile, putFile } from '../../util/api';
 import { remote } from '../../util/electron';
-import { debounce, hexToHSL, hexToOklchL } from '../../util/misc';
+import { debounce, hexToHSL, hexToOklchL, querySelectorAsync } from '../../util/misc';
 import { asriDoms, environment as env } from '../../util/rsc';
 
 const asriConfigs = {
@@ -28,7 +28,8 @@ export async function loadThemePalette() {
                     document.documentElement.style.removeProperty('--asri-user-custom-accent');
                 }
                 else {
-                    document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.userCustomColor); reverseOnPrimaryLightness(asriConfigs.userCustomColor);
+                    document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.userCustomColor);
+                    reverseOnPrimaryLightness(asriConfigs.userCustomColor);
                 }
             } else {
                 document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs.userCustomColor);
@@ -42,7 +43,7 @@ export async function loadThemePalette() {
         }
     });
 
-    env.supportOklch && asriDoms.barMode?.addEventListener("click", customizeThemeColor);
+    // env.supportOklch && asriDoms.barMode?.addEventListener("click", customizeThemeColor);
 }
 
 export function unloadThemePalette() {
@@ -53,7 +54,7 @@ export function unloadThemePalette() {
     document.documentElement.style.removeProperty('--asri-sys-accent-accessible');
     document.documentElement.style.removeProperty('--asri-c-0');
     document.documentElement.style.removeProperty('--asri-on-primary-reverse');
-    asriDoms.barMode?.removeEventListener("click", customizeThemeColor);
+    // asriDoms.barMode?.removeEventListener("click", customizeThemeColor);
     document.querySelectorAll('.asri-config').forEach(el => el.remove());
 }
 
@@ -98,18 +99,22 @@ async function updateAsriConfigs() {
     await putFile("/data/snippets/Asri.config.json", JSON.stringify(asriConfigs, undefined, 4));
 }
 
-async function customizeThemeColor() {
+// async function customizeThemeColor() {
+//     if (!Object.keys(i18n).length) i18n = await loadI18n();
+//     // create menu items and handle click events
+//     setTimeout(createMenuItems, 0);
+// }
+
+export async function createBarModeMenuItems(e: Event) {
+    if (e.type !== 'mouseup') return;
     if (!Object.keys(i18n).length) i18n = await loadI18n();
-
-    // create menu items and handle click events
-    setTimeout(createMenuItems, 0);
-}
-
-function createMenuItems() {
+    const target = e.target as HTMLElement;
+    const targetItem = target.closest('.toolbar__item') as HTMLElement;
+    if (!targetItem) return;
     // use existing menu items if any
     if (document.querySelector('.asri-config')) return;
     // create menu items when there is no existing menu items
-    const barModeMenuItems = document.querySelector('#commonMenu[data-name="barmode"] .b3-menu__items');
+    let barModeMenuItems = await querySelectorAsync('#commonMenu[data-name="barmode"] .b3-menu__items', document, 2, 0);
     if (!barModeMenuItems) return;
 
     const asriConfigMenuHTML = `
