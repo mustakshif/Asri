@@ -13,17 +13,16 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.1.21
+
+* 文档属性面板新增溢出渐隐
+* 适配思源 v3.1.15 样式改动
+
 ### v3.1.20
 
 * 适配思源 v3.1.14 样式改动
 * [修复文档树条目展开动画卡顿的问题](https://github.com/mustakshif/Asri/issues/118)
 * 修复 PDF 文档属性面板按钮样式
-
-### v3.1.19
-
-* 微调亮色模式下数据库标签背景色
-* 修复移动端数据库表头背景色差异的问题
-* [修复打开新页面时顶栏元素重叠的问题](https://github.com/mustakshif/Asri/issues/117)
 
 ### ...
 

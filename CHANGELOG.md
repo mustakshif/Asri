@@ -1,3 +1,15 @@
+### v3.1.21
+
+* 文档属性面板新增溢出渐隐
+* 适配思源 v3.1.15 样式改动
+
+<br />
+
+* Updated styles to be compatible with SiYuan v3.1.15
+* Added overflow fadeout effect in Doc Attribute panel
+
+---
+
 ### v3.1.20
 
 * 适配思源 v3.1.14 样式改动

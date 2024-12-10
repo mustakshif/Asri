@@ -13,17 +13,16 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.21
+
+* Updated styles to be compatible with SiYuan v3.1.15
+* Added overflow fadeout effect in Doc Attribute panel
+
 ### v3.1.20
 
 * Updated styles to be compatible with SiYuan v3.1.14
 * [Fixed laggy animation when expanding document tree items](https://github.com/mustakshif/Asri/issues/118)
 * Fixed button styles in PDF document properties panel
-
-### v3.1.19
-
-* Adjusted database tag background color in light mode
-* Fixed inconsistent database header background color on mobile devices
-* [Fixed overlapping header elements when opening new pages](https://github.com/mustakshif/Asri/issues/117)
 
 ### ...
 
