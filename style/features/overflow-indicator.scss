@@ -91,6 +91,10 @@ body:not(.has-exportimg) // https://github.com/mustakshif/Asri/issues/106
     }
 }
 
+[data-key="dialog-attr"] .b3-dialog__body .layout-tab-bar+.fn__flex-1 {
+    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');
+}
+
 [data-key="dialog-backgroundrandom"] .b3-dialog__body>.b3-cards {
     @include overflow-indicator-fadein-bgClr($fadeout-size-xl, $range: 'top');
 

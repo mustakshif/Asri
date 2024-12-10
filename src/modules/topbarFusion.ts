@@ -176,7 +176,7 @@ export async function calcTabbarSpacings({ execute, centerRectRight } = { execut
         console.log(tabbarContainer);
         if (tabbarContainer.classList.contains('fn__none')) {
             // fix https://github.com/mustakshif/Asri/issues/117
-            tabbarContainer = await querySelectorAsync('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child:not(.fn__none)', wnd) as HTMLElement;
+            tabbarContainer = await querySelectorAsync('.fn__flex-column[data-type="wnd"] > .fn__flex:first-child:not(.fn__none)', wnd, 3) as HTMLElement;
         }
         tabbarContainerRect = tabbarContainer?.getBoundingClientRect() as DOMRect;
         if (!tabbarContainerRect) return;

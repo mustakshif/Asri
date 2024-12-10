@@ -672,6 +672,12 @@ img.av__cellassetimg {
 .custom-attr[data-type="NodeAttributeView"] {
     padding-bottom: 16px;
 
+    .custom-attr__avheader {
+        padding-left: 40px;
+        padding-right: 16px;
+        font-weight: 500;
+    }
+
     .block__icons {
         height: auto;
         min-height: unset;

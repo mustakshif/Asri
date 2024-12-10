@@ -274,9 +274,9 @@ textarea {
     // overflow: hidden;
     // min-width: max-content;
 
-    overflow-wrap: break-word; // 单个长单词换行
-    hyphens: auto; // 长单词换行连字符
-    word-break: keep-all; // 保持CJK字符不换行
+    // overflow-wrap: break-word; // 单个长单词换行
+    // hyphens: auto; // 长单词换行连字符
+    // word-break: keep-all; // 保持CJK字符不换行
 
     @include tooltip-shadow;
     @include border-or-not($outline: false);
