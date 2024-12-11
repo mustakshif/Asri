@@ -458,6 +458,7 @@
 @mixin hljs {
     .hljs {
         border-radius: 10px;
+        padding: 24px 28px;
     }
 }
 
@@ -543,9 +544,19 @@
 
         margin: 0.4em 0;
 
-        .protyle-action .protyle-action__language {
-            margin-top: 0;
-            padding-left: 12px;
+        > .protyle-action {
+            justify-content: flex-end;
+
+            .protyle-action__language {
+                margin-top: 0 !important;
+                // padding-left: 28px;
+                font-weight: 500;
+                font-style: italic;
+
+                +.fn__flex-1 {
+                    max-width: 12px;
+                }
+            }
         }
 
         @include hljs;
