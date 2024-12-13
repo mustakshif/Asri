@@ -29,11 +29,11 @@
             align-items: center;
             
             &:first-child {
-                margin-top: 0;
+                margin-top: .5px;
             }
 
             &:last-child {
-                margin-bottom: 0;
+                margin-bottom: .5px;
             }
 
             &:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not([data-type="nobg"]),
