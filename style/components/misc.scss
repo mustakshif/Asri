@@ -279,7 +279,9 @@ textarea {
     // word-break: keep-all; // 保持CJK字符不换行
 
     @include tooltip-shadow;
-    @include border-or-not($outline: false);
+    @include border-or-not($outline: false) {
+        outline: none;
+    };
 }
 
 // 提示条

@@ -1,3 +1,19 @@
+### v3.1.22
+
+* 增强亮色模式下菜单外框质感
+* 视觉平衡菜单列表首尾项的边距
+* 视觉平衡代码块内边距
+* 调整代码块语言显示样式
+
+<br />
+
+* Enhanced menu border texture in light mode
+* Balanced visual margins for the first and last items in menu lists
+* Balanced internal padding of code blocks
+* Adjusted the display style of code block language indicators
+
+---
+
 ### v3.1.21
 
 * 文档属性面板新增溢出渐隐

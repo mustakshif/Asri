@@ -3,7 +3,13 @@
 .b3-menu,
 .b3-menu__submenu {
     @include menu-shadow($opacity-light: .15);
-    @include border-or-not($border: false);
+
+    @include border-or-not($border: false) {
+        outline: #fff4 solid 1px;
+        outline-offset: -1px;
+    }
+
+    ;
     border-radius: $border-rd-menu;
     padding: 0;
     // animation: menu-pop-up .3s $timing-function-bouncy;
@@ -27,7 +33,7 @@
             line-height: 24px;
             border-radius: 5px;
             align-items: center;
-            
+
             &:first-child {
                 margin-top: .5px;
             }
@@ -139,7 +145,13 @@
 .protyle-hint {
     --b3-border-radius-b: 12px;
     @include menu-shadow;
-    @include border-or-not($border: false);
+
+    @include border-or-not($border: false) {
+        outline: #fff4 solid 1px;
+        outline-offset: -1px;
+    }
+
+    ;
     padding: 0;
     background-color: var(--b3-menu-background);
 
@@ -259,7 +271,11 @@
     border-radius: 12px;
 
     @include menu-shadow;
-    @include border-or-not($border: false);
+
+    @include border-or-not($border: false) {
+        outline: #fff4 solid 1px;
+        outline-offset: -1px;
+    }
 
     .block__icons {
         .resize__move {
@@ -334,6 +350,7 @@
             >.fn__hr {
                 display: none;
             }
+
             >.fn__flex:nth-child(2) {
                 position: absolute;
                 top: 6px;
