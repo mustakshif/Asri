@@ -238,11 +238,16 @@
 
         // 单元格选中状态
         .av__cell--select {
-            box-shadow: none;
+            // box-shadow: none;
             // outline: 3px solid var(--b3-theme-primary-light);
             // z-index: 3;
             border-radius: 0;
             background-color: var(--b3-theme-primary-lightest);
+
+            &::after {
+                // box-shadow: 0 0 0 2px var(--b3-theme-primary);
+                display: none;
+            }
         }
 
         // 勾选框
@@ -531,7 +536,13 @@ img.av__cellassetimg {
 // }
 
 @for $i from 1 through 13 {
-    .b3-chip[style="background-color:var(--b3-font-background#{$i});color:var(--b3-font-color#{$i})"] {
+
+    .b3-chip:where(
+        // 标签列表
+        [style="background-color:var(--b3-font-background#{$i});color:var(--b3-font-color#{$i})"],
+        // 菜单顶部
+        [style="white-space: nowrap;max-width:100%;background-color:var(--b3-font-background#{$i});color:var(--b3-font-color#{$i})"]
+    ) {
         outline: .5px solid rgb(from var(--b3-font-color#{$i}) r g b / .3);
         outline-offset: -.5px;
     }
