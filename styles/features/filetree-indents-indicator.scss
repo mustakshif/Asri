@@ -1,4 +1,4 @@
-@use '../base'  as *;
+@use '../base' as *;
 
 // 文档树缩进参考线 indent guides（方案一）
 // .file-tree>.fn__flex-1 {
@@ -70,13 +70,19 @@
 
 // ————————————————————————————————————————————————————————
 // 文档树缩进参考线 indent guides（方案二）
+@property --indent-color {
+    syntax: '<color>';
+    initial-value: #0000;
+    inherits: false;
+}
+
 .file-tree>.fn__flex-1 {
     $uls: '>ul';
     $indent: 18px;
 
     --indent-color-inactive: rgb(from var(--b3-theme-on-background) r g b / .15);
     --indent-color-active: rgb(from var(--b3-theme-on-background) r g b / .3);
-    
+
     --indent-color: #0000;
 
     @for $i from 1 through 7 {
@@ -89,16 +95,16 @@
                 var(--indent-color) $indent calc($indent + 1px),
                 #0000 calc($indent + 1px) 100%
             );
-            
+
             $indent: $indent + 18px;
         }
     }
 
     &>ul ul {
         transition-duration: 0.2s;
-        transition-property: --indent-color, height;
+        transition-property: --indent-color, height; // added height to fix https://github.com/mustakshif/Asri/issues/118
     }
-    
+
     &:hover>ul ul,
     li.b3-list-item--focus+ul,
     ul.has-focus {
@@ -123,7 +129,7 @@
 }
 
 // 文档树项目小圆点位置
-.layout-tab-container .b3-list-item .b3-list-item__toggle.fn__hidden{
+.layout-tab-container .b3-list-item .b3-list-item__toggle.fn__hidden {
     position: relative;
 
     &::before {
@@ -136,10 +142,4 @@
 .sy__outline .b3-list-item[data-type=NodeHeading] .b3-list-item__text::before {
     transform: translateX(-18px);
     left: auto;
-}
-
-@property --indent-color {
-    syntax: '<color>';
-    initial-value: #0000;
-    inherits: false;
 }
