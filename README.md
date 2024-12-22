@@ -13,6 +13,10 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.1.23
+
+* Updated styles to be compatible with SiYuan v3.1.16
+
 ### v3.1.22
 
 * Enhanced menu border texture in light mode

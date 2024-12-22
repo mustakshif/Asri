@@ -1,3 +1,13 @@
+### v3.1.23
+
+* 适配思源 v3.1.16 样式改动
+
+<br />
+
+* Updated styles to be compatible with SiYuan v3.1.16
+
+---
+
 ### v3.1.22
 
 * 增强亮色模式下菜单外框质感
