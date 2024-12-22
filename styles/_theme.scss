@@ -2,8 +2,11 @@
 
 :root {
     --b3-border-radius-b: 16px; // 对话框圆角
-    
-    @include font-family;
+
+    &,
+    &:lang(zh_CN) {
+        @include font-family;
+    }
 
     &:lang(ja_JP) {
         --b3-font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
@@ -27,7 +30,8 @@
 
 [data-theme-mode="light"] {
 
-    &:root, // fix being overridden by other themes
+    &:root,
+    // fix being overridden by other themes
     body.has-exportimg {
         @include theme-root($theme-light)
     }
@@ -41,7 +45,7 @@
 
     .body-asri--mobile {
         --b3-theme-background: #fff;
-        --b3-parent-background: var(--b3-theme-background); 
+        --b3-parent-background: var(--b3-theme-background);
     }
 
     // use hex to fix https://github.com/mustakshif/Asri/issues/39
