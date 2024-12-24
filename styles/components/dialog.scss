@@ -313,6 +313,11 @@
         button[data-type="addColumn"] {
             @include button-action('normal');
         }
+
+        button[data-type=addColumn] {
+            margin-left: unset;
+            margin-inline-start: 28px;
+        }
     }
 }
 
@@ -572,7 +577,7 @@
                                         display: flex;
 
                                         >input {
-                                            margin-left: auto;
+                                            margin-inline-start: auto;
                                         }
                                     }
 
@@ -936,6 +941,11 @@
                 // @include darkmode-counterpart {
                 //     outline-color: var(--b3-theme-primary-light);
                 // }
+            }
+
+            &__img {
+                margin-left: unset;
+                margin-inline-start: 16px;
             }
 
             &--wrap {

@@ -25,14 +25,14 @@
         min-width: unset;
         min-height: unset;
         line-height: 24px;
-        margin-right: 8px;
+        margin-inline-end: 8px;
         border-radius: 6px;
         overflow: visible;
         background-color: var(--b3-list-hover);
         // transition-property: max-width, width, backdrop-filter, background-color, color;
 
         &:last-child {
-            margin-right: 0;
+            margin-inline-end: unset;
         }
 
         &:not(.item--readonly, .item--full.item--focus):hover {

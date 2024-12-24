@@ -1,0 +1,127 @@
+:lang(ar_SA),
+:lang(he_IL) {
+    // body {
+    //     direction: rtl;
+    // }
+
+    // .toolbar+div {
+    //     direction: ltr;
+    // }
+
+    .b3-menu,
+    .protyle-breadcrumb,
+    #tooltip,
+    .b3-button,
+    .protyle-util .block__icons--menu,
+    [data-key="dialog-setting"] .b3-dialog__container,
+    [data-key="dialog-confirm"],
+    [data-key="dialog-emojis"] .b3-dialog__container,
+    [data-key="dialog-recentdocs"] .b3-dialog__container {
+        direction: rtl;
+    }
+
+    // 集市包详情页
+    .item__main // 历史面板第二个页签
+
+        {
+        direction: ltr;
+    }
+
+    .protyle {}
+
+    .b3-menu {
+        &__icon {
+            margin-right: unset;
+            margin-inline-end: 8px;
+            // transform: scaleX(-1);
+
+            &--small {
+                margin-left: unset;
+                margin-inline-start: 8px;
+                transform: scaleX(-1);
+            }
+        }
+
+        &__item {
+            text-align: start;
+        }
+
+        &__accelerator:not([style="margin-left: 0"]) {
+            margin-left: unset;
+            margin-inline-start: 16px;
+        }
+    }
+
+    .b3-button {
+        svg {
+            margin-right: unset;
+            margin-inline-end: 4px;
+            transform: scaleX(-1);
+        }
+    }
+
+    .b3-list-item__text {
+        text-align: start;
+    }
+
+    .config__panel>.b3-tab-bar .b3-list-item__graphic {
+        padding-left: unset;
+        padding-right: unset;
+        padding-inline-start: 5px;
+        padding-inline-end: 10px;
+    }
+
+    .b3-switch {
+        transform: scaleX(-1);
+    }
+
+    .config-bazaar__panel .config-bazaar__title .b3-switch {
+        transform: scaleX(-1) translateX(11px);
+    }
+
+    .config-bazaar__panel[data-type=downloaded] [data-type=myPlugin]:not(.b3-button--outline)~.counter {
+        transform: translate(64px);
+    }
+
+    [data-type="goBack"] svg,
+    .av__panel .b3-menu .block__icon
+    // .b3-list-item__toggle,
+    // [data-type="docnext"] svg,
+    // [data-type="docprevious"] svg, 
+    // .block__icon[data-type="next"] svg,
+    // .block__icon[data-type="previous"] svg 
+        {
+        transform: scaleX(-1);
+    }
+
+    // 设置-快捷键
+    .b3-list--border .b3-list__panel {
+        margin-left: unset;
+        margin-inline-start: 34px;
+    }
+
+    // 设置-标题
+    // .config__tab-title.resize__move {
+    //     pointer-events: none;
+    // }
+
+    // .resize__rd, .resize__ld, .resize__lt, .resize__rt, .resize__l, .resize__r, .resize__t, .resize__d {
+    //     pointer-events: none;
+    // }
+
+
+    .b3-menu__avemoji {
+        margin-left: unset;
+        margin-right: unset;
+        margin-inline: -4px 4px;
+    }
+
+    // 数据库 ***********************
+    .av__panel .b3-menu .b3-menu__items .b3-menu__item[data-type=nobg]:first-child>.block__icon:not(.fn__none)+.ft__center {
+        transform: translateX(15px);
+    }
+
+    .av__panel .b3-menu__item .b3-chip {
+        float: unset;
+    }
+}
