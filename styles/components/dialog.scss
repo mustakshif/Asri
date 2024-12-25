@@ -1114,7 +1114,11 @@
 // 代码片段对话框
 #addCodeSnippetCSS,
 #addCodeSnippetJS {
-    right: 93px;
+    inset-inline-end: 79px;
+
+    +.fn__space {
+        display: none;
+    }
 
     &,
     ~.b3-switch {
@@ -1123,17 +1127,26 @@
     }
 
     ~.b3-switch {
-        right: 24px;
+        inset-inline-end: 24px;
         top: 19px;
     }
 }
 
-// [data-key="dialog-snippets"] {
-//     textarea {
-//         height: fit-content;
-//         max-height: 8em;
-//     }
-// }
+[data-key="dialog-snippets"] {
+    // textarea {
+    //     height: fit-content;
+    //     max-height: 8em;
+    // }
+
+    .b3-switch--side {
+        margin-right: unset;
+        margin-inline-end: unset;
+    }
+
+    .b3-form__icon + .fn__space {
+        display: none;
+    }
+}
 
 // [data-id]{
 //     &[data-type="css"],

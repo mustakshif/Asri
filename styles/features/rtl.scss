@@ -1,33 +1,27 @@
 :lang(ar_SA),
 :lang(he_IL) {
-    // body {
-    //     direction: rtl;
-    // }
 
-    // .toolbar+div {
-    //     direction: ltr;
-    // }
-
+    // 所有 rtl 元素
     .b3-menu,
     .protyle-breadcrumb,
     #tooltip,
     .b3-button,
     .protyle-util .block__icons--menu,
-    [data-key="dialog-setting"] .b3-dialog__container,
-    [data-key="dialog-confirm"],
-    [data-key="dialog-emojis"] .b3-dialog__container,
-    [data-key="dialog-recentdocs"] .b3-dialog__container {
+    :where([data-key="dialog-setting"],
+        [data-key="dialog-confirm"],
+        [data-key="dialog-snippets"],
+        [data-key="dialog-emojis"],
+        [data-key="dialog-recentdocs"]) .b3-dialog__container {
         direction: rtl;
     }
 
+    // 所有 ltr 元素
     // 集市包详情页
-    .item__main // 历史面板第二个页签
-
-        {
+    .item__main {
         direction: ltr;
     }
 
-    .protyle {}
+    // 杂项 ***********************
 
     .b3-menu {
         &__icon {
@@ -71,6 +65,11 @@
         padding-inline-end: 10px;
     }
 
+    .b3-chip svg:not(.b3-chip__close) {
+        margin-right: unset;
+        margin-inline-end: 6px;
+    }
+
     .b3-switch {
         transform: scaleX(-1);
     }
@@ -84,8 +83,8 @@
     }
 
     [data-type="goBack"] svg,
-    .av__panel .b3-menu .block__icon
-    // .b3-list-item__toggle,
+    .av__panel .b3-menu .block__icon // .b3-list-item__toggle,
+
     // [data-type="docnext"] svg,
     // [data-type="docprevious"] svg, 
     // .block__icon[data-type="next"] svg,
@@ -109,14 +108,13 @@
     //     pointer-events: none;
     // }
 
-
     .b3-menu__avemoji {
         margin-left: unset;
         margin-right: unset;
         margin-inline: -4px 4px;
     }
 
-    // 数据库 ***********************
+    // 数据库
     .av__panel .b3-menu .b3-menu__items .b3-menu__item[data-type=nobg]:first-child>.block__icon:not(.fn__none)+.ft__center {
         transform: translateX(15px);
     }
