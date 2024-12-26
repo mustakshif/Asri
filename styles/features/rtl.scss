@@ -17,7 +17,9 @@
 
     // 所有 ltr 元素
     // 集市包详情页
-    .item__main {
+    .item__main,
+    // 集市卡片描述
+    .b3-card .b3-card__info {
         direction: ltr;
     }
 
@@ -83,8 +85,10 @@
     }
 
     [data-type="goBack"] svg,
-    .av__panel .b3-menu .block__icon // .b3-list-item__toggle,
-
+    .av__panel .b3-menu .block__icon,
+    .config-keymap .b3-list-item__arrow:not(.b3-list-item__arrow--open)
+    
+    // .b3-list-item__toggle,
     // [data-type="docnext"] svg,
     // [data-type="docprevious"] svg, 
     // .block__icon[data-type="next"] svg,
