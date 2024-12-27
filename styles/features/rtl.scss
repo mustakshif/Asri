@@ -84,6 +84,11 @@
         transform: translate(64px);
     }
 
+    .b3-card__actions--right .block__icon {
+        margin-left: unset;
+        margin-inline-start: 8px;
+    }
+
     [data-type="goBack"] svg,
     .av__panel .b3-menu .block__icon,
     .config-keymap .b3-list-item__arrow:not(.b3-list-item__arrow--open)

@@ -668,10 +668,11 @@
                     }
 
 
-                    // 右侧面板
+                    // 右侧内容
                     &__center--text {
                         padding: 24px;
                         line-height: 1.5;
+                        color: var(--b3-theme-on-surface);
 
                         .b3-form__icon-icon {
                             margin: 8px 0;
