@@ -164,7 +164,7 @@
 
         @media screen and (min-width: 1292px) {
 
-            width: 75vw !important;
+            width: 75vw;
             max-width: calc(12em * 7);
             max-height: 65vh;
 
@@ -190,7 +190,7 @@
             }
 
             &>.emojis {
-                min-width: 50vw;
+                min-width: 100%;
             }
 
             // https://github.com/mustakshif/Asri/issues/30

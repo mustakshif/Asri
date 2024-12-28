@@ -7,12 +7,16 @@
     #tooltip,
     .b3-button,
     .protyle-util .block__icons--menu,
+    .protyle-hint.hint--menu>div,
     :where([data-key="dialog-setting"],
         [data-key="dialog-confirm"],
         [data-key="dialog-snippets"],
         [data-key="dialog-emojis"],
         [data-key="dialog-recentdocs"],
-        [data-key="dialog-searchtype"]) .b3-dialog__container {
+        [data-key="dialog-searchtype"],
+        [data-key="dialog-wechatreminder"],
+        [data-key="dialog-setpassword"],
+        [data-key="dialog-saveworkspace"]) .b3-dialog__container {
         direction: rtl;
     }
 
@@ -20,7 +24,9 @@
     // 集市包详情页
     .item__main,
     // 集市卡片描述
-    .b3-card .b3-card__info {
+    .b3-card .b3-card__info,
+    // “/”菜单字符类快捷键提示
+    .protyle-hint .b3-list-item--two .b3-list-item__meta {
         direction: ltr;
     }
 
@@ -37,6 +43,11 @@
                 margin-inline-start: 8px;
                 transform: scaleX(-1);
             }
+        }
+
+        .b3-menu__action {
+            margin-left: unset;
+            margin-inline-start: 8px;
         }
 
         &__item {
@@ -57,8 +68,18 @@
         }
     }
 
+    .b3-list-item__graphic {
+        margin-right: unset;
+        margin-inline-end: 4px;
+    }
+
     .b3-list-item__text {
         text-align: start;
+    }
+
+    .color__square--list {
+        margin-right: unset;
+        margin-inline-end: 8px;
     }
 
     .config__panel>.b3-tab-bar .b3-list-item__graphic {
@@ -91,7 +112,7 @@
     }
 
     [data-type="goBack"] svg,
-    .av__panel .b3-menu .block__icon,
+    .av__panel .b3-menu .block__icon svg,
     .config-keymap .b3-list-item__arrow:not(.b3-list-item__arrow--open)
     
     // .b3-list-item__toggle,

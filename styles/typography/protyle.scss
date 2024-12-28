@@ -903,6 +903,10 @@
     transition: padding 0.2s;
 }
 
+.layout__center[style="margin: 0px 10px;"] {
+    margin: 0 !important; // 覆盖停靠栏和侧边面板隐藏时该元素的内联样式
+}
+
 .protyle {
     // font-variant-emoji: emoji; // 不受支持
 

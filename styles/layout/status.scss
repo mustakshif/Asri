@@ -2,7 +2,7 @@
 
 @mixin floating-status {
     background-color: var(--b3-theme-surface);
-    right: 8px;
+    right: 8px !important; // 否则dock和面板隐藏时会被内联样式覆盖
     bottom: -4px;
     border-radius: 20px;
     height: 26px;
