@@ -1,0 +1,80 @@
+@use '../base' as *;
+
+// .protyle-wysiwyg [data-node-id]#plugin-focus-unique-id,
+// .protyle-wysiwyg [data-node-id][data-plugin-focus=true] {
+//     animation: typewriter-focus .3s;
+//     outline: 0px solid var(--b3-theme-primary-lighter);
+// }
+
+.protyle .protyle-wysiwyg [data-node-id]#plugin-focus-unique-id,
+.protyle .protyle-wysiwyg [data-node-id][data-plugin-focus=true] {
+    box-shadow: none;
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: calc(100% - 16px);
+        width: 3px;
+        border-radius: 99px;
+        top: 8px;
+        inset-inline-start: -5px;
+        inset-inline-end: 0;
+        bottom: 0;
+        background-color: var(--b3-theme-primary);
+        opacity: 0;
+        animation: selected-block-indicator-appear 0.25s $timing-function-bouncy forwards;
+        // animation-delay: .2s;
+        transform-origin: top center;
+        transition-property: opacity, transform;
+        transition-duration: .2s;
+        transition-timing-function: $timing-function-bouncy;
+    }
+
+    &.protyle-wysiwyg--hl {
+
+        &::before {
+            opacity: 0;
+            transform: scaleY(.5);
+            transition-duration: .3s;
+            transition-timing-function: $timing-function-decelerate;
+        }
+    }
+}
+
+.protyle .protyle-wysiwyg [data-node-id][data-plugin-focus=true] {
+    &::before {
+        background-color: var(--b3-theme-primary-light);
+    }
+}
+
+.protyle .protyle-wysiwyg [data-node-id].av .av__row .av__cell#plugin-focus-unique-id,
+.protyle .protyle-wysiwyg [data-node-id].av .av__row .av__cell[data-plugin-focus=true] {
+    box-shadow: none;
+}
+
+// @keyframes typewriter-focus {
+//     0% {
+//         outline-width: 0;
+//         outline-offset: -4px;
+//     }
+
+//     20% {
+//         outline-width: 2px;
+//         outline-offset: 0px;
+//     }
+
+//     50% {
+//         outline-width: 4px;
+//         outline-offset: 4px;
+//     }
+
+//     80% {
+//         outline-width: 2px;
+//         outline-offset: 6px;
+//     }
+
+//     100% {
+//         outline-width: 0;
+//         outline-offset: 7px;
+//     }
+// }

@@ -143,14 +143,6 @@
     &.layout--float {
         .layout-tab-container {
             background-color: var(--b3-theme-background);
-
-            .block__icons {
-
-                &,
-                &~* {
-                    // @include theme-variant-color(background-color, background);
-                }
-            }
         }
 
         box-shadow: none;
@@ -193,6 +185,7 @@
         .fn__flex-1:not(has-dockb).has-layout-dockb-float &:not([style*="transform"]) {
             bottom: calc(var(--status-height, 32px) - 1px) !important;
         }
+
         .fn__flex-1.has-dockb.has-layout-dockb-float &:not([style*="transform"]) {
             bottom: calc(42px + var(--status-height, 32px) - 1px) !important;
         }
@@ -207,14 +200,6 @@
 
         .layout-tab-container {
             background-color: var(--b3-theme-background);
-
-            .block__icons {
-
-                &,
-                &~* {
-                    // @include theme-variant-color(background-color, background)
-                }
-            }
         }
     }
 }
@@ -305,12 +290,14 @@
                 font-family: Dejavu Sans;
             }
         }
-        
+
         .b3-list-item__text:empty {
             &::after {
                 content: "　";
             }
-        } // 兼顾 https://github.com/mustakshif/Asri/issues/69 和 https://github.com/mustakshif/Asri/issues/65
+        }
+
+        // 兼顾 https://github.com/mustakshif/Asri/issues/69 和 https://github.com/mustakshif/Asri/issues/65
 
         &>svg {
             color: transparent !important;
@@ -331,14 +318,17 @@
 }
 
 .sy__file {
+
+    // 关闭的笔记本
     >.b3-list {
         margin-bottom: 8px;
-        
+
         >ul {
             margin-bottom: -8px;
         }
     }
 }
+
 
 .sy__backlink {
     .block__icons {
@@ -355,10 +345,6 @@
                     position: sticky;
                     top: 0;
                     // box-shadow: 0 -0.5px inset var(--b3-border-color-trans), 0 0.5px inset var(--b3-border-color-trans);
-                }
-
-                &.protyle-shown {
-                    // -> js
                 }
 
                 &:not(.b3-list--empty) {
@@ -398,16 +384,17 @@
         }
 
         .protyle-breadcrumb__bar {
-            
+
             &:first-child {
                 border-top: none !important;
             }
-            
+
             &:not(:first-child) {
                 border-top: 1px solid var(--b3-border-color-trans);
             }
 
             margin-bottom: -8px !important;
+
             // height: 36px;
             .protyle-breadcrumb__item {
                 margin: 6px 0;

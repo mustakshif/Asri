@@ -153,4 +153,12 @@
     .av__panel .b3-menu__item .b3-chip {
         float: unset;
     }
+
+    // 通知 
+    .b3-snackbar--error .b3-snackbar__content {
+        padding-left: unset;
+        padding-inline-start: 47px;
+        padding-right: unset;
+        padding-inline-end: 16px;
+    }
 }

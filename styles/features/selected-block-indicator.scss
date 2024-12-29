@@ -1,0 +1,49 @@
+@use '../base' as *;
+
+.protyle-wysiwyg[data-readonly="false"] {
+    [data-node-id].asri-selected-block {
+
+        // box-shadow: none !important;
+        &::before {
+            content: '';
+            position: absolute;
+            height: calc(100% - 16px);
+            width: 3px;
+            border-radius: 99px;
+            top: 8px;
+            inset-inline-start: -5px;
+            inset-inline-end: 0;
+            bottom: 0;
+            background-color: var(--b3-theme-primary);
+            opacity: 1;
+            animation: selected-block-indicator-appear 0.25s $timing-function-bouncy;
+            // animation-delay: .2s;
+            transform-origin: top center;
+            transition-property: opacity, transform;
+            transition-duration: .2s;
+            transition-timing-function: $timing-function-bouncy;
+        }
+
+        &.protyle-wysiwyg--hl {
+
+            &::before {
+                opacity: 0;
+                transform: scaleY(.5);
+                transition-duration: .3s;
+                transition-timing-function: $timing-function-decelerate;
+            }
+        }
+    }
+}
+
+@keyframes selected-block-indicator-appear {
+    0% {
+        transform: scaleY(.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}

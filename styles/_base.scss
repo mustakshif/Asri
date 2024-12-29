@@ -88,8 +88,13 @@
 
 //————————————————————————————————————————
 // 用于暗黑模式模式下给部分元素添加边框
-@mixin border-or-not($outline: true, $border: true, $outline-width: 1px) {
+@mixin border-or-not($outline: true, $border: true, $outline-width: 1px, $outline-light: false) {
     border: none;
+    @if $outline-light == true {
+        outline: $outline-width solid #fff4;
+        outline-offset: $outline-width * -1;
+    }
+    
     @content;
 
     @include darkmode-counterpart {

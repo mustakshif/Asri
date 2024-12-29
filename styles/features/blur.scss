@@ -477,7 +477,6 @@ body:not(.asri-disable-backdrop-blur) {
         }
     }
 
-
     #message.b3-snackbars {
         .b3-snackbar {
             &__content {
@@ -485,5 +484,37 @@ body:not(.asri-disable-backdrop-blur) {
                 @include bg-blur;
             }
         }
+    }
+
+    [data-key="dialog-setting"] {
+        .b3-dialog__container {
+            background-color: rgb(from var(--b3-theme-background) r g b / $thin-transparency);
+            @include bg-blur;
+            // outline: 1px solid #fff4;
+            outline-offset: -1px;
+
+            @include darkmode-counterpart {
+                background-color: rgb(from var(--b3-theme-surface) r g b / $thin-transparency);
+            }
+        }
+
+        .b3-dialog__scrim {
+            backdrop-filter: unset !important;
+        }
+
+        .b3-list--background,
+        .config__tab-wrap {
+            background-color: transparent;
+        }
+    }
+
+    .config-account {
+        backdrop-filter: unset !important;
+    }
+
+    .config-account,
+    .config-account__center--text,
+    .config__tab-container[data-name="account"] {
+        background-color: transparent !important;
     }
 }

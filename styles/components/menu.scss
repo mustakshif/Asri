@@ -318,6 +318,11 @@
         .b3-dialog__container {
             outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
             background-color: var(--b3-menu-background);
+            outline-offset: 0;
+            // @include border-or-not($border: false) {
+            //     outline: #fff4 solid 1px;
+            //     outline-offset: -1px;
+            // }
 
             .b3-dialog__body {
                 border-radius: 11px;

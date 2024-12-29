@@ -19,6 +19,7 @@ const globalClickEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalDragEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalKeyupEventListener = new AsriEventListener(lowFreqEventsCallback);
 const winFocusChangeEventListener = new AsriEventListener(winFocusChangeCallback);
+const selectionChangeEventListener = new AsriEventListener(selectionChangeCallback);
 const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback));
 const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
 const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
@@ -46,6 +47,7 @@ export async function loadAsriJSModules() {
     globalKeyupEventListener.start(document, 'keyup');
     winFocusChangeEventListener.start(window, 'focus');
     winFocusChangeEventListener.start(window, 'blur');
+    selectionChangeEventListener.start(document, 'selectionchange');
     globalClassNameMo.observe(document.body, MOConfigForClassNames);
     watchImgExportMo.observe(document.body, { childList: true });
     asriDoms.layoutCenter || await querySelectorAsync('.layout__center');
@@ -69,6 +71,7 @@ export async function unloadAsriJSModules() {
     globalKeyupEventListener.remove(document, 'keyup');
     winFocusChangeEventListener.remove(window, 'focus');
     winFocusChangeEventListener.remove(window, 'blur');
+    selectionChangeEventListener.remove(document, 'selectionchange');
     globalClassNameMo.disconnect();
     watchImgExportMo.disconnect(() => {
         document.body.classList.remove("has-exportimg")
@@ -93,6 +96,24 @@ function winFocusChangeCallback(e: Event) {
         updateStyles();
         !env.isIOSApp && followSysAccentColor && env.supportOklch && getSystemAccentColor();
     });
+}
+
+function selectionChangeCallback(e: Event) {
+    const selection = window.getSelection();
+    const range = selection && selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
+    if (!range) return;
+
+    const curNode = range.commonAncestorContainer;
+    const curBlock = curNode.parentElement ? curNode.parentElement.closest('[data-node-id]') : null;
+    if (!curBlock) return;
+
+    const curBlockType = curBlock.getAttribute('data-type');
+    document.querySelectorAll('.asri-selected-block').forEach(block => block.classList.remove('asri-selected-block'));
+    if (curBlockType === 'NodeAttributeView' || !curBlockType || curBlockType === 'NodeCodeBlock') return;
+
+    curBlock.classList.add('asri-selected-block');
+
+    // console.log(selection, range, curNode, curBlock, curBlockType);
 }
 
 async function updateStyles(e?: Event | KeyboardEvent) {

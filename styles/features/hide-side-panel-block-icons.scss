@@ -1,0 +1,81 @@
+@use '../base' as *;
+
+// 顶部控件自动隐藏
+
+// .sy__globalGraph, .sy__graph // 导致关系图闪烁
+.sy__file,
+.sy__outline,
+.sy__bookmark,
+.sy__tag {
+    position: relative;
+
+    --dots-clr: var(--b3-border-color-trans);
+    --icons2dots-timing-func: #{$timing-function-bouncy};
+    --dots2icons-timing-func: ease-in-out;
+    --icons2dots-dur: .25s;
+    --dots2icons-dur: .2s;
+
+    .block__icons {
+        height: 20px;
+        min-height: unset;
+        transition: var(--icons2dots-dur) var(--icons2dots-timing-func);
+
+        &::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background-color: var(--dots-clr);
+            box-shadow: 8px 0 0 0 var(--dots-clr), 16px 0 0 0 var(--dots-clr), 24px 0 0 0 var(--dots-clr);
+            border-radius: 50%;
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-12px);
+            transform-origin: top center;
+            transition: var(--icons2dots-dur) var(--icons2dots-timing-func);
+        }
+
+        >:where(div, span) {
+            transform: scale(.5);
+            transition: var(--icons2dots-dur) var(--icons2dots-timing-func);
+            opacity: 0 !important;
+
+            &:first-child {
+                transform-origin: 400% 50%;
+            }
+
+            &:nth-last-child(3 of .block__icon) {
+                transform-origin: -100% 50%;
+            }
+
+            &:nth-last-child(2 of .block__icon) {
+                transform-origin: -200% 50%;
+            }
+
+            &:last-child {
+                transform-origin: -400% 50%;
+            }
+        }
+
+        &:hover {
+            height: 42px;
+
+            transition-timing-function: var(--dots2icons-timing-func);
+            transition-duration: var(--dots2icons-dur);
+
+            &::before {
+                transform: translateX(calc(-12px * 3.5)) scale(3.5);
+                opacity: 0;
+                transition-timing-function: var(--dots2icons-timing-func);
+                transition-duration: var(--dots2icons-dur);
+            }
+
+            >:where(div, span) {
+                transform: none;
+                opacity: 1 !important;
+                transition-timing-function: var(--dots2icons-timing-func);
+                transition-duration: var(--dots2icons-dur);
+            }
+        }
+    }
+}

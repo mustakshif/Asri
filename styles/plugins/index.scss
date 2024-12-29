@@ -5,3 +5,4 @@
 @use 'fake-breadcrumb';
 @use 'database-properties';
 @use 'backlink-panel';
+@use 'typewriter';  // Typewriter plugin uses :has() selector, which affects performance

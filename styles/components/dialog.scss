@@ -37,8 +37,11 @@
             overflow: hidden; // 窗口中有元素如果混合使用mix-blend-mode 和 backdrop-filter，会导致窗口布局跳动、窗口闪烁
             background-color: var(--b3-theme-background);
 
-            @include border-or-not;
+            @include border-or-not($outline-light: true);
             @include dialog-shadow;
+            @include darkmode-counterpart {
+                outline-color: transparent;
+            }
 
             .resize__r {
                 transform: translateX(-4px);
@@ -376,11 +379,19 @@
             }
 
             .b3-list-item {
-                margin: 4px 6px !important;
+                // margin: 4px 6px !important;
+                margin-left: unset;
+                margin-right: unset;
+                margin-inline-start: 4px;
+                margin-inline-end: 6px;
             }
 
             .b3-list-item__graphic {
-                padding: 0 4px;
+                // padding: 0 4px;
+                padding-left: unset;
+                padding-right: unset;
+                padding-inline: 4px !important;
+                margin-inline-end: 0;
             }
         }
     }
@@ -483,6 +494,7 @@
                             mix-blend-mode: luminosity;
 
                             .b3-chip {
+                                border-radius: 99px;
                                 background-color: var(--b3-theme-surface);
                                 padding: 4px 8px;
                                 opacity: .9;
@@ -1169,9 +1181,9 @@
         backdrop-filter: saturate(.3);
     }
 
-    :root[style*="--asri-c-0"] & {
-        backdrop-filter: saturate(0);
-    }
+    // :root[style*="--asri-c-0"] & {
+    //     backdrop-filter: saturate(0);
+    // }
 }
 
 // 弹出动画
@@ -1454,6 +1466,9 @@
 .block__popover {
     @include dialog-shadow;
     @include border-or-not;
+    @include darkmode-counterpart {
+        outline-color: transparent;
+    }
     outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
 
     >.block__icons--menu {

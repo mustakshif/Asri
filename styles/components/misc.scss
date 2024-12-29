@@ -289,14 +289,15 @@ textarea {
     @include tooltip-styles;
 
     animation-delay: .75s;
-    animation-timing-function: $timing-function-decelerate;
+    animation-timing-function: $timing-function-bouncy;
+    animation-duration: .25s;
 
     .ft__on-surface {
         color: var(--b3-theme-on-surface);
     }
 }
 
-// 提示条动画关键帧
+// 提示条动画关键帧，用于覆盖默认主题动画
 @keyframes zoomIn {
     0% {
         opacity: 0;
@@ -331,6 +332,8 @@ textarea {
     border: none;
     transform-origin: 40px top;
     animation-delay: .125s; // 优化鼠标划过时的闪烁
+    animation-duration: .15s;
+    animation-timing-function: unset;
     // transform: scale(0.9);
     pointer-events: auto; // https://ld246.com/article/1709825939240
 
@@ -370,6 +373,8 @@ textarea {
         margin-top: 0;
         // margin-bottom: 0;
         transition-delay: .75s;
+        transition-timing-function: $timing-function-bouncy;
+        transition-duration: .25s;
     }
 }
 
@@ -381,9 +386,19 @@ textarea {
     }
 
     .b3-snackbar {
+        transition-timing-function: $timing-function-decelerate;
+
+        &--hide {
+            transition-timing-function: $timing-function-accelerate;
+        }
+
         &__content {
             border-radius: 16px;
             color: var(--b3-theme-on-background);
+            padding-top: 16px;
+            padding-bottom: 16px;
+            min-width: 19em;
+            line-height: 1.5;
 
             @include menu-shadow();
             @include border-or-not();
@@ -394,7 +409,7 @@ textarea {
             }    
 
             &--close {
-                padding-right: 16px;
+                padding-inline-end: 32px;
 
                 &:hover~.b3-snackbar__close {
                     transform: scale(1);
@@ -452,6 +467,10 @@ textarea {
                 transform: scale(0.95);
             }
         }
+    }
+
+    .b3-snackbar--error .b3-snackbar__content::after {
+        top: 16px;
     }
 }
 
