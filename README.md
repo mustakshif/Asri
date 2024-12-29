@@ -13,21 +13,21 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.1.23
+### v3.2.0
 
-* Updated styles to be compatible with SiYuan v3.1.16
-
-### v3.1.22
-
-* Enhanced menu border texture in light mode
-* Balanced visual margins for the first and last items in menu lists
-* Balanced internal padding of code blocks
-* Adjusted the display style of code block language indicators
-
-### v3.1.21
-
-* Updated styles to be compatible with SiYuan v3.1.15
-* Added overflow fadeout effect in Doc Attribute panel
+* Added right-to-left UI layout mode, which automatically adapts when the application language is set to Arabic or other right-to-left languages
+* Added visual indicators for focused blocks
+* Added transition animations for tab switching
+* Added auto-hide functionality for sidebar panel controls
+* Optimized the layout of code snippet dialog elements
+* Optimized tooltip animation curves
+* Optimized notification styles and animation curves
+* Added compatibility with the "Typewriter Mode" plugin
+* Adjusted the text color of descriptions on the account page
+* Adjusted the top margin of certain database menus
+* Adjusted the dialog border color in dark mode
+* Removed page left and right margins when the docks and side panels are hidden `#macOS`
+* Fixed status bar positioning when docks and side panels are hidden `#macOS`
 
 ### ...
 

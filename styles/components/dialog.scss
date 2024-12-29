@@ -40,7 +40,7 @@
             @include border-or-not($outline-light: true);
             @include dialog-shadow;
             @include darkmode-counterpart {
-                outline-color: transparent;
+                outline-color: #fff1;
             }
 
             .resize__r {

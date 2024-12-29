@@ -1,3 +1,37 @@
+### v3.2.0
+
+* 新增从右至左 UI 布局模式，应用语言为阿拉伯语等从右至左语言时自动适配
+* 新增聚焦块视觉标识
+* 新增页签切换过渡动画
+* 新增侧栏面板控件自动隐藏
+* 优化代码片段对话框元素布局
+* 优化提示条动画曲线
+* 优化通知样式和动画曲线
+* 适配「打字机模式」插件
+* 调整账号页面简介文字色
+* 调整数据库部分菜单顶部边距
+* 调整暗色模式下对话框边框眼色
+* 取消停靠栏和侧边面板隐藏时的页面左右边距 `#macOS`
+* 修正停靠栏和侧边面板隐藏时的状态栏定位 `#macOS`
+
+<br />
+
+* Added right-to-left UI layout mode, which automatically adapts when the application language is set to Arabic or other right-to-left languages
+* Added visual indicators for focused blocks
+* Added transition animations for tab switching
+* Added auto-hide functionality for sidebar panel controls
+* Optimized the layout of code snippet dialog elements
+* Optimized tooltip animation curves
+* Optimized notification styles and animation curves
+* Added compatibility with the "Typewriter Mode" plugin
+* Adjusted the text color of descriptions on the account page
+* Adjusted the top margin of certain database menus
+* Adjusted the dialog border color in dark mode
+* Removed page left and right margins when the docks and side panels are hidden `#macOS`
+* Fixed status bar positioning when docks and side panels are hidden `#macOS`
+
+---
+
 ### v3.1.23
 
 * 适配思源 v3.1.16 样式改动

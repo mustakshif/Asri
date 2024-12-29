@@ -6,7 +6,8 @@
 .sy__file,
 .sy__outline,
 .sy__bookmark,
-.sy__tag {
+.sy__tag,
+.sy__backlink {
     position: relative;
 
     --dots-clr: var(--b3-border-color-trans);
@@ -28,7 +29,7 @@
             box-shadow: 8px 0 0 0 var(--dots-clr), 16px 0 0 0 var(--dots-clr), 24px 0 0 0 var(--dots-clr);
             border-radius: 50%;
             position: absolute;
-            top: 8px;
+            top: 10px;
             left: 50%;
             transform: translateX(-12px);
             transform-origin: top center;
@@ -39,9 +40,14 @@
             transform: scale(.5);
             transition: var(--icons2dots-dur) var(--icons2dots-timing-func);
             opacity: 0 !important;
+            // transform-origin: top center;
 
             &:first-child {
                 transform-origin: 400% 50%;
+            }
+
+            &.counter {
+                transform-origin: 300% 50%;
             }
 
             &:nth-last-child(3 of .block__icon) {
@@ -77,5 +83,11 @@
                 transition-duration: var(--dots2icons-dur);
             }
         }
+    }
+}
+
+.sy__backlink {
+    >:nth-child(2 of .block__icons) {
+        position: relative;
     }
 }
