@@ -162,9 +162,11 @@
 
     .b3-switch:checked {
         background-color: oklch(from var(--b3-theme-primary) min(.82, l) c h);
+        // background-image: linear-gradient(to bottom, oklch(from var(--b3-theme-primary) min(.82, l) c h) 20%, oklch(from var(--b3-theme-primary) calc(min(.82, l) + .1) c h) 100%);
 
         @include darkmode-counterpart {
             background-color: oklch(from var(--b3-theme-primary) min(.65, l) c h);
+            // background-image: linear-gradient(to bottom, oklch(from var(--b3-theme-primary) min(.65, l) c h) 20%, oklch(from var(--b3-theme-primary) calc(min(.65, l) + .1) c h) 100%);
         }
     }
 

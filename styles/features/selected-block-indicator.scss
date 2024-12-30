@@ -1,7 +1,7 @@
 @use '../base' as *;
 
 .protyle-wysiwyg[data-readonly="false"] {
-    [data-node-id].asri-selected-block {
+    [data-node-id].asri-selected-block:not(#plugin-focus-unique-id, [data-plugin-focus=true]) {
 
         // box-shadow: none !important;
         &::before {
@@ -16,12 +16,12 @@
             bottom: 0;
             background-color: var(--b3-theme-primary);
             opacity: 1;
-            animation: selected-block-indicator-appear 0.25s $timing-function-bouncy;
+            animation: selected-block-indicator-appear 0.25s $timing-function-bouncy-both;
             // animation-delay: .2s;
             transform-origin: top center;
             transition-property: opacity, transform;
             transition-duration: .2s;
-            transition-timing-function: $timing-function-bouncy;
+            transition-timing-function: $timing-function-bouncy-both;
         }
 
         &.protyle-wysiwyg--hl {
@@ -29,7 +29,7 @@
             &::before {
                 opacity: 0;
                 transform: scaleY(.5);
-                transition-duration: .3s;
+                transition-duration: .2s;
                 transition-timing-function: $timing-function-decelerate;
             }
         }

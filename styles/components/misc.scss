@@ -289,7 +289,7 @@ textarea {
     @include tooltip-styles;
 
     animation-delay: .75s;
-    animation-timing-function: $timing-function-bouncy;
+    animation-timing-function: $timing-function-bouncy-both;
     animation-duration: .25s;
 
     .ft__on-surface {
@@ -373,7 +373,7 @@ textarea {
         margin-top: 0;
         // margin-bottom: 0;
         transition-delay: .75s;
-        transition-timing-function: $timing-function-bouncy;
+        transition-timing-function: $timing-function-bouncy-both;
         transition-duration: .25s;
     }
 }

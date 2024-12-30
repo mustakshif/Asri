@@ -22,12 +22,12 @@
         bottom: 0;
         background-color: var(--b3-theme-primary);
         opacity: 0;
-        animation: selected-block-indicator-appear 0.25s $timing-function-bouncy forwards;
+        animation: selected-block-indicator-appear 0.25s $timing-function-bouncy-both forwards;
         // animation-delay: .2s;
         transform-origin: top center;
         transition-property: opacity, transform;
         transition-duration: .2s;
-        transition-timing-function: $timing-function-bouncy;
+        transition-timing-function: $timing-function-bouncy-both;
     }
 
     &.protyle-wysiwyg--hl {

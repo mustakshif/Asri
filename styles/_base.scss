@@ -913,7 +913,7 @@ animation-direction: #{$anim-dir};
             height: calc($icon-size - .05em);
             background-color: currentColor;
             mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round"/><rect width="18.5" height="18.5" x="2.75" y="2.75" rx="6"/></g></svg>');
-            animation: uncheck .3s $timing-function-bouncy forwards; // Animation adds mousewheel event listener to the block and the content in it, which is not good? This can be checked in the render tab of the inspector.
+            animation: uncheck .3s $timing-function-bouncy-both forwards; // Animation adds mousewheel event listener to the block and the content in it, which is not good? This can be checked in the render tab of the inspector.
         }
 
         @else {
@@ -921,7 +921,7 @@ animation-direction: #{$anim-dir};
             height: $icon-size;
             background-color: var(--b3-theme-primary);
             mask-image: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.25 2h-6.5A6.76 6.76 0 0 0 2 8.75v6.5A6.76 6.76 0 0 0 8.75 22h6.5A6.76 6.76 0 0 0 22 15.25v-6.5A6.76 6.76 0 0 0 15.25 2m2.06 8.16l-5.22 5.22a2 2 0 0 1-1.41.59a2 2 0 0 1-.76-.15a2 2 0 0 1-.64-.44l-2.59-2.59a1 1 0 0 1 1.41-1.41l2.59 2.59l5.21-5.23a1.002 1.002 0 0 1 1.41 1.42"/></svg>');
-            animation: check .3s $timing-function-bouncy forwards;
+            animation: check .3s $timing-function-bouncy-both forwards;
         }
 
         @content;
@@ -962,6 +962,7 @@ $border-rd-default: 6px;
 
 $timing-function-decelerate: cubic-bezier(0, 0, 0, 1);
 $timing-function-accelerate: cubic-bezier(0.3, 0, 1, 1);
-$timing-function-bouncy: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+$timing-function-bouncy-both: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+$timing-function-bouncy-end: cubic-bezier(0, 0, 0.27, 1.55);
 
 $text-underline-thickness: .08em;
