@@ -16,7 +16,9 @@
         [data-key="dialog-searchtype"],
         [data-key="dialog-wechatreminder"],
         [data-key="dialog-setpassword"],
-        [data-key="dialog-saveworkspace"]) .b3-dialog__container {
+        [data-key="dialog-saveworkspace"],
+        [data-key="dialog-createnotebook"],
+        [data-key="dialog-rename"]) .b3-dialog__container {
         direction: rtl;
     }
 

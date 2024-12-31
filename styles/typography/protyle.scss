@@ -1056,6 +1056,7 @@
         top: calc(2.4em * 1.4 / 2 + 8px) !important; // fix https://github.com/mustakshif/Asri/issues/45 
         transform: scale(.8);
         transform-origin: right center;
+        transition-timing-function: $timing-function-bouncy-end;
     }
 
     &:hover .protyle-title__icon {
@@ -1134,12 +1135,13 @@
 
 //文字格式工具条
 &-toolbar {
-    animation: toolbar 0.2s ease-in-out;
+    animation: protyle-toolbar-appear 0.225s $timing-function-bouncy-end;
     border: none;
     border-radius: 40px;
     padding: 4px;
     // transform: translateY(-12px);
     background-color: var(--b3-theme-surface);
+    transform-origin: 50% 100%;
     @include menu-shadow;
     @include border-or-not($border: false);
 
@@ -1334,7 +1336,7 @@
     }
 
     >button:not([data-type=NodeAttributeViewRow], [data-type=NodeAttributeViewRowMenu], :only-child) {
-        animation: gutters-appear .2s $timing-function-decelerate forwards;
+        animation: gutters-appear .2s $timing-function-bouncy-end forwards;
         opacity: 0;
 
         @for $i from 1 through 7 {
@@ -1345,11 +1347,11 @@
     }
 
     >button:where([data-type=NodeAttributeViewRow], [data-type=NodeAttributeViewRowMenu], :only-child) {
-        animation: gutters-appear-simple .2s;
+        animation: gutters-appear-simple .2s $timing-function-bouncy-end;
     }
 
     button[data-type=fold] svg {
-        transition: transform, .2s $timing-function-decelerate;
+        transition: transform, .2s $timing-function-bouncy-end;
     }
 
     @keyframes gutters-appear {
@@ -1377,6 +1379,24 @@
             opacity: 1;
             transform: none;
             // filter: none;
+        }
+    }
+
+    @keyframes protyle-toolbar-appear {
+
+        // 避免开始时元素大小计算错误导致定位超出视口
+        0%, 5% {
+            opacity: 0;
+            transform: none;
+        }
+
+        5% {
+            transform: scale(.8);
+        }
+
+        100% {
+            opacity: 1;
+            transform: none;
         }
     }
 }

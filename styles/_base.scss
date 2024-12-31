@@ -31,7 +31,7 @@
 @mixin bg-blur($blur-radius: 40px, $saturate-value: 3, $brightness-light: 1.1, $brightness-dark: calc(2 - $brightness-light)) {
     backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness-light);
 
-    html[data-theme-mode="dark"] & {
+    [data-theme-mode="dark"] & {
         backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness-dark);
     }
 }
