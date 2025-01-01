@@ -8,7 +8,7 @@ export async function modeTransitionOnClick(e: Event) {
         // startTranstition();
         startDefaultTranstition(() => {
             console.log('\x1b[34m\x1b[1m\x1b[47mMode Transition started\x1b[0m');
-        }, environment.isMacOS ? 0 : 100);
+        });
     }
 }
 
