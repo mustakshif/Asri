@@ -359,17 +359,17 @@
                         }
 
                         // 视图标签编辑菜单emoji
-                        >.block__icon[style*="font-size: 14px;"] {
-                            padding-left: 0 !important;
-                            margin-left: 0;
+                        // >.block__icon[style*="font-size: 14px;"] {
+                        //     padding-left: 0 !important;
+                        //     margin-left: 0;
 
-                            .body-asri--mac & {
-                                font-size: 16px !important;
-                                width: 16px !important;
-                                line-height: 16px;
-                                margin-right: 4px !important;
-                            }
-                        }
+                        //     .body-asri--mac & {
+                        //         font-size: 16px !important;
+                        //         width: 16px !important;
+                        //         line-height: 16px;
+                        //         margin-right: 4px !important;
+                        //     }
+                        // }
 
                         // ~.b3-menu__item {
                         //     input:focus {
@@ -564,14 +564,14 @@ img.av__cellassetimg {
         }
     }
 
-    &[data-name*="set-filter"],
-    &[data-name="av-col-option"] {
-        .b3-menu__item {
-            input:focus {
-                background-color: var(--b3-menu-background);
-            }
-        }
-    }
+    // &[data-name^="set-filter"],
+    // &[data-name="av-col-option"] {
+    //     .b3-menu__item {
+    //         input:focus {
+    //             background-color: var(--b3-menu-background);
+    //         }
+    //     }
+    // }
 
     &[data-name="av-header-cell"]{
         .b3-menu__items {

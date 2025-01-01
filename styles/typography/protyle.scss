@@ -1135,13 +1135,14 @@
 
 //文字格式工具条
 &-toolbar {
-    animation: protyle-toolbar-appear 0.225s $timing-function-bouncy-end;
+    animation: protyle-toolbar-appear .3s $timing-function-bouncy-both;
     border: none;
     border-radius: 40px;
     padding: 4px;
     // transform: translateY(-12px);
     background-color: var(--b3-theme-surface);
     transform-origin: 50% 100%;
+    transition: none;
     @include menu-shadow;
     @include border-or-not($border: false);
 
@@ -1385,13 +1386,13 @@
     @keyframes protyle-toolbar-appear {
 
         // 避免开始时元素大小计算错误导致定位超出视口
-        0%, 5% {
+        0%, 10% {
             opacity: 0;
             transform: none;
         }
 
-        5% {
-            transform: scale(.8);
+        10% {
+            transform: scale(.9);
         }
 
         100% {

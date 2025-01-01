@@ -18,7 +18,9 @@
         [data-key="dialog-setpassword"],
         [data-key="dialog-saveworkspace"],
         [data-key="dialog-createnotebook"],
-        [data-key="dialog-rename"]) .b3-dialog__container {
+        [data-key="dialog-rename"],
+        [data-key="dialog-commandpanel"],
+        [data-key="dialog-aiupdatecustomaction"]) .b3-dialog__container {
         direction: rtl;
     }
 
