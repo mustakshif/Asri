@@ -1,3 +1,5 @@
+import { environment } from "../util/rsc";
+
 export async function modeTransitionOnClick(e: Event) {
     const target = e.target as HTMLElement;
 
@@ -6,16 +8,41 @@ export async function modeTransitionOnClick(e: Event) {
         // startTranstition();
         startDefaultTranstition(() => {
             console.log('\x1b[34m\x1b[1m\x1b[47mMode Transition started\x1b[0m');
-        });
+        }, environment.isMacOS ? 0 : 100);
     }
 }
 
-export async function startDefaultTranstition(func?: () => void) {
+export async function startDefaultTranstition(func?: () => void, waitDuration = 0) {
     if (!document.startViewTransition) {
         if (func) func();
         return;
     }
-    document.startViewTransition(func);
+
+    if (waitDuration > 0) {
+        const wait = (ms: number) => {
+            return new Promise(r => setTimeout(r, ms))
+        };
+        const transition = document.startViewTransition(async () => {
+            // Pause for up to 100ms for fonts to be ready:
+            await Promise.race([wait(waitDuration)]);
+            func && func();
+        });
+
+        transition.ready.then(() => {
+            document.documentElement.animate(
+                {
+                    opacity: [0, 1],
+                },
+                {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                }
+            );
+        });
+    } else {
+        document.startViewTransition(func); // 此时动画时长由CSS决定
+    }
+
 }
 
 export const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');

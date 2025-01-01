@@ -220,22 +220,5 @@ const debouncedHandleWinResizeEnd = debounce(() => {
 
 function themeUpdateCallback(e: MediaQueryListEvent) {
     console.log('系统主题变化:', e.matches ? '暗色' : '亮色')
-    const wait = (ms: number) => new Promise(r => setTimeout(r, ms));
-    const transition = document.startViewTransition(async () => {
-
-        // Pause for up to 100ms for fonts to be ready:
-        await Promise.race([wait(200)]);
-    });
-
-    transition.ready.then(() => {
-        document.documentElement.animate(
-            {
-                opacity: [0, 1],
-            },
-            {
-                duration: 500,
-                easing: 'ease-in-out',
-            }
-        );
-    });
+    startDefaultTranstition(() => {}, 200);
 }
