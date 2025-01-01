@@ -1,4 +1,4 @@
-type EventListenerTarget = HTMLElement | Document | Window;
+type EventListenerTarget = HTMLElement | Document | Window | MediaQueryList;
 
 export class AsriEventListener<T extends Event> {
 

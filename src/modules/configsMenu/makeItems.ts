@@ -2,13 +2,16 @@
 import { getFile, putFile } from '../../util/api';
 import { remote } from '../../util/electron';
 import { debounce, hexToHSL, hexToOklchL, querySelectorAsync } from '../../util/misc';
-import { asriDoms, environment as env } from '../../util/rsc';
+import { environment as env } from '../../util/rsc';
+import { startDefaultTranstition } from '../modeTransition';
 
 const asriConfigs = {
     'followSysAccentColor': false,
     'chroma': "1",
     'userCustomColor': "#3478f6"
 };
+
+const debounceChramaValueSaving = debounce(() => updateAsriConfigs(), 200);
 
 export let i18n: any;
 let sysAccentColor: string;
@@ -160,7 +163,6 @@ export async function createBarModeMenuItems(e: Event) {
 
 function handleMenuItemClick() {
     if (!followSysAccentBtn || !pickColorBtn || !asriChromaSlider || !colorPicker) return;
-    const debounceChramaValueSaving = debounce(() => updateAsriConfigs(), 200);
 
     // handle click events
     if (env.isInBrowser || env.isMobile || env.isLinux) {
@@ -173,8 +175,12 @@ function handleMenuItemClick() {
     colorPicker.addEventListener('input', handleColorPickerInput);
     colorPicker.addEventListener('change', handleColorPickerChange);
     asriChromaSlider.addEventListener('input', handleChromaSliderInput);
+}
 
-    function handleFollowSystemAccentBtnClick() {
+function handleFollowSystemAccentBtnClick() {
+
+    startDefaultTranstition(func);
+    function func() {
         if (!followSysAccentColor) {
             followSysAccentColor = true;
             followSysAccentBtn!.classList.add('b3-menu__item--selected');
@@ -197,8 +203,12 @@ function handleMenuItemClick() {
 
         updateAsriConfigs();
     }
+}
 
-    function handlePickColorBtnClick() {
+function handlePickColorBtnClick() {
+
+    startDefaultTranstition(func);
+    function func() {
         if (!followSysAccentColor) return;
 
         followSysAccentColor = false;
@@ -216,35 +226,36 @@ function handleMenuItemClick() {
         updateAsriConfigs();
     }
 
-    function handleColorPickerInput() {
-        const hexColor = colorPicker!.value;
-        document.documentElement.style.setProperty('--asri-user-custom-accent', hexColor);
-        reverseOnPrimaryLightness(hexColor);
-    }
+}
 
-    function handleColorPickerChange() {
-        followSysAccentBtn!.classList.remove('b3-menu__item--selected');
-        pickColorBtn!.classList.add('b3-menu__item--selected');
-        reverseOnPrimaryLightness(colorPicker!.value);
+function handleColorPickerInput() {
+    const hexColor = colorPicker!.value;
+    document.documentElement.style.setProperty('--asri-user-custom-accent', hexColor);
+    reverseOnPrimaryLightness(hexColor);
+}
 
-        asriConfigs.userCustomColor = colorPicker!.value;
-        followSysAccentColor = false;
-        asriConfigs.followSysAccentColor = false;
-        updateAsriConfigs();
-    }
+function handleColorPickerChange() {
+    followSysAccentBtn!.classList.remove('b3-menu__item--selected');
+    pickColorBtn!.classList.add('b3-menu__item--selected');
+    reverseOnPrimaryLightness(colorPicker!.value);
 
-    function handleChromaSliderInput(this: any) {
-        const chromaValue = this.value;
-        document.documentElement.style.setProperty('--asri-c-factor', chromaValue);
-        this.parentElement!.ariaLabel = i18n['asriChroma'] + chromaValue;
-        asriConfigs.chroma = chromaValue;
+    asriConfigs.userCustomColor = colorPicker!.value;
+    followSysAccentColor = false;
+    asriConfigs.followSysAccentColor = false;
+    updateAsriConfigs();
+}
 
-        isUserAccentGray = chromaValue === '0' ? true : false;
+function handleChromaSliderInput(this: any) {
+    const chromaValue = this.value;
+    document.documentElement.style.setProperty('--asri-c-factor', chromaValue);
+    this.parentElement!.ariaLabel = i18n['asriChroma'] + chromaValue;
+    asriConfigs.chroma = chromaValue;
 
-        handleGrayScale(chromaValue);
+    isUserAccentGray = chromaValue === '0' ? true : false;
 
-        debounceChramaValueSaving();
-    }
+    handleGrayScale(chromaValue);
+
+    debounceChramaValueSaving();
 }
 
 export function getSystemAccentColor() {

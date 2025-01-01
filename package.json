@@ -15,7 +15,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "cmpl": "tsc ./src/main.ts",
     "build": "webpack --mode production",
-    "w": "webpack --watch --mode development",
+    "dev": "webpack --watch --mode development",
     "wphelp": "webpack --help"
   },
   "author": "mustakshif",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@types/cssom": "^0.4.3",
     "@types/eslint": "^8.56.10",
+    "@types/web": "^0.0.188",
     "html-loader": "^5.0.0",
     "siyuan": "^1.0.2",
     "terser-webpack-plugin": "^5.3.10",

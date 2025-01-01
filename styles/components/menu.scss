@@ -303,35 +303,32 @@
 }
 
 // emoji 面板
-.b3-dialog--open {
+[data-key="dialog-emojis"] {
 
-    &[data-key="dialog-emojis"] {
+    --b3-border-radius-b: 14px; // 对话框圆角
 
-        --b3-border-radius-b: 14px; // 对话框圆角
+    .b3-dialog__scrim {
+        backdrop-filter: none;
+        transition: none;
 
-        .b3-dialog__scrim {
+        @include darkmode-counterpart {
             backdrop-filter: none;
             transition: none;
-
-            @include darkmode-counterpart {
-                backdrop-filter: none;
-                transition: none;
-            }
         }
+    }
 
-        .b3-dialog__container {
-            outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
-            background-color: var(--b3-menu-background);
-            outline-offset: 0;
-            // @include border-or-not($border: false) {
-            //     outline: #fff4 solid 1px;
-            //     outline-offset: -1px;
-            // }
+    .b3-dialog__container {
+        outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
+        background-color: var(--b3-menu-background);
+        outline-offset: 0;
+        // @include border-or-not($border: false) {
+        //     outline: #fff4 solid 1px;
+        //     outline-offset: -1px;
+        // }
 
-            .b3-dialog__body {
-                border-radius: 11px;
-                z-index: 0;
-            }
+        .b3-dialog__body {
+            border-radius: 11px;
+            z-index: 0;
         }
     }
 }
@@ -416,6 +413,10 @@
                 background-color: transparent;
             }
         }
+    }
+
+    &__item {
+        border-radius: unset;
     }
 
     &__item img,

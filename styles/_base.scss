@@ -119,17 +119,17 @@
     color: var(--b3-theme-primary);
     // color: var(--b3-theme-on-background);
     font-weight: 600;
-    transition: .1s all;
+    transition-duration: .1s;
     border: none;
     box-shadow: none;
     outline: 1px solid rgb(from var(--b3-theme-on-background) r g b / .2);
     outline-offset: -1px;
+    transition-property: color, background-color, outline-color, transform;
 
     &:hover {
         background-color: var(--b3-theme-primary);
         color: var(--b3-theme-on-primary);
-        transition: .1s;
-        transition-property: color, background-color, outline-color;
+        
         outline-color: transparent;
         // border-radius: 6px;
     }
@@ -137,7 +137,6 @@
     &:active {
         transform: scale(.95);
         opacity: .8;
-        transition: .1s;
     }
 
     @content;
@@ -147,8 +146,9 @@
 @mixin button-action($type) {
     border-radius: 7px;
     padding: 4px 16px;
-    transition-property: color, background-color, outline;
+    transition-property: color, background-color, outline, transform;
     outline-offset: -1px;
+    transition-duration: .1s;
 
     &:hover {
         box-shadow: none;
@@ -158,7 +158,7 @@
         transform: scale(0.95);
         opacity: .8;
         box-shadow: none;
-        transition: .1s;
+        // transition: .1s;
     }
 
     &:focus {
@@ -178,7 +178,7 @@
         &:focus {
             @include theme-variant-color(background-color, list-hover, 0.1);
             color: var(--b3-theme-on-background);
-            transition: .1s;
+            // transition: .1s;
         }
     }
 
@@ -195,7 +195,7 @@
         &:focus {
             background-color: var(--b3-theme-primary);
             color: var(--b3-theme-on-primary);
-            transition: .1s;
+            // transition: .1s;
         }
     }
 
@@ -213,7 +213,7 @@
         &:focus {
             background-color: var(--b3-theme-error);
             color: var(--b3-theme-on-error);
-            transition: .1s;
+            // transition: .1s;
             outline-color: transparent;
         }
     }

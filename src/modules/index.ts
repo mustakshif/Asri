@@ -9,6 +9,7 @@ import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { debouncedFormatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClassName } from "./editor";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
+import { darkModeMediaQuery, modeTransitionOnClick, startDefaultTranstition } from "./modeTransition";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
 import { avoidOverlappingWithStatus, debouncedStatusPosition, removeStatusStyles, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
@@ -24,6 +25,7 @@ const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback));
 const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
 const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
 const winRo = new AsriResizeObserver(winRoCallback);
+const themeUpdateListener = new AsriEventListener(themeUpdateCallback);
 
 export let isWinResizing = false, fromFullscreen: boolean;
 export let protyleWidthChange = 0;
@@ -50,6 +52,7 @@ export async function loadAsriJSModules() {
     selectionChangeEventListener.start(document, 'selectionchange');
     globalClassNameMo.observe(document.body, MOConfigForClassNames);
     watchImgExportMo.observe(document.body, { childList: true });
+    themeUpdateListener.start(darkModeMediaQuery, 'change');
     asriDoms.layoutCenter || await querySelectorAsync('.layout__center');
     if (!env.isMobile) {
         lytCenterRo.observe(asriDoms.layoutCenter);
@@ -73,6 +76,7 @@ export async function unloadAsriJSModules() {
     winFocusChangeEventListener.remove(window, 'blur');
     selectionChangeEventListener.remove(document, 'selectionchange');
     globalClassNameMo.disconnect();
+    themeUpdateListener.remove(darkModeMediaQuery, 'change');
     watchImgExportMo.disconnect(() => {
         document.body.classList.remove("has-exportimg")
     });
@@ -89,6 +93,7 @@ function lowFreqEventsCallback(e: Event) {
     addAfwdMenuItems(e);
     updateStyles(e);
     // if (!env.isIOSApp)
+    modeTransitionOnClick(e);
 }
 
 function winFocusChangeCallback(e: Event) {
@@ -212,3 +217,25 @@ const debouncedHandleWinResizeEnd = debounce(() => {
     protyleWidthChange = 0;
     // console.log('debouncedwinRoCallback', isWinResizing);
 }, 200);
+
+function themeUpdateCallback(e: MediaQueryListEvent) {
+    console.log('系统主题变化:', e.matches ? '暗色' : '亮色')
+    const wait = (ms: number) => new Promise(r => setTimeout(r, ms));
+    const transition = document.startViewTransition(async () => {
+
+        // Pause for up to 100ms for fonts to be ready:
+        await Promise.race([wait(200)]);
+    });
+
+    transition.ready.then(() => {
+        document.documentElement.animate(
+            {
+                opacity: [0, 1],
+            },
+            {
+                duration: 500,
+                easing: 'ease-in-out',
+            }
+        );
+    });
+}

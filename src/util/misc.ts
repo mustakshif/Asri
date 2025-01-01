@@ -130,12 +130,12 @@ export function hexToOklchL(hex: string) {
     return L;
 }
 
-export function asriModeTransition() {
-    document.body.classList.add('asri-mode-transition');
-    setTimeout(() => {
-        document.body.classList.remove('asri-mode-transition');
-    }, 350);
-}
+// export function asriModeTransition() {
+//     document.body.classList.add('asri-mode-transition');
+//     setTimeout(() => {
+//         document.body.classList.remove('asri-mode-transition');
+//     }, 350);
+// }
 
 /**
 * Check if two elements have overlapping parts.

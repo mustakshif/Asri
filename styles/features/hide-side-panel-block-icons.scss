@@ -13,16 +13,18 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
 
         --dots-clr: var(--b3-border-color-trans);
         --icons2dots-timing-func: #{$timing-function-bouncy-end};
-        --dots2icons-timing-func: ease-in-out;
+        --dots2icons-timing-func: #{$timing-function-bouncy-end};
         --icons2dots-dur: .175s;
         --dots2icons-dur: .15s;
         --icons2dots-delay: .2s;
         --dots2icons-delay: .125s;
 
         .block__icons {
+            transition: var(--icons2dots-dur) var(--icons2dots-timing-func) var(--icons2dots-delay);
+
+            // dots
             height: 20px;
             min-height: unset;
-            transition: var(--icons2dots-dur) var(--icons2dots-timing-func) var(--icons2dots-delay);
 
             &::before {
                 content: '';
@@ -40,33 +42,34 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
             }
 
             >:where(div, span) {
-                transform: scale(.5);
+                transform: scale(.6);
                 transition: var(--icons2dots-dur) var(--icons2dots-timing-func) var(--icons2dots-delay);
                 opacity: 0 !important;
                 // transform-origin: top center;
 
                 &:first-child {
-                    transform-origin: 13em 50%;
+                    transform-origin: 15em 50%;
                 }
 
                 &.counter {
-                    transform-origin: 300% 50%;
+                    transform-origin: 400% 50%;
                 }
 
                 &:nth-last-child(3 of .block__icon) {
-                    transform-origin: -100% 50%;
-                }
-
-                &:nth-last-child(2 of .block__icon) {
                     transform-origin: -200% 50%;
                 }
 
+                &:nth-last-child(2 of .block__icon) {
+                    transform-origin: -300% 50%;
+                }
+
                 &:last-child {
-                    transform-origin: -400% 50%;
+                    transform-origin: -500% 50%;
                 }
             }
 
-            &:hover {
+            &:hover,
+            &:focus-within {
                 height: 42px;
 
                 transition-timing-function: var(--dots2icons-timing-func);
@@ -88,6 +91,10 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
                     transition-duration: var(--dots2icons-dur);
                     transition-delay: var(--dots2icons-delay);
                 }
+            }
+
+            .search__label:not(.fn__none)~.block__icon {
+                opacity: 0 !important
             }
         }
     }
