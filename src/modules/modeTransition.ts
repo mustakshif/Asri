@@ -1,23 +1,19 @@
-import { environment } from "../util/rsc";
-
 export async function modeTransitionOnClick(e: Event) {
     const target = e.target as HTMLElement;
 
     if (target.closest('[data-name="barmode"] .b3-menu__item:not([id])')) {
         console.log(`Clicked item: ${target.textContent}`);
-        // startTranstition();
-        startDefaultTranstition(() => {
-            console.log('\x1b[34m\x1b[1m\x1b[47mMode Transition started\x1b[0m');
-        });
+        startFadeInFadeOutTranstition();
     }
 }
 
-export async function startDefaultTranstition(func?: () => void, waitDuration = 0) {
+export async function startFadeInFadeOutTranstition(func?: () => void, waitDuration = 0) {
     if (!document.startViewTransition) {
-        if (func) func();
+        func && func();
         return;
     }
 
+    console.log('\x1b[34m\x1b[1m\x1b[47mMode Transition started\x1b[0m');
     if (waitDuration > 0) {
         const wait = (ms: number) => {
             return new Promise(r => setTimeout(r, ms))

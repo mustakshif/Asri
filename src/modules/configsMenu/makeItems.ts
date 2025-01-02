@@ -3,7 +3,7 @@ import { getFile, putFile } from '../../util/api';
 import { remote } from '../../util/electron';
 import { debounce, hexToHSL, hexToOklchL, querySelectorAsync } from '../../util/misc';
 import { environment as env } from '../../util/rsc';
-import { startDefaultTranstition } from '../modeTransition';
+import { startFadeInFadeOutTranstition } from '../modeTransition';
 
 const asriConfigs = {
     'followSysAccentColor': false,
@@ -169,9 +169,9 @@ function handleMenuItemClick() {
         // followSysAccentColor = false;
         followSysAccentBtn.classList.add('fn__none');
     } else {
-        followSysAccentBtn.addEventListener('click', handleFollowSystemAccentBtnClick);
+        followSysAccentBtn.addEventListener('mouseup', handleFollowSystemAccentBtnClick);
     }
-    pickColorBtn.addEventListener('click', handlePickColorBtnClick);
+    pickColorBtn.addEventListener('mouseup', handlePickColorBtnClick);
     colorPicker.addEventListener('input', handleColorPickerInput);
     colorPicker.addEventListener('change', handleColorPickerChange);
     asriChromaSlider.addEventListener('input', handleChromaSliderInput);
@@ -179,7 +179,7 @@ function handleMenuItemClick() {
 
 function handleFollowSystemAccentBtnClick() {
 
-    startDefaultTranstition(func);
+    startFadeInFadeOutTranstition(func);
     function func() {
         if (!followSysAccentColor) {
             followSysAccentColor = true;
@@ -207,7 +207,7 @@ function handleFollowSystemAccentBtnClick() {
 
 function handlePickColorBtnClick() {
 
-    startDefaultTranstition(func);
+    startFadeInFadeOutTranstition(func);
     function func() {
         if (!followSysAccentColor) return;
 
@@ -225,7 +225,6 @@ function handlePickColorBtnClick() {
         asriConfigs.followSysAccentColor = false;
         updateAsriConfigs();
     }
-
 }
 
 function handleColorPickerInput() {

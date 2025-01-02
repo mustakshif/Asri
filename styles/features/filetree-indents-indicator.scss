@@ -1,5 +1,21 @@
 @use '../base' as *;
 
+// 文档树项目小圆点位置
+.layout-tab-container .b3-list-item .b3-list-item__toggle.fn__hidden {
+    position: relative;
+
+    &::before {
+        left: auto !important;
+        right: 7px;
+    }
+}
+
+// 大纲数字层级标识
+.sy__outline .b3-list-item[data-type=NodeHeading] .b3-list-item__text::before {
+    transform: translateX(-18px);
+    left: auto;
+}
+
 // 文档树缩进参考线 indent guides（方案一）
 .file-tree>.fn__flex-1 {
     $uls: '>ul';
@@ -11,12 +27,17 @@
         $uls: str-insert($string: $uls, $insert: '>ul', $index: 100);
 
         &#{$uls} {
-            margin-left: $indent;
+            margin-inline-start: $indent;
             box-shadow: 1px 0 transparent inset;
 
             .b3-list-item {
                 margin-left: unset;
-                margin-inline-start: calc($indent * $i * -1 + 9px + var(--indent-offset));
+                margin-inline-start: calc($indent * $i * -1 + 6px + var(--indent-offset));
+
+                >.b3-list-item__toggle {
+                    // padding-left: unset !important;
+                    padding-left: calc($indent * $i + 4px) !important;
+                }
             }
         }
     }
@@ -50,9 +71,9 @@
     }
 }
 
-.sy__tag>.fn__flex-1 {
-    --indent-offset: -4px;
-}
+// .sy__outline>.fn__flex-1 {
+//     --indent-offset: -1px;
+// }
 
 // ————————————————————————————————————————————————————————
 // 文档树缩进参考线 indent guides（方案二，性能更差，导致展开文档目录动画卡顿）
@@ -112,20 +133,4 @@
 //         // }
 //     }
 
-// }
-
-// 文档树项目小圆点位置
-.layout-tab-container .b3-list-item .b3-list-item__toggle.fn__hidden {
-    position: relative;
-
-    &::before {
-        left: auto !important;
-        right: 7px;
-    }
-}
-
-// // 大纲数字层级标识
-// .sy__outline .b3-list-item[data-type=NodeHeading] .b3-list-item__text::before {
-//     transform: translateX(-18px);
-//     left: auto;
 // }

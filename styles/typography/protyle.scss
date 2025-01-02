@@ -375,11 +375,12 @@
 
     .bq,
     blockquote {
-        border-radius: 10px;
         padding: 12px 16px;
-        border: 1.5px solid var(--b3-border-color-trans);
+        // border: .5px solid var(--b3-border-color-trans);
         margin: 1em 0;
         background-color: var(--b3-theme-surface-light);
+        outline: .5px solid var(--b3-border-color-trans);
+        outline-offset: -.5px;
 
         &>[data-type='NodeHeading']:first-child {
             margin-top: 0;
@@ -529,11 +530,16 @@
     // 引用块 ——————————————————————————————————————
     @include blockquote;
 
+    // .sb .bq,
+    // .sb blockquote,
+    // .bq[style*="var(--b3-font-background1)"],
+    // blockquote[style*="var(--b3-font-background1)"] {
+    //     border: none;
+    // }
+
     .sb .bq,
-    .sb blockquote,
-    .bq[style*="var(--b3-font-background1)"],
-    blockquote[style*="var(--b3-font-background1)"] {
-        border: none;
+    .sb blockquote {
+        outline: none
     }
 
     //代码块 ——————————————————————————————————————
@@ -544,7 +550,7 @@
 
         margin: 0.4em 0;
 
-        > .protyle-action {
+        >.protyle-action {
             justify-content: flex-end;
 
             .protyle-action__language {
@@ -935,6 +941,8 @@
 
         // 工具条
         .protyle-icons {
+            width: fit-content;
+
             .protyle-icon {
                 height: 30px;
                 padding: 8px 6px;
@@ -1320,8 +1328,8 @@
 }
 
 [data-node-id][style*="var(--b3-font-background1)"] {
-    outline: 1.5px solid var(--b3-border-color-trans);
-    outline-offset: -1.5px;
+    outline: .5px solid var(--b3-border-color-trans);
+    // outline-offset: -1.5px;
 }
 
 .protyle-gutters {
@@ -1386,7 +1394,8 @@
     @keyframes protyle-toolbar-appear {
 
         // 避免开始时元素大小计算错误导致定位超出视口
-        0%, 10% {
+        0%,
+        10% {
             opacity: 0;
             transform: none;
         }

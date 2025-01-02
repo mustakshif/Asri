@@ -9,7 +9,7 @@ import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { debouncedFormatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClassName } from "./editor";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
-import { darkModeMediaQuery, modeTransitionOnClick, startDefaultTranstition } from "./modeTransition";
+import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstition } from "./modeTransition";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
 import { avoidOverlappingWithStatus, debouncedStatusPosition, removeStatusStyles, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
@@ -35,6 +35,7 @@ export async function loadAsriJSModules() {
     useMacSysScrollbar();
     applyTrafficLightPosition();
     setStatusHeightVar();
+    // startDefaultTranstition(loadThemePalette); 
     loadThemePalette(); // https://github.com/mustakshif/Asri/issues/85
     if (!env.isMobile) {
         await updateWndEls();
@@ -220,5 +221,5 @@ const debouncedHandleWinResizeEnd = debounce(() => {
 
 function themeUpdateCallback(e: MediaQueryListEvent) {
     console.log('系统主题变化:', e.matches ? '暗色' : '亮色')
-    startDefaultTranstition(() => {}, 200);
+    startFadeInFadeOutTranstition(() => {}, 200);
 }

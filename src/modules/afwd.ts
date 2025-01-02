@@ -1,7 +1,7 @@
 import { getBlockAttrs, setBlockAttrs } from "../util/api";
 import { debounce, querySelectorAsync } from "../util/misc";
 import { wndElements } from "../util/state";
-import { i18n as i18nExported, loadI18n } from "./configsMenu/makeItems";
+import { i18n as _i18n, loadI18n } from "./configsMenu/makeItems";
 
 export const debouncedCalcProtyleSpacings = debounce(calcProtyleSpacings, 200);
 const afwdBlockTypes = [
@@ -15,7 +15,7 @@ const afwdBlockTypes = [
 ];
 
 let commonMenuEl: Element | undefined;
-let i18n = i18nExported;
+let i18n = _i18n;
 
 export function calcProtyleSpacings() {
     wndElements?.forEach(wnd => {

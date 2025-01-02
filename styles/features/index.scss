@@ -2,7 +2,8 @@
 // @use 'panda-scheme';
 // @use 'mode-transition';
 // @use 'hide-toolbar';
-@use 'cover-image-fading';
+// @use 'cover-image-fading';
+@use './cover-image-parallax-scrolling';
 @use 'blur';
 @use 'filetree-indents-indicator';
 @use 'topbar-fusion';
