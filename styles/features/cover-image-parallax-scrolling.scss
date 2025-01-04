@@ -22,14 +22,16 @@
         // view-timeline-axis: y;
         animation-range: calc(100vh - var(--bgimg-top-space, 84px)) normal;
         animation-fill-mode: both;
-        animation-name: parallax, cover-img-fade-out;
+        animation-name: parallax-object, cover-img-fade-out;
         animation-timing-function: linear;
         // margin: 0 12px 0;
         // width: calc(100% - 24px);
         // border-radius: 16px;
 
+        // 临时解决方案，待优化
         &[style^="object-position"] {
             animation-name: cover-img-fade-out;
+            // animation: none;
         }
     }
 
@@ -39,21 +41,21 @@
     // }
 }
 
-@keyframes parallax {
+@keyframes parallax-object {
     100% {
         // filter: saturate(0);
         // margin: 0;
         // width: 100%;
         // border-radius: 0;
         // height: 0vh;
-        object-position: center calc(var(--obj-position-offset-y, 50%) + min(calc(30vh - 50px), 100px)); // 30vh 正好保持相对静止
+        object-position: center calc(var(--obj-position-offset-y, 50%) + min(calc(30vh - 40px), 120px)); // 30vh 正好保持相对静止
     }
 }
 
 @keyframes cover-img-fade-out {
 
     0%,
-    60% {
+    50% {
         opacity: 1;
     }
 

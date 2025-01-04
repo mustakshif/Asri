@@ -268,6 +268,10 @@
                 color: var(--b3-theme-on-background);
             }
         }
+        
+        .item__text {
+            transform: none;
+        }
     }
 
     .item:not(.item--focus, .fn__none)+.item:not(.item--focus):not(:first-child)::before {

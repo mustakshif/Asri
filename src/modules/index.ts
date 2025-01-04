@@ -110,9 +110,11 @@ function selectionChangeCallback(e: Event) {
     if (!range) return;
 
     const curNode = range.commonAncestorContainer;
-    const curBlock = curNode.parentElement ? curNode.parentElement.closest('[data-node-id]') : null;
+    const curParent = curNode.parentElement;
+    const curBlock = curParent ? curNode.parentElement.closest('[data-node-id]') : null;
     if (!curBlock) return;
 
+    curParent && curParent.dir && curParent.dir === 'auto';
     const curBlockType = curBlock.getAttribute('data-type');
     document.querySelectorAll('.asri-selected-block').forEach(block => block.classList.remove('asri-selected-block'));
     if (curBlockType === 'NodeAttributeView' || !curBlockType || curBlockType === 'NodeCodeBlock') return;

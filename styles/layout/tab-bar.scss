@@ -60,6 +60,7 @@
         &__text {
             padding: 2px 6px 2px 6px;
             mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0, #000 8px);
+            transition-timing-function: $timing-function-decelerate;
         }
 
         &__close {
@@ -106,7 +107,7 @@
         &--focus {
             max-width: 21rem;
             // font-weight: 500;
-            transition: 0.2s;
+            transition: .2s;
             // border-radius: 7px;
             @include theme-variant-color(background-color, list-hover, 0.12, 0.15);
             // box-shadow: 0 0 0 1.2px var(--tab-border-clr) inset;
@@ -118,6 +119,30 @@
                 display: none;
             }
         }
+
+        &:not(.item--pin,.item--focus) {
+            .item__icon,
+            .item__text {
+                transform: translateX(12px);
+            }
+        }
+
+        &:hover {
+            .item__icon,
+            .item__text {
+                transform: translateX(0);
+            }
+        }
+
+        &__icon {
+            transition-duration: .2s;
+            transition-property: transform;
+            transition-timing-function: $timing-function-decelerate;
+        }
+
+        // &__icon, &__text {
+        //     transition-delay: .125s;
+        // }
 
         // --tab-border-clr: var(--b3-border-color-trans);
         // @include darkmode-counterpart {

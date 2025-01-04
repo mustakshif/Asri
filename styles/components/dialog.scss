@@ -343,7 +343,9 @@
         // border-radius: 12px 0 0 12px;
 
         .config__tab-hr {
-            background-color: var(--b3-border-color-trans);
+            // background-color: var(--b3-border-color-trans);
+            background-color: transparent;
+            margin: 4px 0;
         }
 
         .b3-list-item {
@@ -431,6 +433,10 @@
 
             .b3-label {
                 box-shadow: none;
+
+                &__text {
+                    margin-top: 8px;
+                }
 
                 // 表单元素溢出显示
                 >.fn__flex-1 {
@@ -831,11 +837,13 @@
 
                 .b3-card {
                     &::after {
-                        box-shadow: 0 0 0 1.5px inset var(--b3-theme-primary-light);
+                        // box-shadow: 0 0 0 1px inset var(--b3-theme-primary-light);
 
-                        @include darkmode-counterpart {
-                            box-shadow: 0 0 0 1.5px inset var(--b3-theme-primary);
-                        }
+                        // @include darkmode-counterpart {
+                        //     box-shadow: 0 0 0 1px inset var(--b3-theme-primary);
+                        // }
+
+                        box-shadow: none;
                     }
                 }
             }
@@ -942,9 +950,11 @@
         .b3-card {
             border-radius: $border-rd-card;
             background-color: var(--b3-theme-background);
-            // outline: 1.5px solid var(--b3-border-color-trans);
             border: none;
-            box-shadow: 0 0 0 1.5px inset var(--b3-border-color-trans);
+            box-shadow: none;
+            // box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+            outline: 1.5px solid var(--b3-border-color-trans);
+            outline-offset: -1.5px;
             margin: 0;
             transition-property: outline, transform, box-shadow;
             transition-duration: .2s;
@@ -952,12 +962,7 @@
 
             &--current {
                 background-color: rgb(from var(--b3-theme-primary) r g b / .1);
-                box-shadow: 0 0 0 1.5px inset var(--b3-theme-primary-lighter);
-                // outline: 3px solid var(--b3-theme-primary-lighter);
-
-                // @include darkmode-counterpart {
-                //     outline-color: var(--b3-theme-primary-light);
-                // }
+                // box-shadow: 0 0 0 1px inset var(--b3-theme-primary-lighter);
             }
 
             &__img {
@@ -987,10 +992,6 @@
                 // outline: 2px solid var(--b3-theme-primary-light);
                 z-index: 1;
                 box-shadow: none;
-
-                // @include darkmode-counterpart {
-                //     outline: 2px solid var(--b3-theme-primary);
-                // }
             }
 
             &::after {
@@ -1004,11 +1005,20 @@
                 transition: opacity .2s;
                 pointer-events: none;
                 // @include menu-shadow(var(--b3-theme-primary), $opacity-light: .2);
+                // outline-color: transparent;
 
-                box-shadow: 0 0 0 1.5px inset var(--b3-theme-primary-light), 0 0 0 1px rgb(from var(--b3-theme-primary) r g b/0.1), 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.1), 0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.1);
+                box-shadow: 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.1), 0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.1);
 
                 @include darkmode-counterpart {
-                    box-shadow: 0 0 0 1.5px inset var(--b3-theme-primary), 0 0 0 .5px rgb(from var(--b3-theme-primary) r g b/1), 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.3), 0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.15);
+                    box-shadow: 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.3), 0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.15);
+                }
+            }
+
+            &--current, &:hover, &::after {
+                outline-color: var(--b3-theme-primary-lighter);
+
+                @include darkmode-counterpart {
+                    outline-color: var(--b3-theme-primary);
                 }
             }
 
@@ -1085,6 +1095,33 @@
 
         .item__preview {
             border-radius: 0;
+
+            view-timeline-name: --preview-background;
+            animation-timeline: --preview-background;
+            // view-timeline-axis: y;
+            animation-range: 67% normal;
+            animation-fill-mode: both;
+            animation-name: parallax-background, preview-cover-fade-out;
+            animation-timing-function: linear;
+
+            @keyframes parallax-background {
+                100% {
+                    background-position: center calc(50% + 160px);
+                }
+            }
+
+            @keyframes preview-cover-fade-out {
+
+                0%,
+                60% {
+                    opacity: 1;
+                }
+            
+                90%,
+                100% {
+                    opacity: 0;
+                }
+            }
         }
 
         .b3-typography {
