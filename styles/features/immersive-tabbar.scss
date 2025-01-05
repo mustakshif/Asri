@@ -79,8 +79,7 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
             }
 
             :not(#searchPreview)>.protyle-content {
-                padding-top: var(--blur-block-height); // 可能是导致滚动相关问题的原因
-            }
+                padding-top: var(--blur-block-height); 
 
             &>.file-tree .protyle-content {
                 padding-top: 0 !important;
