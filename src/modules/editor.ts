@@ -1,7 +1,7 @@
 import { debounce, querySelectorAllAsync } from "../util/misc";
 
 export const debouncedFormatProtyleWithBgImageOnly = debounce(formatProtyleWithBgImageOnly);
-export async function formatProtyleWithBgImageOnly() {
+async function formatProtyleWithBgImageOnly() {
     // await updateWndEls();
     let protyleBgs = await querySelectorAllAsync('.protyle-top>.protyle-background');
 

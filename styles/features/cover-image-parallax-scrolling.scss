@@ -1,4 +1,6 @@
 .protyle {
+
+    // 滚动条方案
     // &-content {
     //     scroll-timeline-name: --protyle-content;
     //     scroll-timeline-axis: y;
@@ -16,22 +18,39 @@
     //     }
     // }
 
-    &-background__img img {
+    &-background__img {
         view-timeline-name: --protyle-background;
-        animation-timeline: --protyle-background;
-        // view-timeline-axis: y;
-        animation-range: calc(100vh - var(--bgimg-top-space, 84px)) normal;
-        animation-fill-mode: both;
-        animation-name: parallax-object, cover-img-fade-out;
-        animation-timing-function: linear;
-        // margin: 0 12px 0;
-        // width: calc(100% - 24px);
-        // border-radius: 16px;
+    }
 
-        // 临时解决方案，待优化
-        &[style^="object-position"] {
-            animation-name: cover-img-fade-out;
-            // animation: none;
+    &-background__img {
+        overflow: hidden;
+
+        img {
+            --offset-y: 120px;
+            // view-timeline-name: --protyle-background;
+            animation-timeline: --protyle-background;
+            // view-timeline-axis: y;
+            animation-range: calc(100vh - var(--bgimg-top-space, 84px)) normal;
+            animation-fill-mode: both;
+            animation-name: parallax-object,
+                cover-img-fade-out,
+                // cover-img-blur
+            ;
+            animation-timing-function: linear;
+            // margin: 0 12px 0;
+            // width: calc(100% - 24px);
+            // border-radius: 16px;
+            // min-width: calc(100% + 60px);
+            // margin: 0 -30px;
+            // transform: scale(1.2);
+            transform: translateY(0) scale(1.03);
+            transform-origin: 50% calc(50% + var(--offset-y));
+
+            //临时解决方案，待优化 
+            // &[style^="object-position"] {
+            //     animation-name: cover-img-fade-out;
+            //     // animation: none;
+            // }
         }
     }
 
@@ -48,7 +67,10 @@
         // width: 100%;
         // border-radius: 0;
         // height: 0vh;
-        object-position: center calc(var(--obj-position-offset-y, 50%) + min(calc(30vh - 40px), 120px)); // 30vh 正好保持相对静止
+        // min-width: calc(100%);
+        transform: translateY(var(--offset-y)) scale(1);
+        // filter: blur(20px);
+        // object-position: center calc(var(--obj-position-offset-y, 50%) + min(calc(30vh - 40px), 120px)); // 30vh 正好保持相对静止
     }
 }
 
@@ -65,16 +87,17 @@
     }
 }
 
-// @keyframes blur {
-//     0%,
-//     50% {
-//         filter: none;
-//     }
+@keyframes cover-img-blur {
 
-//     100% {
-//         filter: blur(10px);
-//     }
-// }
+    0%,
+    20% {
+        filter: none;
+    }
+
+    100% {
+        filter: blur(20px);
+    }
+}
 
 // @keyframes testanim {
 //     0% {

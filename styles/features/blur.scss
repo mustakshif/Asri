@@ -68,6 +68,10 @@ body:not(.asri-disable-backdrop-blur) {
         //     }
         // }
 
+        &-background__action {
+            backdrop-filter: blur(20px);
+        }
+
         //文字格式工具条
         &-toolbar {
             background-color: oklch(from var(--b3-theme-surface) l c h / $medium-transparency);
@@ -100,9 +104,9 @@ body:not(.asri-disable-backdrop-blur) {
             mix-blend-mode: luminosity;
 
             // 工具条
-            &:hover {
+            // &:hover {
                 backdrop-filter: blur(20px);
-            }
+            // }
 
             .protyle-icon {
                 &--only {

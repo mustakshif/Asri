@@ -7,7 +7,7 @@ import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, re
 import { createBarModeMenuItems, followSysAccentColor, getSystemAccentColor, loadThemePalette, unloadThemePalette } from "./configsMenu/makeItems";
 import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
-import { debouncedFormatProtyleWithBgImageOnly, removeProtyleWithBgImageOnlyClassName } from "./editor";
+import { removeProtyleWithBgImageOnlyClassName } from "./editor";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstition } from "./modeTransition";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
@@ -148,7 +148,7 @@ async function updateStyles(e?: Event | KeyboardEvent) {
     function lowFreqStyleUpdates() {
         setTimeout(async () => {
             updateDockLBgAndBorder();
-            debouncedFormatProtyleWithBgImageOnly();
+            // debouncedFormatProtyleWithBgImageOnly();
             debouncedStatusPosition();
             setStatusHeightVar();
             await updateWndEls();
@@ -173,7 +173,7 @@ function globalClassNameMoCallback(mutationList: MutationRecord[], observer: Mut
         // console.log(mutation.target, mutation.type, mutation.attributeName, mutation.oldValue);
         if ((mutation.target as HTMLElement).classList.contains('b3-list-item--focus')) {
             debouncedFormatIndentGuidesForFocusedItems();
-            debouncedFormatProtyleWithBgImageOnly();
+            // debouncedFormatProtyleWithBgImageOnly();
             // console.log('focus');
         }
     }

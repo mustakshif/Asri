@@ -23,12 +23,17 @@
     // $indent-start: 22px;
     --indent-offset: 0px; // fix .sy__tag indent offset
 
+    --indent-color-inactive: rgb(from var(--b3-theme-on-background) r g b / .15);
+    --indent-color-active: rgb(from var(--b3-theme-on-background) r g b / .3);
+    --indent-color: #0000;
+
     @for $i from 1 through 7 {
         $uls: str-insert($string: $uls, $insert: '>ul', $index: 100);
 
         &#{$uls} {
             margin-inline-start: $indent;
-            box-shadow: 1px 0 transparent inset;
+            --indent-color: #0000;
+            box-shadow: 1px 0 var(--indent-color) inset;
 
             .b3-list-item {
                 margin-left: unset;
@@ -50,20 +55,12 @@
     &:hover>ul ul,
     li.b3-list-item--focus+ul,
     ul.has-focus {
-        box-shadow: 1px 0 rgb(from var(--b3-theme-on-background) r g b / .15) inset;
-
-        @include darkmode-counterpart {
-            box-shadow: 1px 0 rgb(from var(--b3-theme-on-background) r g b / .15) inset;
-        }
+        --indent-color: var(--indent-color-inactive);
     }
 
     &:hover li.b3-list-item--focus+ul,
     &:hover ul.has-focus {
-        box-shadow: 1px 0 rgb(from var(--b3-theme-on-background) r g b / .3) inset;
-
-        @include darkmode-counterpart {
-            box-shadow: 1px 0 rgb(from var(--b3-theme-on-background) r g b / .3) inset;
-        }
+        --indent-color: var(--indent-color-active);
     }
 
     &>ul {
