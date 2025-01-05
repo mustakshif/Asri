@@ -13,6 +13,26 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.2.1
+
+* Significantly improved the smoothness of transitions between light and dark modes
+* Updated header image style, added parallax scrolling effect
+* Added parallax scrolling effect for full-width displayed images
+* Added animations for text editing toolbar
+* Optimized laggy document tree item expansion animations
+* Adapted more dialogs for right-to-left UI layout mode
+* Optimized animation curves for block icon appearances
+* Optimized button click animations
+* Changed inactive tab content to center alignment
+* Adjusted blockquote styles
+* Fine-tuned settings panel styles
+* Disabled auto-hide functionality for sidebar panel space on mobile devices
+* Fixed emoji edge clipping issues
+* Fixed style compatibility issues with the "Typewriter Mode" plugin
+* Fixed flickering animations in sidebar panel controls
+* Fixed incomplete display of filter input box in backlink panel
+* Fixed render process crashes when opening code snippet dialog
+
 ### v3.2.0
 
 * Added right-to-left UI layout mode, which automatically adapts when the application language is set to Arabic or other right-to-left languages

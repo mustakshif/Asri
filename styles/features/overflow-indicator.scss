@@ -79,17 +79,18 @@ body:not(.has-exportimg) // https://github.com/mustakshif/Asri/issues/106
     }
 }
 
-[data-key="dialog-snippets"] .b3-dialog__body>.fn__flex-1 {
-    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top bottom');
+// 可能导致打开代码片段时渲染进程崩溃
+// [data-key="dialog-snippets"] .b3-dialog__body>.fn__flex-1 {
+//     @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top bottom');
 
-    &::before {
-        top: -16px;
-    }
+//     &::before {
+//         top: -16px;
+//     }
     
-    &::after {
-        bottom: -16px;
-    }
-}
+//     &::after {
+//         bottom: -16px;
+//     }
+// }
 
 [data-key="dialog-attr"] .b3-dialog__body .layout-tab-bar+.fn__flex-1 {
     @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');

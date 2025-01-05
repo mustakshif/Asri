@@ -1041,11 +1041,11 @@
 
                 .protyle-background__action,
                 .b3-chips:not(.fn__none)~.protyle-background__action {
-                    --y: calc(30vh - 100% - 12px);
+                    --y: calc(var(--cover-img-height, 30vh) - 100% - 12px);
                 }
 
                 .protyle-background__icon:not(.fn__none)~.protyle-background__action {
-                    --y: calc(30vh - 100% + 40px);
+                    --y: calc(var(--cover-img-height, 30vh) - 100% + 40px);
                 }
 
                 .protyle-background__icon:not(.fn__none)~.protyle-background__action {

@@ -1,3 +1,45 @@
+### v3.2.1
+
+* 大幅提升亮暗色模式间平滑切换流畅度
+* 更新题头图样式，新增视差滚动效果
+* 全宽显示图片新增视差滚动效果
+* 新增文字编辑工具条动画
+* 优化文档树条目展开动画卡顿的问题
+* 从右至左 UI 布局模式适配更多对话框
+* 优化块标出现时的动画曲线
+* 优化按钮点击动画
+* 未激活页签内容改为居中显示
+* 调整引述块样式
+* 微调设置面板样式
+* 移动端禁用侧栏面板空间自动隐藏
+* 修复 emoji 边缘裁切的问题
+* 修复「打字机模式」插件样式适配问题
+* 修复侧栏面板控件动画闪烁的问题
+* 修复反链面板筛选输入框显示不全的问题
+* 修复打开代码片段对话框时渲染进程崩溃的问题
+
+<br />
+
+* Significantly improved the smoothness of transitions between light and dark modes
+* Updated header image style, added parallax scrolling effect
+* Added parallax scrolling effect for full-width displayed images
+* Added animations for text editing toolbar
+* Optimized laggy document tree item expansion animations
+* Adapted more dialogs for right-to-left UI layout mode
+* Optimized animation curves for block icon appearances
+* Optimized button click animations
+* Changed inactive tab content to center alignment
+* Adjusted blockquote styles
+* Fine-tuned settings panel styles
+* Disabled auto-hide functionality for sidebar panel space on mobile devices
+* Fixed emoji edge clipping issues
+* Fixed style compatibility issues with the "Typewriter Mode" plugin
+* Fixed flickering animations in sidebar panel controls
+* Fixed incomplete display of filter input box in backlink panel
+* Fixed render process crashes when opening code snippet dialog
+
+---
+
 ### v3.2.0
 
 * 新增从右至左 UI 布局模式，应用语言为阿拉伯语等从右至左语言时自动适配
