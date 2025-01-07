@@ -79,7 +79,8 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
             }
 
             :not(#searchPreview)>.protyle-content {
-                padding-top: var(--blur-block-height); 
+                padding-top: var(--blur-block-height);
+            }
 
             &>.file-tree .protyle-content {
                 padding-top: 0 !important;

@@ -135,7 +135,7 @@
     .b3-button--outline:hover,
     .b3-dialog__action .b3-button--text,
     #transactionError+.b3-dialog__action button:last-child,
-    #configBazaarReadme .item__side .b3-button:hover,
+    #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover,
     .protyle-breadcrumb__icon:hover,
     .protyle-breadcrumb__item,
     .config-account__info .b3-button,

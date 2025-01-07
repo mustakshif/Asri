@@ -106,16 +106,16 @@ body:not(.has-exportimg) // https://github.com/mustakshif/Asri/issues/106
     }
 }
 
-// .b3-dialog .emojis__panel {
-//     @include overflow-indicator-line;
-//     // @include overflow-indicator-fadein-mask($fadeout-size-l, $range: 'top');
+.b3-dialog .emojis__panel {
+    // @include overflow-indicator-line;
+    @include overflow-indicator-fadein-mask($fadeout-size-m, $range: 'top');
 
-//     &::before {
-//         width: calc(100% + 16px);
-//         margin-left: -8px;
-//         margin-right: -8px;
-//     }
-// }
+    &::before {
+        width: calc(100% + 16px);
+        margin-left: -8px;
+        margin-right: -8px;
+    }
+}
 
 body:not(.asri-imsvtb-trending) .protyle-breadcrumb__bar {
     @include overflow-indicator-fadein-mask($fadeout-size-s, $range: 'left right');
