@@ -8,6 +8,13 @@ $thin-transparency: 0.75;
 $thin-blur-rd: 12px;
 
 body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
+    &.asri-dragging-gutter {
+
+        .protyle-breadcrumb,
+        :where(.layout__wnd--active, [data-type="wnd"])>.fn__flex:first-child {
+            pointer-events: none;
+        }
+    }
 
     // 以下breadcrumb 相关代码导致：
     // 1. 块拖动至页面顶部时无法触发自动滚动

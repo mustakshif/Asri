@@ -12,15 +12,15 @@ $fadeout-size-xl: 50px;
 
 .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1,
 .sy__file>.b3-list>.fn__flex-1 {
-    @include overflow-indicator-fadein-mask($fadeout-size-s, 'top');
+    @include overflow-indicator-fadein-mask($fadeout-size-m, 'top');
 }
 
 .file-tree.sy__file .block__icons~.fn__flex-1 {
-    @include overflow-indicator-fadein-mask($fadeout-size-s, 'top bottom');
+    @include overflow-indicator-fadein-mask($fadeout-size-m, 'top bottom');
 }
 
 .layout__dockb.layout--float .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
-    @include overflow-indicator-fadein-mask($fadeout-size-s, 'top bottom');
+    @include overflow-indicator-fadein-mask($fadeout-size-m, 'top bottom');
 }
 
 // .file-tree.sy__backlink .backlinkList {
@@ -29,7 +29,7 @@ $fadeout-size-xl: 50px;
 
 .layout__dockb {
     .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
-        @include overflow-indicator-fadein-mask($fadeout-size-s, 'top');
+        @include overflow-indicator-fadein-mask($fadeout-size-m, 'top');
     }
 }
 
@@ -108,7 +108,7 @@ body:not(.has-exportimg) // https://github.com/mustakshif/Asri/issues/106
 
 .b3-dialog .emojis__panel {
     // @include overflow-indicator-line;
-    @include overflow-indicator-fadein-mask($fadeout-size-m, $range: 'top');
+    @include overflow-indicator-fadein-mask($fadeout-size-l, $range: 'top');
 
     &::before {
         width: calc(100% + 16px);

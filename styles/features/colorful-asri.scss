@@ -1,5 +1,11 @@
 @use '../base' as *;
 
+/* 
+！----------------------------------------------
+！-----颜色方面的任何修改完成后，一定要测试导出功能-----
+！----------------------------------------------
+*/
+
 // --asri-sys-accent、 --asri-sys-accent-accessible 是用 JavaScript 获取的基础颜色
 // accent-accessible 跟 accent 相同，但仅当系统强调色（在 HSL 色彩空间中）的饱和度大于 0.3 时可用，否则使用备选颜色；
 // --b3-theme-accent 是一个新的 UI 色，用于突出和区分元素（如激活状态的图标）；
@@ -236,10 +242,10 @@
         svg {
             display: none;
         }
-        
+
         input {
             visibility: visible;
-            width:  20px;
+            width: 20px;
             height: 20px;
             margin-right: 2px;
         }
@@ -270,21 +276,14 @@
         cursor: pointer;
     }
 
-    /* 
-    !---------------------------------------------------------
-    !--------------- Other elements --------------------------
-    !---------------------------------------------------------
-    */
+    /* Other elements */
 
     // #toolbar #barWorkspace {
     //     background-color: oklch(from var(--b3-theme-primary) .9 .08 calc(h));
     // }
 
-    /* 
-    !---------------------------------------------------------
-    !------------ Protyle related elements -------------------
-    !---------------------------------------------------------
-    */
+    /* Protyle related elements */
+
     body:not(.has-exportimg) {
 
         .protyle-toolbar__item--current,

@@ -1,7 +1,10 @@
 :lang(ar_SA),
 :lang(he_IL) {
 
+    --global-negate-factor: -1;
+
     // 所有 rtl 元素
+    .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink),
     .b3-menu,
     .protyle-breadcrumb,
     #tooltip,
@@ -33,6 +36,37 @@
     // “/”菜单字符类快捷键提示
     .protyle-hint .b3-list-item--two .b3-list-item__meta {
         direction: ltr;
+    }
+
+    // 侧栏面板 **********************
+
+    .sy__tag,
+    .sy__outline {
+        .b3-list-item__toggle {
+            margin-right: unset !important;
+            margin-inline-end: 2px;
+        }
+    }
+
+    .sy__outline .b3-list-item[data-type=NodeHeading] .b3-list-item__text::before {
+        transform: translateX(18px);
+    }
+
+    .block__logo {
+        margin-right: unset;
+        margin-inline-end: 8px;
+    }
+
+    .sy__bookmark {
+        .b3-list-item__toggle {
+            margin-right: unset !important;
+            margin-inline-end: 2px;
+        }
+    }
+
+    .search__label {
+        right: unset;
+        inset-inline-end: 8px;
     }
 
     // 杂项 ***********************
@@ -107,10 +141,6 @@
         transform: scaleX(-1) translateX(11px);
     }
 
-    .config-bazaar__panel[data-type=downloaded] [data-type=myPlugin]:not(.b3-button--outline)~.counter {
-        transform: translate(64px);
-    }
-
     .b3-card__actions--right .block__icon {
         margin-left: unset;
         margin-inline-start: 8px;
@@ -118,15 +148,16 @@
 
     [data-type="goBack"] svg,
     .av__panel .b3-menu .block__icon svg,
-    .config-keymap .b3-list-item__arrow:not(.b3-list-item__arrow--open)
-    
+    .config-keymap .b3-list-item__arrow:not(.b3-list-item__arrow--open),
+    .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink) .b3-list-item__arrow:not(.b3-list-item__arrow--open) 
+
     // .b3-list-item__toggle,
     // [data-type="docnext"] svg,
     // [data-type="docprevious"] svg, 
     // .block__icon[data-type="next"] svg,
     // .block__icon[data-type="previous"] svg 
         {
-        transform: scaleX(-1);
+        transform: rotate(180deg);
     }
 
     // 设置-快捷键
@@ -151,10 +182,6 @@
     }
 
     // 数据库
-    .av__panel .b3-menu .b3-menu__items .b3-menu__item[data-type=nobg]:first-child>.block__icon:not(.fn__none)+.ft__center {
-        transform: translateX(15px);
-    }
-
     .av__panel .b3-menu__item .b3-chip {
         float: unset;
     }

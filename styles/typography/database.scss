@@ -354,7 +354,7 @@
                         }
 
                         &:first-child>.block__icon:not(.fn__none)+.ft__center {
-                            transform: translateX(-15px);
+                            transform: translateX(negateForRTL(-15px));
                             pointer-events: none;
                         }
 

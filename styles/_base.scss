@@ -10,6 +10,10 @@
     @return change-color(map-get($theme-map , $color-key), $alpha: $opacity);
 }
 
+@function negateForRTL($value) {
+    @return calc(var(--global-negate-factor, 1) * #{$value});
+}
+
 // common mixins ———————————————————————
 @mixin font-family {
     --b3-font-family: system-ui, ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
@@ -83,6 +87,21 @@
 
     @include darkmode-counterpart {
         box-shadow: 0 0 0 0.5px #000, 0px 2px 6px 0px change-color($shadow-clr-dark, $alpha: $opacity-dark);
+    }
+}
+
+@mixin components-shadow {
+    --shadow-clr: rgba(0, 0, 0, .1);
+    $darkmode-highlight: 0 1.5px 0 -1px inset #fff;
+    $box-shadow: 0 1px 1px 0 var(--shadow-clr),
+    0 5px 5px -2px var(--shadow-clr),
+    0px 6px 10px -3px var(--shadow-clr),
+    0px 15px 16px -3px var(--shadow-clr);
+
+    box-shadow: $box-shadow;
+
+    @include darkmode-counterpart {
+        box-shadow: $darkmode-highlight,  0 1px 4px -1px #0003;
     }
 }
 

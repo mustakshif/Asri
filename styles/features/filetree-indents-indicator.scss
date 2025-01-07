@@ -6,13 +6,13 @@
 
     &::before {
         left: auto !important;
-        right: 7px;
+        inset-inline-end: 7px;
     }
 }
 
 // 大纲数字层级标识
 .sy__outline .b3-list-item[data-type=NodeHeading] .b3-list-item__text::before {
-    transform: translateX(-18px);
+    transform: translateX(negateForRTL(-18px));
     left: auto;
 }
 
@@ -33,23 +33,22 @@
         &#{$uls} {
             margin-inline-start: $indent;
             --indent-color: #0000;
-            box-shadow: 1px 0 var(--indent-color) inset;
+            box-shadow: negateForRTL(1px) 0 var(--indent-color) inset;
 
             .b3-list-item {
-                margin-left: unset;
                 margin-inline-start: calc($indent * $i * -1 + 6px + var(--indent-offset));
 
                 >.b3-list-item__toggle {
-                    // padding-left: unset !important;
-                    padding-left: calc($indent * $i + 4px) !important;
+                    padding-left: unset !important;
+                    padding-inline-start: calc($indent * $i + 4px) !important;
                 }
             }
         }
     }
 
-    &>ul ul {
-        transition: 0.2s;
-    }
+    // &>ul ul {
+    //     transition: 0.2s;
+    // }
 
     // 颜色控制
     &:hover>ul ul,

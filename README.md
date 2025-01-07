@@ -166,7 +166,6 @@ The theme development process drew inspiration from the following sources, and I
 | - Menu background blur | Theme: [Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark) | [Crowds21](https://github.com/chenshinshi) |
 | - Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu<br />- Bottom dock & status bar mergence<br />- Multilevel list style | Theme: [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)           |
 | - Topbar-tabbar mergence<br />- File tree indent guides<br />- MutationObserver related functions | Theme: [Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
-| - File tree indent guides | [Liandi post](https://ld246.com/article/1724305128590#comments) | [wilsons](https://ld246.com/member/wilsons) |
 
 （The order in the list above does not imply any ranking）
 

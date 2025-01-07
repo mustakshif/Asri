@@ -827,7 +827,7 @@
         }
 
         [data-type="myPlugin"]:not(.b3-button--outline)~.counter {
-            transform: translateX(-64px);
+            transform: translateX(negateForRTL(-64px));
         }
 
         // 统一更新的卡片

@@ -48,23 +48,23 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
                 // transform-origin: top center;
 
                 &:first-child {
-                    transform-origin: 15em 50%;
+                    transform-origin: negateForRTL(calc(max(calc(15.5em - 100%), 100%) * var(--exaggerate-factor, 1))) 50%;
                 }
 
                 &.counter {
-                    transform-origin: 400% 50%;
+                    transform-origin: negateForRTL(400%) 50%;
                 }
 
                 &:nth-last-child(3 of .block__icon) {
-                    transform-origin: -200% 50%;
+                    transform-origin: negateForRTL(calc(-200% * var(--exaggerate-factor, 1))) 50%;
                 }
 
                 &:nth-last-child(2 of .block__icon) {
-                    transform-origin: -300% 50%;
+                    transform-origin: negateForRTL(calc(-300% * var(--exaggerate-factor, 1))) 50%;
                 }
 
                 &:last-child {
-                    transform-origin: -500% 50%;
+                    transform-origin: negateForRTL(calc(-500% * var(--exaggerate-factor, 1))) 50%;
                 }
             }
 
@@ -100,6 +100,8 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
     }
 
     .sy__backlink {
+        --exaggerate-factor: 1.5;
+
         >:nth-child(2 of .block__icons) {
             position: relative;
         }
