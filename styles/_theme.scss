@@ -4,6 +4,8 @@
 :root {
     --b3-border-radius-b: 16px; // 对话框圆角
 
+    @include asri-common-css-vars;
+
     &,
     &:lang(zh_CN) {
         @include font-family;
@@ -57,7 +59,9 @@ body {
     text-underline-position: under;
     text-decoration-skip-ink: all; // not supported yet
 
-    @include cssvars; // fix being overridden by other themes
+    // fix being overridden by other themes
+    --b3-toolbar-left-mac: 80px;
+    --toolbar-height: 48px;
 
     @include darkmode-counterpart {
         -webkit-font-smoothing: antialiased;

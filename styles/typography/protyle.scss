@@ -932,7 +932,7 @@
 
     &:not(.fn__none) {
         .protyle-content {
-            animation: protyle-appear .3s $timing-function-decelerate;
+            animation: protyle-appear .3s var(--asri-ease-out-5);
         }
     }
 
@@ -1191,7 +1191,8 @@
         top: calc(2.4em * 1.4 / 2 + 8px) !important; // fix https://github.com/mustakshif/Asri/issues/45 
         transform: scale(.8);
         transform-origin: right center;
-        transition-timing-function: $timing-function-bouncy-end;
+        transition-timing-function: var(--asri-ease-spring-3);
+        transition-duration: .5s;
     }
 
     &:hover .protyle-title__icon {
@@ -1236,7 +1237,7 @@
     [data-node-id] {
         transition-property: box-shadow;
         transition-duration: .2s;
-        transition-timing-function: $timing-function-decelerate;
+        transition-timing-function: var(--asri-ease-out-5);
     }
 
     // 块高亮
@@ -1252,7 +1253,7 @@
     &--select::after,
     &--hl::after {
         border-radius: 10px;
-        // animation: select .3s $timing-function-bouncy-both forwards;
+        // animation: select .3s $timing-function-spring-both forwards;
 
         // @keyframes select {
 
@@ -1270,13 +1271,13 @@
 
 //文字格式工具条
 &-toolbar {
-    animation: protyle-toolbar-appear .3s $timing-function-bouncy-both;
+    animation: protyle-toolbar-appear .5s var(--asri-ease-spring-3);
     border: none;
     border-radius: 40px;
     padding: 4px;
     // transform: translateY(-12px);
     background-color: var(--b3-theme-surface);
-    transform-origin: 50% 100%;
+    transform-origin: 50% 150%;
     transition: none;
     @include menu-shadow;
     @include border-or-not($border: false);
@@ -1472,7 +1473,7 @@
     }
 
     >button:not([data-type=NodeAttributeViewRow], [data-type=NodeAttributeViewRowMenu], :only-child) {
-        animation: gutters-appear .2s $timing-function-bouncy-end forwards;
+        animation: gutters-appear .5s var(--asri-ease-spring-3) forwards;
         opacity: 0;
 
         @for $i from 1 through 7 {
@@ -1483,11 +1484,11 @@
     }
 
     >button:where([data-type=NodeAttributeViewRow], [data-type=NodeAttributeViewRowMenu], :only-child) {
-        animation: gutters-appear-simple .2s $timing-function-bouncy-end;
+        animation: gutters-appear-simple .5s var(--asri-ease-spring-3);
     }
 
     button[data-type=fold] svg {
-        transition: transform, .2s $timing-function-bouncy-end;
+        transition: transform, .5s var(--asri-ease-spring-3);
     }
 
     @keyframes gutters-appear {
@@ -1507,7 +1508,7 @@
     @keyframes gutters-appear-simple {
         from {
             opacity: 0;
-            transform: scale(.8);
+            transform: scale(.5);
             // filter: blur(12px);
         }
 

@@ -12,10 +12,10 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
         position: relative;
 
         --dots-clr: var(--b3-border-color-trans);
-        --icons2dots-timing-func: #{$timing-function-bouncy-end};
-        --dots2icons-timing-func: #{$timing-function-bouncy-end};
-        --icons2dots-dur: .175s;
-        --dots2icons-dur: .15s;
+        --icons2dots-timing-func: var(--asri-ease-spring-3);
+        --dots2icons-timing-func: var(--asri-ease-spring-3);
+        --icons2dots-dur: .4s;
+        --dots2icons-dur: .35s;
         --icons2dots-delay: .2s;
         --dots2icons-delay: .125s;
 

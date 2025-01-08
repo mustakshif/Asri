@@ -208,7 +208,7 @@
 }
 
 .layout--float {
-    transition: transform 0.2s $timing-function-decelerate;
+    transition: transform 0.2s var(--asri-ease-out-5);
 }
 
 // .layout__dockr {

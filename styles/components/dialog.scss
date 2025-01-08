@@ -1032,7 +1032,7 @@
 }
 
 #configBazaarReadme {
-    transition: transform $timing-function-accelerate 0.2s;
+    transition: transform var(--asri-ease-in-2) .2s;
     opacity: 1;
     z-index: 2;
     padding: 0;
@@ -1043,7 +1043,7 @@
     // right: 0;
     // opacity: 0;
     // pointer-events: none;
-    // transition: opacity $timing-function-decelerate 0.2s, transform 0.3s, filter $timing-function-decelerate 0.3s;
+    // transition: opacity var(--asri-ease-out-5) 0.2s, transform 0.3s, filter var(--asri-ease-out-5) 0.3s;
 
     .item__side {
         padding: 16px;
@@ -1189,8 +1189,7 @@
     }
 
     &.config-bazaar__readme--show {
-        transition: transform $timing-function-decelerate 0.3s, filter linear 0.3s 0.1s;
-
+        transition: transform var(--asri-ease-out-5) .3s, filter linear 0.3s 0.1s;
         // transform: none;
         // opacity: 1;
         // pointer-events: all;
@@ -1262,7 +1261,7 @@
 // 弹出动画
 .b3-dialog__container {
     transform: translateY(-40px);
-    transition: opacity 150ms linear 0s, transform 300ms $timing-function-decelerate;
+    transition: opacity 150ms linear 0s, transform .5s var(--asri-ease-spring-1);
 }
 
 // 搜索通用
@@ -1631,7 +1630,7 @@ body.body--window {
         background-color: var(--b3-theme-background);
     }
 
-    animation-timing-function: $timing-function-decelerate;
+    animation-timing-function: var(--asri-ease-out-5);
 
     @keyframes fadeIn {
         from {

@@ -20,7 +20,7 @@ $fadeout-size-xl: 50px;
 }
 
 .layout__dockb.layout--float .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
-    @include overflow-indicator-fadein-mask($fadeout-size-m, 'top bottom');
+    @include overflow-indicator-fadein-mask($fadeout-size-s, 'top bottom');
 }
 
 // .file-tree.sy__backlink .backlinkList {
@@ -29,7 +29,7 @@ $fadeout-size-xl: 50px;
 
 .layout__dockb {
     .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
-        @include overflow-indicator-fadein-mask($fadeout-size-m, 'top');
+        @include overflow-indicator-fadein-mask($fadeout-size-s, 'top');
     }
 }
 
@@ -105,6 +105,10 @@ body:not(.has-exportimg) // https://github.com/mustakshif/Asri/issues/106
         grid-column: 1/-1;
     }
 }
+
+// #message>.fn__flex-1 {
+//     @include overflow-indicator-fadein-mask($fadeout-size-m, $range: 'top bottom');
+// }
 
 .b3-dialog .emojis__panel {
     // @include overflow-indicator-line;

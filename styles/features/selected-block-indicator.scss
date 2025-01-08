@@ -16,12 +16,12 @@
             bottom: 0;
             background-color: var(--b3-theme-primary);
             opacity: 1;
-            animation: selected-block-indicator-appear 0.25s $timing-function-bouncy-both;
+            animation: selected-block-indicator-appear .3s var(--asri-ease-spring-2);
             // animation-delay: .2s;
             transform-origin: top center;
             transition-property: opacity, transform;
-            transition-duration: .2s;
-            transition-timing-function: $timing-function-bouncy-both;
+            transition-duration: .3s;
+            transition-timing-function: var(--asri-ease-spring-2);
         }
 
         &.protyle-wysiwyg--hl {
@@ -29,8 +29,8 @@
             &::before {
                 opacity: 0;
                 transform: scaleY(.5);
-                transition-duration: .2s;
-                transition-timing-function: $timing-function-decelerate;
+                transition-duration: .3s;
+                transition-timing-function: var(--asri-ease-spring-2);
             }
         }
     }

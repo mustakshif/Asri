@@ -346,7 +346,7 @@ body:not(.asri-disable-backdrop-blur) {
 
     //             &:hover::before {
     //                 --property-percentage: calc(100% + var(--glow-offset));
-    //                 transition: --property-percentage 0.5s $timing-function-decelerate;
+    //                 transition: --property-percentage 0.5s var(--asri-ease-out-5);
     //             }
 
     //             // 图片色阴影

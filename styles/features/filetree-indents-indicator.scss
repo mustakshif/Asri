@@ -46,9 +46,10 @@
         }
     }
 
-    // &>ul ul {
-    //     transition: 0.2s;
-    // }
+    &>ul ul {
+        transition-duration: .2s;
+        transition-property: box-shadow, height;
+    }
 
     // 颜色控制
     &:hover>ul ul,

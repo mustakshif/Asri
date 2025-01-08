@@ -9,10 +9,9 @@
         outline-offset: -1px;
     }
 
-    ;
     border-radius: $border-rd-menu;
     padding: 0;
-    // animation: menu-pop-up .3s $timing-function-bouncy-both;
+    // animation: menu-pop-up .5s var(--asri-ease-spring-3);
 
     // @keyframes menu-pop-up {
     //     0%,100% {
@@ -418,7 +417,7 @@
                 &:hover {
                     background: transparent;
                     transform: scale(1.35);
-                    transition: transform 0.3s cubic-bezier(0.12, 0, 0.05, 2.5);
+                    transition: transform .7s var(--asri-ease-spring-4);
                     transform-origin: 50% 82.5%;
                 }
             }

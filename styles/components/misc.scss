@@ -85,6 +85,11 @@
     transition-duration: .3s;
     border: none;
     box-sizing: border-box !important; // fix conflict with enhance plugin's arco css styles
+    box-shadow: 0 4px 7px -4px inset #0002;
+
+    @include darkmode-counterpart {
+        box-shadow: 0 4px 7px -4px inset #0005;
+    }
 
     .b3-menu__item--current>.b3-menu__label & {
         outline: 1px solid #ffffff60;
@@ -117,7 +122,7 @@
         transform: none;
         transition-property: transform;
         transition-duration: .2s;
-        transition-timing-function: $timing-function-decelerate;
+        transition-timing-function: var(--asri-ease-out-5);
 
         // box-shadow: 0px 6px 10px -3px rgba(0,0,0,0.1),0px 15px 16px -3px rgba(0,0,0,0.1);
     }
@@ -288,8 +293,6 @@ textarea {
     @include border-or-not($outline: false) {
         outline: none;
     }
-
-    ;
 }
 
 // 提示条
@@ -297,8 +300,8 @@ textarea {
     @include tooltip-styles;
 
     animation-delay: .75s;
-    animation-timing-function: $timing-function-bouncy-both;
-    animation-duration: .25s;
+    animation-timing-function: var(--asri-ease-spring-2);
+    animation-duration: .3s;
 
     .ft__on-surface {
         color: var(--b3-theme-on-surface);
@@ -381,8 +384,8 @@ textarea {
         margin-top: 0;
         // margin-bottom: 0;
         transition-delay: .75s;
-        transition-timing-function: $timing-function-bouncy-both;
-        transition-duration: .25s;
+        transition-timing-function: var(--asri-ease-spring-3);
+        transition-duration: .5s;
     }
 }
 
@@ -394,10 +397,12 @@ textarea {
     }
 
     .b3-snackbar {
-        transition-timing-function: $timing-function-decelerate;
+        transition-timing-function: var(--asri-ease-spring-1);
+        transition-duration: .4s;
 
         &--hide {
-            transition-timing-function: $timing-function-accelerate;
+            transition-timing-function: var(--asri-ease-in-1);
+            transition-duration: .2s;
         }
 
         &__content {
