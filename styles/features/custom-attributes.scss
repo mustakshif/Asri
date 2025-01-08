@@ -34,30 +34,32 @@
                     display: none;
                 }
 
-                overflow: hidden;
-                view-timeline-name: --afwd-img;
+                @supports (animation-timeline: view()) {
+                    overflow: hidden;
+                    view-timeline-name: --afwd-img;
 
-                img {
+                    img {
 
-                    --offset-y: 120px;
+                        --offset-y: 120px;
 
-                    animation-timeline: --afwd-img;
-                    animation-range: 0% calc(100% + 84px);
-                    animation-fill-mode: both;
-                    animation-name: parallax-afwd-img;
-                    animation-timing-function: linear;
+                        animation-timeline: --afwd-img;
+                        animation-range: 0% calc(100% + 84px);
+                        animation-fill-mode: both;
+                        animation-name: parallax-afwd-img;
+                        animation-timing-function: linear;
 
-                    @keyframes parallax-afwd-img {
-                        0% {
-                            transform: translateY(calc(var(--offset-y) * -1));
-                        }
+                        @keyframes parallax-afwd-img {
+                            0% {
+                                transform: translateY(calc(var(--offset-y) * -1));
+                            }
 
-                        50% {
-                            transform: translateY(0);
-                        }
+                            50% {
+                                transform: translateY(0);
+                            }
 
-                        100% {
-                            transform: translateY(var(--offset-y));
+                            100% {
+                                transform: translateY(var(--offset-y));
+                            }
                         }
                     }
                 }

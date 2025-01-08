@@ -1,101 +1,118 @@
 .protyle {
-
-    // 滚动条方案
-    // &-content {
-    //     scroll-timeline-name: --protyle-content;
-    //     scroll-timeline-axis: y;
-    // }
-
-    // .protyle-background__img {
-
-    //     img {
-    //         animation-name: move-up;
-    //         animation-timeline: --protyle-content;
-    //         // animation-duration: 1ms; /* Firefox requires this to apply the animation */
-    //         // margin: 0 12px 0;
-    //         // width: calc(100% - 24px);
-    //         // border-radius: 16px;
-    //     }
-    // }
-
-    &-background__img {
-        view-timeline-name: --protyle-background;
-    }
-
-    &-background__img {
-        overflow: hidden;
-
-        img {
-            --offset-y: 150px;
-            // view-timeline-name: --protyle-background;
-            animation-timeline: --protyle-background;
-            // view-timeline-axis: y;
-            animation-range: calc(100vh - var(--bgimg-top-space, 84px)) normal;
-            animation-fill-mode: both;
-            animation-name: parallax-cover-img,
-                // cover-img-fade-out,
-                // cover-img-blur
-            ;
-            animation-timing-function: linear;
-            // margin: 0 12px 0;
-            // width: calc(100% - 24px);
-            // border-radius: 16px;
-            // min-width: calc(100% + 60px);
-            // margin: 0 -30px;
-            // transform: scale(1.2);
-            transform: translateY(0) scale(1.03);
-            transform-origin: 50% calc(50% + var(--offset-y));
-
-            //临时解决方案，待优化 
-            // &[style^="object-position"] {
-            //     animation-name: cover-img-fade-out;
-            //     // animation: none;
-            // }
+    @supports not (animation-timeline: view()) {
+        .protyle-background__img {
+            &::after {
+                content: "";
+                display: inline-block;
+                width: -webkit-fill-available;
+                height: 30vh;
+                position: absolute;
+                top: 0;
+                right: 0;
+                background: linear-gradient(to top, var(--b3-theme-background) 2%, rgba(from var(--b3-theme-background) r g b / .97) 9%, rgba(from var(--b3-theme-background) r g b / 0.9) 18%, rgba(from var(--b3-theme-background) r g b / .75) 33%, rgba(from var(--b3-theme-background) r g b /.05) 92%, transparent 99%);
+                pointer-events: none;
+            }
         }
     }
 
-    // &-wysiwyg {
-    //     animation-name: testanim;
-    //     animation-timeline: --protyle-background;
-    // }
-}
+    @supports (animation-timeline: view()) {
+        // 滚动条方案
+        // &-content {
+        //     scroll-timeline-name: --protyle-content;
+        //     scroll-timeline-axis: y;
+        // }
 
-@keyframes parallax-cover-img {
-    100% {
-        // filter: saturate(0);
-        // margin: 0;
-        // width: 100%;
-        // border-radius: 0;
-        // height: 0vh;
-        // min-width: calc(100%);
-        transform: translateY(max(calc(30vh - var(--offset-y)), 80px)) scale(1);
-        // filter: blur(20px);
-        // object-position: center calc(var(--obj-position-offset-y, 50%) + min(calc(30vh - 40px), 120px)); // 30vh 正好保持相对静止
-    }
-}
+        // .protyle-background__img {
 
-@keyframes cover-img-fade-out {
+        //     img {
+        //         animation-name: move-up;
+        //         animation-timeline: --protyle-content;
+        //         // animation-duration: 1ms; /* Firefox requires this to apply the animation */
+        //         // margin: 0 12px 0;
+        //         // width: calc(100% - 24px);
+        //         // border-radius: 16px;
+        //     }
+        // }
 
-    0%,
-    50% {
-        opacity: 1;
-    }
+        &-background__img {
+            view-timeline-name: --protyle-background;
+        }
 
-    90%,
-    100% {
-        opacity: 0;
-    }
-}
+        &-background__img {
+            overflow: hidden;
 
-@keyframes cover-img-blur {
+            img {
+                --offset-y: 150px;
+                // view-timeline-name: --protyle-background;
+                animation-timeline: --protyle-background;
+                // view-timeline-axis: y;
+                animation-range: calc(100vh - var(--bgimg-top-space, 84px)) normal;
+                animation-fill-mode: both;
+                animation-name: parallax-cover-img,
+                    // cover-img-fade-out,
+                    // cover-img-blur
+                ;
+                animation-timing-function: linear;
+                // margin: 0 12px 0;
+                // width: calc(100% - 24px);
+                // border-radius: 16px;
+                // min-width: calc(100% + 60px);
+                // margin: 0 -30px;
+                // transform: scale(1.2);
+                transform: translateY(0) scale(1.03);
+                transform-origin: 50% calc(50% + var(--offset-y));
 
-    0%,
-    20% {
-        filter: none;
-    }
+                //临时解决方案，待优化 
+                // &[style^="object-position"] {
+                //     animation-name: cover-img-fade-out;
+                //     // animation: none;
+                // }
+            }
+        }
 
-    100% {
-        filter: blur(20px);
+        // &-wysiwyg {
+        //     animation-name: testanim;
+        //     animation-timeline: --protyle-background;
+        // }
+
+        @keyframes parallax-cover-img {
+            100% {
+                // filter: saturate(0);
+                // margin: 0;
+                // width: 100%;
+                // border-radius: 0;
+                // height: 0vh;
+                // min-width: calc(100%);
+                transform: translateY(max(calc(30vh - var(--offset-y)), 80px)) scale(1);
+                // filter: blur(20px);
+                // object-position: center calc(var(--obj-position-offset-y, 50%) + min(calc(30vh - 40px), 120px)); // 30vh 正好保持相对静止
+            }
+        }
+        
+        @keyframes cover-img-fade-out {
+        
+            0%,
+            50% {
+                opacity: 1;
+            }
+        
+            90%,
+            100% {
+                opacity: 0;
+            }
+        }
+        
+        @keyframes cover-img-blur {
+        
+            0%,
+            20% {
+                filter: none;
+            }
+        
+            100% {
+                filter: blur(20px);
+            }
+        }
     }
 }
 
