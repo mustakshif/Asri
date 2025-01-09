@@ -9,7 +9,7 @@
             padding: 18px 18px 6px;
 
             &:not(.fn__none)+.b3-dialog__body {
-                >div>.config__panel {
+                .config__panel {
                     .b3-tab-bar {
                         margin: 0 8px 8px;
                         padding: 4px 0;
@@ -402,12 +402,13 @@
         }
     }
 
+    // 条目面板
     .config__tab-wrap {
         padding: 0;
         border-radius: 0;
 
         .config__tab-container {
-            padding: 8px 0;
+            padding: 8px 12px;
             background-color: var(--b3-theme-background);
 
             .b3-label :where(.fn__flex-1, .fn__block, .fn__flex-center):not(.ft__on-surface, .b3-button, .b3-form__icon, .fn__size200, ul, input):first-child,
@@ -1092,14 +1093,14 @@
                     outline-color: rgb(from var(--b3-theme-on-background) r g b/0.2);
                 }
 
-                > span {
+                >span {
                     border-radius: 0;
                     transition: width .2s;
                     left: unset;
                     inset-inline-start: 0px;
 
                     // animation: downloading-color-change 2s infinite ;
-                
+
                     // @keyframes downloading-color-change {
                     //     0% {
                     //         background-color: var(--b3-theme-primary);
@@ -1112,7 +1113,7 @@
                     //     }
                     // }
                 }
-            }           
+            }
         }
     }
 
@@ -1261,7 +1262,7 @@
 // 弹出动画
 .b3-dialog__container {
     transform: translateY(-40px);
-    transition: opacity 150ms linear 0s, transform .5s var(--asri-ease-spring-1);
+    transition: opacity 150ms linear 0s, transform .3s var(--asri-ease-out-5);
 }
 
 // 搜索通用
@@ -1564,6 +1565,10 @@
                 }
             }
         }
+    }
+
+    &--open {
+        animation: scaleBounce .5s var(--asri-ease-spring-3);
     }
 }
 

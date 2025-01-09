@@ -4,11 +4,11 @@
 body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
 
     // .sy__globalGraph, .sy__graph // 导致关系图闪烁
-    .sy__file,
-    .sy__outline,
-    .sy__bookmark,
-    .sy__tag,
-    .sy__backlink {
+    .file-tree.sy__file,
+    .file-tree.sy__outline,
+    .file-tree.sy__bookmark,
+    .file-tree.sy__tag,
+    .file-tree.sy__backlink {
         position: relative;
 
         --dots-clr: var(--b3-border-color-trans);

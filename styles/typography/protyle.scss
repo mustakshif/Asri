@@ -1191,8 +1191,8 @@
         top: calc(2.4em * 1.4 / 2 + 8px) !important; // fix https://github.com/mustakshif/Asri/issues/45 
         transform: scale(.8);
         transform-origin: right center;
-        transition-timing-function: var(--asri-ease-spring-3);
-        transition-duration: .5s;
+        transition-timing-function: var(--asri-ease-spring-5);
+        transition-duration: .8s;
     }
 
     &:hover .protyle-title__icon {
@@ -1488,7 +1488,7 @@
     }
 
     button[data-type=fold] svg {
-        transition: transform, .5s var(--asri-ease-spring-3);
+        transition: transform, .8s var(--asri-ease-spring-5);
     }
 
     @keyframes gutters-appear {

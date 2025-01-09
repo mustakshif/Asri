@@ -9,6 +9,7 @@ import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { removeProtyleWithBgImageOnlyClassName } from "./editor";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
+import { selectionChangeCallback } from "./focusedBlock";
 import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstition } from "./modeTransition";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
@@ -47,7 +48,7 @@ export async function loadAsriJSModules() {
     avoidOverlappingWithStatus();
     globalClickEventListener.start(document, 'mouseup');
     globalDragEventListener.start(document, 'dragend');
-    globalKeyupEventListener.start(document, 'keyup');
+    globalKeyupEventListener.start(document, 'keyup', true);
     winFocusChangeEventListener.start(window, 'focus');
     winFocusChangeEventListener.start(window, 'blur');
     selectionChangeEventListener.start(document, 'selectionchange');
@@ -72,7 +73,7 @@ export async function unloadAsriJSModules() {
     unloadAvoidOverlappingWithStatus();
     globalClickEventListener.remove(document, 'mouseup');
     globalDragEventListener.remove(document, 'dragend');
-    globalKeyupEventListener.remove(document, 'keyup');
+    globalKeyupEventListener.remove(document, 'keyup', true);
     winFocusChangeEventListener.remove(window, 'focus');
     winFocusChangeEventListener.remove(window, 'blur');
     selectionChangeEventListener.remove(document, 'selectionchange');
@@ -102,26 +103,6 @@ function winFocusChangeCallback(e: Event) {
         updateStyles();
         !env.isIOSApp && followSysAccentColor && env.supportOklch && getSystemAccentColor();
     });
-}
-
-function selectionChangeCallback(e: Event) {
-    const selection = window.getSelection();
-    const range = selection && selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
-    if (!range) return;
-
-    const curNode = range.commonAncestorContainer;
-    const curParent = curNode.parentElement;
-    const curBlock = curParent ? curNode.parentElement.closest('[data-node-id]') : null;
-    if (!curBlock) return;
-
-    curParent && curParent.dir && curParent.dir === 'auto';
-    const curBlockType = curBlock.getAttribute('data-type');
-    document.querySelectorAll('.asri-selected-block').forEach(block => block.classList.remove('asri-selected-block'));
-    if (curBlockType === 'NodeAttributeView' || !curBlockType || curBlockType === 'NodeCodeBlock') return;
-
-    curBlock.classList.add('asri-selected-block');
-
-    // console.log(selection, range, curNode, curBlock, curBlockType);
 }
 
 async function updateStyles(e?: Event | KeyboardEvent) {
@@ -223,5 +204,5 @@ const debouncedHandleWinResizeEnd = debounce(() => {
 
 function themeUpdateCallback(e: MediaQueryListEvent) {
     console.log('系统主题变化:', e.matches ? '暗色' : '亮色')
-    startFadeInFadeOutTranstition(() => {}, 200);
+    startFadeInFadeOutTranstition(() => { }, 200);
 }

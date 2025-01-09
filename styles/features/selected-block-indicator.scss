@@ -1,7 +1,7 @@
 @use '../base' as *;
 
 .protyle-wysiwyg[data-readonly="false"] {
-    [data-node-id].asri-selected-block:not(#plugin-focus-unique-id, [data-plugin-focus=true]) {
+    [data-node-id].asri-selected-block {
 
         // box-shadow: none !important;
         &::before {
@@ -15,8 +15,7 @@
             inset-inline-end: 0;
             bottom: 0;
             background-color: var(--b3-theme-primary);
-            opacity: 1;
-            animation: selected-block-indicator-appear .3s var(--asri-ease-spring-2);
+            animation: selected-block-indicator-appear .6s var(--asri-ease-spring-4);
             // animation-delay: .2s;
             transform-origin: top center;
             transition-property: opacity, transform;
@@ -30,7 +29,13 @@
                 opacity: 0;
                 transform: scaleY(.5);
                 transition-duration: .3s;
-                transition-timing-function: var(--asri-ease-spring-2);
+                transition-timing-function: var(--asri-ease-elastic-in-out-3);
+            }
+        }
+
+        &#plugin-focus-unique-id, &[data-plugin-focus=true]{
+            &::before {
+                display: none;
             }
         }
     }

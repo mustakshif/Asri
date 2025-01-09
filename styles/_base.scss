@@ -285,8 +285,12 @@
             }
         }
 
+        .item__icon {
+            transform: none !important;
+        }
+
         .item__text {
-            transform: none;
+            transform: none !important;
             transition-property: color;
         }
     }

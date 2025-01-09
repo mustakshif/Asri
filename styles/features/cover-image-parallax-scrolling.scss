@@ -59,7 +59,7 @@
                 // min-width: calc(100% + 60px);
                 // margin: 0 -30px;
                 // transform: scale(1.2);
-                transform: translateY(0) scale(1.03);
+                transform: translateY(0) scale(var(--bgimg-scale, 1.03));
                 transform-origin: 50% calc(50% + var(--offset-y));
 
                 //临时解决方案，待优化 
