@@ -400,9 +400,16 @@ textarea {
         transition-timing-function: var(--asri-ease-spring-1);
         transition-duration: .4s;
 
+        @for $i from 1 through 5 {
+            &:nth-child(#{$i}) {
+                transition-delay: calc(.1s * ($i - 1));
+            }
+        }
+
         &--hide {
             transition-timing-function: var(--asri-ease-in-1);
             transition-duration: .2s;
+            transition-delay: 0s !important;
         }
 
         &__content {
