@@ -451,31 +451,32 @@ textarea {
     }
 
     // "已读"按钮
-    button:not(.b3-button--white) {
-        @include button-action('primary') {
-            // background-color: var(--b3-theme-surface);
-            transition: transform 0.2s;
-            transform: translateY(-42px);
-            height: 28px;
-            border-radius: 99px;
+    // button:not(.b3-button--white) {
+    //     @include button-action('primary') {
+    //         background-color: var(--b3-theme-surface);
+    //         transition: transform 0.2s;
+    //         transform: translateY(-42px);
+    //         height: 28px;
 
-            &:hover {
-                background-color: var(--b3-theme-primary);
-                transform: scale(1.2) translateY(-35px);
-            }
+    //         &:hover {
+    //             background-color: var(--b3-theme-primary);
+    //             transform: scale(1.2) translateY(-35px);
+    //         }
 
-            &:active {
-                transform: scale(0.95) translateY(-42px);
-            }
-        }
+    //         &:active {
+    //             transform: scale(0.95) translateY(-42px);
+    //         }
+    //     }
 
-        @include menu-shadow(var(--b3-theme-primary));
-    }
+    //     @include menu-shadow(var(--b3-theme-primary));
+    // }
 
     // 打开文件夹 按钮
+    .b3-button,
     .b3-button--white {
         @include button-action('primary') {
             transition: all 0.2s;
+            font-size: 14px;
             display: block;
             margin: 4px 0 4px auto;
 
@@ -486,6 +487,12 @@ textarea {
             &:active {
                 transform: scale(0.95);
             }
+        }
+
+        &#addMicrosoftDefenderExclusion+.fn__space {
+            // display: none;
+            height: 4px;
+            display: block;
         }
     }
 
