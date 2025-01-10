@@ -1261,8 +1261,8 @@
 
 // 弹出动画
 .b3-dialog__container {
-    transform: translateY(-40px);
-    transition: opacity 150ms linear 0s, transform .3s var(--asri-ease-out-5);
+    transform: translateY(-20px) scale(.95);
+    transition: opacity .1s linear 0s, transform .4s var(--asri-ease-spring-1);
 }
 
 // 搜索通用

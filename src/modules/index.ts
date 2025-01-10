@@ -28,8 +28,8 @@ const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
 const winRo = new AsriResizeObserver(winRoCallback);
 const themeUpdateListener = new AsriEventListener(themeUpdateCallback);
 
-export let isWinResizing = false, fromFullscreen: boolean;
-export let protyleWidthChange = 0;
+let isWinResizing = false, fromFullscreen: boolean;
+let protyleWidthChange = 0;
 
 export async function loadAsriJSModules() {
     addEnvClassNames();
