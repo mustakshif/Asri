@@ -1,5 +1,7 @@
 export async function modeTransitionOnClick(e: Event) {
     if (e.type !== 'mouseup') return;
+    e.stopPropagation();
+    e.preventDefault();
     const target = e.target as HTMLElement;
 
     if (target.closest('[data-name="barmode"] .b3-menu__item:not([id])')) {
@@ -9,6 +11,12 @@ export async function modeTransitionOnClick(e: Event) {
 }
 
 export async function startFadeInFadeOutTranstition(func?: () => void, waitDuration = 0) {
+    // // Setup view transition support
+    // const meta = document.createElement('meta');
+    // meta.name = 'view-transition';
+    // meta.content = 'same-origin';
+    // document.head.appendChild(meta);
+
     if (!document.startViewTransition) {
         func && func();
         return;
@@ -20,7 +28,6 @@ export async function startFadeInFadeOutTranstition(func?: () => void, waitDurat
             return new Promise(r => setTimeout(r, ms))
         };
         const transition = document.startViewTransition(async () => {
-            // Pause for up to 100ms for fonts to be ready:
             await Promise.race([wait(waitDuration)]);
             func && func();
         });
@@ -31,13 +38,24 @@ export async function startFadeInFadeOutTranstition(func?: () => void, waitDurat
                     opacity: [0, 1],
                 },
                 {
-                    duration: 500,
-                    easing: 'ease-in-out',
+                    duration: 600,
+                    // easing: 'ease-in-out',
                 }
             );
         });
     } else {
-        document.startViewTransition(func); // 此时动画时长由CSS决定
+        const transition = document.startViewTransition(func);
+        const style = document.createElement('style');
+        style.textContent = `
+            ::view-transition-old(root),
+            ::view-transition-new(root) {
+                animation-duration: .6s;
+            }
+        `;
+        document.head.appendChild(style);
+
+        await transition.finished;
+        style.remove();
     }
 
 }

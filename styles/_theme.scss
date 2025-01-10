@@ -1,5 +1,5 @@
 @use './base' as *;
-@use './features/mode-transition.scss'; // 确保尽早引入以读取动画参数
+// @use './features/mode-transition.scss'; // 确保尽早引入以读取动画参数 // 改用 js 动态载入
 
 :root {
     --b3-border-radius-b: 16px; // 对话框圆角
