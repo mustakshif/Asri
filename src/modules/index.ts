@@ -9,7 +9,7 @@ import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { removeProtyleWithBgImageOnlyClassName } from "./editor";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
-import { selectionChangeCallback } from "./focusedBlock";
+import { removeFocusedBlockClass as removeFocusedBlockClassName, selectionChangeCallback } from "./focusedBlock";
 import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstition } from "./modeTransition";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
@@ -62,14 +62,11 @@ export async function loadAsriJSModules() {
     }
 }
 
-export async function unloadAsriJSModules() {
-    removeEnvClassNames();
-    restoreDefaultSiyuanScrollbar();
-    restoreTrafficLightPosition();
-    removeStatusStyles();
+export async function unloadAsriJSModules(completeUnload = true) {    
     if (!env.isMobile) await unloadTopbarFusion();
     destroyStyleUpdates();
     removeDockbClassName();
+    removeFocusedBlockClassName();
     unloadAvoidOverlappingWithStatus();
     globalClickEventListener.remove(document, 'mouseup');
     globalDragEventListener.remove(document, 'dragend');
@@ -82,12 +79,20 @@ export async function unloadAsriJSModules() {
     watchImgExportMo.disconnect(() => {
         document.body.classList.remove("has-exportimg")
     });
-    document.body.classList.remove('body-asri--fullscreen');
+    
     if (!env.isMobile) {
         lytCenterRo.disconnect();
         winRo.disconnect();
     }
     unloadThemePalette();
+
+    if (completeUnload) {
+        removeStatusStyles();
+        removeEnvClassNames();
+        restoreDefaultSiyuanScrollbar();
+        restoreTrafficLightPosition();
+        document.body.classList.remove('body-asri--fullscreen');
+    }
 }
 function lowFreqEventsCallback(e: Event) {
     // console.log(e);

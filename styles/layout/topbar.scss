@@ -77,8 +77,8 @@
 
 
     // 应用全屏时
-    .body-asri--fullscreen {
-        padding-left: 8px !important;
+    .body-asri--fullscreen & {
+        padding-inline-start: 8px !important;
     }
 }
 
