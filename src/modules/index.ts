@@ -149,10 +149,6 @@ async function updateStyles(e?: Event | KeyboardEvent) {
     }
 }
 
-function destroyStyleUpdates() {
-
-}
-
 function globalClassNameMoCallback(mutationList: MutationRecord[], observer: MutationObserver) {
     for (let mutation of mutationList) {
         if ((mutation.target as HTMLElement).classList.contains('body--blur')) return; // ⚠️ ignore constant classname change when app window blurs which cause unnecessary re-render and high cpu usage.

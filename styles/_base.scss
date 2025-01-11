@@ -138,7 +138,7 @@
     transition-duration: .1s;
     border: none;
     box-shadow: none;
-    outline: 1px solid rgb(from var(--b3-theme-on-background) r g b / .2);
+    outline: 1px solid var(--b3-border-color-trans);
     outline-offset: -1px;
     transition-property: color, background-color, outline-color, transform;
 
@@ -152,7 +152,7 @@
 
     &:active {
         transform: scale(.95);
-        opacity: .8;
+        // opacity: .8;
     }
 
     @content;
@@ -183,7 +183,7 @@
 
     @if $type=='normal' {
         color: var(--b3-theme-on-background);
-        outline: 1px solid rgb(from var(--b3-theme-on-background) r g b / .2);
+        outline: 1px solid var(--b3-border-color-trans);
 
         &:hover {
             background-color: var(--b3-list-hover);

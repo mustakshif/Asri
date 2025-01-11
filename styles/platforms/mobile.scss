@@ -6,7 +6,7 @@
     //编辑区
     .protyle-background {
         --cover-img-height: 200px;
-        
+
         &__img {
             --bgimg-top-space: 90px;
             --bgimg-scale: 1.1;
@@ -39,14 +39,15 @@
         }
     }
 
-    //菜单 
-    #menu {
-        &.b3-menu--fullscreen {
-            box-shadow: none;
-        }
-
-        border-radius: 0;
+    //菜单
+    .b3-menu--fullscreen,
+    .b3-menu__submenu {
+        box-shadow: none;
+        outline: none;
     }
+
+    border-radius: 0;
+
 
     #commonMenu {
         [id^=afwd] .b3-menu__label {

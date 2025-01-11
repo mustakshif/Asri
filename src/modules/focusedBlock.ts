@@ -33,13 +33,12 @@ export function selectionChangeCallback(e: Event) {
 
         const curNode = range.commonAncestorContainer;
         const curParent = curNode.parentElement;
-        const curBlock = curParent ? curNode.parentElement.closest('[data-node-id]') : null;
+        const curBlock = curParent ? curParent.closest('[data-node-id]') : null;
         if (!curBlock) return;
 
-        curParent && curParent.dir && curParent.dir === 'auto';
         const curBlockType = curBlock.getAttribute('data-type');
 
-        document.querySelectorAll('.asri-selected-block').forEach(block => block.classList.remove('asri-selected-block'));
+        removeFocusedBlockClass();
         if (curBlockType === 'NodeAttributeView' || !curBlockType || curBlockType === 'NodeCodeBlock') return;
 
         curBlock.classList.add('asri-selected-block');
