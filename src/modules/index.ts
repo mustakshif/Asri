@@ -14,7 +14,7 @@ import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstitio
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
 import { avoidOverlappingWithStatus, debouncedStatusPosition, removeStatusStyles, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
-import { calcTabbarSpacings, calcTopbarSpacings, handleMacFullScreen, loadTopbarFusion, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
+import { calcTabbarSpacings, calcTopbarSpacings, createTopbarFusionElements, handleMacFullScreen, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
 const globalClickEventListener = new AsriEventListener(lowFreqEventsCallback);
@@ -41,7 +41,7 @@ export async function loadAsriJSModules() {
     if (!env.isMobile) {
         await updateWndEls();
         await updateDragRect('initials');
-        loadTopbarFusion();
+        createTopbarFusionElements();
     }
     updateStyles();
     addDockbClassName();
@@ -62,12 +62,8 @@ export async function loadAsriJSModules() {
     }
 }
 
-export async function unloadAsriJSModules(completeUnload = true) {    
+export async function unloadAsriJSModules(completeUnload = true) {
     if (!env.isMobile) await unloadTopbarFusion();
-    destroyStyleUpdates();
-    removeDockbClassName();
-    removeFocusedBlockClassName();
-    unloadAvoidOverlappingWithStatus();
     globalClickEventListener.remove(document, 'mouseup');
     globalDragEventListener.remove(document, 'dragend');
     globalKeyupEventListener.remove(document, 'keyup', true);
@@ -79,7 +75,7 @@ export async function unloadAsriJSModules(completeUnload = true) {
     watchImgExportMo.disconnect(() => {
         document.body.classList.remove("has-exportimg")
     });
-    
+
     if (!env.isMobile) {
         lytCenterRo.disconnect();
         winRo.disconnect();
@@ -87,6 +83,13 @@ export async function unloadAsriJSModules(completeUnload = true) {
     unloadThemePalette();
 
     if (completeUnload) {
+        destroyDockBg();
+        removeIndentGuidesFormatClassName();
+        removeProtyleWithBgImageOnlyClassName();
+        removeProtyleSpacings();
+        removeDockbClassName();
+        removeFocusedBlockClassName();
+        unloadAvoidOverlappingWithStatus();
         removeStatusStyles();
         removeEnvClassNames();
         restoreDefaultSiyuanScrollbar();
@@ -147,10 +150,7 @@ async function updateStyles(e?: Event | KeyboardEvent) {
 }
 
 function destroyStyleUpdates() {
-    destroyDockBg();
-    removeIndentGuidesFormatClassName();
-    removeProtyleWithBgImageOnlyClassName();
-    removeProtyleSpacings();
+
 }
 
 function globalClassNameMoCallback(mutationList: MutationRecord[], observer: MutationObserver) {

@@ -271,10 +271,10 @@ export function getSystemAccentColor() {
 
             isSysAccentGray = accentHsl.s === 0 ? true : false;
 
-            document.body.classList.add('asri-mode-transition');
-            setTimeout(() => {
-                document.body.classList.remove('asri-mode-transition');
-            }, 350);
+            // document.body.classList.add('asri-mode-transition');
+            // setTimeout(() => {
+            //     document.body.classList.remove('asri-mode-transition');
+            // }, 350);
 
             sysAccentColor = accentHex;
         }

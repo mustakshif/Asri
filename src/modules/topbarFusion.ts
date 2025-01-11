@@ -147,10 +147,11 @@ export async function calcTabbarSpacings({ execute, centerRectRight } = { execut
 
     // set divider style
     (() => {
+        // console.log('pluginsDivider', pluginsDivider)
         if (!pluginsDivider) return;
         if (centerRectRight < dragRectInitialRight - 8) {
             // horisontal divider
-            pluginsDivider.style.setProperty('--container-bg', 'var(--b3-list-hover)');
+            pluginsDivider.style.setProperty('--container-bg', 'var(--b3-border-color-trans))');
             pluginsDivider.style.left = centerRectRight + 'px';
             pluginsDivider.style.right = '0';
             pluginsDivider.style.removeProperty('height');
@@ -207,10 +208,6 @@ export async function calcTabbarSpacings({ execute, centerRectRight } = { execut
     })
 }
 
-export async function loadTopbarFusion() {
-    createTopbarElements();
-}
-
 export async function unloadTopbarFusion() {
     await updateWndEls();
     removeTopbarElements();
@@ -229,7 +226,7 @@ export async function unloadTopbarFusion() {
     doms.layoutDockR?.style.removeProperty('--avoid-topbar');
 }
 
-function createTopbarElements() {
+export function createTopbarFusionElements() {
     if (env.isMobile) return;
 
     pluginsDivider = createTopbarElementById('AsriPluginsIconsDivider', undefined, doms.drag);
