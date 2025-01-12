@@ -13,6 +13,21 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.2.2
+
+* [Added animation for &quot;/&quot; menu popup](https://github.com/mustakshif/Asri/issues/128)
+* [Added fallback styles for header images in older Webview versions](https://github.com/mustakshif/Asri/issues/132)
+* [Optimized light/dark mode transition smoothness](https://github.com/mustakshif/Asri/issues/134)
+* [Improved marketplace package download progress bar styles](https://github.com/mustakshif/Asri/issues/127)
+* Optimized notification button styles
+* Adjusted animation curves for more components
+* [Adjusted Emoji panel layout](https://github.com/mustakshif/Asri/issues/129)
+* Removed width restriction for settings panel buttons and optimized multilingual display
+* Adapted side panels for right-to-left layout mode
+* Fixed missing left margin in Mac fullscreen top bar
+* [Fixed focus block indicator flash issue when &quot;Typewriter Mode&quot; plugin is enabled](https://github.com/mustakshif/Asri/issues/133#issuecomment-2579964200)
+* [Fixed scrollbar clipping issues with container rounded corners](https://github.com/mustakshif/Asri/issues/131)
+
 ### v3.2.1
 
 * Significantly improved the smoothness of transitions between light and dark modes
@@ -32,22 +47,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Fixed flickering animations in sidebar panel controls
 * Fixed incomplete display of filter input box in backlink panel
 * Fixed render process crashes when opening code snippet dialog
-
-### v3.2.0
-
-* Added right-to-left UI layout mode, which automatically adapts when the application language is set to Arabic or other right-to-left languages
-* Added visual indicators for focused blocks
-* Added transition animations for tab switching
-* Added auto-hide functionality for sidebar panel controls
-* Optimized the layout of code snippet dialog elements
-* Optimized tooltip animation curves
-* Optimized notification styles and animation curves
-* Added compatibility with the "Typewriter Mode" plugin
-* Adjusted the text color of descriptions on the account page
-* Adjusted the top margin of certain database menus
-* Adjusted the dialog border color in dark mode
-* Removed page left and right margins when the docks and side panels are hidden `#macOS`
-* Fixed status bar positioning when docks and side panels are hidden `#macOS`
 
 ### ...
 

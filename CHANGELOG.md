@@ -1,3 +1,35 @@
+### v3.2.2
+
+* [新增“/”菜单弹出动画](https://github.com/mustakshif/Asri/issues/128)
+* [添加低版本 Webview 中题头图的回退样式](https://github.com/mustakshif/Asri/issues/132)
+* [优化亮暗色模式切换流畅度](https://github.com/mustakshif/Asri/issues/134)
+* [优化集市包下载进度条样式](https://github.com/mustakshif/Asri/issues/127)
+* 优化通知按钮样式
+* 调整更多组件的动画曲线
+* [调整 Emoji 面板布局](https://github.com/mustakshif/Asri/issues/129)
+* 取消设置面板按钮宽度限制，优化多语言显示
+* 侧栏面板适配从右至左布局模式
+* 修复 Mac 端全屏后顶栏左间距缺失的问题
+* [修复「打字机模式」插件启用后聚焦块指示条闪现的问题](https://github.com/mustakshif/Asri/issues/133#issuecomment-2579964200)
+* [修复滚动条被容器圆角裁切的问题](https://github.com/mustakshif/Asri/issues/131)
+
+<br />
+
+* [Added animation for &quot;/&quot; menu popup](https://github.com/mustakshif/Asri/issues/128)
+* [Added fallback styles for header images in older Webview versions](https://github.com/mustakshif/Asri/issues/132)
+* [Optimized light/dark mode transition smoothness](https://github.com/mustakshif/Asri/issues/134)
+* [Improved marketplace package download progress bar styles](https://github.com/mustakshif/Asri/issues/127)
+* Optimized notification button styles
+* Adjusted animation curves for more components
+* [Adjusted Emoji panel layout](https://github.com/mustakshif/Asri/issues/129)
+* Removed width restriction for settings panel buttons and optimized multilingual display
+* Adapted side panels for right-to-left layout mode
+* Fixed missing left margin in Mac fullscreen top bar
+* [Fixed focus block indicator flash issue when &quot;Typewriter Mode&quot; plugin is enabled](https://github.com/mustakshif/Asri/issues/133#issuecomment-2579964200)
+* [Fixed scrollbar clipping issues with container rounded corners](https://github.com/mustakshif/Asri/issues/131)
+
+---
+
 ### v3.2.1
 
 * 大幅提升亮暗色模式间平滑切换流畅度

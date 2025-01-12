@@ -13,6 +13,21 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.2.2
+
+* [新增“/”菜单弹出动画](https://github.com/mustakshif/Asri/issues/128)
+* [添加低版本 Webview 中题头图的回退样式](https://github.com/mustakshif/Asri/issues/132)
+* [优化亮暗色模式切换流畅度](https://github.com/mustakshif/Asri/issues/134)
+* [优化集市包下载进度条样式](https://github.com/mustakshif/Asri/issues/127)
+* 优化通知按钮样式
+* 调整更多组件的动画曲线
+* [调整 Emoji 面板布局](https://github.com/mustakshif/Asri/issues/129)
+* 取消设置面板按钮宽度限制，优化多语言显示
+* 侧栏面板适配从右至左布局模式
+* 修复 Mac 端全屏后顶栏左间距缺失的问题
+* [修复「打字机模式」插件启用后聚焦块指示条闪现的问题](https://github.com/mustakshif/Asri/issues/133#issuecomment-2579964200)
+* [修复滚动条被容器圆角裁切的问题](https://github.com/mustakshif/Asri/issues/131)
+
 ### v3.2.1
 
 * 大幅提升亮暗色模式间平滑切换流畅度
@@ -32,22 +47,6 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * 修复侧栏面板控件动画闪烁的问题
 * 修复反链面板筛选输入框显示不全的问题
 * 修复打开代码片段对话框时渲染进程崩溃的问题
-
-### v3.2.0
-
-* 新增从右至左 UI 布局模式，应用语言为阿拉伯语等从右至左语言时自动适配
-* 新增聚焦块视觉标识
-* 新增页签切换过渡动画
-* 新增侧栏面板控件自动隐藏
-* 优化代码片段对话框元素布局
-* 优化提示条动画曲线
-* 优化通知样式和动画曲线
-* 适配「打字机模式」插件
-* 调整账号页面简介文字色
-* 调整数据库部分菜单顶部边距
-* 调整暗色模式下对话框边框眼色
-* 取消停靠栏和侧边面板隐藏时的页面左右边距 `#macOS`
-* 修正停靠栏和侧边面板隐藏时的状态栏定位 `#macOS`
 
 ### ...
 
