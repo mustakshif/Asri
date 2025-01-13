@@ -63,7 +63,24 @@ export async function loadAsriJSModules() {
 }
 
 export async function unloadAsriJSModules(completeUnload = true) {
-    if (!env.isMobile) await unloadTopbarFusion();
+
+    if (completeUnload) {
+        if (!env.isMobile) await unloadTopbarFusion();
+        destroyDockBg();
+        removeIndentGuidesFormatClassName();
+        removeProtyleWithBgImageOnlyClassName();
+        removeProtyleSpacings();
+        removeDockbClassName();
+        removeFocusedBlockClassName();
+        unloadAvoidOverlappingWithStatus();
+        removeStatusStyles();
+        removeEnvClassNames();
+        restoreDefaultSiyuanScrollbar();
+        restoreTrafficLightPosition();
+        document.body.classList.remove('body-asri--fullscreen');
+        unloadThemePalette();
+    }
+
     globalClickEventListener.remove(document, 'mouseup');
     globalDragEventListener.remove(document, 'dragend');
     globalKeyupEventListener.remove(document, 'keyup', true);
@@ -79,22 +96,6 @@ export async function unloadAsriJSModules(completeUnload = true) {
     if (!env.isMobile) {
         lytCenterRo.disconnect();
         winRo.disconnect();
-    }
-    unloadThemePalette();
-
-    if (completeUnload) {
-        destroyDockBg();
-        removeIndentGuidesFormatClassName();
-        removeProtyleWithBgImageOnlyClassName();
-        removeProtyleSpacings();
-        removeDockbClassName();
-        removeFocusedBlockClassName();
-        unloadAvoidOverlappingWithStatus();
-        removeStatusStyles();
-        removeEnvClassNames();
-        restoreDefaultSiyuanScrollbar();
-        restoreTrafficLightPosition();
-        document.body.classList.remove('body-asri--fullscreen');
     }
 }
 function lowFreqEventsCallback(e: Event) {

@@ -9,12 +9,12 @@
         border-radius: 4px;
     }
     
-    @for $i from 1 through 13 {
-        .b3-chip[style*="color: var(--b3-font-color#{$i})"] {
-            outline: .5px solid rgb(from var(--b3-font-color#{$i}) r g b / .3);
-            outline-offset: -.5px;
-        }
-    }
+    // @for $i from 1 through 13 {
+    //     .b3-chip[style*="color: var(--b3-font-color#{$i})"] {
+    //         outline: .5px solid rgb(from var(--b3-font-color#{$i}) r g b / .3);
+    //         outline-offset: -.5px;
+    //     }
+    // }
 
     @include database-assets-style;
 }
