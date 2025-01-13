@@ -1,0 +1,81 @@
+// 数据历史 ————————————————————————————————————————
+.history__repo {
+    background-color: unset;
+
+    .history__action {
+        border-bottom: none;
+    }
+
+    select.b3-select {
+        width: auto;
+    }
+}
+
+.history__panel {
+
+    &>.b3-list,
+    &>.history__diff {
+        // width: min(256px, 30%);
+        // min-width: fit-content; // 导致宽度根据条目长度频繁变动
+        padding: 8px 0;
+        background-color: var(--b3-theme-surface);
+    }
+
+    .b3-chip {
+        padding: 0 4px;
+    }
+
+    // 同步？
+    .b3-chip--success {
+        background-color: var(--b3-font-background9);
+        color: var(--b3-font-color9);
+    }
+
+    // 更新
+    .b3-chip--info {
+        background-color: var(--b3-font-background6);
+        color: var(--b3-font-color6);
+    }
+
+    // 替换
+    .b3-chip--secondary {
+        background-color: var(--b3-font-background4);
+        color: var(--b3-font-color4);
+    }
+
+    // 删除
+    .b3-chip--error {
+        background-color: var(--b3-font-background13);
+        color: var(--b3-font-color13);
+    }
+
+    // 排版
+    .b3-chip--pink {
+        background-color: var(--b3-font-background11);
+        color: var(--b3-font-color11);
+    }
+
+    // 大纲
+    .b3-chip--warning {
+        background-color: var(--b3-font-background5);
+        color: var(--b3-font-color5);
+    }
+}
+
+:not(.b3-dialog__body)>.history__panel {
+    border-top: 1px solid var(--b3-border-color-trans);
+
+    // .b3-list--background {
+    //     border-right: 1px solid var(--b3-border-color);
+    // }
+}
+
+#historyContainer {
+    [data-type=doc]>div:first-child {
+        border-bottom: none !important;
+    }
+}
+
+.history__resize {
+    box-shadow: none;
+}

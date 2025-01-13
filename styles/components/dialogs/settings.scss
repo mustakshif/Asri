@@ -1,0 +1,429 @@
+@use '../../base' as *;
+
+// 设置面板 ————————————————————————————————
+.config__panel {
+    .b3-tab-bar {
+        // 侧栏导航
+        background-color: var(--b3-theme-surface);
+        padding: 16px 8px;
+        // border-radius: 12px 0 0 12px;
+
+        .config__tab-hr {
+            // background-color: var(--b3-border-color-trans);
+            background-color: transparent;
+            margin: 8px 0;
+        }
+
+        .b3-list-item {
+            height: 32px;
+            line-height: 30px;
+            margin: 4px 8px;
+
+            &:hover:not(.b3-list-item--focus) {
+                background-color: transparent;
+
+                .b3-list-item__graphic,
+                .b3-list-item__text {
+                    color: var(--b3-theme-on-background);
+                }
+            }
+
+            &__graphic,
+            &__text {
+                color: var(--b3-theme-on-surface);
+            }
+
+            &--focus {
+
+                .b3-list-item__graphic,
+                .b3-list-item__text {
+                    color: var(--b3-theme-on-background);
+                    font-weight: 600;
+                }
+            }
+        }
+
+        @media (max-width: 750px) {
+
+            .config__tab-title,
+            .b3-list-item {
+                justify-content: center;
+            }
+
+            .b3-list-item {
+                // margin: 4px 6px !important;
+                margin-left: unset;
+                margin-right: unset;
+                margin-inline-start: 4px;
+                margin-inline-end: 6px;
+            }
+
+            .b3-list-item__graphic {
+                // padding: 0 4px;
+                padding-left: unset;
+                padding-right: unset;
+                padding-inline: 4px !important;
+                margin-inline-end: 0;
+            }
+        }
+    }
+
+    // 条目面板
+    .config__tab-wrap {
+        padding: 0;
+        border-radius: 0;
+
+        .config__tab-container {
+            padding: 8px 12px;
+            background-color: var(--b3-theme-background);
+
+            .b3-label :where(.fn__flex-1, .fn__block, .fn__flex-center):not(.ft__on-surface, .b3-button, .b3-form__icon, .fn__size200, ul, input):first-child,
+            :where(.b3-label, .config__ite)::first-line {
+                font-weight: 600;
+            }
+
+            .config-query .fn__flex-1,
+            .b3-label__text,
+            .b3-label :where(a, code, .ft__on-surface):not(.b3-button--outline) {
+                font-weight: 400 !important;
+            }
+
+            .layout-tab-bar+.fn__flex-1 {
+                background-color: var(--b3-theme-background);
+            }
+
+            &--top {
+                margin-top: 0;
+                height: 100%;
+                padding: 8px 0 0;
+            }
+
+            .b3-label {
+                box-shadow: none;
+
+                &__text {
+                    margin-top: 8px;
+                }
+
+                // 表单元素溢出显示
+                >.fn__flex-1 {
+                    overflow: visible;
+                }
+            }
+
+            &[data-name="account"] {
+                padding: 0;
+                margin-top: 0;
+                height: inherit;
+
+                .config-account {
+                    background-color: var(--b3-theme-surface);
+
+                    backdrop-filter: opacity(1); // fix .b3-dialog__scrim's backdrop-filter loss caused by child element &__name's mix-blend-mode. See https://stackoverflow.com/questions/66204563/backdrop-filter-not-working-when-mix-blend-mode-of-another-element-on-the-page-i
+
+                    &__center:not(.config-account__center--text) {
+                        height: min(100% - 80px, 650px);
+                        max-width: min(100%, 400px);
+                        margin: auto 20px;
+                        border-radius: 20px;
+                        overflow: hidden;
+                        background-color: var(--b3-theme-background);
+
+                        @include menu-shadow($opacity-light: .05, $opacity-dark: 0.15, $border-light: .5px, $border-dark: 0px);
+
+                        @media (max-width: 750px) {
+                            margin: 40px;
+                            max-width: unset;
+                        }
+                    }
+
+                    &__cover {
+                        // &::before {
+                        //     content: "";
+                        //     display: inline-block;
+                        //     width: -webkit-fill-available;
+                        //     height: 90%;
+                        //     position: absolute;
+                        //     bottom: 0;
+                        //     right: 0;
+                        //     background: linear-gradient(to top, pickThemeColor($theme-light, background) 2%, pickThemeColor($theme-light, background, 0.97) 10%, pickThemeColor($theme-light, background, 0.9) 18%, pickThemeColor($theme-light, background, 0.75) 33%, pickThemeColor($theme-light, background, 0.05) 92%, transparent 99%);
+                        //     pointer-events: none;
+
+                        //     @include darkmode-counterpart {
+                        //         background: linear-gradient(to top, pickThemeColor($theme-dark, background) 2%, pickThemeColor($theme-dark, background, 0.97) 10%, pickThemeColor($theme-dark, background, 0.9) 18%, pickThemeColor($theme-dark, background, 0.75) 33%, pickThemeColor($theme-dark, background, 0.05) 92%, transparent 99%);
+                        //     }
+                        // }
+
+                        mask-image: linear-gradient(to top, transparent 2%, rgba(0, 0, 0, 0.03) 10%, rgba(0, 0, 0, 0.1) 18%, rgba(0, 0, 0, 0.25) 33%, rgba(0, 0, 0, 0.95) 92%, black 99%), linear-gradient(to top, black, black);
+                        mask-size: auto 90%, auto 11%;
+                        mask-position: bottom, top;
+                        mask-repeat: no-repeat;
+
+                        &[style="background-image: url()"] {
+                            background-color: var(--b3-theme-primary-light);
+                        }
+                    }
+
+                    &__bg {
+                        margin-bottom: 0;
+
+                        .b3-chips {
+                            mix-blend-mode: luminosity;
+
+                            .b3-chip {
+                                border-radius: 99px;
+                                background-color: var(--b3-theme-surface);
+                                padding: 4px 8px;
+                                opacity: .9;
+
+                                &::before {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+
+                    &__avatar {
+                        // top: 20%;
+                        bottom: 108px;
+                        box-shadow: none;
+                        border: none;
+                        transition: box-shadow .2s;
+
+                        &:hover {
+                            box-shadow: 0 0 0 2px #fffa;
+                        }
+
+                        @media (max-width: 750px) {
+                            top: 20%;
+                            bottom: unset;
+                        }
+                    }
+
+                    &__name {
+                        // top: calc(20% + 200px);
+                        bottom: 12px;
+                        mix-blend-mode: luminosity;
+
+                        @media (max-width: 750px) {
+                            display: none;
+                        }
+
+                        &>.fn__a {
+                            display: block;
+                            transition: color .2s;
+                        }
+                    }
+
+                    &__info {
+                        margin-top: 0;
+                        background-color: var(--b3-theme-background);
+                        z-index: 1;
+
+                        @media (min-width: 750px) {
+                            >.fn__flex {
+                                margin: 0 24px 24px;
+                                flex-direction: column;
+
+                                // #logout,
+                                // #refresh {
+                                //     box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+                                // }
+
+                                #refresh {
+                                    height: 28px;
+
+                                    >svg {
+                                        display: none;
+                                    }
+
+                                    &::after {
+                                        opacity: 1;
+                                        transform: none;
+                                        right: unset;
+                                        bottom: unset;
+                                        margin-bottom: 0;
+                                        background-color: transparent;
+                                        box-shadow: none;
+                                        font-size: 14px;
+                                        // color: var(--b3-theme-on-surface);
+                                        transition: color .1s;
+                                        -webkit-font-smoothing: auto;
+
+                                        @include darkmode-counterpart {
+                                            -webkit-font-smoothing: antialiased;
+                                        }
+                                    }
+
+                                    &:hover::after {
+                                        color: var(--b3-theme-on-background);
+                                        border: none;
+                                    }
+                                }
+
+                                &:last-child {
+                                    label {
+                                        display: flex;
+
+                                        >input {
+                                            margin-inline-start: auto;
+                                        }
+                                    }
+
+                                    .fn__flex-1 {
+                                        min-height: 8px;
+                                    }
+
+                                }
+
+                                .fn__space {
+                                    height: 8px
+                                }
+                            }
+                        }
+                    }
+
+                    .b3-button--text:not(#activationCode),
+                    button#login {
+
+                        // @include button-action('primary');
+                        @include button-primary {
+                            background-color: var(--b3-theme-primary);
+                            color: var(--b3-theme-on-primary);
+                            outline: none;
+
+                            &:hover {
+                                background-color: rgb(from var(--b3-theme-primary) r g b / .8);
+                            }
+                        }
+
+                        @include darkmode-counterpart {
+                            background-color: var(--b3-theme-primary);
+                        }
+
+                        @media (max-width: 750px) {
+                            @include button-action('primary');
+                            color: var(--b3-theme-on-primary);
+
+                            &:hover {
+                                background-color: var(--b3-theme-primary)
+                            }
+                        }
+                    }
+
+                    .b3-button--cancel {
+                        @include button-action('normal') {
+                            border-radius: 7px;
+                        }
+                    }
+
+                    // 订阅按钮
+                    .b3-button--big {
+                        color: var(--b3-theme-primary);
+                        font-weight: 600;
+                        padding: 24px 16px;
+                        background-color: transparent;
+                        outline: 2px solid var(--b3-theme-primary);
+                        transition: .2s;
+                        border-radius: 99px;
+
+                        &:hover {
+                            background-color: var(--b3-theme-primary-lightest);
+                            box-shadow: none;
+                            transform: scale(1.05);
+                        }
+
+                        &:active {
+                            transform: scale(.95);
+                            opacity: .8;
+                            box-shadow: none;
+                            transition: .1s;
+                        }
+
+                        &:active,
+                        &:focus {
+                            background-color: var(--b3-theme-primary);
+                            color: var(--b3-theme-on-primary);
+                            transition: .1s;
+                            outline-color: transparent;
+                            box-shadow: none;
+                        }
+                    }
+
+                    // 捐赠按钮
+                    .b3-chip--hover:hover {
+                        box-shadow: none;
+                        transform: scale(1.05);
+                    }
+
+
+                    // 右侧内容
+                    &__center--text {
+                        padding: 24px;
+                        line-height: 1.5;
+                        color: var(--b3-theme-on-surface);
+
+                        .b3-form__icon-icon {
+                            margin: 8px 0;
+                        }
+
+                        .b3-form__icon-input {
+                            margin: 8px 0 16px;
+
+                            &:placeholder-shown+#activationCode {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    #activationCode {
+                        margin: 8px 0;
+                        transition: .1s;
+                        font-weight: 600;
+
+                        &:hover {
+                            background-color: transparent;
+                            transform: scale(1.05);
+                        }
+
+                        &:active,
+                        &:focus {
+                            background-color: transparent;
+                            transform: scale(.95);
+                            color: var(--b3-theme-primary);
+                        }
+                    }
+                }
+            }
+
+            #publishAuthAccounts>ul {
+                overflow: visible;
+            }
+        }
+
+        &>.fn__hr--b {
+            display: none;
+        }
+    }
+
+    .config-keymap__key {
+        font-family: SF Pro, Consolas, "Liberation Mono", Menlo, Courier, monospace, var(--b3-font-family);
+    }
+
+    .config-query {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+        gap: 12px 15%;
+        margin-top: 12px;
+
+        .label,
+        label {
+            width: auto;
+            margin: 0;
+        }
+
+        .label>div {
+            flex: 1;
+        }
+    }
+}

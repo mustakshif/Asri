@@ -1,0 +1,440 @@
+@use '../../base' as *;
+
+.config-bazaar__panel {
+    // padding-bottom: 8px;
+
+    .config-bazaar__title {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        align-items: center;
+        backdrop-filter: none;
+        padding: 8px 16px;
+        background-color: var(--b3-theme-background);
+
+
+        .b3-form__icon .b3-text-field {
+            @media (max-width: 830px) {
+                width: calc(100% - 32px)
+            }
+        }
+
+
+        .b3-switch {
+            transform: translateX(11px);
+            margin: 0 !important;
+        }
+    }
+
+    .counter {
+        background-color: transparent !important;
+    }
+
+    &[data-type='downloaded'] {
+        .b3-button {
+            @include button-action(1) {
+                padding: 4px;
+                outline: none;
+            }
+
+            &:not(.b3-button--outline) {
+                background-color: transparent;
+                color: var(--b3-theme-primary);
+                font-weight: 600;
+
+                &:hover,
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+
+            &.b3-button--outline {
+                background-color: transparent;
+                color: var(--b3-theme-on-surface);
+                font-weight: normal;
+
+                &:hover {
+                    color: var(--b3-theme-on-background);
+                    box-shadow: none;
+                }
+            }
+
+            &+.fn__space+.b3-form__icon {
+                margin-left: 8px;
+            }
+        }
+
+        [data-type="myPlugin"]:not(.b3-button--outline)~.counter {
+            transform: translateX(negateForRTL(-64px));
+        }
+
+        // 统一更新的卡片
+        [data-type="downloaded-update"] {
+            .config-bazaar__content {
+                margin: 10px 20px;
+
+                .b3-card {
+                    &::after {
+                        // box-shadow: 0 0 0 1px inset var(--b3-theme-primary-light);
+
+                        // @include darkmode-counterpart {
+                        //     box-shadow: 0 0 0 1px inset var(--b3-theme-primary);
+                        // }
+
+                        box-shadow: none;
+                    }
+                }
+            }
+
+            // 有统一更新时的插件开关
+            // &:not(:empty)~.config-bazaar__title {
+            //     .b3-switch {
+            //         transform: translateX(-20px);
+            //     }
+            // }
+        }
+
+        // 已下载卡片容器
+        .config-bazaar__content {
+            // padding: 0 0 16px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(327px, 1fr));
+            gap: 20px;
+            margin: 10px 20px 20px;
+            width: auto;
+
+            &[data-loading="true"] {
+                >div:not(.b3-card):first-child {
+                    grid-column: 1 / -1;
+                    transform: translateY(-44px);
+                }
+
+                // loading svg
+            }
+
+            >ul.b3-list {
+                grid-column: 1 / -1;
+                text-align: center;
+            }
+
+            // when empty
+
+            .b3-card {
+                display: grid;
+                grid-template-areas: "img info" "img buttons";
+                grid-template-columns: 90px 1fr;
+
+                >.b3-card__img {
+                    grid-area: img;
+
+                    +div {
+                        grid-area: info;
+                    }
+                }
+
+                >.b3-card__actions {
+                    grid-area: buttons;
+                    padding: 0 16px 14px;
+                    align-self: flex-end;
+
+                    >[data-type="setting"],
+                    >[data-type="setting"].fn__none~[data-type="uninstall"],
+                    >[data-type="open"]:first-child {
+                        margin-left: auto;
+                        justify-content: end;
+                        // flex-grow: 1; // 鼠标移至空白区域时也会激活图标
+
+                        // tooltip
+                        &::after {
+                            right: 0;
+                            margin-right: 0;
+                        }
+                    }
+
+                    // 赞助图标
+                    &--right a {
+                        margin-left: 0;
+                    }
+                }
+
+                .b3-card__info--left {
+                    padding: 16px 16px 8px;
+
+                    @media (max-width: 750px) {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    // 未下载项目容器
+    .config-bazaar__content {
+        margin-top: 0;
+        width: 100%;
+        // 网格布局要求父容器的宽度不固定
+
+        .b3-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(327px, 1fr));
+            gap: 20px;
+            margin: 10px 20px 20px;
+
+            >.fn__flex-1 {
+                display: none;
+            }
+        }
+
+        .b3-card {
+            border-radius: $border-rd-card;
+            background-color: var(--b3-theme-background);
+            border: none;
+            box-shadow: none;
+            // box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+            outline: 1.5px solid var(--b3-border-color-trans);
+            outline-offset: -1.5px;
+            margin: 0;
+            transition-property: outline, transform, box-shadow;
+            transition-duration: .2s;
+            overflow: visible;
+
+            &--current {
+                background-color: rgb(from var(--b3-theme-primary) r g b / .1);
+                // box-shadow: 0 0 0 1px inset var(--b3-theme-primary-lighter);
+            }
+
+            &__img {
+                margin-left: unset;
+                margin-inline-start: 16px;
+            }
+
+            &--wrap {
+                min-width: 327px;
+            }
+
+            &__info {
+                font-weight: 500;
+                padding: 16px 16px 8px;
+
+                >* {
+                    font-weight: normal;
+                }
+            }
+
+            &__desc {
+                word-break: initial;
+            }
+
+            &:hover {
+                transform: scale(1.01);
+                // outline: 2px solid var(--b3-theme-primary-light);
+                z-index: 1;
+                // box-shadow: none;
+
+                box-shadow: 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.1), 0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.1);
+
+                @include darkmode-counterpart {
+                    box-shadow: 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.3), 0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.15);
+                }
+            }
+
+            // &::after {
+            //     content: '';
+            //     display: block;
+            //     position: absolute;
+            //     width: 100%;
+            //     height: 100%;
+            //     border-radius: inherit;
+            //     opacity: 0;
+            //     transition: opacity .2s;
+            //     pointer-events: none;
+            //     // @include menu-shadow(var(--b3-theme-primary), $opacity-light: .2);
+            //     // outline-color: transparent;
+
+            //     box-shadow: 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.1), 0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.1);
+
+            //     @include darkmode-counterpart {
+            //         box-shadow: 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.3), 0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.15);
+            //     }
+            // }
+
+            &--current,
+            &:hover {
+                outline-color: var(--b3-theme-primary-lighter);
+
+                @include darkmode-counterpart {
+                    outline-color: var(--b3-theme-primary);
+                }
+            }
+
+            // &:hover::after {
+            //     opacity: 1;
+            // }
+        }
+    }
+}
+
+#configBazaarReadme {
+    transition: transform var(--asri-ease-in-2) .2s;
+    opacity: 1;
+    z-index: 2;
+    padding: 0;
+
+    will-change: transform; // fix https://github.com/mustakshif/Asri/issues/55
+
+    // transform: scale(1.08);
+    // right: 0;
+    // opacity: 0;
+    // pointer-events: none;
+    // transition: opacity var(--asri-ease-out-5) 0.2s, transform 0.3s, filter var(--asri-ease-out-5) 0.3s;
+
+    .item__side {
+        padding: 16px;
+        background-color: var(--b3-theme-surface);
+        justify-content: center;
+
+        >div:first-child {
+            position: absolute;
+            top: 16px;
+        }
+
+        >div:last-child {
+            flex-grow: 0;
+        }
+
+        >.ft__on-surface {
+            font-weight: 600;
+            // font-size: 1em;
+
+            &::first-line {
+                font-weight: normal;
+                // font-size: calc(1em / 1.2);
+            }
+        }
+
+        .item__title {
+            font-weight: 600;
+            word-break: normal;
+        }
+
+        .b3-button {
+            @include button-primary;
+
+            // @include darkmode-counterpart {
+            //     background-color: #0004;
+            // }
+
+            margin-top: 12px;
+
+            &--progress {
+                // border-radius: 99px;
+                overflow: hidden;
+
+                &:hover {
+                    background-color: transparent;
+                    outline-color: rgb(from var(--b3-theme-on-background) r g b/0.2);
+                }
+
+                >span {
+                    border-radius: 0;
+                    transition: width .2s;
+                    left: unset;
+                    inset-inline-start: 0px;
+
+                    // animation: downloading-color-change 2s infinite ;
+
+                    // @keyframes downloading-color-change {
+                    //     0% {
+                    //         background-color: var(--b3-theme-primary);
+                    //     }
+                    //     50% {
+                    //         background-color: hsl(from var(--b3-theme-primary) h s calc(l * 1.2) );
+                    //     }
+                    //     100% {
+                    //         background-color: var(--b3-theme-primary);
+                    //     }
+                    // }
+                }
+            }
+        }
+    }
+
+    .item__main {
+        margin-left: 0;
+        padding: 0;
+        background-color: var(--b3-theme-background);
+
+
+        .item__preview {
+            border-radius: 0;
+
+            // 性能表现不佳
+            // view-timeline-name: --preview-background;
+            // animation-timeline: --preview-background;
+            // // view-timeline-axis: y;
+            // animation-range: 67% normal;
+            // animation-fill-mode: both;
+            // animation-name: parallax-background, preview-cover-fade-out;
+            // animation-timing-function: linear;
+
+            // @keyframes parallax-background {
+            //     100% {
+            //         background-position: center calc(50% + 160px);
+            //     }
+            // }
+
+            // @keyframes preview-cover-fade-out {
+
+            //     0%,
+            //     60% {
+            //         opacity: 1;
+            //     }
+
+            //     90%,
+            //     100% {
+            //         opacity: 0;
+            //     }
+            // }
+        }
+
+        .b3-typography {
+            padding: 0 32px;
+
+            @media (min-width: 1292px) {
+                padding: 1px; //显示表格左右边框
+                width: min(42em, calc(100% - 48px));
+                margin: 24px auto 0;
+            }
+
+            >blockquote:first-child {
+                // border: none;
+                border-radius: 16px;
+                padding: 12px 20px;
+                color: rgb(from var(--b3-theme-on-background) r g b / .6);
+                background-color: #0000;
+                font-weight: 600;
+                margin: 0;
+                font-size: 120%;
+                outline-width: 1.5px;
+                outline-offset: -1.5px;
+            }
+
+            &.item__readme {
+                padding-bottom: 32px;
+
+                @for $i from 1 through 6 {
+                    >h#{$i}:first-child {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    &.config-bazaar__readme--show {
+        transition: transform var(--asri-ease-out-5) .3s, filter linear 0.3s 0.1s;
+        // transform: none;
+        // opacity: 1;
+        // pointer-events: all;
+    }
+}

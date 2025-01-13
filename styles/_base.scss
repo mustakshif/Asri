@@ -100,7 +100,7 @@
     }
 }
 
-//————————————————————————————————————————
+// ————————————————————————————————————————
 // 用于暗黑模式模式下给部分元素添加边框
 @mixin border-or-not($outline: true, $border: true, $outline-width: 1px, $outline-light: false) {
     border: unset;
@@ -125,8 +125,7 @@
     }
 }
 
-//——————————————————————————————————————
-
+// ——————————————————————————————————————
 // 主要用于设置面板的大按钮
 @mixin button-primary {
     // background-color: var(--b3-list-hover);

@@ -1,0 +1,295 @@
+@use '../../base' as *;
+
+// 搜索 ————————————————————————————————————
+[data-key="dialog-globalsearch"],
+[data-key="dialog-search"],
+[data-key="dialog-replace"] {
+    #searchList {
+        background-color: var(--b3-theme-surface);
+
+        >.b3-list-item {
+            &:not([data-type="search-item"]) {
+                background-color: oklch(from var(--b3-theme-surface) .91 c h);
+
+                @include darkmode-counterpart {
+                    background-color: oklch(from var(--b3-theme-surface) .41 c h);
+                }
+
+                @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+                    background-color: change-color(pickThemeColor($theme-light, surface), $lightness: 90%);
+
+                    @include darkmode-counterpart {
+                        background-color: change-color(pickThemeColor($theme-dark, surface), $lightness: 28%);
+                    }
+                }
+            }
+
+            .b3-list-item__text.ariaLabel {
+                font-weight: 500;
+            }
+        }
+    }
+
+    ~.b3-dialog--open:not([data-key="dialog-savecriterion"]) {
+        [onselectstart]+.b3-dialog__body>.b3-dialog__content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-rows: repeat(auto-fill, 28px);
+            gap: 20px 90px;
+
+            .b3-label {
+                border-bottom-color: transparent;
+                padding: 0;
+                height: 28px;
+            }
+
+            div:last-child {
+                grid-column: 1 / -1;
+                grid-row: 10 / span 4;
+            }
+        }
+    }
+}
+
+.search__tip {
+    padding: 4px 8px;
+    margin: 0;
+    color: var(--b3-theme-on-surface);
+
+    kbd {
+        font-family: SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
+    }
+}
+
+// 搜索通用
+#searchInput,
+#searchAssetInput,
+#replaceInput {
+    background-color: transparent;
+}
+
+#criteria {
+    .b3-chips {
+        // $chip-colors: (
+        //     secondary: font-color4,
+        //     primary: font-color5,
+        //     info: font-color6,
+        //     success: font-color8,
+        //     warning:font-color9,
+        //     error: font-color10,
+        //     "": font-color12
+        // );
+
+        // @each $chip-type, $chip-color in $chip-colors {
+        //     .b3-chip--#{$chip-type} {
+        //         background-color: unset;
+        //         color: var(--b3-theme-on-surface);
+        //         outline: .12em solid var(--b3-border-color-trans);
+        //         outline-offset: -.12em;
+
+        //         &.b3-chip--current {
+        //             box-shadow: none;
+        //             color: var(--b3-theme-primary);
+        //             outline-color: var(--b3-theme-primary-lighter);
+        //         }
+        //     }
+        // }
+
+        .b3-chip {
+            font-weight: 500;
+        }
+
+        .b3-chip:not(.b3-chip--current) {
+            color: var(--b3-theme-on-surface);
+        }
+    }
+}
+
+#replaceBtn,
+#replaceAllBtn,
+#criteria .b3-button {
+    @include button-action('primary') {
+        color: var(--b3-theme-accent, var(--b3-theme-primary));
+        background-color: transparent;
+        padding: 2px 8px;
+        box-shadow: none;
+        outline: none;
+
+        &:hover {
+            color: var(--b3-theme-on-primary);
+            background-color: var(--b3-theme-primary);
+        }
+    }
+}
+
+#searchList,
+#searchAssetList {
+    mark {
+        background-color: transparent;
+    }
+
+    [data-type="search-item"] {
+        flex-wrap: wrap;
+        padding: 4px;
+        justify-content: flex-end;
+
+        .b3-list-item__graphic {
+            align-self: flex-start;
+            transform: translateY(20%);
+            color: var(--b3-theme-on-surface);
+        }
+
+        .b3-list-item__text {
+
+            word-break: normal;
+
+            // @include theme-variant-color(color, on-background, 0.9);
+            color: rgb(from var(--b3-theme-on-background) r g b/.9);
+
+            // font-weight: 500;
+            line-height: 1.5;
+            flex-shrink: 0;
+            flex-basis: calc(100% - 44px);
+            -webkit-line-clamp: 2;
+
+            mark {
+                background-color: transparent;
+                color: var(--b3-theme-primary);
+            }
+        }
+
+        .b3-list-item__meta {
+
+            // 备注文本等
+            .b3-list-item__hinttext {
+                line-height: 1;
+                padding: 4px 0;
+            }
+
+            // 文档路径
+            &--ellipsis {
+                max-width: calc(100% - 22px);
+                padding: 8px 0 8px 8px;
+                line-height: 1;
+            }
+
+            mark {
+                background-color: transparent;
+                color: var(--b3-theme-primary);
+            }
+        }
+    }
+
+    // 分组设置为“按文档分组”
+    >.b3-list-item:not([data-type="search-item"]) {
+        margin: 0;
+        padding: 0 8px;
+        border-radius: 0;
+        position: sticky;
+        top: -8px;
+        background-color: var(--b3-theme-surface);
+        z-index: 1;
+
+        .b3-list-item__toggle--hl:hover {
+            background-color: transparent;
+        }
+
+        &:hover .b3-list-item__text {
+            color: var(--b3-theme-on-background) !important;
+        }
+
+        +div>.b3-list-item {
+            min-height: unset;
+            margin: 0;
+            border-radius: 0;
+            padding: 4px;
+            // margin-left: 40px;
+            // padding-left: 4px !important;
+
+            &.b3-list-item--focus {
+                background-color: var(--b3-theme-primary-lightest) !important;
+            }
+        }
+    }
+}
+
+// 水平布局
+.search__layout:not(.search__layout--row) {
+    #searchList {
+        [data-type="search-item"] {
+            .b3-list-item__graphic {
+                align-self: center;
+                transform: none;
+            }
+
+            span.b3-list-item__graphic {
+                margin-right: 0;
+                font-size: 14px;
+            }
+
+            .b3-list-item__text {
+                flex-shrink: 1;
+                flex-basis: 0;
+                -webkit-line-clamp: 1;
+            }
+
+            .b3-list-item__meta {
+
+                // 文档路径
+                &--ellipsis {
+                    max-width: 50%;
+                }
+            }
+        }
+    }
+}
+
+// 高亮
+// .protyle-wysiwyg [data-node-id] span[data-type~=search-mark] {
+//     border-radius: 4px;
+//     // padding: 2px;
+//     // margin: 0 -2px;
+//     // mix-blend-mode: multiply; //有时会出现显示异常
+//     box-decoration-break: clone;
+//     background-color: var(--b3-protyle-inline-mark-background) !important;
+//     color: var(--b3-theme-on-background) !important;
+
+//     // @include darkmode-counterpart {
+//     //     mix-blend-mode: normal;
+//     // }
+
+//     .file-tree & {
+//         border-radius: 0;
+//         padding: 0;
+//         margin: 0;
+//         // mix-blend-mode: normal;
+//     }
+
+//     &.search-mark--hl {
+//         @include menu-shadow(var(--b3-theme-primary), $opacity-light: 0.15, $opacity-dark: 0.4);
+//         // mix-blend-mode: normal;
+//         background-color: var(--b3-theme-primary-lighter) !important;
+//         color: var(--b3-theme-on-background) !important;
+//     }
+// }
+
+// 引用失效面板
+#searchUnRefList {
+    @extend #searchList;
+}
+
+#searchUnRefPreview {
+    padding: 0 !important;
+
+    .protyle-breadcrumb {
+        font-size: 14px;
+    }
+
+    .protyle-hint {
+        font-size: 14px !important;
+
+        mark {
+            box-shadow: none;
+        }
+    }
+}

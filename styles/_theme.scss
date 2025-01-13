@@ -4,8 +4,6 @@
 :root {
     --b3-border-radius-b: 16px; // 对话框圆角
 
-    @include asri-common-css-vars;
-
     &,
     &:lang(zh_CN) {
         @include font-family;
@@ -16,6 +14,8 @@
     }
 
     // interpolate-size: allow-keywords;  // https://developer.chrome.com/docs/css-ui/animate-to-height-auto/
+
+    @include asri-common-css-vars;
 }
 
 // dark first to fix font color and background color abnormality in pdf export 
@@ -35,6 +35,7 @@
 
     &:root,
     // fix being overridden by other themes
+
     body.has-exportimg {
         @include theme-root($theme-light)
     }

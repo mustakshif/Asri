@@ -1,0 +1,38 @@
+@use '../../base' as *;
+
+// 弹出预览窗口 ——————————————————————————————————————
+.block__popover {
+    @include dialog-shadow;
+    @include border-or-not;
+
+    @include darkmode-counterpart {
+        outline-color: transparent;
+    }
+
+    outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
+
+    >.block__icons--menu {
+        background-color: var(--b3-theme-background);
+    }
+
+    .block__icons {
+        .block__icon {
+            &:hover:not([disabled]):not(.ft__primary) {
+                background-color: transparent;
+            }
+
+            &--active {
+                color: var(--b3-theme-primary);
+                background-color: transparent;
+
+                &:hover:not([disabled]):not(.ft__primary) {
+                    color: var(--b3-theme-primary);
+                }
+            }
+        }
+    }
+
+    &--open {
+        animation: scaleBounce .5s var(--asri-ease-spring-3);
+    }
+}

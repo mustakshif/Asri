@@ -1,0 +1,117 @@
+@use '../../base' as *;
+
+// 导出界面
+body[style="-webkit-print-color-adjust: exact;"] {
+    #action {
+
+        .b3-label {
+            border-bottom: none;
+            display: flex;
+
+            &:nth-child(-n + 3) {
+                flex-direction: column;
+            }
+
+            .fn__hr {
+                flex-grow: 1;
+            }
+
+            .b3-switch {
+                margin-left: 8px;
+                align-self: center;
+            }
+        }
+
+        .b3-button--cancel {
+            @include button-action('normal')
+        }
+
+        .b3-button--text {
+            @include button-action('primary')
+        }
+
+        // padding-bottom: 8px; // unnecessary, use default value
+        // >:last-child {
+        //     padding: 8px 16px !important;
+        // } // ❓ don't konw why this statement causes large cpu usage on mobile
+    }
+}
+
+
+//导出窗口 ——————————————————————————
+
+// #preview {
+//     font-feature-settings: "ss06" on;
+// } //避免在非苹果设备上出现意外的字形渲染结果
+
+// #aciton {
+//     .b3-button--cancel {
+//         @include button-action('normal');
+//     }
+
+//     .b3-button--text {
+//         @include button-action('primary');
+//     }
+// }
+
+// 图片预览 ——————————————————————
+.viewer-backdrop {
+    animation: fadeIn 0.3s;
+    transform-origin: var(--mouseX) var(--mouseY);
+    background-color: #bbb;
+
+    @include darkmode-counterpart {
+        background-color: var(--b3-theme-background);
+    }
+
+    animation-timing-function: var(--asri-ease-out-5);
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.1);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+}
+
+.viewer-title {
+    padding: 4px 8px;
+    background-color: var(--b3-theme-surface);
+    border-radius: 99px;
+    @include border-or-not($border: false);
+}
+
+.viewer-toolbar {
+    >ul {
+        background-color: var(--b3-theme-surface);
+        padding: 8px;
+        border-radius: 99px;
+        @include border-or-not($border: false);
+
+        >li {
+            background-color: transparent;
+
+            &:hover {
+                background-color: var(--b3-list-hover);
+
+                >svg {
+                    color: var(--b3-theme-on-background);
+                }
+            }
+
+            &:focus {
+                background-color: var(--b3-theme-on-background);
+                box-shadow: none;
+
+                >svg {
+                    color: var(--b3-menu-background);
+                }
+            }
+        }
+    }
+}

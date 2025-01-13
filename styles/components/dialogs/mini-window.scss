@@ -1,0 +1,34 @@
+// 小窗 ————————————————————————
+body.body--window {
+    .toolbar__window {
+        .toolbar__item {
+            app-region: no-drag;
+            color: var(--b3-theme-on-surface);
+
+            &:hover {
+                color: var(--b3-theme-on-background);
+            }
+
+            &--active {
+                color: var(--b3-theme-primary);
+
+                &:hover {
+                    color: var(--b3-theme-primary);
+                }
+            }
+        }
+    }
+
+    // &.body-asri--mac {
+    //     .fn__flex:first-child>[data-type="wnd"] {
+    //         .layout-tab-bar:not(.layout-tab-bar--readonly) {
+    //             margin-left: var(--b3-toolbar-left-mac);
+    //         }
+    //     }
+    // } // -> js 
+
+    #status {
+        right: 8px !important;
+        padding-right: 0;
+    }
+}
