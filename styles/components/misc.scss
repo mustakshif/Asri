@@ -240,17 +240,18 @@ textarea {
     &::-webkit-slider-thumb {
         @include theme-variant-color(background-color, light-components);
         // @include tooltip-shadow;
-        outline: 1px solid color-mix(in srgb, var(--b3-theme-on-background) 12%, var(--b3-theme-background));
+        outline: 0px solid color-mix(in srgb, var(--b3-theme-on-background) 12%, var(--b3-theme-background));
         height: 16px;
         width: 16px;
         margin-top: -5px;
         transition: all 0.1s ease-out;
-        box-shadow: none;
-    }
+        box-shadow: 0 1px 4px -1px #0003, 0 .3px 0 0 #0002, 0 0 0 1px #0001;
+    }npm uninstall sass-loader node-sassnpm uninstall sass-loader node-sass
 
     &:hover:not(&:focus)::-webkit-slider-thumb {
         transform: none;
-        outline: 2px solid color-mix(in srgb, var(--b3-theme-primary) 38%, var(--b3-theme-background));
+        // outline: 2px solid color-mix(in srgb, var(--b3-theme-primary) 38%, var(--b3-theme-background));
+        outline: 2px solid var(--b3-theme-primary);
 
         // @include darkmode-counterpart {
         //     outline: 2px solid oklch(from var(--b3-theme-primary) .65 .15 h);
@@ -275,6 +276,12 @@ textarea {
 
     &:focus::-webkit-slider-runnable-track {
         height: 12px;
+    }
+}
+
+.protyle-scroll__bar .b3-slider  {
+    &::-webkit-slider-thumb {
+        box-shadow: 1px 0 4px -1px #0003, .3px 0px 0 0 #0002, 0 0 0 1px #0001;
     }
 }
 

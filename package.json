@@ -15,7 +15,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "cmpl": "tsc ./src/main.ts",
     "build": "webpack --mode production",
-    "dev": "webpack --watch --mode development",
+    "dev": "webpack --watch --mode development & sass --watch ./theme.scss:./theme.css --no-source-map",
     "wphelp": "webpack --help"
   },
   "author": "mustakshif",
@@ -29,7 +29,7 @@
     "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",
-    "webpack": "^5.91.0",
+    "webpack": "^5.97.1",
     "webpack-cli": "^5.1.4"
   }
 }
