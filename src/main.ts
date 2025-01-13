@@ -14,9 +14,8 @@ window.destroyTheme = () => {
         console.log('destroy', themePairOnDestroy);
         if (themePairOnDestroy.light === 'Asri' &&
             themePairOnDestroy.dark === 'Asri'
-        ) {
-            completeUnload = false;
-        };
+        ) completeUnload = false;
+
         console.log(`\x1b[31m\x1b[1m\x1b[47mTheme destroy mode: ${completeUnload ? 'complete' : 'incomplete'}\x1b[0m`);
         unloadAsriJSModules(completeUnload);
     }, 0);
