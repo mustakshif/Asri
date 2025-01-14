@@ -14,6 +14,17 @@
     @return calc(var(--global-negate-factor, 1) * #{$value});
 }
 
+@function reverse-list($list) {
+    $reversed: (
+    );
+
+@for $i from length($list) through 1 {
+    $reversed: append($reversed, nth($list, $i), comma);
+}
+
+@return $reversed;
+}
+
 // common mixins ———————————————————————
 @mixin font-family {
     --b3-font-family: system-ui, ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
@@ -712,6 +723,7 @@ background: linear-gradient(unquote($direction), $stops);
     }
 }
 
+// rtl unresolved
 @mixin overflow-indicator-fadein-bgClr($size: 12px, $bg-clr: var(--b3-theme-background), $range: 'top bottom') {
     $range-dir: (
         'top': 'to bottom',
@@ -840,6 +852,12 @@ animation-direction: #{$anim-dir};
 
 @else {
     animation-timeline: scroll(self x);
+
+    :lang(ar_SA) &,
+    :lang(he_IL) & {
+        animation-range: #{reverse-list($anim-range)};
+        animation-direction: #{reverse-list($anim-dir)};
+    }
 }
 
 @keyframes maskAppear-mask-start-#{$this-id} {

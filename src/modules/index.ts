@@ -2,7 +2,7 @@ import { AsriEventListener } from "../util/eventListeners";
 import { debounce, querySelectorAsync } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
-import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/state";
+import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/interfaceState";
 import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
 import { createBarModeMenuItems, followSysAccentColor, getSystemAccentColor, loadThemePalette, unloadThemePalette } from "./configsMenu/makeItems";
 import { docBodyMoCallback } from "./dialog";

@@ -1,4 +1,4 @@
-import { hasDockb, isDockHidden, isDockLytExpanded, isDockLytPinned, isStatusHidden } from "../util/state";
+import { hasDockb, isDockHidden, isDockLytExpanded, isDockLytPinned, isStatusHidden } from "../util/interfaceState";
 import { asriDoms as doms, environment as env } from "../util/rsc";
 import { debounce, isOverlapping, querySelectorAsync } from "../util/misc";
 

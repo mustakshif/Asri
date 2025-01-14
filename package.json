@@ -14,7 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cmpl": "tsc ./src/main.ts",
-    "build": "webpack --mode production & sass ./theme.scss:./theme.css --no-source-map --style compressed && postcss ./theme.css -o ./theme.css",
+    "build": "webpack --mode production && sass ./theme.scss:./theme.css --no-source-map --style compressed && postcss ./theme.css -o ./theme.css",
     "dev": "webpack --watch --mode development & sass --watch ./theme.scss:./theme.css --no-source-map --no-error-css"
   },
   "author": "mustakshif",

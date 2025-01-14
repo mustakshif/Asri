@@ -52,7 +52,7 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
                 }
 
                 &.counter {
-                    transform-origin: negateForRTL(400%) 50%;
+                    transform-origin: negateForRTL(calc(400% * var(--exaggerate-factor, 1))) 50%;
                 }
 
                 &:nth-last-child(3 of .block__icon) {

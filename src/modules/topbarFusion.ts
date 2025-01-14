@@ -1,6 +1,6 @@
 import { isOverlapping, querySelectorAsync } from "../util/misc";
 import { asriDoms as doms, environment as env } from "../util/rsc";
-import { isFullScreen, updateWndEls, wndElements } from "../util/state";
+import { isFullScreen, updateWndEls, wndElements } from "../util/interfaceState";
 
 // added toolbar elements
 let pluginsDivider: AsriDomsExtended, leftSpacing: AsriDomsExtended, rightSpacing: AsriDomsExtended;
