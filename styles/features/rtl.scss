@@ -1,5 +1,4 @@
-:lang(ar_SA),
-:lang(he_IL) {
+:where(:lang(ar_SA), :lang(he_IL)) {
 
     --global-negate-factor: -1;
 
@@ -154,9 +153,8 @@
     [data-type="goBack"] svg,
     .av__panel .b3-menu .block__icon svg,
     .config-keymap .b3-list-item__arrow:not(.b3-list-item__arrow--open),
-    .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink) .b3-list-item__arrow:not(.b3-list-item__arrow--open) 
+    .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink) .b3-list-item__arrow:not(.b3-list-item__arrow--open) // .b3-list-item__toggle,
 
-    // .b3-list-item__toggle,
     // [data-type="docnext"] svg,
     // [data-type="docprevious"] svg, 
     // .block__icon[data-type="next"] svg,
