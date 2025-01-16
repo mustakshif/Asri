@@ -1,0 +1,196 @@
+@use '../../base' as *;
+
+// 页面小工具条 ——————————————————————————————————————
+// 普通工具条、代码块工具条
+.protyle-icons,
+.protyle-action {
+    border-radius: 99px;
+    // transition: none;
+
+    // &:hover {
+    //     transition: none;
+    //     opacity: 1 !important;
+    // }
+
+    .protyle-icon {
+        @include theme-variant-color(background-color, surface, 0.8);
+        @include theme-variant-color(color, on-background, 0.6);
+        padding: 5px 6px;
+
+        &:not(.protyle-icon--text, .protyle-icon--only):hover {
+            color: var(--b3-theme-on-background);
+        }
+
+        &--first {
+            border-radius: 99px 0 0 99px;
+            padding-left: 10px;
+        }
+
+        &--last {
+            border-radius: 0 99px 99px 0;
+            padding-right: 10px;
+        }
+
+        &--only {
+            // 正文图片
+            border-radius: 99px;
+            padding: 5px;
+            transition: none;
+
+            &:hover {
+                color: var(--b3-theme-on-background);
+                transition: none;
+            }
+        }
+    }
+
+    .protyle-icon.fn__none:first-child+.protyle-icon:last-child {
+        border-radius: 99px;
+    }
+
+    // 只读模式下HTML块工具条
+}
+
+.protyle-icons {
+    // 普通工具条（嵌入入块等）
+    @include border-or-not($border: false);
+}
+
+// 字体样式 ——————————————————————————————————————
+.protyle-font {
+
+    .protyle-font__style {
+        font-size: 14px;
+        border-radius: 8px;
+
+        &:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+            border-color: transparent;
+            background-color: var(--b3-list-hover);
+        }
+    }
+
+    .b3-button {
+        @include button-action('normal');
+        box-shadow: none;
+    }
+
+    .fn__space--small {
+        display: none;
+    }
+}
+
+.color__square {
+    // width: 20px;
+    // height: 20px;
+    box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+    border-radius: 8px;
+    // line-height: 20px;
+    // font-size: 14px;
+
+    // &[data-type="backgroundColor"] {
+    //     box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+    // }
+
+    &.color__square--current {
+        box-shadow: 0 0 0 3px var(--b3-border-color-trans);
+    }
+
+    &:hover:not(.color__square--current) {
+        // box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+        transform: scale(1.2);
+        // font-weight: bold;
+    }
+
+    &:hover:not(.color__square--list):not(.color__square--current) {
+        box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+    }
+
+    .b3-menu__label & {
+        width: 26px;
+        height: 26px;
+        font-weight: normal;
+
+        &:hover {
+            transform: none;
+        }
+    }
+
+    .protyle-hint &:hover {
+        transform: none;
+        font-weight: normal;
+    }
+}
+
+//文字格式工具条
+.protyle-toolbar {
+    animation: protyle-toolbar-appear .5s var(--asri-ease-spring-3);
+    border: none;
+    border-radius: 40px;
+    padding: 4px;
+    // transform: translateY(-12px);
+    background-color: var(--b3-theme-surface);
+    transform-origin: 50% 150%;
+    transition: none;
+    @include menu-shadow;
+    @include border-or-not($border: false);
+
+    &__item {
+        height: 30px;
+        width: 30px;
+        padding-top: 3px;
+        border-radius: 20px;
+
+        &:first-child,
+        &:last-child {
+            border-radius: 20px;
+        }
+
+        &:hover {
+            // @include theme-variant-color(background-color, on-background, 0.1);
+            background-color: rgb(from var(--b3-theme-on-background) r g b / .1);
+        }
+
+        &:not(.protyle-toolbar__item--current) {
+            color: var(--b3-theme-on-surface);
+
+            &:hover {
+                color: var(--b3-theme-on-background);
+            }
+        }
+    }
+
+    &__divider {
+        border-left: 1px solid var(--b3-border-color-trans);
+    }
+}
+
+// 块定位滚动条
+.protyle-scroll {
+    opacity: 0;
+    transform: scale(0.95, 0.9);
+    transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1),
+        transform 0.2s cubic-bezier(0, 0, 0.2, 1);
+    transition-delay: 1s;
+    // pointer-events: none;
+
+    // >* {
+    //     pointer-events: all;
+    // }
+
+    &:hover {
+        opacity: 1;
+        transform: none;
+        transition-delay: 0s;
+    }
+
+    // 溢出显示
+    >.protyle-scroll__bar {
+        overflow: visible
+    }
+
+    &__bar {
+        top: calc(50% - 12px);
+    }
+}

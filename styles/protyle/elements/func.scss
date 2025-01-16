@@ -1,0 +1,9 @@
+@function matchSelector($editor1, $selector1, $editor2, $selector2: $selector1) {
+    @if $editor1 ==true {
+        @return $selector1;
+    }
+
+    @if $editor2 ==true {
+        @return $selector2;
+    }
+}

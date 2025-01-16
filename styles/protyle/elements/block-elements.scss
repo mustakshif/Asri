@@ -1,0 +1,396 @@
+@use '../../base' as *;
+@use './func' as *;
+
+@mixin headings {
+    @for $i from 1 through 6 {
+
+        .h#{$i},
+        h#{$i} {
+            margin-top: 1.2em;
+            line-height: 1.5;
+        }
+
+        @for $j from 2 through 6 {
+            @if $i < $j {
+
+                .h#{$i}+.h#{$j},
+                h#{$i}+h#{$j} {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    .h1,
+    h1 {
+        padding: 0 4px; // 修复 gutter 错位
+        margin-bottom: calc(.1em + 4px);
+    }
+
+    // .h1+.h2,
+    // :is(.h1, .h2)+.h3,
+    // :is(.h1, .h2, .h3)+.h4,
+    // :is(.h1, .h2, .h3, .h4)+.h5,
+    // :is(.h1, .h2, .h3, .h4, .h5)+.h6 {
+    //     margin-top: 0;
+    // }
+}
+
+@mixin blockquote {
+
+    .bq,
+    blockquote {
+        padding: 16px 20px;
+        // border: .5px solid var(--b3-border-color-trans);
+        margin: 1em 0;
+        background-color: var(--b3-theme-surface-light);
+        outline: .5px solid var(--b3-border-color-trans);
+        outline-offset: -.5px;
+
+        &>[data-type='NodeHeading']:first-child {
+            margin-top: 0;
+        }
+
+        &::before {
+            display: none;
+        }
+    }
+}
+
+@mixin table ($protyle: true, $typography: false) {
+    $selector: matchSelector($protyle, '[data-node-id].table table', $typography, 'table');
+
+    #{$selector} {
+        @media (min-width: 1024px) {
+            width: auto;
+        }
+
+        font-variant-numeric: tabular-nums;
+        border-radius: 8px;
+        border: 1px solid var(--b3-border-color-trans);
+
+        td,
+        th {
+            border: 1px solid var(--b3-border-color-trans);
+            // background-color: var(--b3-theme-background);
+            // @include theme-variant-color(background-color, background, 0.5);
+            background-color: transparent;
+        }
+
+        thead {
+            tr {
+                th {
+                    @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
+
+                    border-top: none;
+
+                    &:first-child {
+                        border-left: none;
+                    }
+
+                    &:last-child {
+                        border-right: none;
+                    }
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                &:nth-child(2n) {
+                    td {
+                        @include theme-variant-color(background-color, on-surface-gray, 0.05, 0.15);
+                    }
+                }
+
+                &:last-child {
+                    td {
+                        border-bottom: none;
+                    }
+                }
+
+                td:first-child {
+                    border-left: none;
+                }
+
+                td:last-child {
+                    border-right: none;
+                }
+            }
+        }
+    }
+}
+
+@mixin hljs {
+    .hljs {
+        border-radius: 10px;
+        padding: 24px 28px;
+    }
+}
+
+@mixin code-block {
+    .code-block {
+
+        // background-color: var(--b3-theme-surface-light);
+        [data-theme-mode=light] & {
+            background-color: var(--b3-theme-surface-light);
+        }
+
+        [data-theme-mode=dark] & {
+            background-color: #0004;
+        }
+    }
+}
+
+@mixin list {
+    .li {
+
+        // 列表项序号、图标
+        .protyle-action {
+            // opacity: .6;
+            color: inherit !important;
+        }
+    }
+
+    .protyle-action:not(.protyle-action--task):hover {
+        color: var(--b3-theme-primary) !important;
+        // opacity: 1;
+    }
+
+    [data-node-id].li {
+
+        // 缩进参考线
+        &::before {
+            border-left: 1px solid;
+            border-left-color: inherit;
+            // mask-image: linear-gradient(to bottom, transparent 1px, black 1px); // 隐藏原有的1px 剩余
+            opacity: .1;
+            transition: opacity 0.2s;
+        }
+
+        &:hover::before {
+            border-left-color: inherit;
+            opacity: .2;
+        }
+
+        // 引用块 
+        >:is(.bq, blockquote) {
+            padding-right: 16px;
+        }
+
+        div.bq {
+            margin-top: .5em;
+            margin-bottom: .5em;
+        }
+
+        //折叠时序号背景
+        &[fold="1"]>.protyle-action:after {
+            border-radius: 99px;
+            transform: scale(1.5);
+            background-color: rgb(from var(--b3-theme-on-background) r g b / .1);
+        }
+    }
+
+    // 任务列表项 ————————————————————————————————
+    .protyle-task--done {
+        &>div[data-node-id].p {
+            opacity: .5;
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+
+    .li>div[data-node-id].p {
+        transition: opacity .3s;
+    }
+
+    .li[data-subtype=t] {
+        .protyle-action--task {
+            @include bouncy-check-box;
+
+            >svg {
+                visibility: hidden;
+            }
+        }
+    }
+
+    .li.protyle-task--done {
+        >.protyle-action--task {
+            @include bouncy-check-box(true);
+        }
+    }
+
+    [data-node-id][style]:not([style=""]),
+    .protyle-task--done[style]:not([style=""]) {
+        .protyle-action--task::before {
+            background-color: currentColor;
+        }
+    }
+}
+
+@mixin image {
+    [data-node-id] .img {
+        img {
+            border-radius: 6px;
+        }
+
+        &--select {
+            filter: none;
+
+            img {
+                // filter: brightness(0.8);
+                opacity: .8;
+            }
+        }
+
+        &__net {
+            top: 0;
+            left: 0;
+            padding: 5px;
+            color: var(--b3-theme-on-surface);
+            background-color: var(--b3-theme-surface-light);
+            // mix-blend-mode: luminosity; // 和backdrop-filter一起导致卡顿、对话框闪烁
+            border-radius: 6px 0 6px 0;
+        }
+
+        .protyle-action {
+            opacity: 0;
+        }
+
+        .protyle-action__drag {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .protyle-action__title {
+            padding: .5em 0 0;
+        }
+
+        &:hover {
+            .protyle-action__drag {
+                box-shadow: 0 0 0 1px var(--b3-theme-on-surface);
+
+                &:hover {
+                    transform: scale(1.2) translateY(-40%);
+                }
+            }
+        }
+    }
+}
+
+@mixin superblock {
+    $sb-gap: 24px;
+
+    &>.sb+.sb,
+    [data-node-id].sb[data-sb-layout=row]>.sb:not(:first-child) {
+        margin-top: $sb-gap;
+    }
+
+    // [data-node-id].sb[data-sb-layout=col]>div {
+    //     margin-right: $sb-gap;
+    // }
+
+    [data-node-id].sb[data-sb-layout=col] {
+        column-gap: $sb-gap;
+    }
+
+    // [data-node-id].sb[data-sb-layout=row]>.sb:first-child {
+
+    //     margin-top: 0;
+    // }
+    [data-node-id].sb[data-sb-layout=col]>.sb {
+        margin-top: 0;
+    }
+
+    .sb>div {
+        height: fit-content;
+    }
+
+    .sb>.bq {
+        margin: 0;
+    }
+
+    .sb>.code-block {
+        margin: 0.2em 0;
+    }
+
+    .sb[data-sb-layout=row]> :where(.bq, .sb, blockquote)+ :where(.bq, blockquote) {
+        margin-top: $sb-gap;
+    }
+}
+
+@mixin embedblock {
+    [data-node-id].render-node[data-type=NodeBlockQueryEmbed] {
+        border: none;
+        padding: 16px 20px;
+        background-color: var(--b3-theme-surface-light);
+
+        &>.protyle-wysiwyg__embed {
+            border-top: 1px solid var(--b3-border-color-trans);
+        }
+
+        // &:hover {
+        //     .protyle-wysiwyg__embed:nth-child(1 of .protyle-wysiwyg__embed) {
+        //         .protyle-attr>div {
+        //             transform: translateX(-86px);
+        //         }
+
+        //         .protyle-attr .protyle-attr--refcount {
+        //             transform: translateX(0) translateY(24px);
+        //         }
+        //     }
+        // }
+    }
+}
+
+@mixin iframe {
+    [data-node-id].iframe {
+        iframe {
+            border-radius: 4px;
+            border-color: transparent;
+            transition: border-color 0.2s;
+            color-scheme: auto;
+        }
+
+        &:hover {
+            iframe {
+                border-color: var(--b3-border-color-trans);
+            }
+
+            .protyle-action__drag {
+                opacity: 0.5;
+            }
+        }
+
+        .protyle-action__drag {
+            height: 24px;
+            width: 24px;
+            background-color: var(--b3-theme-on-surface);
+            mask-image: url(icons/iframeResizer.svg);
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            box-shadow: none;
+            border-radius: 0;
+            right: -8px;
+            bottom: -8.5px;
+            filter: brightness(0.5);
+            display: inline-block;
+            opacity: 0;
+
+            @include darkmode-counterpart {
+                filter: none;
+            }
+
+            &:hover {
+                box-shadow: none;
+                opacity: 0.8;
+                background-color: var(--b3-theme-on-background);
+                transform: scale(1.2);
+            }
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+}

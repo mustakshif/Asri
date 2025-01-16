@@ -1,0 +1,213 @@
+@use '../../base' as *;
+
+.protyle {
+
+    // 题头图区域
+    &-background {
+
+        // 工具条
+        .protyle-icons {
+            width: fit-content;
+
+            .protyle-icon {
+                height: 30px;
+                padding: 8px 6px;
+
+                &--first {
+                    padding-left: 12px;
+                }
+
+                &--last {
+                    padding-right: 12px;
+                }
+
+                &--text {
+                    //调整题头图上下位置
+                    border-radius: 99px;
+                    padding-left: 12px;
+                    padding-right: 12px;                    
+                }
+            }
+        }
+
+        // 添加标签/表情/背景按钮
+        &__ia>&__action {
+            position: absolute;
+            // bottom: 0;
+            top: 0;
+            padding: 2px 4px;
+            width: fit-content;
+            border-radius: 99px;
+
+            transform: translate(var(--x, 0), var(--y, calc(56px - 100%)));
+
+            mix-blend-mode: luminosity;
+            // @include theme-variant-color(background-color, surface, 0.8);
+            // @include theme-variant-color(color, on-background, 0.6);
+            background-color: rgb(from var(--b3-theme-surface) r g b / .8);
+            color: var(--b3-theme-on-surface);
+
+            @include border-or-not($border: false);
+
+            @include darkmode-counterpart {
+                outline-offset: unset;
+            }
+
+            &:empty {
+                padding: 0;
+            }
+
+            .b3-button--cancel {
+                transition: .1s;
+
+                &:hover {
+                    background-color: transparent;
+                    color: var(--b3-theme-on-background);
+                }
+            }
+        }
+
+        &__img.fn__none {
+            +.protyle-background__ia {
+                padding-top: 48px;
+
+                .protyle-background__action {
+                    padding-left: 0;
+                    padding-right: 0;
+                    background-color: transparent;
+                    backdrop-filter: none;
+                    mix-blend-mode: normal;
+                    outline: none;
+                }
+            }
+        }
+
+        &__img {
+            &.fn__none+.protyle-background__ia {
+                .b3-chips:not(.fn__none)~.protyle-background__action {
+                    --y: 20px;
+                    --x: -12px;
+                }
+
+                .protyle-background__icon:not(.fn__none)~.protyle-background__action {
+                    --y: 108px;
+                    --x: 96px;
+                }
+            }
+
+            &:not(.fn__none)+.protyle-background__ia {
+
+                .protyle-background__action,
+                .b3-chips:not(.fn__none)~.protyle-background__action {
+                    --y: calc(var(--cover-img-height, 30vh) - 100% - 12px);
+                }
+
+                .protyle-background__icon:not(.fn__none)~.protyle-background__action {
+                    --y: calc(var(--cover-img-height, 30vh) - 100% + 40px);
+                }
+
+                .protyle-background__icon:not(.fn__none)~.protyle-background__action {
+                    background-color: transparent;
+                    backdrop-filter: none;
+                    mix-blend-mode: normal;
+                    outline: none;
+                }
+            }
+        }
+
+        &__icon:not(.fn__none)~&__action {
+            --x: 96px;
+        }
+
+        // 文档标签
+        .b3-chips {
+            // margin: 0 -4px;
+            padding: 4px;
+            margin-top: 24px;
+            margin-bottom: -24px;
+            position: relative;
+
+            .b3-chip {
+                background-color: var(--b3-theme-background);
+                align-self: center;
+            }
+
+            .b3-chip--pointer {
+                opacity: unset;
+            }
+
+            .b3-button {
+                // mix-blend-mode: luminosity;
+                opacity: 0;
+                transition: opacity .2s, color .2s;
+
+                &:hover {
+                    background-color: unset;
+                    color: var(--b3-theme-on-background);
+                }
+            }
+
+            .b3-chip--secondary,
+            .b3-chip--primary,
+            .b3-chip--info,
+            .b3-chip--success,
+            .b3-chip--warning,
+            .b3-chip--error,
+            .b3-chip--pink {
+                background-color: unset;
+                font-weight: 500;
+                color: var(--b3-theme-on-surface);
+                outline: .12em solid var(--b3-border-color-trans);
+                outline-offset: -.12em;
+            }
+        }
+
+        &__img {
+            .protyle-icons {
+                @include darkmode-counterpart {
+                    outline-offset: unset;
+                }
+            }
+        }
+    }
+
+    &-top:hover {
+        .protyle-background--enable .protyle-background__img .protyle-icons {
+            opacity: 0;
+        }
+    
+        .protyle-background--enable .protyle-background__img:hover .protyle-icons,
+        .protyle-background--enable .protyle-background__icon:hover,
+        .protyle-background--enable .protyle-background__action,
+        .b3-chips .protyle-background__action .b3-button {
+            opacity: 1;
+        }
+    }
+
+    //文档标题
+    &-title {
+        &__input {
+            font-weight: 600;
+            font-size: 2.4em;
+            line-height: 1.4;
+            padding-top: 8px;
+            padding-bottom: 8px;
+
+            &:empty:after {
+                opacity: 0.6;
+            }
+        }
+
+        &__icon {
+            top: calc(2.4em * 1.4 / 2 + 8px) !important; // fix https://github.com/mustakshif/Asri/issues/45 
+            transform: scale(.8);
+            transform-origin: right center;
+            transition-timing-function: var(--asri-ease-spring-5);
+            transition-duration: .8s;
+        }
+
+        &:hover .protyle-title__icon {
+            transform: none;
+        }
+    }
+}

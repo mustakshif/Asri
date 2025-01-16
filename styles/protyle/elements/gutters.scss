@@ -1,0 +1,78 @@
+.protyle-gutters {
+
+    >button {
+        transform-origin: right center;
+
+        &:hover {
+            svg {
+                color: var(--b3-theme-primary);
+            }
+        }
+    }
+
+    >button:not([data-type=NodeAttributeViewRow], [data-type=NodeAttributeViewRowMenu], :only-child) {
+        animation: gutters-appear .5s var(--asri-ease-spring-3) forwards;
+        opacity: 0;
+
+        @for $i from 1 through 7 {
+            &:nth-last-child(#{$i + 1}) {
+                animation-delay: calc($i * 1s / (2 + $i) / 8);
+            }
+        }
+    }
+
+    >button:where([data-type=NodeAttributeViewRow], [data-type=NodeAttributeViewRowMenu], :only-child) {
+        animation: gutters-appear-simple .5s var(--asri-ease-spring-3);
+    }
+
+    button[data-type=fold] svg {
+        transition: transform, .8s var(--asri-ease-spring-5);
+    }
+
+    @keyframes gutters-appear {
+        from {
+            // opacity: 0;
+            transform: scale(.5) translateX(4px);
+            // filter: blur(12px);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+            // filter: none;
+        }
+    }
+
+    @keyframes gutters-appear-simple {
+        from {
+            opacity: 0;
+            transform: scale(.5);
+            // filter: blur(12px);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+            // filter: none;
+        }
+    }
+
+    @keyframes protyle-toolbar-appear {
+
+        // 避免开始时元素大小计算错误导致定位超出视口
+        0%,
+        10% {
+            opacity: 0;
+            transform: none;
+        }
+
+        10% {
+            transform: scale(.9);
+        }
+
+        100% {
+            opacity: 1;
+            transform: none;
+        }
+    }
+}
