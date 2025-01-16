@@ -1,5 +1,4 @@
 @use './base' as *;
-// @use './features/mode-transition.scss'; // 确保尽早引入以读取动画参数 // 改用 js 动态载入
 
 :root {
     --b3-border-radius-b: 16px; // 对话框圆角
@@ -46,13 +45,11 @@
         }
     }
 
-
+    // use hex to fix https://github.com/mustakshif/Asri/issues/39
     .body-asri--mobile {
         --b3-theme-background: #fff;
         --b3-parent-background: var(--b3-theme-background);
     }
-
-    // use hex to fix https://github.com/mustakshif/Asri/issues/39
 }
 
 body {

@@ -306,7 +306,7 @@ body:not(.body-asri--mobile, .body--window) {
 }
 
 .b3-menu[data-name=barmore] {
-    .b3-menu__items>.b3-menu__item:first-child{
+    .b3-menu__items>.b3-menu__item:first-child {
         display: none;
     }
 }
@@ -314,7 +314,9 @@ body:not(.body-asri--mobile, .body--window) {
 #AsriTopbarLeftSpacing,
 #AsriTopbarRightSpacing,
 #AsriPluginsIconsDivider {
-    svg, use {
+
+    svg,
+    use {
         width: 0;
         height: 0;
     }

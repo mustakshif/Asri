@@ -75,6 +75,7 @@
 
         .config__tab-container {
             padding: 8px 12px;
+            // padding: 8px min(5em, 8%);
             background-color: var(--b3-theme-background);
 
             .b3-label :where(.fn__flex-1, .fn__block, .fn__flex-center):not(.ft__on-surface, .b3-button, .b3-form__icon, .fn__size200, ul, input):first-child,
