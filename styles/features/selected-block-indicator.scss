@@ -52,25 +52,3 @@
         opacity: 1;
     }
 }
-
-@keyframes outline-ripple-outer-boundary {
-
-    0%,
-    100% {
-        outline-width: 0px;
-    }
-
-    50% {
-        outline-width: 4px;
-    }
-}
-
-@keyframes outline-ripple-inner-boundary {
-    0% {
-        outline-offset: 0px;
-    }
-
-    100% {
-        outline-offset: 12px;
-    }
-}

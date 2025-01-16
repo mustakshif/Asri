@@ -72,11 +72,34 @@
     .config__tab-wrap {
         padding: 0;
         border-radius: 0;
+        // container-type: inline-size;
 
         .config__tab-container {
-            padding: 8px 12px;
+
+            &,
+            &[data-name="search"] {
+                padding: 8px 12px;
+            }
+
             // padding: 8px min(5em, 8%);
+            &,
+            &:where([data-name="AI"], [data-name="image"]) .layout-tab-bar+.fn__flex-1 {
+                padding-left: calc(48% - 25em);
+                padding-right: calc(48% - 25em);
+            }
+
             background-color: var(--b3-theme-background);
+
+            // @container (min-width: 750px) {
+            //     padding: 8px calc(50cqw - 25em);
+
+            //     &:where([data-name="AI"], [data-name="image"]) {
+            //         .layout-tab-bar + .fn__flex-1 {
+            //             padding-left: calc(50cqw - 25em);
+            //             padding-right: calc(50cqw - 25em);
+            //         }
+            //     }
+            // }
 
             .b3-label :where(.fn__flex-1, .fn__block, .fn__flex-center):not(.ft__on-surface, .b3-button, .b3-form__icon, .fn__size200, ul, input):first-child,
             :where(.b3-label, .config__ite)::first-line {

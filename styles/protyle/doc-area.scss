@@ -1,6 +1,23 @@
 @use '../base' as *;
 @use './elements' as *;
 
+:is(.b3-typography, .protyle-wysiwyg) {
+    @include headings;
+    @include superlink;
+    @include bold;
+    @include italic;
+    @include underline;
+    @include linethrough;
+    @include highlight;
+    @include kbd;
+    @include inline-code;
+    @include blockquote;
+    @include superscript-subscript;
+    @include hljs;
+    @include code-block;
+    @include table;
+}
+
 .protyle-wysiwyg {
 
     //所有内容块 ————————————————————————
@@ -14,7 +31,6 @@
     }
 
     // 标题块 ————————————————————————
-    @include headings;
 
     // [data-type='NodeSuperBlock']>[data-type='NodeHeading']:first-child, https://github.com/mustakshif/Asri/issues/79
     .sb[data-sb-layout=row]>[data-type=NodeHeading]:first-child,
@@ -29,25 +45,6 @@
 
     // 虚拟引用 ——————————————————————————————————————
     @include v-block-ref;
-
-    // 超链接 ————————————————————————————————————————
-    @include superlink;
-
-    //加粗、倾斜 ——————————————————————————————————————
-    @include bold;
-    @include italic;
-
-    // 下划线 —————————————————————————————————————————
-    @include underline;
-
-    // 删除线 ————————————————————————————————————————
-    @include linethrough;
-
-    //高亮标记 ——————————————————————————————————————
-    @include highlight;
-
-    // 快捷键 ——————————————————————————————————————
-    @include kbd;
 
     // 标签 ——————————————————————————————————————
     @include tag;
@@ -65,33 +62,16 @@
         }
     }
 
-    // 行级代码 ————————————————————————————————————
-    @include inline-code;
-
     // 备注 ——————————————————————————————————————
     @include inline-memo;
 
     // 引用块 ——————————————————————————————————————
-    @include blockquote;
-
-    // .sb .bq,
-    // .sb blockquote,
-    // .bq[style*="var(--b3-font-background1)"],
-    // blockquote[style*="var(--b3-font-background1)"] {
-    //     border: none;
-    // }
-
     .sb .bq,
     .sb blockquote {
         outline: none;
     }
 
-    // 上标、下标 ————————————————————————————————————
-    @include superscript-subscript;
-
     //代码块 ——————————————————————————————————————
-    @include code-block;
-
     .code-block {
         --b3-protyle-code-linenumber-hl: color-mix(in srgb, var(--b3-theme-surface) 55%, var(--b3-theme-primary));
 
@@ -111,8 +91,6 @@
                 }
             }
         }
-
-        @include hljs;
     }
 
     // 列表 ——————————————————————————————————————
@@ -122,8 +100,6 @@
     @include image;
 
     // 表格 ——————————————————————————————————————
-    @include table;
-
     [data-node-id].table[custom-pinthead=true] thead {
         position: sticky;
         z-index: 1;
@@ -191,46 +167,89 @@
         }
     }
 
-    [data-type~=s] {
-        opacity: .5 !important;
-    }
-
-    [data-node-id] {
-        transition-property: box-shadow;
-        transition-duration: .2s;
-        transition-timing-function: var(--asri-ease-out-5);
-    }
-
     // 块高亮
     &--hl {
-        box-shadow: 0 0 0 2px var(--b3-theme-primary-light);
+        // box-shadow: 0 0 0 2px var(--b3-theme-primary-light);
         // background-color: transparent !important;
     }
 
     &--select {
+        // outline: 0px solid var(--b3-theme-primary-light);
         box-shadow: none;
+        // animation: outline-ripple-outer-boundary .7s var(--asri-ease-out-5) forwards,
+        //     outline-ripple-inner-boundary .7s var(--asri-ease-out-3) forwards,
+        //     outline-ripple-opacity-unreveal .7s linear forwards
+        //     ;
+
+        // @keyframes outline-ripple-outer-boundary {
+
+        //     0%,
+        //     100% {
+        //         outline-width: 0px;
+        //     }
+
+        //     50% {
+        //         outline-width: 4px;
+        //     }
+        // }
+
+        // @keyframes outline-ripple-inner-boundary {
+        //     0% {
+        //         outline-offset: 0px;
+        //     }
+
+        //     100% {
+        //         outline-offset: 12px;
+        //     }
+        // }
+
+        // @keyframes outline-ripple-opacity-unreveal {
+        //     100% {
+        //         outline-color: transparent;
+        //     }
+        // }
+    }
+
+    &--hl::after {
+        // box-shadow: 0 0 0 2px var(--b3-theme-primary-light);
+        outline: 0px solid var(--b3-theme-primary-light);
+
+        animation:
+            block-hl-appear .15s forwards,
+            // outline-ripple-outer-boundary .4s var(--asri-ease-out-3) forwards,
+            // outline-ripple-inner-boundary .4s var(--asri-ease-out-3) forwards;
+        ;
+
+        @keyframes block-hl-appear {
+
+            0% {
+                outline-width: 0;
+                outline-color: transparent;
+            }
+
+            100% {
+                outline-width: 2px;
+            }
+        }
+
+        @keyframes opacity-reveal {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        // transition-property: box-shadow;
+        // transition-duration: .2s;
+        // transition-timing-function: var(--asri-ease-out-5);
     }
 
     &--select::after,
     &--hl::after {
         border-radius: 10px;
-        // animation: select .3s $timing-function-spring-both forwards;
-
-        // @keyframes select {
-
-        //     0%,
-        //     100% {
-        //         transform: none;
-        //     }
-
-        //     3% {
-        //         transform: scale(1.01);
-        //     }
-        // }
-    }
-
-    [data-node-id].render-node:hover>.protyle-icons {
-        opacity: 1;
     }
 }
 
@@ -339,21 +358,6 @@
     &:not(#searchUnRefPreview)>* {
         border-radius: 8px;
     }
-
-    @include headings;
-    @include superlink(false, true);
-    @include bold;
-    @include italic;
-    @include underline;
-    @include linethrough;
-    @include highlight;
-    @include kbd;
-    @include inline-code;
-    @include blockquote;
-    @include superscript-subscript;
-    @include hljs;
-    @include code-block;
-    @include table(false, true);
 
     a {
         transition: var(--b3-transition);

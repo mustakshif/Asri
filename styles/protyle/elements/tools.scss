@@ -54,6 +54,10 @@
 .protyle-icons {
     // 普通工具条（嵌入入块等）
     @include border-or-not($border: false);
+
+    [data-node-id].render-node:hover>& {
+        opacity: 1;
+    }
 }
 
 // 字体样式 ——————————————————————————————————————

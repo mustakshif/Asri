@@ -1,10 +1,8 @@
 @use '../../base' as *;
-@use './func' as *;
 
 @mixin block-ref {
 
-    [data-node-id] span[data-type~=block-ref]:not(.av__celltext),
-    [data-node-id] span[data-type~=file-annotation-ref] {
+    :is([data-node-id] span[data-type~=block-ref]:not(.av__celltext), [data-node-id] span[data-type~=file-annotation-ref]) {
         --bg-clr: var(--b3-theme-primary-lightest);
         color: inherit;
         text-decoration-line: underline;
@@ -71,9 +69,10 @@
 }
 
 @mixin superlink($protyle: true, $typography: false) {
-    $selector: matchSelector($protyle, '[data-node-id] span[data-type~=a],a', $typography, 'a');
+    // $selector: matchSelector($protyle, '[data-node-id] span[data-type~=a],a', $typography, 'a');
 
-    #{$selector} {
+    // #{$selector}
+    :is([data-node-id] span[data-type~=a], a) {
         color: inherit;
         text-decoration-line: underline;
         text-decoration-thickness: $text-underline-thickness;
@@ -103,24 +102,21 @@
 
 @mixin bold {
 
-    span[data-type~="strong"],
-    strong {
+    :is(span[data-type~="strong"], strong) {
         color: inherit;
     }
 }
 
 @mixin italic {
 
-    span[data-type~=em],
-    em {
+    :is(span[data-type~=em], em) {
         color: inherit;
     }
 }
 
 @mixin underline {
 
-    span[data-type~=u],
-    u {
+    :is(span[data-type~=u], u) {
         text-decoration: underline;
         text-decoration-thickness: $text-underline-thickness;
         border-bottom: none;
@@ -128,27 +124,26 @@
         &[data-type~=s] {
             text-decoration-line: underline line-through;
         }
-    }
 
-    span[data-type~=u] .katex .base>span {
-        text-decoration: underline;
-        text-decoration-thickness: $text-underline-thickness;
-        text-underline-offset: -.05em;
+        .katex .base>span {
+            text-decoration: underline;
+            text-decoration-thickness: $text-underline-thickness;
+            text-underline-offset: -.05em;
+        }
     }
 }
 
 @mixin linethrough {
 
-    span[data-type~=s],
-    s {
+    :is(span[data-type~=s], s) {
         color: inherit;
+        opacity: .5;
     }
 }
 
 @mixin highlight {
 
-    span[data-type~=mark],
-    mark {
+    :is(span[data-type~=mark], mark) {
         background: transparent;
         box-shadow: 0 -0.5em 0 0 inset var(--b3-protyle-inline-mark-background), 0 0.1em 0 0 var(--b3-protyle-inline-mark-background);
         color: inherit;
@@ -157,8 +152,7 @@
 
 @mixin kbd {
 
-    span[data-type~=kbd],
-    kbd {
+    :is(span[data-type~=kbd], kbd) {
         font: 80% SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
         padding: 0.15em 0.5em;
         border-radius: 1em;

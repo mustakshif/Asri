@@ -1,45 +1,50 @@
 @use '../../base' as *;
-@use './func' as *;
 
 @mixin headings {
-    @for $i from 1 through 6 {
+    // @for $i from 1 through 6 {
 
-        .h#{$i},
-        h#{$i} {
-            margin-top: 1.2em;
-            line-height: 1.5;
-        }
+    //     :is(.h#{$i}, h#{$i}) {
+    //         margin-top: 1.2em;
+    //         line-height: 1.5;
+    //     }
 
-        @for $j from 2 through 6 {
-            @if $i < $j {
+    //     @for $j from 2 through 6 {
+    //         @if $i < $j {
 
-                .h#{$i}+.h#{$j},
-                h#{$i}+h#{$j} {
-                    margin-top: 0;
-                }
-            }
-        }
+    //             :is(.h#{$i}+.h#{$j}, h#{$i}+h#{$j}) {
+    //                 margin-top: 0;
+    //             }
+    //         }
+    //     }
+    // }
+
+    :is(.h1, h1, .h2, h2, .h3, h3, .h4, h4, .h5, h5, .h6, h6) {
+        margin-top: 1.2em;
+        line-height: 1.5;
     }
 
-    .h1,
-    h1 {
+    :is(.h1, h1) {
         padding: 0 4px; // 修复 gutter 错位
         margin-bottom: calc(.1em + 4px);
     }
 
-    // .h1+.h2,
-    // :is(.h1, .h2)+.h3,
-    // :is(.h1, .h2, .h3)+.h4,
-    // :is(.h1, .h2, .h3, .h4)+.h5,
-    // :is(.h1, .h2, .h3, .h4, .h5)+.h6 {
-    //     margin-top: 0;
-    // }
+    .h1+.h2,
+    h1+h2,
+    :is(.h1, .h2)+.h3,
+    :is(h1, h2)+h3,
+    :is(.h1, .h2, .h3)+.h4,
+    :is(h1, h2, h3)+h4,
+    :is(.h1, .h2, .h3, .h4)+.h5,
+    :is(h1, h2, h3, h4)+h5,
+    :is(.h1, .h2, .h3, .h4, .h5)+.h6,
+    :is(h1, h2, h3, h4, h5)+h6 {
+        margin-top: 0;
+    }
 }
 
 @mixin blockquote {
 
-    .bq,
-    blockquote {
+    :is(.bq, blockquote) {
         padding: 16px 20px;
         // border: .5px solid var(--b3-border-color-trans);
         margin: 1em 0;
@@ -58,9 +63,10 @@
 }
 
 @mixin table ($protyle: true, $typography: false) {
-    $selector: matchSelector($protyle, '[data-node-id].table table', $typography, 'table');
+    // $selector: matchSelector($protyle, '[data-node-id].table table', $typography, 'table');
 
-    #{$selector} {
+    // #{$selector}
+    :is([data-node-id].table table, table) {
         @media (min-width: 1024px) {
             width: auto;
         }
@@ -129,7 +135,7 @@
 }
 
 @mixin code-block {
-    .code-block {
+    :is(.code-block, code) {
 
         // background-color: var(--b3-theme-surface-light);
         [data-theme-mode=light] & {
