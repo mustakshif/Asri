@@ -1,11 +1,12 @@
 export async function modeTransitionOnClick(e: Event) {
     if (e.type !== 'mouseup') return;
-    e.stopPropagation();
-    e.preventDefault();
+
     const target = e.target as HTMLElement;
 
     if (target.closest('[data-name="barmode"] .b3-menu__item:not([id])')) {
         console.log(`Clicked item: ${target.textContent}`);
+        // e.stopPropagation();
+        // e.preventDefault();
         startFadeInFadeOutTranstition();
     }
 }

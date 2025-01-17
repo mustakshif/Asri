@@ -337,7 +337,7 @@
 
                 >span {
                     border-radius: 0;
-                    transition: width .2s;
+                    // transition: width .2s; // 没用，元素会随每次进度变化完全更新
                     left: unset;
                     inset-inline-start: 0px;
 
