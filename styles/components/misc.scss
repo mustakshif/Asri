@@ -365,7 +365,7 @@ textarea {
 .b3-tooltips {
 
     // 三角形
-    &:hover::before {
+    &::before, &:hover::before {
         display: none;
     }
 
@@ -379,6 +379,10 @@ textarea {
         transition-delay: .75s;
         transition-timing-function: var(--asri-ease-spring-3);
         transition-duration: .5s;
+    }
+
+    &::after {
+        -webkit-font-smoothing: inherit;
     }
 }
 

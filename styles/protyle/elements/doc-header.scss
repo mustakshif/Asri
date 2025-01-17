@@ -25,7 +25,7 @@
                     //调整题头图上下位置
                     border-radius: 99px;
                     padding-left: 12px;
-                    padding-right: 12px;                    
+                    padding-right: 12px;
                 }
             }
         }
@@ -175,7 +175,7 @@
         .protyle-background--enable .protyle-background__img .protyle-icons {
             opacity: 0;
         }
-    
+
         .protyle-background--enable .protyle-background__img:hover .protyle-icons,
         .protyle-background--enable .protyle-background__icon:hover,
         .protyle-background--enable .protyle-background__action,
@@ -208,6 +208,95 @@
 
         &:hover .protyle-title__icon {
             transform: none;
+        }
+
+        // 属性位置调整至标题下方
+        .protyle-attr {
+            position: static;
+            // font-family: serif;
+            // font-style: italic;
+            font-size: 14px;
+            // font-weight: 500;
+            // flex-wrap: wrap;
+            // align-items: flex-start;
+
+            >:is(.protyle-attr--bookmark, .protyle-attr--name, .protyle-attr--alias, .protyle-attr--av) {
+                flex-shrink: 0;
+                // margin-top: 8px;
+                // display: flex !important;
+                // align-items: center;
+                // justify-content: center;
+            }
+
+            >.protyle-attr--bookmark {
+                flex-grow: unset;
+                // flex-shrink: 0;
+                flex-basis: fit-content;
+            }
+
+            // 属性分隔符
+            >:not(:last-child, :nth-last-child(2), .protyle-attr--memo) {
+                &::after {
+                    content: '·';
+                    display: inline-block;
+                    font-size: 1.5em;
+                    margin-inline-start: 7px;
+                    line-height: 0;
+                    // vertical-align: middle;
+                    color: var(--b3-theme-on-surface);
+                }
+
+                &:hover::after {
+                    color: var(--b3-theme-on-surface);
+                }
+            }
+
+            // 备注常显
+            >.protyle-attr--memo {
+
+                display: flex;
+
+                svg {
+                    min-width: 12px;
+                }
+
+                &::after {
+                    position: static;
+                    margin: 0;
+                    opacity: 1;
+                    transform: none;
+                    padding: 0;
+                    background-color: transparent;
+                    font-size: inherit;
+                    color: var(--b3-theme-on-surface);
+                    // line-height: 1.625;
+                    margin-inline-start: 4px;
+                    border-radius: 0;
+                    z-index: unset;
+                    transition: inherit;
+                    // text-wrap: wrap;
+                }
+
+                &:hover::after {
+                    border: none;
+                    box-shadow: none;
+                    transform: none;
+                    display: inline;
+                    overflow: hidden;
+                    color: var(--b3-theme-on-background);
+                }
+            }
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            height: 8px;
+            // height: 4px;
+            // width: 100%;
+            // background-color: var(--b3-border-color-trans);
+            // margin: 16px auto 8px;
+            // border-radius: 99px;
         }
     }
 }
