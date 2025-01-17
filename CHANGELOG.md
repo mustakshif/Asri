@@ -1,3 +1,25 @@
+### v3.2.3
+
+* 优化亮暗色模式切换流畅度，切换时不再闪现默认配色
+* 优化上下标文字字重，视觉上更匹配普通文本字重
+* 优化设置窗口较宽时设置项的显示效果
+* 微调滑动条样式
+* 修复高亮块的边框线偶尔被遮挡的问题
+* 修复 v3.2.2 主题卸载不完全的问题
+* 修复文字编辑时鼠标点击失效的问题[[issue 139](https://github.com/mustakshif/Asri/issues/139)][[issue 140](https://github.com/mustakshif/Asri/issues/140)]
+
+<br />
+
+* Improved the smoothness of light/dark mode switching, eliminated default color flashing during transitions
+* Optimized the font weight of superscript and subscript text to better match regular text weight visually
+* Enhanced the display of settings items when the settings dialog is wide
+* Refined slider styles
+* Fixed an issue where highlight block borders were occasionally obscured
+* Fixed incomplete theme uninstallation issues from v3.2.2
+* Fixed mouse click failures during text editing [[issue 139](https://github.com/mustakshif/Asri/issues/139)][[issue 140](https://github.com/mustakshif/Asri/issues/140)]
+
+---
+
 ### v3.2.2
 
 * [新增“/”菜单弹出动画](https://github.com/mustakshif/Asri/issues/128)

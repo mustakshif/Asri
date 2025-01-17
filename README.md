@@ -13,6 +13,16 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.2.3
+
+* Improved the smoothness of light/dark mode switching, eliminated default color flashing during transitions
+* Optimized the font weight of superscript and subscript text to better match regular text weight visually
+* Enhanced the display of settings items when the settings dialog is wide
+* Refined slider styles
+* Fixed an issue where highlight block borders were occasionally obscured
+* Fixed incomplete theme uninstallation issues from v3.2.2
+* Fixed mouse click failures during text editing [[issue 139](https://github.com/mustakshif/Asri/issues/139)][[issue 140](https://github.com/mustakshif/Asri/issues/140)]
+
 ### v3.2.2
 
 * [Added animation for &quot;/&quot; menu popup](https://github.com/mustakshif/Asri/issues/128)
@@ -27,26 +37,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Fixed missing left margin in Mac fullscreen top bar
 * [Fixed focus block indicator flash issue when &quot;Typewriter Mode&quot; plugin is enabled](https://github.com/mustakshif/Asri/issues/133#issuecomment-2579964200)
 * [Fixed scrollbar clipping issues with container rounded corners](https://github.com/mustakshif/Asri/issues/131)
-
-### v3.2.1
-
-* Significantly improved the smoothness of transitions between light and dark modes
-* Updated header image style, added parallax scrolling effect
-* Added parallax scrolling effect for full-width displayed images
-* Added animations for text editing toolbar
-* Optimized laggy document tree item expansion animations
-* Adapted more dialogs for right-to-left UI layout mode
-* Optimized animation curves for block icon appearances
-* Optimized button click animations
-* Changed inactive tab content to center alignment
-* Adjusted blockquote styles
-* Fine-tuned settings panel styles
-* Disabled auto-hide functionality for sidebar panel space on mobile devices
-* Fixed emoji edge clipping issues
-* Fixed style compatibility issues with the "Typewriter Mode" plugin
-* Fixed flickering animations in sidebar panel controls
-* Fixed incomplete display of filter input box in backlink panel
-* Fixed render process crashes when opening code snippet dialog
 
 ### ...
 
