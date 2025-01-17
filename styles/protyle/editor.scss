@@ -101,7 +101,8 @@
 
     // 表格 ——————————————————————————————————————
     [data-node-id].table[custom-pinthead=true] thead {
-        position: sticky;
+        // position: sticky;
+        top: 0;
         z-index: 1;
         box-shadow: 0px -1px 0px var(--b3-border-color-trans) inset;
         background-color: var(--b3-theme-background);
@@ -168,10 +169,10 @@
     }
 
     // 块高亮
-    &--hl {
-        // box-shadow: 0 0 0 2px var(--b3-theme-primary-light);
-        // background-color: transparent !important;
-    }
+    // &--hl {
+    //     // box-shadow: 0 0 0 2px var(--b3-theme-primary-light);
+    //     // background-color: transparent !important;
+    // }
 
     &--select {
         // outline: 0px solid var(--b3-theme-primary-light);
