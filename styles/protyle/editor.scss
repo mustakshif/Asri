@@ -108,6 +108,12 @@
         background-color: var(--b3-theme-background);
     }
 
+    // @media (min-width: 1024px) {
+    //     .table table {
+    //         width: auto;
+    //     }
+    // }
+
     .table[custom-pinthead="true"] {
         thead {
             tr {
@@ -304,9 +310,7 @@
 
         >div:not(.protyle-attr--refcount) svg {
             margin-right: unset;
-            margin-inline-end: 4px;
-            margin-top: 3px;
-            margin-bottom: 3px;
+            margin-inline-end: 6px;
         }
     }
 

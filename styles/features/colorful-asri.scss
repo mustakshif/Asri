@@ -288,7 +288,7 @@
 
         .protyle-toolbar__item--current,
         .protyle-attr--refcount:hover,
-        .protyle-attr--av:hover>:is(svg, span),
+        .protyle-attr--av:hover,
         .custom-attr .block__logo.custom-attr__avheader {
             color: var(--b3-theme-accent);
         }

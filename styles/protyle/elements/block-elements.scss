@@ -67,10 +67,6 @@
 
     // #{$selector}
     :is([data-node-id].table table, table) {
-        // @media (min-width: 1024px) {
-        //     width: auto;
-        // }
-
         font-variant-numeric: tabular-nums;
         border-radius: 8px;
         border: 1px solid var(--b3-border-color-trans);
