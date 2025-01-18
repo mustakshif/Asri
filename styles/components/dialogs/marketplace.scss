@@ -74,7 +74,7 @@
                 margin: 10px 20px;
 
                 .b3-card {
-                    &::after {
+                    &, &:hover{
                         // box-shadow: 0 0 0 1px inset var(--b3-theme-primary-light);
 
                         // @include darkmode-counterpart {
