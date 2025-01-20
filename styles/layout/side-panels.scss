@@ -21,11 +21,7 @@
             // fix https://github.com/mustakshif/Asri/issues/31
 
             font-weight: 600;
-            color: oklch(from var(--b3-theme-on-surface) l c h / .5);
-
-            @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-                @include theme-variant-color(color, on-background, 0.5);
-            }
+            color: rgb(from var(--b3-theme-on-surface) r g b / .5);
         }
 
         .block__icon {
@@ -65,11 +61,7 @@
         }
 
         .b3-list-item__toggle {
-            color: oklch(from var(--b3-theme-on-surface) l c h / .6);
-
-            @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-                @include theme-variant-color(color, on-background, 0.6);
-            }
+            color: rgb(from var(--b3-theme-on-surface) r g b / .6);
 
             // transform: translateX(1px);
 
@@ -83,11 +75,7 @@
                 clip-path: circle(45% at center);
                 width: 3px;
                 height: 3px;
-                background-color: oklch(from var(--b3-theme-on-surface) l c h / .6);
-
-                @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-                    @include theme-variant-color(background-color, on-background, 0.6);
-                }
+                background-color: rgb(from var(--b3-theme-on-surface) r g b / .6);
             }
 
             &--hl:hover {

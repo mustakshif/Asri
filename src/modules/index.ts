@@ -1,13 +1,12 @@
 import { AsriEventListener } from "../util/eventListeners";
+import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/interfaceState";
 import { debounce, querySelectorAsync } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
-import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/interfaceState";
 import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
 import { createBarModeMenuItems, followSysAccentColor, getSystemAccentColor, loadThemePalette, unloadThemePalette } from "./configsMenu/makeItems";
 import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
-import { removeProtyleWithBgImageOnlyClassName } from "./editor";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { removeFocusedBlockClass as removeFocusedBlockClassName, selectionChangeCallback } from "./focusedBlock";
 import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstition } from "./modeTransition";
@@ -68,7 +67,6 @@ export async function unloadAsriJSModules(completeUnload = true) {
         if (!env.isMobile) await unloadTopbarFusion();
         destroyDockBg();
         removeIndentGuidesFormatClassName();
-        removeProtyleWithBgImageOnlyClassName();
         removeProtyleSpacings();
         removeDockbClassName();
         removeFocusedBlockClassName();

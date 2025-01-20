@@ -13,7 +13,7 @@
     }
 
     .dock__item {
-        // @include theme-variant-color(color, on-background, 0.6);
+    // @include theme-variant-color(color, on-background, 0.6);
         color: var(--b3-theme-on-surface);
 
         &:not(.dock__item--activefocus, .dock--active):hover {
