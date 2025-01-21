@@ -279,7 +279,7 @@ textarea {
     }
 }
 
-.protyle-scroll__bar .b3-slider  {
+.protyle-scroll__bar .b3-slider {
     &::-webkit-slider-thumb {
         box-shadow: 1px 0 4px -1px #0003, .3px 0px 0 0 #0002, 0 0 0 1px #0001;
     }
@@ -322,38 +322,42 @@ textarea {
     // min-width: unset;
     word-break: normal;
     overflow-wrap: normal;
-    font-size: 14px;
+    font-size: .9em;
     padding: 8px;
-    margin: 0 -8px;
-    line-height: 1.5;
-    font-family: var(--b3-font-family-code);
-    background-color: #FFE680;
-    border-radius: 4px;
-    backdrop-filter: none;
-    color: pickThemeColor($theme-light, on-background, 0.7);
-    box-shadow: none;
-    outline: none;
-    border: none;
-    transform-origin: 40px top;
+    // margin: 0 -8px;
+    line-height: 1.625;
+    // font-family: var(--b3-font-family-code);
+    // background-color: #FFE680;
+    // color: pickThemeColor($theme-light, on-background, 0.7);
+    // color: var(--b3-font-color5);
+    // background-color: var(--b3-font-background5);
+    // border-radius: 4px;
+    // backdrop-filter: none;
+    // // box-shadow: none;
+    // // outline: 1px solid var(--b3-font-color5);
+    // // outline-offset: -1px;
+    // border: none;
+    // // transform-origin: 40px top;
     animation-delay: .125s; // 优化鼠标划过时的闪烁
-    animation-duration: .15s;
-    animation-timing-function: unset;
-    // transform: scale(0.9);
+    // animation-duration: .35s;
+    // animation-timing-function: var(--asri-ease-in-out-4);
+    // // transform: scale(0.9);
     pointer-events: auto; // https://ld246.com/article/1709825939240
 
-    @include darkmode-counterpart {
-        background-color: #DDBA0D;
-        color: pickThemeColor($theme-dark, background, 0.7);
-    }
+    // @include darkmode-counterpart {
+    //     // background-color: #DDBA0D;
+    //     // color: pickThemeColor($theme-dark, background, 0.7);
+    // }
 
-    body.body--win32 & {
-        font-family: var(--b3-font-family);
-    }
+    // body.body--win32 & {
+    //     font-family: var(--b3-font-family);
+    // }
 
-    // mask-image: linear-gradient(90deg, black var(--property-percentage), transparent var(--property-percentage));
-    // mask-image: radial-gradient(circle at 0% 0%,black var(--property-percentage), transparent var(--property-percentage));
+    // // mask-image: linear-gradient(180deg, black var(--property-percentage, 0%), transparent var(--property-percentage, 0%));
+    // mask-image: radial-gradient(circle at 40px 0%, black var(--property-percentage, 0%), transparent var(--property-percentage, 0%));
 
     // animation-name: appear-wipe;
+
     // @keyframes appear-wipe {
     //     to {
     //         --property-percentage: 100%;
@@ -365,7 +369,8 @@ textarea {
 .b3-tooltips {
 
     // 三角形
-    &::before, &:hover::before {
+    &::before,
+    &:hover::before {
         display: none;
     }
 
