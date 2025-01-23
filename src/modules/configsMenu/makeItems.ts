@@ -93,7 +93,7 @@ export async function loadI18n() {
 }
 
 async function getAsriConfigs() {
-    console.log('curmode', curMode);
+    console.log('curMode', curMode);
     await getFile("/data/snippets/Asri.config.json")
         .then((response) => {
             if (response && response.status === 200) {
@@ -115,12 +115,14 @@ async function getAsriConfigs() {
                 asriConfigs['dark'].presetPalette = '';
                 updateAsriConfigs();
             }
-
-            followSysAccentColor = !!data[curMode].followSysAccentColor;
-            asriConfigs[curMode].followSysAccentColor = followSysAccentColor;
-            asriConfigs[curMode].chroma = data[curMode].chroma ?? "1";
-            asriConfigs[curMode].userCustomColor = data[curMode].userCustomColor ?? "#3478f6";
-            asriConfigs[curMode].presetPalette = data[curMode].presetPalette ?? '';
+            const modes: ('light' | 'dark')[] = ['light', 'dark'];
+            for (const mode of modes) {
+                followSysAccentColor = !!data[mode].followSysAccentColor;
+                asriConfigs[mode].followSysAccentColor = followSysAccentColor;
+                asriConfigs[mode].chroma = data[mode].chroma ?? "1";
+                asriConfigs[mode].userCustomColor = data[mode].userCustomColor ?? "#3478f6";
+                asriConfigs[mode].presetPalette = data[mode].presetPalette ?? '';
+            }
         });
 }
 
