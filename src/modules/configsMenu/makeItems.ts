@@ -20,9 +20,9 @@ const asriConfigs = {
     }
 };
 
-const curMode = window.siyuan.config.appearance.mode === 0 ? 'light' : 'dark';
+let curMode: 'light' | 'dark';
 
-const debounceChramaValueSaving = debounce(() => updateAsriConfigs(), 200);
+const debounceChramaValueSaving = debounce(updateAsriConfigs, 200);
 
 export let i18n: any;
 let sysAccentColor: string;
@@ -30,31 +30,34 @@ let isSysAccentGray = false, isUserAccentGray = false;
 let followSysAccentBtn: AsriDomsExtended, pickColorBtn: AsriDomsExtended, asriChromaSlider: HTMLInputElement | null, colorPicker: HTMLInputElement | null;
 export let followSysAccentColor = false;
 
-
+function updateThemeMode() {
+    return window.siyuan.config.appearance.mode === 0 ? 'light' : 'dark'
+}
 export async function loadThemePalette() {
     // if (env.isIOSApp) return; // fix app crash
     i18n = await loadI18n();
+    curMode = updateThemeMode();
     getAsriConfigs().then(() => {
-        if (env.supportOklch) {
-            // check local configs to set initial theme color
-            if (!(env.isInBrowser || env.isMobile || env.isLinux)) {
-                if (followSysAccentColor) {
-                    document.documentElement.style.removeProperty('--asri-user-custom-accent');
-                }
-                else {
-                    document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs[curMode].userCustomColor);
-                    reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
-                }
-            } else {
+        if (!env.supportOklch) return;
+
+        // check local configs to set initial theme color
+        if (!(env.isInBrowser || env.isMobile || env.isLinux)) {
+            if (followSysAccentColor) {
+                document.documentElement.style.removeProperty('--asri-user-custom-accent');
+            }
+            else {
                 document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs[curMode].userCustomColor);
                 reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
             }
-
-            document.documentElement.style.setProperty('--asri-c-factor', asriConfigs[curMode].chroma);
-            isUserAccentGray = asriConfigs[curMode].chroma === '0' ? true : false;
-            handleGrayScale(asriConfigs[curMode].chroma);
-            getSystemAccentColor();
+        } else {
+            document.documentElement.style.setProperty('--asri-user-custom-accent', asriConfigs[curMode].userCustomColor);
+            reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
         }
+
+        document.documentElement.style.setProperty('--asri-c-factor', asriConfigs[curMode].chroma);
+        isUserAccentGray = asriConfigs[curMode].chroma === '0' ? true : false;
+        handleGrayScale(asriConfigs[curMode].chroma);
+        getSystemAccentColor();
     });
 
     // env.supportOklch && asriDoms.barMode?.addEventListener("click", customizeThemeColor);
@@ -90,6 +93,7 @@ export async function loadI18n() {
 }
 
 async function getAsriConfigs() {
+    console.log('curmode', curMode);
     await getFile("/data/snippets/Asri.config.json")
         .then((response) => {
             if (response && response.status === 200) {
@@ -98,6 +102,7 @@ async function getAsriConfigs() {
             return null;
         })
         .then(data => {
+            console.log(data[curMode]);
             if (!data) {
                 followSysAccentColor = asriConfigs[curMode].followSysAccentColor;
                 return;
