@@ -4,7 +4,7 @@ import { debounce, querySelectorAsync } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
 import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
-import { createBarModeMenuItems, followSysAccentColor, getSystemAccentColor, loadThemePalette, unloadThemePalette } from "./configsMenu/makeItems";
+import { createBarModeMenuItems, followSysAccentColor, getSystemAccentColor, loadI18n, loadThemePalette, unloadThemePalette } from "./configsMenu/makeItems";
 import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
@@ -37,6 +37,7 @@ export async function loadAsriJSModules() {
     setStatusHeightVar();
     // startDefaultTranstition(loadThemePalette); 
     loadThemePalette(); // https://github.com/mustakshif/Asri/issues/85
+    await loadI18n();
     if (!env.isMobile) {
         await updateWndEls();
         await updateDragRect('initials');
@@ -204,5 +205,5 @@ const debouncedHandleWinResizeEnd = debounce(() => {
 
 function themeUpdateCallback(e: MediaQueryListEvent) {
     console.log('系统主题变化:', e.matches ? '暗色' : '亮色')
-    startFadeInFadeOutTranstition(() => { }, 200);
+    startFadeInFadeOutTranstition(600,() => { }, 200);
 }

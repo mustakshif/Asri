@@ -35,7 +35,7 @@ function updateThemeMode() {
 }
 export async function loadThemePalette() {
     // if (env.isIOSApp) return; // fix app crash
-    i18n = await loadI18n();
+    // i18n = await loadI18n();
     curMode = updateThemeMode();
     getAsriConfigs().then(() => {
         if (!env.supportOklch) return;
@@ -117,12 +117,13 @@ async function getAsriConfigs() {
             }
             const modes: ('light' | 'dark')[] = ['light', 'dark'];
             for (const mode of modes) {
-                followSysAccentColor = !!data[mode].followSysAccentColor;
-                asriConfigs[mode].followSysAccentColor = followSysAccentColor;
+                asriConfigs[mode].followSysAccentColor = !!data[mode].followSysAccentColor;
                 asriConfigs[mode].chroma = data[mode].chroma ?? "1";
                 asriConfigs[mode].userCustomColor = data[mode].userCustomColor ?? "#3478f6";
                 asriConfigs[mode].presetPalette = data[mode].presetPalette ?? '';
             }
+
+            followSysAccentColor = !!data[curMode].followSysAccentColor;
         });
 }
 
@@ -207,8 +208,7 @@ function handleMenuItemClick() {
 
 function handleFollowSystemAccentBtnClick() {
 
-    startFadeInFadeOutTranstition(func);
-    function func() {
+    startFadeInFadeOutTranstition(600, ()=>{
         if (!followSysAccentColor) {
             followSysAccentColor = true;
             followSysAccentBtn!.classList.add('b3-menu__item--selected');
@@ -230,13 +230,12 @@ function handleFollowSystemAccentBtnClick() {
         }
 
         updateAsriConfigs();
-    }
+    });
 }
 
 function handlePickColorBtnClick() {
 
-    startFadeInFadeOutTranstition(func);
-    function func() {
+    startFadeInFadeOutTranstition(600, ()=>{
         if (!followSysAccentColor) return;
 
         followSysAccentColor = false;
@@ -252,7 +251,7 @@ function handlePickColorBtnClick() {
 
         asriConfigs[curMode].followSysAccentColor = false;
         updateAsriConfigs();
-    }
+    });
 }
 
 function handleColorPickerInput() {

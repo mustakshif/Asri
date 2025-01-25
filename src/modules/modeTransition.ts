@@ -11,7 +11,7 @@ export async function modeTransitionOnClick(e: Event) {
     }
 }
 
-export async function startFadeInFadeOutTranstition(func?: () => void, waitDuration = 0) {
+export async function startFadeInFadeOutTranstition(animDuration = 600, func?: () => void, waitDuration = 0) {
     // // Setup view transition support
     // const meta = document.createElement('meta');
     // meta.name = 'view-transition';
@@ -39,7 +39,7 @@ export async function startFadeInFadeOutTranstition(func?: () => void, waitDurat
                     opacity: [0, 1],
                 },
                 {
-                    duration: 600,
+                    duration: animDuration,
                     // easing: 'ease-in-out',
                 }
             );
@@ -50,7 +50,7 @@ export async function startFadeInFadeOutTranstition(func?: () => void, waitDurat
         style.textContent = `
             ::view-transition-old(root),
             ::view-transition-new(root) {
-                animation-duration: .6s;
+                animation-duration: ${animDuration}ms;
             }
         `;
         document.head.appendChild(style);
