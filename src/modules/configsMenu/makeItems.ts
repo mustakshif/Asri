@@ -117,6 +117,9 @@ async function getAsriConfigs() {
             }
             const modes: ('light' | 'dark')[] = ['light', 'dark'];
             for (const mode of modes) {
+                if (!data[mode]) {
+                    data = asriConfigs;
+                };
                 asriConfigs[mode].followSysAccentColor = !!data[mode].followSysAccentColor;
                 asriConfigs[mode].chroma = data[mode].chroma ?? "1";
                 asriConfigs[mode].userCustomColor = data[mode].userCustomColor ?? "#3478f6";
