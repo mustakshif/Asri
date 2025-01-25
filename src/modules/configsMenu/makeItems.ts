@@ -5,7 +5,7 @@ import { debounce, hexToHSL, hexToOklchL, querySelectorAsync } from '../../util/
 import { environment as env } from '../../util/rsc';
 import { startFadeInFadeOutTranstition } from '../modeTransition';
 
-const asriConfigs = {
+let asriConfigs = {
     'light': {
         'followSysAccentColor': false,
         'chroma': "1",
@@ -102,24 +102,23 @@ async function getAsriConfigs() {
             return null;
         })
         .then(data => {
-            console.log(data[curMode]);
             if (!data) {
                 followSysAccentColor = asriConfigs[curMode].followSysAccentColor;
                 return;
             };
 
-            if (!(data['light'] || data['dark'])) {
-                asriConfigs['light'] = data;
-                asriConfigs['light'].presetPalette = '';
-                asriConfigs['dark'] = data;
-                asriConfigs['dark'].presetPalette = '';
-                updateAsriConfigs();
+            // 如果本地配置数据中没有light或dark，则将旧数据赋值给asriConfigs
+            let originalData: any;
+
+            if (!(data['light'])) {
+                originalData = data;
+                Object.keys(asriConfigs).forEach(key => {
+                    data[key as keyof typeof asriConfigs] = originalData;
+                })
             }
+            
             const modes: ('light' | 'dark')[] = ['light', 'dark'];
             for (const mode of modes) {
-                if (!data[mode]) {
-                    data = asriConfigs;
-                };
                 asriConfigs[mode].followSysAccentColor = !!data[mode].followSysAccentColor;
                 asriConfigs[mode].chroma = data[mode].chroma ?? "1";
                 asriConfigs[mode].userCustomColor = data[mode].userCustomColor ?? "#3478f6";
@@ -211,7 +210,7 @@ function handleMenuItemClick() {
 
 function handleFollowSystemAccentBtnClick() {
 
-    startFadeInFadeOutTranstition(600, ()=>{
+    startFadeInFadeOutTranstition(600, () => {
         if (!followSysAccentColor) {
             followSysAccentColor = true;
             followSysAccentBtn!.classList.add('b3-menu__item--selected');
@@ -231,14 +230,13 @@ function handleFollowSystemAccentBtnClick() {
 
             asriConfigs[curMode].followSysAccentColor = false;
         }
-
         updateAsriConfigs();
     });
 }
 
 function handlePickColorBtnClick() {
 
-    startFadeInFadeOutTranstition(600, ()=>{
+    startFadeInFadeOutTranstition(600, () => {
         if (!followSysAccentColor) return;
 
         followSysAccentColor = false;
