@@ -116,7 +116,7 @@ async function getAsriConfigs() {
                     data[key as keyof typeof asriConfigs] = originalData;
                 })
             }
-            
+
             const modes: ('light' | 'dark')[] = ['light', 'dark'];
             for (const mode of modes) {
                 asriConfigs[mode].followSysAccentColor = !!data[mode].followSysAccentColor;
@@ -169,6 +169,12 @@ export async function createBarModeMenuItems(e: Event) {
             <div aria-label="${i18n['asriChroma'] + (asriChromaSlider?.value ?? asriConfigs[curMode].chroma ?? '1')}" class="b3-tooltips b3-tooltips__n">
                 <input style="box-sizing: border-box" type="range" id="asriChromaSlider" class="b3-slider fn__block" min="0" max="5" step="0.1" value="1">
             </div>
+        </button>
+        <button class="b3-menu__separator asri-config"></button>
+        <button class="b3-menu__item asri-config" id="prst-light-festival-vibe">
+            <svg class="b3-menu__icon"></svg>
+            <label for="" class="be-menu__label">festival-vibe</label>
+                
         </button>
 `;
     const asriConfigFrag = document.createRange().createContextualFragment(asriConfigMenuHTML);

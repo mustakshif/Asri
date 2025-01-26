@@ -295,7 +295,7 @@
             }
         }
 
-        .item__icon {
+        :is(.item__icon, .item__graphic) {
             transform: none !important;
         }
 
