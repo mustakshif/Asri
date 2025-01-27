@@ -10,6 +10,8 @@
 
 @use 'plugins';
 
+@use 'palettes';
+
 .body-asri--linux {
     @extend .body--win32;
 }
