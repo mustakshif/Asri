@@ -1,3 +1,21 @@
+### v3.3.0
+
+* 新增春节主题配色方案：岁禧、鎏金
+* 支持亮暗色模式分设不同主题色配置
+* 修改文档属性样式显示，现置于文档标题下方
+* [调整行内备注样式](https://github.com/mustakshif/Asri/issues/141)
+* 修复部分类型的页签失焦时图标不向中位移的问题
+
+<br />
+
+* Added Spring Festival theme color schemes: Everbliss, Auriflow
+* Supported separate theme color configurations for light and dark modes
+* Modified the display of document property styles, now placed below the document title
+* [Adjusted inline memo styles](https://github.com/mustakshif/Asri/issues/141)
+* Fixed the issue where icons did not center when certain types of tabs lost focus
+
+---
+
 ### v3.2.3
 
 * 优化亮暗色模式切换流畅度，切换时不再闪现默认配色

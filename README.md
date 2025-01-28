@@ -13,30 +13,15 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.2.3
+![new palettes](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/asri-palettes.png)
 
-* Improved the smoothness of light/dark mode switching, eliminated default color flashing during transitions
-* Optimized the font weight of superscript and subscript text to better match regular text weight visually
-* Enhanced the display of settings items when the settings dialog is wide
-* Refined slider styles
-* Fixed an issue where highlight block borders were occasionally obscured
-* Fixed incomplete theme uninstallation issues from v3.2.2
-* Fixed mouse click failures during text editing [[issue 139](https://github.com/mustakshif/Asri/issues/139)][[issue 140](https://github.com/mustakshif/Asri/issues/140)]
+### v3.3.0
 
-### v3.2.2
-
-* [Added animation for &quot;/&quot; menu popup](https://github.com/mustakshif/Asri/issues/128)
-* [Added fallback styles for header images in older Webview versions](https://github.com/mustakshif/Asri/issues/132)
-* [Optimized light/dark mode transition smoothness](https://github.com/mustakshif/Asri/issues/134)
-* [Improved marketplace package download progress bar styles](https://github.com/mustakshif/Asri/issues/127)
-* Optimized notification button styles
-* Adjusted animation curves for more components
-* [Adjusted Emoji panel layout](https://github.com/mustakshif/Asri/issues/129)
-* Removed width restriction for settings panel buttons and optimized multilingual display
-* Adapted side panels for right-to-left layout mode
-* Fixed missing left margin in Mac fullscreen top bar
-* [Fixed focus block indicator flash issue when &quot;Typewriter Mode&quot; plugin is enabled](https://github.com/mustakshif/Asri/issues/133#issuecomment-2579964200)
-* [Fixed scrollbar clipping issues with container rounded corners](https://github.com/mustakshif/Asri/issues/131)
+* Added Spring Festival theme color schemes: Everbliss, Auriflow
+* Supported separate theme color configurations for light and dark modes
+* Modified the display of document property styles, now placed below the document title
+* [Adjusted inline memo styles](https://github.com/mustakshif/Asri/issues/141)
+* Fixed the issue where icons did not center when certain types of tabs lost focus
 
 ### ...
 

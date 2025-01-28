@@ -13,30 +13,15 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
-### v3.2.3
+![new palettes](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/asri-palettes.png)
 
-* 优化亮暗色模式切换流畅度，切换时不再闪现默认配色
-* 优化上下标文字字重，视觉上更匹配普通文本字重
-* 优化设置窗口较宽时设置项的显示效果
-* 微调滑动条样式
-* 修复高亮块的边框线偶尔被遮挡的问题
-* 修复 v3.2.2 主题卸载不完全的问题
-* 修复文字编辑时鼠标点击失效的问题[[issue 139](https://github.com/mustakshif/Asri/issues/139)][[issue 140](https://github.com/mustakshif/Asri/issues/140)]
+### v3.3.0
 
-### v3.2.2
-
-* [新增“/”菜单弹出动画](https://github.com/mustakshif/Asri/issues/128)
-* [添加低版本 Webview 中题头图的回退样式](https://github.com/mustakshif/Asri/issues/132)
-* [优化亮暗色模式切换流畅度](https://github.com/mustakshif/Asri/issues/134)
-* [优化集市包下载进度条样式](https://github.com/mustakshif/Asri/issues/127)
-* 优化通知按钮样式
-* 调整更多组件的动画曲线
-* [调整 Emoji 面板布局](https://github.com/mustakshif/Asri/issues/129)
-* 取消设置面板按钮宽度限制，优化多语言显示
-* 侧栏面板适配从右至左布局模式
-* 修复 Mac 端全屏后顶栏左间距缺失的问题
-* [修复「打字机模式」插件启用后聚焦块指示条闪现的问题](https://github.com/mustakshif/Asri/issues/133#issuecomment-2579964200)
-* [修复滚动条被容器圆角裁切的问题](https://github.com/mustakshif/Asri/issues/131)
+* 新增春节主题配色方案：岁禧、鎏金
+* 支持亮暗色模式分设不同主题色配置
+* 修改文档属性样式显示，现置于文档标题下方
+* [调整行内备注样式](https://github.com/mustakshif/Asri/issues/141)
+* 修复部分类型的页签失焦时图标不向中位移的问题
 
 ### ...
 
