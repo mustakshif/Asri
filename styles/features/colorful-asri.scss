@@ -251,16 +251,18 @@
         }
     }
 
-    #followSysAccent,
-    #pickColor,
-    #useSeparateScheme {
+    .asri-config {
+        &.b3-menu__item--disabled {
+            pointer-events: none;
+        }
+
         label {
-            cursor: pointer;
+            cursor: inherit;
         }
     }
 
     #asriChroma {
-        cursor: default;
+        // cursor: default;
 
         .b3-tooltips {
             flex-grow: 1;
@@ -274,6 +276,13 @@
 
     #asriChromaSlider {
         cursor: pointer;
+    }
+
+    .menu-item__subtitle {
+        color: rgba(from var(--b3-theme-on-background) r g b / .5);
+        font-size: .85em;
+        font-weight: 600;
+        padding: 4px 8px;
     }
 
     /* Other elements */

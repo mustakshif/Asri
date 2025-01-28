@@ -2,23 +2,12 @@
 
 @mixin goldfoil-background {
     // https://www.zhangxinxu.com/wordpress/2023/06/css-noise/
-    --foil-local-clr: rgb(224, 190, 136);
-    --foil-base-clr: rgb(255, 248, 172);
-    --foil-highlight-opacity: .5;
-    --foil-shadow-opacity: .4;
     background:
         repeating-radial-gradient(rgba(180, 135, 30, var(--foil-shadow-opacity)) 0 0.0001%, #0000 0 0.0002%) 30% 50% / 2500px 2500px,
         repeating-conic-gradient(var(--foil-local-clr) 0 0.0001%, #0000 0 0.0002%) 60% 60% / 2500px 2500px,
         repeating-conic-gradient(rgba(245, 227, 199, var(--foil-highlight-opacity)) 0 0.0001%, #0000 0 0.0002%) 50% 50% / 2500px 2500px,
         linear-gradient(var(--foil-base-clr) 0 0);
     background-blend-mode: multiply, normal, hard-light, normal;
-
-    @include darkmode-counterpart {
-        --foil-local-clr: rgb(190, 165, 100);
-        --foil-base-clr: rgb(210, 180, 80);
-        --foil-shadow-opacity: .7;
-        --foil-highlight-opacity: .7;
-    }
 }
 
 @mixin goldfoil-border($border-width: 1px, $border-radius: 8px, $container-bg: var(--b3-theme-background)) {
@@ -34,72 +23,5 @@
         inset: $border-width;
         z-index: -1;
         border-radius: $border-radius;
-    }
-}
-
-[asri-palette="Auriflow"] {
-    .config-bazaar__panel .b3-card:hover {
-        @include goldfoil-border(1.5px, $border-radius: 18.5px);
-        outline: none !important;
-    }
-
-    .b3-switch:checked,
-    .b3-button--outline:hover,
-    .b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not([data-type=nobg]),
-    .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly, .b3-menu__item--disabled):not([disabled]):not([data-type=nobg]),
-    .b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not([data-type=nobg]),
-    .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly, .b3-menu__item--disabled):not([disabled]):not([data-type=nobg]),
-    .protyle-wysiwyg .li.protyle-task--done>.protyle-action--task::before,
-    .protyle-wysiwyg .li[data-subtype=t] .protyle-action--task::before,
-    .protyle-wysiwyg[data-readonly=false] [data-node-id].asri-selected-block::before,
-    #toolbar #barWorkspace:hover,
-    .config__panel .config__tab-wrap .config__tab-container[data-name=account] .config-account .b3-button--text:not(#activationCode),
-    .config__panel .config__tab-wrap .config__tab-container[data-name=account] .config-account button#login {
-        @include goldfoil-background;
-        // -webkit-font-smoothing: auto;
-    }
-
-    .b3-switch:checked {
-        @include darkmode-counterpart {
-            --foil-base-clr: rgb(178, 132, 6);
-        }
-    }
-
-    .protyle-title__input,
-    [data-type="NodeHeading"]:not([style])>[contenteditable]:not([style]),
-    .b3-dialog__header {
-        @include goldfoil-background;
-        background-clip: text;
-        color: rgba(from var(--b3-theme-on-background) r g b / .1);
-
-        @include darkmode-counterpart {
-            color: rgba(from var(--b3-theme-on-background) r g b / .2);
-        }
-    }
-
-    .protyle-wysiwyg [data-node-id].hr>div:after {
-        @include goldfoil-background;
-        // height: 1px;
-        border-radius: 0;
-        opacity: .7;
-    }
-
-    .b3-button--outline:hover {
-        box-shadow: none;
-    }
-
-    .protyle-wysiwyg[data-readonly=false] [data-node-id].asri-selected-block::before {
-        // opacity: .6;
-        border-radius: 0;
-        width: 2px;
-    }
-
-    #toolbar #barWorkspace {
-        transition-property: color;
-    }
-
-    @include darkmode-counterpart(true) {
-        --b3-theme-on-background: #e8d9be;
-        --b3-theme-on-surface: #e8d9bead;
     }
 }

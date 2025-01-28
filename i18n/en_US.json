@@ -11,5 +11,8 @@
     "afwdMenuItem-sb": "Superblock",
     "afwdMenuItem-clear": "Clear attributes",
     "afwdMenuItem-on": "Enable for this block",
-    "afwdMenuItem-off": "Disable for this block"
+    "afwdMenuItem-off": "Disable for this block",
+    "palette-presets": "Presets",
+    "prst-palette-everbliss": "Everbliss",
+    "prst-palette-auriflow": "Auriflow"
 }
