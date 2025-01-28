@@ -146,7 +146,9 @@
     .protyle-breadcrumb__item,
     .config-account__info .b3-button,
     .b3-menu,
-    .b3-switch {
+    .b3-switch,
+    .b3-chip--primary,
+    .b3-chip--current {
         /*
         !!! chroma value calculation for on-primary: 
             if reversed, use primary color's original chroma; 
