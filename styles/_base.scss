@@ -634,8 +634,9 @@ $theme-dark: (
     }
 }
 
-@mixin darkmode-counterpart {
-    [data-theme-mode="dark"] & {
+@mixin darkmode-counterpart($root:false) {
+    $selector: if($root, "&[data-theme-mode=dark]", "[data-theme-mode=dark] & ");
+    #{$selector} {
         @content;
     }
 }

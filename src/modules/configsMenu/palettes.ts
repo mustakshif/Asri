@@ -1,8 +1,8 @@
 const prstDarkAuriflow = {
     id: "Auriflow",
     configs: {
-        'primary': '#F4CA57',
-        'chroma': '1',
+        'primary': '#E1D2B2',
+        'chroma': '0.3',
         'followSysAccentColor': false,
     }
 }
