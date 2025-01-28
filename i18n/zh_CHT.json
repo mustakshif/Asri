@@ -11,5 +11,8 @@
     "afwdMenuItem-sb": "超級塊",
     "afwdMenuItem-clear": "清除屬性",
     "afwdMenuItem-on": "為此塊啟用",
-    "afwdMenuItem-off": "為此塊禁用"
+    "afwdMenuItem-off": "為此塊禁用",
+    "palette-presets": "預設配色方案",
+    "prst-palette-everbliss": "歲禧",
+    "prst-palette-auriflow": "鎏金"
 }

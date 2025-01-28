@@ -125,22 +125,22 @@
                 transform: translateX(12px);
             }
 
-            .item__icon,
-            .item__icon+.item__text {
+            :is(.item__icon, .item__graphic),
+            :is(.item__icon, .item__graphic)+.item__text {
                 transform: translateX(10px);
             }
         }
 
         &:hover {
-
             .item__text,
-            .item__icon,
-            .item__icon+.item__text {
+            :is(.item__icon, .item__graphic),
+            :is(.item__icon, .item__graphic)+.item__text {
                 transform: translateX(0);
             }
         }
 
-        &__icon {
+        &__icon,
+        &__graphic {
             transition-duration: .2s;
             transition-property: transform;
             transition-timing-function: var(--asri-ease-out-5);

@@ -146,7 +146,9 @@
     .protyle-breadcrumb__item,
     .config-account__info .b3-button,
     .b3-menu,
-    .b3-switch {
+    .b3-switch,
+    .b3-chip--primary,
+    .b3-chip--current {
         /*
         !!! chroma value calculation for on-primary: 
             if reversed, use primary color's original chroma; 
@@ -251,16 +253,18 @@
         }
     }
 
-    #followSysAccent,
-    #pickColor,
-    #useSeparateScheme {
+    .asri-config {
+        &.b3-menu__item--disabled {
+            pointer-events: none;
+        }
+
         label {
-            cursor: pointer;
+            cursor: inherit;
         }
     }
 
     #asriChroma {
-        cursor: default;
+        // cursor: default;
 
         .b3-tooltips {
             flex-grow: 1;
@@ -274,6 +278,13 @@
 
     #asriChromaSlider {
         cursor: pointer;
+    }
+
+    .menu-item__subtitle {
+        color: rgba(from var(--b3-theme-on-background) r g b / .5);
+        font-size: .85em;
+        font-weight: 600;
+        padding: 4px 8px;
     }
 
     /* Other elements */

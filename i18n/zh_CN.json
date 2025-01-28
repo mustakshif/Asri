@@ -11,5 +11,8 @@
     "afwdMenuItem-sb": "超级块",
     "afwdMenuItem-clear": "清除属性",
     "afwdMenuItem-on": "为此块启用",
-    "afwdMenuItem-off": "为此块禁用"
+    "afwdMenuItem-off": "为此块禁用",
+    "palette-presets": "预设配色方案",
+    "prst-palette-everbliss": "岁禧",
+    "prst-palette-auriflow": "鎏金"
 }
