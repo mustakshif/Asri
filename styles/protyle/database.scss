@@ -263,16 +263,19 @@
         }
 
         &:not(.av__row--header)>.av__colsticky {
-            svg {
+            .av__firstcol svg {
                 visibility: hidden;
             }
 
-            .av__firstcol::before {
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                margin: auto;
+            .av__firstcol {
+                position: relative;
+                &::before {
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                }
             }
         }
 
@@ -578,7 +581,7 @@ img.av__cellassetimg {
     //     }
     // }
 
-    &[data-name="av-header-cell"]{
+    &[data-name="av-header-cell"] {
         .b3-menu__items {
             div:first-child {
                 margin-inline-start: 8px;
