@@ -16,6 +16,12 @@
         --b3-theme-on-background: #e3c9b0;
         --b3-theme-on-surface: #e3c9b0a2;
     }
+
+    .protyle-title__input,
+    [data-type="NodeHeading"]:not([style])>[contenteditable]:not([style]),
+    .b3-dialog__header {
+        color: var(--b3-theme-primary);
+    }
 }
 
 #barWorkspace,

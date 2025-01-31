@@ -206,6 +206,6 @@ const debouncedHandleWinResizeEnd = debounce(() => {
 }, 200);
 
 function themeUpdateCallback(e: MediaQueryListEvent) {
-    console.log('系统主题变化:', e.matches ? '暗色' : '亮色')
+    // console.log('系统主题变化:', e.matches ? '暗色' : '亮色')
     startFadeInFadeOutTranstition(600,() => { }, 200);
 }
