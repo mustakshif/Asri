@@ -1,12 +1,12 @@
 // import htmlString from './menuHTML/index.html';
-import { getFile, putFile } from '../../util/api';
-import { remote } from '../../util/electron';
-import { AsriEventListener } from "../../util/eventListeners";
-import { debounce, hexToHSL, hexToOklchL, querySelectorAsync } from '../../util/misc';
-import { environment as env } from '../../util/rsc';
-import { startFadeInFadeOutTranstition } from '../modeTransition';
+import { getFile, putFile } from '../util/api';
+import { remote } from '../util/electron';
+import { AsriEventListener } from "../util/eventListeners";
+import { debounce, hexToHSL, hexToOklchL, querySelectorAsync } from '../util/misc';
+import { environment as env } from '../util/rsc';
+import { startFadeInFadeOutTranstition } from './modeTransition';
 
-export const asriConfigs = {
+const asriConfigs = {
     'light': {
         'followSysAccentColor': false,
         'chroma': "1",

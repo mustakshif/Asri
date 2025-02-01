@@ -4,7 +4,7 @@ import { debounce, querySelectorAsync } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
 import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
-import { createBarModeMenuItems, followSysAccentColor, getSystemAccentColor, loadI18n, loadThemePalette, paletteMenuItemClickEventListener, unloadThemePalette } from "./configsMenu/makeItems";
+import { createBarModeMenuItems, followSysAccentColor, getSystemAccentColor, loadI18n, loadThemePalette, paletteMenuItemClickEventListener, unloadThemePalette } from "./asriPalettes";
 import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
