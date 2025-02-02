@@ -3,6 +3,13 @@
 /* 
 背景模糊
 */
+$thick-transparency: 0.85;
+$thick-blur-rd: 40px;
+$medium-transparency: 0.8;
+$medium-blur-rd: 20px;
+$thin-transparency: 0.75;
+$thin-blur-rd: 12px;
+
 @mixin bg-blur($blur-radius: 40px, $saturate-value: 3, $brightness-light: 1.1, $brightness-dark: calc(2 - $brightness-light)) {
     backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness-light);
 

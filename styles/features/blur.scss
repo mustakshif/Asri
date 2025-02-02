@@ -1,14 +1,5 @@
 @use '../base' as *;
-
-
-//blur ————————————————————————————
-
-$thick-transparency: 0.85;
-$thick-blur-rd: 40px;
-$medium-transparency: 0.8;
-$medium-blur-rd: 20px;
-$thin-transparency: 0.75;
-$thin-blur-rd: 12px;
+@use './utils' as *;
 
 body:not(.asri-disable-backdrop-blur) {
 
