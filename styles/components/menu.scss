@@ -1,10 +1,11 @@
 @use '../base' as *;
+@use './utils' as *;
 
 .b3-menu,
 .b3-menu__submenu {
     @include menu-shadow($opacity-light: .15);
 
-    @include border-or-not($border: false) {
+    @include theme-variant-border($border: false) {
         outline: #fff4 solid 1px;
         outline-offset: -1px;
     }
@@ -124,7 +125,7 @@
     // @include bouncy-scaling-animation;
 
     // &::before {
-        // animation: solid2trans .5s $timing-function-accelerate;
+    // animation: solid2trans .5s $timing-function-accelerate;
 
     //     @keyframes solid2trans {
     //         0%, 50% {
@@ -167,7 +168,7 @@
     --b3-border-radius-b: 12px;
     @include menu-shadow;
 
-    @include border-or-not($border: false) {
+    @include theme-variant-border($border: false) {
         outline: #fff4 solid 1px;
         outline-offset: -1px;
     }
@@ -175,7 +176,33 @@
     padding: 0;
     background-color: var(--b3-menu-background);
 
-    @include bouncy-scaling-animation;
+    transform-origin: top left;
+    animation: scaleBounce .5s var(--asri-ease-spring-3);
+
+    @keyframes scaleBounce {
+
+        // fix location bug
+        0%,
+        5% {
+            opacity: 0;
+            transform: none;
+        }
+
+        5% {
+            opacity: 0;
+            transform: scale(0.98);
+        }
+
+        // 70% {
+        //     opacity: 1;
+        //     transform: scale(1.002);
+        // }
+
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
 
     &.hint--menu {
 
@@ -292,10 +319,10 @@
     padding: 8px 0 0;
     border-radius: 12px;
     animation: scaleBounce .5s var(--asri-ease-spring-3);
-    
+
     @include menu-shadow;
 
-    @include border-or-not($border: false) {
+    @include theme-variant-border($border: false) {
         outline: #fff4 solid 1px;
         outline-offset: -1px;
     }
@@ -340,7 +367,7 @@
         outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
         background-color: var(--b3-menu-background);
         outline-offset: 0;
-        // @include border-or-not($border: false) {
+        // @include theme-variant-border($border: false) {
         //     outline: #fff4 solid 1px;
         //     outline-offset: -1px;
         // }

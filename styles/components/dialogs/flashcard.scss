@@ -1,4 +1,6 @@
 @use '../../base' as *;
+@use '../utils' as *;
+
 // 闪卡复习 ————————————————————————————————————
 .card__main {
     .layout-tab-container & {

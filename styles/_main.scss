@@ -15,27 +15,3 @@
 .body-asri--linux {
     @extend .body--win32;
 }
-
-// @keyframes scroll-fadein {
-//     0% {
-//         opacity: 0;
-//     }
-//     // 2% {
-//     //     opacity: 1;
-//     // }
-//     100% {
-//         opacity: 1;
-//     }
-// }
-
-// @property --property-length {
-//     syntax: '<length>';
-//     inherits: false;
-//     initial-value: 0px;
-// }
-
-// @property --property-percentage {
-//     syntax: '<percentage>';
-//     inherits: false;
-//     initial-value: 0%;
-// }  

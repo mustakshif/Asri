@@ -1,0 +1,70 @@
+@use './colors.scss' as *;
+
+@mixin darkmode-counterpart($root:false) {
+    $selector: if($root, "&[data-theme-mode=dark]", "[data-theme-mode=dark] &");
+    #{$selector} {
+        @content;
+    }
+}
+
+@mixin theme-variant-color($property, $theme-key, $opacity-light: 1, $opacity-dark: $opacity-light, $important: false) {
+
+    $_color: map-get($theme-light, $theme-key);
+
+    @if $_color !=null {
+        @if $important {
+            #{$property}: change-color($_color, $alpha: $opacity-light) !important;
+        }
+
+        @else {
+            #{$property}: change-color($_color, $alpha: $opacity-light);
+        }
+    }
+
+    @else {
+        @warn "No color found for `#{$theme-key}` in `$theme-light`. Please check your `$theme-light` map and the `$theme-key` you are using.";
+    }
+
+    @include darkmode-counterpart {
+        $_color: map-get($theme-dark, $theme-key);
+
+        @if $_color !=null {
+            @if $important {
+                #{$property}: change-color($_color, $alpha: $opacity-dark) !important;
+            }
+
+            @else {
+                #{$property}: change-color($_color, $alpha: $opacity-dark);
+            }
+        }
+
+        @else {
+            @warn "No color found for `#{$theme-key}` in `$theme-dark`. Please check your `$theme-dark` map and the `$theme-key` you are using.";
+        }
+    }
+}
+
+// ————————————————————————————————————————
+// 用于暗黑模式模式下给部分元素添加边框
+@mixin theme-variant-border($outline: true, $border: true, $outline-width: 1px, $outline-light: false) {
+    border: unset;
+    // border-color: transparent;
+
+    @if $outline-light ==true {
+        outline: $outline-width solid #fff4;
+        outline-offset: $outline-width * -1;
+    }
+
+    @content;
+
+    @include darkmode-counterpart {
+        @if $outline ==true {
+            outline: $outline-width solid var(--b3-border-color-trans);
+            outline-offset: $outline-width * -1;
+        }
+
+        @if $border ==true {
+            border: 1px solid var(--b3-border-color-trans);
+        }
+    }
+}

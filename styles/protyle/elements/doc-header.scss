@@ -47,7 +47,7 @@
             background-color: rgb(from var(--b3-theme-surface) r g b / .8);
             color: var(--b3-theme-on-surface);
 
-            @include border-or-not($border: false);
+            @include theme-variant-border($border: false);
 
             @include darkmode-counterpart {
                 outline-offset: unset;

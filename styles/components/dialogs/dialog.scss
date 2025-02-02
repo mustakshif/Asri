@@ -1,4 +1,5 @@
 @use '../../base' as *;
+@use '../utils' as *;
 
 .b3-dialog--open {
     .b3-dialog {
@@ -37,7 +38,7 @@
             overflow: hidden; // 窗口中有元素如果混合使用mix-blend-mode 和 backdrop-filter，会导致窗口布局跳动、窗口闪烁
             background-color: var(--b3-theme-background);
 
-            @include border-or-not($outline-light: true);
+            @include theme-variant-border($outline-light: true);
             @include dialog-shadow;
 
             @include darkmode-counterpart {

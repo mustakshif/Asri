@@ -1,5 +1,6 @@
 @use '../base' as *;
-
+@use '../components/utils' as *;
+@use '../protyle/utils' as *;
 
 // 嵌入块和引用块中的数据库表头等处的背景色
 [data-type=NodeBlockQueryEmbed],

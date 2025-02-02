@@ -1,9 +1,10 @@
 @use '../../base' as *;
+@use '../utils' as *;
 
 // 弹出预览窗口 ——————————————————————————————————————
 .block__popover {
     @include dialog-shadow;
-    @include border-or-not;
+    @include theme-variant-border;
 
     @include darkmode-counterpart {
         outline-color: transparent;

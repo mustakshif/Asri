@@ -1,4 +1,5 @@
 @use '../../base' as *;
+@use '../utils' as *;
 
 @mixin headings {
     // @for $i from 1 through 6 {

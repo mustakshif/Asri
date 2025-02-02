@@ -1,4 +1,5 @@
 @use '../../base' as *;
+@use '../../components/utils.scss' as *;
 
 // 页面小工具条 ——————————————————————————————————————
 // 普通工具条、代码块工具条
@@ -53,7 +54,7 @@
 
 .protyle-icons {
     // 普通工具条（嵌入入块等）
-    @include border-or-not($border: false);
+    @include theme-variant-border($border: false);
 
     [data-node-id].render-node:hover>& {
         opacity: 1;
@@ -138,7 +139,7 @@
     transform-origin: 50% 150%;
     transition: none;
     @include menu-shadow;
-    @include border-or-not($border: false);
+    @include theme-variant-border($border: false);
 
     &__item {
         height: 30px;

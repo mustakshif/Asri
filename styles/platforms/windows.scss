@@ -1,5 +1,41 @@
 @use '../base' as *;
 
 body.body--win32 {
-    @include webkit-scrollbar;
+    ::-webkit-scrollbar {
+        background-color: transparent;
+
+        &-thumb {
+            -webkit-border-radius: 10px;
+            background-clip: padding-box;
+            border: 2px solid transparent;
+            background-color: var(--b3-scroll-color);
+
+            &:hover {
+                background-color: var(--b3-scroll-color-hover);
+            }
+        }
+
+        // &-track {
+        //     .b3-dialog & {
+        //         margin: 8px 0;
+        //     }
+
+        //     :where(.b3-menu, .protyle-hint, .protyle-util) & {
+        //         margin: 4px 0;
+        //     }
+        // }
+    }
+
+    .b3-dialog ::-webkit-scrollbar-track {
+        margin: 8px 0;
+    }
+
+    :where(.b3-menu, .protyle-hint, .protyle-util) ::-webkit-scrollbar-track {
+        margin: 4px 0;
+    }
+
+    .protyle-content::-webkit-scrollbar-track {
+        margin-bottom: 4px;
+    }
 }
+

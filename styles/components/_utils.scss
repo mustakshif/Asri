@@ -1,0 +1,253 @@
+@use '../base' as *;
+
+@mixin menu-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $border-light: 1px, $border-dark: 0.5px) {
+    @if type-of($shadow-clr-light) !=color {
+        box-shadow: 0 0 0 $border-light rgb(from #{$shadow-clr-light} r g b / calc($opacity-light / 2)),
+        0px 13px 25px -2px rgb(from #{$shadow-clr-light} r g b / calc($opacity-light / 2)),
+        0px 0px 10px 0px rgb(from #{$shadow-clr-light} r g b / calc($opacity-light / 2));
+    }
+
+    @else {
+        box-shadow: 0 0 0 $border-light change-color($shadow-clr-light, $alpha: calc($opacity-light / 2)),
+            0px 13px 25px -2px change-color($shadow-clr-light, $alpha: calc($opacity-light / 2)),
+            0px 0px 10px 0px change-color($shadow-clr-light, $alpha: calc($opacity-light / 2));
+    }
+
+    @include darkmode-counterpart {
+        @if type-of($shadow-clr-dark) !=color {
+            box-shadow: 0 0 0 $border-dark rgb(from #{$shadow-clr-dark} r g b / 1),
+            0px 13px 25px -2px rgb(from #{$shadow-clr-dark} r g b / $opacity-dark),
+            0px 0px 10px 0px rgb(from #{$shadow-clr-dark} r g b / calc($opacity-dark / 2));
+        }
+
+        @else {
+            box-shadow: 0 0 0 $border-dark change-color($shadow-clr-dark, $alpha: 1),
+                0px 13px 25px -2px change-color($shadow-clr-dark, $alpha: $opacity-dark),
+                0px 0px 10px 0px change-color($shadow-clr-dark, $alpha: calc($opacity-dark / 2));
+        }
+    }
+}
+
+@mixin dialog-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3) {
+    box-shadow: 0px 10px 15px -3px change-color($shadow-clr-light, $alpha: $opacity-light * 0.7),
+        0px 24px 40px 9px change-color($shadow-clr-light, $alpha: $opacity-light * 0.5),
+        0 66px 40px -32px change-color($shadow-clr-light, $alpha: $opacity-light);
+
+    @include darkmode-counterpart {
+        box-shadow: 0 0 0 1px #000,
+            0px 10px 15px -3px change-color($shadow-clr-dark, $alpha: $opacity-dark * 0.7),
+            0px 24px 40px 9px change-color($shadow-clr-dark, $alpha: $opacity-dark * 0.5),
+            0 66px 40px -32px change-color($shadow-clr-dark, $alpha: $opacity-dark);
+    }
+}
+
+@mixin tooltip-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3) {
+    box-shadow: 0 0 0px 1px change-color($shadow-clr-light, $alpha: $opacity-light), 0px 2px 6px 0px change-color($shadow-clr-light, $alpha: $opacity-light);
+
+    @include darkmode-counterpart {
+        box-shadow: 0 0 0 0.5px #000, 0px 2px 6px 0px change-color($shadow-clr-dark, $alpha: $opacity-dark);
+    }
+}
+
+@mixin components-shadow {
+    --shadow-clr: rgba(0, 0, 0, .1);
+    $darkmode-highlight: 0 1.5px 0 -1px inset #fff;
+    $box-shadow: 0 1px 1px 0 var(--shadow-clr),
+        0 5px 5px -2px var(--shadow-clr),
+        0px 6px 10px -3px var(--shadow-clr),
+        0px 15px 16px -3px var(--shadow-clr);
+
+    box-shadow: $box-shadow;
+
+    @include darkmode-counterpart {
+        box-shadow: $darkmode-highlight, 0 1px 4px -1px #0003;
+    }
+}
+
+// ——————————————————————————
+// 对话框、数据库页签样式
+@mixin dialog-tabbar {
+    margin: 8px auto 8px;
+    border-radius: 8px !important;
+    background-color: var(--b3-list-hover);
+    padding: 2px;
+    height: auto;
+
+    // @include darkmode-counterpart {
+    //     background-color: #0004;
+    // }
+
+    .item {
+        border-radius: 6px !important;
+        background-color: transparent;
+        transition: none !important;
+        padding: 2px 12px;
+
+        &:hover:not(.item--focus) {
+            background-color: transparent !important;
+
+            .item__text {
+                color: var(--b3-theme-on-background) !important;
+            }
+        }
+
+        &--focus {
+            max-width: unset;
+            box-shadow: 0 1px 4px -1px #0003, 0 0.3px 0 0 #0002;
+            animation: none;
+            background-color: #fff;
+
+            @include darkmode-counterpart {
+                background-color: #ffffff23;
+            }
+
+            @include darkmode-counterpart {
+                box-shadow: 0 1px 0 0 inset rgba(255, 255, 255, 0.1), 0 1px 4px -1px #0003, 0 0.3px 0 0 #0002;
+            }
+
+            // @include theme-variant-color(background-color, light-components, 1, 0.2);
+
+            .item__text {
+                color: var(--b3-theme-on-background);
+            }
+        }
+
+        :is(.item__icon, .item__graphic) {
+            transform: none !important;
+        }
+
+        .item__text {
+            transform: none !important;
+            transition-property: color;
+        }
+    }
+
+    .item:not(.item--focus, .fn__none)+.item:not(.item--focus):not(:first-child)::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 2px;
+        height: 1.3em;
+        inset-inline-start: -4px;
+        border-radius: 9px;
+        pointer-events: none;
+
+        @include theme-variant-color(background-color, list-hover, 0.08);
+    }
+
+    .item__graphic {
+        font-family: var(--b3-font-family-emoji);
+    }
+}
+
+
+// ——————————————————————————————————————
+// 主要用于设置面板的大按钮
+@mixin button-primary {
+    // background-color: var(--b3-list-hover);
+    background-color: #0000;
+    border-radius: 7px;
+    color: var(--b3-theme-primary);
+    // color: var(--b3-theme-on-background);
+    font-weight: 600;
+    transition-duration: .1s;
+    border: none;
+    box-shadow: none;
+    outline: 1px solid var(--b3-border-color-trans);
+    outline-offset: -1px;
+    transition-property: color, background-color, outline-color, transform;
+
+    &:hover {
+        background-color: var(--b3-theme-primary);
+        color: var(--b3-theme-on-primary);
+
+        outline-color: transparent;
+        // border-radius: 6px;
+    }
+
+    &:active {
+        transform: scale(.95);
+        // opacity: .8;
+    }
+
+    @content;
+}
+
+// 普通按钮
+@mixin button-action($type) {
+    border-radius: 7px;
+    padding: 4px 16px;
+    transition-property: color, background-color, outline, transform;
+    outline-offset: -1px;
+    transition-duration: .1s;
+
+    &:hover {
+        box-shadow: none;
+    }
+
+    &:active {
+        transform: scale(0.95);
+        opacity: .8;
+        box-shadow: none;
+        // transition: .1s;
+    }
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    @if $type=='normal' {
+        color: var(--b3-theme-on-background);
+        outline: 1px solid var(--b3-border-color-trans);
+
+        &:hover {
+            background-color: var(--b3-list-hover);
+            color: var(--b3-theme-on-background);
+        }
+
+        &:active,
+        &:focus {
+            @include theme-variant-color(background-color, list-hover, 0.1);
+            color: var(--b3-theme-on-background);
+            // transition: .1s;
+        }
+    }
+
+    @else if $type =='primary' {
+        color: var(--b3-theme-on-primary);
+        background-color: var(--b3-theme-primary);
+        // font-weight: 600;
+
+        &:hover {
+            background-color: rgb(from var(--b3-theme-primary) r g b / .8);
+        }
+
+        &:active,
+        &:focus {
+            background-color: var(--b3-theme-primary);
+            color: var(--b3-theme-on-primary);
+            // transition: .1s;
+        }
+    }
+
+    @else if $type =='danger' {
+        color: var(--b3-theme-error);
+        background-color: transparent;
+        outline: 1px solid rgb(from var(--b3-theme-error) r g b / .3);
+        box-shadow: none;
+
+        &:hover {
+            background-color: rgb(from var(--b3-theme-error) r g b / .2);
+        }
+
+        &:active,
+        &:focus {
+            background-color: var(--b3-theme-error);
+            color: var(--b3-theme-on-error);
+            // transition: .1s;
+            outline-color: transparent;
+        }
+    }
+
+    @content;
+}

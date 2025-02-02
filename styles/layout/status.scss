@@ -12,7 +12,7 @@
     overflow: hidden;
     z-index: 3; // 等于数据库 sticky header，不会其被覆盖
 
-    @include border-or-not($border: false);
+    @include theme-variant-border($border: false);
 
     .toolbar__item {
         height: 26px;

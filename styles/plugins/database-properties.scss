@@ -1,4 +1,5 @@
-@use "../base" as *;
+@use '../base' as *;
+@use '../protyle/utils' as *;
 
 .plugin-database-properties-wrapper {
     .b3-chip--middle {

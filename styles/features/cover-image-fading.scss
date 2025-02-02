@@ -77,7 +77,7 @@ body:not(.body-asri--mobile) {
                     border-radius: 99px;
                     mix-blend-mode: luminosity;
 
-                    @include border-or-not($border: false);
+                    @include theme-variant-border($border: false);
 
                     &:hover {
                         @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
