@@ -13,9 +13,16 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-![new palettes](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/asri-palettes.png)
+### v3.3.1
+
+* Added heading element highlight color for "Everbliss".
+* Fixed content display issues when database columns were fixed, as well as checkbox positioning issues.
+* Fixed the issue where the database primary key copy button was not displayed.
+* Fixed the issue where some emojis could not be displayed correctly on Windows.
 
 ### v3.3.0
+
+![new palettes](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/asri-palettes.png)
 
 * Added Spring Festival theme color schemes: Everbliss, Auriflow
 * Supported separate theme color configurations for light and dark modes
@@ -25,13 +32,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ### ...
 
-### v3.0.0
-
-![custom theme color preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/theme-config_en_US.gif)
-
-🎨 Refactored theme colors using a perceptual lightness-based color system, added supports for seamless adjustment of global color tones which can also follow system accent color (`#Windows` `#macOS`), providing a fully personalized note-taking experience. (Check *Theme Configurations* below for configuration options information)
-
-Check all updates [here](./CHANGELOG.md).
+Check all updates [here](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md).
 
 ## Theme Features
 
@@ -89,7 +90,8 @@ Check all updates [here](./CHANGELOG.md).
 ## Theme Configurations
 
 ### 🌈 Customizing Theme Colors
-![asri config menu](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/asri-config-menu_en_US_v2.png)
+
+![custom theme color preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/theme-config_en_US.gif)
 
 Click on the `Appearance Mode` icon in the top right corner to open the Asri theme configuration menu and customize the theme colors:
 

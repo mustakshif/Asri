@@ -1,3 +1,19 @@
+### v3.3.1
+
+* 为「岁禧」添加标题元素强调色
+* 修复数据库列固定时的内容显示问题，以及复选框定位问题
+* 修复数据库主键复制按钮不显示的问题
+* 修复 Windows 端部分 emoji 无法正确显示的问题
+
+<br />
+
+* Added heading element highlight color for "Everbliss".
+* Fixed content display issues when database columns were fixed, as well as checkbox positioning issues.
+* Fixed the issue where the database primary key copy button was not displayed.
+* Fixed the issue where some emojis could not be displayed correctly on Windows.
+
+---
+
 ### v3.3.0
 
 * 新增春节主题配色方案：岁禧、鎏金

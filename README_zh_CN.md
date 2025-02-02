@@ -13,9 +13,16 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
-![new palettes](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/asri-palettes.png)
+### v3.3.1
+
+* 为「岁禧」添加标题元素强调色
+* 修复数据库列固定时的内容显示问题，以及复选框定位问题
+* 修复数据库主键复制按钮不显示的问题
+* 修复 Windows 端部分 emoji 无法正确显示的问题
 
 ### v3.3.0
+
+![new palettes](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/asri-palettes.png)
 
 * 新增春节主题配色方案：岁禧、鎏金
 * 支持亮暗色模式分设不同主题色配置
@@ -25,13 +32,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### ...
 
-### v3.0.0
-
-![custom theme color preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/theme-config_zh_CN.gif)
-
-🎨 采用基于感知亮度的色彩系统重构主题配色，全局色调支持无级调节，也可跟随系统强调色（`#Windows` `#macOS`），带来完全个性化的笔记体验。（配置选项信息见下方「主题配置」一节）
-
-点击[这里](./CHANGELOG.md)查看全部更新日志。
+点击[这里](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md)查看全部更新日志。
 
 ## 主题特性
 
@@ -89,7 +90,8 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 ## 主题配置
 
 ### 🌈 自定义主题色
-![asri config menu](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/asri-config-menu_zh_CN_v2.png)
+
+![custom theme color preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/theme-config_zh_CN.gif)
 
 点击右上角 `外观模式` 图标即可弹出 Asri 主题配置菜单，定制主题配色。
 
