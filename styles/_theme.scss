@@ -1,7 +1,7 @@
 @use './base' as *;
 
 :root {
-    --b3-border-radius-b: 16px; // 对话框圆角
+    --b3-border-radius-b: 16px; // SiYuan 定义的对话框圆角
 
     &,
     &:lang(zh_CN) {
@@ -19,7 +19,7 @@
     }
 
     &:lang(ja_JP) {
-        --b3-font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+        --b3-font-family: ui-sans-serif, -apple-system, "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
     }
 
     // interpolate-size: allow-keywords;  // https://developer.chrome.com/docs/css-ui/animate-to-height-auto/
