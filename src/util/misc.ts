@@ -229,3 +229,15 @@ export async function querySelectorAllAsync(selector: string, scope: Document | 
     }
     // throw new Error('querySelectorAllPromise failed');
 }
+
+export async function isProtyle(docID?: string): Promise<boolean> {
+    if (!docID) {
+        // 获取当前聚焦的文档
+        const focusedDocTab = await querySelectorAsync('.layout__center .layout-tab-bar .item--focus');
+        docID = focusedDocTab?.getAttribute('data-id') ?? undefined;
+    };
+    const curProtyle = document.querySelector(`.layout__center .layout-tab-container>[data-id="${docID}"]:not(.fn__none)`) as HTMLElement;
+    // console.log(docID, curProtyle);
+    if (!curProtyle) return true;
+    return curProtyle.classList.contains('protyle');
+}

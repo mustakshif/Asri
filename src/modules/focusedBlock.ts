@@ -39,6 +39,7 @@ export function selectionChangeCallback(e: Event) {
         const curBlockType = curBlock.getAttribute('data-type');
 
         removeFocusedBlockClass();
+
         if (!curBlockType
             || ['NodeAttributeView','NodeCodeBlock','NodeList', 'NodeHTMLBlock'].includes(curBlockType)
         ) return;

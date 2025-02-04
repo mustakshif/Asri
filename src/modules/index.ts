@@ -1,6 +1,6 @@
 import { AsriEventListener } from "../util/eventListeners";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/interfaceState";
-import { debounce, querySelectorAsync } from "../util/misc";
+import { debounce, isProtyle, querySelectorAsync } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
 import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
@@ -10,6 +10,7 @@ import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAn
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { removeFocusedBlockClass as removeFocusedBlockClassName, selectionChangeCallback } from "./focusedBlock";
 import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstition } from "./modeTransition";
+import { removeProtyleStatusClassName, toggleProtyleStatus } from "./protyleStatus";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
 import { avoidOverlappingWithStatus, debouncedStatusPosition, removeStatusStyles, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
@@ -37,6 +38,7 @@ export async function loadAsriJSModules() {
     setStatusHeightVar();
     // startDefaultTranstition(loadThemePalette); 
     loadThemePalette(); // https://github.com/mustakshif/Asri/issues/85
+    toggleProtyleStatus();
     await loadI18n();
     if (!env.isMobile) {
         await updateWndEls();
@@ -71,6 +73,7 @@ export async function unloadAsriJSModules(completeUnload = true) {
         removeIndentGuidesFormatClassName();
         removeProtyleSpacings();
         removeDockbClassName();
+        removeProtyleStatusClassName();
         removeFocusedBlockClassName();
         unloadAvoidOverlappingWithStatus();
         removeStatusStyles();
@@ -151,14 +154,38 @@ async function updateStyles(e?: Event | KeyboardEvent) {
     }
 }
 
-function globalClassNameMoCallback(mutationList: MutationRecord[], observer: MutationObserver) {
+async function globalClassNameMoCallback(mutationList: MutationRecord[], observer: MutationObserver) {
     for (let mutation of mutationList) {
-        if ((mutation.target as HTMLElement).classList.contains('body--blur')) return; // ⚠️ ignore constant classname change when app window blurs which cause unnecessary re-render and high cpu usage.
+        const target = mutation.target as HTMLElement;
+
+        if (target.classList.contains('body--blur')) return; // ⚠️ ignore constant classname change when app window blurs which cause unnecessary re-render and high cpu usage.
         // console.log(mutation.target, mutation.type, mutation.attributeName, mutation.oldValue);
-        if ((mutation.target as HTMLElement).classList.contains('b3-list-item--focus')) {
+
+        // filetree list item switch
+        if (target.classList.contains('b3-list-item--focus')) {
             debouncedFormatIndentGuidesForFocusedItems();
             // debouncedFormatProtyleWithBgImageOnly();
             // console.log('focus');
+        }
+
+        // tab switch
+        if (target.classList.contains('item--focus')) {
+            
+            const docId = target.getAttribute('data-id') ?? undefined;
+            // if (!docId) return;
+            toggleProtyleStatus(docId);
+        }
+
+        if (target.classList.contains('layout__wnd--active')) {
+            // console.log(target, mutation.type, mutation.attributeName, mutation.oldValue)
+            const targetDoc = target.querySelector('.layout__center .layout-tab-container>[data-id]:not(.fn__none)')
+            // console.log(targetDoc)
+
+            if (!targetDoc) return;
+
+            const docId = targetDoc.getAttribute('data-id') ?? undefined;
+            // if (!docId) return;
+            toggleProtyleStatus(docId);
         }
     }
 }
@@ -207,5 +234,5 @@ const debouncedHandleWinResizeEnd = debounce(() => {
 
 function themeUpdateCallback(e: MediaQueryListEvent) {
     // console.log('系统主题变化:', e.matches ? '暗色' : '亮色')
-    startFadeInFadeOutTranstition(600,() => { }, 200);
+    startFadeInFadeOutTranstition(600, () => { }, 200);
 }

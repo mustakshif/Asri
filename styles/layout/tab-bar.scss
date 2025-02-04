@@ -120,7 +120,7 @@
             }
         }
 
-        &:not(.item--pin, .item--focus) {
+        &:not(.item--pin, .item--full, .item--focus) {
             .item__text {
                 transform: translateX(12px);
             }
@@ -135,7 +135,7 @@
             .item__text,
             :is(.item__icon, .item__graphic),
             :is(.item__icon, .item__graphic)+.item__text {
-                transform: translateX(0);
+                transform: none;
             }
         }
 

@@ -12,7 +12,9 @@ export async function statusPosition() {
     if (!doms.status) await querySelectorAsync('#status');
     if (!await hasDockb()) {
         function setStatusTransform(x: number, y: number) {
-            doms.status!.style.transform = `translate(${x}px, ${y}px)`;
+            // doms.status!.style.transform = `translate(${x}px, ${y}px)`;
+            doms.status!.style.setProperty('--asri-status-transform-x', `${x}px`);
+            doms.status!.style.setProperty('--asri-status-transform-y', `${y}px`);
         }
 
         let layoutCenter = (doms.layouts || await querySelectorAsync('#layouts'))!.querySelector('.layout__center');
@@ -41,7 +43,8 @@ export async function statusPosition() {
         }
     } else {
         doms.status?.style.removeProperty('max-width');
-        doms.status?.style.removeProperty('transform');
+        doms.status?.style.removeProperty('--asri-status-transform-x');
+        doms.status?.style.removeProperty('--asri-status-transform-y');
     }
 
     // if (!hasDockb() && !isLayoutDockHidden('b')) {
@@ -60,8 +63,9 @@ export function setStatusHeightVar() {
 export function removeStatusStyles() {
     document.body.style.removeProperty('--status-height');
     setTimeout(() => {
-        document.getElementById('status')?.style.removeProperty('max-width');
-        document.getElementById('status')?.style.removeProperty('transform');
+        doms.status?.style.removeProperty('max-width');
+        doms.status?.style.removeProperty('--asri-status-transform-x');
+        doms.status?.style.removeProperty('--asri-status-transform-y');
     }, 200);
 }
 

@@ -1,6 +1,9 @@
 @use '../base' as *;
 
 @mixin floating-status {
+    --asri-status-transform-x: 0px;
+    --asri-status-transform-y: 0px;
+    --status-position-transform: translate(var(--asri-status-transform-x), var(--asri-status-transform-y));
     background-color: var(--b3-theme-surface);
     right: 8px !important; // 否则dock和面板隐藏时会被内联样式覆盖
     bottom: -4px;
@@ -11,6 +14,8 @@
     margin: 0 0 12px 0;
     overflow: hidden;
     z-index: 3; // 等于数据库 sticky header，不会其被覆盖
+    position: fixed;
+    transform: var(--status-position-transform);
 
     @include theme-variant-border($border: false);
 
@@ -119,6 +124,73 @@
             }
         }
     }
+
+    // 非 protyle 自动隐藏
+    transform-origin: calc(100% + var(--asri-status-transform-x)) 50%;
+
+    &.asri--non-protyle-status {
+        >div:not(#barDock, #statusHelp) {
+            display: none;
+        }
+
+        // #barDock {
+        //     padding: 3px 1px;
+        // }
+    }
+
+    &.asri--non-protyle-status {
+        animation: statusScaling1 .5s var(--asri-ease-spring-3);
+
+        >div {
+            animation: statusItemFadeIn1 .4s var(--asri-ease-out-3);
+        }
+    }
+
+    animation: statusScaling2 .5s var(--asri-ease-spring-3);
+
+    >div {
+        animation: statusItemFadeIn2 .4s var(--asri-ease-out-3);
+    }
+
+    @keyframes statusScaling1 {
+        0% {
+            transform: scaleX(2) var(--status-position-transform);
+        }
+
+        100% {
+            transform: var(--status-position-transform);
+        }
+    }
+
+    @keyframes statusScaling2 {
+        0% {
+            transform: scaleX(.6) var(--status-position-transform);
+        }
+
+        100% {
+            transform: var(--status-position-transform);
+        }
+    }
+
+    @keyframes statusItemFadeIn1 {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes statusItemFadeIn2 {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
 }
 
 #status {
@@ -126,10 +198,13 @@
     position: fixed;
 }
 
-#dockBottom.fn__none:not(.has-layout-dockb-float)~#status {
-    body:not(.body-asri--mobile) & {
-        @include floating-status();
-    }
+// .has-dockb~.status {
+//     position: fixed;
+// }
+
+body:not(.body-asri--mobile) #dockBottom.fn__none:not(.has-layout-dockb-float)~#status,
+body.body--window #status {
+    @include floating-status();
 }
 
 #dockBottom:not(.fn__none)~#status,
@@ -192,11 +267,7 @@
     border-top-width: 1px;
 }
 
-body.body--window #status {
-    @include floating-status();
-    padding-right: 0 !important;
-}
-
+body.body--window #status,
 .body-asri--readOnly #status {
     padding-right: 0 !important;
 }
