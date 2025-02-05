@@ -21,10 +21,10 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
         .block__icons {
             transition: var(--icons2dots-dur) var(--icons2dots-timing-func) var(--icons2dots-delay);
 
-            // dots
             height: 20px;
             min-height: unset;
 
+            // dots
             &::before {
                 content: '';
                 width: 4px;

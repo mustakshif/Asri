@@ -126,35 +126,48 @@
     }
 
     // 非 protyle 自动隐藏
-    transform-origin: calc(100% + var(--asri-status-transform-x)) 50%;
+    transform-origin: calc(100% + var(--asri-status-transform-x)) 100%;
 
-    &.asri--non-protyle-status {
-        >div:not(#barDock, #statusHelp) {
+    &.asri--non-protyle-status:not(:hover) {
+
+        >div {
             display: none;
         }
 
-        // #barDock {
-        //     padding: 3px 1px;
-        // }
-    }
+        height: 16px;
+        width: 32px;
+        padding-right: 0;
+        animation: statusShrink .5s var(--asri-ease-spring-3);
 
-    &.asri--non-protyle-status {
-        animation: statusScaling1 .5s var(--asri-ease-spring-3);
+        --dots-clr: var(--b3-theme-on-surface);
 
-        >div {
-            animation: statusItemFadeIn1 .4s var(--asri-ease-out-3);
+        &::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background-color: var(--dots-clr);
+            box-shadow: 8px 0 0 0 var(--dots-clr), 16px 0 0 0 var(--dots-clr);
+            border-radius: 50%;
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-10px);
+            transform-origin: top center;
+            // transition: var(--icons2dots-dur) var(--icons2dots-timing-func) var(--icons2dots-delay);
+            animation: statusDotsFadeIn .4s var(--asri-ease-out-3);
+            opacity: .5;
         }
     }
 
-    animation: statusScaling2 .5s var(--asri-ease-spring-3);
+    animation: statusExpand .5s var(--asri-ease-spring-3);
 
     >div {
-        animation: statusItemFadeIn2 .4s var(--asri-ease-out-3);
+        animation: statusItemFadeIn .4s var(--asri-ease-out-3);
     }
 
-    @keyframes statusScaling1 {
+    @keyframes statusShrink {
         0% {
-            transform: scaleX(2) var(--status-position-transform);
+            transform: scaleX(2.5) scaleY(calc(26 / 16)) var(--status-position-transform);
         }
 
         100% {
@@ -162,9 +175,9 @@
         }
     }
 
-    @keyframes statusScaling2 {
+    @keyframes statusExpand {
         0% {
-            transform: scaleX(.6) var(--status-position-transform);
+            transform: scaleX(.4) scaleY(calc(16 / 26)) var(--status-position-transform);
         }
 
         100% {
@@ -172,17 +185,17 @@
         }
     }
 
-    @keyframes statusItemFadeIn1 {
+    @keyframes statusDotsFadeIn {
         0% {
             opacity: 0;
         }
 
         100% {
-            opacity: 1;
+            opacity: .5;
         }
     }
 
-    @keyframes statusItemFadeIn2 {
+    @keyframes statusItemFadeIn {
         0% {
             opacity: 0;
         }
