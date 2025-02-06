@@ -219,6 +219,10 @@
         }
     }
 
+    .protyle-action {
+        contain: strict; // avoid unnecessary mousewheel event listener in other blocks (check the render tab of the inspector)
+    }
+
     .li.protyle-task--done {
         >.protyle-action--task {
             @include bouncy-check-box(true);

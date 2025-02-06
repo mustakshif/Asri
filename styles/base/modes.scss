@@ -51,7 +51,7 @@
     // border-color: transparent;
 
     @if $outline-light ==true {
-        outline: $outline-width solid #fff4;
+        outline: $outline-width solid #fff4; // outline 会导致容器整体频繁绘制
         outline-offset: $outline-width * -1;
     }
 

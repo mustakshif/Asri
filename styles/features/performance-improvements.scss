@@ -1,17 +1,14 @@
 // no effect
 
-.layout__center .protyle-content {
-    contain: content;
-}
+// .layout__center .protyle-content {
+//     contain: content;
+// }
 
-.file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag, .sy__backlink) {
-    contain: strict;
-}
+// .file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag, .sy__backlink) {
+//     contain: strict;
+// }
 
-.protyle-top {
-    content-visibility: auto;
-}
-
-#status {
-    contain: content;
-}
+// .protyle-top {
+//     content-visibility: auto;
+//     contain: content;
+// }

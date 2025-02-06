@@ -100,6 +100,8 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
 
     .sy__backlink {
         --exaggerate-factor: 1.5;
+        --icons2dots-dur: .5s;
+        --dots2icons-dur: .4s;
 
         >:nth-child(2 of .block__icons) {
             position: relative;
