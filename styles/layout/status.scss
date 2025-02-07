@@ -153,7 +153,9 @@
             transform: translateX(-10px);
             transform-origin: top center;
             // transition: var(--icons2dots-dur) var(--icons2dots-timing-func) var(--icons2dots-delay);
-            animation: statusDotsFadeIn .4s var(--asri-ease-out-3);
+            animation:
+                statusDotsFadeIn .4s var(--asri-ease-out-3),
+                statusDotsTransform .5s var(--asri-ease-spring-3);
             opacity: .5;
         }
     }
@@ -161,7 +163,9 @@
     animation: statusExpand .4s var(--asri-ease-spring-2);
 
     >div {
-        animation: statusItemFadeIn .3s var(--asri-ease-out-3);
+        animation:
+            statusItemFadeIn .3s var(--asri-ease-out-3),
+            statusItemTransform .5s var(--asri-ease-spring-3);
     }
 
     @keyframes statusShrink {
@@ -194,6 +198,16 @@
         }
     }
 
+    @keyframes statusDotsTransform {
+        0% {
+            transform: translateX(-25px);
+        }
+
+        100% {
+            transform: translateX(-10px);
+        }
+    }
+
     @keyframes statusItemFadeIn {
         0% {
             opacity: 0;
@@ -201,6 +215,16 @@
 
         100% {
             opacity: 1;
+        }
+    }
+
+    @keyframes statusItemTransform {
+        0% {
+            transform: translateX(30px);
+        }
+
+        100% {
+            transform: translateX(0);
         }
     }
 }

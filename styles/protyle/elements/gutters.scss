@@ -56,23 +56,4 @@
             // filter: none;
         }
     }
-
-    @keyframes protyle-toolbar-appear {
-
-        // 避免开始时元素大小计算错误导致定位超出视口
-        0%,
-        10% {
-            opacity: 0;
-            transform: none;
-        }
-
-        10% {
-            transform: scale(.9);
-        }
-
-        100% {
-            opacity: 1;
-            transform: none;
-        }
-    }
 }

@@ -111,8 +111,6 @@
             // border-radius: 7px;
             @include theme-variant-color(background-color, list-hover, 0.12, 0.15);
             // box-shadow: 0 0 0 1.2px var(--tab-border-clr) inset;
-            // background-color: #0000;
-
             animation: click 0.2s;
 
             &::after {

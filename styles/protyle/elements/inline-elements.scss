@@ -225,6 +225,7 @@
         transition-property: background-color, text-decoration-color, box-shadow, color, border-radius;
         transition-duration: .15s;
         // transition: .15s;
+        -webkit-box-decoration-break: clone;
         box-decoration-break: clone;
         text-decoration-color: #FFCC02;
         text-decoration-thickness: $text-underline-thickness;
