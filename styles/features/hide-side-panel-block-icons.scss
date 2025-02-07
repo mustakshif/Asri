@@ -108,3 +108,107 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
         }
     }
 }
+
+// 方案二，减少局部重绘 
+
+// .file-tree .block__icons {
+//     app-region: no-drag;
+// }
+
+// // .sy__globalGraph, .sy__graph // 导致关系图闪烁
+// .file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag) {
+//     position: relative;
+
+//     .block__icons {
+//         position: absolute;
+//         z-index: 1;
+//         background-color: transparent;
+//         // border: 1px solid var(--b3-border-color-trans);
+//         transition: .2s;
+//         transition-property: background-color;
+//         top: 4px;
+//         left: 0;
+//         right: 0;
+//         margin: auto;
+//         width: fit-content;
+//         min-height: 20px;
+//         transform-origin: 50% 0%;
+//         // min-width: 20px;
+//         animation: blockIconsShrink .5s var(--asri-ease-spring-3);
+//         border-radius: 99px;
+//         // backdrop-filter: blur(20px);
+
+//         --dots-clr: #fff5;
+
+//         ~.fn__flex-1 {
+//             padding-top: 20px !important;
+//         }
+
+//         >:where(div, span) {
+//             content-visibility: hidden;
+//         }
+
+//         &::before {
+//             content: '';
+//             width: 4px;
+//             height: 4px;
+//             background-color: var(--dots-clr);
+//             box-shadow: 8px 0 0 0 var(--dots-clr), 16px 0 0 0 var(--dots-clr), 24px 0 0 0 var(--dots-clr);
+//             border-radius: 50%;
+//             position: absolute;
+//             top: 10px;
+//             left: 50%;
+//             transform: translateX(-12px);
+//             transform-origin: top center;
+//             transition: var(--icons2dots-dur) var(--icons2dots-timing-func) var(--icons2dots-delay);
+//         }
+
+//         &:hover,
+//         &:focus-within {
+//             min-height: 42px;
+//             animation: blockIconsExpand .5s var(--asri-ease-spring-3);
+//             backdrop-filter: blur(20px);
+//             background-color: rgb(from var(--b3-theme-surface) r g b /.8);
+//             border: 1px solid var(--b3-border-color-trans);
+
+//             >:where(div, span) {
+//                 content-visibility: visible;
+//             }
+
+//             &::before{
+//                 visibility: hidden;
+//             }
+//         }
+//     }
+
+//     @keyframes blockIconsShrink {
+//         0% {
+//             transform: scale(2, calc(42/20));
+//         }
+
+//         100% {
+//             transform: none;
+//         }
+//     }
+
+//     @keyframes blockIconsExpand {
+//         0% {
+//             transform: scale(.5, calc(20/42));
+//             opacity: 0;
+//         }
+
+//         90%,100% {
+//             opacity: 1;
+//         }
+
+//         100% {
+//             transform: none;
+//         }
+//     }
+
+//     // .sy__backlink {
+//     //     >:nth-child(2 of .block__icons) {
+//     //         position: relative;
+//     //     }
+//     // }
+// }

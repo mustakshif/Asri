@@ -44,9 +44,9 @@
         &~.fn__flex-1 {
             margin-bottom: 0 !important;
 
-            &:not(.graph__svg, .backlinkList, .backlinkMList) {
-                padding: 0 2px !important; // 覆盖内联样式
-            }
+            // &:not(.graph__svg, .backlinkList, .backlinkMList) {
+            //     padding: 0 2px !important; // 覆盖内联样式
+            // }
         }
     }
 
