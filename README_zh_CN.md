@@ -13,6 +13,11 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.3.2
+
+* [新增：展示非笔记文档页面时底部状态栏自动收缩](https://github.com/mustakshif/Asri/issues/107)
+* 调整文档标题文字色至强调色
+
 ### v3.3.1
 
 * 为「岁禧」添加标题元素强调色

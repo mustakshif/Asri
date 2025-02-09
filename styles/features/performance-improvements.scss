@@ -8,7 +8,11 @@
 //     contain: strict;
 // }
 
-// .protyle-top {
-//     content-visibility: auto;
-//     contain: content;
-// }
+.protyle-top {
+    // content-visibility: auto;
+    contain: content;
+}
+
+.layout__dockl, .layout__dockr {
+    contain: content;
+}

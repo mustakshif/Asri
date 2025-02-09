@@ -13,6 +13,11 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.3.2
+
+* [Added: Bottom status bar automatically collapses when displaying non-note document pages](https://github.com/mustakshif/Asri/issues/107)
+* Adjusted the document title text color to the accent color
+
 ### v3.3.1
 
 * Added heading element highlight color for "Everbliss".
