@@ -4,7 +4,6 @@
 body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
     .file-tree .block__icons {
         app-region: no-drag;
-        contain: strict;
     }
 
     // .sy__globalGraph, .sy__graph // 导致关系图闪烁
