@@ -219,8 +219,8 @@
         }
     }
 
-    .protyle-action {
-        contain: content; // avoid unnecessary mousewheel event listener in other blocks (check the render tab of the inspector)
+    .protyle-action--task { // fix https://github.com/mustakshif/Asri/issues/147
+        contain: strict; // avoid unnecessary mousewheel event listener in other blocks (check the render tab of the inspector) 
     }
 
     .li.protyle-task--done {

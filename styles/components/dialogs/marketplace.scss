@@ -93,6 +93,10 @@
             //         transform: translateX(-20px);
             //     }
             // }
+
+            .block__icon[target]+.block__icon {
+                margin-left: auto;
+            }
         }
 
         // 已下载卡片容器
@@ -142,7 +146,7 @@
                     >[data-type="setting"].fn__none~[data-type="uninstall"],
                     >[data-type="open"]:first-child {
                         margin-left: auto;
-                        justify-content: end;
+                        // justify-content: end;
                         // flex-grow: 1; // 鼠标移至空白区域时也会激活图标
 
                         // tooltip
