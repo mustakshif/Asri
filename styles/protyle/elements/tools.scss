@@ -56,7 +56,7 @@
     // 普通工具条（嵌入入块等）
     @include theme-variant-border($border: false);
 
-    [data-node-id].render-node:hover>& {
+    .protyle-wysiwyg [data-node-id].render-node:hover>& {
         opacity: 1;
     }
 }

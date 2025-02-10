@@ -220,7 +220,7 @@
     }
 
     .protyle-action {
-        contain: strict; // avoid unnecessary mousewheel event listener in other blocks (check the render tab of the inspector)
+        contain: content; // avoid unnecessary mousewheel event listener in other blocks (check the render tab of the inspector)
     }
 
     .li.protyle-task--done {

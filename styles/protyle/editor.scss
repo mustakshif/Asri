@@ -24,7 +24,7 @@
     [data-node-id] {
         border-radius: 10px;
 
-        &[style*="--b3-font-background1"] {
+        &[style*="--b3-font-background1)"] { // 避免选择到 background10-13
             outline: .5px solid var(--b3-border-color-trans);
             // outline-offset: -1.5px;
         }
