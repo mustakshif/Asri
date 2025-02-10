@@ -1,3 +1,15 @@
+### v3.3.3
+
+* [修复代码块工具条不显示的问题](https://github.com/mustakshif/Asri/blob/main/theme.css)
+* 修复嵌入块工具条透明度问题
+
+<br />
+
+* [Fixed the issue where the code block toolbar was not displaying](https://github.com/mustakshif/Asri/blob/main/theme.css)
+* Fixed the transparency issue with the embedded block toolbar
+
+---
+
 ### v3.3.2
 
 * [新增：展示非笔记文档页面时底部状态栏自动收缩](https://github.com/mustakshif/Asri/issues/107)

@@ -13,27 +13,15 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.3.3
+
+* [Fixed the issue where the code block toolbar was not displaying](https://github.com/mustakshif/Asri/blob/main/theme.css)
+* Fixed the transparency issue with the embedded block toolbar
+
 ### v3.3.2
 
 * [Added: Bottom status bar automatically collapses when displaying non-note document pages](https://github.com/mustakshif/Asri/issues/107)
 * Adjusted the document title text color to the accent color
-
-### v3.3.1
-
-* Added heading element highlight color for "Everbliss".
-* Fixed content display issues when database columns were fixed, as well as checkbox positioning issues.
-* Fixed the issue where the database primary key copy button was not displayed.
-* Fixed the issue where some emojis could not be displayed correctly on Windows.
-
-### v3.3.0
-
-![new palettes](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/asri-palettes.png)
-
-* Added Spring Festival theme color schemes: Everbliss, Auriflow
-* Supported separate theme color configurations for light and dark modes
-* Modified the display of document property styles, now placed below the document title
-* [Adjusted inline memo styles](https://github.com/mustakshif/Asri/issues/141)
-* Fixed the issue where icons did not center when certain types of tabs lost focus
 
 ### ...
 

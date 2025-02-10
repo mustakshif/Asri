@@ -13,27 +13,15 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.3.3
+
+* [修复代码块工具条不显示的问题](https://github.com/mustakshif/Asri/blob/main/theme.css)
+* 修复嵌入块工具条透明度问题
+
 ### v3.3.2
 
 * [新增：展示非笔记文档页面时底部状态栏自动收缩](https://github.com/mustakshif/Asri/issues/107)
 * 调整文档标题文字色至强调色
-
-### v3.3.1
-
-* 为「岁禧」添加标题元素强调色
-* 修复数据库列固定时的内容显示问题，以及复选框定位问题
-* 修复数据库主键复制按钮不显示的问题
-* 修复 Windows 端部分 emoji 无法正确显示的问题
-
-### v3.3.0
-
-![new palettes](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/asri-palettes.png)
-
-* 新增春节主题配色方案：岁禧、鎏金
-* 支持亮暗色模式分设不同主题色配置
-* 修改文档属性样式显示，现置于文档标题下方
-* [调整行内备注样式](https://github.com/mustakshif/Asri/issues/141)
-* 修复部分类型的页签失焦时图标不向中位移的问题
 
 ### ...
 
