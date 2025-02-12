@@ -13,6 +13,11 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.3.4
+
+* 修复思源 v3.1.21 列表项前圆点、块属性错位的问题
+* 修复待更新集市卡片中的按钮对其方式不统一的问题
+
 ### v3.3.3
 
 * [修复代码块工具条不显示的问题](https://github.com/mustakshif/Asri/blob/main/theme.css)

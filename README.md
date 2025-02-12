@@ -13,6 +13,11 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.3.4
+
+* Fixed the misalignment of bullet points and block attributes in list items in SiYuan v3.1.21.
+* Fixed the inconsistent alignment of buttons in the pending update marketplace cards.
+
 ### v3.3.3
 
 * [Fixed the issue where the code block toolbar was not displaying](https://github.com/mustakshif/Asri/blob/main/theme.css)
