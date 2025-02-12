@@ -262,3 +262,14 @@
         }
     }
 }
+
+// @mixin inline-background {
+//     span:not([data-type~=kbd])[style*="--b3-font-background"] {
+//         background-color: transparent !important;
+//         @for $i from 1 through 13 {
+//             &[style*="--b3-font-background#{$i})"] {
+//                 background: linear-gradient(#0000 50%, var(--b3-font-background#{$i}) 50%);
+//             }
+//         }
+//     }
+// }

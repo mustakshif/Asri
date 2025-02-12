@@ -221,3 +221,7 @@
         top: calc(50% - 12px);
     }
 }
+
+.protyle-wysiwyg [data-node-id].li > .protyle-attr {
+    line-height: unset !important;
+}

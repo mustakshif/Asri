@@ -126,15 +126,24 @@ $li-types: ".li[data-subtype=o]", ".li[data-subtype=u]";
     }
 
     // folded list
-    .li[fold="1"]:not([data-subtype=t]) {
-        .protyle-action {
-            &::after {
-                transform: none;
-                outline: .25em solid rgb(from var(--b3-theme-on-background) r g b / .1);
-            }
+    .li[fold="1"] {
+        &:not([data-subtype=t]) {
+            .protyle-action {
+                &::after {
+                    transform: none;
+                    // outline: .25em solid rgb(from var(--b3-theme-on-background) r g b / .1);
+                    box-shadow: 0 0 0 .25em rgb(from var(--b3-theme-on-background) r g b / .1);
+                }
 
-            &:hover::after {
-                background-color: rgb(from var(--b3-theme-on-background) r g b / .1);
+                &:hover::after {
+                    background-color: rgb(from var(--b3-theme-on-background) r g b / .1);
+                }
+            }
+        }
+
+        &[data-subtype=u] {
+            .protyle-action::after {
+                box-shadow: none;
             }
         }
     }
