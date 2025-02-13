@@ -134,7 +134,7 @@
 }
 
 @mixin code-block {
-    :is(.code-block, code) {
+    :is(.code-block, code.hljs) {
 
         // background-color: var(--b3-theme-surface-light);
         [data-theme-mode=light] & {

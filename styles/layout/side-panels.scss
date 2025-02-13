@@ -269,7 +269,7 @@
             // top: 0;
             opacity: 0.5;
             z-index: 0;
-            transition: .2s color;
+            transition: color .2s, opacity .2s;
             font-family: SF Pro;
             font-size: calc(16em / 14);
 
