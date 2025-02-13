@@ -136,7 +136,7 @@ body:not(.body-asri--mobile, .body--window) {
     }
 
     #dockRight::before {
-        right: 0;
+        right: 1px; // fix https://github.com/mustakshif/Asri/issues/149
     }
 
     &.body-asri--mac {
