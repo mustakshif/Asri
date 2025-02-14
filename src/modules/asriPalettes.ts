@@ -1,4 +1,3 @@
-// import htmlString from './menuHTML/index.html';
 import { getFile, putFile } from '../util/api';
 import { remote } from '../util/electron';
 import { AsriEventListener } from "../util/eventListeners";
@@ -206,11 +205,11 @@ export async function createBarModeMenuItems(e: Event) {
     colorPicker = pickColorBtn!.querySelector('input') as HTMLInputElement | null;
 
     if (!followSysAccentBtn || !pickColorBtn || !asriChromaSlider || !colorPicker) return;
-    updateMenuItems();
-    handleAsriConfigMenuItemClick();
+    initMenuItems();
+    initAsriConfigMenuItemClick();
 }
 
-function updateMenuItems() {
+function initMenuItems() {
     // check local configs to determine the initial state of the menu items
     const asriChromaBtn = document.getElementById('asriChroma');
 
@@ -237,7 +236,7 @@ function updateMenuItems() {
     }
 }
 
-function handleAsriConfigMenuItemClick() {
+function initAsriConfigMenuItemClick() {
     if (!followSysAccentBtn || !pickColorBtn || !asriChromaSlider || !colorPicker) return;
 
     // handle click events
