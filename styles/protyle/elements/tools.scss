@@ -130,7 +130,7 @@
 
 //文字格式工具条
 .protyle-toolbar {
-    animation: protyle-toolbar-appear .5s var(--asri-ease-spring-3);
+    animation: protyle-toolbar-appear .6s var(--asri-ease-spring-3);
     border: none;
     border-radius: 40px;
     padding: 4px;
@@ -181,7 +181,7 @@
         }
 
         10% {
-            transform: scale(.9);
+            transform: scale(.92);
         }
 
         90%, 100% {

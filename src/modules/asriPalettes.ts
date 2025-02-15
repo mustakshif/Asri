@@ -29,14 +29,10 @@ let sysAccentColor: string;
 let isSysAccentGray = false, isUserAccentGray = false;
 let followSysAccentBtn: AsriDomsExtended, pickColorBtn: AsriDomsExtended, asriChromaSlider: HTMLInputElement | null, colorPicker: HTMLInputElement | null;
 export let followSysAccentColor = false;
-
-function updateThemeMode() {
-    return window.siyuan.config.appearance.mode === 0 ? 'light' : 'dark'
-}
 export async function loadThemePalette() {
     // if (env.isIOSApp) return; // fix app crash
     // i18n = await loadI18n();
-    curMode = updateThemeMode();
+    curMode = env.appSchemeMode;
     getAsriConfigs().then(() => {
         if (!env.supportOklch) return;
 

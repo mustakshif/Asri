@@ -51,6 +51,6 @@ export const environment = {
     lang: window.siyuan.config.lang as string,
     supportOklch: CSS.supports('color', 'oklch(from red calc(l * 0.5) 0 h)'),
     isReadOnly: window.siyuan.config.readonly as boolean,
-    appSchemeMode: window.siyuan.config.appearance.mode > 0 ? 'dark' : 'light',
+    appSchemeMode: window.siyuan.config.appearance.mode > 0 ? 'dark' : 'light' as 'dark' | 'light',
     isSafari: /^((?!chrome|android).)*safari/i.test(ua)
 };

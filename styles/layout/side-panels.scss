@@ -1,7 +1,8 @@
 @use '../base' as *;
 @use '../components/utils' as *;
 
-@mixin layout-tab-container-contents {
+// 侧栏面板总体样式
+.file-tree {
     .block__icons {
 
         .block__logo {
@@ -127,8 +128,6 @@
     .layout-tab-container {
         // background-color: transparent;
         background-color: var(--b3-theme-surface);
-
-        @include layout-tab-container-contents;
     }
 
     // 浮动布局
@@ -166,8 +165,6 @@
     .layout-tab-container {
         // background-color: transparent;
         background-color: var(--b3-theme-surface);
-
-        @include layout-tab-container-contents;
     }
 
     &.layout--float {
@@ -310,6 +307,12 @@
 }
 
 .sy__file {
+
+    .b3-list--background {
+        >.b3-list-item {
+            font-weight: 500;            
+        }
+    }
 
     // 关闭的笔记本
     >.b3-list {
@@ -462,14 +465,6 @@
 //         }
 //     }
 // }
-
-// -> js
-
-// 作为页签打开时
-.layout__center {
-    @include layout-tab-container-contents
-}
-
 
 // 列表展开动画
 .file-tree__sliderDown {
