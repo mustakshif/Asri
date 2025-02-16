@@ -1,3 +1,23 @@
+### v3.3.5
+
+* 调整行内代码背景色
+* 微调文档树笔记本条目字重
+* 微调文字工具条动画时长
+* 修复思源 v3.1.22 滑动块样式异常的问题
+* [修复 Linux 端右侧停靠栏边框线超出顶栏的问题](https://github.com/mustakshif/Asri/issues/149)
+* [修复反链面板块标不显示的问题](https://github.com/mustakshif/Asri/issues/150)
+
+<br />
+
+* Adjusted the background color of inline code.
+* Fine-tuned the font weight of notebook entries in the document tree.
+* Fine-tuned the animation duration of the text toolbar.
+* Fixed the abnormal style of the slider block in SiYuan v3.1.22.
+* [Fixed the issue where the border line of the right dock exceeded the top bar on Linux](https://github.com/mustakshif/Asri/issues/149).
+* [Fixed the issue where the block reference in the backlink panel was not displayed](https://github.com/mustakshif/Asri/issues/150).
+
+---
+
 ### v3.3.4
 
 * 修复思源 v3.1.21 列表项前圆点、块属性错位的问题

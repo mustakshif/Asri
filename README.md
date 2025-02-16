@@ -13,20 +13,19 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.3.5
+
+* Adjusted the background color of inline code.
+* Fine-tuned the font weight of notebook entries in the document tree.
+* Fine-tuned the animation duration of the text toolbar.
+* Fixed the abnormal style of the slider block in SiYuan v3.1.22.
+* [Fixed the issue where the border line of the right dock exceeded the top bar on Linux](https://github.com/mustakshif/Asri/issues/149).
+* [Fixed the issue where the block reference in the backlink panel was not displayed](https://github.com/mustakshif/Asri/issues/150).
+
 ### v3.3.4
 
 * Fixed the misalignment of bullet points and block attributes in list items in SiYuan v3.1.21.
 * Fixed the inconsistent alignment of buttons in the pending update marketplace cards.
-
-### v3.3.3
-
-* [Fixed the issue where the code block toolbar was not displaying](https://github.com/mustakshif/Asri/blob/main/theme.css)
-* Fixed the transparency issue with the embedded block toolbar
-
-### v3.3.2
-
-* [Added: Bottom status bar automatically collapses when displaying non-note document pages](https://github.com/mustakshif/Asri/issues/107)
-* Adjusted the document title text color to the accent color
 
 ### ...
 

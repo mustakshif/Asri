@@ -13,20 +13,19 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.3.5
+
+* 调整行内代码背景色
+* 微调文档树笔记本条目字重
+* 微调文字工具条动画时长
+* 修复思源 v3.1.22 滑动块样式异常的问题
+* [修复 Linux 端右侧停靠栏边框线超出顶栏的问题](https://github.com/mustakshif/Asri/issues/149)
+* [修复反链面板块标不显示的问题](https://github.com/mustakshif/Asri/issues/150)
+
 ### v3.3.4
 
 * 修复思源 v3.1.21 列表项前圆点、块属性错位的问题
 * 修复待更新集市卡片中的按钮对其方式不统一的问题
-
-### v3.3.3
-
-* [修复代码块工具条不显示的问题](https://github.com/mustakshif/Asri/blob/main/theme.css)
-* 修复嵌入块工具条透明度问题
-
-### v3.3.2
-
-* [新增：展示非笔记文档页面时底部状态栏自动收缩](https://github.com/mustakshif/Asri/issues/107)
-* 调整文档标题文字色至强调色
 
 ### ...
 
