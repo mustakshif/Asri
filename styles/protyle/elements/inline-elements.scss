@@ -24,6 +24,7 @@
 
         &[data-type~=s] {
             text-decoration-line: underline line-through;
+            opacity: .5; // fix https://github.com/mustakshif/Asri/issues/152
         }
 
         &[data-subtype=d] {
