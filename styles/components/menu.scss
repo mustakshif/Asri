@@ -425,14 +425,6 @@
             gap: 6px;
             min-height: unset !important;
 
-            &:nth-child(2 of .emojis__content) {
-                >div:first-child {
-                    grid-column: 1 / -1;
-                }
-            }
-
-            // 保证自定义表情为空时正常显示
-
             .emojis__item {
                 padding: 0;
                 font-size: 28px;
@@ -449,6 +441,13 @@
                     transform-origin: 50% 82.5%;
                 }
             }
+        }
+    }
+
+    // 保证自定义表情为空时正常显示
+    &__title[data-type="1"] {
+        +.emojis__content>div:only-child {
+            grid-column: 1 / -1;
         }
     }
 
