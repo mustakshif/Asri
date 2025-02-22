@@ -219,7 +219,8 @@
         }
     }
 
-    .protyle-action--task { // fix https://github.com/mustakshif/Asri/issues/147
+    .protyle-action--task {
+        // fix https://github.com/mustakshif/Asri/issues/147
         contain: strict; // avoid unnecessary mousewheel event listener in other blocks (check the render tab of the inspector) 
     }
 
@@ -229,8 +230,9 @@
         }
     }
 
-    [data-node-id][style]:not([style=""]),
-    .protyle-task--done[style]:not([style=""]) {
+    [data-node-id][style*="font-color"],
+    .protyle-task--done[style*="font-color"] {
+
         .protyle-action--task::before {
             background-color: currentColor;
         }
