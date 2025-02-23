@@ -1,3 +1,19 @@
+### v3.3.6
+
+* [调整块引用+删除线样式时的文本透明度](https://github.com/mustakshif/Asri/issues/152)
+* [修复插件导致的任务列表复选框颜色异常问题](https://github.com/mustakshif/Asri/issues/154)
+* [修复 Emoji 被裁切的问题](https://github.com/mustakshif/Asri/issues/153)
+* 修复 iOS 端暗色模式下系统 UI 背景色问题
+
+<br />
+
+* [Adjusted text opacity for blockquote + strikethrough styles](https://github.com/mustakshif/Asri/issues/152)
+* [Fixed abnormal checkbox color in task lists caused by plugins](https://github.com/mustakshif/Asri/issues/154)
+* [Fixed issue where Emojis were being clipped](https://github.com/mustakshif/Asri/issues/153)
+* Fixed system UI background color issue in dark mode on iOS
+
+---
+
 ### v3.3.5
 
 * 调整行内代码背景色
