@@ -13,7 +13,7 @@
     &[custom-afwd="all"]>.p:not([custom-afwd="off"]),
     &[custom-afwd~="p"]>.p:not([custom-afwd="off"]),
     >.p[custom-afwd="on"] {
-        content-visibility: visible;
+        // content-visibility: visible;
 
         .img {
             margin: 0 calc(-1 * var(--protyle-spacing-compatible) - 9px);
@@ -111,7 +111,7 @@
     &[custom-afwd="all"]>.iframe:not([custom-afwd="off"]),
     &[custom-afwd~="iframe"]>.iframe:not([custom-afwd="off"]),
     >.iframe[custom-afwd="on"] {
-        content-visibility: visible;
+        // content-visibility: visible;
         margin: calc(-12em / 17) 0;
 
         .protyle-attr {
@@ -177,7 +177,7 @@
     &[custom-afwd="all"]>.av:not([custom-afwd="off"]),
     &[custom-afwd~="db"]>.av:not([custom-afwd="off"]),
     >.av[custom-afwd="on"] {
-        content-visibility: visible;
+        // content-visibility: visible;
 
         .av__container {
             margin: 0 calc(var(--protyle-spacing-compatible) * -1 - 3px);
@@ -239,7 +239,7 @@
     &[custom-afwd="all"]>.sb[data-sb-layout="col"]:not([custom-afwd="off"]),
     &[custom-afwd~="sb"]>.sb[data-sb-layout="col"]:not([custom-afwd="off"]),
     >.sb[data-sb-layout="col"][custom-afwd="on"] {
-        content-visibility: visible;
+        // content-visibility: visible;
 
         > :first-child {
             margin-left: calc(var(--protyle-spacing-compatible)*-1 + min(24px, var(--protyle-spacing-compatible)));
@@ -281,7 +281,7 @@
     &[custom-afwd="all"]>.table:not([custom-afwd="off"]),
     &[custom-afwd~="t"]>.table:not([custom-afwd="off"]),
     >.table[custom-afwd="on"] {
-        content-visibility: visible;
+        // content-visibility: visible;
 
         margin: calc(-12em / 17) 0;
 
@@ -314,7 +314,7 @@
 
     // plan B. for test only. can't handle small-width tables; can't make tables centered without maintaining normal positioning of table resizing and selecting controls.
     >.table[custom-afwd="fit"] {
-        content-visibility: visible;
+        // content-visibility: visible;
         
         margin: calc(-12em / 17) 0;
 

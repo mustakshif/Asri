@@ -169,20 +169,24 @@
 
 @mixin tag {
     [data-node-id] span[data-type~="tag"] {
-        --tag-color: #df8300;
+        --tag-color-border: #df830060;
+        --tag-color-bg: #df830015;
+        --tag-color-text: #df8300;
 
         font-size: 90%;
         border-radius: 1em;
         padding: 0.1em 0.5em 0.15em;
         border: none;
-        box-shadow: 0 0 0 0.065em inset var(--tag-color);
-        background-color: transparent;
-        color: var(--tag-color);
+        box-shadow: 0 0 0 .065em inset var(--tag-color-border);
+        background-color: var(--tag-color-bg);
+        color: var(--tag-color-text);
         box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
 
         @include darkmode-counterpart {
-            --tag-color: #ffa444;
+            --tag-color-border: #ffa44460;
+            --tag-color-bg: #ffa44420;
+            --tag-color-text: #ffa444;
         }
 
         &:hover {
