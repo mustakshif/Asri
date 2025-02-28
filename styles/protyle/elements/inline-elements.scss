@@ -162,10 +162,12 @@
         vertical-align: baseline;
         box-shadow: inset 0 -1px 0 var(--b3-theme-surface-light), inset 0 1px 0 #fffa;
         background-image: linear-gradient(to bottom, #0000, #0001);
+        margin: auto .25em;
         
         @include darkmode-counterpart {
-            box-shadow: inset 0 1px 0 #fff5, 0 1px 0 #000a;
+            box-shadow: inset 0 1px 0 #fff3, 0 1px 0 #0004,  inset 0 0 0 1px var(--b3-theme-surface-lighter);
             background-image: linear-gradient(to bottom, #0000, #0003);
+            border:none;
         }
     }
 }
