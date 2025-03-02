@@ -86,7 +86,7 @@
     }
 
     .protyle-title__input,
-    [data-type="NodeHeading"]:not([style])>[contenteditable]:not([style]),
+    [data-type="NodeHeading"]:not([style*='background-color']),
     .b3-dialog__header {
         @include goldfoil-background;
         background-clip: text;
