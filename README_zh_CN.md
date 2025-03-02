@@ -13,21 +13,18 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.3.7
+
+* 微调行内标签样式
+* 微调行内键盘样式
+* [修复预设配色主题中，标题块制作闪卡后颜色失效的问题](https://github.com/mustakshif/Asri/issues/155)
+
 ### v3.3.6
 
 * [调整块引用+删除线样式时的文本透明度](https://github.com/mustakshif/Asri/issues/152)
 * [修复插件导致的任务列表复选框颜色异常问题](https://github.com/mustakshif/Asri/issues/154)
 * [修复 Emoji 被裁切的问题](https://github.com/mustakshif/Asri/issues/153)
 * 修复 iOS 端暗色模式下系统 UI 背景色问题
-
-### v3.3.5
-
-* 调整行内代码背景色
-* 微调文档树笔记本条目字重
-* 微调文字工具条动画时长
-* 修复思源 v3.1.22 滑动块样式异常的问题
-* [修复 Linux 端右侧停靠栏边框线超出顶栏的问题](https://github.com/mustakshif/Asri/issues/149)
-* [修复反链面板块标不显示的问题](https://github.com/mustakshif/Asri/issues/150)
 
 ### ...
 

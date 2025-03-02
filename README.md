@@ -13,21 +13,18 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.3.7
+
+* Fine-tuned the inline label styles.
+* Fine-tuned the inline keyboard styles.
+* [Fixed the issue where the color of title blocks in preset color themes would fail after creating flashcards](https://github.com/mustakshif/Asri/issues/155).
+
 ### v3.3.6
 
 * [Adjusted text opacity for blockquote + strikethrough styles](https://github.com/mustakshif/Asri/issues/152)
 * [Fixed abnormal checkbox color in task lists caused by plugins](https://github.com/mustakshif/Asri/issues/154)
 * [Fixed issue where Emojis were being clipped](https://github.com/mustakshif/Asri/issues/153)
 * Fixed system UI background color issue in dark mode on iOS
-
-### v3.3.5
-
-* Adjusted the background color of inline code.
-* Fine-tuned the font weight of notebook entries in the document tree.
-* Fine-tuned the animation duration of the text toolbar.
-* Fixed the abnormal style of the slider block in SiYuan v3.1.22.
-* [Fixed the issue where the border line of the right dock exceeded the top bar on Linux](https://github.com/mustakshif/Asri/issues/149).
-* [Fixed the issue where the block reference in the backlink panel was not displayed](https://github.com/mustakshif/Asri/issues/150).
 
 ### ...
 

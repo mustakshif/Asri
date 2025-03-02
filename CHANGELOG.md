@@ -1,3 +1,17 @@
+### v3.3.7
+
+* 微调行内标签样式
+* 微调行内键盘样式
+* [修复预设配色主题中，标题块制作闪卡后颜色失效的问题](https://github.com/mustakshif/Asri/issues/155)
+
+<br />
+
+* Fine-tuned the inline label styles.
+* Fine-tuned the inline keyboard styles.
+* [Fixed the issue where the color of title blocks in preset color themes would fail after creating flashcards](https://github.com/mustakshif/Asri/issues/155).
+
+---
+
 ### v3.3.6
 
 * [调整块引用+删除线样式时的文本透明度](https://github.com/mustakshif/Asri/issues/152)
