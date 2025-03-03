@@ -403,13 +403,13 @@
         }
 
         .b3-typography {
-            padding: 0 32px;
+            padding: 0 max(32px, calc(50% - 21.5em));
 
-            @media (min-width: 1292px) {
-                padding: 1px; //显示表格左右边框
-                width: min(42em, calc(100% - 48px));
-                margin: 24px auto 0;
-            }
+            // @media (min-width: 1292px) {
+            //     padding: 1px; //显示表格左右边框
+            //     width: min(42em, calc(100% - 48px));
+            //     margin: 24px auto 0;
+            // }
 
             >blockquote:first-child {
                 // border: none;
