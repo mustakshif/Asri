@@ -154,7 +154,12 @@
                         overflow: hidden;
                         background-color: var(--b3-theme-background);
 
-                        @include menu-shadow($opacity-light: .05, $opacity-dark: 0.15, $border-light: .5px, $border-dark: 0px);
+                        @include menu-shadow($opacity-light: .05,
+                            $opacity-dark: 0.15,
+                            $border-light: .5px,
+                            $border-dark: 0px,
+                            $extra-shadow-light: inset 0 1px 0 0 #fff,
+                            $extra-shadow-dark: inset 0 1px 0 0 var(--b3-border-color-trans));
 
                         @media (max-width: 750px) {
                             margin: 40px;

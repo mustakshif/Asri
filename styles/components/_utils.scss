@@ -1,29 +1,33 @@
 @use '../base' as *;
 
-@mixin menu-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $border-light: 1px, $border-dark: 0.5px) {
+@mixin menu-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $border-light: 1px, $border-dark: 0.5px, $extra-shadow-light: '', $extra-shadow-dark: '') {
     @if type-of($shadow-clr-light) !=color {
         box-shadow: 0 0 0 $border-light rgb(from #{$shadow-clr-light} r g b / calc($opacity-light / 2)),
         0px 13px 25px -2px rgb(from #{$shadow-clr-light} r g b / calc($opacity-light / 2)),
-        0px 0px 10px 0px rgb(from #{$shadow-clr-light} r g b / calc($opacity-light / 2));
+        0px 0px 10px 0px rgb(from #{$shadow-clr-light} r g b / calc($opacity-light / 2)),
+        #{$extra-shadow-light};
     }
 
     @else {
         box-shadow: 0 0 0 $border-light change-color($shadow-clr-light, $alpha: calc($opacity-light / 2)),
-            0px 13px 25px -2px change-color($shadow-clr-light, $alpha: calc($opacity-light / 2)),
-            0px 0px 10px 0px change-color($shadow-clr-light, $alpha: calc($opacity-light / 2));
+        0px 13px 25px -2px change-color($shadow-clr-light, $alpha: calc($opacity-light / 2)),
+        0px 0px 10px 0px change-color($shadow-clr-light, $alpha: calc($opacity-light / 2)),
+        #{$extra-shadow-light};
     }
 
     @include darkmode-counterpart {
         @if type-of($shadow-clr-dark) !=color {
             box-shadow: 0 0 0 $border-dark rgb(from #{$shadow-clr-dark} r g b / 1),
             0px 13px 25px -2px rgb(from #{$shadow-clr-dark} r g b / $opacity-dark),
-            0px 0px 10px 0px rgb(from #{$shadow-clr-dark} r g b / calc($opacity-dark / 2));
+            0px 0px 10px 0px rgb(from #{$shadow-clr-dark} r g b / calc($opacity-dark / 2)),
+            #{$extra-shadow-dark};
         }
 
         @else {
             box-shadow: 0 0 0 $border-dark change-color($shadow-clr-dark, $alpha: 1),
-                0px 13px 25px -2px change-color($shadow-clr-dark, $alpha: $opacity-dark),
-                0px 0px 10px 0px change-color($shadow-clr-dark, $alpha: calc($opacity-dark / 2));
+            0px 13px 25px -2px change-color($shadow-clr-dark, $alpha: $opacity-dark),
+            0px 0px 10px 0px change-color($shadow-clr-dark, $alpha: calc($opacity-dark / 2)),
+            #{$extra-shadow-dark};
         }
     }
 }
