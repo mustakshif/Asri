@@ -15,10 +15,11 @@
 
 // --asri-on-primary-reverse: 用于 primary 颜色亮度较高时反转 on-primary 颜色至深色，亮色模式下为 0.4，暗色模式下为 0.3；primary 亮度正常时不可用
 
-
+$cvc: 10; // color variant count
 @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
     :root {
         --b3-protyle-inline-blockref-color: var(--b3-theme-accent);
+
 
         &[data-theme-mode='light'] {
             --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
@@ -72,9 +73,9 @@
 
             --b3-empty-color: oklch(from var(--b3-theme-on-background) l c h / .45);
 
-            @for $i from 1 through 10 {
-                --b3-font-color#{$i + 3}: oklch(0.6 0.23 calc(360 / 10 * #{ $i } + 30));
-                --b3-font-background#{$i + 3}: oklch(0.97 0.05 calc(360 / 10 * #{ $i } + 30));
+            @for $i from 1 through $cvc {
+                --b3-font-color#{$i + 3}: oklch(0.6 0.23 calc(360 / #{$cvc} * #{ $i } + 30));
+                --b3-font-background#{$i + 3}: oklch(0.97 0.05 calc(360 / #{$cvc} * #{ $i } + 30));
             }
         }
 
@@ -128,9 +129,9 @@
 
             --b3-empty-color: oklch(from var(--b3-theme-on-background) l c h / .45);
 
-            @for $i from 1 through 10 {
-                --b3-font-color#{$i + 3}: oklch(0.83 0.17 calc(360 / 10 * #{ $i } + 30));
-                --b3-font-background#{$i + 3}: oklch(0.31 0.05 calc(360 / 10 * #{ $i } + 30));
+            @for $i from 1 through $cvc {
+                --b3-font-color#{$i + 3}: oklch(0.83 0.17 calc(360 / #{$cvc} * #{ $i } + 30));
+                --b3-font-background#{$i + 3}: oklch(0.31 0.05 calc(360 / #{$cvc} * #{ $i } + 30));
             }
         }
     }
@@ -398,17 +399,34 @@
     }
 
     // database chips
-    @for $i from 1 through 10 {
-        .b3-chip[style="background-color:var(--b3-font-background#{$i + 3});color:var(--b3-font-color#{$i + 3})"] {
-            color: oklch(.6 .2 calc(360 / 10 * #{ $i } + 30)) !important;
-            background-color: oklch(from var(--b3-font-background#{$i + 3}) 0.96 c h / .8) !important;
+    .b3-chip,
+    [data-name="av-col-option"] .color__square {
+        $cvc: 11;
 
-            @include darkmode-counterpart {
-                color: oklch(0.85 0.12 calc(360 / 10 * #{ $i } + 30)) !important;
-                background-color: oklch(from var(--b3-font-background#{$i + 3}) .3 c h) !important;
+        @for $i from 1 through $cvc {
+            --b3-font-color#{$i + 3}: oklch(0.6 0.23 calc(360 / #{$cvc} * #{ $i } + 30));
+            --b3-font-background#{$i + 3}: oklch(0.97 0.05 calc(360 / #{$cvc} * #{ $i } + 30));
+        }
+
+        @include darkmode-counterpart {
+            @for $i from 1 through $cvc {
+                --b3-font-color#{$i + 3}: oklch(0.83 0.17 calc(360 / #{$cvc} * #{ $i } + 30));
+                --b3-font-background#{$i + 3}: oklch(0.31 0.05 calc(360 / #{$cvc} * #{ $i } + 30));
             }
         }
     }
+
+    // @for $i from 1 through $cvc {
+    //     .b3-chip[style="background-color:var(--b3-font-background#{$i + 3});color:var(--b3-font-color#{$i + 3})"] {
+    //         color: oklch(.6 .2 calc(360 / $cvc * #{ $i } + 30)) !important;
+    //         background-color: oklch(from var(--b3-font-background#{$i + 3}) 0.96 c h / .8) !important;
+
+    //         @include darkmode-counterpart {
+    //             color: oklch(0.85 0.12 calc(360 / $cvc * #{ $i } + 30)) !important;
+    //             background-color: oklch(from var(--b3-font-background#{$i + 3}) .3 c h) !important;
+    //         }
+    //     }
+    // }
 
     @for $i from 1 through 3 {
         .b3-chip[style="background-color:var(--b3-font-background#{$i});color:var(--b3-font-color#{$i})"] {
