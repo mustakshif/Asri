@@ -402,16 +402,17 @@ $cvc: 10; // color variant count
     .b3-chip,
     [data-name="av-col-option"] .color__square {
         $cvc: 11;
+        $hso: 36; // hue shift offset
 
         @for $i from 1 through $cvc {
-            --b3-font-color#{$i + 3}: oklch(0.6 0.23 calc(360 / #{$cvc} * #{ $i } + 30));
-            --b3-font-background#{$i + 3}: oklch(0.97 0.05 calc(360 / #{$cvc} * #{ $i } + 30));
+            --b3-font-color#{$i + 3}: oklch(0.6 0.23 calc(360 / #{$cvc} * #{ $i } + #{$hso}));
+            --b3-font-background#{$i + 3}: oklch(0.97 0.05 calc(360 / #{$cvc} * #{ $i } +  #{$hso}));
         }
 
         @include darkmode-counterpart {
             @for $i from 1 through $cvc {
-                --b3-font-color#{$i + 3}: oklch(0.83 0.17 calc(360 / #{$cvc} * #{ $i } + 30));
-                --b3-font-background#{$i + 3}: oklch(0.31 0.05 calc(360 / #{$cvc} * #{ $i } + 30));
+                --b3-font-color#{$i + 3}: oklch(0.83 0.17 calc(360 / #{$cvc} * #{ $i } +  #{$hso}));
+                --b3-font-background#{$i + 3}: oklch(0.31 0.05 calc(360 / #{$cvc} * #{ $i } +  #{$hso}));
             }
         }
     }
