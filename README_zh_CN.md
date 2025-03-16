@@ -13,18 +13,16 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.3.8
+
+* 对其数据库表头图标和内容与主键列图标和内容
+* 补全数据库 14 种标签颜色
+
 ### v3.3.7
 
 * 微调行内标签样式
 * 微调行内键盘样式
 * [修复预设配色主题中，标题块制作闪卡后颜色失效的问题](https://github.com/mustakshif/Asri/issues/155)
-
-### v3.3.6
-
-* [调整块引用+删除线样式时的文本透明度](https://github.com/mustakshif/Asri/issues/152)
-* [修复插件导致的任务列表复选框颜色异常问题](https://github.com/mustakshif/Asri/issues/154)
-* [修复 Emoji 被裁切的问题](https://github.com/mustakshif/Asri/issues/153)
-* 修复 iOS 端暗色模式下系统 UI 背景色问题
 
 ### ...
 

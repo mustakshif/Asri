@@ -1,3 +1,15 @@
+### v3.3.8
+
+* 对其数据库表头图标和内容与主键列图标和内容
+* 补全数据库 14 种标签颜色
+
+<br />
+
+* Aligned the database table header icons and content with the primary key column icons and content.
+* Completed the 14 tag colors in the database.
+
+---
+
 ### v3.3.7
 
 * 微调行内标签样式

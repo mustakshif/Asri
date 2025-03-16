@@ -13,18 +13,16 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.3.8
+
+* Aligned the database table header icons and content with the primary key column icons and content.
+* Completed the 14 tag colors in the database.
+
 ### v3.3.7
 
 * Fine-tuned the inline label styles.
 * Fine-tuned the inline keyboard styles.
 * [Fixed the issue where the color of title blocks in preset color themes would fail after creating flashcards](https://github.com/mustakshif/Asri/issues/155).
-
-### v3.3.6
-
-* [Adjusted text opacity for blockquote + strikethrough styles](https://github.com/mustakshif/Asri/issues/152)
-* [Fixed abnormal checkbox color in task lists caused by plugins](https://github.com/mustakshif/Asri/issues/154)
-* [Fixed issue where Emojis were being clipped](https://github.com/mustakshif/Asri/issues/153)
-* Fixed system UI background color issue in dark mode on iOS
 
 ### ...
 
