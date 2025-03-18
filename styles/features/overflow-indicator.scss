@@ -66,7 +66,7 @@ $fadeout-size-xl: 50px;
     @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top bottom');
 }
 
-body:not(.has-exportimg) // https://github.com/mustakshif/Asri/issues/106
+// body:not(.has-exportimg) // https://github.com/mustakshif/Asri/issues/106
 .b3-dialog__header:not(.fn__none)+.b3-dialog__body .b3-dialog__content {
     @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top bottom');
     

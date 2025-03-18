@@ -296,7 +296,7 @@ $cvc: 10; // color variant count
 
     /* Protyle related elements */
 
-    body:not(.has-exportimg) {
+    // body:not(.has-exportimg) {
 
         .protyle-toolbar__item--current,
         .protyle-attr--refcount:hover,
@@ -333,7 +333,7 @@ $cvc: 10; // color variant count
                 background-color: oklch(from var(--b3-theme-surface) 0.32 c h/0.7);
             }
         }
-    }
+    // }
 
     // adapt elements that need to be accented    
     #toolbar .toolbar__item--active,

@@ -22,7 +22,7 @@ const globalDragEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalKeyupEventListener = new AsriEventListener(lowFreqEventsCallback);
 const winFocusChangeEventListener = new AsriEventListener(winFocusChangeCallback);
 const selectionChangeEventListener = new AsriEventListener(selectionChangeCallback);
-const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback));
+// const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback));
 const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
 const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
 const winRo = new AsriResizeObserver(winRoCallback);
@@ -55,7 +55,7 @@ export async function loadAsriJSModules() {
     winFocusChangeEventListener.start(window, 'blur');
     selectionChangeEventListener.start(document, 'selectionchange');
     globalClassNameMo.observe(document.body, MOConfigForClassNames);
-    watchImgExportMo.observe(document.body, { childList: true });
+    // watchImgExportMo.observe(document.body, { childList: true });
     themeUpdateListener.start(darkModeMediaQuery, 'change');
     paletteMenuItemClickEventListener.start(document, 'mouseup');
     asriDoms.layoutCenter || await querySelectorAsync('.layout__center');
@@ -93,9 +93,9 @@ export async function unloadAsriJSModules(completeUnload = true) {
     globalClassNameMo.disconnect();
     themeUpdateListener.remove(darkModeMediaQuery, 'change');
     paletteMenuItemClickEventListener.remove(document, 'mouseup');
-    watchImgExportMo.disconnect(() => {
-        document.body.classList.remove("has-exportimg")
-    });
+    // watchImgExportMo.disconnect(() => {
+    //     document.body.classList.remove("has-exportimg")
+    // });
 
     if (!env.isMobile) {
         lytCenterRo.disconnect();
