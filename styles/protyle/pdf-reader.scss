@@ -71,6 +71,8 @@
         right: 8px;
         overflow: visible !important;
         background-color: var(--b3-menu-background);
+        width: fit-content;
+        @include theme-variant-border;
 
         &> :is(input, button, label.b3-button) {
             margin-top: 4px;
@@ -139,6 +141,7 @@
 
     .pdf__util {
         padding: 6px;
+        @include theme-variant-border;
 
         .color__square {
             height: 20px;

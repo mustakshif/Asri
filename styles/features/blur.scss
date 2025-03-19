@@ -225,18 +225,12 @@ body:not(.asri-disable-backdrop-blur) {
         overflow: hidden;
 
         &:not(#searchHistoryListm, #findbar, .pdf__util)::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            // background-position: center top;
-            // background-size: cover;
-            // background-attachment: fixed;
-            border-radius: 8px;
             @include bg-blur;
         }
 
-        .b3-menu__items {
+        // .b3-menu__items
+        &::before
+         {
             background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
 
             @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
