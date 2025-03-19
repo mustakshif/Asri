@@ -138,7 +138,7 @@
     background-color: var(--b3-theme-surface);
     transform-origin: 50% 150%;
     transition: none;
-    @include menu-shadow;
+    @include menu-shadow($extra-shadow-dark: '0 0 0 1px inset #fff1, 0 1.5px 1px -1px #fff4 inset');
     @include theme-variant-border($border: false);
 
     &__item {

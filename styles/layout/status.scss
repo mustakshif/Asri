@@ -16,8 +16,11 @@
     z-index: 3; // 等于数据库 sticky header，不会其被覆盖
     position: fixed;
     transform: var(--status-position-transform);
+    box-shadow: 0 0 0 1px #0001 inset;
 
-    @include theme-variant-border($border: false);
+    @include darkmode-counterpart {
+        box-shadow: 0 0 0 1px #fff2 inset;
+    }
 
     .toolbar__item {
         height: 26px;

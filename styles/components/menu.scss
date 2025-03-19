@@ -5,7 +5,7 @@
 .b3-menu__submenu {
     @include menu-shadow($opacity-light: .15);
 
-    @include theme-variant-border() {
+    @include theme-variant-border($border: false) {
         // outline: #fff4 solid 1px;
         // outline-offset: -1px;
     }
