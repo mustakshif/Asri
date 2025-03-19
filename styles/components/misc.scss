@@ -300,7 +300,7 @@ textarea {
 
     @include tooltip-shadow;
 
-    @include theme-variant-border($outline: false) {
+    @include theme-variant-border {
         outline: none;
     }
 }

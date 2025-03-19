@@ -46,23 +46,12 @@
 
 // ————————————————————————————————————————
 // 用于暗黑模式模式下给部分元素添加边框
-@mixin theme-variant-border($outline: true, $border: true, $outline-width: 1px, $outline-light: false) {
+@mixin theme-variant-border($border: true) {
+    // 使用outline会导致频繁重绘
     border: unset;
     // border-color: transparent;
-
-    @if $outline-light ==true {
-        outline: $outline-width solid #fff4; // outline 会导致容器整体频繁绘制
-        outline-offset: $outline-width * -1;
-    }
-
     @content;
-
     @include darkmode-counterpart {
-        @if $outline ==true {
-            outline: $outline-width solid var(--b3-border-color-trans);
-            outline-offset: $outline-width * -1;
-        }
-
         @if $border ==true {
             border: 1px solid var(--b3-border-color-trans);
         }
