@@ -1,7 +1,8 @@
 @use '../base' as *;
 
 .protyle-wysiwyg[data-readonly="false"] {
-    [data-node-id].asri-selected-block {
+    [data-node-id].asri-selected-block:not(.rc-focus) {
+        // https://github.com/mustakshif/Asri/issues/156
 
         // box-shadow: none !important;
         &::before {
