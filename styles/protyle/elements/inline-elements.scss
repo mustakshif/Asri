@@ -155,6 +155,7 @@
 
     :is(span[data-type~=kbd], kbd) {
         font: 80% SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
+        color: inherit;
         padding: 0.15em 0.5em;
         border-radius: 1em;
         box-decoration-break: clone;
