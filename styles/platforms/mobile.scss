@@ -8,7 +8,7 @@
         --cover-img-height: 200px;
 
         &__img {
-            --bgimg-top-space: 90px;
+            --bgimg-top-space: 92px; // 修复题头图跳动（实际为 90.5px, 这里给一点变动空间）
             --bgimg-scale: 1.1;
         }
     }
@@ -22,6 +22,10 @@
         [data-node-id].render-node[data-type=NodeBlockQueryEmbed] {
             padding: 4px 8px;
         }
+    }
+
+    .protyle-wysiwyg--attr .protyle-attr {
+        height: -webkit-fill-available; // 修复文档标题属性显示不全
     }
 
     .b3-typography,

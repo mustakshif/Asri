@@ -49,7 +49,7 @@
                 animation-range: calc(100vh - var(--bgimg-top-space, 84px)) normal;
                 animation-fill-mode: both;
                 animation-name: parallax-cover-img,
-                    // cover-img-fade-out,
+                    cover-img-fade-out,
                     // cover-img-blur
                 ;
                 animation-timing-function: linear;
