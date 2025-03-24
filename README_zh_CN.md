@@ -13,16 +13,22 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.3.9
+
+* 优化对话框和菜单频繁重绘的问题
+* 添加浅色模式下底部状态栏的边框，增加区分度
+* 微调暗色模式下菜单和文字编辑工具条的质感效果
+* [提高行内 ](https://github.com/mustakshif/Asri/issues/157)[`kbd`](https://github.com/mustakshif/Asri/issues/157)[ 样式文字对比度](https://github.com/mustakshif/Asri/issues/157)
+* 修复 PDF 搜索工具栏宽度问题
+* 修复 PDF 搜索工具结果信息字体颜色问题
+* 修复移动端文档标题属性显示不全的问题
+* 修复移动端滚动至顶部时题头图跳动的问题
+* [修复与列表子弹线插件的样式冲突](https://github.com/mustakshif/Asri/blob/main/theme.css)
+
 ### v3.3.8
 
 * 对其数据库表头图标和内容与主键列图标和内容
 * 补全数据库 14 种标签颜色
-
-### v3.3.7
-
-* 微调行内标签样式
-* 微调行内键盘样式
-* [修复预设配色主题中，标题块制作闪卡后颜色失效的问题](https://github.com/mustakshif/Asri/issues/155)
 
 ### ...
 

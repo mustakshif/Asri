@@ -13,16 +13,22 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.3.9
+
+* Optimized the issue of frequent redrawing of dialogs and menus.
+* Added a border to the bottom status bar in light mode to enhance differentiation.
+* Fine-tuned the texture effects of menus and text editing toolbars in dark mode.
+* [Increased the contrast of inline ](https://github.com/mustakshif/Asri/issues/157)[`kbd`](https://github.com/mustakshif/Asri/issues/157)[ style text](https://github.com/mustakshif/Asri/issues/157).
+* Fixed the issue with the width of the PDF search toolbar.
+* Fixed the font color issue in the PDF search tool results information.
+* Fixed the issue of incomplete display of document title attributes on mobile devices.
+* Fixed the issue of header image jumping when scrolling to the top on mobile devices.
+* [Fixed the style conflict with the bullet threading plugin](https://github.com/mustakshif/Asri/blob/main/theme.css).
+
 ### v3.3.8
 
 * Aligned the database table header icons and content with the primary key column icons and content.
 * Completed the 14 tag colors in the database.
-
-### v3.3.7
-
-* Fine-tuned the inline label styles.
-* Fine-tuned the inline keyboard styles.
-* [Fixed the issue where the color of title blocks in preset color themes would fail after creating flashcards](https://github.com/mustakshif/Asri/issues/155).
 
 ### ...
 
