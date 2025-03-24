@@ -24,7 +24,8 @@
     [data-node-id] {
         border-radius: 10px;
 
-        &[style*="--b3-font-background1)"] { // 避免选择到 background10-13
+        &[style*="--b3-font-background1)"] {
+            // 避免选择到 background10-13
             outline: .5px solid var(--b3-border-color-trans);
             // outline-offset: -1.5px;
         }
@@ -232,6 +233,16 @@
         >div:not(.protyle-attr--refcount) svg {
             margin-right: unset;
             margin-inline-end: 6px;
+        }
+
+        &--av {
+            &:hover {
+                color: var(--b3-theme-accent) !important;
+            }
+
+            span:hover {
+                color: inherit;
+            }
         }
     }
 
