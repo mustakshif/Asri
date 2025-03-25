@@ -276,6 +276,13 @@
     }
 }
 
+// inline background
+// [data-node-id] span[data-type~=text][style*=background] {
+//     border-radius: .25em;
+//     padding: 0 .1em;
+//     // margin: 0 .1em;
+//     box-decoration-break: clone;
+// }
 // @mixin inline-background {
 //     span:not([data-type~=kbd])[style*="--b3-font-background"] {
 //         background-color: transparent !important;

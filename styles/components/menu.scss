@@ -183,10 +183,7 @@
     --b3-border-radius-b: 12px;
     @include menu-shadow;
 
-    @include theme-variant-border($border: false) {
-        outline: #fff4 solid 1px;
-        outline-offset: -1px;
-    }
+    @include theme-variant-border($border: true);
 
     padding: 0;
     background-color: var(--b3-menu-background);
@@ -331,16 +328,13 @@
 
 .protyle-util {
     background-color: var(--b3-menu-background);
-    padding: 8px 0 0;
+    padding: 0;
     border-radius: 12px;
     animation: scaleBounce .5s var(--asri-ease-spring-3);
 
     @include menu-shadow;
 
-    @include theme-variant-border($border: false) {
-        outline: #fff4 solid 1px;
-        outline-offset: -1px;
-    }
+    @include theme-variant-border($border: true);
 
     .block__icons {
         .resize__move {
@@ -358,7 +352,7 @@
     }
 
     .protyle-font {
-        padding-top: 0;
+        padding-top: 8px;
         padding-bottom: 8px;
     }
 }
