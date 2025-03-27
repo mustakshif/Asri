@@ -262,7 +262,8 @@
         padding: 4px 0;
 
         .b3-list-item {
-            width: calc(100% - 12px) !important;
+            // width: calc(100% - 8px) !important;
+            margin: 4px auto;
 
             &--focus:not(:hover) {
                 background-color: var(--b3-theme-primary-lightest);
@@ -284,7 +285,7 @@
     .b3-list-item--first,
     .b3-list-item--two {
         .b3-list-item__text {
-            font-weight: 500;
+            // font-weight: 500;
 
             >mark {
                 color: var(--b3-theme-primary);
@@ -354,6 +355,19 @@
     .protyle-font {
         padding-top: 8px;
         padding-bottom: 8px;
+    }
+
+    >div {
+        padding-top: 8px;
+
+        // >div {
+        //     padding-bottom: 8px;
+        // }
+    }
+
+    .toolbarResize {
+        box-shadow: inset 1px 0 0 var(--b3-border-color-trans) !important;
+        margin-bottom: 8px;
     }
 }
 

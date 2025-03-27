@@ -84,8 +84,9 @@
             .protyle-action__language {
                 margin-top: 0 !important;
                 // padding-left: 28px;
-                // font-weight: 500;
+                font-weight: 500;
                 // font-style: italic;
+                // font-family: var(--b3-font-family-code);
 
                 +.fn__flex-1 {
                     max-width: 12px;
