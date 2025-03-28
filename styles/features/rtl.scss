@@ -1,6 +1,6 @@
 :where(:lang(ar_SA), :lang(he_IL)) {
 
-    --global-negate-factor: -1;
+    --gnf: -1; // global negate factor
 
     // 所有 rtl 元素
     .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink),

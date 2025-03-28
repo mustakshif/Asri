@@ -1,10 +1,5 @@
 @use '../base' as *;
 @use '../components/utils' as *;
-/* 
-！----------------------------------------------
-！-----颜色方面的任何修改完成后，一定要测试导出功能-----
-！----------------------------------------------
-*/
 
 // --asri-sys-accent、 --asri-sys-accent-accessible 是用 JavaScript 获取的基础颜色
 // accent-accessible 跟 accent 相同，但仅当系统强调色（在 HSL 色彩空间中）的饱和度大于 0.3 时可用，否则使用备选颜色；

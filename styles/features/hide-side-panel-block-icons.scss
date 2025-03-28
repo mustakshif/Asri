@@ -6,6 +6,16 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
         app-region: no-drag;
     }
 
+    .sy__backlink {
+        --exgf: 1.5; // exaggerate factor
+        --icons2dots-dur: .5s;
+        --dots2icons-dur: .4s;
+
+        >:nth-child(2 of .block__icons) {
+            position: relative;
+        }
+    }
+
     // .sy__globalGraph, .sy__graph // 导致关系图闪烁
     .file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag, .sy__backlink) {
         position: relative;
@@ -47,23 +57,23 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
                 // transform-origin: top center;
 
                 &:first-child {
-                    transform-origin: negateForRTL(calc(max(calc(15.5em - 100%), 100%) * var(--exaggerate-factor, 1))) 50%;
+                    transform-origin: negateForRTL(calc(max(calc(15.5em - 100%), 100%) * var(--exgf, 1))) 50%;
                 }
 
                 &.counter {
-                    transform-origin: negateForRTL(calc(400% * var(--exaggerate-factor, 1))) 50%;
+                    transform-origin: negateForRTL(calc(400% * var(--exgf, 1))) 50%;
                 }
 
                 &:nth-last-child(3 of .block__icon) {
-                    transform-origin: negateForRTL(calc(-200% * var(--exaggerate-factor, 1))) 50%;
+                    transform-origin: negateForRTL(calc(-200% * var(--exgf, 1))) 50%;
                 }
 
                 &:nth-last-child(2 of .block__icon) {
-                    transform-origin: negateForRTL(calc(-300% * var(--exaggerate-factor, 1))) 50%;
+                    transform-origin: negateForRTL(calc(-300% * var(--exgf, 1))) 50%;
                 }
 
                 &:last-child {
-                    transform-origin: negateForRTL(calc(-500% * var(--exaggerate-factor, 1))) 50%;
+                    transform-origin: negateForRTL(calc(-500% * var(--exgf, 1))) 50%;
                 }
             }
 
@@ -95,16 +105,6 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
             .search__label:not(.fn__none)~.block__icon {
                 opacity: 0 !important
             }
-        }
-    }
-
-    .sy__backlink {
-        --exaggerate-factor: 1.5;
-        --icons2dots-dur: .5s;
-        --dots2icons-dur: .4s;
-
-        >:nth-child(2 of .block__icons) {
-            position: relative;
         }
     }
 }

@@ -243,5 +243,6 @@ $theme-dark: (
 }
 
 @function negateForRTL($value) {
-    @return calc(var(--global-negate-factor, 1) * #{$value});
+    // gnf 值，用于在 rtl 模式下反转值
+    @return calc(var(--gnf, 1) * #{$value});
 }
