@@ -23,7 +23,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * 修复 PDF 搜索工具结果信息字体颜色问题
 * 修复移动端文档标题属性显示不全的问题
 * 修复移动端滚动至顶部时题头图跳动的问题
-* [修复与列表子弹线插件的样式冲突](https://github.com/mustakshif/Asri/blob/main/theme.css)
+* [修复与列表子弹线插件的样式冲突](https://github.com/mustakshif/Asri/issues/156)
 
 ### v3.3.8
 

@@ -23,7 +23,7 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Fixed the font color issue in the PDF search tool results information.
 * Fixed the issue of incomplete display of document title attributes on mobile devices.
 * Fixed the issue of header image jumping when scrolling to the top on mobile devices.
-* [Fixed the style conflict with the bullet threading plugin](https://github.com/mustakshif/Asri/blob/main/theme.css).
+* [Fixed the style conflict with the bullet threading plugin](https://github.com/mustakshif/Asri/issues/156).
 
 ### v3.3.8
 
