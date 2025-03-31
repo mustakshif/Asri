@@ -13,6 +13,12 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.3.10
+
+* Optimized the hover effects for database property icons and text in blocks
+* Unified the styling of global `kbd` content
+* Fixed an issue where theme information displayed in Chinese when the interface language was set to non-English/Chinese languages
+
 ### v3.3.9
 
 * Optimized the issue of frequent redrawing of dialogs and menus.
@@ -24,11 +30,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Fixed the issue of incomplete display of document title attributes on mobile devices.
 * Fixed the issue of header image jumping when scrolling to the top on mobile devices.
 * [Fixed the style conflict with the bullet threading plugin](https://github.com/mustakshif/Asri/issues/156).
-
-### v3.3.8
-
-* Aligned the database table header icons and content with the primary key column icons and content.
-* Completed the 14 tag colors in the database.
 
 ### ...
 

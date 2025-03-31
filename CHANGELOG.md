@@ -1,3 +1,17 @@
+### v3.3.10
+
+* 优化块的数据库属性图标和文字的鼠标悬停效果
+* 统一全局 `kbd` 内容的样式效果
+* 修复界面语言为中英文以外的其他语言时，主题信息显示为中文的问题
+
+<br />
+
+* Optimized the hover effects for database property icons and text in blocks
+* Unified the styling of global `kbd` content
+* Fixed an issue where theme information displayed in Chinese when the interface language was set to non-English/Chinese languages
+
+---
+
 ### v3.3.9
 
 * 优化对话框和菜单频繁重绘的问题
