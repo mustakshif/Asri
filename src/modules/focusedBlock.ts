@@ -53,8 +53,6 @@ export function removeFocusedBlockClass() {
     document.querySelectorAll('.asri-selected-block').forEach(block => block.classList.remove('asri-selected-block'));
 }
 
-
-
 // export function handleFocusedBlockChange() {
 //     const selection = window.getSelection();
 //     const range = selection && selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
