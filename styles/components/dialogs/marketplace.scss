@@ -75,7 +75,9 @@
                 margin: 10px 20px;
 
                 .b3-card {
-                    &, &:hover{
+
+                    &,
+                    &:hover {
                         // box-shadow: 0 0 0 1px inset var(--b3-theme-primary-light);
 
                         // @include darkmode-counterpart {
@@ -307,12 +309,40 @@
             flex-grow: 0;
         }
 
+        .fn__hr--b{
+            height: 8px;
+        }
+
+        .block__icons {
+            background-color: var(--b3-border-color-trans);
+            border-radius: 2em;
+            width: fit-content;
+            padding: 0 12px 0 8px;
+            margin: 12px auto 0;
+            min-height: 2.4em;
+            transition: transform .2s;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            .fn__space {
+                width: 4px;
+            }
+        }
+
+        a:not(.ft__on-surface, .b3-button) {
+            color: var(--b3-theme-on-background);
+        }
+
         >.ft__on-surface {
             font-weight: 600;
+            color: var(--b3-theme-on-background);
             // font-size: 1em;
 
             &::first-line {
                 font-weight: normal;
+                color: var(--b3-theme-on-surface);
                 // font-size: calc(1em / 1.2);
             }
         }
@@ -329,7 +359,7 @@
             //     background-color: #0004;
             // }
 
-            margin-top: 12px;
+            margin-top: 4px;
 
             &--progress {
                 // border-radius: 99px;
@@ -434,6 +464,10 @@
                 }
             }
         }
+    }
+
+    .fn__flex:nth-last-child(1 of .fn__flex) {
+        margin-top: 12px;
     }
 
     &.config-bazaar__readme--show {
