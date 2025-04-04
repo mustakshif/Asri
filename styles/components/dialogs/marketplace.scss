@@ -313,11 +313,13 @@
             height: 8px;
         }
 
+        // author
         .block__icons {
-            background-color: var(--b3-border-color-trans);
+            background-color: rgb(from var(--b3-theme-primary) r g b / .2);
             border-radius: 2em;
             width: fit-content;
-            padding: 0 12px 0 8px;
+            padding-inline-start: 8px;
+            padding-inline-end: 12px;
             margin: 12px auto 0;
             min-height: 2.4em;
             transition: transform .2s;
