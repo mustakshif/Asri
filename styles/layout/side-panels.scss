@@ -4,7 +4,6 @@
 // 侧栏面板总体样式
 .file-tree {
     .block__icons {
-
         .block__logo {
             .block__logoicon {
                 visibility: hidden;
@@ -84,6 +83,10 @@
                 color: var(--b3-theme-on-background) !important;
                 background-color: transparent;
             }
+        }
+
+        &.dragover::after{
+            border-radius: var(--b3-border-radius);
         }
 
         &:hover {

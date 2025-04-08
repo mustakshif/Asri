@@ -315,7 +315,7 @@
 
         // author
         .block__icons {
-            background-color: rgb(from var(--b3-theme-primary) r g b / .15);
+            background-color: rgb(from var(--b3-theme-on-surface) r g b / .1);
             border-radius: 2em;
             width: fit-content;
             padding-inline-start: 8px;

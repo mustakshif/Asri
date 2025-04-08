@@ -1,160 +1,161 @@
 @use '../../base' as *;
 @use '../utils' as *;
 
-.b3-dialog--open {
-    .b3-dialog {
-        &__header {
-            font-weight: 600;
-            text-align: center;
-            border-bottom: none;
-            padding: 18px 18px 6px;
 
-            &:not(.fn__none)+.b3-dialog__body {
-                .config__panel {
-                    .b3-tab-bar {
-                        margin: 0 8px 8px;
-                        padding: 4px 0;
-                        border-radius: 8px;
-                    }
+.b3-dialog {
+    &__header {
+        font-weight: 600;
+        text-align: center;
+        border-bottom: none;
+        padding: 18px 18px 6px;
 
-                    .config__tab-container {
-                        padding: 0;
-
-                        .layout-tab-bar {
-                            margin-top: 0;
-                        }
-                    }
-                }
-
-                .history__panel .history__diff {
+        &:not(.fn__none)+.b3-dialog__body {
+            .config__panel {
+                .b3-tab-bar {
                     margin: 0 8px 8px;
+                    padding: 4px 0;
                     border-radius: 8px;
-                    border-right: none;
-                }
-            }
-        }
-
-        &__container {
-            overflow: hidden; // 窗口中有元素如果混合使用mix-blend-mode 和 backdrop-filter，会导致窗口布局跳动、窗口闪烁
-            background-color: var(--b3-theme-background);
-
-            @include theme-variant-border();
-            @include dialog-shadow;
-
-            @include darkmode-counterpart {
-                outline-color: #ffffff08;
-            }
-
-            .resize__r {
-                transform: translateX(-4px);
-            }
-
-            .resize__d {
-                transform: translateY(-4px);
-            }
-
-            .resize__t {
-                transform: translateY(4px);
-            }
-
-            .resize__l {
-                transform: translateX(4px);
-            }
-
-            .b3-dialog__close {
-                visibility: hidden;
-            }
-
-            // .b3-dialog__body {
-            //     border-radius: 12px;
-            // }
-
-
-        }
-
-        // 对话框底部按钮区域 ——————————————————————————————
-        &__action {
-            // padding: 8px 24px;
-            padding: 6px 18px 18px;
-            border-top: none;
-
-            .fn__space {
-                width: 12px;
-            }
-
-            .b3-button {
-                &--cancel {
-                    @include button-action('normal');
                 }
 
-                &--text {
-                    @include button-action('primary');
-                }
+                .config__tab-container {
+                    padding: 0;
 
-                &--remove {
-                    @include button-action('danger');
+                    .layout-tab-bar {
+                        margin-top: 0;
+                    }
                 }
             }
-        }
 
-        &__content {
-            word-break: normal;
-            line-height: 1.6;
-            padding: 12px 18px;
-        }
-
-        &__header.fn__none~.b3-dialog__body .b3-dialog__content {
-            padding-top: 18px;
+            .history__panel .history__diff {
+                margin: 0 8px 8px;
+                border-radius: 8px;
+                border-right: none;
+            }
         }
     }
 
-    // 对话框中的 tab-bar ——————————————————————————————
+    &__container {
+        overflow: hidden; // 窗口中有元素如果混合使用mix-blend-mode 和 backdrop-filter，会导致窗口布局跳动、窗口闪烁
+        background-color: var(--b3-theme-background);
+
+        @include theme-variant-border();
+        @include dialog-shadow;
+
+        @include darkmode-counterpart {
+            outline-color: #ffffff08;
+        }
+
+        .resize__r {
+            transform: translateX(-4px);
+        }
+
+        .resize__d {
+            transform: translateY(-4px);
+        }
+
+        .resize__t {
+            transform: translateY(4px);
+        }
+
+        .resize__l {
+            transform: translateX(4px);
+        }
+
+        // .b3-dialog__body {
+        //     border-radius: 12px;
+        // }
+
+
+    }
+
+    &__close {
+        visibility: hidden;
+    }
+
+    // 对话框底部按钮区域 ——————————————————————————————
+    &__action {
+        // padding: 8px 24px;
+        padding: 6px 18px 18px;
+        border-top: none;
+
+        .fn__space {
+            width: 12px;
+        }
+
+        .b3-button {
+            &--cancel {
+                @include button-action('normal');
+            }
+
+            &--text {
+                @include button-action('primary');
+            }
+
+            &--remove {
+                @include button-action('danger');
+            }
+        }
+    }
+
+    &__content {
+        word-break: normal;
+        line-height: 1.6;
+        padding: 12px 18px;
+    }
+
+    &__header.fn__none~.b3-dialog__body .b3-dialog__content {
+        padding-top: 18px;
+    }
+
     .layout-tab-bar {
         @include dialog-tabbar;
     }
 
-    // // 仅针对部分对话框的呲边修复 ————————————————————
-    // &[data-key="dialog-setting"],
-    // // 设置
-    // &[data-key="dialog-history"] // 文件历史
+    // 弹出动画
+    &__container {
+        transform: translateY(-30px);
+        transition: opacity .1s linear 0s, transform .4s var(--asri-ease-spring-1);
+    }
 
-    //     {
-    //     .b3-dialog__container {
-    //         overflow: hidden;
+    // [data-id]{
+    //     &[data-type="css"],
+    //     &[data-type="js"] {
+    //         [type="text"].fn__size200.b3-text-field{
+    //             font-weight: 500;
+    //         }
     //     }
     // }
 
-    #transactionError+.b3-dialog__action button:last-child {
-        @include button-action('primary');
+    &__scrim {
+        background-color: #80808080;
+        backdrop-filter: saturate(.5);
+        transition: opacity 250ms 0s, backdrop-filter 300ms 0s;
+
+        @include darkmode-counterpart {
+            background-color: #00000080;
+            backdrop-filter: saturate(.3);
+        }
+
+        // :root[style*="--asri-c-0"] & {
+        //     backdrop-filter: saturate(0);
+        // }
     }
 }
 
-// 弹出动画
-.b3-dialog__container {
-    transform: translateY(-30px);
-    transition: opacity .1s linear 0s, transform .4s var(--asri-ease-spring-1);
-}
+// 对话框中的 tab-bar ——————————————————————————————
 
-// [data-id]{
-//     &[data-type="css"],
-//     &[data-type="js"] {
-//         [type="text"].fn__size200.b3-text-field{
-//             font-weight: 500;
-//         }
+
+// // 仅针对部分对话框的呲边修复 ————————————————————
+// &[data-key="dialog-setting"],
+// // 设置
+// &[data-key="dialog-history"] // 文件历史
+
+//     {
+//     .b3-dialog__container {
+//         overflow: hidden;
 //     }
 // }
 
-.b3-dialog__scrim {
-    background-color: #80808080;
-    backdrop-filter: saturate(.5);
-    transition: opacity 250ms 0s, backdrop-filter 300ms 0s;
-
-    @include darkmode-counterpart {
-        background-color: #00000080;
-        backdrop-filter: saturate(.3);
-    }
-
-    // :root[style*="--asri-c-0"] & {
-    //     backdrop-filter: saturate(0);
-    // }
+#transactionError+.b3-dialog__action button:last-child {
+    @include button-action('primary');
 }
