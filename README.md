@@ -13,23 +13,17 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.3.11
+
+* Optimized the display of sidebar information for marketplace packages
+* Improved the highlighting effect when dragging document tree entries
+* Fixed layout jitter when closing dialog boxes
+
 ### v3.3.10
 
 * Optimized the hover effects for database property icons and text in blocks
 * Unified the styling of global `kbd` content
 * Fixed an issue where theme information displayed in Chinese when the interface language was set to non-English/Chinese languages
-
-### v3.3.9
-
-* Optimized the issue of frequent redrawing of dialogs and menus.
-* Added a border to the bottom status bar in light mode to enhance differentiation.
-* Fine-tuned the texture effects of menus and text editing toolbars in dark mode.
-* [Increased the contrast of inline ](https://github.com/mustakshif/Asri/issues/157)[`kbd`](https://github.com/mustakshif/Asri/issues/157)[ style text](https://github.com/mustakshif/Asri/issues/157).
-* Fixed the issue with the width of the PDF search toolbar.
-* Fixed the font color issue in the PDF search tool results information.
-* Fixed the issue of incomplete display of document title attributes on mobile devices.
-* Fixed the issue of header image jumping when scrolling to the top on mobile devices.
-* [Fixed the style conflict with the bullet threading plugin](https://github.com/mustakshif/Asri/issues/156).
 
 ### ...
 

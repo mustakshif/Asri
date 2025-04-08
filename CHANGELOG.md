@@ -1,3 +1,17 @@
+### v3.3.11
+
+* 优化集市包侧栏信息展示
+* 优化文档树条目拖动高亮效果
+* 修复对话框关闭时布局抖动的问题
+
+<br />
+
+* Optimized the display of sidebar information for marketplace packages
+* Improved the highlighting effect when dragging document tree entries
+* Fixed layout jitter when closing dialog boxes
+
+---
+
 ### v3.3.10
 
 * 优化块的数据库属性图标和文字的鼠标悬停效果
