@@ -97,6 +97,12 @@
         }
     }
 
+    [data-type="NodeHeading"]:not([style*='background-color']){
+        [data-type=kbd] {
+            color: var(--b3-theme-on-surface);
+        }
+    }
+
     .protyle-wysiwyg [data-node-id].hr>div:after {
         @include goldfoil-background;
         // height: 1px;
