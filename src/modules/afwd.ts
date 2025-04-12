@@ -97,7 +97,7 @@ async function initializeCurBlocksAttrs(curBlockType: string, curBlockId: string
         }
     }
 
-    menuItemsFunctionalities(isDoc, curBlockId, attrs);
+    afwdMenuItemsFunctionalities(isDoc, curBlockId, attrs);
 }
 
 async function makeItems(blockType: string) {
@@ -105,8 +105,8 @@ async function makeItems(blockType: string) {
 
     const commonMenuBtnList = commonMenuEl.lastChild as HTMLDivElement;
 
-    const mainBtn = document.createElement('button');
-    mainBtn.className = 'b3-menu__item';
+    const afwdEntryBtn = document.createElement('button');
+    afwdEntryBtn.className = 'b3-menu__item';
     const separator = document.createElement('button');
     separator.className = 'b3-menu__separator';
 
@@ -187,7 +187,7 @@ async function makeItems(blockType: string) {
         </button>
     `
 
-    const menuBtnHtml = `
+    const afwdMenuBtnHtml = `
         <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 18 18">
             <path fill="currentColor" d="m15.503 15.003l-.735.71a.75.75 0 1 0 1.042 1.078l1.886-1.82a1 1 0 0 0 0-1.44l-1.886-1.82a.75.75 0 0 0-1.042 1.079l.739.713H12.75a.75.75 0 0 0 0 1.5zM15 3a2 2 0 0 1 2 2v4.25a.75.75 0 0 1-1.5 0V5a.5.5 0 0 0-.5-.5H5a.5.5 0 0 0-.5.5v4.25a.75.75 0 0 1-1.5 0V5a2 2 0 0 1 2-2zM5.234 15.712l-.735-.71h2.752a.75.75 0 1 0 0-1.5H4.495l.739-.713a.75.75 0 0 0-1.042-1.078l-1.886 1.82a1 1 0 0 0 0 1.44l1.886 1.82a.75.75 0 0 0 1.042-1.079"/>
         </svg>
@@ -208,12 +208,16 @@ async function makeItems(blockType: string) {
         </div>
     `;
 
-    mainBtn.innerHTML = menuBtnHtml;
-    commonMenuBtnList.insertBefore(mainBtn, commonMenuBtnList.lastChild?.previousSibling!);
-    commonMenuBtnList.insertBefore(separator, mainBtn);
+    const tdirEntryBtn = document.createElement('button');
+    tdirEntryBtn.className = 'b3-menu__item';
+
+    afwdEntryBtn.innerHTML = afwdMenuBtnHtml;
+    commonMenuBtnList.insertBefore(afwdEntryBtn, commonMenuBtnList.lastChild?.previousSibling!);
+    commonMenuBtnList.insertBefore(tdirEntryBtn, commonMenuBtnList.lastChild?.previousSibling!);
+    commonMenuBtnList.insertBefore(separator, afwdEntryBtn);
 }
 
-function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, attrs: string[]) {
+function afwdMenuItemsFunctionalities(isDoc: boolean, curBlockId: string, attrs: string[]) {
     const menuItemEls = commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-clear)') as unknown as HTMLButtonElement[];
     let attrsReserved: string[] = []; // save all attrs except 'all', 'on', 'off'
 
