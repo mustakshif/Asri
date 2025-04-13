@@ -208,13 +208,37 @@ async function makeItems(blockType: string) {
         </div>
     `;
 
+    afwdEntryBtn.innerHTML = afwdMenuBtnHtml;
+    commonMenuBtnList.insertBefore(afwdEntryBtn, commonMenuBtnList.lastChild?.previousSibling!);
+    commonMenuBtnList.insertBefore(separator, afwdEntryBtn);
+
+    // tdir menu
+    if (blockType !== 'doc') return;
     const tdirEntryBtn = document.createElement('button');
     tdirEntryBtn.className = 'b3-menu__item';
 
-    afwdEntryBtn.innerHTML = afwdMenuBtnHtml;
-    commonMenuBtnList.insertBefore(afwdEntryBtn, commonMenuBtnList.lastChild?.previousSibling!);
+    const tdirMenuBtnHtml = `
+        <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 22 22">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 5h-3m-5 0h5m-5 0v10m0-10h-1c-1.667 0-5 1-5 5s3.333 5 5 5h1m0 4v-4m5 4V5"/>
+        </svg>
+        <span class="b3-menu__label">${i18n['tdirDocMenuLabel']}</span>
+        <svg class="b3-menu__icon b3-menu__icon--small">
+            <use xlink:href="#iconRight"></use>
+        </svg>
+        <div class="b3-menu__submenu">
+            <div class="b3-menu__items">
+                
+                <button class="b3-menu__separator"></button>
+                <button class="b3-menu__item" id="tdirMenuItem-clear">
+                    <svg class="b3-menu__icon " style=""><use xlink:href="#iconTrashcan"></use></svg>
+                    <span class="b3-menu__label">${i18n['afwdMenuItem-clear']}
+                    </span>
+                </button>
+            </div>
+        </div>
+    `;
+    tdirEntryBtn.innerHTML = tdirMenuBtnHtml;
     commonMenuBtnList.insertBefore(tdirEntryBtn, commonMenuBtnList.lastChild?.previousSibling!);
-    commonMenuBtnList.insertBefore(separator, afwdEntryBtn);
 }
 
 function afwdMenuItemsFunctionalities(isDoc: boolean, curBlockId: string, attrs: string[]) {
