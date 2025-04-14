@@ -111,9 +111,9 @@ To enable full-width display, you can click on the block icons for **Document Bl
 * Full-width display is only effective in the editing area of the main window and small windows, and does not work in block reference preview windows, export previews, backlink panel, search result previews, etc.
 * Enabling full-width display may cause the page to feel more jumpy when the editing area's size changes and automatically returns to the cursor position.
 
-<br />
+<p style="font-size: .5em"></p>
 <details>
-<summary>More info</summary>  
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">Details</summary>
 This feature relies on the custom attributes of SiYuan, so you can also manually configure the block attributes. The attribute name and values are shown in the table below:
 
 | Attribute | Value | Description |

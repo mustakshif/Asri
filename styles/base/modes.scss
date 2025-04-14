@@ -1,7 +1,8 @@
 @use './colors.scss' as *;
 
-@mixin darkmode-counterpart($root:false) {
+@mixin darkmode-counterpart($root: false) {
     $selector: if($root, "&[data-theme-mode=dark]", "[data-theme-mode=dark] &");
+
     #{$selector} {
         @content;
     }
@@ -51,9 +52,11 @@
     border: unset;
     // border-color: transparent;
     @content;
+
     @include darkmode-counterpart {
         @if $border ==true {
-            border: 1px solid var(--b3-border-color-trans);
+            outline: 1px solid #fff2;
+            outline-offset: -1px;
         }
     }
 }

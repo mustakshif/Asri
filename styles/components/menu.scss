@@ -387,13 +387,10 @@
     }
 
     .b3-dialog__container {
-        outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
+        // outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
         background-color: var(--b3-menu-background);
         outline-offset: 0;
-        // @include theme-variant-border($border: false) {
-        //     outline: #fff4 solid 1px;
-        //     outline-offset: -1px;
-        // }
+        @include theme-variant-border($border: true);
 
         .b3-dialog__body {
             border-radius: 11px;

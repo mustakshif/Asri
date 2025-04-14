@@ -110,9 +110,9 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * 全宽显示仅在主窗口和小窗编辑区有效，块引用预览窗、导出预览、反链面板和搜索结果预览等场景均不生效。
 * 启用全宽显示可能导致编辑区大小改变后，自动返回光标所在位置时页面的跳动感增强。
 
-<br />
+<p style="font-size: .5em"></p>
 <details>
-<summary>更多信息</summary>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">细节</summary>
 此特性依赖自定义属性功能，因此也可手动配置块属性，属性名和属性值如下表所示：
 
 | 属性名 | 属性值 | 说明 |
