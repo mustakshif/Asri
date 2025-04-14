@@ -4,10 +4,12 @@
 // 弹出预览窗口 ——————————————————————————————————————
 .block__popover {
     @include dialog-shadow;
-    @include theme-variant-border;
+    @include theme-variant-border($border: false);
 
     @include darkmode-counterpart {
-        outline-color: transparent;
+        // outline-color: transparent;
+        border: 1px solid var(--b3-border-color-trans);
+
     }
 
     outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
