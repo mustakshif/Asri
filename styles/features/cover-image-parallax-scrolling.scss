@@ -34,6 +34,10 @@
         //     }
         // }
 
+        &.fullscreen {
+            --bgimg-top-space: 48px;
+        }
+
         &-background__img {
             view-timeline-name: --protyle-background;
         }

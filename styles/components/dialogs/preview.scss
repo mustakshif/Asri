@@ -9,7 +9,6 @@
     @include darkmode-counterpart {
         // outline-color: transparent;
         border: 1px solid var(--b3-border-color-trans);
-
     }
 
     outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
