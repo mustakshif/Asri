@@ -67,37 +67,43 @@ async function initializeCurBlocksAttrs(curBlockType: string, curBlockId: string
 
     makeItems(curBlockType);
 
-    let attrs = await getBlockAttrs(curBlockId).then(res => res['custom-afwd']);
-    if (!attrs) attrs = '';
-    attrs = attrs.split(' ');
+    const attrs = await getBlockAttrs(curBlockId);
+    let afwdAttrs = attrs['custom-afwd'];
+    let tdirAttrs = attrs['custom-tdir'];
+
+    if (!afwdAttrs) afwdAttrs = '';
+    afwdAttrs = afwdAttrs.split(' ');
 
     // read & set initial states
-    // for doc blocks
-    if (attrs.length > 0 && isDoc) {
-        attrs.forEach((attr: string) => {
-            const menuItemEl = document.getElementById(`afwdMenuItem-${attr}`);
-            if (menuItemEl) {
-                menuItemEl.querySelector('input')!.checked = true;
+    if (afwdAttrs.length > 0) {
+        // for doc blocks
+        if (isDoc) {
+            afwdAttrs.forEach((attr: string) => {
+                const menuItemEl = document.getElementById(`afwdMenuItem-${attr}`);
+                if (menuItemEl) {
+                    menuItemEl.querySelector('input')!.checked = true;
+                }
+            })
+
+            if (afwdAttrs.includes('all')) {
+                const menuItemEls = commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-all, #afwdMenuItem-clear)');
+                menuItemEls?.forEach(el => {
+                    el.classList.add('b3-menu__item--disabled');
+                    el.querySelector('input')!.disabled = true;
+                });
             }
-        })
-
-        if (attrs.includes('all')) {
-            const menuItemEls = commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-all, #afwdMenuItem-clear)');
-            menuItemEls?.forEach(el => {
-                el.classList.add('b3-menu__item--disabled');
-                el.querySelector('input')!.disabled = true;
-            });
         }
-    }
-    // for indoc content blocks
-    else if (attrs.length > 0) {
-        const menuItemEl = document.getElementById(`afwdMenuItem-${attrs[0]}`);
-        if (menuItemEl) {
-            menuItemEl.classList.add('b3-menu__item--selected');
+
+        // for indoc content blocks
+        else {
+            const menuItemEl = document.getElementById(`afwdMenuItem-${afwdAttrs[0]}`);
+            if (menuItemEl) {
+                menuItemEl.classList.add('b3-menu__item--selected');
+            }
         }
     }
 
-    afwdMenuItemsFunctionalities(isDoc, curBlockId, attrs);
+    menuItemsFunctionalities(isDoc, curBlockId, afwdAttrs, tdirAttrs);
 }
 
 async function makeItems(blockType: string) {
@@ -227,7 +233,14 @@ async function makeItems(blockType: string) {
         </svg>
         <div class="b3-menu__submenu">
             <div class="b3-menu__items">
-                
+                <button class="b3-menu__item b3-menu__item--custom" id="tdirMenuItem-ltr">
+                    <svg class="b3-menu__icon " style=""><use xlink:href="#iconLtr"></use></svg>
+                    <span class="b3-menu__label">${i18n['tdirMenuItem-ltr']}</span>
+                </button>
+                <button class="b3-menu__item b3-menu__item--custom" id="tdirMenuItem-rtl">
+                    <svg class="b3-menu__icon " style=""><use xlink:href="#iconRtl"></use></svg>
+                    <span class="b3-menu__label">${i18n['tdirMenuItem-rtl']}</span>
+                </button>                
                 <button class="b3-menu__separator"></button>
                 <button class="b3-menu__item" id="tdirMenuItem-clear">
                     <svg class="b3-menu__icon " style=""><use xlink:href="#iconTrashcan"></use></svg>
@@ -241,20 +254,20 @@ async function makeItems(blockType: string) {
     commonMenuBtnList.insertBefore(tdirEntryBtn, commonMenuBtnList.lastChild?.previousSibling!);
 }
 
-function afwdMenuItemsFunctionalities(isDoc: boolean, curBlockId: string, attrs: string[]) {
-    const menuItemEls = commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-clear)') as unknown as HTMLButtonElement[];
-    let attrsReserved: string[] = []; // save all attrs except 'all', 'on', 'off'
+function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, afwdAttrs: string[], tdirAttrs: string[]) {
+    const afwdMenuItemEls = commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-clear)') as unknown as HTMLButtonElement[];
+    let groupedAttrsReserved: string[] = []; // save all attrs except 'all', 'on', 'off'
 
-    if (!menuItemEls) return;
-    const menuItemElsExceptAll = [...menuItemEls].filter(el => el.id !== 'afwdMenuItem-all');
+    if (!afwdMenuItemEls) return;
+    const menuItemElsExceptAll = [...afwdMenuItemEls].filter(el => el.id !== 'afwdMenuItem-all');
 
     // set doc blocks afwd menu funcs
     if (isDoc) {
-        menuItemEls?.forEach(el => {
+        afwdMenuItemEls?.forEach(el => {
             el.onclick = (ev) => {
                 if (el.classList.contains('b3-menu__item--disabled')) return;
                 const input = el.querySelector('input')!;
-                const curAttr = el['id'].split('-')[1]; // 'all' | 'db' | ...
+                const curAttrItem = el['id'].split('-')[1]; // 'all' | 'db' | ...
                 let isOn = input.checked; // check initial state
 
                 // clicking on input itself will toggle the checkbox automatically,
@@ -264,69 +277,76 @@ function afwdMenuItemsFunctionalities(isDoc: boolean, curBlockId: string, attrs:
 
                 // when menu item is actived
                 if (isOn) {
-                    if (curAttr === 'all') {
+                    if (curAttrItem === 'all') {
                         menuItemElsExceptAll.forEach(el => {
                             el.classList.remove('b3-menu__item--disabled');
                             el.querySelector('input')!.disabled = false;
                         });
 
-                        attrs = attrsReserved.length > 0 ? attrsReserved : [];
-                    } else attrs = attrs.filter(a => a !== curAttr);
+                        afwdAttrs = groupedAttrsReserved.length > 0 ? groupedAttrsReserved : [];
+                    } else afwdAttrs = afwdAttrs.filter(a => a !== curAttrItem);
                 }
                 // when menu item is deactived
                 else {
-                    if (curAttr === 'all') {
-                        if (!attrs.includes('all')) attrsReserved = attrs;
-                        attrs = ['all'];
+                    if (curAttrItem === 'all') {
+                        if (!afwdAttrs.includes('all')) groupedAttrsReserved = afwdAttrs;
+                        afwdAttrs = ['all'];
                         menuItemElsExceptAll.forEach(el => {
                             el.classList.add('b3-menu__item--disabled');
                             el.querySelector('input')!.disabled = true;
                         });
-                    } else attrs.push(curAttr);
+                    } else afwdAttrs.push(curAttrItem);
                 };
 
-                setBlockAttrs(curBlockId, { 'custom-afwd': attrs.join(' ') || '' });
+                setBlockAttrs(curBlockId, { 'custom-afwd': afwdAttrs.join(' ') || '' });
             }
         })
     }
     // set indoc blocks afwd menu funcs
     else {
-        menuItemEls?.forEach((el, index, arr) => {
+        afwdMenuItemEls?.forEach((el, index, arr) => {
             el.onclick = () => {
                 const attr = el['id'].split('-')[1]; // 'on' | 'off'
                 const isSelected = el.classList.contains('b3-menu__item--selected');
 
                 if (isSelected) {
-                    attrs = [];
+                    afwdAttrs = [];
                     el.classList.remove('b3-menu__item--selected');
                 } else {
-                    attrs = [attr];
+                    afwdAttrs = [attr];
                     el.classList.add('b3-menu__item--selected');
                     arr[1 - index].classList.remove('b3-menu__item--selected');
                 };
 
-                setBlockAttrs(curBlockId, { 'custom-afwd': attrs?.join(' ') || '' });
+                setBlockAttrs(curBlockId, { 'custom-afwd': afwdAttrs?.join(' ') || '' });
             }
         })
     }
 
-    // functionality of clear button
-    const clearBtn = document.getElementById('afwdMenuItem-clear');
-    if (clearBtn) {
-        clearBtn.onclick = () => {
-            attrs = [];
-            attrsReserved = [];
-            setBlockAttrs(curBlockId, { 'custom-afwd': '' });
-            menuItemEls.forEach(el => {
-                el.classList.remove('b3-menu__item--disabled');
-                el.classList.remove('b3-menu__item--selected');
-                if (isDoc) {
-                    const inputEl = el.querySelector('input');
-                    inputEl!.disabled = false;
-                    inputEl!.checked = false;
-                }
-            })
-        }
+    // functionality of afwd clear button
+    const afwdClearBtn = document.getElementById('afwdMenuItem-clear');
+    if (!afwdClearBtn) return;
+    afwdClearBtn.onclick = () => {
+        afwdAttrs = [];
+        groupedAttrsReserved = [];
+        setBlockAttrs(curBlockId, { 'custom-afwd': '' });
+        afwdMenuItemEls.forEach(el => {
+            el.classList.remove('b3-menu__item--disabled');
+            el.classList.remove('b3-menu__item--selected');
+            if (isDoc) {
+                const inputEl = el.querySelector('input');
+                inputEl!.disabled = false;
+                inputEl!.checked = false;
+            }
+        })
+    }
+
+    // functionality of tdir clear button
+    if (!isDoc) return;
+    const tdirClearBtn = document.getElementById('tdirMenuItem-clear');
+    if (!tdirClearBtn) return;
+    tdirClearBtn.onclick = () => {
+
     }
 }
 

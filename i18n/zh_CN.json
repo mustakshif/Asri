@@ -13,6 +13,8 @@
     "afwdMenuItem-on": "为此块启用",
     "afwdMenuItem-off": "为此块禁用",
     "tdirDocMenuLabel": "文档排版方向",
+    "tdirMenuItem-ltr": "从左向右",
+    "tdirMenuItem-rtl": "从右向左",
     "palette-presets": "预设配色方案",
     "prst-palette-everbliss": "岁禧",
     "prst-palette-auriflow": "鎏金"
