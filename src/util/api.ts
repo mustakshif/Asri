@@ -12,9 +12,10 @@ export {
 async function getFile(path:string) {
     const response = await fetch('/api/file/getFile', {
         method: 'POST',
-        headers: {
-            Authorization: `Token ''`,
-        },
+        // https://github.com/siyuan-note/siyuan/issues/14571
+        // headers: {
+        //     Authorization: `Token ''`,
+        // },
         body: JSON.stringify({
             path: path,
         }),
@@ -35,9 +36,10 @@ async function putFile(path:string, filedata: BlobPart, isDir = false, modTime =
     const response = await fetch('/api/file/putFile', {
         body: formdata,
         method: 'POST',
-        headers: {
-            Authorization: `Token ''`,
-        },
+        //https://github.com/siyuan-note/siyuan/issues/14571
+        // headers: {
+        //     Authorization: `Token ''`,
+        // },
     });
     if (response.ok) return await response.json();
     else return null;

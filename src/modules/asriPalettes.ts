@@ -149,6 +149,34 @@ async function updateAsriConfigs() {
 //     setTimeout(createMenuItems, 0);
 // }
 
+const asriPrstPalettes = {
+    'prst-palette-auriflow': {
+        'dark': {
+            'primary': '#D2B983',
+            'chroma': '0.3',
+            'followSysAccentColor': false,
+        },
+        'light': {
+            'primary': '#F4D18B',
+            'chroma': '0',
+            'followSysAccentColor': false,
+        }
+    },
+
+    'prst-palette-everbliss': {
+        'dark': {
+            'primary': '#ccc4fb',
+            'chroma': '1.5',
+            'followSysAccentColor': false,
+        },
+        'light': {
+            'primary': '#F4CA57',
+            'chroma': '2.8',
+            'followSysAccentColor': false,
+        }
+    }
+}
+
 const paletteMenuItem = (paletteID: string) => {
     const displayName = i18n[paletteID] || paletteID;
     return `<button class="b3-menu__item asri-config" id="${paletteID}"><svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19 3h-4a2 2 0 0 0-2 2v12a4 4 0 0 0 8 0V5a2 2 0 0 0-2-2"/><path d="m13 7.35l-2-2a2 2 0 0 0-2.828 0L5.344 8.178a2 2 0 0 0 0 2.828l9 9"/><path d="M7.3 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h12m0-4v.01"/></g></svg><span class="b3-menu__label">${displayName}</span></button>`;
@@ -169,8 +197,7 @@ export async function createBarModeMenuItems(e: Event) {
     const asriConfigMenuHTML = `
         <button class="b3-menu__separator asri-config"></button>
         <div class="menu-item__subtitle" style="user-select: none;">${i18n['palette-presets']}</div>
-        ${paletteMenuItem("prst-palette-everbliss")}
-        ${paletteMenuItem("prst-palette-auriflow")}
+        ${Object.keys(asriPrstPalettes).map(paletteID => paletteMenuItem(paletteID)).join('')}
         <button class="b3-menu__separator asri-config"></button>
         <button class="b3-menu__item asri-config" id="pickColor">
             <svg class="b3-menu__icon"></svg>
@@ -393,33 +420,6 @@ function reverseOnPrimaryLightness(hex: string) {
     }
 }
 
-const asriPrstPalettes = {
-    'prst-palette-auriflow': {
-        'dark': {
-            'primary': '#D2B983',
-            'chroma': '0.3',
-            'followSysAccentColor': false,
-        },
-        'light': {
-            'primary': '#F4D18B',
-            'chroma': '0',
-            'followSysAccentColor': false,
-        }
-    },
-
-    'prst-palette-everbliss': {
-        'dark': {
-            'primary': '#ccc4fb',
-            'chroma': '1.5',
-            'followSysAccentColor': false,
-        },
-        'light': {
-            'primary': '#F4CA57',
-            'chroma': '2.8',
-            'followSysAccentColor': false,
-        }
-    }
-}
 
 export const paletteMenuItemClickEventListener = new AsriEventListener(paletteMenuItemCallback);
 
