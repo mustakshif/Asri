@@ -13,17 +13,21 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.3.12
+
+* Added a new preset theme color scheme "Zerith"
+* Document layout direction (previously the `tdir` custom attribute) can now be quickly set via the document block menu
+* Added Arabic language support to Asri configuration menu items
+* Fixed the text color issue of inline keyboard-style text in heading blocks under the "Auriflow" color scheme
+* Fixed the gap appearing above cover images in full-screen mode
+* Fixed abnormal border line colors of some panels in dark mode
+* Fixed the issue where user theme configurations failed to load/save
+
 ### v3.3.11
 
 * Optimized the display of sidebar information for marketplace packages
 * Improved the highlighting effect when dragging document tree entries
 * Fixed layout jitter when closing dialog boxes
-
-### v3.3.10
-
-* Optimized the hover effects for database property icons and text in blocks
-* Unified the styling of global `kbd` content
-* Fixed an issue where theme information displayed in Chinese when the interface language was set to non-English/Chinese languages
 
 ### ...
 

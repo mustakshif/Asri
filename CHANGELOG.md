@@ -1,3 +1,25 @@
+### v3.3.12
+
+* 新增预设主题配色「零域」
+* 文档排版方向（原 `tdir` 自定义属性）现可通过文档块菜单快速设置
+* Asri 配置菜单项新增阿拉伯语支持
+* 修复「鎏金」配色下标题块中行内键盘样式文字颜色问题
+* 修复全屏模式下题头图上方出现空隙的问题
+* 修复暗色模式下部分面板边框线颜色异常问题
+* 修复用户主题配置无法加载/储存的问题
+
+<br />
+
+* Added a new preset theme color scheme "Zerith"
+* Document layout direction (previously the `tdir` custom attribute) can now be quickly set via the document block menu
+* Added Arabic language support to Asri configuration menu items
+* Fixed the text color issue of inline keyboard-style text in heading blocks under the "Auriflow" color scheme
+* Fixed the gap appearing above cover images in full-screen mode
+* Fixed abnormal border line colors of some panels in dark mode
+* Fixed the issue where user theme configurations failed to load/save
+
+---
+
 ### v3.3.11
 
 * 优化集市包侧栏信息展示
