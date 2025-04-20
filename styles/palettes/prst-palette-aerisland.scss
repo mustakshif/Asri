@@ -10,12 +10,12 @@
     }
 
     &[data-theme-mode=dark] {
-        --aerisland-base-accent: #a9f256;
+        --aerisland-base-accent: #41aa9d;
         --asri-theme-accent-customized: var(--aerisland-base-accent);
         --b3-theme-primary: var(--aerisland-base-accent);
 
-        --b3-theme-on-background: #ccdbb3;
-        --b3-theme-on-surface: #ccdbb3a2;
+        --b3-theme-on-background: #c1d2ab;
+        --b3-theme-on-surface: #c1d2aba2;
     }
 
     .protyle-title__input,

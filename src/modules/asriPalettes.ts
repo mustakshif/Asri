@@ -178,8 +178,8 @@ const asriPrstPalettes = {
 
     // 'prst-palette-aerisland': {
     //     'dark': {
-    //         'primary': '#c0f2e9',
-    //         'chroma': '1.5',
+    //         'primary': '#11353f',
+    //         'chroma': '2',
     //         'followSysAccentColor': false,
     //     },
     //     'light': {
