@@ -1,0 +1,73 @@
+[data-asri-palette="zerith"] {
+    &[data-theme-mode=light] {
+        --zerith-base-accent: #cfea00;
+        --asri-theme-accent-customized: var(--zerith-base-accent);
+        --b3-theme-primary: #8bc600;
+        --b3-theme-accent: #73a400;
+
+        --b3-theme-on-background: #265970;
+        --b3-theme-on-surface: #265970a2;
+
+        .layout__center :not(.av__views)>.layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
+        .layout__center :not(.av__views)>.layout-tab-bar .item--focus {
+            background-color: #c7ea008e;
+        }
+
+        [data-type=wnd]:not(.layout__wnd--active) .item--focus {
+            background-color: #c7ea0052 !important;
+        }
+
+        // .protyle-title__input,
+        // [data-type="NodeHeading"],
+        // .b3-dialog__header,
+        // :where(h1, h2, h3, h4, h5, h6) {
+        //     color: #21597394;
+        // }
+    }
+
+    &[data-theme-mode=dark] {
+        --zerith-base-accent: #dbf611;
+        --asri-theme-accent-customized: var(--zerith-base-accent);
+        --b3-theme-primary: var(--zerith-base-accent);
+
+        --b3-theme-on-background: #bfd1cc;
+        --b3-theme-on-surface: #bfd1cca2;
+
+        .protyle-title__input,
+        [data-type="NodeHeading"],
+        .b3-dialog__header,
+        :where(h1, h2, h3, h4, h5, h6) {
+            color: var(--b3-theme-primary);
+        }
+    }
+}
+
+#barWorkspace,
+#message,
+.b3-button--outline:hover,
+.b3-dialog__action .b3-button--text,
+#transactionError+.b3-dialog__action button:last-child,
+#configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover,
+.protyle-breadcrumb__icon:hover,
+.protyle-breadcrumb__item,
+.config-account__info .b3-button,
+.b3-menu,
+.b3-switch,
+.b3-button--outline,
+.protyle-breadcrumb__icon {
+    [data-asri-palette="zerith"][data-theme-mode=light] & {
+        --b3-theme-primary: var(--zerith-base-accent);
+        --b3-theme-on-primary: var(--b3-theme-on-background);
+    }
+
+    [data-asri-palette="zerith"][data-theme-mode=dark] & {
+        --b3-theme-primary: var(--zerith-base-accent);
+        // --b3-theme-on-primary: #fffaf1;
+    }
+}
+
+.b3-button--outline {
+    [data-asri-palette="zerith"][data-theme-mode=light] & {
+        --b3-theme-primary: var(--b3-theme-accent);
+    }
+}

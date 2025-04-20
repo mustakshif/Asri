@@ -1,0 +1,56 @@
+[data-asri-palette="aerisland"] {
+    &[data-theme-mode=light] {
+        --aerisland-base-accent: #53d9ca;
+        --asri-theme-accent-customized: var(--aerisland-base-accent);
+        --b3-theme-primary: #07a996;
+        --b3-theme-accent: #0fbca7;
+
+        --b3-theme-on-background: #07443d;
+        --b3-theme-on-surface: #07443da2;
+    }
+
+    &[data-theme-mode=dark] {
+        --aerisland-base-accent: #a9f256;
+        --asri-theme-accent-customized: var(--aerisland-base-accent);
+        --b3-theme-primary: var(--aerisland-base-accent);
+
+        --b3-theme-on-background: #ccdbb3;
+        --b3-theme-on-surface: #ccdbb3a2;
+    }
+
+    .protyle-title__input,
+    [data-type="NodeHeading"],
+    .b3-dialog__header {
+        color: var(--b3-theme-primary);
+    }
+}
+
+#barWorkspace,
+#message,
+.b3-button--outline:hover,
+.b3-dialog__action .b3-button--text,
+#transactionError+.b3-dialog__action button:last-child,
+#configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover,
+.protyle-breadcrumb__icon:hover,
+.protyle-breadcrumb__item,
+.config-account__info .b3-button,
+.b3-menu,
+.b3-switch,
+.b3-button--outline,
+.protyle-breadcrumb__icon {
+    [data-asri-palette="aerisland"][data-theme-mode=light] & {
+        --b3-theme-primary: var(--aerisland-base-accent);
+        --b3-theme-on-primary: #07443d;
+    }
+
+    [data-asri-palette="aerisland"][data-theme-mode=dark] & {
+        --b3-theme-primary: var(--aerisland-base-accent);
+        // --b3-theme-on-primary: #fffaf1;
+    }
+}
+
+.b3-button--outline {
+    [data-asri-palette="aerisland"][data-theme-mode=light] & {
+        --b3-theme-primary: var(--b3-theme-accent);
+    }
+}

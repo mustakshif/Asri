@@ -174,6 +174,32 @@ const asriPrstPalettes = {
             'chroma': '2.8',
             'followSysAccentColor': false,
         }
+    },
+
+    // 'prst-palette-aerisland': {
+    //     'dark': {
+    //         'primary': '#c0f2e9',
+    //         'chroma': '1.5',
+    //         'followSysAccentColor': false,
+    //     },
+    //     'light': {
+    //         'primary': '#E5EFDF',
+    //         'chroma': '2',
+    //         'followSysAccentColor': false,
+    //     }
+    // },
+
+    'prst-palette-zerith': {
+        'dark': {
+            'primary': '#ABC3D9',
+            'chroma': '2.4',
+            'followSysAccentColor': false,
+        },
+        'light': {
+            'primary': '#C2E2DF',
+            'chroma': '0.7',
+            'followSysAccentColor': false,
+        }
     }
 }
 

@@ -49,7 +49,7 @@ $cvc: 10; // color variant count
 
             --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
 
-            --b3-border-color: oklch(from var(--b3-theme-on-background) .92 clamp(0, .009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) h);
+            --b3-border-color: oklch(from var(--b3-theme-background) .92 clamp(0, .009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) h);
             --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
 
             --b3-menu-background: oklch(from var(--b3-theme-background) .95 c h);
@@ -105,7 +105,7 @@ $cvc: 10; // color variant count
 
             --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
 
-            --b3-border-color: oklch(from var(--b3-theme-on-background) .34 clamp(0, .009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) h);
+            --b3-border-color: oklch(from var(--b3-theme-background) .34 clamp(0, .009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) h);
             --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
 
             --b3-menu-background: oklch(from var(--b3-theme-background) .25 c h);
