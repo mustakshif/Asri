@@ -12,6 +12,9 @@
     "afwdMenuItem-clear": "Clear attributes",
     "afwdMenuItem-on": "Enable for this block",
     "afwdMenuItem-off": "Disable for this block",
+    "tdirDocMenuLabel": "Doc layout direction",
+    "tdirMenuItem-ltr": "Left to right",
+    "tdirMenuItem-rtl": "Right to left",
     "palette-presets": "Presets",
     "prst-palette-everbliss": "Everbliss",
     "prst-palette-auriflow": "Auriflow"

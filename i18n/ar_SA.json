@@ -1,0 +1,21 @@
+{
+    "followSysAccent": "اتباع لون النظام الأساسي",
+    "pickColor": "تخصيص لون السمة",
+    "asriChroma": "التشبع: ",
+    "afwdDocMenuLabel": "عرض بعرض الشاشة الكامل",
+    "afwdMenuItem-all": "جميع الكتل القابلة للتطبيق",
+    "afwdMenuItem-db": "قاعدة البيانات",
+    "afwdMenuItem-t": "جدول",
+    "afwdMenuItem-p": "صورة",
+    "afwdMenuItem-iframe": "إطار داخلي",
+    "afwdMenuItem-sb": "كتلة فائقة",
+    "afwdMenuItem-clear": "مسح السمات",
+    "afwdMenuItem-on": "تفعيل لهذه الكتلة",
+    "afwdMenuItem-off": "تعطيل لهذه الكتلة",
+    "tdirDocMenuLabel": "اتجاه تخطيط المستند",
+    "tdirMenuItem-ltr": "من اليسار إلى اليمين",
+    "tdirMenuItem-rtl": "من اليمين إلى اليسار",
+    "palette-presets": "الإعدادات المسبقة",
+    "prst-palette-everbliss": "النعيم الأبدي",
+    "prst-palette-auriflow": "تدفق الذهب"
+}

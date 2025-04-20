@@ -53,7 +53,7 @@ Check all updates [here](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.
 ### 🧭 Convenient and Clear Navigation
 
 * 🗂️ Indent guides for file tree and outline
-* 🔍 Clear presentation of search results and backlinks lists
+* 🔍 Clear hierarchical display of search results and backlinks lists
 * ↕️ Enabled native scrollbar, which can auto-hide to minimize visual clutter[^5] `#macOS`
 
 ### 👆 Nimble and Smooth Interaction
@@ -113,7 +113,7 @@ To enable full-width display, you can click on the block icons for **Document Bl
 
 <p style="font-size: .5em"></p>
 <details>
-<summary style="opacity: .6; font-weight: 600; font-size: .8em">Details</summary>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">More</summary>
 This feature relies on the custom attributes of SiYuan, so you can also manually configure the block attributes. The attribute name and values are shown in the table below:
 
 | Attribute | Value | Description |
@@ -124,14 +124,20 @@ This feature relies on the custom attributes of SiYuan, so you can also manually
 
 #### 2. `tdir`: Document text direction
 
-Applies exclusively to document blocks, ensuring that content within the block is consistently rendered from left-to-right or right-to-left for ease of writing and reading. This property is independent of global settings and does not override individual layout settings of blocks within the document.
+Applies exclusively to document blocks, ensuring that content within the block is consistently rendered from left-to-right or right-to-left for ease of writing and reading. This property is independent of global settings and does not override individual layout settings of blocks within the document. This attribute does not take effect in backlink lists and export previews.
+
+To apply this property to a document, you can click on the block icon for **Document Block**, then select `Doc layout direction` in the popup menu.
+
+<p style="font-size: .5em"></p>
+<details>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">More</summary>
 
 | Attribute | Value | Description |
 | ------ | ------ | ------ |
 | `tdir`               | `ltr`                | Renders document content from left to right, ideal for left-to-right languages like Chinese and English. |
 | `tdir`               | `rtl`                | Renders document content from right to left, ideal for right-to-left languages like Arabic.        |
 
-This attribute does not take effect in backlink lists and export previews.
+</details>
 
 ## Acknowledgements
 

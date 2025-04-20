@@ -69,9 +69,10 @@ async function initializeCurBlocksAttrs(curBlockType: string, curBlockId: string
 
     const attrs = await getBlockAttrs(curBlockId);
     let afwdAttrs = attrs['custom-afwd'];
-    let tdirAttrs = attrs['custom-tdir'];
+    let tdirAttr = attrs['custom-tdir']; // 'ltr' or 'rtl'
 
     if (!afwdAttrs) afwdAttrs = '';
+    if (!tdirAttr) tdirAttr = '';
     afwdAttrs = afwdAttrs.split(' ');
 
     // read & set initial states
@@ -103,7 +104,14 @@ async function initializeCurBlocksAttrs(curBlockType: string, curBlockId: string
         }
     }
 
-    menuItemsFunctionalities(isDoc, curBlockId, afwdAttrs, tdirAttrs);
+    if (tdirAttr.length && isDoc) {
+        const menuItemEl = document.getElementById(`tdirMenuItem-${tdirAttr}`);
+        if (menuItemEl) {
+            menuItemEl.classList.add('b3-menu__item--selected');
+        }
+    }
+
+    menuItemsFunctionalities(isDoc, curBlockId, afwdAttrs, tdirAttr);
 }
 
 async function makeItems(blockType: string) {
@@ -256,13 +264,14 @@ async function makeItems(blockType: string) {
 
 function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, afwdAttrs: string[], tdirAttrs: string[]) {
     const afwdMenuItemEls = commonMenuEl?.querySelectorAll('button[id^=afwdMenuItem]:not(#afwdMenuItem-clear)') as unknown as HTMLButtonElement[];
+    const tdirMenuItemEls = commonMenuEl?.querySelectorAll('button[id^=tdirMenuItem]:not(#tdirMenuItem-clear)') as unknown as HTMLButtonElement[];
+
     let groupedAttrsReserved: string[] = []; // save all attrs except 'all', 'on', 'off'
 
-    if (!afwdMenuItemEls) return;
-    const menuItemElsExceptAll = [...afwdMenuItemEls].filter(el => el.id !== 'afwdMenuItem-all');
+    const afwdMenuItemElsExceptAll = [...afwdMenuItemEls].filter(el => el.id !== 'afwdMenuItem-all');
 
-    // set doc blocks afwd menu funcs
     if (isDoc) {
+        // set doc blocks afwd menu funcs
         afwdMenuItemEls?.forEach(el => {
             el.onclick = (ev) => {
                 if (el.classList.contains('b3-menu__item--disabled')) return;
@@ -278,7 +287,7 @@ function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, afwdAttrs:
                 // when menu item is actived
                 if (isOn) {
                     if (curAttrItem === 'all') {
-                        menuItemElsExceptAll.forEach(el => {
+                        afwdMenuItemElsExceptAll.forEach(el => {
                             el.classList.remove('b3-menu__item--disabled');
                             el.querySelector('input')!.disabled = false;
                         });
@@ -291,7 +300,7 @@ function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, afwdAttrs:
                     if (curAttrItem === 'all') {
                         if (!afwdAttrs.includes('all')) groupedAttrsReserved = afwdAttrs;
                         afwdAttrs = ['all'];
-                        menuItemElsExceptAll.forEach(el => {
+                        afwdMenuItemElsExceptAll.forEach(el => {
                             el.classList.add('b3-menu__item--disabled');
                             el.querySelector('input')!.disabled = true;
                         });
@@ -301,6 +310,25 @@ function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, afwdAttrs:
                 setBlockAttrs(curBlockId, { 'custom-afwd': afwdAttrs.join(' ') || '' });
             }
         })
+
+        // set doc blocks tdir menu funcs
+        tdirMenuItemEls?.forEach((el, index, arr) => {
+            el.onclick = () => {
+                const attr = el['id'].split('-')[1]; // 'ltr' or 'rtl'
+                const isSelected = el.classList.contains('b3-menu__item--selected');
+
+                if (isSelected) {
+                    el.classList.remove('b3-menu__item--selected');
+                    tdirAttrs = [];
+                } else {
+                    tdirAttrs = [attr];
+                    el.classList.add('b3-menu__item--selected');
+                    arr[1 - index].classList.remove('b3-menu__item--selected');
+                }
+
+                setBlockAttrs(curBlockId, { 'custom-tdir': `${tdirAttrs.join('')}` });
+            }
+        });
     }
     // set indoc blocks afwd menu funcs
     else {
@@ -346,7 +374,11 @@ function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, afwdAttrs:
     const tdirClearBtn = document.getElementById('tdirMenuItem-clear');
     if (!tdirClearBtn) return;
     tdirClearBtn.onclick = () => {
-
+        tdirAttrs = [];
+        setBlockAttrs(curBlockId, { 'custom-tdir': '' });
+        tdirMenuItemEls.forEach(el => {
+            el.classList.remove('b3-menu__item--selected');
+        });
     }
 }
 

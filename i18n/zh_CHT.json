@@ -12,6 +12,9 @@
     "afwdMenuItem-clear": "清除屬性",
     "afwdMenuItem-on": "為此塊啟用",
     "afwdMenuItem-off": "為此塊禁用",
+    "tdirDocMenuLabel": "文件排版方向",
+    "tdirMenuItem-ltr": "從左向右",
+    "tdirMenuItem-rtl": "從右向左",
     "palette-presets": "預設配色方案",
     "prst-palette-everbliss": "歲禧",
     "prst-palette-auriflow": "鎏金"
