@@ -1,21 +1,21 @@
 [data-asri-palette="aerisland"] {
     &[data-theme-mode=light] {
-        --aerisland-base-accent: #53d9ca;
+        --aerisland-base-accent: #93dcd4;
         --asri-theme-accent-customized: var(--aerisland-base-accent);
-        --b3-theme-primary: #07a996;
-        --b3-theme-accent: #0fbca7;
+        --b3-theme-primary: #67b6ad;
+        --b3-theme-accent: #2ea5a2;
 
-        --b3-theme-on-background: #07443d;
-        --b3-theme-on-surface: #07443da2;
+        --b3-theme-on-background: #0c544c;
+        --b3-theme-on-surface: #09423ba2;
     }
 
     &[data-theme-mode=dark] {
-        --aerisland-base-accent: #41aa9d;
+        --aerisland-base-accent: #4d9c93;
         --asri-theme-accent-customized: var(--aerisland-base-accent);
         --b3-theme-primary: var(--aerisland-base-accent);
 
-        --b3-theme-on-background: #c1d2ab;
-        --b3-theme-on-surface: #c1d2aba2;
+        --b3-theme-on-background: #bbbdaa;
+        --b3-theme-on-surface: #bbbdaaa2;
     }
 
     .protyle-title__input,

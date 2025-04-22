@@ -281,6 +281,7 @@
                                         -webkit-font-smoothing: auto;
 
                                         @include darkmode-counterpart {
+                                            outline: none;
                                             -webkit-font-smoothing: antialiased;
                                         }
                                     }

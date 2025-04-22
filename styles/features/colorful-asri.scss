@@ -365,18 +365,18 @@ $cvc: 10; // color variant count
 
     .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
     .layout-tab-bar .item--focus {
-        background-color: oklch(from var(--b3-theme-primary) .5 clamp(0, calc(.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .35) h / .2);
+        background-color: oklch(from var(--b3-theme-primary) .5 clamp(0, calc(.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .25) h / .2);
 
         @include darkmode-counterpart {
-            background-color: oklch(from var(--b3-theme-primary) .99 clamp(0, calc(.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .2) h / .2);
+            background-color: oklch(from var(--b3-theme-primary) .99 clamp(0, calc(.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .15) h / .2);
         }
     }
 
     [data-type="wnd"]:not(.layout__wnd--active) .item--focus {
-        background-color: oklch(from var(--b3-theme-primary) .5 clamp(0, calc(.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * .5), .35) h / .2);
+        background-color: oklch(from var(--b3-theme-primary) .5 clamp(0, calc(.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * .5), .25) h / .2);
 
         @include darkmode-counterpart {
-            background-color: oklch(from var(--b3-theme-primary) .99 clamp(0, calc(.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * .5), .2) h / .2);
+            background-color: oklch(from var(--b3-theme-primary) .99 clamp(0, calc(.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * .5), .15) h / .2);
         }
     }
 
