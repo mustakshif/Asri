@@ -13,7 +13,7 @@
             background-color: #c7ea008e;
         }
 
-        [data-type=wnd]:not(.layout__wnd--active) .item--focus {
+        [data-type=wnd]:not(.layout__wnd--active) :not(.av__views)>.layout-tab-bar .item--focus {
             background-color: #c7ea0052 !important;
         }
 
@@ -66,7 +66,8 @@
     }
 }
 
-.b3-button--outline {
+.b3-button--outline,
+.protyle-breadcrumb__icon {
     [data-asri-palette="zerith"][data-theme-mode=light] & {
         --b3-theme-primary: var(--b3-theme-accent);
     }
