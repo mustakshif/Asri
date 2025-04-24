@@ -400,14 +400,14 @@ $cvc: 10; // color variant count
         $hso: 36; // hue shift offset
 
         @for $i from 1 through $cvc {
-            --b3-font-color#{$i + 3}: oklch(0.6 0.23 calc(360 / #{$cvc} * #{ $i } + #{$hso}));
-            --b3-font-background#{$i + 3}: oklch(0.97 0.05 calc(360 / #{$cvc} * #{ $i } +  #{$hso}));
+            --b3-font-color#{$i + 3}: oklch(0.6 0.2 calc(360 / #{$cvc} * #{ $i } + #{$hso}));
+            --b3-font-background#{$i + 3}: oklch(0.97 0.04 calc(360 / #{$cvc} * #{ $i } +  #{$hso}));
         }
 
         @include darkmode-counterpart {
             @for $i from 1 through $cvc {
-                --b3-font-color#{$i + 3}: oklch(0.83 0.17 calc(360 / #{$cvc} * #{ $i } +  #{$hso}));
-                --b3-font-background#{$i + 3}: oklch(0.31 0.05 calc(360 / #{$cvc} * #{ $i } +  #{$hso}));
+                --b3-font-color#{$i + 3}: oklch(0.83 0.13 calc(360 / #{$cvc} * #{ $i } +  #{$hso}));
+                --b3-font-background#{$i + 3}: oklch(0.31 0.04 calc(360 / #{$cvc} * #{ $i } +  #{$hso}));
             }
         }
     }
