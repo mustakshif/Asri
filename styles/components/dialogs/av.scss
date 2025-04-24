@@ -1,0 +1,104 @@
+@use '../../protyle/utils' as *;
+
+// 属性面板视图
+.custom-attr .block__logo.custom-attr__avheader {
+    color: var(--b3-theme-primary);
+    font-weight: 500;
+    margin-right: 0;
+    margin-bottom: 4px;
+    opacity: 1;
+    position: sticky;
+    top: 0;
+    background-color: var(--b3-theme-background);
+    z-index: 1;
+}
+
+.custom-attr[data-type="NodeAttributeView"] {
+    padding-bottom: 16px;
+
+    .custom-attr__avheader {
+        padding-left: 40px;
+        padding-right: 16px;
+        font-weight: 500;
+    }
+
+    .block__icons {
+        height: auto;
+        min-height: unset;
+        padding: 4px 16px;
+    }
+
+    .av__row {
+        .block__logo {
+            font-weight: 500;
+        }
+
+        .block__logo~.fn__flex-1 {
+            overflow: visible;
+        }
+
+        .custom-attr__avvalue {
+            padding: 4px 0;
+
+            &:empty {
+                padding: 4px;
+            }
+        }
+
+        input,
+        select,
+        [data-type=text] .b3-text-field {
+            min-height: unset;
+            height: 28px;
+            padding: 4px;
+
+            &:hover {
+                background-color: var(--b3-theme-surface);
+            }
+
+            &:focus {
+                background-color: var(--b3-theme-surface);
+                outline: 3px solid var(--b3-theme-primary-light);
+            }
+        }
+
+        [data-type=text] {
+            align-self: flex-start;
+        }
+
+        .b3-chip {
+            border-radius: 4px;
+            padding: 2px 6px;
+        }
+
+        @include database-assets-style() {
+            color: var(--b3-theme-on-surface);
+            margin: 2px;
+        }
+    }
+}
+
+.custom-attr__avvalue {
+    &[data-type="relation"] {
+        flex-direction: column;
+
+        .av__cell--relation {
+            // margin: 4px 0;
+            margin-left: unset;
+            margin: 2px 0;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .b3-menu__avemoji {
+            display: inline;
+            padding-top: .1em;
+        }
+    }
+}

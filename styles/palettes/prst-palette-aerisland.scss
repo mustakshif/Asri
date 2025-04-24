@@ -2,7 +2,7 @@
     &[data-theme-mode=light] {
         --aerisland-base-accent: #93dcd4;
         --asri-theme-accent-customized: var(--aerisland-base-accent);
-        --b3-theme-primary: #67b6ad;
+        --b3-theme-primary: #4fbdb0;
         --b3-theme-accent: #2ea5a2;
 
         --b3-theme-on-background: #0c544c;
@@ -14,8 +14,8 @@
         --asri-theme-accent-customized: var(--aerisland-base-accent);
         --b3-theme-primary: var(--aerisland-base-accent);
 
-        --b3-theme-on-background: #bbbdaa;
-        --b3-theme-on-surface: #bbbdaaa2;
+        --b3-theme-on-background: #c6c9b3;
+        --b3-theme-on-surface: #c6c9b3a2;
     }
 
     .protyle-title__input,
@@ -49,7 +49,8 @@
     }
 }
 
-.b3-button--outline {
+.b3-button--outline,
+.protyle-breadcrumb__icon {
     [data-asri-palette="aerisland"][data-theme-mode=light] & {
         --b3-theme-primary: var(--b3-theme-accent);
     }

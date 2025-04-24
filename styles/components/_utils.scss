@@ -32,16 +32,18 @@
     }
 }
 
-@mixin dialog-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3) {
+@mixin dialog-shadow ($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $extra-shadow-light: '', $extra-shadow-dark: '') {
     box-shadow: 0px 10px 15px -3px change-color($shadow-clr-light, $alpha: $opacity-light * 0.7),
         0px 24px 40px 9px change-color($shadow-clr-light, $alpha: $opacity-light * 0.5),
-        0 66px 40px -32px change-color($shadow-clr-light, $alpha: $opacity-light);
+        0 66px 40px -32px change-color($shadow-clr-light, $alpha: $opacity-light),
+        #{$extra-shadow-light};
 
     @include darkmode-counterpart {
         box-shadow: 0 0 0 1px #000,
             0px 10px 15px -3px change-color($shadow-clr-dark, $alpha: $opacity-dark * 0.7),
             0px 24px 40px 9px change-color($shadow-clr-dark, $alpha: $opacity-dark * 0.5),
-            0 66px 40px -32px change-color($shadow-clr-dark, $alpha: $opacity-dark);
+            0 66px 40px -32px change-color($shadow-clr-dark, $alpha: $opacity-dark),
+            #{$extra-shadow-dark};
     }
 }
 

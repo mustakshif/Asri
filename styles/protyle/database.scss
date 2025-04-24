@@ -250,11 +250,11 @@
                 position: relative;
 
                 &::before {
-                    top: 0;
+                    top: .55em;
                     bottom: 0;
                     left: 0;
                     right: 0;
-                    margin: auto;
+                    margin: 0 auto;
                 }
             }
         }
@@ -291,6 +291,34 @@
         // 主键列项文档图标
         .b3-menu__avemoji {
             margin-right: 1px;
+        }
+
+        // 关联列表格内容
+        &[data-wrap="true"] {
+            .av__cell--relation {
+                margin-left: unset;
+                display: flex;
+                margin: 4px 0;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                .b3-menu__avemoji {
+                    padding-top: .1em;
+                    align-self: auto;
+                    height: fit-content;
+                }
+            }
+
+            .av__cell:not(.av__cell--header)[data-dtype="relation"] {
+                display: flex;
+                flex-direction: column;
+            }
         }
     }
 
@@ -336,13 +364,13 @@
 
                 // v2.1.9: fix关联主键编辑菜单背景差异
 
-                @include darkmode-counterpart {
-                    border-top: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
-                    background-clip: padding-box;
-                    border-left: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
-                    border-right: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
-                    border-radius: 10px 10px 0 0;
-                }
+                // @include darkmode-counterpart {
+                //     border-top: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
+                //     background-clip: padding-box;
+                //     border-left: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
+                //     border-right: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
+                //     border-radius: 10px 10px 0 0;
+                // }
 
                 // v2.1.10: fix暗色模式下边框差异
             }
@@ -670,7 +698,7 @@ img.av__cellassetimg {
 
     [data-type="setRelationCell"] {
         .b3-menu__label.popover__block {
-            color: var(--b3-theme-primary) !important;
+            // color: var(--b3-theme-primary) !important;
             text-decoration: underline transparent;
             text-decoration-thickness: $text-underline-thickness;
         }
@@ -697,80 +725,6 @@ img.av__cellassetimg {
         &:focus {
             background-color: var(--b3-menu-background);
             outline: none;
-        }
-    }
-}
-
-// 属性面板视图
-.custom-attr .block__logo.custom-attr__avheader {
-    color: var(--b3-theme-primary);
-    font-weight: 500;
-    margin-right: 0;
-    margin-bottom: 4px;
-    opacity: 1;
-    position: sticky;
-    top: 0;
-    background-color: var(--b3-theme-background);
-    z-index: 1;
-}
-
-.custom-attr[data-type="NodeAttributeView"] {
-    padding-bottom: 16px;
-
-    .custom-attr__avheader {
-        padding-left: 40px;
-        padding-right: 16px;
-        font-weight: 500;
-    }
-
-    .block__icons {
-        height: auto;
-        min-height: unset;
-        padding: 4px 16px;
-    }
-
-    .av__row {
-        .block__logo {
-            font-weight: 500;
-        }
-
-        .block__logo~.fn__flex-1 {
-            overflow: visible;
-        }
-
-        .custom-attr__avvalue {
-            padding: 4px 0;
-        }
-
-        input,
-        select,
-        [data-type=text] .b3-text-field {
-            min-height: unset;
-            height: 28px;
-            padding: 4px;
-
-            &:hover {
-                background-color: var(--b3-theme-surface);
-            }
-
-            &:focus {
-                background-color: var(--b3-theme-surface);
-                outline: 3px solid var(--b3-theme-primary-light);
-            }
-        }
-
-        [data-type=text] {
-            align-self: flex-start;
-        }
-
-        .b3-chip {
-            border-radius: 4px;
-            padding: 2px 6px;
-        }
-
-        @include database-assets-style() {
-            color: var(--b3-theme-on-surface);
-            margin: 2px;
         }
     }
 }

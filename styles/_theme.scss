@@ -70,17 +70,20 @@
 }
 
 body {
-    -webkit-font-smoothing: auto;
     text-underline-position: under;
     text-decoration-skip-ink: all; // not supported yet
+
+    [data-theme-mode="light"] & {
+        -webkit-font-smoothing: auto;
+    }
 
     // fix being overridden by other themes
     --b3-toolbar-left-mac: 80px;
     --toolbar-height: 48px;
 
-    @include darkmode-counterpart {
-        -webkit-font-smoothing: antialiased;
-    }
+    // @include darkmode-counterpart {
+    //     -webkit-font-smoothing: antialiased;
+    // }
 
     &[arco-theme] {
         font-family: var(--b3-font-family);

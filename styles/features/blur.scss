@@ -454,11 +454,12 @@ body:not(.asri-disable-backdrop-blur) {
 
                 &,
                 &+.fn__hr {
-                    background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+                    background-color: transparent;
+                    // background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
 
-                    @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-                        @include theme-variant-color(background-color, menu-background, $medium-transparency);
-                    }
+                    // @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+                    //     @include theme-variant-color(background-color, menu-background, $medium-transparency);
+                    // }
                 }
             }
 
