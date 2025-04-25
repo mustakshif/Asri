@@ -144,6 +144,10 @@
             transition-timing-function: var(--asri-ease-out-5);
         }
 
+        &--unupdate:not(.item--pin) .item__icon {
+            font-style: normal;
+        }
+
         // &__icon, &__text {
         //     transition-delay: .125s;
         // }

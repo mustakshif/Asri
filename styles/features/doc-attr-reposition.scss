@@ -144,6 +144,7 @@ body:not(.body-asri--mobile) {
                     transform: none;
                     display: inline;
                     overflow: hidden;
+                    outline: none;
                     color: var(--b3-theme-on-background);
                 }
             }
