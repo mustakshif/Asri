@@ -13,6 +13,18 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.3.13
+
+* Added new preset theme color scheme "Aerisland"
+* Optimized the display effect when enabling line wrap in database relation columns
+* Improved the text color of primary keys in the database relation column menu
+* Enhanced the positioning of database checkboxes
+* Adjusted the paddings of blank entries in the property view
+* Strengthened the parallax scrolling effect of header images
+* Reduced the saturation of database tag colors
+* Removed the italic style of unedited tab icons
+* Eliminated the redundant border of the refresh button on the personal account page in dark mode
+
 ### v3.3.12
 
 * Added a new preset theme color scheme "Zerith"
@@ -22,12 +34,6 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 * Fixed the gap appearing above cover images in full-screen mode
 * Fixed abnormal border line colors of some panels in dark mode
 * Fixed the issue where user theme configurations failed to load/save
-
-### v3.3.11
-
-* Optimized the display of sidebar information for marketplace packages
-* Improved the highlighting effect when dragging document tree entries
-* Fixed layout jitter when closing dialog boxes
 
 ### ...
 

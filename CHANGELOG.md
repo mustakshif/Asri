@@ -1,3 +1,29 @@
+### v3.3.13
+
+* 新增预设主题配色「空屿」
+* 优化数据库关联列启用换行时的展示效果
+* 优化数据库关联列菜单主键文字颜色
+* 优化数据库勾选框定位
+* 优化属性视图空白条目边距
+* 增强题头图视差滚动效果
+* 降低数据库标签颜色饱和度
+* 取消未编辑页签图标的斜体样式
+* 去除暗色模式下个人账号页面刷新按钮多余边框
+
+<br />
+
+* Added new preset theme color scheme "Aerisland"
+* Optimized the display effect when enabling line wrap in database relation columns
+* Improved the text color of primary keys in the database relation column menu
+* Enhanced the positioning of database checkboxes
+* Adjusted the paddings of blank entries in the property view
+* Strengthened the parallax scrolling effect of header images
+* Reduced the saturation of database tag colors
+* Removed the italic style of unedited tab icons
+* Eliminated the redundant border of the refresh button on the personal account page in dark mode
+
+---
+
 ### v3.3.12
 
 * 新增预设主题配色「零域」
