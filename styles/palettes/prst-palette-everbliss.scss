@@ -4,12 +4,12 @@
         --asri-theme-accent-customized: var(--everbliss-base-accent);
         --b3-theme-primary: var(--everbliss-base-accent);
 
-        --b3-theme-on-background: #592b26;
-        --b3-theme-on-surface: #592b26a2;
+        --b3-theme-on-background: #4d3d5f;
+        --b3-theme-on-surface: #4d3d5fa2;
     }
 
     &[data-theme-mode=dark] {
-        --everbliss-base-accent: #ffbc88;
+        --everbliss-base-accent: #e4545e;
         --asri-theme-accent-customized: var(--everbliss-base-accent);
         --b3-theme-primary: var(--everbliss-base-accent);
 
@@ -44,6 +44,6 @@
 
     [data-asri-palette="everbliss"][data-theme-mode=dark] & {
         --b3-theme-primary: var(--everbliss-base-accent);
-        // --b3-theme-on-primary: #fffaf1;
+        --b3-theme-on-primary: #f3d9c1;
     }
 }

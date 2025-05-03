@@ -165,7 +165,7 @@ const asriPrstPalettes = {
 
     'prst-palette-everbliss': {
         'dark': {
-            'primary': '#ccc4fb',
+            'primary': '#13012a',
             'chroma': '1.5',
             'followSysAccentColor': false,
         },
