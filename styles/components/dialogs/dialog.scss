@@ -39,7 +39,7 @@
         background-color: var(--b3-theme-background);
         
         @include theme-variant-border;
-        @include dialog-shadow($extra-shadow-light: "0 0 0 1px var(--b3-border-color-trans)");
+        @include dialog-shadow($extra-shadow-light: "0 0 0 1px rgba(0, 0, 0, 0.05)");
 
         @include darkmode-counterpart {
             outline-color: #ffffff08;

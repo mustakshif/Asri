@@ -21,7 +21,7 @@
         border-radius: 10px;
     }
 
-    &::before {
+    &:not(&--fullscreen)::before {
         box-shadow: 0 0 0 1px #fff2 inset, 0 2px 1px -1px #fff3 inset;
     }
 

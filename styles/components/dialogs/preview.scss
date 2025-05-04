@@ -3,7 +3,7 @@
 
 // 弹出预览窗口 ——————————————————————————————————————
 .block__popover {
-    @include dialog-shadow;
+    @include dialog-shadow($extra-shadow-light: "0 0 0 1px rgba(0, 0, 0, 0.05)");
     @include theme-variant-border($border: false);
 
     @include darkmode-counterpart {
@@ -11,7 +11,7 @@
         border: 1px solid var(--b3-border-color-trans);
     }
 
-    outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
+    // outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
 
     >.block__icons--menu {
         background-color: var(--b3-theme-background);
