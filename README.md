@@ -58,7 +58,8 @@ Check all updates [here](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.
 * 🦋 Support for full-width display of images, videos, widgets, databases, superblocks and more, enhancing information display
 * 💬 Supports right-to-left layout, accommodating languages written from right to left, such as Arabic[^4]
 * 🚏 Document-level text direction settings cater to different language layout needs
- * 🧩 Streamlined superblock margins for simplified creation of grid and masonry layouts
+* 🧩 Streamlined superblock margins for simplified creation of grid and masonry layouts
+* 📝 Enhanced the layout details in database and attribute view for improved clarity and organization
 
 ### 🧭 Convenient and Clear Navigation
 
