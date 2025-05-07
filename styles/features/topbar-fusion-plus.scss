@@ -1,7 +1,7 @@
 @use '../base' as *;
 @use './utils' as *;
 
-body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
+body.asri-tfp:not(.asri-disable-backdrop-blur) {
     &.asri-dragging-gutter {
 
         .protyle-breadcrumb,
@@ -118,8 +118,8 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
         }
     }
 
-    // two types of immersive tabbar
-    &.asri-imsvtb-classic {
+    // two types of topbar fusion plus
+    &.asri-tfp-classic {
 
         .layout__wnd--active,
         [data-type="wnd"] {
@@ -142,7 +142,7 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
         }
     }
 
-    &.asri-imsvtb-trending {
+    &.asri-tfp-immersive {
 
         .layout__wnd--active,
         [data-type="wnd"] {
@@ -313,6 +313,10 @@ body.asri-immersive-tabbar:not(.asri-disable-backdrop-blur) {
     .av__colsticky,
     .av__row--footer {
         z-index: 1;
+    }
+
+    .av__row--header {
+        transform: none !important;
     }
 
     &.body--window {
