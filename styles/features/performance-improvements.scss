@@ -8,10 +8,10 @@
 //     contain: strict;
 // }
 
-.protyle-top {
-    // content-visibility: auto;
-    contain: content;
-}
+// .protyle-top {
+//     // content-visibility: auto;
+//     // contain: content; // conflict with sidebar memo plugin
+// }
 
 // .layout__dockl, .layout__dockr {
 //     contain: content; // https://github.com/mustakshif/Asri/issues/150

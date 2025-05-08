@@ -58,7 +58,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
                 // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
             }
 
-            :not(#searchPreview, .card__block)>.protyle-breadcrumb {
+            :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb {
                 padding-top: 42px;
                 margin-bottom: calc(var(--blur-block-height) * -1);
                 height: var(--blur-block-height);
@@ -132,7 +132,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
                 }
             }
 
-            :not(#searchPreview, .card__block)>.protyle-breadcrumb {
+            :not(#searchPreview, .card__block,.plugin-panel)>.protyle-breadcrumb {
                 background-color: rgb(from var(--b3-theme-background) r g b / $thick-transparency);
 
                 @include darkmode-counterpart {
@@ -229,7 +229,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
                 }
             }
 
-            :not(#searchPreview, .card__block)>.protyle-breadcrumb {
+            :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb {
                 background-color: transparent;
                 // mix-blend-mode: luminosity;
                 // mix-blend-mode: difference;
@@ -275,7 +275,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
                 }
             }
 
-            :not(.fullscreen)>.protyle-breadcrumb {
+            :not(.fullscreen, .plugin-panel)>.protyle-breadcrumb {
                 .protyle-breadcrumb__bar {
                     height: fit-content;
                     margin: 6px 0;
@@ -285,6 +285,22 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
                     // background-color: var(--b3-theme-surface-light);
                     border-radius: 6px;
                     @include bg-blur(8px, 1.5, $brightness-light: 1);
+                }
+            }
+
+            .protyle-top {
+                margin-top: -84px;
+
+                --cover-img-height: calc(30vh + 84px);
+            }
+
+            .protyle-background__img {
+                img {
+                    height: calc(30vh + 84px);
+                }
+
+                .protyle-icons {
+                    top: 92px;
                 }
             }
 
@@ -315,9 +331,15 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
         z-index: 1;
     }
 
-    .av__row--header {
-        transform: none !important;
-    }
+    // .protyle-breadcrumb{
+    //     anchor-name: --breadcrumb;
+    // }
+
+    // .av__row--header {
+    //     transform: none !important;
+    //     position: sticky;
+    //     top: calc(anchor(bottom) + 42px);
+    // }
 
     &.body--window {
         --blur-block-height: 74px;
