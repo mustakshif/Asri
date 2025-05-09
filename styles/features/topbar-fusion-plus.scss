@@ -248,6 +248,10 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
                     backdrop-filter: blur(16px) saturate(2);
                     mask-image: linear-gradient(to bottom, #000, #0000);
                     pointer-events: none;
+
+                    @include darkmode-counterpart {
+                        backdrop-filter: blur(16px) saturate(1.25);
+                    }
                 }
 
                 .protyle-breadcrumb__item {
