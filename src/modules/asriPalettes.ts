@@ -27,7 +27,7 @@ const debounceChramaValueSaving = debounce(updateAsriConfigs, 200);
 export let i18n: any;
 let sysAccentColor: string;
 let isSysAccentGray = false, isUserAccentGray = false;
-let followSysAccentBtn: AsriDomsExtended, pickColorBtn: AsriDomsExtended, asriChromaSlider: HTMLInputElement | null, colorPicker: HTMLInputElement | null;
+let followSysAccentBtn: AsriDomsExtended, pickColorBtn: AsriDomsExtended, asriChromaSlider: HTMLInputElement | null, colorPicker: HTMLInputElement | null, topbarFusionPlusBtn: AsriDomsExtended;
 export let followSysAccentColor = false;
 export async function loadThemePalette() {
     // if (env.isIOSApp) return; // fix app crash
@@ -242,6 +242,8 @@ export async function createBarModeMenuItems(e: Event) {
                 <input style="box-sizing: border-box" type="range" id="asriChromaSlider" class="b3-slider fn__block" min="0" max="5" step="0.1" value="1">
             </div>
         </button>
+        <button class="b3-menu__separator asri-config"></button>
+        <button class="b3-menu__item asri-config" id="topbarFusionPlus"></button>
 `;
     const asriConfigFrag = document.createRange().createContextualFragment(asriConfigMenuHTML);
 
@@ -252,10 +254,68 @@ export async function createBarModeMenuItems(e: Event) {
     pickColorBtn = document.getElementById('pickColor');
     asriChromaSlider = document.getElementById('asriChromaSlider') as HTMLInputElement | null;
     colorPicker = pickColorBtn!.querySelector('input') as HTMLInputElement | null;
+    topbarFusionPlusBtn = document.getElementById('topbarFusionPlus');
+
+    topbarFusionPlusBtn!.innerHTML = `
+        <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg>
+        <span class="b3-menu__label">${i18n['topbarFusionPlus']}</span>
+        <svg class="b3-menu__icon b3-menu__icon--small">
+            <use xlink:href="#iconRight"></use>
+        </svg>
+        <div class="b3-menu__submenu">
+            <div class="b3-menu__items">
+                <button class="b3-menu__item" id="tfp-progressive">
+                    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
+                    <span class="b3-menu__label">${i18n['tfp-progressive']}</span>
+                </button>
+                <button class="b3-menu__item" id="tfp-acrylic">
+                    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
+                    <span class="b3-menu__label">${i18n['tfp-acrylic']}</span>
+                </button>                
+                <button class="b3-menu__separator"></button>
+                <button class="b3-menu__item" id="tfp-disable">
+                    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9l-6 6m0-6l6 6"/></g>
+                    </svg>
+                    <span class="b3-menu__label">${i18n['tfp-disable']}</span>
+                </button>
+            </div>
+        </div>
+    `;
 
     if (!followSysAccentBtn || !pickColorBtn || !asriChromaSlider || !colorPicker) return;
     initMenuItems();
     initAsriConfigMenuItemClick();
+}
+
+export const tfpMenuItemCallbackEventListener = new AsriEventListener(tfpMenuItemCallback);
+
+function tfpMenuItemCallback(e: Event) {
+    const target = (e.target as HTMLElement).closest('[id^="tfp-"]');
+    const tfpMenuItems = document.querySelectorAll('[id^="tfp-"]');
+    if (!target) return;
+
+    if (target.id === 'tfp-disable') {
+        document.body.classList.remove('asri-tfp-acrylic', 'asri-tfp-progressive', 'asri-tfp');
+        tfpMenuItems.forEach(item => {
+            item.classList.remove('b3-menu__item--selected');
+        });
+        return;
+    } else {
+        if (target.classList.contains('b3-menu__item--selected')) {
+            document.body.classList.remove(target.id.replace('tfp-', 'asri-tfp-'));
+            document.body.classList.remove('asri-tfp');
+            target.classList.remove('b3-menu__item--selected');
+        } else {
+            tfpMenuItems.forEach(item => {
+                item.classList.remove('b3-menu__item--selected');
+            });
+            target.classList.add('b3-menu__item--selected');
+            document.body.classList.remove('asri-tfp-acrylic', 'asri-tfp-progressive');
+            document.body.classList.add('asri-tfp');
+            document.body.classList.add(target.id.replace('tfp-', 'asri-tfp-'));
+        }
+    }
 }
 
 function initMenuItems() {

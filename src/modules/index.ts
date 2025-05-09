@@ -4,7 +4,7 @@ import { debounce, isProtyle, querySelectorAsync } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
 import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
-import { createBarModeMenuItems, followSysAccentColor, getSystemAccentColor, loadI18n, loadThemePalette, paletteMenuItemClickEventListener, unloadThemePalette } from "./asriPalettes";
+import { createBarModeMenuItems, followSysAccentColor, getSystemAccentColor, loadI18n, loadThemePalette, paletteMenuItemClickEventListener, tfpMenuItemCallbackEventListener, unloadThemePalette } from "./asriPalettes";
 import { docBodyMoCallback } from "./dialog";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
@@ -58,6 +58,7 @@ export async function loadAsriJSModules() {
     // watchImgExportMo.observe(document.body, { childList: true });
     themeUpdateListener.start(darkModeMediaQuery, 'change');
     paletteMenuItemClickEventListener.start(document, 'mouseup');
+    tfpMenuItemCallbackEventListener.start(document, 'mouseup');
     asriDoms.layoutCenter || await querySelectorAsync('.layout__center');
     if (!env.isMobile) {
         lytCenterRo.observe(asriDoms.layoutCenter);
@@ -93,6 +94,7 @@ export async function unloadAsriJSModules(completeUnload = true) {
     globalClassNameMo.disconnect();
     themeUpdateListener.remove(darkModeMediaQuery, 'change');
     paletteMenuItemClickEventListener.remove(document, 'mouseup');
+    tfpMenuItemCallbackEventListener.remove(document, 'mouseup');
     // watchImgExportMo.disconnect(() => {
     //     document.body.classList.remove("has-exportimg")
     // });

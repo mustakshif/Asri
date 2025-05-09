@@ -79,7 +79,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
                 padding-top: 0 !important;
             }
 
-            :not(#searchPreview)>.protyle-content {
+            :not(#searchPreview)>.protyle-breadcrumb+.protyle-content {
                 padding-top: var(--blur-block-height);
             }
 
@@ -119,7 +119,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
     }
 
     // two types of topbar fusion plus
-    &.asri-tfp-classic {
+    &.asri-tfp-acrylic {
 
         .layout__wnd--active,
         [data-type="wnd"] {
@@ -132,7 +132,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
                 }
             }
 
-            :not(#searchPreview, .card__block,.plugin-panel)>.protyle-breadcrumb {
+            :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb {
                 background-color: rgb(from var(--b3-theme-background) r g b / $thick-transparency);
 
                 @include darkmode-counterpart {
@@ -142,7 +142,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
         }
     }
 
-    &.asri-tfp-immersive {
+    &.asri-tfp-progressive {
 
         .layout__wnd--active,
         [data-type="wnd"] {
@@ -210,7 +210,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
                         background: unset;
                     }
 
-                    .protyle-content::before {
+                    .protyle-breadcrumb+.protyle-content::before {
                         content: '';
                         position: absolute;
                         top: 0;
@@ -245,7 +245,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
                     height: 100%;
                     height: 80%;
                     // background-color: transparent;
-                    backdrop-filter: blur(16px);
+                    backdrop-filter: blur(16px) saturate(2);
                     mask-image: linear-gradient(to bottom, #000, #0000);
                     pointer-events: none;
                 }
@@ -291,6 +291,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
             .protyle-top {
                 margin-top: -84px;
 
+                --bgimg-top-space: 12px; // -> parallax scrolling fix
                 --cover-img-height: calc(30vh + 84px);
             }
 
@@ -301,6 +302,10 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
 
                 .protyle-icons {
                     top: 92px;
+                }
+
+                &.fn__none+.protyle-background__ia {
+                    margin-top: 92px !important;
                 }
             }
 
