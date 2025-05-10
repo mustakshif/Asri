@@ -3,6 +3,7 @@
 
 body.asri-tfp:not(.asri-disable-backdrop-blur) {
     &.asri-dragging-gutter {
+        // 修复向上拖动块时无法出发自动滚动
 
         .protyle-breadcrumb,
         :where(.layout__wnd--active, [data-type="wnd"])>.fn__flex:first-child {
@@ -97,7 +98,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
         // pdf
         #outerContainer {
             #sidebarContainer {
-                top: 84px;
+                top: var(--blur-block-height);
             }
 
             .pdf__toolbar {
@@ -111,7 +112,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
             }
 
             #viewerContainer {
-                top: 84px;
+                top: var(--blur-block-height);
                 transition: none;
             }
 
@@ -144,27 +145,94 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
 
     &.asri-tfp-progressive {
 
-        .layout__wnd--active,
-        [data-type="wnd"] {
+        // .protyle-background__img {
+        //     &::after {
+        //         content: "";
+        //         display: inline-block;
+        //         width: -webkit-fill-available;
+        //         height: calc(30vh + var(--blur-block-height) - 20px);
+        //         position: absolute;
+        //         top: 20px;
+        //         right: 0;
+        //         background: linear-gradient(to top, var(--b3-theme-background) 2%, rgba(from var(--b3-theme-background) r g b / .97) 9%, rgba(from var(--b3-theme-background) r g b / 0.9) 18%, rgba(from var(--b3-theme-background) r g b / .75) 33%, rgba(from var(--b3-theme-background) r g b /.05) 92%, transparent 99%);
+        //         pointer-events: none;
+        //     }
+        // }
+
+        :where(.layout__wnd--active,
+            [data-type="wnd"]) {
+            >.fn__flex:first-child {
+                // mix-blend-mode: luminosity;
+            }
 
             :not(.av__views)>.layout-tab-bar {
-                @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
-                    .item:not(.item--readonly) {
-                        background-color: oklch(from var(--b3-theme-background) .9 c h / .5);
+                @include overflow-indicator-fadein-mask(24px, $range: 'left right');
 
-                        @include darkmode-counterpart {
-                            background-color: oklch(from var(--b3-theme-background) .4 c h / .5);
-                        }
+                .item:not(.item--pin) {
+                    margin-inline-end: 0;
+
+                    &:last-child {
+                        margin-inline-end: 1px;
+                    }
+                }
+
+                .item--focus:not(.item--pin) {
+                    margin-inline-start: 8px;
+                    margin-inline-end: 8px;
+                }
+
+                .item--focus:last-child {
+                    margin-inline-end: 0;
+                }
+
+
+                // .item--pin+.item:not(.item--pin, .item--readonly) {
+                //     margin-inline-start: 0;
+
+                //     &::before {
+                //         inset-inline-start: 0;
+                //     }
+                // }
+
+                // .item__text {
+                //     color: var(--b3-theme-on-background);
+                // }
+
+                .item:not(.item--readonly, .item--focus) {
+                    background-color: transparent;
+
+                    .item__text {
+                        filter: drop-shadow(0 0 3.5px var(--b3-theme-background));
                     }
 
-                    .item:not(.item--readonly, .item--full.item--focus):hover,
-                    .item.item--focus {
-                        background-color: oklch(from var(--b3-theme-primary) .8 clamp(0, calc(.05 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .18) h / .5);
-
-                        @include darkmode-counterpart {
-                            background-color: oklch(from var(--b3-theme-primary) .6 clamp(0, calc(.06 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .18) h / .5);
-                        }
+                    @include darkmode-counterpart {
+                        background-color: transparent;
                     }
+                }
+
+                // @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
+                //     .item:not(.item--readonly, .item--focus) {
+                //         // background-color: oklch(from var(--b3-theme-background) .9 c h / .4);
+
+                //         @include darkmode-counterpart {
+                //             // background-color: oklch(from var(--b3-theme-background) .4 c h / .4);
+                //         }
+                //     }
+
+                //     // .item:not(.item--readonly, .item--full.item--focus):hover,
+                //     // .item.item--focus {
+                //     //     background-color: oklch(from var(--b3-theme-primary) .8 clamp(0, calc(.05 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .18) h / .5);
+
+                //     //     @include darkmode-counterpart {
+                //     //         background-color: oklch(from var(--b3-theme-primary) .6 clamp(0, calc(.06 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .18) h / .5);
+                //     //     }
+                //     // }
+                // }
+
+                .item:not(.item--readonly, .item--full.item--focus, .item--focus):hover {
+                    box-shadow: inset 0 0 1px rgb(from var(--b3-theme-on-background) r g b / .8);
+                    background-color: transparent;
+                    border-radius: 7px;
                 }
 
                 .item--focus {
@@ -172,15 +240,19 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
                 }
 
                 &:not(.layout-tab-bar--readonly) .item {
+                    font-weight: 500;
                     // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
-                    backdrop-filter: saturate(2);
+                    // backdrop-filter: saturate(2);
                     // outline: 1px solid rgb(from var(--b3-theme-background) r g b / .2);
                     // outline-offset: -1px;
-                    // box-shadow: inset 0 0 1px rgb(from var(--b3-theme-background) r g b / .9);
+                    // box-shadow: inset 0 0 1px rgb(from var(--b3-theme-on-background) r g b / .9);
 
                     &--focus {
                         // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
-                        backdrop-filter: saturate(2.5);
+                        // backdrop-filter: saturate(2.5);
+                        backdrop-filter: none;
+                        // background-color: var(--b3-theme-background);
+                        // box-shadow: inset 0 0 1px rgb(from var(--b3-theme-on-background) r g b / .9);
                     }
                 }
             }
@@ -293,15 +365,15 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
             }
 
             .protyle-top {
-                margin-top: -84px;
+                margin-top: calc(-1 * var(--blur-block-height));
 
                 --bgimg-top-space: 12px; // -> parallax scrolling fix
-                --cover-img-height: calc(30vh + 84px);
+                --cover-img-height: calc(30vh + var(--blur-block-height));
             }
 
             .protyle-background__img {
                 img {
-                    height: calc(30vh + 84px);
+                    height: calc(30vh + var(--blur-block-height));
                 }
 
                 .protyle-icons {
@@ -321,7 +393,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
 
         //页签栏图标、顶栏图标
         .item--readonly .block__icon,
-        .toolbar__item:not(#barWorkspace) {
+        .toolbar .toolbar__item:not(#barWorkspace) {
             filter: drop-shadow(0 0 3px var(--b3-theme-background));
         }
     }

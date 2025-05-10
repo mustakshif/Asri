@@ -88,12 +88,12 @@
             }
 
             &+.item:not(.item--pin, .item--readonly) {
-                margin-left: 14px;
+                margin-inline-start: 14px;
 
                 &::before {
                     content: "";
                     position: absolute;
-                    left: -12px;
+                    inset-inline-start: -12px;
                     display: block;
                     width: 2px;
                     background-color: var(--b3-border-color-trans);

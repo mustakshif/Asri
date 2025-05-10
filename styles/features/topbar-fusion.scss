@@ -151,17 +151,19 @@ body:not(.body-asri--mobile, .body--window) {
         }
     }
 
-    & {
-        .layout__dockl.layout--float {
-            &::before {
-                content: '';
-                width: 41px;
-                height: var(--toolbar-height);
-                position: fixed;
-                left: 0;
-                background-color: var(--b3-theme-background);
-            }
+    .layout__dockl.layout--float {
+        &::before {
+            content: '';
+            width: 41px;
+            height: var(--toolbar-height);
+            position: fixed;
+            left: 0;
+            background-color: var(--b3-theme-background);
         }
+    }
+
+    #dockLeft.fn__none+#layouts .layout__dockl.layout--float::before {
+        display: none;
     }
 
     .layout--float {
