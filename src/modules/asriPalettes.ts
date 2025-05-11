@@ -8,15 +8,18 @@ import { startFadeInFadeOutTranstition } from './modeTransition';
 const asriConfigs = {
     'light': {
         'followSysAccentColor': false,
-        'chroma': "1",
-        'userCustomColor': "#3478f6",
+        'chroma': '1',
+        'userCustomColor': '#3478f6',
         'presetPalette': ''
     },
     'dark': {
         'followSysAccentColor': false,
-        'chroma': "1",
-        'userCustomColor': "#3478f6",
+        'chroma': '1',
+        'userCustomColor': '#3478f6',
         'presetPalette': ''
+    },
+    'features': {
+        'tfp': ''
     }
 };
 
@@ -27,7 +30,7 @@ const debounceChramaValueSaving = debounce(updateAsriConfigs, 200);
 export let i18n: any;
 let sysAccentColor: string;
 let isSysAccentGray = false, isUserAccentGray = false;
-let followSysAccentBtn: AsriDomsExtended, pickColorBtn: AsriDomsExtended, asriChromaSlider: HTMLInputElement | null, colorPicker: HTMLInputElement | null, topbarFusionPlusBtn: AsriDomsExtended;
+let followSysAccentBtn: AsriDomsExtended, pickColorBtn: AsriDomsExtended, asriChromaSlider: HTMLInputElement | null, colorPicker: HTMLInputElement | null, topbarFusionPlusBtn: AsriDomsExtended, tfpProgressiveBtn: AsriDomsExtended, tfpAcrylicBtn: AsriDomsExtended;
 export let followSysAccentColor = false;
 export async function loadThemePalette() {
     // if (env.isIOSApp) return; // fix app crash
@@ -68,6 +71,10 @@ export async function loadThemePalette() {
             handleGrayScale(asriConfigs[curMode].chroma);
         }
         getSystemAccentColor();
+
+        if (asriConfigs.features.tfp) {
+            document.body.classList.add('asri-tfp', 'asri-tfp-' + asriConfigs.features.tfp);
+        }
     });
 
     // env.supportOklch && asriDoms.barMode?.addEventListener("click", customizeThemeColor);
@@ -127,6 +134,10 @@ async function getAsriConfigs() {
                 })
             }
 
+            if (!(data.features)) {
+                data.features = asriConfigs.features;
+            }
+
             const modes: ('light' | 'dark')[] = ['light', 'dark'];
             for (const mode of modes) {
                 asriConfigs[mode].followSysAccentColor = !!data[mode].followSysAccentColor;
@@ -134,7 +145,7 @@ async function getAsriConfigs() {
                 asriConfigs[mode].userCustomColor = data[mode].userCustomColor ?? "#3478f6";
                 asriConfigs[mode].presetPalette = data[mode].presetPalette ?? '';
             }
-
+            asriConfigs.features = data.features;
             followSysAccentColor = !!data[curMode].followSysAccentColor;
         });
 }
@@ -292,35 +303,37 @@ export const tfpMenuItemCallbackEventListener = new AsriEventListener(tfpMenuIte
 
 function tfpMenuItemCallback(e: Event) {
     const target = (e.target as HTMLElement).closest('[id^="tfp-"]');
-    const tfpMenuItems = document.querySelectorAll('[id^="tfp-"]');
     if (!target) return;
 
+    const tfpMenuItems = document.querySelectorAll('[id^="tfp-"]');
     if (target.id === 'tfp-disable') {
         document.body.classList.remove('asri-tfp-acrylic', 'asri-tfp-progressive', 'asri-tfp');
         tfpMenuItems.forEach(item => {
             item.classList.remove('b3-menu__item--selected');
         });
-        return;
+        asriConfigs.features.tfp = '';
     } else {
         if (target.classList.contains('b3-menu__item--selected')) {
-            document.body.classList.remove(target.id.replace('tfp-', 'asri-tfp-'));
-            document.body.classList.remove('asri-tfp');
-            target.classList.remove('b3-menu__item--selected');
+            document.body.classList.remove('asri-tfp', target.id.replace('tfp-', 'asri-tfp-'));
+            asriConfigs.features.tfp = '';
         } else {
             tfpMenuItems.forEach(item => {
                 item.classList.remove('b3-menu__item--selected');
             });
-            target.classList.add('b3-menu__item--selected');
             document.body.classList.remove('asri-tfp-acrylic', 'asri-tfp-progressive');
-            document.body.classList.add('asri-tfp');
-            document.body.classList.add(target.id.replace('tfp-', 'asri-tfp-'));
+            document.body.classList.add('asri-tfp', target.id.replace('tfp-', 'asri-tfp-'));
+            asriConfigs.features.tfp = target.id.replace('tfp-', '');
         }
+        target.classList.toggle('b3-menu__item--selected');
     }
+    updateAsriConfigs();
 }
 
 function initMenuItems() {
     // check local configs to determine the initial state of the menu items
     const asriChromaBtn = document.getElementById('asriChroma');
+    tfpProgressiveBtn = document.getElementById('tfp-progressive');
+    tfpAcrylicBtn = document.getElementById('tfp-acrylic');
 
     if (asriConfigs[curMode].presetPalette) {
         pickColorBtn?.classList.add('b3-menu__item--disabled');
@@ -342,6 +355,15 @@ function initMenuItems() {
     if (asriConfigs[curMode].presetPalette) {
         const curPalette = document.getElementById(`${asriConfigs[curMode].presetPalette}`);
         curPalette?.classList.add('b3-menu__item--selected');
+    }
+
+    if (tfpProgressiveBtn && tfpAcrylicBtn) {
+        tfpProgressiveBtn.classList.toggle('b3-menu__item--selected',
+            asriConfigs.features.tfp === 'progressive'
+        );
+        tfpAcrylicBtn.classList.toggle('b3-menu__item--selected',
+            asriConfigs.features.tfp === 'acrylic'
+        );
     }
 }
 

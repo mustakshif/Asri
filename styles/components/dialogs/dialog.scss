@@ -40,6 +40,7 @@
         
         @include theme-variant-border;
         @include dialog-shadow($extra-shadow-light: "0 0 0 1px rgba(0, 0, 0, 0.05)");
+        // box-shadow: none !important;
 
         @include darkmode-counterpart {
             outline-color: #ffffff08;

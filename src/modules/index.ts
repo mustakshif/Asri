@@ -81,7 +81,7 @@ export async function unloadAsriJSModules(completeUnload = true) {
         removeEnvClassNames();
         restoreDefaultSiyuanScrollbar();
         restoreTrafficLightPosition();
-        document.body.classList.remove('body-asri--fullscreen');
+        document.body.classList.remove('body-asri--fullscreen', 'asri-tfp', 'asri-tfp-acrylic', 'asri-tfp-progressive');
         unloadThemePalette();
     }
 

@@ -134,7 +134,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
             }
 
             :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb {
-                background-color: rgb(from var(--b3-theme-background) r g b / $thick-transparency);
+                background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
 
                 @include darkmode-counterpart {
                     background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
