@@ -17,7 +17,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp.png)
 
-* 新增「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」，突破顶栏与编辑区界限，带来沉浸式的阅读与编辑体验。（*此为实验性功能，请参阅主题说明*）
+* 新增「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」，突破顶栏与编辑区界限，带来沉浸式的阅读与编辑体验（*此为实验性功能，请谨慎启用；详请见脚注 3*）
 * 调整预设配色方案「岁禧」的配色
 * 去除移动端菜单的多余边框
 * [修复移动端块属性遮挡内容的问题](https://github.com/mustakshif/Asri/issues/162)
@@ -32,7 +32,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 ### 🪄 简洁现代的设计
 
 * 👨‍🎨 主题色无极调节，带来完全个性化的笔记体验[^1]
-* ⚖️ 顶栏融合，实现顶栏与标签栏的无缝整合[^2]
+* ⚖️ 顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>，实现顶栏与页签栏和编辑器的无缝整合[^2]<svg style="vertical-align: super; height: .5em; width: .5em; padding-inline-start: .1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg>[^3]
 * 🧊 引入毛玻璃材质，带来富有层次感的视觉体验
 * 🌓 支持亮色模式和暗色模式、模式切换平滑过渡
 * ➖ 精简分割线，打造一体化的界面风格
@@ -41,10 +41,10 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 ### 📐 优雅高效的排版
 
 * 🔢 为表格、数据库启用等宽数字变体，提升阅读效率
-* 👁️ 启用高可读性字形变体，适应笔记场景[^3] `#macOS` `#iOS` `#iPadOS`
+* 👁️ 启用高可读性字形变体，适应笔记场景[^4] `#macOS` `#iOS` `#iPadOS`
 * 🛋️ 亮暗色模式分设字体平滑模式，保持视觉字重一致性 `#macOS` `#iOS` `#iPadOS`
 * 🦋 支持图片、视频、挂件、数据库、超级块等的全宽显示，提高信息展示效率
-* 💬 支持从右至左布局，适配阿拉伯语等从右至左书写的语言[^4]
+* 💬 支持从右至左布局，适配阿拉伯语等从右至左书写的语言[^5]
 * 🚏 支持文档级别的文字方向设定，满足不同语言的排版需求
 * 🧩 优化超级块内外部间距，轻松实现网格、瀑布流布局
 * 📝 优化数据库和属性面板的布局细节，内容展现更清晰有序
@@ -53,7 +53,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 * 🗂️ 添加文档树、大纲缩进参考线
 * 🔍 层级分明的搜索列表、反链列表展示
-* ↕️ 采用系统原生滚动条，可自动隐藏，界面更清爽[^5] `#macOS`
+* ↕️ 采用系统原生滚动条，可自动隐藏，界面更清爽[^6] `#macOS`
 
 ### 👆 灵动流畅的交互
 
@@ -65,16 +65,31 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 [^2]: 顶栏空白区域均可用于拖动窗口（页签间隙除外）。
 
-[^3]: 如需禁用此特性，或在使用自定义字体时发现字形错误，可在代码片段中添加以下 CSS 代码恢复原字形：
+[^3]: 顶栏融合+对思源笔记原生样式进行了重大调整，虽经长期稳定性测试，仍无法保证完全稳定，或将长期作为实验性功能存在。当前已知问题如下：
+
+    1. 编辑器右侧动态滚动条无法实时显示文档进度（跳转功能正常）
+    2. 向页面顶部拖拽块时无法触发自动滚动
+    3. 数据库表头无法固定在编辑器可视区域内
+
+    此外还可能引发其他问题，例如：
+
+    1. 与自定义样式代码产生冲突
+    2. 与部分插件存在兼容性问题
+    3. 顶栏文字/图标可读性下降
+    4. 页面运行效率降低
+
+    使用过程中如遇问题请及时停用此功能。
+
+[^4]: 如需禁用此特性，或在使用自定义字体时发现字形错误，可在代码片段中添加以下 CSS 代码恢复原字形：
     ```CSS
     .layout-tab-container, .protyle-content, .b3-typography {
         font-feature-settings: normal !important;
     }
     ```
 
-[^4]: 由于主题功能有限，部分界面的 UI 布局方向无法完全修改
+[^5]: 由于主题功能有限，部分界面的 UI 布局方向无法完全修改。
 
-[^5]: 自动隐藏滚动条需要在「系统设置-外观」中，将「显示滚动条」设置为「滚动时」。
+[^6]: 自动隐藏滚动条需要在「系统设置-外观」中，将「显示滚动条」设置为「滚动时」。
 
 ## 开始使用
 
@@ -156,9 +171,6 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 - 发送邮件至 mustakshif@icloud.com
 
 ## 其他
-
-* 设置窗口拖移区域仅保留左栏顶部区域
-* 隐藏了对话框右上角的关闭按钮，可通过点击对话框外部区域关闭对话框
 
 <!--## Star History
 
