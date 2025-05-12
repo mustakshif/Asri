@@ -1,4 +1,5 @@
 @use "sass:string";
+@use "../base/modes.scss" as *;
 
 /* 
 背景模糊
@@ -62,7 +63,7 @@ background: linear-gradient(unquote($direction), $stops);
 
 }
 
-@mixin smoothGradientVar($startColor, $startColorOpacityFactor: 1, $direction: 'to bottom') {
+@mixin smoothGradientVar($startColor, $startColorOpacityFactorLight: 1, $startColorOpacityFactorDark: $startColorOpacityFactorLight, $direction: 'to bottom') {
     $scrimCoordinates: (
         0: 1,
         19: 0.738,
@@ -79,15 +80,25 @@ background: linear-gradient(unquote($direction), $stops);
         100: 0
     );
 
-$stops: (
+$stops-light: (
+);
+$stops-dark: (
 );
 
 @each $colorStop, $alphaValue in $scrimCoordinates {
-    $stop: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactor)) percentage(calc($colorStop/100));
-    $stops: append($stops, $stop, comma);
+    $stop-light: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorLight)) percentage(calc($colorStop/100));
+    $stop-dark: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorDark)) percentage(calc($colorStop/100));
+    $stops-light: append($stops-light, $stop-light, comma);
+    $stops-dark: append($stops-dark, $stop-dark, comma);
 }
 
-background: linear-gradient(unquote($direction), $stops);
+background: linear-gradient(unquote($direction), $stops-light);
+
+@if $startColorOpacityFactorLight !=$startColorOpacityFactorDark {
+    @include darkmode-counterpart {
+        background: linear-gradient(unquote($direction), $stops-dark);
+    }
+}
 }
 
 @mixin overflow-indicator-line($height: 1px) {
