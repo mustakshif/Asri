@@ -5,7 +5,7 @@ English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main
 
 <br/>
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v20.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v22.png)
 
 # Asri, theme for SiYuan
 
@@ -13,27 +13,15 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
-### v3.3.13
+### v3.4.0: Vision Unbound
 
-* Added new preset theme color scheme "Aerisland"
-* Optimized the display effect when enabling line wrap in database relation columns
-* Improved the text color of primary keys in the database relation column menu
-* Enhanced the positioning of database checkboxes
-* Adjusted the paddings of blank entries in the property view
-* Strengthened the parallax scrolling effect of header images
-* Reduced the saturation of database tag colors
-* Removed the italic style of unedited tab icons
-* Eliminated the redundant border of the refresh button on the personal account page in dark mode
+![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp.png)
 
-### v3.3.12
-
-* Added a new preset theme color scheme "Zerith"
-* Document layout direction (previously the `tdir` custom attribute) can now be quickly set via the document block menu
-* Added Arabic language support to Asri configuration menu items
-* Fixed the text color issue of inline keyboard-style text in heading blocks under the "Auriflow" color scheme
-* Fixed the gap appearing above cover images in full-screen mode
-* Fixed abnormal border line colors of some panels in dark mode
-* Fixed the issue where user theme configurations failed to load/save
+* Added "Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>", breaking the boundary between the topbar and the editor to deliver an immersive reading and editing experience. (*This is an experimental feature — please refer to the theme documentation*)
+* Adjusted the color scheme of the preset theme "EverBliss"
+* Removed redundant borders in the mobile menu
+* [Fixed an issue where block attributes obscured content on mobile](https://github.com/mustakshif/Asri/issues/162)
+* [Fixed a theme-related issue preventing the "Sidebar Memo" plugin from displaying](https://ld246.com/article/1746662147426/comment/1746667474590?r=Mustakshif#comments)
 
 ### ...
 

@@ -153,23 +153,26 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
 
         .protyle-background__img {
             &::after {
-                $width: 180%;
                 content: "";
                 display: inline-block;
-                width: $width;
-                height: calc(30vh + var(--blur-block-height));
                 position: absolute;
-                top: 0;
-                left: calc(($width - 100%) / -2);
-                // right: 0;
-                // background: linear-gradient(to top, var(--b3-theme-background) 2%,
-                //         rgba(from var(--b3-theme-background) r g b / .97) 9%,
-                //         rgba(from var(--b3-theme-background) r g b / .9) 18%,
-                //         rgba(from var(--b3-theme-background) r g b / .75) 33%,
-                //         rgba(from var(--b3-theme-background) r g b /.05) 92%,
-                //         transparent 99%);
-                background: radial-gradient(farthest-side at 50% 42px, transparent 1%, rgba(from var(--b3-theme-background) r g b /.05) 8%, rgba(from var(--b3-theme-background) r g b / .75) 67%, rgba(from var(--b3-theme-background) r g b / .9) 82%, rgba(from var(--b3-theme-background) r g b /.97) 91%, var(--b3-theme-background) 98%);
                 pointer-events: none;
+
+                //方案一
+                $offset: 30px;
+                width: 100%;
+                left: 0;
+                height: calc(30vh + var(--blur-block-height) - $offset);
+                top: $offset;
+                background: linear-gradient(to top, var(--b3-theme-background) 2%, rgba(from var(--b3-theme-background) r g b / .97) 9%, rgba(from var(--b3-theme-background) r g b / .9) 18%, rgba(from var(--b3-theme-background) r g b / .75) 33%, rgba(from var(--b3-theme-background) r g b /.05) 92%, transparent 99%);
+
+                //方案二
+                // $width: 180%;
+                // width: $width;
+                // height: calc(30vh + var(--blur-block-height));
+                // top: 0;
+                // left: calc(($width - 100%) / -2);
+                // background: radial-gradient(farthest-side at 50% 42px, transparent 1%, rgba(from var(--b3-theme-background) r g b /.05) 8%, rgba(from var(--b3-theme-background) r g b / .75) 67%, rgba(from var(--b3-theme-background) r g b / .9) 82%, rgba(from var(--b3-theme-background) r g b /.97) 91%, var(--b3-theme-background) 98%);
             }
         }
 

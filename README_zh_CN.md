@@ -5,7 +5,7 @@
 
 <br />
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v20.png)
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v22.png)
 
 # Asri, theme for SiYuan
 
@@ -13,27 +13,15 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
-### v3.3.13
+### v3.4.0：视界无界
 
-* 新增预设主题配色「空屿」
-* 优化数据库关联列启用换行时的展示效果
-* 优化数据库关联列菜单主键文字颜色
-* 优化数据库勾选框定位
-* 优化属性视图空白条目边距
-* 增强题头图视差滚动效果
-* 降低数据库标签颜色饱和度
-* 取消未编辑页签图标的斜体样式
-* 去除暗色模式下个人账号页面刷新按钮多余边框
+![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp.png)
 
-### v3.3.12
-
-* 新增预设主题配色「零域」
-* 文档排版方向（原 `tdir` 自定义属性）现可通过文档块菜单快速设置
-* Asri 配置菜单项新增阿拉伯语支持
-* 修复「鎏金」配色下标题块中行内键盘样式文字颜色问题
-* 修复全屏模式下题头图上方出现空隙的问题
-* 修复暗色模式下部分面板边框线颜色异常问题
-* 修复用户主题配置无法加载/储存的问题
+* 新增「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」，突破顶栏与编辑区界限，带来沉浸式的阅读与编辑体验。（*此为实验性功能，请参阅主题说明*）
+* 调整预设配色方案「岁禧」的配色
+* 去除移动端菜单的多余边框
+* [修复移动端块属性遮挡内容的问题](https://github.com/mustakshif/Asri/issues/162)
+* [修复主题导致的「侧栏备注」插件无法显示的问题](https://ld246.com/article/1746662147426/comment/1746667474590?r=Mustakshif#comments)
 
 ### ...
 

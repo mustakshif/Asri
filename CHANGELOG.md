@@ -1,3 +1,21 @@
+### v3.4.0：视界无界｜Vision Unbound
+
+* 新增「顶栏融合+」，突破顶栏与编辑区界限，带来沉浸式的阅读与编辑体验。（*此为实验性功能，请参阅主题说明*）
+* 调整预设配色方案「岁禧」的配色
+* 去除移动端菜单的多余边框
+* [修复移动端块属性遮挡内容的问题](https://github.com/mustakshif/Asri/issues/162)
+* [修复主题导致的「侧栏备注」插件无法显示的问题](https://ld246.com/article/1746662147426/comment/1746667474590?r=Mustakshif#comments)
+
+<br />
+
+* Added "Topbar Fusion+", breaking the boundary between the topbar and the editor to deliver an immersive reading and editing experience. (*This is an experimental feature — please refer to the theme documentation*)
+* Adjusted the color scheme of the preset theme "EverBliss"
+* Removed redundant borders in the mobile menu
+* [Fixed an issue where block attributes obscured content on mobile](https://github.com/mustakshif/Asri/issues/162)
+* [Fixed a theme-related issue preventing the "Sidebar Memo" plugin from displaying](https://ld246.com/article/1746662147426/comment/1746667474590?r=Mustakshif#comments)
+
+---
+
 ### v3.3.13
 
 * 新增预设主题配色「空屿」
