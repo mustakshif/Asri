@@ -71,12 +71,12 @@
             display: grid;
             flex-wrap: wrap;
             grid-template-columns: repeat(auto-fill, minmax(36px, 4fr));
-            gap: 6px;
+            gap: 12px;
             min-height: unset !important;
 
             .emojis__item {
                 padding: 0;
-                font-size: 28px;
+                font-size: 27px; // 27.5px以上会导致hover时饱和度突然增高？？？
                 height: 36px;
                 width: 36px; // https://github.com/mustakshif/Asri/issues/153
 

@@ -23,5 +23,6 @@
     "topbarFusionPlus": "顶栏融合+",
     "tfp-progressive": "渐进模糊",
     "tfp-acrylic": "亚克力",
-    "tfp-disable": "禁用"
+    "tfp-disable": "禁用",
+    "tfp-experimental": "实验性功能，请谨慎启用\n更多信息请查看主题说明脚注 3"
 }

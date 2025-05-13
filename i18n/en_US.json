@@ -23,5 +23,6 @@
     "topbarFusionPlus": "Topbar Fusion+",
     "tfp-progressive": "Progressive blur",
     "tfp-acrylic": "Acrylic",
-    "tfp-disable": "Disable"
+    "tfp-disable": "Disable",
+    "tfp-experimental": "Experimental feature; enable with caution.\nFor more information please refer to footnote 3 of the theme doc."
 }
