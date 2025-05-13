@@ -1,7 +1,7 @@
 @use '../base' as *;
 @use './utils' as *;
 
-body.asri-tfp:not(.asri-disable-backdrop-blur) {
+body.asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile) {
     &.asri-dragging-gutter {
         // 修复向上拖动块时无法出发自动滚动
 
@@ -147,11 +147,19 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
 
     &.asri-tfp-progressive {
 
+        .protyle:not(.fn__none) {
+            .protyle-content {
+                animation: none;
+            }
+        }
+
         .protyle-content {
             overflow-x: hidden;
         }
 
         .protyle-background__img {
+            --bgimg-top-space: 6px;
+
             &::after {
                 content: "";
                 display: inline-block;
@@ -305,21 +313,36 @@ body.asri-tfp:not(.asri-disable-backdrop-blur) {
                         background: unset;
                     }
 
-                    .protyle-breadcrumb+.protyle-content::before {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        width: 100%;
-                        height: min(calc(var(--blur-block-height) + 50px), 100%);
-                        // height: var(--blur-block-height);
-                        z-index: 1;
-                        pointer-events: none;
+                    .protyle-breadcrumb+.protyle-content {
+                        scroll-timeline-name: --protyle-content;
 
-                        @include smoothGradientVar(var(--b3-theme-background), .7, .6);
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            width: 100%;
+                            height: min(calc(var(--blur-block-height) + 50px), 100%);
+                            // height: var(--blur-block-height);
+                            z-index: 1;
+                            pointer-events: none;
+                            opacity: .6;
 
-                        // @include darkmode-counterpart {
-                        //     @include smoothGradientVar(var(--b3-theme-background), .7);
-                        // }
+                            @include smoothGradientVar(var(--b3-theme-background), .9, .9);
+
+                            @supports (animation-timeline: view()) {
+                                animation-timeline: --protyle-content;
+                                animation-range: -2px 30vh;
+                                animation-fill-mode: both;
+                                animation-name: dynamic-opacity;
+                                animation-timing-function: linear;
+
+                                @keyframes dynamic-opacity {
+                                    to {
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

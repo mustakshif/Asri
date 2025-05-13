@@ -39,11 +39,8 @@
         }
 
         &-background__img {
-            view-timeline-name: --protyle-background;
-        }
-
-        &-background__img {
             overflow: hidden;
+            view-timeline-name: --protyle-background;
 
             img {
                 --offset-y: 50px;
