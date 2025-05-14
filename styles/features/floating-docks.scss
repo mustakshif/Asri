@@ -1,0 +1,26 @@
+.dock {
+    position: fixed;
+    z-index: 99;
+    background-color: transparent !important;
+    top: 50%;
+    transform: translateY(-25%);
+
+    .dock__item--space {
+        flex-grow: 0;
+    }
+
+    &#dockLeft {
+        left: 0;
+    }
+
+    &#dockRight {
+        right: 0;
+    }
+}
+
+#dockLeft.dock-layout-expanded:not(.fn__none)+#layouts {
+    .layout__dockl {
+        padding-left: 42px;
+        background-color: var(--b3-theme-surface);
+    }
+}

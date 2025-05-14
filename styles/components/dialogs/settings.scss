@@ -44,6 +44,16 @@
             }
         }
 
+        @media (min-width: 750px) {
+            .config__tab-title {
+                font-weight: 600;
+                
+                .b3-list-item__graphic {
+                    display: none;
+                }
+            }
+        }
+
         @media (max-width: 750px) {
 
             .config__tab-title,
