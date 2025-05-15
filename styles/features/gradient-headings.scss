@@ -1,7 +1,7 @@
 @supports (color: oklch(from #00f l clamp(0, c, .2) calc(h + 0))) {
     #layouts {
         --heading-clr-primary-base: var(--b3-theme-primary);
-        --hchs: 30; // heading color hue shift
+        --hchs: 30; // heading color hue shift. [0, 60]
     }
     @for $i from 1 through 6 {
         :is(.h#{$i}, h#{$i}) {

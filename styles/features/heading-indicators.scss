@@ -5,6 +5,7 @@ $headingContent: "";
 .protyle,
 .b3-typography {
     --prefix: var(--asri-heading-prefix, "#");
+    --suffix: var(--asri-heading-suffix, "");
 }
 
 @for $i from 1 through 6 {
@@ -13,7 +14,7 @@ $headingContent: "";
     .h#{$i},
     h#{$i} {
         &:before {
-            content: var(--prefix)"#{$i}";
+            content: var(--prefix) "#{$i}" var(--suffix);
             // content:$headingContent;
         }
     }

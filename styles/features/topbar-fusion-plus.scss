@@ -337,11 +337,12 @@ body.asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile) {
 
                             @include darkmode-counterpart {
                                 mix-blend-mode: normal;
+                                opacity: .7
                             }
 
-                            @include smoothGradientVar(var(--b3-theme-background), 1, .9);
+                            @include smoothGradientVar(var(--b3-theme-background), .9, .8);
                             
-                            opacity: .7;
+                            opacity: .8;
                             @supports (animation-timeline: view()) {
                                 animation-timeline: --protyle-content;
                                 animation-range: -2px 30vh;
