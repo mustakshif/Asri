@@ -34,7 +34,8 @@
             }
         }
 
-        &#plugin-focus-unique-id, &[data-plugin-focus=true]{
+        &#plugin-focus-unique-id,
+        &[data-plugin-focus=true] {
             &::before {
                 display: none;
             }
@@ -53,3 +54,39 @@
         opacity: 1;
     }
 }
+
+// 内容块根据视口位置淡入淡出
+// .protyle-wysiwyg {
+//     >[data-node-id]:not(.asri-selected-block) {
+//         @supports (animation-timeline: view()) {
+//             view-timeline-name: --content-block-view;
+
+//             animation-timeline: --content-block-view;
+//             animation-range: 0% 100%;
+//             animation-fill-mode: both;
+//             animation-name: content-block-fadeinout;
+//             animation-timing-function: linear;
+//         }
+
+//         @keyframes content-block-fadeinout {
+
+//             0%,
+//             10%,
+//             90%,
+//             100% {
+//                 opacity: 0;
+//                 // filter: blur(4px);
+//             }
+
+//             40%,
+//             60% {
+//                 opacity: 1;
+//             }
+
+//             // 30%,
+//             // 70% {
+//             //     filter: none;
+//             // }
+//         }
+//     }
+// }

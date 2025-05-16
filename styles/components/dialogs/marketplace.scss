@@ -405,7 +405,7 @@
         .item__preview {
             border-radius: 0;
 
-            // 性能表现不佳
+            // background-position 性能表现不佳
             // view-timeline-name: --preview-background;
             // animation-timeline: --preview-background;
             // // view-timeline-axis: y;

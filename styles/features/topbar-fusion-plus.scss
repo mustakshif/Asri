@@ -321,7 +321,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile) {
                     }
 
                     .protyle-breadcrumb+.protyle-content {
-                        scroll-timeline-name: --protyle-content;
+                        scroll-timeline-name: --protyle-content-scroll;
 
                         &::before {
                             content: '';
@@ -344,7 +344,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile) {
                             
                             opacity: .8;
                             @supports (animation-timeline: view()) {
-                                animation-timeline: --protyle-content;
+                                animation-timeline: --protyle-content-scroll;
                                 animation-range: -2px 30vh;
                                 animation-fill-mode: both;
                                 animation-name: dynamic-opacity;

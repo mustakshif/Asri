@@ -6,8 +6,7 @@
     --protyle-spacing-compatible: var(--protyle-spacing, 24px);
 }
 
-.layout__center .protyle-wysiwyg,
-.body-asri--mobile .protyle-wysiwyg {
+:is(.body-asri--mobile, .layout__center) .protyle-wysiwyg {
 
     // 图片 ——————————————————————
     &[custom-afwd="all"]>.p:not([custom-afwd="off"]),
