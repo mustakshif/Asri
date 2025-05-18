@@ -13,6 +13,7 @@ import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstitio
 import { removeProtyleStatusClassName, toggleProtyleStatus } from "./protyleStatus";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
+import { initStickyStacks, unloadStickyStacks } from "./stickyStacks";
 import { avoidOverlappingWithStatus, debouncedStatusPosition, removeStatusStyles, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
 import { calcTabbarSpacings, calcTopbarSpacings, createTopbarFusionElements, handleMacFullScreen, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
@@ -48,6 +49,7 @@ export async function loadAsriJSModules() {
     updateStyles();
     addDockbClassName();
     avoidOverlappingWithStatus();
+    initStickyStacks(); // 初始化标题吸顶功能
     globalClickEventListener.start(document, 'mouseup');
     globalDragEventListener.start(document, 'dragend');
     globalKeyupEventListener.start(document, 'keyup', true);
@@ -83,6 +85,7 @@ export async function unloadAsriJSModules(completeUnload = true) {
         restoreTrafficLightPosition();
         document.body.classList.remove('body-asri--fullscreen', 'asri-tfp', 'asri-tfp-acrylic', 'asri-tfp-progressive');
         unloadThemePalette();
+        unloadStickyStacks(); // 卸载标题吸顶功能
     }
 
     globalClickEventListener.remove(document, 'mouseup');

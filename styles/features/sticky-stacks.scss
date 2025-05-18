@@ -1,0 +1,77 @@
+@use '../base' as *;
+
+// 标题吸顶样式
+.protyle-content {
+  // 吸顶标题的基础样式
+  [data-type="NodeHeading"].asri-sticky-stack {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: var(--b3-theme-background);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--b3-border-color);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    
+    // 确保吸顶时内容不会被遮挡
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      margin-bottom: -1px;
+    }
+    
+    // 不同级别标题的堆叠顺序和位置
+    &.h1 {
+      z-index: 16;
+      top: 0;
+    }
+    
+    &.h2 {
+      z-index: 15;
+      top: calc(var(--h1-sticky-height, 42px));
+    }
+    
+    &.h3 {
+      z-index: 14;
+      top: calc(var(--h1-sticky-height, 42px) + var(--h2-sticky-height, 36px));
+    }
+    
+    &.h4 {
+      z-index: 13;
+      top: calc(var(--h1-sticky-height, 42px) + var(--h2-sticky-height, 36px) + var(--h3-sticky-height, 32px));
+    }
+    
+    &.h5 {
+      z-index: 12;
+      top: calc(var(--h1-sticky-height, 42px) + var(--h2-sticky-height, 36px) + var(--h3-sticky-height, 32px) + var(--h4-sticky-height, 28px));
+    }
+    
+    &.h6 {
+      z-index: 11;
+      top: calc(var(--h1-sticky-height, 42px) + var(--h2-sticky-height, 36px) + var(--h3-sticky-height, 32px) + var(--h4-sticky-height, 28px) + var(--h5-sticky-height, 24px));
+    }
+  }
+  
+  // 为不同级别的标题设置CSS变量，用于计算堆叠位置
+  :root {
+    --h1-sticky-height: 42px;
+    --h2-sticky-height: 36px;
+    --h3-sticky-height: 32px;
+    --h4-sticky-height: 28px;
+    --h5-sticky-height: 24px;
+    --h6-sticky-height: 22px;
+  }
+  
+  // 暗色模式下的样式调整
+  @include darkmode-counterpart {
+    [data-type="NodeHeading"].asri-sticky-stack {
+      background-color: var(--b3-theme-background);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
