@@ -194,7 +194,7 @@ const asriPrstPalettes = {
             'followSysAccentColor': false,
         },
         'light': {
-            'primary': '#E5EFDF',
+            'primary': '#e6f9db', // 饱和度需要高一点，修复Safari显示为红色的问题
             'chroma': '2',
             'followSysAccentColor': false,
         }
