@@ -14,7 +14,7 @@
 - Adapted styling changes for SiYuan v3.1.29
 - Adjusted symbol spacing in the emoji panel
 - Fixed abnormal color display of emojis
-- Fixed background color anomaly in Safari browser with the 「Aerisland」color scheme
+- Fixed background color anomaly in Safari browser with the "Aerisland" color scheme
 
 ---
 
