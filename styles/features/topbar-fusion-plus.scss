@@ -64,7 +64,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile) {
                 // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
             }
 
-            :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb {
+            :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb:not([slot]) {
                 padding-top: 42px;
                 margin-bottom: calc(var(--blur-block-height) * -1);
                 height: var(--blur-block-height);
@@ -142,7 +142,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile) {
                 }
             }
 
-            :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb {
+            :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb:not([slot]) {
                 background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
 
                 @include darkmode-counterpart {
@@ -361,7 +361,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile) {
                 }
             }
 
-            :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb {
+            :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb:not([slot]) {
                 background-color: transparent;
                 // mix-blend-mode: luminosity;
                 // mix-blend-mode: difference;
@@ -418,7 +418,7 @@ body.asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile) {
                 }
             }
 
-            :not(.fullscreen, .plugin-panel)>.protyle-breadcrumb {
+            :not(.fullscreen, .plugin-panel)>.protyle-breadcrumb:not([slot]) {
                 .protyle-breadcrumb__bar {
                     height: fit-content;
                     margin: 6px 0;
