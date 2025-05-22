@@ -1,0 +1,97 @@
+@use "../components/utils" as *;
+
+body {
+
+    $gap-unit: 8px;
+    $br-unit: 6px;
+    $border-clr: rgba(from var(--b3-theme-on-background) r g b / 0.08);
+
+    @mixin bento {
+        border-radius: calc($br-unit * 2);
+        // box-shadow: 0 0 0 1px $border-clr;
+    }
+
+    background-color: var(--b3-theme-surface);
+
+    > .fn__flex {
+        margin: 0 $gap-unit $gap-unit;
+    }
+
+    // docks & side panels
+
+    .dock {
+        background-color: var(--b3-theme-surface) !important;
+        border-color: transparent !important;
+    }
+
+    .file-tree {
+        @include bento();
+        background-color: var(--b3-theme-background);
+        margin-left: 1px;
+        margin-right: 1px;
+        margin-bottom: 1px;
+    }
+
+    // .dock.fn__none+.layout {
+    //     .layout__dockl .file-tree {
+    //         margin-left: $gap-unit;
+    //     }
+
+    //     .layout__dockr .file-tree {
+    //         margin-right: $gap-unit;
+    //     }
+    // }
+
+
+    // layout center
+    .fn__flex-column[data-type=wnd]>.fn__flex:first-child {
+        background-color: var(--b3-theme-surface);
+    }
+
+    .layout-tab-container {
+        background-color: var(--b3-theme-surface);
+    }
+
+    .protyle:not(.fullscreen) {
+        @include bento();
+        margin-top: $gap-unit;
+    }
+
+    .protyle-background__img {
+        margin: $gap-unit;
+        width: calc(100% - $gap-unit * 2);
+        border-radius: calc($br-unit + 4px);
+    }
+
+    // .layout__center {
+
+    //     // 处理分栏边距
+    //     .fn__flex-column,
+    //     &.fn__flex-column {
+
+    //         // 横向
+    //         >.fn__flex:not(:last-child) .protyle {
+    //             margin-bottom: 1px;
+    //         }
+    //     }
+
+    //     // 纵向
+    //     >.fn__flex:not(.fn__flex-column)>:where(.fn__flex, .fn__flex-column):not(:last-child) .protyle,
+    //     .fn__flex-column>.fn__flex>:where(.fn__flex, .fn__flex-column):not(:last-child) .protyle,
+    //     >.fn__flex:not(.fn__flex-column):not(:last-child) .protyle {
+    //         margin-right: 1px;
+    //     }
+    // }
+
+    .layout__resize {
+        height: 8px;
+        margin: 0;
+        &--lr {
+            width: 8px;
+            height: auto;            
+        }
+        &::after {
+            background-color: transparent;
+        }
+    }
+}
