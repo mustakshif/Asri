@@ -1,544 +1,586 @@
-@use '../base' as *;
-@use './utils' as *;
+@use "../base" as *;
+@use "./utils" as *;
 
-body.asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile) {
-    &.asri-dragging-gutter {
-        // 修复向上拖动块时无法出发自动滚动
+.asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile) {
+  &.asri-dragging-gutter {
+    // 修复向上拖动块时无法出发自动滚动
 
-        .protyle-breadcrumb,
-        :where(.layout__wnd--active, [data-type="wnd"])>.fn__flex:first-child {
-            pointer-events: none;
-        }
+    .protyle-breadcrumb,
+    :where(.layout__wnd--active, [data-type="wnd"]) > .fn__flex:first-child {
+      pointer-events: none;
+    }
+  }
+
+  svg.asri-experimental {
+    transition: 0.2s opacity;
+    &:hover {
+      opacity: 1 !important;
+    }
+  }
+
+  // 以下breadcrumb 相关代码导致：
+  // 1. 块拖动至页面顶部时无法触发自动滚动
+  // 2. 页面块进度条（.protyle-scroll）无法自动定位；点击时跳转到块的位置，但溢出页面顶部
+
+  --blur-block-height: 84px;
+
+  .layout__wnd--active,
+  [data-type="wnd"] {
+    --blur-radius-main: 40px;
+
+    > .fn__flex:first-child {
+      background-color: transparent;
+      margin-bottom: -42px;
+      z-index: 3;
     }
 
-    svg.asri-experimental {
-        transition: .2s opacity;
-        &:hover {
-            opacity: 1 !important;
+    :not(.av__views) > .layout-tab-bar {
+      .item {
+        // backdrop-filter: brightness(1) saturate(1);
+
+        &--focus {
+          // background-color: transparent;
+          backdrop-filter: brightness(1) saturate(1.8);
+
+          @include darkmode-counterpart {
+            // background-color: #ffffff20;
+            backdrop-filter: brightness(1.2) saturate(1.8);
+          }
         }
+      }
     }
 
-    // 以下breadcrumb 相关代码导致：
-    // 1. 块拖动至页面顶部时无法触发自动滚动
-    // 2. 页面块进度条（.protyle-scroll）无法自动定位；点击时跳转到块的位置，但溢出页面顶部
+    .layout-tab-container {
+      & > .protyle[data-loading="finished"]::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: min(
+          calc(var(--blur-radius-main) * 2 + var(--blur-block-height)),
+          100%
+        );
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        pointer-events: none;
+        // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
+      }
 
-    --blur-block-height: 84px;
+      :not(#searchPreview, .card__block, .plugin-panel)
+        > .protyle-breadcrumb:not([slot]) {
+        padding-top: 42px;
+        margin-bottom: calc(var(--blur-block-height) * -1);
+        height: var(--blur-block-height);
+        // @include theme-variant-color(background-color, background, $thick-transparency);
+        z-index: 2;
+      }
 
+      .protyle[data-loading="finished"].fullscreen {
+        &::before,
+        &::after {
+          --blur-block-height: var(--toolbar-height);
+        }
+      }
+
+      .fullscreen > .protyle-breadcrumb {
+        height: var(--toolbar-height) !important;
+        padding-top: 0 !important;
+      }
+
+      :not(#searchPreview, .card__block, .plugin-panel)
+        > .protyle-breadcrumb
+        + .protyle-content {
+        padding-top: var(--blur-block-height);
+      }
+
+      & > .file-tree .protyle-content {
+        padding-top: 0 !important;
+      }
+
+      // .block__icons.search {
+      //     padding-top: 42px;
+      // }
+    }
+
+    .protyle-background__img img {
+      --offset-y: 10px;
+    }
+
+    // ————————————————————————————————————
+
+    // pdf
+    // #outerContainer {
+    //     #sidebarContainer {
+    //         top: var(--blur-block-height);
+    //     }
+
+    //     .pdf__toolbar {
+    //         #toolbarContainer {
+    //             padding-top: 42px;
+    //         }
+    //     }
+
+    //     .findbar {
+    //         top: 78px;
+    //     }
+
+    //     #viewerContainer {
+    //         top: var(--blur-block-height);
+    //         transition: none;
+    //     }
+
+    // }
+  }
+
+  // two types of topbar fusion plus
+  &.asri-tfp-acrylic {
     .layout__wnd--active,
     [data-type="wnd"] {
+      .layout-tab-container {
+        & > .protyle[data-loading="finished"]::before {
+          mask-image: linear-gradient(
+            to bottom,
+            black 0,
+            black calc(var(--blur-block-height) - 0.5px),
+            transparent calc(var(--blur-block-height) + 1px)
+          );
 
-        --blur-radius-main: 40px;
-
-        >.fn__flex:first-child {
-            background-color: transparent;
-            margin-bottom: -42px;
-            z-index: 3;
+          @include bg-blur($brightness-dark: 0.95);
         }
+      }
 
-        :not(.av__views)>.layout-tab-bar {
-            .item {
-                // backdrop-filter: brightness(1) saturate(1);
+      :not(#searchPreview, .card__block, .plugin-panel)
+        > .protyle-breadcrumb:not([slot]) {
+        background-color: rgb(
+          from var(--b3-theme-background) r g b / $medium-transparency
+        );
 
-                &--focus {
-                    // background-color: transparent;
-                    backdrop-filter: brightness(1) saturate(1.8);
-
-                    @include darkmode-counterpart {
-                        // background-color: #ffffff20;
-                        backdrop-filter: brightness(1.2) saturate(1.8);
-                    }
-                }
-            }
+        @include darkmode-counterpart {
+          background-color: rgb(
+            from var(--b3-theme-background) r g b / $medium-transparency
+          );
         }
+      }
+    }
+  }
 
-        .layout-tab-container {
-            &>.protyle[data-loading="finished"]::before {
-                content: "";
-                display: block;
-                width: 100%;
-                height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
-                position: absolute;
-                top: 0;
-                z-index: 2;
-                pointer-events: none;
-                // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
-            }
+  &.asri-tfp-progressive {
+    .protyle:not(.fn__none) {
+      .protyle-content {
+        animation: none;
+      }
+    }
 
-            :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb:not([slot]) {
-                padding-top: 42px;
-                margin-bottom: calc(var(--blur-block-height) * -1);
-                height: var(--blur-block-height);
-                // @include theme-variant-color(background-color, background, $thick-transparency);
-                z-index: 2;
-            }
+    .protyle-content {
+      overflow-x: hidden;
+    }
 
-            .protyle[data-loading="finished"].fullscreen {
+    .protyle-background__img {
+      --bgimg-top-space: 6px;
 
-                &::before,
-                &::after {
-                    --blur-block-height: var(--toolbar-height);
-                }
-            }
+      &::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        pointer-events: none;
 
-            .fullscreen>.protyle-breadcrumb {
-                height: var(--toolbar-height) !important;
-                padding-top: 0 !important;
-            }
+        //方案一
+        $offset: 30px;
+        width: 100%;
+        left: 0;
+        height: calc(30vh + var(--blur-block-height) - $offset);
+        top: $offset;
+        background: linear-gradient(
+          to top,
+          var(--b3-theme-background) 2%,
+          rgba(from var(--b3-theme-background) r g b / 0.97) 9%,
+          rgba(from var(--b3-theme-background) r g b / 0.9) 18%,
+          rgba(from var(--b3-theme-background) r g b / 0.75) 33%,
+          rgba(from var(--b3-theme-background) r g b / 0.05) 92%,
+          transparent 99%
+        );
 
-            :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb+.protyle-content {
-                padding-top: var(--blur-block-height);
-            }
+        //方案二
+        // $width: 180%;
+        // width: $width;
+        // height: calc(30vh + var(--blur-block-height));
+        // top: 0;
+        // left: calc(($width - 100%) / -2);
+        // background: radial-gradient(farthest-side at 50% 42px, transparent 1%, rgba(from var(--b3-theme-background) r g b /.05) 8%, rgba(from var(--b3-theme-background) r g b / .75) 67%, rgba(from var(--b3-theme-background) r g b / .9) 82%, rgba(from var(--b3-theme-background) r g b /.97) 91%, var(--b3-theme-background) 98%);
+      }
+    }
 
-            &>.file-tree .protyle-content {
-                padding-top: 0 !important;
-            }
+    :where(.layout__wnd--active, [data-type="wnd"]) {
+      > .fn__flex:first-child {
+        mix-blend-mode: multiply;
 
-            // .block__icons.search {
-            //     padding-top: 42px;
-            // }
+        @include darkmode-counterpart {
+          mix-blend-mode: screen;
         }
+      }
 
-        .protyle-background__img img {
-            --offset-y: 10px;
-        }
+      :not(.av__views) > .layout-tab-bar {
+        border-radius: 0;
+        @include overflow-indicator-fadein-mask(24px, $range: "left right");
 
-        // ————————————————————————————————————
+        // .item:not(.item--pin) {
+        //     margin-inline-end: 0;
 
-        // pdf
-        // #outerContainer {
-        //     #sidebarContainer {
-        //         top: var(--blur-block-height);
+        //     &:last-child {
+        //         margin-inline-end: 1px;
         //     }
+        // }
 
-        //     .pdf__toolbar {
-        //         #toolbarContainer {
-        //             padding-top: 42px;
+        // .item--focus:not(.item--pin) {
+        //     margin-inline-start: 8px;
+        //     margin-inline-end: 8px;
+        // }
+
+        // .item--focus:last-child {
+        //     margin-inline-end: 0;
+        // }
+
+        // .item--pin+.item:not(.item--pin, .item--readonly) {
+        //     margin-inline-start: 0;
+
+        //     &::before {
+        //         inset-inline-start: 0;
+        //     }
+        // }
+
+        // .item__text {
+        //     color: var(--b3-theme-on-background);
+        // }
+
+        .item:not(.item--readonly, .item--focus) {
+          background-color: transparent;
+
+          // .item__text {
+          //     filter: drop-shadow(0 0 3.5px var(--b3-theme-background));
+          // }
+
+          @include darkmode-counterpart {
+            background-color: transparent;
+          }
+        }
+
+        // @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
+        //     .item:not(.item--readonly, .item--focus) {
+        //         // background-color: oklch(from var(--b3-theme-background) .9 c h / .4);
+
+        //         @include darkmode-counterpart {
+        //             // background-color: oklch(from var(--b3-theme-background) .4 c h / .4);
         //         }
         //     }
 
-        //     .findbar {
-        //         top: 78px;
-        //     }
-
-        //     #viewerContainer {
-        //         top: var(--blur-block-height);
-        //         transition: none;
-        //     }
-
-        // }
-    }
-
-    // two types of topbar fusion plus
-    &.asri-tfp-acrylic {
-
-        .layout__wnd--active,
-        [data-type="wnd"] {
-
-            .layout-tab-container {
-                &>.protyle[data-loading="finished"]::before {
-                    mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - .5px), transparent calc(var(--blur-block-height) + 1px));
-
-                    @include bg-blur($brightness-dark: 0.95);
-                }
-            }
-
-            :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb:not([slot]) {
-                background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
-
-                @include darkmode-counterpart {
-                    background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
-                }
-            }
-        }
-    }
-
-    &.asri-tfp-progressive {
-
-        .protyle:not(.fn__none) {
-            .protyle-content {
-                animation: none;
-            }
-        }
-
-        .protyle-content {
-            overflow-x: hidden;
-        }
-
-        .protyle-background__img {
-            --bgimg-top-space: 6px;
-
-            &::after {
-                content: "";
-                display: inline-block;
-                position: absolute;
-                pointer-events: none;
-
-                //方案一
-                $offset: 30px;
-                width: 100%;
-                left: 0;
-                height: calc(30vh + var(--blur-block-height) - $offset);
-                top: $offset;
-                background: linear-gradient(to top, var(--b3-theme-background) 2%, rgba(from var(--b3-theme-background) r g b / .97) 9%, rgba(from var(--b3-theme-background) r g b / .9) 18%, rgba(from var(--b3-theme-background) r g b / .75) 33%, rgba(from var(--b3-theme-background) r g b /.05) 92%, transparent 99%);
-
-                //方案二
-                // $width: 180%;
-                // width: $width;
-                // height: calc(30vh + var(--blur-block-height));
-                // top: 0;
-                // left: calc(($width - 100%) / -2);
-                // background: radial-gradient(farthest-side at 50% 42px, transparent 1%, rgba(from var(--b3-theme-background) r g b /.05) 8%, rgba(from var(--b3-theme-background) r g b / .75) 67%, rgba(from var(--b3-theme-background) r g b / .9) 82%, rgba(from var(--b3-theme-background) r g b /.97) 91%, var(--b3-theme-background) 98%);
-            }
-        }
-
-        :where(.layout__wnd--active, [data-type="wnd"]) {
-            >.fn__flex:first-child {
-                mix-blend-mode: multiply;
-
-                @include darkmode-counterpart {
-                    mix-blend-mode: screen;
-                }
-            }
-
-            :not(.av__views)>.layout-tab-bar {
-                border-radius: 0;
-                @include overflow-indicator-fadein-mask(24px, $range: 'left right');
-
-                // .item:not(.item--pin) {
-                //     margin-inline-end: 0;
-
-                //     &:last-child {
-                //         margin-inline-end: 1px;
-                //     }
-                // }
-
-                // .item--focus:not(.item--pin) {
-                //     margin-inline-start: 8px;
-                //     margin-inline-end: 8px;
-                // }
-
-                // .item--focus:last-child {
-                //     margin-inline-end: 0;
-                // }
-
-
-                // .item--pin+.item:not(.item--pin, .item--readonly) {
-                //     margin-inline-start: 0;
-
-                //     &::before {
-                //         inset-inline-start: 0;
-                //     }
-                // }
-
-                // .item__text {
-                //     color: var(--b3-theme-on-background);
-                // }
-
-                .item:not(.item--readonly, .item--focus) {
-                    background-color: transparent;
-
-                    // .item__text {
-                    //     filter: drop-shadow(0 0 3.5px var(--b3-theme-background));
-                    // }
-
-                    @include darkmode-counterpart {
-                        background-color: transparent;
-                    }
-                }
-
-                // @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
-                //     .item:not(.item--readonly, .item--focus) {
-                //         // background-color: oklch(from var(--b3-theme-background) .9 c h / .4);
-
-                //         @include darkmode-counterpart {
-                //             // background-color: oklch(from var(--b3-theme-background) .4 c h / .4);
-                //         }
-                //     }
-
-                //     // .item:not(.item--readonly, .item--full.item--focus):hover,
-                //     // .item.item--focus {
-                //     //     background-color: oklch(from var(--b3-theme-primary) .8 clamp(0, calc(.05 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .18) h / .5);
-
-                //     //     @include darkmode-counterpart {
-                //     //         background-color: oklch(from var(--b3-theme-primary) .6 clamp(0, calc(.06 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .18) h / .5);
-                //     //     }
-                //     // }
-                // }
-
-                .item:not(.item--readonly, .item--full.item--focus, .item--focus):hover {
-                    // box-shadow: inset 0 0 0 1px rgb(from var(--b3-theme-on-background) r g b / .8);
-                    background-color: transparent;
-                }
-
-                .item--focus {
-                    font-weight: 500;
-                }
-
-                &:not(.layout-tab-bar--readonly) .item {
-                    // font-weight: 500;
-                    border-radius: 7px;
-                    // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
-                    // backdrop-filter: saturate(2);
-                    // outline: 1px solid rgb(from var(--b3-theme-background) r g b / .2);
-                    // outline-offset: -1px;
-                    box-shadow: inset 0 0 0 1px rgb(from var(--b3-theme-on-background) r g b / .2);
-
-                    &--focus {
-                        // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
-                        // backdrop-filter: saturate(2.5);
-                        border-radius: 6px;
-                        box-shadow: none;
-                        backdrop-filter: none;
-                        // background-color: var(--b3-theme-background);
-                        // box-shadow: inset 0 0 0 1px rgb(from var(--b3-theme-on-background) r g b / .9);
-                    }
-                }
-            }
-
-            .layout-tab-container {
-                &>.protyle[data-loading="finished"] {
-                    &::before {
-                        mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 25px), transparent calc(var(--blur-block-height) - 5px));
-
-                        @include bg-blur($blur-radius: 4px, $saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
-                    }
-
-                    &::after {
-                        content: "";
-                        display: block;
-                        width: 100%;
-                        height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
-                        position: absolute;
-                        top: 0;
-                        pointer-events: none;
-                        // background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / .6), transparent var(--blur-block-height));
-                        backdrop-filter: blur(2px);
-                        mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 15px), transparent calc(var(--blur-block-height) + 0px));
-                    }
-
-                    &.fullscreen::after {
-                        background: unset;
-                    }
-
-                    .protyle-breadcrumb+.protyle-content {
-                        scroll-timeline-name: --protyle-content-scroll;
-
-                        &::before {
-                            content: '';
-                            position: absolute;
-                            top: 0;
-                            width: 100%;
-                            height: min(calc(var(--blur-block-height) + 50px), 100%);
-                            // height: var(--blur-block-height);
-                            z-index: 1;
-                            pointer-events: none;
-
-                            mix-blend-mode: luminosity;
-
-                            @include darkmode-counterpart {
-                                mix-blend-mode: normal;
-                                opacity: .7
-                            }
-
-                            @include smoothGradientVar(var(--b3-theme-background), .9, .8);
-                            
-                            opacity: .8;
-                            @supports (animation-timeline: view()) {
-                                animation-timeline: --protyle-content-scroll;
-                                animation-range: -2px 30vh;
-                                animation-fill-mode: both;
-                                animation-name: dynamic-opacity;
-                                animation-timing-function: linear;
-
-                                @keyframes dynamic-opacity {
-                                    to {
-                                        opacity: 1;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            :not(#searchPreview, .card__block, .plugin-panel)>.protyle-breadcrumb:not([slot]) {
-                background-color: transparent;
-                // mix-blend-mode: luminosity;
-                // mix-blend-mode: difference;
-                position: relative;
-
-                // 顶部页签区域第三层模糊，可以去掉
-                &::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    height: 80%;
-                    // background-color: transparent;
-                    backdrop-filter: blur(16px) saturate(1.5);
-                    mask-image: linear-gradient(to bottom, #000, #0000);
-                    pointer-events: none;
-
-                    @include darkmode-counterpart {
-                        // backdrop-filter: blur(16px) saturate(1.5);
-                    }
-                }
-
-                .protyle-breadcrumb__item {
-                    &:not(:first-child) {
-                        @include overflow-indicator-fadein-mask($range: 'left right');
-                    }
-
-                    &::-webkit-scrollbar {
-                        display: none;
-                    }
-                }
-
-                // .protyle-breadcrumb__text,
-                // .popover__block {
-                //     // color: var(--b3-theme-on-background);
-                //     font-weight: 600;
-                //     // overflow: visible;
-                //     filter: drop-shadow(0 0 4px var(--b3-theme-background));
-                //     // color: #fffa;
-                // }
-
-
-                // mix-blend-mode: multiply;
-
-                // @include darkmode-counterpart {
-                //     mix-blend-mode: screen;
-                // }
-
-                .block__icon,
-                .protyle-breadcrumb__arrow {
-                    filter: drop-shadow(0 0 3px var(--b3-theme-background));
-                }
-            }
-
-            :not(.fullscreen, .plugin-panel)>.protyle-breadcrumb:not([slot]) {
-                .protyle-breadcrumb__bar {
-                    height: fit-content;
-                    margin: 6px 0;
-                    padding: 0 2px;
-                    background-color: rgb(from var(--b3-theme-background) r g b / .4);
-                    // background: radial-gradient(closest-side,var(--b3-theme-background) 0%, #0000 100%);
-                    // background-color: var(--b3-theme-surface-light);
-                    border-radius: 6px;
-                    @include bg-blur(8px, 1.5, $brightness-light: 1);
-                }
-            }
-
-            .protyle-top {
-                margin-top: calc(-1 * var(--blur-block-height));
-
-                --bgimg-top-space: 12px; // -> parallax scrolling fix
-                --cover-img-height: calc(30vh + var(--blur-block-height));
-            }
-
-            .protyle-background__img {
-                img {
-                    height: calc(30vh + var(--blur-block-height));
-                }
-
-                .protyle-icons {
-                    top: 92px;
-                }
-
-                &.fn__none+.protyle-background__ia {
-                    margin-top: 92px !important;
-                }
-            }
-
-            .protyle-background__icon,
-            .img .protyle-action__drag {
-                z-index: auto;
-            }
-        }
-
-        //页签栏图标、顶栏图标
-        // .item--readonly .block__icon,
-        // .toolbar .toolbar__item:not(#barWorkspace) {
-        //     filter: drop-shadow(0 0 3px var(--b3-theme-background));
-        // }
-        .toolbar {
-            mix-blend-mode: multiply;
-
-            @include darkmode-counterpart {
-                mix-blend-mode: screen;
-            }
-        }
-    }
-
-    &:not(.body-asri--mobile, .body--window)>#toolbar {
-        z-index: 4;
-    }
-
-    .layout__resize {
-        z-index: 3;
-    }
-
-    .av__row--header,
-    .av__colsticky,
-    .av__row--footer {
-        z-index: 1;
-    }
-
-    // .protyle-breadcrumb{
-    //     anchor-name: --breadcrumb;
-    // }
-
-    // .av__row--header {
-    //     transform: none !important;
-    //     position: sticky;
-    //     top: calc(anchor(bottom) + 42px);
-    // }
-
-    &.body--window {
-        --blur-block-height: 74px;
-    }
-
-    .layout__center {
-
-        // // 大纲、反链面板
-        // .file-tree,
-        // // 搜索面板
-        // .layout-tab-container>[data-timeout] {
-        //     margin-top: 42px;
-        //     min-height: calc(100% - 42px);
-        // }
-
-        .layout-tab-container>:not(.protyle) {
-            margin-top: 42px;
-            // min-height: calc(100% - 42px);
-            min-height: unset;
-        }
-
-        // [data-key="dialog-opencard"] {
-        //     padding-top: 42px;
-
-        //     // >.card__main>.block__icons {
-        //     //     background-color: var(--b3-theme-background);
+        //     // .item:not(.item--readonly, .item--full.item--focus):hover,
+        //     // .item.item--focus {
+        //     //     background-color: oklch(from var(--b3-theme-primary) .8 clamp(0, calc(.05 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .18) h / .5);
+
+        //     //     @include darkmode-counterpart {
+        //     //         background-color: oklch(from var(--b3-theme-primary) .6 clamp(0, calc(.06 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .18) h / .5);
+        //     //     }
         //     // }
         // }
-    }
 
-    // 适配插件、挂件
-    iframe[src="/widgets/Whiteboard/"] {
-        margin-top: 48px;
-    }
-
-    .enhanceProtyleBottomContainer .protyle-content {
-        padding-top: 0 !important;
-
-        &::before {
-            display: none;
+        .item:not(
+            .item--readonly,
+            .item--full.item--focus,
+            .item--focus
+          ):hover {
+          // box-shadow: inset 0 0 0 1px rgb(from var(--b3-theme-on-background) r g b / .8);
+          background-color: transparent !important;
         }
+
+        .item--focus {
+          font-weight: 500;
+        }
+
+        &:not(.layout-tab-bar--readonly) .item {
+          // font-weight: 500;
+          border-radius: 7px;
+          // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
+          // backdrop-filter: saturate(2);
+          // outline: 1px solid rgb(from var(--b3-theme-background) r g b / .2);
+          // outline-offset: -1px;
+          box-shadow: inset 0 0 0 1px
+            rgb(from var(--b3-theme-on-background) r g b / 0.2);
+
+          &--focus {
+            // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
+            // backdrop-filter: saturate(2.5);
+            border-radius: 6px;
+            box-shadow: none;
+            backdrop-filter: none;
+            // background-color: var(--b3-theme-background);
+            // box-shadow: inset 0 0 0 1px rgb(from var(--b3-theme-on-background) r g b / .9);
+          }
+        }
+      }
+
+      .layout-tab-container {
+        & > .protyle[data-loading="finished"] {
+          &::before {
+            mask-image: linear-gradient(
+              to bottom,
+              black 0,
+              black calc(var(--blur-block-height) - 25px),
+              transparent calc(var(--blur-block-height) - 5px)
+            );
+
+            @include bg-blur(
+              $blur-radius: 4px,
+              $saturate-value: 1,
+              $brightness-light: 1,
+              $brightness-dark: 1
+            );
+          }
+
+          &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: min(
+              calc(var(--blur-radius-main) * 2 + var(--blur-block-height)),
+              100%
+            );
+            position: absolute;
+            top: 0;
+            pointer-events: none;
+            // background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / .6), transparent var(--blur-block-height));
+            backdrop-filter: blur(2px);
+            mask-image: linear-gradient(
+              to bottom,
+              black 0,
+              black calc(var(--blur-block-height) - 15px),
+              transparent calc(var(--blur-block-height) + 0px)
+            );
+          }
+
+          &.fullscreen::after {
+            background: unset;
+          }
+
+          .protyle-breadcrumb + .protyle-content {
+            scroll-timeline-name: --protyle-content-scroll;
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              width: 100%;
+              height: min(calc(var(--blur-block-height) + 50px), 100%);
+              // height: var(--blur-block-height);
+              z-index: 1;
+              pointer-events: none;
+
+              mix-blend-mode: luminosity;
+
+              @include darkmode-counterpart {
+                mix-blend-mode: normal;
+                opacity: 0.7;
+              }
+
+              @include smoothGradientVar(var(--b3-theme-background), 0.9, 0.8);
+
+              opacity: 0.8;
+              @supports (animation-timeline: view()) {
+                animation-timeline: --protyle-content-scroll;
+                animation-range: -2px 30vh;
+                animation-fill-mode: both;
+                animation-name: dynamic-opacity;
+                animation-timing-function: linear;
+
+                @keyframes dynamic-opacity {
+                  to {
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      :not(#searchPreview, .card__block, .plugin-panel)
+        > .protyle-breadcrumb:not([slot]) {
+        background-color: transparent;
+        // mix-blend-mode: luminosity;
+        // mix-blend-mode: difference;
+        position: relative;
+
+        // 顶部页签区域第三层模糊，可以去掉
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          height: 80%;
+          // background-color: transparent;
+          backdrop-filter: blur(16px) saturate(1.5);
+          mask-image: linear-gradient(to bottom, #000, #0000);
+          pointer-events: none;
+
+          @include darkmode-counterpart {
+            // backdrop-filter: blur(16px) saturate(1.5);
+          }
+        }
+
+        .protyle-breadcrumb__item {
+          &:not(:first-child) {
+            @include overflow-indicator-fadein-mask($range: "left right");
+          }
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        }
+
+        // .protyle-breadcrumb__text,
+        // .popover__block {
+        //     // color: var(--b3-theme-on-background);
+        //     font-weight: 600;
+        //     // overflow: visible;
+        //     filter: drop-shadow(0 0 4px var(--b3-theme-background));
+        //     // color: #fffa;
+        // }
+
+        // mix-blend-mode: multiply;
+
+        // @include darkmode-counterpart {
+        //     mix-blend-mode: screen;
+        // }
+
+        .block__icon,
+        .protyle-breadcrumb__arrow {
+          filter: drop-shadow(0 0 3px var(--b3-theme-background));
+        }
+      }
+
+      :not(.fullscreen, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+        .protyle-breadcrumb__bar {
+          height: fit-content;
+          margin: 6px 0;
+          padding: 0 2px;
+          background-color: rgb(from var(--b3-theme-background) r g b / 0.4);
+          // background: radial-gradient(closest-side,var(--b3-theme-background) 0%, #0000 100%);
+          // background-color: var(--b3-theme-surface-light);
+          border-radius: 6px;
+          @include bg-blur(8px, 1.5, $brightness-light: 1);
+        }
+      }
+
+      .protyle-top {
+        margin-top: calc(-1 * var(--blur-block-height));
+
+        --bgimg-top-space: 12px; // -> parallax scrolling fix
+        --cover-img-height: calc(30vh + var(--blur-block-height));
+      }
+
+      .protyle-background__img {
+        img {
+          height: calc(30vh + var(--blur-block-height));
+        }
+
+        .protyle-icons {
+          top: 92px;
+        }
+
+        &.fn__none + .protyle-background__ia {
+          margin-top: 92px !important;
+        }
+      }
+
+      .protyle-background__icon,
+      .img .protyle-action__drag {
+        z-index: auto;
+      }
     }
 
-    .backlinkArea.arco-collapse .backlinkAreaCollapse>.arco-collapse-item-header {
-        z-index: 1;
+    //页签栏图标、顶栏图标
+    // .item--readonly .block__icon,
+    // .toolbar .toolbar__item:not(#barWorkspace) {
+    //     filter: drop-shadow(0 0 3px var(--b3-theme-background));
+    // }
+    .toolbar {
+      mix-blend-mode: multiply;
+
+      @include darkmode-counterpart {
+        mix-blend-mode: screen;
+      }
     }
+  }
+
+  &:not(.body-asri--mobile, .body--window) > #toolbar {
+    z-index: 4;
+  }
+
+  .layout__resize {
+    z-index: 3;
+  }
+
+  .av__row--header,
+  .av__colsticky,
+  .av__row--footer {
+    z-index: 1;
+  }
+
+  // .protyle-breadcrumb{
+  //     anchor-name: --breadcrumb;
+  // }
+
+  // .av__row--header {
+  //     transform: none !important;
+  //     position: sticky;
+  //     top: calc(anchor(bottom) + 42px);
+  // }
+
+  &.body--window {
+    --blur-block-height: 74px;
+  }
+
+  .layout__center {
+    // // 大纲、反链面板
+    // .file-tree,
+    // // 搜索面板
+    // .layout-tab-container>[data-timeout] {
+    //     margin-top: 42px;
+    //     min-height: calc(100% - 42px);
+    // }
+
+    .layout-tab-container > :not(.protyle) {
+      margin-top: 42px;
+      // min-height: calc(100% - 42px);
+      min-height: unset;
+    }
+
+    // [data-key="dialog-opencard"] {
+    //     padding-top: 42px;
+
+    //     // >.card__main>.block__icons {
+    //     //     background-color: var(--b3-theme-background);
+    //     // }
+    // }
+  }
+
+  // 适配插件、挂件
+  iframe[src="/widgets/Whiteboard/"] {
+    margin-top: 48px;
+  }
+
+  .enhanceProtyleBottomContainer .protyle-content {
+    padding-top: 0 !important;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .backlinkArea.arco-collapse
+    .backlinkAreaCollapse
+    > .arco-collapse-item-header {
+    z-index: 1;
+  }
 }

@@ -1,248 +1,256 @@
-
 // color scheme related mixins————————————————
 $theme-light: (
-    primary: rgb(52, 120, 246),
-    secondary: rgb(241, 154, 55),
-    background: #fff,
-    surface: rgb(240, 240, 240),
-    error: rgb(234, 77, 60),
-    on-primary: #fff,
-    on-secondary: #fff,
-    on-background: rgb(69, 69, 69),
-    on-surface-gray: rgb(127, 127, 127),
-    border: rgb(230, 230, 230),
-    scroll: rgba(0, 0, 0, 0.08),
-    list-hover: rgba(0, 0, 0, 0.05),
-    menu-background: rgb(236, 236, 236),
-    menu-item-hv-background: rgb(41, 98, 217, 0.8),
-    menu-item-hv-on-background: #fff,
-    mask-background: rgba(0, 0, 0, 0.78),
-    card-error: #732F25,
-    card-error-background: #FFE2D7,
-    card-warning: #524900,
-    card-warning-background: #FBF5BE,
-    card-info: #044977,
-    card-info-background: #CDF7FF,
-    card-success: #2A5318,
-    card-success-background: #DBFED0,
-    font-color1: #000,
-    font-color2: #808080,
-    font-color3: #A9733A,
-    font-color4: #C85E00,
-    font-color5: #997C00,
-    font-color6: #389800,
-    font-color7: #009F76,
-    font-color8: #0098C1,
-    font-color9: #007FF2,
-    font-color10:#705EFD,
-    font-color11:#B240D2,
-    font-color12:#DC2188,
-    font-color13:#E72312,
-    font-background1: #00000000,
-    font-background2: #E8E8E8,
-    font-background3: #EDE7E1,
-    font-background4: #FFEAC1,
-    font-background5: #FBF5BE,
-    font-background6: #DBFED0,
-    font-background7: #C2FFEE,
-    font-background8: #BAFFFF,
-    font-background9: #CDF7FF,
-    font-background10:#E9EDFF,
-    font-background11:#FFE4FF,
-    font-background12:#FFE0F5,
-    font-background13:#FFE2D7,
-    pdf-background1: #FFC3D3,
-    pdf-background2: #FFD18D,
-    pdf-background3: #FDE57A,
-    pdf-background4: #A7FDB4,
-    pdf-background5: #A3F4FF,
-    pdf-background6: #BDE2FF,
-    pdf-background7: #FFC9FF,
-    inline-link-color: #4285f4,
-    inline-mark-background: rgb(168, 251, 172),
-    light-components:#fff
+	primary: rgb(52, 120, 246),
+	secondary: rgb(241, 154, 55),
+	background: #fff,
+	surface: rgb(240, 240, 240),
+	error: rgb(234, 77, 60),
+	on-primary: #fff,
+	on-secondary: #fff,
+	on-background: rgb(69, 69, 69),
+	on-surface-gray: rgb(127, 127, 127),
+	border: rgb(230, 230, 230),
+	scroll: rgba(0, 0, 0, 0.08),
+	list-hover: rgba(0, 0, 0, 0.05),
+	menu-background: rgb(236, 236, 236),
+	menu-item-hv-background: rgb(41, 98, 217, 0.8),
+	menu-item-hv-on-background: #fff,
+	mask-background: rgba(0, 0, 0, 0.78),
+	card-error: #732f25,
+	card-error-background: #ffe2d7,
+	card-warning: #524900,
+	card-warning-background: #fbf5be,
+	card-info: #044977,
+	card-info-background: #cdf7ff,
+	card-success: #2a5318,
+	card-success-background: #dbfed0,
+	font-color1: #000,
+	font-color2: #808080,
+	font-color3: #a9733a,
+	font-color4: #c85e00,
+	font-color5: #997c00,
+	font-color6: #389800,
+	font-color7: #009f76,
+	font-color8: #0098c1,
+	font-color9: #007ff2,
+	font-color10: #705efd,
+	font-color11: #b240d2,
+	font-color12: #dc2188,
+	font-color13: #e72312,
+	font-background1: #00000000,
+	font-background2: #e8e8e8,
+	font-background3: #ede7e1,
+	font-background4: #ffeac1,
+	font-background5: #fbf5be,
+	font-background6: #dbfed0,
+	font-background7: #c2ffee,
+	font-background8: #baffff,
+	font-background9: #cdf7ff,
+	font-background10: #e9edff,
+	font-background11: #ffe4ff,
+	font-background12: #ffe0f5,
+	font-background13: #ffe2d7,
+	pdf-background1: #ffc3d3,
+	pdf-background2: #ffd18d,
+	pdf-background3: #fde57a,
+	pdf-background4: #a7fdb4,
+	pdf-background5: #a3f4ff,
+	pdf-background6: #bde2ff,
+	pdf-background7: #ffc9ff,
+	inline-link-color: #4285f4,
+	inline-mark-background: rgb(168, 251, 172),
+	light-components: #fff,
 );
 
 $theme-dark: (
-    primary: rgb(17, 139, 255),
-    secondary: rgb(198, 126, 44),
-    background: rgb(30, 30, 30),
-    surface: rgb(56, 56, 56),
-    error: rgb(255, 59, 48),
-    on-primary: #ffffffe3,
-    on-secondary: #fff,
-    on-background: rgb(220, 220, 220),
-    on-surface-gray: rgb(127, 127, 127),
-    border: hsl(0, 0%, 26%),
-    scroll: rgba(255, 255, 255, 0.1),
-    list-hover: rgba(255, 255, 255, 0.06),
-    menu-background: rgb(50, 50, 50),
-    menu-item-hv-background: rgb(32, 80, 202, 0.8),
-    menu-item-hv-on-background:#ffffffe3,
-    mask-background: rgba(0, 0, 0, 0.78),
-    card-error: #FFC8BC,
-    card-error-background: #52302B,
-    card-warning: #E5DEA0,
-    card-warning-background: #403C1A,
-    card-info: #9AEAF8,
-    card-info-background: #233D53,
-    card-success: #C1E8B4,
-    card-success-background: #2D4126,
-    font-color1: #FFF,
-    font-color2: #AEAEAE,
-    font-color3: #ECCEB3,
-    font-color4: #FFC168,
-    font-color5: #E8D754,
-    font-color6: #A2EB88,
-    font-color7: #45F3CC,
-    font-color8: #01EFFF,
-    font-color9: #79DDFF,
-    font-color10: #C5C7FF,
-    font-color11: #FDB4FF,
-    font-color12: #FFADDA,
-    font-color13: #FFB09B,
-    font-background1: #00000000,
-    font-background2: #3A3A3A,
-    font-background3: #3E3A35,
-    font-background4: #5E3808,
-    font-background5: #4B4400,
-    font-background6: #2C4C20,
-    font-background7: #004F3F,
-    font-background8: #004D59,
-    font-background9: #16466A,
-    font-background10:#3C3C6B,
-    font-background11:#54345D,
-    font-background12:#632E46,
-    font-background13:#663028,
-    pdf-background1: #9F3D53,
-    pdf-background2: #935000,
-    pdf-background3: #786100,
-    pdf-background4: #1C7736,
-    pdf-background5: #14707A,
-    pdf-background6: #415EAC,
-    pdf-background7: #814893,
-    inline-link-color: #8ab4f8,
-    inline-mark-background: #00d95964,
-    light-components:#e0e0e0,
+	primary: rgb(17, 139, 255),
+	secondary: rgb(198, 126, 44),
+	background: rgb(30, 30, 30),
+	surface: rgb(56, 56, 56),
+	error: rgb(255, 59, 48),
+	on-primary: #ffffffe3,
+	on-secondary: #fff,
+	on-background: rgb(220, 220, 220),
+	on-surface-gray: rgb(127, 127, 127),
+	border: hsl(0, 0%, 26%),
+	scroll: rgba(255, 255, 255, 0.1),
+	list-hover: rgba(255, 255, 255, 0.06),
+	menu-background: rgb(50, 50, 50),
+	menu-item-hv-background: rgb(32, 80, 202, 0.8),
+	menu-item-hv-on-background: #ffffffe3,
+	mask-background: rgba(0, 0, 0, 0.78),
+	card-error: #ffc8bc,
+	card-error-background: #52302b,
+	card-warning: #e5dea0,
+	card-warning-background: #403c1a,
+	card-info: #9aeaf8,
+	card-info-background: #233d53,
+	card-success: #c1e8b4,
+	card-success-background: #2d4126,
+	font-color1: #fff,
+	font-color2: #aeaeae,
+	font-color3: #ecceb3,
+	font-color4: #ffc168,
+	font-color5: #e8d754,
+	font-color6: #a2eb88,
+	font-color7: #45f3cc,
+	font-color8: #01efff,
+	font-color9: #79ddff,
+	font-color10: #c5c7ff,
+	font-color11: #fdb4ff,
+	font-color12: #ffadda,
+	font-color13: #ffb09b,
+	font-background1: #00000000,
+	font-background2: #3a3a3a,
+	font-background3: #3e3a35,
+	font-background4: #5e3808,
+	font-background5: #4b4400,
+	font-background6: #2c4c20,
+	font-background7: #004f3f,
+	font-background8: #004d59,
+	font-background9: #16466a,
+	font-background10: #3c3c6b,
+	font-background11: #54345d,
+	font-background12: #632e46,
+	font-background13: #663028,
+	pdf-background1: #9f3d53,
+	pdf-background2: #935000,
+	pdf-background3: #786100,
+	pdf-background4: #1c7736,
+	pdf-background5: #14707a,
+	pdf-background6: #415eac,
+	pdf-background7: #814893,
+	inline-link-color: #8ab4f8,
+	inline-mark-background: #00d95964,
+	light-components: #e0e0e0,
 );
 
 @mixin theme-root($theme-map) {
-    --b3-theme-primary: #{map-get($theme-map,primary)};
-    --b3-theme-primary-light: #{rgba(map-get($theme-map, primary), 0.56)};
-    --b3-theme-primary-lighter: #{rgba(map-get($theme-map,primary), 0.38)};
-    --b3-theme-primary-lightest: #{rgba(map-get($theme-map,primary), 0.2)};
-    --b3-theme-secondary: #{map-get($theme-map,secondary)};
-    --b3-theme-background: #{map-get($theme-map, background)};
-    --b3-theme-background-light: #{rgb(map-get($theme-map,background),0.1)};
-    --b3-theme-surface: #{map-get($theme-map,surface)};
-    --b3-theme-surface-light: #{rgb(map-get($theme-map,surface), 0.5)};
-    --b3-theme-error: #{map-get($theme-map,error)};
+	--b3-theme-primary: #{map-get($theme-map, primary)};
+	--b3-theme-primary-light: #{rgba(map-get($theme-map, primary), 0.56)};
+	--b3-theme-primary-lighter: #{rgba(map-get($theme-map, primary), 0.38)};
+	--b3-theme-primary-lightest: #{rgba(map-get($theme-map, primary), 0.2)};
+	--b3-theme-secondary: #{map-get($theme-map, secondary)};
+	--b3-theme-background: #{map-get($theme-map, background)};
+	--b3-theme-background-light: #{rgb(map-get($theme-map, background), 0.1)};
+	--b3-theme-surface: #{map-get($theme-map, surface)};
+	--b3-theme-surface-light: #{rgb(map-get($theme-map, surface), 0.5)};
+	--b3-theme-error: #{map-get($theme-map, error)};
 
-    /* 文字颜色 */
-    --b3-theme-on-primary: #{map-get($theme-map,on-primary)};
-    --b3-theme-on-secondary: #{map-get($theme-map,on-secondary)};
-    --b3-theme-on-background: #{map-get($theme-map,on-background)};
-    --b3-theme-on-surface:#{rgb(map-get($theme-map, on-background), 0.65)};
-    --b3-theme-on-surface-light: #{rgb(map-get($theme-map,on-surface-gray), 0.68)};
-    --b3-theme-surface-lighter: var(--b3-border-color);
-    --b3-theme-on-error: #{map-get($theme-map,on-primary)};
+	/* 文字颜色 */
+	--b3-theme-on-primary: #{map-get($theme-map, on-primary)};
+	--b3-theme-on-secondary: #{map-get($theme-map, on-secondary)};
+	--b3-theme-on-background: #{map-get($theme-map, on-background)};
+	--b3-theme-on-surface: #{rgb(map-get($theme-map, on-background), 0.65)};
+	--b3-theme-on-surface-light: #{rgb(map-get($theme-map, on-surface-gray), 0.68)};
+	--b3-theme-surface-lighter: var(--b3-border-color);
+	--b3-theme-on-error: #{map-get($theme-map, on-primary)};
 
-    /* 线条 */
-    --b3-border-color: #{map-get($theme-map,border)};
-    --b3-border-color-trans:#{rgb(map-get($theme-map, on-background), 0.15)};
+	/* 线条 */
+	--b3-border-color: #{map-get($theme-map, border)};
+	--b3-border-color-trans: #{rgb(map-get($theme-map, on-background), 0.15)};
 
-    /* 滚动条 */
-    --b3-scroll-color: #{map-get($theme-map,scroll)};
-    --b3-scroll-color-hover: #{change-color(map-get($theme-map, scroll), $alpha:alpha(map-get($theme-map, scroll)) * 2)};
+	/* 滚动条 */
+	--b3-scroll-color: #{map-get($theme-map, scroll)};
+	--b3-scroll-color-hover: #{change-color(
+			map-get($theme-map, scroll),
+			$alpha: alpha(map-get($theme-map, scroll)) * 2
+		)};
 
-    /* 列表 */
-    --b3-list-hover: #{map-get($theme-map,list-hover)};
+	/* 列表 */
+	--b3-list-hover: #{map-get($theme-map, list-hover)};
 
-    /* 菜单 */
-    --b3-menu-background: #{map-get($theme-map,menu-background)};
-    --b3-menu-item-background-hover: #{map-get($theme-map,menu-item-hv-background)};
-    --b3-menu-item-background-hover-text:#{map-get($theme-map,menu-item-hv-on-background)};
+	/* 菜单 */
+	--b3-menu-background: #{map-get($theme-map, menu-background)};
+	--b3-menu-item-background-hover: #{map-get(
+			$theme-map,
+			menu-item-hv-background
+		)};
+	--b3-menu-item-background-hover-text: #{map-get(
+			$theme-map,
+			menu-item-hv-on-background
+		)};
 
-    /* 提示 */
-    --b3-tooltips-color: var(--b3-theme-on-background);
-    --b3-tooltips-background: var(--b3-menu-background);
+	/* 提示 */
+	--b3-tooltips-color: var(--b3-theme-on-background);
+	--b3-tooltips-background: var(--b3-menu-background);
 
-    /* 遮罩 */
-    --b3-mask-background: #{map-get($theme-map,mask-background)};
+	/* 遮罩 */
+	--b3-mask-background: #{map-get($theme-map, mask-background)};
 
-    /* 卡片背景 */
-    --b3-card-error-color: #{map-get($theme-map,card-error)};
-    --b3-card-error-background: #{map-get($theme-map,card-error-background)};
-    --b3-card-warning-color: #{map-get($theme-map,card-warning)};
-    --b3-card-warning-background:#{map-get($theme-map,card-warning-background)};
-    --b3-card-info-color: #{map-get($theme-map,card-info)};
-    --b3-card-info-background: #{map-get($theme-map,card-info-background)};
-    --b3-card-success-color: #{map-get($theme-map,card-success)};
-    --b3-card-success-background: #{map-get($theme-map,card-success-background)};
+	/* 卡片背景 */
+	--b3-card-error-color: #{map-get($theme-map, card-error)};
+	--b3-card-error-background: #{map-get($theme-map, card-error-background)};
+	--b3-card-warning-color: #{map-get($theme-map, card-warning)};
+	--b3-card-warning-background: #{map-get($theme-map, card-warning-background)};
+	--b3-card-info-color: #{map-get($theme-map, card-info)};
+	--b3-card-info-background: #{map-get($theme-map, card-info-background)};
+	--b3-card-success-color: #{map-get($theme-map, card-success)};
+	--b3-card-success-background: #{map-get($theme-map, card-success-background)};
 
-    /* 自定义文字 */
-    @for $i from 1 through 13 {
-        $font-color: map-get($theme-map, font-color#{$i});
+	/* 自定义文字 */
+	@for $i from 1 through 13 {
+		$font-color: map-get($theme-map, font-color#{$i});
 
-        //背景色：不透明色
-        // $font-background: mix(map-get($theme-map, font-color#{$i}), map-get($theme-map, background), 12.5%);
-        $font-background: map-get($theme-map, font-background#{$i});
+		//背景色：不透明色
+		// $font-background: mix(map-get($theme-map, font-color#{$i}), map-get($theme-map, background), 12.5%);
+		$font-background: map-get($theme-map, font-background#{$i});
 
-        // 背景色：透明色
-        // $font-background:change-color(map-get($theme-map,font-color#{$i}), $alpha: 0.1);
+		// 背景色：透明色
+		// $font-background:change-color(map-get($theme-map,font-color#{$i}), $alpha: 0.1);
 
-        --b3-font-color#{$i}: #{$font-color};
+		--b3-font-color#{$i}: #{$font-color};
 
-        --b3-font-background#{$i}:#{$font-background};
-    }
+		--b3-font-background#{$i}: #{$font-background};
+	}
 
-    ;
+	/* 所见即所得行内元素颜色 */
+	--b3-protyle-inline-link-color: #{map-get($theme-map, inline-link-color)};
+	--b3-protyle-inline-mark-background: #{map-get(
+			$theme-map,
+			inline-mark-background
+		)};
+	--b3-protyle-code-background: var(--b3-theme-surface);
 
-    /* 所见即所得行内元素颜色 */
-    --b3-protyle-inline-link-color: #{map-get($theme-map,inline-link-color)};
-    --b3-protyle-inline-mark-background: #{map-get($theme-map,inline-mark-background)};
-    --b3-protyle-code-background: var(--b3-theme-surface);
+	// 占位符
+	--b3-empty-color: #{rgba(map-get($theme-map, on-background), 0.45)};
 
-    // 占位符
-    --b3-empty-color: #{rgba(map-get($theme-map,on-background), 0.45)};
+	// 关系图
+	--b3-graph-p-point: #a188fd;
+	--b3-graph-heading-point: #ef6b9a;
+	--b3-graph-math-point: #24a5ff;
+	--b3-graph-code-point: #6a9bff;
+	--b3-graph-table-point: #0abc71;
+	--b3-graph-list-point: #82b025;
+	// --b3-graph-todo-point: #FFBF00;
+	--b3-graph-olist-point: #b3005f;
+	--b3-graph-listitem-point: #00b89f;
+	--b3-graph-bq-point: #de8700;
+	--b3-graph-super-point: #a2a700;
+	--b3-graph-doc-point: var(--b3-theme-on-background);
+	--b3-graph-tag-point: #ef7747;
+	// --b3-graph-asset-point: #05c091;
+	--b3-graph-line: var(--b3-border-color-trans);
+	--b3-graph-ref-line: var(--b3-theme-primary-light);
+	// --b3-graph-tag-line: #5f6b06;
+	// --b3-graph-tag-tag-line: #dbf32f;
+	// --b3-graph-asset-line: #037457;
+	--b3-graph-hl-point: #ff5799;
+	--b3-graph-hl-line: #ff5799;
 
-    // 关系图
-    --b3-graph-p-point: #a188fd;
-    --b3-graph-heading-point: #ef6b9a;
-    --b3-graph-math-point: #24a5ff;
-    --b3-graph-code-point: #6a9bff;
-    --b3-graph-table-point: #0abc71;
-    --b3-graph-list-point: #82b025;
-    // --b3-graph-todo-point: #FFBF00;
-    --b3-graph-olist-point: #b3005f;
-    --b3-graph-listitem-point: #00b89f;
-    --b3-graph-bq-point: #de8700;
-    --b3-graph-super-point: #a2a700;
-    --b3-graph-doc-point: var(--b3-theme-on-background);
-    --b3-graph-tag-point: #ef7747;
-    // --b3-graph-asset-point: #05c091;
-    --b3-graph-line: var(--b3-border-color-trans);
-    --b3-graph-ref-line: var(--b3-theme-primary-light);
-    // --b3-graph-tag-line: #5f6b06;
-    // --b3-graph-tag-tag-line: #dbf32f;
-    // --b3-graph-asset-line: #037457;
-    --b3-graph-hl-point: #ff5799;
-    --b3-graph-hl-line: #ff5799;
-
-    /* 父块颜色 */
-    // --b3-parent-background: ;
+	/* 父块颜色 */
+	// --b3-parent-background: ;
 }
 
-
 @function getRgb($color) {
-    @return red($color), green($color), blue($color);
+	@return red($color), green($color), blue($color);
 }
 
 @function pickThemeColor($theme-map, $color-key, $opacity: 1) {
-    @return change-color(map-get($theme-map , $color-key), $alpha: $opacity);
+	@return change-color(map-get($theme-map, $color-key), $alpha: $opacity);
 }
 
 @function negateForRTL($value) {
-    // gnf 值，用于在 rtl 模式下反转值
-    @return calc(var(--gnf, 1) * #{$value});
+	// gnf 值，用于在 rtl 模式下反转值
+	@return calc(var(--gnf, 1) * #{$value});
 }

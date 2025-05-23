@@ -1,91 +1,102 @@
-@use './base' as *;
+@use "./base" as *;
 
 :root {
-    --b3-border-radius-b: 16px; // SiYuan 定义的对话框圆角
+  --b3-border-radius-b: 16px; // SiYuan 定义的对话框圆角
 
-    &,
-    &:lang(zh_CN) {
-        --b3-font-family: system-ui, ui-sans-serif, -apple-system, "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+  &,
+  &:lang(zh_CN) {
+    --b3-font-family: system-ui, ui-sans-serif, -apple-system,
+      "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, "SF Pro Text",
+      "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans",
+      "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB",
+      sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol",
+      "Android Emoji", "EmojiSymbols";
 
-        --b3-font-family-code: SF Mono, "JetBrains Mono", JetBrainsMono-Regular, Menlo, mononoki, Consolas, "Liberation Mono", Courier, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols", var(--b3-font-family), monospace;
+    --b3-font-family-code: SF Mono, "JetBrains Mono", JetBrainsMono-Regular,
+      Menlo, mononoki, Consolas, "Liberation Mono", Courier, "Apple Color Emoji",
+      "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+      "EmojiSymbols", var(--b3-font-family), monospace;
 
-        // --b3-font-family-emoji: "Apple Color Emoji", "Emojis Additional", "Emojis Reset";
+    // --b3-font-family-emoji: "Apple Color Emoji", "Emojis Additional", "Emojis Reset";
 
-        // --b3-font-family-graph: mononoki;
+    // --b3-font-family-graph: mononoki;
 
-        // --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
+    // --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
 
-        // --b3-font-family-math: KaTeX_Math;
-    }
+    // --b3-font-family-math: KaTeX_Math;
+  }
 
-    &:lang(ja_JP) {
-        --b3-font-family: ui-sans-serif, -apple-system, "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
-    }
+  &:lang(ja_JP) {
+    --b3-font-family: ui-sans-serif, -apple-system, "Emojis Additional",
+      "Emojis Reset", BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons",
+      "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans",
+      "Yu Gothic UI", "PingFang SC", "Segoe UI", "Microsoft Yahei",
+      "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji",
+      "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+  }
 
-    // interpolate-size: allow-keywords;  // https://developer.chrome.com/docs/css-ui/animate-to-height-auto/
+  // interpolate-size: allow-keywords;  // https://developer.chrome.com/docs/css-ui/animate-to-height-auto/
 
-    @include common-anim-css-vars;
+  @include common-anim-css-vars;
 }
 
-// dark first to fix font color and background color abnormality in pdf export 
+// dark first to fix font color and background color abnormality in pdf export
 [data-theme-mode="dark"] {
-    &:root {
-        color-scheme: dark;
-        // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
-    }
+  &:root {
+    color-scheme: dark;
+    // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
+  }
 
-    &:root // body.has-exportimg 
+  &:root // body.has-exportimg
+  {
+    @include theme-root($theme-dark);
+  }
 
-        {
-        @include theme-root($theme-dark);
-    }
-
-    // use hex to fix ios top bar color
-    .body-asri--iosApp {
-        --b3-theme-background: #161616;
-        --b3-parent-background: var(--b3-theme-background);
-    }
+  // use hex to fix ios top bar color
+  .body-asri--iosApp {
+    --b3-theme-background: #161616;
+    --b3-parent-background: var(--b3-theme-background);
+  }
 }
 
 [data-theme-mode="light"] {
+  &:root // fix being overridden by other themes
 
-    &:root // fix being overridden by other themes
+    // body.has-exportimg
+  {
+    @include theme-root($theme-light);
+  }
 
-    // body.has-exportimg 
-        {
-        @include theme-root($theme-light)
+  body {
+    ::selection {
+      background-color: var(--b3-theme-primary-lightest);
     }
+  }
 
-    body {
-        ::selection {
-            background-color: var(--b3-theme-primary-lightest);
-        }
-    }
-
-    // use hex to fix https://github.com/mustakshif/Asri/issues/39
-    .body-asri--mobile {
-        --b3-theme-background: #fff;
-        --b3-parent-background: var(--b3-theme-background);
-    }
+  // use hex to fix https://github.com/mustakshif/Asri/issues/39
+  .body-asri--mobile {
+    --b3-theme-background: #fff;
+    --b3-parent-background: var(--b3-theme-background);
+  }
 }
 
 body {
-    text-underline-position: under;
-    text-decoration-skip-ink: all; // not supported yet
+  text-underline-position: under;
+  text-decoration-skip-ink: all; // not supported yet
 
-    [data-theme-mode="light"] & {
-        -webkit-font-smoothing: auto;
-    }
+  [data-theme-mode="light"] & {
+    -webkit-font-smoothing: auto;
+  }
 
-    // fix being overridden by other themes
-    --b3-toolbar-left-mac: 80px;
-    --toolbar-height: 48px;
+  // fix being overridden by other themes
+  --b3-toolbar-left-mac: 80px;
+  --toolbar-height: 48px;
 
-    // @include darkmode-counterpart {
-    //     -webkit-font-smoothing: antialiased;
-    // }
+  // @include darkmode-counterpart {
+  //     -webkit-font-smoothing: antialiased;
+  // }
 
-    &[arco-theme] {
-        font-family: var(--b3-font-family);
-    }
+  &[arco-theme] {
+    font-family: var(--b3-font-family);
+  }
 }
