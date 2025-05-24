@@ -124,18 +124,30 @@ async function getAsriConfigs() {
                 return;
             };
 
-            // 如果本地配置数据中没有light或dark，则将旧数据赋值给asriConfigs
-            let originalData: any;
+            /**
+            https://github.com/mustakshif/Asri/issues/165 这个写法导致当config数据不全时，updateAsriConfigs()会形成循坏引用，从而无法储存主题配置
 
-            if (!(data['light'])) {
-                originalData = data;
-                Object.keys(asriConfigs).forEach(key => {
-                    data[key as keyof typeof asriConfigs] = originalData;
-                })
-            }
+            // // 如果本地配置数据中没有light或dark，则将旧数据赋值给asriConfigs
+            // let originalData: any;
 
-            if (!(data.features)) {
-                data.features = asriConfigs.features;
+            // if (!(data['light'])) {
+            //     originalData = data;
+            //     Object.keys(asriConfigs).forEach(key => {
+            //         data[key as keyof typeof asriConfigs] = originalData;
+            //     })
+            // } 
+
+            // if (!(data.features)) {
+            //     data.features = asriConfigs.features;
+            // }
+            **/
+
+            // 如果本地配置缺失数据，则赋与默认值
+
+            for (let key in asriConfigs) {
+                if (!(key in data)) {
+                    data[key] = asriConfigs[key as keyof typeof asriConfigs];
+                }
             }
 
             const modes: ('light' | 'dark')[] = ['light', 'dark'];
