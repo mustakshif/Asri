@@ -1,35 +1,35 @@
 [data-asri-palette="aerisland"] {
-    &[data-theme-mode=light] {
-        --aerisland-base-accent: #93dcd4;
-        --asri-theme-accent-customized: var(--aerisland-base-accent);
-        --b3-theme-primary: #4fbdb0;
-        --b3-theme-accent: #2ea5a2;
+  &[data-theme-mode="light"] {
+    --aerisland-base-accent: #93dcd4;
+    --asri-theme-accent-customized: var(--aerisland-base-accent);
+    --b3-theme-primary: #4fbdb0;
+    --b3-theme-accent: #2ea5a2;
 
-        --b3-theme-on-background: #0c544c;
-        --b3-theme-on-surface: #09423ba2;
-    }
+    --b3-theme-on-background: #0c544c;
+    --b3-theme-on-surface: #09423ba2;
+  }
 
-    &[data-theme-mode=dark] {
-        --aerisland-base-accent: #4d9c93;
-        --asri-theme-accent-customized: var(--aerisland-base-accent);
-        --b3-theme-primary: var(--aerisland-base-accent);
+  &[data-theme-mode="dark"] {
+    --aerisland-base-accent: #4d9c93;
+    --asri-theme-accent-customized: var(--aerisland-base-accent);
+    --b3-theme-primary: var(--aerisland-base-accent);
 
-        --b3-theme-on-background: #c6c9b3;
-        --b3-theme-on-surface: #c6c9b3a2;
-    }
+    --b3-theme-on-background: #c6c9b3;
+    --b3-theme-on-surface: #c6c9b3a2;
+  }
 
-    .protyle-title__input,
-    [data-type="NodeHeading"],
-    .b3-dialog__header {
-        color: var(--b3-theme-primary);
-    }
+  .protyle-title__input,
+  [data-type="NodeHeading"],
+  .b3-dialog__header {
+    color: var(--b3-theme-primary);
+  }
 }
 
 #barWorkspace,
 #message,
 .b3-button--outline:hover,
 .b3-dialog__action .b3-button--text,
-#transactionError+.b3-dialog__action button:last-child,
+#transactionError + .b3-dialog__action button:last-child,
 #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover,
 .protyle-breadcrumb__icon:hover,
 .protyle-breadcrumb__item,
@@ -38,20 +38,20 @@
 .b3-switch,
 .b3-button--outline,
 .protyle-breadcrumb__icon {
-    [data-asri-palette="aerisland"][data-theme-mode=light] & {
-        --b3-theme-primary: var(--aerisland-base-accent);
-        --b3-theme-on-primary: #07443d;
-    }
+  [data-asri-palette="aerisland"][data-theme-mode="light"] & {
+    --b3-theme-primary: var(--aerisland-base-accent);
+    --b3-theme-on-primary: #07443d;
+  }
 
-    [data-asri-palette="aerisland"][data-theme-mode=dark] & {
-        --b3-theme-primary: var(--aerisland-base-accent);
-        // --b3-theme-on-primary: #fffaf1;
-    }
+  [data-asri-palette="aerisland"][data-theme-mode="dark"] & {
+    --b3-theme-primary: var(--aerisland-base-accent);
+    // --b3-theme-on-primary: #fffaf1;
+  }
 }
 
 .b3-button--outline,
 .protyle-breadcrumb__icon {
-    [data-asri-palette="aerisland"][data-theme-mode=light] & {
-        --b3-theme-primary: var(--b3-theme-accent);
-    }
+  [data-asri-palette="aerisland"][data-theme-mode="light"] & {
+    --b3-theme-primary: var(--b3-theme-accent);
+  }
 }

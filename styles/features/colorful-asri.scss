@@ -17,243 +17,115 @@ $cvc: 10; // color variant count
 
     &[data-theme-mode="light"] {
       --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
-      --asri-theme-accent-customized: oklch(
-        from var(--asri-user-custom-accent) 0.67 0.18 h
-      );
+      --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) 0.67 0.18 h);
 
       --asri-fallback-accent: #3478f6; //oklch(0.6 0.2 261.37)
       --asri-fallback-background: #fff;
       --asri-fallback-surface: #f0f0f0;
       --asri-fallback-on-background: #454545;
-      --asri-composite-background: oklch(
-        from var(--asri-base-color) calc(1 - var(--asri-c-0, 0.015))
-          calc(0.005 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h
-      );
-      --asri-composite-surface: oklch(
-        from var(--asri-base-color) calc(0.96 - var(--asri-c-0, 0.02))
-          calc(0.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h
-      );
-      --asri-composite-on-background: oklch(
-        from var(--asri-base-color) 0.35
-          clamp(0, 0.03 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.06) h
-      );
+      --asri-composite-background: oklch(from var(--asri-base-color) calc(1 - var(--asri-c-0, 0.015)) calc(0.005 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+      --asri-composite-surface: oklch(from var(--asri-base-color) calc(0.96 - var(--asri-c-0, 0.02)) calc(0.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+      --asri-composite-on-background: oklch(from var(--asri-base-color) 0.35 clamp(0, 0.03 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.06) h);
 
       // UI colors
       // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h); // complex calculation not supported yet
-      --b3-theme-primary: oklch(
-        from var(--asri-base-color, var(--asri-fallback-accent)) 0.67 c h
-      );
-      --b3-theme-primary-light: oklch(
-        from var(--b3-theme-primary) l c h / 0.56
-      );
-      --b3-theme-primary-lighter: oklch(
-        from var(--b3-theme-primary) l c h / 0.38
-      );
-      --b3-theme-primary-lightest: oklch(
-        from var(--b3-theme-primary) l c h / 0.2
-      );
-      --b3-theme-accent: var(
-        --asri-theme-accent-customized,
-        oklch(
-          from
-            var(
-              --asri-sys-accent-accessible,
-              oklch(from var(--b3-theme-primary) l 0.2 h)
-            )
-            0.67 c h
-        )
-      );
-      --b3-menu-item-background-hover: oklch(
-        from var(--asri-base-color, var(--asri-fallback-accent)) 0.62 c h / 0.8
-      );
+      --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) 0.67 c h);
+      --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
+      --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
+      --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
+      --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) 0.67 c h));
+      --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) 0.62 c h / 0.8);
 
-      --b3-theme-background: var(
-        --asri-composite-background,
-        var(--asri-fallback-background)
-      );
-      --b3-theme-surface: var(
-        --asri-composite-surface,
-        var(--asri-fallback-surface)
-      );
-      --b3-theme-on-background: var(
-        --asri-composite-on-background,
-        var(--asri-fallback-on-background)
-      );
-      --b3-theme-on-surface: oklch(
-        from var(--b3-theme-on-background) l c h / 0.65
-      );
+      --b3-theme-background: var(--asri-composite-background, var(--asri-fallback-background));
+      --b3-theme-surface: var(--asri-composite-surface, var(--asri-fallback-surface));
+      --b3-theme-on-background: var(--asri-composite-on-background, var(--asri-fallback-on-background));
+      --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / 0.65);
 
-      --b3-theme-background-light: oklch(
-        from var(--b3-theme-background) l c h / 0.1
-      );
+      --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / 0.1);
       --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / 0.5);
       --b3-theme-surface-lighter: oklch(from var(--b3-theme-surface) 0.9 c h);
-      --b3-theme-on-surface-light: oklch(
-        from var(--b3-theme-on-surface) 0.65 c h / 0.68
-      );
+      --b3-theme-on-surface-light: oklch(from var(--b3-theme-on-surface) 0.65 c h / 0.68);
 
       --b3-theme-on-primary: oklch(from var(--b3-theme-primary) 0.99 0.01 h);
 
-      --b3-border-color: oklch(
-        from var(--b3-theme-background) 0.92
-          clamp(0, 0.009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h
-      );
-      --b3-border-color-trans: oklch(
-        from var(--b3-theme-on-background) l c h / 0.15
-      );
+      --b3-border-color: oklch(from var(--b3-theme-background) 0.92 clamp(0, 0.009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h);
+      --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / 0.15);
 
       --b3-menu-background: oklch(from var(--b3-theme-background) 0.95 c h);
 
       --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / 0.08);
 
       // --b3-av-background-hl: oklch(from var(--b3-theme-primary) .95 .02 h);
-      --b3-av-background-hl: color-mix(
-        in srgb,
-        var(--b3-theme-primary) 20%,
-        var(--b3-theme-background)
-      );
+      --b3-av-background-hl: color-mix(in srgb, var(--b3-theme-primary) 20%, var(--b3-theme-background));
 
       --b3-av-hover: oklch(from var(--b3-theme-on-background) 0.93 0.02 h);
 
       --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / 0.09);
-      --b3-scroll-color-hover: oklch(
-        from var(--b3-theme-on-background) l c h / 0.18
-      );
+      --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / 0.18);
 
-      --b3-protyle-code-background: oklch(
-        from var(--b3-theme-surface) 0.9 c h / 0.5
-      );
+      --b3-protyle-code-background: oklch(from var(--b3-theme-surface) 0.9 c h / 0.5);
 
       --b3-empty-color: oklch(from var(--b3-theme-on-background) l c h / 0.45);
 
       @for $i from 1 through $cvc {
-        --b3-font-color#{$i + 3}: oklch(
-          0.6 0.17 calc(360 / #{$cvc} * #{$i} + 30)
-        );
-        --b3-font-background#{$i + 3}: oklch(
-          0.97 0.05 calc(360 / #{$cvc} * #{$i} + 30)
-        );
+        --b3-font-color#{$i + 3}: oklch(0.6 0.17 calc(360 / #{$cvc} * #{$i} + 30));
+        --b3-font-background#{$i + 3}: oklch(0.97 0.05 calc(360 / #{$cvc} * #{$i} + 30));
       }
     }
 
     &[data-theme-mode="dark"] {
       --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
-      --asri-theme-accent-customized: oklch(
-        from var(--asri-user-custom-accent) 0.7 0.17 h
-      );
+      --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) 0.7 0.17 h);
 
       --asri-fallback-accent: #118bff; // oklch(0.64 0.2 253.9)
       --asri-fallback-background: #1e1e1e;
       --asri-fallback-surface: #383838;
       --asri-fallback-on-background: #dcdcdc;
-      --asri-composite-background: oklch(
-        from var(--asri-base-color) 0.2
-          calc(0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h
-      );
-      --asri-composite-surface: oklch(
-        from var(--asri-base-color) 0.29
-          calc(0.015 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h
-      );
-      --asri-composite-on-background: oklch(
-        from var(--asri-base-color) 0.89
-          clamp(0, 0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h
-      );
+      --asri-composite-background: oklch(from var(--asri-base-color) 0.2 calc(0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+      --asri-composite-surface: oklch(from var(--asri-base-color) 0.29 calc(0.015 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+      --asri-composite-on-background: oklch(from var(--asri-base-color) 0.89 clamp(0, 0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h);
 
-      --b3-theme-primary: oklch(
-        from var(--asri-base-color, var(--asri-fallback-accent)) 0.65 c h
-      );
-      --b3-theme-primary-light: oklch(
-        from var(--b3-theme-primary) l c h / 0.56
-      );
-      --b3-theme-primary-lighter: oklch(
-        from var(--b3-theme-primary) l c h / 0.38
-      );
-      --b3-theme-primary-lightest: oklch(
-        from var(--b3-theme-primary) l c h / 0.2
-      );
-      --b3-theme-accent: var(
-        --asri-theme-accent-customized,
-        oklch(
-          from
-            var(
-              --asri-sys-accent-accessible,
-              oklch(from var(--b3-theme-primary) l 0.2 h)
-            )
-            0.65 c h
-        )
-      );
-      --b3-menu-item-background-hover: oklch(
-        from var(--asri-base-color, var(--asri-fallback-accent)) 0.6 c h / 0.7
-      );
+      --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) 0.65 c h);
+      --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
+      --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
+      --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
+      --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) 0.65 c h));
+      --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) 0.6 c h / 0.7);
 
-      --b3-theme-background: var(
-        --asri-composite-background,
-        var(--asri-fallback-background)
-      );
-      --b3-theme-surface: var(
-        --asri-composite-surface,
-        var(--asri-fallback-surface)
-      );
+      --b3-theme-background: var(--asri-composite-background, var(--asri-fallback-background));
+      --b3-theme-surface: var(--asri-composite-surface, var(--asri-fallback-surface));
 
-      --b3-theme-on-background: var(
-        --asri-composite-on-background,
-        var(--asri-fallback-on-background)
-      );
-      --b3-theme-on-surface: oklch(
-        from var(--b3-theme-on-background) l c h / 0.65
-      );
+      --b3-theme-on-background: var(--asri-composite-on-background, var(--asri-fallback-on-background));
+      --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / 0.65);
 
-      --b3-theme-background-light: oklch(
-        from var(--b3-theme-background) l c h / 0.1
-      );
+      --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / 0.1);
       --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / 0.5);
-      --b3-theme-on-surface-light: oklch(
-        from var(--b3-theme-on-surface) 0.6 c h / 0.68
-      );
+      --b3-theme-on-surface-light: oklch(from var(--b3-theme-on-surface) 0.6 c h / 0.68);
 
       --b3-theme-on-primary: oklch(from var(--b3-theme-primary) 0.99 0.01 h);
 
-      --b3-border-color: oklch(
-        from var(--b3-theme-background) 0.34
-          clamp(0, 0.009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h
-      );
-      --b3-border-color-trans: oklch(
-        from var(--b3-theme-on-background) l c h / 0.15
-      );
+      --b3-border-color: oklch(from var(--b3-theme-background) 0.34 clamp(0, 0.009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h);
+      --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / 0.15);
 
       --b3-menu-background: oklch(from var(--b3-theme-background) 0.25 c h);
 
       --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / 0.08);
 
       // --b3-av-background-hl: oklch(from var(--b3-theme-primary) .32 .03 h);
-      --b3-av-background-hl: color-mix(
-        in srgb,
-        var(--b3-theme-primary) 20%,
-        var(--b3-theme-background)
-      );
+      --b3-av-background-hl: color-mix(in srgb, var(--b3-theme-primary) 20%, var(--b3-theme-background));
 
-      --b3-av-hover: oklch(
-        from var(--b3-theme-on-background) 0.35 0.02 h
-      ); // database header hover
+      --b3-av-hover: oklch(from var(--b3-theme-on-background) 0.35 0.02 h); // database header hover
 
       --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / 0.09);
-      --b3-scroll-color-hover: oklch(
-        from var(--b3-theme-on-background) l c h / 0.18
-      );
+      --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / 0.18);
 
-      --b3-protyle-code-background: oklch(
-        from var(--b3-theme-surface) 0.4 c h / 0.6
-      );
+      --b3-protyle-code-background: oklch(from var(--b3-theme-surface) 0.4 c h / 0.6);
 
       --b3-empty-color: oklch(from var(--b3-theme-on-background) l c h / 0.45);
 
       @for $i from 1 through $cvc {
-        --b3-font-color#{$i + 3}: oklch(
-          0.83 0.17 calc(360 / #{$cvc} * #{$i} + 30)
-        );
-        --b3-font-background#{$i + 3}: oklch(
-          0.31 0.05 calc(360 / #{$cvc} * #{$i} + 30)
-        );
+        --b3-font-color#{$i + 3}: oklch(0.83 0.17 calc(360 / #{$cvc} * #{$i} + 30));
+        --b3-font-background#{$i + 3}: oklch(0.31 0.05 calc(360 / #{$cvc} * #{$i} + 30));
       }
     }
   }
@@ -280,31 +152,14 @@ $cvc: 10; // color variant count
             This is to fix the issue that the text color is too vivid when not reversed.
         */
 
-    --b3-theme-primary: oklch(
-      from var(--asri-base-color, var(--asri-fallback-accent)) min(0.87, l) c h
-    );
-    --b3-theme-on-primary: oklch(
-      from var(--asri-base-color, var(--asri-fallback-accent))
-        var(--asri-on-primary-reverse, 0.99)
-        calc(
-          c * var(--asri-on-primary-reverse, 0.01) /
-            var(--asri-on-primary-reverse, 1)
-        )
-        h
-    );
-    --b3-menu-item-background-hover: oklch(
-      from var(--b3-theme-primary) l c h / 0.8
-    );
+    --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) min(0.87, l) c h);
+    --b3-theme-on-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) var(--asri-on-primary-reverse, 0.99) calc(c * var(--asri-on-primary-reverse, 0.01) / var(--asri-on-primary-reverse, 1)) h);
+    --b3-menu-item-background-hover: oklch(from var(--b3-theme-primary) l c h / 0.8);
     --b3-menu-item-background-hover-text: var(--b3-theme-on-primary);
 
     @include darkmode-counterpart {
-      --b3-theme-primary: oklch(
-        from var(--asri-base-color, var(--asri-fallback-accent)) max(0.45, l) c
-          h
-      );
-      --b3-menu-item-background-hover-text: oklch(
-        from var(--b3-theme-on-primary) l c h / 0.89
-      );
+      --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) max(0.45, l) c h);
+      --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-on-primary) l c h / 0.89);
     }
   }
 
@@ -320,16 +175,10 @@ $cvc: 10; // color variant count
 
   .b3-button--outline,
   .protyle-breadcrumb__icon {
-    --b3-theme-primary: oklch(
-      from var(--asri-base-color, var(--asri-fallback-accent))
-        max(min(0.72, l), 0.39) c h
-    );
+    --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) max(min(0.72, l), 0.39) c h);
 
     @include darkmode-counterpart {
-      --b3-theme-primary: oklch(
-        from var(--asri-base-color, var(--asri-fallback-accent))
-          min(max(0.65, l), 0.89) c h
-      );
+      --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) min(max(0.65, l), 0.89) c h);
     }
   }
 
@@ -368,10 +217,7 @@ $cvc: 10; // color variant count
   #pickColor {
     &.b3-menu__item--selected {
       svg {
-        background-color: var(
-          --asri-user-custom-accent,
-          var(--b3-theme-primary)
-        );
+        background-color: var(--asri-user-custom-accent, var(--b3-theme-primary));
         border-radius: 15px;
       }
 
@@ -457,18 +303,10 @@ $cvc: 10; // color variant count
     color: var(--b3-theme-accent) !important;
   }
 
-  .protyle-wysiwyg
-    [data-node-id]
-    span[data-type~="search-mark"].search-mark--hl {
-    background-color: oklch(
-      from var(--b3-theme-accent) l c h / 0.38
-    ) !important;
+  .protyle-wysiwyg [data-node-id] span[data-type~="search-mark"].search-mark--hl {
+    background-color: oklch(from var(--b3-theme-accent) l c h / 0.38) !important;
 
-    @include menu-shadow(
-      var(--b3-theme-accent),
-      $opacity-light: 0.15,
-      $opacity-dark: 0.4
-    );
+    @include menu-shadow(var(--b3-theme-accent), $opacity-light: 0.15, $opacity-dark: 0.4);
   }
 
   .protyle-wysiwyg [data-node-id].table table thead tr th,
@@ -511,75 +349,33 @@ $cvc: 10; // color variant count
   .config-account__cover[style="background-image: url()"] {
     // background-color: oklch(from var(--b3-theme-primary) l c h / 0.3) !important;
     background-color: unset !important;
-    background: radial-gradient(
-      circle at bottom,
-      oklch(from var(--b3-theme-primary) l calc(c * 1.05) h / 0.5) 30%,
-      oklch(from var(--b3-theme-primary) l calc(c * 1.1) calc(h + 30) / 0.3) 85%
-    ) !important;
+    background: radial-gradient(circle at bottom, oklch(from var(--b3-theme-primary) l calc(c * 1.05) h / 0.5) 30%, oklch(from var(--b3-theme-primary) l calc(c * 1.1) calc(h + 30) / 0.3) 85%) !important;
   }
 
   // other
   .b3-list-item--focus {
     // background-color: oklch(from var(--b3-theme-primary) l c h / .2);
-    background-color: oklch(
-      from var(--b3-theme-primary) 0.5 calc(c * 0.9 * var(--asri-c-0, 1)) h /
-        0.1
-    ) !important;
+    background-color: oklch(from var(--b3-theme-primary) 0.5 calc(c * 0.9 * var(--asri-c-0, 1)) h / 0.1) !important;
 
     @include darkmode-counterpart {
-      background-color: oklch(
-        from var(--b3-theme-primary) 0.9 calc(c * 0.9 * var(--asri-c-0, 1)) h /
-          0.13
-      ) !important;
+      background-color: oklch(from var(--b3-theme-primary) 0.9 calc(c * 0.9 * var(--asri-c-0, 1)) h / 0.13) !important;
     }
   }
 
   .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
   .layout-tab-bar .item--focus {
-    background-color: oklch(
-      from var(--b3-theme-primary) 0.5
-        clamp(
-          0,
-          calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)),
-          0.25
-        )
-        h / 0.2
-    );
+    background-color: oklch(from var(--b3-theme-primary) 0.5 clamp(0, calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), 0.25) h / 0.2);
 
     @include darkmode-counterpart {
-      background-color: oklch(
-        from var(--b3-theme-primary) 0.99
-          clamp(
-            0,
-            calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)),
-            0.15
-          )
-          h / 0.2
-      );
+      background-color: oklch(from var(--b3-theme-primary) 0.99 clamp(0, calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), 0.15) h / 0.2);
     }
   }
 
   [data-type="wnd"]:not(.layout__wnd--active) .item--focus {
-    background-color: oklch(
-      from var(--b3-theme-primary) 0.5
-        clamp(
-          0,
-          calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5),
-          0.25
-        )
-        h / 0.2
-    );
+    background-color: oklch(from var(--b3-theme-primary) 0.5 clamp(0, calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5), 0.25) h / 0.2);
 
     @include darkmode-counterpart {
-      background-color: oklch(
-        from var(--b3-theme-primary) 0.99
-          clamp(
-            0,
-            calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5),
-            0.15
-          )
-          h / 0.2
-      );
+      background-color: oklch(from var(--b3-theme-primary) 0.99 clamp(0, calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5), 0.15) h / 0.2);
     }
   }
 
@@ -603,22 +399,14 @@ $cvc: 10; // color variant count
     $hso: 36; // hue shift offset
 
     @for $i from 1 through $cvc {
-      --b3-font-color#{$i + 3}: oklch(
-        0.6 0.15 calc(360 / #{$cvc} * #{$i} + #{$hso})
-      );
-      --b3-font-background#{$i + 3}: oklch(
-        0.97 0.04 calc(360 / #{$cvc} * #{$i} + #{$hso})
-      );
+      --b3-font-color#{$i + 3}: oklch(0.6 0.15 calc(360 / #{$cvc} * #{$i} + #{$hso}));
+      --b3-font-background#{$i + 3}: oklch(0.97 0.04 calc(360 / #{$cvc} * #{$i} + #{$hso}));
     }
 
     @include darkmode-counterpart {
       @for $i from 1 through $cvc {
-        --b3-font-color#{$i + 3}: oklch(
-          0.83 0.15 calc(360 / #{$cvc} * #{$i} + #{$hso})
-        );
-        --b3-font-background#{$i + 3}: oklch(
-          0.31 0.04 calc(360 / #{$cvc} * #{$i} + #{$hso})
-        );
+        --b3-font-color#{$i + 3}: oklch(0.83 0.15 calc(360 / #{$cvc} * #{$i} + #{$hso}));
+        --b3-font-background#{$i + 3}: oklch(0.31 0.04 calc(360 / #{$cvc} * #{$i} + #{$hso}));
       }
     }
   }
@@ -638,23 +426,16 @@ $cvc: 10; // color variant count
   @for $i from 1 through 3 {
     .b3-chip[style="background-color:var(--b3-font-background#{$i});color:var(--b3-font-color#{$i})"] {
       color: oklch(from var(--b3-font-color#{$i}) 0.6 c h) !important;
-      background-color: oklch(
-        from var(--b3-font-background#{$i}) 0.96 c h
-      ) !important;
+      background-color: oklch(from var(--b3-font-background#{$i}) 0.96 c h) !important;
 
       @include darkmode-counterpart {
         color: oklch(from var(--b3-font-color#{$i}) 0.85 c h) !important;
-        background-color: oklch(
-          from var(--b3-font-background#{$i}) 0.3 c h
-        ) !important;
+        background-color: oklch(from var(--b3-font-background#{$i}) 0.3 c h) !important;
       }
     }
   }
 
   .b3-switch {
-    background-color: oklch(
-      from var(--b3-theme-on-background) 0.6
-        clamp(0, 0.01 * var(--asri-c-factor, 1), 0.03) h / 0.4
-    );
+    background-color: oklch(from var(--b3-theme-on-background) 0.6 clamp(0, 0.01 * var(--asri-c-factor, 1), 0.03) h / 0.4);
   }
 }

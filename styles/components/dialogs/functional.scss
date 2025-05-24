@@ -1,153 +1,151 @@
-@use '../../base' as *;
-@use '../utils' as *;
+@use "../../base" as *;
+@use "../utils" as *;
 
 // 最近文档 ——————————————————————————————————
 [data-key="dialog-recentdocs"] {
-    .b3-dialog__header {
-        padding: 12px;
-        border-bottom: 1px solid var(--b3-border-color);
-    }
+  .b3-dialog__header {
+    padding: 12px;
+    border-bottom: 1px solid var(--b3-border-color);
+  }
 
-    .b3-list--background:first-child {
-        background-color: var(--b3-theme-surface)
-    }
+  .b3-list--background:first-child {
+    background-color: var(--b3-theme-surface);
+  }
 }
-
 
 // 笔记本设置 ————————————————————
 [data-key="dialog-notebookconf"] {
-    .b3-dialog__header {
-        >.fn__flex {
-            margin: auto;
-            width: fit-content;
-        }
-
-        .b3-button {
-            @include button-action('normal');
-            padding: 4px 8px;
-            background-color: transparent;
-        }
+  .b3-dialog__header {
+    > .fn__flex {
+      margin: auto;
+      width: fit-content;
     }
+
+    .b3-button {
+      @include button-action("normal");
+      padding: 4px 8px;
+      background-color: transparent;
+    }
+  }
 }
 
 // 块属性 ————————————————————
 [data-key="dialog-attr"] {
+  button[data-action="addCustom"],
+  button[data-type="addColumn"] {
+    @include button-action("normal");
+  }
 
-    button[data-action="addCustom"],
-    button[data-type="addColumn"] {
-        @include button-action('normal');
-    }
-
-    button[data-type=addColumn] {
-        margin-left: unset;
-        margin-inline-start: 28px;
-    }
+  button[data-type="addColumn"] {
+    margin-left: unset;
+    margin-inline-start: 28px;
+  }
 }
 
 // 命令面板 ——————————————————————————
 [data-key="dialog-commandpanel"] {
-    .search__header {
-        >.b3-form__icon-icon {
-            left: 20px;
-        }
-
-        >.b3-text-field {
-            background-color: var(--b3-theme-background);
-            margin: 0 12px;
-        }
+  .search__header {
+    > .b3-form__icon-icon {
+      left: 20px;
     }
 
-    #commands {
-        padding: 8px;
-
-        ~.fn__hr {
-            display: none;
-        }
+    > .b3-text-field {
+      background-color: var(--b3-theme-background);
+      margin: 0 12px;
     }
+  }
+
+  #commands {
+    padding: 8px;
+
+    ~ .fn__hr {
+      display: none;
+    }
+  }
 }
 
 // 代码片段对话框 ——————————————————————
 #addCodeSnippetCSS,
 #addCodeSnippetJS {
-    inset-inline-end: 79px;
+  inset-inline-end: 79px;
 
-    +.fn__space {
-        display: none;
-    }
+  + .fn__space {
+    display: none;
+  }
 
-    &,
-    ~.b3-switch {
-        position: absolute;
-        top: 16px;
-    }
+  &,
+  ~ .b3-switch {
+    position: absolute;
+    top: 16px;
+  }
 
-    ~.b3-switch {
-        inset-inline-end: 24px;
-        top: 19px;
-    }
+  ~ .b3-switch {
+    inset-inline-end: 24px;
+    top: 19px;
+  }
 }
 
 [data-key="dialog-snippets"] {
-    // textarea {
-    //     height: fit-content;
-    //     max-height: 8em;
-    // }
+  // textarea {
+  //     height: fit-content;
+  //     max-height: 8em;
+  // }
 
-    .b3-switch--side {
-        margin-right: unset;
-        margin-inline-end: unset;
-    }
+  .b3-switch--side {
+    margin-right: unset;
+    margin-inline-end: unset;
+  }
 
-    .b3-form__icon+.fn__space {
-        display: none;
-    }
+  .b3-form__icon + .fn__space {
+    display: none;
+  }
 }
 
 // 随机题头图列表 ——————————————————————
 [data-key="dialog-backgroundrandom"] {
-    .b3-dialog__body {
-        position: relative;
-        z-index: 0;
+  .b3-dialog__body {
+    position: relative;
+    z-index: 0;
 
-        &>.b3-cards {
-            grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
-            margin: 0;
-            padding: 32px;
-            gap: 32px;
-            display: grid;
+    & > .b3-cards {
+      grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+      margin: 0;
+      padding: 32px;
+      gap: 32px;
+      display: grid;
 
-            .b3-card {
-                width: auto !important;
-                min-width: unset;
-                margin: 0;
-                border-radius: $border-rd-card;
-                padding: 0;
-                box-shadow: none;
-                top: 0;
-                // transform: scale(0.9);
+      .b3-card {
+        width: auto !important;
+        min-width: unset;
+        margin: 0;
+        border-radius: $border-rd-card;
+        padding: 0;
+        box-shadow: none;
+        top: 0;
+        // transform: scale(0.9);
 
-                &:hover {
-                    transform: scale(1.05);
-                    // box-shadow: 0 4px 18px -8px #0000001b;
-                    @include menu-shadow;
+        &:hover {
+          transform: scale(1.05);
+          // box-shadow: 0 4px 18px -8px #0000001b;
+          @include menu-shadow;
 
-                    @include darkmode-counterpart {
-                        box-shadow: 0 8px 28px -8px #00000062;
-                    }
-                }
-            }
+          @include darkmode-counterpart {
+            box-shadow: 0 8px 28px -8px #00000062;
+          }
         }
+      }
     }
+  }
 }
 
 // 移动块窗口 ———————————————————————————————————————
 [data-key="dialog-movepathto"] {
-    .b3-dialog__header>div {
-        text-wrap: nowrap;
-        overflow-x: auto;
-    }
+  .b3-dialog__header > div {
+    text-wrap: nowrap;
+    overflow-x: auto;
+  }
 
-    #foldList .b3-list-item__showall {
-        line-height: 1.5;
-    }
+  #foldList .b3-list-item__showall {
+    line-height: 1.5;
+  }
 }

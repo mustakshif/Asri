@@ -1,95 +1,93 @@
-@use '../base' as *;
+@use "../base" as *;
 
 #toolbar {
+  height: var(--toolbar-height);
+  background-color: var(--b3-theme-background);
+  border-bottom: 1px solid var(--b3-border-color);
+  overflow: visible;
+
+  #barWorkspace {
+    // background-color: var(--b3-theme-primary-lighter);
+    background-color: #0000;
+    color: var(--b3-theme-on-surface);
+    font-weight: 500;
+    height: 28px;
+    position: relative;
+    // box-shadow: 0 0 0 1px var(--b3-border-color-trans) inset;
+    transition-property: background-color, color, outline;
+    outline: 1px solid var(--b3-border-color-trans);
+    outline-offset: -1px;
+
+    &:hover {
+      background-color: var(--b3-theme-primary);
+      outline-color: transparent;
+      color: var(--b3-theme-on-primary);
+      // box-shadow: 0 0 0 1px transparent inset;
+    }
+
+    .toolbar__text {
+      font-size: 14px;
+      align-self: center;
+      z-index: 1;
+      line-height: normal;
+    }
+
+    svg.toolbar__svg {
+      align-self: center;
+    }
+  }
+
+  .toolbar__item {
     height: var(--toolbar-height);
-    background-color: var(--b3-theme-background);
-    border-bottom: 1px solid var(--b3-border-color);
-    overflow: visible;
+    color: var(--b3-theme-on-surface);
 
-    #barWorkspace {
-        // background-color: var(--b3-theme-primary-lighter);
-        background-color: #0000;
-        color: var(--b3-theme-on-surface);
-        font-weight: 500;
-        height: 28px;
-        position: relative;
-        // box-shadow: 0 0 0 1px var(--b3-border-color-trans) inset;
-        transition-property: background-color, color, outline;
-        outline: 1px solid var(--b3-border-color-trans);
-        outline-offset: -1px;
-
-        &:hover {
-            background-color: var(--b3-theme-primary);
-            outline-color: transparent;
-            color: var(--b3-theme-on-primary);
-            // box-shadow: 0 0 0 1px transparent inset;
-        }
-
-        .toolbar__text {
-            font-size: 14px;
-            align-self: center;
-            z-index: 1;
-            line-height: normal;
-        }
-
-        svg.toolbar__svg {
-            align-self: center;
-        }
+    &:hover {
+      background-color: transparent;
     }
 
-    .toolbar__item {
-        height: var(--toolbar-height);
-        color: var(--b3-theme-on-surface);
-
-        &:hover {
-            background-color: transparent;
-        }
-
-        svg {
-            align-self: center;
-        }
-
-        &--active {
-            background-color: transparent;
-            color: var(--b3-theme-primary);
-        }
-
-        &--disabled {
-            opacity: .4;
-        }
-
-        &:not(.toolbar__item--disabled):not(.toolbar__item--close):hover {
-            color: var(--b3-theme-on-background);
-        }
+    svg {
+      align-self: center;
     }
 
-    &.toolbar--browser,
-    body.body--win32 & {
-        padding-left: 8px;
+    &--active {
+      background-color: transparent;
+      color: var(--b3-theme-primary);
     }
 
-    #closeWindow {
-        padding: 9px;
-        padding-right: 16px;
-
-        &:hover,
-        body.body--win32 &:hover {
-            color: var(--b3-theme-error);
-            background-color: transparent;
-        }
+    &--disabled {
+      opacity: 0.4;
     }
 
-
-    // 应用全屏时
-    .body-asri--fullscreen & {
-        padding-inline-start: 8px !important;
+    &:not(.toolbar__item--disabled):not(.toolbar__item--close):hover {
+      color: var(--b3-theme-on-background);
     }
+  }
+
+  &.toolbar--browser,
+  body.body--win32 & {
+    padding-left: 8px;
+  }
+
+  #closeWindow {
+    padding: 9px;
+    padding-right: 16px;
+
+    &:hover,
+    body.body--win32 &:hover {
+      color: var(--b3-theme-error);
+      background-color: transparent;
+    }
+  }
+
+  // 应用全屏时
+  .body-asri--fullscreen & {
+    padding-inline-start: 8px !important;
+  }
 }
 
 body:not(.body-asri--browser, .body-asri--mobile) {
-
-    #barZoom,
-    #barExit {
-        display: none;
-    }
+  #barZoom,
+  #barExit {
+    display: none;
+  }
 }

@@ -1,150 +1,140 @@
 $li-types: ".li[data-subtype=o]", ".li[data-subtype=u]";
 
-.list[data-subtype=o] {
-    counter-reset: olcounter1 0 olcounter2 0 olcounter3 0;
+.list[data-subtype="o"] {
+  counter-reset: olcounter1 0 olcounter2 0 olcounter3 0;
 }
 
 .protyle-wysiwyg {
+  @each $type in $li-types {
+    $start: $type;
+    $j: 1;
 
-    @each $type in $li-types {
-        $start: $type;
-        $j: 1;
+    @for $i from 1 through 3 {
+      @if $type == ".li[data-subtype=o]" {
+        #{$start} {
+          counter-increment: olcounter1;
 
-        @for $i from 1 through 3 {
-            @if $type ==".li[data-subtype=o]" {
-                #{$start} {
+          @if $j >3 {
+            > .protyle-action {
+              color: transparent !important;
 
-                    counter-increment: olcounter1;
+              &::after {
+                content: counter(olcounter1) ".";
+              }
+            }
+          }
 
-                    @if $j >3 {
-                        >.protyle-action {
-                            color: transparent !important;
+          #{$type} {
+            counter-increment: olcounter2;
 
-                            &::after {
-                                content: counter(olcounter1) ".";
-                            }
-                        }
-                    }
+            > .protyle-action {
+              color: transparent !important;
 
-                    #{$type} {
-
-                        counter-increment: olcounter2;
-
-                        >.protyle-action {
-                            color: transparent !important;
-
-                            &::after {
-                                content: counter(olcounter2, lower-alpha) ".";
-                            }
-                        }
-
-                        #{$type} {
-
-                            counter-increment: olcounter3;
-
-                            >.protyle-action {
-                                color: transparent !important;
-
-                                &::after {
-                                    content: counter(olcounter3, lower-roman) ".";
-                                }
-                            }
-                        }
-                    }
-                }
+              &::after {
+                content: counter(olcounter2, lower-alpha) ".";
+              }
             }
 
-            @else {
-                #{$start} {
+            #{$type} {
+              counter-increment: olcounter3;
 
-                    >.protyle-action::after {
-                        content: "•";
-                    }
+              > .protyle-action {
+                color: transparent !important;
 
-                    #{$type} {
-
-                        >.protyle-action::after {
-                            content: "◦";
-                        }
-
-                        #{$type} {
-
-                            >.protyle-action::after {
-                                content: "▪";
-                            }
-                        }
-                    }
-                }
-            }
-
-            $start: $start + " " + $type + " " + $type + " " + $type;
-            $j: $j + 3;
-        }
-    }
-
-    // other styles
-    // ordered list starting from 2nd level li
-    .li .li[data-subtype=o]>.protyle-action {
-        &::after {
-            color: var(--b3-theme-on-background);
-            white-space: nowrap;
-            // text-align: end;
-        }
-
-        &:hover {
-            // color: transparent !important;
-
-            &::after {
-                color: var(--b3-theme-primary);
-            }
-        }
-    }
-
-    .li:not([data-subtype=t])>.protyle-action {
-        line-height: 1em;
-    }
-
-    // unordered list
-    .li[data-subtype=u]>.protyle-action {
-
-        // color: transparent !important;
-        svg {
-            visibility: hidden;
-        }
-
-        &::after {
-            font-family: Arial;
-            font-size: 1.5em;
-            text-align: center;
-            // color: var(--b3-theme-on-background);
-            line-height: 1;
-            color: inherit;
-            left: unset;
-            top: unset;
-            margin: 0;
-        }
-    }
-
-    // folded list
-    .li[fold="1"] {
-        &:not([data-subtype=t]) {
-            .protyle-action {
                 &::after {
-                    transform: none;
-                    // outline: .25em solid rgb(from var(--b3-theme-on-background) r g b / .1);
-                    box-shadow: 0 0 0 .25em rgb(from var(--b3-theme-on-background) r g b / .1);
+                  content: counter(olcounter3, lower-roman) ".";
                 }
-
-                &:hover::after {
-                    background-color: rgb(from var(--b3-theme-on-background) r g b / .1);
-                }
+              }
             }
+          }
         }
+      } @else {
+        #{$start} {
+          > .protyle-action::after {
+            content: "•";
+          }
 
-        &[data-subtype=u] {
-            .protyle-action::after {
-                box-shadow: none;
+          #{$type} {
+            > .protyle-action::after {
+              content: "◦";
             }
+
+            #{$type} {
+              > .protyle-action::after {
+                content: "▪";
+              }
+            }
+          }
         }
+      }
+
+      $start: $start + " " + $type + " " + $type + " " + $type;
+      $j: $j + 3;
     }
+  }
+
+  // other styles
+  // ordered list starting from 2nd level li
+  .li .li[data-subtype="o"] > .protyle-action {
+    &::after {
+      color: var(--b3-theme-on-background);
+      white-space: nowrap;
+      // text-align: end;
+    }
+
+    &:hover {
+      // color: transparent !important;
+
+      &::after {
+        color: var(--b3-theme-primary);
+      }
+    }
+  }
+
+  .li:not([data-subtype="t"]) > .protyle-action {
+    line-height: 1em;
+  }
+
+  // unordered list
+  .li[data-subtype="u"] > .protyle-action {
+    // color: transparent !important;
+    svg {
+      visibility: hidden;
+    }
+
+    &::after {
+      font-family: Arial;
+      font-size: 1.5em;
+      text-align: center;
+      // color: var(--b3-theme-on-background);
+      line-height: 1;
+      color: inherit;
+      left: unset;
+      top: unset;
+      margin: 0;
+    }
+  }
+
+  // folded list
+  .li[fold="1"] {
+    &:not([data-subtype="t"]) {
+      .protyle-action {
+        &::after {
+          transform: none;
+          // outline: .25em solid rgb(from var(--b3-theme-on-background) r g b / .1);
+          box-shadow: 0 0 0 0.25em rgb(from var(--b3-theme-on-background) r g b / 0.1);
+        }
+
+        &:hover::after {
+          background-color: rgb(from var(--b3-theme-on-background) r g b / 0.1);
+        }
+      }
+    }
+
+    &[data-subtype="u"] {
+      .protyle-action::after {
+        box-shadow: none;
+      }
+    }
+  }
 }

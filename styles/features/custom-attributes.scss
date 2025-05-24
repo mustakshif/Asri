@@ -1,347 +1,341 @@
-@use '../base' as *;
+@use "../base" as *;
 
 // full-width display ——————————————————
 
 .protyle-wysiwyg {
-    --protyle-spacing-compatible: var(--protyle-spacing, 24px);
+  --protyle-spacing-compatible: var(--protyle-spacing, 24px);
 }
 
 :is(.body-asri--mobile, .layout__center) .protyle-wysiwyg {
+  // 图片 ——————————————————————
+  &[custom-afwd="all"] > .p:not([custom-afwd="off"]),
+  &[custom-afwd~="p"] > .p:not([custom-afwd="off"]),
+  > .p[custom-afwd="on"] {
+    // content-visibility: visible;
 
-    // 图片 ——————————————————————
-    &[custom-afwd="all"]>.p:not([custom-afwd="off"]),
-    &[custom-afwd~="p"]>.p:not([custom-afwd="off"]),
-    >.p[custom-afwd="on"] {
-        // content-visibility: visible;
+    .img {
+      margin: 0 calc(-1 * var(--protyle-spacing-compatible) - 9px);
+      max-width: unset !important;
+      display: block !important;
+      transition: margin 0.2s;
 
-        .img {
-            margin: 0 calc(-1 * var(--protyle-spacing-compatible) - 9px);
-            max-width: unset !important;
-            display: block !important;
-            transition: margin .2s;
+      > span:nth-child(2) {
+        width: 100%;
 
-            >span:nth-child(2) {
-                width: 100%;
-
-                img {
-                    width: 100% !important;
-                    height: 100% !important;
-                    max-width: unset;
-                    border-radius: 0;
-                }
-
-                .protyle-action__drag {
-                    display: none;
-                }
-
-                @supports (animation-timeline: view()) {
-                    overflow: hidden;
-                    view-timeline-name: --afwd-img;
-
-                    img {
-
-                        --offset-y: 120px;
-
-                        animation-timeline: --afwd-img;
-                        animation-range: 0% calc(100% + 84px);
-                        animation-fill-mode: both;
-                        animation-name: parallax-afwd-img;
-                        animation-timing-function: linear;
-
-                        @keyframes parallax-afwd-img {
-                            0% {
-                                transform: translateY(calc(var(--offset-y) * -1));
-                            }
-
-                            50% {
-                                transform: translateY(0);
-                            }
-
-                            100% {
-                                transform: translateY(var(--offset-y));
-                            }
-                        }
-                    }
-                }
-            }
-
-            &__net {
-                border-radius: 0 0 6px 0;
-            }
-
-            // 图片标题
-            .protyle-action__title {
-                width: auto;
-                padding: .5em var(--protyle-spacing-compatible) 0;
-            }
-
-            --img-bottom-offset: .5em;
-
-            margin-bottom: calc(var(--img-bottom-offset) * -1);
-
-            .protyle-action__title {
-                position: relative;
-
-                >span {
-
-                    &:not(:empty) {
-                        // --stroke-width: .5px;
-                        // --stroke-clr: rgba(from var(--b3-theme-background) r g b / .8);
-                        background-color: var(--b3-theme-background);
-                        padding: .5em;
-                        max-width: fit-content;
-                        margin: auto auto var(--img-bottom-offset);
-                        border-radius: 8px;
-                        // mix-blend-mode: luminosity;
-                        // text-shadow:
-                        //     // var(--stroke-width) var(--stroke-width) 0 var(--stroke-clr),
-                        //     // calc(var(--stroke-width) * -1) calc(var(--stroke-width) * -1) 0 var(--stroke-clr),
-                        //     // calc(var(--stroke-width) * -1) var(--stroke-width) 0 var(--stroke-clr),
-                        //     // var(--stroke-width) calc(var(--stroke-width) * -1) 0 var(--stroke-clr),
-                        //     0 0 12px var(--b3-theme-background);
-                    }
-                }
-            }
+        img {
+          width: 100% !important;
+          height: 100% !important;
+          max-width: unset;
+          border-radius: 0;
         }
+
+        .protyle-action__drag {
+          display: none;
+        }
+
+        @supports (animation-timeline: view()) {
+          overflow: hidden;
+          view-timeline-name: --afwd-img;
+
+          img {
+            --offset-y: 120px;
+
+            animation-timeline: --afwd-img;
+            animation-range: 0% calc(100% + 84px);
+            animation-fill-mode: both;
+            animation-name: parallax-afwd-img;
+            animation-timing-function: linear;
+
+            @keyframes parallax-afwd-img {
+              0% {
+                transform: translateY(calc(var(--offset-y) * -1));
+              }
+
+              50% {
+                transform: translateY(0);
+              }
+
+              100% {
+                transform: translateY(var(--offset-y));
+              }
+            }
+          }
+        }
+      }
+
+      &__net {
+        border-radius: 0 0 6px 0;
+      }
+
+      // 图片标题
+      .protyle-action__title {
+        width: auto;
+        padding: 0.5em var(--protyle-spacing-compatible) 0;
+      }
+
+      --img-bottom-offset: 0.5em;
+
+      margin-bottom: calc(var(--img-bottom-offset) * -1);
+
+      .protyle-action__title {
+        position: relative;
+
+        > span {
+          &:not(:empty) {
+            // --stroke-width: .5px;
+            // --stroke-clr: rgba(from var(--b3-theme-background) r g b / .8);
+            background-color: var(--b3-theme-background);
+            padding: 0.5em;
+            max-width: fit-content;
+            margin: auto auto var(--img-bottom-offset);
+            border-radius: 8px;
+            // mix-blend-mode: luminosity;
+            // text-shadow:
+            //     // var(--stroke-width) var(--stroke-width) 0 var(--stroke-clr),
+            //     // calc(var(--stroke-width) * -1) calc(var(--stroke-width) * -1) 0 var(--stroke-clr),
+            //     // calc(var(--stroke-width) * -1) var(--stroke-width) 0 var(--stroke-clr),
+            //     // var(--stroke-width) calc(var(--stroke-width) * -1) 0 var(--stroke-clr),
+            //     0 0 12px var(--b3-theme-background);
+          }
+        }
+      }
+    }
+  }
+
+  // iframe ———————————————————
+
+  &[custom-afwd="all"] > .iframe:not([custom-afwd="off"]),
+  &[custom-afwd~="iframe"] > .iframe:not([custom-afwd="off"]),
+  > .iframe[custom-afwd="on"] {
+    // content-visibility: visible;
+    margin: calc(-12em / 17) 0;
+
+    .protyle-attr {
+      top: 8px;
     }
 
-    // iframe ———————————————————
+    .iframe-content {
+      display: block;
+      margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 5px);
+      transition: margin 0.2s;
 
-    &[custom-afwd="all"]>.iframe:not([custom-afwd="off"]),
-    &[custom-afwd~="iframe"]>.iframe:not([custom-afwd="off"]),
-    >.iframe[custom-afwd="on"] {
-        // content-visibility: visible;
-        margin: calc(-12em / 17) 0;
+      video,
+      iframe {
+        max-height: unset;
+        border-radius: 0;
+        width: 100% !important;
+      }
 
-        .protyle-attr {
-            top: 8px;
+      .protyle-action__drag {
+        background-color: transparent;
+        width: 30%;
+        height: 20px;
+        left: 50%;
+        right: unset;
+        bottom: -16px;
+        transform: translateX(-50%);
+        transition-property: transform, background-color, opacity;
+        transition-duration: 0.15s;
+        border-radius: 4px;
+        mask-image: none;
+        max-width: 180px;
+
+        cursor: ns-resize;
+
+        &::before {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 4px;
+          margin: 8px 0;
+          background-color: var(--b3-theme-surface);
+          border-radius: 4px;
+
+          @include darkmode-counterpart {
+            background-color: var(--b3-theme-on-surface);
+          }
         }
 
-        .iframe-content {
-            display: block;
-            margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 5px);
-            transition: margin .2s;
-
-            video,
-            iframe {
-                max-height: unset;
-                border-radius: 0;
-                width: 100% !important;
-            }
-
-            .protyle-action__drag {
-                background-color: transparent;
-                width: 30%;
-                height: 20px;
-                left: 50%;
-                right: unset;
-                bottom: -16px;
-                transform: translateX(-50%);
-                transition-property: transform, background-color, opacity;
-                transition-duration: .15s;
-                border-radius: 4px;
-                mask-image: none;
-                max-width: 180px;
-
-                cursor: ns-resize;
-
-                &::before {
-                    content: '';
-                    display: block;
-                    width: 100%;
-                    height: 4px;
-                    margin: 8px 0;
-                    background-color: var(--b3-theme-surface);
-                    border-radius: 4px;
-
-                    @include darkmode-counterpart {
-                        background-color: var(--b3-theme-on-surface);
-                    }
-                }
-
-                &:hover {
-                    transform: scale(1.1) translateX(calc(-50% * 1 / 1.1));
-                }
-            }
+        &:hover {
+          transform: scale(1.1) translateX(calc(-50% * 1 / 1.1));
         }
-
-        .protyle-attr--refcount {
-            transform: translateY(-12px);
-        }
+      }
     }
 
-
-    // 数据库 ——————————————————
-
-    &[custom-afwd="all"]>.av:not([custom-afwd="off"]),
-    &[custom-afwd~="db"]>.av:not([custom-afwd="off"]),
-    >.av[custom-afwd="on"] {
-        // content-visibility: visible;
-
-        .av__container {
-            margin: 0 calc(var(--protyle-spacing-compatible) * -1 - 3px);
-            transition: margin .2s;
-
-            .av__header .av__counter {
-                width: calc(100% - 2 * var(--protyle-spacing-compatible) - 6px);
-            }
-
-            .av__header,
-            .av__scroll {
-                padding: 0 calc(var(--protyle-spacing-compatible) + 3px);
-                transition: padding .2s;
-            }
-
-            .av__scroll::-webkit-scrollbar {
-                display: none;
-            }
-
-            .av__colsticky {
-                left: calc(var(--protyle-spacing-compatible) * -1 - 3px);
-
-                // // 固定列左侧勾选框
-                // .av__firstcol {
-                //     opacity: 1;
-                // }
-            }
-
-            // 「添加行」按钮
-            .av__row--util .av__colsticky {
-                opacity: unset;
-            }
-
-            // .av__colsticky {
-            //     // border-right: 1px solid var(--b3-border-color-trans);
-            //     // opacity: 0;
-            //     transition-duration: .2s;
-            //     transition-delay: .2s;
-            //     transition-property: opacity;
-
-            //     // &:hover {
-            //     //     opacity: 1;
-            //     //     transition-delay: 0s;
-            //     // }
-            // }
-
-            // .av__row--select {
-            //     .av__colsticky {
-            //         opacity: 1;
-            //         transition-delay: 0s;
-            //     }
-            // }
-        }
+    .protyle-attr--refcount {
+      transform: translateY(-12px);
     }
+  }
 
+  // 数据库 ——————————————————
 
-    // 超级块 ————————————————————
+  &[custom-afwd="all"] > .av:not([custom-afwd="off"]),
+  &[custom-afwd~="db"] > .av:not([custom-afwd="off"]),
+  > .av[custom-afwd="on"] {
+    // content-visibility: visible;
 
-    &[custom-afwd="all"]>.sb[data-sb-layout="col"]:not([custom-afwd="off"]),
-    &[custom-afwd~="sb"]>.sb[data-sb-layout="col"]:not([custom-afwd="off"]),
-    >.sb[data-sb-layout="col"][custom-afwd="on"] {
-        // content-visibility: visible;
+    .av__container {
+      margin: 0 calc(var(--protyle-spacing-compatible) * -1 - 3px);
+      transition: margin 0.2s;
 
-        > :first-child {
-            margin-left: calc(var(--protyle-spacing-compatible)*-1 + min(24px, var(--protyle-spacing-compatible)));
-            transition: margin .2s;
+      .av__header .av__counter {
+        width: calc(100% - 2 * var(--protyle-spacing-compatible) - 6px);
+      }
 
+      .av__header,
+      .av__scroll {
+        padding: 0 calc(var(--protyle-spacing-compatible) + 3px);
+        transition: padding 0.2s;
+      }
 
-            // >*,
-            // .sb,
-            // .bq,
-            // .render-node {
-            //     border-top-left-radius: 0;
-            //     border-bottom-left-radius: 0;
-            // }
-        }
+      .av__scroll::-webkit-scrollbar {
+        display: none;
+      }
 
-        > :nth-last-child(1 of [data-node-id]) {
-            margin-right: calc(var(--protyle-spacing-compatible)*-1 + min(24px, var(--protyle-spacing-compatible)));
+      .av__colsticky {
+        left: calc(var(--protyle-spacing-compatible) * -1 - 3px);
 
-            // >*, // 导致 tabbar 滚动卡顿 + 行内备注 hover 状态取消时动画卡顿
-            // .sb,
-            // .bq,
-            // .render-node {
-            //     border-top-right-radius: 0;
-            //     border-bottom-right-radius: 0;
-            // } 
-        }
-
-        // > .sb:first-child {
-        //     margin-left: calc(var(--protyle-spacing-compatible)*-1);
+        // // 固定列左侧勾选框
+        // .av__firstcol {
+        //     opacity: 1;
         // }
+      }
 
-        // > .sb:nth-last-child(2) {
-        //     margin-right: calc(var(--protyle-spacing-compatible)*-1);
-        // }
+      // 「添加行」按钮
+      .av__row--util .av__colsticky {
+        opacity: unset;
+      }
+
+      // .av__colsticky {
+      //     // border-right: 1px solid var(--b3-border-color-trans);
+      //     // opacity: 0;
+      //     transition-duration: .2s;
+      //     transition-delay: .2s;
+      //     transition-property: opacity;
+
+      //     // &:hover {
+      //     //     opacity: 1;
+      //     //     transition-delay: 0s;
+      //     // }
+      // }
+
+      // .av__row--select {
+      //     .av__colsticky {
+      //         opacity: 1;
+      //         transition-delay: 0s;
+      //     }
+      // }
+    }
+  }
+
+  // 超级块 ————————————————————
+
+  &[custom-afwd="all"] > .sb[data-sb-layout="col"]:not([custom-afwd="off"]),
+  &[custom-afwd~="sb"] > .sb[data-sb-layout="col"]:not([custom-afwd="off"]),
+  > .sb[data-sb-layout="col"][custom-afwd="on"] {
+    // content-visibility: visible;
+
+    > :first-child {
+      margin-left: calc(var(--protyle-spacing-compatible) * -1 + min(24px, var(--protyle-spacing-compatible)));
+      transition: margin 0.2s;
+
+      // >*,
+      // .sb,
+      // .bq,
+      // .render-node {
+      //     border-top-left-radius: 0;
+      //     border-bottom-left-radius: 0;
+      // }
     }
 
-    // 表格块 ————————————————————
+    > :nth-last-child(1 of [data-node-id]) {
+      margin-right: calc(var(--protyle-spacing-compatible) * -1 + min(24px, var(--protyle-spacing-compatible)));
 
-    &[custom-afwd="all"]>.table:not([custom-afwd="off"]),
-    &[custom-afwd~="t"]>.table:not([custom-afwd="off"]),
-    >.table[custom-afwd="on"] {
-        // content-visibility: visible;
-
-        margin: calc(-12em / 17) 0;
-
-        .protyle-attr {
-            top: 8px;
-        }
-
-        >div:first-child {
-            margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 4px);
-            padding: 0 calc(var(--protyle-spacing-compatible));
-
-            &::-webkit-scrollbar {
-                display: none;
-            }
-        }
-
-        table {
-            width: max-content;
-        }
-
-        table[contenteditable=true]+.protyle-action__table .table__resize,
-        table[contenteditable=true]+.protyle-action__table .table__select {
-            transform: translateY(calc(20em/17 + 1px));
-        }
-
-        .protyle-attr--refcount {
-            transform: translateY(-12px);
-        }
+      // >*, // 导致 tabbar 滚动卡顿 + 行内备注 hover 状态取消时动画卡顿
+      // .sb,
+      // .bq,
+      // .render-node {
+      //     border-top-right-radius: 0;
+      //     border-bottom-right-radius: 0;
+      // }
     }
 
-    // plan B. for test only. can't handle small-width tables; can't make tables centered without maintaining normal positioning of table resizing and selecting controls.
-    >.table[custom-afwd="fit"] {
-        // content-visibility: visible;
-        
-        margin: calc(-12em / 17) 0;
+    // > .sb:first-child {
+    //     margin-left: calc(var(--protyle-spacing-compatible)*-1);
+    // }
 
-        .protyle-attr {
-            top: 8px;
-        }
+    // > .sb:nth-last-child(2) {
+    //     margin-right: calc(var(--protyle-spacing-compatible)*-1);
+    // }
+  }
 
-        >div:first-child {
-            margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 4px);
-            padding: 0 !important;
-        }
+  // 表格块 ————————————————————
 
-        table {
-            width: auto !important;
-            border-left: none;
-            border-right: none;
-            border-radius: 0;
-        }
+  &[custom-afwd="all"] > .table:not([custom-afwd="off"]),
+  &[custom-afwd~="t"] > .table:not([custom-afwd="off"]),
+  > .table[custom-afwd="on"] {
+    // content-visibility: visible;
 
-        table[contenteditable=true]+.protyle-action__table .table__resize,
-        table[contenteditable=true]+.protyle-action__table .table__select {
-            transform: translateY(calc(20em/17 + 1px));
-        }
+    margin: calc(-12em / 17) 0;
 
-        .protyle-attr--refcount {
-            transform: translateY(-12px);
-        }
+    .protyle-attr {
+      top: 8px;
     }
+
+    > div:first-child {
+      margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 4px);
+      padding: 0 calc(var(--protyle-spacing-compatible));
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    table {
+      width: max-content;
+    }
+
+    table[contenteditable="true"] + .protyle-action__table .table__resize,
+    table[contenteditable="true"] + .protyle-action__table .table__select {
+      transform: translateY(calc(20em / 17 + 1px));
+    }
+
+    .protyle-attr--refcount {
+      transform: translateY(-12px);
+    }
+  }
+
+  // plan B. for test only. can't handle small-width tables; can't make tables centered without maintaining normal positioning of table resizing and selecting controls.
+  > .table[custom-afwd="fit"] {
+    // content-visibility: visible;
+
+    margin: calc(-12em / 17) 0;
+
+    .protyle-attr {
+      top: 8px;
+    }
+
+    > div:first-child {
+      margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 4px);
+      padding: 0 !important;
+    }
+
+    table {
+      width: auto !important;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
+
+    table[contenteditable="true"] + .protyle-action__table .table__resize,
+    table[contenteditable="true"] + .protyle-action__table .table__select {
+      transform: translateY(calc(20em / 17 + 1px));
+    }
+
+    .protyle-attr--refcount {
+      transform: translateY(-12px);
+    }
+  }
 }
 
 // 数据库添加、拖移按钮
@@ -355,10 +349,10 @@
 // }// 思源 3.0.6 已修复
 
 // text direction ———————————————————————
-[custom-tdir=rtl] {
-    direction: rtl;
+[custom-tdir="rtl"] {
+  direction: rtl;
 }
 
-[custom-tdir=ltr] {
-    direction: ltr;
+[custom-tdir="ltr"] {
+  direction: ltr;
 }

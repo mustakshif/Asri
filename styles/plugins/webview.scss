@@ -1,17 +1,17 @@
-.layout__center .layout-tab-container .fn__flex-column>.protyle-breadcrumb {
-    height: 42px;
+.layout__center .layout-tab-container .fn__flex-column > .protyle-breadcrumb {
+  height: 42px;
 
-    .address-field {
-        margin: 8px 4px;
-    }
+  .address-field {
+    margin: 8px 4px;
+  }
 }
 
 body.body-asri--fullscreen,
 body.body-asri--browser {
-    .fullscreen> {
-        .protyle-breadcrumb,
-        .block__icons {
-            padding-left: 10px;
-        }
+  .fullscreen > {
+    .protyle-breadcrumb,
+    .block__icons {
+      padding-left: 10px;
     }
+  }
 }

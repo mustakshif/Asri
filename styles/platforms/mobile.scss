@@ -1,79 +1,77 @@
-@use '../base' as *;
+@use "../base" as *;
 
 .body-asri--mobile {
-    // -> js
+  // -> js
 
-    //编辑区
-    .protyle-background {
-        --cover-img-height: 200px;
+  //编辑区
+  .protyle-background {
+    --cover-img-height: 200px;
 
-        &__img {
-            --bgimg-top-space: 92px; // 修复题头图跳动（实际为 90.5px, 这里给一点变动空间）
-            --bgimg-scale: 1.1;
-        }
+    &__img {
+      --bgimg-top-space: 92px; // 修复题头图跳动（实际为 90.5px, 这里给一点变动空间）
+      --bgimg-scale: 1.1;
     }
+  }
 
-    .protyle-wysiwyg {
+  .protyle-wysiwyg {
+    padding-right: 24px !important;
 
-        padding-right: 24px !important;
-
-        .bq,
-        .protyle-wysiwyg blockquote,
-        [data-node-id].render-node[data-type=NodeBlockQueryEmbed] {
-            padding: 4px 8px;
-        }
+    .bq,
+    .protyle-wysiwyg blockquote,
+    [data-node-id].render-node[data-type="NodeBlockQueryEmbed"] {
+      padding: 4px 8px;
     }
+  }
 
-    .protyle-title .protyle-attr {
-        height: -webkit-fill-available; // 修复文档标题属性显示不全
+  .protyle-title .protyle-attr {
+    height: -webkit-fill-available; // 修复文档标题属性显示不全
+  }
+
+  .b3-typography,
+  .protyle-wysiwyg {
+    font-family: var(--b3-font-family);
+  }
+
+  .protyle-scroll {
+    opacity: 1;
+    transform: none;
+    z-index: 4; // 高于数据库表头
+
+    &__bar {
+      right: calc(8px - var(--b3-dynamicscroll-width) / 2);
     }
+  }
 
-    .b3-typography,
-    .protyle-wysiwyg {
-        font-family: var(--b3-font-family);
+  //菜单
+  .b3-menu--fullscreen,
+  .b3-menu__submenu {
+    box-shadow: none;
+    outline: none;
+  }
+
+  border-radius: 0;
+
+  #commonMenu {
+    [id^="afwd"] .b3-menu__label {
+      white-space: unset;
     }
+  }
 
-    .protyle-scroll {
-        opacity: 1;
-        transform: none;
-        z-index: 4; // 高于数据库表头
+  .b3-menu__separator {
+    height: 1px;
+    margin: 16px;
+    width: calc(100% - 32px);
+    background-color: var(--b3-border-color-trans);
+  }
 
-        &__bar {
-            right: calc(8px - var(--b3-dynamicscroll-width)/2);
-        }
-    }
+  // 状态栏
+  .status {
+    padding: 8px;
+    background-color: var(--b3-theme-surface);
+  }
 
-    //菜单
-    .b3-menu--fullscreen,
-    .b3-menu__submenu {
-        box-shadow: none;
-        outline: none;
-    }
-
-    border-radius: 0;
-
-
-    #commonMenu {
-        [id^=afwd] .b3-menu__label {
-            white-space: unset;
-        }
-    }
-
-    .b3-menu__separator {
-        height: 1px;
-        margin: 16px;
-        width: calc(100% - 32px);
-        background-color: var(--b3-border-color-trans);
-    }
-
-    // 状态栏
-    .status {
-        padding: 8px;
-        background-color: var(--b3-theme-surface);
-    }
-
-    //侧栏遮罩
-    [style="transform: translateX(0px);"]~.side-mask {
-        opacity: 0 !important;
-    }
+  //侧栏遮罩
+  [style="transform: translateX(0px);"] ~ .side-mask {
+    opacity: 0 !important;
+  }
 }

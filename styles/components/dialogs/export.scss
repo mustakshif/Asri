@@ -1,43 +1,41 @@
-@use '../../base' as *;
-@use '../utils' as *;
+@use "../../base" as *;
+@use "../utils" as *;
 
 // 导出界面
 body[style="-webkit-print-color-adjust: exact;"] {
-    #action {
+  #action {
+    .b3-label {
+      border-bottom: none;
+      display: flex;
 
-        .b3-label {
-            border-bottom: none;
-            display: flex;
+      &:nth-child(-n + 3) {
+        flex-direction: column;
+      }
 
-            &:nth-child(-n + 3) {
-                flex-direction: column;
-            }
+      .fn__hr {
+        flex-grow: 1;
+      }
 
-            .fn__hr {
-                flex-grow: 1;
-            }
-
-            .b3-switch {
-                margin-left: 8px;
-                align-self: center;
-            }
-        }
-
-        .b3-button--cancel {
-            @include button-action('normal')
-        }
-
-        .b3-button--text {
-            @include button-action('primary')
-        }
-
-        // padding-bottom: 8px; // unnecessary, use default value
-        // >:last-child {
-        //     padding: 8px 16px !important;
-        // } // ❓ don't konw why this statement causes large cpu usage on mobile
+      .b3-switch {
+        margin-left: 8px;
+        align-self: center;
+      }
     }
-}
 
+    .b3-button--cancel {
+      @include button-action("normal");
+    }
+
+    .b3-button--text {
+      @include button-action("primary");
+    }
+
+    // padding-bottom: 8px; // unnecessary, use default value
+    // >:last-child {
+    //     padding: 8px 16px !important;
+    // } // ❓ don't konw why this statement causes large cpu usage on mobile
+  }
+}
 
 //导出窗口 ——————————————————————————
 
@@ -57,62 +55,62 @@ body[style="-webkit-print-color-adjust: exact;"] {
 
 // 图片预览 ——————————————————————
 .viewer-backdrop {
-    animation: fadeIn 0.3s;
-    transform-origin: var(--mouseX) var(--mouseY);
-    background-color: #bbb;
+  animation: fadeIn 0.3s;
+  transform-origin: var(--mouseX) var(--mouseY);
+  background-color: #bbb;
 
-    @include darkmode-counterpart {
-        background-color: var(--b3-theme-background);
+  @include darkmode-counterpart {
+    background-color: var(--b3-theme-background);
+  }
+
+  animation-timing-function: var(--asri-ease-out-5);
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.1);
     }
 
-    animation-timing-function: var(--asri-ease-out-5);
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: scale(0.1);
-        }
-
-        to {
-            opacity: 1;
-            transform: none;
-        }
+    to {
+      opacity: 1;
+      transform: none;
     }
+  }
 }
 
 .viewer-title {
-    padding: 4px 8px;
-    background-color: var(--b3-theme-surface);
-    border-radius: 99px;
-    @include theme-variant-border($border: false);
+  padding: 4px 8px;
+  background-color: var(--b3-theme-surface);
+  border-radius: 99px;
+  @include theme-variant-border($border: false);
 }
 
 .viewer-toolbar {
-    >ul {
-        background-color: var(--b3-theme-surface);
-        padding: 8px;
-        border-radius: 99px;
-        @include theme-variant-border($border: false);
+  > ul {
+    background-color: var(--b3-theme-surface);
+    padding: 8px;
+    border-radius: 99px;
+    @include theme-variant-border($border: false);
 
-        >li {
-            background-color: transparent;
+    > li {
+      background-color: transparent;
 
-            &:hover {
-                background-color: var(--b3-list-hover);
+      &:hover {
+        background-color: var(--b3-list-hover);
 
-                >svg {
-                    color: var(--b3-theme-on-background);
-                }
-            }
-
-            &:focus {
-                background-color: var(--b3-theme-on-background);
-                box-shadow: none;
-
-                >svg {
-                    color: var(--b3-menu-background);
-                }
-            }
+        > svg {
+          color: var(--b3-theme-on-background);
         }
+      }
+
+      &:focus {
+        background-color: var(--b3-theme-on-background);
+        box-shadow: none;
+
+        > svg {
+          color: var(--b3-menu-background);
+        }
+      }
     }
+  }
 }

@@ -6,14 +6,14 @@ type EnvClassifier = {
 };
 
 const envClassifiers: EnvClassifier[] = [
-  { condition: env.isMacOS, className: 'body-asri--mac' },
-  { condition: env.isLinux, className: 'body-asri--linux' },
-  { condition: env.isMobile, className: 'body-asri--mobile' },
-  { condition: env.isInBrowser, className: 'body-asri--browser' },
-  { condition: env.isAndroid, className: 'body-asri--android' },
-  { condition: env.isIOSApp, className: 'body-asri--iosApp' },
-  { condition: env.isReadOnly, className: 'body-asri--readOnly' },
-  { condition: env.isSafari, className: 'body-asri--safari' },
+  { condition: env.isMacOS, className: "body-asri--mac" },
+  { condition: env.isLinux, className: "body-asri--linux" },
+  { condition: env.isMobile, className: "body-asri--mobile" },
+  { condition: env.isInBrowser, className: "body-asri--browser" },
+  { condition: env.isAndroid, className: "body-asri--android" },
+  { condition: env.isIOSApp, className: "body-asri--iosApp" },
+  { condition: env.isReadOnly, className: "body-asri--readOnly" },
+  { condition: env.isSafari, className: "body-asri--safari" },
 ];
 
 export function addEnvClassNames() {

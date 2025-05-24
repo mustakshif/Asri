@@ -1,62 +1,53 @@
-@use './colors.scss' as *;
+@use "./colors.scss" as *;
 
 @mixin darkmode-counterpart($root: false) {
-    $selector: if($root, "&[data-theme-mode=dark]", "[data-theme-mode=dark] &");
+  $selector: if($root, "&[data-theme-mode=dark]", "[data-theme-mode=dark] &");
 
-    #{$selector} {
-        @content;
-    }
+  #{$selector} {
+    @content;
+  }
 }
 
 @mixin theme-variant-color($property, $theme-key, $opacity-light: 1, $opacity-dark: $opacity-light, $important: false) {
+  $_color: map-get($theme-light, $theme-key);
 
-    $_color: map-get($theme-light, $theme-key);
+  @if $_color !=null {
+    @if $important {
+      #{$property}: change-color($_color, $alpha: $opacity-light) !important;
+    } @else {
+      #{$property}: change-color($_color, $alpha: $opacity-light);
+    }
+  } @else {
+    @warn "No color found for `#{$theme-key}` in `$theme-light`. Please check your `$theme-light` map and the `$theme-key` you are using.";
+  }
+
+  @include darkmode-counterpart {
+    $_color: map-get($theme-dark, $theme-key);
 
     @if $_color !=null {
-        @if $important {
-            #{$property}: change-color($_color, $alpha: $opacity-light) !important;
-        }
-
-        @else {
-            #{$property}: change-color($_color, $alpha: $opacity-light);
-        }
+      @if $important {
+        #{$property}: change-color($_color, $alpha: $opacity-dark) !important;
+      } @else {
+        #{$property}: change-color($_color, $alpha: $opacity-dark);
+      }
+    } @else {
+      @warn "No color found for `#{$theme-key}` in `$theme-dark`. Please check your `$theme-dark` map and the `$theme-key` you are using.";
     }
-
-    @else {
-        @warn "No color found for `#{$theme-key}` in `$theme-light`. Please check your `$theme-light` map and the `$theme-key` you are using.";
-    }
-
-    @include darkmode-counterpart {
-        $_color: map-get($theme-dark, $theme-key);
-
-        @if $_color !=null {
-            @if $important {
-                #{$property}: change-color($_color, $alpha: $opacity-dark) !important;
-            }
-
-            @else {
-                #{$property}: change-color($_color, $alpha: $opacity-dark);
-            }
-        }
-
-        @else {
-            @warn "No color found for `#{$theme-key}` in `$theme-dark`. Please check your `$theme-dark` map and the `$theme-key` you are using.";
-        }
-    }
+  }
 }
 
 // ————————————————————————————————————————
 // 用于暗黑模式模式下给部分元素添加边框
 @mixin theme-variant-border($border: true) {
-    // 使用outline会导致频繁重绘
-    border: unset;
-    // border-color: transparent;
-    @content;
+  // 使用outline会导致频繁重绘
+  border: unset;
+  // border-color: transparent;
+  @content;
 
-    @include darkmode-counterpart {
-        @if $border ==true {
-            outline: 1px solid #fff2;
-            outline-offset: -1px;
-        }
+  @include darkmode-counterpart {
+    @if $border ==true {
+      outline: 1px solid #fff2;
+      outline-offset: -1px;
     }
+  }
 }

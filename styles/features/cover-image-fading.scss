@@ -1,172 +1,163 @@
-@use '../base' as *;
-@use './utils' as *;
+@use "../base" as *;
+@use "./utils" as *;
 
 .protyle-background__img {
+  //遮罩层
+  // &::before {
+  //     content: "";
+  //     display: inline-block;
+  //     width: -webkit-fill-available;
+  //     height: 90%;
+  //     position: absolute;
+  //     bottom: 0;
+  //     right: 0;
+  //     background: linear-gradient(to top, pickThemeColor($theme-light, background) 2%, pickThemeColor($theme-light, background, 0.97) 10%, pickThemeColor($theme-light, background, 0.9) 18%, pickThemeColor($theme-light, background, 0.75) 33%, pickThemeColor($theme-light, background, 0.05) 92%, transparent 99%);
+  //     pointer-events: none;
 
-    //遮罩层
-    // &::before {
-    //     content: "";
-    //     display: inline-block;
-    //     width: -webkit-fill-available;
-    //     height: 90%;
-    //     position: absolute;
-    //     bottom: 0;
-    //     right: 0;
-    //     background: linear-gradient(to top, pickThemeColor($theme-light, background) 2%, pickThemeColor($theme-light, background, 0.97) 10%, pickThemeColor($theme-light, background, 0.9) 18%, pickThemeColor($theme-light, background, 0.75) 33%, pickThemeColor($theme-light, background, 0.05) 92%, transparent 99%);
-    //     pointer-events: none;
+  //     @include darkmode-counterpart {
+  //         background: linear-gradient(to top, pickThemeColor($theme-dark, background) 2%, pickThemeColor($theme-dark, background, 0.97) 10%, pickThemeColor($theme-dark, background, 0.9) 18%, pickThemeColor($theme-dark, background, 0.75) 33%, pickThemeColor($theme-dark, background, 0.05) 92%, transparent 99%);
+  //     }
+  // }
 
-    //     @include darkmode-counterpart {
-    //         background: linear-gradient(to top, pickThemeColor($theme-dark, background) 2%, pickThemeColor($theme-dark, background, 0.97) 10%, pickThemeColor($theme-dark, background, 0.9) 18%, pickThemeColor($theme-dark, background, 0.75) 33%, pickThemeColor($theme-dark, background, 0.05) 92%, transparent 99%);
-    //     }
-    // }
+  img {
+    // mask-image: linear-gradient(to bottom,
+    //         black 2%,
+    //         rgba(0, 0, 0, 0.97) 10%,
+    //         rgba(0, 0, 0, 0.9) 18%,
+    //         rgba(0, 0, 0, 0.75) 33%,
+    //         rgba(0, 0, 0, 0.05) 92%,
+    //         transparent 99%);
 
-    img {
-        // mask-image: linear-gradient(to bottom,
-        //         black 2%,
-        //         rgba(0, 0, 0, 0.97) 10%,
-        //         rgba(0, 0, 0, 0.9) 18%,
-        //         rgba(0, 0, 0, 0.75) 33%,
-        //         rgba(0, 0, 0, 0.05) 92%,
-        //         transparent 99%);
+    mask-image: linear-gradient(to top, transparent 2%, rgba(0, 0, 0, 0.03) 10%, rgba(0, 0, 0, 0.1) 18%, rgba(0, 0, 0, 0.25) 33%, rgba(0, 0, 0, 0.95) 92%, black 99%), linear-gradient(to top, black, black);
+    mask-size: auto 90%, auto 11%;
+    mask-position: bottom, top;
+    mask-repeat: no-repeat;
 
-        mask-image: linear-gradient(to top,
-                transparent 2%,
-                rgba(0, 0, 0, 0.03) 10%,
-                rgba(0, 0, 0, 0.1) 18%,
-                rgba(0, 0, 0, 0.25) 33%,
-                rgba(0, 0, 0, 0.95) 92%,
-                black 99%),
-            linear-gradient(to top, black, black);
-        mask-size: auto 90%, auto 11%;
-        mask-position: bottom, top;
-        mask-repeat: no-repeat;
+    // mask-image: linear-gradient(to bottom, hsl(0, 0%, 0%) 0%, hsl(0, 0%, 0%, .96) 11%, hsla(0, 0%, 0%, 0.9) 16%, hsla(0, 0%, 0%, 0.738) 27.1%, hsla(0, 0%, 0%, 0.541) 40.6%, hsla(0, 0%, 0%, 0.382) 52.3%, hsla(0, 0%, 0%, 0.278) 60.85%, hsla(0, 0%, 0%, 0.194) 68.5%, hsla(0, 0%, 0%, 0.126) 75.7%, hsla(0, 0%, 0%, 0.075) 82.18%, hsla(0, 0%, 0%, 0.042) 87.49%, hsla(0, 0%, 0%, 0.021) 91.9%, hsla(0, 0%, 0%, 0.008) 95.68%, hsla(0, 0%, 0%, 0.002) 98.38%, hsla(0, 0%, 0%, 0) 100%);
+    // mask-position: bottom;
+    // mask-repeat: no-repeat;
+  }
 
-        // mask-image: linear-gradient(to bottom, hsl(0, 0%, 0%) 0%, hsl(0, 0%, 0%, .96) 11%, hsla(0, 0%, 0%, 0.9) 16%, hsla(0, 0%, 0%, 0.738) 27.1%, hsla(0, 0%, 0%, 0.541) 40.6%, hsla(0, 0%, 0%, 0.382) 52.3%, hsla(0, 0%, 0%, 0.278) 60.85%, hsla(0, 0%, 0%, 0.194) 68.5%, hsla(0, 0%, 0%, 0.126) 75.7%, hsla(0, 0%, 0%, 0.075) 82.18%, hsla(0, 0%, 0%, 0.042) 87.49%, hsla(0, 0%, 0%, 0.021) 91.9%, hsla(0, 0%, 0%, 0.008) 95.68%, hsla(0, 0%, 0%, 0.002) 98.38%, hsla(0, 0%, 0%, 0) 100%);
-        // mask-position: bottom;
-        // mask-repeat: no-repeat;
-    }
-
-    &::after {
-        content: "";
-        display: inline-block;
-        width: 100%;
-        height: 13.5vh;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        backdrop-filter: blur(4px);
-        mask-image: linear-gradient(to top, black 50%, transparent);
-        transform: translateZ(0);
-        pointer-events: none;
-    }
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 13.5vh;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    backdrop-filter: blur(4px);
+    mask-image: linear-gradient(to top, black 50%, transparent);
+    transform: translateZ(0);
+    pointer-events: none;
+  }
 }
 
 body:not(.body-asri--mobile) {
-    .protyle-background {
-        .protyle-background__img {
-            position: relative;
+  .protyle-background {
+    .protyle-background__img {
+      position: relative;
 
-            &:not(.fn__none) {
-                margin-bottom: -24px;
+      &:not(.fn__none) {
+        margin-bottom: -24px;
 
-                +.protyle-background__ia .protyle-background__icon.fn__none~.protyle-background__action {
-                    @include theme-variant-color(background-color, surface, 0.8, 0.6);
-                    @include theme-variant-color(color, on-background, 0.6, 1);
+        + .protyle-background__ia .protyle-background__icon.fn__none ~ .protyle-background__action {
+          @include theme-variant-color(background-color, surface, 0.8, 0.6);
+          @include theme-variant-color(color, on-background, 0.6, 1);
 
-                    padding: 2px;
-                    width: fit-content;
-                    border-radius: 99px;
-                    mix-blend-mode: luminosity;
+          padding: 2px;
+          width: fit-content;
+          border-radius: 99px;
+          mix-blend-mode: luminosity;
 
-                    @include theme-variant-border($border: false);
+          @include theme-variant-border($border: false);
 
-                    &:hover {
-                        @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
-                    }
+          &:hover {
+            @include bg-blur($saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+          }
 
-                    .b3-button {
-                        margin-top: 0;
+          .b3-button {
+            margin-top: 0;
 
-                        &:hover {
-                            background-color: unset;
-                            color: var(--b3-theme-on-background);
-                        }
-                    }
-                }
-            }
-
-            &.fn__none {
-                +.protyle-background__ia {
-                    margin-top: 48px;
-                }
-            }
-
-            .protyle-icons:nth-last-child(2) {
-                width: fit-content;
-                top: calc(15vh - 24px);
-            }
-        }
-
-        // 无图标
-        &.without-icon {
-            .protyle-background__img {
-                margin-bottom: -100px;
-            }
-
-            .protyle-background__ia {
-                flex-direction: column-reverse;
-            }
-        }
-
-        // 有图标
-        &:not(.without-icon) {
-
-            // 有题头图
-            .protyle-background__img+.protyle-background__ia {
-                // 无标签
-                >.protyle-background__action {
-                    position: absolute;
-                    top: auto;
-                    transform: translateX(88px); // 可能是导致 https://github.com/mustakshif/Asri/issues/58 的原因
-                }
-
-                // 有标签 
-                .b3-chips .fn__space:not(:first-child)+.protyle-background__action {
-                    position: static;
-                    transform: none;
-                }
-            }
-
-            // 无题头图
-            .protyle-background__img.fn__none+.protyle-background__ia .protyle-background__action {
-                top: 48px;
-            }
-        }
-    }
-
-    .protyle-top {
-        &:hover {
-            .b3-chips .b3-button {
-                opacity: 1;
-            }
-        }
-    }
-
-    .protyle-background__ia {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .protyle-background__action {
-        &:hover {
-            opacity: 1 !important;
-        }
-
-        .b3-button {
             &:hover {
-                background-color: unset;
-                color: var(--b3-theme-on-background);
+              background-color: unset;
+              color: var(--b3-theme-on-background);
             }
+          }
         }
+      }
+
+      &.fn__none {
+        + .protyle-background__ia {
+          margin-top: 48px;
+        }
+      }
+
+      .protyle-icons:nth-last-child(2) {
+        width: fit-content;
+        top: calc(15vh - 24px);
+      }
     }
+
+    // 无图标
+    &.without-icon {
+      .protyle-background__img {
+        margin-bottom: -100px;
+      }
+
+      .protyle-background__ia {
+        flex-direction: column-reverse;
+      }
+    }
+
+    // 有图标
+    &:not(.without-icon) {
+      // 有题头图
+      .protyle-background__img + .protyle-background__ia {
+        // 无标签
+        > .protyle-background__action {
+          position: absolute;
+          top: auto;
+          transform: translateX(88px); // 可能是导致 https://github.com/mustakshif/Asri/issues/58 的原因
+        }
+
+        // 有标签
+        .b3-chips .fn__space:not(:first-child) + .protyle-background__action {
+          position: static;
+          transform: none;
+        }
+      }
+
+      // 无题头图
+      .protyle-background__img.fn__none + .protyle-background__ia .protyle-background__action {
+        top: 48px;
+      }
+    }
+  }
+
+  .protyle-top {
+    &:hover {
+      .b3-chips .b3-button {
+        opacity: 1;
+      }
+    }
+  }
+
+  .protyle-background__ia {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .protyle-background__action {
+    &:hover {
+      opacity: 1 !important;
+    }
+
+    .b3-button {
+      &:hover {
+        background-color: unset;
+        color: var(--b3-theme-on-background);
+      }
+    }
+  }
 }

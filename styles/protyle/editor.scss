@@ -1,348 +1,351 @@
-@use '../base' as *;
-@use './elements' as *;
+@use "../base" as *;
+@use "./elements" as *;
 
 :is(.b3-typography, .protyle-wysiwyg) {
-    @include headings;
-    @include superlink;
-    @include bold;
-    @include italic;
-    @include underline;
-    @include linethrough;
-    @include highlight;
-    @include kbd;
-    @include inline-code;
-    @include blockquote;
-    @include superscript-subscript;
-    @include hljs;
-    @include code-block;
-    @include table;
+  @include headings;
+  @include superlink;
+  @include bold;
+  @include italic;
+  @include underline;
+  @include linethrough;
+  @include highlight;
+  @include kbd;
+  @include inline-code;
+  @include blockquote;
+  @include superscript-subscript;
+  @include hljs;
+  @include code-block;
+  @include table;
 }
 
 .layout__center .protyle {
-    container: protyle / inline-size;
+  container: protyle / inline-size;
 }
 
 .protyle-wysiwyg {
+  //所有内容块 ————————————————————————
+  [data-node-id] {
+    border-radius: 10px;
 
-    //所有内容块 ————————————————————————
-    [data-node-id] {
-        border-radius: 10px;
+    &[style*="--b3-font-background1)"] {
+      // 避免选择到 background10-13
+      // outline: .5px solid var(--b3-border-color-trans);
+      box-shadow: 0 0 0 1px var(--b3-border-color-trans);
+      // outline-offset: -1.5px;
+    }
+  }
 
-        &[style*="--b3-font-background1)"] {
-            // 避免选择到 background10-13
-            // outline: .5px solid var(--b3-border-color-trans);
-            box-shadow: 0 0 0 1px var(--b3-border-color-trans);
-            // outline-offset: -1.5px;
+  // 标题块 ————————————————————————
+
+  // [data-type='NodeSuperBlock']>[data-type='NodeHeading']:first-child, https://github.com/mustakshif/Asri/issues/79
+  .sb[data-sb-layout="row"] > [data-type="NodeHeading"]:first-child,
+  .sb[data-sb-layout="col"] > [data-type="NodeHeading"],
+  .protyle-wysiwyg__embed > [data-type="NodeHeading"]:first-child,
+  .protyle-wysiwyg__embed
+    > .protyle-breadcrumb__bar
+    + [data-type="NodeHeading"] {
+    margin-top: 0;
+  }
+
+  // 块引用 ————————————————————————————————————
+  @include block-ref;
+
+  // 虚拟引用 ——————————————————————————————————————
+  @include v-block-ref;
+
+  // 标签 ——————————————————————————————————————
+  @include tag;
+
+  [data-node-id] span[data-type~="tag"] {
+    &[data-type~="block-ref"] {
+      color: var(--b3-theme-primary);
+      box-shadow: none;
+      border: 0.1em solid var(--b3-theme-primary-light);
+      text-decoration: none;
+
+      &[data-type~="s"] {
+        text-decoration-line: line-through;
+      }
+    }
+  }
+
+  // 备注 ——————————————————————————————————————
+  @include inline-memo;
+
+  // 引用块 ——————————————————————————————————————
+  .sb .bq,
+  .sb blockquote {
+    outline: none;
+  }
+
+  //代码块 ——————————————————————————————————————
+  .code-block {
+    --b3-protyle-code-linenumber-hl: color-mix(
+      in srgb,
+      var(--b3-theme-surface) 55%,
+      var(--b3-theme-primary)
+    );
+
+    margin: 0.4em 0;
+
+    > .protyle-action {
+      justify-content: flex-end;
+
+      .protyle-action__language {
+        margin-top: 0 !important;
+        // padding-left: 28px;
+        font-weight: 500;
+        // font-style: italic;
+        // font-family: var(--b3-font-family-code);
+
+        + .fn__flex-1 {
+          max-width: 12px;
         }
+      }
     }
+  }
 
-    // 标题块 ————————————————————————
+  // 列表 ——————————————————————————————————————
+  @include list;
 
-    // [data-type='NodeSuperBlock']>[data-type='NodeHeading']:first-child, https://github.com/mustakshif/Asri/issues/79
-    .sb[data-sb-layout=row]>[data-type=NodeHeading]:first-child,
-    .sb[data-sb-layout=col]>[data-type=NodeHeading],
-    .protyle-wysiwyg__embed>[data-type='NodeHeading']:first-child,
-    .protyle-wysiwyg__embed>.protyle-breadcrumb__bar+[data-type='NodeHeading'] {
-        margin-top: 0;
+  // 图片 ——————————————————————————————————
+  @include image;
+
+  // 表格 ——————————————————————————————————————
+  [data-node-id].table[custom-pinthead="true"] thead {
+    // position: sticky;
+    top: 0;
+    z-index: 1;
+    box-shadow: 0px -1px 0px var(--b3-border-color-trans) inset;
+    background-color: var(--b3-theme-background);
+  }
+
+  // 仅适用编辑器的表格
+  @container protyle (min-width: 900px) {
+    .table table {
+      width: auto;
     }
+  }
 
-    // 块引用 ————————————————————————————————————
-    @include block-ref;
-
-    // 虚拟引用 ——————————————————————————————————————
-    @include v-block-ref;
-
-    // 标签 ——————————————————————————————————————
-    @include tag;
-
-    [data-node-id] span[data-type~="tag"] {
-        &[data-type~="block-ref"] {
-            color: var(--b3-theme-primary);
-            box-shadow: none;
-            border: .1em solid var(--b3-theme-primary-light);
-            text-decoration: none;
-
-            &[data-type~=s] {
-                text-decoration-line: line-through;
-            }
+  .table[custom-pinthead="true"] {
+    thead {
+      tr {
+        th {
+          background-color: var(--b3-theme-surface);
         }
+      }
+    }
+  }
+
+  // 分隔线 ————————————————————————————————————
+  [data-node-id].hr > div:after {
+    background-color: var(--b3-border-color-trans);
+    height: 2px;
+    border-radius: 2px;
+  }
+
+  // >.hr:first-child {
+  //     height: 0;
+  //     // padding: 0;
+  //     // margin: 0;
+
+  //     ::after {
+  //         display: none;
+  //     }
+  // }
+
+  // 视频 ——————————————————————————————————————
+  video {
+    border-radius: 4px;
+  }
+
+  // 超级块 ————————————————————————————————————
+  @include superblock;
+
+  // 嵌入块 ——————————————————————————————————————
+  @include embedblock;
+
+  // iframe ————————————————————————————————————————
+  @include iframe;
+
+  // misc ——————————————————————————————————————
+  font-variant-ligatures: normal;
+
+  // 正文紧挨文档标题的标题块
+  & > div[data-type="NodeHeading"]:first-child,
+  & > [data-node-id].sb:first-child .sb:first-child {
+    margin-top: 0;
+  }
+
+  // 折叠块--标题块、列表块
+  div[fold="1"] {
+    &[data-type="NodeHeading"] {
+      background-color: var(--b3-theme-surface-light);
+      outline: 1px solid var(--b3-border-color-trans);
+      opacity: 0.6;
+
+      &::before {
+        display: none;
+      }
     }
 
-    // 备注 ——————————————————————————————————————
-    @include inline-memo;
-
-    // 引用块 ——————————————————————————————————————
-    .sb .bq,
-    .sb blockquote {
-        outline: none;
+    &:not(.li):not([data-type="NodeHeading"]).list {
+      background-color: var(--b3-theme-surface-light);
+      outline: 1px solid var(--b3-border-color-trans);
+      opacity: 0.6;
     }
+  }
 
-    //代码块 ——————————————————————————————————————
-    .code-block {
-        --b3-protyle-code-linenumber-hl: color-mix(in srgb, var(--b3-theme-surface) 55%, var(--b3-theme-primary));
-
-        margin: 0.4em 0;
-
-        >.protyle-action {
-            justify-content: flex-end;
-
-            .protyle-action__language {
-                margin-top: 0 !important;
-                // padding-left: 28px;
-                font-weight: 500;
-                // font-style: italic;
-                // font-family: var(--b3-font-family-code);
-
-                +.fn__flex-1 {
-                    max-width: 12px;
-                }
-            }
-        }
-    }
-
-    // 列表 ——————————————————————————————————————
-    @include list;
-
-    // 图片 ——————————————————————————————————
-    @include image;
-
-    // 表格 ——————————————————————————————————————
-    [data-node-id].table[custom-pinthead=true] thead {
-        // position: sticky;
-        top: 0;
-        z-index: 1;
-        box-shadow: 0px -1px 0px var(--b3-border-color-trans) inset;
-        background-color: var(--b3-theme-background);
-    }
-
-    // 仅适用编辑器的表格
-    @container protyle (min-width: 900px) {
-        .table table {
-            width: auto;
-        }
-    }
-
-    .table[custom-pinthead="true"] {
-        thead {
-            tr {
-                th {
-                    background-color: var(--b3-theme-surface);
-                }
-            }
-        }
-    }
-
-    // 分隔线 ————————————————————————————————————
-    [data-node-id].hr>div:after {
-        background-color: var(--b3-border-color-trans);
-        height: 2px;
-        border-radius: 2px;
-    }
-
-    // >.hr:first-child {
-    //     height: 0;
-    //     // padding: 0;
-    //     // margin: 0;
-
-    //     ::after {
-    //         display: none;
-    //     }
-    // }
-
-    // 视频 ——————————————————————————————————————
-    video {
-        border-radius: 4px;
-    }
-
-
-    // 超级块 ————————————————————————————————————
-    @include superblock;
-
-    // 嵌入块 ——————————————————————————————————————
-    @include embedblock;
-
-    // iframe ————————————————————————————————————————
-    @include iframe;
-
-    // misc ——————————————————————————————————————
-    font-variant-ligatures: normal;
-
-    // 正文紧挨文档标题的标题块
-    &>div[data-type="NodeHeading"]:first-child,
-    &>[data-node-id].sb:first-child .sb:first-child {
-        margin-top: 0;
-    }
-
-    // 折叠块--标题块、列表块
-    div[fold="1"] {
-        &[data-type=NodeHeading] {
-            background-color: var(--b3-theme-surface-light);
-            outline: 1px solid var(--b3-border-color-trans);
-            opacity: .6;
-
-            &::before {
-                display: none;
-            }
-        }
-
-        &:not(.li):not([data-type=NodeHeading]).list {
-            background-color: var(--b3-theme-surface-light);
-            outline: 1px solid var(--b3-border-color-trans);
-            opacity: .6;
-        }
-    }
-
-    // 块高亮
-    &--select::after,
-    &--hl::after {
-        border-radius: 10px;
-    }
+  // 块高亮
+  &--select::after,
+  &--hl::after {
+    border-radius: 10px;
+  }
 }
 
 .layout-tab-container {
-    background-color: var(--b3-theme-background);
-    transition: padding .2s;
+  background-color: var(--b3-theme-background);
+  transition: padding 0.2s;
 }
 
 .layout__center[style="margin: 0px 10px;"] {
-    margin: 0 !important; // 覆盖停靠栏和侧边面板隐藏时该元素的内联样式
+  margin: 0 !important; // 覆盖停靠栏和侧边面板隐藏时该元素的内联样式
 }
 
 .protyle {
-    // font-variant-emoji: emoji; // 不受支持
+  // font-variant-emoji: emoji; // 不受支持
 
-    // background-color: transparent; // 全屏视图下是透明的]
+  // background-color: transparent; // 全屏视图下是透明的]
 
-    &:not(.fn__none) {
-        .protyle-content {
-            animation: protyle-appear .3s var(--asri-ease-out-5);
-        }
+  &:not(.fn__none) {
+    .protyle-content {
+      animation: protyle-appear 0.3s var(--asri-ease-out-5);
+    }
+  }
+
+  @keyframes protyle-appear {
+    from {
+      opacity: 0;
+      transform: translateY(-1%);
     }
 
-    @keyframes protyle-appear {
-        from {
-            opacity: 0;
-            transform: translateY(-1%);
-        }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 
-        to {
-            opacity: 1;
-            transform: none;
-        }
+  &-attr {
+    > div {
+      transition: 0.2s;
     }
 
-
-    &-attr {
-        >div {
-            transition: .2s;
-        }
-
-        >div:not(.protyle-attr--refcount) svg {
-            margin-right: unset;
-            margin-inline-end: 6px;
-        }
-
-        &--av {
-            &:hover {
-                color: var(--b3-theme-accent) !important;
-            }
-
-            span:hover {
-                color: inherit;
-            }
-        }
+    > div:not(.protyle-attr--refcount) svg {
+      margin-right: unset;
+      margin-inline-end: 6px;
     }
 
-    // 框选框
-    // &-select {
-    // outline: 1px solid var(--b3-theme-primary-lighter);
-    // }
+    &--av {
+      &:hover {
+        color: var(--b3-theme-accent) !important;
+      }
 
-    // 预览模式 ————————————————————————————
-    .protyle-preview__action {
-        background-color: var(--b3-theme-background);
-        border-bottom: 1px solid var(--b3-border-color-trans);
-
-        button {
-            background-color: transparent;
-
-            &.protyle-preview__action--current {
-                background-color: transparent;
-                font-weight: 600;
-            }
-
-            &:not(.protyle-preview__action--current):hover {
-                background-color: transparent;
-                color: var(--b3-theme-on-background);
-            }
-        }
+      span:hover {
+        color: inherit;
+      }
     }
+  }
 
-    // [style*="background-color"]:is(.p, .list) {
-    //     padding: 1em 1.2em;
-    // }
+  // 框选框
+  // &-select {
+  // outline: 1px solid var(--b3-theme-primary-lighter);
+  // }
 
-    // .h1[style*=background-color] {
-    //     padding: calc(1em / 1.75) calc(1.2em / 1.75);
-    // }
+  // 预览模式 ————————————————————————————
+  .protyle-preview__action {
+    background-color: var(--b3-theme-background);
+    border-bottom: 1px solid var(--b3-border-color-trans);
 
-    // .h2[style*=background-color] {
-    //     padding: calc(1em / 1.55) calc(1.2em / 1.55);
-    // }
+    button {
+      background-color: transparent;
 
-    // .h3[style*=background-color] {
-    //     padding: calc(1em / 1.38) calc(1.2em / 1.38);
-    // }
+      &.protyle-preview__action--current {
+        background-color: transparent;
+        font-weight: 600;
+      }
 
-    // .h4[style*=background-color] {
-    //     padding: calc(1em / 1.25) calc(1.2em / 1.25);
-    // }
+      &:not(.protyle-preview__action--current):hover {
+        background-color: transparent;
+        color: var(--b3-theme-on-background);
+      }
+    }
+  }
 
-    // .h5[style*=background-color] {
-    //     padding: calc(1em / 1.13) calc(1.2em / 1.13);
-    // }
+  // [style*="background-color"]:is(.p, .list) {
+  //     padding: 1em 1.2em;
+  // }
 
-    // .h6[style*=background-color] {
-    //     padding: 1em 1.2em;
-    // }
+  // .h1[style*=background-color] {
+  //     padding: calc(1em / 1.75) calc(1.2em / 1.75);
+  // }
 
-    // &-wysiwyg>.sb[style*=background-color] {
-    //     padding: 1em 1.2em;
-    // }
+  // .h2[style*=background-color] {
+  //     padding: calc(1em / 1.55) calc(1.2em / 1.55);
+  // }
+
+  // .h3[style*=background-color] {
+  //     padding: calc(1em / 1.38) calc(1.2em / 1.38);
+  // }
+
+  // .h4[style*=background-color] {
+  //     padding: calc(1em / 1.25) calc(1.2em / 1.25);
+  // }
+
+  // .h5[style*=background-color] {
+  //     padding: calc(1em / 1.13) calc(1.2em / 1.13);
+  // }
+
+  // .h6[style*=background-color] {
+  //     padding: 1em 1.2em;
+  // }
+
+  // &-wysiwyg>.sb[style*=background-color] {
+  //     padding: 1em 1.2em;
+  // }
 }
 
 .b3-typography {
-    font-variant-ligatures: normal;
-    // font-variant-emoji: emoji; // 不受支持
+  font-variant-ligatures: normal;
+  // font-variant-emoji: emoji; // 不受支持
 
-    // @extend .protyle-wysiwyg;
-    &:not(#searchUnRefPreview)>* {
-        border-radius: 8px;
-    }
+  // @extend .protyle-wysiwyg;
+  &:not(#searchUnRefPreview) > * {
+    border-radius: 8px;
+  }
 
-    a {
-        transition: var(--b3-transition);
-    }
+  a {
+    transition: var(--b3-transition);
+  }
 
-    table {
-        width: max-content;
-        // border: none;
-        // box-shadow: 0 0 0 1px var(--b3-border-color-trans);
-        // overflow: hidden; // support for wide table
-    }
+  table {
+    width: max-content;
+    // border: none;
+    // box-shadow: 0 0 0 1px var(--b3-border-color-trans);
+    // overflow: hidden; // support for wide table
+  }
 
-    img {
-        border-radius: 6px;
-    }
+  img {
+    border-radius: 6px;
+  }
 
-    hr {
-        background-color: transparent;
-        border: 1px solid var(--b3-border-color-trans);
-    }
+  hr {
+    background-color: transparent;
+    border: 1px solid var(--b3-border-color-trans);
+  }
 
-    video,
-    iframe {
-        border-radius: 4px;
-        border-color: transparent;
-    }
+  video,
+  iframe {
+    border-radius: 4px;
+    border-color: transparent;
+  }
 }

@@ -1,20 +1,20 @@
-@supports (color: oklch(from #00f l clamp(0, c, .2) calc(h + 0))) {
-    #layouts {
-        --heading-clr-primary-base: var(--b3-theme-primary);
-        --hchs: 30; // heading color hue shift. [0, 60]
-    }
-    @for $i from 1 through 6 {
-        :is(.h#{$i}, h#{$i}) {
-            --heading-clr-primary: oklch(from var(--heading-clr-primary-base) l clamp(0, c, .2) calc(h + var(--hchs) * #{($i - 1)}));
-            // --heading-clr-primary:oklch(from var(--heading-clr-primary-base) calc(l - (l - .89)/6 * #{$i}) calc(c - (c - clamp(0, .01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04))/6 * #{$i}) h);
+@supports (color: oklch(from #00f l clamp(0, c, 0.2) calc(h + 0))) {
+  #layouts {
+    --heading-clr-primary-base: var(--b3-theme-primary);
+    --hchs: 30; // heading color hue shift. [0, 60]
+  }
+  @for $i from 1 through 6 {
+    :is(.h#{$i}, h#{$i}) {
+      --heading-clr-primary: oklch(from var(--heading-clr-primary-base) l clamp(0, c, 0.2) calc(h + var(--hchs) * #{($i - 1)}));
+      // --heading-clr-primary:oklch(from var(--heading-clr-primary-base) calc(l - (l - .89)/6 * #{$i}) calc(c - (c - clamp(0, .01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04))/6 * #{$i}) h);
 
-            // >div, ~div {
-            //     --b3-theme-primary: oklch(from var(--heading-clr-primary-base) l clamp(0, c, .2) calc(h + #{50 * ($i - 1)}));
-            // }
-        }
+      // >div, ~div {
+      //     --b3-theme-primary: oklch(from var(--heading-clr-primary-base) l clamp(0, c, .2) calc(h + #{50 * ($i - 1)}));
+      // }
     }
+  }
 
-    :is(.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6) {
-        color: var(--heading-clr-primary);
-    }
+  :is(.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6) {
+    color: var(--heading-clr-primary);
+  }
 }

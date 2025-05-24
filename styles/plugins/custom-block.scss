@@ -1,33 +1,32 @@
-:root:not([plugin-custom-block-disabled~=list-view-map]) .protyle-content [custom-block-list-view=map] [data-node-id].li:before {
-    opacity: 1;
+:root:not([plugin-custom-block-disabled~="list-view-map"]) .protyle-content [custom-block-list-view="map"] [data-node-id].li:before {
+  opacity: 1;
 }
 
 .protyle-wysiwyg [custom-block-render][data-node-id] {
+  border-radius: 0;
+}
+
+:root:not([plugin-custom-block-disabled~="list-view-table"]) .protyle-content [custom-block-list-view="table"] {
+  [data-node-id] {
     border-radius: 0;
+
+    &.li {
+      outline-color: var(--b3-border-color) !important;
+      outline-offset: -0.5px;
+    }
+  }
+
+  > [data-node-id]:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  > :nth-last-child(1 of [data-node-id]) {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
 }
 
-:root:not([plugin-custom-block-disabled~=list-view-table]) .protyle-content [custom-block-list-view="table"] {
-
-    [data-node-id] {
-        border-radius: 0;
-
-        &.li {
-            outline-color: var(--b3-border-color) !important;
-            outline-offset: -.5px;
-        }
-    }
-
-    >[data-node-id]:first-child {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-    }
-
-    >:nth-last-child(1 of [data-node-id]) {
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-    }
-}
-
-:root:not([plugin-custom-block-disabled~=list-view-board]) .protyle-content [custom-block-list-view=board][data-node-id].list>[data-node-id].li:nth-child(12n+1)>[data-node-id]:not(.list) {
-    outline: 1px solid var(--b3-border-color-trans);
+:root:not([plugin-custom-block-disabled~="list-view-board"]) .protyle-content [custom-block-list-view="board"][data-node-id].list > [data-node-id].li:nth-child(12n + 1) > [data-node-id]:not(.list) {
+  outline: 1px solid var(--b3-border-color-trans);
 }

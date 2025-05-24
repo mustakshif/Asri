@@ -1,100 +1,94 @@
-
 // ——————————————————————————————————————
 // 弹性复选框
-@mixin bouncy-check-box($checked: false, $icon-size: 1.1em, $stroke-width: .1em) {
-    &::before {
-        content: '' !important; // fix https://github.com/mustakshif/Asri/issues/113
-        position: absolute;
-        // display: block !important;
+@mixin bouncy-check-box($checked: false, $icon-size: 1.1em, $stroke-width: 0.1em) {
+  &::before {
+    content: "" !important; // fix https://github.com/mustakshif/Asri/issues/113
+    position: absolute;
+    // display: block !important;
 
-        @if $checked==false {
-            width: calc($icon-size - .05em);
-            height: calc($icon-size - .05em);
-            background-color: currentColor;
-            mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round"/><rect width="18.5" height="18.5" x="2.75" y="2.75" rx="6"/></g></svg>');
-            animation: uncheck .3s var(--asri-ease-elastic-in-out-3) forwards; // Animation adds mousewheel event listener to the block and the content in it, which is not good? This can be checked in the render tab of the inspector.
-        }
-
-        @else {
-            width: $icon-size;
-            height: $icon-size;
-            background-color: var(--b3-theme-primary);
-            mask-image: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.25 2h-6.5A6.76 6.76 0 0 0 2 8.75v6.5A6.76 6.76 0 0 0 8.75 22h6.5A6.76 6.76 0 0 0 22 15.25v-6.5A6.76 6.76 0 0 0 15.25 2m2.06 8.16l-5.22 5.22a2 2 0 0 1-1.41.59a2 2 0 0 1-.76-.15a2 2 0 0 1-.64-.44l-2.59-2.59a1 1 0 0 1 1.41-1.41l2.59 2.59l5.21-5.23a1.002 1.002 0 0 1 1.41 1.42"/></svg>');
-            animation: check .3s var(--asri-ease-elastic-in-out-3) forwards;
-        }
-
-        @content;
+    @if $checked==false {
+      width: calc($icon-size - 0.05em);
+      height: calc($icon-size - 0.05em);
+      background-color: currentColor;
+      mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round"/><rect width="18.5" height="18.5" x="2.75" y="2.75" rx="6"/></g></svg>');
+      animation: uncheck 0.3s var(--asri-ease-elastic-in-out-3) forwards; // Animation adds mousewheel event listener to the block and the content in it, which is not good? This can be checked in the render tab of the inspector.
+    } @else {
+      width: $icon-size;
+      height: $icon-size;
+      background-color: var(--b3-theme-primary);
+      mask-image: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.25 2h-6.5A6.76 6.76 0 0 0 2 8.75v6.5A6.76 6.76 0 0 0 8.75 22h6.5A6.76 6.76 0 0 0 22 15.25v-6.5A6.76 6.76 0 0 0 15.25 2m2.06 8.16l-5.22 5.22a2 2 0 0 1-1.41.59a2 2 0 0 1-.76-.15a2 2 0 0 1-.64-.44l-2.59-2.59a1 1 0 0 1 1.41-1.41l2.59 2.59l5.21-5.23a1.002 1.002 0 0 1 1.41 1.42"/></svg>');
+      animation: check 0.3s var(--asri-ease-elastic-in-out-3) forwards;
     }
+
+    @content;
+  }
 }
 
 @keyframes check {
+  0%,
+  100% {
+    transform: none;
+  }
 
-    0%,
-    100% {
-        transform: none;
-    }
-
-    10% {
-        transform: scale(1.2);
-    }
+  10% {
+    transform: scale(1.2);
+  }
 }
 
 @keyframes uncheck {
+  0%,
+  100% {
+    transform: none;
+  }
 
-    0%,
-    100% {
-        transform: none;
-    }
-
-    3% {
-        transform: scale(1.2);
-    }
+  3% {
+    transform: scale(1.2);
+  }
 }
 
 // ——————————————————————————————————————
 // 资源列 chip 样式
 @mixin database-assets-style($level: "non-chip") {
+  $selector: if($level == "non-chip", ".av__celltext--url", ".b3-chip.av__celltext--url");
 
-    $selector: if($level =="non-chip", ".av__celltext--url", ".b3-chip.av__celltext--url");
+  #{$selector} {
+    // 资源列超链接或资源链接
+    text-decoration: none;
+    background-color: transparent;
+    outline: 1px solid var(--b3-border-color-trans);
+    // outline-offset: -1.5px;
+    font-size: 100%;
+    border-radius: 4px;
 
-    #{$selector} {
-        // 资源列超链接或资源链接
-        text-decoration: none;
-        background-color: transparent;
-        outline: 1px solid var(--b3-border-color-trans);
-        // outline-offset: -1.5px;
-        font-size: 100%;
-        border-radius: 4px;
+    &:hover {
+      outline-color: var(--b3-theme-primary-lighter);
+      color: var(--b3-theme-primary);
 
-        &:hover {
-            outline-color: var(--b3-theme-primary-lighter);
-            color: var(--b3-theme-primary);
-
-            &::before {
-                background-color: var(--b3-theme-primary);
-            }
-        }
-
-        &::before {
-            content: "";
-            width: 1em;
-            height: 1em;
-            display: inline-block;
-            background-color: var(--b3-theme-on-surface);
-            mask-image: url(icons/icon-assets.svg);
-            mask-size: 100% 100%;
-            vertical-align: -2px;
-            margin-right: 0.2em;
-        }
-
-        &[data-url^="http"]::before {
-            mask-image: url(icons/icon-outerLink.svg);
-        }
-
-        &[data-url^="siyuan"]::before {
-            mask-image: url(icons/icon-syLink.svg);
-        }
-
-        @content;
+      &::before {
+        background-color: var(--b3-theme-primary);
+      }
     }
+
+    &::before {
+      content: "";
+      width: 1em;
+      height: 1em;
+      display: inline-block;
+      background-color: var(--b3-theme-on-surface);
+      mask-image: url(icons/icon-assets.svg);
+      mask-size: 100% 100%;
+      vertical-align: -2px;
+      margin-right: 0.2em;
+    }
+
+    &[data-url^="http"]::before {
+      mask-image: url(icons/icon-outerLink.svg);
+    }
+
+    &[data-url^="siyuan"]::before {
+      mask-image: url(icons/icon-syLink.svg);
+    }
+
+    @content;
+  }
 }

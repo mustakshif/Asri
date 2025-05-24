@@ -29,9 +29,7 @@
 
     :is(.layout, .b3-typography) {
       --b3-theme-primary: var(--b3-theme-accent);
-      --b3-theme-primary-lighter: oklch(
-        from var(--b3-theme-primary) l c h / 0.38
-      );
+      --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
     }
   }
 
@@ -48,9 +46,7 @@
 
     :is(.layout, .b3-typography) {
       --b3-theme-primary: #50f555;
-      --b3-theme-primary-lighter: oklch(
-        from var(--b3-theme-primary) l c h / 0.38
-      );
+      --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
     }
 
     .code-block,

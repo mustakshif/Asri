@@ -1,69 +1,65 @@
-@use '../../base' as *;
-@use '../utils' as *;
+@use "../../base" as *;
+@use "../utils" as *;
 
 // 闪卡复习 ————————————————————————————————————
 .card__main {
-    .layout-tab-container & {
-        border-radius: 0;
+  .layout-tab-container & {
+    border-radius: 0;
+  }
+
+  .card__action {
+    > div {
+      body:not(.body-asri--mobile) & {
+        margin: 0 12px 8px;
+      }
+
+      // fix https://github.com/mustakshif/Asri/issues/61
     }
 
-    .card__action {
-        >div {
-            body:not(.body-asri--mobile) & {
-                margin: 0 12px 8px;
-            }
+    .b3-button {
+      font-weight: 600;
+      border-radius: $border-rd-card;
+      transition: 0.2s;
 
-            // fix https://github.com/mustakshif/Asri/issues/61
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.95);
+        opacity: 0.8;
+        box-shadow: none;
+      }
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      $button-colors: ((map-get($theme-light, card-error), map-get($theme-dark, card-error)), (map-get($theme-light, card-warning), map-get($theme-dark, card-warning)), (map-get($theme-light, card-info), map-get($theme-dark, card-info)), (map-get($theme-light, card-success), map-get($theme-dark, card-success)));
+
+      @for $i from 1 through 4 {
+        &[data-type="#{$i}"]:hover {
+          @include menu-shadow(nth($button-colors, $i)..., $opacity-dark: 0.2);
+        }
+      }
+
+      // 显示答案按钮、(p)按钮
+      &[data-type="-1"],
+      &[data-type="-2"] {
+        &:hover {
+          transform: none;
+          box-shadow: none;
         }
 
-        .b3-button {
-            font-weight: 600;
-            border-radius: $border-rd-card;
-            transition: 0.2s;
-
-            &:hover {
-                transform: scale(1.05);
-            }
-
-            &:active {
-                transform: scale(0.95);
-                opacity: 0.8;
-                box-shadow: none;
-            }
-
-            &:focus {
-                box-shadow: none;
-            }
-
-            $button-colors: (
-                (map-get($theme-light, card-error), map-get($theme-dark, card-error)),
-                (map-get($theme-light, card-warning), map-get($theme-dark, card-warning)),
-                (map-get($theme-light, card-info), map-get($theme-dark, card-info)),
-                (map-get($theme-light, card-success), map-get($theme-dark, card-success))
-            );
-
-        @for $i from 1 through 4 {
-            &[data-type="#{$i}"]:hover {
-                @include menu-shadow(nth($button-colors, $i)..., $opacity-dark: 0.2)
-            }
+        &:active {
+          transform: scale(0.9);
         }
+      }
 
-        // 显示答案按钮、(p)按钮 
-        &[data-type="-1"], &[data-type="-2"] {
-            &:hover {
-                transform: none;
-                box-shadow: none;
-            }
-
-            &:active {
-                transform: scale(0.9)
-            }
-        }
-
-        // 跳过按钮
-        &[data-type="-3"]:hover {
-            background-color: var(--b3-list-hover);
-        }
+      // 跳过按钮
+      &[data-type="-3"]:hover {
+        background-color: var(--b3-list-hover);
+      }
     }
-}
+  }
 }
