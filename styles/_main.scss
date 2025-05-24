@@ -1,17 +1,17 @@
-@use 'layout';
+@use "layout";
 
-@use 'protyle';
+@use "protyle";
 
-@use 'components';
+@use "components";
 
-@use 'features';
+@use "features";
 
-@use 'platforms';
+@use "platforms";
 
-@use 'plugins';
+@use "plugins";
 
-@use 'palettes';
+@use "palettes";
 
 .body-asri--linux {
-    @extend .body--win32;
+  @extend .body--win32;
 }

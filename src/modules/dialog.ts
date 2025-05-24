@@ -1,7 +1,7 @@
 export function docBodyMoCallback(mutationList: MutationRecord[], observer: MutationObserver) {
-    addExportImgClassName()
+  addExportImgClassName();
 }
 
 export function addExportImgClassName() {
-    document.body.classList.toggle('has-exportimg', !!document.querySelector('[data-key="dialog-exportimage"]'));
+  document.body.classList.toggle("has-exportimg", !!document.querySelector('[data-key="dialog-exportimage"]'));
 }

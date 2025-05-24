@@ -1,8 +1,9 @@
-@use 'custom-block';
-@use 'siyuan-plugin-enhance';
-@use 'webview';
+@use "custom-block";
+@use "siyuan-plugin-enhance";
+@use "webview";
 // @use 'bookmark-plus';
-@use 'fake-breadcrumb';
-@use 'database-properties';
-@use 'backlink-panel';
+@use "fake-breadcrumb";
+@use "database-properties";
+@use "backlink-panel";
+@use "media-player";
 // @use 'typewriter';  // Typewriter plugin uses :has() selector, which affects performance

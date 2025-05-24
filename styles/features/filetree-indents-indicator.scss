@@ -1,71 +1,75 @@
-@use '../base' as *;
+@use "../base" as *;
 
 // 文档树项目小圆点位置
 .layout-tab-container .b3-list-item .b3-list-item__toggle.fn__hidden {
-    position: relative;
+  position: relative;
 
-    &::before {
-        left: auto !important;
-        inset-inline-end: 7px;
-    }
+  &::before {
+    left: auto !important;
+    inset-inline-end: 7px;
+  }
 }
 
 // 大纲数字层级标识
-.sy__outline .b3-list-item[data-type=NodeHeading] .b3-list-item__text::before {
-    transform: translateX(negateForRTL(-18px));
-    left: auto;
+.sy__outline .b3-list-item[data-type="NodeHeading"] .b3-list-item__text::before {
+  transform: translateX(negateForRTL(-18px));
+  left: auto;
 }
 
 // 文档树缩进参考线 indent guides（方案一）
-.file-tree>.fn__flex-1 {
-    $uls: '>ul';
-    $indent: 18px;
-    // $indent-start: 22px;
-    --indent-offset: 0px; // fix .sy__tag indent offset
+.file-tree > .fn__flex-1 {
+  $uls: ">ul";
+  $indent: 18px;
+  // $indent-start: 22px;
+  --indent-offset: 0px; // fix .sy__tag indent offset
 
-    --indent-color-inactive: rgb(from var(--b3-theme-on-background) r g b / .15);
-    --indent-color-active: rgb(from var(--b3-theme-on-background) r g b / .3);
-    --indent-color: #0000;
+  --indent-color-inactive: rgb(from var(--b3-theme-on-background) r g b / 0.15);
+  --indent-color-active: rgb(from var(--b3-theme-on-background) r g b / 0.3);
+  --indent-color: #0000;
 
-    @for $i from 1 through 7 {
-        $uls: str-insert($string: $uls, $insert: '>ul', $index: 100);
+  @for $i from 1 through 7 {
+    $uls: str-insert(
+      $string: $uls,
+      $insert: ">ul",
+      $index: 100,
+    );
 
-        &#{$uls} {
-            margin-inline-start: $indent;
-            --indent-color: #0000;
-            box-shadow: negateForRTL(1px) 0 var(--indent-color) inset;
+    &#{$uls} {
+      margin-inline-start: $indent;
+      --indent-color: #0000;
+      box-shadow: negateForRTL(1px) 0 var(--indent-color) inset;
 
-            .b3-list-item {
-                margin-inline-start: calc($indent * $i * -1 + 6px + var(--indent-offset));
+      .b3-list-item {
+        margin-inline-start: calc($indent * $i * -1 + 6px + var(--indent-offset));
 
-                >.b3-list-item__toggle {
-                    padding-left: unset !important;
-                    padding-inline-start: calc($indent * $i + 4px) !important;
-                }
-            }
+        > .b3-list-item__toggle {
+          padding-left: unset !important;
+          padding-inline-start: calc($indent * $i + 4px) !important;
         }
+      }
     }
+  }
 
-    &>ul ul {
-        transition-duration: .2s;
-        transition-property: box-shadow, height;
-    }
+  & > ul ul {
+    transition-duration: 0.2s;
+    transition-property: box-shadow, height;
+  }
 
-    // 颜色控制
-    &:hover>ul ul,
-    li.b3-list-item--focus+ul,
-    ul.has-focus {
-        --indent-color: var(--indent-color-inactive);
-    }
+  // 颜色控制
+  &:hover > ul ul,
+  li.b3-list-item--focus + ul,
+  ul.has-focus {
+    --indent-color: var(--indent-color-inactive);
+  }
 
-    &:hover li.b3-list-item--focus+ul,
-    &:hover ul.has-focus {
-        --indent-color: var(--indent-color-active);
-    }
+  &:hover li.b3-list-item--focus + ul,
+  &:hover ul.has-focus {
+    --indent-color: var(--indent-color-active);
+  }
 
-    &>ul {
-        box-shadow: none !important;
-    }
+  & > ul {
+    box-shadow: none !important;
+  }
 }
 
 // .sy__outline>.fn__flex-1 {

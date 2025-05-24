@@ -1,116 +1,115 @@
-@use '../base' as *;
+@use "../base" as *;
 
 .dock {
-    box-sizing: border-box;
-    background-color: transparent;
+  box-sizing: border-box;
+  background-color: transparent;
 
-    &[style~="z-index"] {
-        z-index: auto !important;
+  &[style~="z-index"] {
+    z-index: auto !important;
+  }
+
+  .dock__items {
+    min-width: unset;
+  }
+
+  .dock__item {
+    // @include theme-variant-color(color, on-background, 0.6);
+    color: var(--b3-theme-on-surface);
+
+    &:not(.dock__item--activefocus, .dock--active):hover {
+      color: var(--b3-theme-on-background);
     }
 
-    .dock__items {
-        min-width: unset;
+    &:hover {
+      background-color: transparent;
     }
+
+    &--activefocus,
+    &--active {
+      color: var(--b3-theme-primary) !important;
+      background-color: transparent !important;
+    }
+  }
+
+  &#dockLeft {
+    --border-clr: var(--b3-border-color);
+    // box-shadow: 1px var(--toolbar-height) 0 var(--border-clr);
+    // border:none;
+    // padding-left: 1px;
+    border-right-width: 1px;
+    border-right-color: var(--border-clr);
+  }
+
+  &#dockRight {
+    --border-clr: var(--b3-border-color);
+    // box-shadow: -1px var(--toolbar-height) 0 var(--border-clr);
+    // border: none;
+    border-left-width: 1px;
+    border-left-color: var(--border-clr);
+
+    // .body-asri--mac &,
+    // .body-asri--browser & {
+    //     box-shadow: -1px 0 0 var(--border-clr);
+    // }
+  }
+
+  &#dockBottom {
+    padding: 0 0 0 34px;
+    border-top-width: 1px;
+    background-color: var(--b3-theme-background); // fix https://github.com/mustakshif/Asri/issues/37
+
+    // .fn__flex:first-child,
+    // .fn__flex:last-child {
+    //     .dock__item:not(:first-child){
+    //         margin-left: 0;
+    //     }
+    // }
 
     .dock__item {
-    // @include theme-variant-color(color, on-background, 0.6);
-        color: var(--b3-theme-on-surface);
-
-        &:not(.dock__item--activefocus, .dock--active):hover {
-            color: var(--b3-theme-on-background);
-        }
-
-        &:hover {
-            background-color: transparent;
-        }
-
-        &--activefocus,
-        &--active {
-            color: var(--b3-theme-primary) !important;
-            background-color: transparent !important;
-        }
+      margin: 7px 3.5px;
     }
 
-    &#dockLeft {
-        --border-clr: var(--b3-border-color);
-        // box-shadow: 1px var(--toolbar-height) 0 var(--border-clr);
-        // border:none;
-        // padding-left: 1px;
-        border-right-width: 1px;
-        border-right-color: var(--border-clr);
+    .dock__item--pin {
+      position: fixed;
+      left: 3.5px;
+      opacity: 1;
     }
 
+    &.has-layout-dockb-float {
+      .fn__flex:last-child .dock__item:last-child {
+        margin-right: 8px;
+      }
+    }
+
+    &:not(.has-layout-dockb-float) {
+      .fn__flex-1 {
+        flex: 0 0 15px;
+      }
+
+      .fn__flex:last-child:not(:empty) {
+        &::before {
+          content: "";
+          display: block;
+          background-color: var(--b3-border-color-trans);
+          height: 20px;
+          width: 2px;
+          margin-top: 10px;
+          transform: translateX(-7.5px);
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+
+  &.dock-layout-expanded {
+    // -> js
+    background-color: var(--b3-theme-surface);
+
+    &#dockLeft,
     &#dockRight {
-        --border-clr: var(--b3-border-color);
-        // box-shadow: -1px var(--toolbar-height) 0 var(--border-clr);
-        // border: none;
-        border-left-width: 1px;
-        border-left-color: var(--border-clr);
-
-        // .body-asri--mac &,
-        // .body-asri--browser & {
-        //     box-shadow: -1px 0 0 var(--border-clr);
-        // }
+      --border-clr: transparent;
     }
-
-    &#dockBottom {
-        padding: 0 0 0 34px;
-        border-top-width: 1px;
-        background-color: var(--b3-theme-background); // fix https://github.com/mustakshif/Asri/issues/37
-
-        // .fn__flex:first-child,
-        // .fn__flex:last-child {
-        //     .dock__item:not(:first-child){
-        //         margin-left: 0;
-        //     }
-        // }
-
-        .dock__item {
-            margin: 7px 3.5px;
-        }
-
-        .dock__item--pin {
-            position: fixed;
-            left: 3.5px;
-            opacity: 1;
-        }
-
-        &.has-layout-dockb-float {
-            .fn__flex:last-child .dock__item:last-child {
-                margin-right: 8px;
-            }
-        }
-
-        &:not(.has-layout-dockb-float) {
-            .fn__flex-1 {
-                flex: 0 0 15px;
-            }
-
-            .fn__flex:last-child:not(:empty) {
-
-                &::before {
-                    content: "";
-                    display: block;
-                    background-color: var(--b3-border-color-trans);
-                    height: 20px;
-                    width: 2px;
-                    margin-top: 10px;
-                    transform: translateX(-7.5px);
-                    border-radius: 2px;
-                }
-            }
-        }
-    }
-
-    &.dock-layout-expanded {
-        // -> js
-        background-color: var(--b3-theme-surface);
-
-        &#dockLeft,
-        &#dockRight {
-            --border-clr: transparent;
-        }
-    }
+  }
 }
 
 // 以下代码影响性能 ——————————————————————————————————

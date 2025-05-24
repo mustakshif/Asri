@@ -1,3 +1,23 @@
+### v3.4.1
+
+- [「顶栏融合+」渐进模糊遮罩现支持动态变化，提高顶栏可读性](https://github.com/mustakshif/Asri/issues/163)
+- 「顶栏融合+」菜单「实验性功能」图标添加文本提示
+- 适配思源 v3.1.29 样式改动
+- 调整表情符号面板符号间距
+- 修复表情符号颜色异常的问题
+- 修复Safari浏览器「空屿」配色背景色异常的问题
+
+<br />
+
+- [Added dynamic progressive blur mask of "Topbar Fusion+" to improve top bar readability](https://github.com/mustakshif/Asri/issues/163)
+- Added text tooltips to experimental feature icons in the "Topbar Fusion+" menu
+- Adapted styling changes for SiYuan v3.1.29
+- Adjusted symbol spacing in the emoji panel
+- Fixed abnormal color display of emojis
+- Fixed background color anomaly in Safari browser with the "Aerisland" color scheme
+
+---
+
 ### v3.4.0：视界无界｜Vision Unbound
 
 * 新增「顶栏融合+」，突破顶栏与编辑区界限，带来沉浸式的阅读与编辑体验。（*此为实验性功能，请参阅主题说明*）

@@ -13,6 +13,15 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.4.1
+
+- [「顶栏融合+」渐进模糊遮罩现支持动态变化，提高顶栏可读性](https://github.com/mustakshif/Asri/issues/163)
+- 「顶栏融合+」菜单「实验性功能」图标添加文本提示
+- 适配思源 v3.1.29 样式改动
+- 调整表情符号面板符号间距
+- 修复表情符号颜色异常的问题
+- 修复Safari浏览器「空屿」配色背景色异常的问题
+
 ### v3.4.0：视界无界
 
 ![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp.png)

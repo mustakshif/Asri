@@ -1,312 +1,307 @@
-@use '../base' as *;
+@use "../base" as *;
 
 @mixin floating-status {
-    --asri-status-transform-x: 0px;
-    --asri-status-transform-y: 0px;
-    --status-position-transform: translate(var(--asri-status-transform-x), var(--asri-status-transform-y));
-    background-color: var(--b3-theme-surface);
-    right: 8px !important; // 否则dock和面板隐藏时会被内联样式覆盖
-    bottom: -4px;
-    border-radius: 20px;
+  --asri-status-transform-x: 0px;
+  --asri-status-transform-y: 0px;
+  --status-position-transform: translate(var(--asri-status-transform-x), var(--asri-status-transform-y));
+  background-color: var(--b3-theme-surface);
+  right: 8px !important; // 否则dock和面板隐藏时会被内联样式覆盖
+  bottom: -4px;
+  border-radius: 20px;
+  height: 26px;
+  border: 0;
+  padding: 0 26px 0 0;
+  margin: 0 0 12px 0;
+  overflow: hidden;
+  z-index: 3; // 等于数据库 sticky header，不会其被覆盖
+  position: fixed;
+  transform: var(--status-position-transform);
+  box-shadow: 0 0 0 1px #0001 inset;
+
+  @include darkmode-counterpart {
+    box-shadow: 0 0 0 1px #fff2 inset;
+  }
+
+  .toolbar__item {
     height: 26px;
-    border: 0;
-    padding: 0 26px 0 0;
-    margin: 0 0 12px 0;
-    overflow: hidden;
-    z-index: 3; // 等于数据库 sticky header，不会其被覆盖
-    position: fixed;
-    transform: var(--status-position-transform);
-    box-shadow: 0 0 0 1px #0001 inset;
 
-    @include darkmode-counterpart {
-        box-shadow: 0 0 0 1px #fff2 inset;
+    span {
+      margin: 3px;
+      font-size: 12px;
     }
 
-    .toolbar__item {
-        height: 26px;
-
-        span {
-            margin: 3px;
-            font-size: 12px;
-        }
-
-        &:not(.toolbar__item--close) {
-            margin: 3px !important;
-            padding: 3px;
-            background-color: rgb(0, 0, 0, 0);
-        }
-
-        svg {
-            padding: 3px 4px;
-            color: var(--b3-dockright-color);
-            width: 12px;
-        }
+    &:not(.toolbar__item--close) {
+      margin: 3px !important;
+      padding: 3px;
+      background-color: rgb(0, 0, 0, 0);
     }
 
-    &>.fn__flex-1 {
-        position: relative !important;
-        width: 0px !important;
-        right: 0px;
-        flex: 0;
+    svg {
+      padding: 3px 4px;
+      color: var(--b3-dockright-color);
+      width: 12px;
+    }
+  }
+
+  & > .fn__flex-1 {
+    position: relative !important;
+    width: 0px !important;
+    right: 0px;
+    flex: 0;
+  }
+
+  #barDock {
+    position: absolute;
+    right: 0px;
+    z-index: 8;
+    color: var(--b3-theme-on-background);
+
+    &::before {
+      right: unset !important;
+      left: 0px;
+      transform: rotateY(180deg);
     }
 
-    #barDock {
-        position: absolute;
-        right: 0px;
-        z-index: 8;
+    &::after {
+      left: unset !important;
+      right: 100%;
+    }
+
+    svg {
+      color: var(--b3-theme-on-surface);
+
+      &:hover {
         color: var(--b3-theme-on-background);
+      }
+    }
+  }
 
-        &::before {
-            right: unset !important;
-            left: 0px;
-            transform: rotateY(180deg);
-        }
+  .status__msg:not(:empty) {
+    // animation: statusmsg 5s ease-in-out;
+    max-width: 140px;
+    padding: 0px 8px;
+    border-radius: 5px;
+    margin: 0px;
+    transition: max-width 300ms;
+    transition-delay: 2000ms;
+    position: relative;
+    height: 26px;
+    line-height: 26px;
 
-        &::after {
-            left: unset !important;
-            right: 100%;
-        }
-
-        svg {
-            color: var(--b3-theme-on-surface);
-
-            &:hover {
-                color: var(--b3-theme-on-background);
-            }
-        }
+    &::before {
+      content: "";
+      font-size: 12px;
+      padding-right: 6px;
     }
 
-    .status__msg:not(:empty) {
-        // animation: statusmsg 5s ease-in-out;
-        max-width: 140px;
-        padding: 0px 8px;
-        border-radius: 5px;
-        margin: 0px;
-        transition: max-width 300ms;
-        transition-delay: 2000ms;
-        position: relative;
-        height: 26px;
-        line-height: 26px;
+    &:hover {
+      max-width: 90vw;
+      transition: max-width 300ms 0.125s;
+    }
+  }
 
-        &::before {
-            content: "";
-            font-size: 12px;
-            padding-right: 6px;
-        }
+  .status__backgroundtask {
+    margin: 0px 0px 7px 0px;
+    padding: 0px 0px 0px 8px;
+    border-radius: 5px;
+    height: 26px;
+    line-height: 26px;
+  }
 
-        &:hover {
-            max-width: 90vw;
-            transition: max-width 300ms .125s;
-        }
+  .status__counter:not(:empty) {
+    border-radius: 5px;
+    padding: 0px 0px 0 8px;
+    margin: 0px 2px 0px 0px;
+    height: 26px;
+    line-height: 26px;
+  }
+
+  #statusHelp {
+    position: relative;
+
+    svg {
+      color: var(--b3-theme-on-surface);
+
+      &:hover {
+        color: var(--b3-theme-on-background);
+      }
+    }
+  }
+
+  // 非 protyle 自动隐藏
+  transform-origin: calc(100% + var(--asri-status-transform-x)) 100%;
+
+  &.asri--non-protyle-status:not(:hover) {
+    > div {
+      display: none;
     }
 
-    .status__backgroundtask {
-        margin: 0px 0px 7px 0px;
-        padding: 0px 0px 0px 8px;
-        border-radius: 5px;
-        height: 26px;
-        line-height: 26px;
+    height: 16px;
+    width: 32px;
+    animation: statusShrink 0.5s var(--asri-ease-spring-3);
+
+    --dots-clr: var(--b3-theme-on-surface);
+
+    &::before {
+      content: "";
+      width: 4px;
+      height: 4px;
+      background-color: var(--dots-clr);
+      box-shadow: 8px 0 0 0 var(--dots-clr), 16px 0 0 0 var(--dots-clr);
+      border-radius: 50%;
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-10px);
+      transform-origin: top center;
+      // transition: var(--icons2dots-dur) var(--icons2dots-timing-func) var(--icons2dots-delay);
+      animation: statusDotsFadeIn 0.4s var(--asri-ease-out-3), statusDotsTransform 0.5s var(--asri-ease-spring-3);
+      opacity: 0.5;
+    }
+  }
+
+  animation: statusExpand 0.4s var(--asri-ease-spring-2);
+
+  > div {
+    animation: statusItemFadeIn 0.3s var(--asri-ease-out-3), statusItemTransform 0.5s var(--asri-ease-spring-3);
+  }
+
+  @keyframes statusShrink {
+    0% {
+      transform: scaleX(2.5) scaleY(calc(26 / 16)) var(--status-position-transform);
     }
 
-    .status__counter:not(:empty) {
-        border-radius: 5px;
-        padding: 0px 0px 0 8px;
-        margin: 0px 2px 0px 0px;
-        height: 26px;
-        line-height: 26px;
+    100% {
+      transform: var(--status-position-transform);
+    }
+  }
+
+  @keyframes statusExpand {
+    0% {
+      transform: scaleX(0.4) scaleY(calc(16 / 26)) var(--status-position-transform);
     }
 
-    #statusHelp {
-        position: relative;
+    100% {
+      transform: var(--status-position-transform);
+    }
+  }
 
-        svg {
-            color: var(--b3-theme-on-surface);
-
-            &:hover {
-                color: var(--b3-theme-on-background);
-            }
-        }
+  @keyframes statusDotsFadeIn {
+    0% {
+      opacity: 0;
     }
 
-    // 非 protyle 自动隐藏
-    transform-origin: calc(100% + var(--asri-status-transform-x)) 100%;
+    100% {
+      opacity: 0.5;
+    }
+  }
 
-    &.asri--non-protyle-status:not(:hover) {
-
-        >div {
-            display: none;
-        }
-
-        height: 16px;
-        width: 32px;
-        animation: statusShrink .5s var(--asri-ease-spring-3);
-
-        --dots-clr: var(--b3-theme-on-surface);
-
-        &::before {
-            content: '';
-            width: 4px;
-            height: 4px;
-            background-color: var(--dots-clr);
-            box-shadow: 8px 0 0 0 var(--dots-clr), 16px 0 0 0 var(--dots-clr);
-            border-radius: 50%;
-            position: absolute;
-            top: 6px;
-            left: 50%;
-            transform: translateX(-10px);
-            transform-origin: top center;
-            // transition: var(--icons2dots-dur) var(--icons2dots-timing-func) var(--icons2dots-delay);
-            animation:
-                statusDotsFadeIn .4s var(--asri-ease-out-3),
-                statusDotsTransform .5s var(--asri-ease-spring-3);
-            opacity: .5;
-        }
+  @keyframes statusDotsTransform {
+    0% {
+      transform: translateX(-25px);
     }
 
-    animation: statusExpand .4s var(--asri-ease-spring-2);
+    100% {
+      transform: translateX(-10px);
+    }
+  }
 
-    >div {
-        animation:
-            statusItemFadeIn .3s var(--asri-ease-out-3),
-            statusItemTransform .5s var(--asri-ease-spring-3);
+  @keyframes statusItemFadeIn {
+    0% {
+      opacity: 0;
     }
 
-    @keyframes statusShrink {
-        0% {
-            transform: scaleX(2.5) scaleY(calc(26 / 16)) var(--status-position-transform);
-        }
+    100% {
+      opacity: 1;
+    }
+  }
 
-        100% {
-            transform: var(--status-position-transform);
-        }
+  @keyframes statusItemTransform {
+    0% {
+      transform: translateX(30px);
     }
 
-    @keyframes statusExpand {
-        0% {
-            transform: scaleX(.4) scaleY(calc(16 / 26)) var(--status-position-transform);
-        }
-
-        100% {
-            transform: var(--status-position-transform);
-        }
+    100% {
+      transform: translateX(0);
     }
-
-    @keyframes statusDotsFadeIn {
-        0% {
-            opacity: 0;
-        }
-
-        100% {
-            opacity: .5;
-        }
-    }
-
-    @keyframes statusDotsTransform {
-        0% {
-            transform: translateX(-25px);
-        }
-
-        100% {
-            transform: translateX(-10px);
-        }
-    }
-
-    @keyframes statusItemFadeIn {
-        0% {
-            opacity: 0;
-        }
-
-        100% {
-            opacity: 1;
-        }
-    }
-
-    @keyframes statusItemTransform {
-        0% {
-            transform: translateX(30px);
-        }
-
-        100% {
-            transform: translateX(0);
-        }
-    }
+  }
 }
 
 #status {
-    transition: transform .2s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color .2s;
-    position: fixed;
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.2s;
+  position: fixed;
 }
 
 // .has-dockb~.status {
 //     position: fixed;
 // }
 
-body:not(.body-asri--mobile) #dockBottom.fn__none:not(.has-layout-dockb-float)~#status,
+body:not(.body-asri--mobile) #dockBottom.fn__none:not(.has-layout-dockb-float) ~ #status,
 body.body--window #status {
-    @include floating-status();
+  @include floating-status();
 }
 
-#dockBottom:not(.fn__none)~#status,
-#dockBottom.fn__none.has-layout-dockb-float~#status {
-    background-color: transparent;
-    border-top-color: transparent;
-    padding: 0 32px 0 6px;
-    bottom: 5px;
-    right: 2px;
+#dockBottom:not(.fn__none) ~ #status,
+#dockBottom.fn__none.has-layout-dockb-float ~ #status {
+  background-color: transparent;
+  border-top-color: transparent;
+  padding: 0 32px 0 6px;
+  bottom: 5px;
+  right: 2px;
 
-    #barDock {
-        position: absolute;
-        right: 6px;
-        z-index: 8;
+  #barDock {
+    position: absolute;
+    right: 6px;
+    z-index: 8;
+    color: var(--b3-theme-on-background);
+    transition: none;
+
+    &::before {
+      right: unset !important;
+      left: 0px;
+      transform: rotateY(180deg);
+    }
+
+    &::after {
+      left: unset !important;
+      right: 100%;
+    }
+
+    svg {
+      color: var(--b3-theme-on-surface);
+
+      &:hover {
         color: var(--b3-theme-on-background);
-        transition: none;
-
-        &::before {
-            right: unset !important;
-            left: 0px;
-            transform: rotateY(180deg);
-        }
-
-        &::after {
-            left: unset !important;
-            right: 100%;
-        }
-
-        svg {
-            color: var(--b3-theme-on-surface);
-
-            &:hover {
-                color: var(--b3-theme-on-background);
-            }
-        }
+      }
     }
+  }
 
-    .status__counter,
-    .status__msg,
-    .status__backgroundtask {
-        align-self: center;
-    }
+  .status__counter,
+  .status__msg,
+  .status__backgroundtask {
+    align-self: center;
+  }
 }
 
-#dockBottom.has-layout-dockb-float~#status {
-    // background-color: var(--b3-theme-background);
-    position: static;
-    padding-right: 34px;
-    max-width: unset !important;
-    transform: none !important;
+#dockBottom.has-layout-dockb-float ~ #status {
+  // background-color: var(--b3-theme-background);
+  position: static;
+  padding-right: 34px;
+  max-width: unset !important;
+  transform: none !important;
 
-    #barDock {
-        right: 8px;
-        transition: none;
-    }
+  #barDock {
+    right: 8px;
+    transition: none;
+  }
 }
 
-#dockBottom.has-layout-dockb-float.fn__none~#status {
-    border-top-color: var(--b3-border-color);
-    border-top-width: 1px;
+#dockBottom.has-layout-dockb-float.fn__none ~ #status {
+  border-top-color: var(--b3-border-color);
+  border-top-width: 1px;
 }
 
 body.body--window #status,
 .body-asri--readOnly #status {
-    padding-right: 0 !important;
+  padding-right: 0 !important;
 }

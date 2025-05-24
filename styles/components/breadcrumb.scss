@@ -1,95 +1,95 @@
-@use '../base' as *;
-@use './utils' as *;
+@use "../base" as *;
+@use "./utils" as *;
 
 .protyle-breadcrumb {
-    // padding: 0 4px;
-    height: 42px;
-    color: var(--b3-theme-on-surface);
-    // background-color: transparent; //全屏视图下是透明的
+  // padding: 0 4px;
+  height: 42px;
+  color: var(--b3-theme-on-surface);
+  // background-color: transparent; //全屏视图下是透明的
 
-    // //面包屑居中
-    // &::before {
-    //     content: '';
-    //     // display: block;
-    //     // height: 100%;
-    //     flex-grow: 1;
+  // //面包屑居中
+  // &::before {
+  //     content: '';
+  //     // display: block;
+  //     // height: 100%;
+  //     flex-grow: 1;
+  // }
+
+  .block__icon:hover:not([disabled]):not(.ft__primary) {
+    background-color: transparent;
+  }
+
+  // alt+Y 全屏视图
+  .fullscreen > & {
+    height: var(--toolbar-height);
+    padding-right: 10px;
+
+    > .protyle-breadcrumb__space:hover {
+      background-color: transparent;
+    }
+  }
+
+  &__item {
+    // &:first-child {
+    //     padding: 0;
     // }
 
-    .block__icon:hover:not([disabled]):not(.ft__primary) {
-        background-color: transparent;
+    // &:last-child {
+    //     .protyle-breadcrumb__text {
+    //         max-width: 21rem;
+    //     }
+    // }
+
+    svg {
+      // outline: 2px solid var(--b3-theme-primary);
+      border-radius: 3px;
+      padding: 3px;
+      width: 12px;
+      height: 12px;
     }
 
-    // alt+Y 全屏视图
-    .fullscreen>& {
-        height: var(--toolbar-height);
-        padding-right: 10px;
-
-        >.protyle-breadcrumb__space:hover {
-            background-color: transparent;
-        }
+    &:not(&--active):hover {
+      svg {
+        color: var(--b3-theme-on-background);
+      }
     }
 
-    &__item {
-        // &:first-child {
-        //     padding: 0;
-        // }
+    &--active {
+      background-color: transparent;
 
-        // &:last-child {
-        //     .protyle-breadcrumb__text {
-        //         max-width: 21rem;
-        //     }
-        // }
+      &:hover {
+        background-color: var(--b3-list-hover);
+      }
 
+      &:not(:first-child) {
         svg {
-            // outline: 2px solid var(--b3-theme-primary);
-            border-radius: 3px;
-            padding: 3px;
-            width: 12px;
-            height: 12px;
+          background-color: var(--b3-theme-primary);
+          color: var(--b3-theme-on-primary);
         }
-
-        &:not(&--active):hover {
-            svg {
-                color: var(--b3-theme-on-background);
-            }
-        }
-
-        &--active {
-            background-color: transparent;
-
-            &:hover {
-                background-color: var(--b3-list-hover);
-            }
-
-            &:not(:first-child) {
-                svg {
-                    background-color: var(--b3-theme-primary);
-                    color: var(--b3-theme-on-primary);
-                }
-            }
-        }
+      }
     }
+  }
 
-    &__arrow {
-        color: transparent;
-        margin: 0 6px;
-        background-color: var(--b3-theme-on-surface);
-        width: 1.5px;
-        height: 1em;
-        border-radius: 2px;
-        transform: rotate(27deg);
-        opacity: .8;
-    }
+  &__arrow {
+    color: transparent;
+    margin: 0 6px;
+    background-color: var(--b3-theme-on-surface);
+    width: 1.5px;
+    height: 1em;
+    border-radius: 2px;
+    transform: rotate(27deg);
+    opacity: 0.8;
+  }
 
-    // 退出聚焦按钮
-    & &__icon {
-        @include button-primary;
-        padding: 0 8px;
-        margin-right: 4px;
-    }
+  // 退出聚焦按钮
+  & &__icon {
+    @include button-primary;
+    padding: 0 8px;
+    margin-right: 4px;
+  }
 
-    .card__main & {
-        min-height: 42px;
-        height: auto;
-    } // fix https://github.com/mustakshif/Asri/issues/53
+  .card__main & {
+    min-height: 42px;
+    height: auto;
+  } // fix https://github.com/mustakshif/Asri/issues/53
 }

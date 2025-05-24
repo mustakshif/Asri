@@ -1,5 +1,5 @@
-@use '../base' as *;
-@use '../components/utils' as *;
+@use "../base" as *;
+@use "../components/utils" as *;
 
 // --asri-sys-accent、 --asri-sys-accent-accessible 是用 JavaScript 获取的基础颜色
 // accent-accessible 跟 accent 相同，但仅当系统强调色（在 HSL 色彩空间中）的饱和度大于 0.3 时可用，否则使用备选颜色；
@@ -12,140 +12,139 @@
 
 $cvc: 10; // color variant count
 @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
-    :root {
-        --b3-protyle-inline-blockref-color: var(--b3-theme-accent);
+  :root {
+    --b3-protyle-inline-blockref-color: var(--b3-theme-accent);
 
+    &[data-theme-mode="light"] {
+      --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
+      --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) 0.67 0.18 h);
 
-        &[data-theme-mode='light'] {
-            --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
-            --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .67 .18 h);
+      --asri-fallback-accent: #3478f6; //oklch(0.6 0.2 261.37)
+      --asri-fallback-background: #fff;
+      --asri-fallback-surface: #f0f0f0;
+      --asri-fallback-on-background: #454545;
+      --asri-composite-background: oklch(from var(--asri-base-color) calc(1 - var(--asri-c-0, 0.015)) calc(0.005 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+      --asri-composite-surface: oklch(from var(--asri-base-color) calc(0.96 - var(--asri-c-0, 0.02)) calc(0.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+      --asri-composite-on-background: oklch(from var(--asri-base-color) 0.35 clamp(0, 0.03 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.06) h);
 
-            --asri-fallback-accent: #3478f6; //oklch(0.6 0.2 261.37)
-            --asri-fallback-background: #fff;
-            --asri-fallback-surface: #f0f0f0;
-            --asri-fallback-on-background: #454545;
-            --asri-composite-background: oklch(from var(--asri-base-color) calc(1 - var(--asri-c-0, .015)) calc(.005 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-            --asri-composite-surface: oklch(from var(--asri-base-color) calc(.96 - var(--asri-c-0, .02)) calc(.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-            --asri-composite-on-background: oklch(from var(--asri-base-color) .35 clamp(0, .03 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .06) h);
+      // UI colors
+      // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h); // complex calculation not supported yet
+      --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) 0.67 c h);
+      --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
+      --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
+      --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
+      --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) 0.67 c h));
+      --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) 0.62 c h / 0.8);
 
-            // UI colors
-            // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h); // complex calculation not supported yet
-            --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .67 c h);
-            --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
-            --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
-            --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
-            --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l .2 h)) .67 c h));
-            --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .62 c h / .8);
+      --b3-theme-background: var(--asri-composite-background, var(--asri-fallback-background));
+      --b3-theme-surface: var(--asri-composite-surface, var(--asri-fallback-surface));
+      --b3-theme-on-background: var(--asri-composite-on-background, var(--asri-fallback-on-background));
+      --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / 0.65);
 
-            --b3-theme-background: var(--asri-composite-background, var(--asri-fallback-background));
-            --b3-theme-surface: var(--asri-composite-surface, var(--asri-fallback-surface));
-            --b3-theme-on-background: var(--asri-composite-on-background, var(--asri-fallback-on-background));
-            --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
+      --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / 0.1);
+      --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / 0.5);
+      --b3-theme-surface-lighter: oklch(from var(--b3-theme-surface) 0.9 c h);
+      --b3-theme-on-surface-light: oklch(from var(--b3-theme-on-surface) 0.65 c h / 0.68);
 
-            --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / .1);
-            --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / .5);
-            --b3-theme-surface-lighter: oklch(from var(--b3-theme-surface) .9 c h);
-            --b3-theme-on-surface-light: oklch(from var(--b3-theme-on-surface) .65 c h / .68);
+      --b3-theme-on-primary: oklch(from var(--b3-theme-primary) 0.99 0.01 h);
 
-            --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
+      --b3-border-color: oklch(from var(--b3-theme-background) 0.92 clamp(0, 0.009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h);
+      --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / 0.15);
 
-            --b3-border-color: oklch(from var(--b3-theme-background) .92 clamp(0, .009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) h);
-            --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
+      --b3-menu-background: oklch(from var(--b3-theme-background) 0.95 c h);
 
-            --b3-menu-background: oklch(from var(--b3-theme-background) .95 c h);
+      --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / 0.08);
 
-            --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
+      // --b3-av-background-hl: oklch(from var(--b3-theme-primary) .95 .02 h);
+      --b3-av-background-hl: color-mix(in srgb, var(--b3-theme-primary) 20%, var(--b3-theme-background));
 
-            // --b3-av-background-hl: oklch(from var(--b3-theme-primary) .95 .02 h);
-            --b3-av-background-hl: color-mix(in srgb, var(--b3-theme-primary) 20%, var(--b3-theme-background));
+      --b3-av-hover: oklch(from var(--b3-theme-on-background) 0.93 0.02 h);
 
-            --b3-av-hover: oklch(from var(--b3-theme-on-background) .93 .02 h);
+      --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / 0.09);
+      --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / 0.18);
 
-            --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / .09);
-            --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / .18);
+      --b3-protyle-code-background: oklch(from var(--b3-theme-surface) 0.9 c h / 0.5);
 
-            --b3-protyle-code-background: oklch(from var(--b3-theme-surface) .9 c h / .5);
+      --b3-empty-color: oklch(from var(--b3-theme-on-background) l c h / 0.45);
 
-            --b3-empty-color: oklch(from var(--b3-theme-on-background) l c h / .45);
-
-            @for $i from 1 through $cvc {
-                --b3-font-color#{$i + 3}: oklch(0.6 0.17 calc(360 / #{$cvc} * #{ $i } + 30));
-                --b3-font-background#{$i + 3}: oklch(0.97 0.05 calc(360 / #{$cvc} * #{ $i } + 30));
-            }
-        }
-
-        &[data-theme-mode='dark'] {
-            --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
-            --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) .7 .17 h);
-
-            --asri-fallback-accent: #118bff; // oklch(0.64 0.2 253.9)
-            --asri-fallback-background: #1e1e1e;
-            --asri-fallback-surface: #383838;
-            --asri-fallback-on-background: #dcdcdc;
-            --asri-composite-background: oklch(from var(--asri-base-color) .2 calc(.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-            --asri-composite-surface: oklch(from var(--asri-base-color) .29 calc(.015 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-            --asri-composite-on-background: oklch(from var(--asri-base-color) .89 clamp(0, .01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) h);
-
-            --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .65 c h);
-            --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / .56);
-            --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / .38);
-            --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / .2);
-            --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) .65 c h));
-            --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) .6 c h / .7);
-
-            --b3-theme-background: var(--asri-composite-background, var(--asri-fallback-background));
-            --b3-theme-surface: var(--asri-composite-surface, var(--asri-fallback-surface));
-
-            --b3-theme-on-background: var(--asri-composite-on-background, var(--asri-fallback-on-background));
-            --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
-
-            --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / .1);
-            --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / .5);
-            --b3-theme-on-surface-light: oklch(from var(--b3-theme-on-surface) .6 c h / .68);
-
-            --b3-theme-on-primary: oklch(from var(--b3-theme-primary) .99 .01 h);
-
-            --b3-border-color: oklch(from var(--b3-theme-background) .34 clamp(0, .009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) h);
-            --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
-
-            --b3-menu-background: oklch(from var(--b3-theme-background) .25 c h);
-
-            --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
-
-            // --b3-av-background-hl: oklch(from var(--b3-theme-primary) .32 .03 h);
-            --b3-av-background-hl: color-mix(in srgb, var(--b3-theme-primary) 20%, var(--b3-theme-background));
-
-            --b3-av-hover: oklch(from var(--b3-theme-on-background) .35 .02 h); // database header hover
-
-            --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / .09);
-            --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / .18);
-
-            --b3-protyle-code-background: oklch(from var(--b3-theme-surface) .4 c h / .6);
-
-            --b3-empty-color: oklch(from var(--b3-theme-on-background) l c h / .45);
-
-            @for $i from 1 through $cvc {
-                --b3-font-color#{$i + 3}: oklch(0.83 0.17 calc(360 / #{$cvc} * #{ $i } + 30));
-                --b3-font-background#{$i + 3}: oklch(0.31 0.05 calc(360 / #{$cvc} * #{ $i } + 30));
-            }
-        }
+      @for $i from 1 through $cvc {
+        --b3-font-color#{$i + 3}: oklch(0.6 0.17 calc(360 / #{$cvc} * #{$i} + 30));
+        --b3-font-background#{$i + 3}: oklch(0.97 0.05 calc(360 / #{$cvc} * #{$i} + 30));
+      }
     }
 
-    // reverse on-primary colors when primary color is too bright
-    #barWorkspace,
-    #message,
-    .b3-button--outline:hover,
-    .b3-dialog__action .b3-button--text,
-    #transactionError+.b3-dialog__action button:last-child,
-    #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover,
-    .protyle-breadcrumb__icon:hover,
-    .protyle-breadcrumb__item,
-    .config-account__info .b3-button,
-    .b3-menu,
-    .b3-switch,
-    .b3-chip--primary,
-    .b3-chip--current {
-        /*
+    &[data-theme-mode="dark"] {
+      --asri-base-color: var(--asri-user-custom-accent, var(--asri-sys-accent));
+      --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) 0.7 0.17 h);
+
+      --asri-fallback-accent: #118bff; // oklch(0.64 0.2 253.9)
+      --asri-fallback-background: #1e1e1e;
+      --asri-fallback-surface: #383838;
+      --asri-fallback-on-background: #dcdcdc;
+      --asri-composite-background: oklch(from var(--asri-base-color) 0.2 calc(0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+      --asri-composite-surface: oklch(from var(--asri-base-color) 0.29 calc(0.015 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+      --asri-composite-on-background: oklch(from var(--asri-base-color) 0.89 clamp(0, 0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h);
+
+      --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) 0.65 c h);
+      --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
+      --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
+      --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
+      --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) 0.65 c h));
+      --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) 0.6 c h / 0.7);
+
+      --b3-theme-background: var(--asri-composite-background, var(--asri-fallback-background));
+      --b3-theme-surface: var(--asri-composite-surface, var(--asri-fallback-surface));
+
+      --b3-theme-on-background: var(--asri-composite-on-background, var(--asri-fallback-on-background));
+      --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / 0.65);
+
+      --b3-theme-background-light: oklch(from var(--b3-theme-background) l c h / 0.1);
+      --b3-theme-surface-light: oklch(from var(--b3-theme-surface) l c h / 0.5);
+      --b3-theme-on-surface-light: oklch(from var(--b3-theme-on-surface) 0.6 c h / 0.68);
+
+      --b3-theme-on-primary: oklch(from var(--b3-theme-primary) 0.99 0.01 h);
+
+      --b3-border-color: oklch(from var(--b3-theme-background) 0.34 clamp(0, 0.009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h);
+      --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / 0.15);
+
+      --b3-menu-background: oklch(from var(--b3-theme-background) 0.25 c h);
+
+      --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / 0.08);
+
+      // --b3-av-background-hl: oklch(from var(--b3-theme-primary) .32 .03 h);
+      --b3-av-background-hl: color-mix(in srgb, var(--b3-theme-primary) 20%, var(--b3-theme-background));
+
+      --b3-av-hover: oklch(from var(--b3-theme-on-background) 0.35 0.02 h); // database header hover
+
+      --b3-scroll-color: oklch(from var(--b3-theme-on-background) l c h / 0.09);
+      --b3-scroll-color-hover: oklch(from var(--b3-theme-on-background) l c h / 0.18);
+
+      --b3-protyle-code-background: oklch(from var(--b3-theme-surface) 0.4 c h / 0.6);
+
+      --b3-empty-color: oklch(from var(--b3-theme-on-background) l c h / 0.45);
+
+      @for $i from 1 through $cvc {
+        --b3-font-color#{$i + 3}: oklch(0.83 0.17 calc(360 / #{$cvc} * #{$i} + 30));
+        --b3-font-background#{$i + 3}: oklch(0.31 0.05 calc(360 / #{$cvc} * #{$i} + 30));
+      }
+    }
+  }
+
+  // reverse on-primary colors when primary color is too bright
+  #barWorkspace,
+  #message,
+  .b3-button--outline:hover,
+  .b3-dialog__action .b3-button--text,
+  #transactionError + .b3-dialog__action button:last-child,
+  #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover,
+  .protyle-breadcrumb__icon:hover,
+  .protyle-breadcrumb__item,
+  .config-account__info .b3-button,
+  .b3-menu,
+  .b3-switch,
+  .b3-chip--primary,
+  .b3-chip--current {
+    /*
         !!! chroma value calculation for on-primary: 
             if reversed, use primary color's original chroma; 
             else use 0 or 0.01.
@@ -153,290 +152,290 @@ $cvc: 10; // color variant count
             This is to fix the issue that the text color is too vivid when not reversed.
         */
 
-        --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) min(.87, l) c h);
-        --b3-theme-on-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) var(--asri-on-primary-reverse, .99) calc(c * var(--asri-on-primary-reverse, .01) / var(--asri-on-primary-reverse, 1)) h);
-        --b3-menu-item-background-hover: oklch(from var(--b3-theme-primary) l c h / .8);
-        --b3-menu-item-background-hover-text: var(--b3-theme-on-primary);
+    --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) min(0.87, l) c h);
+    --b3-theme-on-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) var(--asri-on-primary-reverse, 0.99) calc(c * var(--asri-on-primary-reverse, 0.01) / var(--asri-on-primary-reverse, 1)) h);
+    --b3-menu-item-background-hover: oklch(from var(--b3-theme-primary) l c h / 0.8);
+    --b3-menu-item-background-hover-text: var(--b3-theme-on-primary);
 
-        @include darkmode-counterpart {
-            --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) max(.45, l) c h);
-            --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-on-primary) l c h / .89);
-        }
+    @include darkmode-counterpart {
+      --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) max(0.45, l) c h);
+      --b3-menu-item-background-hover-text: oklch(from var(--b3-theme-on-primary) l c h / 0.89);
+    }
+  }
+
+  .b3-switch:checked {
+    background-color: oklch(from var(--b3-theme-primary) min(0.82, l) c h);
+    // background-image: linear-gradient(to bottom, oklch(from var(--b3-theme-primary) min(.82, l) c h) 20%, oklch(from var(--b3-theme-primary) calc(min(.82, l) + .1) c h) 100%);
+
+    @include darkmode-counterpart {
+      background-color: oklch(from var(--b3-theme-primary) min(0.65, l) c h);
+      // background-image: linear-gradient(to bottom, oklch(from var(--b3-theme-primary) min(.65, l) c h) 20%, oklch(from var(--b3-theme-primary) calc(min(.65, l) + .1) c h) 100%);
+    }
+  }
+
+  .b3-button--outline,
+  .protyle-breadcrumb__icon {
+    --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) max(min(0.72, l), 0.39) c h);
+
+    @include darkmode-counterpart {
+      --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) min(max(0.65, l), 0.89) c h);
+    }
+  }
+
+  // .b3-menu__item:hover > .b3-switch--menu {
+  //     outline-color: oklch(from var(--b3-theme-on-background) var(--asri-on-primary-reverse, 1) c h / .37);
+  // }
+
+  // asri config menu
+  #commonMenu[data-name="barmode"] {
+    right: 40px;
+    left: unset !important;
+
+    .body-asri--mac &,
+    .body-asri--browser & {
+      right: 8px;
     }
 
-    .b3-switch:checked {
-        background-color: oklch(from var(--b3-theme-primary) min(.82, l) c h);
-        // background-image: linear-gradient(to bottom, oklch(from var(--b3-theme-primary) min(.82, l) c h) 20%, oklch(from var(--b3-theme-primary) calc(min(.82, l) + .1) c h) 100%);
+    .b3-menu__separator {
+      cursor: default;
+    }
+  }
 
-        @include darkmode-counterpart {
-            background-color: oklch(from var(--b3-theme-primary) min(.65, l) c h);
-            // background-image: linear-gradient(to bottom, oklch(from var(--b3-theme-primary) min(.65, l) c h) 20%, oklch(from var(--b3-theme-primary) calc(min(.65, l) + .1) c h) 100%);
-        }
+  #followSysAccent {
+    &.b3-menu__item--selected {
+      svg {
+        background-color: var(--asri-sys-accent);
+        border-radius: 15px;
+      }
+
+      &.b3-menu__item--current svg {
+        outline: 1px solid oklch(from var(--b3-theme-on-primary) l c h / 0.5);
+      }
+    }
+  }
+
+  #pickColor {
+    &.b3-menu__item--selected {
+      svg {
+        background-color: var(--asri-user-custom-accent, var(--b3-theme-primary));
+        border-radius: 15px;
+      }
+
+      &.b3-menu__item--current svg {
+        outline: 1px solid oklch(from var(--b3-theme-on-primary) l c h / 0.5);
+      }
     }
 
-    .b3-button--outline,
-    .protyle-breadcrumb__icon {
-        --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) max(min(.72, l), .39) c h);
+    input {
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      padding: 0;
+      margin-left: -2px;
+    }
+  }
 
-        @include darkmode-counterpart {
-            --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) min(max(.65, l), .89) c h);
-        }
+  body:where(.body-asri--iosApp, .body-asri--safari) #pickColor {
+    svg {
+      display: none;
     }
 
-    // .b3-menu__item:hover > .b3-switch--menu {
-    //     outline-color: oklch(from var(--b3-theme-on-background) var(--asri-on-primary-reverse, 1) c h / .37);
-    // }
+    input {
+      visibility: visible;
+      width: 20px;
+      height: 20px;
+      margin-right: 2px;
+    }
+  }
 
-    // asri config menu
-    #commonMenu[data-name="barmode"] {
-        right: 40px;
-        left: unset !important;
-
-        .body-asri--mac &,
-        .body-asri--browser & {
-            right: 8px;
-        }
-
-        .b3-menu__separator {
-            cursor: default;
-        }
+  .asri-config {
+    &.b3-menu__item--disabled {
+      pointer-events: none;
     }
 
-    #followSysAccent {
-        &.b3-menu__item--selected {
-            svg {
-                background-color: var(--asri-sys-accent);
-                border-radius: 15px;
-            }
+    label {
+      cursor: inherit;
+    }
+  }
 
-            &.b3-menu__item--current svg {
-                outline: 1px solid oklch(from var(--b3-theme-on-primary) l c h / .5);
-            }
-        }
+  #asriChroma {
+    // cursor: default;
+
+    .b3-tooltips {
+      flex-grow: 1;
     }
 
-    #pickColor {
-        &.b3-menu__item--selected {
-            svg {
-                background-color: var(--asri-user-custom-accent, var(--b3-theme-primary));
-                border-radius: 15px;
-            }
+    svg:first-child {
+      margin-inline-end: 4px;
+      transform: scale(1.1);
+    }
+  }
 
-            &.b3-menu__item--current svg {
-                outline: 1px solid oklch(from var(--b3-theme-on-primary) l c h / .5);
-            }
-        }
+  #asriChromaSlider {
+    cursor: pointer;
+  }
 
-        input {
-            visibility: hidden;
-            width: 0;
-            height: 0;
-            padding: 0;
-            margin-left: -2px;
-        }
+  .menu-item__subtitle {
+    color: rgba(from var(--b3-theme-on-background) r g b / 0.5);
+    font-size: 0.85em;
+    font-weight: 600;
+    padding: 4px 8px;
+  }
+
+  /* Other elements */
+
+  // #toolbar #barWorkspace {
+  //     background-color: oklch(from var(--b3-theme-primary) .9 .08 calc(h));
+  // }
+
+  /* Protyle related elements */
+
+  // body:not(.has-exportimg) {
+
+  .protyle-toolbar__item--current,
+  .protyle-attr--refcount:hover,
+  .protyle-attr--av:hover,
+  .custom-attr .block__logo.custom-attr__avheader {
+    color: var(--b3-theme-accent);
+  }
+
+  .b3-list-item__text mark {
+    color: var(--b3-theme-accent) !important;
+  }
+
+  .protyle-wysiwyg [data-node-id] span[data-type~="search-mark"].search-mark--hl {
+    background-color: oklch(from var(--b3-theme-accent) l c h / 0.38) !important;
+
+    @include menu-shadow(var(--b3-theme-accent), $opacity-light: 0.15, $opacity-dark: 0.4);
+  }
+
+  .protyle-wysiwyg [data-node-id].table table thead tr th,
+  .b3-typography table thead tr th {
+    background-color: oklch(from var(--b3-theme-surface) 0.95 c h/0.8);
+    border-top: none;
+
+    @include darkmode-counterpart {
+      background-color: oklch(from var(--b3-theme-surface) 0.32 c h/0.7);
+    }
+  }
+
+  .protyle-wysiwyg [data-node-id].table table tbody tr:nth-child(2n) td,
+  .b3-typography table tbody tr:nth-child(2n) td {
+    background-color: oklch(from var(--b3-theme-surface) 0.95 c h/0.8);
+
+    @include darkmode-counterpart {
+      background-color: oklch(from var(--b3-theme-surface) 0.32 c h/0.7);
+    }
+  }
+  // }
+
+  // adapt elements that need to be accented
+  #toolbar .toolbar__item--active,
+  .block__icon--active,
+  .b3-menu__item--selected {
+    color: var(--b3-theme-accent);
+  }
+
+  .b3-menu__icon[style="color:var(--b3-theme-primary)"],
+  .dock .dock__item--activefocus,
+  .dock .dock__item--active {
+    color: var(--b3-theme-accent) !important;
+  }
+
+  .av__drag-fill {
+    border-color: rgb(from var(--b3-theme-accent) r g b / 0.5);
+  }
+
+  .config-account__cover[style="background-image: url()"] {
+    // background-color: oklch(from var(--b3-theme-primary) l c h / 0.3) !important;
+    background-color: unset !important;
+    background: radial-gradient(circle at bottom, oklch(from var(--b3-theme-primary) l calc(c * 1.05) h / 0.5) 30%, oklch(from var(--b3-theme-primary) l calc(c * 1.1) calc(h + 30) / 0.3) 85%) !important;
+  }
+
+  // other
+  .b3-list-item--focus {
+    // background-color: oklch(from var(--b3-theme-primary) l c h / .2);
+    background-color: oklch(from var(--b3-theme-primary) 0.5 calc(c * 0.9 * var(--asri-c-0, 1)) h / 0.1) !important;
+
+    @include darkmode-counterpart {
+      background-color: oklch(from var(--b3-theme-primary) 0.9 calc(c * 0.9 * var(--asri-c-0, 1)) h / 0.13) !important;
+    }
+  }
+
+  .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
+  .layout-tab-bar .item--focus {
+    background-color: oklch(from var(--b3-theme-primary) 0.5 clamp(0, calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), 0.25) h / 0.2);
+
+    @include darkmode-counterpart {
+      background-color: oklch(from var(--b3-theme-primary) 0.99 clamp(0, calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), 0.15) h / 0.2);
+    }
+  }
+
+  [data-type="wnd"]:not(.layout__wnd--active) .item--focus {
+    background-color: oklch(from var(--b3-theme-primary) 0.5 clamp(0, calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5), 0.25) h / 0.2);
+
+    @include darkmode-counterpart {
+      background-color: oklch(from var(--b3-theme-primary) 0.99 clamp(0, calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5), 0.15) h / 0.2);
+    }
+  }
+
+  .b3-dialog__scrim {
+    background-color: oklch(from var(--b3-theme-background) 0.6 c h / 0.5);
+
+    @include darkmode-counterpart {
+      background-color: oklch(from var(--b3-theme-background) 0.1 c h / 0.6);
+    }
+  }
+
+  .toolbarButton.toggled,
+  .secondaryToolbarButton.toggled {
+    color: var(--b3-theme-accent);
+  }
+
+  // database chips
+  .b3-chip,
+  [data-name="av-col-option"] .color__square {
+    $cvc: 11;
+    $hso: 36; // hue shift offset
+
+    @for $i from 1 through $cvc {
+      --b3-font-color#{$i + 3}: oklch(0.6 0.15 calc(360 / #{$cvc} * #{$i} + #{$hso}));
+      --b3-font-background#{$i + 3}: oklch(0.97 0.04 calc(360 / #{$cvc} * #{$i} + #{$hso}));
     }
 
-    body:where(.body-asri--iosApp, .body-asri--safari) #pickColor {
-        svg {
-            display: none;
-        }
-
-        input {
-            visibility: visible;
-            width: 20px;
-            height: 20px;
-            margin-right: 2px;
-        }
+    @include darkmode-counterpart {
+      @for $i from 1 through $cvc {
+        --b3-font-color#{$i + 3}: oklch(0.83 0.15 calc(360 / #{$cvc} * #{$i} + #{$hso}));
+        --b3-font-background#{$i + 3}: oklch(0.31 0.04 calc(360 / #{$cvc} * #{$i} + #{$hso}));
+      }
     }
+  }
 
-    .asri-config {
-        &.b3-menu__item--disabled {
-            pointer-events: none;
-        }
+  // @for $i from 1 through $cvc {
+  //     .b3-chip[style="background-color:var(--b3-font-background#{$i + 3});color:var(--b3-font-color#{$i + 3})"] {
+  //         color: oklch(.6 .2 calc(360 / $cvc * #{ $i } + 30)) !important;
+  //         background-color: oklch(from var(--b3-font-background#{$i + 3}) 0.96 c h / .8) !important;
 
-        label {
-            cursor: inherit;
-        }
+  //         @include darkmode-counterpart {
+  //             color: oklch(0.85 0.12 calc(360 / $cvc * #{ $i } + 30)) !important;
+  //             background-color: oklch(from var(--b3-font-background#{$i + 3}) .3 c h) !important;
+  //         }
+  //     }
+  // }
+
+  @for $i from 1 through 3 {
+    .b3-chip[style="background-color:var(--b3-font-background#{$i});color:var(--b3-font-color#{$i})"] {
+      color: oklch(from var(--b3-font-color#{$i}) 0.6 c h) !important;
+      background-color: oklch(from var(--b3-font-background#{$i}) 0.96 c h) !important;
+
+      @include darkmode-counterpart {
+        color: oklch(from var(--b3-font-color#{$i}) 0.85 c h) !important;
+        background-color: oklch(from var(--b3-font-background#{$i}) 0.3 c h) !important;
+      }
     }
+  }
 
-    #asriChroma {
-        // cursor: default;
-
-        .b3-tooltips {
-            flex-grow: 1;
-        }
-
-        svg:first-child {
-            margin-inline-end: 4px;
-            transform: scale(1.1);
-        }
-    }
-
-    #asriChromaSlider {
-        cursor: pointer;
-    }
-
-    .menu-item__subtitle {
-        color: rgba(from var(--b3-theme-on-background) r g b / .5);
-        font-size: .85em;
-        font-weight: 600;
-        padding: 4px 8px;
-    }
-
-    /* Other elements */
-
-    // #toolbar #barWorkspace {
-    //     background-color: oklch(from var(--b3-theme-primary) .9 .08 calc(h));
-    // }
-
-    /* Protyle related elements */
-
-    // body:not(.has-exportimg) {
-
-        .protyle-toolbar__item--current,
-        .protyle-attr--refcount:hover,
-        .protyle-attr--av:hover,
-        .custom-attr .block__logo.custom-attr__avheader {
-            color: var(--b3-theme-accent);
-        }
-
-        .b3-list-item__text mark {
-            color: var(--b3-theme-accent) !important;
-        }
-
-        .protyle-wysiwyg [data-node-id] span[data-type~=search-mark].search-mark--hl {
-            background-color: oklch(from var(--b3-theme-accent) l c h / .38) !important;
-
-            @include menu-shadow(var(--b3-theme-accent), $opacity-light: 0.15, $opacity-dark: 0.4);
-        }
-
-        .protyle-wysiwyg [data-node-id].table table thead tr th,
-        .b3-typography table thead tr th {
-            background-color: oklch(from var(--b3-theme-surface) 0.95 c h/0.8);
-            border-top: none;
-
-            @include darkmode-counterpart {
-                background-color: oklch(from var(--b3-theme-surface) 0.32 c h/0.7);
-            }
-        }
-
-        .protyle-wysiwyg [data-node-id].table table tbody tr:nth-child(2n) td,
-        .b3-typography table tbody tr:nth-child(2n) td {
-            background-color: oklch(from var(--b3-theme-surface) 0.95 c h/0.8);
-
-            @include darkmode-counterpart {
-                background-color: oklch(from var(--b3-theme-surface) 0.32 c h/0.7);
-            }
-        }
-    // }
-
-    // adapt elements that need to be accented    
-    #toolbar .toolbar__item--active,
-    .block__icon--active,
-    .b3-menu__item--selected {
-        color: var(--b3-theme-accent);
-    }
-
-    .b3-menu__icon[style="color:var(--b3-theme-primary)"],
-    .dock .dock__item--activefocus,
-    .dock .dock__item--active {
-        color: var(--b3-theme-accent) !important;
-    }
-
-    .av__drag-fill {
-        border-color: rgb(from var(--b3-theme-accent) r g b / 0.5);
-    }
-
-    .config-account__cover[style="background-image: url()"] {
-        // background-color: oklch(from var(--b3-theme-primary) l c h / 0.3) !important;
-        background-color: unset !important;
-        background: radial-gradient(circle at bottom, oklch(from var(--b3-theme-primary) l calc(c * 1.05) h / .5) 30%, oklch(from var(--b3-theme-primary) l calc(c * 1.1) calc(h + 30) / .3) 85%) !important;
-    }
-
-    // other 
-    .b3-list-item--focus {
-        // background-color: oklch(from var(--b3-theme-primary) l c h / .2);
-        background-color: oklch(from var(--b3-theme-primary) .5 calc(c * .9 * var(--asri-c-0, 1)) h / .1) !important;
-
-        @include darkmode-counterpart {
-            background-color: oklch(from var(--b3-theme-primary) .9 calc(c * .9 * var(--asri-c-0, 1)) h / .13) !important;
-        }
-    }
-
-    .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
-    .layout-tab-bar .item--focus {
-        background-color: oklch(from var(--b3-theme-primary) .5 clamp(0, calc(.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .25) h / .2);
-
-        @include darkmode-counterpart {
-            background-color: oklch(from var(--b3-theme-primary) .99 clamp(0, calc(.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), .15) h / .2);
-        }
-    }
-
-    [data-type="wnd"]:not(.layout__wnd--active) .item--focus {
-        background-color: oklch(from var(--b3-theme-primary) .5 clamp(0, calc(.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * .5), .25) h / .2);
-
-        @include darkmode-counterpart {
-            background-color: oklch(from var(--b3-theme-primary) .99 clamp(0, calc(.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * .5), .15) h / .2);
-        }
-    }
-
-    .b3-dialog__scrim {
-        background-color: oklch(from var(--b3-theme-background) .6 c h / .5);
-
-        @include darkmode-counterpart {
-            background-color: oklch(from var(--b3-theme-background) .1 c h / .6);
-        }
-    }
-
-    .toolbarButton.toggled,
-    .secondaryToolbarButton.toggled {
-        color: var(--b3-theme-accent);
-    }
-
-    // database chips
-    .b3-chip,
-    [data-name="av-col-option"] .color__square {
-        $cvc: 11;
-        $hso: 36; // hue shift offset
-
-        @for $i from 1 through $cvc {
-            --b3-font-color#{$i + 3}: oklch(0.6 0.15 calc(360 / #{$cvc} * #{ $i } + #{$hso}));
-            --b3-font-background#{$i + 3}: oklch(0.97 0.04 calc(360 / #{$cvc} * #{ $i } +  #{$hso}));
-        }
-
-        @include darkmode-counterpart {
-            @for $i from 1 through $cvc {
-                --b3-font-color#{$i + 3}: oklch(0.83 0.15 calc(360 / #{$cvc} * #{ $i } +  #{$hso}));
-                --b3-font-background#{$i + 3}: oklch(0.31 0.04 calc(360 / #{$cvc} * #{ $i } +  #{$hso}));
-            }
-        }
-    }
-
-    // @for $i from 1 through $cvc {
-    //     .b3-chip[style="background-color:var(--b3-font-background#{$i + 3});color:var(--b3-font-color#{$i + 3})"] {
-    //         color: oklch(.6 .2 calc(360 / $cvc * #{ $i } + 30)) !important;
-    //         background-color: oklch(from var(--b3-font-background#{$i + 3}) 0.96 c h / .8) !important;
-
-    //         @include darkmode-counterpart {
-    //             color: oklch(0.85 0.12 calc(360 / $cvc * #{ $i } + 30)) !important;
-    //             background-color: oklch(from var(--b3-font-background#{$i + 3}) .3 c h) !important;
-    //         }
-    //     }
-    // }
-
-    @for $i from 1 through 3 {
-        .b3-chip[style="background-color:var(--b3-font-background#{$i});color:var(--b3-font-color#{$i})"] {
-            color: oklch(from var(--b3-font-color#{$i}) 0.6 c h) !important;
-            background-color: oklch(from var(--b3-font-background#{$i}) 0.96 c h) !important;
-
-            @include darkmode-counterpart {
-                color: oklch(from var(--b3-font-color#{$i}) 0.85 c h) !important;
-                background-color: oklch(from var(--b3-font-background#{$i}) .3 c h) !important
-            }
-        }
-    }
-
-    .b3-switch {
-        background-color: oklch(from var(--b3-theme-on-background) .6 clamp(0, .01 * var(--asri-c-factor, 1), .03) h / .4);
-    }
+  .b3-switch {
+    background-color: oklch(from var(--b3-theme-on-background) 0.6 clamp(0, 0.01 * var(--asri-c-factor, 1), 0.03) h / 0.4);
+  }
 }

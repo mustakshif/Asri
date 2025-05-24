@@ -1,5 +1,5 @@
-@use '../base' as *;
-@use './utils' as *;
+@use "../base" as *;
+@use "./utils" as *;
 
 $fadeout-size-s: 18px;
 $fadeout-size-m: 32px;
@@ -10,17 +10,17 @@ $fadeout-size-xl: 50px;
 //     @include overflow-indicator-fadein-mask($fadeout-size-s, $range: 'left right');
 // }
 
-.file-tree:not(.sy__backlink) .block__icons~.fn__flex-1,
-.sy__file>.b3-list>.fn__flex-1 {
-    @include overflow-indicator-fadein-mask($fadeout-size-m, 'top');
+.file-tree:not(.sy__backlink) .block__icons ~ .fn__flex-1,
+.sy__file > .b3-list > .fn__flex-1 {
+  @include overflow-indicator-fadein-mask($fadeout-size-m, "top");
 }
 
-.file-tree.sy__file .block__icons~.fn__flex-1 {
-    @include overflow-indicator-fadein-mask($fadeout-size-m, 'top bottom');
+.file-tree.sy__file .block__icons ~ .fn__flex-1 {
+  @include overflow-indicator-fadein-mask($fadeout-size-m, "top bottom");
 }
 
-.layout__dockb.layout--float .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
-    @include overflow-indicator-fadein-mask($fadeout-size-s, 'top bottom');
+.layout__dockb.layout--float .file-tree:not(.sy__backlink) .block__icons ~ .fn__flex-1 {
+  @include overflow-indicator-fadein-mask($fadeout-size-s, "top bottom");
 }
 
 // .file-tree.sy__backlink .backlinkList {
@@ -28,55 +28,55 @@ $fadeout-size-xl: 50px;
 // } //文字编辑工具条会被裁切
 
 .layout__dockb {
-    .file-tree:not(.sy__backlink) .block__icons~.fn__flex-1 {
-        @include overflow-indicator-fadein-mask($fadeout-size-s, 'top');
-    }
+  .file-tree:not(.sy__backlink) .block__icons ~ .fn__flex-1 {
+    @include overflow-indicator-fadein-mask($fadeout-size-s, "top");
+  }
 }
 
 [data-name="bazaar"] .config-bazaar__panel {
-    @include overflow-indicator-fadein-bgClr($fadeout-size-l, $range: 'top');
+  @include overflow-indicator-fadein-bgClr($fadeout-size-l, $range: "top");
 
-    &::before {
-        top: 44px;
-        z-index: 2;
-    }
+  &::before {
+    top: 44px;
+    z-index: 2;
+  }
 }
 
-[data-name="AI"] .layout-tab-bar+.fn__flex-1,
+[data-name="AI"] .layout-tab-bar + .fn__flex-1,
 .history__repo[data-type="repo"] .b3-list--background {
-    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');
+  @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: "top");
 }
 
 // pdf 侧边导航
 #thumbnailView,
 #outlineView {
-    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');
+  @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: "top");
 
-    &::before {
-        top: -10px;
-    }
+  &::before {
+    top: -10px;
+  }
 }
 
 // 部分插件配置窗口，移动文档窗口
-.b3-dialog__header:not(.fn__none)+.b3-dialog__body :where(.config__tab-container, .layout-tab-bar+.fn__flex-1){
-    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');
+.b3-dialog__header:not(.fn__none) + .b3-dialog__body :where(.config__tab-container, .layout-tab-bar + .fn__flex-1) {
+  @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: "top");
 }
 
 #foldTree {
-    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top bottom');
+  @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: "top bottom");
 }
 
 // body:not(.has-exportimg) // https://github.com/mustakshif/Asri/issues/106
-.b3-dialog__header:not(.fn__none)+.b3-dialog__body .b3-dialog__content {
-    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top bottom');
-    
-    &::before {
-        top: -12px;
-    }
-    
-    &::after {
-        bottom: -12px;
-    }
+.b3-dialog__header:not(.fn__none) + .b3-dialog__body .b3-dialog__content {
+  @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: "top bottom");
+
+  &::before {
+    top: -12px;
+  }
+
+  &::after {
+    bottom: -12px;
+  }
 }
 
 // 可能导致打开代码片段时渲染进程崩溃
@@ -86,24 +86,24 @@ $fadeout-size-xl: 50px;
 //     &::before {
 //         top: -16px;
 //     }
-    
+
 //     &::after {
 //         bottom: -16px;
 //     }
 // }
 
-[data-key="dialog-attr"] .b3-dialog__body .layout-tab-bar+.fn__flex-1 {
-    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: 'top');
+[data-key="dialog-attr"] .b3-dialog__body .layout-tab-bar + .fn__flex-1 {
+  @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: "top");
 }
 
-[data-key="dialog-backgroundrandom"] .b3-dialog__body>.b3-cards {
-    @include overflow-indicator-fadein-bgClr($fadeout-size-xl, $range: 'top');
+[data-key="dialog-backgroundrandom"] .b3-dialog__body > .b3-cards {
+  @include overflow-indicator-fadein-bgClr($fadeout-size-xl, $range: "top");
 
-    padding-top: 0;
+  padding-top: 0;
 
-    &::before {
-        grid-column: 1/-1;
-    }
+  &::before {
+    grid-column: 1/-1;
+  }
 }
 
 // #message>.fn__flex-1 {
@@ -111,18 +111,18 @@ $fadeout-size-xl: 50px;
 // }
 
 .b3-dialog .emojis__panel {
-    // @include overflow-indicator-line;
-    @include overflow-indicator-fadein-mask($fadeout-size-l, $range: 'top');
+  // @include overflow-indicator-line;
+  @include overflow-indicator-fadein-mask($fadeout-size-l, $range: "top");
 
-    &::before {
-        width: calc(100% + 16px);
-        margin-left: -8px;
-        margin-right: -8px;
-    }
+  &::before {
+    width: calc(100% + 16px);
+    margin-left: -8px;
+    margin-right: -8px;
+  }
 }
 
 body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
-    @include overflow-indicator-fadein-mask($fadeout-size-s, $range: 'left right');
+  @include overflow-indicator-fadein-mask($fadeout-size-s, $range: "left right");
 }
 
 // body:not(.asri-tfp) {
@@ -138,28 +138,28 @@ body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
 [data-key="dialog-exportimage"] .b3-dialog__content::before,
 [data-key="dialog-replacetype"] .b3-dialog__content::before,
 [data-key="dialog-searchtype"] .b3-dialog__content::before {
-    display: none !important; // fix https://github.com/mustakshif/Asri/issues/80
+  display: none !important; // fix https://github.com/mustakshif/Asri/issues/80
 }
 
 [data-key="dialog-searchtype"] .b3-dialog__content::after {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 [data-key="dialog-searchtype"] .b3-dialog__content,
 [data-key="dialog-replacetype"] .b3-dialog__content {
-    @include overflow-indicator-fadein-mask($fadeout-size-m, $range: 'top');
+  @include overflow-indicator-fadein-mask($fadeout-size-m, $range: "top");
 }
 
 @keyframes maskAppear-bgClr {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    1% {
-        opacity: 1;
-    }
+  1% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }

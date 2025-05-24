@@ -1,153 +1,152 @@
-@use '../base' as *;
-@use '../components/utils' as *;
+@use "../base" as *;
+@use "../components/utils" as *;
 
 // 侧栏面板总体样式
 .file-tree {
-    .block__icons {
-        .block__logo {
-            .block__logoicon {
-                visibility: hidden;
-                width: 0px;
-                padding: 0;
-            }
+  .block__icons {
+    .block__logo {
+      .block__logoicon {
+        visibility: hidden;
+        width: 0px;
+        padding: 0;
+      }
 
-            &.fn__pointer {
-                .block__logoicon {
-                    visibility: visible;
-                    width: 16px;
-                    padding: 4px;
-                }
-            }
-
-            // fix https://github.com/mustakshif/Asri/issues/31
-
-            font-weight: 600;
-            color: rgb(from var(--b3-theme-on-surface) r g b / .5);
+      &.fn__pointer {
+        .block__logoicon {
+          visibility: visible;
+          width: 16px;
+          padding: 4px;
         }
+      }
 
-        .block__icon {
-            &:hover {
-                background-color: transparent;
-            }
-        }
+      // fix https://github.com/mustakshif/Asri/issues/31
 
-        .fn__space {
-            width: 4px;
-        }
-
-        // &,
-        // &~* {
-        //     @content;
-        //     // 指定背景颜色
-        // }
-
-        &~.fn__flex-1 {
-            margin-bottom: 0 !important;
-
-            // &:not(.graph__svg, .backlinkList, .backlinkMList) {
-            //     padding: 0 2px !important; // 覆盖内联样式
-            // }
-        }
+      font-weight: 600;
+      color: rgb(from var(--b3-theme-on-surface) r g b / 0.5);
     }
 
-    .b3-list-item {
-        margin-top: 4px;
-        margin-bottom: 4px;
-        margin-inline-start: 6px;
-        margin-inline-end: 6px;
-
-        .b3-list-item__graphic,
-        .b3-list-item__text {
-            color: var(--b3-theme-on-surface);
-        }
-
-        .b3-list-item__toggle {
-            color: rgb(from var(--b3-theme-on-surface) r g b / .6);
-
-            // transform: translateX(1px);
-
-            // 小圆点
-            &.fn__hidden::before {
-                visibility: visible;
-                content: '';
-                // margin: 0 -11px 0 8px;
-                position: absolute;
-                left: 12px;
-                clip-path: circle(45% at center);
-                width: 3px;
-                height: 3px;
-                background-color: rgb(from var(--b3-theme-on-surface) r g b / .6);
-            }
-
-            &--hl:hover {
-                color: var(--b3-theme-on-background) !important;
-                background-color: transparent;
-            }
-        }
-
-        &.dragover::after{
-            border-radius: var(--b3-border-radius);
-        }
-
-        &:hover {
-            // background-color: transparent;
-
-            .b3-list-item__text {
-                color: var(--b3-theme-on-background);
-            }
-        }
-
-        &--focus {
-            background-color: var(--b3-list-hover);
-
-            .b3-list-item__text {
-                color: var(--b3-theme-on-background);
-                font-weight: 600;
-            }
-
-            &:hover {
-                background-color: var(--b3-list-hover);
-            }
-        }
-
-        // .b3-list-item__icon {
-        //     font-size: 15px;
-        // }
-
-        .b3-list-item__action {
-            color: var(--b3-theme-on-surface);
-
-            &:hover {
-                color: var(--b3-theme-on-background);
-                background-color: transparent;
-            }
-        }
+    .block__icon {
+      &:hover {
+        background-color: transparent;
+      }
     }
+
+    .fn__space {
+      width: 4px;
+    }
+
+    // &,
+    // &~* {
+    //     @content;
+    //     // 指定背景颜色
+    // }
+
+    & ~ .fn__flex-1 {
+      margin-bottom: 0 !important;
+
+      // &:not(.graph__svg, .backlinkList, .backlinkMList) {
+      //     padding: 0 2px !important; // 覆盖内联样式
+      // }
+    }
+  }
+
+  .b3-list-item {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-inline-start: 6px;
+    margin-inline-end: 6px;
+
+    .b3-list-item__graphic,
+    .b3-list-item__text {
+      color: var(--b3-theme-on-surface);
+    }
+
+    .b3-list-item__toggle {
+      color: rgb(from var(--b3-theme-on-surface) r g b / 0.6);
+
+      // transform: translateX(1px);
+
+      // 小圆点
+      &.fn__hidden::before {
+        visibility: visible;
+        content: "";
+        // margin: 0 -11px 0 8px;
+        position: absolute;
+        left: 12px;
+        clip-path: circle(45% at center);
+        width: 3px;
+        height: 3px;
+        background-color: rgb(from var(--b3-theme-on-surface) r g b / 0.6);
+      }
+
+      &--hl:hover {
+        color: var(--b3-theme-on-background) !important;
+        background-color: transparent;
+      }
+    }
+
+    &.dragover::after {
+      border-radius: var(--b3-border-radius);
+    }
+
+    &:hover {
+      // background-color: transparent;
+
+      .b3-list-item__text {
+        color: var(--b3-theme-on-background);
+      }
+    }
+
+    &--focus {
+      background-color: var(--b3-list-hover);
+
+      .b3-list-item__text {
+        color: var(--b3-theme-on-background);
+        font-weight: 600;
+      }
+
+      &:hover {
+        background-color: var(--b3-list-hover);
+      }
+    }
+
+    // .b3-list-item__icon {
+    //     font-size: 15px;
+    // }
+
+    .b3-list-item__action {
+      color: var(--b3-theme-on-surface);
+
+      &:hover {
+        color: var(--b3-theme-on-background);
+        background-color: transparent;
+      }
+    }
+  }
 }
 
 .layout__dockl,
 .layout__dockr {
+  .layout-tab-container {
+    // background-color: transparent;
+    background-color: var(--b3-theme-surface);
+  }
 
+  // 浮动布局
+  &.layout--float {
     .layout-tab-container {
-        // background-color: transparent;
-        background-color: var(--b3-theme-surface);
+      background-color: var(--b3-theme-background);
     }
 
-    // 浮动布局
-    &.layout--float {
-        .layout-tab-container {
-            background-color: var(--b3-theme-background);
-        }
-
-        box-shadow: none;
-        height: calc(100% - var(--toolbar-height));
-        bottom: 0;
-        top: unset;
-        border-radius: 0;
-        border-top: none;
-        border-bottom: none;
-        opacity: 1 !important;
-    }
+    box-shadow: none;
+    height: calc(100% - var(--toolbar-height));
+    bottom: 0;
+    top: unset;
+    border-radius: 0;
+    border-top: none;
+    border-bottom: none;
+    opacity: 1 !important;
+  }
 }
 
 // .fn__flex-1.has-dockb {
@@ -165,39 +164,39 @@
 // }
 
 .layout__dockb {
+  .layout-tab-container {
+    // background-color: transparent;
+    background-color: var(--b3-theme-surface);
+  }
+
+  &.layout--float {
+    box-shadow: none;
+    opacity: 1 !important;
+
+    .fn__flex-1:not(has-dockb).has-layout-dockb-float &:not([style*="transform"]) {
+      bottom: calc(var(--status-height, 32px) - 1px) !important;
+    }
+
+    .fn__flex-1.has-dockb.has-layout-dockb-float &:not([style*="transform"]) {
+      bottom: calc(42px + var(--status-height, 32px) - 1px) !important;
+    }
+
+    &[style*="bottom: 26px"] {
+      bottom: 0 !important;
+
+      .layout-tab-container {
+        padding-bottom: 32px;
+      }
+    }
+
     .layout-tab-container {
-        // background-color: transparent;
-        background-color: var(--b3-theme-surface);
+      background-color: var(--b3-theme-background);
     }
-
-    &.layout--float {
-        box-shadow: none;
-        opacity: 1 !important;
-
-        .fn__flex-1:not(has-dockb).has-layout-dockb-float &:not([style*="transform"]) {
-            bottom: calc(var(--status-height, 32px) - 1px) !important;
-        }
-
-        .fn__flex-1.has-dockb.has-layout-dockb-float &:not([style*="transform"]) {
-            bottom: calc(42px + var(--status-height, 32px) - 1px) !important;
-        }
-
-        &[style*="bottom: 26px"] {
-            bottom: 0 !important;
-
-            .layout-tab-container {
-                padding-bottom: 32px;
-            }
-        }
-
-        .layout-tab-container {
-            background-color: var(--b3-theme-background);
-        }
-    }
+  }
 }
 
 .layout--float {
-    transition: transform 0.2s var(--asri-ease-out-5);
+  transition: transform 0.2s var(--asri-ease-out-5);
 }
 
 // .layout__dockr {
@@ -210,21 +209,21 @@
 
 // 边框
 .layout__dockl {
-    &.layout--float {
-        border-right: 1px solid var(--b3-border-color);
-    }
+  &.layout--float {
+    border-right: 1px solid var(--b3-border-color);
+  }
 }
 
 .layout__dockr {
-    &.layout--float {
-        border-left: 1px solid var(--b3-border-color);
-    }
+  &.layout--float {
+    border-left: 1px solid var(--b3-border-color);
+  }
 }
 
 .layout__dockb {
-    &.layout--float {
-        border-top: 1px solid var(--b3-border-color);
-    }
+  &.layout--float {
+    border-top: 1px solid var(--b3-border-color);
+  }
 }
 
 // 停靠栏常驻时面板的间距优化
@@ -242,221 +241,215 @@
 
 // 其他模块 ——————————————
 .sy__outline {
-    .b3-list-item[title] {
-        display: none;
+  .b3-list-item[title] {
+    display: none;
+  }
+
+  .b3-list-item[data-type="NodeHeading"] {
+    // $titleIcons: 'h1' '❶', 'h2' '❷', 'h3' '❸', 'h4' '❹', 'h5' '❺', 'h6' '❻';
+    // @each $title, $icon in $titleIcons {
+    //     &[data-subtype=#{$title}] .b3-list-item__text::before {
+    //         content: $icon;
+    //     }
+    // }
+
+    $titleIcons: "❶", "❷", "❸", "❹", "❺", "❻";
+
+    @for $i from 1 through length($titleIcons) {
+      &[data-subtype="h#{$i}"] .b3-list-item__text::before {
+        content: nth($titleIcons, $i);
+      }
     }
 
-    .b3-list-item[data-type="NodeHeading"] {
-        // $titleIcons: 'h1' '❶', 'h2' '❷', 'h3' '❸', 'h4' '❹', 'h5' '❺', 'h6' '❻';
-        // @each $title, $icon in $titleIcons {
-        //     &[data-subtype=#{$title}] .b3-list-item__text::before {
-        //         content: $icon;
-        //     }
-        // }
+    .b3-list-item__text::before {
+      position: absolute;
+      background-color: transparent;
+      left: 24px;
+      // top: 0;
+      opacity: 0.5;
+      z-index: 0;
+      transition: color 0.2s, opacity 0.2s;
+      font-family: SF Pro;
+      font-size: calc(16em / 14);
 
-        $titleIcons: '❶', '❷', '❸', '❹', '❺', '❻';
+      body.body--win32 & {
+        font-family: "Segoe UI";
+        font-size: calc(12em / 16);
+      }
 
-        @for $i from 1 through length($titleIcons) {
-            &[data-subtype=h#{$i}] .b3-list-item__text::before {
-                content: nth($titleIcons, $i);
-            }
-        }
-
-        .b3-list-item__text::before {
-            position: absolute;
-            background-color: transparent;
-            left: 24px;
-            // top: 0;
-            opacity: 0.5;
-            z-index: 0;
-            transition: color .2s, opacity .2s;
-            font-family: SF Pro;
-            font-size: calc(16em / 14);
-
-            body.body--win32 & {
-                font-family: "Segoe UI";
-                font-size: calc(12em / 16);
-            }
-
-            body.body-asri--linux & {
-                font-family: Dejavu Sans;
-            }
-        }
-
-        .b3-list-item__text:empty {
-            &::after {
-                content: "　";
-            }
-        }
-
-        // 兼顾 https://github.com/mustakshif/Asri/issues/69 和 https://github.com/mustakshif/Asri/issues/65
-
-        &>svg {
-            color: transparent !important;
-            z-index: 1;
-
-            &:hover~.b3-list-item__text::before {
-                color: var(--b3-theme-primary);
-                opacity: 1;
-            }
-        }
+      body.body-asri--linux & {
+        font-family: Dejavu Sans;
+      }
     }
+
+    .b3-list-item__text:empty {
+      &::after {
+        content: "　";
+      }
+    }
+
+    // 兼顾 https://github.com/mustakshif/Asri/issues/69 和 https://github.com/mustakshif/Asri/issues/65
+
+    & > svg {
+      color: transparent !important;
+      z-index: 1;
+
+      &:hover ~ .b3-list-item__text::before {
+        color: var(--b3-theme-primary);
+        opacity: 1;
+      }
+    }
+  }
 }
 
 .sy__tag {
-    .b3-list-item__graphic {
-        display: none;
-    }
+  .b3-list-item__graphic {
+    display: none;
+  }
 }
 
 .sy__file {
-
-    .b3-list--background {
-        >.b3-list-item {
-            font-weight: 500;
-        }
+  .b3-list--background {
+    > .b3-list-item {
+      font-weight: 500;
     }
+  }
 
-    // 关闭的笔记本
-    >.b3-list {
-        margin-bottom: 8px;
+  // 关闭的笔记本
+  > .b3-list {
+    margin-bottom: 8px;
 
-        >ul {
-            margin-bottom: -8px;
-        }
+    > ul {
+      margin-bottom: -8px;
     }
+  }
 }
 
-
 .sy__backlink {
-    .block__icons {
-
-        .block__logo+.counter {
-            line-height: 24px;
-        }
-
-        &+.fn__flex-1 {
-            li {
-                z-index: 4; // 避免被嵌入块数据库表头覆盖
-
-                &:not(.b3-list--empty) {
-                    position: sticky;
-                    top: 0;
-                    // box-shadow: 0 -0.5px inset var(--b3-border-color-trans), 0 0.5px inset var(--b3-border-color-trans);
-                }
-
-                &:not(.b3-list--empty) {
-                    // margin: 0;
-                    padding: 2px 8px;
-                    // border-radius: 0;
-                    background-color: change-color($color: pickThemeColor($theme-light, surface), $lightness: 90%);
-
-                    @include darkmode-counterpart {
-                        background-color: change-color($color: pickThemeColor($theme-dark, surface), $lightness: 28%);
-                    }
-
-                    &:first-child {
-                        margin-top: 0;
-                    }
-
-                    >.b3-list-item__text {
-                        font-weight: 500;
-                    }
-
-                    .layout--float &,
-                    .layout__center &,
-                    .layout__dockr & {
-                        background-color: var(--b3-theme-surface) !important;
-                    }
-                }
-
-            }
-        }
+  .block__icons {
+    .block__logo + .counter {
+      line-height: 24px;
     }
 
-    .protyle {
+    & + .fn__flex-1 {
+      li {
+        z-index: 4; // 避免被嵌入块数据库表头覆盖
 
-        &,
-        &-content {
-            background-color: transparent;
+        &:not(.b3-list--empty) {
+          position: sticky;
+          top: 0;
+          // box-shadow: 0 -0.5px inset var(--b3-border-color-trans), 0 0.5px inset var(--b3-border-color-trans);
         }
 
-        .protyle-breadcrumb__bar {
+        &:not(.b3-list--empty) {
+          // margin: 0;
+          padding: 2px 8px;
+          // border-radius: 0;
+          background-color: change-color($color: pickThemeColor($theme-light, surface), $lightness: 90%);
 
-            &:first-child {
-                border-top: none !important;
-            }
+          @include darkmode-counterpart {
+            background-color: change-color($color: pickThemeColor($theme-dark, surface), $lightness: 28%);
+          }
 
-            &:not(:first-child) {
-                border-top: 1px solid var(--b3-border-color-trans);
-            }
+          &:first-child {
+            margin-top: 0;
+          }
 
-            margin-bottom: -8px !important;
+          > .b3-list-item__text {
+            font-weight: 500;
+          }
 
-            // height: 36px;
-            .protyle-breadcrumb__item {
-                margin: 6px 0;
-            }
-
-            // span.protyle-breadcrumb__item,
-            // svg.protyle-breadcrumb__arrow {
-            //     display: none;
-            // }
-
-            // span.protyle-breadcrumb__item:nth-last-of-type(1),
-            // span.protyle-breadcrumb__item:nth-last-of-type(2) {
-            //     display: flex;
-            // }
-
-            // svg.protyle-breadcrumb__arrow:last-of-type {
-            //     display: block;
-            // }
-
-            // span.protyle-breadcrumb__item:nth-last-of-type(1) {
-            //     opacity: 0;
-            //     transition: opacity 0.2s;
-            // }
-
-            // &:hover span.protyle-breadcrumb__item:nth-last-of-type(1) {
-            //     opacity: 1;
-            // }
-
-            // span.protyle-breadcrumb__item:first-child {
-            //     opacity: 1;
-            // }
-
-            .protyle-breadcrumb__item--active svg {
-                background-color: var(--b3-theme-primary);
-                color: var(--b3-theme-on-primary);
-            }
-
-            span:only-child:empty {
-                height: .6em;
-            }
+          .layout--float &,
+          .layout__center &,
+          .layout__dockr & {
+            background-color: var(--b3-theme-surface) !important;
+          }
         }
-
-        .protyle-wysiwyg {
-            padding-top: 0 !important;
-        }
+      }
     }
+  }
+
+  .protyle {
+    &,
+    &-content {
+      background-color: transparent;
+    }
+
+    .protyle-breadcrumb__bar {
+      &:first-child {
+        border-top: none !important;
+      }
+
+      &:not(:first-child) {
+        border-top: 1px solid var(--b3-border-color-trans);
+      }
+
+      margin-bottom: -8px !important;
+
+      // height: 36px;
+      .protyle-breadcrumb__item {
+        margin: 6px 0;
+      }
+
+      // span.protyle-breadcrumb__item,
+      // svg.protyle-breadcrumb__arrow {
+      //     display: none;
+      // }
+
+      // span.protyle-breadcrumb__item:nth-last-of-type(1),
+      // span.protyle-breadcrumb__item:nth-last-of-type(2) {
+      //     display: flex;
+      // }
+
+      // svg.protyle-breadcrumb__arrow:last-of-type {
+      //     display: block;
+      // }
+
+      // span.protyle-breadcrumb__item:nth-last-of-type(1) {
+      //     opacity: 0;
+      //     transition: opacity 0.2s;
+      // }
+
+      // &:hover span.protyle-breadcrumb__item:nth-last-of-type(1) {
+      //     opacity: 1;
+      // }
+
+      // span.protyle-breadcrumb__item:first-child {
+      //     opacity: 1;
+      // }
+
+      .protyle-breadcrumb__item--active svg {
+        background-color: var(--b3-theme-primary);
+        color: var(--b3-theme-on-primary);
+      }
+
+      span:only-child:empty {
+        height: 0.6em;
+      }
+    }
+
+    .protyle-wysiwyg {
+      padding-top: 0 !important;
+    }
+  }
 }
 
 .sy__graph,
 .sy__globalGraph {
-    .graph__svg {
-        background-color: transparent;
-    }
+  .graph__svg {
+    background-color: transparent;
+  }
 }
 
 .graph:not(.fullscreen) {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .graph__panel {
-    .b3-button {
-        @include button-action('normal');
-        background-color: transparent;
-    }
+  .b3-button {
+    @include button-action("normal");
+    background-color: transparent;
+  }
 }
 
 // // 避让状态栏
@@ -471,24 +464,24 @@
 
 // 列表展开动画
 .file-tree__sliderDown {
-    top: -4px !important;
+  top: -4px !important;
 }
 
 // 全屏状态
-.fullscreen>.block__icons {
-    height: var(--toolbar-height);
-    padding-right: 10px;
+.fullscreen > .block__icons {
+  height: var(--toolbar-height);
+  padding-right: 10px;
 
-    >.fn__flex-1:hover {
-        background-color: transparent;
-    }
+  > .fn__flex-1:hover {
+    background-color: transparent;
+  }
 
-    // body.body--win32:not(.hadeeth-pin-toolbar) & {
-    //     padding-right: 10px;
-    // }
+  // body.body--win32:not(.hadeeth-pin-toolbar) & {
+  //     padding-right: 10px;
+  // }
 }
 
 //侧栏搜索框
-.block__icons .search__label:not(.fn__none)~.block__icon {
-    opacity: 0 !important;
+.block__icons .search__label:not(.fn__none) ~ .block__icon {
+  opacity: 0 !important;
 }

@@ -1,49 +1,49 @@
-@use '../base' as *;
+@use "../base" as *;
 
 $headingContent: "";
 
 .protyle,
 .b3-typography {
-    --prefix: var(--asri-heading-prefix, "#");
-    --suffix: var(--asri-heading-suffix, "");
+  --prefix: var(--asri-heading-prefix, "#");
+  --suffix: var(--asri-heading-suffix, "");
 }
 
 @for $i from 1 through 6 {
-    $headingContent: $headingContent+"#";
+  $headingContent: $headingContent + "#";
 
-    .h#{$i},
-    h#{$i} {
-        &:before {
-            content: var(--prefix) "#{$i}" var(--suffix);
-            // content:$headingContent;
-        }
+  .h#{$i},
+  h#{$i} {
+    &:before {
+      content: var(--prefix) "#{$i}" var(--suffix);
+      // content:$headingContent;
     }
+  }
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    &::before {
-        display: block;
-        overflow: visible;
-        font-weight: 900;
-        font-size: 2.4em;
-        // font-style: italic;
-        position: absolute;
-        // top: -0.36em;
-        // right: 8px;
-        top: -.6em;
-        left: 0;
-        color: inherit;
-        opacity: 0.15;
-        pointer-events: none;
-        user-select: none;
-        mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
+:is(.h1, .h2, .h3, .h4, .h5, .h6, ), :where(h1, h2, h3, h4, h5, h6) {
+  &::before {
+    display: block;
+    overflow: visible;
+    font-weight: 900;
+    font-size: 2.4em;
+    // font-style: italic;
+    position: absolute;
+    // top: -0.36em;
+    // right: 8px;
+    top: -0.6em;
+    left: 0;
+    color: inherit;
+    opacity: 0.15;
+    pointer-events: none;
+    user-select: none;
+    mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
 
-        // @include darkmode-counterpart {
-        //     opacity: 0.2;
-        // }
-    }
+    // @include darkmode-counterpart {
+    //     opacity: 0.2;
+    // }
+  }
 }
 
-h1, h2, h3, h4, h5, h6 {
-    position: relative;
+:where(h1, h2, h3, h4, h5, h6) {
+  position: relative;
 }

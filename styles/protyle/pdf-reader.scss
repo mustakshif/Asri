@@ -1,173 +1,169 @@
-@use '../base' as *;
-@use '../components/utils' as *;
+@use "../base" as *;
+@use "../components/utils" as *;
 
 .pdf__outer#outerContainer {
-    &:not(.pdf__outer--dark) {
-        @for $i from 1 through 7 {
-            $pdf-highlight-background: map-get($theme-light, pdf-background#{$i});
-            --b3-pdf-background#{$i}: #{$pdf-highlight-background};
-        }
+  &:not(.pdf__outer--dark) {
+    @for $i from 1 through 7 {
+      $pdf-highlight-background: map-get($theme-light, pdf-background#{$i});
+      --b3-pdf-background#{$i}: #{$pdf-highlight-background};
+    }
+  }
+
+  &.pdf__outer--dark {
+    @for $i from 1 through 7 {
+      $pdf-hightlight-background: map-get($theme-dark, pdf-background#{$i});
+      --b3-pdf-background#{$i}: #{$pdf-hightlight-background};
+    }
+  }
+
+  :root[data-theme-mode="light"] &:not(.pdf__outer--dark) .pdfViewer .textLayer {
+    background-color: var(--b3-theme-background);
+  }
+
+  :root[data-theme-mode="dark"] &.pdf__outer--dark .pdfViewer .textLayer {
+    background-color: var(--b3-theme-background);
+  }
+
+  #sidebarContainer {
+    top: 42px;
+    z-index: 1;
+    background-color: var(--b3-theme-background);
+    border-right: 1px solid var(--b3-border-color-trans);
+
+    #sidebarResizer {
+      right: -3px;
+
+      &::after {
+        background-color: transparent;
+      }
+
+      &:hover::after {
+        background-color: var(--b3-theme-primary-light);
+      }
     }
 
-    &.pdf__outer--dark {
-        @for $i from 1 through 7 {
-            $pdf-hightlight-background: map-get($theme-dark, pdf-background#{$i});
-            --b3-pdf-background#{$i}: #{$pdf-hightlight-background};
+    #sidebarContent {
+      .treeItem > a {
+        line-height: 1.5;
+      }
+    }
+  }
+
+  .pdf__toolbar {
+    #toolbarContainer {
+      #toolbarViewer {
+        height: 42px;
+        align-items: center;
+        border-bottom: 1px solid var(--b3-border-color-trans);
+
+        .dropdownToolbarButton {
+          margin: 4px 8px 4px 0;
         }
+      }
+    }
+  }
+
+  .findbar {
+    padding: 4px 8px;
+    right: 8px;
+    overflow: visible !important;
+    background-color: var(--b3-menu-background);
+    width: fit-content;
+    @include theme-variant-border;
+
+    & > :is(input, button, label.b3-button) {
+      margin-top: 4px;
+      margin-bottom: 4px;
     }
 
-    :root[data-theme-mode="light"] &:not(.pdf__outer--dark) .pdfViewer .textLayer {
-        background-color: var(--b3-theme-background);
+    .b3-button {
+      transition: background-color 0.2s;
+
+      // 选中样式
+      @include button-action("primary") {
+        margin: 0;
+        background-color: transparent;
+
+        &:hover {
+          box-shadow: none;
+        }
+      }
+
+      // 默认样式
+      &--outline {
+        @include button-action("normal");
+      }
     }
 
+    #findResultsCount {
+      pointer-events: none;
+      font-weight: 400;
+      color: var(--b3-theme-on-surface);
+    }
+  }
 
-    :root[data-theme-mode="dark"] &.pdf__outer--dark .pdfViewer .textLayer {
-        background-color: var(--b3-theme-background);
+  #viewerContainer {
+    top: 42px;
+    transition: none;
+
+    body.body-status-shown & {
+      padding-bottom: 42px;
     }
 
+    // -> js
+  }
 
-    #sidebarContainer {
-        top: 42px;
-        z-index: 1;
-        background-color: var(--b3-theme-background);
-        border-right: 1px solid var(--b3-border-color-trans);
+  #dialogContainer {
+    .dialog {
+      padding: 16px;
 
-        #sidebarResizer {
-            right: -3px;
+      @include dialog-shadow;
+      @include theme-variant-border;
+      outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
 
-            &::after {
-                background-color: transparent;
-            }
+      #documentPropertiesClose {
+        @include button-action("primary") {
+          // background-color: transparent;
+          // transition: 0.2s;
 
-            &:hover::after {
-                background-color: var(--b3-theme-primary-light);
-            }
+          &:hover,
+          &:active,
+          &:focus {
+            box-shadow: none;
+          }
         }
+      }
+    }
+  }
 
-        #sidebarContent {
-            .treeItem>a {
-                line-height: 1.5;
-            }
-        }
+  .pdf__util {
+    padding: 6px;
+    @include theme-variant-border;
+
+    .color__square {
+      height: 20px;
+      width: 20px;
+      margin-right: 6px;
+      border-radius: 6px;
+
+      &:hover {
+        box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+        transform: scale(1.2);
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
 
-    .pdf__toolbar {
-        #toolbarContainer {
-
-            #toolbarViewer {
-                height: 42px;
-                align-items: center;
-                border-bottom: 1px solid var(--b3-border-color-trans);
-
-                .dropdownToolbarButton {
-                    margin: 4px 8px 4px 0;
-                }
-            }
-        }
+    .b3-menu__item {
+      &:not(:hover) {
+        background-color: transparent;
+      }
     }
-
-    .findbar {
-        padding: 4px 8px;
-        right: 8px;
-        overflow: visible !important;
-        background-color: var(--b3-menu-background);
-        width: fit-content;
-        @include theme-variant-border;
-
-        &> :is(input, button, label.b3-button) {
-            margin-top: 4px;
-            margin-bottom: 4px;
-        }
-
-        .b3-button {
-            transition: background-color .2s;
-
-            // 选中样式
-            @include button-action('primary') {
-                margin: 0;
-                background-color: transparent;
-
-                &:hover {
-                    box-shadow: none;
-                }
-            }
-
-            // 默认样式
-            &--outline {
-                @include button-action('normal')
-            }
-
-        }
-
-        #findResultsCount {
-            pointer-events: none;
-            font-weight: 400;
-            color: var(--b3-theme-on-surface);
-        }
-    }
-
-    #viewerContainer {
-        top: 42px;
-        transition: none;
-
-        body.body-status-shown & {
-            padding-bottom: 42px;
-        }
-
-        // -> js
-    }
-
-    #dialogContainer {
-        .dialog {
-            padding: 16px;
-
-            @include dialog-shadow;
-            @include theme-variant-border;
-            outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
-
-            #documentPropertiesClose {
-                @include button-action('primary') {
-                    // background-color: transparent;
-                    // transition: 0.2s;
-
-                    &:hover,
-                    &:active,
-                    &:focus {
-                        box-shadow: none;
-                    }
-                }
-            }
-        }
-    }
-
-    .pdf__util {
-        padding: 6px;
-        @include theme-variant-border;
-
-        .color__square {
-            height: 20px;
-            width: 20px;
-            margin-right: 6px;
-            border-radius: 6px;
-
-            &:hover {
-                box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
-                transform: scale(1.2);
-            }
-
-            &:first-child {
-                margin-left: 0;
-            }
-
-            &:last-child {
-                margin-right: 0;
-            }
-        }
-
-        .b3-menu__item {
-            &:not(:hover) {
-                background-color: transparent;
-            }
-        }
-    }
+  }
 }

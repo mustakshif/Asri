@@ -1,58 +1,57 @@
-@use '../base' as *;
+@use "../base" as *;
 
 .protyle-wysiwyg[data-readonly="false"] {
-    [data-node-id].asri-selected-block:not(.rc-focus) {
-        // https://github.com/mustakshif/Asri/issues/156
+  [data-node-id].asri-selected-block:not(.rc-focus) {
+    // https://github.com/mustakshif/Asri/issues/156
 
-        // box-shadow: none !important;
-        &::before {
-            content: '';
-            position: absolute;
-            height: calc(100% - 16px);
-            width: 3px;
-            border-radius: 99px;
-            top: 8px;
-            inset-inline-start: -5px;
-            inset-inline-end: 0;
-            bottom: 0;
-            background-color: var(--b3-theme-primary);
-            animation: selected-block-indicator-appear .6s var(--asri-ease-spring-4);
-            // animation-delay: .2s;
-            transform-origin: top center;
-            transition-property: opacity, transform;
-            transition-duration: .3s;
-            transition-timing-function: var(--asri-ease-spring-2);
-        }
-
-        &.protyle-wysiwyg--hl {
-
-            &::before {
-                opacity: 0;
-                transform: scaleY(.5);
-                transition-duration: .3s;
-                transition-timing-function: var(--asri-ease-elastic-in-out-3);
-            }
-        }
-
-        &#plugin-focus-unique-id,
-        &[data-plugin-focus=true] {
-            &::before {
-                display: none;
-            }
-        }
+    // box-shadow: none !important;
+    &::before {
+      content: "";
+      position: absolute;
+      height: calc(100% - 16px);
+      width: 3px;
+      border-radius: 99px;
+      top: 8px;
+      inset-inline-start: -5px;
+      inset-inline-end: 0;
+      bottom: 0;
+      background-color: var(--b3-theme-primary);
+      animation: selected-block-indicator-appear 0.6s var(--asri-ease-spring-4);
+      // animation-delay: .2s;
+      transform-origin: top center;
+      transition-property: opacity, transform;
+      transition-duration: 0.3s;
+      transition-timing-function: var(--asri-ease-spring-2);
     }
+
+    &.protyle-wysiwyg--hl {
+      &::before {
+        opacity: 0;
+        transform: scaleY(0.5);
+        transition-duration: 0.3s;
+        transition-timing-function: var(--asri-ease-elastic-in-out-3);
+      }
+    }
+
+    &#plugin-focus-unique-id,
+    &[data-plugin-focus="true"] {
+      &::before {
+        display: none;
+      }
+    }
+  }
 }
 
 @keyframes selected-block-indicator-appear {
-    0% {
-        transform: scaleY(.8);
-        opacity: 0;
-    }
+  0% {
+    transform: scaleY(0.8);
+    opacity: 0;
+  }
 
-    100% {
-        transform: scaleY(1);
-        opacity: 1;
-    }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }
 
 // 内容块根据视口位置淡入淡出

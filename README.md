@@ -13,6 +13,15 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.4.1
+
+- [Added dynamic progressive blur mask of "Topbar Fusion+" to improve top bar readability](https://github.com/mustakshif/Asri/issues/163)
+- Added text tooltips to experimental feature icons in the "Topbar Fusion+" menu
+- Adapted styling changes for SiYuan v3.1.29
+- Adjusted symbol spacing in the emoji panel
+- Fixed abnormal color display of emojis
+- Fixed background color anomaly in Safari browser with the "Aerisland" color scheme
+
 ### v3.4.0: Vision Unbound
 
 ![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp.png)

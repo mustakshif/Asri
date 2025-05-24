@@ -1,567 +1,555 @@
-@use '../base' as *;
-@use '../components/utils' as *;
-@use '../protyle/utils' as *;
+@use "../base" as *;
+@use "../components/utils" as *;
+@use "../protyle/utils" as *;
 
 // 嵌入块和引用块中的数据库表头等处的背景色
-[data-type=NodeBlockQueryEmbed],
-[data-type=NodeBlockquote] {
-    --b3-parent-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background));
+[data-type="NodeBlockQueryEmbed"],
+[data-type="NodeBlockquote"] {
+  --b3-parent-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background));
 }
 
 .av {
+  // &__container[style="--av-background:var(--b3-theme-surface)"] {
+  //     --av-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background)) !important;
 
-    // &__container[style="--av-background:var(--b3-theme-surface)"] {
-    //     --av-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background)) !important;
+  //     [data-type="NodeBlockQueryEmbed"][style*="var(--b3-font-background1)"] & {
+  //         --av-background: var(--b3-theme-background) !important;
+  //     }
+  // }
 
-    //     [data-type="NodeBlockQueryEmbed"][style*="var(--b3-font-background1)"] & {
-    //         --av-background: var(--b3-theme-background) !important;
-    //     }
-    // }
+  // .bq &__container[style="--av-background:var(--b3-theme-background)"] {
+  //     --av-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background)) !important;
+  // }
 
-    // .bq &__container[style="--av-background:var(--b3-theme-background)"] {
-    //     --av-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background)) !important;
-    // }
+  // .bq[style*="var(--b3-font-background1)"] &__container[style="--av-background:var(--b3-theme-background)"] {
+  //     --av-background: var(--b3-theme-background) !important;
+  // }
 
-    // .bq[style*="var(--b3-font-background1)"] &__container[style="--av-background:var(--b3-theme-background)"] {
-    //     --av-background: var(--b3-theme-background) !important;
-    // }
+  // 数据库视图切换、标题
+  .av__views {
+    box-shadow: none;
 
-    // 数据库视图切换、标题
-    .av__views {
+    .layout-tab-bar {
+      @include dialog-tabbar;
+      height: auto;
+      margin: 8px 0 !important;
+      padding: 0;
+      border-radius: calc(1em / 0.875 * 8 / 17) !important;
+      border: 2.5px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
+
+      .item {
+        padding: 2px 4px;
+        height: auto;
+        border-radius: calc(1em / 0.875 * 8 / 17 - 2.5px) !important;
+
+        &__graphic {
+          padding: 0.42em 4px 0.42em 8px;
+
+          .body-asri--mac & {
+            font-size: calc(1em / 0.875 * 15 / 17);
+          }
+        }
+
+        &__text {
+          padding-right: 8px;
+        }
+      }
+
+      .item:not(.item--focus) {
+        .item__graphic {
+          color: var(--b3-theme-on-surface);
+        }
+
+        &:hover {
+          .item__graphic {
+            color: var(--b3-theme-on-background);
+          }
+        }
+      }
+
+      .item--focus {
+        // box-shadow: 0 -1px .5px 0 rgba(0, 0, 0, .12) inset;
         box-shadow: none;
+        color: var(--b3-theme-on-background);
 
-        .layout-tab-bar {
-            @include dialog-tabbar;
-            height: auto;
-            margin: 8px 0 !important;
-            padding: 0;
-            border-radius: calc(1em / 0.875 * 8 / 17) !important;
-            border: 2.5px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
+        &:hover {
+          // @include theme-variant-color(background-color, light-components, 1, 0.2, $important: true);
+          background-color: #fff !important;
 
-            .item {
-                padding: 2px 4px;
-                height: auto;
-                border-radius: calc(1em / 0.875 * 8 / 17 - 2.5px) !important;
+          @include darkmode-counterpart {
+            background-color: #ffffff23 !important;
+          }
+        }
+      }
+    }
 
-                &__graphic {
-                    padding: .42em 4px .42em 8px;
+    .block__icon {
+      // &:hover {
+      //     background-color: transparent !important;
+      // }
 
-                    .body-asri--mac & {
-                        font-size: calc(1em / .875 * 15 / 17);
-                    }
-                }
+      &--active {
+        background-color: transparent;
+      }
 
-                &__text {
-                    padding-right: 8px;
-                }
-            }
+      // svg {
+      //     width: calc(14em / 17);
+      //     height: calc(14em / 17);
+      // }
+    }
 
-            .item:not(.item--focus) {
-                .item__graphic {
-                    color: var(--b3-theme-on-surface);
-                }
+    // >.fn__space:last-child {
+    //     width: 0;
+    // }
+  }
 
-                &:hover {
-                    .item__graphic {
-                        color: var(--b3-theme-on-background);
-                    }
-                }
-            }
+  .av__title {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
 
-            .item--focus {
-                // box-shadow: 0 -1px .5px 0 rgba(0, 0, 0, .12) inset;
-                box-shadow: none;
-                color: var(--b3-theme-on-background);
+  .av__counter {
+    width: calc(100% - 8px);
+    padding: 4px;
+  }
 
-                &:hover {
-                    // @include theme-variant-color(background-color, light-components, 1, 0.2, $important: true);
-                    background-color: #fff !important;
+  // search bar
+  [data-type="av-search-icon"] + div {
+    > input {
+      font-size: 14px;
+      background-color: transparent;
+    }
 
-                    @include darkmode-counterpart {
-                        background-color: #ffffff23 !important;
-                    }
-                }
-            }
+    > svg {
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+
+  // 数据库主体
+  &__scroll {
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__row {
+    border-bottom-color: var(--b3-border-color-trans);
+
+    &--header {
+      // color: var(--b3-theme-on-surface);
+      font-weight: 500;
+
+      .av__cellheadericon {
+        color: inherit;
+      }
+
+      svg.av__cellheadericon,
+      .av__celltext {
+        opacity: 0.68;
+      }
+    }
+
+    .av__cell:not(.av__cell--header) {
+      border-right-color: var(--b3-border-color-trans);
+
+      .b3-chip {
+        border-radius: 4px;
+        // padding: 2px 6px;
+        color: var(--b3-theme-on-surface);
+        background-color: var(--b3-theme-surface);
+        font-size: 95%;
+
+        &:hover {
+          color: var(--b3-theme-on-background);
+        }
+      }
+
+      @include database-assets-style("chip");
+
+      // 「更新」按钮
+      .popover__block {
+        color: var(--b3-theme-primary);
+        font-weight: 500;
+
+        &:hover {
+          background-color: var(--b3-theme-primary);
+          color: var(--b3-theme-on-primary);
+        }
+      }
+
+      .b3-chip[data-type="block-more"] {
+        font-weight: 500;
+      }
+
+      .av__celltext--url {
+        border-bottom: none;
+        text-decoration: underline var(--b3-theme-primary-light);
+        text-decoration-thickness: $text-underline-thickness;
+
+        transition-property: color, text-decoration-color;
+        transition-duration: 0.2s;
+
+        @include darkmode-counterpart {
+          text-decoration-color: rgb(from var(--b3-theme-primary) r g b / 0.8);
         }
 
+        &:hover {
+          // text-decoration-color: var(--b3-theme-primary-lighter);
+          color: var(--b3-theme-primary);
+
+          .ft__on-surface {
+            color: var(--b3-theme-primary-light);
+            transition: inherit;
+          }
+        }
+      }
+
+      .av__celltext--ref {
+        border-bottom: none;
+        text-decoration: underline rgb(from var(--b3-theme-on-background) r g b / 0.3);
+        transition-property: color, text-decoration-color;
+        transition-duration: 0.2s;
+
+        &:hover {
+          text-decoration-color: var(--b3-theme-primary-light);
+          color: var(--b3-theme-primary);
+        }
+      }
+
+      // 复制按钮
+      // .block__icon {
+      //     border-radius: 20px;
+      // }
+
+      &:hover {
         .block__icon {
-            // &:hover {
-            //     background-color: transparent !important;
-            // }
-
-            &--active {
-                background-color: transparent;
-            }
-
-            // svg {
-            //     width: calc(14em / 17);
-            //     height: calc(14em / 17);
-            // }
+          background-color: var(--b3-theme-surface) !important;
         }
-
-        // >.fn__space:last-child {
-        //     width: 0;
-        // }
+      }
     }
 
-
-    .av__title {
-        font-size: 1.2em;
-        font-weight: 600;
-        margin: 0 0 4px;
+    &--footer {
+      border-top-color: var(--b3-border-color-trans);
     }
 
-    .av__counter {
-        width: calc(100% - 8px);
-        padding: 4px;
+    .av__colsticky {
+      // transition: opacity .2s;
+      cursor: pointer;
     }
 
-    // search bar
-    [data-type="av-search-icon"]+div {
-        >input {
-            font-size: 14px;
-            background-color: transparent;
-        }
+    &:not(.av__row--header) > .av__colsticky {
+      .av__firstcol svg {
+        visibility: hidden;
+      }
 
-        >svg {
-            top: 0;
-            bottom: 0;
-            margin: auto;
+      .av__firstcol {
+        position: relative;
+
+        &::before {
+          top: 0.55em;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
         }
+      }
     }
 
-
-    // 数据库主体
-    &__scroll {
-        font-variant-numeric: tabular-nums;
+    &:not(&--select, .av__row--header) {
+      .av__colsticky .av__firstcol {
+        @include bouncy-check-box(false, 1.2em);
+      }
     }
 
-    &__row {
-        border-bottom-color: var(--b3-border-color-trans);
+    &--select:not(.av__row--header) {
+      .av__colsticky .av__firstcol {
+        @include bouncy-check-box(true, 1.2em);
+      }
+    }
+  }
 
-        &--header {
-            // color: var(--b3-theme-on-surface);
-            font-weight: 500;
+  &__cell {
+    // 单元格选中状态
+    &--select {
+      // box-shadow: none;
+      // outline: 3px solid var(--b3-theme-primary-light);
+      // z-index: 3;
+      border-radius: 0;
+      background-color: var(--b3-theme-primary-lightest);
 
-            .av__cellheadericon {
-                color: inherit;
-            }
-
-            svg.av__cellheadericon,
-            .av__celltext {
-                opacity: .68;
-            }
-        }
-
-        .av__cell:not(.av__cell--header) {
-            border-right-color: var(--b3-border-color-trans);
-
-            .b3-chip {
-                border-radius: 4px;
-                // padding: 2px 6px;
-                color: var(--b3-theme-on-surface);
-                background-color: var(--b3-theme-surface);
-                font-size: 95%;
-
-                &:hover {
-                    color: var(--b3-theme-on-background);
-                }
-            }
-
-            @include database-assets-style('chip');
-
-            // 「更新」按钮
-            .popover__block {
-                color: var(--b3-theme-primary);
-                font-weight: 500;
-
-                &:hover {
-                    background-color: var(--b3-theme-primary);
-                    color: var(--b3-theme-on-primary);
-                }
-            }
-
-            .b3-chip[data-type=block-more] {
-                font-weight: 500;
-            }
-
-            .av__celltext--url {
-                border-bottom: none;
-                text-decoration: underline var(--b3-theme-primary-light);
-                text-decoration-thickness: $text-underline-thickness;
-
-                transition-property: color, text-decoration-color;
-                transition-duration: .2s;
-
-                @include darkmode-counterpart {
-                    text-decoration-color: rgb(from var(--b3-theme-primary) r g b / .8);
-                }
-
-                &:hover {
-                    // text-decoration-color: var(--b3-theme-primary-lighter);
-                    color: var(--b3-theme-primary);
-
-                    .ft__on-surface {
-                        color: var(--b3-theme-primary-light);
-                        transition: inherit;
-                    }
-                }
-            }
-
-            .av__celltext--ref {
-                border-bottom: none;
-                text-decoration: underline rgb(from var(--b3-theme-on-background) r g b / .3);
-                transition-property: color, text-decoration-color;
-                transition-duration: .2s;
-
-                &:hover {
-                    text-decoration-color: var(--b3-theme-primary-light);
-                    color: var(--b3-theme-primary);
-                }
-            }
-
-            // 复制按钮
-            // .block__icon {
-            //     border-radius: 20px;
-            // }
-
-            &:hover {
-                .block__icon {
-                    background-color: var(--b3-theme-surface) !important;
-                }
-            }
-        }
-
-        &--footer {
-            border-top-color: var(--b3-border-color-trans);
-        }
-
-        .av__colsticky {
-            // transition: opacity .2s;
-            cursor: pointer;
-        }
-
-        &:not(.av__row--header)>.av__colsticky {
-            .av__firstcol svg {
-                visibility: hidden;
-            }
-
-            .av__firstcol {
-                position: relative;
-
-                &::before {
-                    top: .55em;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    margin: 0 auto;
-                }
-            }
-        }
-
-        &:not(&--select, .av__row--header) {
-            .av__colsticky .av__firstcol {
-                @include bouncy-check-box(false, 1.2em);
-            }
-        }
-
-        &--select:not(.av__row--header) {
-            .av__colsticky .av__firstcol {
-                @include bouncy-check-box(true, 1.2em);
-            }
-        }
+      &::after {
+        // box-shadow: 0 0 0 2px var(--b3-theme-primary);
+        display: none;
+      }
     }
 
-    &__cell {
+    // 主键列项文档图标
+    .b3-menu__avemoji {
+      margin-right: 1px;
+    }
 
-        // 单元格选中状态
-        &--select {
-            // box-shadow: none;
-            // outline: 3px solid var(--b3-theme-primary-light);
-            // z-index: 3;
-            border-radius: 0;
-            background-color: var(--b3-theme-primary-lightest);
+    // 关联列表格内容
+    &[data-wrap="true"] {
+      .av__cell--relation {
+        margin-left: unset;
+        display: flex;
+        margin: 4px 0;
 
-            &::after {
-                // box-shadow: 0 0 0 2px var(--b3-theme-primary);
-                display: none;
-            }
+        &:first-child {
+          margin-top: 0;
         }
 
-        // 主键列项文档图标
+        &:last-child {
+          margin-bottom: 0;
+        }
+
         .b3-menu__avemoji {
-            margin-right: 1px;
+          padding-top: 0.1em;
+          align-self: auto;
+          height: fit-content;
+        }
+      }
+
+      .av__cell:not(.av__cell--header)[data-dtype="relation"] {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  // 首列勾选框/钉住列父元素
+  &__firstcol::before {
+    transition: opacity 0.2s;
+    opacity: 0;
+  }
+
+  &__firstcol:hover::before {
+    opacity: 1;
+  }
+
+  &__row--select .av__firstcol::before,
+  &__row--hl .av__firstcol::before {
+    opacity: 1;
+  }
+
+  &__cell[data-wrap="true"] {
+    // 列开启换行时
+    .b3-chip.av__celltext--url,
+    .av__cellassetimg {
+      // 资源列标签
+      margin: 2px;
+      font-size: calc(1em - 2px) !important;
+    }
+  }
+
+  // 菜单
+  &__panel {
+    --b3-font-background1: var(--b3-theme-background);
+
+    .b3-menu {
+      > .fn__flex-column > .b3-menu__item[data-type="nobg"]:first-child {
+        border-radius: 0;
+        margin: 0;
+        padding: 8px 8px 0; // v3.0.4
+
+        + .fn__hr {
+          background-color: var(--b3-menu-background);
         }
 
-        // 关联列表格内容
-        &[data-wrap="true"] {
-            .av__cell--relation {
-                margin-left: unset;
-                display: flex;
-                margin: 4px 0;
+        // v2.1.9: fix关联主键编辑菜单背景差异
 
-                &:first-child {
-                    margin-top: 0;
-                }
+        // @include darkmode-counterpart {
+        //     border-top: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
+        //     background-clip: padding-box;
+        //     border-left: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
+        //     border-right: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
+        //     border-radius: 10px 10px 0 0;
+        // }
 
-                &:last-child {
-                    margin-bottom: 0;
-                }
+        // v2.1.10: fix暗色模式下边框差异
+      }
 
-                .b3-menu__avemoji {
-                    padding-top: .1em;
-                    align-self: auto;
-                    height: fit-content;
-                }
+      .b3-menu__items {
+        .b3-menu__item {
+          &[data-type="nobg"] {
+            cursor: default;
+            align-items: center;
+            // height: 30px;
+
+            .b3-menu__label {
+              font-weight: 500;
+              color: var(--b3-theme-on-surface);
             }
 
-            .av__cell:not(.av__cell--header)[data-dtype="relation"] {
-                display: flex;
-                flex-direction: column;
+            &:first-child > .block__icon:not(.fn__none) + .ft__center {
+              transform: translateX(negateForRTL(-15px));
+              pointer-events: none;
             }
+
+            // 视图标签编辑菜单emoji
+            // >.block__icon[style*="font-size: 14px;"] {
+            //     padding-left: 0 !important;
+            //     margin-left: 0;
+
+            //     .body-asri--mac & {
+            //         font-size: 16px !important;
+            //         width: 16px !important;
+            //         line-height: 16px;
+            //         margin-right: 4px !important;
+            //     }
+            // }
+
+            // ~.b3-menu__item {
+            //     input:focus {
+            //         background-color: var(--b3-menu-background);
+            //     }
+            // }
+          }
+
+          &[data-type="goUpdateColType"] {
+            // height: 30px;
+            align-items: center;
+            margin-top: 4px;
+          }
+
+          &[draggable="true"] {
+            mix-blend-mode: normal !important;
+
+            .b3-chip:not(.b3-chip--primary) {
+              background-color: var(--b3-theme-surface);
+            }
+
+            &:hover .b3-menu__action {
+              opacity: 0.7;
+
+              &:hover {
+                opacity: 1;
+              }
+            }
+          }
+
+          .b3-menu__label {
+            input[data-type="addOption"]:focus {
+              background-color: var(--b3-menu-background);
+            }
+          }
         }
-    }
+      }
 
-    // 首列勾选框/钉住列父元素
-    &__firstcol::before {
-        transition: opacity .2s;
-        opacity: 0;
-    }
+      .b3-menu__item {
+        .b3-chip {
+          border-radius: 4px;
 
-    &__firstcol:hover::before {
-        opacity: 1;
-    }
-
-    &__row--select .av__firstcol::before,
-    &__row--hl .av__firstcol::before {
-        opacity: 1;
-    }
-
-    &__cell[data-wrap=true] {
-
-        // 列开启换行时
-        .b3-chip.av__celltext--url,
-        .av__cellassetimg {
-            // 资源列标签
-            margin: 2px;
-            font-size: calc(1em - 2px) !important;
-        }
-    }
-
-    // 菜单
-    &__panel {
-        --b3-font-background1: var(--b3-theme-background);
-
-        .b3-menu {
-            >.fn__flex-column>.b3-menu__item[data-type="nobg"]:first-child {
-                border-radius: 0;
-                margin: 0;
-                padding: 8px 8px 0; // v3.0.4
-
-                +.fn__hr {
-                    background-color: var(--b3-menu-background);
-                }
-
-                // v2.1.9: fix关联主键编辑菜单背景差异
-
-                // @include darkmode-counterpart {
-                //     border-top: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
-                //     background-clip: padding-box;
-                //     border-left: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
-                //     border-right: 1px solid rgb(map-get($theme-dark, on-background), 0.1);
-                //     border-radius: 10px 10px 0 0;
-                // }
-
-                // v2.1.10: fix暗色模式下边框差异
-            }
-
-            .b3-menu__items {
-                .b3-menu__item {
-                    &[data-type="nobg"] {
-                        cursor: default;
-                        align-items: center;
-                        // height: 30px;
-
-                        .b3-menu__label {
-                            font-weight: 500;
-                            color: var(--b3-theme-on-surface)
-                        }
-
-                        &:first-child>.block__icon:not(.fn__none)+.ft__center {
-                            transform: translateX(negateForRTL(-15px));
-                            pointer-events: none;
-                        }
-
-                        // 视图标签编辑菜单emoji
-                        // >.block__icon[style*="font-size: 14px;"] {
-                        //     padding-left: 0 !important;
-                        //     margin-left: 0;
-
-                        //     .body-asri--mac & {
-                        //         font-size: 16px !important;
-                        //         width: 16px !important;
-                        //         line-height: 16px;
-                        //         margin-right: 4px !important;
-                        //     }
-                        // }
-
-                        // ~.b3-menu__item {
-                        //     input:focus {
-                        //         background-color: var(--b3-menu-background);
-                        //     }
-                        // }
-                    }
-
-                    &[data-type="goUpdateColType"] {
-                        // height: 30px;
-                        align-items: center;
-                        margin-top: 4px;
-                    }
-
-                    &[draggable=true] {
-                        mix-blend-mode: normal !important;
-
-                        .b3-chip:not(.b3-chip--primary) {
-                            background-color: var(--b3-theme-surface);
-                        }
-
-                        &:hover .b3-menu__action {
-                            opacity: 0.7;
-
-                            &:hover {
-                                opacity: 1;
-                            }
-                        }
-                    }
-
-                    .b3-menu__label {
-                        input[data-type="addOption"]:focus {
-                            background-color: var(--b3-menu-background);
-                        }
-                    }
-                }
-            }
-
-            .b3-menu__item {
-                .b3-chip {
-                    border-radius: 4px;
-
-                    // 筛选菜单 属性图标
-                    .icon {
-                        margin-left: auto;
-                    }
-                }
-
-                .fn__flex-1 {
-                    padding-left: .1em;
-                }
-
-                // https://github.com/mustakshif/Asri/issues/104
-            }
-
-            .b3-chips {
-                border-bottom: 1px solid var(--b3-border-color-trans);
-                margin-bottom: 4px;
-
-                //多选标签
-                .b3-chip--middle {
-                    &::before {
-                        content: '';
-                        display: inline-block;
-                        width: 8px;
-                        transition: var(--b3-transition);
-                    }
-
-                    .b3-chip__close {
-                        opacity: 0;
-                        width: 8px;
-                    }
-
-                    &:hover {
-                        &::before {
-                            width: 0;
-                        }
-
-                        .b3-chip__close {
-                            opacity: 1;
-                            width: 16px;
-                        }
-                    }
-                }
-
-                .b3-chip--middle,
-                &~div [data-type="addColOptionOrCell"] .b3-chip {
-                    border-radius: 4px;
-                }
-
-                input {
-                    background-color: transparent;
-                }
-            }
+          // 筛选菜单 属性图标
+          .icon {
+            margin-left: auto;
+          }
         }
 
-    }
-
-
-    // 文本框键入
-    &__mask {
-        textarea {
-            resize: both;
-            background-color: var(--b3-theme-surface);
+        .fn__flex-1 {
+          padding-left: 0.1em;
         }
 
-        .b3-text-field,
-        select.b3-select {
-            background-color: var(--b3-theme-surface);
-        }
-    }
+        // https://github.com/mustakshif/Asri/issues/104
+      }
 
-    // 图标间距
-    .block__icons .fn__space {
-        width: 8px;
-    }
+      .b3-chips {
+        border-bottom: 1px solid var(--b3-border-color-trans);
+        margin-bottom: 4px;
 
-    &__cell {
+        //多选标签
+        .b3-chip--middle {
+          &::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            transition: var(--b3-transition);
+          }
 
-        &[data-dtype=mSelect],
-        &[data-dtype=select],
-        &[data-dtype=mAsset] {
-            padding: 5px 4px;
-        }
+          .b3-chip__close {
+            opacity: 0;
+            width: 8px;
+          }
 
-        &-uncheck,
-        &-check {
-            svg {
-                visibility: hidden;
-            }
-
+          &:hover {
             &::before {
-                top: 0;
-                bottom: 0;
-                margin: auto;
-            }
-        }
-
-        &-uncheck {
-            @include bouncy-check-box(false, 1.15em) {
-                animation: none;
+              width: 0;
             }
 
-            ;
-        }
-
-        &-check {
-            @include bouncy-check-box(true, 1.1em) {
-                animation: none;
+            .b3-chip__close {
+              opacity: 1;
+              width: 16px;
             }
-
-            ;
+          }
         }
+
+        .b3-chip--middle,
+        & ~ div [data-type="addColOptionOrCell"] .b3-chip {
+          border-radius: 4px;
+        }
+
+        input {
+          background-color: transparent;
+        }
+      }
     }
+  }
+
+  // 文本框键入
+  &__mask {
+    textarea {
+      resize: both;
+      background-color: var(--b3-theme-surface);
+    }
+
+    .b3-text-field,
+    select.b3-select {
+      background-color: var(--b3-theme-surface);
+    }
+  }
+
+  // 图标间距
+  .block__icons .fn__space {
+    width: 8px;
+  }
+
+  &__cell {
+    &[data-dtype="mSelect"],
+    &[data-dtype="select"],
+    &[data-dtype="mAsset"] {
+      padding: 5px 4px;
+    }
+
+    &-uncheck,
+    &-check {
+      svg {
+        visibility: hidden;
+      }
+
+      &::before {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    }
+
+    &-uncheck {
+      @include bouncy-check-box(false, 1.15em) {
+        animation: none;
+      }
+    }
+
+    &-check {
+      @include bouncy-check-box(true, 1.1em) {
+        animation: none;
+      }
+    }
+  }
 }
 
 img.av__cellassetimg {
-    border-radius: 4px;
+  border-radius: 4px;
 }
 
 // .b3-chip[style*="background-color:var(--b3-font-background1);color:var(--b3-font-color1)"] {
@@ -583,146 +571,145 @@ img.av__cellassetimg {
 // }
 
 .b3-chip {
-    outline: .5px solid var(--b3-border-color-trans);
-    outline-offset: -.5px;
+  outline: 0.5px solid var(--b3-border-color-trans);
+  outline-offset: -0.5px;
 }
 
 .b3-menu {
-    &[data-name="av-col-option"] {
-        .b3-menu__item {
-            .color__square {
-                // box-shadow: none;
+  &[data-name="av-col-option"] {
+    .b3-menu__item {
+      .color__square {
+        // box-shadow: none;
 
-                &[style*="var(--b3-font-background1)"] {
-                    outline: 1px solid var(--b3-border-color-trans);
-                    outline-offset: -1px;
-                    background-color: var(--b3-theme-background) !important;
-                    color: var(--b3-theme-on-background) !important;
-                }
-            }
+        &[style*="var(--b3-font-background1)"] {
+          outline: 1px solid var(--b3-border-color-trans);
+          outline-offset: -1px;
+          background-color: var(--b3-theme-background) !important;
+          color: var(--b3-theme-on-background) !important;
         }
+      }
+    }
+  }
+
+  // &[data-name^="set-filter"],
+  // &[data-name="av-col-option"] {
+  //     .b3-menu__item {
+  //         input:focus {
+  //             background-color: var(--b3-menu-background);
+  //         }
+  //     }
+  // }
+
+  &[data-name="av-header-cell"] {
+    .b3-menu__items {
+      div:first-child {
+        margin-top: 3px;
+
+        > .fn__hr {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &[data-name="av-col-option"] {
+    div:first-child {
+      > .fn__hr {
+        display: none;
+      }
+    }
+  }
+
+  .b3-menu__icon {
+    + .b3-menu__label .b3-chip--middle::before {
+      display: none;
+    }
+  }
+
+  // 单选、多选列筛选菜单的 chips
+
+  .b3-menu__label {
+    .b3-chip {
+      border-radius: 4px;
+
+      &[data-color] {
+        border-radius: 4px;
+      }
+
+      // 筛选菜单中的数据库标签
+    }
+  }
+
+  &__item:not(.b3-menu__item--readonly) {
+    .b3-menu__accelerator {
+      svg {
+        height: 24px !important;
+      }
     }
 
-    // &[data-name^="set-filter"],
-    // &[data-name="av-col-option"] {
-    //     .b3-menu__item {
-    //         input:focus {
-    //             background-color: var(--b3-menu-background);
-    //         }
-    //     }
+    &:hover textarea:not([data-type="ocr"]),
+    textarea:not([data-type="ocr"]):focus {
+      background-color: var(--b3-menu-background);
+      transition: none;
+    }
+
+    &:hover {
+      select {
+        background-color: var(--b3-menu-background);
+        transition: none;
+      }
+    }
+
+    .b3-button {
+      @include button-primary;
+    }
+
+    .block__icon:not([data-type="hideAllCol"]) {
+      font-family: var(--b3-font-family-emoji);
+    }
+  }
+
+  .b3-chip {
+    border-radius: 4px;
+
+    // &[style*="background-color"] {
+    //     padding: 4px 8px;
     // }
 
-    &[data-name="av-header-cell"] {
-        .b3-menu__items {
-            div:first-child {
-                margin-top: 3px;
+    .icon {
+      font-family: var(--b3-font-family-emoji);
+    }
+  }
 
-                >.fn__hr {
-                    display: none;
-                }
-            }
-        }
+  [data-type="setRelationCell"] {
+    .b3-menu__label.popover__block {
+      // color: var(--b3-theme-primary) !important;
+      text-decoration: underline transparent;
+      text-decoration-thickness: $text-underline-thickness;
     }
 
-    &[data-name="av-col-option"] {
-        div:first-child {
-
-            >.fn__hr {
-                display: none;
-            }
-        }
+    &.b3-menu__item--current,
+    &:hover {
+      > .b3-menu__label.popover__block {
+        color: var(--b3-theme-on-primary) !important;
+        text-decoration-color: currentColor;
+      }
     }
-
-    .b3-menu__icon {
-        +.b3-menu__label .b3-chip--middle::before {
-            display: none;
-        }
-    }
-
-    // 单选、多选列筛选菜单的 chips
-
-    .b3-menu__label {
-        .b3-chip {
-            border-radius: 4px;
-
-            &[data-color] {
-                border-radius: 4px;
-            }
-
-            // 筛选菜单中的数据库标签
-        }
-    }
-
-    &__item:not(.b3-menu__item--readonly) {
-        .b3-menu__accelerator {
-            svg {
-                height: 24px !important;
-            }
-        }
-
-        &:hover textarea:not([data-type="ocr"]),
-        textarea:not([data-type="ocr"]):focus {
-            background-color: var(--b3-menu-background);
-            transition: none;
-        }
-
-        &:hover {
-            select {
-                background-color: var(--b3-menu-background);
-                transition: none;
-            }
-        }
-
-        .b3-button {
-            @include button-primary;
-        }
-
-        .block__icon:not([data-type="hideAllCol"]) {
-            font-family: var(--b3-font-family-emoji);
-        }
-    }
-
-    .b3-chip {
-        border-radius: 4px;
-
-        // &[style*="background-color"] {
-        //     padding: 4px 8px;
-        // }
-
-        .icon {
-            font-family: var(--b3-font-family-emoji);
-        }
-    }
-
-    [data-type="setRelationCell"] {
-        .b3-menu__label.popover__block {
-            // color: var(--b3-theme-primary) !important;
-            text-decoration: underline transparent;
-            text-decoration-thickness: $text-underline-thickness;
-        }
-
-        &.b3-menu__item--current,
-        &:hover {
-            >.b3-menu__label.popover__block {
-                color: var(--b3-theme-on-primary) !important;
-                text-decoration-color: currentColor;
-            }
-        }
-    }
+  }
 }
 
 .protyle-hint {
-    &>input.b3-text-field {
-        margin: 0 !important;
-        background-color: var(--b3-menu-background);
-        padding: 8px;
-        box-sizing: content-box;
-        border-bottom: 1px solid var(--b3-border-color-trans);
-        border-radius: 0;
+  & > input.b3-text-field {
+    margin: 0 !important;
+    background-color: var(--b3-menu-background);
+    padding: 8px;
+    box-sizing: content-box;
+    border-bottom: 1px solid var(--b3-border-color-trans);
+    border-radius: 0;
 
-        &:focus {
-            background-color: var(--b3-menu-background);
-            outline: none;
-        }
+    &:focus {
+      background-color: var(--b3-menu-background);
+      outline: none;
     }
+  }
 }

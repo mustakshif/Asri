@@ -1,279 +1,269 @@
-@use '../../base' as *;
+@use "../../base" as *;
 
 @mixin block-ref {
+  :is([data-node-id] span[data-type~="block-ref"]:not(.av__celltext), [data-node-id] span[data-type~="file-annotation-ref"]) {
+    --bg-clr: var(--b3-theme-primary-lightest);
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: var(--b3-theme-primary);
+    text-decoration-thickness: $text-underline-thickness;
+    background: linear-gradient(90deg, var(--bg-clr) 100%, transparent 0%) center right;
+    background-size: 0;
+    background-repeat: no-repeat;
+    opacity: 1;
+    transition: background-size 0.2s;
 
-    :is([data-node-id] span[data-type~=block-ref]:not(.av__celltext), [data-node-id] span[data-type~=file-annotation-ref]) {
-        --bg-clr: var(--b3-theme-primary-lightest);
-        color: inherit;
-        text-decoration-line: underline;
-        text-decoration-style: dashed;
-        text-decoration-color: var(--b3-theme-primary);
-        text-decoration-thickness: $text-underline-thickness;
-        background: linear-gradient(90deg, var(--bg-clr) 100%, transparent 0%) center right;
-        background-size: 0;
-        background-repeat: no-repeat;
-        opacity: 1;
-        transition: background-size .2s;
-
-        &:hover {
-            background-position: center left;
-            text-decoration-style: solid !important;
-            background-size: 100% !important;
-            transition-delay: .125s; // 优化鼠标划过时的闪烁
-        }
-
-        &[data-type~=s] {
-            text-decoration-line: underline line-through;
-            opacity: .5; // fix https://github.com/mustakshif/Asri/issues/152
-        }
-
-        &[data-subtype=d] {
-            text-decoration-style: dotted;
-            text-underline-offset: -.02em;
-            text-decoration-thickness: calc($text-underline-thickness * 1.8);
-
-            &:hover {
-                text-decoration-thickness: $text-underline-thickness;
-            }
-        }
-
-        @include darkmode-counterpart {
-            --bg-clr: var(--b3-theme-primary-lighter);
-        }
+    &:hover {
+      background-position: center left;
+      text-decoration-style: solid !important;
+      background-size: 100% !important;
+      transition-delay: 0.125s; // 优化鼠标划过时的闪烁
     }
+
+    &[data-type~="s"] {
+      text-decoration-line: underline line-through;
+      opacity: 0.5; // fix https://github.com/mustakshif/Asri/issues/152
+    }
+
+    &[data-subtype="d"] {
+      text-decoration-style: dotted;
+      text-underline-offset: -0.02em;
+      text-decoration-thickness: calc($text-underline-thickness * 1.8);
+
+      &:hover {
+        text-decoration-thickness: $text-underline-thickness;
+      }
+    }
+
+    @include darkmode-counterpart {
+      --bg-clr: var(--b3-theme-primary-lighter);
+    }
+  }
 }
 
 @mixin v-block-ref {
-    [data-node-id] span[data-type=virtual-block-ref] {
-        border-bottom: none;
-        text-decoration-line: underline;
-        text-decoration-thickness: $text-underline-thickness;
-        text-decoration-color: var(--b3-theme-on-surface-light);
-        text-decoration-style: dashed;
-        background: linear-gradient(90deg, var(--b3-border-color) 100%, transparent 0%) center right;
-        background-size: 0;
-        background-repeat: no-repeat;
-        transition: background-size .2s;
+  [data-node-id] span[data-type="virtual-block-ref"] {
+    border-bottom: none;
+    text-decoration-line: underline;
+    text-decoration-thickness: $text-underline-thickness;
+    text-decoration-color: var(--b3-theme-on-surface-light);
+    text-decoration-style: dashed;
+    background: linear-gradient(90deg, var(--b3-border-color) 100%, transparent 0%) center right;
+    background-size: 0;
+    background-repeat: no-repeat;
+    transition: background-size 0.2s;
 
-        &[data-type~=s] {
-            text-decoration-line: underline line-through;
-        }
-
-        &:hover {
-            background-position: center left;
-            text-decoration-style: solid !important;
-            border: none;
-            background-size: 100% !important;
-            transition-delay: .125s;
-        }
+    &[data-type~="s"] {
+      text-decoration-line: underline line-through;
     }
+
+    &:hover {
+      background-position: center left;
+      text-decoration-style: solid !important;
+      border: none;
+      background-size: 100% !important;
+      transition-delay: 0.125s;
+    }
+  }
 }
 
 @mixin superlink($protyle: true, $typography: false) {
-    // $selector: matchSelector($protyle, '[data-node-id] span[data-type~=a],a', $typography, 'a');
+  // $selector: matchSelector($protyle, '[data-node-id] span[data-type~=a],a', $typography, 'a');
 
-    // #{$selector}
-    :is([data-node-id] span[data-type~=a], a) {
-        color: inherit;
-        text-decoration-line: underline;
-        text-decoration-thickness: $text-underline-thickness;
-        text-decoration-color: var(--b3-theme-primary);
+  // #{$selector}
+  :is([data-node-id] span[data-type~="a"], a) {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: $text-underline-thickness;
+    text-decoration-color: var(--b3-theme-primary);
 
-        &[data-type~=s] {
-            text-decoration-line: underline line-through;
-        }
-
-        &:hover {
-            color: var(--b3-theme-primary);
-            border-bottom: none;
-        }
+    &[data-type~="s"] {
+      text-decoration-line: underline line-through;
     }
+
+    &:hover {
+      color: var(--b3-theme-primary);
+      border-bottom: none;
+    }
+  }
 }
 
 @mixin superscript-subscript {
+  :where(span[data-type~="sup"], span[data-type~="sub"], sub, sup) {
+    font-weight: 500;
+  }
 
-    :where(span[data-type~=sup], span[data-type~=sub], sub, sup) {
-        font-weight: 500;
-    }
-
-    span[data-type~=strong]:where(span[data-type~=sup], span[data-type~=sub], sub, sup) {
-        font-weight: 900;
-    }
+  span[data-type~="strong"]:where(span[data-type~="sup"], span[data-type~="sub"], sub, sup) {
+    font-weight: 900;
+  }
 }
 
 @mixin bold {
-
-    :is(span[data-type~="strong"], strong) {
-        color: inherit;
-    }
+  :is(span[data-type~="strong"], strong) {
+    color: inherit;
+  }
 }
 
 @mixin italic {
-
-    :is(span[data-type~=em], em) {
-        color: inherit;
-    }
+  :is(span[data-type~="em"], em) {
+    color: inherit;
+  }
 }
 
 @mixin underline {
+  :is(span[data-type~="u"], u) {
+    text-decoration: underline;
+    text-decoration-thickness: $text-underline-thickness;
+    border-bottom: none;
 
-    :is(span[data-type~=u], u) {
-        text-decoration: underline;
-        text-decoration-thickness: $text-underline-thickness;
-        border-bottom: none;
-
-        &[data-type~=s] {
-            text-decoration-line: underline line-through;
-        }
-
-        .katex .base>span {
-            text-decoration: underline;
-            text-decoration-thickness: $text-underline-thickness;
-            text-underline-offset: -.05em;
-        }
+    &[data-type~="s"] {
+      text-decoration-line: underline line-through;
     }
+
+    .katex .base > span {
+      text-decoration: underline;
+      text-decoration-thickness: $text-underline-thickness;
+      text-underline-offset: -0.05em;
+    }
+  }
 }
 
 @mixin linethrough {
-
-    :is(span[data-type~=s], s) {
-        color: inherit;
-        opacity: .5;
-    }
+  :is(span[data-type~="s"], s) {
+    color: inherit;
+    opacity: 0.5;
+  }
 }
 
 @mixin highlight {
-
-    :is(span[data-type~=mark], mark) {
-        background: transparent;
-        box-shadow: 0 -0.5em 0 0 inset var(--b3-protyle-inline-mark-background), 0 0.1em 0 0 var(--b3-protyle-inline-mark-background);
-        color: inherit;
-    }
+  :is(span[data-type~="mark"], mark) {
+    background: transparent;
+    box-shadow: 0 -0.5em 0 0 inset var(--b3-protyle-inline-mark-background), 0 0.1em 0 0 var(--b3-protyle-inline-mark-background);
+    color: inherit;
+  }
 }
 
 @mixin kbd {
+  :is(span[data-type~="kbd"], kbd) {
+    font: 80% SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
+    color: inherit;
+    padding: 0.15em 0.5em;
+    border-radius: 1em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    vertical-align: baseline;
+    box-shadow: inset 0 -1px 0 var(--b3-theme-surface-light), inset 0 1px 0 #fffa;
+    background-image: linear-gradient(to bottom, #0000, #0001);
+    margin: auto 0.25em;
+    text-shadow: 0 1px #fffa;
 
-    :is(span[data-type~=kbd], kbd) {
-        font: 80% SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
-        color: inherit;
-        padding: 0.15em 0.5em;
-        border-radius: 1em;
-        box-decoration-break: clone;
-        -webkit-box-decoration-break: clone;
-        vertical-align: baseline;
-        box-shadow: inset 0 -1px 0 var(--b3-theme-surface-light), inset 0 1px 0 #fffa;
-        background-image: linear-gradient(to bottom, #0000, #0001);
-        margin: auto .25em;
-        text-shadow: 0 1px #fffa;
-        
-        @include darkmode-counterpart {
-            box-shadow: inset 0 1px 0 #fff3, 0 1px 0 #0004,  inset 0 0 0 1px var(--b3-theme-surface-lighter);
-            background-image: linear-gradient(to bottom, #0000, #0003);
-            border:none;
-            text-shadow: 0 -1px #000a;
-        }
+    @include darkmode-counterpart {
+      box-shadow: inset 0 1px 0 #fff3, 0 1px 0 #0004, inset 0 0 0 1px var(--b3-theme-surface-lighter);
+      background-image: linear-gradient(to bottom, #0000, #0003);
+      border: none;
+      text-shadow: 0 -1px #000a;
     }
+  }
 }
 
 @mixin tag {
-    [data-node-id] span[data-type~="tag"] {
-        --tag-color-border: #df830060;
-        --tag-color-bg: #df830015;
-        --tag-color-text: #df8300;
+  [data-node-id] span[data-type~="tag"] {
+    --tag-color-border: #df830060;
+    --tag-color-bg: #df830015;
+    --tag-color-text: #df8300;
 
-        font-size: 90%;
-        border-radius: 1em;
-        padding: 0.1em 0.5em 0.15em;
-        border: none;
-        box-shadow: 0 0 0 .065em inset var(--tag-color-border);
-        background-color: var(--tag-color-bg);
-        color: var(--tag-color-text);
-        box-decoration-break: clone;
-        -webkit-box-decoration-break: clone;
+    font-size: 90%;
+    border-radius: 1em;
+    padding: 0.1em 0.5em 0.15em;
+    border: none;
+    box-shadow: 0 0 0 0.065em inset var(--tag-color-border);
+    background-color: var(--tag-color-bg);
+    color: var(--tag-color-text);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 
-        @include darkmode-counterpart {
-            --tag-color-border: #ffa44460;
-            --tag-color-bg: #ffa44420;
-            --tag-color-text: #ffa444;
-        }
-
-        &:hover {
-            // box-shadow: 0 0 0 0.8em inset var(--tag-color);
-            background-color: transparent;
-            // @include theme-variant-color(color, background);
-            // color: change-color($color: pickThemeColor($theme-light, secondary), $lightness: 40%);
-
-            // @include darkmode-counterpart {
-            //     color: change-color($color: pickThemeColor($theme-dark, secondary), $lightness: 70%);
-            // }
-        }
+    @include darkmode-counterpart {
+      --tag-color-border: #ffa44460;
+      --tag-color-bg: #ffa44420;
+      --tag-color-text: #ffa444;
     }
+
+    &:hover {
+      // box-shadow: 0 0 0 0.8em inset var(--tag-color);
+      background-color: transparent;
+      // @include theme-variant-color(color, background);
+      // color: change-color($color: pickThemeColor($theme-light, secondary), $lightness: 40%);
+
+      // @include darkmode-counterpart {
+      //     color: change-color($color: pickThemeColor($theme-dark, secondary), $lightness: 70%);
+      // }
+    }
+  }
 }
 
 @mixin inline-code {
+  span[data-type~="code"],
+  code:not(.hljs) {
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    border-radius: 0.4em;
+    color: inherit;
+  }
 
-    span[data-type~=code],
-    code:not(.hljs) {
-        box-decoration-break: clone;
-        -webkit-box-decoration-break: clone;
-        border-radius: 0.4em;
-        color: inherit;
+  span[data-type~="code"] {
+    &[data-type~="u"],
+    &[data-type~="a"] {
+      text-decoration-thickness: calc($text-underline-thickness * 1.2);
+      text-underline-offset: 0.1em;
     }
-
-    span[data-type~=code] {
-
-        &[data-type~=u],
-        &[data-type~=a] {
-            text-decoration-thickness: calc($text-underline-thickness * 1.2);
-            text-underline-offset: .1em;
-        }
-    }
+  }
 }
 
 @mixin inline-memo {
-    span[data-type~=inline-memo] {
-        background-color: transparent;
-        border-bottom: none;
-        text-decoration-line: underline;
-        transition-property: background-color, text-decoration-color, box-shadow, color, border-radius;
-        transition-duration: .15s;
-        // transition: .15s;
-        -webkit-box-decoration-break: clone;
-        box-decoration-break: clone;
-        text-decoration-color: #FFCC02;
-        text-decoration-thickness: $text-underline-thickness;
+  span[data-type~="inline-memo"] {
+    background-color: transparent;
+    border-bottom: none;
+    text-decoration-line: underline;
+    transition-property: background-color, text-decoration-color, box-shadow, color, border-radius;
+    transition-duration: 0.15s;
+    // transition: .15s;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    text-decoration-color: #ffcc02;
+    text-decoration-thickness: $text-underline-thickness;
 
-        @include darkmode-counterpart {
-            text-decoration-color: #FED709;
-        }
-
-        &[data-type~=s] {
-            text-decoration-line: underline line-through;
-        }
-
-        &:hover {
-            --memo-bg: #FFE680;
-            background-color: var(--memo-bg);
-            box-shadow: 0 0 0 8px var(--memo-bg);
-            text-decoration-color: var(--memo-bg) !important;
-            color: var(--b3-theme-on-background) !important;
-            border-radius: 1px;
-            z-index: 1;
-            position: relative;
-            transition-delay: .125s; // 优化鼠标划过时的闪烁
-            // padding-left: 8px;
-            // padding-right: 8px;
-            // margin-left: -8px;
-            // margin-right: -8px;
-
-            @include darkmode-counterpart {
-                // box-shadow: 0 -1.2em 0 0 inset mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%);
-                --memo-bg: #DDBA0D;
-
-                color: var(--b3-theme-background) !important;
-            }
-        }
+    @include darkmode-counterpart {
+      text-decoration-color: #fed709;
     }
+
+    &[data-type~="s"] {
+      text-decoration-line: underline line-through;
+    }
+
+    &:hover {
+      --memo-bg: #ffe680;
+      background-color: var(--memo-bg);
+      box-shadow: 0 0 0 8px var(--memo-bg);
+      text-decoration-color: var(--memo-bg) !important;
+      color: var(--b3-theme-on-background) !important;
+      border-radius: 1px;
+      z-index: 1;
+      position: relative;
+      transition-delay: 0.125s; // 优化鼠标划过时的闪烁
+      // padding-left: 8px;
+      // padding-right: 8px;
+      // margin-left: -8px;
+      // margin-right: -8px;
+
+      @include darkmode-counterpart {
+        // box-shadow: 0 -1.2em 0 0 inset mix(map-get($theme-dark, font-color5), map-get($theme-dark, background), 85%);
+        --memo-bg: #ddba0d;
+
+        color: var(--b3-theme-background) !important;
+      }
+    }
+  }
 }
 
 // inline background

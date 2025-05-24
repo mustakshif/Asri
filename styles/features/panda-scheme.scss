@@ -1,42 +1,40 @@
 @supports (color: oklch(from red calc(l * 0.5) 0 h)) {
-    :root[data-theme-mode='light'] {
-        body // body.asri-enable-panda-scheme
+  :root[data-theme-mode="light"] {
+    body // body.asri-enable-panda-scheme
 
         //[]左停靠栏收起的情况
         //[]列表项目高亮背景颜色
         //[]分割线颜色
         //[]反链面板
-
-            {
-            #dockLeft.dock-layout-expanded,
+    {
+      #dockLeft.dock-layout-expanded,
             .layout__dockl:not(.layout--float),
             #toolbar button:not(#AsriTopbarLeftSpacing.asri-expanded ~ button),
             #toolbar div:not(#AsriPluginsIconsDivider, #AsriPluginsIconsDivider ~ div, #AsriTopbarLeftSpacing.asri-expanded ~ div) // .config__panel .b3-tab-bar
+      {
+        --l-background: 0.25;
+        --l-background-grayscale: 0.24;
+        --l-surface: 0.34;
+        --l-surface-grayscale: 0.34;
+        --l-on-background: 0.92;
 
-                {
-                --l-background: .25;
-                --l-background-grayscale: .24;
-                --l-surface: .34;
-                --l-surface-grayscale: .34;
-                --l-on-background: .92;
+        --asri-composite-background: oklch(from var(--asri-base-color) 0.25 calc(0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+        --asri-composite-surface: oklch(from var(--asri-base-color) 0.34 calc(0.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
+        --asri-composite-on-background: oklch(from var(--asri-base-color) 0.89 clamp(0, 0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h);
 
-                --asri-composite-background: oklch(from var(--asri-base-color) .25 calc(.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-                --asri-composite-surface: oklch(from var(--asri-base-color) .34 calc(.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-                --asri-composite-on-background: oklch(from var(--asri-base-color) .89 clamp(0, .01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), .04) h);
+        --b3-theme-background: var(--asri-composite-background-grayscale, var(--asri-composite-background, var(--asri-fallback-background)));
+        --b3-theme-surface: var(--asri-composite-surface-grayscale, var(--asri-composite-surface, var(--asri-fallback-surface)));
 
-                --b3-theme-background: var(--asri-composite-background-grayscale, var(--asri-composite-background, var(--asri-fallback-background)));
-                --b3-theme-surface: var(--asri-composite-surface-grayscale, var(--asri-composite-surface, var(--asri-fallback-surface)));
+        --b3-theme-on-background: var(--asri-composite-on-background-grayscale, var(--asri-composite-on-background, var(--asri-fallback-on-background)));
+        --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / 0.65);
 
-                --b3-theme-on-background: var(--asri-composite-on-background-grayscale, var(--asri-composite-on-background, var(--asri-fallback-on-background)));
-                --b3-theme-on-surface: oklch(from var(--b3-theme-on-background) l c h / .65);
+        --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / 0.08);
 
-                --b3-list-hover: oklch(from var(--b3-theme-on-background) l c h / .08);
+        --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / 0.15);
 
-                --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / .15);
-
-                color-scheme: dark;
-                -webkit-font-smoothing: antialiased;
-            }
-        }
+        color-scheme: dark;
+        -webkit-font-smoothing: antialiased;
+      }
     }
+  }
 }

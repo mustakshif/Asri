@@ -1,40 +1,40 @@
-@use '../../base' as *;
-@use '../utils' as *;
+@use "../../base" as *;
+@use "../utils" as *;
 
 // 弹出预览窗口 ——————————————————————————————————————
 .block__popover {
-    @include dialog-shadow($extra-shadow-light: "0 0 0 1px rgba(0, 0, 0, 0.05)");
-    @include theme-variant-border($border: false);
+  @include dialog-shadow($extra-shadow-light: "0 0 0 1px rgba(0, 0, 0, 0.05)");
+  @include theme-variant-border($border: false);
 
-    @include darkmode-counterpart {
-        // outline-color: transparent;
-        border: 1px solid var(--b3-border-color-trans);
-    }
+  @include darkmode-counterpart {
+    // outline-color: transparent;
+    border: 1px solid var(--b3-border-color-trans);
+  }
 
-    // outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
+  // outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
 
-    >.block__icons--menu {
-        background-color: var(--b3-theme-background);
-    }
+  > .block__icons--menu {
+    background-color: var(--b3-theme-background);
+  }
 
-    .block__icons {
-        .block__icon {
-            &:hover:not([disabled]):not(.ft__primary) {
-                background-color: transparent;
-            }
+  .block__icons {
+    .block__icon {
+      &:hover:not([disabled]):not(.ft__primary) {
+        background-color: transparent;
+      }
 
-            &--active {
-                color: var(--b3-theme-primary);
-                background-color: transparent;
+      &--active {
+        color: var(--b3-theme-primary);
+        background-color: transparent;
 
-                &:hover:not([disabled]):not(.ft__primary) {
-                    color: var(--b3-theme-primary);
-                }
-            }
+        &:hover:not([disabled]):not(.ft__primary) {
+          color: var(--b3-theme-primary);
         }
+      }
     }
+  }
 
-    &--open {
-        animation: scaleBounce .5s var(--asri-ease-spring-3);
-    }
+  &--open {
+    animation: scaleBounce 0.5s var(--asri-ease-spring-3);
+  }
 }
