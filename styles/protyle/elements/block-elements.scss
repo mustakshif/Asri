@@ -73,7 +73,7 @@
     // $selector: matchSelector($protyle, '[data-node-id].table table', $typography, 'table');
 
     // #{$selector}
-    :is([data-node-id].table table),
+    
     table {
         font-variant-numeric: tabular-nums;
         border-radius: 8px;

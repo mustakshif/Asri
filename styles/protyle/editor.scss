@@ -18,6 +18,10 @@
     @include table;
 }
 
+.layout__center .protyle {
+    container: protyle / inline-size;
+}
+
 .protyle-wysiwyg {
 
     //所有内容块 ————————————————————————
@@ -111,11 +115,12 @@
         background-color: var(--b3-theme-background);
     }
 
-    // @media (min-width: 1024px) {
-    //     .table table {
-    //         width: auto;
-    //     }
-    // }
+    // 仅适用编辑器的表格
+    @container protyle (min-width: 900px) {
+        .table table {
+            width: auto;
+        }
+    }
 
     .table[custom-pinthead="true"] {
         thead {
