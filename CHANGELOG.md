@@ -1,3 +1,21 @@
+### v3.4.2
+
+- 「顶栏融合+」适配更多插件
+- [新增表格显示样式随编辑器宽度动态调整](https://github.com/mustakshif/Asri/issues/166)
+- 斜杠菜单显示样式改为随编辑器动态调整
+- 优化列表项中引述块的右边距
+- [修复主题配置损坏时无法储存配置的问题](https://github.com/mustakshif/Asri/issues/165)
+
+<br />
+
+- Adapted "Topbar Fusion+" for more plugins
+- [Added dynamic adjustment of table display style based on editor width](https://github.com/mustakshif/Asri/issues/166)
+- Changed the slash menu display style to dynamically adjust with the editor
+- Optimized the right margin of blockquotes in list items
+- [Fixed an issue where configurations couldn&apos;t be saved when theme settings were corrupted](https://github.com/mustakshif/Asri/issues/165)
+
+---
+
 ### v3.4.1
 
 - [「顶栏融合+」渐进模糊遮罩现支持动态变化，提高顶栏可读性](https://github.com/mustakshif/Asri/issues/163)

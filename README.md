@@ -13,6 +13,14 @@ An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), 
 
 ## Latest Updates
 
+### v3.4.2
+
+- Adapted "Topbar Fusion+" for more plugins
+- [Added dynamic adjustment of table display style based on editor width](https://github.com/mustakshif/Asri/issues/166)
+- Changed the slash menu display style to dynamically adjust with the editor
+- Optimized the right margin of blockquotes in list items
+- [Fixed an issue where configurations couldn&apos;t be saved when theme settings were corrupted](https://github.com/mustakshif/Asri/issues/165)
+
 ### v3.4.1
 
 - [Added dynamic progressive blur mask of "Topbar Fusion+" to improve top bar readability](https://github.com/mustakshif/Asri/issues/163)

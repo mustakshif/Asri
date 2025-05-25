@@ -13,6 +13,14 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 最近更新
 
+### v3.4.2
+
+- 「顶栏融合+」适配更多插件
+- [新增表格显示样式随编辑器宽度动态调整](https://github.com/mustakshif/Asri/issues/166)
+- 斜杠菜单显示样式改为随编辑器动态调整
+- 优化列表项中引述块的右边距
+- [修复主题配置损坏时无法储存配置的问题](https://github.com/mustakshif/Asri/issues/165)
+
 ### v3.4.1
 
 - [「顶栏融合+」渐进模糊遮罩现支持动态变化，提高顶栏可读性](https://github.com/mustakshif/Asri/issues/163)
