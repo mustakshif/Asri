@@ -43,10 +43,21 @@
   }
 
   //菜单
+  .b3-menu,
+  .b3-menu__submenu {
+    &,
+    &::before {
+      border-radius: 0 !important;
+    }
+  }
   .b3-menu--fullscreen,
   .b3-menu__submenu {
     box-shadow: none;
     outline: none;
+  }
+
+  .b3-menu__submenu .b3-menu__items {
+    max-height: calc(100% - 10px);
   }
 
   border-radius: 0;

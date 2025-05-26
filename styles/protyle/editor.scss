@@ -21,6 +21,9 @@
 .layout__center .protyle {
   container: protyle / inline-size;
 }
+.file-tree .protyle {
+  container: unset; 
+}
 
 .protyle-wysiwyg {
   //所有内容块 ————————————————————————
