@@ -34,7 +34,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp.png)
 
-* 新增「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」，突破顶栏与编辑区界限，带来沉浸式的阅读与编辑体验（*此为实验性功能，请谨慎启用；详请见脚注 3*）
+* 新增「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」，突破顶栏与编辑区界限，带来沉浸式的阅读与编辑体验（*实验性功能，请谨慎启用；详请见脚注 3*）
 * 调整预设配色方案「岁禧」的配色
 * 去除移动端菜单的多余边框
 * [修复移动端块属性遮挡内容的问题](https://github.com/mustakshif/Asri/issues/162)
