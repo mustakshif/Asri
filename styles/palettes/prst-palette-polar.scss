@@ -5,12 +5,10 @@
     --polar-base-accent: #000;
     --asri-theme-accent-customized: var(--polar-base-accent);
     --b3-theme-primary: var(--polar-base-accent);
-    --b3-theme-accent: #2752fd;
+    --b3-theme-accent: #00c22d;
 
-    --b3-theme-surface: #eef1f3;
-
-    --b3-theme-on-background: #16192f;
-    --b3-theme-on-surface: #16192fa2;
+    --b3-theme-on-background: #000000;
+    --b3-theme-on-surface: #00000081;
 
     // .layout__center
     //   :not(.av__views)
@@ -61,6 +59,28 @@
     color: var(--b3-theme-primary);
   }
 
+  .layout__dockl + .layout__resize--lr::after {
+    background-color: var(--b3-border-color);
+  }
+
+  .config__panel {
+    .b3-tab-bar,
+    .item__side {
+      border-right: 1px solid var(--b3-border-color);
+    }
+  }
+
+  .layout__dockl,
+  .dock,
+  .config__panel :is(.b3-tab-bar, .item__side) {
+    --b3-theme-surface: var(--b3-theme-background);
+  }
+
+  body:not(.asri-tfp) {
+    .protyle .protyle-breadcrumb {
+      box-shadow: 0 -1px 0 0 var(--b3-border-color) inset;
+    }
+  }
   // @supports (color: oklch(from #00f l clamp(0, c, 0.2) calc(h + 0))) {
   //   :is(.layout, .b3-typography) {
   //     --heading-clr-primary-base: #50f555;

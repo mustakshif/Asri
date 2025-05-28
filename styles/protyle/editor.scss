@@ -22,7 +22,7 @@
   container: protyle / inline-size;
 }
 .file-tree .protyle {
-  container: unset; 
+  container: unset;
 }
 
 .protyle-wysiwyg {
@@ -44,9 +44,7 @@
   .sb[data-sb-layout="row"] > [data-type="NodeHeading"]:first-child,
   .sb[data-sb-layout="col"] > [data-type="NodeHeading"],
   .protyle-wysiwyg__embed > [data-type="NodeHeading"]:first-child,
-  .protyle-wysiwyg__embed
-    > .protyle-breadcrumb__bar
-    + [data-type="NodeHeading"] {
+  .protyle-wysiwyg__embed > .protyle-breadcrumb__bar + [data-type="NodeHeading"] {
     margin-top: 0;
   }
 
@@ -83,11 +81,7 @@
 
   //代码块 ——————————————————————————————————————
   .code-block {
-    --b3-protyle-code-linenumber-hl: color-mix(
-      in srgb,
-      var(--b3-theme-surface) 55%,
-      var(--b3-theme-primary)
-    );
+    --b3-protyle-code-linenumber-hl: color-mix(in srgb, var(--b3-theme-surface) 55%, var(--b3-theme-primary));
 
     margin: 0.4em 0;
 
