@@ -353,13 +353,14 @@
     padding-bottom: 8px;
   }
 
-  // >div {
-  //     padding-top: 8px;
+  // 代码块语言选择、模版挂件等选择面板
+  >.fn__flex-column {
+      padding-top: 8px;
 
-  //     // >div {
-  //     //     padding-bottom: 8px;
-  //     // }
-  // }
+      >.b3-list {
+          padding-bottom: 8px;
+      }
+  }
 
   .toolbarResize {
     box-shadow: inset 1px 0 0 var(--b3-border-color-trans) !important;
