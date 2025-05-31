@@ -1,11 +1,11 @@
 @use "sass:list";
 
-[data-asri-palette="polar"] {
+[data-asri-palette="polarity"] {
   &[data-theme-mode="light"] {
-    --polar-base-accent: #000;
-    --asri-theme-accent-customized: var(--polar-base-accent);
-    --b3-theme-primary: var(--polar-base-accent);
-    --b3-theme-accent: #009322;
+    --polarity-base-accent: #000;
+    --asri-theme-accent-customized: var(--polarity-base-accent);
+    --b3-theme-primary: var(--polarity-base-accent);
+    --b3-theme-accent: #12b355;
 
     // --b3-theme-on-background: #232323;
     // --b3-theme-on-surface: #00000081;
@@ -24,17 +24,12 @@
     //   .item--focus {
     //   background-color: #c7ea0052 !important;
     // }
-
-    :is(.layout, .b3-typography) {
-      --b3-theme-primary: var(--b3-theme-accent);
-      --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
-    }
   }
 
   &[data-theme-mode="dark"] {
-    --polar-base-accent: #fff;
+    --polarity-base-accent: #fff;
     --asri-theme-accent-customized: #50f555;
-    --b3-theme-primary: var(--polar-base-accent);
+    --b3-theme-primary: var(--polarity-base-accent);
 
     --b3-theme-background: #000;
     --b3-theme-surface: #1f1f22;
@@ -42,15 +37,18 @@
     --b3-theme-on-background: #dddddd;
     --b3-theme-on-surface: #dddddda2;
 
-    :is(.layout, .b3-typography) {
-      --b3-theme-primary: #50f555;
-      --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
-    }
-
     .code-block,
-    code {
-      box-shadow: 0 0 0 1px #fff3;
+    code,
+    .config-account__center:not(.config-account__center--text) {
+      box-shadow: 0 0 0 1px var(--b3-border-color-trans);
     }
+  }
+
+  :is(.layout, .b3-typography) {
+    --b3-theme-primary: var(--b3-theme-accent);
+    --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
+    --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
+    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
   }
 
   .protyle-title__input,
@@ -72,7 +70,8 @@
 
   .layout__dockl,
   .dock,
-  .config__panel :is(.b3-tab-bar, .item__side) {
+  .config__panel :is(.b3-tab-bar, .item__side),
+  .config-account {
     --b3-theme-surface: var(--b3-theme-background);
   }
 
@@ -121,20 +120,20 @@
 .b3-switch,
 .b3-button--outline,
 .protyle-breadcrumb__icon {
-  // [data-asri-palette="polar"][data-theme-mode="light"] & {
-  //   --b3-theme-primary: var(--polar-base-accent);
+  // [data-asri-palette="polarity"][data-theme-mode="light"] & {
+  //   --b3-theme-primary: var(--polarity-base-accent);
   //   --b3-theme-on-primary: var(--b3-theme-on-background);
   // }
 
-  [data-asri-palette="polar"][data-theme-mode="dark"] & {
-    --b3-theme-primary: var(--polar-base-accent);
+  [data-asri-palette="polarity"][data-theme-mode="dark"] & {
+    --b3-theme-primary: var(--polarity-base-accent);
     --b3-theme-on-primary: #000;
   }
 }
 
 // .b3-button--outline,
 // .protyle-breadcrumb__icon {
-//   [data-asri-palette="polar"][data-theme-mode="light"] & {
+//   [data-asri-palette="polarity"][data-theme-mode="light"] & {
 //     --b3-theme-primary: var(--b3-theme-accent);
 //   }
 // }

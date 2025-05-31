@@ -415,7 +415,9 @@ body:not(.asri-disable-backdrop-blur) {
     }
   }
 
-  // 图片预览 ——————————————————————
+  /* 
+   * 图片预览
+   */
   .viewer-backdrop {
     @include bg-blur($saturate-value: 1);
     backdrop-filter: blur(40px);
@@ -440,7 +442,9 @@ body:not(.asri-disable-backdrop-blur) {
     }
   }
 
-  // 数据库菜单 ——————————————————————
+  /* 
+   * 数据库菜单
+   */
   .av__panel {
     .b3-menu {
       > .fn__flex-column > .b3-menu__item[data-type="nobg"]:first-child {

@@ -1,13 +1,17 @@
 @use "../base" as *;
 
-// full-width display ——————————————————
-
+/*
+ * 全宽显示
+ */
 .protyle-wysiwyg {
   --protyle-spacing-compatible: var(--protyle-spacing, 24px);
 }
 
 :is(.body-asri--mobile, .layout__center) .protyle-wysiwyg {
-  // 图片 ——————————————————————
+  
+  /*
+   * 图片
+   */
   &[custom-afwd="all"] > .p:not([custom-afwd="off"]),
   &[custom-afwd~="p"] > .p:not([custom-afwd="off"]),
   > .p[custom-afwd="on"] {
@@ -102,7 +106,9 @@
     }
   }
 
-  // iframe ———————————————————
+  /* 
+   * iframe
+   */
 
   &[custom-afwd="all"] > .iframe:not([custom-afwd="off"]),
   &[custom-afwd~="iframe"] > .iframe:not([custom-afwd="off"]),
@@ -167,7 +173,9 @@
     }
   }
 
-  // 数据库 ——————————————————
+  /* 
+   * 数据库
+   */
 
   &[custom-afwd="all"] > .av:not([custom-afwd="off"]),
   &[custom-afwd~="db"] > .av:not([custom-afwd="off"]),
@@ -228,7 +236,9 @@
     }
   }
 
-  // 超级块 ————————————————————
+   /* 
+   * 超级块
+   */
 
   &[custom-afwd="all"] > .sb[data-sb-layout="col"]:not([custom-afwd="off"]),
   &[custom-afwd~="sb"] > .sb[data-sb-layout="col"]:not([custom-afwd="off"]),
@@ -269,7 +279,9 @@
     // }
   }
 
-  // 表格块 ————————————————————
+  /* 
+   * 表格
+   */
 
   &[custom-afwd="all"] > .table:not([custom-afwd="off"]),
   &[custom-afwd~="t"] > .table:not([custom-afwd="off"]),
@@ -348,7 +360,9 @@
 //     }
 // }// 思源 3.0.6 已修复
 
-// text direction ———————————————————————
+/* 
+ * text direction
+ */
 [custom-tdir="rtl"] {
   direction: rtl;
 }

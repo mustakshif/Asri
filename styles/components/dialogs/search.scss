@@ -1,7 +1,9 @@
 @use "../../base" as *;
 @use "../utils" as *;
 
-// 搜索 ————————————————————————————————————
+/*
+ * 搜索
+*/
 [data-key="dialog-globalsearch"],
 [data-key="dialog-search"],
 [data-key="dialog-replace"] {
@@ -63,9 +65,7 @@
 }
 
 // 搜索通用
-#searchInput,
-#searchAssetInput,
-#replaceInput {
+:is(#searchInput, #searchAssetInput, #replaceInput) {
   background-color: transparent;
 }
 
@@ -106,9 +106,7 @@
   }
 }
 
-#replaceBtn,
-#replaceAllBtn,
-#criteria .b3-button {
+:is(#replaceBtn, #replaceAllBtn, #criteria .b3-button) {
   @include button-action("primary") {
     color: var(--b3-theme-accent, var(--b3-theme-primary));
     background-color: transparent;
@@ -123,8 +121,7 @@
   }
 }
 
-#searchList,
-#searchAssetList {
+:is(#searchList, #searchAssetList) {
   mark {
     background-color: transparent;
   }

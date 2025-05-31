@@ -76,7 +76,7 @@ body:not(.body-asri--mobile, .body--window) {
     margin: 8px auto;
   }
 
-  // 侧栏、侧栏面板 ——————————————————————————
+  /* 侧边栏 */
   #dockLeft {
     padding-top: calc(var(--avoid-topbar) - 6px);
   }
@@ -221,7 +221,9 @@ body:not(.body-asri--mobile, .body--window) {
     }
   }
 
-  // 禁用拖动的区域 ————————————————————————————————————
+  /*
+   * 禁用拖动的区域
+   */
   // 页签栏
   .layout-tab-bar--readonly .block__icon,
     .layout-tab-bar:not(.layout-tab-bar--readonly),

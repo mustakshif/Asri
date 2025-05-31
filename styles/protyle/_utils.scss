@@ -1,5 +1,6 @@
-// ——————————————————————————————————————
-// 弹性复选框
+/*
+* 弹性复选框
+*/
 @mixin bouncy-check-box($checked: false, $icon-size: 1.1em, $stroke-width: 0.1em) {
   &::before {
     content: "" !important; // fix https://github.com/mustakshif/Asri/issues/113
@@ -46,8 +47,9 @@
   }
 }
 
-// ——————————————————————————————————————
-// 资源列 chip 样式
+/* 
+* 数据库资源列样式
+*/
 @mixin database-assets-style($level: "non-chip") {
   $selector: if($level == "non-chip", ".av__celltext--url", ".b3-chip.av__celltext--url");
 

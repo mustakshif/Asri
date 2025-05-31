@@ -76,8 +76,9 @@
 //     --indent-offset: -1px;
 // }
 
-// ————————————————————————————————————————————————————————
-// 文档树缩进参考线 indent guides（方案二，性能更差，导致展开文档目录动画卡顿）
+/*
+* 文档树缩进参考线 indent guides（方案二，性能更差，导致展开文档目录动画卡顿）
+*/
 // @property --indent-color {
 //     syntax: '<color>';
 //     initial-value: #0000;

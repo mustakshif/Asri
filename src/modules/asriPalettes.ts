@@ -225,7 +225,7 @@ const asriPrstPalettes = {
     },
   },
 
-  'prst-palette-polar': {
+  'prst-palette-polarity': {
       'dark': {
           'primary': '#E6E9EF',
           'chroma': '0',

@@ -1,7 +1,9 @@
 @use "../../base" as *;
 @use "../utils" as *;
 
-// 最近文档 ——————————————————————————————————
+/*
+ * 最近文档
+*/
 [data-key="dialog-recentdocs"] {
   .b3-dialog__header {
     padding: 12px;
@@ -13,7 +15,9 @@
   }
 }
 
-// 笔记本设置 ————————————————————
+/*
+ * 笔记本设置
+*/
 [data-key="dialog-notebookconf"] {
   .b3-dialog__header {
     > .fn__flex {
@@ -29,7 +33,9 @@
   }
 }
 
-// 块属性 ————————————————————
+/*
+ * 块属性
+*/
 [data-key="dialog-attr"] {
   button[data-action="addCustom"],
   button[data-type="addColumn"] {
@@ -42,7 +48,9 @@
   }
 }
 
-// 命令面板 ——————————————————————————
+/*
+ * 命令面板
+*/
 [data-key="dialog-commandpanel"] {
   .search__header {
     > .b3-form__icon-icon {
@@ -64,7 +72,9 @@
   }
 }
 
-// 代码片段对话框 ——————————————————————
+/* 
+ * 代码片段对话框 
+*/
 #addCodeSnippetCSS,
 #addCodeSnippetJS {
   inset-inline-end: 79px;
@@ -101,7 +111,9 @@
   }
 }
 
-// 随机题头图列表 ——————————————————————
+/*
+ * 随机题头图列表
+*/
 [data-key="dialog-backgroundrandom"] {
   .b3-dialog__body {
     position: relative;
@@ -138,7 +150,9 @@
   }
 }
 
-// 移动块窗口 ———————————————————————————————————————
+/*
+ * 移动块窗口
+*/
 [data-key="dialog-movepathto"] {
   .b3-dialog__header > div {
     text-wrap: nowrap;

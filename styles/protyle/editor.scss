@@ -26,7 +26,9 @@
 }
 
 .protyle-wysiwyg {
-  //所有内容块 ————————————————————————
+  /* 
+   * 所有内容块
+   */
   [data-node-id] {
     border-radius: 10px;
 
@@ -38,8 +40,9 @@
     }
   }
 
-  // 标题块 ————————————————————————
-
+  /* 
+   * 标题块
+   */
   // [data-type='NodeSuperBlock']>[data-type='NodeHeading']:first-child, https://github.com/mustakshif/Asri/issues/79
   .sb[data-sb-layout="row"] > [data-type="NodeHeading"]:first-child,
   .sb[data-sb-layout="col"] > [data-type="NodeHeading"],
@@ -48,13 +51,13 @@
     margin-top: 0;
   }
 
-  // 块引用 ————————————————————————————————————
+  /* 块引用 */
   @include block-ref;
 
-  // 虚拟引用 ——————————————————————————————————————
+  /* 虚拟引用 */
   @include v-block-ref;
 
-  // 标签 ——————————————————————————————————————
+  /* 标签 */
   @include tag;
 
   [data-node-id] span[data-type~="tag"] {
@@ -70,16 +73,16 @@
     }
   }
 
-  // 备注 ——————————————————————————————————————
+  /* 内联备注 */
   @include inline-memo;
 
-  // 引用块 ——————————————————————————————————————
+  /* 引用块 */
   .sb .bq,
   .sb blockquote {
     outline: none;
   }
 
-  //代码块 ——————————————————————————————————————
+  /* 代码块 */
   .code-block {
     --b3-protyle-code-linenumber-hl: color-mix(in srgb, var(--b3-theme-surface) 55%, var(--b3-theme-primary));
 
@@ -102,13 +105,13 @@
     }
   }
 
-  // 列表 ——————————————————————————————————————
+  /* 列表块 */
   @include list;
 
-  // 图片 ——————————————————————————————————
+  /* 图片 */
   @include image;
 
-  // 表格 ——————————————————————————————————————
+   /* 表格 */
   [data-node-id].table[custom-pinthead="true"] thead {
     // position: sticky;
     top: 0;
@@ -134,7 +137,7 @@
     }
   }
 
-  // 分隔线 ————————————————————————————————————
+  /* 分割线 */
   [data-node-id].hr > div:after {
     background-color: var(--b3-border-color-trans);
     height: 2px;
@@ -151,21 +154,21 @@
   //     }
   // }
 
-  // 视频 ——————————————————————————————————————
+  /* 视频 */
   video {
     border-radius: 4px;
   }
 
-  // 超级块 ————————————————————————————————————
+  /* 超级块 */
   @include superblock;
 
-  // 嵌入块 ——————————————————————————————————————
+  /* 嵌入块*/
   @include embedblock;
 
-  // iframe ————————————————————————————————————————
+   /* iframe */
   @include iframe;
 
-  // misc ——————————————————————————————————————
+  /* misc */
   font-variant-ligatures: normal;
 
   // 正文紧挨文档标题的标题块
@@ -258,7 +261,7 @@
   // outline: 1px solid var(--b3-theme-primary-lighter);
   // }
 
-  // 预览模式 ————————————————————————————
+  /* 预览模式 */
   .protyle-preview__action {
     background-color: var(--b3-theme-background);
     border-bottom: 1px solid var(--b3-border-color-trans);

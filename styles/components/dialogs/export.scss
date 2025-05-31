@@ -37,7 +37,9 @@ body[style="-webkit-print-color-adjust: exact;"] {
   }
 }
 
-//导出窗口 ——————————————————————————
+/* 
+* 导出窗口 
+*/
 
 // #preview {
 //     font-feature-settings: "ss06" on;
@@ -53,7 +55,9 @@ body[style="-webkit-print-color-adjust: exact;"] {
 //     }
 // }
 
-// 图片预览 ——————————————————————
+/* 
+* 图片预览 
+*/
 .viewer-backdrop {
   animation: fadeIn 0.3s;
   transform-origin: var(--mouseX) var(--mouseY);
