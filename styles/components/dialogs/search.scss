@@ -7,6 +7,9 @@
 [data-key="dialog-globalsearch"],
 [data-key="dialog-search"],
 [data-key="dialog-replace"] {
+  .b3-dialog__container {
+    overflow: unset; // 避免打开时向上移位
+  }
   #searchList {
     background-color: var(--b3-theme-surface);
 

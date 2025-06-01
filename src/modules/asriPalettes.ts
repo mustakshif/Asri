@@ -225,17 +225,30 @@ const asriPrstPalettes = {
     },
   },
 
-  'prst-palette-polarity': {
-      'dark': {
-          'primary': '#E6E9EF',
-          'chroma': '0',
-          'followSysAccentColor': false,
-      },
-      'light': {
-          'primary': '#1B1C1D',
-          'chroma': '0',
-          'followSysAccentColor': false,
-      }
+  // 'prst-palette-polarity': {
+  //     'dark': {
+  //         'primary': '#E6E9EF',
+  //         'chroma': '0',
+  //         'followSysAccentColor': false,
+  //     },
+  //     'light': {
+  //         'primary': '#1B1C1D',
+  //         'chroma': '0',
+  //         'followSysAccentColor': false,
+  //     }
+  // },
+
+  "prst-palette-stellula": {
+    "dark": {
+      "primary": "#3B2731",
+      "chroma": "0.6",
+      "followSysAccentColor": false,
+    },
+    "light": {
+      "primary": "#FFF4EB",
+      "chroma": "2.5",
+      "followSysAccentColor": false,
+    },
   },
 };
 

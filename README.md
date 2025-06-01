@@ -7,9 +7,9 @@ English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main
 
 ![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v22.png)
 
-# Asri, theme for SiYuan
+# Asri · When the Interface Fades, the Mind Emerges
 
-An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), delivers an elegant, efficient, and personalized note-taking experience through its clean, intuitive design.
+Asri is a modern theme designed for [SiYuan Note](https://github.com/siyuan-note/siyuan), crafting a space where visual distractions disappear and your thinking takes center stage — immersive, focused, and intuitively guided.
 
 ## Latest Updates
 
