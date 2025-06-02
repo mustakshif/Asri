@@ -5,9 +5,17 @@
 
   &,
   &:lang(zh_CN) {
-    --b3-font-family: system-ui, ui-sans-serif, -apple-system, "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+    --b3-font-family: system-ui, ui-sans-serif, -apple-system,
+      "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, "SF Pro Text",
+      "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans",
+      "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB",
+      sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol",
+      "Android Emoji", "EmojiSymbols";
 
-    --b3-font-family-code: SF Mono, "JetBrains Mono", JetBrainsMono-Regular, Menlo, mononoki, Consolas, "Liberation Mono", Courier, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols", var(--b3-font-family), monospace;
+    --b3-font-family-code: SF Mono, "JetBrains Mono", JetBrainsMono-Regular,
+      Menlo, mononoki, Consolas, "Liberation Mono", Courier, "Apple Color Emoji",
+      "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+      "EmojiSymbols", var(--b3-font-family), monospace;
 
     // --b3-font-family-emoji: "Apple Color Emoji", "Emojis Additional", "Emojis Reset";
 
@@ -19,7 +27,12 @@
   }
 
   &:lang(ja_JP) {
-    --b3-font-family: ui-sans-serif, -apple-system, "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+    --b3-font-family: ui-sans-serif, -apple-system, "Emojis Additional",
+      "Emojis Reset", BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons",
+      "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans",
+      "Yu Gothic UI", "PingFang SC", "Segoe UI", "Microsoft Yahei",
+      "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji",
+      "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
   }
 
   // interpolate-size: allow-keywords;  // https://developer.chrome.com/docs/css-ui/animate-to-height-auto/
@@ -70,6 +83,11 @@
 body {
   text-underline-position: under;
   text-decoration-skip-ink: all; // not supported yet
+
+  &:not(.body--win32, .body-asri--linux) {
+    scrollbar-width: thin;
+    scrollbar-color: var(--b3-scroll-color-hover) var(--b3-scroll-color-track, #0000);
+  }
 
   [data-theme-mode="light"] & {
     -webkit-font-smoothing: auto;

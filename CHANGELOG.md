@@ -1,3 +1,21 @@
+### v3.4.3
+
+- 新增预设主题配色「星漪」
+- 优化滚动条颜色
+- 修复移动端部分子菜单无法滚动的问题
+- 修复部分面板上下间距问题
+- 修复打开搜索窗口时内容向上移位的问题
+
+<br />
+
+- Added new preset theme color "Stellula"
+- Optimized the scrollbar color
+- Fixed scrolling issue for some submenus on mobile devices
+- Adjusted vertical spacing for certain panels
+- Fixed content shift issue when opening the search window
+
+---
+
 ### v3.4.2
 
 - 「顶栏融合+」适配更多插件

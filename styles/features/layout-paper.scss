@@ -1,0 +1,30 @@
+//https://github.com/mustakshif/Asri/issues/120#issuecomment-2566140825
+
+.dock-layout-expanded+#layouts {
+    overflow: visible;
+
+    >.fn__flex-1:first-child {
+        overflow: visible;
+    }
+
+    .layout__center {
+        overflow: visible;
+        z-index: 1;
+
+        >.fn__flex-1 {
+            overflow: visible;
+
+            >[data-type="wnd"] {
+                overflow: visible;
+
+                >.layout-tab-container {
+                    box-shadow: rgba(244, 244, 244, .12) 0px 0px 0px 1px, rgba(0, 0, 0, .16) 0px 24px 48px, rgba(0, 0, 0, .12) 0px 4px 16px;
+                }
+            }
+        }
+    }
+}
+
+.layout-tab-container {
+    transition: box-shadow .2s;
+}

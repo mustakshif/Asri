@@ -239,7 +239,12 @@ textarea {
   &::-webkit-slider-thumb {
     @include theme-variant-color(background-color, light-components);
     // @include tooltip-shadow;
-    outline: 0px solid color-mix(in srgb, var(--b3-theme-on-background) 12%, var(--b3-theme-background));
+    outline: 0px solid
+      color-mix(
+        in srgb,
+        var(--b3-theme-on-background) 12%,
+        var(--b3-theme-background)
+      );
     height: 16px;
     width: 16px;
     margin-top: -5px;
@@ -576,4 +581,9 @@ textarea {
     outline: 0.5px solid rgb(from var(--b3-font-color1) r g b / 0.3);
     outline-offset: -0.5px;
   }
+}
+
+.fn__hidescrollbar,
+.b3-snackbars > .fn__flex-1 {
+  scrollbar-width: none;
 }

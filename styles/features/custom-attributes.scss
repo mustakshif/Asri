@@ -198,6 +198,7 @@
 
       .av__scroll::-webkit-scrollbar {
         display: none;
+        scrollbar-width: none;
       }
 
       .av__colsticky {
@@ -300,6 +301,7 @@
 
       &::-webkit-scrollbar {
         display: none;
+        scrollbar-width: none;
       }
     }
 

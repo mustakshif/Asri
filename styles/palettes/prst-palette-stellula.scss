@@ -1,4 +1,9 @@
 [data-asri-palette="stellula"] {
+  body {
+    --b3-scroll-color-hover: var(--b3-theme-primary-lighter);
+    --b3-scroll-color-track: var(--b3-theme-background-light);
+  }
+
   &[data-theme-mode="light"] {
     --stellula-base-accent: #7ed5db;
     --asri-theme-accent-customized: var(--stellula-base-accent);
@@ -11,18 +16,25 @@
     --b3-theme-on-background: #424074;
     --b3-theme-on-surface: #373379a2;
 
-    .layout__center :not(.av__views) > .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
+    .layout__center
+      :not(.av__views)
+      > .layout-tab-bar
+      .item:not(.item--readonly, .item--full.item--focus):hover,
     .layout__center :not(.av__views) > .layout-tab-bar .item--focus {
       background-color: #7ed5db8e;
     }
 
-    [data-type="wnd"]:not(.layout__wnd--active) :not(.av__views) > .layout-tab-bar .item--focus {
+    [data-type="wnd"]:not(.layout__wnd--active)
+      :not(.av__views)
+      > .layout-tab-bar
+      .item--focus {
       background-color: #7ed5db52 !important;
     }
   }
 
   &[data-theme-mode="dark"] {
-    --stellula-base-accent: #FC8B60;
+    // --stellula-base-accent: #FC8B60;
+    --stellula-base-accent: #6cc3c9;
     --asri-theme-accent-customized: var(--stellula-base-accent);
     --b3-theme-primary: var(--stellula-base-accent);
 

@@ -9,26 +9,21 @@ English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main
 
 # Asri · When the Interface Fades, the Mind Emerges
 
-Asri is a modern theme designed for [SiYuan Note](https://github.com/siyuan-note/siyuan), crafting a space where visual distractions disappear and your thinking takes center stage — immersive, focused, and intuitively guided.
+Asri is a modern theme designed for [SiYuan Note](https://github.com/siyuan-note/siyuan), crafting a space where visual distractions disappear and your thinking takes center stage - immersive, focused, and intuitively guided.
 
 ## Latest Updates
 
-### v3.4.2
+### v3.4.3
 
-- Adapted "Topbar Fusion+" for more plugins
-- [Added dynamic adjustment of table display style based on editor width](https://github.com/mustakshif/Asri/issues/166)
-- Changed the slash menu display style to dynamically adjust with the editor
-- Optimized the right margin of blockquotes in list items
-- [Fixed an issue where configurations couldn&apos;t be saved when theme settings were corrupted](https://github.com/mustakshif/Asri/issues/165)
+### v3.4.3
 
-### v3.4.1
+- Added new preset theme color "Stellula"
+- Optimized the scrollbar color
+- Fixed scrolling issue for some submenus on mobile devices
+- Adjusted vertical spacing for certain panels
+- Fixed content shift issue when opening the search window
 
-- [Added dynamic progressive blur mask of "Topbar Fusion+" to improve top bar readability](https://github.com/mustakshif/Asri/issues/163)
-- Added text tooltips to experimental feature icons in the "Topbar Fusion+" menu
-- Adapted styling changes for SiYuan v3.1.29
-- Adjusted symbol spacing in the emoji panel
-- Fixed abnormal color display of emojis
-- Fixed background color anomaly in Safari browser with the "Aerisland" color scheme
+### ...
 
 ### v3.4.0: Vision Unbound
 
