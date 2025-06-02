@@ -15,8 +15,6 @@ Asri is a modern theme designed for [SiYuan Note](https://github.com/siyuan-note
 
 ### v3.4.3
 
-### v3.4.3
-
 - Added new preset theme color "Stellula"
 - Optimized the scrollbar color
 - Fixed scrolling issue for some submenus on mobile devices
