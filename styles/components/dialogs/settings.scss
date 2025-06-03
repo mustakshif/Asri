@@ -259,6 +259,7 @@
         background-color: var(--b3-theme-surface);
         padding: 4px 8px;
         opacity: 0.9;
+        color: var(--b3-theme-on-surface);
 
         &::before {
           display: none;
