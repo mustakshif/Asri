@@ -41,8 +41,10 @@ Check all updates [here](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.
 
 ### 🪄 Sleek and Modern Design
 
- * 👨‍🎨 Unlimited theme color options allow for a fully personalized note-taking experience[^1]
+* 👨‍🎨 Unlimited theme color options allow for a fully personalized note-taking experience[^1]
+* 🎨 Color scheme based on human brightness perception for harmonious, non-intrusive visuals
 * ⚖️ Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span> seamlessly integrates the top bar, the tab bar and the editor[^2]<svg style="vertical-align: super; height: .5em; width: .5em; padding-inline-start: .1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg>[^3]
+
 * 🧊 Glassmorphism enhances the visual hierarchy
 * 🌓 Support for light and dark modes and smooth transition between them
 * ➖ Minimized dividers create an integrated, cohesive interface style
@@ -52,24 +54,30 @@ Check all updates [here](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.
 
 * 🔢 Tabular and database-friendly monospaced numerals improve reading efficiency
 * 👁️ High readability glyph variants tailored for note-taking scenarios[^4] `#macOS` `#iOS` `#iPadOS`
-* 🛋️ Different font smoothing for light and dark modes to maintain visual consistency in font weight `#macOS` `#iOS` `#iPadOS`
 * 🦋 Support for full-width display of images, videos, widgets, databases, superblocks and more, enhancing information display
 * 💬 Supports right-to-left layout, accommodating languages written from right to left, such as Arabic[^5]
 * 🚏 Document-level text direction settings cater to different language layout needs
 * 🧩 Streamlined superblock margins for simplified creation of grid and masonry layouts
 * 📝 Enhanced the layout details in database and attribute view for improved clarity and organization
 
-### 🧭 Convenient and Clear Navigation
+### 🧭 Clear and Convenient Navigation
 
-* 🗂️ Indent guides for file tree and outline
-* 🔍 Clear hierarchical display of search results and backlinks lists
-* ↕️ Enabled native scrollbar, which can auto-hide to minimize visual clutter[^6] `#macOS`
+* 🗂️ Well-structured document tree and indentation guide lines to help you quickly grasp content hierarchy
+* 🔍 Hierarchically organized search and backlink panels for intuitive contextual tracing and associative thinking
+* 🎯 Focus block indicators guide attention flow and enhance coherent output of thought sequences
+* ↕️ Native system scrollbars with auto-hide for a cleaner and more natural interface[^6] `#macOS`
 
-### 👆 Nimble and Smooth Interaction
+### 👆 Fluid and Lively Interactions
 
-* ⏱️ Optimized timing of animations for better interface feedback, reducing user distraction
-* 💫 Appropriate and lively animations enrich the interactive experience
-* 🚀 A high level of smooth performance maintained
+* 💫 Carefully tuned lively animations add warmth and rhythm to interactions
+* ⏱️ Refined animation triggers and frequency enhance interface response rhythm and minimize attention drift
+* 🚀 High-performance global animations ensure uninterrupted immersive experience
+
+### 🗜️ Meticulous Visual Details
+
+* 🌁 Global gradient fades soften element edges and reduce visual fragmentation
+* 🛋️ Optimized font rendering strategies per light/dark mode to maintain consistent perceived weight `#macOS` `#iOS` `#iPadOS`
+* 🚥 Subtle repositioning of window control buttons for enhanced native system alignment `#macOS`
 
 [^1]: This new feature is only available on platforms that support `oklch()` and its relative color syntax. Some devices will still use color schemes in previous versions due to lower browser kernel versions.
 
