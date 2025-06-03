@@ -86,7 +86,7 @@ body {
 
   &:not(.body--win32, .body-asri--linux) {
     scrollbar-width: thin;
-    scrollbar-color: var(--b3-scroll-color-hover) var(--b3-scroll-color-track, #0000);
+    scrollbar-color: var(--b3-scroll-color-hover) var(--b3-theme-background-light, #0000);
   }
 
   [data-theme-mode="light"] & {

@@ -8,7 +8,6 @@
 }
 
 :is(.body-asri--mobile, .layout__center) .protyle-wysiwyg {
-  
   /*
    * 图片
    */
@@ -196,9 +195,11 @@
         transition: padding 0.2s;
       }
 
-      .av__scroll::-webkit-scrollbar {
-        display: none;
+      .av__scroll {
         scrollbar-width: none;
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
 
       .av__colsticky {
@@ -237,7 +238,7 @@
     }
   }
 
-   /* 
+  /* 
    * 超级块
    */
 
@@ -247,7 +248,10 @@
     // content-visibility: visible;
 
     > :first-child {
-      margin-left: calc(var(--protyle-spacing-compatible) * -1 + min(24px, var(--protyle-spacing-compatible)));
+      margin-left: calc(
+        var(--protyle-spacing-compatible) * -1 +
+          min(24px, var(--protyle-spacing-compatible))
+      );
       transition: margin 0.2s;
 
       // >*,
@@ -260,7 +264,10 @@
     }
 
     > :nth-last-child(1 of [data-node-id]) {
-      margin-right: calc(var(--protyle-spacing-compatible) * -1 + min(24px, var(--protyle-spacing-compatible)));
+      margin-right: calc(
+        var(--protyle-spacing-compatible) * -1 +
+          min(24px, var(--protyle-spacing-compatible))
+      );
 
       // >*, // 导致 tabbar 滚动卡顿 + 行内备注 hover 状态取消时动画卡顿
       // .sb,
@@ -299,9 +306,10 @@
       margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 4px);
       padding: 0 calc(var(--protyle-spacing-compatible));
 
+      scrollbar-width: none;
+
       &::-webkit-scrollbar {
         display: none;
-        scrollbar-width: none;
       }
     }
 

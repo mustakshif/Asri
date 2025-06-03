@@ -55,7 +55,10 @@
         content: "";
         display: block;
         width: 100%;
-        height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
+        height: min(
+          calc(var(--blur-radius-main) * 2 + var(--blur-block-height)),
+          100%
+        );
         position: absolute;
         top: 0;
         z-index: 2;
@@ -63,7 +66,8 @@
         // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+      :not(#searchPreview, .card__block, .plugin-panel)
+        > .protyle-breadcrumb:not([slot]) {
         padding-top: 42px;
         margin-bottom: calc(var(--blur-block-height) * -1);
         height: var(--blur-block-height);
@@ -83,7 +87,9 @@
         padding-top: 0 !important;
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb + .protyle-content {
+      :not(#searchPreview, .card__block, .plugin-panel)
+        > .protyle-breadcrumb
+        + .protyle-content {
         padding-top: var(--blur-block-height);
       }
 
@@ -130,17 +136,27 @@
     [data-type="wnd"] {
       .layout-tab-container {
         & > .protyle[data-loading="finished"]::before {
-          mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 0.5px), transparent calc(var(--blur-block-height) + 1px));
+          mask-image: linear-gradient(
+            to bottom,
+            black 0,
+            black calc(var(--blur-block-height) - 0.5px),
+            transparent calc(var(--blur-block-height) + 1px)
+          );
 
           @include bg-blur($brightness-dark: 0.95);
         }
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
-        background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
+      :not(#searchPreview, .card__block, .plugin-panel)
+        > .protyle-breadcrumb:not([slot]) {
+        background-color: rgb(
+          from var(--b3-theme-background) r g b / $medium-transparency
+        );
 
         @include darkmode-counterpart {
-          background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
+          background-color: rgb(
+            from var(--b3-theme-background) r g b / $medium-transparency
+          );
         }
       }
     }
@@ -172,7 +188,15 @@
         left: 0;
         height: calc(30vh + var(--blur-block-height) - $offset);
         top: $offset;
-        background: linear-gradient(to top, var(--b3-theme-background) 2%, rgba(from var(--b3-theme-background) r g b / 0.97) 9%, rgba(from var(--b3-theme-background) r g b / 0.9) 18%, rgba(from var(--b3-theme-background) r g b / 0.75) 33%, rgba(from var(--b3-theme-background) r g b / 0.05) 92%, transparent 99%);
+        background: linear-gradient(
+          to top,
+          var(--b3-theme-background) 2%,
+          rgba(from var(--b3-theme-background) r g b / 0.97) 9%,
+          rgba(from var(--b3-theme-background) r g b / 0.9) 18%,
+          rgba(from var(--b3-theme-background) r g b / 0.75) 33%,
+          rgba(from var(--b3-theme-background) r g b / 0.05) 92%,
+          transparent 99%
+        );
 
         //方案二
         // $width: 180%;
@@ -257,7 +281,11 @@
         //     // }
         // }
 
-        .item:not(.item--readonly, .item--full.item--focus, .item--focus):hover {
+        .item:not(
+            .item--readonly,
+            .item--full.item--focus,
+            .item--focus
+          ):hover {
           // box-shadow: inset 0 0 0 1px rgb(from var(--b3-theme-on-background) r g b / .8);
           background-color: transparent !important;
         }
@@ -273,7 +301,8 @@
           // backdrop-filter: saturate(2);
           // outline: 1px solid rgb(from var(--b3-theme-background) r g b / .2);
           // outline-offset: -1px;
-          box-shadow: inset 0 0 0 1px rgb(from var(--b3-theme-on-background) r g b / 0.2);
+          box-shadow: inset 0 0 0 1px
+            rgb(from var(--b3-theme-on-background) r g b / 0.2);
 
           &--focus {
             // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
@@ -290,22 +319,40 @@
       .layout-tab-container {
         & > .protyle[data-loading="finished"] {
           &::before {
-            mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 25px), transparent calc(var(--blur-block-height) - 5px));
+            mask-image: linear-gradient(
+              to bottom,
+              black 0,
+              black calc(var(--blur-block-height) - 25px),
+              transparent calc(var(--blur-block-height) - 5px)
+            );
 
-            @include bg-blur($blur-radius: 4px, $saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+            @include bg-blur(
+              $blur-radius: 4px,
+              $saturate-value: 1,
+              $brightness-light: 1,
+              $brightness-dark: 1
+            );
           }
 
           &::after {
             content: "";
             display: block;
             width: 100%;
-            height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
+            height: min(
+              calc(var(--blur-radius-main) * 2 + var(--blur-block-height)),
+              100%
+            );
             position: absolute;
             top: 0;
             pointer-events: none;
             // background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / .6), transparent var(--blur-block-height));
             backdrop-filter: blur(2px);
-            mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 15px), transparent calc(var(--blur-block-height) + 0px));
+            mask-image: linear-gradient(
+              to bottom,
+              black 0,
+              black calc(var(--blur-block-height) - 15px),
+              transparent calc(var(--blur-block-height) + 0px)
+            );
           }
 
           &.fullscreen::after {
@@ -353,7 +400,8 @@
         }
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+      :not(#searchPreview, .card__block, .plugin-panel)
+        > .protyle-breadcrumb:not([slot]) {
         background-color: transparent;
         // mix-blend-mode: luminosity;
         // mix-blend-mode: difference;
@@ -382,11 +430,10 @@
           &:not(:first-child) {
             @include overflow-indicator-fadein-mask($range: "left right");
           }
-
           &::-webkit-scrollbar {
             display: none;
-            scrollbar-width: none;
           }
+          scrollbar-width: none;
         }
 
         // .protyle-breadcrumb__text,
@@ -529,7 +576,9 @@
     }
   }
 
-  .backlinkArea.arco-collapse .backlinkAreaCollapse > .arco-collapse-item-header {
+  .backlinkArea.arco-collapse
+    .backlinkAreaCollapse
+    > .arco-collapse-item-header {
     z-index: 1;
   }
 }
