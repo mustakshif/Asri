@@ -235,10 +235,12 @@
         z-index: 1;
         // box-shadow: none;
 
-        box-shadow: 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.1), 0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.1);
+        box-shadow: 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.1),
+          0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.1);
 
         @include darkmode-counterpart {
-          box-shadow: 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.3), 0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.15);
+          box-shadow: 0px 13px 25px -2px rgb(from var(--b3-theme-primary) r g b/0.3),
+            0px 0px 10px 0px rgb(from var(--b3-theme-primary) r g b/0.15);
         }
       }
 
@@ -297,6 +299,54 @@
     background-color: var(--b3-theme-surface);
     justify-content: center;
 
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:
+      30% 32px 1.5em calc(2.4em + 28px) 3em calc(3em + 28px) 28px 56px repeat(auto-fill, minmax(28px, auto))
+      3em;
+
+    .fn__hr--b,
+    .fn__hr,
+    .fn__flex-1 {
+      display: none;
+    }
+
+    .item__img {
+      grid-column: 1 / -1;
+      margin-bottom: 32px;
+      margin-top: auto;
+
+      + div {
+        // repo name
+        + div + div {
+          grid-column: 1 / -1;
+          height: 1em;
+          // text-align: end;
+        }
+      }
+    }
+
+    // author
+    > .block__icons {
+      grid-column: 1 / -1;
+      height: 1em;
+      padding: 0;
+      min-height: unset;
+    }
+
+    // 下载、反馈按钮
+    > div:not([class]) {
+      grid-column: 1 / -1;
+    }
+
+    // 底部图标
+    > .fn__flex:nth-last-child(1 of .fn__flex) {
+      grid-column: 1 / -1;
+      align-items: center;
+    }
+
+    // 返回主题列表按钮
     > div:first-child {
       position: absolute;
       top: 16px;
@@ -317,7 +367,7 @@
       width: fit-content;
       padding-inline-start: 8px;
       padding-inline-end: 12px;
-      margin: 12px auto 0;
+      margin: 0 auto 12px;
       min-height: 2.4em;
       transition: transform 0.2s;
 
