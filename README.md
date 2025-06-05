@@ -41,7 +41,7 @@ Check all updates [here](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.
 
 ### 🪄 Sleek and Modern Design
 
-* 👨‍🎨 Unlimited theme color options allow for a fully personalized note-taking experience[^1]
+* 👨‍🎨 Infinitely adjustable theme colors with up to 13,000 combinations for a fully personalized experience[^1]
 * 🎨 Color scheme based on human brightness perception for harmonious, non-intrusive visuals
 * ⚖️ Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span> seamlessly integrates the top bar, the tab bar and the editor[^2]<svg style="vertical-align: super; height: .5em; width: .5em; padding-inline-start: .1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg>[^3]
 * 🧊 Glassmorphism enhances the visual hierarchy

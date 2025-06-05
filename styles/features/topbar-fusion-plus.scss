@@ -55,10 +55,7 @@
         content: "";
         display: block;
         width: 100%;
-        height: min(
-          calc(var(--blur-radius-main) * 2 + var(--blur-block-height)),
-          100%
-        );
+        height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
         position: absolute;
         top: 0;
         z-index: 2;
@@ -66,8 +63,7 @@
         // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel)
-        > .protyle-breadcrumb:not([slot]) {
+      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
         padding-top: 42px;
         margin-bottom: calc(var(--blur-block-height) * -1);
         height: var(--blur-block-height);
@@ -87,9 +83,7 @@
         padding-top: 0 !important;
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel)
-        > .protyle-breadcrumb
-        + .protyle-content {
+      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb + .protyle-content {
         padding-top: var(--blur-block-height);
       }
 
@@ -147,16 +141,11 @@
         }
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel)
-        > .protyle-breadcrumb:not([slot]) {
-        background-color: rgb(
-          from var(--b3-theme-background) r g b / $medium-transparency
-        );
+      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+        background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
 
         @include darkmode-counterpart {
-          background-color: rgb(
-            from var(--b3-theme-background) r g b / $medium-transparency
-          );
+          background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
         }
       }
     }
@@ -281,11 +270,7 @@
         //     // }
         // }
 
-        .item:not(
-            .item--readonly,
-            .item--full.item--focus,
-            .item--focus
-          ):hover {
+        .item:not(.item--readonly, .item--full.item--focus, .item--focus):hover {
           // box-shadow: inset 0 0 0 1px rgb(from var(--b3-theme-on-background) r g b / .8);
           background-color: transparent !important;
         }
@@ -301,8 +286,7 @@
           // backdrop-filter: saturate(2);
           // outline: 1px solid rgb(from var(--b3-theme-background) r g b / .2);
           // outline-offset: -1px;
-          box-shadow: inset 0 0 0 1px
-            rgb(from var(--b3-theme-on-background) r g b / 0.2);
+          box-shadow: inset 0 0 0 1px rgb(from var(--b3-theme-on-background) r g b / 0.2);
 
           &--focus {
             // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
@@ -326,22 +310,14 @@
               transparent calc(var(--blur-block-height) - 5px)
             );
 
-            @include bg-blur(
-              $blur-radius: 4px,
-              $saturate-value: 1,
-              $brightness-light: 1,
-              $brightness-dark: 1
-            );
+            @include bg-blur($blur-radius: 4px, $saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
           }
 
           &::after {
             content: "";
             display: block;
             width: 100%;
-            height: min(
-              calc(var(--blur-radius-main) * 2 + var(--blur-block-height)),
-              100%
-            );
+            height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
             position: absolute;
             top: 0;
             pointer-events: none;
@@ -373,15 +349,15 @@
               pointer-events: none;
 
               mix-blend-mode: luminosity;
+              opacity: 0.8;
 
               @include darkmode-counterpart {
                 mix-blend-mode: normal;
-                opacity: 0.7;
+                opacity: 0.75;
               }
 
               @include smoothGradientVar(var(--b3-theme-background), 0.9, 0.8);
 
-              opacity: 0.8;
               @supports (animation-timeline: view()) {
                 animation-timeline: --protyle-content-scroll;
                 animation-range: -2px 30vh;
@@ -400,8 +376,7 @@
         }
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel)
-        > .protyle-breadcrumb:not([slot]) {
+      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
         background-color: transparent;
         // mix-blend-mode: luminosity;
         // mix-blend-mode: difference;
@@ -576,9 +551,7 @@
     }
   }
 
-  .backlinkArea.arco-collapse
-    .backlinkAreaCollapse
-    > .arco-collapse-item-header {
+  .backlinkArea.arco-collapse .backlinkAreaCollapse > .arco-collapse-item-header {
     z-index: 1;
   }
 }

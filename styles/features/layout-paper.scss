@@ -1,30 +1,81 @@
 //https://github.com/mustakshif/Asri/issues/120#issuecomment-2566140825
 
-.dock-layout-expanded+#layouts {
+@use "../base" as *;
+.protyle:not(.fn__none) {
+  .protyle-content {
+    // animation: none;
+  }
+}
+
+body {
+  background-color: var(--b3-theme-surface);
+
+  --asri-layout-paper-border-radius: 16px;
+}
+// protyle shadow
+.dock-layout-expanded + #layouts {
+  overflow: visible;
+
+  > .fn__flex-1:first-child {
     overflow: visible;
+  }
 
-    >.fn__flex-1:first-child {
+  .layout__center {
+    overflow: visible;
+    z-index: 1;
+
+    > .fn__flex-1 {
+      overflow: visible;
+
+      [data-type="wnd"] {
         overflow: visible;
-    }
 
-    .layout__center {
-        overflow: visible;
-        z-index: 1;
-
-        >.fn__flex-1 {
-            overflow: visible;
-
-            >[data-type="wnd"] {
-                overflow: visible;
-
-                >.layout-tab-container {
-                    box-shadow: rgba(244, 244, 244, .12) 0px 0px 0px 1px, rgba(0, 0, 0, .16) 0px 24px 48px, rgba(0, 0, 0, .12) 0px 4px 16px;
-                }
+        .layout-tab-container {
+          background-color: inherit;
+          margin-top: 8px;
+          overflow: visible;
+          contain: style;
+          > .protyle {
+            overflow: hidden;
+            will-change: border-radius;
+            border-radius: var(--asri-layout-paper-border-radius) var(--asri-layout-paper-border-radius) 0 0;
+            box-shadow: rgba(31, 34, 37, 0.09) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 24px 48px,
+              rgba(0, 0, 0, 0.02) 0px 4px 16px;
+            @include darkmode-counterpart {
+              box-shadow: rgba(244, 244, 244, 0.12) 0px 0px 0px 1px, rgba(0, 0, 0, 0.16) 0px 24px 48px,
+                rgba(0, 0, 0, 0.12) 0px 4px 16px;
             }
+          }
         }
+      }
     }
+  }
 }
 
 .layout-tab-container {
-    transition: box-shadow .2s;
+  transition: box-shadow 0.2s;
+}
+
+// docks and side panels
+.dock {
+  background-color: inherit !important;
+  border-color: transparent !important;
+
+  &#dockRight {
+    border-left-color: transparent !important;
+  }
+}
+.file-tree {
+  background-color: var(--b3-theme-surface) !important;
+}
+
+.layout__resize {
+  &::after {
+    background-color: transparent;
+  }
+}
+
+// tabbar
+.fn__flex-column[data-type="wnd"] > .fn__flex:first-child {
+  background-color: inherit;
 }

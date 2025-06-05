@@ -41,7 +41,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### 🪄 简洁现代的设计
 
-* 👨‍🎨 主题色无极调节，带来完全个性化的笔记体验[^1]
+* 👨‍🎨 主题色可无极调节，生成多达 13000 种配色组合，带来高度个性化的笔记体验[^1]
 * 🎨 采用基于人眼感知亮度的色彩模型，科学设计整体配色系统，呈现协调柔和的视觉效果
 * ⚖️ 顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>，实现顶栏与页签栏和编辑器的无缝整合[^2]<svg style="vertical-align: super; height: .5em; width: .5em; padding-inline-start: .1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg>[^3]
 * 🧊 引入毛玻璃材质，带来富有层次感的视觉体验

@@ -1,12 +1,12 @@
-// no effect
-
 // .layout__center .protyle-content {
-//     contain: content;
+//     contain: content; // cause positioning issues
 // }
 
-// .file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag, .sy__backlink) {
-//     contain: strict;
-// }
+.file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag 
+// ,.sy__backlink
+) {
+  contain: content; // may cause positioning issues
+}
 
 // .protyle-top {
 //     // content-visibility: auto;
@@ -16,3 +16,28 @@
 // .layout__dockl, .layout__dockr {
 //     contain: content; // https://github.com/mustakshif/Asri/issues/150
 // }
+
+.list,
+.hljs,
+.sb,
+.render-node,
+.av {
+  contain: layout style;
+}
+
+// [data-type="NodeMathBlock"] > [spin],
+// [data-type~="inline-math"],
+// [data-subtype="abc"] >[spin], // 五线谱
+.render-node>[spin],
+// .hljs > [contenteditable], // code// cause linenumber issue
+audio,
+canvas,
+video,
+:is(.sy__file, .sy__bookmark)  .b3-list,
+.sy__tag .b3-list-item,
+// .av__row:not(.av__row--header),
+.av__container,
+.table>[contenteditable] {
+  contain: content;
+  content-visibility: auto;
+}
