@@ -3,9 +3,9 @@
 // }
 
 .file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag 
-// ,.sy__backlink
+// ,.sy__backlink // cause element positioning issues
 ) {
-  contain: content; // may cause positioning issues
+  contain: content;
 }
 
 // .protyle-top {
@@ -26,18 +26,26 @@
 }
 
 // [data-type="NodeMathBlock"] > [spin],
-// [data-type~="inline-math"],
-// [data-subtype="abc"] >[spin], // 五线谱
-.render-node>[spin],
-// .hljs > [contenteditable], // code// cause linenumber issue
+// [data-subtype="abc"] >[spin], // abc notation
+.render-node>[spin], // graph, mermaid, etc.
+.hljs>.fn__none+[contenteditable], // code, only when linenumber is disabled
+// .protyle-wysiwyg__embed [contenteditable]:not(.protyle-attr),
+[data-type~="inline-math"],
+[data-type="NodeHTMLBlock"]>div:nth-child(2),
 audio,
 canvas,
 video,
-:is(.sy__file, .sy__bookmark)  .b3-list,
-.sy__tag .b3-list-item,
-// .av__row:not(.av__row--header),
-.av__container,
-.table>[contenteditable] {
+// :is(.sy__file, .sy__bookmark) .b3-list,
+// .sy__tag .b3-list-item, // cause flash
+.av__row:not(.av__row--header)
+// .av__container
+// .li>[data-node-id]>[contenteditable] // negative effect
+// .table>[contenteditable], // cause table overflow issue
+{
   contain: content;
   content-visibility: auto;
 }
+
+// .av__container {
+//   contain-intrinsic-size: 300px; // reduce layout shift
+// }

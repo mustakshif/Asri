@@ -352,6 +352,16 @@
     //     }
     // }
   }
+
+  .protyle-wysiwyg__embed .code-block > .protyle-action {
+    // justify-content: flex-start;
+    .protyle-action__language {
+      margin-right: 8px;
+    }
+    >:not(.protyle-action__language) {
+      display: none;
+    }
+  }
 }
 
 @mixin iframe {

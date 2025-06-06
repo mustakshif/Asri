@@ -3,45 +3,51 @@ English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main
 <!-- [![Releases](https://img.shields.io/github/downloads/mustakshif/Asri/total?label=Downloads&color=477BF9&style=flat)](https://github.com/mustakshif/Asri/releases/latest)
 [![Stars](https://img.shields.io/github/stars/mustakshif/Asri?style=flat)](https://star-history.com/#mustakshif/Asri) -->
 
-<br/>
-
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v22.png)
-
 # Asri · When the Interface Fades, the Mind Emerges
 
 Asri is a modern theme designed for [SiYuan Note](https://github.com/siyuan-note/siyuan), crafting a space where visual distractions disappear and your thinking takes center stage - immersive, focused, and intuitively guided.
 
-## Latest Updates
+## Changelog
 
-### v3.4.3
+To view the details of the latest release, please visit the [Releases Page](https://github.com/mustakshif/Asri/releases).
 
-- Added new preset theme color "Stellula"
-- Optimized the scrollbar color
-- Fixed scrolling issue for some submenus on mobile devices
-- Adjusted vertical spacing for certain panels
-- Fixed content shift issue when opening the search window
+For the complete update history, refer to the [CHANGELOG.md](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md).
 
-### ...
+### Major Updates Overview
 
-### v3.4.0: Vision Unbound
+#### v3.4.0: Vision Unbound
 
 ![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp_v2.png)
 
-* Added "Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>", breaking the boundary between the topbar and the editor to deliver an immersive reading and editing experience (*This is an experimental feature; enable with caution. See footnote 3 for details*)
-* Adjusted the color scheme of the preset theme "EverBliss"
-* Removed redundant borders in the mobile menu
-* [Fixed an issue where block attributes obscured content on mobile](https://github.com/mustakshif/Asri/issues/162)
-* [Fixed a theme-related issue preventing the "Sidebar Memo" plugin from displaying](https://ld246.com/article/1746662147426/comment/1746667474590?r=Mustakshif#comments)
+"Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>": breaking the boundary between the topbar and the editor to deliver an immersive reading and editing experience (*This is an experimental feature; enable with caution. See footnote 3 for details*)
 
-### ...
+#### v3.0.0
 
-Check all updates [here](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md).
+![color customization](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/asri-config-menu_en_US_v2.png)
+
+Refactored theme colors using a perceptual lightness-based color system, added supports for seamless adjustment of global color tones which can also follow system accent color (`#Windows` `#macOS`), providing a fully personalized note-taking experience.
+
+<p style="font-size: .5em"></p>
+<details>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">More Content</summary>
+
+#### v2.1.0
+
+"Asri Full-width Display": implementing full-page width display of images, videos, widgets, superblocks, and database blocks, etc
+
+#### v2.0.0
+
+"Tabbar Fusion": introduced a new top bar design seamlessly integrated with the tab bar, balancing aesthetics and efficiency
+
+</details>
 
 ## Theme Features
 
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v22.png)
+
 ### 🪄 Sleek and Modern Design
 
-* 👨‍🎨 Infinitely adjustable theme colors with up to 13,000 combinations for a fully personalized experience[^1]
+* 👨‍🎨 continuously adjustable theme color customization, allowing for over 18,000 visually distinct combinations[^1]
 * 🎨 Color scheme based on human brightness perception for harmonious, non-intrusive visuals
 * ⚖️ Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span> seamlessly integrates the top bar, the tab bar and the editor[^2]<svg style="vertical-align: super; height: .5em; width: .5em; padding-inline-start: .1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg>[^3]
 * 🧊 Glassmorphism enhances the visual hierarchy
@@ -75,6 +81,7 @@ Check all updates [here](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.
 ### 🗜️ Meticulous Visual Details
 
 * 🌁 Global gradient fades soften element edges and reduce visual fragmentation
+* 🌄 Parallax scrolling for header images, creating a layered and minimalist spatial atmosphere
 * 🛋️ Optimized font rendering strategies per light/dark mode to maintain consistent perceived weight `#macOS` `#iOS` `#iPadOS`
 * 🚥 Subtle repositioning of window control buttons for enhanced native system alignment `#macOS`
 
@@ -125,6 +132,8 @@ Click on the `Appearance Mode` icon in the top right corner to open the Asri the
 * `Follow system accent color`: Use the system's accent color as the base theme color. This option is available on `Windows` and `macOS` desktop platforms.
 * `Chroma slider`: Adjust the chroma of backgrounds and regular texts, with a range of `0 - 5`, where `0` represents pure grayscale, and the default is `1`.
 
+**When a preset color scheme is active, custom options will be disabled**. To re-enable the custom theme color feature, simply click the currently active preset scheme again to switch back to custom mode.
+
 ### 📐 Custom Attributes
 
 #### 1. `afwd`: Asri full-width display
@@ -144,7 +153,7 @@ To enable full-width display, you can click on the block icons for **Document Bl
 
 <p style="font-size: .5em"></p>
 <details>
-<summary style="opacity: .6; font-weight: 600; font-size: .8em">More</summary>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">More Details</summary>
 This feature relies on the custom attributes of SiYuan, so you can also manually configure the block attributes. The attribute name and values are shown in the table below:
 
 | Attribute | Value | Description |
@@ -161,7 +170,7 @@ To apply this property to a document, you can click on the block icon for **Docu
 
 <p style="font-size: .5em"></p>
 <details>
-<summary style="opacity: .6; font-weight: 600; font-size: .8em">More</summary>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">More Details</summary>
 
 | Attribute | Value | Description |
 | ------ | ------ | ------ |

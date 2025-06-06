@@ -3,45 +3,51 @@
 <!-- [![Releases](https://img.shields.io/github/downloads/mustakshif/Asri/total?label=Downloads&color=477BF9&style=flat)](https://github.com/mustakshif/Asri/releases/latest)
 [![Stars](https://img.shields.io/github/stars/mustakshif/Asri?style=flat)](https://star-history.com/#mustakshif/Asri) -->
 
-<br />
-
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v22.png)
-
 # Asri · 让界面隐退，让思维登场
 
 Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/siyuan)主题，以隐形设计构筑沉浸空间，为你带来专注、优雅、直觉驱动的笔记体验。
 
-## 最近更新
+## 更新日志
 
-### v3.4.3
+查看最新版本更新细节，请访问[发布页](https://github.com/mustakshif/Asri/releases)。
 
-- 新增预设主题配色「星漪」
-- 优化滚动条颜色
-- 修复移动端部分子菜单无法滚动的问题
-- 修复部分面板上下间距问题
-- 修复打开搜索窗口时内容向上移位的问题
+查看完整更新日志，请访问 [CHANGELOG.md](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md)。
 
-### …
+### 重大更新一览
 
-### v3.4.0：视界无界
+#### v3.4.0：视界无界
 
 ![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp_v2.png)
 
-* 新增「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」，突破顶栏与编辑区界限，带来沉浸式的阅读与编辑体验（*实验性功能，请谨慎启用；详请见脚注 3*）
-* 调整预设配色方案「岁禧」的配色
-* 去除移动端菜单的多余边框
-* [修复移动端块属性遮挡内容的问题](https://github.com/mustakshif/Asri/issues/162)
-* [修复主题导致的「侧栏备注」插件无法显示的问题](https://ld246.com/article/1746662147426/comment/1746667474590?r=Mustakshif#comments)
+「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」：突破顶栏与编辑区界限，带来沉浸式的阅读与编辑体验（*实验性功能，请谨慎启用；详请见脚注 3*）
 
-### ...
+#### v3.0.0
 
-全部更新日志见[这里](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md)。
+![color customization](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/asri-config-menu_zh_CN_v2.png)
+
+采用基于感知亮度的色彩系统重构主题配色，全局色调支持无级调节，也可跟随系统强调色（`#Windows` `#macOS`），带来完全个性化的笔记体验
+
+<p style="font-size: .5em"></p>
+<details>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">更多内容</summary>
+
+#### v2.1.0
+
+「全宽显示」自定义属性：实现正文图片、视频、挂件、超级块、数据库块等撑满页宽显示
+
+#### v2.0.0
+
+「顶栏融合」：全新顶栏设计，与页签栏无缝融合，兼顾美感与效率
+
+</details>
 
 ## 主题特性
 
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v22.png)
+
 ### 🪄 简洁现代的设计
 
-* 👨‍🎨 主题色可无极调节，生成多达 13000 种配色组合，带来高度个性化的笔记体验[^1]
+* 👨‍🎨 主题色支持无极调节，可生成超过 1.8 万种具可视差异的配色组合，为你打造高度个性化的笔记空间[^1]
 * 🎨 采用基于人眼感知亮度的色彩模型，科学设计整体配色系统，呈现协调柔和的视觉效果
 * ⚖️ 顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>，实现顶栏与页签栏和编辑器的无缝整合[^2]<svg style="vertical-align: super; height: .5em; width: .5em; padding-inline-start: .1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg>[^3]
 * 🧊 引入毛玻璃材质，带来富有层次感的视觉体验
@@ -75,6 +81,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 ### 🗜️ 精雕细琢的细节
 
 * 🌁 全局溢出渐隐处理，柔化元素边界，减少界面割裂感
+* 🌄 题头图支持视差滚动，营造富有层次的极简空间感
 * 🛋️ 在亮暗色模式下分别启用优化字体渲染策略，保持视觉字重一致性 `#macOS` `#iOS` `#iPadOS`
 * 🚥 微调窗口控制按钮（红绿灯）位置，强化原生系统的一致观感 `#macOS`
 
@@ -90,10 +97,10 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
     此外还可能引发其他问题，例如：
 
-    1. 与自定义样式代码产生冲突
-    2. 与部分插件存在兼容性问题
-    3. 顶栏文字/图标可读性下降
-    4. 页面运行效率降低
+    4. 与自定义样式代码产生冲突
+    5. 与部分插件存在兼容性问题
+    6. 顶栏文字/图标可读性下降
+    7. 页面运行效率降低
 
     使用过程中如遇问题请及时停用此功能。
 
@@ -124,6 +131,8 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * `自定义主题色`：使用自选色作为主题基准色，生成相应配色方案并直接应用
 * `跟随系统强调色`：使用系统强调色作为主题基准色，仅在 Windows 和 macOS 桌面端可用
 * `色度滑块`：调整背景和普通文本的色彩浓度，取值范围为 `0 - 5`，`0` 表示纯灰度色，默认值为 `1`
+
+**当启用预设配色方案时，自定义选项将被禁用**。若要重新启用自定义主题色功能，可再次点击当前已激活的预设配色方案以切换回自定义模式。
 
 ### 📐 自定义属性
 
