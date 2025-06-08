@@ -1,3 +1,27 @@
+### v3.4.4
+
+- 「顶栏融合+」适配更多插件
+- 优化集市包侧栏信息展示效果
+- 优化嵌入块中代码块语言标识位置
+- 导出 PDF 界面适配主题色
+- 改善编辑器部分元素的渲染性能
+- 调整「星漪」暗色模式强调色
+- 适配思源 v3.1.32 样式改动
+- 修复部分按钮文字颜色异常问题
+
+<br />
+
+- Adapted "Top Bar Fusion+" for more plugins
+- Optimized the display effect of package information in the marketplace sidebar
+- Improved the position of code block language identifiers in embedded blocks
+- Adjusted the PDF export interface to match the theme color
+- Enhanced rendering performance for certain elements in the editor
+- Modified the accent color in "Starry Ripple" dark mode
+- Adapted to style changes in SiYuan v3.1.32
+- Fixed abnormal text color issues for some buttons
+
+---
+
 ### v3.4.3
 
 - 新增预设主题配色「星漪」

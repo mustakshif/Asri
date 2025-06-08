@@ -103,6 +103,8 @@ export async function unloadAsriJSModules(completeUnload = true) {
     lytCenterRo.disconnect();
     winRo.disconnect();
   }
+
+  document.querySelectorAll("#snippetCSS-asri-var-root")?.forEach((el) => el.remove());
 }
 function lowFreqEventsCallback(e: Event) {
   // console.log(e);
