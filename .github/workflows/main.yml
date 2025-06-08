@@ -23,21 +23,6 @@ jobs:
             PREV_VERSION=$(git tag --sort=-v:refname | grep -v "^${GITHUB_REF#refs/tags/}$" | head -n 1)
             echo "PREV_VERSION=$PREV_VERSION" >> $GITHUB_ENV
 
-        - name: Zip Release
-          uses: thedoctor0/zip-release@0.7.6
-          with:
-            type: 'zip'
-            filename: 'package.zip'
-            exclusions: '*.git* *.scss *.txt /*styles/* /*doc/* /*src/* *config* *package* *CHANGELOG*'
-    
-        - name: Create Release
-          uses: ncipollo/release-action@v1.13.0
-          with:
-            allowUpdates: true
-            artifactErrorsFailBuild: true
-            artifacts: "package.zip"
-            token: ${{ secrets.GITHUB_TOKEN }}
-
         - name: Extract changelog
           id: get_changelog
           run: |
@@ -59,6 +44,21 @@ jobs:
             echo "CHANGELOG<<EOF" >> $GITHUB_ENV
             echo "$CHANGELOG" >> $GITHUB_ENV
             echo "EOF" >> $GITHUB_ENV
+
+        - name: Zip Release
+          uses: thedoctor0/zip-release@0.7.6
+          with:
+            type: 'zip'
+            filename: 'package.zip'
+            exclusions: '*.git* *.scss *.txt /*styles/* /*doc/* /*src/* *config* *package* /*scripts/*'
+    
+        - name: Create Release
+          uses: ncipollo/release-action@v1.13.0
+          with:
+            allowUpdates: true
+            artifactErrorsFailBuild: true
+            artifacts: "package.zip"
+            token: ${{ secrets.GITHUB_TOKEN }}
 
         - name: Update Release Notes
           uses: softprops/action-gh-release@v1
