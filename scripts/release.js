@@ -9,6 +9,32 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
+// 检查 git 配置
+const checkGitConfig = () => {
+  try {
+    // 检查用户配置
+    execSync('git config user.name', { stdio: 'ignore' });
+    execSync('git config user.email', { stdio: 'ignore' });
+    return true;
+  } catch (error) {
+    console.error('Git 配置不完整，请先设置：');
+    console.error('git config --global user.name "你的名字"');
+    console.error('git config --global user.email "你的邮箱"');
+    return false;
+  }
+};
+
+// 检查是否有未提交的更改
+const checkUncommittedChanges = () => {
+  try {
+    const status = execSync('git status --porcelain', { encoding: 'utf8' });
+    return status.trim().length > 0;
+  } catch (error) {
+    console.error('检查 git 状态失败：', error.message);
+    return true;
+  }
+};
+
 // 比较版本号
 const compareVersions = (v1, v2) => {
   const parts1 = v1.split(".").map(Number);
@@ -35,7 +61,7 @@ const extractChangelogContent = (changelog, version) => {
   let content = match[1].trim();
 
   // 移除末尾的 <br /> 标记
-  // content = content.replace(/<br \/>\n?/g, '\n');
+  content = content.replace(/<br \/>\n?/g, '\n');
 
   return content;
 };
@@ -71,6 +97,17 @@ const checkVersion = () => {
 
 // 执行发布
 const doRelease = (versionInfo) => {
+  // 检查 git 配置
+  if (!checkGitConfig()) {
+    process.exit(1);
+  }
+
+  // 检查是否有未提交的更改
+  if (checkUncommittedChanges()) {
+    console.error('存在未提交的更改，请先提交或暂存更改');
+    process.exit(1);
+  }
+
   const themeJson = JSON.parse(fs.readFileSync(path.join(__dirname, "../theme.json"), "utf8"));
   const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, "../package.json"), "utf8"));
 
@@ -83,6 +120,13 @@ const doRelease = (versionInfo) => {
   fs.writeFileSync(path.join(__dirname, "../package.json"), JSON.stringify(packageJson, null, 2));
 
   try {
+    // 检查是否有文件被修改
+    const status = execSync('git status --porcelain', { encoding: 'utf8' });
+    if (!status.includes('theme.json') && !status.includes('package.json')) {
+      console.error('没有检测到版本号变更，请确保 CHANGELOG.md 中的版本号比当前版本号新');
+      process.exit(1);
+    }
+
     // 提交更改
     execSync("git add theme.json package.json");
     execSync(`git commit -m "release v${versionInfo.version}"`);
@@ -90,12 +134,23 @@ const doRelease = (versionInfo) => {
     // 提取更新日志内容
     const tagMessage = extractChangelogContent(versionInfo.changelog, versionInfo.version);
 
-    // 创建并推送标签
-    execSync(`git tag -a v${versionInfo.version} -m "${tagMessage}"`);
-    execSync("git push origin HEAD");
-    execSync(`git push origin v${versionInfo.version}`);
+    // 创建临时文件存储 tag 消息
+    const tempFile = path.join(__dirname, "../.tag-message");
+    fs.writeFileSync(tempFile, tagMessage);
 
-    console.log(`成功发布版本 v${versionInfo.version}`);
+    try {
+      // 使用临时文件创建标签
+      execSync(`git tag -a v${versionInfo.version} -F "${tempFile}"`);
+      execSync("git push origin HEAD");
+      execSync(`git push origin v${versionInfo.version}`);
+
+      console.log(`成功发布版本 v${versionInfo.version}`);
+    } finally {
+      // 清理临时文件
+      if (fs.existsSync(tempFile)) {
+        fs.unlinkSync(tempFile);
+      }
+    }
   } catch (error) {
     console.error("发布过程中出错：", error.message);
     process.exit(1);

@@ -16,7 +16,7 @@
 - Improved the position of code block language identifiers in embedded blocks
 - Adjusted the PDF export interface to match the theme color
 - Enhanced rendering performance for certain elements in the editor
-- Modified the accent color in "Starry Ripple" dark mode
+- Modified the accent color in "Stellula" dark mode
 - Adapted to style changes in SiYuan v3.1.32
 - Fixed abnormal text color issues for some buttons
 
