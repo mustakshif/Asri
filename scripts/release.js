@@ -106,29 +106,16 @@ const doRelease = (versionInfo) => {
     // 添加所有更改
     execSync('git add .');
     execSync(`git commit -m "release v${versionInfo.version}"`);
-
-    // 提取更新日志内容
-    const tagMessage = extractChangelogContent(versionInfo.changelog, versionInfo.version);
-
-    // 创建临时文件存储 tag 消息
-    const tempFile = path.join(__dirname, "../.tag-message");
-    fs.writeFileSync(tempFile, tagMessage);
-
-    try {
-      // 使用临时文件创建标签
-      execSync(`git tag -a v${versionInfo.version} -F "${tempFile}"`);
-      execSync("git push origin HEAD");
-      execSync(`git push origin v${versionInfo.version}`);
-
-      console.log(`成功发布版本 v${versionInfo.version}`);
-    } finally {
-      // 清理临时文件
-      if (fs.existsSync(tempFile)) {
-        fs.unlinkSync(tempFile);
-      }
-    }
+    
+    // 创建并推送标签
+    execSync(`git tag v${versionInfo.version}`);
+    execSync('git push origin HEAD');
+    execSync(`git push origin v${versionInfo.version}`);
+    
+    console.log(`成功发布版本 v${versionInfo.version}`);
+    console.log('GitHub Release 将在推送标签后自动创建');
   } catch (error) {
-    console.error("发布过程中出错：", error.message);
+    console.error('发布过程中出错：', error.message);
     process.exit(1);
   }
 };
