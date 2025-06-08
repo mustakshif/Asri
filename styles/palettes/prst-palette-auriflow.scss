@@ -1,4 +1,5 @@
 @use "../base" as *;
+@use "../features/_utils.scss" as *;
 
 @mixin goldfoil-background {
   background: var(--texture-goldfoil);

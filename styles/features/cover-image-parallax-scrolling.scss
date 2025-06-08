@@ -9,7 +9,15 @@
         position: absolute;
         top: 0;
         right: 0;
-        background: linear-gradient(to top, var(--b3-theme-background) 2%, rgba(from var(--b3-theme-background) r g b / 0.97) 9%, rgba(from var(--b3-theme-background) r g b / 0.9) 18%, rgba(from var(--b3-theme-background) r g b / 0.75) 33%, rgba(from var(--b3-theme-background) r g b / 0.05) 92%, transparent 99%);
+        background: linear-gradient(
+          to top,
+          var(--b3-theme-background) 2%,
+          rgba(from var(--b3-theme-background) r g b / 0.97) 9%,
+          rgba(from var(--b3-theme-background) r g b / 0.9) 18%,
+          rgba(from var(--b3-theme-background) r g b / 0.75) 33%,
+          rgba(from var(--b3-theme-background) r g b / 0.05) 92%,
+          transparent 99%
+        );
         pointer-events: none;
       }
     }
@@ -42,7 +50,7 @@
       overflow: hidden;
       view-timeline-name: --protyle-background;
 
-      img {
+      :where(img, video) {
         --offset-y: 50px;
         // view-timeline-name: --protyle-background;
         animation-timeline: --protyle-background;

@@ -30,6 +30,7 @@
 .render-node>[spin], // graph, mermaid, etc.
 .hljs>.fn__none+[contenteditable], // code, only when linenumber is disabled
 // .protyle-wysiwyg__embed [contenteditable]:not(.protyle-attr),
+// .protyle-wysiwyg__embed, // negative effect
 [data-type~="inline-math"],
 [data-type="NodeHTMLBlock"]>div:nth-child(2),
 audio,
@@ -44,6 +45,10 @@ video,
 {
   contain: content;
   content-visibility: auto;
+}
+
+.av__row {
+  contain-intrinsic-height: calc(1em * 1.625 + 1px + 10px);
 }
 
 // .av__container {

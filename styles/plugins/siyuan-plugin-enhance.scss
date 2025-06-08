@@ -3,3 +3,12 @@
     padding-bottom: 42px !important;
   }
 }
+
+// 修复 lifelog 吸顶闪烁
+html[data-en_enabled_module~=EnableLifelogTag] .asri-tfp [data-type=NodeParagraph][custom-lifelog-type] {
+  z-index: 2;
+  position: sticky;
+  border-left: var(--en-lifelog-border-style);
+  border-right: var(--en-lifelog-border-style);
+  top: 0;
+}

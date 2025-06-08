@@ -198,6 +198,7 @@
     }
 
     :where(.layout__wnd--active, [data-type="wnd"]) {
+      // tabbar overlay blend mode
       > .fn__flex:first-child {
         mix-blend-mode: multiply;
 
@@ -371,6 +372,10 @@
                   }
                 }
               }
+
+              @supports not (animation-timeline: view()) {
+                opacity: 1;
+              }
             }
           }
         }
@@ -382,7 +387,7 @@
         // mix-blend-mode: difference;
         position: relative;
 
-        // 顶部页签区域第三层模糊，可以去掉
+        // optional blur layer, under the tabbar area
         &::before {
           content: "";
           position: absolute;
@@ -409,6 +414,12 @@
             display: none;
           }
           scrollbar-width: none;
+        }
+
+        // "exit focus" button
+        .protyle-breadcrumb__icon:not(:hover) {
+          color: var(--b3-theme-on-background);
+          background-color: var(--b3-theme-background-light);
         }
 
         // .protyle-breadcrumb__text,

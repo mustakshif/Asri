@@ -1,4 +1,5 @@
 @use "sass:list";
+@use "../features/_utils.scss" as *;
 
 [data-asri-palette="polarity"] {
   &[data-theme-mode="light"] {
@@ -110,29 +111,29 @@
   // }
 }
 
-#barWorkspace,
-#message,
-.b3-button--outline:hover,
-.b3-dialog__action .b3-button--text,
-#transactionError + .b3-dialog__action button:last-child,
-#configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover,
-.protyle-breadcrumb__icon:hover,
-.protyle-breadcrumb__item,
-.config-account__info .b3-button,
-.b3-menu,
-.b3-switch,
-.b3-button--outline,
-.protyle-breadcrumb__icon {
-  // [data-asri-palette="polarity"][data-theme-mode="light"] & {
-  //   --b3-theme-primary: var(--polarity-base-accent);
-  //   --b3-theme-on-primary: var(--b3-theme-on-background);
-  // }
+// #barWorkspace,
+// #message,
+// .b3-button--outline:hover,
+// .b3-dialog__action .b3-button--text,
+// #transactionError + .b3-dialog__action button:last-child,
+// #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover,
+// .protyle-breadcrumb__icon:hover,
+// .protyle-breadcrumb__item,
+// .config-account__info .b3-button,
+// .b3-menu,
+// .b3-switch,
+// .b3-button--outline,
+// .protyle-breadcrumb__icon {
+//   // [data-asri-palette="polarity"][data-theme-mode="light"] & {
+//   //   --b3-theme-primary: var(--polarity-base-accent);
+//   //   --b3-theme-on-primary: var(--b3-theme-on-background);
+//   // }
 
-  [data-asri-palette="polarity"][data-theme-mode="dark"] & {
-    --b3-theme-primary: var(--polarity-base-accent);
-    --b3-theme-on-primary: #000;
-  }
-}
+//   [data-asri-palette="polarity"][data-theme-mode="dark"] & {
+//     --b3-theme-primary: var(--polarity-base-accent);
+//     --b3-theme-on-primary: #000;
+//   }
+// }
 
 // .b3-button--outline,
 // .protyle-breadcrumb__icon {

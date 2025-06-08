@@ -4,6 +4,8 @@
 // 侧栏面板总体样式
 .file-tree {
   .block__icons {
+    border-bottom: none;
+
     .block__logo {
       .block__logoicon {
         visibility: hidden;

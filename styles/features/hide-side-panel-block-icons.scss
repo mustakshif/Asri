@@ -1,6 +1,9 @@
+/**
+  Inspired by @cuppertino, obsidian.
+*/
+
 @use "../base" as *;
 
-// 顶部控件自动隐藏
 body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
   .file-tree .block__icons {
     app-region: no-drag;
@@ -16,7 +19,7 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
     }
   }
 
-  // .sy__globalGraph, .sy__graph // 导致关系图闪烁
+  // .sy__globalGraph, .sy__graph // cause graph to flicker
   .file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag, .sy__backlink) {
     position: relative;
 

@@ -403,6 +403,7 @@
 
     .b3-button {
       @include button-primary;
+      color: var(--b3-theme-accent);
 
       // @include darkmode-counterpart {
       //     background-color: #0004;
