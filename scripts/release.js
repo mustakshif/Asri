@@ -24,17 +24,6 @@ const checkGitConfig = () => {
   }
 };
 
-// 检查是否有未提交的更改
-const checkUncommittedChanges = () => {
-  try {
-    const status = execSync('git status --porcelain', { encoding: 'utf8' });
-    return status.trim().length > 0;
-  } catch (error) {
-    console.error('检查 git 状态失败：', error.message);
-    return true;
-  }
-};
-
 // 比较版本号
 const compareVersions = (v1, v2) => {
   const parts1 = v1.split(".").map(Number);
@@ -102,12 +91,6 @@ const doRelease = (versionInfo) => {
     process.exit(1);
   }
 
-  // 检查是否有未提交的更改
-  if (checkUncommittedChanges()) {
-    console.error('存在未提交的更改，请先提交或暂存更改');
-    process.exit(1);
-  }
-
   const themeJson = JSON.parse(fs.readFileSync(path.join(__dirname, "../theme.json"), "utf8"));
   const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, "../package.json"), "utf8"));
 
@@ -120,15 +103,8 @@ const doRelease = (versionInfo) => {
   fs.writeFileSync(path.join(__dirname, "../package.json"), JSON.stringify(packageJson, null, 2));
 
   try {
-    // 检查是否有文件被修改
-    const status = execSync('git status --porcelain', { encoding: 'utf8' });
-    if (!status.includes('theme.json') && !status.includes('package.json')) {
-      console.error('没有检测到版本号变更，请确保 CHANGELOG.md 中的版本号比当前版本号新');
-      process.exit(1);
-    }
-
-    // 提交更改
-    execSync("git add theme.json package.json");
+    // 添加所有更改
+    execSync('git add .');
     execSync(`git commit -m "release v${versionInfo.version}"`);
 
     // 提取更新日志内容
