@@ -10,6 +10,18 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@master
+          with:
+            fetch-depth: 0
+
+        - name: Extract version
+          id: get_version
+          run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+        - name: Get previous version
+          id: get_prev_version
+          run: |
+            PREV_VERSION=$(git tag --sort=-v:refname | grep -v "^${GITHUB_REF#refs/tags/}$" | head -n 1)
+            echo "PREV_VERSION=$PREV_VERSION" >> $GITHUB_ENV
 
         - name: Zip Release
           uses: thedoctor0/zip-release@0.7.6
@@ -25,3 +37,34 @@ jobs:
             artifactErrorsFailBuild: true
             artifacts: "package.zip"
             token: ${{ secrets.GITHUB_TOKEN }}
+
+        - name: Extract changelog
+          id: get_changelog
+          run: |
+            # 获取最新版本的更新日志内容
+            VERSION_TAG="${GITHUB_REF#refs/tags/}"
+            CHANGELOG=$(awk -v version="$VERSION_TAG" '
+              BEGIN { p=0 }
+              /^### v'"$VERSION_TAG"'/ { p=1; next }
+              /^### v/ { p=0 }
+              p { print }
+            ' CHANGELOG.md)
+            # 移除开头的空行
+            CHANGELOG=$(echo "$CHANGELOG" | sed '/./,$!d')
+            # 移除末尾的空行
+            CHANGELOG=$(echo "$CHANGELOG" | sed -e :a -e '/^\n*$/{$d;N;ba' -e '}')
+            # 添加 changelog 链接
+            CHANGELOG=$(printf "%s\n\n**Full Changelog**: https://github.com/mustakshif/Asri/compare/$PREV_VERSION...${GITHUB_REF#refs/tags/}" "$CHANGELOG")
+            # 输出到环境变量
+            echo "CHANGELOG<<EOF" >> $GITHUB_ENV
+            echo "$CHANGELOG" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
+
+        - name: Update Release Notes
+          uses: softprops/action-gh-release@v1
+          with:
+            body: ${{ env.CHANGELOG }}
+            draft: false
+            prerelease: false
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
