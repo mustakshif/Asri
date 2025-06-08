@@ -1,5 +1,7 @@
 const { execSync } = require("child_process");
 const readline = require("readline");
+const fs = require("fs");
+const path = require("path");
 
 // 创建 readline 接口
 const rl = readline.createInterface({
@@ -19,6 +21,32 @@ const getRecentTags = () => {
     return tags;
   } catch (error) {
     console.error("获取标签列表失败：", error.message);
+    process.exit(1);
+  }
+};
+
+// 回退版本号
+const revertVersion = (prevVersion) => {
+  try {
+    // 更新 theme.json
+    const themeJson = JSON.parse(fs.readFileSync(path.join(__dirname, "../theme.json"), "utf8"));
+    themeJson.version = prevVersion;
+    fs.writeFileSync(
+      path.join(__dirname, "../theme.json"),
+      JSON.stringify(themeJson, null, 2)
+    );
+
+    // 更新 package.json
+    const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, "../package.json"), "utf8"));
+    packageJson.version = prevVersion;
+    fs.writeFileSync(
+      path.join(__dirname, "../package.json"),
+      JSON.stringify(packageJson, null, 2)
+    );
+
+    console.log(`已将版本号回退到 ${prevVersion}`);
+  } catch (error) {
+    console.error("回退版本号失败：", error.message);
     process.exit(1);
   }
 };
@@ -62,13 +90,21 @@ const main = async () => {
       }
 
       const selectedTag = tags[index];
+      const prevVersion = tags[index + 1]?.replace('v', '') || '0.0.0';
       console.log(`\n你选择了标签：${selectedTag}`);
+      console.log(`将回退到版本：${prevVersion}`);
 
-      rl.question("确认要删除这个标签吗？(y/n) ", (confirm) => {
+      rl.question("确认要删除这个标签并回退版本号吗？(y/n) ", (confirm) => {
         if (confirm.toLowerCase() === "y") {
           deleteTag(selectedTag);
+          revertVersion(prevVersion);
+          // 提交版本号更改
+          execSync('git add theme.json package.json');
+          execSync(`git commit -m "revert: version to ${prevVersion}"`);
+          execSync('git push origin HEAD');
+          console.log('已提交版本号更改');
         } else {
-          console.log("已取消删除");
+          console.log("已取消操作");
         }
         rl.close();
       });
