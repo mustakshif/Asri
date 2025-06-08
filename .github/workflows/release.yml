@@ -33,7 +33,7 @@ jobs:
           # 移除末尾的空行
           CHANGELOG=$(echo "$CHANGELOG" | sed -e :a -e '/^\n*$/{$d;N;ba' -e '}')
           # 添加 changelog 链接
-          CHANGELOG="$CHANGELOG\n\n**Full Changelog**: https://github.com/mustakshif/Asri/compare/$PREV_VERSION...${GITHUB_REF#refs/tags/}"
+          CHANGELOG=$(printf "%s\n\n**Full Changelog**: https://github.com/mustakshif/Asri/compare/$PREV_VERSION...${GITHUB_REF#refs/tags/}" "$CHANGELOG")
           # 输出到环境变量
           echo "CHANGELOG<<EOF" >> $GITHUB_ENV
           echo "$CHANGELOG" >> $GITHUB_ENV

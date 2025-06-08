@@ -99,10 +99,10 @@ const main = async () => {
           deleteTag(selectedTag);
           revertVersion(prevVersion);
           // 提交版本号更改
-          execSync('git add theme.json package.json');
-          execSync(`git commit -m "revert: version to ${prevVersion}"`);
-          execSync('git push origin HEAD');
-          console.log('已提交版本号更改');
+          // execSync('git add theme.json package.json');
+          // execSync(`git commit -m "revert: version to ${prevVersion}"`);
+          // execSync('git push origin HEAD');
+          // console.log('已提交版本号更改');
         } else {
           console.log("已取消操作");
         }
