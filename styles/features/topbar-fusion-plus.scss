@@ -63,7 +63,7 @@
         // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
         padding-top: 42px;
         margin-bottom: calc(var(--blur-block-height) * -1);
         height: var(--blur-block-height);
@@ -83,7 +83,7 @@
         padding-top: 0 !important;
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb + .protyle-content {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb + .protyle-content {
         padding-top: var(--blur-block-height);
       }
 
@@ -124,6 +124,11 @@
     // }
   }
 
+  // fix export preview
+  .protyle > .protyle-content.fn__none ~ .protyle-preview {
+    margin-top: var(--blur-block-height);
+  }
+
   // two types of topbar fusion plus
   &.asri-tfp-acrylic {
     .layout__wnd--active,
@@ -141,7 +146,7 @@
         }
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
         background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
 
         @include darkmode-counterpart {
@@ -381,7 +386,7 @@
         }
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
         background-color: transparent;
         // mix-blend-mode: luminosity;
         // mix-blend-mode: difference;

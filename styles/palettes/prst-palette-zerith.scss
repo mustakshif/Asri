@@ -44,7 +44,7 @@
   }
 }
 
-#{$primary-color-reverse-selectors} {
+#{$primary-color-reverse-selectors, ".b3-button--outline"} {
   [data-asri-palette="zerith"][data-theme-mode="light"] & {
     --b3-theme-primary: var(--zerith-base-accent);
     --b3-theme-on-primary: var(--b3-theme-on-background);

@@ -27,7 +27,7 @@
   }
 }
 
-#{$primary-color-reverse-selectors} {
+#{$primary-color-reverse-selectors, ".b3-button--outline"} {
   [data-asri-palette="aerisland"][data-theme-mode="light"] & {
     --b3-theme-primary: var(--aerisland-base-accent);
     --b3-theme-on-primary: #07443d;

@@ -15,7 +15,7 @@ $primary-color-reverse-selectors: (
   "#configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover",
   ".protyle-breadcrumb__icon:hover",
   ".protyle-breadcrumb__item",
-  ":not(.config-bazaar__title)>.b3-button:not(.b3-button--outline)",
+  ":not(.config-bazaar__title)>.b3-button:not(.b3-button--outline, .b3-button--big)",
   ".b3-menu",
   ".b3-switch",
   ".b3-chip--primary",

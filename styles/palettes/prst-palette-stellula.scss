@@ -55,7 +55,7 @@
   }
 }
 
-#{$primary-color-reverse-selectors} {
+#{$primary-color-reverse-selectors, ".b3-button--outline"} {
   [data-asri-palette="stellula"][data-theme-mode="light"] & {
     --b3-theme-primary: var(--stellula-base-accent);
     --b3-theme-on-primary: var(--b3-theme-on-background);
