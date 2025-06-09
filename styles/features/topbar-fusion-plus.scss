@@ -149,6 +149,10 @@
       .protyle:not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
         background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
 
+        [data-asri-palette="polarity"][data-theme-mode=dark] & {
+          background-color: rgb(from var(--b3-theme-background) r g b / 0.6);
+        }
+
         @include darkmode-counterpart {
           background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
         }
@@ -345,6 +349,8 @@
             scroll-timeline-name: --protyle-content-scroll;
 
             &::before {
+              --mask-opacity-factor-light: 0.9;
+              --mask-opacity-factor-dark: 0.8;
               content: "";
               position: absolute;
               top: 0;
@@ -362,7 +368,19 @@
                 opacity: 0.75;
               }
 
-              @include smoothGradientVar(var(--b3-theme-background), 0.9, 0.8);
+              @include smoothGradientVar(
+                var(--b3-theme-background),
+                var(--mask-opacity-factor-light),
+                var(--mask-opacity-factor-dark)
+              );
+
+              [data-asri-palette="polarity"][data-theme-mode="light"] & {
+                --mask-opacity-factor-light: 0.8;
+              }
+
+              [data-asri-palette="polarity"][data-theme-mode="dark"] & {
+                --mask-opacity-factor-dark: 0.7;
+              }
 
               @supports (animation-timeline: view()) {
                 animation-timeline: --protyle-content-scroll;

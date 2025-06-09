@@ -6,12 +6,12 @@
     --polarity-base-accent: #000;
     --asri-theme-accent-customized: var(--polarity-base-accent);
     --b3-theme-primary: var(--polarity-base-accent);
-    --b3-theme-accent: #3478f6;
+    --b3-theme-accent: #1c6bff;
 
     --b3-theme-surface: #F5F5F7;
 
     --b3-theme-on-background: #1d1d1f;
-    --b3-theme-on-surface: #1d1d1f81;
+    --b3-theme-on-surface: #1d1d1f87;
 
     // .layout__center
     //   :not(.av__views)
@@ -27,6 +27,10 @@
     //   .item--focus {
     //   background-color: #c7ea0052 !important;
     // }
+
+    :where(.b3-typography, .protyle-wysiwyg) :where([data-type="a"], a) {
+      --b3-theme-primary: var(--b3-theme-accent);
+    }
   }
 
   &[data-theme-mode="dark"] {
@@ -45,14 +49,21 @@
     .config-account__center:not(.config-account__center--text) {
       box-shadow: 0 0 0 1px var(--b3-border-color-trans);
     }
+
+    :is(.layout, .b3-typography) {
+      --b3-theme-primary: var(--b3-theme-accent);
+      // --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
+      // --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
+      // --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
+    }  
   }
 
+
   :is(.layout, .b3-typography) {
-    --b3-theme-primary: var(--b3-theme-accent);
-    --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
-    --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
-    --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
-  }
+    --b3-theme-primary-light: oklch(from var(--b3-theme-accent) l c h / 0.56);
+    --b3-theme-primary-lighter: oklch(from var(--b3-theme-accent) l c h / 0.38);
+    --b3-theme-primary-lightest: oklch(from var(--b3-theme-accent) l c h / 0.2);
+  }  
 
   .protyle-title__input,
   [data-type="NodeHeading"],

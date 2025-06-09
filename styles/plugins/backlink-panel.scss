@@ -8,11 +8,11 @@
       content: "";
       display: block;
       width: 100%;
-      height: 84px;
-      margin-top: -84px;
+      height: var(--blur-block-height);
+      margin-top: calc(var(--blur-block-height) * -1);
       background-color: var(--b3-theme-background);
       position: sticky;
-      top: -84px;
+      top: calc(var(--blur-block-height) * -1);
       z-index: 1;
     }
   }
