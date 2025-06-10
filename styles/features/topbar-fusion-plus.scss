@@ -3,7 +3,7 @@
 
 .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile) {
   &.asri-dragging-gutter {
-    // 修复向上拖动块时无法出发自动滚动
+    // fix the issue when dragging a block up, the auto-scroll is not triggered
 
     .protyle-breadcrumb,
     :where(.layout__wnd--active, [data-type="wnd"]) > .fn__flex:first-child {
@@ -149,13 +149,96 @@
       .protyle:not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
         background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
 
-        [data-asri-palette="polarity"][data-theme-mode=dark] & {
+        [data-asri-palette="polar"][data-theme-mode="dark"] & {
           background-color: rgb(from var(--b3-theme-background) r g b / 0.6);
         }
 
         @include darkmode-counterpart {
           background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
         }
+      }
+    }
+  }
+
+  // glowy glass
+  &.asri-tfp-glowy {
+    .layout__wnd--active,
+    [data-type="wnd"] {
+      .layout-tab-container {
+        & > .protyle[data-loading="finished"] {
+          &::before {
+            mask-image: linear-gradient(
+              to bottom,
+              black 0,
+              // pass-through
+              #000 calc(var(--blur-block-height) - 8px),
+              #000a calc(var(--blur-block-height) - 0px),
+              // line
+              #000 calc(var(--blur-block-height)),
+              #000 calc(var(--blur-block-height) + 0.5px),
+              // // glow
+              // #0006 calc(var(--blur-block-height) + 0.5px),
+              // transparent calc(var(--blur-block-height) + 40px)
+              #0000 calc(var(--blur-block-height) + 1px)
+            );
+
+            @include bg-blur(6px, $saturate-value: 1, $brightness-dark: 0.95);
+            // @include darkmode-counterpart {
+            //   backdrop-filter: blur(8px) saturate(1) contrast(1.2);
+            // }
+          }
+
+          &::after {
+            --glow-strength: #0003;
+            content: "";
+            display: block;
+            width: 100%;
+            // background-color: rgba(255, 0, 0, 0.474);
+            height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
+            position: absolute;
+            top: 0;
+            pointer-events: none;
+            @include bg-blur(40px, $saturate-value: 3, $brightness-dark: 1.2);
+            @include darkmode-counterpart {
+              // backdrop-filter: blur(40px) saturate(4) contrast(1.2);
+              mask-image: linear-gradient(
+                to bottom,
+                #0000 0,
+                // inner glow
+                #000 calc(var(--blur-block-height)),
+                // line
+                #000 calc(var(--blur-block-height) + 1px),
+                // outer glow
+                var(--glow-strength) calc(var(--blur-block-height) + 1.5px),
+                #0000 calc(var(--blur-block-height) + 21px)
+              );
+            }
+          }
+        }
+      }
+
+      .protyle:not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+        background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
+
+        [data-asri-palette="polar"][data-theme-mode="dark"] & {
+          background-color: rgb(from var(--b3-theme-background) r g b / 0.6);
+        }
+
+        @include darkmode-counterpart {
+          // mix-blend-mode: hard-light;
+          box-shadow: 0 0.5px 0 0 #fff2, 0 -8px 5px -5px rgb(from var(--b3-theme-background) r g b / 0.25) inset;
+          background-color: rgb(from var(--b3-theme-background) r g b / 0.5);
+          // background-color: #0000;
+        }
+      }
+    }
+
+    :where(.layout__wnd--active, [data-type="wnd"]) > .fn__flex:first-child,
+    .toolbar {
+      mix-blend-mode: multiply;
+
+      @include darkmode-counterpart {
+        mix-blend-mode: screen;
       }
     }
   }
@@ -374,11 +457,11 @@
                 var(--mask-opacity-factor-dark)
               );
 
-              [data-asri-palette="polarity"][data-theme-mode="light"] & {
+              [data-asri-palette="polar"][data-theme-mode="light"] & {
                 --mask-opacity-factor-light: 0.8;
               }
 
-              [data-asri-palette="polarity"][data-theme-mode="dark"] & {
+              [data-asri-palette="polar"][data-theme-mode="dark"] & {
                 --mask-opacity-factor-dark: 0.7;
               }
 
