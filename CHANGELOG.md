@@ -1,3 +1,19 @@
+### v3.4.5
+
+- 新增预设主题配色「极地」
+- [「顶栏融合+」适配 「Keemap」、「反链过滤面板」插件](https://github.com/mustakshif/Asri/issues/168)
+- 「顶栏融合+」适配导出预览模式
+- 修复部分按钮文字颜色
+
+<br />
+
+- Added new preset theme color "Polar"
+- [Adapted "Topbar Fusion+" for "Keemap" and "Backlink Panel" plugins](https://github.com/mustakshif/Asri/issues/168)
+- Adapted "Topbar Fusion+" for export preview mode
+- Fixed text color for some buttons
+
+---
+
 ### v3.4.4
 
 - 「顶栏融合+」适配更多插件
