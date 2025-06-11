@@ -39,6 +39,7 @@
         // backdrop-filter: brightness(1) saturate(1);
 
         &--focus {
+          font-weight: 500;
           // background-color: transparent;
           backdrop-filter: brightness(1) saturate(1.8);
 
@@ -83,7 +84,9 @@
         padding-top: 0 !important;
       }
 
-      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb + .protyle-content {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle)
+        > .protyle-breadcrumb
+        + .protyle-content {
         padding-top: var(--blur-block-height);
       }
 
@@ -98,6 +101,11 @@
 
     .protyle-background__img img {
       --offset-y: 10px;
+    }
+
+    .protyle-background__icon,
+    .img .protyle-action__drag {
+      z-index: auto;
     }
 
     // pdf
@@ -142,7 +150,7 @@
             transparent calc(var(--blur-block-height) + 1px)
           );
 
-          @include bg-blur($brightness-dark: 0.95);
+          @include bg-blur(20px, $brightness-dark: 0.95);
         }
       }
 
@@ -189,7 +197,7 @@
           }
 
           &::after {
-            --glow-strength: #0002;
+            --glow-strength: rgb(0, 0, 0, 0.25);
             content: "";
             display: block;
             width: 100%;
@@ -211,6 +219,10 @@
               var(--glow-strength) calc(var(--blur-block-height) + 2px),
               #0000 calc(var(--blur-block-height) + 40px)
             );
+
+            [data-asri-palette="polar"][data-theme-mode="dark"] & {
+              --glow-strength: #0005;
+            }
 
             @include darkmode-counterpart {
               // backdrop-filter: blur(40px) saturate(4) contrast(1.2);
@@ -381,10 +393,6 @@
         .item:not(.item--readonly, .item--full.item--focus, .item--focus):hover {
           // box-shadow: inset 0 0 0 1px rgb(from var(--b3-theme-on-background) r g b / .8);
           background-color: transparent !important;
-        }
-
-        .item--focus {
-          font-weight: 500;
         }
 
         &:not(.layout-tab-bar--readonly) .item {
@@ -596,11 +604,6 @@
         &.fn__none + .protyle-background__ia {
           margin-top: 92px !important;
         }
-      }
-
-      .protyle-background__icon,
-      .img .protyle-action__drag {
-        z-index: auto;
       }
     }
 
