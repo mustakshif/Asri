@@ -63,7 +63,7 @@
         // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
       }
 
-      .protyle:not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
         padding-top: 42px;
         margin-bottom: calc(var(--blur-block-height) * -1);
         height: var(--blur-block-height);
@@ -83,7 +83,7 @@
         padding-top: 0 !important;
       }
 
-      .protyle:not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb + .protyle-content {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb + .protyle-content {
         padding-top: var(--blur-block-height);
       }
 
@@ -146,7 +146,7 @@
         }
       }
 
-      .protyle:not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
         background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
 
         [data-asri-palette="polar"][data-theme-mode="dark"] & {
@@ -182,14 +182,14 @@
               #0000 calc(var(--blur-block-height) + 1px)
             );
 
-            @include bg-blur(6px, $saturate-value: 1, $brightness-dark: 0.95);
+            @include bg-blur(6px, $saturate-value: 1, $brightness-light: 1, $brightness-dark: 0.95);
             // @include darkmode-counterpart {
             //   backdrop-filter: blur(8px) saturate(1) contrast(1.2);
             // }
           }
 
           &::after {
-            --glow-strength: #0003;
+            --glow-strength: #0002;
             content: "";
             display: block;
             width: 100%;
@@ -198,9 +198,23 @@
             position: absolute;
             top: 0;
             pointer-events: none;
-            @include bg-blur(40px, $saturate-value: 3, $brightness-dark: 1.2);
+            @include bg-blur(40px, $saturate-value: 3, $brightness-light: 1.1, $brightness-dark: 1.2);
+
+            mask-image: linear-gradient(
+              to bottom,
+              #0000 0,
+              // inner glow
+              #000 calc(var(--blur-block-height)),
+              // line
+              #0006 calc(var(--blur-block-height) + 2px),
+              // outer glow
+              var(--glow-strength) calc(var(--blur-block-height) + 2px),
+              #0000 calc(var(--blur-block-height) + 40px)
+            );
+
             @include darkmode-counterpart {
               // backdrop-filter: blur(40px) saturate(4) contrast(1.2);
+              --glow-strength: #0003;
               mask-image: linear-gradient(
                 to bottom,
                 #0000 0,
@@ -217,7 +231,8 @@
         }
       }
 
-      .protyle:not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
+        box-shadow: 0 1px 0 0 #fff, 0 0px 20px 0px rgb(from var(--b3-theme-on-background) r g b / 0.06);
         background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
 
         [data-asri-palette="polar"][data-theme-mode="dark"] & {
@@ -487,7 +502,7 @@
         }
       }
 
-      .protyle:not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
         background-color: transparent;
         // mix-blend-mode: luminosity;
         // mix-blend-mode: difference;

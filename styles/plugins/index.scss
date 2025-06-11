@@ -6,4 +6,5 @@
 @use "database-properties";
 @use "backlink-panel";
 @use "media-player";
+@use "docs-flow";
 // @use 'typewriter';  // Typewriter plugin uses :has() selector, which affects performance

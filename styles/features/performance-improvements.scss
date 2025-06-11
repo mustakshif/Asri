@@ -54,3 +54,7 @@ video,
 // .av__container {
 //   contain-intrinsic-size: 300px; // reduce layout shift
 // }
+
+.hljs > .fn__none + [contenteditable] {
+  overflow: auto; //https://github.com/mustakshif/Asri/issues/170
+}
