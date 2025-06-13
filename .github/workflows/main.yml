@@ -35,7 +35,7 @@ jobs:
             VERSION_TAG="${GITHUB_REF#refs/tags/}"
             CHANGELOG=$(awk -v version="$VERSION_TAG" '
               BEGIN { p=0 }
-              /^### v'"$VERSION_TAG"'/ { p=1; next }
+              /^### '"$VERSION_TAG"'/ { p=1; next }
               /^### v/ { p=0 }
               p { print }
             ' CHANGELOG.md)

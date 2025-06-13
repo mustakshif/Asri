@@ -215,7 +215,7 @@
           }
 
           &::after {
-            --glow-strength: rgb(0, 0, 0, 0.25);
+            --glow-strength: rgb(0, 0, 0, 0.3);
             content: "";
             display: block;
             width: 100%;
@@ -232,7 +232,7 @@
               // inner glow
               #000 calc(var(--blur-block-height)),
               // line
-              #0006 calc(var(--blur-block-height) + 2px),
+              #0007 calc(var(--blur-block-height) + 2px),
               // outer glow
               var(--glow-strength) calc(var(--blur-block-height) + 2px),
               #0000 calc(var(--blur-block-height) + 40px)
@@ -263,7 +263,7 @@
 
       .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
         box-shadow: 0 1px 0 0 #fff, 0 0px 20px 0px rgb(from var(--b3-theme-on-background) r g b / 0.06);
-        background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
+        background-color: rgb(from var(--b3-theme-background) r g b / 0.8);
 
         // [data-asri-palette="polar"][data-theme-mode="dark"] & {
         //   background-color: rgb(from var(--b3-theme-background) r g b / 0.6);
