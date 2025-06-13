@@ -319,7 +319,7 @@ $cvc: 10; // color variant count
   // }
 
   // adapt elements that need to be accented
-  #toolbar .toolbar__item--active,
+  .toolbar .toolbar__item--active,
   .block__icon--active,
   .b3-menu__item--selected {
     color: var(--b3-theme-accent);

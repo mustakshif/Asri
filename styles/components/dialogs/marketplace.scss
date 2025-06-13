@@ -449,38 +449,6 @@
     padding: 0;
     background-color: var(--b3-theme-background);
 
-    .item__preview {
-      border-radius: 0;
-
-      // background-position 性能表现不佳
-      // view-timeline-name: --preview-background;
-      // animation-timeline: --preview-background;
-      // // view-timeline-axis: y;
-      // animation-range: 67% normal;
-      // animation-fill-mode: both;
-      // animation-name: parallax-background, preview-cover-fade-out;
-      // animation-timing-function: linear;
-
-      // @keyframes parallax-background {
-      //     100% {
-      //         background-position: center calc(50% + 160px);
-      //     }
-      // }
-
-      // @keyframes preview-cover-fade-out {
-
-      //     0%,
-      //     60% {
-      //         opacity: 1;
-      //     }
-
-      //     90%,
-      //     100% {
-      //         opacity: 0;
-      //     }
-      // }
-    }
-
     .b3-typography {
       padding: 0 max(32px, calc(50% - 21.5em));
 
@@ -513,6 +481,38 @@
         }
       }
     }
+  }
+
+  .item__preview {
+    border-radius: 0;
+
+    // background-position 性能表现不佳
+    // view-timeline-name: --preview-background;
+    // animation-timeline: --preview-background;
+    // // view-timeline-axis: y;
+    // animation-range: 67% normal;
+    // animation-fill-mode: both;
+    // animation-name: parallax-background, preview-cover-fade-out;
+    // animation-timing-function: linear;
+
+    // @keyframes parallax-background {
+    //     100% {
+    //         background-position: center calc(50% + 160px);
+    //     }
+    // }
+
+    // @keyframes preview-cover-fade-out {
+
+    //     0%,
+    //     60% {
+    //         opacity: 1;
+    //     }
+
+    //     90%,
+    //     100% {
+    //         opacity: 0;
+    //     }
+    // }
   }
 
   .fn__flex:nth-last-child(1 of .fn__flex) {

@@ -5,7 +5,7 @@ body:not(.body-asri--mobile, .body--window) {
   --topbar-z-index: 2;
   --avoid-topbar: calc(var(--toolbar-height));
 
-  > #toolbar {
+  > .toolbar {
     background-color: transparent;
     border-bottom-color: transparent;
     margin-bottom: calc(var(--toolbar-height) * -1);
@@ -225,7 +225,8 @@ body:not(.body-asri--mobile, .body--window) {
    * 禁用拖动的区域
    */
   // 页签栏
-  .layout-tab-bar--readonly .block__icon,
+  :is(
+    .layout-tab-bar--readonly .block__icon,
     .layout-tab-bar:not(.layout-tab-bar--readonly),
 
     //菜单
@@ -258,7 +259,8 @@ body:not(.body-asri--mobile, .body--window) {
 
     .protyle-util,
 
-    .dock__item {
+    .dock__item
+  ) {
     app-region: no-drag;
   }
 }
@@ -299,9 +301,9 @@ body:not(.body-asri--mobile, .body--window) {
   }
 }
 
-#AsriTopbarLeftSpacing,
+:is(#AsriTopbarLeftSpacing,
 #AsriTopbarRightSpacing,
-#AsriPluginsIconsDivider {
+#AsriPluginsIconsDivider) {
   svg,
   use {
     width: 0;

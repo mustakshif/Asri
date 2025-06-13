@@ -133,10 +133,10 @@ async function updateStyles(e?: Event | KeyboardEvent) {
   else if (e.type.startsWith("mouse") || e.type.startsWith("drag") || (e instanceof KeyboardEvent && (e.key === "Control" || e.key === "Alt" || e.key === "Shift" || e.key === "Meta"))) {
     lowFreqStyleUpdates();
 
-    setTimeout(() => {
+    Promise.resolve().then(() => {
       recalcDragInitials();
-      calcTopbarSpacings(0, false, doesTopBarOverflow).then(calcTabbarSpacings);
-    }, 0);
+      return calcTopbarSpacings(0, false, doesTopBarOverflow);
+    }).then(calcTabbarSpacings);
   }
 
   function lowFreqStyleUpdates() {
