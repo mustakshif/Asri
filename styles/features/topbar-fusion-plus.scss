@@ -142,15 +142,33 @@
     .layout__wnd--active,
     [data-type="wnd"] {
       .layout-tab-container {
-        & > .protyle[data-loading="finished"]::before {
-          mask-image: linear-gradient(
-            to bottom,
-            black 0,
-            black calc(var(--blur-block-height) - 0.5px),
-            transparent calc(var(--blur-block-height) + 1px)
-          );
+        & > .protyle[data-loading="finished"] {
+          &::before {
+            mask-image: linear-gradient(
+              to bottom,
+              black 0,
+              black calc(var(--blur-block-height) - 0.5px),
+              transparent calc(var(--blur-block-height) + 1px)
+            );
 
-          @include bg-blur(20px, $brightness-dark: 0.95);
+            @include bg-blur(20px, $brightness-light: 1, $brightness-dark: 0.9);
+          }
+
+          &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: var(--blur-block-height);
+            position: absolute;
+            pointer-events: none;
+            // background-color: rgba(255, 0, 0, 0.604);
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><filter id='noise'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' /></filter><rect width='100%' height='100%' filter='url(%23noise)' /></svg>");
+            background-repeat: repeat;
+            background-size: 100px 100px;
+            z-index: 2;
+            mix-blend-mode: overlay;
+            opacity: 1; // control the strength
+          }
         }
       }
 
@@ -158,7 +176,7 @@
         background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
 
         [data-asri-palette="polar"][data-theme-mode="dark"] & {
-          background-color: rgb(from var(--b3-theme-background) r g b / 0.6);
+          background-color: rgb(from var(--b3-theme-background) r g b / 0.7);
         }
 
         @include darkmode-counterpart {
@@ -168,8 +186,8 @@
     }
   }
 
-  // glowy glass
-  &.asri-tfp-glowy {
+  // luminous glass
+  &.asri-tfp-luminous {
     .layout__wnd--active,
     [data-type="wnd"] {
       .layout-tab-container {
@@ -247,14 +265,15 @@
         box-shadow: 0 1px 0 0 #fff, 0 0px 20px 0px rgb(from var(--b3-theme-on-background) r g b / 0.06);
         background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
 
-        [data-asri-palette="polar"][data-theme-mode="dark"] & {
-          background-color: rgb(from var(--b3-theme-background) r g b / 0.6);
-        }
+        // [data-asri-palette="polar"][data-theme-mode="dark"] & {
+        //   background-color: rgb(from var(--b3-theme-background) r g b / 0.6);
+        // }
 
         @include darkmode-counterpart {
           // mix-blend-mode: hard-light;
           box-shadow: 0 0.5px 0 0 #fff2, 0 -8px 5px -5px rgb(from var(--b3-theme-background) r g b / 0.25) inset;
           background-color: rgb(from var(--b3-theme-background) r g b / 0.5);
+          // background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / 0.8), rgb(from var(--b3-theme-background) r g b / 0.4));
           // background-color: #0000;
         }
       }

@@ -19,7 +19,7 @@ For the complete update history, refer to the [CHANGELOG.md](https://github.com/
 
 ![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp_v3.png)
 
-"Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>": breaking the boundary between the topbar and the editor to deliver an immersive reading and editing experience (*This is an experimental feature; enable with caution. See footnote 3 for details*)
+"Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>": Introduced advanced material effects (luminous glass, progressive blur, acrylic), breaking the boundary between the top bar and the editor for an immersive reading and editing experience (experimental feature; enable with caution - see Footnote 3 for details).
 
 #### v3.0.0
 

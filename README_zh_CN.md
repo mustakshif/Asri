@@ -19,7 +19,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp_v3.png)
 
-「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」：突破顶栏与编辑区界限，带来沉浸式的阅读与编辑体验（*实验性功能，请谨慎启用；详请见脚注 3*）
+「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」：引入高级材质效果（光感玻璃、渐进模糊、亚克力），突破顶栏与编辑区界限，沉浸式的阅读与编辑体验（*实验性功能，请谨慎启用；详请见脚注 3*）
 
 #### v3.0.0
 

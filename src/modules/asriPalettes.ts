@@ -135,7 +135,7 @@ let followSysAccentBtn: AsriDomsExtended,
   topbarFusionPlusBtn: AsriDomsExtended,
   tfpProgressiveBtn: AsriDomsExtended,
   tfpAcrylicBtn: AsriDomsExtended,
-  tfpGlowyBtn: AsriDomsExtended;
+  tfpLuminousBtn: AsriDomsExtended;
 export let followSysAccentColor = false;
 export async function loadThemePalette() {
   // if (env.isIOSApp) return; // fix app crash
@@ -424,20 +424,18 @@ export async function createBarModeMenuItems(e: Event) {
         </svg>
         <div class="b3-menu__submenu">
             <div class="b3-menu__items">
+                <button class="b3-menu__item" id="tfp-luminous">
+                    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
+                    <span class="b3-menu__label">${i18n["tfp-luminous"]}</span>
+                </button>
                 <button class="b3-menu__item" id="tfp-progressive">
                     <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
                     <span class="b3-menu__label">${i18n["tfp-progressive"]}</span>
-                </button>
+                </button>                                
                 <button class="b3-menu__item" id="tfp-acrylic">
                     <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
                     <span class="b3-menu__label">${i18n["tfp-acrylic"]}</span>
-                </button>
-                
-                <button class="b3-menu__item" id="tfp-glowy">
-                    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
-                    <span class="b3-menu__label">${i18n["tfp-glowy"]}</span>
-                </button>
-                
+                </button>                
                 <button class="b3-menu__separator"></button>
                 <button class="b3-menu__item" id="tfp-disable">
                     <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
@@ -463,7 +461,7 @@ function tfpMenuItemCallback(e: Event) {
   const tfpMenuItems = document.querySelectorAll('[id^="tfp-"]');
   if (target.id === "tfp-disable") {
     // disable all tfp features
-    document.body.classList.remove("asri-tfp-acrylic", "asri-tfp-progressive", "asri-tfp", "asri-tfp-glowy");
+    document.body.classList.remove("asri-tfp-acrylic", "asri-tfp-progressive", "asri-tfp", "asri-tfp-luminous");
     tfpMenuItems.forEach((item) => {
       item.classList.remove("b3-menu__item--selected");
     });
@@ -477,7 +475,7 @@ function tfpMenuItemCallback(e: Event) {
       tfpMenuItems.forEach((item) => {
         item.classList.remove("b3-menu__item--selected");
       });
-      document.body.classList.remove("asri-tfp-acrylic", "asri-tfp-progressive", "asri-tfp-glowy");
+      document.body.classList.remove("asri-tfp-acrylic", "asri-tfp-progressive", "asri-tfp-luminous");
       document.body.classList.add("asri-tfp", target.id.replace("tfp-", "asri-tfp-"));
       asriConfigs.features.tfp = target.id.replace("tfp-", "");
     }
@@ -491,7 +489,7 @@ function initMenuItems() {
   const asriChromaBtn = document.getElementById("asriChroma");
   tfpProgressiveBtn = document.getElementById("tfp-progressive");
   tfpAcrylicBtn = document.getElementById("tfp-acrylic");
-  tfpGlowyBtn = document.getElementById("tfp-glowy");
+  tfpLuminousBtn = document.getElementById("tfp-luminous");
 
   if (asriConfigs[curMode].presetPalette) {
     pickColorBtn?.classList.add("b3-menu__item--disabled");
@@ -515,7 +513,7 @@ function initMenuItems() {
     curPalette?.classList.add("b3-menu__item--selected");
   }
 
-  [tfpProgressiveBtn, tfpAcrylicBtn, tfpGlowyBtn].forEach((btn) => {
+  [tfpProgressiveBtn, tfpAcrylicBtn, tfpLuminousBtn].forEach((btn) => {
     if (btn) {
       const type = btn.id.replace("tfp-", "");
       btn.classList.toggle("b3-menu__item--selected", asriConfigs.features.tfp === type);
