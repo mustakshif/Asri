@@ -1,3 +1,21 @@
+### v3.4.6
+
+- 「顶栏融合+」新增「光感玻璃」材质，动态反映编辑器光源
+- 改进「顶栏融合+」亚克力材质质感效果
+- [提升页签切换流畅度](https://github.com/mustakshif/Asri/issues/171)
+- [「顶栏融合+」适配「文档流」插件](https://github.com/mustakshif/Asri/issues/168#issuecomment-2961126706)
+- [修复代码块无法横向滚动的问题](https://github.com/mustakshif/Asri/issues/170)
+
+<br/>
+
+- Added "Luminous Glass" material to "Topbar Fusion+", dynamically reflecting editor light sources
+- Improved the "Acrylic" effect's texture in "Topbar Fusion+"
+- [Enhanced tab switching smoothness](https://github.com/mustakshif/Asri/issues/171)
+- [Adapted "Topbar Fusion+" for the "Document Flow" plugin](https://github.com/mustakshif/Asri/issues/168#issuecomment-2961126706)
+- [Fixed the issue where code blocks couldn&apos;t scroll horizontally](https://github.com/mustakshif/Asri/issues/170)
+
+---
+
 ### v3.4.5
 
 - 新增预设主题配色「极地」

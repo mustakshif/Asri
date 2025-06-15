@@ -239,7 +239,7 @@
             );
 
             [data-asri-palette="polar"][data-theme-mode="dark"] & {
-              --glow-strength: #0005;
+              --glow-strength: #0006;
             }
 
             @include darkmode-counterpart {
@@ -272,9 +272,14 @@
         @include darkmode-counterpart {
           // mix-blend-mode: hard-light;
           box-shadow: 0 0.5px 0 0 #fff2, 0 -8px 5px -5px rgb(from var(--b3-theme-background) r g b / 0.25) inset;
-          background-color: rgb(from var(--b3-theme-background) r g b / 0.5);
-          // background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / 0.8), rgb(from var(--b3-theme-background) r g b / 0.4));
-          // background-color: #0000;
+          // background-color: rgb(from var(--b3-theme-background) r g b / 0.5);
+          background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / 0.6), rgb(from var(--b3-theme-background) r g b / 0.45));
+          background-color: #0000;
+        }
+
+        [data-asri-palette="polar"][data-theme-mode="dark"] & {
+          background-color: #0000;
+          background-image: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / 0.6), rgb(from var(--b3-theme-background) r g b / 0.3));
         }
       }
     }
