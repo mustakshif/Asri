@@ -88,10 +88,10 @@
   .b3-dialog__header {
     @include goldfoil-background;
     background-clip: text;
-    color: rgba(from var(--b3-theme-on-background) r g b / 0.1);
+    color: rgb(from var(--b3-theme-on-background) r g b / 0.1);
 
     @include darkmode-counterpart {
-      color: rgba(from var(--b3-theme-on-background) r g b / 0.2);
+      color: rgb(from var(--b3-theme-on-background) r g b / 0.2);
     }
   }
 

@@ -86,7 +86,7 @@
         > span {
           &:not(:empty) {
             // --stroke-width: .5px;
-            // --stroke-clr: rgba(from var(--b3-theme-background) r g b / .8);
+            // --stroke-clr: rgb(from var(--b3-theme-background) r g b / .8);
             background-color: var(--b3-theme-background);
             padding: 0.5em;
             max-width: fit-content;

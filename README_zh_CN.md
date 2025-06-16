@@ -196,8 +196,6 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 - [项目主页](https://github.com/mustakshif/Asri/)提交 issue 或 PR
 - 发送邮件至 mustakshif@icloud.com
 
-## 其他
-
 <!--## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=mustakshif/Asri&type=Date)](https://star-history.com/#mustakshif/Asri&Date)-->

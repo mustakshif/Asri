@@ -3,7 +3,7 @@
 body {
   $gap-unit: 8px;
   $br-unit: 6px;
-  $border-clr: rgba(from var(--b3-theme-on-background) r g b / 0.08);
+  $border-clr: rgb(from var(--b3-theme-on-background) r g b / 0.08);
 
   @mixin bento {
     border-radius: calc($br-unit * 2);

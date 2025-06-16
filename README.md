@@ -195,8 +195,6 @@ The theme development process drew inspiration from the following sources, and I
 - Create an issue or PR at [the project page](https://github.com/mustakshif/Asri/)
 - Send an email to mustakshif@icloud.com
 
-## Notes
-
 <!--## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=mustakshif/Asri&type=Date)](https://star-history.com/#mustakshif/Asri&Date)-->

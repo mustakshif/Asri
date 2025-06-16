@@ -265,7 +265,7 @@ $cvc: 10; // color variant count
   }
 
   .menu-item__subtitle {
-    color: rgba(from var(--b3-theme-on-background) r g b / 0.5);
+    color: rgb(from var(--b3-theme-on-background) r g b / 0.5);
     font-size: 0.85em;
     font-weight: 600;
     padding: 4px 8px;

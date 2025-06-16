@@ -12,10 +12,10 @@
         background: linear-gradient(
           to top,
           var(--b3-theme-background) 2%,
-          rgba(from var(--b3-theme-background) r g b / 0.97) 9%,
-          rgba(from var(--b3-theme-background) r g b / 0.9) 18%,
-          rgba(from var(--b3-theme-background) r g b / 0.75) 33%,
-          rgba(from var(--b3-theme-background) r g b / 0.05) 92%,
+          rgb(from var(--b3-theme-background) r g b / 0.97) 9%,
+          rgb(from var(--b3-theme-background) r g b / 0.9) 18%,
+          rgb(from var(--b3-theme-background) r g b / 0.75) 33%,
+          rgb(from var(--b3-theme-background) r g b / 0.05) 92%,
           transparent 99%
         );
         pointer-events: none;
