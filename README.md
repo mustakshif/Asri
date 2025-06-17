@@ -189,8 +189,6 @@ The theme development process drew inspiration from the following sources, and I
 | - Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu<br />- Bottom dock & status bar mergence<br />- Multilevel list style | Theme: [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)           |
 | - Topbar-tabbar mergence<br />- File tree indent guides<br />- MutationObserver related functions | Theme: [Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
 
-（The order in the list above does not imply any ranking）
-
 ## Feedbacks & suggestions
 - Create an issue or PR at [the project page](https://github.com/mustakshif/Asri/)
 - Send an email to mustakshif@icloud.com

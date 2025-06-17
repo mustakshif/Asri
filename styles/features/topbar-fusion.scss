@@ -50,7 +50,7 @@ body:not(.body-asri--mobile, .body--window) {
   .layout__center .layout-tab-bar {
     margin: 10px;
 
-    &:not(&--readonly) {
+    &:not(.layout-tab-bar--readonly) {
       margin-right: 4px;
     }
 

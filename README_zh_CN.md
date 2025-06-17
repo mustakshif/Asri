@@ -167,8 +167,6 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 如需进行相应配置，可点击**文档块**块标，在弹出的菜单中选择 `文档排版方向` 即可。
 
-
-
 <p style="font-size: .5em"></p>
 <details>
 <summary style="opacity: .6; font-weight: 600; font-size: .8em">更多信息</summary>
@@ -189,8 +187,6 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 | - 菜单背景模糊 | 主题：[Cliff-Dark](https://github.com/chenshinshi/Cliff-Dark) | [Crowds21](https://github.com/chenshinshi) |
 | - 侧栏面板列表项前圆点<br />- 大纲列表标题图标<br />- 状态栏<br />- 搜索列表<br />- 表格列宽<br />- `/` 菜单多栏布局<br />- 底栏和状态栏合并<br />- 多级列表序号 | 主题：[Savor](https://github.com/royc01/notion-theme) | [Roy](https://github.com/royc01) |
 | - 顶栏页签栏合并<br />- 文档树缩进线<br />- DOM 变动观察相关函数 | 主题：[Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
-
-(以上排名不分先后)
 
 ## 反馈和建议
 - [项目主页](https://github.com/mustakshif/Asri/)提交 issue 或 PR
