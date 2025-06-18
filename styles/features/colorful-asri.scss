@@ -24,9 +24,17 @@ $cvc: 10; // color variant count
       --asri-fallback-background: #fff;
       --asri-fallback-surface: #f0f0f0;
       --asri-fallback-on-background: #454545;
-      --asri-composite-background: oklch(from var(--asri-base-color) calc(1 - var(--asri-c-0, 0.015)) calc(0.005 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-      --asri-composite-surface: oklch(from var(--asri-base-color) calc(0.96 - var(--asri-c-0, 0.02)) calc(0.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-      --asri-composite-on-background: oklch(from var(--asri-base-color) 0.35 clamp(0, 0.03 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.06) h);
+      --asri-composite-background: oklch(
+        from var(--asri-base-color) calc(1 - var(--asri-c-0, 0.015))
+          calc(0.005 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h
+      );
+      --asri-composite-surface: oklch(
+        from var(--asri-base-color) calc(0.96 - var(--asri-c-0, 0.02))
+          calc(0.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h
+      );
+      --asri-composite-on-background: oklch(
+        from var(--asri-base-color) 0.35 clamp(0, 0.03 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.06) h
+      );
 
       // UI colors
       // --b3-theme-primary: oklch(from var(--asri-sys-accent, var(--asri-accent-fallback)) clamp(0.5,l,0.8) c h); // complex calculation not supported yet
@@ -34,7 +42,10 @@ $cvc: 10; // color variant count
       --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
       --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
       --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
-      --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) 0.67 c h));
+      --b3-theme-accent: var(
+        --asri-theme-accent-customized,
+        oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) 0.67 c h)
+      );
       --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) 0.62 c h / 0.8);
 
       --b3-theme-background: var(--asri-composite-background, var(--asri-fallback-background));
@@ -49,7 +60,9 @@ $cvc: 10; // color variant count
 
       --b3-theme-on-primary: oklch(from var(--b3-theme-primary) 0.99 0.01 h);
 
-      --b3-border-color: oklch(from var(--b3-theme-background) 0.92 clamp(0, 0.009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h);
+      --b3-border-color: oklch(
+        from var(--b3-theme-background) 0.92 clamp(0, 0.009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h
+      );
       --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / 0.15);
 
       --b3-menu-background: oklch(from var(--b3-theme-background) 0.95 c h);
@@ -82,15 +95,24 @@ $cvc: 10; // color variant count
       --asri-fallback-background: #1e1e1e;
       --asri-fallback-surface: #383838;
       --asri-fallback-on-background: #dcdcdc;
-      --asri-composite-background: oklch(from var(--asri-base-color) 0.2 calc(0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-      --asri-composite-surface: oklch(from var(--asri-base-color) 0.29 calc(0.015 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h);
-      --asri-composite-on-background: oklch(from var(--asri-base-color) 0.89 clamp(0, 0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h);
+      --asri-composite-background: oklch(
+        from var(--asri-base-color) 0.2 calc(0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h
+      );
+      --asri-composite-surface: oklch(
+        from var(--asri-base-color) 0.29 calc(0.015 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h
+      );
+      --asri-composite-on-background: oklch(
+        from var(--asri-base-color) 0.89 clamp(0, 0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h
+      );
 
       --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) 0.65 c h);
       --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
       --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
       --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
-      --b3-theme-accent: var(--asri-theme-accent-customized, oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) 0.65 c h));
+      --b3-theme-accent: var(
+        --asri-theme-accent-customized,
+        oklch(from var(--asri-sys-accent-accessible, oklch(from var(--b3-theme-primary) l 0.2 h)) 0.65 c h)
+      );
       --b3-menu-item-background-hover: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) 0.6 c h / 0.7);
 
       --b3-theme-background: var(--asri-composite-background, var(--asri-fallback-background));
@@ -105,7 +127,9 @@ $cvc: 10; // color variant count
 
       --b3-theme-on-primary: oklch(from var(--b3-theme-primary) 0.99 0.01 h);
 
-      --b3-border-color: oklch(from var(--b3-theme-background) 0.34 clamp(0, 0.009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h);
+      --b3-border-color: oklch(
+        from var(--b3-theme-background) 0.34 clamp(0, 0.009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h
+      );
       --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / 0.15);
 
       --b3-menu-background: oklch(from var(--b3-theme-background) 0.25 c h);
@@ -142,7 +166,10 @@ $cvc: 10; // color variant count
         */
 
     --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) min(0.87, l) c h);
-    --b3-theme-on-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) var(--asri-on-primary-reverse, 0.99) calc(c * var(--asri-on-primary-reverse, 0.01) / var(--asri-on-primary-reverse, 1)) h);
+    --b3-theme-on-primary: oklch(
+      from var(--asri-base-color, var(--asri-fallback-accent)) var(--asri-on-primary-reverse, 0.99)
+        calc(c * var(--asri-on-primary-reverse, 0.01) / var(--asri-on-primary-reverse, 1)) h
+    );
     --b3-menu-item-background-hover: oklch(from var(--b3-theme-primary) l c h / 0.8);
     --b3-menu-item-background-hover-text: var(--b3-theme-on-primary);
 
@@ -162,8 +189,7 @@ $cvc: 10; // color variant count
     }
   }
 
-  .b3-button--outline,
-  .protyle-breadcrumb__icon {
+  :is(.b3-button--outline, .protyle-breadcrumb__icon) {
     --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) max(min(0.72, l), 0.39) c h);
 
     @include darkmode-counterpart {
@@ -281,10 +307,12 @@ $cvc: 10; // color variant count
 
   // body:not(.has-exportimg) {
 
-  .protyle-toolbar__item--current,
-  .protyle-attr--refcount:hover,
-  .protyle-attr--av:hover,
-  .custom-attr .block__logo.custom-attr__avheader {
+  :is(
+      .protyle-toolbar__item--current,
+      .protyle-attr--refcount:hover,
+      .protyle-attr--av:hover,
+      .custom-attr .block__logo.custom-attr__avheader
+    ) {
     color: var(--b3-theme-accent);
   }
 
@@ -319,15 +347,15 @@ $cvc: 10; // color variant count
   // }
 
   // adapt elements that need to be accented
-  .toolbar .toolbar__item--active,
+  :is(.toolbar .toolbar__item--active,
   .block__icon--active,
-  .b3-menu__item--selected {
+  .b3-menu__item--selected) {
     color: var(--b3-theme-accent);
   }
 
-  .b3-menu__icon[style="color:var(--b3-theme-primary)"],
+  :is(.b3-menu__icon[style="color:var(--b3-theme-primary)"],
   .dock .dock__item--activefocus,
-  .dock .dock__item--active {
+  .dock .dock__item--active) {
     color: var(--b3-theme-accent) !important;
   }
 
@@ -338,7 +366,11 @@ $cvc: 10; // color variant count
   .config-account__cover[style="background-image: url()"] {
     // background-color: oklch(from var(--b3-theme-primary) l c h / 0.3) !important;
     background-color: unset !important;
-    background: radial-gradient(circle at bottom, oklch(from var(--b3-theme-primary) l calc(c * 1.05) h / 0.5) 30%, oklch(from var(--b3-theme-primary) l calc(c * 1.1) calc(h + 30) / 0.3) 85%) !important;
+    background: radial-gradient(
+      circle at bottom,
+      oklch(from var(--b3-theme-primary) l calc(c * 1.05) h / 0.5) 30%,
+      oklch(from var(--b3-theme-primary) l calc(c * 1.1) calc(h + 30) / 0.3) 85%
+    ) !important;
   }
 
   // other
@@ -353,18 +385,29 @@ $cvc: 10; // color variant count
 
   .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
   .layout-tab-bar .item--focus {
-    background-color: oklch(from var(--b3-theme-primary) 0.5 clamp(0, calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), 0.25) h / 0.2);
+    background-color: oklch(
+      from var(--b3-theme-primary) 0.5 clamp(0, calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), 0.25) h / 0.2
+    );
 
     @include darkmode-counterpart {
-      background-color: oklch(from var(--b3-theme-primary) 0.99 clamp(0, calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), 0.15) h / 0.2);
+      background-color: oklch(
+        from var(--b3-theme-primary) 0.99 clamp(0, calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), 0.15) h /
+          0.2
+      );
     }
   }
 
   [data-type="wnd"]:not(.layout__wnd--active) .item--focus {
-    background-color: oklch(from var(--b3-theme-primary) 0.5 clamp(0, calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5), 0.25) h / 0.2);
+    background-color: oklch(
+      from var(--b3-theme-primary) 0.5 clamp(0, calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5), 0.25) h /
+        0.2
+    );
 
     @include darkmode-counterpart {
-      background-color: oklch(from var(--b3-theme-primary) 0.99 clamp(0, calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5), 0.15) h / 0.2);
+      background-color: oklch(
+        from var(--b3-theme-primary) 0.99 clamp(0, calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5), 0.15)
+          h / 0.2
+      );
     }
   }
 
@@ -425,6 +468,8 @@ $cvc: 10; // color variant count
   }
 
   .b3-switch {
-    background-color: oklch(from var(--b3-theme-on-background) 0.6 clamp(0, 0.01 * var(--asri-c-factor, 1), 0.03) h / 0.4);
+    background-color: oklch(
+      from var(--b3-theme-on-background) 0.6 clamp(0, 0.01 * var(--asri-c-factor, 1), 0.03) h / 0.4
+    );
   }
 }

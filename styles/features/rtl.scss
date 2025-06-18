@@ -2,13 +2,15 @@
   --gnf: -1; // global negate factor
 
   // 所有 rtl 元素
-  .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink),
-  .b3-menu,
-  .protyle-breadcrumb,
-  #tooltip,
-  .b3-button,
-  .protyle-util .block__icons--menu,
-  .protyle-hint.hint--menu > div,
+  :is(
+      .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink),
+      .b3-menu,
+      .protyle-breadcrumb,
+      .tooltip,
+      .b3-button,
+      .protyle-util .block__icons--menu,
+      .protyle-hint.hint--menu > div
+    ),
   :where(
       [data-key="dialog-setting"],
       [data-key="dialog-confirm"],

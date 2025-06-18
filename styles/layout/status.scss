@@ -227,7 +227,7 @@
   }
 }
 
-#status {
+.status {
   transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.2s;
   position: fixed;
 }
@@ -236,13 +236,13 @@
 //     position: fixed;
 // }
 
-body:not(.body-asri--mobile) #dockBottom.fn__none:not(.has-layout-dockb-float) ~ #status,
-body.body--window #status {
+body:not(.body-asri--mobile) #dockBottom.fn__none:not(.has-layout-dockb-float) ~ .status,
+body.body--window .status {
   @include floating-status();
 }
 
-#dockBottom:not(.fn__none) ~ #status,
-#dockBottom.fn__none.has-layout-dockb-float ~ #status {
+#dockBottom:not(.fn__none) ~ .status,
+#dockBottom.fn__none.has-layout-dockb-float ~ .status {
   background-color: transparent;
   border-top-color: transparent;
   padding: 0 32px 0 6px;
@@ -283,7 +283,7 @@ body.body--window #status {
   }
 }
 
-#dockBottom.has-layout-dockb-float ~ #status {
+#dockBottom.has-layout-dockb-float ~ .status {
   // background-color: var(--b3-theme-background);
   position: static;
   padding-right: 34px;
@@ -296,12 +296,12 @@ body.body--window #status {
   }
 }
 
-#dockBottom.has-layout-dockb-float.fn__none ~ #status {
+#dockBottom.has-layout-dockb-float.fn__none ~ .status {
   border-top-color: var(--b3-border-color);
   border-top-width: 1px;
 }
 
-body.body--window #status,
-.body-asri--readOnly #status {
+body.body--window .status,
+.body-asri--readOnly .status {
   padding-right: 0 !important;
 }

@@ -181,7 +181,7 @@ To apply this property to a document, you can click on the block icon for **Docu
 
 ## Acknowledgements
 
-The theme development process drew inspiration from the following sources, and I would like to express my gratitude to their authors:
+The theme’s early development drew inspiration from the following sources, for which I would like to express my gratitude to their authors:
 
 | Reference Content | Source | Author |
 | --- | --- | --- |
