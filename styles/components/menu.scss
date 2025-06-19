@@ -1,8 +1,8 @@
 @use "../base" as *;
 @use "./utils" as *;
 
-.b3-menu,
-.b3-menu__submenu {
+:is(.b3-menu,
+.b3-menu__submenu) {
   @include menu-shadow($opacity-light: 0.15);
 
   @include theme-variant-border($border: false) {
@@ -21,7 +21,7 @@
     border-radius: 10px;
   }
 
-  &:not(&--fullscreen)::before {
+  &:not(.b3-menu--fullscreen)::before {
     box-shadow: 0 0 0 1px #fff2 inset, 0 2px 1px -1px #fff3 inset;
   }
 
