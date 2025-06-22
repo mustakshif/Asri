@@ -34,7 +34,7 @@
 [data-type~="inline-math"],
 [data-type="NodeHTMLBlock"]>div:nth-child(2),
 audio,
-canvas,
+// canvas, // cause pdf flash when scrolling
 video,
 // :is(.sy__file, .sy__bookmark) .b3-list,
 // :is(.sy__tag, .sy__outline) .b3-list-item, // cause flash

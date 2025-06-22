@@ -19,7 +19,7 @@ body:not(.body-asri--mobile, .body--window) {
       opacity: 0;
     }
 
-    >.toolbar__item {
+    > .toolbar__item {
       pointer-events: visibleFill;
       app-region: no-drag;
       height: auto;

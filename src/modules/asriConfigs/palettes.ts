@@ -76,4 +76,17 @@ export const asriPrstPalettes: Record<string, PresetPalette> = {
       "followSysAccentColor": false,
     },
   },
+
+  // "prst-palette-haven": {
+  //   "dark": {
+  //     "primary": "#28626C",
+  //     "chroma": "1.6",
+  //     "followSysAccentColor": false,
+  //   },
+  //   "light": {
+  //     "primary": "#28626C",
+  //     "chroma": "2.5",
+  //     "followSysAccentColor": false,
+  //   },
+  // },
 }; 
