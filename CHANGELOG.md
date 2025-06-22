@@ -1,3 +1,17 @@
+### v3.4.7
+
+- 移除底栏避让相关 JS 代码
+- 修复 PDF 阅读器滚动时闪烁的问题
+- [修复折叠块指示在部分设备上的兼容性问题](https://github.com/mustakshif/Asri/issues/172)
+
+<br />
+
+- Removed the bottom bar avoidance-related JS code
+- Fixed flickering issues when scrolling in the PDF viewer
+- [Fixed compatibility issues with fold block indicators on certain devices](https://github.com/mustakshif/Asri/issues/172)
+
+---
+
 ### v3.4.6
 
 - 「顶栏融合+」新增「光感玻璃」材质，动态反映编辑器光源
