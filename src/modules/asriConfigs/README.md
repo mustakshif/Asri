@@ -20,8 +20,8 @@
 - `eventHandlers.ts` - 事件处理函数
 - `state.ts` - 状态管理
 
-### 工具模块
-- `types.ts` - TypeScript类型定义
+### 类型定义
+- 所有TypeScript类型定义已移至 `src/types/asri.d.ts` 全局声明文件，无需导入即可使用
 
 ## 使用方法
 

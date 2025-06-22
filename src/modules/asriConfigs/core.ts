@@ -2,13 +2,7 @@ import { environment as env } from "../../util/rsc";
 import { loadI18n } from "./i18n";
 import { getAsriConfigs, asriConfigs } from "./configs";
 import { asriPrstPalettes } from "./palettes";
-import { 
-  setCurMode, 
-  setI18n, 
-  setFollowSysAccentColor,
-  setIsUserAccentGray,
-  followSysAccentColor
-} from "./state";
+import { setCurMode, setI18n, setFollowSysAccentColor, setIsUserAccentGray, followSysAccentColor } from "./state";
 import { cssVarManager } from "./cssVarManager";
 import { getSystemAccentColor, handleGrayScale, reverseOnPrimaryLightness } from "./systemColor";
 
@@ -60,13 +54,13 @@ export async function loadThemePalette() {
 }
 
 export function unloadThemePalette() {
-  // cssVarManager.removeProperty("--asri-user-custom-accent");
-  // cssVarManager.removeProperty("--asri-sys-accent-grayscale");
-  // cssVarManager.removeProperty("--asri-c-factor");
-  // cssVarManager.removeProperty("--asri-sys-accent");
-  // cssVarManager.removeProperty("--asri-sys-accent-accessible");
-  // cssVarManager.removeProperty("--asri-c-0");
-  // cssVarManager.removeProperty("--asri-on-primary-reverse");
+  cssVarManager.removeProperty("--asri-user-custom-accent");
+  cssVarManager.removeProperty("--asri-sys-accent-grayscale");
+  cssVarManager.removeProperty("--asri-c-factor");
+  cssVarManager.removeProperty("--asri-sys-accent");
+  cssVarManager.removeProperty("--asri-sys-accent-accessible");
+  cssVarManager.removeProperty("--asri-c-0");
+  cssVarManager.removeProperty("--asri-on-primary-reverse");
   // asriDoms.barMode?.removeEventListener("click", customizeThemeColor);
   document.querySelectorAll(".asri-config").forEach((el) => el.remove());
 }
@@ -75,4 +69,4 @@ export async function initI18n() {
   const i18n = await loadI18n();
   setI18n(i18n);
   return i18n;
-} 
+}

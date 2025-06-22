@@ -34,9 +34,6 @@ export {
 // I18n
 export { loadI18n } from "./i18n";
 
-// Types
-export type * from "./types";
-
 // Re-export main functions for backward compatibility
 export let i18n: any;
 export let followSysAccentColor = false;

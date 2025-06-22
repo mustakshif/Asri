@@ -1,11 +1,19 @@
 import { AsriEventListener } from "../util/eventListeners";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/interfaceState";
-import { debounce, isProtyle, querySelectorAsync } from "../util/misc";
+import { debounce, querySelectorAsync } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
 import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
-import { createBarModeMenuItems, followSysAccentColor, getSystemAccentColor, loadI18n, loadThemePalette, paletteMenuItemClickEventListener, tfpMenuItemCallbackEventListener, unloadThemePalette } from "./asriPalettes";
-import { docBodyMoCallback } from "./dialog";
+import {
+  createBarModeMenuItems,
+  followSysAccentColor,
+  getI18n,
+  getSystemAccentColor,
+  loadThemePalette,
+  paletteMenuItemClickEventListener,
+  tfpMenuItemCallbackEventListener,
+  unloadThemePalette,
+} from "./asriConfigs";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { removeFocusedBlockClass as removeFocusedBlockClassName, selectionChangeCallback } from "./focusedBlock";
@@ -13,8 +21,22 @@ import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstitio
 import { removeProtyleStatusClassName, toggleProtyleStatus } from "./protyleStatus";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
-import { avoidOverlappingWithStatus, debouncedStatusPosition, removeStatusStyles, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
-import { calcTabbarSpacings, calcTopbarSpacings, createTopbarFusionElements, handleMacFullScreen, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
+import {
+  avoidOverlappingWithStatus,
+  debouncedStatusPosition,
+  removeStatusStyles,
+  setStatusHeightVar,
+  unloadAvoidOverlappingWithStatus,
+} from "./status";
+import {
+  calcTabbarSpacings,
+  calcTopbarSpacings,
+  createTopbarFusionElements,
+  handleMacFullScreen,
+  recalcDragInitials,
+  unloadTopbarFusion,
+  updateDragRect,
+} from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
 const globalClickEventListener = new AsriEventListener(lowFreqEventsCallback);
@@ -37,10 +59,11 @@ export async function loadAsriJSModules() {
   useMacSysScrollbar();
   applyTrafficLightPosition();
   setStatusHeightVar();
-  // startDefaultTranstition(loadThemePalette);
-  loadThemePalette(); // https://github.com/mustakshif/Asri/issues/85
   toggleProtyleStatus();
-  await loadI18n();
+  // startDefaultTranstition(loadThemePalette);
+  await getI18n();
+  loadThemePalette(); // https://github.com/mustakshif/Asri/issues/85
+
   if (!env.isMobile) {
     await updateWndEls();
     await updateDragRect("initials");
@@ -48,7 +71,7 @@ export async function loadAsriJSModules() {
   }
   updateStyles();
   addDockbClassName();
-  avoidOverlappingWithStatus();
+  // avoidOverlappingWithStatus();
   globalClickEventListener.start(document, "mouseup");
   globalDragEventListener.start(document, "dragend");
   globalKeyupEventListener.start(document, "keyup", true);
@@ -130,13 +153,19 @@ async function updateStyles(e?: Event | KeyboardEvent) {
   }
 
   // run on mouse events
-  else if (e.type.startsWith("mouse") || e.type.startsWith("drag") || (e instanceof KeyboardEvent && (e.key === "Control" || e.key === "Alt" || e.key === "Shift" || e.key === "Meta"))) {
+  else if (
+    e.type.startsWith("mouse") ||
+    e.type.startsWith("drag") ||
+    (e instanceof KeyboardEvent && (e.key === "Control" || e.key === "Alt" || e.key === "Shift" || e.key === "Meta"))
+  ) {
     lowFreqStyleUpdates();
 
-    Promise.resolve().then(() => {
-      recalcDragInitials();
-      return calcTopbarSpacings(0, false, doesTopBarOverflow);
-    }).then(calcTabbarSpacings);
+    Promise.resolve()
+      .then(() => {
+        recalcDragInitials();
+        return calcTopbarSpacings(0, false, doesTopBarOverflow);
+      })
+      .then(calcTabbarSpacings);
   }
 
   function lowFreqStyleUpdates() {
@@ -148,7 +177,7 @@ async function updateStyles(e?: Event | KeyboardEvent) {
       await updateWndEls();
       calcProtyleSpacings();
       addDockbClassName();
-      avoidOverlappingWithStatus();
+      // avoidOverlappingWithStatus();
       !env.isIOSApp && followSysAccentColor && env.supportOklch && getSystemAccentColor();
     }, 0);
   }

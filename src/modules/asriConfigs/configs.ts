@@ -1,6 +1,5 @@
 import { getFile, putFile } from "../../util/api";
 import { environment as env } from "../../util/rsc";
-import type { AsriConfigs } from "./types";
 import { setFollowSysAccentColor } from "./state";
 
 export const asriConfigs: AsriConfigs = {
@@ -42,7 +41,7 @@ export async function getAsriConfigs() {
         }
       }
 
-      const modes: ("light" | "dark")[] = ["light", "dark"];
+      const modes: Modes[] = ["light", "dark"];
       for (const mode of modes) {
         asriConfigs[mode].followSysAccentColor = !!data[mode].followSysAccentColor;
         asriConfigs[mode].chroma = data[mode].chroma ?? "1";

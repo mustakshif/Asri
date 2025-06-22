@@ -13,18 +13,19 @@ body:not(.body-asri--mobile, .body--window) {
     pointer-events: none;
     app-region: drag;
 
-    #drag {
+    > .fn__ellipsis // #drag
+    {
       min-width: unset;
       opacity: 0;
     }
 
-    .toolbar__item {
+    >.toolbar__item {
       pointer-events: visibleFill;
       app-region: no-drag;
       height: auto;
     }
 
-    #AsriPluginsIconsDivider {
+    > #AsriPluginsIconsDivider {
       width: auto;
       height: 1px;
       border-radius: 6px;
@@ -35,12 +36,12 @@ body:not(.body-asri--mobile, .body--window) {
       z-index: -1;
     }
 
-    #AsriTopbarLeftSpacing {
+    > #AsriTopbarLeftSpacing {
       width: var(--topbar-left-spacing);
       flex-shrink: 0;
     }
 
-    #AsriTopbarRightSpacing {
+    > #AsriTopbarRightSpacing {
       width: var(--topbar-right-spacing);
       flex-shrink: 0;
     }
@@ -58,14 +59,14 @@ body:not(.body-asri--mobile, .body--window) {
       margin-left: 0;
       margin-right: 8px;
 
-      .item--readonly {
+      > .item--readonly {
         justify-content: end;
 
-        .fn__flex-1:nth-child(2) {
+        > .fn__flex-1 {
           flex-grow: 0;
         }
 
-        .block__icon:hover {
+        > .block__icon:hover {
           background-color: transparent;
         }
       }
@@ -301,12 +302,11 @@ body:not(.body-asri--mobile, .body--window) {
   }
 }
 
-:is(#AsriTopbarLeftSpacing,
-#AsriTopbarRightSpacing,
-#AsriPluginsIconsDivider) {
+:is(#AsriTopbarLeftSpacing, #AsriTopbarRightSpacing, #AsriPluginsIconsDivider) {
   svg,
   use {
-    width: 0;
-    height: 0;
+    // width: 0;
+    // height: 0;
+    display: none;
   }
 }

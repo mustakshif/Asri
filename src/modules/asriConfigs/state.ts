@@ -1,5 +1,3 @@
-import type { AsriDomsExtended } from "./types";
-
 export let curMode: "light" | "dark";
 export let i18n: any;
 export let sysAccentColor: string;

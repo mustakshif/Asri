@@ -1,5 +1,3 @@
-import type { PresetPalette } from "./types";
-
 export const asriPrstPalettes: Record<string, PresetPalette> = {
   "prst-palette-auriflow": {
     "dark": {
