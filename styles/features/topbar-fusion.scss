@@ -19,11 +19,11 @@ body:not(.body-asri--mobile, .body--window) {
       opacity: 0;
     }
 
-    > .toolbar__item {
+    .toolbar__item {
       pointer-events: visibleFill;
       app-region: no-drag;
       height: auto;
-    }
+    } // fix https://github.com/mustakshif/Asri/issues/175
 
     > #AsriPluginsIconsDivider {
       width: auto;
