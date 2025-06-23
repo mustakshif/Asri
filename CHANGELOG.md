@@ -1,3 +1,13 @@
+### v3.4.8
+
+- [修复 Windows 端窗口控制按钮无法点击的问题](https://github.com/mustakshif/Asri/issues/175)
+
+<br />
+
+- [Fixed an issue where window control buttons were unclickable on Windows](https://github.com/mustakshif/Asri/issues/175)
+
+---
+
 ### v3.4.7
 
 - 移除底栏避让相关 JS 代码
