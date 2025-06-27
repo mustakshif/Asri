@@ -32,3 +32,33 @@ interface PresetPalette {
   dark: PaletteConfig;
   light: PaletteConfig;
 }
+
+// UI：菜单项类型
+interface BaseElementOptions {
+  id?: string;
+  className?: string | string[];
+  attributes?: Record<string, string>;
+  style?: Partial<CSSStyleDeclaration>;
+  onClick?: (event: Event) => void;
+}
+
+interface MenuItemOptions extends BaseElementOptions {
+  label: string;
+  icon?: string | SVGElement;
+  disabled?: boolean;
+  selected?: boolean;
+  type?: 'default' | 'custom' | 'separator';
+  submenu?: MenuItemOptions[];
+  accelerator?: string;
+}
+
+interface SvgIconOptions {
+  viewBox?: string;
+  width?: string;
+  height?: string;
+  fill?: string;
+  stroke?: string;
+  strokeWidth?: string;
+  pathData?: string;
+  useHref?: string;
+}
