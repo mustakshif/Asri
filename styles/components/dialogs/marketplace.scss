@@ -303,7 +303,7 @@
     gap: 8px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows:
-      30% 32px 1.5em calc(2.4em + 28px) 3em calc(3em + 28px) 28px 56px repeat(auto-fill, minmax(28px, auto))
+      30% minmax(max-content, 32px) 1.5em calc(2.4em + 28px) 3em calc(3em + 28px) 28px 56px repeat(auto-fill, minmax(28px, auto))
       3em;
 
     .fn__hr--b,
