@@ -1,0 +1,26 @@
+.protyle-wysiwyg
+  [data-node-id].li[fold="1"]
+  > .p
+  > [spellcheck]:not(.fn__flex-1.history__text.protyle [data-node-id].li[fold="1"] > .p > [spellcheck]) {
+  &::after {
+    content: "•••";
+    font-family: "times new roman";
+    letter-spacing: 0.1em;
+    border-radius: 1em;
+    font-size: 0.8em;
+    // position: static;
+    margin-inline-start: 0.5em;
+    //   border-color: currentColor;
+    border: none;
+    padding-inline-start: 0.2em;
+    padding-inline-end: 0.1em;
+    opacity: 0.5;
+    transition: opacity 0.15s ease-in-out;
+    // background-color: var(--b3-border-color-trans);
+    cursor: pointer;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
