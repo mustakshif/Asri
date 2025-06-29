@@ -15,13 +15,13 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### 重大更新一览
 
-#### v3.4.0：视界无界
+#### `25/05/12 - v3.4.0：视界无界`
 
 ![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp_v3.png)
 
 「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」：引入高级材质效果（光感玻璃、渐进模糊、亚克力），突破顶栏与编辑区界限，沉浸式的阅读与编辑体验（*实验性功能，请谨慎启用；详请见脚注 3*）
 
-#### v3.0.0
+#### `24/04/03 - v3.0.0`
 
 ![color customization](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/asri-config-menu_zh_CN_v2.png)
 
@@ -31,13 +31,16 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 <details>
 <summary style="opacity: .6; font-weight: 600; font-size: .8em">更多内容</summary>
 
-#### v2.1.0
+#### `24/02/07 - v2.1.0`
 
 「全宽显示」自定义属性：实现正文图片、视频、挂件、超级块、数据库块等撑满页宽显示
 
-#### v2.0.0
+#### `24/01/24 - v2.0.0`
 
 「顶栏融合」：全新顶栏设计，与页签栏无缝融合，兼顾美感与效率
+
+#### `23/12/21 - v1.0.0`
+主题发布
 
 </details>
 
@@ -60,10 +63,11 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * 🔢 为表格、数据库启用等宽数字变体，提升阅读效率
 * 👁️ 启用高可读性字形变体，适应笔记场景[^4] `#macOS` `#iOS` `#iPadOS`
 * 🦋 支持图片、视频、挂件、数据库、超级块等的全宽显示，提高信息展示效率
-* 💬 支持从右至左布局，适配阿拉伯语等从右至左书写的语言[^5]
-* 🚏 支持文档级别的文字方向设定，满足不同语言的排版需求
 * 🧩 优化超级块内外部间距，轻松实现网格、瀑布流布局
 * 📝 优化数据库和属性面板的布局细节，内容展现更清晰有序
+* 💬 支持从右至左布局，适配阿拉伯语等从右至左书写的语言[^5]
+* 🚏 支持文档级别的文字方向设定，满足不同语言的排版需求
+* 🌐 多语言支持，特别适配中文、英语和阿拉伯语
 
 ### 🧭 便捷清晰的导航
 

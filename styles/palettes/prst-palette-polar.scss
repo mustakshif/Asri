@@ -82,6 +82,16 @@
     }
   }
 
+  &:where(:lang(ar_SA), :lang(he_IL)) {
+    .config__panel {
+      .b3-tab-bar,
+      .item__side {
+        border-right: unset;
+        border-left: 1px solid var(--b3-border-color);
+      }
+    }
+  }
+
   .layout__dockl,
   .dock,
   .config__panel :is(.b3-tab-bar, .item__side),

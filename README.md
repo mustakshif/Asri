@@ -15,13 +15,13 @@ For the complete update history, refer to the [CHANGELOG.md](https://github.com/
 
 ### Major Updates Overview
 
-#### v3.4.0: Vision Unbound
+#### `May 12, 2025 - v3.4.0: Vision Unbound`
 
 ![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp_v3.png)
 
 "Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>": Introduced advanced material effects (luminous glass, progressive blur, acrylic), breaking the boundary between the top bar and the editor for an immersive reading and editing experience (experimental feature; enable with caution - see Footnote 3 for details).
 
-#### v3.0.0
+#### `Apr 3, 2024 - v3.0.0`
 
 ![color customization](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/asri-config-menu_en_US_v2.png)
 
@@ -31,13 +31,16 @@ Refactored theme colors using a perceptual lightness-based color system, added s
 <details>
 <summary style="opacity: .6; font-weight: 600; font-size: .8em">More Content</summary>
 
-#### v2.1.0
+#### `Feb 7, 2024 - v2.1.0`
 
 "Asri Full-width Display": implementing full-page width display of images, videos, widgets, superblocks, and database blocks, etc
 
-#### v2.0.0
+#### `Jan 24, 2024 - v2.0.0`
 
 "Tabbar Fusion": introduced a new top bar design seamlessly integrated with the tab bar, balancing aesthetics and efficiency
+
+#### `Dec 21, 2023 - v1.0.0`
+Theme release
 
 </details>
 
@@ -60,10 +63,11 @@ Refactored theme colors using a perceptual lightness-based color system, added s
 * 🔢 Tabular and database-friendly monospaced numerals improve reading efficiency
 * 👁️ High readability glyph variants tailored for note-taking scenarios[^4] `#macOS` `#iOS` `#iPadOS`
 * 🦋 Support for full-width display of images, videos, widgets, databases, superblocks and more, enhancing information display
-* 💬 Supports right-to-left layout, accommodating languages written from right to left, such as Arabic[^5]
-* 🚏 Document-level text direction settings cater to different language layout needs
 * 🧩 Streamlined superblock margins for simplified creation of grid and masonry layouts
 * 📝 Enhanced the layout details in database and attribute view for improved clarity and organization
+* 💬 Supports right-to-left layout, accommodating languages written from right to left, such as Arabic[^5]
+* 🚏 Document-level text direction settings cater to different language layout needs
+* 🌐 Multi-language support, specially adapted for Chinese, English and Arabic
 
 ### 🧭 Clear and Convenient Navigation
 

@@ -1,3 +1,9 @@
+/**
+ * @description 管理配色相关CSS变量,在head元素上设置CSS变量,使这些变量能应用到导出界面
+ * @author mustakshif
+ * @date 2025-06
+ */
+
 export class CSSVarManager {
   private static instance: CSSVarManager;
   private styleElement: HTMLStyleElement;
