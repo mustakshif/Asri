@@ -5,14 +5,18 @@ import { setFollowSysAccentColor } from "./state";
 export const asriConfigs: AsriConfigs = {
   "light": {
     "followSysAccentColor": false,
+    "followCoverImgColor":false,
     "chroma": "1",
     "userCustomColor": "#3478f6",
+    "coverImgColor": "",
     "presetPalette": "",
   },
   "dark": {
     "followSysAccentColor": false,
+    "followCoverImgColor":false,
     "chroma": "1",
     "userCustomColor": "#3478f6",
+    "coverImgColor": "",
     "presetPalette": "",
   },
   "features": {
@@ -44,9 +48,11 @@ export async function getAsriConfigs() {
       const modes: Modes[] = ["light", "dark"];
       for (const mode of modes) {
         asriConfigs[mode].followSysAccentColor = !!data[mode].followSysAccentColor;
+        asriConfigs[mode].followCoverImgColor = !!data[mode].followCoverImgColor;
         asriConfigs[mode].chroma = data[mode].chroma ?? "1";
         asriConfigs[mode].userCustomColor = data[mode].userCustomColor ?? "#3478f6";
         asriConfigs[mode].presetPalette = data[mode].presetPalette ?? "";
+        asriConfigs[mode].coverImgColor = data[mode].coverImgColor ?? "";
       }
       asriConfigs.features = data.features;
       setFollowSysAccentColor(!!data[env.appSchemeMode].followSysAccentColor);

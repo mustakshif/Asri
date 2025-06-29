@@ -14,6 +14,7 @@
 - `palettes.ts` - 预设色板数据
 - `systemColor.ts` - 系统颜色处理
 - `i18n.ts` - 国际化支持
+- `util.ts` - 灰度界面、反转强调色功能
 
 ### 界面模块
 - `menuItems.ts` - 菜单项创建和管理

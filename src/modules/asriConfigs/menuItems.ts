@@ -21,7 +21,6 @@ import {
   tfpLuminousBtn,
   followSysAccentColor,
 } from "./state";
-import { environment as env } from "../../util/rsc";
 import { initAsriConfigMenuItemClick } from "./eventHandlers";
 
 const paletteMenuItem = (paletteID: string) => {
@@ -130,11 +129,11 @@ export function initMenuItems() {
   setTfpAcrylicBtn(document.getElementById("tfp-acrylic"));
   setTfpLuminousBtn(document.getElementById("tfp-luminous"));
 
-  if (asriConfigs[curMode].presetPalette) {
-    pickColorBtn?.classList.add("b3-menu__item--disabled");
-    followSysAccentBtn?.classList.add("b3-menu__item--disabled");
-    asriChromaBtn?.classList.add("b3-menu__item--disabled");
-  }
+  // if (asriConfigs[curMode].presetPalette) {
+  //   pickColorBtn?.classList.add("b3-menu__item--disabled");
+  //   followSysAccentBtn?.classList.add("b3-menu__item--disabled");
+  //   asriChromaBtn?.classList.add("b3-menu__item--disabled");
+  // }
 
   followSysAccentBtn!.classList.toggle(
     "b3-menu__item--selected",

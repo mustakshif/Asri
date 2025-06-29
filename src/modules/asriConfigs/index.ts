@@ -14,21 +14,16 @@ export { asriPrstPalettes } from "./palettes";
 export * from "./state";
 
 // System color handling
-export { getSystemAccentColor, handleGrayScale, reverseOnPrimaryLightness } from "./systemColor";
+export { getSystemAccentColor } from "./systemColor";
 
 // Menu items
 export { createBarModeMenuItems, initMenuItems } from "./menuItems";
 
 // Event handlers
-export { 
+export {
   initAsriConfigMenuItemClick,
-  handleFollowSystemAccentBtnClick,
-  handlePickColorBtnClick,
-  handleColorPickerInput,
-  handleColorPickerChange,
-  handleChromaSliderInput,
   tfpMenuItemCallbackEventListener,
-  paletteMenuItemClickEventListener
+  paletteMenuItemClickEventListener,
 } from "./eventHandlers";
 
 // I18n
@@ -44,4 +39,4 @@ import { initI18n } from "./core";
 // This function should be called to initialize i18n if needed
 export async function getI18n() {
   return await initI18n();
-} 
+}

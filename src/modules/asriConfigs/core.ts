@@ -4,7 +4,8 @@ import { getAsriConfigs, asriConfigs } from "./configs";
 import { asriPrstPalettes } from "./palettes";
 import { setCurMode, setI18n, setFollowSysAccentColor, setIsUserAccentGray, followSysAccentColor } from "./state";
 import { cssVarManager } from "./cssVarManager";
-import { getSystemAccentColor, handleGrayScale, reverseOnPrimaryLightness } from "./systemColor";
+import { getSystemAccentColor } from "./systemColor";
+import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
 
 export async function loadThemePalette() {
   // if (env.isIOSApp) return; // fix app crash

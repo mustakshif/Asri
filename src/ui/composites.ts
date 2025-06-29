@@ -42,8 +42,8 @@ export class MenuBuilder {
     return this;
   }
   
-  addCustomElement(element: HTMLButtonElement | HTMLDivElement): this {
-    this.items.push(element);
+  addCustomElement(elements: HTMLButtonElement[] | HTMLDivElement[]): this {
+    this.items.push(...elements);
     return this;
   }
   
