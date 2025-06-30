@@ -50,6 +50,7 @@ export async function loadThemePalette() {
     reverseOnPrimaryLightness(curPalette.primary);
   } else if (asriConfigs[curMode].followCoverImgColor) {
     cssVarManager.setProperty("--asri-cover-dominant", asriConfigs[curMode].coverImgColor || "");
+    cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
     handleGrayScale(hexToOklch(asriConfigs[curMode].coverImgColor || "")?.C || 0);
     reverseOnPrimaryLightness(asriConfigs[curMode].coverImgColor || "");
   } else {

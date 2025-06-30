@@ -1,9 +1,8 @@
 import { FastAverageColor, FastAverageColorOptions } from "fast-average-color";
 import { convertToHex, extractFirstColorFromCSSBackground, hexToOklch } from "../../util/colorTools";
-import { cssVarManager } from "./cssVarManager";
 import { asriConfigs, updateAsriConfigs } from "./configs";
+import { cssVarManager } from "./cssVarManager";
 import { curMode, isCoverImgColorGray, setIsCoverImgColorGray } from "./state";
-import { startFadeInFadeOutTranstition } from "../modeTransition";
 import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
 
 const fac = new FastAverageColor();
@@ -127,7 +126,6 @@ export async function getCoverImgColor(activeDocId: string) {
 export async function updateCoverImgColor(activeDocId: string) {
   const color = await getCoverImgColor(activeDocId);
   if (!color) return;
-  console.log("cover color", color);
   
   const colorChroma = hexToOklch(color)?.C || 0;
   setIsCoverImgColorGray(colorChroma.toFixed(3) === "0.000");

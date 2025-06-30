@@ -1,7 +1,8 @@
 import { hexToOklch } from "../../util/colorTools";
 import { environment as env } from "../../util/rsc";
+import { asriConfigs } from "./configs";
 import { cssVarManager } from "./cssVarManager";
-import { followSysAccentColor, isCoverImgColorGray, isSysAccentGray, isUserAccentGray } from "./state";
+import { curMode, followSysAccentColor, isCoverImgColorGray, isSysAccentGray, isUserAccentGray } from "./state";
 
 export const reverseThreshold = env.appSchemeMode === "light" ? 0.81 : 0.79;
 
@@ -12,9 +13,13 @@ export const reverseThreshold = env.appSchemeMode === "light" ? 0.81 : 0.79;
  */
 
 export function handleGrayScale(chroma: string | number) {
-  // console.log('chroma', chroma, 'followSysAccentColor', followSysAccentColor, 'isSysAccentGray', isSysAccentGray, 'isUserAccentGray', isUserAccentGray);
+ 
   const chromaValue = String(chroma);
-  if (chromaValue === "0" || (followSysAccentColor && isSysAccentGray) || isUserAccentGray || isCoverImgColorGray) {
+
+  // console.log('chroma', chroma, 'followSysAccentColor', followSysAccentColor, 'isSysAccentGray', isSysAccentGray, 'isUserAccentGray', isUserAccentGray, 'isCoverImgColorGray', isCoverImgColorGray, "addCfactor0", chromaValue === "0" || (followSysAccentColor && isSysAccentGray) || isUserAccentGray || (isCoverImgColorGray && asriConfigs[curMode].followCoverImgColor));
+
+  if (chromaValue === "0" || (followSysAccentColor && isSysAccentGray) || isUserAccentGray || (isCoverImgColorGray && asriConfigs[curMode].followCoverImgColor)) {
+    console.log('addCfactor0');
     cssVarManager.setProperty("--asri-c-0", "0");
     return true;
   } else {
