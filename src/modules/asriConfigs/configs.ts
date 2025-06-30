@@ -24,7 +24,7 @@ export const asriConfigs: AsriConfigs = {
   },
 };
 
-export async function getAsriConfigs() {
+export async function getLocalConfigs() {
   console.log("curMode", env.appSchemeMode);
   await getFile("/data/snippets/Asri.config.json")
     .then((response) => {
@@ -52,7 +52,6 @@ export async function getAsriConfigs() {
         asriConfigs[mode].chroma = data[mode].chroma ?? "1";
         asriConfigs[mode].userCustomColor = data[mode].userCustomColor ?? "#3478f6";
         asriConfigs[mode].presetPalette = data[mode].presetPalette ?? "";
-        asriConfigs[mode].coverImgColor = data[mode].coverImgColor ?? "";
       }
       asriConfigs.features = data.features;
       setFollowSysAccentColor(!!data[env.appSchemeMode].followSysAccentColor);

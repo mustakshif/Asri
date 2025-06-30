@@ -1,27 +1,29 @@
 import { querySelectorAsync } from "../../util/misc";
-import { asriPrstPalettes } from "./palettes";
 import { asriConfigs } from "./configs";
+import { initAsriConfigMenuItemClick } from "./eventHandlers";
+import { asriPrstPalettes } from "./palettes";
 import {
-  i18n,
-  curMode,
-  setFollowSysAccentBtn,
-  setPickColorBtn,
-  setAsriChromaSlider,
-  setColorPicker,
-  setTopbarFusionPlusBtn,
-  setTfpProgressiveBtn,
-  setTfpAcrylicBtn,
-  setTfpLuminousBtn,
-  followSysAccentBtn,
-  pickColorBtn,
   asriChromaSlider,
   colorPicker,
-  tfpProgressiveBtn,
+  curMode,
+  followCoverImgColorBtn,
+  followSysAccentBtn,
+  followSysAccentColor,
+  i18n,
+  pickColorBtn,
+  setAsriChromaSlider,
+  setColorPicker,
+  setFollowCoverImgColorBtn,
+  setFollowSysAccentBtn,
+  setPickColorBtn,
+  setTfpAcrylicBtn,
+  setTfpLuminousBtn,
+  setTfpProgressiveBtn,
+  setTopbarFusionPlusBtn,
   tfpAcrylicBtn,
   tfpLuminousBtn,
-  followSysAccentColor,
+  tfpProgressiveBtn,
 } from "./state";
-import { initAsriConfigMenuItemClick } from "./eventHandlers";
 
 const paletteMenuItem = (paletteID: string) => {
   const displayName = i18n[paletteID] || paletteID;
@@ -55,6 +57,10 @@ export async function createBarModeMenuItems(e: Event) {
             <svg class="b3-menu__icon"></svg>
             <label for="" class="be-menu__label">${i18n["followSysAccent"]}</label>
         </button>
+        <button class="b3-menu__item asri-config" id="followCoverImgColor">
+            <svg class="b3-menu__icon"></svg>
+            <label for="" class="be-menu__label">${i18n["followCoverImgColor"]||"follow cover img color"}</label>
+        </button>
         <button class="b3-menu__item asri-config" data-type="nobg" id="asriChroma">
             <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                 <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 11l-8-8l-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0zM5 2l5 5m-8 6h15m5 7a2 2 0 1 1-4 0c0-1.6 1.7-2.4 2-4c.3 1.6 2 2.4 2 4" />
@@ -74,6 +80,7 @@ export async function createBarModeMenuItems(e: Event) {
 
   // set funcitons for menu items
   setFollowSysAccentBtn(document.getElementById("followSysAccent"));
+  setFollowCoverImgColorBtn(document.getElementById("followCoverImgColor"));
   setPickColorBtn(document.getElementById("pickColor"));
   setAsriChromaSlider(document.getElementById("asriChromaSlider") as HTMLInputElement | null);
   setColorPicker(pickColorBtn!.querySelector("input") as HTMLInputElement | null);
@@ -128,6 +135,7 @@ export function initMenuItems() {
   setTfpProgressiveBtn(document.getElementById("tfp-progressive"));
   setTfpAcrylicBtn(document.getElementById("tfp-acrylic"));
   setTfpLuminousBtn(document.getElementById("tfp-luminous"));
+  setFollowCoverImgColorBtn(document.getElementById("followCoverImgColor"));
 
   // if (asriConfigs[curMode].presetPalette) {
   //   pickColorBtn?.classList.add("b3-menu__item--disabled");
@@ -139,9 +147,13 @@ export function initMenuItems() {
     "b3-menu__item--selected",
     !asriConfigs[curMode].presetPalette && followSysAccentColor
   );
+  followCoverImgColorBtn!.classList.toggle(
+    "b3-menu__item--selected",
+    asriConfigs[curMode].followCoverImgColor && !asriConfigs[curMode].presetPalette && !followSysAccentColor
+  );
   pickColorBtn!.classList.toggle(
     "b3-menu__item--selected",
-    !asriConfigs[curMode].presetPalette && !followSysAccentColor
+    !asriConfigs[curMode].presetPalette && !followSysAccentColor && !asriConfigs[curMode].followCoverImgColor
   );
   asriChromaSlider!.value = asriConfigs[curMode].chroma || "1";
   asriChromaSlider!.parentElement!.ariaLabel = i18n["asriChroma"] + asriConfigs[curMode].chroma;

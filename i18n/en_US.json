@@ -1,5 +1,6 @@
 {
     "followSysAccent": "Follow system accent color",
+    "followCoverImgColor": "Follow cover image color",
     "pickColor": "Customize theme color",
     "asriChroma": "Chroma: ",
     "afwdDocMenuLabel": "Full-width Display",

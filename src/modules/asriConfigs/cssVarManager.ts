@@ -5,7 +5,7 @@
  */
 
 export class CSSVarManager {
-  private static instance: CSSVarManager;
+  private static instance: CSSVarManager | null = null;
   private styleElement: HTMLStyleElement;
   private pendingUpdates: Map<string, string>;
   private rafId: number | null = null;
@@ -96,6 +96,11 @@ export class CSSVarManager {
   // 获取当前所有CSS变量的值
   public getAllVars(): Map<string, string> {
     return new Map(this.existingVars);
+  }
+
+  destory() {
+    this.styleElement.remove();
+    CSSVarManager.instance = null;
   }
 }
 

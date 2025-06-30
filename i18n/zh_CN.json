@@ -1,5 +1,6 @@
 {
   "followSysAccent": "跟随系统强调色",
+  "followCoverImgColor": "跟随题头图颜色",
   "pickColor": "自定义主题色",
   "asriChroma": "色度：",
   "afwdDocMenuLabel": "全宽显示",

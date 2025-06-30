@@ -5,7 +5,7 @@ export { loadThemePalette, unloadThemePalette, initI18n } from "./core";
 export { cssVarManager, CSSVarManager } from "./cssVarManager";
 
 // Configuration management
-export { asriConfigs, getAsriConfigs, updateAsriConfigs } from "./configs";
+export { asriConfigs, getLocalConfigs as getAsriConfigs, updateAsriConfigs } from "./configs";
 
 // Palette data
 export { asriPrstPalettes } from "./palettes";
@@ -28,10 +28,6 @@ export {
 
 // I18n
 export { loadI18n } from "./i18n";
-
-// Re-export main functions for backward compatibility
-export let i18n: any;
-export let followSysAccentColor = false;
 
 // Initialize and export for backward compatibility
 import { initI18n } from "./core";

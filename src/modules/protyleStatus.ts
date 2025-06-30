@@ -1,8 +1,8 @@
-import { isProtyle, querySelectorAsync } from "../util/misc";
+import { getFocusedProtyleInfo, querySelectorAsync } from "../util/misc";
 import { asriDoms } from "../util/rsc";
 
 export async function toggleProtyleStatus(docID?: string) {
-  let isprotyle = await isProtyle(docID);
+  let isprotyle = (await getFocusedProtyleInfo(docID)).isProtyle;
   const status = asriDoms.status || (await querySelectorAsync("#status"));
   if (!status) return;
   status.classList.toggle("asri--non-protyle-status", !isprotyle);

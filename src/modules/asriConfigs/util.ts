@@ -1,7 +1,7 @@
-import { hexToOklchL } from "../../util/misc";
+import { hexToOklch } from "../../util/colorTools";
 import { environment as env } from "../../util/rsc";
 import { cssVarManager } from "./cssVarManager";
-import { followSysAccentColor, isSysAccentGray, isUserAccentGray } from "./state";
+import { followSysAccentColor, isCoverImgColorGray, isSysAccentGray, isUserAccentGray } from "./state";
 
 export const reverseThreshold = env.appSchemeMode === "light" ? 0.81 : 0.79;
 
@@ -14,7 +14,7 @@ export const reverseThreshold = env.appSchemeMode === "light" ? 0.81 : 0.79;
 export function handleGrayScale(chroma: string | number) {
   // console.log('chroma', chroma, 'followSysAccentColor', followSysAccentColor, 'isSysAccentGray', isSysAccentGray, 'isUserAccentGray', isUserAccentGray);
   const chromaValue = String(chroma);
-  if (chromaValue === "0" || (followSysAccentColor && isSysAccentGray) || isUserAccentGray) {
+  if (chromaValue === "0" || (followSysAccentColor && isSysAccentGray) || isUserAccentGray || isCoverImgColorGray) {
     cssVarManager.setProperty("--asri-c-0", "0");
     return true;
   } else {
@@ -24,9 +24,9 @@ export function handleGrayScale(chroma: string | number) {
 }
 
 export function reverseOnPrimaryLightness(hex: string) {
-  const lightness = hexToOklchL(hex);
-  if (!lightness) return;
-  if (lightness > reverseThreshold) {
+  const { L } = hexToOklch(hex) || {};
+  if (!L) return;
+  if (L > reverseThreshold) {
     cssVarManager.setProperty("--asri-on-primary-reverse", env.appSchemeMode === "light" ? ".4" : ".3");
   } else {
     cssVarManager.removeProperty("--asri-on-primary-reverse");

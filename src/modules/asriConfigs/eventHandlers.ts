@@ -1,14 +1,15 @@
 import { AsriEventListener } from "../../util/eventListeners";
-import { debounce } from "../../util/misc";
+import { debounce, getFocusedProtyleInfo } from "../../util/misc";
 import { environment as env } from "../../util/rsc";
 import { startFadeInFadeOutTranstition } from "../modeTransition";
 import { cssVarManager } from "./cssVarManager";
-import { asriConfigs, updateAsriConfigs } from "./configs";
+import { asriConfigs, getLocalConfigs, updateAsriConfigs } from "./configs";
 import { asriPrstPalettes } from "./palettes";
 import {
   curMode,
   i18n,
   followSysAccentBtn,
+  followCoverImgColorBtn,
   pickColorBtn,
   asriChromaSlider,
   colorPicker,
@@ -17,14 +18,16 @@ import {
   setIsUserAccentGray,
   sysAccentColor,
   isUserAccentGray,
+  setFollowCoverImgColorBtn,
 } from "./state";
 import { getSystemAccentColor } from "./systemColor";
 import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
+import { coverImgColorManager, updateCoverImgColor } from "./coverImgColor";
 
 const debounceChramaValueSaving = debounce(updateAsriConfigs, 200);
 
 export function initAsriConfigMenuItemClick() {
-  if (!followSysAccentBtn || !pickColorBtn || !asriChromaSlider || !colorPicker) return;
+  if (!followSysAccentBtn || !pickColorBtn || !asriChromaSlider || !colorPicker || !followCoverImgColorBtn) return;
 
   // handle click events
   if (env.isInBrowser || env.isMobile || env.isLinux) {
@@ -37,51 +40,66 @@ export function initAsriConfigMenuItemClick() {
   colorPicker.addEventListener("input", handleColorPickerInput);
   colorPicker.addEventListener("change", handleColorPickerChange);
   asriChromaSlider.addEventListener("input", handleChromaSliderInput);
+  followCoverImgColorBtn.addEventListener("click", handleFollowCoverImgColorBtnClick);
 }
 
 function handleFollowSystemAccentBtnClick() {
   // if (followSysAccentBtn?.classList.contains('b3-menu__item--disabled')) return;
+
+  if (followSysAccentColor) return;
+
   startFadeInFadeOutTranstition(600, () => {
     resetPresetPalette(false);
+
     document
       .querySelectorAll(".asri-config.b3-menu__item--selected")
       .forEach((el) => el.classList.remove("b3-menu__item--selected"));
+    setFollowSysAccentColor(true);
+    followSysAccentBtn!.classList.add("b3-menu__item--selected");
+    // pickColorBtn!.classList.remove('b3-menu__item--selected');
+    cssVarManager.removeProperty("--asri-user-custom-accent");
+    cssVarManager.removeProperty("--asri-cover-dominant");
 
-    if (!followSysAccentColor) {
-      setFollowSysAccentColor(true);
-      followSysAccentBtn!.classList.add("b3-menu__item--selected");
-      // pickColorBtn!.classList.remove('b3-menu__item--selected');
-      cssVarManager.removeProperty("--asri-user-custom-accent");
-
-      asriConfigs[curMode].followSysAccentColor = true;
-      getSystemAccentColor();
-    } else {
-      setFollowSysAccentColor(false);
-      // followSysAccentBtn!.classList.remove('b3-menu__item--selected');
-      pickColorBtn!.classList.add("b3-menu__item--selected");
-      cssVarManager.setProperty(
-        "--asri-user-custom-accent",
-        asriConfigs[curMode].userCustomColor || sysAccentColor || "#3478f6"
-      );
-
-      handleGrayScale(asriConfigs[curMode].chroma);
-      reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor || sysAccentColor || "#3478f6");
-
-      asriConfigs[curMode].followSysAccentColor = false;
-    }
+    asriConfigs[curMode].followSysAccentColor = true;
+    asriConfigs[curMode].followCoverImgColor = false;
+    getSystemAccentColor();
     updateAsriConfigs();
+  });
+}
+
+function handleFollowCoverImgColorBtnClick() {
+  if (asriConfigs[curMode].followCoverImgColor) return;
+  resetPresetPalette();
+  setFollowSysAccentColor(false);
+
+  document
+    .querySelectorAll(".asri-config.b3-menu__item--selected")
+    .forEach((el) => el.classList.remove("b3-menu__item--selected"));
+
+  startFadeInFadeOutTranstition(600, async () => {
+    followCoverImgColorBtn!.classList.add("b3-menu__item--selected");
+    asriConfigs[curMode].followCoverImgColor = true;
+    asriConfigs[curMode].followSysAccentColor = false;
+
+    const activeDocId = (await getFocusedProtyleInfo()).docID;
+
+    updateCoverImgColor(activeDocId || "");
   });
 }
 
 function handlePickColorBtnClick(event: Event) {
   startFadeInFadeOutTranstition(600, () => {
     resetPresetPalette();
-    if (!followSysAccentColor) return;
+    if (document.documentElement.getAttribute("--asri-user-custom-accent")) return;
     setFollowSysAccentColor(false);
-    followSysAccentBtn!.classList.remove("b3-menu__item--selected");
+    document
+      .querySelectorAll(".asri-config.b3-menu__item--selected")
+      .forEach((el) => el.classList.remove("b3-menu__item--selected"));
+
     pickColorBtn!.classList.add("b3-menu__item--selected");
 
     cssVarManager.setProperty("--asri-user-custom-accent", asriConfigs[curMode].userCustomColor);
+    cssVarManager.removeProperty("--asri-cover-dominant");
 
     handleGrayScale(asriConfigs[curMode].chroma);
     reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
@@ -89,6 +107,7 @@ function handlePickColorBtnClick(event: Event) {
     asriConfigs[curMode].userCustomColor = asriConfigs[curMode].userCustomColor;
 
     asriConfigs[curMode].followSysAccentColor = false;
+    asriConfigs[curMode].followCoverImgColor = false;
     updateAsriConfigs();
   });
 }
@@ -101,7 +120,7 @@ function handleColorPickerInput() {
 }
 
 function handleColorPickerChange() {
-  resetPresetPalette();
+  // resetPresetPalette();
   followSysAccentBtn!.classList.remove("b3-menu__item--selected");
   pickColorBtn!.classList.add("b3-menu__item--selected");
   reverseOnPrimaryLightness(colorPicker!.value);
@@ -109,6 +128,7 @@ function handleColorPickerChange() {
   asriConfigs[curMode].userCustomColor = colorPicker!.value;
   setFollowSysAccentColor(false);
   asriConfigs[curMode].followSysAccentColor = false;
+  asriConfigs[curMode].followCoverImgColor = false;
   updateAsriConfigs();
 }
 
@@ -145,7 +165,8 @@ function resetPresetPalette(alterFollowSysAccentColor: boolean = true) {
   if (followSysAccentColorState && !(env.isInBrowser || env.isMobile || env.isLinux)) {
     followSysAccentBtn!.classList.add("b3-menu__item--selected");
     cssVarManager.removeProperty("--asri-user-custom-accent");
-    asriConfigs[curMode].followSysAccentColor = true;
+    // asriConfigs[curMode].followSysAccentColor = true;
+    // asriConfigs[curMode].followCoverImgColor = false;
     getSystemAccentColor();
   } else {
     pickColorBtn!.classList.add("b3-menu__item--selected");
@@ -153,7 +174,7 @@ function resetPresetPalette(alterFollowSysAccentColor: boolean = true) {
       "--asri-user-custom-accent",
       asriConfigs[curMode].userCustomColor || sysAccentColor || "#3478f6"
     );
-    asriConfigs[curMode].followSysAccentColor = false;
+    // asriConfigs[curMode].followSysAccentColor = false;
   }
 
   cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
@@ -161,7 +182,7 @@ function resetPresetPalette(alterFollowSysAccentColor: boolean = true) {
   handleGrayScale(asriConfigs[curMode].chroma);
   reverseOnPrimaryLightness(!followSysAccentColor ? asriConfigs[curMode].userCustomColor : sysAccentColor);
 
-  updateAsriConfigs();
+  // updateAsriConfigs();
 }
 
 export const tfpMenuItemCallbackEventListener = new AsriEventListener(tfpMenuItemCallback);
@@ -204,67 +225,38 @@ async function paletteMenuItemCallback(e: Event) {
   const asriChromaBtn = document.getElementById("asriChroma");
   const paletteID = target.id as keyof typeof asriPrstPalettes;
   const curPalette = asriPrstPalettes[paletteID][curMode];
-  document.querySelectorAll('[id^="prst-palette-"]').forEach((el) => el.classList.remove("b3-menu__item--selected"));
+
+  if (asriConfigs[curMode].presetPalette === paletteID) return;
+
+  // document.querySelectorAll('[id^="prst-palette-"]').forEach((el) => el.classList.remove("b3-menu__item--selected"));
+  document
+    .querySelectorAll(".asri-config.b3-menu__item--selected")
+    .forEach((el) => el.classList.remove("b3-menu__item--selected"));
 
   startFadeInFadeOutTranstition(600, () => {
-    if (asriConfigs[curMode].presetPalette === paletteID) {
-      // 取消预设色板
-      target.classList.remove("b3-menu__item--selected");
-      document.documentElement.removeAttribute("data-asri-palette");
+    target.classList.add("b3-menu__item--selected");
+    document.documentElement.setAttribute("data-asri-palette", paletteID.split("-")[2]);
 
-      // pickColorBtn?.classList.remove("b3-menu__item--disabled");
-      // followSysAccentBtn?.classList.remove("b3-menu__item--disabled");
-      // asriChromaBtn?.classList.remove("b3-menu__item--disabled");
+    // pickColorBtn?.classList.add("b3-menu__item--disabled");
+    // followSysAccentBtn?.classList.add("b3-menu__item--disabled");
+    // asriChromaBtn?.classList.add("b3-menu__item--disabled");
 
-      asriConfigs[curMode].presetPalette = "";
-      // updateMenuItems();
-      
-      const followSysAccentColorState = asriConfigs[curMode]["followSysAccentColor"];
-      setFollowSysAccentColor(followSysAccentColorState);
+    setFollowSysAccentColor(false);
+    followSysAccentBtn!.classList.remove("b3-menu__item--selected");
+    pickColorBtn!.classList.remove("b3-menu__item--selected");
 
-      if (followSysAccentColorState && !(env.isInBrowser || env.isMobile || env.isLinux)) {
-        followSysAccentBtn!.classList.add("b3-menu__item--selected");
-        cssVarManager.removeProperty("--asri-user-custom-accent");
-        asriConfigs[curMode].followSysAccentColor = true;
-        getSystemAccentColor();
-      } else {
-        pickColorBtn!.classList.add("b3-menu__item--selected");
-        cssVarManager.setProperty(
-          "--asri-user-custom-accent",
-          asriConfigs[curMode].userCustomColor || sysAccentColor || "#3478f6"
-        );
-        asriConfigs[curMode].followSysAccentColor = false;
-      }
+    cssVarManager.setProperty("--asri-user-custom-accent", curPalette.primary);
+    cssVarManager.setProperty("--asri-c-factor", curPalette.chroma);
+    cssVarManager.removeProperty("--asri-cover-dominant");
+    setIsUserAccentGray(curPalette.chroma === "0" ? true : false);
 
-      cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
-      setIsUserAccentGray(asriConfigs[curMode].chroma === "0" ? true : false);
-      handleGrayScale(asriConfigs[curMode].chroma);
-      reverseOnPrimaryLightness(!followSysAccentColor ? asriConfigs[curMode].userCustomColor : sysAccentColor);
+    handleGrayScale(curPalette.chroma);
+    reverseOnPrimaryLightness(curPalette.primary);
 
-      updateAsriConfigs();
-    } else {
-      // 应用预设色板
-      target.classList.add("b3-menu__item--selected");
-      document.documentElement.setAttribute("data-asri-palette", paletteID.split("-")[2]);
-
-      // pickColorBtn?.classList.add("b3-menu__item--disabled");
-      // followSysAccentBtn?.classList.add("b3-menu__item--disabled");
-      // asriChromaBtn?.classList.add("b3-menu__item--disabled");
-
-      setFollowSysAccentColor(false);
-      followSysAccentBtn!.classList.remove("b3-menu__item--selected");
-      pickColorBtn!.classList.remove("b3-menu__item--selected");
-
-      cssVarManager.setProperty("--asri-user-custom-accent", curPalette.primary);
-      cssVarManager.setProperty("--asri-c-factor", curPalette.chroma);
-      setIsUserAccentGray(curPalette.chroma === "0" ? true : false);
-
-      handleGrayScale(curPalette.chroma);
-      reverseOnPrimaryLightness(curPalette.primary);
-
-      // 写入预设色板数据
-      asriConfigs[curMode].presetPalette = paletteID;
-      updateAsriConfigs();
-    }
+    // 写入预设色板数据
+    asriConfigs[curMode].presetPalette = paletteID;
+    asriConfigs[curMode].followSysAccentColor = false;
+    asriConfigs[curMode].followCoverImgColor = false;
+    updateAsriConfigs();
   });
 }

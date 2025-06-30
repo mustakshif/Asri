@@ -15,6 +15,10 @@ For the complete update history, refer to the [CHANGELOG.md](https://github.com/
 
 ### Major Updates Overview
 
+#### `25/07/01 - v3.5.0: Hue in Motion`
+
+Theme colors now support "Follow cover image color", automatically extracting colors from document cover images or videos and switching theme colors in real-time for an immersive visual experience.
+
 #### `May 12, 2025 - v3.4.0: Vision Unbound`
 
 ![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp_v3.png)
@@ -134,9 +138,8 @@ Click on the `Appearance Mode` icon in the top right corner to open the Asri the
 
 * `Customize theme color`: Use a custom color as the base color for the theme and apply a corresponding color scheme directly based on it.
 * `Follow system accent color`: Use the system's accent color as the base theme color. This option is available on `Windows` and `macOS` desktop platforms.
+* `Follow cover image color`: Extract color from the cover image (image, video) of the current active document as the theme base color.
 * `Chroma slider`: Adjust the chroma of backgrounds and regular texts, with a range of `0 - 5`, where `0` represents pure grayscale, and the default is `1`.
-
-**When a preset color scheme is active, custom options will be disabled**. To re-enable the custom theme color feature, simply click the currently active preset scheme again to switch back to custom mode.
 
 ### 📐 Custom Attributes
 

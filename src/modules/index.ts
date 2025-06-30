@@ -5,7 +5,9 @@ import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from 
 import { asriDoms, environment as env } from "../util/rsc";
 import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
 import {
+  asriConfigs,
   createBarModeMenuItems,
+  curMode,
   followSysAccentColor,
   getI18n,
   getSystemAccentColor,
@@ -14,6 +16,7 @@ import {
   tfpMenuItemCallbackEventListener,
   unloadThemePalette,
 } from "./asriConfigs";
+import { updateCoverImgColor } from "./asriConfigs/coverImgColor";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { removeFocusedBlockClass as removeFocusedBlockClassName, selectionChangeCallback } from "./focusedBlock";
@@ -154,7 +157,7 @@ async function updateStyles(e?: Event | KeyboardEvent) {
 
   // run on mouse events
   else if (
-    e.type.startsWith("mouse") ||
+    e.type.startsWith("mouseup") ||
     e.type.startsWith("drag") ||
     (e instanceof KeyboardEvent && (e.key === "Control" || e.key === "Alt" || e.key === "Shift" || e.key === "Meta"))
   ) {
@@ -202,6 +205,8 @@ async function globalClassNameMoCallback(mutationList: MutationRecord[], observe
       const docId = target.getAttribute("data-id") ?? undefined;
       // if (!docId) return;
       toggleProtyleStatus(docId);
+
+      docId && asriConfigs[curMode].followCoverImgColor && updateCoverImgColor(docId);
     }
 
     if (target.classList.contains("layout__wnd--active")) {
@@ -214,6 +219,8 @@ async function globalClassNameMoCallback(mutationList: MutationRecord[], observe
       const docId = targetDoc.getAttribute("data-id") ?? undefined;
       // if (!docId) return;
       toggleProtyleStatus(docId);
+      
+      docId && asriConfigs[curMode].followCoverImgColor && updateCoverImgColor(docId);
     }
   }
 }
