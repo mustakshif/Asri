@@ -1,3 +1,25 @@
+### v3.5.0
+
+- 新增：主题色跟随题头图，支持图片、视频和默认题头图取色
+- 支持使用预设配色方案时直接切换至自定义配色
+- 「顶栏融合+」适配更多插件
+- 优化对话框标题的垂直方向对齐
+- 优化提示工具条圆角和内边距
+- [修复首次加载文档时或刷新后偶现滚动失败的问题](https://github.com/mustakshif/Asri/issues/173)
+- 修复集市包信息页面标题换行会与下方内容重叠的问题
+- 修复阿拉伯语界面「极地」配色下边框线位置
+- 修复跟随系统强调色失效的问题
+
+- Added: Theme color now adapts to cover images, supporting color extraction from images, videos, and default headers.
+- Supported switching directly to custom color schemes when using preset color palettes.
+- Enhanced compatibility of "Topbar Fusion+" with more plugins.
+- Improved vertical alignment of dialog titles.
+- Optimized corner radius and padding of tooltips.
+- [Fixed an issue where scrolling occasionally failed after initial document load or refresh](https://github.com/mustakshif/Asri/issues/173).
+- Fixed overlapping between wrapped titles and content on marketplace package info pages.
+- Corrected border line positioning in the "Polar" color scheme for Arabic UI.
+- Fixed the ineffectiveness of system accent color following.
+
 ### v3.4.8
 
 - [修复 Windows 端窗口控制按钮无法点击的问题](https://github.com/mustakshif/Asri/issues/175)
