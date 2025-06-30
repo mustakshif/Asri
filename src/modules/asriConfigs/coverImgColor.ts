@@ -4,6 +4,8 @@ import { asriConfigs, updateAsriConfigs } from "./configs";
 import { cssVarManager } from "./cssVarManager";
 import { curMode, isCoverImgColorGray, setIsCoverImgColorGray } from "./state";
 import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
+import { getFocusedProtyleInfo } from "../../util/misc";
+import { startFadeInFadeOutTranstition } from "../modeTransition";
 
 const fac = new FastAverageColor();
 
@@ -23,12 +25,14 @@ class CoverImgColorManager {
    * @param activeDocId - The ID of the active document
    * @returns a subject of the type of the source image (img/vid/css) and the source image element/hex color, or null if no source image is found
    */
-  getSourceType(activeDocId: string) {
+  async getSourceType(activeDocId: string) {
     if (!activeDocId) return null;
 
-    const backgroundParentElement = document.querySelector(
-      `.protyle:not(.fn__none)[data-id="${activeDocId}"] .protyle-background__img:not(.fn__none)`
-    );
+    const curProtyle = (await getFocusedProtyleInfo(activeDocId, true)).protyle;
+
+    if (!curProtyle) return null;
+
+    const backgroundParentElement = curProtyle.querySelector(`.protyle-background__img:not(.fn__none)`);
 
     if (!backgroundParentElement) return null;
 
@@ -107,7 +111,7 @@ class CoverImgColorManager {
 export const coverImgColorManager = CoverImgColorManager.getInstance();
 
 export async function getCoverImgColor(activeDocId: string) {
-  const sourceType = coverImgColorManager.getSourceType(activeDocId);
+  const sourceType = await coverImgColorManager.getSourceType(activeDocId);
   if (!sourceType) return;
 
   if (sourceType.type === "css") {
@@ -126,15 +130,17 @@ export async function getCoverImgColor(activeDocId: string) {
 export async function updateCoverImgColor(activeDocId: string) {
   const color = await getCoverImgColor(activeDocId);
   if (!color) return;
-  
+
   const colorChroma = hexToOklch(color)?.C || 0;
   setIsCoverImgColorGray(colorChroma.toFixed(3) === "0.000");
 
-  cssVarManager.setProperty("--asri-cover-dominant", color);
+  startFadeInFadeOutTranstition(200, () => {
+    cssVarManager.setProperty("--asri-cover-dominant", color);
 
-  console.log("isCoverImgColorGray", color, colorChroma, isCoverImgColorGray);
-  handleGrayScale(colorChroma);
-  reverseOnPrimaryLightness(color);
+    console.log("isCoverImgColorGray", color, colorChroma, isCoverImgColorGray);
+    handleGrayScale(colorChroma);
+    reverseOnPrimaryLightness(color);
+  });
 
   // 写入配置
   //   asriConfigs[curMode].followCoverImgColor = true;

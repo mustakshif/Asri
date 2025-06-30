@@ -13,8 +13,9 @@ import {
 import { cssVarManager } from "./cssVarManager";
 import { getSystemAccentColor } from "./systemColor";
 import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
-import { coverImgColorManager } from "./coverImgColor";
+import { coverImgColorManager, updateCoverImgColor } from "./coverImgColor";
 import { hexToOklch } from "../../util/colorTools";
+import { getFocusedProtyleInfo } from "../../util/misc";
 
 export async function loadThemePalette() {
   // if (env.isIOSApp) return; // fix app crash
@@ -51,6 +52,10 @@ export async function loadThemePalette() {
   } else if (asriConfigs[curMode].followCoverImgColor) {
     cssVarManager.setProperty("--asri-cover-dominant", asriConfigs[curMode].coverImgColor || "");
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
+    
+    const activeDocId = (await getFocusedProtyleInfo(undefined, true)).docID;
+    updateCoverImgColor(activeDocId || "");
+
     handleGrayScale(hexToOklch(asriConfigs[curMode].coverImgColor || "")?.C || 0);
     reverseOnPrimaryLightness(asriConfigs[curMode].coverImgColor || "");
   } else {

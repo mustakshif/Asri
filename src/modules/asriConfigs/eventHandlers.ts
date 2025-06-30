@@ -72,16 +72,15 @@ function handleFollowCoverImgColorBtnClick() {
   resetPresetPalette();
   setFollowSysAccentColor(false);
 
-  document
-    .querySelectorAll(".asri-config.b3-menu__item--selected")
-    .forEach((el) => el.classList.remove("b3-menu__item--selected"));
-
   startFadeInFadeOutTranstition(600, async () => {
+    document
+      .querySelectorAll(".asri-config.b3-menu__item--selected")
+      .forEach((el) => el.classList.remove("b3-menu__item--selected"));
     followCoverImgColorBtn!.classList.add("b3-menu__item--selected");
     asriConfigs[curMode].followCoverImgColor = true;
     asriConfigs[curMode].followSysAccentColor = false;
 
-    const activeDocId = (await getFocusedProtyleInfo()).docID;
+    const activeDocId = (await getFocusedProtyleInfo(undefined, true)).docID;
 
     updateCoverImgColor(activeDocId || "");
   });
