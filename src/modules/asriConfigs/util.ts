@@ -13,13 +13,17 @@ export const reverseThreshold = env.appSchemeMode === "light" ? 0.81 : 0.79;
  */
 
 export function handleGrayScale(chroma: string | number) {
- 
   const chromaValue = String(chroma);
 
   // console.log('chroma', chroma, 'followSysAccentColor', followSysAccentColor, 'isSysAccentGray', isSysAccentGray, 'isUserAccentGray', isUserAccentGray, 'isCoverImgColorGray', isCoverImgColorGray, "addCfactor0", chromaValue === "0" || (followSysAccentColor && isSysAccentGray) || isUserAccentGray || (isCoverImgColorGray && asriConfigs[curMode].followCoverImgColor));
 
-  if (chromaValue === "0" || (followSysAccentColor && isSysAccentGray) || isUserAccentGray || (isCoverImgColorGray && asriConfigs[curMode].followCoverImgColor)) {
-    console.log('addCfactor0');
+  if (
+    chromaValue === "0" ||
+    (followSysAccentColor && isSysAccentGray) ||
+    isUserAccentGray ||
+    (isCoverImgColorGray && asriConfigs[curMode].followCoverImgColor)
+  ) {
+    console.log("addCfactor0");
     cssVarManager.setProperty("--asri-c-0", "0");
     return true;
   } else {
@@ -30,7 +34,7 @@ export function handleGrayScale(chroma: string | number) {
 
 export function reverseOnPrimaryLightness(hex: string) {
   const { L } = hexToOklch(hex) || {};
-  if (!L) return;
+  if (L === undefined) return;
   if (L > reverseThreshold) {
     cssVarManager.setProperty("--asri-on-primary-reverse", env.appSchemeMode === "light" ? ".4" : ".3");
   } else {

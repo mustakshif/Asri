@@ -1,11 +1,10 @@
 import { FastAverageColor, FastAverageColorOptions } from "fast-average-color";
 import { convertToHex, extractFirstColorFromCSSBackground, hexToOklch } from "../../util/colorTools";
+import { getFocusedProtyleInfo } from "../../util/misc";
 import { asriConfigs, updateAsriConfigs } from "./configs";
 import { cssVarManager } from "./cssVarManager";
 import { curMode, isCoverImgColorGray, setIsCoverImgColorGray } from "./state";
 import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
-import { getFocusedProtyleInfo } from "../../util/misc";
-import { startFadeInFadeOutTranstition } from "../modeTransition";
 
 const fac = new FastAverageColor();
 
