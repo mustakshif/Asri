@@ -10,6 +10,8 @@
 - 修复阿拉伯语界面「极地」配色下边框线位置
 - 修复跟随系统强调色失效的问题
 
+<br />
+
 - Added: Theme color now adapts to cover images, supporting color extraction from images, videos, and default headers.
 - Supported switching directly to custom color schemes when using preset color palettes.
 - Enhanced compatibility of "Topbar Fusion+" with more plugins.
@@ -19,6 +21,8 @@
 - Fixed overlapping between wrapped titles and content on marketplace package info pages.
 - Corrected border line positioning in the "Polar" color scheme for Arabic UI.
 - Fixed the ineffectiveness of system accent color following.
+
+---
 
 ### v3.4.8
 

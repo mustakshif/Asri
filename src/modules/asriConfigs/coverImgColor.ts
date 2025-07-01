@@ -134,13 +134,11 @@ export async function updateCoverImgColor(activeDocId: string) {
   const colorChroma = hexToOklch(color)?.C || 0;
   setIsCoverImgColorGray(colorChroma.toFixed(3) === "0.000");
 
-  startFadeInFadeOutTranstition(200, () => {
-    cssVarManager.setProperty("--asri-cover-dominant", color);
+  cssVarManager.setProperty("--asri-cover-dominant", color);
 
-    console.log("isCoverImgColorGray", color, colorChroma, isCoverImgColorGray);
-    handleGrayScale(colorChroma);
-    reverseOnPrimaryLightness(color);
-  });
+  console.log("isCoverImgColorGray", color, colorChroma, isCoverImgColorGray);
+  handleGrayScale(colorChroma);
+  reverseOnPrimaryLightness(color);
 
   // 写入配置
   //   asriConfigs[curMode].followCoverImgColor = true;
