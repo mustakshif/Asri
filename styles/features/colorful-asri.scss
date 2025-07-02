@@ -15,7 +15,7 @@ $cvc: 10; // color variant count
 @supports (color: oklch(from red clamp(0, (l * 0.5), 0.3) 0 h)) {
   :root {
     --b3-protyle-inline-blockref-color: var(--b3-theme-accent);
-    --asri-cover-accent: oklch(from var(--asri-cover-dominant) clamp(0.2, l, 0.95) clamp(0.1, c, 0.25) calc(h + var(--asri-c-0, -235) + 235));
+    --asri-cover-accent: oklch(from var(--asri-cover-dominant) clamp(0.2, l, 0.95) clamp(0.1, c, 0.25) h);
 
     &[data-theme-mode="light"] {
       --asri-base-color: var(--asri-cover-accent, var(--asri-user-custom-accent, var(--asri-sys-accent)));

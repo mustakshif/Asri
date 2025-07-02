@@ -15,7 +15,7 @@ For the complete update history, refer to the [CHANGELOG.md](https://github.com/
 
 ### Major Updates Overview
 
-#### `Jul 1, 2025 - v3.5.0: Hue in Motion`
+#### `Jul 1, 2025 - v3.5.0`
 
 Theme colors now support "Follow cover image color", automatically extracting colors from document cover images or videos and switching theme colors in real-time for an immersive visual experience.
 
