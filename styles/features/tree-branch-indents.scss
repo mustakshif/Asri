@@ -1,0 +1,158 @@
+body
+// .asri-edi-tbi
+{
+  // solution 1
+  :is(.protyle-wysiwyg, .bq) [data-node-id].li {
+    --bw: 1px; // branch width
+    --bcr: calc(12em / 16); // branch corner radius
+    --bco: 0.2; // branch color opacity
+
+    &::before {
+      display: none;
+    }
+
+    .li {
+      // vertical line
+      &:not(:nth-last-child(2))::before {
+        content: "";
+        display: block;
+        left: -17px;
+        top: calc(4px + 0.3em - 0.5px);
+        height: calc(100% - 0.3em + 0.5px);
+        opacity: var(--bco);
+        border-width: var(--bw);
+      }
+    }
+
+    .li:not(.protyle-wysiwyg--select, .protyle-wysiwyg--hl) {
+      // round line
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 1em;
+        width: 17px;
+        left: -17px;
+        top: 0;
+        border-radius: 0 0 0 var(--bcr);
+        border-left: var(--bw) solid;
+        border-bottom: var(--bw) solid;
+        border-color: inherit;
+        opacity: var(--bco);
+      }
+    }
+
+    // handle list (after non list items) in list situation
+    > :not(.protyle-action + :not(.li)) // not regular list item
+  + .list > .li:first-child:not(.protyle-wysiwyg--select, .protyle-wysiwyg--hl) {
+      &::before {
+        top: calc(2em + 1px);
+        height: calc(100% - 2em + 3px);
+      }
+      &::after {
+        border-radius: var(--bcr) 0 0 0;
+        border-top: 1px solid;
+        border-top-color: inherit;
+        border-bottom: none;
+        top: 1em;
+      }
+
+      // handle one item only situation
+      // display a single horizontal line
+      &:nth-last-child(2)::after {
+        border-radius: 0;
+        border-left: none;
+      }
+    }
+  }
+
+  // solution 2: include outer indent
+  // .protyle-wysiwyg {
+  //   --bw: 1px; // branch width
+  //   --bcr: calc(12em / 16); // branch corner radius
+  //   --bco: 0.2; // branch color opacity
+
+  //   [data-node-id].li::before {
+  //     display: none;
+  //   }
+
+  //   [data-node-id].li {
+  //     // vertical line
+  //     &:not(:nth-last-child(2))::before {
+  //       content: "";
+  //       display: block;
+  //       left: -17px;
+  //       top: calc(4px + 0.3em - 0.5px);
+  //       height: calc(100% - 0.3em + 0.5px);
+  //       opacity: var(--bco);
+  //       border-width: var(--bw);
+  //     }
+  //   }
+
+  //   .li:not(.protyle-wysiwyg--select, .protyle-wysiwyg--hl) {
+  //     // round line
+  //     &::after {
+  //       content: "";
+  //       display: block;
+  //       position: absolute;
+  //       height: 1em;
+  //       width: 17px;
+  //       left: -17px;
+  //       top: 0;
+  //       border-radius: 0 0 0 var(--bcr);
+  //       border-left: var(--bw) solid;
+  //       border-bottom: var(--bw) solid;
+  //       border-color: inherit;
+  //       opacity: var(--bco);
+  //     }
+  //   }
+
+  //   // handle list (after non list items) in list situation
+  //   :not(.protyle-action + :not(.li)) // not regular list item
+  //   + .list > .li:first-child:not(.protyle-wysiwyg--select, .protyle-wysiwyg--hl),
+  //   > .list > .li:first-child:not(.protyle-wysiwyg--select, .protyle-wysiwyg--hl) {
+  //     &::before {
+  //       top: calc(2em + 1px);
+  //       height: calc(100% - 2em + 3px);
+  //     }
+  //     &::after {
+  //       border-radius: var(--bcr) 0 0 0;
+  //       border-top: 1px solid;
+  //       border-top-color: inherit;
+  //       border-bottom: none;
+  //       top: 1em;
+  //     }
+
+  //     // handle one item only situation
+  //     // display a single horizontal line
+  //     &:nth-last-child(2)::after {
+  //       border-radius: 0;
+  //       border-left: none;
+  //     }
+  //   }
+
+  //   // hide the only first-level list item's indents
+  //   > .list > .li:first-child:nth-last-child(2):not(.protyle-wysiwyg--select, .protyle-wysiwyg--hl)::after {
+  //     display: none;
+  //   }
+  // }
+
+  // common
+  :is(.bq, .sb) {
+    > .list > [data-node-id].li:not(.protyle-wysiwyg--select, .protyle-wysiwyg--hl) {
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  .protyle-wysiwyg__embed {
+    > [data-node-id].li:not(.protyle-wysiwyg--select, .protyle-wysiwyg--hl) {
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

@@ -14,6 +14,7 @@ body:not(.body-asri--mobile) {
       &::-webkit-scrollbar {
         display: none;
       }
+      scrollbar-width: none;
 
       > div:not(.protyle-attr--refcount) svg {
         // margin-top: 3px;

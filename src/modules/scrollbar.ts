@@ -1,7 +1,16 @@
+/**
+ * @description This module is used to support Safari.
+ */
+
 import { environment as env } from "../util/rsc";
 
 const { isMacOS, isMobile } = env;
 const asriDeletedRules: { styleSheet: CSSStyleSheet; rule: string }[] = [];
+
+/**
+ * Can be achieved by `scrollbar` css property.
+ * This module is used to support Safari.
+ */
 export async function useMacSysScrollbar() {
   if (isMacOS || isMobile) {
     for (let i = 0; i < document.styleSheets.length; i++) {

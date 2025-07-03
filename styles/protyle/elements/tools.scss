@@ -1,7 +1,7 @@
 @use "../../base" as *;
 @use "../../components/utils.scss" as *;
 
-// 页面小工具条 ——————————————————————————————————————
+/* 页面小工具条 */
 // 普通工具条、代码块工具条
 .protyle-icons,
 .protyle-action {
@@ -61,7 +61,7 @@
   }
 }
 
-// 字体样式 ——————————————————————————————————————
+/* 字体样式 */
 .protyle-font {
   .protyle-font__style {
     font-size: 14px;

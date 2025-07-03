@@ -44,8 +44,9 @@
   }
 }
 
-// ——————————————————————————
-// 对话框、数据库页签样式
+/*
+* 对话框、数据库页签样式
+*/
 @mixin dialog-tabbar {
   margin: 8px auto 8px;
   border-radius: 8px !important;
@@ -120,8 +121,9 @@
   }
 }
 
-// ——————————————————————————————————————
-// 主要用于设置面板的大按钮
+/*
+* 主要用于设置面板的大按钮
+*/
 @mixin button-primary {
   // background-color: var(--b3-list-hover);
   background-color: #0000;

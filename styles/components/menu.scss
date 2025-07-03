@@ -1,8 +1,8 @@
 @use "../base" as *;
 @use "./utils" as *;
 
-.b3-menu,
-.b3-menu__submenu {
+:is(.b3-menu,
+.b3-menu__submenu) {
   @include menu-shadow($opacity-light: 0.15);
 
   @include theme-variant-border($border: false) {
@@ -21,7 +21,7 @@
     border-radius: 10px;
   }
 
-  &:not(&--fullscreen)::before {
+  &:not(.b3-menu--fullscreen)::before {
     box-shadow: 0 0 0 1px #fff2 inset, 0 2px 1px -1px #fff3 inset;
   }
 
@@ -57,7 +57,9 @@
         margin-bottom: 0.5px;
       }
 
-      &:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not([data-type="nobg"]),
+      &:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not(
+          [data-type="nobg"]
+        ),
       &--current:not(.b3-menu__item--readonly, .b3-menu__item--disabled):not([disabled]):not([data-type="nobg"]) {
         background-color: var(--b3-menu-item-background-hover);
         color: var(--b3-menu-item-background-hover-text);
@@ -220,9 +222,9 @@
       height: 20px;
     }
 
-    @media screen and (min-width: 1292px) {
+    @container protyle (min-width: 1048px) {
       width: 75vw;
-      max-width: calc(12em * 7);
+      // max-width: calc(12em * 7);
       max-height: 65vh;
 
       & > div {
@@ -247,11 +249,24 @@
       }
 
       & > .emojis {
-        min-width: 100%;
+        min-width: 100%; // https://github.com/mustakshif/Asri/issues/30
       }
-
-      // https://github.com/mustakshif/Asri/issues/30
     }
+
+    // @container protyle (min-width: 1048px) {
+    //   width: 75vw;
+    //   // max-width: calc(12em * 7);
+    //   max-height: 65vh;
+    //   > div {
+    //     display: grid;
+    //     grid-auto-flow: column;
+    //     grid-auto-columns: minmax(12em, max-content);
+    //     grid-auto-rows: 28px;
+    //     grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+    //     grid-template-rows: repeat(12, minmax(28px, 1fr));
+    //     gap: 4px;
+    //   }
+    // }
   }
 
   & > div {
@@ -353,13 +368,14 @@
     padding-bottom: 8px;
   }
 
-  // >div {
-  //     padding-top: 8px;
+  // 代码块语言选择、模版挂件等选择面板
+  > .fn__flex-column {
+    padding-top: 8px;
 
-  //     // >div {
-  //     //     padding-bottom: 8px;
-  //     // }
-  // }
+    > .b3-list {
+      padding-bottom: 8px;
+    }
+  }
 
   .toolbarResize {
     box-shadow: inset 1px 0 0 var(--b3-border-color-trans) !important;

@@ -1,5 +1,6 @@
 {
     "followSysAccent": "اتباع لون النظام الأساسي",
+    "followCoverImgColor": "اتباع لون صورة الغلاف",
     "pickColor": "تخصيص لون السمة",
     "asriChroma": "التشبع: ",
     "afwdDocMenuLabel": "عرض بعرض الشاشة الكامل",
@@ -20,9 +21,12 @@
     "prst-palette-auriflow": "تدفق الذهب",
     "prst-palette-aerisland": "جزيرة السماء",
     "prst-palette-zerith": "المجال الصفري",
+    "prst-palette-polar": "القطب",
+    "prst-palette-stellula": "تموُّج نجمي",
     "topbarFusionPlus": "دمج شريط الأعلى+",
     "tfp-progressive": "الضبابية التدريجية",
     "tfp-acrylic": "الأكريليك",
+    "tfp-luminous": "الزجاج المضيء",
     "tfp-disable": "تعطيل",
     "tfp-experimental": "ميزة تجريبية، يرجى التفعيل بحذر.\nلمزيد من المعلومات، يرجى الاطلاع على الحاشية 3 في وصف السمة."
 }

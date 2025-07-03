@@ -1,7 +1,9 @@
 @use "../../base" as *;
 @use "../utils" as *;
 
-// 弹出预览窗口 ——————————————————————————————————————
+/* 
+* 弹出预览窗口 
+*/
 .block__popover {
   @include dialog-shadow($extra-shadow-light: "0 0 0 1px rgba(0, 0, 0, 0.05)");
   @include theme-variant-border($border: false);
@@ -18,6 +20,7 @@
   }
 
   .block__icons {
+    
     .block__icon {
       &:hover:not([disabled]):not(.ft__primary) {
         background-color: transparent;

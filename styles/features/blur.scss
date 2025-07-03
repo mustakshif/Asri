@@ -79,7 +79,7 @@ body:not(.asri-disable-backdrop-blur) {
       &:hover {
         .protyle-action__drag {
           background-color: transparent;
-          backdrop-filter: invert(1) blur(200px) saturate(0) contrast(0.5) brightness(1.15);
+          backdrop-filter: invert(1) blur(50px) saturate(0) contrast(0.5) brightness(1.15);
           filter: contrast(10) invert(0.1) opacity(0.9);
           box-shadow: none;
           transition: transform 50ms;
@@ -136,8 +136,7 @@ body:not(.asri-disable-backdrop-blur) {
     }
   }
 
-  .layout__dockl,
-  .layout__dockr {
+  :is(.layout__dockl, .layout__dockr) {
     &.layout--float {
       margin-top: 0;
 
@@ -180,8 +179,7 @@ body:not(.asri-disable-backdrop-blur) {
     }
   }
 
-  .layout--float,
-  .protyle-background__iconw {
+  :is(.layout--float, .protyle-background__iconw) {
     .protyle-icons {
       mix-blend-mode: normal;
       @include bg-blur($medium-blur-rd, $brightness-light: 1);
@@ -415,7 +413,9 @@ body:not(.asri-disable-backdrop-blur) {
     }
   }
 
-  // 图片预览 ——————————————————————
+  /* 
+   * 图片预览
+   */
   .viewer-backdrop {
     @include bg-blur($saturate-value: 1);
     backdrop-filter: blur(40px);
@@ -440,7 +440,9 @@ body:not(.asri-disable-backdrop-blur) {
     }
   }
 
-  // 数据库菜单 ——————————————————————
+  /* 
+   * 数据库菜单
+   */
   .av__panel {
     .b3-menu {
       > .fn__flex-column > .b3-menu__item[data-type="nobg"]:first-child {

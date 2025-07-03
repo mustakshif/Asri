@@ -1,4 +1,6 @@
-// color scheme related mixins————————————————
+/*
+ * color scheme related mixins
+ */
 $theme-light: (
   primary: rgb(52, 120, 246),
   secondary: rgb(241, 154, 55),
@@ -236,9 +238,4 @@ $theme-dark: (
 
 @function pickThemeColor($theme-map, $color-key, $opacity: 1) {
   @return change-color(map-get($theme-map, $color-key), $alpha: $opacity);
-}
-
-@function negateForRTL($value) {
-  // gnf 值，用于在 rtl 模式下反转值
-  @return calc(var(--gnf, 1) * #{$value});
 }

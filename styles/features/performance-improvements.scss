@@ -1,12 +1,12 @@
-// no effect
-
 // .layout__center .protyle-content {
-//     contain: content;
+//     contain: content; // cause positioning issues
 // }
 
-// .file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag, .sy__backlink) {
-//     contain: strict;
-// }
+.file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag 
+// ,.sy__backlink // cause element positioning issues
+) {
+  contain: content;
+}
 
 // .protyle-top {
 //     // content-visibility: auto;
@@ -16,3 +16,45 @@
 // .layout__dockl, .layout__dockr {
 //     contain: content; // https://github.com/mustakshif/Asri/issues/150
 // }
+
+.list,
+.hljs,
+.sb,
+.render-node,
+.av {
+  contain: layout style;
+}
+
+// [data-type="NodeMathBlock"] > [spin],
+// [data-subtype="abc"] >[spin], // abc notation
+.render-node>[spin], // graph, mermaid, etc.
+.hljs>.fn__none+[contenteditable], // code, only when linenumber is disabled
+// .protyle-wysiwyg__embed [contenteditable]:not(.protyle-attr),
+// .protyle-wysiwyg__embed, // negative effect
+[data-type~="inline-math"],
+[data-type="NodeHTMLBlock"]>div:nth-child(2),
+audio,
+// canvas, // cause pdf flash when scrolling
+video
+// :is(.sy__file, .sy__bookmark) .b3-list,
+// :is(.sy__tag, .sy__outline) .b3-list-item, // cause flash
+// .av__row:not(.av__row--header) // cause scrolling issue (https://github.com/mustakshif/Asri/issues/173)
+// .av__container
+// .li>[data-node-id]>[contenteditable] // negative effect
+// .table>[contenteditable], // cause table overflow issue
+{
+  contain: content;
+  content-visibility: auto;
+}
+
+.av__row {
+  contain-intrinsic-height: calc(1em * 1.625 + 1px + 10px);
+}
+
+// .av__container {
+//   contain-intrinsic-size: 300px; // reduce layout shift
+// }
+
+.hljs > .fn__none + [contenteditable] {
+  overflow: auto; //https://github.com/mustakshif/Asri/issues/170
+}

@@ -388,7 +388,9 @@ body.body--window {
     }
   }
 
-  // 窗口顶部的拖移区 ——————————————————————————————————————
+  /* 
+   * 窗口顶部的拖移区 
+   */
   #toolbar {
     .toolbar__item {
       app-region: no-drag;
@@ -454,7 +456,9 @@ body.body--window {
     app-region: unset;
   }
 
-  // 禁用拖动的区域 ————————————————————————————————————
+  /* 
+   * 禁用拖动的区域
+   */
   //菜单
   .b3-menu,
   .b3-menu__submenu,

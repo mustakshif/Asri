@@ -3,7 +3,7 @@
 
 .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile) {
   &.asri-dragging-gutter {
-    // 修复向上拖动块时无法出发自动滚动
+    // fix the issue when dragging a block up, the auto-scroll is not triggered
 
     .protyle-breadcrumb,
     :where(.layout__wnd--active, [data-type="wnd"]) > .fn__flex:first-child {
@@ -39,6 +39,7 @@
         // backdrop-filter: brightness(1) saturate(1);
 
         &--focus {
+          font-weight: 500;
           // background-color: transparent;
           backdrop-filter: brightness(1) saturate(1.8);
 
@@ -63,7 +64,7 @@
         // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
         padding-top: 42px;
         margin-bottom: calc(var(--blur-block-height) * -1);
         height: var(--blur-block-height);
@@ -83,7 +84,9 @@
         padding-top: 0 !important;
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb + .protyle-content {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle)
+        > .protyle-breadcrumb
+        + .protyle-content {
         padding-top: var(--blur-block-height);
       }
 
@@ -100,7 +103,10 @@
       --offset-y: 10px;
     }
 
-    // ————————————————————————————————————
+    .protyle-background__icon,
+    .img .protyle-action__drag {
+      z-index: auto;
+    }
 
     // pdf
     // #outerContainer {
@@ -126,24 +132,164 @@
     // }
   }
 
+  // fix export preview
+  .protyle > .protyle-content.fn__none ~ .protyle-preview {
+    margin-top: var(--blur-block-height);
+  }
+
   // two types of topbar fusion plus
   &.asri-tfp-acrylic {
     .layout__wnd--active,
     [data-type="wnd"] {
       .layout-tab-container {
-        & > .protyle[data-loading="finished"]::before {
-          mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 0.5px), transparent calc(var(--blur-block-height) + 1px));
+        & > .protyle[data-loading="finished"] {
+          &::before {
+            mask-image: linear-gradient(
+              to bottom,
+              black 0,
+              black calc(var(--blur-block-height) - 0.5px),
+              transparent calc(var(--blur-block-height) + 1px)
+            );
 
-          @include bg-blur($brightness-dark: 0.95);
+            @include bg-blur(20px, $brightness-light: 1, $brightness-dark: 0.9);
+          }
+
+          &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: var(--blur-block-height);
+            position: absolute;
+            pointer-events: none;
+            // background-color: rgba(255, 0, 0, 0.604);
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><filter id='noise'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' /></filter><rect width='100%' height='100%' filter='url(%23noise)' /></svg>");
+            background-repeat: repeat;
+            background-size: 100px 100px;
+            z-index: 2;
+            mix-blend-mode: overlay;
+            opacity: 1; // control the strength
+          }
         }
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
         background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
+
+        [data-asri-palette="polar"][data-theme-mode="dark"] & {
+          background-color: rgb(from var(--b3-theme-background) r g b / 0.7);
+        }
 
         @include darkmode-counterpart {
           background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
         }
+      }
+    }
+  }
+
+  // luminous glass
+  &.asri-tfp-luminous {
+    .layout__wnd--active,
+    [data-type="wnd"] {
+      .layout-tab-container {
+        & > .protyle[data-loading="finished"] {
+          &::before {
+            mask-image: linear-gradient(
+              to bottom,
+              black 0,
+              // pass-through
+              #000 calc(var(--blur-block-height) - 8px),
+              #000a calc(var(--blur-block-height) - 0px),
+              // line
+              #000 calc(var(--blur-block-height)),
+              #000 calc(var(--blur-block-height) + 0.5px),
+              // // glow
+              // #0006 calc(var(--blur-block-height) + 0.5px),
+              // transparent calc(var(--blur-block-height) + 40px)
+              #0000 calc(var(--blur-block-height) + 1px)
+            );
+
+            @include bg-blur(6px, $saturate-value: 1, $brightness-light: 1, $brightness-dark: 0.95);
+            // @include darkmode-counterpart {
+            //   backdrop-filter: blur(8px) saturate(1) contrast(1.2);
+            // }
+          }
+
+          &::after {
+            --glow-strength: rgb(0, 0, 0, 0.3);
+            content: "";
+            display: block;
+            width: 100%;
+            // background-color: rgba(255, 0, 0, 0.474);
+            height: min(calc(var(--blur-radius-main) * 2 + var(--blur-block-height)), 100%);
+            position: absolute;
+            top: 0;
+            pointer-events: none;
+            @include bg-blur(40px, $saturate-value: 3, $brightness-light: 1.1, $brightness-dark: 1.2);
+
+            mask-image: linear-gradient(
+              to bottom,
+              #0000 0,
+              // inner glow
+              #000 calc(var(--blur-block-height)),
+              // line
+              #0007 calc(var(--blur-block-height) + 2px),
+              // outer glow
+              var(--glow-strength) calc(var(--blur-block-height) + 2px),
+              #0000 calc(var(--blur-block-height) + 40px)
+            );
+
+            [data-asri-palette="polar"][data-theme-mode="dark"] & {
+              --glow-strength: #0006;
+            }
+
+            @include darkmode-counterpart {
+              // backdrop-filter: blur(40px) saturate(4) contrast(1.2);
+              --glow-strength: #0003;
+              mask-image: linear-gradient(
+                to bottom,
+                #0000 0,
+                // inner glow
+                #000 calc(var(--blur-block-height)),
+                // line
+                #000 calc(var(--blur-block-height) + 1px),
+                // outer glow
+                var(--glow-strength) calc(var(--blur-block-height) + 1.5px),
+                #0000 calc(var(--blur-block-height) + 21px)
+              );
+            }
+          }
+        }
+      }
+
+      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
+        box-shadow: 0 1px 0 0 #fff, 0 0px 20px 0px rgb(from var(--b3-theme-on-background) r g b / 0.06);
+        background-color: rgb(from var(--b3-theme-background) r g b / 0.8);
+
+        // [data-asri-palette="polar"][data-theme-mode="dark"] & {
+        //   background-color: rgb(from var(--b3-theme-background) r g b / 0.6);
+        // }
+
+        @include darkmode-counterpart {
+          // mix-blend-mode: hard-light;
+          box-shadow: 0 0.5px 0 0 #fff2, 0 -8px 5px -5px rgb(from var(--b3-theme-background) r g b / 0.25) inset;
+          // background-color: rgb(from var(--b3-theme-background) r g b / 0.5);
+          background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / 0.6), rgb(from var(--b3-theme-background) r g b / 0.45));
+          background-color: #0000;
+        }
+
+        [data-asri-palette="polar"][data-theme-mode="dark"] & {
+          background-color: #0000;
+          background-image: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / 0.6), rgb(from var(--b3-theme-background) r g b / 0.3));
+        }
+      }
+    }
+
+    :where(.layout__wnd--active, [data-type="wnd"]) > .fn__flex:first-child,
+    .toolbar {
+      mix-blend-mode: multiply;
+
+      @include darkmode-counterpart {
+        mix-blend-mode: screen;
       }
     }
   }
@@ -174,7 +320,15 @@
         left: 0;
         height: calc(30vh + var(--blur-block-height) - $offset);
         top: $offset;
-        background: linear-gradient(to top, var(--b3-theme-background) 2%, rgba(from var(--b3-theme-background) r g b / 0.97) 9%, rgba(from var(--b3-theme-background) r g b / 0.9) 18%, rgba(from var(--b3-theme-background) r g b / 0.75) 33%, rgba(from var(--b3-theme-background) r g b / 0.05) 92%, transparent 99%);
+        background: linear-gradient(
+          to top,
+          var(--b3-theme-background) 2%,
+          rgb(from var(--b3-theme-background) r g b / 0.97) 9%,
+          rgb(from var(--b3-theme-background) r g b / 0.9) 18%,
+          rgb(from var(--b3-theme-background) r g b / 0.75) 33%,
+          rgb(from var(--b3-theme-background) r g b / 0.05) 92%,
+          transparent 99%
+        );
 
         //方案二
         // $width: 180%;
@@ -182,11 +336,12 @@
         // height: calc(30vh + var(--blur-block-height));
         // top: 0;
         // left: calc(($width - 100%) / -2);
-        // background: radial-gradient(farthest-side at 50% 42px, transparent 1%, rgba(from var(--b3-theme-background) r g b /.05) 8%, rgba(from var(--b3-theme-background) r g b / .75) 67%, rgba(from var(--b3-theme-background) r g b / .9) 82%, rgba(from var(--b3-theme-background) r g b /.97) 91%, var(--b3-theme-background) 98%);
+        // background: radial-gradient(farthest-side at 50% 42px, transparent 1%, rgb(from var(--b3-theme-background) r g b /.05) 8%, rgb(from var(--b3-theme-background) r g b / .75) 67%, rgb(from var(--b3-theme-background) r g b / .9) 82%, rgb(from var(--b3-theme-background) r g b /.97) 91%, var(--b3-theme-background) 98%);
       }
     }
 
     :where(.layout__wnd--active, [data-type="wnd"]) {
+      // tabbar overlay blend mode
       > .fn__flex:first-child {
         mix-blend-mode: multiply;
 
@@ -264,10 +419,6 @@
           background-color: transparent !important;
         }
 
-        .item--focus {
-          font-weight: 500;
-        }
-
         &:not(.layout-tab-bar--readonly) .item {
           // font-weight: 500;
           border-radius: 7px;
@@ -292,7 +443,12 @@
       .layout-tab-container {
         & > .protyle[data-loading="finished"] {
           &::before {
-            mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 25px), transparent calc(var(--blur-block-height) - 5px));
+            mask-image: linear-gradient(
+              to bottom,
+              black 0,
+              black calc(var(--blur-block-height) - 25px),
+              transparent calc(var(--blur-block-height) - 5px)
+            );
 
             @include bg-blur($blur-radius: 4px, $saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
           }
@@ -307,7 +463,12 @@
             pointer-events: none;
             // background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / .6), transparent var(--blur-block-height));
             backdrop-filter: blur(2px);
-            mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 15px), transparent calc(var(--blur-block-height) + 0px));
+            mask-image: linear-gradient(
+              to bottom,
+              black 0,
+              black calc(var(--blur-block-height) - 15px),
+              transparent calc(var(--blur-block-height) + 0px)
+            );
           }
 
           &.fullscreen::after {
@@ -318,6 +479,8 @@
             scroll-timeline-name: --protyle-content-scroll;
 
             &::before {
+              --mask-opacity-factor-light: 0.9;
+              --mask-opacity-factor-dark: 0.8;
               content: "";
               position: absolute;
               top: 0;
@@ -328,15 +491,27 @@
               pointer-events: none;
 
               mix-blend-mode: luminosity;
+              opacity: 0.8;
 
               @include darkmode-counterpart {
                 mix-blend-mode: normal;
-                opacity: 0.7;
+                opacity: 0.75;
               }
 
-              @include smoothGradientVar(var(--b3-theme-background), 0.9, 0.8);
+              @include smoothGradientVar(
+                var(--b3-theme-background),
+                var(--mask-opacity-factor-light),
+                var(--mask-opacity-factor-dark)
+              );
 
-              opacity: 0.8;
+              [data-asri-palette="polar"][data-theme-mode="light"] & {
+                --mask-opacity-factor-light: 0.8;
+              }
+
+              [data-asri-palette="polar"][data-theme-mode="dark"] & {
+                --mask-opacity-factor-dark: 0.7;
+              }
+
               @supports (animation-timeline: view()) {
                 animation-timeline: --protyle-content-scroll;
                 animation-range: -2px 30vh;
@@ -350,18 +525,22 @@
                   }
                 }
               }
+
+              @supports not (animation-timeline: view()) {
+                opacity: 1;
+              }
             }
           }
         }
       }
 
-      :not(#searchPreview, .card__block, .plugin-panel) > .protyle-breadcrumb:not([slot]) {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
         background-color: transparent;
         // mix-blend-mode: luminosity;
         // mix-blend-mode: difference;
         position: relative;
 
-        // 顶部页签区域第三层模糊，可以去掉
+        // optional blur layer, under the tabbar area
         &::before {
           content: "";
           position: absolute;
@@ -384,10 +563,16 @@
           &:not(:first-child) {
             @include overflow-indicator-fadein-mask($range: "left right");
           }
-
           &::-webkit-scrollbar {
             display: none;
           }
+          scrollbar-width: none;
+        }
+
+        // "exit focus" button
+        .protyle-breadcrumb__icon:not(:hover) {
+          color: var(--b3-theme-on-background);
+          background-color: var(--b3-theme-background-light);
         }
 
         // .protyle-breadcrumb__text,
@@ -443,11 +628,6 @@
         &.fn__none + .protyle-background__ia {
           margin-top: 92px !important;
         }
-      }
-
-      .protyle-background__icon,
-      .img .protyle-action__drag {
-        z-index: auto;
       }
     }
 

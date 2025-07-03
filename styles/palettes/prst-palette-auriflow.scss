@@ -1,4 +1,5 @@
 @use "../base" as *;
+@use "../features/_utils.scss" as *;
 
 @mixin goldfoil-background {
   background: var(--texture-goldfoil);
@@ -72,7 +73,7 @@
   .protyle-wysiwyg .li.protyle-task--done > .protyle-action--task::before,
   .protyle-wysiwyg .li[data-subtype="t"] .protyle-action--task::before,
   .protyle-wysiwyg[data-readonly="false"] [data-node-id].asri-selected-block::before,
-  #toolbar #barWorkspace:hover,
+  .toolbar #barWorkspace:hover,
   .config__panel .config__tab-wrap .config__tab-container[data-name="account"] .config-account .b3-button--text:not(#activationCode),
   .config__panel .config__tab-wrap .config__tab-container[data-name="account"] .config-account button#login,
   .protyle-breadcrumb__icon:hover,
@@ -87,10 +88,10 @@
   .b3-dialog__header {
     @include goldfoil-background;
     background-clip: text;
-    color: rgba(from var(--b3-theme-on-background) r g b / 0.1);
+    color: rgb(from var(--b3-theme-on-background) r g b / 0.1);
 
     @include darkmode-counterpart {
-      color: rgba(from var(--b3-theme-on-background) r g b / 0.2);
+      color: rgb(from var(--b3-theme-on-background) r g b / 0.2);
     }
   }
 
@@ -117,7 +118,7 @@
     width: 2px;
   }
 
-  #toolbar #barWorkspace {
+  .toolbar #barWorkspace {
     transition-property: color;
   }
 

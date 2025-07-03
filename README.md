@@ -3,44 +3,59 @@ English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main
 <!-- [![Releases](https://img.shields.io/github/downloads/mustakshif/Asri/total?label=Downloads&color=477BF9&style=flat)](https://github.com/mustakshif/Asri/releases/latest)
 [![Stars](https://img.shields.io/github/stars/mustakshif/Asri?style=flat)](https://star-history.com/#mustakshif/Asri) -->
 
-<br/>
+# Asri · When the Interface Fades, the Mind Emerges
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v22.png)
+Asri is a modern theme designed for [SiYuan Note](https://github.com/siyuan-note/siyuan), crafting a space where visual distractions disappear and your thinking takes center stage - immersive, focused, and intuitively guided.
 
-# Asri, theme for SiYuan
+## Changelog
 
-An ultra-modern theme for [SiYuan Note](https://github.com/siyuan-note/siyuan), delivers an elegant, efficient, and personalized note-taking experience through its clean, intuitive design.
+To view the details of the latest release, please visit the [Releases Page](https://github.com/mustakshif/Asri/releases).
 
-## Latest Updates
+For the complete update history, refer to the [CHANGELOG.md](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md).
 
-### v3.4.1
+### Major Updates Overview
 
-- [Added dynamic progressive blur mask of "Topbar Fusion+" to improve top bar readability](https://github.com/mustakshif/Asri/issues/163)
-- Added text tooltips to experimental feature icons in the "Topbar Fusion+" menu
-- Adapted styling changes for SiYuan v3.1.29
-- Adjusted symbol spacing in the emoji panel
-- Fixed abnormal color display of emojis
-- Fixed background color anomaly in Safari browser with the "Aerisland" color scheme
+#### `Jul 1, 2025 - v3.5.0`
 
-### v3.4.0: Vision Unbound
+Theme colors now support "Follow cover image color", automatically extracting colors from document cover images or videos and switching theme colors in real-time for an immersive visual experience.
 
-![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp.png)
+#### `May 12, 2025 - v3.4.0: Vision Unbound`
 
-* Added "Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>", breaking the boundary between the topbar and the editor to deliver an immersive reading and editing experience (*This is an experimental feature; enable with caution. See footnote 3 for details*)
-* Adjusted the color scheme of the preset theme "EverBliss"
-* Removed redundant borders in the mobile menu
-* [Fixed an issue where block attributes obscured content on mobile](https://github.com/mustakshif/Asri/issues/162)
-* [Fixed a theme-related issue preventing the "Sidebar Memo" plugin from displaying](https://ld246.com/article/1746662147426/comment/1746667474590?r=Mustakshif#comments)
+![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp_v3.png)
 
-### ...
+"Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>": Introduced advanced material effects (luminous glass, progressive blur, acrylic), breaking the boundary between the top bar and the editor for an immersive reading and editing experience (experimental feature; enable with caution - see Footnote 3 for details).
 
-Check all updates [here](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md).
+#### `Apr 3, 2024 - v3.0.0`
+
+![color customization](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/asri-config-menu_en_US_v2.png)
+
+Refactored theme colors using a perceptual lightness-based color system, added supports for seamless adjustment of global color tones which can also follow system accent color (`#Windows` `#macOS`), providing a fully personalized note-taking experience.
+
+<p style="font-size: .5em"></p>
+<details>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">More Content</summary>
+
+#### `Feb 7, 2024 - v2.1.0`
+
+"Asri Full-width Display": implementing full-page width display of images, videos, widgets, superblocks, and database blocks, etc
+
+#### `Jan 24, 2024 - v2.0.0`
+
+"Tabbar Fusion": introduced a new top bar design seamlessly integrated with the tab bar, balancing aesthetics and efficiency
+
+#### `Dec 21, 2023 - v1.0.0`
+Theme release
+
+</details>
 
 ## Theme Features
 
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v22.png)
+
 ### 🪄 Sleek and Modern Design
 
- * 👨‍🎨 Unlimited theme color options allow for a fully personalized note-taking experience[^1]
+* 👨‍🎨 continuously adjustable theme color customization, allowing for over 18,000 visually distinct combinations[^1]
+* 🎨 Color scheme based on human brightness perception for harmonious, non-intrusive visuals
 * ⚖️ Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span> seamlessly integrates the top bar, the tab bar and the editor[^2]<svg style="vertical-align: super; height: .5em; width: .5em; padding-inline-start: .1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg>[^3]
 * 🧊 Glassmorphism enhances the visual hierarchy
 * 🌓 Support for light and dark modes and smooth transition between them
@@ -51,24 +66,32 @@ Check all updates [here](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.
 
 * 🔢 Tabular and database-friendly monospaced numerals improve reading efficiency
 * 👁️ High readability glyph variants tailored for note-taking scenarios[^4] `#macOS` `#iOS` `#iPadOS`
-* 🛋️ Different font smoothing for light and dark modes to maintain visual consistency in font weight `#macOS` `#iOS` `#iPadOS`
 * 🦋 Support for full-width display of images, videos, widgets, databases, superblocks and more, enhancing information display
-* 💬 Supports right-to-left layout, accommodating languages written from right to left, such as Arabic[^5]
-* 🚏 Document-level text direction settings cater to different language layout needs
 * 🧩 Streamlined superblock margins for simplified creation of grid and masonry layouts
 * 📝 Enhanced the layout details in database and attribute view for improved clarity and organization
+* 💬 Supports right-to-left layout, accommodating languages written from right to left, such as Arabic[^5]
+* 🚏 Document-level text direction settings cater to different language layout needs
+* 🌐 Multi-language support, specially adapted for Chinese, English and Arabic
 
-### 🧭 Convenient and Clear Navigation
+### 🧭 Clear and Convenient Navigation
 
-* 🗂️ Indent guides for file tree and outline
-* 🔍 Clear hierarchical display of search results and backlinks lists
-* ↕️ Enabled native scrollbar, which can auto-hide to minimize visual clutter[^6] `#macOS`
+* 🗂️ Well-structured document tree and indentation guide lines to help you quickly grasp content hierarchy
+* 🔍 Hierarchically organized search and backlink panels for intuitive contextual tracing and associative thinking
+* 🎯 Focus block indicators guide attention flow and enhance coherent output of thought sequences
+* ↕️ Native system scrollbars with auto-hide for a cleaner and more natural interface[^6] `#macOS`
 
-### 👆 Nimble and Smooth Interaction
+### 👆 Fluid and Lively Interactions
 
-* ⏱️ Optimized timing of animations for better interface feedback, reducing user distraction
-* 💫 Appropriate and lively animations enrich the interactive experience
-* 🚀 A high level of smooth performance maintained
+* 💫 Carefully tuned lively animations add warmth and rhythm to interactions
+* ⏱️ Refined animation triggers and frequency enhance interface response rhythm and minimize attention drift
+* 🚀 High-performance global animations ensure uninterrupted immersive experience
+
+### 🗜️ Meticulous Visual Details
+
+* 🌁 Global gradient fades soften element edges and reduce visual fragmentation
+* 🌄 Parallax scrolling for header images, creating a layered and minimalist spatial atmosphere
+* 🛋️ Optimized font rendering strategies per light/dark mode to maintain consistent perceived weight `#macOS` `#iOS` `#iPadOS`
+* 🚥 Subtle repositioning of window control buttons for enhanced native system alignment `#macOS`
 
 [^1]: This new feature is only available on platforms that support `oklch()` and its relative color syntax. Some devices will still use color schemes in previous versions due to lower browser kernel versions.
 
@@ -115,6 +138,7 @@ Click on the `Appearance Mode` icon in the top right corner to open the Asri the
 
 * `Customize theme color`: Use a custom color as the base color for the theme and apply a corresponding color scheme directly based on it.
 * `Follow system accent color`: Use the system's accent color as the base theme color. This option is available on `Windows` and `macOS` desktop platforms.
+* `Follow cover image color`: Extract color from the cover image (image, video) of the current active document as the theme base color.
 * `Chroma slider`: Adjust the chroma of backgrounds and regular texts, with a range of `0 - 5`, where `0` represents pure grayscale, and the default is `1`.
 
 ### 📐 Custom Attributes
@@ -136,7 +160,7 @@ To enable full-width display, you can click on the block icons for **Document Bl
 
 <p style="font-size: .5em"></p>
 <details>
-<summary style="opacity: .6; font-weight: 600; font-size: .8em">More</summary>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">More Details</summary>
 This feature relies on the custom attributes of SiYuan, so you can also manually configure the block attributes. The attribute name and values are shown in the table below:
 
 | Attribute | Value | Description |
@@ -153,7 +177,7 @@ To apply this property to a document, you can click on the block icon for **Docu
 
 <p style="font-size: .5em"></p>
 <details>
-<summary style="opacity: .6; font-weight: 600; font-size: .8em">More</summary>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">More Details</summary>
 
 | Attribute | Value | Description |
 | ------ | ------ | ------ |
@@ -164,7 +188,7 @@ To apply this property to a document, you can click on the block icon for **Docu
 
 ## Acknowledgements
 
-The theme development process drew inspiration from the following sources, and I would like to express my gratitude to their authors:
+The theme’s early development drew inspiration from the following sources, for which I would like to express my gratitude to their authors:
 
 | Reference Content | Source | Author |
 | --- | --- | --- |
@@ -172,13 +196,9 @@ The theme development process drew inspiration from the following sources, and I
 | - Dots before sidebar panel list items<br />- Outline list item icons<br />- Status bar<br />- Seach list<br />- Table column width<br />- Multi-column `/` menu<br />- Bottom dock & status bar mergence<br />- Multilevel list style | Theme: [Savor](https://github.com/royc01/notion-theme)         | [Roy](https://github.com/royc01)           |
 | - Topbar-tabbar mergence<br />- File tree indent guides<br />- MutationObserver related functions | Theme: [Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
 
-（The order in the list above does not imply any ranking）
-
 ## Feedbacks & suggestions
 - Create an issue or PR at [the project page](https://github.com/mustakshif/Asri/)
 - Send an email to mustakshif@icloud.com
-
-## Notes
 
 <!--## Star History
 

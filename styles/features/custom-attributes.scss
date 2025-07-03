@@ -1,13 +1,16 @@
 @use "../base" as *;
 
-// full-width display ——————————————————
-
+/*
+ * 全宽显示
+ */
 .protyle-wysiwyg {
   --protyle-spacing-compatible: var(--protyle-spacing, 24px);
 }
 
 :is(.body-asri--mobile, .layout__center) .protyle-wysiwyg {
-  // 图片 ——————————————————————
+  /*
+   * 图片
+   */
   &[custom-afwd="all"] > .p:not([custom-afwd="off"]),
   &[custom-afwd~="p"] > .p:not([custom-afwd="off"]),
   > .p[custom-afwd="on"] {
@@ -83,7 +86,7 @@
         > span {
           &:not(:empty) {
             // --stroke-width: .5px;
-            // --stroke-clr: rgba(from var(--b3-theme-background) r g b / .8);
+            // --stroke-clr: rgb(from var(--b3-theme-background) r g b / .8);
             background-color: var(--b3-theme-background);
             padding: 0.5em;
             max-width: fit-content;
@@ -102,7 +105,9 @@
     }
   }
 
-  // iframe ———————————————————
+  /* 
+   * iframe
+   */
 
   &[custom-afwd="all"] > .iframe:not([custom-afwd="off"]),
   &[custom-afwd~="iframe"] > .iframe:not([custom-afwd="off"]),
@@ -167,7 +172,9 @@
     }
   }
 
-  // 数据库 ——————————————————
+  /* 
+   * 数据库
+   */
 
   &[custom-afwd="all"] > .av:not([custom-afwd="off"]),
   &[custom-afwd~="db"] > .av:not([custom-afwd="off"]),
@@ -188,8 +195,11 @@
         transition: padding 0.2s;
       }
 
-      .av__scroll::-webkit-scrollbar {
-        display: none;
+      .av__scroll {
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
 
       .av__colsticky {
@@ -228,7 +238,9 @@
     }
   }
 
-  // 超级块 ————————————————————
+  /* 
+   * 超级块
+   */
 
   &[custom-afwd="all"] > .sb[data-sb-layout="col"]:not([custom-afwd="off"]),
   &[custom-afwd~="sb"] > .sb[data-sb-layout="col"]:not([custom-afwd="off"]),
@@ -236,7 +248,10 @@
     // content-visibility: visible;
 
     > :first-child {
-      margin-left: calc(var(--protyle-spacing-compatible) * -1 + min(24px, var(--protyle-spacing-compatible)));
+      margin-left: calc(
+        var(--protyle-spacing-compatible) * -1 +
+          min(24px, var(--protyle-spacing-compatible))
+      );
       transition: margin 0.2s;
 
       // >*,
@@ -249,7 +264,10 @@
     }
 
     > :nth-last-child(1 of [data-node-id]) {
-      margin-right: calc(var(--protyle-spacing-compatible) * -1 + min(24px, var(--protyle-spacing-compatible)));
+      margin-right: calc(
+        var(--protyle-spacing-compatible) * -1 +
+          min(24px, var(--protyle-spacing-compatible))
+      );
 
       // >*, // 导致 tabbar 滚动卡顿 + 行内备注 hover 状态取消时动画卡顿
       // .sb,
@@ -269,7 +287,9 @@
     // }
   }
 
-  // 表格块 ————————————————————
+  /* 
+   * 表格
+   */
 
   &[custom-afwd="all"] > .table:not([custom-afwd="off"]),
   &[custom-afwd~="t"] > .table:not([custom-afwd="off"]),
@@ -285,6 +305,8 @@
     > div:first-child {
       margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 4px);
       padding: 0 calc(var(--protyle-spacing-compatible));
+
+      scrollbar-width: none;
 
       &::-webkit-scrollbar {
         display: none;
@@ -348,7 +370,9 @@
 //     }
 // }// 思源 3.0.6 已修复
 
-// text direction ———————————————————————
+/* 
+ * text direction
+ */
 [custom-tdir="rtl"] {
   direction: rtl;
 }

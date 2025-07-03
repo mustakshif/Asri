@@ -1,3 +1,147 @@
+### v3.5.0
+
+- 新增：主题色跟随题头图，支持图片、视频和默认题头图取色
+- 支持使用预设配色方案时直接切换至自定义配色
+- 「顶栏融合+」适配更多插件
+- 优化对话框标题的垂直方向对齐
+- 优化提示工具条圆角和内边距
+- [修复首次加载文档时或刷新后偶现滚动失败的问题](https://github.com/mustakshif/Asri/issues/173)
+- 修复集市包信息页面标题换行会与下方内容重叠的问题
+- 修复阿拉伯语界面「极地」配色下边框线位置
+- 修复跟随系统强调色失效的问题
+
+<br />
+
+- Added: Theme color now adapts to cover images, supporting color extraction from images, videos, and default headers.
+- Supported switching directly to custom color schemes when using preset color palettes.
+- Enhanced compatibility of "Topbar Fusion+" with more plugins.
+- Improved vertical alignment of dialog titles.
+- Optimized corner radius and padding of tooltips.
+- [Fixed an issue where scrolling occasionally failed after initial document load or refresh](https://github.com/mustakshif/Asri/issues/173).
+- Fixed overlapping between wrapped titles and content on marketplace package info pages.
+- Corrected border line positioning in the "Polar" color scheme for Arabic UI.
+- Fixed the ineffectiveness of system accent color following.
+
+---
+
+### v3.4.8
+
+- [修复 Windows 端窗口控制按钮无法点击的问题](https://github.com/mustakshif/Asri/issues/175)
+
+<br />
+
+- [Fixed an issue where window control buttons were unclickable on Windows](https://github.com/mustakshif/Asri/issues/175)
+
+---
+
+### v3.4.7
+
+- 移除底栏避让相关 JS 代码
+- 修复 PDF 阅读器滚动时闪烁的问题
+- [修复折叠块指示在部分设备上的兼容性问题](https://github.com/mustakshif/Asri/issues/172)
+
+<br />
+
+- Removed the bottom bar avoidance-related JS code
+- Fixed flickering issues when scrolling in the PDF viewer
+- [Fixed compatibility issues with fold block indicators on certain devices](https://github.com/mustakshif/Asri/issues/172)
+
+---
+
+### v3.4.6
+
+- 「顶栏融合+」新增「光感玻璃」材质，动态反映编辑器光源
+- 改进「顶栏融合+」亚克力材质质感效果
+- [提升页签切换流畅度](https://github.com/mustakshif/Asri/issues/171)
+- [「顶栏融合+」适配「文档流」插件](https://github.com/mustakshif/Asri/issues/168#issuecomment-2961126706)
+- [修复代码块无法横向滚动的问题](https://github.com/mustakshif/Asri/issues/170)
+
+<br/>
+
+- Added "Luminous Glass" material to "Topbar Fusion+", dynamically reflecting editor light sources
+- Improved the "Acrylic" effect's texture in "Topbar Fusion+"
+- [Enhanced tab switching smoothness](https://github.com/mustakshif/Asri/issues/171)
+- [Adapted "Topbar Fusion+" for the "Document Flow" plugin](https://github.com/mustakshif/Asri/issues/168#issuecomment-2961126706)
+- [Fixed the issue where code blocks couldn&apos;t scroll horizontally](https://github.com/mustakshif/Asri/issues/170)
+
+---
+
+### v3.4.5
+
+- 新增预设主题配色「极地」
+- [「顶栏融合+」适配 「Keemap」、「反链过滤面板」插件](https://github.com/mustakshif/Asri/issues/168)
+- 「顶栏融合+」适配导出预览模式
+- 修复部分按钮文字颜色
+
+<br />
+
+- Added new preset theme color "Polar"
+- [Adapted "Topbar Fusion+" for "Keemap" and "Backlink Panel" plugins](https://github.com/mustakshif/Asri/issues/168)
+- Adapted "Topbar Fusion+" for export preview mode
+- Fixed text color for some buttons
+
+---
+
+### v3.4.4
+
+- 「顶栏融合+」适配更多插件
+- 优化集市包侧栏信息展示效果
+- 优化嵌入块中代码块语言标识位置
+- 导出 PDF 界面适配主题色
+- 改善编辑器部分元素的渲染性能
+- 调整「星漪」暗色模式强调色
+- 适配思源 v3.1.32 样式改动
+- 修复部分按钮文字颜色异常问题
+
+<br />
+
+- Adapted "Top Bar Fusion+" for more plugins
+- Optimized the display effect of package information in the marketplace sidebar
+- Improved the position of code block language identifiers in embedded blocks
+- Adjusted the PDF export interface to match the theme color
+- Enhanced rendering performance for certain elements in the editor
+- Modified the accent color in "Stellula" dark mode
+- Adapted to style changes in SiYuan v3.1.32
+- Fixed abnormal text color issues for some buttons
+
+---
+
+### v3.4.3
+
+- 新增预设主题配色「星漪」
+- 优化滚动条颜色
+- 修复移动端部分子菜单无法滚动的问题
+- 修复部分面板上下间距问题
+- 修复打开搜索窗口时内容向上移位的问题
+
+<br />
+
+- Added new preset theme color "Stellula"
+- Optimized the scrollbar color
+- Fixed scrolling issue for some submenus on mobile devices
+- Adjusted vertical spacing for certain panels
+- Fixed content shift issue when opening the search window
+
+---
+
+### v3.4.2
+
+- 「顶栏融合+」适配更多插件
+- [新增表格显示样式随编辑器宽度动态调整](https://github.com/mustakshif/Asri/issues/166)
+- 斜杠菜单显示样式改为随编辑器动态调整
+- 优化列表项中引述块的右边距
+- [修复主题配置损坏时无法储存配置的问题](https://github.com/mustakshif/Asri/issues/165)
+
+<br />
+
+- Adapted "Topbar Fusion+" for more plugins
+- [Added dynamic adjustment of table display style based on editor width](https://github.com/mustakshif/Asri/issues/166)
+- Changed the slash menu display style to dynamically adjust with the editor
+- Optimized the right margin of blockquotes in list items
+- [Fixed an issue where configurations couldn&apos;t be saved when theme settings were corrupted](https://github.com/mustakshif/Asri/issues/165)
+
+---
+
 ### v3.4.1
 
 - [「顶栏融合+」渐进模糊遮罩现支持动态变化，提高顶栏可读性](https://github.com/mustakshif/Asri/issues/163)

@@ -4,6 +4,8 @@
 // 侧栏面板总体样式
 .file-tree {
   .block__icons {
+    border-bottom: none;
+
     .block__logo {
       .block__logoicon {
         visibility: hidden;
@@ -239,7 +241,9 @@
 //     }
 // } // 调整窗口大小后侧栏面板宽度异常无法恢复
 
-// 其他模块 ——————————————
+/* 
+ * 其他模块 
+ */
 .sy__outline {
   .b3-list-item[title] {
     display: none;

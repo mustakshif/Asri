@@ -1,5 +1,6 @@
 {
     "followSysAccent": "Follow system accent color",
+    "followCoverImgColor": "Follow cover image color",
     "pickColor": "Customize theme color",
     "asriChroma": "Chroma: ",
     "afwdDocMenuLabel": "Full-width Display",
@@ -20,9 +21,12 @@
     "prst-palette-auriflow": "Auriflow",
     "prst-palette-aerisland": "Aerisland",
     "prst-palette-zerith": "Zerith",
+    "prst-palette-polar": "Polar",
+    "prst-palette-stellula": "Stellula",
     "topbarFusionPlus": "Topbar Fusion+",
     "tfp-progressive": "Progressive blur",
     "tfp-acrylic": "Acrylic",
+    "tfp-luminous": "Luminous glass",
     "tfp-disable": "Disable",
     "tfp-experimental": "Experimental feature; enable with caution.\nFor more information please refer to footnote 3 of the theme doc."
 }

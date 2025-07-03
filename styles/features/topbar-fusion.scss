@@ -5,7 +5,7 @@ body:not(.body-asri--mobile, .body--window) {
   --topbar-z-index: 2;
   --avoid-topbar: calc(var(--toolbar-height));
 
-  > #toolbar {
+  > .toolbar {
     background-color: transparent;
     border-bottom-color: transparent;
     margin-bottom: calc(var(--toolbar-height) * -1);
@@ -13,7 +13,8 @@ body:not(.body-asri--mobile, .body--window) {
     pointer-events: none;
     app-region: drag;
 
-    #drag {
+    > .fn__ellipsis // #drag
+    {
       min-width: unset;
       opacity: 0;
     }
@@ -22,9 +23,9 @@ body:not(.body-asri--mobile, .body--window) {
       pointer-events: visibleFill;
       app-region: no-drag;
       height: auto;
-    }
+    } // fix https://github.com/mustakshif/Asri/issues/175
 
-    #AsriPluginsIconsDivider {
+    > #AsriPluginsIconsDivider {
       width: auto;
       height: 1px;
       border-radius: 6px;
@@ -35,12 +36,12 @@ body:not(.body-asri--mobile, .body--window) {
       z-index: -1;
     }
 
-    #AsriTopbarLeftSpacing {
+    > #AsriTopbarLeftSpacing {
       width: var(--topbar-left-spacing);
       flex-shrink: 0;
     }
 
-    #AsriTopbarRightSpacing {
+    > #AsriTopbarRightSpacing {
       width: var(--topbar-right-spacing);
       flex-shrink: 0;
     }
@@ -50,7 +51,7 @@ body:not(.body-asri--mobile, .body--window) {
   .layout__center .layout-tab-bar {
     margin: 10px;
 
-    &:not(&--readonly) {
+    &:not(.layout-tab-bar--readonly) {
       margin-right: 4px;
     }
 
@@ -58,14 +59,14 @@ body:not(.body-asri--mobile, .body--window) {
       margin-left: 0;
       margin-right: 8px;
 
-      .item--readonly {
+      > .item--readonly {
         justify-content: end;
 
-        .fn__flex-1:nth-child(2) {
+        > .fn__flex-1 {
           flex-grow: 0;
         }
 
-        .block__icon:hover {
+        > .block__icon:hover {
           background-color: transparent;
         }
       }
@@ -76,7 +77,7 @@ body:not(.body-asri--mobile, .body--window) {
     margin: 8px auto;
   }
 
-  // 侧栏、侧栏面板 ——————————————————————————
+  /* 侧边栏 */
   #dockLeft {
     padding-top: calc(var(--avoid-topbar) - 6px);
   }
@@ -221,9 +222,12 @@ body:not(.body-asri--mobile, .body--window) {
     }
   }
 
-  // 禁用拖动的区域 ————————————————————————————————————
+  /*
+   * 禁用拖动的区域
+   */
   // 页签栏
-  .layout-tab-bar--readonly .block__icon,
+  :is(
+    .layout-tab-bar--readonly .block__icon,
     .layout-tab-bar:not(.layout-tab-bar--readonly),
 
     //菜单
@@ -256,7 +260,8 @@ body:not(.body-asri--mobile, .body--window) {
 
     .protyle-util,
 
-    .dock__item {
+    .dock__item
+  ) {
     app-region: no-drag;
   }
 }
@@ -297,12 +302,11 @@ body:not(.body-asri--mobile, .body--window) {
   }
 }
 
-#AsriTopbarLeftSpacing,
-#AsriTopbarRightSpacing,
-#AsriPluginsIconsDivider {
+:is(#AsriTopbarLeftSpacing, #AsriTopbarRightSpacing, #AsriPluginsIconsDivider) {
   svg,
   use {
-    width: 0;
-    height: 0;
+    // width: 0;
+    // height: 0;
+    display: none;
   }
 }

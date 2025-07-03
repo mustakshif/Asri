@@ -1,7 +1,7 @@
 import { getBlockAttrs, setBlockAttrs } from "../util/api";
 import { debounce, querySelectorAsync } from "../util/misc";
 import { wndElements } from "../util/interfaceState";
-import { i18n as _i18n, loadI18n } from "./asriPalettes";
+import { i18n as _i18n, loadI18n } from "./asriConfigs";
 
 export const debouncedCalcProtyleSpacings = debounce(calcProtyleSpacings, 200);
 const afwdBlockTypes = ["NodeParagraph", "NodeTable", "NodeAttributeView", "NodeSuperBlock", "NodeVideo", "NodeWidget", "NodeIFrame"];

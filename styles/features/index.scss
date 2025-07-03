@@ -1,6 +1,7 @@
 @use "colorful-asri";
 @use "rtl";
 @use "high-readability-variants";
+// @use "tree-branch-indents.scss";
 // @use 'panda-scheme';
 // @use 'mode-transition';
 // @use 'hide-toolbar';
@@ -23,3 +24,6 @@
 @use "sticky-stacks";
 // @use 'floating-docks';
 // @use 'layout-bento';
+// @use "layout-paper";
+@use "vibrancy.scss";
+// @use "floating-tabbar";

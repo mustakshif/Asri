@@ -1,11 +1,22 @@
 import { AsriEventListener } from "../util/eventListeners";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/interfaceState";
-import { debounce, isProtyle, querySelectorAsync } from "../util/misc";
+import { debounce, querySelectorAsync } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
 import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
-import { createBarModeMenuItems, followSysAccentColor, getSystemAccentColor, loadI18n, loadThemePalette, paletteMenuItemClickEventListener, tfpMenuItemCallbackEventListener, unloadThemePalette } from "./asriPalettes";
-import { docBodyMoCallback } from "./dialog";
+import {
+  asriConfigs,
+  createBarModeMenuItems,
+  curMode,
+  followSysAccentColor,
+  getI18n,
+  getSystemAccentColor,
+  loadThemePalette,
+  paletteMenuItemClickEventListener,
+  tfpMenuItemCallbackEventListener,
+  unloadThemePalette,
+} from "./asriConfigs";
+import { updateCoverImgColor } from "./asriConfigs/coverImgColor";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { removeFocusedBlockClass as removeFocusedBlockClassName, selectionChangeCallback } from "./focusedBlock";
@@ -13,12 +24,25 @@ import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstitio
 import { removeProtyleStatusClassName, toggleProtyleStatus } from "./protyleStatus";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
-import { initStickyStacks, unloadStickyStacks } from "./stickyStacks";
-import { avoidOverlappingWithStatus, debouncedStatusPosition, removeStatusStyles, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
-import { calcTabbarSpacings, calcTopbarSpacings, createTopbarFusionElements, handleMacFullScreen, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
+import {
+  avoidOverlappingWithStatus,
+  debouncedStatusPosition,
+  removeStatusStyles,
+  setStatusHeightVar,
+  unloadAvoidOverlappingWithStatus,
+} from "./status";
+import {
+  calcTabbarSpacings,
+  calcTopbarSpacings,
+  createTopbarFusionElements,
+  handleMacFullScreen,
+  recalcDragInitials,
+  unloadTopbarFusion,
+  updateDragRect,
+} from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
-const globalClickEventListener = new AsriEventListener(lowFreqEventsCallback);
+const globalMouseupEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalDragEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalKeyupEventListener = new AsriEventListener(lowFreqEventsCallback);
 const winFocusChangeEventListener = new AsriEventListener(winFocusChangeCallback);
@@ -27,7 +51,7 @@ const selectionChangeEventListener = new AsriEventListener(selectionChangeCallba
 const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
 const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
 const winRo = new AsriResizeObserver(winRoCallback);
-const themeUpdateListener = new AsriEventListener(themeUpdateCallback);
+const themeUpdateListener = new AsriEventListener(appearanceModeUpdateCallback);
 
 let isWinResizing = false,
   fromFullscreen: boolean;
@@ -38,10 +62,11 @@ export async function loadAsriJSModules() {
   useMacSysScrollbar();
   applyTrafficLightPosition();
   setStatusHeightVar();
-  // startDefaultTranstition(loadThemePalette);
-  loadThemePalette(); // https://github.com/mustakshif/Asri/issues/85
   toggleProtyleStatus();
-  await loadI18n();
+  // startDefaultTranstition(loadThemePalette);
+  await getI18n();
+  loadThemePalette(); // https://github.com/mustakshif/Asri/issues/85
+
   if (!env.isMobile) {
     await updateWndEls();
     await updateDragRect("initials");
@@ -49,8 +74,8 @@ export async function loadAsriJSModules() {
   }
   updateStyles();
   addDockbClassName();
-  avoidOverlappingWithStatus();
-  globalClickEventListener.start(document, "mouseup");
+  // avoidOverlappingWithStatus();
+  globalMouseupEventListener.start(document, "mouseup");
   globalDragEventListener.start(document, "dragend");
   globalKeyupEventListener.start(document, "keyup", true);
   winFocusChangeEventListener.start(window, "focus");
@@ -86,7 +111,7 @@ export async function unloadAsriJSModules(completeUnload = true) {
     unloadThemePalette();
   }
 
-  globalClickEventListener.remove(document, "mouseup");
+  globalMouseupEventListener.remove(document, "mouseup");
   globalDragEventListener.remove(document, "dragend");
   globalKeyupEventListener.remove(document, "keyup", true);
   winFocusChangeEventListener.remove(window, "focus");
@@ -104,6 +129,8 @@ export async function unloadAsriJSModules(completeUnload = true) {
     lytCenterRo.disconnect();
     winRo.disconnect();
   }
+
+  document.querySelectorAll("#snippetCSS-asri-var-root")?.forEach((el) => el.remove());
 }
 function lowFreqEventsCallback(e: Event) {
   // console.log(e);
@@ -129,13 +156,19 @@ async function updateStyles(e?: Event | KeyboardEvent) {
   }
 
   // run on mouse events
-  else if (e.type.startsWith("mouse") || e.type.startsWith("drag") || (e instanceof KeyboardEvent && (e.key === "Control" || e.key === "Alt" || e.key === "Shift" || e.key === "Meta"))) {
+  else if (
+    e.type.startsWith("mouseup") ||
+    e.type.startsWith("drag") ||
+    (e instanceof KeyboardEvent && (e.key === "Control" || e.key === "Alt" || e.key === "Shift" || e.key === "Meta"))
+  ) {
     lowFreqStyleUpdates();
 
-    setTimeout(() => {
-      recalcDragInitials();
-      calcTopbarSpacings(0, false, doesTopBarOverflow).then(calcTabbarSpacings);
-    }, 0);
+    Promise.resolve()
+      .then(() => {
+        recalcDragInitials();
+        return calcTopbarSpacings(0, false, doesTopBarOverflow);
+      })
+      .then(calcTabbarSpacings);
   }
 
   function lowFreqStyleUpdates() {
@@ -147,7 +180,7 @@ async function updateStyles(e?: Event | KeyboardEvent) {
       await updateWndEls();
       calcProtyleSpacings();
       addDockbClassName();
-      avoidOverlappingWithStatus();
+      // avoidOverlappingWithStatus();
       !env.isIOSApp && followSysAccentColor && env.supportOklch && getSystemAccentColor();
     }, 0);
   }
@@ -172,6 +205,8 @@ async function globalClassNameMoCallback(mutationList: MutationRecord[], observe
       const docId = target.getAttribute("data-id") ?? undefined;
       // if (!docId) return;
       toggleProtyleStatus(docId);
+
+      docId && asriConfigs[curMode].followCoverImgColor && updateCoverImgColor(docId);
     }
 
     if (target.classList.contains("layout__wnd--active")) {
@@ -184,6 +219,8 @@ async function globalClassNameMoCallback(mutationList: MutationRecord[], observe
       const docId = targetDoc.getAttribute("data-id") ?? undefined;
       // if (!docId) return;
       toggleProtyleStatus(docId);
+      
+      docId && asriConfigs[curMode].followCoverImgColor && updateCoverImgColor(docId);
     }
   }
 }
@@ -230,7 +267,7 @@ const debouncedHandleWinResizeEnd = debounce(() => {
   // console.log('debouncedwinRoCallback', isWinResizing);
 }, 200);
 
-function themeUpdateCallback(e: MediaQueryListEvent) {
+function appearanceModeUpdateCallback(e: MediaQueryListEvent) {
   // console.log('系统主题变化:', e.matches ? '暗色' : '亮色')
   startFadeInFadeOutTranstition(600, () => {}, 200);
 }

@@ -3,44 +3,59 @@
 <!-- [![Releases](https://img.shields.io/github/downloads/mustakshif/Asri/total?label=Downloads&color=477BF9&style=flat)](https://github.com/mustakshif/Asri/releases/latest)
 [![Stars](https://img.shields.io/github/stars/mustakshif/Asri?style=flat)](https://star-history.com/#mustakshif/Asri) -->
 
-<br />
+# Asri · 让界面隐退，让思维登场
 
-![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v22.png)
+Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/siyuan)主题，以隐形设计构筑沉浸空间，为你带来专注、优雅、直觉驱动的笔记体验。
 
-# Asri, theme for SiYuan
+## 更新日志
 
-Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/siyuan)主题，以简洁、符合直觉的设计，带来优雅、高效、个性化的笔记体验。
+查看最新版本更新细节，请访问[发布页](https://github.com/mustakshif/Asri/releases)。
 
-## 最近更新
+查看完整更新日志，请访问 [CHANGELOG.md](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md)。
 
-### v3.4.1
+### 重大更新一览
 
-- [「顶栏融合+」渐进模糊遮罩现支持动态变化，提高顶栏可读性](https://github.com/mustakshif/Asri/issues/163)
-- 「顶栏融合+」菜单「实验性功能」图标添加文本提示
-- 适配思源 v3.1.29 样式改动
-- 调整表情符号面板符号间距
-- 修复表情符号颜色异常的问题
-- 修复Safari浏览器「空屿」配色背景色异常的问题
+#### `25/07/01 - v3.5.0`
 
-### v3.4.0：视界无界
+主题色支持「跟随题头图颜色」，自动提取文档题头图片或视频的颜色，并实时切换主题配色，营造沉浸式的视觉体验
 
-![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp.png)
+#### `25/05/12 - v3.4.0：视界无界`
 
-* 新增「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」，突破顶栏与编辑区界限，带来沉浸式的阅读与编辑体验（*此为实验性功能，请谨慎启用；详请见脚注 3*）
-* 调整预设配色方案「岁禧」的配色
-* 去除移动端菜单的多余边框
-* [修复移动端块属性遮挡内容的问题](https://github.com/mustakshif/Asri/issues/162)
-* [修复主题导致的「侧栏备注」插件无法显示的问题](https://ld246.com/article/1746662147426/comment/1746667474590?r=Mustakshif#comments)
+![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp_v3.png)
 
-### ...
+「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」：引入高级材质效果（光感玻璃、渐进模糊、亚克力），突破顶栏与编辑区界限，沉浸式的阅读与编辑体验（*实验性功能，请谨慎启用；详请见脚注 3*）
 
-全部更新日志见[这里](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md)。
+#### `24/04/03 - v3.0.0`
+
+![color customization](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/asri-config-menu_zh_CN_v2.png)
+
+采用基于感知亮度的色彩系统重构主题配色，全局色调支持无级调节，也可跟随系统强调色（`#Windows` `#macOS`），带来完全个性化的笔记体验
+
+<p style="font-size: .5em"></p>
+<details>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">更多内容</summary>
+
+#### `24/02/07 - v2.1.0`
+
+「全宽显示」自定义属性：实现正文图片、视频、挂件、超级块、数据库块等撑满页宽显示
+
+#### `24/01/24 - v2.0.0`
+
+「顶栏融合」：全新顶栏设计，与页签栏无缝融合，兼顾美感与效率
+
+#### `23/12/21 - v1.0.0`
+主题发布
+
+</details>
 
 ## 主题特性
 
+![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v22.png)
+
 ### 🪄 简洁现代的设计
 
-* 👨‍🎨 主题色无极调节，带来完全个性化的笔记体验[^1]
+* 👨‍🎨 主题色支持无极调节，可生成超过 1.8 万种具可视差异的配色组合，为你打造高度个性化的笔记空间[^1]
+* 🎨 采用基于人眼感知亮度的色彩模型，科学设计整体配色系统，呈现协调柔和的视觉效果
 * ⚖️ 顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>，实现顶栏与页签栏和编辑器的无缝整合[^2]<svg style="vertical-align: super; height: .5em; width: .5em; padding-inline-start: .1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg>[^3]
 * 🧊 引入毛玻璃材质，带来富有层次感的视觉体验
 * 🌓 支持亮色模式和暗色模式、模式切换平滑过渡
@@ -51,24 +66,32 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 * 🔢 为表格、数据库启用等宽数字变体，提升阅读效率
 * 👁️ 启用高可读性字形变体，适应笔记场景[^4] `#macOS` `#iOS` `#iPadOS`
-* 🛋️ 亮暗色模式分设字体平滑模式，保持视觉字重一致性 `#macOS` `#iOS` `#iPadOS`
 * 🦋 支持图片、视频、挂件、数据库、超级块等的全宽显示，提高信息展示效率
-* 💬 支持从右至左布局，适配阿拉伯语等从右至左书写的语言[^5]
-* 🚏 支持文档级别的文字方向设定，满足不同语言的排版需求
 * 🧩 优化超级块内外部间距，轻松实现网格、瀑布流布局
 * 📝 优化数据库和属性面板的布局细节，内容展现更清晰有序
+* 💬 支持从右至左布局，适配阿拉伯语等从右至左书写的语言[^5]
+* 🚏 支持文档级别的文字方向设定，满足不同语言的排版需求
+* 🌐 多语言支持，特别适配中文、英语和阿拉伯语
 
 ### 🧭 便捷清晰的导航
 
-* 🗂️ 添加文档树、大纲缩进参考线
-* 🔍 层级分明的搜索列表、反链列表展示
-* ↕️ 采用系统原生滚动条，可自动隐藏，界面更清爽[^6] `#macOS`
+* 🗂️ 结构清晰的文档树与大纲缩进参考线，助你快速定位内容结构
+* 🔍 搜索与反链列表层级分明，便于追溯上下文与联想路径
+* 🎯 聚焦块提示引导注意力流动，强化思维链条的连贯输出
+* ↕️ 采用系统原生滚动条，自动隐藏，界面更清爽自然[^6] `#macOS`
 
 ### 👆 灵动流畅的交互
 
-* ⏱️ 优化动画响应时机，改善界面反馈频率，减少用户注意力分散
-* 💫 适当加入鲜活动效，丰富交互体验
-* 🚀 保持较高的流畅度表现
+* 💫 精心调配活泼动效，增强交互的情感温度与节奏感
+* ⏱️ 优化动效触发时机与频率，提升界面反馈的节奏控制，避免注意力漂移
+* 🚀 全局动画保持高流畅度，保障沉浸体验不被打断
+
+### 🗜️ 精雕细琢的细节
+
+* 🌁 全局溢出渐隐处理，柔化元素边界，减少界面割裂感
+* 🌄 题头图支持视差滚动，营造富有层次的极简空间感
+* 🛋️ 在亮暗色模式下分别启用优化字体渲染策略，保持视觉字重一致性 `#macOS` `#iOS` `#iPadOS`
+* 🚥 微调窗口控制按钮（红绿灯）位置，强化原生系统的一致观感 `#macOS`
 
 [^1]: 新特性仅在支持 `oklch()` 及其相对颜色语法的平台有效。部分设备由于浏览器内核版本较低，仍采用旧版本配色方案。
 
@@ -82,10 +105,10 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
     此外还可能引发其他问题，例如：
 
-    1. 与自定义样式代码产生冲突
-    2. 与部分插件存在兼容性问题
-    3. 顶栏文字/图标可读性下降
-    4. 页面运行效率降低
+    4. 与自定义样式代码产生冲突
+    5. 与部分插件存在兼容性问题
+    6. 顶栏文字/图标可读性下降
+    7. 页面运行效率降低
 
     使用过程中如遇问题请及时停用此功能。
 
@@ -115,7 +138,9 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 * `自定义主题色`：使用自选色作为主题基准色，生成相应配色方案并直接应用
 * `跟随系统强调色`：使用系统强调色作为主题基准色，仅在 Windows 和 macOS 桌面端可用
+* `跟随题头图颜色`：从当前活跃文档的题头图（图片、视频）取色作为主题基准色
 * `色度滑块`：调整背景和普通文本的色彩浓度，取值范围为 `0 - 5`，`0` 表示纯灰度色，默认值为 `1`
+
 
 ### 📐 自定义属性
 
@@ -150,8 +175,6 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 如需进行相应配置，可点击**文档块**块标，在弹出的菜单中选择 `文档排版方向` 即可。
 
-
-
 <p style="font-size: .5em"></p>
 <details>
 <summary style="opacity: .6; font-weight: 600; font-size: .8em">更多信息</summary>
@@ -165,7 +188,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 鸣谢
 
-主题制作过程中参考借鉴了以下来源，在此对各位作者表示感谢：
+主题在早期制作阶段参考借鉴了以下来源，在此对各位作者表示感谢：
 
 | 借鉴内容 | 来源 | 作者 |
 |--- | --- | --- |
@@ -173,13 +196,9 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 | - 侧栏面板列表项前圆点<br />- 大纲列表标题图标<br />- 状态栏<br />- 搜索列表<br />- 表格列宽<br />- `/` 菜单多栏布局<br />- 底栏和状态栏合并<br />- 多级列表序号 | 主题：[Savor](https://github.com/royc01/notion-theme) | [Roy](https://github.com/royc01) |
 | - 顶栏页签栏合并<br />- 文档树缩进线<br />- DOM 变动观察相关函数 | 主题：[Rem Craft](https://github.com/svchord/Rem-Craft) | [Seven Chord](https://github.com/svchord) |
 
-(以上排名不分先后)
-
 ## 反馈和建议
 - [项目主页](https://github.com/mustakshif/Asri/)提交 issue 或 PR
 - 发送邮件至 mustakshif@icloud.com
-
-## 其他
 
 <!--## Star History
 

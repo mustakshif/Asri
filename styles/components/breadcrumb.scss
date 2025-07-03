@@ -7,6 +7,10 @@
   color: var(--b3-theme-on-surface);
   // background-color: transparent; //全屏视图下是透明的
 
+  &__bar {
+    scrollbar-width: none;
+  }
+
   // //面包屑居中
   // &::before {
   //     content: '';

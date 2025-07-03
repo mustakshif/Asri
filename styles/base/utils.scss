@@ -7,3 +7,8 @@
 
   @return $reversed;
 }
+
+@function negateForRTL($value) {
+  // gnf 值，用于在 rtl 模式下反转值。rtl 模式下 --gnf 的值为 -1
+  @return calc(var(--gnf, 1) * #{$value});
+}

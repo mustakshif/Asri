@@ -26,7 +26,6 @@ export function debounce<T extends (...args: any[]) => any>(func: T, delay = 200
 
 // export function debounce(fn: Function, delay = 200): (...args: any[]) => any {
 //     let timer: any;
-
 //     return function (this: any, ...args: any) {
 //         if (timer) {
 //             clearTimeout(timer)
@@ -37,101 +36,6 @@ export function debounce<T extends (...args: any[]) => any>(func: T, delay = 200
 //         }, delay)
 //     }
 // }
-
-export function hexToHSL(hex: string) {
-  if (!hex) {
-    return;
-  }
-  const r = parseInt(hex.substring(1, 3), 16) / 255;
-  const g = parseInt(hex.substring(3, 5), 16) / 255;
-  const b = parseInt(hex.substring(5, 7), 16) / 255;
-
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-
-  const lightness = (max + min) / 2;
-
-  if (max === min) {
-    return {
-      h: 0,
-      s: 0,
-      l: lightness,
-    };
-  }
-
-  let hue = 0;
-  const delta = max - min;
-  const saturation = lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min);
-  switch (max) {
-    case r:
-      hue = (g - b) / delta + (g < b ? 6 : 0);
-      break;
-    case g:
-      hue = (b - r) / delta + 2;
-      break;
-    case b:
-      hue = (r - g) / delta + 4;
-      break;
-  }
-  hue /= 6;
-
-  return {
-    h: hue,
-    s: saturation,
-    l: lightness,
-  };
-}
-
-export function hexToOklchL(hex: string) {
-  if (!hex) return;
-  // 移除可能存在的 '#' 符号
-  hex = hex.replace(/^#/, "");
-
-  if (hex.length === 4) hex.substring(0, 3);
-  else if (hex.length === 8) hex.substring(0, 6);
-
-  if (hex.length === 3) {
-    hex = hex
-      .split("")
-      .map(function (c) {
-        return c + c;
-      })
-      .join("");
-  }
-
-  // 将 hex 转换为 RGB
-  let r = parseInt(hex.slice(0, 2), 16) / 255;
-  let g = parseInt(hex.slice(2, 4), 16) / 255;
-  let b = parseInt(hex.slice(4, 6), 16) / 255;
-
-  // 将 RGB 转换为线性 RGB
-  r = r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
-  g = g > 0.04045 ? Math.pow((g + 0.055) / 1.055, 2.4) : g / 12.92;
-  b = b > 0.04045 ? Math.pow((b + 0.055) / 1.055, 2.4) : b / 12.92;
-
-  // 将线性 RGB 转换为 XYZ
-  let x = 0.4124564 * r + 0.3575761 * g + 0.1804375 * b;
-  let y = 0.2126729 * r + 0.7151522 * g + 0.072175 * b;
-  let z = 0.0193339 * r + 0.119192 * g + 0.9503041 * b;
-
-  // 将 XYZ 转换为 LMS
-  let l = 0.8189330101 * x + 0.3618667424 * y - 0.1288597137 * z;
-  let m = 0.0329845436 * x + 0.9293118715 * y + 0.0361456387 * z;
-  let s = 0.0482003018 * x + 0.2643662691 * y + 0.633851707 * z;
-
-  // 应用非线性函数
-  l = Math.cbrt(l);
-  m = Math.cbrt(m);
-  s = Math.cbrt(s);
-
-  // 计算 OKLCH 的 L 值
-  let L = 0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s;
-
-  // 将 L 值范围调整到 0-100
-  // L = L * 100;
-
-  return L;
-}
 
 // export function asriModeTransition() {
 //     document.body.classList.add('asri-mode-transition');
@@ -180,7 +84,11 @@ export async function isOverlappingAsync(el1: AsriDomsExtended, el2: AsriDomsExt
 function isRectOverlapping(elementRect: DOMRect, targetRect: DOMRect): boolean {
   let result = false;
   if (elementRect && targetRect) {
-    result = elementRect.right > targetRect.left && elementRect.bottom > targetRect.top && elementRect.left < targetRect.left + targetRect.width && elementRect.top < targetRect.top + targetRect.height;
+    result =
+      elementRect.right > targetRect.left &&
+      elementRect.bottom > targetRect.top &&
+      elementRect.left < targetRect.left + targetRect.width &&
+      elementRect.top < targetRect.top + targetRect.height;
   }
   return result;
 }
@@ -204,7 +112,12 @@ export function nodeListsHaveSameElements(list1: NodeListOf<Element>, list2: Nod
   return true;
 }
 
-export async function querySelectorAsync(selector: string, scope: Document | HTMLElement | Element = document, trial = 10, timeout = 200): Promise<Element | undefined> {
+export async function querySelectorAsync(
+  selector: string,
+  scope: Document | HTMLElement | Element = document,
+  trial = 10,
+  timeout = 200
+): Promise<Element | undefined> {
   let n = 0;
   while (n < trial) {
     const element = scope.querySelector<Element>(selector);
@@ -216,7 +129,12 @@ export async function querySelectorAsync(selector: string, scope: Document | HTM
   // throw new Error('querySelectorPromise failed');
 }
 
-export async function querySelectorAllAsync(selector: string, scope: Document | HTMLElement | Element = document, trial = 10, timeout = 200): Promise<NodeListOf<Element> | undefined> {
+export async function querySelectorAllAsync(
+  selector: string,
+  scope: Document | HTMLElement | Element = document,
+  trial = 10,
+  timeout = 200
+): Promise<NodeListOf<Element> | undefined> {
   let n = 0;
   while (n < trial) {
     const elements = scope.querySelectorAll<Element>(selector);
@@ -228,14 +146,79 @@ export async function querySelectorAllAsync(selector: string, scope: Document | 
   // throw new Error('querySelectorAllPromise failed');
 }
 
-export async function isProtyle(docID?: string): Promise<boolean> {
+export async function getFocusedProtyleInfo(docID?: string, waitForLoading = false) {
+  const res: {
+    docID: string | undefined;
+    isProtyle: boolean;
+    protyle: HTMLElement | undefined;
+  } = {
+    docID: docID || undefined,
+    isProtyle: false,
+    protyle: undefined,
+  };
   if (!docID) {
     // 获取当前聚焦的文档
     const focusedDocTab = await querySelectorAsync(".layout__center .layout-tab-bar .item--focus");
     docID = focusedDocTab?.getAttribute("data-id") ?? undefined;
   }
-  const curProtyle = document.querySelector(`.layout__center .layout-tab-container>[data-id="${docID}"]:not(.fn__none)`) as HTMLElement;
-  // console.log(docID, curProtyle);
-  if (!curProtyle) return true;
-  return curProtyle.classList.contains("protyle");
+  if (!docID) return res;
+  
+  const curProtyle = document.querySelector(
+    `.layout__center .layout-tab-container>.protyle[data-id="${docID}"]:not(.fn__none)`
+  ) as HTMLElement;
+  if (!curProtyle) return res;
+  
+  // 如果需要等待加载完成，则等待 data-loading="finished" 属性
+  if (waitForLoading) {
+    await waitForProtyleLoaded(curProtyle);
+  }
+  
+  res.isProtyle = true;
+  res.protyle = curProtyle;
+  res.docID = docID;
+  return res;
+}
+
+/**
+ * 等待 protyle 元素加载完成（data-loading="finished"）
+ * @param protyle - protyle 元素
+ * @param maxWaitTime - 最大等待时间（毫秒），默认 5000ms
+ * @returns Promise<boolean> - 是否成功等待到加载完成
+ */
+async function waitForProtyleLoaded(protyle: HTMLElement, maxWaitTime = 5000): Promise<boolean> {
+  return new Promise((resolve) => {
+    // 如果已经加载完成，直接返回
+    if (protyle.getAttribute('data-loading') === 'finished') {
+      resolve(true);
+      return;
+    }
+    
+    let timeoutId: NodeJS.Timeout;
+    
+    // 创建 MutationObserver 监听属性变化
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.type === 'attributes' && 
+            mutation.attributeName === 'data-loading' &&
+            (mutation.target as HTMLElement).getAttribute('data-loading') === 'finished') {
+          clearTimeout(timeoutId);
+          observer.disconnect();
+          resolve(true);
+          return;
+        }
+      }
+    });
+    
+    // 开始观察属性变化
+    observer.observe(protyle, {
+      attributes: true,
+      attributeFilter: ['data-loading']
+    });
+    
+    // 设置超时
+    timeoutId = setTimeout(() => {
+      observer.disconnect();
+      resolve(false); // 超时返回 false
+    }, maxWaitTime);
+  });
 }

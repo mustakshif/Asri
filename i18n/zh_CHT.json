@@ -1,5 +1,6 @@
 {
     "followSysAccent": "跟隨系統強調色",
+    "followCoverImgColor": "跟隨題頭圖顏色",
     "pickColor": "自定義主題色",
     "asriChroma": "色度：",
     "afwdDocMenuLabel": "全寬顯示",
@@ -20,9 +21,12 @@
     "prst-palette-auriflow": "鎏金",
     "prst-palette-aerisland": "空嶼",
     "prst-palette-zerith": "零域",
+    "prst-palette-polar": "極地",
+    "prst-palette-stellula": "星漪",
     "topbarFusionPlus": "頂欄融合+",
     "tfp-progressive": "漸進模糊",
     "tfp-acrylic": "亞克力",
+    "tfp-luminous": "光感玻璃",
     "tfp-disable": "禁用",
     "tfp-experimental": "實驗性功能，請謹慎啟用\n更多資訊見主題文檔腳注 3"
 }

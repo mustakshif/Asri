@@ -1,7 +1,9 @@
 @use "../../base" as *;
 @use "../utils" as *;
 
-// 设置面板 ————————————————————————————————
+/*
+ * 设置面板
+ */
 .config__panel {
   .b3-tab-bar {
     // 侧栏导航
@@ -257,6 +259,7 @@
         background-color: var(--b3-theme-surface);
         padding: 4px 8px;
         opacity: 0.9;
+        color: var(--b3-theme-on-surface);
 
         &::before {
           display: none;

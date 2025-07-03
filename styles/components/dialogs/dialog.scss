@@ -24,12 +24,6 @@
           }
         }
       }
-
-      .history__panel .history__diff {
-        margin: 0 8px 8px;
-        border-radius: 8px;
-        border-right: none;
-      }
     }
   }
 
@@ -71,7 +65,9 @@
     visibility: hidden;
   }
 
-  // 对话框底部按钮区域 ——————————————————————————————
+  /* 
+  * 对话框底部按钮区域
+  */
   &__action {
     // padding: 8px 24px;
     padding: 6px 18px 18px;
@@ -141,9 +137,10 @@
   }
 }
 
-// 对话框中的 tab-bar ——————————————————————————————
-
-// // 仅针对部分对话框的呲边修复 ————————————————————
+/*
+* 对话框中的 tab-bar
+*/
+// // 仅针对部分对话框的呲边修复
 // &[data-key="dialog-setting"],
 // // 设置
 // &[data-key="dialog-history"] // 文件历史

@@ -2,4 +2,81 @@
 @use "./prst-palette-everbliss.scss";
 @use "./prst-palette-aerisland.scss";
 @use "./prst-palette-zerith.scss";
-// @use './prst-palette-polar.scss';
+@use "./prst-palette-polar.scss";
+@use "./prst-palette-stellula.scss";
+
+// @use "../features/_utils.scss" as *;
+
+// [data-asri-palette="haven"] {
+//     // body {
+//     //   --b3-scroll-color-hover: var(--b3-theme-primary-lighter);
+//     //   --b3-scroll-color-track: var(--b3-theme-background-light);
+//     // }
+  
+//     &[data-theme-mode="light"] {
+//       --haven-base-accent: #28626C;
+//       --asri-theme-accent-customized: var(--haven-base-accent);
+//       --b3-theme-primary: var(--haven-base-accent);
+//       --b3-theme-accent: var(--haven-base-accent);
+  
+//       --b3-theme-background: #DEE3E7;
+//       --b3-theme-surface: #C2D4DA;
+  
+//       --b3-theme-on-background: #09132A;
+//       --b3-theme-on-surface: #09132Aa2;
+  
+//     //   .layout__center
+//     //     :not(.av__views)
+//     //     > .layout-tab-bar
+//     //     .item:not(.item--readonly, .item--full.item--focus):hover,
+//     //   .layout__center :not(.av__views) > .layout-tab-bar .item--focus {
+//     //     background-color: #7ed5db8e;
+//     //   }
+  
+//       [data-type="wnd"]:not(.layout__wnd--active)
+//         :not(.av__views)
+//         > .layout-tab-bar
+//         .item--focus {
+//         background-color: #7ed5db52 !important;
+//       }
+//     }
+  
+//     &[data-theme-mode="dark"] {
+//       --haven-base-accent: #9FBFC6;
+//       // --haven-base-accent: #6cc3c9;
+//       --asri-theme-accent-customized: var(--haven-base-accent);
+//       --b3-theme-primary: var(--haven-base-accent);
+  
+//       --b3-theme-surface: #2e4046;
+//       --b3-theme-background: #2a3239;
+  
+//       --b3-theme-on-background: #e6cfbc;
+//       --b3-theme-on-surface: #e6cfbca2;
+//     }
+  
+//     .protyle-title__input,
+//     [data-type="NodeHeading"],
+//     // .b3-dialog__header,
+//     :where(h1, h2, h3, h4, h5, h6) {
+//       color: var(--b3-theme-primary);
+//     }
+//   }
+  
+//   #{$primary-color-reverse-selectors, ".b3-button--outline"} {
+//     [data-asri-palette="haven"][data-theme-mode="light"] & {
+//     //   --b3-theme-primary: var(--haven-base-accent);
+//     //   --b3-theme-on-primary: var(--b3-theme-on-background);
+//     }
+  
+//     [data-asri-palette="haven"][data-theme-mode="dark"] & {
+//       --b3-theme-primary: #4fb1b8;
+//       // --b3-theme-on-primary: #fff;
+//     }
+//   }
+  
+//   .b3-button--outline,
+//   .protyle-breadcrumb__icon {
+//     [data-asri-palette="haven"][data-theme-mode="light"] & {
+//       --b3-theme-primary: var(--b3-theme-accent);
+//     }
+//   }

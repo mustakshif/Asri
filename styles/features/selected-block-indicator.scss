@@ -54,7 +54,7 @@
   }
 }
 
-// 内容块根据视口位置淡入淡出
+//内容块根据视口位置淡入淡出
 // .protyle-wysiwyg {
 //     >[data-node-id]:not(.asri-selected-block) {
 //         @supports (animation-timeline: view()) {
@@ -77,9 +77,18 @@
 //                 // filter: blur(4px);
 //             }
 
+//             0%, 10% {
+//               transform: translateY(40px);
+//             }
+
+//             // 90%, 100% {
+//             //   transform: translateY(-20px);
+//             // }
+
 //             40%,
 //             60% {
 //                 opacity: 1;
+//                 transform: none;
 //             }
 
 //             // 30%,
