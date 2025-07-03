@@ -246,7 +246,7 @@
       .av__container {
         overflow: hidden;
         // overflow-y: visible;
-        width: auto;
+        width: -webkit-fill-available;
       }
     }
   }
