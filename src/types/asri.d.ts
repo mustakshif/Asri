@@ -9,7 +9,6 @@ interface AsriModeConfig {
   followCoverImgColor?: boolean;
   chroma: string;
   userCustomColor: string;
-  coverImgColor?: string;
   presetPalette: string;
 }
 

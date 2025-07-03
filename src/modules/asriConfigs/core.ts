@@ -50,14 +50,9 @@ export async function loadThemePalette() {
     handleGrayScale(curPalette.chroma);
     reverseOnPrimaryLightness(curPalette.primary);
   } else if (asriConfigs[curMode].followCoverImgColor) {
-    cssVarManager.setProperty("--asri-cover-dominant", asriConfigs[curMode].coverImgColor || "");
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
-    
-    const activeDocId = (await getFocusedProtyleInfo(undefined, true)).docID;
-    updateCoverImgColor(activeDocId || "");
 
-    handleGrayScale(hexToOklch(asriConfigs[curMode].coverImgColor || "")?.C || 0);
-    reverseOnPrimaryLightness(asriConfigs[curMode].coverImgColor || "");
+    updateCoverImgColor();
   } else {
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
     document.documentElement.removeAttribute("data-asri-palette");

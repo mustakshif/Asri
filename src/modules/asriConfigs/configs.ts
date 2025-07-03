@@ -8,7 +8,6 @@ export const asriConfigs: AsriConfigs = {
     "followCoverImgColor":false,
     "chroma": "1",
     "userCustomColor": "#3478f6",
-    "coverImgColor": "",
     "presetPalette": "",
   },
   "dark": {
@@ -16,7 +15,6 @@ export const asriConfigs: AsriConfigs = {
     "followCoverImgColor":false,
     "chroma": "1",
     "userCustomColor": "#3478f6",
-    "coverImgColor": "",
     "presetPalette": "",
   },
   "features": {

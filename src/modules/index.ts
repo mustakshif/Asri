@@ -42,7 +42,7 @@ import {
 } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 
-const globalClickEventListener = new AsriEventListener(lowFreqEventsCallback);
+const globalMouseupEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalDragEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalKeyupEventListener = new AsriEventListener(lowFreqEventsCallback);
 const winFocusChangeEventListener = new AsriEventListener(winFocusChangeCallback);
@@ -51,7 +51,7 @@ const selectionChangeEventListener = new AsriEventListener(selectionChangeCallba
 const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
 const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
 const winRo = new AsriResizeObserver(winRoCallback);
-const themeUpdateListener = new AsriEventListener(themeUpdateCallback);
+const themeUpdateListener = new AsriEventListener(appearanceModeUpdateCallback);
 
 let isWinResizing = false,
   fromFullscreen: boolean;
@@ -75,7 +75,7 @@ export async function loadAsriJSModules() {
   updateStyles();
   addDockbClassName();
   // avoidOverlappingWithStatus();
-  globalClickEventListener.start(document, "mouseup");
+  globalMouseupEventListener.start(document, "mouseup");
   globalDragEventListener.start(document, "dragend");
   globalKeyupEventListener.start(document, "keyup", true);
   winFocusChangeEventListener.start(window, "focus");
@@ -111,7 +111,7 @@ export async function unloadAsriJSModules(completeUnload = true) {
     unloadThemePalette();
   }
 
-  globalClickEventListener.remove(document, "mouseup");
+  globalMouseupEventListener.remove(document, "mouseup");
   globalDragEventListener.remove(document, "dragend");
   globalKeyupEventListener.remove(document, "keyup", true);
   winFocusChangeEventListener.remove(window, "focus");
@@ -267,7 +267,7 @@ const debouncedHandleWinResizeEnd = debounce(() => {
   // console.log('debouncedwinRoCallback', isWinResizing);
 }, 200);
 
-function themeUpdateCallback(e: MediaQueryListEvent) {
+function appearanceModeUpdateCallback(e: MediaQueryListEvent) {
   // console.log('系统主题变化:', e.matches ? '暗色' : '亮色')
   startFadeInFadeOutTranstition(600, () => {}, 200);
 }

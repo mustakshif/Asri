@@ -80,9 +80,8 @@ function handleFollowCoverImgColorBtnClick() {
     asriConfigs[curMode].followCoverImgColor = true;
     asriConfigs[curMode].followSysAccentColor = false;
 
-    const activeDocId = (await getFocusedProtyleInfo(undefined, true)).docID;
-
-    updateCoverImgColor(activeDocId || "");
+    updateCoverImgColor();
+    updateAsriConfigs();
   });
 }
 

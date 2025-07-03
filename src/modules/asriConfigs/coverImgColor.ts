@@ -24,16 +24,15 @@ class CoverImgColorManager {
    * @param activeDocId - The ID of the active document
    * @returns a subject of the type of the source image (img/vid/css) and the source image element/hex color, or null if no source image is found
    */
-  async getSourceType(activeDocId: string) {
-    if (!activeDocId) return null;
-
+  async getSourceType(activeDocId?: string) {
     const curProtyle = (await getFocusedProtyleInfo(activeDocId, true)).protyle;
+    let res: { type: "img" | "vid" | "css"; source: string | HTMLImageElement | HTMLVideoElement } | null = null;
 
-    if (!curProtyle) return null;
+    if (!curProtyle) return res;
 
     const backgroundParentElement = curProtyle.querySelector(`.protyle-background__img:not(.fn__none)`);
 
-    if (!backgroundParentElement) return null;
+    if (!backgroundParentElement) return res;
 
     const backgroundImgElement = backgroundParentElement.querySelector(`&>img`) as HTMLImageElement;
     const backgroundVidElement = backgroundParentElement.querySelector(`&>video`) as HTMLVideoElement;
@@ -41,35 +40,38 @@ class CoverImgColorManager {
     if (backgroundImgElement.style) {
       const style = backgroundImgElement.style;
 
-      if (style.backgroundColor)
-        return {
+      if (style.backgroundColor) {
+        return (res = {
           type: "css",
           source: convertToHex(style.backgroundColor),
-        };
+        });
+      }
 
       if (style.backgroundImage) {
         const cssText = style.backgroundImage;
         let parsedColor: string | null = extractFirstColorFromCSSBackground(cssText);
 
-        return {
+        return (res = {
           type: "css",
           source: parsedColor || "#3478f6",
-        };
+        });
       }
     }
 
-    if (backgroundVidElement)
-      return {
+    if (backgroundVidElement) {
+      return (res = {
         type: "vid",
         source: backgroundVidElement,
-      };
-    if (backgroundImgElement)
-      return {
+      });
+    }
+    if (backgroundImgElement) {
+      return (res = {
         type: "img",
         source: backgroundImgElement,
-      };
+      });
+    }
 
-    return null;
+    return res;
   }
 
   getSourceImg(activeDocId: string) {
@@ -109,7 +111,7 @@ class CoverImgColorManager {
 
 export const coverImgColorManager = CoverImgColorManager.getInstance();
 
-export async function getCoverImgColor(activeDocId: string) {
+export async function getCoverImgColor(activeDocId?: string) {
   const sourceType = await coverImgColorManager.getSourceType(activeDocId);
   if (!sourceType) return;
 
@@ -126,7 +128,7 @@ export async function getCoverImgColor(activeDocId: string) {
   }
 }
 
-export async function updateCoverImgColor(activeDocId: string) {
+export async function updateCoverImgColor(activeDocId?: string) {
   const color = await getCoverImgColor(activeDocId);
   if (!color) return;
 
@@ -138,9 +140,4 @@ export async function updateCoverImgColor(activeDocId: string) {
   console.log("isCoverImgColorGray", color, colorChroma, isCoverImgColorGray);
   handleGrayScale(colorChroma);
   reverseOnPrimaryLightness(color);
-
-  // 写入配置
-  //   asriConfigs[curMode].followCoverImgColor = true;
-  asriConfigs[curMode].coverImgColor = color;
-  updateAsriConfigs();
 }
