@@ -1,8 +1,7 @@
 @use "../base" as *;
 @use "./utils" as *;
 
-:is(.b3-menu,
-.b3-menu__submenu) {
+:is(.b3-menu, .b3-menu__submenu) {
   @include menu-shadow($opacity-light: 0.15);
 
   @include theme-variant-border($border: false) {
@@ -41,6 +40,10 @@
 
   .b3-menu__items {
     padding: 5px;
+
+    > .b3-menu__items {
+      padding: 0;
+    }
 
     .b3-menu__item {
       // padding: 0 8px; //用默认主题样式

@@ -168,15 +168,15 @@
       @include database-assets-style("chip");
 
       // 「更新」按钮
-      .popover__block {
-        color: var(--b3-theme-primary);
-        font-weight: 500;
+      // .popover__block {
+      //   color: var(--b3-theme-primary);
+      //   font-weight: 500;
 
-        &:hover {
-          background-color: var(--b3-theme-primary);
-          color: var(--b3-theme-on-primary);
-        }
-      }
+      //   &:hover {
+      //     background-color: var(--b3-theme-primary);
+      //     color: var(--b3-theme-on-primary);
+      //   }
+      // }
 
       .b3-chip[data-type="block-more"] {
         font-weight: 500;
@@ -202,18 +202,6 @@
             color: var(--b3-theme-primary-light);
             transition: inherit;
           }
-        }
-      }
-
-      .av__celltext--ref {
-        border-bottom: none;
-        text-decoration: underline rgb(from var(--b3-theme-on-background) r g b / 0.3);
-        transition-property: color, text-decoration-color;
-        transition-duration: 0.2s;
-
-        &:hover {
-          text-decoration-color: var(--b3-theme-primary-light);
-          color: var(--b3-theme-primary);
         }
       }
 
@@ -340,6 +328,18 @@
       // 资源列标签
       margin: 2px;
       font-size: calc(1em - 2px) !important;
+    }
+  }
+
+  .av__celltext--ref {
+    border-bottom: none;
+    text-decoration: underline rgb(from var(--b3-theme-on-background) r g b / 0.3);
+    transition-property: color, text-decoration-color;
+    transition-duration: 0.2s;
+
+    &:hover {
+      text-decoration-color: var(--b3-theme-primary-light);
+      color: var(--b3-theme-primary);
     }
   }
 
@@ -543,6 +543,115 @@
     &-check {
       @include bouncy-check-box(true, 1.1em) {
         animation: none;
+      }
+    }
+  }
+
+  &__layout {
+    > .av__layout-item {
+      border-radius: 12px;
+      border-color: var(--b3-border-color-trans);
+
+      &--select {
+        color: var(--b3-theme-accent);
+        border-color: var(--b3-theme-accent);
+      }
+    }
+  }
+
+  &__gallery {
+    // gap: 20px;
+
+    &-item {
+      border-radius: 12px;
+      box-shadow: 0 0 0 1px var(--b3-border-color-trans);
+
+      &:hover {
+        > .av__gallery-cover {
+          background-color: var(--b3-theme-surface);
+          // background-color: #0000;
+        }
+
+        > .av__gallery-fields {
+          background-color: inherit;
+        }
+      }
+    }
+
+    &-cover {
+      border-bottom: none;
+      border-radius: 12px 12px 0 0;
+      background-color: var(--b3-theme-surface);
+      // background-color: #0000;
+      // background-image: linear-gradient(to bottom, var(--b3-theme-surface), #0000);
+      contain: content;
+      container-type: size;
+
+      .av__gallery-content {
+        margin: 8px 12px 0;
+        // mask-image: linear-gradient(to bottom, #000, #0000);
+      }
+
+      .av__gallery-content ~ ::after,
+      &:empty::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        width: 100cqw;
+        height: 100cqh;
+        background-image: linear-gradient(to top, var(--b3-theme-background), #0000);
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+
+    &-fields {
+      padding: 12px;
+      border-radius: 0 0 12px 12px;
+
+      &--edit .av__cell {
+        padding: 5px 4px !important;
+      }
+
+      > .av__cell {
+        padding: 5px 4px;
+
+        @include database-assets-style("chip");
+
+        &[data-dtype="block"] {
+          font-weight: 500;
+        }
+
+        &[data-wrap="false"] {
+          height: fit-content;
+
+          > .av__cell--relation {
+            margin-bottom: 0;
+          }
+        }
+
+        &[data-wrap="true"] {
+          .b3-chip {
+            margin: 2px;
+          }
+
+          > .av__cell--relation:nth-last-child(2) {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      // 「更多」按钮
+      &:first-child:hover .b3-chip[data-type="block-more"] {
+        right: 60px;
+      }
+    }
+
+    &-add {
+      @include button-action("normal") {
+        box-shadow: none;
+        border-radius: 12px;
       }
     }
   }

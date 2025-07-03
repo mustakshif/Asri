@@ -4,7 +4,8 @@
 /* 页面小工具条 */
 // 普通工具条、代码块工具条
 .protyle-icons,
-.protyle-action {
+.protyle-action,
+.av__gallery-actions {
   border-radius: 99px;
   // transition: none;
 
@@ -50,6 +51,10 @@
   }
 
   // 只读模式下HTML块工具条
+}
+
+.av__gallery-item:hover .av__gallery-actions {
+  opacity: 1;
 }
 
 .protyle-icons {

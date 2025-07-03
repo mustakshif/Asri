@@ -235,6 +235,19 @@
       //         transition-delay: 0s;
       //     }
       // }
+
+      > .av__gallery {
+        padding: 4px 24px;
+        width: calc(100% - 48px);
+      }
+    }
+
+    &[data-av-type="gallery"] {
+      .av__container {
+        overflow: hidden;
+        // overflow-y: visible;
+        width: auto;
+      }
     }
   }
 

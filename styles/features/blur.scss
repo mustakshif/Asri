@@ -461,6 +461,10 @@ body:not(.asri-disable-backdrop-blur) {
     }
   }
 
+  .av__gallery-actions {
+    backdrop-filter: blur(10px) saturate(3);
+  }
+
   #message.b3-snackbars {
     .b3-snackbar {
       &__content {
