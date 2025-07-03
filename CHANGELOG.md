@@ -1,3 +1,21 @@
+### v3.5.1
+
+- 优化数据库画廊视图 UI、提供全宽显示支持
+- 移除移动端顶栏分割线
+- 修复跟随题头图取色时部分情况下菜单文字对比度问题
+- 修复跟随题头图取色时将色度调为 0 时色彩偏移的问题
+- 临时修复 Chromium 138 内核相对颜色计算错误导致的界面颜色偏差问题
+
+<br />
+
+- Optimized the database gallery view UI and added full-width display support
+- Removed the top bar divider on mobile devices
+- Fixed menu text contrast issues in certain scenarios when following the header image color scheme
+- Fixed color shifting when adjusting chroma to 0 while following the header image color scheme
+- Temporarily resolved interface color deviations caused by relative color calculation errors in Chromium 138 kernel
+
+---
+
 ### v3.5.0
 
 - 新增：主题色跟随题头图，支持图片、视频和默认题头图取色

@@ -1,3 +1,5 @@
+import { cssVarManager } from "../modules/asriConfigs";
+
 /**
  * Pushes an item to the array if it is not already present.
  * @param {Array} arr - The array to push the item to.
@@ -162,17 +164,17 @@ export async function getFocusedProtyleInfo(docID?: string, waitForLoading = fal
     docID = focusedDocTab?.getAttribute("data-id") ?? undefined;
   }
   if (!docID) return res;
-  
+
   const curProtyle = document.querySelector(
     `.layout__center .layout-tab-container>.protyle[data-id="${docID}"]:not(.fn__none)`
   ) as HTMLElement;
   if (!curProtyle) return res;
-  
+
   // 如果需要等待加载完成，则等待 data-loading="finished" 属性
   if (waitForLoading) {
     await waitForProtyleLoaded(curProtyle);
   }
-  
+
   res.isProtyle = true;
   res.protyle = curProtyle;
   res.docID = docID;
@@ -188,19 +190,21 @@ export async function getFocusedProtyleInfo(docID?: string, waitForLoading = fal
 async function waitForProtyleLoaded(protyle: HTMLElement, maxWaitTime = 5000): Promise<boolean> {
   return new Promise((resolve) => {
     // 如果已经加载完成，直接返回
-    if (protyle.getAttribute('data-loading') === 'finished') {
+    if (protyle.getAttribute("data-loading") === "finished") {
       resolve(true);
       return;
     }
-    
+
     let timeoutId: NodeJS.Timeout;
-    
+
     // 创建 MutationObserver 监听属性变化
     const observer = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
-        if (mutation.type === 'attributes' && 
-            mutation.attributeName === 'data-loading' &&
-            (mutation.target as HTMLElement).getAttribute('data-loading') === 'finished') {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "data-loading" &&
+          (mutation.target as HTMLElement).getAttribute("data-loading") === "finished"
+        ) {
           clearTimeout(timeoutId);
           observer.disconnect();
           resolve(true);
@@ -208,17 +212,31 @@ async function waitForProtyleLoaded(protyle: HTMLElement, maxWaitTime = 5000): P
         }
       }
     });
-    
+
     // 开始观察属性变化
     observer.observe(protyle, {
       attributes: true,
-      attributeFilter: ['data-loading']
+      attributeFilter: ["data-loading"],
     });
-    
+
     // 设置超时
     timeoutId = setTimeout(() => {
       observer.disconnect();
       resolve(false); // 超时返回 false
     }, maxWaitTime);
   });
+}
+
+function isChromiumV138() {
+  return navigator.userAgent.includes("Chrome/138");
+}
+
+export function addChromiumV138FixVar() {
+  if (isChromiumV138()) {
+    cssVarManager.setProperty("--asri-ccff", "0.5");
+  }
+}
+
+export function removeChromiumV138FixVar() {
+  cssVarManager.removeProperty("--asri-ccff");
 }

@@ -31,6 +31,7 @@
 
     .layout-tab-bar {
       @include dialog-tabbar;
+      // background-color: var(--b3-theme-surface);
       height: auto;
       margin: 8px 0 !important;
       padding: 0;
@@ -560,11 +561,33 @@
   }
 
   &__gallery {
-    // gap: 20px;
+    // 小
+    --gibr: 12px; // gallery item border radius
+    --gtis: 1.5em; // gallery title icon size
+    --gtfs: 1em; // gallery item font size
+
+    // 中
+    &:not(.av__gallery--small) {
+      gap: 20px;
+      --gibr: 16px;
+      --gtis: 2em;
+      --gtfs: 1.2em;
+    }
+
+    // 大
+    &.av__gallery--big {
+      gap: 24px;
+      --gibr: 20px;
+      --gtis: 2.75em;
+      --gtfs: 1.3em;
+    }
 
     &-item {
-      border-radius: 12px;
+      border-radius: var(--gibr);
       box-shadow: 0 0 0 1px var(--b3-border-color-trans);
+      // @include darkmode-counterpart {
+      //   box-shadow: none;
+      // }
 
       &:hover {
         > .av__gallery-cover {
@@ -574,21 +597,36 @@
 
         > .av__gallery-fields {
           background-color: inherit;
+
+          @include darkmode-counterpart {
+            // background-color: var(--b3-theme-surface);
+          }
+        }
+      }
+
+      &--select {
+        &::before {
+          z-index: 2;
+          border-radius: var(--gibr);
         }
       }
     }
 
     &-cover {
       border-bottom: none;
-      border-radius: 12px 12px 0 0;
+      border-radius: var(--gibr) var(--gibr) 0 0;
       background-color: var(--b3-theme-surface);
       // background-color: #0000;
       // background-image: linear-gradient(to bottom, var(--b3-theme-surface), #0000);
       // contain: content;
       container-type: size;
 
+      @include darkmode-counterpart {
+        box-shadow: 0 0.5px 0 0 inset rgb(from var(--b3-theme-on-background) r g b / 0.3);
+      }
+
       .av__gallery-content {
-        margin: 8px 12px 0;
+        margin: calc(var(--gibr) - 4px) var(--gibr) 0;
         // mask-image: linear-gradient(to bottom, #000, #0000);
       }
 
@@ -603,12 +641,20 @@
         background-image: linear-gradient(to top, var(--b3-theme-background), #0000);
         z-index: 1;
         pointer-events: none;
+
+        @include darkmode-counterpart {
+          // background-image: linear-gradient(to top, var(--b3-theme-surface), #0000);
+        }
       }
     }
 
     &-fields {
-      padding: 12px;
-      border-radius: 0 0 12px 12px;
+      padding: var(--gibr);
+      border-radius: 0 0 var(--gibr) var(--gibr);
+
+      @include darkmode-counterpart {
+        // background-color: var(--b3-theme-surface);
+      }
 
       &--edit .av__cell {
         padding: 5px 4px !important;
@@ -642,16 +688,51 @@
         }
       }
 
-      // 「更多」按钮
-      &:first-child:hover .b3-chip[data-type="block-more"] {
-        right: 60px;
-      }
+      // // 「更多」按钮
+      // &:first-child:hover .b3-chip[data-type="block-more"] {
+      //   right: 60px;
+      // }
     }
 
+    // 「添加」按钮
     &-add {
       @include button-action("normal") {
         box-shadow: none;
-        border-radius: 12px;
+        border-radius: var(--gibr);
+      }
+    }
+
+    // 标题图标上移、标题字体大小、标题内边距
+    &-fields {
+      > .av__cell[data-dtype="block"] {
+        padding-top: calc(var(--gtfs) / 13.6 * 5);
+        padding-bottom: calc(var(--gtfs) / 13.6 * 5);
+
+        &:first-child {
+          overflow: visible;
+          // width: 100%;
+
+          > .b3-menu__avemoji {
+            font-size: var(--gtis);
+            position: absolute;
+            top: -1.5em;
+            z-index: 2;
+          }
+
+          &[data-wrap="false"] {
+            > .av__celltext {
+              font-size: var(--gtfs);
+              display: -webkit-box;
+              // -webkit-box-orient: vertical;
+              // -webkit-line-clamp: 1;
+              // overflow: hidden;
+            }
+          }
+        }
+      }
+
+      &:first-child {
+        padding-top: calc(var(--gtis) * 1.4 + var(--gibr));
       }
     }
   }

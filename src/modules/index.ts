@@ -1,6 +1,6 @@
 import { AsriEventListener } from "../util/eventListeners";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/interfaceState";
-import { debounce, querySelectorAsync } from "../util/misc";
+import { addChromiumV138FixVar, debounce, querySelectorAsync, removeChromiumV138FixVar } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
 import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
@@ -58,6 +58,7 @@ let isWinResizing = false,
 let protyleWidthChange = 0;
 
 export async function loadAsriJSModules() {
+  addChromiumV138FixVar();
   addEnvClassNames();
   useMacSysScrollbar();
   applyTrafficLightPosition();
@@ -109,6 +110,7 @@ export async function unloadAsriJSModules(completeUnload = true) {
     restoreTrafficLightPosition();
     document.body.classList.remove("body-asri--fullscreen", "asri-tfp", "asri-tfp-acrylic", "asri-tfp-progressive");
     unloadThemePalette();
+    removeChromiumV138FixVar();
   }
 
   globalMouseupEventListener.remove(document, "mouseup");

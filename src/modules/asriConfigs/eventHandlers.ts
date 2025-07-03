@@ -86,6 +86,7 @@ function handleFollowCoverImgColorBtnClick() {
 }
 
 function handlePickColorBtnClick(event: Event) {
+  
   startFadeInFadeOutTranstition(600, () => {
     resetPresetPalette();
     if (document.documentElement.getAttribute("--asri-user-custom-accent")) return;
@@ -103,7 +104,6 @@ function handlePickColorBtnClick(event: Event) {
     reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
 
     asriConfigs[curMode].userCustomColor = asriConfigs[curMode].userCustomColor;
-
     asriConfigs[curMode].followSysAccentColor = false;
     asriConfigs[curMode].followCoverImgColor = false;
     updateAsriConfigs();
@@ -156,31 +156,10 @@ function resetPresetPalette(alterFollowSysAccentColor: boolean = true) {
   asriConfigs[curMode].presetPalette = "";
   document.getElementById(`prst-palette-${curPresetPalette}`)?.classList.remove("b3-menu__item--selected");
   document.documentElement.removeAttribute("data-asri-palette");
-
-  const followSysAccentColorState = asriConfigs[curMode]["followSysAccentColor"];
-  if (alterFollowSysAccentColor) setFollowSysAccentColor(followSysAccentColorState);
-
-  if (followSysAccentColorState && !(env.isInBrowser || env.isMobile || env.isLinux)) {
-    followSysAccentBtn!.classList.add("b3-menu__item--selected");
-    cssVarManager.removeProperty("--asri-user-custom-accent");
-    // asriConfigs[curMode].followSysAccentColor = true;
-    // asriConfigs[curMode].followCoverImgColor = false;
-    getSystemAccentColor();
-  } else {
-    pickColorBtn!.classList.add("b3-menu__item--selected");
-    cssVarManager.setProperty(
-      "--asri-user-custom-accent",
-      asriConfigs[curMode].userCustomColor || sysAccentColor || "#3478f6"
-    );
-    // asriConfigs[curMode].followSysAccentColor = false;
-  }
-
   cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
   setIsUserAccentGray(asriConfigs[curMode].chroma === "0" ? true : false);
-  handleGrayScale(asriConfigs[curMode].chroma);
-  reverseOnPrimaryLightness(!followSysAccentColor ? asriConfigs[curMode].userCustomColor : sysAccentColor);
-
-  // updateAsriConfigs();
+  // handleGrayScale(asriConfigs[curMode].chroma);
+  // reverseOnPrimaryLightness(!followSysAccentColor ? asriConfigs[curMode].userCustomColor : sysAccentColor);
 }
 
 export const tfpMenuItemCallbackEventListener = new AsriEventListener(tfpMenuItemCallback);

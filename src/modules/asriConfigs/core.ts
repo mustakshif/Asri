@@ -26,16 +26,14 @@ export async function loadThemePalette() {
   if (!env.supportOklch) return;
 
   // check local configs to set initial theme color
-  if (!(env.isInBrowser || env.isMobile || env.isLinux)) {
-    if (followSysAccentColor) {
-      cssVarManager.removeProperty("--asri-user-custom-accent");
-    } else {
-      cssVarManager.setProperty("--asri-user-custom-accent", asriConfigs[curMode].userCustomColor);
-      reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
-    }
-  } else {
+  const shouldUseCustomColor = env.isInBrowser || env.isMobile || env.isLinux || !followSysAccentColor;
+  
+  if (shouldUseCustomColor) {
     cssVarManager.setProperty("--asri-user-custom-accent", asriConfigs[curMode].userCustomColor);
     reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
+  } else {
+    cssVarManager.removeProperty("--asri-user-custom-accent");
+    cssVarManager.removeProperty("--asri-cover-dominant");
   }
 
   if (asriConfigs[curMode].presetPalette) {
@@ -46,12 +44,13 @@ export async function loadThemePalette() {
     setFollowSysAccentColor(false);
     cssVarManager.setProperty("--asri-user-custom-accent", curPalette.primary);
     cssVarManager.setProperty("--asri-c-factor", curPalette.chroma);
+    cssVarManager.removeProperty("--asri-cover-dominant");
     setIsUserAccentGray(curPalette.chroma === "0" ? true : false);
     handleGrayScale(curPalette.chroma);
     reverseOnPrimaryLightness(curPalette.primary);
   } else if (asriConfigs[curMode].followCoverImgColor) {
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
-
+    document.documentElement.removeAttribute("data-asri-palette");
     updateCoverImgColor();
   } else {
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
