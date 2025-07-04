@@ -29,9 +29,15 @@ const compareVersions = (v1, v2) => {
   const parts1 = v1.split(".").map(Number);
   const parts2 = v2.split(".").map(Number);
 
-  for (let i = 0; i < 3; i++) {
-    if (parts1[i] > parts2[i]) return 1;
-    if (parts1[i] < parts2[i]) return -1;
+  // 支持最多4位版本号，不足的部分用0补齐
+  const maxLength = Math.max(parts1.length, parts2.length, 4);
+  
+  for (let i = 0; i < maxLength; i++) {
+    const part1 = parts1[i] || 0;
+    const part2 = parts2[i] || 0;
+    
+    if (part1 > part2) return 1;
+    if (part1 < part2) return -1;
   }
   return 0;
 };
@@ -61,8 +67,8 @@ const checkVersion = () => {
   const changelog = fs.readFileSync(path.join(__dirname, "../CHANGELOG.md"), "utf8");
   const themeJson = JSON.parse(fs.readFileSync(path.join(__dirname, "../theme.json"), "utf8"));
 
-  // 从 CHANGELOG.md 中提取最新版本号
-  const versionMatch = changelog.match(/### v(\d+\.\d+\.\d+)/);
+  // 从 CHANGELOG.md 中提取最新版本号，支持3位或4位版本号
+  const versionMatch = changelog.match(/### v(\d+\.\d+\.\d+(?:\.\d+)?)/);
   if (!versionMatch) {
     console.error("无法从 CHANGELOG.md 中提取版本号");
     process.exit(1);
