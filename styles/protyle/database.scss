@@ -563,6 +563,7 @@
   &__gallery {
     // 小
     &.av__gallery--small {
+      gap: 16px;
       --gibr: 12px; // gallery item border radius
       --gtis: 1.5em; // gallery title icon size
       --gtfs: 1em; // gallery item font size
@@ -572,14 +573,14 @@
     gap: 20px;
     --gibr: 16px;
     --gtis: 2em;
-    --gtfs: 1.2em;
+    --gtfs: 1.33em;
 
     // 大
     &.av__gallery--big {
       gap: 24px;
       --gibr: 20px;
       --gtis: 2.75em;
-      --gtfs: 1.6em;
+      --gtfs: 1.77em;
     }
 
     &-item {
@@ -628,6 +629,7 @@
       .av__gallery-content {
         margin: calc(var(--gibr) - 4px) var(--gibr) 0;
         // mask-image: linear-gradient(to bottom, #000, #0000);
+        width: calc(100% / 0.85 - var(--gibr) * 2);
       }
 
       .av__gallery-content ~ ::after,
@@ -734,6 +736,7 @@
         }
       }
 
+      // 无图片有图标的情况
       &:first-child {
         padding-top: calc(var(--gtis) * 1.4 + var(--gibr));
       }
