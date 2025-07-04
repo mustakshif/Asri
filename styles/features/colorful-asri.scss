@@ -19,7 +19,7 @@ $cvc: 10; // color variant count
     --b3-protyle-inline-blockref-color: var(--b3-theme-accent);
     --asri-cover-accent: oklch(from var(--asri-cover-dominant) clamp(0.2, l, 0.95) clamp(0.1, c, 0.25) h);
 
-    --ccff: var(--asri-ccff, 1);
+    --ccff: 1;
 
     &[data-theme-mode="light"] {
       --asri-base-color: var(--asri-cover-accent, var(--asri-user-custom-accent, var(--asri-sys-accent)));
