@@ -26,14 +26,14 @@ $primary-color-reverse-selectors: (
 背景模糊
 */
 $thick-transparency: 0.85;
-$thick-blur-rd: 40px;
+$thick-blur-rd: 20px;
 $medium-transparency: 0.8;
-$medium-blur-rd: 20px;
+$medium-blur-rd: 15px;
 $thin-transparency: 0.75;
-$thin-blur-rd: 12px;
+$thin-blur-rd: 10px;
 
 @mixin bg-blur(
-  $blur-radius: 40px,
+  $blur-radius: $thick-blur-rd,
   $saturate-value: 3,
   $brightness-light: 1.1,
   $brightness-dark: calc(2 - $brightness-light)

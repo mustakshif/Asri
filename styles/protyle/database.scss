@@ -629,7 +629,10 @@
       .av__gallery-content {
         margin: calc(var(--gibr) - 4px) var(--gibr) 0;
         // mask-image: linear-gradient(to bottom, #000, #0000);
-        width: calc(100% / 0.85 - var(--gibr) * 2);
+        // width: calc(100% / 0.85 - var(--gibr) * 2);
+        width: auto;
+        transform: none;
+        font-size: 85%;
       }
 
       .av__gallery-content ~ ::after,
