@@ -11,7 +11,7 @@
   }
 
   &[data-theme-mode="dark"] {
-    --everbliss-base-accent: #e4545e;
+    --everbliss-base-accent: #d55f4f;
     --asri-theme-accent-customized: var(--everbliss-base-accent);
     --b3-theme-primary: var(--everbliss-base-accent);
 
@@ -30,10 +30,11 @@
   [data-asri-palette="everbliss"][data-theme-mode="light"] & {
     --b3-theme-primary: var(--everbliss-base-accent);
     --b3-theme-on-primary: #fefaef;
+    --b3-menu-item-background-hover: #de6257;
   }
 
   [data-asri-palette="everbliss"][data-theme-mode="dark"] & {
     --b3-theme-primary: var(--everbliss-base-accent);
-    --b3-theme-on-primary: #f3d9c1;
+    --b3-theme-on-primary: #f8f0e9;
   }
 }

@@ -86,7 +86,6 @@ function handleFollowCoverImgColorBtnClick() {
 }
 
 function handlePickColorBtnClick(event: Event) {
-  
   startFadeInFadeOutTranstition(600, () => {
     resetPresetPalette();
     if (document.documentElement.getAttribute("--asri-user-custom-accent")) return;
@@ -227,13 +226,13 @@ async function paletteMenuItemCallback(e: Event) {
     cssVarManager.removeProperty("--asri-cover-dominant");
     setIsUserAccentGray(curPalette.chroma === "0" ? true : false);
 
-    handleGrayScale(curPalette.chroma);
-    reverseOnPrimaryLightness(curPalette.primary);
-
-    // 写入预设色板数据
     asriConfigs[curMode].presetPalette = paletteID;
     asriConfigs[curMode].followSysAccentColor = false;
     asriConfigs[curMode].followCoverImgColor = false;
+
+    handleGrayScale(curPalette.chroma);
+    reverseOnPrimaryLightness(curPalette.primary);
+
     updateAsriConfigs();
   });
 }

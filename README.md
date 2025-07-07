@@ -60,7 +60,7 @@ Theme release
 * 🧊 Glassmorphism enhances the visual hierarchy
 * 🌓 Support for light and dark modes and smooth transition between them
 * ➖ Minimized dividers create an integrated, cohesive interface style
-* ⚙️ Modernized designs for multiple kinds of components
+* 🐚 Self-consistent design language, unified, coherent, and seamless
 
 ### 📐 Elegant and Efficient Layout
 

@@ -1,7 +1,7 @@
 import { FastAverageColor, FastAverageColorOptions } from "fast-average-color";
 import { convertToHex, extractFirstColorFromCSSBackground, hexToOklch } from "../../util/colorTools";
 import { getFocusedProtyleInfo } from "../../util/misc";
-import { asriConfigs, updateAsriConfigs } from "./configs";
+import { asriConfigs } from "./configs";
 import { cssVarManager } from "./cssVarManager";
 import { curMode, isCoverImgColorGray, setIsCoverImgColorGray } from "./state";
 import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
@@ -128,9 +128,16 @@ export async function getCoverImgColor(activeDocId?: string) {
   }
 }
 
-export async function updateCoverImgColor(activeDocId?: string) {
+export async function updateCoverImgColor(activeDocId?: string, isFirstload = false) {
+
   const color = await getCoverImgColor(activeDocId);
-  if (!color) return;
+  if (!color) {
+    isFirstload &&
+      reverseOnPrimaryLightness(
+        cssVarManager.getAllVars().get("--asri-cover-dominant") ?? asriConfigs[curMode].userCustomColor
+      ); // 处理首次载入封面图颜色时当前活跃文档没有题头图的情况
+    return;
+  }
 
   const colorChroma = hexToOklch(color)?.C || 0;
   setIsCoverImgColorGray(colorChroma.toFixed(3) === "0.000");

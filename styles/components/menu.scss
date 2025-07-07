@@ -3,7 +3,6 @@
 
 :is(.b3-menu, .b3-menu__submenu) {
   @include menu-shadow($opacity-light: 0.15);
-
   @include theme-variant-border($border: false) {
     // outline: #fff4 solid 1px;
     // outline-offset: -1px;
@@ -17,7 +16,7 @@
     // background-position: center top;
     // background-size: cover;
     // background-attachment: fixed;
-    border-radius: 10px;
+    border-radius: $border-rd-menu;
   }
 
   &:not(.b3-menu--fullscreen)::before {
@@ -48,8 +47,9 @@
     .b3-menu__item {
       // padding: 0 8px; //用默认主题样式
       background-color: transparent;
+      padding: 0.5px 12px;
       line-height: 24px;
-      border-radius: 5px;
+      border-radius: $border-rd-menu - 5px;
       align-items: center;
 
       &:first-child {
@@ -167,6 +167,8 @@
 
   &__separator {
     background-color: var(--b3-border-color-trans);
+    margin: 5px 12px;
+    width: calc(100% - 24px);
   }
 }
 

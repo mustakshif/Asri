@@ -18,24 +18,18 @@
     --b3-theme-on-background: #424074;
     --b3-theme-on-surface: #373379a2;
 
-    .layout__center
-      :not(.av__views)
-      > .layout-tab-bar
-      .item:not(.item--readonly, .item--full.item--focus):hover,
+    .layout__center :not(.av__views) > .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
     .layout__center :not(.av__views) > .layout-tab-bar .item--focus {
       background-color: #7ed5db8e;
     }
 
-    [data-type="wnd"]:not(.layout__wnd--active)
-      :not(.av__views)
-      > .layout-tab-bar
-      .item--focus {
+    [data-type="wnd"]:not(.layout__wnd--active) :not(.av__views) > .layout-tab-bar .item--focus {
       background-color: #7ed5db52 !important;
     }
   }
 
   &[data-theme-mode="dark"] {
-    --stellula-base-accent: #FC8B60;
+    --stellula-base-accent: #fc8b60;
     // --stellula-base-accent: #6cc3c9;
     --asri-theme-accent-customized: var(--stellula-base-accent);
     --b3-theme-primary: var(--stellula-base-accent);
@@ -55,14 +49,15 @@
   }
 }
 
-#{$primary-color-reverse-selectors, ".b3-button--outline"} {
+#{$primary-color-reverse-selectors,
+".b3-button--outline"} {
   [data-asri-palette="stellula"][data-theme-mode="light"] & {
     --b3-theme-primary: var(--stellula-base-accent);
     --b3-theme-on-primary: var(--b3-theme-on-background);
   }
 
   [data-asri-palette="stellula"][data-theme-mode="dark"] & {
-    --b3-theme-primary: #4fb1b8;
+    --b3-theme-primary: #41959b;
     // --b3-theme-on-primary: #fff;
   }
 }
@@ -73,3 +68,7 @@
     --b3-theme-primary: var(--b3-theme-accent);
   }
 }
+
+// [data-asri-palette="stellula"][data-theme-mode="dark"] :is(.b3-button--outline, .protyle-breadcrumb__icon):hover {
+//   --b3-theme-primary: #35898f;
+// }

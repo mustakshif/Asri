@@ -51,7 +51,7 @@ export async function loadThemePalette() {
   } else if (asriConfigs[curMode].followCoverImgColor) {
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
     document.documentElement.removeAttribute("data-asri-palette");
-    updateCoverImgColor();
+    updateCoverImgColor(undefined, true);
   } else {
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
     document.documentElement.removeAttribute("data-asri-palette");

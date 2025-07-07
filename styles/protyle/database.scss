@@ -690,6 +690,11 @@
           > .av__cell--relation:nth-last-child(2) {
             margin-bottom: 0;
           }
+
+          > .av__cellassetimg {
+            max-height: 100%;
+            max-width: calc(100% - 4px);
+          }
         }
       }
 
