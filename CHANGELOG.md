@@ -1,3 +1,21 @@
+### v3.5.3
+
+- 优化画廊 UI 细节
+- 调整全局菜单样式
+- 调整全局模糊效果半径
+- 提高预设配色可读性
+- 修复跟随题头图取色时部分情况下菜单文字对比度问题
+
+<br />
+
+- Optimized gallery UI details
+- Adjusted global menu styles
+- Modified the radius of global blur effects
+- Improved readability of preset color schemes
+- Fixed menu text contrast issues in certain scenarios when following header image color
+
+---
+
 ### v3.5.2
 
 - 优化数据库画廊视图 UI、提供全宽显示支持
