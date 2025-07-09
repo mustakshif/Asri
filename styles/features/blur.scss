@@ -56,17 +56,21 @@ body:not(.asri-disable-backdrop-blur) {
     // }
 
     &-background__action {
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur($medium-blur-rd);
     }
 
     //文字格式工具条
     &-toolbar {
-      background-color: oklch(from var(--b3-theme-surface) l c h / $medium-transparency);
+      background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
       @include bg-blur;
       // z-index: 1;
 
+      @media (color-gamut: p3) {
+        @include bg-blur(2px);
+      }
+
       @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-        @include theme-variant-color(background-color, surface, $medium-transparency);
+        @include theme-variant-color(background-color, menu-background, $medium-transparency);
       }
     }
 
@@ -468,8 +472,8 @@ body:not(.asri-disable-backdrop-blur) {
   #message.b3-snackbars {
     .b3-snackbar {
       &__content {
-        background-color: rgb(from var(--b3-theme-surface) r g b / $medium-transparency);
-        @include bg-blur;
+        background-color: rgb(from var(--b3-theme-surface) r g b / $thin-transparency);
+        @include bg-blur($thin-blur-rd);
       }
     }
   }

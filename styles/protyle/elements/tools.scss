@@ -162,11 +162,11 @@
     }
 
     &:not(.protyle-toolbar__item--current) {
-      color: var(--b3-theme-on-surface);
+      color: var(--b3-theme-on-background);
 
-      &:hover {
-        color: var(--b3-theme-on-background);
-      }
+      // &:hover {
+      //   color: var(--b3-theme-on-background);
+      // }
     }
   }
 

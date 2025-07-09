@@ -24,11 +24,11 @@
   }
 }
 
-@mixin tooltip-shadow($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3) {
-  box-shadow: 0 0 0px 1px change-color($shadow-clr-light, $alpha: $opacity-light), 0px 2px 6px 0px change-color($shadow-clr-light, $alpha: $opacity-light);
+@mixin tooltip-shadow($shadow-clr-light: #000, $shadow-clr-dark: $shadow-clr-light, $opacity-light: 0.1, $opacity-dark: 0.3, $extra-shadow-light: "", $extra-shadow-dark: "") {
+  box-shadow: 0 0 0px 1px change-color($shadow-clr-light, $alpha: $opacity-light), 0px 2px 6px 0px change-color($shadow-clr-light, $alpha: $opacity-light), #{$extra-shadow-light};
 
   @include darkmode-counterpart {
-    box-shadow: 0 0 0 0.5px #000, 0px 2px 6px 0px change-color($shadow-clr-dark, $alpha: $opacity-dark);
+    box-shadow: 0 0 0 0.5px #000, 0px 2px 6px 0px change-color($shadow-clr-dark, $alpha: $opacity-dark), #{$extra-shadow-dark};
   }
 }
 
