@@ -661,6 +661,14 @@
         // background-color: var(--b3-theme-surface);
       }
 
+      // > .av__cell[data-dtype="block"]:first-child {
+      //   padding-top: 0;
+      //   > .b3-menu__avemoji,
+      //   > .av__celltext {
+      //     font-size: var(--gtfs);
+      //   }
+      // }
+
       &--edit .av__cell {
         padding: 5px 4px !important;
       }
@@ -698,10 +706,19 @@
         }
       }
 
-      // // 「更多」按钮
-      // &:first-child:hover .b3-chip[data-type="block-more"] {
-      //   right: 60px;
-      // }
+      // 「更多」按钮
+      [data-type="block-more"] {
+        // top: calc(5px + 0.1em);
+        right: 3px;
+        // transform: translateY(50%);
+        font-weight: 500;
+        background-color: var(--b3-theme-surface);
+        color: var(--b3-theme-on-surface);
+      }
+      &:first-child:hover .b3-chip[data-type="block-more"] {
+        top: calc(5px + 0.1em);
+        transform: translateX(-54px);
+      }
     }
 
     // 「添加」按钮
@@ -713,7 +730,7 @@
     }
 
     // 标题图标上移、标题字体大小、标题内边距
-    &-fields {
+    &-fields:nth-child(2) {
       > .av__cell[data-dtype="block"] {
         padding-top: calc(var(--gtfs) / 13.6 * 5);
         padding-bottom: calc(var(--gtfs) / 13.6 * 5);
