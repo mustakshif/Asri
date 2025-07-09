@@ -9,6 +9,15 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 更新日志
 
+> ⚠️ 部分设备在近期 Chromium 版本中遇到[颜色计算异常](https://issues.chromium.org/issues/428657802)，可能导致主题色的亮度和饱和度异常偏高。若你发现界面色彩异常，请前往 `设置 - 外观 - 代码片段`，添加并启用下方 CSS 代码片段：
+>
+> ```css
+>   :root {
+>     --ccff: var(--asri-ccff, 1);
+>   }
+> ```
+
+
 查看最新版本更新细节，请访问[发布页](https://github.com/mustakshif/Asri/releases)。
 
 查看完整更新日志，请访问 [CHANGELOG.md](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md)。

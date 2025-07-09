@@ -9,6 +9,15 @@ Asri is a modern theme designed for [SiYuan Note](https://github.com/siyuan-note
 
 ## Changelog
 
+> ⚠️ Some devices may experience [abnormal color calculation](https://issues.chromium.org/issues/428657802) in recent Chromium versions, resulting in excessively high brightness and saturation of theme colors. If you notice such color issues, please go to `Settings - Appearance - Code Snippets`, add and enable the following CSS snippet as a temporary fix:
+> 
+> ```css
+>   :root {
+>     --ccff: var(--asri-ccff, 1);
+>   }
+> ```
+
+
 To view the details of the latest release, please visit the [Releases Page](https://github.com/mustakshif/Asri/releases).
 
 For the complete update history, refer to the [CHANGELOG.md](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md).
