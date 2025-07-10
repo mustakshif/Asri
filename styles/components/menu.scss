@@ -20,7 +20,11 @@
   }
 
   &:not(.b3-menu--fullscreen)::before {
-    box-shadow: 0 0 0 1px #fff2 inset, 0 2px 1px -1px #fff3 inset;
+    box-shadow: glassy-shadow($opacity: 0.9);
+
+    @include darkmode-counterpart {
+      box-shadow: glassy-shadow($opacity: 0.3);
+    }
   }
 
   border-radius: $border-rd-menu;

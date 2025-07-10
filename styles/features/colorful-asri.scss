@@ -303,6 +303,10 @@ $cvc: 10; // color variant count
 
   #asriChromaSlider {
     cursor: pointer;
+
+    &::-webkit-slider-runnable-track {
+      background: linear-gradient(to right, oklch(from var(--asri-base-color) .65 0 h / .4), oklch(from var(--asri-base-color) .65 0.18 h / .4));
+    }
   }
 
   .menu-item__subtitle {

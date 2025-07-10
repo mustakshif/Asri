@@ -12,3 +12,20 @@
   // gnf 值，用于在 rtl 模式下反转值。rtl 模式下 --gnf 的值为 -1
   @return calc(var(--gnf, 1) * #{$value});
 }
+
+@function hdr-shadow($shadow: "0 2px 1px -1px", $brightness: 2, $opacity: 0.1, $other: "inset") {
+  @return unquote("#{$shadow} color(display-p3 #{$brightness} #{$brightness} #{$brightness} / #{$opacity}) #{$other}");
+}
+
+@function glassy-shadow(
+  $rgb: "255,255,255",
+  $opacity: 0.5,
+  $pattern-outline: "0 0 0 1px",
+  $pattern-hightlight: "1px 2px 1px -1px",
+  $pattern-reflection: "-1px -2px 1px -1px",
+  $extra: "inset"
+) {
+  @return unquote(
+    "#{$pattern-outline} rgba(#{$rgb}, #{calc($opacity / 5)}) #{$extra}, #{$pattern-hightlight} rgba(#{$rgb}, #{$opacity}) #{$extra}, #{$pattern-reflection} rgba(#{$rgb}, #{calc($opacity / 2)}) #{$extra}"
+  );
+}

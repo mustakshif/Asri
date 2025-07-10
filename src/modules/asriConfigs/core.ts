@@ -26,10 +26,11 @@ export async function loadThemePalette() {
   if (!env.supportOklch) return;
 
   // check local configs to set initial theme color
-  const shouldUseCustomColor = env.isInBrowser || env.isMobile || env.isLinux || !followSysAccentColor;
+  const shouldUseCustomColor = env.isInBrowser || env.isMobile || env.isLinux || (!followSysAccentColor && !asriConfigs[curMode].followCoverImgColor);
   
   if (shouldUseCustomColor) {
     cssVarManager.setProperty("--asri-user-custom-accent", asriConfigs[curMode].userCustomColor);
+    cssVarManager.removeProperty("--asri-cover-dominant");
     reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
   } else {
     cssVarManager.removeProperty("--asri-user-custom-accent");
@@ -79,6 +80,7 @@ export function unloadThemePalette() {
   cssVarManager.destory();
   coverImgColorManager.destory();
   // asriDoms.barMode?.removeEventListener("click", customizeThemeColor);
+  document.body.classList.remove("asri-c-0");
   document.querySelectorAll(".asri-config").forEach((el) => el.remove());
 }
 

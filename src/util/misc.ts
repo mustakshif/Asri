@@ -215,7 +215,6 @@ async function waitForProtyleLoaded(protyle: HTMLElement, maxWaitTime = 5000): P
 
     // 开始观察属性变化
     observer.observe(protyle, {
-      attributes: true,
       attributeFilter: ["data-loading"],
     });
 

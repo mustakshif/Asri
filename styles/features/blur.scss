@@ -61,7 +61,7 @@ body:not(.asri-disable-backdrop-blur) {
 
     //文字格式工具条
     &-toolbar {
-      background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+      background-color: oklch(from var(--b3-theme-surface) l c h / $medium-transparency);
       @include bg-blur;
       // z-index: 1;
 
@@ -70,7 +70,7 @@ body:not(.asri-disable-backdrop-blur) {
       }
 
       @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+        @include theme-variant-color(background-color, surface, $medium-transparency);
       }
     }
 
@@ -124,8 +124,8 @@ body:not(.asri-disable-backdrop-blur) {
     }
   }
 
-  #dockBottom.fn__none:not(.has-layout-dockb-float) ~ #status,
-  &.body-asri--mobile #status {
+  #dockBottom.fn__none:not(.has-layout-dockb-float) ~ .status,
+  &.body-asri--mobile .status {
     background-color: oklch(from var(--b3-theme-surface) l c h / $thin-transparency);
     @include bg-blur;
 
@@ -133,8 +133,11 @@ body:not(.asri-disable-backdrop-blur) {
     @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
       @include theme-variant-color(background-color, surface, $thin-transparency);
     }
+  }
 
-    :root[style*="--asri-c-0"] & {
+  &.asri-c-0 {
+    #dockBottom.fn__none:not(.has-layout-dockb-float) ~ .status,
+    &.body-asri--mobile .status {
       mix-blend-mode: luminosity;
       @include bg-blur($saturate-value: 1.3);
     }

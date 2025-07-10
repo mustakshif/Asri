@@ -25,11 +25,10 @@ import { removeProtyleStatusClassName, toggleProtyleStatus } from "./protyleStat
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
 import {
-  avoidOverlappingWithStatus,
   debouncedStatusPosition,
   removeStatusStyles,
   setStatusHeightVar,
-  unloadAvoidOverlappingWithStatus,
+  unloadAvoidOverlappingWithStatus
 } from "./status";
 import {
   calcTabbarSpacings,
@@ -64,7 +63,6 @@ export async function loadAsriJSModules() {
   applyTrafficLightPosition();
   setStatusHeightVar();
   toggleProtyleStatus();
-  addHdrSupportImage(); // 添加HDR支持图片
   // startDefaultTranstition(loadThemePalette);
   await getI18n();
   loadThemePalette(); // https://github.com/mustakshif/Asri/issues/85
@@ -112,7 +110,6 @@ export async function unloadAsriJSModules(completeUnload = true) {
     document.body.classList.remove("body-asri--fullscreen", "asri-tfp", "asri-tfp-acrylic", "asri-tfp-progressive");
     unloadThemePalette();
     removeChromiumV138FixVar();
-    removeHdrSupportImage(); // 移除HDR支持图片
   }
 
   globalMouseupEventListener.remove(document, "mouseup");
@@ -276,27 +273,4 @@ function appearanceModeUpdateCallback(e: MediaQueryListEvent) {
   startFadeInFadeOutTranstition(600, () => {}, 200);
 }
 
-function addHdrSupportImage() {
-  // 检查浏览器是否支持HDR
-  if (
-    window.matchMedia &&
-    window.matchMedia("(color-gamut: p3)").matches &&
-    !document.querySelector(".asri-hdr-support-image")
-  ) {
-    const img = document.createElement("img");
-    img.src = "/appearance/themes/Asri/hdr.jpg"; // source: https://github.com/ardov/hdr-web
-    img.style.position = "fixed";
-    img.style.pointerEvents = "none";
-    img.style.width = "1px";
-    img.style.height = "1px";
-    img.classList.add("asri-hdr-support-image");
-    document.body.appendChild(img);
-  }
-}
 
-function removeHdrSupportImage() {
-  const hdrImage = document.querySelector(".asri-hdr-support-image");
-  if (hdrImage) {
-    hdrImage.remove();
-  }
-}

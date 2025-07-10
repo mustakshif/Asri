@@ -3,62 +3,58 @@
 */
 
 @use "../components/utils.scss" as *;
-
-@function hdr-shadow($shadow: "0 2px 1px -1px", $brightness: 2, $opacity: 0.1, $other: "inset") {
-  @return unquote("#{$shadow} color(display-p3 #{$brightness} #{$brightness} #{$brightness} / #{$opacity}) #{$other}");
-}
+@use "../base" as *;
 
 @media (color-gamut: p3) {
-  body {
-    --alglb: 0 1px 0 0 color(display-p3 2 2 2); // asri luminous glass light border
-  }
-  [data-theme-mode="light"] {
-    :is(.b3-menu, .b3-menu__submenu):not(.b3-menu--fullscreen)::before {
-      box-shadow: hdr-shadow("0 0 0 1px", 1.7, 0.05), hdr-shadow("1px 2px 1px -1px", 2, 0.1),
-        hdr-shadow("-1px -2px 1px -1px", 1.5, 0.1);
+  .asri-c-0 {
+    [data-theme-mode="light"]>& {
+      :is(.b3-menu, .b3-menu__submenu):not(.b3-menu--fullscreen)::before {
+        box-shadow: hdr-shadow("0 0 0 1px", 1.5, 0.05), hdr-shadow("1px 2px 1px -1px", 2, 0.15),
+          hdr-shadow("-1px -2px 1px -1px", 2, 0.1);
 
-      // box-shadow: 0 0 0 1px color(srgb 1 1 1 / 0.5) inset, 0 2px 1px -1px color(srgb 1 1 1 / 1) inset;
+        // box-shadow: 0 0 0 1px color(srgb 1 1 1 / 0.5) inset, 0 2px 1px -1px color(srgb 1 1 1 / 1) inset;
+      }
+
+      // .av__gallery-fields:first-child {
+      //   box-shadow: inset 0 2px 1px -1px color(display-p3 #{$w} #{$w} #{$w} / 0.1);
+      //   border-radius: var(--gibr);
+      // }
+      // .av__gallery-cover {
+      //   box-shadow: inset 0 2px 1px -1px color(display-p3 #{$w} #{$w} #{$w} / 0.1);
+      // }
     }
 
-    // .av__gallery-fields:first-child {
-    //   box-shadow: inset 0 2px 1px -1px color(display-p3 #{$w} #{$w} #{$w} / 0.1);
-    //   border-radius: var(--gibr);
-    // }
-    // .av__gallery-cover {
-    //   box-shadow: inset 0 2px 1px -1px color(display-p3 #{$w} #{$w} #{$w} / 0.1);
-    // }
-  }
+    .protyle-toolbar {
+      @include menu-shadow(
+        $extra-shadow-light: (
+          hdr-shadow("0 0 0 1px", 1.3, 0.05),
+          hdr-shadow("1px 1px 1px -1px", 2, 0.7),
+          hdr-shadow("-1px -1px 1px -1px", 1.7, 0.4),
+        ),
+        $extra-shadow-dark: glassy-shadow("255, 255, 255", 0.6, "0 0 0 1px", "1px 1px 1px -1px", "-1px -1px 1px -1px")
+      );
+    }
 
-  .protyle-toolbar {
-    @include menu-shadow(
-      $extra-shadow-light: (
-        hdr-shadow("0 0 0 1px", 1.3, 0.05),
-        hdr-shadow("1px 1px 1px -1px", 2, 0.5),
-        hdr-shadow("-1px -1px 1px -1px", 1.7, 0.4),
-      ),
-      $extra-shadow-dark: "0 0 0 1px inset #fff1, 0 1.5px 1px -1px #fff4 inset"
-    );
-  }
+    .protyle-util,
+    #message.b3-snackbars .b3-snackbar__content {
+      @include menu-shadow(
+        $extra-shadow-light: (
+          hdr-shadow("0 0 0 1px", 1.7, 0.05),
+          hdr-shadow("1px 2px 1px -1px", 2, 0.1),
+          hdr-shadow("-1px -2px 1px -1px", 1.5, 0.1),
+        )
+      );
+    }
 
-  .protyle-util,
-  #message.b3-snackbars .b3-snackbar__content {
-    @include menu-shadow(
-      $extra-shadow-light: (
-        hdr-shadow("0 0 0 1px", 1.7, 0.05),
-        hdr-shadow("1px 2px 1px -1px", 2, 0.1),
-        hdr-shadow("-1px -2px 1px -1px", 1.5, 0.1),
-      )
-    );
-  }
-
-  .b3-dialog__container {
-    @include dialog-shadow(
-      $extra-shadow-light: (
-        "0 0 0 1px rgba(0, 0, 0, 0.05)",
-        hdr-shadow("0 0 0 1px", 1.7, 0.05),
-        hdr-shadow("1px 2px 1px -1px", 2, 0.1),
-        hdr-shadow("-1px -2px 1px -1px", 1.5, 0.1),
-      )
-    );
+    .b3-dialog__container {
+      @include dialog-shadow(
+        $extra-shadow-light: (
+          "0 0 0 1px rgba(0, 0, 0, 0.05)",
+          hdr-shadow("0 0 0 1px", 1.7, 0.05),
+          hdr-shadow("1px 2px 1px -1px", 2, 0.15),
+          hdr-shadow("-1px -2px 1px -1px", 2, 0.1),
+        )
+      );
+    }
   }
 }

@@ -24,8 +24,6 @@ import { getSystemAccentColor } from "./systemColor";
 import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
 import { coverImgColorManager, updateCoverImgColor } from "./coverImgColor";
 
-const debounceChramaValueSaving = debounce(updateAsriConfigs, 200);
-
 export function initAsriConfigMenuItemClick() {
   if (!followSysAccentBtn || !pickColorBtn || !asriChromaSlider || !colorPicker || !followCoverImgColorBtn) return;
 
@@ -34,9 +32,9 @@ export function initAsriConfigMenuItemClick() {
     // followSysAccentColor = false;
     followSysAccentBtn.classList.add("fn__none");
   } else {
-    followSysAccentBtn.addEventListener("mouseup", handleFollowSystemAccentBtnClick);
+    followSysAccentBtn.addEventListener("click", handleFollowSystemAccentBtnClick);
   }
-  pickColorBtn.addEventListener("click", handlePickColorBtnClick);
+  pickColorBtn.addEventListener("mouseup", handlePickColorBtnClick); // 使用mouseup事件防止重复触发
   colorPicker.addEventListener("input", handleColorPickerInput);
   colorPicker.addEventListener("change", handleColorPickerChange);
   asriChromaSlider.addEventListener("input", handleChromaSliderInput);
@@ -69,10 +67,9 @@ function handleFollowSystemAccentBtnClick() {
 
 function handleFollowCoverImgColorBtnClick() {
   if (asriConfigs[curMode].followCoverImgColor) return;
-  resetPresetPalette();
-  setFollowSysAccentColor(false);
-
   startFadeInFadeOutTranstition(600, async () => {
+    resetPresetPalette();
+    setFollowSysAccentColor(false);
     document
       .querySelectorAll(".asri-config.b3-menu__item--selected")
       .forEach((el) => el.classList.remove("b3-menu__item--selected"));
@@ -112,8 +109,10 @@ function handlePickColorBtnClick(event: Event) {
 function handleColorPickerInput() {
   resetPresetPalette();
   const hexColor = colorPicker!.value;
-  cssVarManager.setProperty("--asri-user-custom-accent", hexColor);
-  reverseOnPrimaryLightness(hexColor);
+  requestAnimationFrame(() => {
+    cssVarManager.setProperty("--asri-user-custom-accent", hexColor);
+    reverseOnPrimaryLightness(hexColor);
+  });
 }
 
 function handleColorPickerChange() {
@@ -136,15 +135,15 @@ function handleChromaSliderInput(this: any) {
   // }
   resetPresetPalette();
   const chromaValue = this.value;
-  cssVarManager.setProperty("--asri-c-factor", chromaValue);
-  this.parentElement!.ariaLabel = i18n["asriChroma"] + chromaValue;
-  asriConfigs[curMode].chroma = chromaValue;
+  requestAnimationFrame(() => {
+    cssVarManager.setProperty("--asri-c-factor", chromaValue);
+    this.parentElement!.ariaLabel = i18n["asriChroma"] + chromaValue;
+    asriConfigs[curMode].chroma = chromaValue;
 
-  setIsUserAccentGray(chromaValue === "0" ? true : false);
-
-  handleGrayScale(chromaValue);
-
-  debounceChramaValueSaving();
+    setIsUserAccentGray(chromaValue === "0" ? true : false);
+    handleGrayScale(chromaValue);
+  });
+  debounce(updateAsriConfigs, 200)();
 }
 
 function resetPresetPalette(alterFollowSysAccentColor: boolean = true) {
@@ -154,6 +153,7 @@ function resetPresetPalette(alterFollowSysAccentColor: boolean = true) {
 
   asriConfigs[curMode].presetPalette = "";
   document.getElementById(`prst-palette-${curPresetPalette}`)?.classList.remove("b3-menu__item--selected");
+  document.getElementById("asriChroma")?.classList.remove("b3-menu__item--disabled");
   document.documentElement.removeAttribute("data-asri-palette");
   cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
   setIsUserAccentGray(asriConfigs[curMode].chroma === "0" ? true : false);
@@ -205,11 +205,13 @@ async function paletteMenuItemCallback(e: Event) {
   if (asriConfigs[curMode].presetPalette === paletteID) return;
 
   // document.querySelectorAll('[id^="prst-palette-"]').forEach((el) => el.classList.remove("b3-menu__item--selected"));
-  document
-    .querySelectorAll(".asri-config.b3-menu__item--selected")
-    .forEach((el) => el.classList.remove("b3-menu__item--selected"));
 
   startFadeInFadeOutTranstition(600, () => {
+    document
+      .querySelectorAll(".asri-config.b3-menu__item--selected")
+      .forEach((el) => el.classList.remove("b3-menu__item--selected"));
+    asriChromaBtn?.classList.add("b3-menu__item--disabled");
+
     target.classList.add("b3-menu__item--selected");
     document.documentElement.setAttribute("data-asri-palette", paletteID.split("-")[2]);
 

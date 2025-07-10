@@ -80,4 +80,4 @@ export const setTfpAcrylicBtn = (element: AsriDomsExtended) => {
 
 export const setTfpLuminousBtn = (element: AsriDomsExtended) => {
   tfpLuminousBtn = element;
-}; 
+};

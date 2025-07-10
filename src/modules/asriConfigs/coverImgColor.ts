@@ -129,22 +129,40 @@ export async function getCoverImgColor(activeDocId?: string) {
 }
 
 export async function updateCoverImgColor(activeDocId?: string, isFirstload = false) {
-
   const color = await getCoverImgColor(activeDocId);
+  const prevColor = cssVarManager.getAllVars().get("--asri-cover-dominant");
+
+  let targetColor: string;
+  let colorChroma: number;
+
   if (!color) {
-    isFirstload &&
-      reverseOnPrimaryLightness(
-        cssVarManager.getAllVars().get("--asri-cover-dominant") ?? asriConfigs[curMode].userCustomColor
-      ); // 处理首次载入封面图颜色时当前活跃文档没有题头图的情况
-    return;
+    if (!prevColor) {
+      targetColor = asriConfigs[curMode].userCustomColor;
+      colorChroma = parseFloat(asriConfigs[curMode].chroma) || 0;
+      cssVarManager.setProperty("--asri-user-custom-accent", targetColor);
+    } else {
+      targetColor = prevColor;
+      colorChroma = hexToOklch(prevColor)?.C || 0;
+    }
+    if (isFirstload) {
+      reverseOnPrimaryLightness(prevColor ?? targetColor);
+    }
+  } else {
+    targetColor = color;
+    colorChroma = hexToOklch(color)?.C || 0;
+
+    cssVarManager.setProperty("--asri-cover-dominant", color);
   }
 
-  const colorChroma = hexToOklch(color)?.C || 0;
-  setIsCoverImgColorGray(colorChroma.toFixed(3) === "0.000");
+  const isGray = colorChroma.toFixed(3) === "0.000";
+  setIsCoverImgColorGray(isGray);
 
-  cssVarManager.setProperty("--asri-cover-dominant", color);
+  if (isGray || asriConfigs[curMode].chroma === "0") {
+    colorChroma = 0;
+  }
 
-  console.log("isCoverImgColorGray", color, colorChroma, isCoverImgColorGray);
+  console.log("isCoverImgColorGray", targetColor, colorChroma, isCoverImgColorGray);
+
   handleGrayScale(colorChroma);
-  reverseOnPrimaryLightness(color);
+  reverseOnPrimaryLightness(targetColor);
 }

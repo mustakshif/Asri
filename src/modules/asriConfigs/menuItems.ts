@@ -160,6 +160,7 @@ export function initMenuItems() {
 
   if (asriConfigs[curMode].presetPalette) {
     const curPalette = document.getElementById(`${asriConfigs[curMode].presetPalette}`);
+    asriChromaBtn?.classList.add("b3-menu__item--disabled");
     curPalette?.classList.add("b3-menu__item--selected");
   }
 

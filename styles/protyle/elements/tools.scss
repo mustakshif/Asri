@@ -142,7 +142,10 @@
   background-color: var(--b3-theme-surface);
   transform-origin: 50% 150%;
   transition: none;
-  @include menu-shadow($extra-shadow-dark: "0 0 0 1px inset #fff1, 0 1.5px 1px -1px #fff4 inset");
+  @include menu-shadow(
+    $extra-shadow-light: glassy-shadow("255, 255, 255", 1, "0 0 0 1px", "1px 1px 1px -1px", "-1px -1px 1px -1px"),
+    $extra-shadow-dark: glassy-shadow("255, 255, 255", 0.6, "0 0 0 1px", "1px 1px 1px -1px", "-1px -1px 1px -1px")
+  );
   @include theme-variant-border($border: false);
 
   &__item {
