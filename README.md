@@ -7,8 +7,6 @@ English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main
 
 Asri is a modern theme designed for [SiYuan Note](https://github.com/siyuan-note/siyuan), crafting a space where visual distractions disappear and your thinking takes center stage - immersive, focused, and intuitively guided.
 
-## Changelog
-
 > ⚠️ Some devices may experience [abnormal color calculation](https://issues.chromium.org/issues/428657802) in recent Chromium versions, resulting in excessively high brightness and saturation of theme colors. If you notice such color issues, please go to `Settings - Appearance - Code Snippets`, add and enable the following CSS snippet as a temporary fix:
 > 
 > ```css
@@ -17,6 +15,7 @@ Asri is a modern theme designed for [SiYuan Note](https://github.com/siyuan-note
 >   }
 > ```
 
+## Changelog
 
 To view the details of the latest release, please visit the [Releases Page](https://github.com/mustakshif/Asri/releases).
 
@@ -27,6 +26,10 @@ For the complete update history, refer to the [CHANGELOG.md](https://github.com/
 #### `Jul 1, 2025 - v3.5.0`
 
 Theme colors now support "Follow cover image color", automatically extracting colors from document cover images or videos and switching theme colors in real-time for an immersive visual experience.
+
+![hdr ui component](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/hdr_ui_v2.jpg)
+
+`v3.5.4` introduces HDR UI components, presenting a more futuristic and tech-inspired design in HDR-supported screens and browser environments
 
 #### `May 12, 2025 - v3.4.0: Vision Unbound`
 

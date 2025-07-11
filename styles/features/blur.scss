@@ -61,7 +61,7 @@ body:not(.asri-disable-backdrop-blur) {
 
     //文字格式工具条
     &-toolbar {
-      background-color: oklch(from var(--b3-theme-surface) l c h / $medium-transparency);
+      background-color: oklch(from var(--b3-theme-surface) l c h / $thick-transparency);
       @include bg-blur;
       // z-index: 1;
 

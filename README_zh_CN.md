@@ -7,7 +7,6 @@
 
 Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/siyuan)主题，以隐形设计构筑沉浸空间，为你带来专注、优雅、直觉驱动的笔记体验。
 
-## 更新日志
 
 > ⚠️ 部分设备在近期 Chromium 版本中遇到[颜色计算异常](https://issues.chromium.org/issues/428657802)，可能导致主题色的亮度和饱和度异常偏高。若你发现界面色彩异常，请前往 `设置 - 外观 - 代码片段`，添加并启用下方 CSS 代码片段：
 >
@@ -17,6 +16,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 >   }
 > ```
 
+## 更新日志
 
 查看最新版本更新细节，请访问[发布页](https://github.com/mustakshif/Asri/releases)。
 
@@ -27,6 +27,10 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 #### `25/07/01 - v3.5.0`
 
 主题色支持「跟随题头图颜色」，自动提取文档题头图片或视频的颜色，并实时切换主题配色，营造沉浸式的视觉体验
+
+![hdr ui component](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/hdr_ui_v2.jpg)
+
+`v3.5.4` 引入 HDR UI 组件，在支持 HDR 的屏幕和浏览器环境中呈现更具未来感和科技感的设计
 
 #### `25/05/12 - v3.4.0：视界无界`
 
