@@ -56,8 +56,6 @@ export function addHdrSupportImage() {
     const img = document.createElement("img");
     img.src = "/appearance/themes/Asri/hdr.jpg"; // source: https://github.com/ardov/hdr-web
     img.style.position = "fixed";
-    img.style.top = "50%";
-    img.style.left = "50%";
     img.style.pointerEvents = "none";
     img.style.width = "1px";
     img.style.height = "1px";
