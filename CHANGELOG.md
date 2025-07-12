@@ -1,9 +1,5 @@
 ### v3.5.4
 
-![hdr ui component](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/hdr_ui_v2.jpg)
-
-
-
 ### v3.5.3
 
 - 优化画廊 UI 细节

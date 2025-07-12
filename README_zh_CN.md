@@ -28,7 +28,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 主题色支持「跟随题头图颜色」，自动提取文档题头图片或视频的颜色，并实时切换主题配色，营造沉浸式的视觉体验
 
-![hdr ui component](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/hdr_ui_v2.jpg)
+![hdr ui component](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/hdr_ui_v3.jpg)
 
 `v3.5.4` 引入 HDR UI 组件，在支持 HDR 的屏幕和浏览器环境中呈现更具未来感和科技感的设计
 

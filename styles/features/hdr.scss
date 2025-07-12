@@ -8,6 +8,11 @@
 @media (color-gamut: p3) {
   .asri-c-0 {
     [data-theme-mode="light"]>& {
+      :is(.b3-menu, .b3-menu__submenu) {
+        @include menu-shadow($opacity-light: 0.15, $extra-shadow-light: (
+          hdr-shadow("3px 6px 6px -3px", 1.5, 0.12, ""),
+        ));
+      }
       :is(.b3-menu, .b3-menu__submenu):not(.b3-menu--fullscreen)::before {
         box-shadow: hdr-shadow("0 0 0 1px", 1.5, 0.05), hdr-shadow("1px 2px 1px -1px", 2, 0.15),
           hdr-shadow("-1px -2px 1px -1px", 2, 0.1);
@@ -28,8 +33,9 @@
       @include menu-shadow(
         $extra-shadow-light: (
           hdr-shadow("0 0 0 1px", 1.3, 0.05),
-          hdr-shadow("1px 1px 1px -1px", 2, 0.7),
+          hdr-shadow("1px 2px 2px -2px", 2, 0.5),
           hdr-shadow("-1px -1px 1px -1px", 1.7, 0.4),
+          hdr-shadow("3px 5px 6px -3px", 1.5, 0.15, ""),
         ),
         $extra-shadow-dark: glassy-shadow("255, 255, 255", 0.6, "0 0 0 1px", "1px 1px 1px -1px", "-1px -1px 1px -1px")
       );
@@ -42,17 +48,19 @@
           hdr-shadow("0 0 0 1px", 1.7, 0.05),
           hdr-shadow("1px 2px 1px -1px", 2, 0.1),
           hdr-shadow("-1px -2px 1px -1px", 1.5, 0.1),
+          hdr-shadow("3px 6px 6px -3px", 1.5, 0.12, ""),
         )
       );
     }
 
-    .b3-dialog__container {
+    [data-key="dialog-emojis"] .b3-dialog__container {
       @include dialog-shadow(
         $extra-shadow-light: (
           "0 0 0 1px rgba(0, 0, 0, 0.05)",
           hdr-shadow("0 0 0 1px", 1.7, 0.05),
           hdr-shadow("1px 2px 1px -1px", 2, 0.15),
           hdr-shadow("-1px -2px 1px -1px", 2, 0.1),
+          hdr-shadow("2px 12px 12px -3px", 1.5, 0.15, ""),
         )
       );
     }
