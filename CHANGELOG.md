@@ -1,5 +1,25 @@
 ### v3.5.4
 
+![hdr ui component](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/hdr_ui_v3.jpg)
+
+- 菜单、工具条等 UI 组件引入 HDR（主题色色度为 0 时自动启用，需要显示设备和应用环境支持）
+- 优化主题色配置菜单交互逻辑
+- 降低菜单项颜色亮度反转阈值，提高可读性
+- 调整编辑器文字工具条样式
+- 调整通知样式
+- 调整对话框阴影样式
+
+<br />
+
+- Added HDR support for UI components such as menus and toolbars (automatically enabled when theme chroma is 0, requires compatible display devices and application environment)
+- Optimized the interaction logic of theme color configuration menu
+- Lowered the brightness inversion threshold for menu items to improve readability
+- Adjusted the styling of editor text toolbars
+- Modified notification appearance
+- Updated dialog box shadow styling
+
+---
+
 ### v3.5.3
 
 - 优化画廊 UI 细节
