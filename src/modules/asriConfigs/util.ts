@@ -24,14 +24,18 @@ export function handleGrayScale(chroma: string | number) {
     (isCoverImgColorGray && asriConfigs[curMode].followCoverImgColor)
   ) {
     console.log("addCfactor0");
-    cssVarManager.setProperty("--asri-c-0", "0");
-    document.body.classList.add("asri-c-0");
-    addHdrSupportImage();
+    requestAnimationFrame(() => {
+      cssVarManager.setProperty("--asri-c-0", "0");
+      document.body.classList.add("asri-c-0");
+      addHdrSupportImage();
+    });
     return true;
   } else {
-    cssVarManager.removeProperty("--asri-c-0");
-    document.body.classList.remove("asri-c-0");
-    removeHdrSupportImage();
+    requestAnimationFrame(() => {
+      cssVarManager.removeProperty("--asri-c-0");
+      document.body.classList.remove("asri-c-0");
+      removeHdrSupportImage();
+    });
     return false;
   }
 }
