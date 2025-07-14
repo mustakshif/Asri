@@ -17,6 +17,7 @@ import {
   unloadThemePalette,
 } from "./asriConfigs";
 import { updateCoverImgColor } from "./asriConfigs/coverImgColor";
+import { removeHdrSupportImage } from "./asriConfigs/util";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { removeFocusedBlockClass as removeFocusedBlockClassName, selectionChangeCallback } from "./focusedBlock";
@@ -107,9 +108,10 @@ export async function unloadAsriJSModules(completeUnload = true) {
     removeEnvClassNames();
     restoreDefaultSiyuanScrollbar();
     restoreTrafficLightPosition();
-    document.body.classList.remove("body-asri--fullscreen", "asri-tfp", "asri-tfp-acrylic", "asri-tfp-progressive");
+    document.body.classList.remove("body-asri--fullscreen", "asri-tfp", "asri-tfp-acrylic", "asri-tfp-progressive", "asri-c-0");
     unloadThemePalette();
     removeChromiumV138FixVar();
+    removeHdrSupportImage();
   }
 
   globalMouseupEventListener.remove(document, "mouseup");
