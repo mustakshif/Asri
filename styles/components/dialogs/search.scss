@@ -35,26 +35,26 @@
       }
     }
   }
+}
 
-  ~ .b3-dialog--open:not([data-key="dialog-savecriterion"]) {
-    [onselectstart] + .b3-dialog__body > .b3-dialog__content {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      grid-template-rows: repeat(auto-fill, 28px);
-      gap: 20px 90px;
+[data-key="dialog-searchtype"] {
+  .b3-dialog__content {
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+   grid-template-rows: repeat(auto-fill, 28px);
+   gap: 20px 90px;
 
-      .b3-label {
-        border-bottom-color: transparent;
-        padding: 0;
-        height: 28px;
-      }
+   .b3-label {
+     border-bottom-color: transparent;
+     padding: 0;
+     height: 28px;
+   }
 
-      div:last-child {
-        grid-column: 1 / -1;
-        grid-row: 10 / span 4;
-      }
-    }
-  }
+   div:last-child {
+     grid-column: 1 / -1;
+     grid-row: 10 / span 4;
+   }
+ }
 }
 
 .search__tip {

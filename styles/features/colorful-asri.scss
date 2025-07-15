@@ -305,7 +305,7 @@ $cvc: 10; // color variant count
     cursor: pointer;
 
     &::-webkit-slider-runnable-track {
-      background: linear-gradient(to right, oklch(from var(--asri-base-color) .65 0 h / .4), oklch(from var(--asri-base-color) .65 0.18 h / .4));
+      background: linear-gradient(calc(90deg * var(--gnf, 1)), oklch(from var(--asri-base-color) .65 0 h / .4), oklch(from var(--asri-base-color) .65 0.18 h / .4));
     }
   }
 
