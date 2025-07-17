@@ -29,7 +29,7 @@ Theme colors now support "Follow cover image color", automatically extracting co
 
 ![hdr ui component](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/hdr_ui_v3.jpg)
 
-`v3.5.4` introduces HDR UI components, presenting a more futuristic and tech-inspired design in HDR-supported screens and browser environments
+`v3.5.4` introduces HDR UI components, presenting a more futuristic and tech-inspired design in HDR-supported screens and browser environments.
 
 #### `May 12, 2025 - v3.4.0: Vision Unbound`
 

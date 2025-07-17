@@ -84,13 +84,13 @@
   height: 20px;
   width: calc(32px + 2 * var(--sscu));
   // transition: all 0.3s;
-  transition-property: background-color, filter;
-  transition-duration: 0.5s;
+  transition-property: background-color, filter, transform;
+  transition-duration: 0.4s, 0.2s, 0.2s;
   border: none;
   border-radius: calc(var(--sbrc) + 2px);
   box-sizing: border-box !important; // fix conflict with enhance plugin's arco css styles
   box-shadow: 0 4px 7px -4px inset #0002;
-  // transform: scale(0.9);
+  transform: scale(1) scaleX(var(--gnf, 1));
 
   @include darkmode-counterpart {
     box-shadow: 0 4px 7px -4px inset #0005;
@@ -161,16 +161,17 @@
     }
 
     &:active::after {
-      transform: translateX(10px) scale(1.1) scaleX(1.2);
+      transform: translateX(11px) scale(1.25) scaleX(1.1);
     }
   }
 
   &:active {
-    filter: brightness(1.5);
-    transition-duration: 0.1s;
+    filter: brightness(1.2);
+    // transition-duration: 0.15s;
+    transform: scale(1.05) scaleX(var(--gnf, 1));
 
     &::after {
-      transform: scale(1.1) scaleX(1.2) translateX(2px);
+      transform: scale(1.25) scaleX(1.1) translateX(1px);
     }
   }
 }

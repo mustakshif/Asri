@@ -96,12 +96,11 @@ function handlePickColorBtnClick(event: Event) {
     cssVarManager.setProperty("--asri-user-custom-accent", asriConfigs[curMode].userCustomColor);
     cssVarManager.removeProperty("--asri-cover-dominant");
 
-    handleGrayScale(asriConfigs[curMode].chroma);
-    reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
-
     asriConfigs[curMode].userCustomColor = asriConfigs[curMode].userCustomColor;
     asriConfigs[curMode].followSysAccentColor = false;
     asriConfigs[curMode].followCoverImgColor = false;
+    handleGrayScale(asriConfigs[curMode].chroma);
+    reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
     updateAsriConfigs();
   });
 }
