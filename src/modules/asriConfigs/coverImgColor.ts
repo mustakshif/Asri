@@ -97,9 +97,9 @@ class CoverImgColorManager {
     return color.hex;
   }
 
-  getCoverVidColor(sourceVid: HTMLVideoElement) {
+  getCoverVidColor(sourceVid: HTMLVideoElement, option: FastAverageColorOptions = { algorithm: "dominant" }) {
     if (!sourceVid) return;
-    const color = fac.getColor(sourceVid);
+    const color = fac.getColor(sourceVid, option);
     return color.hex;
   }
 
@@ -128,7 +128,7 @@ export async function getCoverImgColor(activeDocId?: string) {
   }
 }
 
-export async function updateCoverImgColor(activeDocId?: string, isFirstload = false) {
+export async function updateCoverImgColor(activeDocId?: string) {
   const color = await getCoverImgColor(activeDocId);
   const prevColor = cssVarManager.getAllVars().get("--asri-cover-dominant");
 
@@ -139,20 +139,16 @@ export async function updateCoverImgColor(activeDocId?: string, isFirstload = fa
     if (!prevColor) {
       targetColor = asriConfigs[curMode].userCustomColor;
       colorChroma = parseFloat(asriConfigs[curMode].chroma) || 0;
-      cssVarManager.setProperty("--asri-user-custom-accent", targetColor);
     } else {
       targetColor = prevColor;
       colorChroma = hexToOklch(prevColor)?.C || 0;
     }
-    if (isFirstload) {
-      reverseOnPrimaryLightness(prevColor ?? targetColor);
-    }
   } else {
     targetColor = color;
     colorChroma = hexToOklch(color)?.C || 0;
-
-    cssVarManager.setProperty("--asri-cover-dominant", color);
   }
+  
+  cssVarManager.setProperty("--asri-cover-dominant", targetColor);
 
   const isGray = colorChroma.toFixed(3) === "0.000";
   setIsCoverImgColorGray(isGray);

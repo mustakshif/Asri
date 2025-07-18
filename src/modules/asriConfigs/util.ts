@@ -42,6 +42,7 @@ export function handleGrayScale(chroma: string | number) {
 
 export function reverseOnPrimaryLightness(hex: string) {
   const { L } = hexToOklch(hex) || {};
+  console.log("reverseOnPrimaryLightness", hex, L);
   if (L === undefined) return;
   if (L > reverseThreshold) {
     cssVarManager.setProperty("--asri-on-primary-reverse", env.appSchemeMode === "light" ? ".3" : ".2");

@@ -26,15 +26,19 @@ export async function loadThemePalette() {
   if (!env.supportOklch) return;
 
   // check local configs to set initial theme color
-  const shouldUseCustomColor = env.isInBrowser || env.isMobile || env.isLinux || (!followSysAccentColor && !asriConfigs[curMode].followCoverImgColor);
-  
+  const shouldUseCustomColor =
+    env.isInBrowser ||
+    env.isMobile ||
+    env.isLinux ||
+    (!followSysAccentColor && !asriConfigs[curMode].followCoverImgColor);
+
   if (shouldUseCustomColor) {
     cssVarManager.setProperty("--asri-user-custom-accent", asriConfigs[curMode].userCustomColor);
     cssVarManager.removeProperty("--asri-cover-dominant");
     reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
   } else {
     cssVarManager.removeProperty("--asri-user-custom-accent");
-    cssVarManager.removeProperty("--asri-cover-dominant");
+    if (asriConfigs[curMode].followCoverImgColor) cssVarManager.removeProperty("--asri-cover-dominant");
   }
 
   if (asriConfigs[curMode].presetPalette) {
@@ -52,7 +56,7 @@ export async function loadThemePalette() {
   } else if (asriConfigs[curMode].followCoverImgColor) {
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
     document.documentElement.removeAttribute("data-asri-palette");
-    updateCoverImgColor(undefined, true);
+    updateCoverImgColor();
   } else {
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
     document.documentElement.removeAttribute("data-asri-palette");
