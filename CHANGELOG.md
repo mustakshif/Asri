@@ -1,3 +1,27 @@
+### v3.5.5
+
+- 优化 HDR 组件呈现效果
+- 画廊主键字段不换行时出框部分添加省略号
+- 调整开关样式，优化动效
+- 调整滑动块样式
+- 移除了主题包中的非必要文件
+- 修复色度滑块在 RTL 布局下的样式
+- 修复题头图取色为灰度色时切换至自定义主题色模式，色度不跟随用户配置的问题
+- 修复亮暗色模式切换后偶现跟随题头图取色失效的问题
+
+<br />
+
+- Optimized the rendering effect of the HDR component
+- Added ellipsis for out-of-bound content in non-wrapping gallery primary key fields
+- Adjusted the toggle switch style and improved animation effects
+- Modified the slider component style
+- Removed unnecessary files from the theme package
+- Fixed the chroma slider style in RTL layouts
+- Fixed an issue where the chroma didn't follow user settings when switching to custom theme color mode with grayscale header image colors
+- Resolved occasional failures in header image color following after light/dark mode switching
+
+---
+
 ### v3.5.4
 
 ![hdr ui component](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/hdr_ui_v3.jpg)
