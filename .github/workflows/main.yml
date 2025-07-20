@@ -55,7 +55,7 @@ jobs:
           with:
             type: 'zip'
             filename: 'package.zip'
-            exclusions: '*.git* *.scss *.txt /*styles/* /*doc/* /*src/* *config* *package* /*scripts/* *CHANGELOG* *.icon*'
+            exclusions: '*.git* *.scss *.txt /*styles/* /*doc/* /*src/* *config* *package* /*scripts/* *CHANGELOG* /*.icon*'
     
         - name: Create Release
           uses: ncipollo/release-action@v1.13.0
