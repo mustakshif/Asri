@@ -621,7 +621,7 @@
       border-radius: var(--gibr) var(--gibr) 0 0;
       background-color: var(--b3-theme-surface);
       // background-color: #0000;
-      // background-image: linear-gradient(to bottom, var(--b3-theme-surface), #0000);
+      // background: linear-gradient(to bottom, var(--b3-theme-surface), #0000);
       // contain: content;
       container-type: size;
 
@@ -631,7 +631,7 @@
 
       .av__gallery-content {
         margin: calc(var(--gibr) - 4px) var(--gibr) 0;
-        // mask-image: linear-gradient(to bottom, #000, #0000);
+        // mask-image: linear-gradient(to bottom, #000 0%, #0000 100cqh);
         // width: calc(100% / 0.85 - var(--gibr) * 2);
         width: auto;
         transform: none;

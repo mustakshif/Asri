@@ -85,8 +85,8 @@ $cvc: 10; // color variant count
       --b3-empty-color: oklch(from var(--b3-theme-on-background) l c h / 0.45);
 
       @for $i from 1 through $cvc {
-        --b3-font-color#{$i + 3}: oklch(0.6 0.17 calc(360 / #{$cvc} * #{$i} + 30));
-        --b3-font-background#{$i + 3}: oklch(0.97 0.05 calc(360 / #{$cvc} * #{$i} + 30));
+        --b3-font-color#{$i + 3}: oklch(0.58 0.25 calc(360 / #{$cvc} * #{$i} + 30));
+        --b3-font-background#{$i + 3}: oklch(0.96 0.07 calc(360 / #{$cvc} * #{$i} + 30));
       }
     }
 
@@ -152,7 +152,7 @@ $cvc: 10; // color variant count
 
       @for $i from 1 through $cvc {
         --b3-font-color#{$i + 3}: oklch(0.83 0.17 calc(360 / #{$cvc} * #{$i} + 30));
-        --b3-font-background#{$i + 3}: oklch(0.31 0.05 calc(360 / #{$cvc} * #{$i} + 30));
+        --b3-font-background#{$i + 3}: oklch(0.31 0.06 calc(360 / #{$cvc} * #{$i} + 30));
       }
     }
   }
@@ -455,14 +455,14 @@ $cvc: 10; // color variant count
     $hso: 36; // hue shift offset
 
     @for $i from 1 through $cvc {
-      --b3-font-color#{$i + 3}: oklch(0.6 0.15 calc(360 / #{$cvc} * #{$i} + #{$hso}));
-      --b3-font-background#{$i + 3}: oklch(0.97 0.04 calc(360 / #{$cvc} * #{$i} + #{$hso}));
+      --b3-font-color#{$i + 3}: oklch(0.58 0.17 calc(360 / #{$cvc} * #{$i} + #{$hso}));
+      --b3-font-background#{$i + 3}: oklch(0.97 0.07 calc(360 / #{$cvc} * #{$i} + #{$hso}));
     }
 
     @include darkmode-counterpart {
       @for $i from 1 through $cvc {
-        --b3-font-color#{$i + 3}: oklch(0.83 0.15 calc(360 / #{$cvc} * #{$i} + #{$hso}));
-        --b3-font-background#{$i + 3}: oklch(0.31 0.04 calc(360 / #{$cvc} * #{$i} + #{$hso}));
+        --b3-font-color#{$i + 3}: oklch(0.83 0.18 calc(360 / #{$cvc} * #{$i} + #{$hso}));
+        --b3-font-background#{$i + 3}: oklch(0.31 0.05 calc(360 / #{$cvc} * #{$i} + #{$hso}));
       }
     }
   }
@@ -481,11 +481,11 @@ $cvc: 10; // color variant count
 
   @for $i from 1 through 3 {
     .b3-chip[style="background-color:var(--b3-font-background#{$i});color:var(--b3-font-color#{$i})"] {
-      color: oklch(from var(--b3-font-color#{$i}) 0.6 c h) !important;
+      color: oklch(from var(--b3-font-color#{$i}) 0.58 c h) !important;
       background-color: oklch(from var(--b3-font-background#{$i}) 0.96 c h) !important;
 
       @include darkmode-counterpart {
-        color: oklch(from var(--b3-font-color#{$i}) 0.85 c h) !important;
+        color: oklch(from var(--b3-font-color#{$i}) 0.83 c h) !important;
         background-color: oklch(from var(--b3-font-background#{$i}) 0.3 c h) !important;
       }
     }

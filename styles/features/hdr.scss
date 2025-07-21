@@ -6,10 +6,6 @@
 @use "../base" as *;
 
 @media (color-gamut: p3) {
-  body {
-    dynamic-range-limit: no-limit;
-  }
-
   [data-theme-mode="light"] {
     :is(.b3-menu, .b3-menu__submenu) {
       @include menu-shadow(
@@ -71,9 +67,10 @@
     );
   }
 
-  [data-theme-mode="dark"] {
-    .item__preview {
-      dynamic-range-limit: standard;
-    }
-  }
+  // [data-theme-mode="dark"] {
+  //   .item__preview {
+  //     dynamic-range-limit: standard; 
+  //   }
+  // } // hdr map will be automatically removed when transferred through the network
+  
 }

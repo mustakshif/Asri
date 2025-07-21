@@ -8,10 +8,15 @@ English | [简体中文](https://github.com/mustakshif/Asri-for-SiYuan/blob/main
 Asri is a modern theme designed for [SiYuan Note](https://github.com/siyuan-note/siyuan), crafting a space where visual distractions disappear and your thinking takes center stage - immersive, focused, and intuitively guided.
 
 > ⚠️ Some devices may experience [abnormal color calculation](https://issues.chromium.org/issues/428657802) in recent Chromium versions, resulting in excessively high brightness and saturation of theme colors. If you notice such color issues, please go to `Settings - Appearance - Code Snippets`, add and enable the following CSS snippet as a temporary fix:
-> 
+>
 > ```css
->   :root {
->     --ccff: var(--asri-ccff, 1);
+>   /* Light mode */
+>   :root[data-theme-mode=light] {
+>     --ccff: 0.5; /* 0-1 reduces brightness and saturation, >1 increases brightness and saturation */
+>   }
+>   /* Dark mode */
+>   :root[data-theme-mode=dark] {
+>     --ccff: 0.5; /* 0-1 reduces brightness and saturation, >1 increases brightness and saturation */
 >   }
 > ```
 
