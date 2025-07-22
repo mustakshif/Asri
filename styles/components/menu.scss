@@ -231,9 +231,9 @@
       height: 20px;
     }
 
-    @container protyle (min-width: 1048px) {
+    @media (min-width: 1200px) {
       width: 75vw;
-      // max-width: calc(12em * 7);
+      max-width: calc(12em * 6);
       max-height: 65vh;
 
       & > div {

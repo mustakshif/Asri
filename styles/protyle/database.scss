@@ -46,6 +46,7 @@
         padding: 2px 4px;
         height: auto;
         border-radius: calc(1em / 0.875 * 8 / 17 - 2.5px) !important;
+        width: auto !important; // 修复v3.2.1拖动后宽度递增的问题
 
         &__graphic {
           padding: 0.42em 4px 0.42em 8px;
