@@ -1,3 +1,17 @@
+### v3.5.6
+
+- 微调文字外观颜色和数据库标签颜色
+- [「/菜单」改为根据视口宽度调整排列样式](https://github.com/mustakshif/Asri/issues/182)
+- 适配思源 v3.2.1 样式变动
+
+<br />
+
+- Adjusted text appearance customizable colors and database label colors
+- [Changed "/ menu" to adapt layout styles based on viewport width](https://github.com/mustakshif/Asri/issues/182)
+- Adapted to style changes in SiYuan v3.2.1
+
+---
+
 ### v3.5.5
 
 - 优化 HDR 组件呈现效果
