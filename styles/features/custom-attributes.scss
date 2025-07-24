@@ -261,10 +261,7 @@
     // content-visibility: visible;
 
     > :first-child {
-      margin-left: calc(
-        var(--protyle-spacing-compatible) * -1 +
-          min(24px, var(--protyle-spacing-compatible))
-      );
+      margin-left: calc(var(--protyle-spacing-compatible) * -1 + min(24px, var(--protyle-spacing-compatible)));
       transition: margin 0.2s;
 
       // >*,
@@ -277,10 +274,7 @@
     }
 
     > :nth-last-child(1 of [data-node-id]) {
-      margin-right: calc(
-        var(--protyle-spacing-compatible) * -1 +
-          min(24px, var(--protyle-spacing-compatible))
-      );
+      margin-right: calc(var(--protyle-spacing-compatible) * -1 + min(24px, var(--protyle-spacing-compatible)));
 
       // >*, // 导致 tabbar 滚动卡顿 + 行内备注 hover 状态取消时动画卡顿
       // .sb,
@@ -388,6 +382,50 @@
  */
 [custom-tdir="rtl"] {
   direction: rtl;
+
+  .protyle-attr {
+    direction: rtl;
+
+    > div:not(.protyle-attr--refcount) svg {
+      float: right;
+    }
+  }
+
+  [data-type="NodeHeading"] {
+    direction: rtl;
+  }
+
+  [data-node-id].li > .protyle-action {
+    // right: 0;
+    // left: auto;
+    direction: rtl;
+  }
+
+  .av {
+    direction: ltr;
+  }
+
+  // .av__colsticky {
+  //   right: 0;
+  //   left: unset;
+  // }
+
+  // .av__gallery-fields [data-type=block-more] {
+  //   right: unset;
+  //   inset-inline-end: 3px;
+  // }
+
+  // .av__gallery-actions {
+  //   right: unset;
+  //   inset-inline-end: 8px;
+  //   .protyle-icon--first {
+  //     border-radius: 0 99px 99px 0;
+  //   }
+
+  //   .protyle-icon--last {
+  //     border-radius: 99px 0 0 99px;
+  //   }
+  // }
 }
 
 [custom-tdir="ltr"] {

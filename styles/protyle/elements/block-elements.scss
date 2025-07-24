@@ -25,6 +25,11 @@
     line-height: 1.5;
   }
 
+  [data-type="NodeHeading"] [spellcheck],
+  :is(h1, h2, h3, h4, h5, h6) {
+    word-break: auto-phrase; // 允许自动断字，目前仅支持日文
+  }
+
   :is(.h1, h1) {
     padding: 0 4px; // 修复 gutter 错位
     margin-bottom: calc(0.1em + 4px);
@@ -151,20 +156,23 @@
 }
 
 @mixin list {
-  .li {
-    // 列表项序号、图标
-    .protyle-action {
-      // opacity: .6;
-      color: inherit !important;
-    }
-  }
-
   .protyle-action:not(.protyle-action--task):hover {
     color: var(--b3-theme-primary) !important;
     // opacity: 1;
   }
 
   [data-node-id].li {
+    > .protyle-action {
+      color: inherit;
+      left: unset;
+      inset-inline-start: 0;
+    }
+
+    > [data-node-id] {
+      margin-left: unset;
+      margin-inline-start: 34px;
+    }
+
     // 缩进参考线
     &::before {
       border-left: 1px solid;
@@ -172,6 +180,8 @@
       // mask-image: linear-gradient(to bottom, transparent 1px, black 1px); // 隐藏原有的1px 剩余
       opacity: 0.1;
       transition: opacity 0.2s;
+      left: unset;
+      inset-inline-start: 17px;
     }
 
     &:hover::before {

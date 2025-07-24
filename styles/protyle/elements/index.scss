@@ -1,6 +1,5 @@
-@use "gutters";
-@use "tools";
-@use "doc-header";
-
+@forward "gutters";
+@forward "tools";
+@forward "doc-header";
 @forward "inline-elements"; // 内联元素相关 mixin
 @forward "block-elements"; // 块级元素相关 mixin

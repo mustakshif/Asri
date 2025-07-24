@@ -30,11 +30,11 @@ For the complete update history, refer to the [CHANGELOG.md](https://github.com/
 
 #### `Jul 1, 2025 - v3.5.0`
 
-Theme colors now support "Follow cover image color", automatically extracting colors from document cover images or videos and switching theme colors in real-time for an immersive visual experience.
+Theme colors now support "Follow cover image color", automatically extracting colors from document cover images or videos and switching theme colors in real-time.
 
 ![hdr ui component](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/hdr_ui_v3.jpg)
 
-`v3.5.4` introduces HDR UI components, presenting a more futuristic and tech-inspired design in HDR-supported screens and browser environments.
+`v3.5.4` introduces HDR UI components, presenting a more futuristic and tech-inspired design in HDR-supported screens and browser environments (requires the theme chroma set to 0).
 
 #### `May 12, 2025 - v3.4.0: Vision Unbound`
 
@@ -69,7 +69,7 @@ Theme release
 
 ![banner](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/banner_v22.png)
 
-### 🪄 Sleek and Modern Design
+### Sleek and Modern Design
 
 * 👨‍🎨 continuously adjustable theme color customization, allowing for over 18,000 visually distinct combinations[^1]
 * 🎨 Color scheme based on human brightness perception for harmonious, non-intrusive visuals
@@ -79,7 +79,7 @@ Theme release
 * ➖ Minimized dividers create an integrated, cohesive interface style
 * 🐚 Self-consistent design language, unified, coherent, and seamless
 
-### 📐 Elegant and Efficient Layout
+### Elegant and Efficient Layout
 
 * 🔢 Tabular and database-friendly monospaced numerals improve reading efficiency
 * 👁️ High readability glyph variants tailored for note-taking scenarios[^4] `#macOS` `#iOS` `#iPadOS`
@@ -90,20 +90,20 @@ Theme release
 * 🚏 Document-level text direction settings cater to different language layout needs
 * 🌐 Multi-language support, specially adapted for Chinese, English and Arabic
 
-### 🧭 Clear and Convenient Navigation
+### Clear and Convenient Navigation
 
 * 🗂️ Well-structured document tree and indentation guide lines to help you quickly grasp content hierarchy
 * 🔍 Hierarchically organized search and backlink panels for intuitive contextual tracing and associative thinking
 * 🎯 Focus block indicators guide attention flow and enhance coherent output of thought sequences
 * ↕️ Native system scrollbars with auto-hide for a cleaner and more natural interface[^6] `#macOS`
 
-### 👆 Fluid and Lively Interactions
+### Fluid and Lively Interactions
 
 * 💫 Carefully tuned lively animations add warmth and rhythm to interactions
 * ⏱️ Refined animation triggers and frequency enhance interface response rhythm and minimize attention drift
 * 🚀 High-performance global animations ensure uninterrupted immersive experience
 
-### 🗜️ Meticulous Visual Details
+### Meticulous Visual Details
 
 * 🌁 Global gradient fades soften element edges and reduce visual fragmentation
 * 🌄 Parallax scrolling for header images, creating a layered and minimalist spatial atmosphere

@@ -111,7 +111,7 @@
   /* 图片 */
   @include image;
 
-   /* 表格 */
+  /* 表格 */
   [data-node-id].table[custom-pinthead="true"] thead {
     // position: sticky;
     top: 0;
@@ -165,7 +165,7 @@
   /* 嵌入块*/
   @include embedblock;
 
-   /* iframe */
+  /* iframe */
   @include iframe;
 
   /* misc */
@@ -235,7 +235,14 @@
     }
   }
 
+  &-wysiwyg [data-node-id].li > .protyle-attr {
+    line-height: unset;
+  }
+
   &-attr {
+    right: unset;
+    inset-inline-end: 0;
+
     > div {
       transition: 0.2s;
     }

@@ -163,7 +163,6 @@ async function updateStyles(e?: Event | KeyboardEvent) {
     (e instanceof KeyboardEvent && (e.key === "Control" || e.key === "Alt" || e.key === "Shift" || e.key === "Meta"))
   ) {
     lowFreqStyleUpdates();
-
     Promise.resolve()
       .then(() => {
         recalcDragInitials();
