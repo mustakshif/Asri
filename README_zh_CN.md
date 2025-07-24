@@ -35,7 +35,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ![hdr ui component](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/hdr_ui_v3.jpg)
 
-`v3.5.4` 引入 HDR UI 组件，在支持 HDR 的屏幕和浏览器环境中呈现更具未来感和科技感的设计（需要将主题色度设为 0）
+`v3.5.4` 引入 HDR UI 组件，在支持 HDR 的屏幕和浏览器环境中呈现更具未来感和科技感的设计（主题色度为 0 时自动启用）
 
 #### `25/05/12 - v3.4.0：视界无界`
 
@@ -72,13 +72,12 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### 简洁现代的设计
 
-* 👨‍🎨 主题色支持无极调节，可生成超过 1.8 万种具可视差异的配色组合，为你打造高度个性化的笔记空间[^1]
+* 👨‍🎨 主题色支持无极调节，为你打造高度个性化的笔记空间[^1]
 * 🎨 采用基于人眼感知亮度的色彩模型，科学设计整体配色系统，呈现协调柔和的视觉效果
 * ⚖️ 顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>，实现顶栏与页签栏和编辑器的无缝整合[^2]<svg style="vertical-align: super; height: .5em; width: .5em; padding-inline-start: .1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg>[^3]
 * 🧊 引入毛玻璃材质，带来富有层次感的视觉体验
 * 🌓 支持亮色模式和暗色模式、模式切换平滑过渡
 * ➖ 精简分割线，打造一体化的界面风格
-* 🐚 自相呼应的设计语言，统一、自洽、不割裂
 
 ### 优雅高效的排版
 
@@ -88,7 +87,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * 🧩 优化超级块内外部间距，轻松实现网格、瀑布流布局
 * 📝 优化数据库和属性面板的布局细节，内容展现更清晰有序
 * 💬 支持从右至左布局，适配阿拉伯语等从右至左书写的语言[^5]
-* 🚏 支持文档级别的文字方向设定，满足不同语言的排版需求
+* 🚏 支持文档级别的排版方向设定，满足不同语言的排版需求
 * 🌐 多语言支持，特别适配中文、英语和阿拉伯语
 
 ### 便捷清晰的导航

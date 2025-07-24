@@ -34,7 +34,7 @@ Theme colors now support "Follow cover image color", automatically extracting co
 
 ![hdr ui component](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/hdr_ui_v3.jpg)
 
-`v3.5.4` introduces HDR UI components, presenting a more futuristic and tech-inspired design in HDR-supported screens and browser environments (requires the theme chroma set to 0).
+`v3.5.4` introduces HDR UI components, presenting a more futuristic and tech-inspired design in HDR-supported screens and browser environments (automatically enabled when the theme chroma is 0).
 
 #### `May 12, 2025 - v3.4.0: Vision Unbound`
 
@@ -71,13 +71,12 @@ Theme release
 
 ### Sleek and Modern Design
 
-* 👨‍🎨 continuously adjustable theme color customization, allowing for over 18,000 visually distinct combinations[^1]
+* 👨‍🎨 continuously adjustable theme color customization, crafting a highly personalized note space for you[^1]
 * 🎨 Color scheme based on human brightness perception for harmonious, non-intrusive visuals
 * ⚖️ Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span> seamlessly integrates the top bar, the tab bar and the editor[^2]<svg style="vertical-align: super; height: .5em; width: .5em; padding-inline-start: .1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg>[^3]
 * 🧊 Glassmorphism enhances the visual hierarchy
 * 🌓 Support for light and dark modes and smooth transition between them
 * ➖ Minimized dividers create an integrated, cohesive interface style
-* 🐚 Self-consistent design language, unified, coherent, and seamless
 
 ### Elegant and Efficient Layout
 
@@ -87,7 +86,7 @@ Theme release
 * 🧩 Streamlined superblock margins for simplified creation of grid and masonry layouts
 * 📝 Enhanced the layout details in database and attribute view for improved clarity and organization
 * 💬 Supports right-to-left layout, accommodating languages written from right to left, such as Arabic[^5]
-* 🚏 Document-level text direction settings cater to different language layout needs
+* 🚏 Document-level typography direction settings cater to different language layout needs
 * 🌐 Multi-language support, specially adapted for Chinese, English and Arabic
 
 ### Clear and Convenient Navigation
@@ -147,7 +146,7 @@ Theme release
 
 ## Theme Configurations
 
-### 🌈 Customizing Theme Colors
+### Customizing Theme Colors
 
 ![custom theme color preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/theme-config_en_US.gif)
 
@@ -158,7 +157,7 @@ Click on the `Appearance Mode` icon in the top right corner to open the Asri the
 * `Follow cover image color`: Extract color from the cover image (image, video) of the current active document as the theme base color.
 * `Chroma slider`: Adjust the chroma of backgrounds and regular texts, with a range of `0 - 5`, where `0` represents pure grayscale, and the default is `1`.
 
-### 📐 Custom Attributes
+### Custom Attributes
 
 #### 1. `afwd`: Asri full-width display
 

@@ -192,6 +192,7 @@
       line-height: 1.4;
       padding-top: 8px;
       padding-bottom: 8px;
+      word-break: auto-phrase;
 
       &:empty:after {
         opacity: 0.6;
