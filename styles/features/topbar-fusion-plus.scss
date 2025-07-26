@@ -307,37 +307,41 @@
     .protyle-background__img {
       --bgimg-top-space: 6px;
 
-      &::after {
-        content: "";
-        display: inline-block;
-        position: absolute;
-        pointer-events: none;
+      // &::after {
+      //   content: "";
+      //   display: inline-block;
+      //   position: absolute;
+      //   pointer-events: none;
 
-        //方案一
-        $offset: 30px;
-        width: 100%;
-        left: 0;
-        height: calc(30vh + var(--blur-block-height) - $offset);
-        top: $offset;
-        background: linear-gradient(
-          to top,
-          var(--b3-theme-background) 2%,
-          rgb(from var(--b3-theme-background) r g b / 0.97) 9%,
-          rgb(from var(--b3-theme-background) r g b / 0.9) 18%,
-          rgb(from var(--b3-theme-background) r g b / 0.75) 33%,
-          rgb(from var(--b3-theme-background) r g b / 0.05) 92%,
-          transparent 99%
-        );
+      //   //方案一
+      //   $offset: 30px;
+      //   width: 100%;
+      //   left: 0;
+      //   height: calc(30vh + var(--blur-block-height) - $offset);
+      //   top: $offset;
+      //   background: linear-gradient(
+      //     to top,
+      //     var(--b3-theme-background) 2%,
+      //     rgb(from var(--b3-theme-background) r g b / 0.97) 9%,
+      //     rgb(from var(--b3-theme-background) r g b / 0.9) 18%,
+      //     rgb(from var(--b3-theme-background) r g b / 0.75) 33%,
+      //     rgb(from var(--b3-theme-background) r g b / 0.05) 92%,
+      //     transparent 99%
+      //   );
 
-        //方案二
-        // $width: 180%;
-        // width: $width;
-        // height: calc(30vh + var(--blur-block-height));
-        // top: 0;
-        // left: calc(($width - 100%) / -2);
-        // background: radial-gradient(farthest-side at 50% 42px, transparent 1%, rgb(from var(--b3-theme-background) r g b /.05) 8%, rgb(from var(--b3-theme-background) r g b / .75) 67%, rgb(from var(--b3-theme-background) r g b / .9) 82%, rgb(from var(--b3-theme-background) r g b /.97) 91%, var(--b3-theme-background) 98%);
-      }
+      //   //方案二
+      //   // $width: 180%;
+      //   // width: $width;
+      //   // height: calc(30vh + var(--blur-block-height));
+      //   // top: 0;
+      //   // left: calc(($width - 100%) / -2);
+      //   // background: radial-gradient(farthest-side at 50% 42px, transparent 1%, rgb(from var(--b3-theme-background) r g b /.05) 8%, rgb(from var(--b3-theme-background) r g b / .75) 67%, rgb(from var(--b3-theme-background) r g b / .9) 82%, rgb(from var(--b3-theme-background) r g b /.97) 91%, var(--b3-theme-background) 98%);
+      // }
     }
+
+    // .protyle-background__icon {
+    //   filter: drop-shadow(0px -8px 10px rgb(from var(--b3-theme-background) r g b / 0.5));
+    // }
 
     :where(.layout__wnd--active, [data-type="wnd"]) {
       // tabbar overlay blend mode
@@ -493,7 +497,7 @@
               opacity: 0.8;
 
               @include darkmode-counterpart {
-                mix-blend-mode: normal;
+                // mix-blend-mode: normal;
                 opacity: 0.75;
               }
 
@@ -549,12 +553,12 @@
           height: 100%;
           height: 80%;
           // background-color: transparent;
-          backdrop-filter: blur(16px) saturate(1.5);
+          backdrop-filter: blur(16px) saturate(1.8);
           mask-image: linear-gradient(to bottom, #000, #0000);
           pointer-events: none;
 
           @include darkmode-counterpart {
-            // backdrop-filter: blur(16px) saturate(1.5);
+            backdrop-filter: blur(16px) saturate(1.2);
           }
         }
 

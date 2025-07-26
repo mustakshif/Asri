@@ -147,7 +147,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ## 主题配置
 
-### 🌈 自定义主题色
+### 自定义主题色
 
 ![custom theme color preview](https://cdn.jsdelivr.net/gh/mustakshif/Asri@main/doc/theme-config_zh_CN.gif)
 
@@ -159,7 +159,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * `色度滑块`：调整背景和普通文本的色彩浓度，取值范围为 `0 - 5`，`0` 表示纯灰度色，默认值为 `1`
 
 
-### 📐 自定义属性
+### 自定义属性
 
 #### 1. `afwd`：全宽显示（Asri full-width display）
 
