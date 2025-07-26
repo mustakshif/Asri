@@ -34,6 +34,14 @@
   --texture-goldfoil: #{$texture-goldfoil};
   --texture-goldfoil-blend-mode: multiply, normal, hard-light, normal;
 
+  &[data-theme-mode="light"] {
+    :is(.protyle, .b3-typography) {
+      --foil-local-clr: rgb(207 155 72); // 本色
+      --foil-base-clr: rgb(196 182 33); // 底色
+      --texture-goldfoil: #{$texture-goldfoil};
+    }
+  }
+
   @include darkmode-counterpart(true) {
     --b3-theme-on-background: #e8d9be;
     --b3-theme-on-surface: #e8d9bead;
@@ -84,15 +92,18 @@
   }
 
   .protyle-title__input,
+  :is(h1, h2, h3, h4, h5, h6),
   [data-type="NodeHeading"]:not([style*="background-color"]),
   .b3-dialog__header {
     @include goldfoil-background;
     background-clip: text;
-    color: rgb(from var(--b3-theme-on-background) r g b / 0.1);
+    // color: rgb(from var(--b3-theme-on-background) r g b / 0.1);
+    color: transparent;
+    caret-color: var(--foil-local-clr, auto);
 
-    @include darkmode-counterpart {
-      color: rgb(from var(--b3-theme-on-background) r g b / 0.2);
-    }
+    // @include darkmode-counterpart {
+    //   color: rgb(from var(--b3-theme-on-background) r g b / 0.2);
+    // }
   }
 
   [data-type="NodeHeading"]:not([style*="background-color"]) {
