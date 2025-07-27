@@ -1,3 +1,23 @@
+### v3.5.7
+
+- [提高「鎏金」配色标题文字和文本插入光标可读性](https://github.com/mustakshif/Asri/issues/183)
+- 文档 `tdir` 属性设置为 `rtl` 时，支持列表的从右至左显示
+- 文档 `tdir` 属性设置为 `rtl` 时，数据库始终保持从左至右显示，避免功能问题
+- 应用语言为日语时，文档标题和标题元素支持语义换行
+- CJK 标点位于行首时显示为半宽，提升排版美观度
+- 调整「顶栏融合+」渐进模糊颜色混合模式，移除题头图底部渐变遮罩，增强沉浸感
+
+<br />
+
+- [Improved readability of titles, headings and text insertion cursor in the "Auriflow" color scheme](https://github.com/mustakshif/Asri/issues/183).
+- Supported right-to-left display for lists when the document `tdir` attribute was set to `rtl`.
+- Maintained left-to-right display for databases when the document `tdir` attribute was set to `rtl` to prevent functional issues.
+- Added semantic line break support for document titles and heading elements when the application language was set to Japanese.
+- Displayed CJK punctuation at line starts as half-width to improve typographic aesthetics.
+- Adjusted the progressive blur color blending mode for "Topbar Fusion+" and removed the gradient mask at the bottom of cover images to enhance immersion.
+
+---
+
 ### v3.5.6
 
 - 微调文字外观颜色和数据库标签颜色
