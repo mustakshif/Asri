@@ -18,6 +18,10 @@
     }
   }
 
+  .protyle .wysiwygLoading {
+    z-index: 0;
+  } // fix wysiwyg loading covering tab bar
+
   // 以下breadcrumb 相关代码导致：
   // 1. 块拖动至页面顶部时无法触发自动滚动
   // 2. 页面块进度条（.protyle-scroll）无法自动定位；点击时跳转到块的位置，但溢出页面顶部

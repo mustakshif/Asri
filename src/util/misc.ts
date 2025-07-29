@@ -26,18 +26,29 @@ export function debounce<T extends (...args: any[]) => any>(func: T, delay = 200
   }) as T;
 }
 
-// export function debounce(fn: Function, delay = 200): (...args: any[]) => any {
-//     let timer: any;
-//     return function (this: any, ...args: any) {
-//         if (timer) {
-//             clearTimeout(timer)
-//         }
-//         timer = setTimeout(() => {
-//             fn.apply(this, args);
-//             timer = null;
-//         }, delay)
-//     }
-// }
+export function throttle<T extends (...args: any[]) => any>(func: T, limit = 200): T {
+  let lastCall = 0;
+  let timeoutId: NodeJS.Timeout | null = null;
+  let lastArgs: Parameters<T> | null = null;
+
+  return ((...args: Parameters<T>) => {
+    const now = Date.now();
+    if (now - lastCall >= limit) {
+      lastCall = now;
+      func(...args);
+    } else {
+      lastArgs = args;
+      if (!timeoutId) {
+        timeoutId = setTimeout(() => {
+          lastCall = Date.now();
+          if (lastArgs) func(...lastArgs);
+          timeoutId = null;
+          lastArgs = null;
+        }, limit - (now - lastCall));
+      }
+    }
+  }) as T;
+}
 
 // export function asriModeTransition() {
 //     document.body.classList.add('asri-mode-transition');

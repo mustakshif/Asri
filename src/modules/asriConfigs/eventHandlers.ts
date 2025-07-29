@@ -1,25 +1,11 @@
 import { AsriEventListener } from "../../util/eventListeners";
-import { debounce, getFocusedProtyleInfo } from "../../util/misc";
+import { debounce, getFocusedProtyleInfo, throttle } from "../../util/misc";
 import { environment as env } from "../../util/rsc";
 import { startFadeInFadeOutTranstition } from "../modeTransition";
 import { cssVarManager } from "./cssVarManager";
 import { asriConfigs, getLocalConfigs, updateAsriConfigs } from "./configs";
 import { asriPrstPalettes } from "./palettes";
-import {
-  curMode,
-  i18n,
-  followSysAccentBtn,
-  followCoverImgColorBtn,
-  pickColorBtn,
-  asriChromaSlider,
-  colorPicker,
-  followSysAccentColor,
-  setFollowSysAccentColor,
-  setIsUserAccentGray,
-  sysAccentColor,
-  isUserAccentGray,
-  setFollowCoverImgColorBtn,
-} from "./state";
+import { curMode, i18n, followSysAccentBtn, followCoverImgColorBtn, pickColorBtn, asriChromaSlider, colorPicker, followSysAccentColor, setFollowSysAccentColor, setIsUserAccentGray, sysAccentColor, isUserAccentGray, setFollowCoverImgColorBtn } from "./state";
 import { getSystemAccentColor } from "./systemColor";
 import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
 import { coverImgColorManager, updateCoverImgColor } from "./coverImgColor";
@@ -49,9 +35,7 @@ function handleFollowSystemAccentBtnClick() {
   startFadeInFadeOutTranstition(600, () => {
     resetPresetPalette(false);
 
-    document
-      .querySelectorAll(".asri-config.b3-menu__item--selected")
-      .forEach((el) => el.classList.remove("b3-menu__item--selected"));
+    document.querySelectorAll(".asri-config.b3-menu__item--selected").forEach((el) => el.classList.remove("b3-menu__item--selected"));
     setFollowSysAccentColor(true);
     followSysAccentBtn!.classList.add("b3-menu__item--selected");
     // pickColorBtn!.classList.remove('b3-menu__item--selected');
@@ -70,9 +54,7 @@ function handleFollowCoverImgColorBtnClick() {
   startFadeInFadeOutTranstition(600, async () => {
     resetPresetPalette();
     setFollowSysAccentColor(false);
-    document
-      .querySelectorAll(".asri-config.b3-menu__item--selected")
-      .forEach((el) => el.classList.remove("b3-menu__item--selected"));
+    document.querySelectorAll(".asri-config.b3-menu__item--selected").forEach((el) => el.classList.remove("b3-menu__item--selected"));
     followCoverImgColorBtn!.classList.add("b3-menu__item--selected");
     asriConfigs[curMode].followCoverImgColor = true;
     asriConfigs[curMode].followSysAccentColor = false;
@@ -87,9 +69,7 @@ function handlePickColorBtnClick(event: Event) {
     resetPresetPalette();
     if (document.documentElement.getAttribute("--asri-user-custom-accent")) return;
     setFollowSysAccentColor(false);
-    document
-      .querySelectorAll(".asri-config.b3-menu__item--selected")
-      .forEach((el) => el.classList.remove("b3-menu__item--selected"));
+    document.querySelectorAll(".asri-config.b3-menu__item--selected").forEach((el) => el.classList.remove("b3-menu__item--selected"));
 
     pickColorBtn!.classList.add("b3-menu__item--selected");
 
@@ -105,13 +85,16 @@ function handlePickColorBtnClick(event: Event) {
   });
 }
 
-function handleColorPickerInput() {
-  resetPresetPalette();
-  const hexColor = colorPicker!.value;
+const throttledColorUpdate = throttle((hexColor: string) => {
   requestAnimationFrame(() => {
     cssVarManager.setProperty("--asri-user-custom-accent", hexColor);
     reverseOnPrimaryLightness(hexColor);
   });
+}, 400);
+
+function handleColorPickerInput() {
+  const hexColor = colorPicker!.value;
+  throttledColorUpdate(hexColor);
 }
 
 function handleColorPickerChange() {
@@ -206,9 +189,7 @@ async function paletteMenuItemCallback(e: Event) {
   // document.querySelectorAll('[id^="prst-palette-"]').forEach((el) => el.classList.remove("b3-menu__item--selected"));
 
   startFadeInFadeOutTranstition(600, () => {
-    document
-      .querySelectorAll(".asri-config.b3-menu__item--selected")
-      .forEach((el) => el.classList.remove("b3-menu__item--selected"));
+    document.querySelectorAll(".asri-config.b3-menu__item--selected").forEach((el) => el.classList.remove("b3-menu__item--selected"));
     asriChromaBtn?.classList.add("b3-menu__item--disabled");
 
     target.classList.add("b3-menu__item--selected");

@@ -94,7 +94,7 @@ export class CSSVarManager {
   }
 
   // 获取当前所有CSS变量的值
-  public getAllVars(): Map<string, string> {
+  getAllVars(): Map<string, string> {
     return new Map(this.existingVars);
   }
 
