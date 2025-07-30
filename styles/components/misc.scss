@@ -310,6 +310,12 @@ textarea {
   // word-break: keep-all; // 保持CJK字符不换行
   padding: 6px 10px;
   border-radius: 8px;
+  // transition: display 0.1s allow-discrete;
+  // text-wrap-style: pretty;
+
+  // &.fn__none {
+  //   animation: tooltip-disappear 0.1s forwards; // causes flicker
+  // }
 
   @include tooltip-shadow;
 
@@ -317,6 +323,19 @@ textarea {
     outline: none;
   }
 }
+
+// @keyframes tooltip-disappear {
+//   from {
+//     opacity: 1;
+//     transform: scale(1);
+//   }
+
+//   to {
+//     opacity: 0;
+//     transform: scale(0.9);
+//   }
+  
+// }
 
 // 提示条
 .tooltip {

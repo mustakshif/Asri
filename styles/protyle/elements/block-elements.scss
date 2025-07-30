@@ -28,6 +28,7 @@
   [data-type="NodeHeading"] [spellcheck],
   :is(h1, h2, h3, h4, h5, h6) {
     word-break: auto-phrase; // 允许自动断字，目前仅支持日文
+    // text-wrap-style: balance; // 平衡断字
   }
 
   :is(.h1, h1) {

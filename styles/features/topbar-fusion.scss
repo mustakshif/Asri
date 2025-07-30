@@ -89,7 +89,7 @@ body:not(.body-asri--mobile, .body--window) {
 
   .layout__dockl,
   .layout__dockr {
-    > .fn__flex:not(.fn__none):first-child,
+    > .fn__flex:first-child,
     > .fn__flex.fn__none ~ .fn__flex {
       .layout-tab-container {
         padding-top: var(--avoid-topbar);
@@ -102,7 +102,7 @@ body:not(.body-asri--mobile, .body--window) {
   }
 
   .layout__dockl {
-    > .fn__flex:not(.fn__none):first-child,
+    > .fn__flex:first-child,
     > .fn__flex.fn__none ~ .fn__flex {
       .layout-tab-container {
         padding-top: calc(var(--avoid-topbar) - 6px);

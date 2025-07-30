@@ -101,9 +101,50 @@
     }
   }
 
+  // animation
+  transition: background-color 0.1s ease-in-out 0.1s, display 0.2s allow-discrete, width 0.2s, height 0.2s;
+
+  &#dockLeft,
+  &#dockRight,
+  &#dockBottom {
+    animation: vertical-docks-appear 0.2s;
+  }
+
+  &#dockLeft {
+    --direction-x: -100%;
+  }
+  &#dockRight {
+    --direction-x: 100%;
+  }
+  &#dockBottom {
+    --direction-y: 100%;
+  }
+
+  @keyframes vertical-docks-appear {
+    from {
+      transform: translate(var(--direction-x, 0), var(--direction-y, 0));
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  &--vertical {
+    &.fn__none {
+      width: 0px;
+    }
+  }
+
+  &#dockBottom {
+    &.fn__none {
+      height: 0px;
+    }
+  }
+
   &.dock-layout-expanded {
     // -> js
     background-color: var(--b3-theme-surface);
+    transition: none;
 
     &#dockLeft,
     &#dockRight {

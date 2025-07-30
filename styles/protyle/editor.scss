@@ -40,6 +40,10 @@
     }
   }
 
+  [contenteditable="true"] {
+    text-wrap-style: stable;
+  }
+
   /* 
    * 标题块
    */

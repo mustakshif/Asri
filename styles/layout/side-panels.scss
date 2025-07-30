@@ -1,6 +1,15 @@
 @use "../base" as *;
 @use "../components/utils" as *;
 
+:is(.layout__dockl, .layout__dockr, .layout__dockb) {
+  // transition-duration: 1s;
+
+  > .fn__flex {
+    transition-property: display;
+    transition-duration: .2s;
+    transition-behavior: allow-discrete;
+  }
+}
 // 侧栏面板总体样式
 .file-tree {
   .block__icons {
