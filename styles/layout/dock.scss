@@ -105,27 +105,29 @@
   transition: background-color 0.1s ease-in-out 0.1s, display 0.2s allow-discrete, width 0.2s, height 0.2s;
 
   &#dockLeft,
-  &#dockRight,
-  &#dockBottom {
+  &#dockRight {
     animation: vertical-docks-appear 0.2s;
   }
 
-  &#dockLeft {
-    --direction-x: -100%;
-  }
-  &#dockRight {
-    --direction-x: 100%;
-  }
   &#dockBottom {
-    --direction-y: 100%;
+    animation: horizontal-docks-appear 0.2s;
   }
 
   @keyframes vertical-docks-appear {
     from {
-      transform: translate(var(--direction-x, 0), var(--direction-y, 0));
+      width: 0px;
     }
     to {
-      transform: none;
+      width: 42px;
+    }
+  }
+
+  @keyframes horizontal-docks-appear {
+    from {
+      height: 0px;
+    }
+    to {
+      height: 42px;
     }
   }
 
@@ -144,7 +146,7 @@
   &.dock-layout-expanded {
     // -> js
     background-color: var(--b3-theme-surface);
-    transition: none;
+    transition: background-color 0s, display 0.2s allow-discrete, width 0.2s, height 0.2s;
 
     &#dockLeft,
     &#dockRight {
