@@ -115,7 +115,7 @@ function handleChromaSliderInput(this: any) {
   //     this.value = asriConfigs[curMode].chroma;
   //     return;
   // }
-  resetPresetPalette();
+  // resetPresetPalette();
   const chromaValue = this.value;
   requestAnimationFrame(() => {
     cssVarManager.setProperty("--asri-c-factor", chromaValue);

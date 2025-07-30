@@ -449,6 +449,7 @@
 
       .layout-tab-container {
         & > .protyle[data-loading="finished"] {
+          // 中层模糊
           &::before {
             mask-image: linear-gradient(
               to bottom,
@@ -457,9 +458,10 @@
               transparent calc(var(--blur-block-height) - 5px)
             );
 
-            @include bg-blur($blur-radius: 4px, $saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
+            @include bg-blur($blur-radius: 3px, $saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
           }
 
+          // 底层模糊
           &::after {
             content: "";
             display: block;
@@ -469,7 +471,7 @@
             top: 0;
             pointer-events: none;
             // background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / .6), transparent var(--blur-block-height));
-            backdrop-filter: blur(2px);
+            backdrop-filter: blur(1.5px);
             mask-image: linear-gradient(
               to bottom,
               black 0,
@@ -547,7 +549,7 @@
         // mix-blend-mode: difference;
         position: relative;
 
-        // optional blur layer, under the tabbar area
+        // 顶层模糊
         &::before {
           content: "";
           position: absolute;
@@ -557,12 +559,12 @@
           height: 100%;
           height: 80%;
           // background-color: transparent;
-          backdrop-filter: blur(16px) saturate(1.8);
+          backdrop-filter: blur(8px) saturate(1.8);
           mask-image: linear-gradient(to bottom, #000, #0000);
           pointer-events: none;
 
           @include darkmode-counterpart {
-            backdrop-filter: blur(16px) saturate(1.2);
+            backdrop-filter: blur(8px) saturate(1.1);
           }
         }
 
