@@ -79,7 +79,11 @@ $li-types: ".li[data-subtype=o]", ".li[data-subtype=u]";
     &::after {
       color: var(--b3-theme-on-background);
       white-space: nowrap;
-      // text-align: end;
+      text-align: end;
+      min-width: fit-content;
+      left: unset;
+      inset-inline-end: calc(50% - .5em);
+      // font-family:var(--b3-font-family);
     }
 
     &:hover {

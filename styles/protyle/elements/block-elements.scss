@@ -228,6 +228,10 @@
     .protyle-action--task {
       @include bouncy-check-box;
 
+      &:hover {
+        color: inherit !important;
+      }
+
       > svg {
         visibility: hidden;
       }
