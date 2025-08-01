@@ -2,13 +2,15 @@
 @use "../components/utils" as *;
 
 :is(.layout__dockl, .layout__dockr, .layout__dockb) {
-  // transition-duration: 1s;
-
+  // animation fold/unfold
   > .fn__flex {
     transition-property: display;
-    transition-duration: .2s;
+    transition-duration: 0.3s;
     transition-behavior: allow-discrete;
   }
+
+  transition-timing-function: var(--asri-ease-in-out-4);
+  transition-duration: 0.3s;
 }
 // 侧栏面板总体样式
 .file-tree {

@@ -86,7 +86,6 @@ body:not(.asri-disable-backdrop-blur) {
           backdrop-filter: invert(1) blur(50px) saturate(0) contrast(0.5) brightness(1.15);
           filter: contrast(10) invert(0.1) opacity(0.9);
           box-shadow: none;
-          transition: transform 50ms;
         }
       }
     }

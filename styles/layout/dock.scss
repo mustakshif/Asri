@@ -102,7 +102,7 @@
   }
 
   // animation
-  transition: background-color 0.1s ease-in-out 0.1s, display 0.2s allow-discrete, width 0.2s, height 0.2s;
+  transition: background-color 0.15s ease-in-out 0.15s, display 0.2s allow-discrete, width 0.2s, height 0.2s, border-color .1s .2s;
 
   &#dockLeft,
   &#dockRight {

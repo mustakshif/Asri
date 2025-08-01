@@ -298,9 +298,12 @@
     &:hover {
       .protyle-action__drag {
         box-shadow: 0 0 0 1px var(--b3-theme-on-surface);
+        transition: transform 100ms ease-in-out;
 
         &:hover {
-          transform: scale(1.2) translateY(-40%);
+          transform: scale(1.2) translateY(calc(-50% / 1.2));
+          transition-timing-function: var(--asri-ease-spring-3);
+          transition-duration: 450ms;
         }
       }
     }
