@@ -1,3 +1,25 @@
+### v3.5.8
+
+- 新增停靠栏和停靠栏面板展开/收起时的动画过渡
+- [优化自定义颜色取色流畅度](https://github.com/mustakshif/Asri/issues/184#issuecomment-3132161742)
+- [优化有序列表序号对齐方式，优化字体兼容性](https://github.com/mustakshif/Asri/issues/185)
+- 调整「顶栏融合+」渐进模糊强度
+- 微调题头图视差滚动效果
+- 微调部分组件动效
+- 修复启用「顶栏融合+」时载入文档过程中页签栏短暂消失的问题
+
+<br />
+
+- Added animation transitions for docking bar and docking bar panel expansion/collapse
+- [Optimized the smoothness of custom color picking](https://github.com/mustakshif/Asri/issues/184#issuecomment-3132161742)
+- [Improved the alignment of ordered list numbers and enhanced font compatibility](https://github.com/mustakshif/Asri/issues/185)
+- Adjusted the progressive blur intensity for "Topbar Fusion+"
+- Fine-tuned the parallax scrolling effect of header images
+- Tweaked animations for certain components
+- Fixed an issue where the tab bar briefly disappeared during document loading when "Topbar Fusion+" was enabled
+
+---
+
 ### v3.5.7
 
 - [提高「鎏金」配色标题文字和文本插入光标可读性](https://github.com/mustakshif/Asri/issues/183)
