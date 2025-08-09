@@ -19,7 +19,11 @@
 }
 
 .layout__center .protyle {
-  container: protyle / inline-size;
+  container: protyle-width / inline-size;
+  &-wysiwyg {
+    counter-reset: katexEqnNo mmlEqnNo; // https://github.com/mustakshif/Asri/issues/188
+    // 或许可以为每个块单独重置计数器，这样就避免了全局连续计数；目前是每个protyle重置计数
+  }
 }
 .file-tree .protyle {
   container: unset;
@@ -125,12 +129,18 @@
   }
 
   // 仅适用编辑器的表格
-  @container protyle (min-width: 900px) {
+  // https://github.com/mustakshif/Asri/issues/188 //container size query 会自动添加contain: layout style，导致计数错误？那列表项怎么没被影响？
+  @container protyle-width (min-width: 900px) {
     .table table {
       width: auto;
     }
   }
 
+  // @media (min-width: 1200px) {
+  //   .table table {
+  //     width: auto;
+  //   }
+  // }
   .table[custom-pinthead="true"] {
     thead {
       tr {

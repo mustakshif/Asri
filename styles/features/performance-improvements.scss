@@ -20,14 +20,17 @@
 .list,
 .hljs,
 .sb,
-.render-node,
 .av {
   contain: layout style;
 }
 
+.render-node {
+  contain: layout; // https://github.com/mustakshif/Asri/issues/188 // style 影响内部css计数 
+}
+
 // [data-type="NodeMathBlock"] > [spin],
 // [data-subtype="abc"] >[spin], // abc notation
-.render-node>[spin], // graph, mermaid, etc.
+.render-node:not([data-subtype="math"])>[spin], // graph, mermaid, etc.
 .hljs>.fn__none+[contenteditable], // code, only when linenumber is disabled
 // .protyle-wysiwyg__embed [contenteditable]:not(.protyle-attr),
 // .protyle-wysiwyg__embed, // negative effect
