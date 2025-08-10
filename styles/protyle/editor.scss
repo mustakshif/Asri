@@ -129,7 +129,6 @@
   }
 
   // 仅适用编辑器的表格
-  // https://github.com/mustakshif/Asri/issues/188 //container size query 会自动添加contain: layout style，导致计数错误？那列表项怎么没被影响？
   @container protyle-width (min-width: 900px) {
     .table table {
       width: auto;

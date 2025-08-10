@@ -1,4 +1,8 @@
 .og-fake-doc-breadcrumb-container {
+
+  &::before{
+    display: none;
+  }
   // 单行
   &.og-breadcrumb-oneline {
     align-self: center;
@@ -34,7 +38,7 @@
 
   // 多行
   &.protyle-breadcrumb {
-    border-bottom: 1px solid var(--b3-border-color-trans);
+    // border-bottom: 1px solid var(--b3-border-color-trans);
     // >.protyle-breadcrumb__bar {
     //  border-bottom: 1px solid var(--b3-border-color-trans);
     // }

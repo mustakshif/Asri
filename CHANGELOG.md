@@ -1,3 +1,13 @@
+### v3.5.9
+
+- [修复 Katex 计数器重置问题](https://github.com/mustakshif/Asri/issues/188)
+
+<br />
+
+- [Fixed Katex counter reset issue](https://github.com/mustakshif/Asri/issues/188)
+
+---
+
 ### v3.5.8
 
 - 新增停靠栏和停靠栏面板展开/收起时的动画过渡
