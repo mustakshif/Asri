@@ -236,13 +236,17 @@
       //     }
       // }
 
-      > .av__gallery {
+      .av__gallery {
         padding: 4px 24px;
         width: calc(100% - 48px);
       }
     }
 
     &[data-av-type="gallery"] {
+      .av__group-title {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
       .av__container {
         overflow: hidden;
         // overflow-y: visible;
