@@ -1,3 +1,13 @@
+### v3.5.10
+
+- 适配思源 v3.3.0
+
+<br />
+
+- Adapted to SiYuan v3.3.0
+
+---
+
 ### v3.5.9
 
 - [修复 Katex 计数器重置问题](https://github.com/mustakshif/Asri/issues/188)
