@@ -55,6 +55,11 @@
       line-height: 24px;
       border-radius: $border-rd-menu - 5px;
       align-items: center;
+      // transition: background-color 0.07s linear, color 0.07s linear;
+
+      // &:hover {
+      //   transition: background-color 0.05s linear, color 0.05s linear;
+      // }
 
       &:first-child {
         margin-top: 0.5px;
@@ -64,9 +69,7 @@
         margin-bottom: 0.5px;
       }
 
-      &:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not(
-          [data-type="nobg"]
-        ),
+      &:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not([data-type="nobg"]),
       &--current:not(.b3-menu__item--readonly, .b3-menu__item--disabled):not([disabled]):not([data-type="nobg"]) {
         background-color: var(--b3-menu-item-background-hover);
         color: var(--b3-menu-item-background-hover-text);

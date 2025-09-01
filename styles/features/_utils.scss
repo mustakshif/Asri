@@ -112,9 +112,9 @@ https://css-tricks.com/easing-linear-gradients/
   $stops-dark: ();
 
   @each $colorStop, $alphaValue in $scrimCoordinates {
-    $stop-light: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorLight * var(--ccff)))
+    $stop-light: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorLight))
       percentage(calc($colorStop/100));
-    $stop-dark: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorDark * var(--ccff)))
+    $stop-dark: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorDark))
       percentage(calc($colorStop/100));
     $stops-light: append($stops-light, $stop-light, comma);
     $stops-dark: append($stops-dark, $stop-dark, comma);

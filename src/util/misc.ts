@@ -237,16 +237,16 @@ async function waitForProtyleLoaded(protyle: HTMLElement, maxWaitTime = 5000): P
   });
 }
 
-function isChromiumV138() {
-  return navigator.userAgent.includes("Chrome/138");
-}
+// function isChromiumV138() {
+//   return navigator.userAgent.includes("Chrome/138");
+// }
 
-export function addChromiumV138FixVar() {
-  if (isChromiumV138()) {
-    cssVarManager.setProperty("--asri-ccff", "0.5");
-  }
-}
+// export function addChromiumV138FixVar() {
+//   if (isChromiumV138()) {
+//     cssVarManager.setProperty("--asri-ccff", "0.5");
+//   }
+// }
 
-export function removeChromiumV138FixVar() {
-  cssVarManager.removeProperty("--asri-ccff");
-}
+// export function removeChromiumV138FixVar() {
+//   cssVarManager.removeProperty("--asri-ccff");
+// }

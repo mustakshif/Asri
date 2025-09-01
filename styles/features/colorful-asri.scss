@@ -19,8 +19,6 @@ $cvc: 10; // color variant count
     --b3-protyle-inline-blockref-color: var(--b3-theme-accent);
     --asri-cover-accent: oklch(from var(--asri-cover-dominant) clamp(0.2, l, 0.95) clamp(0.1, c, 0.25) h);
 
-    --ccff: 1;
-
     &[data-theme-mode="light"] {
       --asri-base-color: var(--asri-cover-accent, var(--asri-user-custom-accent, var(--asri-sys-accent)));
       // --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) 0.67 0.18 h);
@@ -30,16 +28,16 @@ $cvc: 10; // color variant count
       --asri-fallback-surface: #f0f0f0;
       --asri-fallback-on-background: #454545;
       --asri-composite-background: oklch(
-        from var(--asri-base-color) calc((1 - var(--asri-c-0, 0.015) * var(--ccff)))
-          calc(0.005 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * var(--ccff)) h
+        from var(--asri-base-color) calc(1 - var(--asri-c-0, 0.015))
+          calc(0.005 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h
       );
       --asri-composite-surface: oklch(
-        from var(--asri-base-color) calc((0.96 - var(--asri-c-0, 0.02)) * var(--ccff))
-          calc(0.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * var(--ccff)) h
+        from var(--asri-base-color) calc(0.96 - var(--asri-c-0, 0.02))
+          calc(0.012 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h
       );
       --asri-composite-on-background: oklch(
         from var(--asri-base-color) 0.35
-          clamp(0, 0.03 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * var(--ccff), 0.06) h
+          clamp(0, 0.03 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.06) h
       );
 
       // UI colors
@@ -99,14 +97,14 @@ $cvc: 10; // color variant count
       --asri-fallback-surface: #383838;
       --asri-fallback-on-background: #dcdcdc;
       --asri-composite-background: oklch(
-        from var(--asri-base-color) 0.2 calc(0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * var(--ccff)) h
+        from var(--asri-base-color) 0.2 calc(0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h
       );
       --asri-composite-surface: oklch(
-        from var(--asri-base-color) 0.29 calc(0.015 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * var(--ccff)) h
+        from var(--asri-base-color) 0.29 calc(0.015 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)) h
       );
       --asri-composite-on-background: oklch(
         from var(--asri-base-color) 0.89
-          clamp(0, 0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * var(--ccff), 0.04) h
+          clamp(0, 0.01 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h
       );
 
       --b3-theme-primary: oklch(from var(--asri-base-color, var(--asri-fallback-accent)) 0.65 c h);
@@ -130,7 +128,7 @@ $cvc: 10; // color variant count
 
       --b3-border-color: oklch(
         from var(--b3-theme-background) 0.34
-          clamp(0, 0.009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * var(--ccff), 0.04) h
+          clamp(0, 0.009 * var(--asri-c-factor, 1) * var(--asri-c-0, 1), 0.04) h
       );
       --b3-border-color-trans: oklch(from var(--b3-theme-on-background) l c h / 0.15);
 
@@ -387,8 +385,8 @@ $cvc: 10; // color variant count
     background-color: unset !important;
     background: radial-gradient(
       circle at bottom,
-      oklch(from var(--b3-theme-primary) l calc(c * 1.05 * var(--ccff)) h / 0.5) 30%,
-      oklch(from var(--b3-theme-primary) l calc(c * 1.1 * var(--ccff)) calc(h + 30) / 0.3) 85%
+      oklch(from var(--b3-theme-primary) l calc(c * 1.05) h / 0.5) 30%,
+      oklch(from var(--b3-theme-primary) l calc(c * 1.1) calc(h + 30) / 0.3) 85%
     ) !important;
   }
 
@@ -396,12 +394,12 @@ $cvc: 10; // color variant count
   .b3-list-item--focus {
     // background-color: oklch(from var(--b3-theme-primary) l c h / .2);
     background-color: oklch(
-      from var(--b3-theme-primary) 0.5 calc(c * 0.9 * var(--asri-c-0, 1) * var(--ccff)) h / 0.1
+      from var(--b3-theme-primary) 0.5 calc(c * 0.9 * var(--asri-c-0, 1)) h / 0.1
     ) !important;
 
     @include darkmode-counterpart {
       background-color: oklch(
-        from var(--b3-theme-primary) 0.9 calc(c * 0.9 * var(--asri-c-0, 1) * var(--ccff)) h / 0.13
+        from var(--b3-theme-primary) 0.9 calc(c * 0.9 * var(--asri-c-0, 1)) h / 0.13
       ) !important;
     }
   }
@@ -410,13 +408,13 @@ $cvc: 10; // color variant count
   .layout-tab-bar .item--focus {
     background-color: oklch(
       from var(--b3-theme-primary) 0.5
-        clamp(0, calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * var(--ccff)), 0.25) h / 0.2
+        clamp(0, calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), 0.25) h / 0.2
     );
 
     @include darkmode-counterpart {
       background-color: oklch(
         from var(--b3-theme-primary) 0.99
-          clamp(0, calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * var(--ccff)), 0.15) h / 0.2
+          clamp(0, calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), 0.15) h / 0.2
       );
     }
   }
@@ -424,13 +422,13 @@ $cvc: 10; // color variant count
   [data-type="wnd"]:not(.layout__wnd--active) .item--focus {
     background-color: oklch(
       from var(--b3-theme-primary) 0.5
-        clamp(0, calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5 * var(--ccff)), 0.25) h / 0.2
+        clamp(0, calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5), 0.25) h / 0.2
     );
 
     @include darkmode-counterpart {
       background-color: oklch(
         from var(--b3-theme-primary) 0.99
-          clamp(0, calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5 * var(--ccff)), 0.15) h / 0.2
+          clamp(0, calc(0.1 * var(--asri-c-factor, 1) * var(--asri-c-0, 1) * 0.5), 0.15) h / 0.2
       );
     }
   }
