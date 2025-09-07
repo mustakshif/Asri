@@ -1,3 +1,13 @@
+### v3.5.11
+
+- 移除 Chromium v138 颜色计算修复，更新主题说明
+
+<br />
+
+- Removed the Chromium v138 color calculation fix and updated the theme documentation
+
+---
+
 ### v3.5.10
 
 - 适配思源 v3.3.0

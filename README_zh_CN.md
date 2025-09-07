@@ -30,7 +30,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 查看最新版本更新细节，请访问[发布页](https://github.com/mustakshif/Asri/releases)。
 
-查看完整更新日志，请访问 [CHANGELOG.md](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md)。
+查看完整更新日志，请查看 [CHANGELOG.md](https://github.com/mustakshif/Asri/blob/main/CHANGELOG.md)。
 
 ### 主要更新一览
 
