@@ -229,6 +229,10 @@
         word-break: initial;
       }
 
+      &__info .ft__smaller {
+        display: none;
+      }
+
       &:hover {
         transform: scale(1.01);
         // outline: 2px solid var(--b3-theme-primary-light);
