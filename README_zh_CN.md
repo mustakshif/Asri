@@ -7,7 +7,7 @@
 
 Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/siyuan)主题，以隐形设计构筑沉浸空间，为你带来专注、优雅、直觉驱动的笔记体验。
 
-> 在思源 v3.3.0 版本中，Chromium 颜色计算异常问题已被修复，可以删去此前用于临时修复的自定义代码片段
+> 📢 在思源 v3.3.0 版本中，Chromium 颜色计算异常问题已被修复，可以删去此前用于临时修复的自定义代码片段
 > 
 > <details>
 > <summary style="opacity: .6; font-weight: 600; font-size: .8em">临时修复片段</summary>
