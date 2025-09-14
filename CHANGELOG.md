@@ -1,3 +1,15 @@
+### v3.5.12
+
+- 隐藏集市包卡片标题旁的包名
+- [修复列表中公式块行号计数问题](https://github.com/mustakshif/Asri/issues/192)
+
+<br />
+
+- Hid the repo name next to the card title in the Marketplace
+- [Fixed line number counting issue in formula blocks within lists](https://github.com/mustakshif/Asri/issues/192)
+
+---
+
 ### v3.5.11
 
 - 移除 Chromium v138 颜色计算修复，更新主题说明
