@@ -56,7 +56,8 @@ export function addHdrSupportImage() {
   if (
     window.matchMedia &&
     window.matchMedia("(color-gamut: p3)").matches &&
-    !document.querySelector(".asri-hdr-support-image")
+    !document.querySelector(".asri-hdr-support-image") &&
+    env.appSchemeMode === "light"
   ) {
     const img = document.createElement("img");
     img.src = "/appearance/themes/Asri/hdr.jpg"; // source: https://github.com/ardov/hdr-web
