@@ -1,3 +1,13 @@
+### v3.5.13
+
+- HDR 相关特性改为仅在亮色模式生效
+
+<br />
+
+- HDR-related features are now only enabled in light mode
+
+---
+
 ### v3.5.12
 
 - 隐藏集市包卡片标题旁的包名
