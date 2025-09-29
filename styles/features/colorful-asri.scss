@@ -459,7 +459,7 @@ $cvc: 10; // color variant count
 
     @include darkmode-counterpart {
       @for $i from 1 through $cvc {
-        --b3-font-color#{$i + 3}: oklch(0.83 0.08 calc(360 / #{$cvc} * #{$i} + #{$hso}));
+        --b3-font-color#{$i + 3}: oklch(0.83 0.12 calc(360 / #{$cvc} * #{$i} + #{$hso}));
         --b3-font-background#{$i + 3}: oklch(0.31 0.05 calc(360 / #{$cvc} * #{$i} + #{$hso}));
       }
     }
