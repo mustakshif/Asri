@@ -1,9 +1,14 @@
 ### v3.5.14
+
 - 提高浅色模式的「鎏金」配色下对话框标题的可读性
 - 降低数据库标签饱和度
 
+<br />
+
 - Improved readability of dialog titles in the "Auriflow" color scheme for light mode
 - Reduced saturation of database tags
+
+---
 
 ### v3.5.13
 
