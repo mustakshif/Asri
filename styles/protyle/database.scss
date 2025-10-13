@@ -358,6 +358,10 @@
         margin: 0;
         padding: 8px 8px 0; // v3.0.4
 
+        > .b3-form__icona {
+          overflow: visible;
+        }
+
         + .fn__hr {
           background-color: var(--b3-menu-background);
         }

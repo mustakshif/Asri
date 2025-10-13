@@ -1,3 +1,13 @@
+### v3.5.15
+
+- 修复数据库关联列菜单高亮输入框显示问题
+
+<br />
+
+- Fixed the display issue of the highlighted input box in the database relation column menu
+
+---
+
 ### v3.5.14
 
 - 提高浅色模式的「鎏金」配色下对话框标题的可读性
