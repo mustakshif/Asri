@@ -124,7 +124,7 @@ Theme release
 
 [^5]: Due to the limited theming functionality, the UI layout direction of some interfaces cannot be fully modified.
 
-[^6]: To automatically hide the scrollbars, go to "System Settings - Appearance" and set "Show scroll bars" to "When scrolling".
+[^6]: To automatically hide the scrollbars, go to macOS "System Settings - Appearance" and set "Show scroll bars" to "When scrolling".
 
 ## Getting Started
 
