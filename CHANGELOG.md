@@ -1,3 +1,13 @@
+### v3.5.16
+
+- [提高对彩色图标包的兼容性](https://github.com/mustakshif/Asri/issues/195)
+
+<br/>
+
+- [Improved compatibility with colorful icon packs](https://github.com/mustakshif/Asri/issues/195)
+
+---
+
 ### v3.5.15
 
 - 修复数据库关联列菜单高亮输入框显示问题
