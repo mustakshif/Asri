@@ -78,7 +78,7 @@
 */
 #addCodeSnippetCSS,
 #addCodeSnippetJS {
-  inset-inline-end: 79px;
+  inset-inline-end: 70px;
 
   + .fn__space {
     display: none;
@@ -109,6 +109,10 @@
 
   .b3-form__icon + .fn__space {
     display: none;
+  }
+
+  .b3-form__icon.fn__flex-1 {
+    overflow: visible; //https://github.com/mustakshif/Asri/issues/197
   }
 }
 
