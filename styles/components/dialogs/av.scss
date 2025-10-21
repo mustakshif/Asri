@@ -38,18 +38,14 @@
     }
 
     .custom-attr__avvalue {
-      padding: 4px 0;
-
-      &:empty {
-        padding: 4px;
-      }
+      padding: 4px;
     }
 
     input,
     select,
     [data-type="text"] .b3-text-field {
       min-height: unset;
-      height: 28px;
+      height: 34px;
       padding: 4px;
 
       &:hover {
@@ -83,9 +79,7 @@
     flex-direction: column;
 
     .av__cell--relation {
-      // margin: 4px 0;
-      margin-left: unset;
-      margin: 2px 0;
+      margin: 2px 4px;
       display: flex;
 
       &:first-child {
@@ -101,6 +95,10 @@
       display: inline;
       padding-top: 0.1em;
       align-self: auto;
+
+      &:hover {
+        background-color: transparent;
+      }
     }
   }
 }
