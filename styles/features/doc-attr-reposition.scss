@@ -114,6 +114,7 @@ body:not(.body-asri--mobile) {
       // 备注常显
       > .protyle-attr--memo {
         display: flex;
+        overflow: hidden;
 
         svg {
           min-width: 12px;
@@ -127,6 +128,7 @@ body:not(.body-asri--mobile) {
           padding: 0;
           background-color: transparent;
           font-size: inherit;
+          line-height: 1.2;
           color: var(--b3-theme-on-surface);
           // line-height: 1.625;
           margin-inline-start: 4px;
@@ -134,14 +136,17 @@ body:not(.body-asri--mobile) {
           z-index: unset;
           transition: inherit;
           box-shadow: none;
-          // text-wrap: wrap;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          text-overflow: ellipsis;
         }
 
         &:hover::after {
           border: none;
           box-shadow: none;
           transform: none;
-          display: inline;
+          display: -webkit-box;
           overflow: hidden;
           outline: none;
           color: var(--b3-theme-on-background);
