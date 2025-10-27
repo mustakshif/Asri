@@ -88,9 +88,7 @@
         padding-top: 0 !important;
       }
 
-      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle)
-        > .protyle-breadcrumb
-        + .protyle-content {
+      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb + .protyle-content {
         padding-top: var(--blur-block-height);
       }
 
@@ -147,12 +145,7 @@
       .layout-tab-container {
         & > .protyle[data-loading="finished"] {
           &::before {
-            mask-image: linear-gradient(
-              to bottom,
-              black 0,
-              black calc(var(--blur-block-height) - 0.5px),
-              transparent calc(var(--blur-block-height) + 1px)
-            );
+            mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 0.5px), transparent calc(var(--blur-block-height) + 1px));
 
             @include bg-blur(20px, $brightness-light: 1, $brightness-dark: 0.9);
           }
@@ -452,12 +445,7 @@
         & > .protyle[data-loading="finished"] {
           // 中层模糊
           &::before {
-            mask-image: linear-gradient(
-              to bottom,
-              black 0,
-              black calc(var(--blur-block-height) - 25px),
-              transparent calc(var(--blur-block-height) - 5px)
-            );
+            mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 25px), transparent calc(var(--blur-block-height) - 5px));
 
             // @include bg-blur($blur-radius: 2px, $saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
             backdrop-filter: blur(calc(var(--pgbb) * 2));
@@ -474,12 +462,7 @@
             pointer-events: none;
             // background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / .6), transparent var(--blur-block-height));
             backdrop-filter: blur(var(--pgbb));
-            mask-image: linear-gradient(
-              to bottom,
-              black 0,
-              black calc(var(--blur-block-height) - 15px),
-              transparent calc(var(--blur-block-height) + 0px)
-            );
+            mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) - 15px), transparent calc(var(--blur-block-height) + 0px));
           }
 
           &.fullscreen::after {
@@ -509,11 +492,7 @@
                 opacity: 0.75;
               }
 
-              @include smoothGradientVar(
-                var(--b3-theme-background),
-                var(--mask-opacity-factor-light),
-                var(--mask-opacity-factor-dark)
-              );
+              @include smoothGradientVar(var(--b3-theme-background), var(--mask-opacity-factor-light), var(--mask-opacity-factor-dark));
 
               [data-asri-palette="polar"][data-theme-mode="light"] & {
                 --mask-opacity-factor-light: 0.8;
@@ -669,6 +648,11 @@
   .av__row--footer {
     z-index: 1;
   }
+
+  .av__row--header[style*="transform"] {
+    z-index: 2;
+    top: calc(var(--blur-block-height) + 1px);
+  } // https://github.com/mustakshif/Asri/issues/200
 
   // .protyle-breadcrumb{
   //     anchor-name: --breadcrumb;

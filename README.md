@@ -104,14 +104,13 @@ Theme release
 
     1. The dynamic scrollbar on the right side of the editor failed to display document progress in real time (jump functionality remained normal)
     2. Automatic scrolling could not be triggered when dragging blocks toward the top of the page
-    3. Database headers could not remain fixed within the editor's visible area
 
     Additionally, it might cause other issues such as:
 
-    1. Conflicts with custom styling code
-    2. Compatibility problems with certain plugins
-    3. Reduced readability of top bar texts/icons
-    4. Decreased page performance
+    3. Conflicts with custom styling code
+    4. Compatibility problems with certain plugins
+    5. Reduced readability of top bar texts/icons
+    6. Decreased page performance
 
     If any issues are encountered during use, please disable this feature promptly.
 
