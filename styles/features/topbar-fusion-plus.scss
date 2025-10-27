@@ -35,7 +35,7 @@
     > .fn__flex:first-child {
       background-color: transparent;
       margin-bottom: -42px;
-      z-index: 3;
+      z-index: 4;
     }
 
     :not(.av__views) > .layout-tab-bar {
@@ -73,7 +73,7 @@
         margin-bottom: calc(var(--blur-block-height) * -1);
         height: var(--blur-block-height);
         // @include theme-variant-color(background-color, background, $thick-transparency);
-        z-index: 2;
+        z-index: 3;
       }
 
       .protyle[data-loading="finished"].fullscreen {
@@ -636,7 +636,7 @@
   }
 
   &:not(.body-asri--mobile, .body--window) > #toolbar {
-    z-index: 4;
+    z-index: 5;
   }
 
   .layout__resize {
@@ -647,12 +647,29 @@
   .av__colsticky,
   .av__row--footer {
     z-index: 1;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      margin-top: calc(var(--blur-block-height) * -1.5);
+      width: 100%;
+      height: calc(var(--blur-block-height) * 1.5);
+      background-color: var(--b3-parent-background);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s linear;
+    }
   }
 
   .av__row--header[style*="transform"] {
     z-index: 2;
-    top: calc(var(--blur-block-height) + 1px);
-  } // https://github.com/mustakshif/Asri/issues/200
+    top: calc(var(--blur-block-height) + 1px); // https://github.com/mustakshif/Asri/issues/200
+
+    &::before {
+      opacity: 1;
+    }
+  }
 
   // .protyle-breadcrumb{
   //     anchor-name: --breadcrumb;

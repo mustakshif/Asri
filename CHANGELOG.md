@@ -1,3 +1,23 @@
+### v3.5.17
+
+- 新增 `<details>` 元素展开/收起动画
+- 微调代码片段对话框布局
+- [修复「顶栏融合+」模式下数据库表头无法固定在编辑器可视区域内的问题](https://github.com/mustakshif/Asri/issues/200)
+- [修复代码片段搜索输入框边框高亮显示不全的问题](https://github.com/mustakshif/Asri/issues/197)
+- [修复属性视图输入框内边距不一致的问题](https://github.com/mustakshif/Asri/issues/198)
+- 修复文档的备注属性换行显示的问题
+
+<br/>
+
+- Added expand/collapse animations for the `<details>` element
+- Adjusted the layout of the code snippet dialog
+- [Fixed an issue where database headers could not remain fixed within the editor&apos;s viewport in "Topbar Fusion+" mode](https://github.com/mustakshif/Asri/issues/200)
+- [Fixed incomplete border highlighting in the code snippet search input box](https://github.com/mustakshif/Asri/issues/197)
+- [Fixed inconsistent padding in the attribute view input fields](https://github.com/mustakshif/Asri/issues/198)
+- Fixed an issue with line breaks in the document's memo attribute display
+
+---
+
 ### v3.5.16
 
 - [提高对彩色图标包的兼容性](https://github.com/mustakshif/Asri/issues/195)
