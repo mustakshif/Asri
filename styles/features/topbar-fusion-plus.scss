@@ -643,11 +643,16 @@
     z-index: 3;
   }
 
-  .av__row--header,
-  .av__colsticky,
-  .av__row--footer {
+  > :not(.block__popover) :is(.av__row--header, .av__colsticky, .av__row--footer) {
     z-index: 1;
+  }
 
+  // .av__row--header {
+  //   top: 0;
+  //   transition: top .4s var(--asri-ease-in-out-5);
+  // }
+
+  > :not(.block__popover) .av__row--header {
     &::before {
       content: "";
       display: block;
@@ -660,14 +665,13 @@
       opacity: 0;
       transition: opacity 0.3s linear;
     }
-  }
+    &[style*="transform"] {
+      z-index: 2;
+      top: calc(var(--blur-block-height) + 1px); // https://github.com/mustakshif/Asri/issues/200
 
-  .av__row--header[style*="transform"] {
-    z-index: 2;
-    top: calc(var(--blur-block-height) + 1px); // https://github.com/mustakshif/Asri/issues/200
-
-    &::before {
-      opacity: 1;
+      &::before {
+        opacity: 1;
+      }
     }
   }
 
