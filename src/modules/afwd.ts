@@ -47,6 +47,7 @@ export async function addAfwdMenuItems(e: Event) {
   const blockId = type === "doc" ? targetLabel.parentElement!.dataset["nodeId"] ?? (targetLabel.closest(".protyle")?.querySelector(".protyle-title") as HTMLElement)?.dataset["nodeId"] : targetLabel.dataset["nodeId"];
   // console.log(blockId, type);
   commonMenuEl = await querySelectorAsync("#commonMenu:not(.fn__none)");
+  await new Promise(resolve => setTimeout(resolve, 0));
   initializeCurBlocksAttrs(type, blockId as string);
 }
 
