@@ -2,14 +2,45 @@
   "fill" : "automatic",
   "groups" : [
     {
-      "blend-mode" : "lighten",
+      "blend-mode" : "normal",
       "blur-material" : null,
       "layers" : [
+        {
+          "blend-mode-specializations" : [
+            {
+              "value" : "normal"
+            },
+            {
+              "appearance" : "dark",
+              "value" : "normal"
+            }
+          ],
+          "fill-specializations" : [
+            {
+              "appearance" : "dark",
+              "value" : {
+                "automatic-gradient" : "display-p3:0.14783,0.36351,0.93859,1.00000"
+              }
+            }
+          ],
+          "glass" : true,
+          "hidden" : false,
+          "image-name" : "Intersect.svg",
+          "name" : "Intersect",
+          "opacity" : 1,
+          "position" : {
+            "scale" : 6.19,
+            "translation-in-points" : [
+              0,
+              -10
+            ]
+          }
+        },
         {
           "blend-mode" : "normal",
           "fill" : "none",
           "glass" : true,
-          "hidden" : false,
+          "hidden" : true,
           "image-name" : "A.svg",
           "name" : "A",
           "opacity" : 1,
@@ -34,18 +65,28 @@
       }
     },
     {
+      "hidden" : false,
       "layers" : [
         {
+          "blend-mode" : "normal",
           "fill-specializations" : [
             {
+              "value" : {
+                "automatic-gradient" : "display-p3:0.12815,0.31724,0.96376,1.00000"
+              }
+            },
+            {
               "appearance" : "dark",
-              "value" : "automatic"
+              "value" : {
+                "solid" : "srgb:0.00000,0.53333,1.00000,0.00000"
+              }
             }
           ],
           "glass" : false,
           "hidden" : false,
           "image-name" : "Frame 7.png",
           "name" : "Frame 7",
+          "opacity" : 1,
           "position" : {
             "scale" : 2.4,
             "translation-in-points" : [
