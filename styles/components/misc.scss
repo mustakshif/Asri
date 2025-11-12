@@ -212,6 +212,12 @@ select.b3-select {
   }
 }
 
+.b3-text-field,
+.pcr-app .pcr-interaction .pcr-result,
+.b3-select {
+  @include superellipse(6px);
+}
+
 // 密码输入框、API输入框
 .b3-form__icona {
   &-icon:hover {
@@ -310,6 +316,7 @@ textarea {
   // word-break: keep-all; // 保持CJK字符不换行
   padding: 6px 10px;
   border-radius: 8px;
+  @include superellipse(8px);
   // transition: display 0.1s allow-discrete;
   // text-wrap-style: pretty;
 
@@ -334,7 +341,7 @@ textarea {
 //     opacity: 0;
 //     transform: scale(0.9);
 //   }
-  
+
 // }
 
 // 提示条
@@ -455,6 +462,7 @@ textarea {
       min-width: 19em;
       line-height: 1.5;
 
+      @include superellipse(16px);
       @include menu-shadow();
       @include theme-variant-border();
 

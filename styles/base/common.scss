@@ -3,9 +3,30 @@
 */
 $border-rd-card: 20px;
 $border-rd-popover: 12px;
-$border-rd-menu: 12px;
+$border-rd-menu: 10px;
 $border-rd-tab: 8px;
 $border-rd-default: 6px;
+
+@mixin superellipse($border-radius: (), $fallback: false, $k: 1.5) {
+  $final-border-radius: ();
+  @for $i from 1 through length($border-radius) {
+    $radius: if(type-of($border-radius) == "list", nth($border-radius, $i), $border-radius);
+
+    @if $i == 1 {
+      $final-border-radius: calc($radius * $k);
+    } @else {
+      $final-border-radius: #{$final-border-radius} calc($radius * $k);
+    }
+  }
+  @supports (corner-shape: superellipse(1.5)) {
+    corner-shape: superellipse($k);
+    border-radius: $final-border-radius;
+  }
+
+  @if $fallback {
+    border-radius: $border-radius;
+  }
+}
 
 // $timing-function-decelerate: cubic-bezier(0, 0, 0, 1);
 // $timing-function-accelerate: cubic-bezier(0.3, 0, 1, 1);

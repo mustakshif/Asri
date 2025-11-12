@@ -17,6 +17,7 @@
     transition-property: background-color, color, outline;
     outline: 1px solid var(--b3-border-color-trans);
     outline-offset: -1px;
+    @include superellipse(6px);
 
     &:hover {
       background-color: var(--b3-theme-primary);

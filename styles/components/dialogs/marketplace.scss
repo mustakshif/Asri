@@ -202,6 +202,8 @@
       transition-duration: 0.2s;
       overflow: visible;
 
+      @include superellipse($border-rd-card);
+
       &--current {
         background-color: rgb(from var(--b3-theme-primary) r g b / 0.1);
         // box-shadow: 0 0 0 1px inset var(--b3-theme-primary-lighter);
@@ -280,6 +282,10 @@
       // }
     }
   }
+
+  .b3-card__img img {
+    @include superellipse(9px);
+  }
 }
 
 #configBazaarReadme {
@@ -318,6 +324,8 @@
       grid-column: 1 / -1;
       margin-bottom: 32px;
       margin-top: auto;
+
+      @include superellipse(12px);
 
       + div {
         // repo name

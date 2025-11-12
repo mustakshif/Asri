@@ -27,6 +27,7 @@
 
   .b3-chip {
     border-radius: 4px;
+    // @include superellipse(4px);
   }
 
   // 数据库视图切换、标题
@@ -39,14 +40,18 @@
       height: auto;
       margin: 8px 0 !important;
       padding: 0;
-      border-radius: calc(1em / 0.875 * 8 / 17) !important;
+      border-radius: calc(1em / 0.875 * 8 / 17);
       border: 2.5px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
+
+      @include superellipse(calc(1em / 0.875 * 8 / 17));
 
       .item {
         padding: 2px 4px;
         height: auto;
-        border-radius: calc(1em / 0.875 * 8 / 17 - 2.5px) !important;
+        border-radius: calc(1em / 0.875 * 8 / 17 - 2.5px);
         width: auto !important; // 修复v3.2.1拖动后宽度递增的问题
+
+        @include superellipse(calc(1em / 0.875 * 8 / 17 - 2.5px));
 
         &__graphic {
           padding: 0.42em 4px 0.42em 8px;
@@ -597,6 +602,7 @@
 
     &-item {
       border-radius: var(--gibr);
+      @include superellipse(var(--gibr));
       box-shadow: 0 0 0 1px var(--b3-border-color-trans);
       // @include darkmode-counterpart {
       //   box-shadow: none;
@@ -628,6 +634,7 @@
     &-cover {
       border-bottom: none;
       border-radius: var(--gibr) var(--gibr) 0 0;
+      @include superellipse(var(--gibr) var(--gibr) 0 0);
       background-color: var(--b3-theme-surface);
       // background-color: #0000;
       // background: linear-gradient(to bottom, var(--b3-theme-surface), #0000);
@@ -668,6 +675,7 @@
     &-fields {
       padding: var(--gibr);
       border-radius: 0 0 var(--gibr) var(--gibr);
+      @include superellipse(0 0 var(--gibr) var(--gibr));
 
       @include darkmode-counterpart {
         // background-color: var(--b3-theme-surface);
@@ -738,6 +746,7 @@
       @include button-action("normal") {
         box-shadow: none;
         border-radius: var(--gibr);
+        @include superellipse(var(--gibr));
       }
     }
 

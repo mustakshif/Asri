@@ -210,6 +210,7 @@
     max-width: min(100%, 400px);
     margin: auto 20px;
     border-radius: 20px;
+    @include superellipse(20px);
     overflow: hidden;
     background-color: var(--b3-theme-background);
 
@@ -409,7 +410,8 @@
     background-color: transparent;
     outline: 2px solid var(--b3-theme-primary);
     transition: 0.2s;
-    border-radius: 99px;
+    border-radius: 12px;
+    @include superellipse(99px, $k: 1.2);
 
     &:hover {
       background-color: var(--b3-theme-primary-lightest);

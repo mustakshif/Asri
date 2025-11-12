@@ -17,6 +17,7 @@
     // background-size: cover;
     // background-attachment: fixed;
     border-radius: $border-rd-menu;
+    @include superellipse($border-rd-menu);
   }
 
   &:not(.b3-menu--fullscreen)::before {
@@ -29,6 +30,7 @@
 
   border-radius: $border-rd-menu;
   padding: 0;
+  @include superellipse($border-rd-menu);
   // animation: menu-pop-up .5s var(--asri-ease-spring-3);
 
   // @keyframes menu-pop-up {
@@ -53,8 +55,10 @@
       background-color: transparent;
       padding: 0.5px 12px;
       line-height: 24px;
-      border-radius: $border-rd-menu - 5px;
+      border-radius: $border-rd-menu - 4px;
       align-items: center;
+
+      // @include superellipse($border-rd-menu - 5px);
       // transition: background-color 0.07s linear, color 0.07s linear;
 
       // &:hover {
@@ -356,6 +360,7 @@
   border-radius: 12px;
   animation: scaleBounce 0.5s var(--asri-ease-spring-3);
 
+  @include superellipse(12px);
   @include menu-shadow;
 
   @include theme-variant-border($border: true);
