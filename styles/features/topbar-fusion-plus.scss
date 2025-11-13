@@ -645,7 +645,7 @@
     z-index: 3;
   }
 
-  > :not(.block__popover) :is(.av__row--header, .av__colsticky, .av__row--footer) {
+  > :not(.block__popover,.b3-dialog--open) :is(.av__row--header, .av__colsticky, .av__row--footer) {
     z-index: 1;
   }
 
@@ -654,7 +654,7 @@
   //   transition: top .4s var(--asri-ease-in-out-5);
   // }
 
-  > :not(.block__popover) .av__row--header {
+  > :not(.block__popover,.b3-dialog--open) .av__row--header {
     &::before {
       content: "";
       display: block;

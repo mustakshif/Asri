@@ -89,7 +89,7 @@
 */
 @mixin dialog-tabbar {
   margin: 8px auto 8px;
-  border-radius: 8px;
+  border-radius: 8px !important;
   background-color: var(--b3-list-hover);
   padding: 2px;
   height: auto;

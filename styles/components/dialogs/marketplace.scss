@@ -195,8 +195,8 @@
       border: none;
       box-shadow: none;
       // box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
-      outline: 1.5px solid var(--b3-border-color-trans);
-      outline-offset: -1.5px;
+      outline: 1px solid var(--b3-border-color-trans);
+      outline-offset: -1px;
       margin: 0;
       transition-property: outline, transform, box-shadow;
       transition-duration: 0.2s;
@@ -325,7 +325,7 @@
       margin-bottom: 32px;
       margin-top: auto;
 
-      @include superellipse(12px);
+      @include superellipse(20px);
 
       + div {
         // repo name

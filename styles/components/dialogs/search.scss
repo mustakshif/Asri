@@ -39,22 +39,22 @@
 
 [data-key="dialog-searchtype"] {
   .b3-dialog__content {
-   display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-   grid-template-rows: repeat(auto-fill, 28px);
-   gap: 20px 90px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-rows: repeat(auto-fill, 28px);
+    gap: 20px 90px;
 
-   .b3-label {
-     border-bottom-color: transparent;
-     padding: 0;
-     height: 28px;
-   }
+    .b3-label {
+      border-bottom-color: transparent;
+      padding: 0;
+      height: 28px;
+    }
 
-   div:last-child {
-     grid-column: 1 / -1;
-     grid-row: 10 / span 4;
-   }
- }
+    div:last-child {
+      grid-column: 1 / -1;
+      grid-row: 10 / span 4;
+    }
+  }
 }
 
 .search__tip {
@@ -291,3 +291,30 @@
     }
   }
 }
+
+// [data-key="dialog-globalsearch"],
+// [data-key="dialog-search"],
+// [data-key="dialog-replace"] {
+//   .b3-dialog {
+//     &__scrim {
+//       backdrop-filter: blur(18px);
+//     }
+//     &__container {
+//       background-color: transparent;
+//       outline: none;
+//       box-shadow: none;
+//       border: none;
+//       border-radius: 0;
+//     }
+//   }
+
+//   #searchList {
+//     background-color: transparent;
+//   }
+
+//   .search__header,
+//   .search__preview,
+//   .search__preview .protyle-breadcrumb {
+//     background-color: transparent;
+//   }
+// }
