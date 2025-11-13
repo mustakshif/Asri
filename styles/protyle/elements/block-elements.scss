@@ -83,6 +83,7 @@
     font-variant-numeric: tabular-nums;
     border-radius: 8px;
     border: 1px solid var(--b3-border-color-trans);
+    @include superellipse(8px);
 
     td,
     th {

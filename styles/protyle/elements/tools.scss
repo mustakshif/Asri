@@ -138,6 +138,7 @@
   animation: protyle-toolbar-appear 0.6s var(--asri-ease-spring-3);
   border: none;
   border-radius: 40px;
+  @include superellipse(40px, $k: 1.1);
   padding: 4px;
   // transform: translateY(-12px);
   background-color: var(--b3-theme-surface);

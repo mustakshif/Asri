@@ -8,6 +8,7 @@
   right: 8px !important; // 否则dock和面板隐藏时会被内联样式覆盖
   bottom: -4px;
   border-radius: 20px;
+  @include superellipse(20px, $k: 1.1);
   height: 26px;
   border: 0;
   padding: 0 26px 0 0;

@@ -94,7 +94,10 @@
   padding: 2px;
   height: auto;
 
-  @include superellipse(8px);
+  @supports (corner-shape: superellipse(1.5)) {
+    corner-shape: superellipse($superellipse-k);
+    border-radius: 8px * $superellipse-k !important;
+  }
 
   // @include darkmode-counterpart {
   //     background-color: #0004;

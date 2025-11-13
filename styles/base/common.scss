@@ -3,11 +3,12 @@
 */
 $border-rd-card: 20px;
 $border-rd-popover: 12px;
-$border-rd-menu: 10px;
+$border-rd-menu: 12px;
 $border-rd-tab: 8px;
 $border-rd-default: 6px;
+$superellipse-k: 1.4;
 
-@mixin superellipse($border-radius: (), $fallback: false, $k: 1.5) {
+@mixin superellipse($border-radius: (), $fallback: false, $k: $superellipse-k) {
   $final-border-radius: ();
   @for $i from 1 through length($border-radius) {
     $radius: if(type-of($border-radius) == "list", nth($border-radius, $i), $border-radius);
@@ -18,7 +19,7 @@ $border-rd-default: 6px;
       $final-border-radius: #{$final-border-radius} calc($radius * $k);
     }
   }
-  @supports (corner-shape: superellipse(1.5)) {
+  @supports (corner-shape: superellipse(1)) {
     corner-shape: superellipse($k);
     border-radius: $final-border-radius;
   }
