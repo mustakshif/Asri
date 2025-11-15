@@ -3,7 +3,7 @@ $li-types: ".li[data-subtype=o]", ".li[data-subtype=u]";
 .list[data-subtype="o"] {
   counter-reset: olcounter1 0 olcounter2 0 olcounter3 0;
 }
-
+:not(.export-img)> // https://ld246.com/article/1763139003515
 .protyle-wysiwyg {
   @each $type in $li-types {
     $start: $type;
@@ -82,7 +82,7 @@ $li-types: ".li[data-subtype=o]", ".li[data-subtype=u]";
       text-align: end;
       min-width: fit-content;
       left: unset;
-      inset-inline-end: calc(50% - .5em);
+      inset-inline-end: calc(50% - 0.5em);
       // font-family:var(--b3-font-family);
     }
 

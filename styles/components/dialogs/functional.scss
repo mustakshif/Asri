@@ -168,3 +168,7 @@
     line-height: 1.5;
   }
 }
+
+.export-img {
+  @include superellipse(16px);
+}
