@@ -360,11 +360,7 @@
           // margin: 0;
           padding: 2px 8px;
           // border-radius: 0;
-          background-color: change-color($color: pickThemeColor($theme-light, surface), $lightness: 90%);
-
-          @include darkmode-counterpart {
-            background-color: change-color($color: pickThemeColor($theme-dark, surface), $lightness: 28%);
-          }
+          background-color: var(--b3-border-color-trans);
 
           &:first-child {
             margin-top: 0;
@@ -372,12 +368,6 @@
 
           > .b3-list-item__text {
             font-weight: 500;
-          }
-
-          .layout--float &,
-          .layout__center &,
-          .layout__dockr & {
-            background-color: var(--b3-theme-surface) !important;
           }
         }
       }
