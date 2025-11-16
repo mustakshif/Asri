@@ -1,3 +1,19 @@
+### v3.5.18
+
+- [重新设计单选按钮](https://github.com/mustakshif/Asri/issues/207)
+- [修复连续点击块标时全宽显示菜单项消失的问题](https://github.com/mustakshif/Asri/pull/204)
+- [减少主题包体积](https://github.com/mustakshif/Asri/issues/205)
+- [修复导出图片时列表序号错乱的问题](https://ld246.com/article/1763139003515)
+
+<br />
+
+- [Redesigned radio buttons](https://github.com/mustakshif/Asri/issues/207)
+- [Fixed disappearing full-width menu items when continuously clicking block icons](https://github.com/mustakshif/Asri/pull/204)
+- [Reduced theme package size](https://github.com/mustakshif/Asri/issues/205)
+- [Fixed list numbering disorder when exporting images](https://ld246.com/article/1763139003515)
+
+---
+
 ### v3.5.17
 
 - 新增 `<details>` 元素展开/收起动画

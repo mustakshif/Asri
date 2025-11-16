@@ -360,7 +360,8 @@
           // margin: 0;
           padding: 2px 8px;
           // border-radius: 0;
-          background-color: var(--b3-border-color-trans);
+          background-color: var(--b3-theme-surface);
+          transition: background-color 0.2s;
 
           &:first-child {
             margin-top: 0;
@@ -368,6 +369,14 @@
 
           > .b3-list-item__text {
             font-weight: 500;
+          }
+
+          &:hover {
+            background-color: var(--b3-theme-surface) !important;
+          }
+
+          .layout__dockl & {
+            background-color: var(--b3-theme-background);
           }
         }
       }
