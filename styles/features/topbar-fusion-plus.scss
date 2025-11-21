@@ -443,11 +443,18 @@
       }
 
       .layout-tab-container {
-        --pgbb: 0.8px; // progressive blur base
+        .protyle {
+          --pgbb: 1px; // progressive blur base
+          --blur-block-height-progressive: calc(var(--blur-block-height) + 8px);
+
+          &.fullscreen{
+            --pgbb: 0.4px;
+          }
+        }
         & > .protyle[data-loading="finished"] {
           // 中层模糊
           &::before {
-            mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) * 0.5), transparent calc(var(--blur-block-height) * 0.75));
+            mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height-progressive) * 0.5), transparent calc(var(--blur-block-height-progressive) * 0.75));
 
             // @include bg-blur($blur-radius: 2px, $saturate-value: 1, $brightness-light: 1, $brightness-dark: 1);
             backdrop-filter: blur(calc(var(--pgbb) * 2.5));
@@ -464,7 +471,7 @@
             pointer-events: none;
             // background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / .6), transparent var(--blur-block-height));
             backdrop-filter: blur(var(--pgbb));
-            mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height) * 0.7) , transparent calc(var(--blur-block-height) * 1));
+            mask-image: linear-gradient(to bottom, black 0, black calc(var(--blur-block-height-progressive) * 0.7), transparent calc(var(--blur-block-height-progressive) * 1));
           }
 
           &.fullscreen::after {
@@ -543,7 +550,7 @@
           height: 80%;
           // background-color: transparent;
           backdrop-filter: blur(calc(var(--pgbb) * 5)) saturate(1.8);
-          mask-image: linear-gradient(to bottom, #000 calc(var(--blur-block-height) * 0.2), #0000 calc(var(--blur-block-height) * 0.55));
+          mask-image: linear-gradient(to bottom, #000 calc(var(--blur-block-height-progressive) * 0.2), #0000 calc(var(--blur-block-height-progressive) * 0.55));
           pointer-events: none;
 
           @include darkmode-counterpart {
@@ -645,7 +652,7 @@
     z-index: 3;
   }
 
-  > :not(.block__popover,.b3-dialog--open) :is(.av__row--header, .av__colsticky, .av__row--footer) {
+  > :not(.block__popover, .b3-dialog--open) :is(.av__row--header, .av__colsticky, .av__row--footer) {
     z-index: 1;
   }
 
@@ -654,7 +661,7 @@
   //   transition: top .4s var(--asri-ease-in-out-5);
   // }
 
-  > :not(.block__popover,.b3-dialog--open) .av__row--header {
+  > :not(.block__popover, .b3-dialog--open) .av__row--header {
     &::before {
       content: "";
       display: block;

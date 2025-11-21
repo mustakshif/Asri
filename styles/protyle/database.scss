@@ -823,12 +823,13 @@
 
       .av__gallery-cover {
         background-color: #0000;
+        border-bottom: 1px solid var(--b3-av-kanban-background);
       }
 
-      .av__gallery-cover .av__gallery-content,
-      .av__gallery-cover:empty {
-        mask-image: linear-gradient(to bottom, #000 0%, #0000 100cqh);
-      }
+      // .av__gallery-cover .av__gallery-content,
+      // .av__gallery-cover:empty {
+      //   mask-image: linear-gradient(to bottom, #000 0%, #0000 100cqh);
+      // } // performance issue
       .av__gallery-cover .av__gallery-content ~ ::after,
       .av__gallery-cover:empty::after {
         display: none;

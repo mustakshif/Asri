@@ -1,3 +1,17 @@
+### v3.5.19
+
+- 主要UI组件采用超椭圆平滑圆角（思源v3.4.0桌面端）
+- 支持CJK字符和西文字符之间自动渲染间距（思源v3.4.0桌面端）
+- 适配看板视图UI
+
+<br />
+
+- Adopted superellipse rounded corners for major UI components (SiYuan v3.4.0 Desktop)
+- Enabled automatic spacing between CJK and Western characters (SiYuan v3.4.0 Desktop)
+- Adapted UI for kanban view
+
+---
+
 ### v3.5.18
 
 - [重新设计单选按钮](https://github.com/mustakshif/Asri/issues/207)

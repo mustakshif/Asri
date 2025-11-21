@@ -56,7 +56,7 @@ body:not(.asri-disable-backdrop-blur) {
     // }
 
     &-background__action {
-      backdrop-filter: blur($medium-blur-rd);
+      // backdrop-filter: blur($medium-blur-rd);
     }
 
     //文字格式工具条
@@ -116,7 +116,7 @@ body:not(.asri-disable-backdrop-blur) {
       .protyle-icon {
         &--only {
           &:hover {
-            backdrop-filter: blur(20px);
+            // backdrop-filter: blur(20px);
           }
         }
       }
@@ -468,7 +468,7 @@ body:not(.asri-disable-backdrop-blur) {
   }
 
   .av__gallery-actions {
-    backdrop-filter: blur(10px) saturate(3);
+    // backdrop-filter: blur(10px) saturate(3);
   }
 
   #message.b3-snackbars {
