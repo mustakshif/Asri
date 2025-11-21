@@ -236,9 +236,15 @@
       //     }
       // }
 
-      .av__gallery {
+      .av__gallery,
+      .av__kanban {
         padding: 4px 24px;
         width: calc(100% - 48px);
+      }
+
+      .av__kanban-group > .av__body >.av__gallery{
+        padding: unset;
+        width: 100%;
       }
     }
 
@@ -247,6 +253,14 @@
         padding-left: 24px;
         padding-right: 24px;
       }
+      .av__container {
+        overflow: hidden;
+        // overflow-y: visible;
+        width: -webkit-fill-available;
+      }
+    }
+
+    &[data-av-type="kanban"] {
       .av__container {
         overflow: hidden;
         // overflow-y: visible;
