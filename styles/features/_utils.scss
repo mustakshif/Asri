@@ -32,12 +32,7 @@ $medium-blur-rd: 15px;
 $thin-transparency: 0.75;
 $thin-blur-rd: 10px;
 
-@mixin bg-blur(
-  $blur-radius: $thick-blur-rd,
-  $saturate-value: 3,
-  $brightness-light: 1.1,
-  $brightness-dark: calc(2 - $brightness-light)
-) {
+@mixin bg-blur($blur-radius: $thick-blur-rd, $saturate-value: 3, $brightness-light: 1.1, $brightness-dark: calc(2 - $brightness-light)) {
   backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness-light);
 
   [data-theme-mode="dark"] & {
@@ -56,7 +51,7 @@ A simple little SCSS mixin for creating scrim gradients
 Inspired by Andreas Larson - https://github.com/larsenwork
 https://css-tricks.com/easing-linear-gradients/
 */
-@mixin smoothGradientHex($startColor: #000, $direction: "to bottom") {
+@mixin smoothGradientHex($startColor: #000, $startColorOpacityFactor: 1, $direction: "to bottom") {
   $scrimCoordinates: (
     0: 1,
     19: 0.738,
@@ -79,19 +74,14 @@ https://css-tricks.com/easing-linear-gradients/
   $stops: ();
 
   @each $colorStop, $alphaValue in $scrimCoordinates {
-    $stop: hsla($hue, $saturation, $lightness, $alphaValue) percentage($colorStop/100);
+    $stop: hsla($hue, $saturation, $lightness, calc($alphaValue * $startColorOpacityFactor)) percentage(calc($colorStop/100));
     $stops: append($stops, $stop, comma);
   }
 
   background: linear-gradient(unquote($direction), $stops);
 }
 
-@mixin smoothGradientVar(
-  $startColor,
-  $startColorOpacityFactorLight: 1,
-  $startColorOpacityFactorDark: $startColorOpacityFactorLight,
-  $direction: "to bottom"
-) {
+@mixin smoothGradientVar($startColor, $startColorOpacityFactorLight: 1, $startColorOpacityFactorDark: $startColorOpacityFactorLight, $direction: "to bottom") {
   $scrimCoordinates: (
     0: 1,
     19: 0.738,
@@ -112,10 +102,8 @@ https://css-tricks.com/easing-linear-gradients/
   $stops-dark: ();
 
   @each $colorStop, $alphaValue in $scrimCoordinates {
-    $stop-light: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorLight))
-      percentage(calc($colorStop/100));
-    $stop-dark: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorDark))
-      percentage(calc($colorStop/100));
+    $stop-light: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorLight)) percentage(calc($colorStop/100));
+    $stop-dark: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorDark)) percentage(calc($colorStop/100));
     $stops-light: append($stops-light, $stop-light, comma);
     $stops-dark: append($stops-dark, $stop-dark, comma);
   }
@@ -242,13 +230,7 @@ https://css-tricks.com/easing-linear-gradients/
     $gradient-dir: "to right";
   }
 
-  mask-image: linear-gradient(
-    #{$gradient-dir},
-    transparent,
-    black var(--mask-stop-start),
-    black calc(100% - var(--mask-stop-end)),
-    transparent
-  );
+  mask-image: linear-gradient(#{$gradient-dir}, transparent, black var(--mask-stop-start), black calc(100% - var(--mask-stop-end)), transparent);
 
   $anim-name: ();
   $anim-range: ();

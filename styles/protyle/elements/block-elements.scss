@@ -52,20 +52,39 @@
 
 @mixin blockquote {
   :is(.bq, blockquote) {
+    $corner-size: max(1em, 16px);
     padding: 16px 20px;
     // border: .5px solid var(--b3-border-color-trans);
     margin: 1em 0;
     background-color: var(--b3-theme-surface-light);
-    outline: 0.5px solid var(--b3-border-color-trans);
-    outline-offset: -0.5px;
+    // outline: 0.5px solid var(--b3-border-color-trans);
+    // outline-offset: -0.5px;
+
+    &::before {
+      content: "";
+      display: block;
+      height: $corner-size;
+      width: $corner-size;
+      position: absolute;
+      left: unset;
+      right: 0;
+      top: 0;
+      border-radius: 0;
+      background: linear-gradient(45deg, var(--b3-border-color-trans) 50%, transparent 50%);
+    }
+
+    @supports (corner-shape: superellipse(1)) {
+      corner-shape: superellipse(0);
+      border-radius: 0 $corner-size 0 0;
+    }
 
     & > [data-type="NodeHeading"]:first-child {
       margin-top: 0;
     }
 
-    &::before {
-      display: none;
-    }
+    // &::before {
+    //   display: none;
+    // }
   }
 
   [data-node-id].li > [data-node-id]:not(.code-block).bq {

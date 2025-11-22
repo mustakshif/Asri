@@ -1,5 +1,6 @@
 @use "../../base" as *;
 @use "../utils" as *;
+@use "../../features/utils" as *;
 
 .config-bazaar__panel {
   // padding-bottom: 8px;
@@ -468,17 +469,62 @@
       //     margin: 24px auto 0;
       // }
 
-      > blockquote:first-child {
-        // border: none;
-        border-radius: 16px;
-        padding: 12px 20px;
-        color: rgb(from var(--b3-theme-on-background) r g b / 0.6);
-        background-color: #0000;
-        font-weight: 600;
-        margin: 0;
-        font-size: 120%;
-        outline-width: 1.5px;
-        outline-offset: -1.5px;
+      // > blockquote:first-child {
+      //   // border: none;
+      //   border-radius: 16px;
+      //   padding: 12px 20px;
+      //   color: rgb(from var(--b3-theme-on-background) r g b / 0.6);
+      //   background-color: #0000;
+      //   font-weight: 600;
+      //   margin: 0;
+      //   font-size: 120%;
+      //   outline-width: 1.5px;
+      //   outline-offset: -1.5px;
+      // }
+
+      &:not(.item__readme) {
+        border-radius: 0;
+        position: absolute;
+        position-anchor: --preview;
+        left: anchor(left);
+        bottom: anchor(bottom);
+        padding: 0;
+        width: calc(100% - 292px);
+        pointer-events: none;
+        height: auto;
+        mix-blend-mode: luminosity;
+        // @include smoothGradientVar(var(--b3-theme-background), $direction: "to top");
+        @include smoothGradientHex(#111, 0.5, $direction: "to top");
+        // float: left;
+
+        // &::before {
+        //   content: "";
+        //   display: block;
+        //   width: 100%;
+        //   height: 100%;
+        //   position: absolute;
+        //   bottom: 0;
+        //   mix-blend-mode: luminosity;
+        //   // @include smoothGradientHex(#000, 0.5, $direction: "to top");
+        //   background-image: linear-gradient(to bottom, #0000, #101010);
+        // }
+
+        > blockquote {
+          margin: 0;
+          width: 100%;
+          box-sizing: border-box;
+          padding: 80px max(32px, calc(50% - 21.5em / 1.2)) 16px;
+          color: #f9f9f9;
+          background-color: #0000;
+          border-radius: 0 !important;
+          font-weight: 600;
+          font-size: 120%;
+          text-shadow: 0px 0px 8px #0005;
+          // mix-blend-mode: plus-lighter;
+          &::before {
+            display: none;
+          }
+        }
       }
 
       &.item__readme {
@@ -495,6 +541,11 @@
 
   .item__preview {
     border-radius: 0;
+    anchor-name: --preview;
+
+    &--fullscreen {
+      anchor-name: none;
+    }
 
     // background-position 性能表现不佳
     // view-timeline-name: --preview-background;

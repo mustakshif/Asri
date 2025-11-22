@@ -1,34 +1,6 @@
 @use "../base" as *;
 @use "./elements" as *;
 
-:is(.b3-typography, .protyle-wysiwyg) {
-  @include headings;
-  @include superlink;
-  @include bold;
-  @include italic;
-  @include underline;
-  @include linethrough;
-  @include highlight;
-  @include kbd;
-  @include inline-code;
-  @include blockquote;
-  @include superscript-subscript;
-  @include hljs;
-  @include code-block;
-  @include table;
-}
-
-.layout__center .protyle {
-  container: protyle-width / inline-size;
-  &-wysiwyg {
-    counter-reset: katexEqnNo mmlEqnNo; // https://github.com/mustakshif/Asri/issues/188
-    // 或许可以为每个块单独重置计数器，这样就避免了全局连续计数；目前是每个protyle重置计数
-  }
-}
-.file-tree .protyle {
-  container: unset;
-}
-
 .protyle-wysiwyg {
   /* 
    * 所有内容块
@@ -218,6 +190,36 @@
   }
 }
 
+:is(.b3-typography, .protyle-wysiwyg) {
+  @include headings;
+  @include superlink;
+  @include bold;
+  @include italic;
+  @include underline;
+  @include linethrough;
+  @include highlight;
+  @include kbd;
+  @include inline-code;
+  @include blockquote;
+  @include superscript-subscript;
+  @include hljs;
+  @include code-block;
+  @include table;
+}
+
+.layout__center .protyle {
+  container: protyle-width / inline-size;
+  &-wysiwyg {
+    counter-reset: katexEqnNo mmlEqnNo; // https://github.com/mustakshif/Asri/issues/188
+    // 或许可以为每个块单独重置计数器，这样就避免了全局连续计数；目前是每个protyle重置计数
+  }
+}
+.file-tree .protyle {
+  container: unset;
+}
+
+
+
 .layout-tab-container {
   background-color: var(--b3-theme-background);
   transition: padding 0.2s;
@@ -341,7 +343,7 @@
   // font-variant-emoji: emoji; // 不受支持
 
   // @extend .protyle-wysiwyg;
-  &:not(#searchUnRefPreview) > * {
+  &:not(#searchUnRefPreview) > *:not(blockquote) { 
     border-radius: 8px;
   }
 
