@@ -56,7 +56,7 @@ body:not(.asri-disable-backdrop-blur) {
     // }
 
     &-background__action {
-      // backdrop-filter: blur($medium-blur-rd);
+      backdrop-filter: blur($medium-blur-rd);
     }
 
     //文字格式工具条
@@ -82,9 +82,12 @@ body:not(.asri-disable-backdrop-blur) {
 
       &:hover {
         .protyle-action__drag {
-          background-color: transparent;
-          backdrop-filter: invert(1) blur(50px) saturate(0) contrast(0.5) brightness(1.15);
-          filter: contrast(10) invert(0.1) opacity(0.9);
+          // background-color: transparent;
+          // backdrop-filter: invert(1) blur(50px) saturate(0) contrast(0.5) brightness(1.15);
+          // filter: contrast(10) invert(0.1) opacity(0.9);
+          backdrop-filter: blur(10px) saturate(0) contrast(0.5);
+          mix-blend-mode: difference;
+          background-color: #fff;
           box-shadow: none;
         }
       }
@@ -95,13 +98,13 @@ body:not(.asri-disable-backdrop-blur) {
 
       // 工具条
       // &:hover {
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur($medium-blur-rd);
       // }
 
       .protyle-icon {
         &--only {
           &:hover {
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur($medium-blur-rd);
           }
         }
       }
@@ -208,7 +211,7 @@ body:not(.asri-disable-backdrop-blur) {
   // }
 
   .graph__panel {
-    @include bg-blur(20px);
+    @include bg-blur();
     opacity: 1;
     background-color: oklch(from var(--b3-theme-background) l c h / $medium-transparency);
 
@@ -223,7 +226,7 @@ body:not(.asri-disable-backdrop-blur) {
     overflow: hidden;
 
     &:not(#searchHistoryListm, #findbar, .pdf__util)::before {
-      @include bg-blur;
+      @include bg-blur();
     }
 
     // .b3-menu__items
@@ -265,7 +268,7 @@ body:not(.asri-disable-backdrop-blur) {
 
   .protyle-util {
     background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
-    @include bg-blur($saturate-value: 3);
+    @include bg-blur($saturate-value: 1.5);
 
     @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
       @include theme-variant-color(background-color, menu-background, $medium-transparency);

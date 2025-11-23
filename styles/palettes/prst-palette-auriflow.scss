@@ -19,6 +19,7 @@
     inset: $border-width;
     z-index: -1;
     border-radius: $border-radius;
+    @include superellipse($border-radius);
   }
 }
 

@@ -494,7 +494,7 @@
         height: auto;
         mix-blend-mode: luminosity;
         // @include smoothGradientVar(var(--b3-theme-background), $direction: "to top");
-        @include smoothGradientHex(#111, 0.5, $direction: "to top");
+
         // float: left;
 
         // &::before {
@@ -520,6 +520,9 @@
           font-weight: 600;
           font-size: 120%;
           text-shadow: 0px 0px 8px #0005;
+          outline: none;
+          clip-path: none;
+          @include smoothGradientHex(#111, 0.5, $direction: "to top");
           // mix-blend-mode: plus-lighter;
           &::before {
             display: none;

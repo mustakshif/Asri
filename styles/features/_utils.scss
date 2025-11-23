@@ -26,13 +26,13 @@ $primary-color-reverse-selectors: (
 背景模糊
 */
 $thick-transparency: 0.85;
-$thick-blur-rd: 20px;
+$thick-blur-rd: 10px;
 $medium-transparency: 0.8;
-$medium-blur-rd: 15px;
+$medium-blur-rd: 8px;
 $thin-transparency: 0.75;
-$thin-blur-rd: 10px;
+$thin-blur-rd: 5px;
 
-@mixin bg-blur($blur-radius: $thick-blur-rd, $saturate-value: 3, $brightness-light: 1.1, $brightness-dark: calc(2 - $brightness-light)) {
+@mixin bg-blur($blur-radius: $thick-blur-rd, $saturate-value: 1.5, $brightness-light: 1.1, $brightness-dark: calc(2 - $brightness-light)) {
   backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness-light);
 
   [data-theme-mode="dark"] & {
