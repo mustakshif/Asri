@@ -58,29 +58,31 @@
     // border: .5px solid var(--b3-border-color-trans);
     margin: 1em 0;
     background-color: var(--b3-theme-surface-light);
-    outline: 0.5px solid var(--b3-border-color-trans);
-    outline-offset: -0.5px;
+    // outline: 1px solid var(--b3-border-color-trans);
+    // outline-offset: -1px; //https://github.com/mustakshif/Asri/issues/208
 
     &::before {
       display: none;
     }
     // corner-shape: superellipse(0);
     // border-radius: 0 $corner-size 0 0;
-    @include superellipse($corner-radius);
+    &:not([custom-callout], [custom-b], [custom-cssclasses]) {
+      @include superellipse($corner-radius);
 
-    clip-path: polygon($corner-size 0%, $corner-size -2em,calc(100% + 2em) -2em, calc(100% + 2em) 100%, 0 100%, 0 $corner-size);
+      clip-path: polygon($corner-size 0%, $corner-size -2em, calc(100% + 2em) -2em, calc(100% + 2em) calc(100% + 1px), 0 calc(100% + 1px), 0 $corner-size);
 
-    &::before {
-      content: "";
-      display: block;
-      height: $corner-size;
-      width: $corner-size;
-      position: absolute;
-      left: 0;
-      top: 0;
-      border-radius: 0 0 calc($corner-radius / $superellipse-k) 0;
-      background-color: var(--b3-border-color-trans); 
-      // background: linear-gradient(-45deg, var(--b3-border-color-trans) 50%, transparent 50%);
+      &::before {
+        content: "";
+        display: block;
+        height: $corner-size;
+        width: $corner-size;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 0 0 calc($corner-radius / $superellipse-k) 0;
+        background-color: var(--b3-border-color-trans);
+        // background: linear-gradient(-45deg, var(--b3-border-color-trans) 50%, transparent 50%);
+      }
     }
 
     &::after {
