@@ -1,3 +1,15 @@
+### v3.5.20
+
+- 引述块采用折角设计，增加辨识度
+- 降低全局模糊效果强度
+
+<br />
+
+- Applied a folded corner design to blockquotes for enhanced visual distinction
+- Reduced the intensity of the global blur effect
+
+---
+
 ### v3.5.19
 
 - 主要UI组件采用超椭圆平滑圆角（思源v3.4.0桌面端）

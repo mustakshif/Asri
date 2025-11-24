@@ -11,9 +11,9 @@
 
     &[style*="--b3-font-background1)"] {
       // 避免选择到 background10-13
-      // outline: .5px solid var(--b3-border-color-trans);
-      box-shadow: 0 0 0 1px var(--b3-border-color-trans);
-      // outline-offset: -1.5px;
+      outline: .5px solid var(--b3-border-color-trans) !important;
+      // box-shadow: 0 0 0 1px var(--b3-border-color-trans);
+      outline-offset: -0.5px;
     }
   }
 

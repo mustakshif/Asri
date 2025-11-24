@@ -427,7 +427,7 @@ body:not(.asri-disable-backdrop-blur) {
    */
   .viewer-backdrop {
     @include bg-blur($saturate-value: 1);
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur($thick-blur-rd);
     background-color: #80808080;
 
     @include darkmode-counterpart {
