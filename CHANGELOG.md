@@ -1,3 +1,13 @@
+### v3.5.21
+
+- [提高引述块新设计兼容性](https://github.com/mustakshif/Asri/issues/208)
+
+<br/>
+
+- [Improved compatibility with new design of blockquotes](https://github.com/mustakshif/Asri/issues/208)
+
+---
+
 ### v3.5.20
 
 - 引述块采用折角设计，增加辨识度

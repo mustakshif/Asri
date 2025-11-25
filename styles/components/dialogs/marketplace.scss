@@ -513,19 +513,23 @@
           margin: 0;
           width: 100%;
           box-sizing: border-box;
-          padding: 80px max(32px, calc(50% - 21.5em / 1.2)) 16px;
-          color: #f9f9f9;
+          padding: 80px max(32px, calc(50% - 21.5em / 1.5)) 16px;
+          color: #fafafa;
           background-color: #0000;
           border-radius: 0 !important;
           font-weight: 600;
-          font-size: 120%;
-          text-shadow: 0px 0px 8px #0005;
+          font-size: 150%;
+          text-shadow: 0px 0px 8px #0004;
           outline: none;
           clip-path: none;
           @include smoothGradientHex(#111, 0.5, $direction: "to top");
           // mix-blend-mode: plus-lighter;
           &::before {
             display: none;
+          }
+
+          > p {
+            line-height: 1.3;
           }
         }
       }
