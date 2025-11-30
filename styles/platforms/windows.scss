@@ -27,11 +27,11 @@ body.body--win32 {
   }
 
   .b3-dialog ::-webkit-scrollbar-track {
-    margin: 8px 0;
+    margin: 16px 0;
   }
 
   :where(.b3-menu, .protyle-hint, .protyle-util) ::-webkit-scrollbar-track {
-    margin: 4px 0;
+    margin: 8px 0;
   }
 
   .protyle-content::-webkit-scrollbar-track {
