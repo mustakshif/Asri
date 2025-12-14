@@ -1,3 +1,17 @@
+### v3.5.22
+
+- 修复全宽显示iframe的显示问题
+- 调整Windows端滚动条边距
+- [微调代码块工具条样式](https://github.com/mustakshif/Asri/issues/209)
+
+<br/>
+
+- Fixed display issues with full-width iframes
+- Adjusted scrollbar margins on the Windows version
+- [Fine-tuned the styling of the code block toolbar](https://github.com/mustakshif/Asri/issues/209)
+
+---
+
 ### v3.5.21
 
 - [提高引述块新设计兼容性](https://github.com/mustakshif/Asri/issues/208)
