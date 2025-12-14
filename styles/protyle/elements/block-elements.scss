@@ -183,6 +183,10 @@
     [data-theme-mode="dark"] & {
       background-color: #0004;
     }
+    
+    .protyle-action {
+      mix-blend-mode: luminosity;
+    }
   }
 }
 

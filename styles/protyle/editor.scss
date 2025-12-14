@@ -17,9 +17,9 @@
     }
   }
 
-  [contenteditable="true"] {
-    text-wrap-style: stable;
-  }
+  // [contenteditable="true"] {
+  //   text-wrap-style: stable;
+  // }
 
   /* 
    * 标题块
@@ -80,7 +80,7 @@
         // font-family: var(--b3-font-family-code);
 
         + .fn__flex-1 {
-          max-width: 12px;
+          max-width: 8px;
         }
       }
     }

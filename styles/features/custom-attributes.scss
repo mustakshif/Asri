@@ -113,7 +113,7 @@
   &[custom-afwd~="iframe"] > .iframe:not([custom-afwd="off"]),
   > .iframe[custom-afwd="on"] {
     // content-visibility: visible;
-    margin: calc(-12em / 17) 0;
+    // margin: calc(-12em / 17) 0;
 
     .protyle-attr {
       top: 8px;
@@ -123,6 +123,7 @@
       display: block;
       margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 5px);
       transition: margin 0.2s;
+      width: auto;
 
       video,
       iframe {

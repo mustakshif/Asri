@@ -600,6 +600,10 @@
       --gtfs: 1.77em;
     }
 
+    .av__gallery-actions .protyle-icon {
+      background-color: var(--b3-theme-surface);
+    }
+
     &-item {
       border-radius: var(--gibr);
       @include superellipse(var(--gibr));

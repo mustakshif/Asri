@@ -524,6 +524,7 @@
           clip-path: none;
           @include smoothGradientHex(#111, 0.5, $direction: "to top");
           // mix-blend-mode: plus-lighter;
+          text-wrap-style: balance;
           &::before {
             display: none;
           }
