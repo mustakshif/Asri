@@ -1,7 +1,11 @@
 @use "./colors.scss" as *;
+@use "sass:map";
+@use "sass:color";
 
 @mixin darkmode-counterpart($root: false) {
-  $selector: if($root, "&[data-theme-mode=dark]", "[data-theme-mode=dark] &");
+  $selector: if(
+    sass($root): "&[data-theme-mode=dark]" ; else: "[data-theme-mode=dark] &",
+  );
 
   #{$selector} {
     @content;
@@ -9,26 +13,26 @@
 }
 
 @mixin theme-variant-color($property, $theme-key, $opacity-light: 1, $opacity-dark: $opacity-light, $important: false) {
-  $_color: map-get($theme-light, $theme-key);
+  $_color: map.get($theme-light, $theme-key);
 
   @if $_color !=null {
     @if $important {
-      #{$property}: change-color($_color, $alpha: $opacity-light) !important;
+      #{$property}: color.change($_color, $alpha: $opacity-light) !important;
     } @else {
-      #{$property}: change-color($_color, $alpha: $opacity-light);
+      #{$property}: color.change($_color, $alpha: $opacity-light);
     }
   } @else {
     @warn "No color found for `#{$theme-key}` in `$theme-light`. Please check your `$theme-light` map and the `$theme-key` you are using.";
   }
 
   @include darkmode-counterpart {
-    $_color: map-get($theme-dark, $theme-key);
+    $_color: map.get($theme-dark, $theme-key);
 
     @if $_color !=null {
       @if $important {
-        #{$property}: change-color($_color, $alpha: $opacity-dark) !important;
+        #{$property}: color.change($_color, $alpha: $opacity-dark) !important;
       } @else {
-        #{$property}: change-color($_color, $alpha: $opacity-dark);
+        #{$property}: color.change($_color, $alpha: $opacity-dark);
       }
     } @else {
       @warn "No color found for `#{$theme-key}` in `$theme-dark`. Please check your `$theme-dark` map and the `$theme-key` you are using.";

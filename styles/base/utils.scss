@@ -1,3 +1,5 @@
+@use "sass:string";
+
 @function reverse-list($list) {
   $reversed: ();
 
@@ -14,7 +16,7 @@
 }
 
 @function hdr-shadow($shadow: "0 2px 1px -1px", $brightness: 2, $opacity: 0.1, $other: "inset") {
-  @return unquote("#{$shadow} color(display-p3 #{$brightness} #{$brightness} #{$brightness} / #{$opacity}) #{$other}");
+  @return string.unquote("#{$shadow} color(display-p3 #{$brightness} #{$brightness} #{$brightness} / #{$opacity}) #{$other}");
 }
 
 @function glassy-shadow(
@@ -25,7 +27,7 @@
   $pattern-reflection: "-1px -2px 1px -1px",
   $extra: "inset"
 ) {
-  @return unquote(
+  @return string.unquote(
     "#{$pattern-outline} rgba(#{$rgb}, #{calc($opacity / 5)}) #{$extra}, #{$pattern-hightlight} rgba(#{$rgb}, #{$opacity}) #{$extra}, #{$pattern-reflection} rgba(#{$rgb}, #{calc($opacity / 2)}) #{$extra}"
   );
 }

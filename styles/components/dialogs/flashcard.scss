@@ -1,6 +1,9 @@
 @use "../../base" as *;
 @use "../utils" as *;
 
+@use "sass:map";
+@use "sass:list";
+
 /* 
 * 闪卡复习
 */
@@ -37,11 +40,11 @@
         box-shadow: none;
       }
 
-      $button-colors: ((map-get($theme-light, card-error), map-get($theme-dark, card-error)), (map-get($theme-light, card-warning), map-get($theme-dark, card-warning)), (map-get($theme-light, card-info), map-get($theme-dark, card-info)), (map-get($theme-light, card-success), map-get($theme-dark, card-success)));
+      $button-colors: ((map.get($theme-light, card-error), map.get($theme-dark, card-error)), (map.get($theme-light, card-warning), map.get($theme-dark, card-warning)), (map.get($theme-light, card-info), map.get($theme-dark, card-info)), (map.get($theme-light, card-success), map.get($theme-dark, card-success)));
 
       @for $i from 1 through 4 {
         &[data-type="#{$i}"]:hover {
-          @include menu-shadow(nth($button-colors, $i)..., $opacity-dark: 0.2);
+          @include menu-shadow($opacity-dark: 0.2, list.nth($button-colors, $i)...);
         }
       }
 

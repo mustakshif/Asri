@@ -1,5 +1,6 @@
 @use "../../base" as *;
 @use "../utils" as *;
+@use "sass:string";
 
 @mixin headings {
   // @for $i from 1 through 6 {
@@ -52,9 +53,11 @@
 
 @mixin blockquote {
   :is(.bq, blockquote) {
-    $corner-radius: calc(1em * 10 / 16);
-    $corner-size: calc($corner-radius + 6px);
+    $corner-radius: 10px;
+    $corner-size: 16px;
+
     padding: 16px 20px;
+    
     // border: .5px solid var(--b3-border-color-trans);
     box-shadow: 0 0 0 0.5px inset var(--b3-border-color-trans);
     margin: 1em 0;
@@ -68,7 +71,7 @@
     // corner-shape: superellipse(0);
     // border-radius: 0 $corner-size 0 0;
     &:not([custom-callout], [custom-b], [custom-cssclasses]) {
-      @include superellipse($corner-radius);
+      // @include superellipse($corner-radius);
 
       clip-path: polygon($corner-size 0%, $corner-size -2em, calc(100% + 2em) -2em, calc(100% + 2em) calc(100% + 1px), 0 calc(100% + 1px), 0 $corner-size);
 
@@ -86,13 +89,17 @@
       }
     }
 
-    &::after {
-      // corner-shape: superellipse(0);
-      // border-radius: 0 $corner-size 0 0;
-      @include superellipse($corner-radius);
-    }
+    // &::after {
+    //   // corner-shape: superellipse(0);
+    //   // border-radius: 0 $corner-size 0 0;
+    //   @include superellipse($corner-radius);
+    // }
 
     & > [data-type="NodeHeading"]:first-child {
+      margin-top: 0;
+    }
+
+    &+:is(.bq, blockquote, .callout) {
       margin-top: 0;
     }
   }
@@ -183,7 +190,7 @@
     [data-theme-mode="dark"] & {
       background-color: #0004;
     }
-    
+
     .protyle-action {
       mix-blend-mode: luminosity;
     }
@@ -467,6 +474,51 @@
       &::after {
         display: none;
       }
+    }
+  }
+}
+
+@mixin callout {
+  .callout {
+    padding-left: unset;
+    padding-inline-start: 0.5em;
+    padding-inline-end: 0.5em;
+    margin: 1em 0;
+    padding-top: 0.5em;
+    padding-bottom: calc(0.5em + 4px);
+    color: var(--callout-text-color, var(--b3-theme-on-surface));
+    background-color: var(--callout-background-color, var(--b3-theme-surface));
+    box-shadow: 0 0 0 0.5px inset var(--callout-border-color, var(--b3-border-color-trans));
+
+    &-icon {
+      font-size: 120%;
+    }
+
+    &-title {
+      margin-left: 0;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-feature-settings: normal;
+    }
+
+    &-content {
+      padding-inline-start: calc(1.2em + 8px);
+    }
+
+    &::before {
+      display: none;
+    }
+
+    @each $type in ("NOTE", "TIP", "WARNING", "IMPORTANT", "CAUTION") {
+      &[data-subtype=#{$type}] {
+        --callout-text-color: var(--b3-callout-#{string.to-lower-case($type)}-text);
+        --callout-border-color: var(--b3-callout-#{string.to-lower-case($type)}-border);
+        --callout-background-color: var(--b3-callout-#{string.to-lower-case($type)}-background);
+      }
+    }
+
+    &+:is(.callout, .bq, blockquote) {
+      margin-top: 0;
     }
   }
 }

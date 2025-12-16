@@ -1,5 +1,6 @@
 @use "../base" as *;
 @use "../components/utils" as *;
+@use "sass:list";
 
 :is(.layout__dockl, .layout__dockr, .layout__dockb) {
   // animation fold/unfold
@@ -270,9 +271,9 @@
 
     $titleIcons: "❶", "❷", "❸", "❹", "❺", "❻";
 
-    @for $i from 1 through length($titleIcons) {
+    @for $i from 1 through list.length($titleIcons) {
       &[data-subtype="h#{$i}"] .b3-list-item__text::before {
-        content: nth($titleIcons, $i);
+        content: list.nth($titleIcons, $i);
       }
     }
 

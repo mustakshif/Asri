@@ -1,0 +1,10 @@
+#progress {
+  .b3-dialog__scrim {
+    backdrop-filter: blur(4px);
+  }
+
+  .b3-dialog__loading {
+    background-color: transparent;
+    border-radius: 0;
+  }
+}

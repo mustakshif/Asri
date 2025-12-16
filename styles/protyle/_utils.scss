@@ -51,7 +51,7 @@
 * 数据库资源列样式
 */
 @mixin database-assets-style($level: "non-chip") {
-  $selector: if($level == "non-chip", ".av__celltext--url", ".b3-chip.av__celltext--url");
+  $selector: if(sass($level == "non-chip"): ".av__celltext--url"; else: ".b3-chip.av__celltext--url");
 
   #{$selector} {
     // 资源列超链接或资源链接

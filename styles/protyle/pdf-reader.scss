@@ -1,17 +1,19 @@
 @use "../base" as *;
 @use "../components/utils" as *;
+@use "sass:list";
+@use "sass:map";
 
 .pdf__outer#outerContainer {
   &:not(.pdf__outer--dark) {
     @for $i from 1 through 7 {
-      $pdf-highlight-background: map-get($theme-light, pdf-background#{$i});
+      $pdf-highlight-background:map.get($theme-light, pdf-background#{$i});
       --b3-pdf-background#{$i}: #{$pdf-highlight-background};
     }
   }
 
   &.pdf__outer--dark {
     @for $i from 1 through 7 {
-      $pdf-hightlight-background: map-get($theme-dark, pdf-background#{$i});
+      $pdf-hightlight-background: map.get($theme-dark, pdf-background#{$i});
       --b3-pdf-background#{$i}: #{$pdf-hightlight-background};
     }
   }
@@ -119,7 +121,7 @@
 
       @include dialog-shadow;
       @include theme-variant-border;
-      outline: 1px solid rgb(map-get($theme-light, on-background), 0.1);
+      outline: 1px solid rgb(map.get($theme-light, on-background), 0.1);
 
       #documentPropertiesClose {
         @include button-action("primary") {

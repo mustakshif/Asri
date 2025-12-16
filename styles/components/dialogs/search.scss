@@ -1,6 +1,8 @@
 @use "../../base" as *;
 @use "../utils" as *;
 
+@use "sass:color";
+
 /*
  * 搜索
 */
@@ -22,10 +24,10 @@
         }
 
         @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-          background-color: change-color(pickThemeColor($theme-light, surface), $lightness: 90%);
+          background-color: color.change(pickThemeColor($theme-light, surface), $lightness: 90%);
 
           @include darkmode-counterpart {
-            background-color: change-color(pickThemeColor($theme-dark, surface), $lightness: 28%);
+            background-color: color.change(pickThemeColor($theme-dark, surface), $lightness: 28%);
           }
         }
       }

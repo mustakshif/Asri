@@ -1,3 +1,5 @@
+@use "sass:meta";
+@use "sass:list";
 /* 
 * global vars
 */
@@ -10,8 +12,8 @@ $superellipse-k: 1.4;
 
 @mixin superellipse($border-radius: (), $fallback: false, $k: $superellipse-k) {
   $final-border-radius: ();
-  @for $i from 1 through length($border-radius) {
-    $radius: if(type-of($border-radius) == "list", nth($border-radius, $i), $border-radius);
+  @for $i from 1 through list.length($border-radius) {
+    $radius: if(sass(meta.type-of($border-radius) == "list"): list.nth($border-radius, $i); else: $border-radius);
 
     @if $i == 1 {
       $final-border-radius: calc($radius * $k);

@@ -37,6 +37,7 @@
   &:root // body.has-exportimg
   {
     @include theme-root($theme-dark);
+    @include theme-root-dark;
   }
 
   // use hex to fix ios top bar color
@@ -52,6 +53,7 @@
     // body.has-exportimg
   {
     @include theme-root($theme-light);
+    @include theme-root-light;
   }
 
   body {

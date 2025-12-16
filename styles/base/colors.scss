@@ -1,3 +1,5 @@
+@use "sass:color";
+@use "sass:map";
 /*
  * color scheme related mixins
  */
@@ -62,6 +64,11 @@ $theme-light: (
   inline-link-color: #4285f4,
   inline-mark-background: rgb(168, 251, 172),
   light-components: #fff,
+  callout-note: #329aff,
+  callout-tip: #4eb23e,
+  callout-important: #a07dfb,
+  callout-warning: #ce8800,
+  callout-caution: #f26075,
 );
 
 $theme-dark: (
@@ -125,72 +132,77 @@ $theme-dark: (
   inline-link-color: #8ab4f8,
   inline-mark-background: #00d95964,
   light-components: #e0e0e0,
+  callout-note: #3aa1ff,
+  callout-tip: #55b945,
+  callout-important: #a684ff,
+  callout-warning: #d48e13,
+  callout-caution: #f9667b,
 );
 
 @mixin theme-root($theme-map) {
-  --b3-theme-primary: #{map-get($theme-map, primary)};
-  --b3-theme-primary-light: #{rgba(map-get($theme-map, primary), 0.56)};
-  --b3-theme-primary-lighter: #{rgba(map-get($theme-map, primary), 0.38)};
-  --b3-theme-primary-lightest: #{rgba(map-get($theme-map, primary), 0.2)};
-  --b3-theme-secondary: #{map-get($theme-map, secondary)};
-  --b3-theme-background: #{map-get($theme-map, background)};
-  --b3-theme-background-light: #{rgb(map-get($theme-map, background), 0.1)};
-  --b3-theme-surface: #{map-get($theme-map, surface)};
-  --b3-theme-surface-light: #{rgb(map-get($theme-map, surface), 0.5)};
-  --b3-theme-error: #{map-get($theme-map, error)};
+  --b3-theme-primary: #{map.get($theme-map, primary)};
+  --b3-theme-primary-light: #{rgba(map.get($theme-map, primary), 0.56)};
+  --b3-theme-primary-lighter: #{rgba(map.get($theme-map, primary), 0.38)};
+  --b3-theme-primary-lightest: #{rgba(map.get($theme-map, primary), 0.2)};
+  --b3-theme-secondary: #{map.get($theme-map, secondary)};
+  --b3-theme-background: #{map.get($theme-map, background)};
+  --b3-theme-background-light: #{rgb(map.get($theme-map, background), 0.1)};
+  --b3-theme-surface: #{map.get($theme-map, surface)};
+  --b3-theme-surface-light: #{rgb(map.get($theme-map, surface), 0.5)};
+  --b3-theme-error: #{map.get($theme-map, error)};
 
   /* 文字颜色 */
-  --b3-theme-on-primary: #{map-get($theme-map, on-primary)};
-  --b3-theme-on-secondary: #{map-get($theme-map, on-secondary)};
-  --b3-theme-on-background: #{map-get($theme-map, on-background)};
-  --b3-theme-on-surface: #{rgb(map-get($theme-map, on-background), 0.65)};
-  --b3-theme-on-surface-light: #{rgb(map-get($theme-map, on-surface-gray), 0.68)};
+  --b3-theme-on-primary: #{map.get($theme-map, on-primary)};
+  --b3-theme-on-secondary: #{map.get($theme-map, on-secondary)};
+  --b3-theme-on-background: #{map.get($theme-map, on-background)};
+  --b3-theme-on-surface: #{rgb(map.get($theme-map, on-background), 0.65)};
+  --b3-theme-on-surface-light: #{rgb(map.get($theme-map, on-surface-gray), 0.68)};
   --b3-theme-surface-lighter: var(--b3-border-color);
-  --b3-theme-on-error: #{map-get($theme-map, on-primary)};
+  --b3-theme-on-error: #{map.get($theme-map, on-primary)};
 
   /* 线条 */
-  --b3-border-color: #{map-get($theme-map, border)};
-  --b3-border-color-trans: #{rgb(map-get($theme-map, on-background), 0.15)};
+  --b3-border-color: #{map.get($theme-map, border)};
+  --b3-border-color-trans: #{rgb(map.get($theme-map, on-background), 0.15)};
 
   /* 滚动条 */
-  --b3-scroll-color: #{map-get($theme-map, scroll)};
-  --b3-scroll-color-hover: #{change-color(map-get($theme-map, scroll), $alpha: alpha(map-get($theme-map, scroll)) * 2)};
+  --b3-scroll-color: #{map.get($theme-map, scroll)};
+  --b3-scroll-color-hover: #{color.change(map.get($theme-map, scroll), $alpha: color.alpha(map.get($theme-map, scroll)) * 2)};
 
   /* 列表 */
-  --b3-list-hover: #{map-get($theme-map, list-hover)};
+  --b3-list-hover: #{map.get($theme-map, list-hover)};
 
   /* 菜单 */
-  --b3-menu-background: #{map-get($theme-map, menu-background)};
-  --b3-menu-item-background-hover: #{map-get($theme-map, menu-item-hv-background)};
-  --b3-menu-item-background-hover-text: #{map-get($theme-map, menu-item-hv-on-background)};
+  --b3-menu-background: #{map.get($theme-map, menu-background)};
+  --b3-menu-item-background-hover: #{map.get($theme-map, menu-item-hv-background)};
+  --b3-menu-item-background-hover-text: #{map.get($theme-map, menu-item-hv-on-background)};
 
   /* 提示 */
   --b3-tooltips-color: var(--b3-theme-on-background);
   --b3-tooltips-background: var(--b3-menu-background);
 
   /* 遮罩 */
-  --b3-mask-background: #{map-get($theme-map, mask-background)};
+  --b3-mask-background: #{map.get($theme-map, mask-background)};
 
   /* 卡片背景 */
-  --b3-card-error-color: #{map-get($theme-map, card-error)};
-  --b3-card-error-background: #{map-get($theme-map, card-error-background)};
-  --b3-card-warning-color: #{map-get($theme-map, card-warning)};
-  --b3-card-warning-background: #{map-get($theme-map, card-warning-background)};
-  --b3-card-info-color: #{map-get($theme-map, card-info)};
-  --b3-card-info-background: #{map-get($theme-map, card-info-background)};
-  --b3-card-success-color: #{map-get($theme-map, card-success)};
-  --b3-card-success-background: #{map-get($theme-map, card-success-background)};
+  --b3-card-error-color: #{map.get($theme-map, card-error)};
+  --b3-card-error-background: #{map.get($theme-map, card-error-background)};
+  --b3-card-warning-color: #{map.get($theme-map, card-warning)};
+  --b3-card-warning-background: #{map.get($theme-map, card-warning-background)};
+  --b3-card-info-color: #{map.get($theme-map, card-info)};
+  --b3-card-info-background: #{map.get($theme-map, card-info-background)};
+  --b3-card-success-color: #{map.get($theme-map, card-success)};
+  --b3-card-success-background: #{map.get($theme-map, card-success-background)};
 
   /* 自定义文字 */
   @for $i from 1 through 13 {
-    $font-color: map-get($theme-map, font-color#{$i});
+    $font-color: map.get($theme-map, font-color#{$i});
 
     //背景色：不透明色
-    // $font-background: mix(map-get($theme-map, font-color#{$i}), map-get($theme-map, background), 12.5%);
-    $font-background: map-get($theme-map, font-background#{$i});
+    // $font-background: mix(map.get($theme-map, font-color#{$i}), map.get($theme-map, background), 12.5%);
+    $font-background: map.get($theme-map, font-background#{$i});
 
     // 背景色：透明色
-    // $font-background:change-color(map-get($theme-map,font-color#{$i}), $alpha: 0.1);
+    // $font-background:color.change(map.get($theme-map,font-color#{$i}), $alpha: 0.1);
 
     --b3-font-color#{$i}: #{$font-color};
 
@@ -198,12 +210,12 @@ $theme-dark: (
   }
 
   /* 所见即所得行内元素颜色 */
-  --b3-protyle-inline-link-color: #{map-get($theme-map, inline-link-color)};
-  --b3-protyle-inline-mark-background: #{map-get($theme-map, inline-mark-background)};
+  --b3-protyle-inline-link-color: #{map.get($theme-map, inline-link-color)};
+  --b3-protyle-inline-mark-background: #{map.get($theme-map, inline-mark-background)};
   --b3-protyle-code-background: var(--b3-theme-surface);
 
   // 占位符
-  --b3-empty-color: #{rgba(map-get($theme-map, on-background), 0.45)};
+  --b3-empty-color: #{rgba(map.get($theme-map, on-background), 0.45)};
 
   // 关系图
   --b3-graph-p-point: #a188fd;
@@ -230,6 +242,43 @@ $theme-dark: (
 
   /* 父块颜色 */
   // --b3-parent-background: ;
+
+  @each $type in (note, tip, important, warning, caution) {
+    --b3-callout-#{$type}: #{map.get($theme-map, callout-#{$type})};
+    // --b3-callout-#{$type}-text: #{color.change(map.get($theme-map, callout-#{$type}), $chroma: 0.1, $space: oklch)};
+    --b3-callout-#{$type}-border: #{rgba(map.get($theme-map, callout-#{$type}), 0.25)};
+    --b3-callout-#{$type}-background: #{rgba(map.get($theme-map, callout-#{$type}), 0.1)};
+  }
+
+  // --b3-callout-note: #{map.get($theme-map, callout-note)};
+  // --b3-callout-tip: #{map.get($theme-map, callout-tip)};
+  // --b3-callout-important: #{map.get($theme-map, callout-important)};
+  // --b3-callout-warning: #{map.get($theme-map, callout-warning)};
+  // --b3-callout-caution: #{map.get($theme-map, callout-caution)};
+
+  // --b3-callout-note-border: #{rgba(map.get($theme-map, callout-note), 0.25)};
+  // --b3-callout-tip-border: #{rgba(map.get($theme-map, callout-tip), 0.25)};
+  // --b3-callout-important-border: #{rgba(map.get($theme-map, callout-important), 0.25)};
+  // --b3-callout-warning-border: #{rgba(map.get($theme-map, callout-warning), 0.25)};
+  // --b3-callout-caution-border: #{rgba(map.get($theme-map, callout-caution), 0.25)};
+
+  // --b3-callout-note-background: #{rgba(map.get($theme-map, callout-note), 0.1)};
+  // --b3-callout-tip-background: #{rgba(map.get($theme-map, callout-tip), 0.1)};
+  // --b3-callout-important-background: #{rgba(map.get($theme-map, callout-important), 0.1)};
+  // --b3-callout-warning-background: #{rgba(map.get($theme-map, callout-warning), 0.1)};
+  // --b3-callout-caution-background: #{rgba(map.get($theme-map, callout-caution), 0.1)};
+}
+
+@mixin theme-root-light() {
+  @each $type in (note, tip, important, warning, caution) {
+    --b3-callout-#{$type}-text: #{color.change(map.get($theme-light, callout-#{$type}), $alpha: 0.8, $lightness: 0.56, $chroma: 0.12, $space: oklch)};
+  }
+}
+
+@mixin theme-root-dark() {
+  @each $type in (note, tip, important, warning, caution) {
+    --b3-callout-#{$type}-text: #{color.change(map.get($theme-dark, callout-#{$type}), $alpha: 0.8, $lightness: 0.85, $chroma: 0.08, $space: oklch)};
+  }
 }
 
 @function getRgb($color) {
@@ -237,5 +286,5 @@ $theme-dark: (
 }
 
 @function pickThemeColor($theme-map, $color-key, $opacity: 1) {
-  @return change-color(map-get($theme-map, $color-key), $alpha: $opacity);
+  @return color.change(map.get($theme-map, $color-key), $alpha: $opacity);
 }

@@ -1,4 +1,9 @@
 @use "sass:string";
+@use "sass:color";
+@use "sass:list";
+@use "sass:math";
+@use "sass:map";
+
 @use "../base/modes.scss" as *;
 
 /*
@@ -68,17 +73,17 @@ https://css-tricks.com/easing-linear-gradients/
     100: 0,
   );
 
-  $hue: hue($startColor);
-  $saturation: saturation($startColor);
-  $lightness: lightness($startColor);
+  $hue: color.channel($startColor, "hue", $space: hsl);
+  $saturation: color.channel($startColor, "saturation", $space: hsl);
+  $lightness: color.channel($startColor, "lightness", $space: hsl);
   $stops: ();
 
   @each $colorStop, $alphaValue in $scrimCoordinates {
-    $stop: hsla($hue, $saturation, $lightness, calc($alphaValue * $startColorOpacityFactor)) percentage(calc($colorStop/100));
-    $stops: append($stops, $stop, comma);
+    $stop: hsla($hue, $saturation, $lightness, calc($alphaValue * $startColorOpacityFactor)) math.percentage(calc($colorStop/100));
+    $stops: list.append($stops, $stop, comma);
   }
 
-  background: linear-gradient(unquote($direction), $stops);
+  background: linear-gradient(string.unquote($direction), $stops);
 }
 
 @mixin smoothGradientVar($startColor, $startColorOpacityFactorLight: 1, $startColorOpacityFactorDark: $startColorOpacityFactorLight, $direction: "to bottom") {
@@ -102,17 +107,17 @@ https://css-tricks.com/easing-linear-gradients/
   $stops-dark: ();
 
   @each $colorStop, $alphaValue in $scrimCoordinates {
-    $stop-light: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorLight)) percentage(calc($colorStop/100));
-    $stop-dark: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorDark)) percentage(calc($colorStop/100));
-    $stops-light: append($stops-light, $stop-light, comma);
-    $stops-dark: append($stops-dark, $stop-dark, comma);
+    $stop-light: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorLight)) math.percentage(calc($colorStop/100));
+    $stop-dark: rgb(from $startColor r g b / calc($alphaValue * $startColorOpacityFactorDark)) math.percentage(calc($colorStop/100));
+    $stops-light: list.append($stops-light, $stop-light, comma);
+    $stops-dark: list.append($stops-dark, $stop-dark, comma);
   }
 
-  background: linear-gradient(unquote($direction), $stops-light);
+  background: linear-gradient(string.unquote($direction), $stops-light);
 
   @if $startColorOpacityFactorLight !=$startColorOpacityFactorDark {
     @include darkmode-counterpart {
-      background: linear-gradient(unquote($direction), $stops-dark);
+      background: linear-gradient(string.unquote($direction), $stops-dark);
     }
   }
 }
@@ -148,8 +153,8 @@ https://css-tricks.com/easing-linear-gradients/
     "right": "to left",
   );
 
-  @if str-index($range, "top") or str-index($range, "left") {
-    $dir: map-get($range-dir, nth(string.split($range, " "), 1));
+  @if string.index($range, "top") or string.index($range, "left") {
+    $dir: map.get($range-dir, list.nth(string.split($range, " "), 1));
 
     &::before {
       content: "";
@@ -164,7 +169,7 @@ https://css-tricks.com/easing-linear-gradients/
       // background-image: linear-gradient(#{$dir}, $bg-clr, transparent);
       @include smoothGradientVar($bg-clr, $direction: #{$dir});
 
-      margin-#{str-slice($dir, 4)}: calc(-1 * $size);
+      margin-#{string.slice($dir, 4)}: calc(-1 * $size);
 
       pointer-events: none;
 
@@ -182,8 +187,8 @@ https://css-tricks.com/easing-linear-gradients/
     }
   }
 
-  @if str-index($range, "bottom") or str-index($range, "right") {
-    $dir: map-get($range-dir, nth(string.split($range, " "), -1)); // -> 'to top' / 'to left'
+  @if string.index($range, "bottom") or string.index($range, "right") {
+    $dir: map.get($range-dir, list.nth(string.split($range, " "), -1)); // -> 'to top' / 'to left'
 
     &::after {
       content: "";
@@ -199,7 +204,7 @@ https://css-tricks.com/easing-linear-gradients/
       // background-image: linear-gradient(#{$dir}, $bg-clr, transparent);
       @include smoothGradientVar($bg-clr, $direction: #{$dir});
 
-      margin-#{str-slice($dir, 4)}: calc(-1 * $size);
+      margin-#{string.slice($dir, 4)}: calc(-1 * $size);
 
       pointer-events: none;
 
@@ -219,12 +224,12 @@ https://css-tricks.com/easing-linear-gradients/
 }
 
 @mixin overflow-indicator-fadein-mask($size: 12px, $range: "top bottom") {
-  $range-start: nth(string.split($range, " "), 1);
-  $range-end: nth(string.split($range, " "), -1);
+  $range-start: list.nth(string.split($range, " "), 1);
+  $range-end: list.nth(string.split($range, " "), -1);
   $gradient-dir: "";
-  $this-id: unique-id();
+  $this-id: string.unique-id();
 
-  @if str-index($range, "top") or str-index($range, "bottom") {
+  @if string.index($range, "top") or string.index($range, "bottom") {
     $gradient-dir: "to bottom";
   } @else {
     $gradient-dir: "to right";
@@ -237,15 +242,15 @@ https://css-tricks.com/easing-linear-gradients/
   $anim-dir: ();
 
   @if $range-start == "top" or $range-start == "left" {
-    $anim-name: append($anim-name, "maskAppear-mask-start-#{$this-id}", comma);
-    $anim-range: append($anim-range, "1px 100%", comma);
-    $anim-dir: append($anim-dir, "alternate", comma);
+    $anim-name: list.append($anim-name, "maskAppear-mask-start-#{$this-id}", comma);
+    $anim-range: list.append($anim-range, "1px 100%", comma);
+    $anim-dir: list.append($anim-dir, "alternate", comma);
   }
 
   @if $range-end == "bottom" or $range-end == "right" {
-    $anim-name: append($anim-name, "maskAppear-mask-end-#{$this-id}", comma);
-    $anim-range: append($anim-range, "0% calc(100% - 1px)", comma);
-    $anim-dir: append($anim-dir, "alternate-reverse", comma);
+    $anim-name: list.append($anim-name, "maskAppear-mask-end-#{$this-id}", comma);
+    $anim-range: list.append($anim-range, "0% calc(100% - 1px)", comma);
+    $anim-dir: list.append($anim-dir, "alternate-reverse", comma);
   }
 
   animation-name: #{$anim-name};

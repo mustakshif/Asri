@@ -1,5 +1,7 @@
 @use "../base" as *;
 
+@use "sass:string";
+
 // 文档树项目小圆点位置
 .layout-tab-container .b3-list-item .b3-list-item__toggle.fn__hidden {
   position: relative;
@@ -28,7 +30,7 @@
   --indent-color: #0000;
 
   @for $i from 1 through 7 {
-    $uls: str-insert(
+    $uls: string.insert(
       $string: $uls,
       $insert: ">ul",
       $index: 100,

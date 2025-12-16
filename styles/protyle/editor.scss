@@ -7,7 +7,7 @@
    */
   [data-node-id] {
     border-radius: 10px;
-    // @include superellipse(10px);
+    @include superellipse(10px);
 
     &[style*="--b3-font-background1)"] {
       // 避免选择到 background10-13
@@ -205,6 +205,7 @@
   @include hljs;
   @include code-block;
   @include table;
+  @include callout;
 }
 
 .layout__center .protyle {

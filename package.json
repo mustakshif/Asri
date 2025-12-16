@@ -15,7 +15,8 @@
     "build": "webpack --mode production && sass ./theme.scss:./theme.css --no-source-map --style compressed && postcss ./theme.css -o ./theme.css",
     "dev": "concurrently \"webpack --watch --mode development\" \"sass --watch ./theme.scss:./theme.css --no-source-map --no-error-css\"",
     "release": "node scripts/release.js",
-    "undo-release": "node scripts/undo-release.js"
+    "undo-release": "node scripts/undo-release.js",
+    "lint": "stylelint \"**/*.scss\""
   },
   "author": "mustakshif",
   "license": "MIT",
@@ -28,7 +29,10 @@
     "fast-average-color": "^9.5.0",
     "html-loader": "^5.0.0",
     "postcss-cli": "^11.0.0",
+    "sass": "^1.97.0",
     "siyuan": "^1.0.2",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard-scss": "^16.0.0",
     "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",
