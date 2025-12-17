@@ -1,3 +1,17 @@
+### v3.5.23
+
+- 适配Callout块样式
+- 聚焦块标识颜色调整为跟随块文本颜色
+- 调整进度条样式
+
+<br/>
+
+- Adapted the Callout block styling
+- Adjusted the focus block indicator color to follow the block text color
+- Modified the progress bar styling
+
+---
+
 ### v3.5.22
 
 - 修复全宽显示iframe的显示问题
