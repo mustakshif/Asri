@@ -1,4 +1,7 @@
 #progress {
+  :root[data-theme-light] & .b3-dialog__scrim {
+    background-color: var(--b3-theme-surface-light);
+  }
   .b3-dialog__loading {
     background-color: transparent;
     border-radius: 0;

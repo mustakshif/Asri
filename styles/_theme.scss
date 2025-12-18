@@ -73,7 +73,7 @@ body {
   text-underline-position: under;
   text-decoration-skip-ink: all; // not supported yet
   text-spacing-trim: trim-start;
-  text-autospace: normal; // Safari only, add spaces around punctuation in Chinese, Japanese, and Korean text
+  text-autospace: normal;
 
   &:not(.body--win32, .body-asri--linux) {
     scrollbar-width: thin;

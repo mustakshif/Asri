@@ -68,10 +68,8 @@
     &::before {
       display: none;
     }
-    // corner-shape: superellipse(0);
-    // border-radius: 0 $corner-size 0 0;
     &:not([custom-callout], [custom-b], [custom-cssclasses]) {
-      // @include superellipse($corner-radius);
+      @include superellipse($corner-radius);
 
       clip-path: polygon($corner-size 0%, $corner-size -2em, calc(100% + 2em) -2em, calc(100% + 2em) calc(100% + 1px), 0 calc(100% + 1px), 0 $corner-size);
 
