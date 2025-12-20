@@ -120,16 +120,16 @@ body:not(.body-asri--mobile, .body--window) {
   #dockRight {
     &:not(.dock-layout-expanded) {
       background-color: var(--b3-theme-background);
-    }
 
-    &::before {
-      //遮挡侧栏边线
-      content: "";
-      height: var(--toolbar-height);
-      position: fixed;
-      background-color: inherit;
-      width: inherit;
-      top: 0;
+      &::before {
+        //遮挡侧栏边线
+        content: "";
+        height: var(--toolbar-height);
+        position: fixed;
+        background-color: inherit;
+        width: inherit;
+        top: 0;
+      }
     }
   }
 

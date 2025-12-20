@@ -4,18 +4,7 @@ import { debounce, querySelectorAsync } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
 import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
-import {
-  asriConfigs,
-  createBarModeMenuItems,
-  curMode,
-  followSysAccentColor,
-  getI18n,
-  getSystemAccentColor,
-  loadThemePalette,
-  paletteMenuItemClickEventListener,
-  tfpMenuItemCallbackEventListener,
-  unloadThemePalette,
-} from "./asriConfigs";
+import { asriConfigs, createBarModeMenuItems, curMode, followSysAccentColor, getI18n, getSystemAccentColor, loadThemePalette, paletteMenuItemClickEventListener, tfpMenuItemCallbackEventListener, unloadThemePalette } from "./asriConfigs";
 import { updateCoverImgColor } from "./asriConfigs/coverImgColor";
 import { removeHdrSupportImage } from "./asriConfigs/util";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
@@ -25,22 +14,10 @@ import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstitio
 import { removeProtyleStatusClassName, toggleProtyleStatus } from "./protyleStatus";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
-import {
-  debouncedStatusPosition,
-  removeStatusStyles,
-  setStatusHeightVar,
-  unloadAvoidOverlappingWithStatus
-} from "./status";
-import {
-  calcTabbarSpacings,
-  calcTopbarSpacings,
-  createTopbarFusionElements,
-  handleMacFullScreen,
-  recalcDragInitials,
-  unloadTopbarFusion,
-  updateDragRect,
-} from "./topbarFusion";
+import { debouncedStatusPosition, removeStatusStyles, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
+import { calcTabbarSpacings, calcTopbarSpacings, createTopbarFusionElements, handleMacFullScreen, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
+import { setVibrancy, removeVibrancy, setThemeSource } from "./vibrancy";
 
 const globalMouseupEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalDragEventListener = new AsriEventListener(lowFreqEventsCallback);
@@ -65,7 +42,10 @@ export async function loadAsriJSModules() {
   toggleProtyleStatus();
   // startDefaultTranstition(loadThemePalette);
   await getI18n();
+
   loadThemePalette(); // https://github.com/mustakshif/Asri/issues/85
+  setVibrancy();
+  console.log("加载主题");
 
   if (!env.isMobile) {
     await updateWndEls();
@@ -83,7 +63,7 @@ export async function loadAsriJSModules() {
   selectionChangeEventListener.start(document, "selectionchange");
   globalClassNameMo.observe(document.body, MOConfigForClassNames);
   // watchImgExportMo.observe(document.body, { childList: true });
-  themeUpdateListener.start(darkModeMediaQuery, "change");
+  // themeUpdateListener.start(darkModeMediaQuery, "change");
   paletteMenuItemClickEventListener.start(document, "mouseup");
   tfpMenuItemCallbackEventListener.start(document, "mouseup");
   asriDoms.layoutCenter || (await querySelectorAsync(".layout__center"));
@@ -110,8 +90,10 @@ export async function unloadAsriJSModules(completeUnload = true) {
     document.body.classList.remove("body-asri--fullscreen", "asri-tfp", "asri-tfp-acrylic", "asri-tfp-progressive", "asri-c-0");
     unloadThemePalette();
     removeHdrSupportImage();
+    removeVibrancy();
   }
 
+  setThemeSource();
   globalMouseupEventListener.remove(document, "mouseup");
   globalDragEventListener.remove(document, "dragend");
   globalKeyupEventListener.remove(document, "keyup", true);
@@ -119,7 +101,7 @@ export async function unloadAsriJSModules(completeUnload = true) {
   winFocusChangeEventListener.remove(window, "blur");
   selectionChangeEventListener.remove(document, "selectionchange");
   globalClassNameMo.disconnect();
-  themeUpdateListener.remove(darkModeMediaQuery, "change");
+  // themeUpdateListener.remove(darkModeMediaQuery, "change");
   paletteMenuItemClickEventListener.remove(document, "mouseup");
   tfpMenuItemCallbackEventListener.remove(document, "mouseup");
   // watchImgExportMo.disconnect(() => {
@@ -155,11 +137,7 @@ async function updateStyles(e?: Event | KeyboardEvent) {
   }
 
   // run on mouse events
-  else if (
-    e.type.startsWith("mouseup") ||
-    e.type.startsWith("drag") ||
-    (e instanceof KeyboardEvent && (e.key === "Control" || e.key === "Alt" || e.key === "Shift" || e.key === "Meta"))
-  ) {
+  else if (e.type.startsWith("mouseup") || e.type.startsWith("drag") || (e instanceof KeyboardEvent && (e.key === "Control" || e.key === "Alt" || e.key === "Shift" || e.key === "Meta"))) {
     lowFreqStyleUpdates();
     Promise.resolve()
       .then(() => {
@@ -269,5 +247,3 @@ function appearanceModeUpdateCallback(e: MediaQueryListEvent) {
   // console.log('系统主题变化:', e.matches ? '暗色' : '亮色')
   startFadeInFadeOutTranstition(600, () => {}, 200);
 }
-
-

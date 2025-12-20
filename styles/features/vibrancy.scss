@@ -1,0 +1,15 @@
+body.body-asri--mac:not(.body-asri--browser) {
+  background-color: transparent;
+
+  .layout__dockl .layout-tab-container,
+  .layout__dockr .layout-tab-container,
+  .dock.dock-layout-expanded {
+    background-color: var(--b3-theme-surface-light);
+    // background-color: transparent;
+
+    //   :root[data-theme-mode="light"] & {
+    //     // background-color: color-mix(in srgb, var(--b3-theme-surface) 70%, #0000);
+    //     background-color: transparent;
+    //   }
+  }
+}

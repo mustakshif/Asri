@@ -88,5 +88,6 @@ export const environment = {
   supportOklch: CSS.supports("color", "oklch(from red calc(l * 0.5) 0 h)"),
   isReadOnly: window.siyuan.config.readonly as boolean,
   appSchemeMode: window.siyuan.config.appearance.mode > 0 ? "dark" : ("light" as "dark" | "light"),
+  isFollowSysMode: window.siyuan.config.appearance.modeOS,
   isSafari: /^((?!chrome|android).)*safari/i.test(ua),
 };

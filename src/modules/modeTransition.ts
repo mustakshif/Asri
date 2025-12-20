@@ -1,13 +1,16 @@
+import { setThemeSource } from "./vibrancy";
+
 export async function modeTransitionOnClick(e: Event) {
   if (e.type !== "mouseup") return;
 
   const target = e.target as HTMLElement;
 
   if (target.closest('[data-name="barmode"] .b3-menu__item:not([id])')) {
-    console.log(`Clicked item: ${target.textContent}`);
+    console.log(`Clicked item: ${target.textContent}, dataset: ${target.parentElement?.dataset.id}`);
     // e.stopPropagation();
     // e.preventDefault();
     startFadeInFadeOutTranstition();
+    if (target.parentElement?.dataset.id === "themeOS") setThemeSource();
   }
 }
 
