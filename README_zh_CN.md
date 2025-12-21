@@ -17,7 +17,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ###  `25/12/21 - v3.6.0`
 
-![vibrancy effect](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/vibracny.webp)
+![vibrancy effect](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/vibrancy.webp)
 
 主界面支持窗体透明效果，适配 macOS 和 Windows 桌面端
 

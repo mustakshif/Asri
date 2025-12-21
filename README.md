@@ -17,7 +17,7 @@ For the complete update history, refer to the [CHANGELOG.md](https://github.com/
 
 #### `Dec 21, 2025 - v3.6.0`
 
-![vibrancy effect](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/vibracny.webp)
+![vibrancy effect](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/vibrancy.webp)
 
 The main interface now supports window transparency effects, compatible with macOS and Windows desktop environments.
 

@@ -1,5 +1,7 @@
 ### v3.6.0
 
+![vibrancy effect](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/vibrancy.webp)
+
 - 新增左侧栏支持窗体透明效果（可能需要重启思源生效） `macOS` `Windows`
 - 优化文档标题换行风格
 
