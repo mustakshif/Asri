@@ -33,7 +33,7 @@ export function setThemeSource(mode: "dark" | "light" | "system" = "system") {
   if (remote && (env.isMacOS || env.isWindows)) {
     setTimeout(() => {
       nativeTheme.themeSource = mode; // can break theme.js execution
-    }, 200);
+    }, 400);
     console.log(isFollowSysMode, "resetThemeSource", mode, env.appSchemeMode);
   }
 }

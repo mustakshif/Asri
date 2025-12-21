@@ -5,12 +5,17 @@ body.asri-vibrancy:not(.body-asri--browser) {
   // .layout__dockr .layout-tab-container,#dockRight 
   .dock.dock-layout-expanded {
     background-color: var(--b3-theme-surface-light);
-    // background-color: transparent;
+  }
 
-    //   :root[data-theme-mode="light"] & {
-    //     // background-color: color-mix(in srgb, var(--b3-theme-surface) 70%, #0000);
-    //     background-color: transparent;
-    //   }
+  &.body--win32 {
+    .layout__dockl:not(.layout--float) .layout-tab-container,
+  // .layout__dockr .layout-tab-container,#dockRight 
+  .dock.dock-layout-expanded {
+    background-color: var(--b3-theme-surface-light);
+    @supports (color: oklch(from blue l c h)) {
+      background-color: oklch(from var(--b3-theme-background) l c h / 0.68);
+    }
+  }
   }
 
   // // fully transparent

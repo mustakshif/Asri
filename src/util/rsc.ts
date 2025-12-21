@@ -78,7 +78,7 @@ export const asriDoms = {
 
 export const environment = {
   isMacOS: navigator.platform.indexOf("Mac") > -1,
-  isWindows: window.siyuan.config.system.os.name === "windows",
+  isWindows: window.siyuan.config.system.os === "windows",
   isLinux: navigator.platform.indexOf("Linux") > -1,
   isAndroid: /Android/.test(ua),
   isMobile: !!document.getElementById("sidebar"),
