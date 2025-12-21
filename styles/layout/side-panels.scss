@@ -230,7 +230,7 @@
 
 .layout__dockr {
   &.layout--float {
-    border-left: 1px solid var(--b3-border-color);
+    border-left: 1px solid transparent;
   }
 }
 

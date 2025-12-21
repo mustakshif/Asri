@@ -277,7 +277,7 @@ body:not(.body-asri--mobile, .body--window) {
   &:not(.layout--float) {
     .layout-tab-container {
       background-color: var(--b3-theme-background);
-      border-left: 1px solid var(--b3-border-color);
+      border-left: 1px solid var(--b3-border-color-trans);
     }
   }
 }

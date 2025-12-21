@@ -1,8 +1,8 @@
 body.body-asri--mac:not(.body-asri--browser) {
   background-color: transparent;
 
-  .layout__dockl .layout-tab-container,
-  .layout__dockr .layout-tab-container,
+  .layout__dockl:not(.layout--float) .layout-tab-container,
+  // .layout__dockr .layout-tab-container,#dockRight 
   .dock.dock-layout-expanded {
     background-color: var(--b3-theme-surface-light);
     // background-color: transparent;
@@ -12,4 +12,22 @@ body.body-asri--mac:not(.body-asri--browser) {
     //     background-color: transparent;
     //   }
   }
+
+  // // fully transparent
+  // .layout-tab-container,
+  // .layout__dockr .layout-tab-container,
+  // #dockLeft:not(.dock-layout-expanded),
+  // #dockRight,
+  // .fn__flex-column[data-type="wnd"] > .fn__flex:first-child {
+  //   background-color: var(--b3-theme-surface-light);
+  // }
+
+  // #dockLeft::before {
+  //   display: none;
+  // }
+
+  // .protyle,
+  // .protyle-breadcrumb {
+  //   background-color: transparent;
+  // }
 }
