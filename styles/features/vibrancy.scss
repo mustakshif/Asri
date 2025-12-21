@@ -1,21 +1,24 @@
-body.asri-vibrancy:not(.body-asri--browser) {
+body.asri-vibrancy:not(.body-asri--browser, .body-asri--fullscreen) {
   background-color: transparent;
 
   .layout__dockl:not(.layout--float) .layout-tab-container,
   // .layout__dockr .layout-tab-container,#dockRight 
   .dock.dock-layout-expanded {
     background-color: var(--b3-theme-surface-light);
+    // @supports (color: oklch(from blue l c h)) {
+    //   background-color: oklch(from var(--b3-theme-background) l c h / 0.5);
+    // }
   }
 
   &.body--win32 {
     .layout__dockl:not(.layout--float) .layout-tab-container,
   // .layout__dockr .layout-tab-container,#dockRight 
   .dock.dock-layout-expanded {
-    background-color: var(--b3-theme-surface-light);
-    @supports (color: oklch(from blue l c h)) {
-      background-color: oklch(from var(--b3-theme-background) l c h / 0.68);
+      background-color: var(--b3-theme-surface-light);
+      @supports (color: oklch(from blue l c h)) {
+        background-color: oklch(from var(--b3-theme-background) l c h / 0.68);
+      }
     }
-  }
   }
 
   // // fully transparent
@@ -25,6 +28,7 @@ body.asri-vibrancy:not(.body-asri--browser) {
   // #dockRight,
   // .fn__flex-column[data-type="wnd"] > .fn__flex:first-child {
   //   background-color: var(--b3-theme-surface-light);
+  //   background-color: oklch(from var(--b3-theme-background) l c h / 0.5);
   // }
 
   // #dockLeft::before {

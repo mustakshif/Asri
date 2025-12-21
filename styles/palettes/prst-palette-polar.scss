@@ -8,7 +8,7 @@
     --b3-theme-primary: var(--polar-base-accent);
     --b3-theme-accent: #1c6bff;
 
-    --b3-theme-surface: #F5F5F7;
+    --b3-theme-surface: #f5f5f7;
 
     --b3-theme-on-background: #1d1d1f;
     --b3-theme-on-surface: #1d1d1f87;
@@ -55,15 +55,14 @@
       // --b3-theme-primary-light: oklch(from var(--b3-theme-primary) l c h / 0.56);
       // --b3-theme-primary-lighter: oklch(from var(--b3-theme-primary) l c h / 0.38);
       // --b3-theme-primary-lightest: oklch(from var(--b3-theme-primary) l c h / 0.2);
-    }  
+    }
   }
-
 
   :is(.layout, .b3-typography) {
     --b3-theme-primary-light: oklch(from var(--b3-theme-accent) l c h / 0.56);
     --b3-theme-primary-lighter: oklch(from var(--b3-theme-accent) l c h / 0.38);
     --b3-theme-primary-lightest: oklch(from var(--b3-theme-accent) l c h / 0.2);
-  }  
+  }
 
   .protyle-title__input,
   [data-type="NodeHeading"],
@@ -102,6 +101,15 @@
   body:not(.asri-tfp) {
     .protyle .protyle-breadcrumb {
       box-shadow: 0 -1px 0 0 var(--b3-border-color-trans) inset;
+    }
+  }
+
+  body.asri-vibrancy:not(.body-asri--browser, .body-asri--fullscreen) {
+    .layout__dockl:not(.layout--float) .layout-tab-container,
+    .dock.dock-layout-expanded {
+      @supports (color: oklch(from blue l c h)) {
+        background-color: oklch(from var(--b3-theme-background) l c h / 0.5);
+      }
     }
   }
 

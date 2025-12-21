@@ -15,7 +15,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### 主要更新一览
 
-###  `25/12/21 - v3.6.0`
+#### `25/12/21 - v3.6.0`
 
 ![vibrancy effect](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/vibrancy.webp)
 
