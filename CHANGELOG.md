@@ -1,3 +1,15 @@
+### v3.6.0
+
+- 新增左侧栏支持窗体透明效果（可能需要重启思源生效） `macOS` `Windows`
+- 优化文档标题换行风格
+
+<br/>
+
+- Added support for window transparency effect in the left sidebar (may require restarting SiYuan to take effect) `macOS` `Windows`
+- Optimized the line break style for document titles
+
+---
+
 ### v3.5.23
 
 - 适配Callout块样式

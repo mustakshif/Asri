@@ -15,6 +15,12 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### 主要更新一览
 
+###  `25/12/21 - v3.6.0`
+
+![vibrancy effect](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/vibracny.webp)
+
+主界面支持窗体透明效果，适配 macOS 和 Windows 桌面端
+
 #### `25/07/01 - v3.5.0`
 
 主题色支持「跟随题头图颜色」，自动提取文档题头图片或视频的颜色，并实时切换主题配色
@@ -29,15 +35,15 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」：引入高级材质效果（光感玻璃、渐进模糊、亚克力），突破顶栏与编辑区界限，打造沉浸式的阅读与编辑体验（*实验性功能，请谨慎启用；详请见脚注 3*）
 
+<p style="font-size: .5em"></p>
+<details>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">更多内容</summary>
+
 #### `24/04/03 - v3.0.0`
 
 ![color customization](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/asri-config-menu_zh_CN_v2.png)
 
 采用基于感知亮度的色彩系统重构主题配色，全局色调支持无级调节，也可跟随系统强调色（`#Windows` `#macOS`），带来完全个性化的笔记体验
-
-<p style="font-size: .5em"></p>
-<details>
-<summary style="opacity: .6; font-weight: 600; font-size: .8em">更多内容</summary>
 
 #### `24/02/07 - v2.1.0`
 
