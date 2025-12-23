@@ -72,7 +72,7 @@ module.exports = {
                 "themeDark",
                 "themeLight",
                 "willReadFrequently", // fast average color 需要
-                "nativeTheme","setVibrancy", "themeSource", "setBackgroundMaterial" // vibrancy 需要  
+                "nativeTheme","setVibrancy", "themeSource", "setBackgroundMaterial", "require", "release", // vibrancy 需要  
               ], // 保留不混淆的属性名
               // regex: /^[a-z]*[A-Z][a-z0-9]*/
             },

@@ -2,12 +2,12 @@
 
 ![vibrancy effect](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/vibrancy.webp)
 
-- 新增左侧栏支持窗体透明效果（可能需要重启思源生效） `macOS` `Windows`
+- 新增左侧栏支持窗体透明效果（可能需要重启思源生效） `macOS` `Windows 11 22H2及以上`
 - 优化文档标题换行风格
 
 <br/>
 
-- Added support for window transparency effect in the left sidebar (may require restarting SiYuan to take effect) `macOS` `Windows`
+- Added support for window transparency effect in the left sidebar (may require restarting SiYuan to take effect) `macOS` `Windows 11 22H2 and up`
 - Optimized the line break style for document titles
 
 ---

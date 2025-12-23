@@ -377,7 +377,7 @@
     height: fit-content;
   }
 
-  .sb > .bq {
+  .sb > :is(.bq, .callout) {
     margin: 0;
   }
 
