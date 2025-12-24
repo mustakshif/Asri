@@ -12,23 +12,23 @@ const buildVer = parseInt(release?.split(".")[2] || "0");
 const isWin11 = buildVer >= 22000;
 
 export function setVibrancy() {
-  if (!remote && !isWin11) return;
+  if (!remote) return;
   setThemeSource(isFollowSysMode ? "system" : appMode);
   if (env.isMacOS) {
     remote.getCurrentWindow().setVibrancy("menu", 300);
     document.body.classList.add("asri-vibrancy");
-  } else if (env.isWindows) {
+  } else if (env.isWindows && isWin11) {
     remote.getCurrentWindow().setBackgroundMaterial("acrylic", 300);
     document.body.classList.add("asri-vibrancy");
   }
 }
 
 export function removeVibrancy() {
-  if (!remote && !isWin11) return;
+  if (!remote) return;
   setThemeSource();
   if (env.isMacOS) {
     remote.getCurrentWindow().setVibrancy(null);
-  } else if (env.isWindows) {
+  } else if (env.isWindows && isWin11) {
     remote.getCurrentWindow().setBackgroundMaterial(null);
   }
   document.body.classList.remove("asri-vibrancy");
@@ -39,6 +39,5 @@ export function setThemeSource(mode: "dark" | "light" | "system" = "system") {
     setTimeout(() => {
       nativeTheme.themeSource = mode; // can break theme.js execution
     }, 400);
-    console.log(isFollowSysMode, "resetThemeSource", mode, env.appSchemeMode);
   }
 }

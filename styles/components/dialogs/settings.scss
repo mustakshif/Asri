@@ -397,9 +397,7 @@
   }
 
   .b3-button--cancel {
-    @include button-action("normal") {
-      border-radius: 7px;
-    }
+    @include button-action("normal");
   }
 
   // 订阅按钮
