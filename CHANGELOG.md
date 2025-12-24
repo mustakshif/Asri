@@ -1,14 +1,24 @@
+### v3.6.2
+
+- 修复移动端菜单圆角缺失的问题
+- 修复Windows10窗体颜色问题
+
+<br />
+
+- Fixed the issue of missing rounded corners on the mobile menu
+- Fixed the window color issue on Windows 10
+
+---
+
 ### v3.6.1
 
 - [取消Mac端全屏状态下窗体透明特效](https://github.com/mustakshif/Asri/issues/212)
 - 优化超级块中的Callout块边距
-- 修复Windows10窗体颜色问题
 
 <br />
 
 - [Removed the transparent window effect in full-screen mode on Mac](https://github.com/mustakshif/Asri/issues/212)
 - Optimized the margin of Callout blocks in Superblocks
-- Fixed the window color issue on Windows 10
 
 ---
 
