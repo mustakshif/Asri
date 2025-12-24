@@ -1,3 +1,7 @@
+/**
+ * Deprecated due to anchor positioning support.
+ */
+
 import { hasDockb, isDockHidden, isDockLytExpanded, isDockLytPinned, isStatusHidden } from "../util/interfaceState";
 import { asriDoms as doms, environment as env } from "../util/rsc";
 import { debounce, isOverlapping, querySelectorAsync } from "../util/misc";
@@ -7,7 +11,7 @@ export const debouncedStatusPosition = debounce(statusPosition);
 /**
  * Calculate the position of status bar when there is a change of the display of docks and their layouts.
  */
-export async function statusPosition() {
+async function statusPosition() {
   if (env.isMobile || env.isMiniWindow) return;
   if (!doms.status) await querySelectorAsync("#status");
   if (!(await hasDockb())) {

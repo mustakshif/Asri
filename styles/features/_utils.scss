@@ -27,6 +27,16 @@ $primary-color-reverse-selectors: (
   ".b3-chip--current"
 );
 
+$vibrancy-applicable-elements: (
+  ":is(.layout__dockl, .layout__dockb):not(.layout--float) .layout-tab-container",
+  // ".layout__dockr .layout-tab-container",
+  // "#dockRight",
+  ".dock.dock-layout-expanded",
+  ".dock#dockBottom",
+  "#dockBottom.fn__none.has-layout-dockb-float ~ .status",
+  "#dockBottom:not(.fn__none) ~ .status"
+);
+
 /* 
 背景模糊
 */

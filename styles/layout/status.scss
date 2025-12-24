@@ -1,5 +1,240 @@
 @use "../base" as *;
 
+.layout__center {
+  anchor-name: --anchor-layout-center;
+}
+
+@mixin floating-status-anchor {
+  --asri-status-transform-x: 0px;
+  --asri-status-transform-y: 0px;
+  --status-position-transform: translate(var(--asri-status-transform-x), var(--asri-status-transform-y));
+  bottom: calc(anchor(--anchor-layout-center bottom) + 8px);
+  right: calc(anchor(--anchor-layout-center right) + 8px);
+
+  border-radius: 20px;
+  @include superellipse(20px, $k: 1.1);
+  -electron-corner-smoothing: 60%;
+  height: 26px;
+  border: 0;
+  padding: 0 26px 0 0;
+  overflow: hidden;
+
+  max-width: max(calc(anchor-size(--anchor-layout-center) - 16px), 200px);
+
+  z-index: 3;
+
+  box-shadow: 0 0 0 1px #0001 inset;
+
+  @include darkmode-counterpart {
+    box-shadow: 0 0 0 1px #fff2 inset;
+  }
+
+  .toolbar__item {
+    height: 26px;
+
+    span {
+      margin: 3px;
+      font-size: 12px;
+    }
+
+    &:not(.toolbar__item--close) {
+      margin: 3px !important;
+      padding: 3px;
+      background-color: rgb(0, 0, 0, 0);
+    }
+
+    svg {
+      padding: 3px 4px;
+      color: var(--b3-dockright-color);
+      width: 12px;
+    }
+  }
+
+  & > .fn__flex-1 {
+    position: relative !important;
+    width: 0px !important;
+    right: 0px;
+    flex: 0;
+  }
+
+  #barDock {
+    position: absolute;
+    right: 0px;
+    z-index: 8;
+    color: var(--b3-theme-on-background);
+
+    &::before {
+      right: unset !important;
+      left: 0px;
+      transform: rotateY(180deg);
+    }
+
+    &::after {
+      left: unset !important;
+      right: 100%;
+    }
+
+    svg {
+      color: var(--b3-theme-on-surface);
+
+      &:hover {
+        color: var(--b3-theme-on-background);
+      }
+    }
+  }
+
+  .status__msg:not(:empty) {
+    // animation: statusmsg 5s ease-in-out;
+    max-width: 140px;
+    padding: 0px 8px;
+    border-radius: 5px;
+    margin: 0px;
+    transition: max-width 300ms;
+    transition-delay: 2000ms;
+    position: relative;
+    height: 26px;
+    line-height: 26px;
+
+    &::before {
+      content: "";
+      font-size: 12px;
+      padding-right: 6px;
+    }
+
+    &:hover {
+      max-width: 90vw;
+      transition: max-width 300ms 0.125s;
+    }
+  }
+
+  .status__backgroundtask {
+    margin: 0px 0px 7px 0px;
+    padding: 0px 0px 0px 8px;
+    border-radius: 5px;
+    height: 26px;
+    line-height: 26px;
+  }
+
+  .status__counter:not(:empty) {
+    border-radius: 5px;
+    padding: 0px 0px 0 8px;
+    margin: 0px 2px 0px 0px;
+    height: 26px;
+    line-height: 26px;
+  }
+
+  #statusHelp {
+    position: relative;
+
+    svg {
+      color: var(--b3-theme-on-surface);
+
+      &:hover {
+        color: var(--b3-theme-on-background);
+      }
+    }
+  }
+
+  // 非 protyle 自动隐藏
+  transform-origin: calc(100% + var(--asri-status-transform-x)) 100%;
+
+  &.asri--non-protyle-status:not(:hover) {
+    > div {
+      display: none;
+    }
+
+    height: 16px;
+    width: 32px;
+    animation: statusShrink 0.5s var(--asri-ease-spring-3);
+
+    --dots-clr: var(--b3-theme-on-surface);
+
+    &::before {
+      content: "";
+      width: 4px;
+      height: 4px;
+      background-color: var(--dots-clr);
+      box-shadow: 8px 0 0 0 var(--dots-clr), 16px 0 0 0 var(--dots-clr);
+      border-radius: 50%;
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-10px);
+      transform-origin: top center;
+      // transition: var(--icons2dots-dur) var(--icons2dots-timing-func) var(--icons2dots-delay);
+      animation: statusDotsFadeIn 0.4s var(--asri-ease-out-3), statusDotsTransform 0.5s var(--asri-ease-spring-3);
+      opacity: 0.5;
+    }
+  }
+
+  animation: statusExpand 0.4s var(--asri-ease-spring-2);
+
+  > div {
+    animation: statusItemFadeIn 0.3s var(--asri-ease-out-3), statusItemTransform 0.5s var(--asri-ease-spring-3);
+  }
+
+  @keyframes statusShrink {
+    0% {
+      transform: scaleX(2.5) scaleY(calc(26 / 16)) var(--status-position-transform);
+    }
+
+    100% {
+      transform: var(--status-position-transform);
+    }
+  }
+
+  @keyframes statusExpand {
+    0% {
+      transform: scaleX(0.4) scaleY(calc(16 / 26)) var(--status-position-transform);
+    }
+
+    100% {
+      transform: var(--status-position-transform);
+    }
+  }
+
+  @keyframes statusDotsFadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes statusDotsTransform {
+    0% {
+      transform: translateX(-25px);
+    }
+
+    100% {
+      transform: translateX(-10px);
+    }
+  }
+
+  @keyframes statusItemFadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes statusItemTransform {
+    0% {
+      transform: translateX(30px);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
+
+// #region // legacy implementation that requires js calc
 @mixin floating-status {
   --asri-status-transform-x: 0px;
   --asri-status-transform-y: 0px;
@@ -227,10 +462,11 @@
     }
   }
 }
+// #endregion
 
 .status {
   transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.2s;
-  position: fixed;
+  position: absolute; // "fixed" won't work in safari
 }
 
 // .has-dockb~.status {
@@ -239,7 +475,8 @@
 
 body:not(.body-asri--mobile) #dockBottom.fn__none:not(.has-layout-dockb-float) ~ .status,
 body.body--window .status {
-  @include floating-status();
+  // @include floating-status();
+  @include floating-status-anchor();
 }
 
 #dockBottom:not(.fn__none) ~ .status,

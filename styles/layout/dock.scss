@@ -56,6 +56,7 @@
   &#dockBottom {
     padding: 0 0 0 34px;
     border-top-width: 1px;
+    border-top-color: var(--b3-border-color-trans);
     background-color: var(--b3-theme-background); // fix https://github.com/mustakshif/Asri/issues/37
 
     // .fn__flex:first-child,

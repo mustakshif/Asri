@@ -14,7 +14,7 @@ import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstitio
 import { removeProtyleStatusClassName, toggleProtyleStatus } from "./protyleStatus";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
-import { debouncedStatusPosition, removeStatusStyles, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
+// import { debouncedStatusPosition, removeStatusStyles, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
 import { calcTabbarSpacings, calcTopbarSpacings, createTopbarFusionElements, handleMacFullScreen, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 import { setVibrancy, removeVibrancy, setThemeSource } from "./vibrancy";
@@ -38,7 +38,7 @@ export async function loadAsriJSModules() {
   addEnvClassNames();
   useMacSysScrollbar();
   applyTrafficLightPosition();
-  setStatusHeightVar();
+  // setStatusHeightVar();
   toggleProtyleStatus();
   // startDefaultTranstition(loadThemePalette);
   await getI18n();
@@ -82,8 +82,8 @@ export async function unloadAsriJSModules(completeUnload = true) {
     removeDockbClassName();
     removeProtyleStatusClassName();
     removeFocusedBlockClassName();
-    unloadAvoidOverlappingWithStatus();
-    removeStatusStyles();
+    // unloadAvoidOverlappingWithStatus();
+    // removeStatusStyles();
     removeEnvClassNames();
     restoreDefaultSiyuanScrollbar();
     restoreTrafficLightPosition();
@@ -151,8 +151,8 @@ async function updateStyles(e?: Event | KeyboardEvent) {
     setTimeout(async () => {
       updateDockLBgAndBorder();
       // debouncedFormatProtyleWithBgImageOnly();
-      debouncedStatusPosition();
-      setStatusHeightVar();
+      // debouncedStatusPosition();
+      // setStatusHeightVar();
       await updateWndEls();
       calcProtyleSpacings();
       addDockbClassName();
@@ -205,7 +205,7 @@ function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObs
   // debouncedHandleWinResizeEnd();
   calcTopbarSpacings(0, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
   debouncedCalcProtyleSpacings();
-  debouncedStatusPosition();
+  // debouncedStatusPosition();
   // console.log('lytCenterRoCallback', isWinResizing)
 }
 

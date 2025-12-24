@@ -1,19 +1,21 @@
+@use "./utils";
+
 body.asri-vibrancy:not(.body-asri--browser, .body-asri--fullscreen) {
   background-color: transparent;
 
-  .layout__dockl:not(.layout--float) .layout-tab-container,
-  // .layout__dockr .layout-tab-container,#dockRight 
-  .dock.dock-layout-expanded {
+  #{utils.$vibrancy-applicable-elements} {
     background-color: var(--b3-theme-surface-light);
     // @supports (color: oklch(from blue l c h)) {
     //   background-color: oklch(from var(--b3-theme-background) l c h / 0.5);
     // }
   }
 
+  #dockBottom:not(.fn__none, .has-layout-dockb-float) + .status{
+    background-color: transparent !important;
+  }
+
   &.body--win32 {
-    .layout__dockl:not(.layout--float) .layout-tab-container,
-  // .layout__dockr .layout-tab-container,#dockRight 
-  .dock.dock-layout-expanded {
+    #{utils.$vibrancy-applicable-elements} {
       background-color: var(--b3-theme-surface-light);
       @supports (color: oklch(from blue l c h)) {
         background-color: oklch(from var(--b3-theme-background) l c h / 0.68);

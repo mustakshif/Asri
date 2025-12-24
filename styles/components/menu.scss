@@ -55,7 +55,9 @@
       background-color: transparent;
       padding: 0.5px 12px;
       line-height: 24px;
+      // @include superellipse($border-rd-menu - 4px);
       border-radius: $border-rd-menu - 4px;
+      -electron-corner-smoothing: 60%;
       align-items: center;
 
       // @include superellipse($border-rd-menu - 5px);

@@ -105,8 +105,7 @@
   }
 
   body.asri-vibrancy:not(.body-asri--browser, .body-asri--fullscreen) {
-    .layout__dockl:not(.layout--float) .layout-tab-container,
-    .dock.dock-layout-expanded {
+    #{$vibrancy-applicable-elements} {
       @supports (color: oklch(from blue l c h)) {
         background-color: oklch(from var(--b3-theme-background) l c h / 0.5);
       }

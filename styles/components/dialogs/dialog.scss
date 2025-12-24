@@ -33,7 +33,9 @@
     background-color: var(--b3-theme-background);
 
     @include superellipse(20px);
-    @include theme-variant-border;
+    // border-radius: 20px;
+    // -electron-corner-smoothing: 60%;
+    @include theme-variant-border; 
     @include dialog-shadow($extra-shadow-light: "0 0 0 1px rgba(0, 0, 0, 0.05)");
     // box-shadow: none !important;
 

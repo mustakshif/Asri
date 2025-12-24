@@ -1,5 +1,7 @@
 @use "sass:meta";
 @use "sass:list";
+@use "sass:math";
+
 /* 
 * global vars
 */
@@ -12,22 +14,24 @@ $superellipse-k: 1.4;
 
 @mixin superellipse($border-radius: (), $fallback: false, $k: $superellipse-k) {
   $final-border-radius: ();
+  $balance-factor: if(sass($k >= 20): math.div(14, 15); else: 1);
   @for $i from 1 through list.length($border-radius) {
     $radius: if(sass(meta.type-of($border-radius) == "list"): list.nth($border-radius, $i); else: $border-radius);
 
     @if $i == 1 {
-      $final-border-radius: calc($radius * $k);
+      $final-border-radius: calc($radius * $k * $balance-factor);
     } @else {
-      $final-border-radius: #{$final-border-radius} calc($radius * $k);
+      $final-border-radius: #{$final-border-radius} calc($radius * $k * $balance-factor);
     }
+  }
+
+
+  @if $fallback {
+    border-radius: $border-radius;
   }
   @supports (corner-shape: superellipse(1)) {
     corner-shape: superellipse($k);
     border-radius: $final-border-radius;
-  }
-
-  @if $fallback {
-    border-radius: $border-radius;
   }
 }
 

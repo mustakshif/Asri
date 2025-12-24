@@ -143,16 +143,14 @@
   animation: protyle-toolbar-appear 0.6s var(--asri-ease-spring-3);
   border: none;
   border-radius: 40px;
+  -electron-corner-smoothing: 60%;
   @include superellipse(40px, $k: 1.1);
   padding: 4px;
   // transform: translateY(-12px);
   background-color: var(--b3-theme-surface);
   transform-origin: 50% 150%;
   transition: none;
-  @include menu-shadow(
-    $extra-shadow-light: glassy-shadow("255, 255, 255", 1, "0 0 0 1px", "1px 1px 1px -1px", "-1px -1px 1px -1px"),
-    $extra-shadow-dark: glassy-shadow("255, 255, 255", 0.6, "0 0 0 1px", "1px 1px 1px -1px", "-1px -1px 1px -1px")
-  );
+  @include menu-shadow($extra-shadow-light: glassy-shadow("255, 255, 255", 1, "0 0 0 1px", "1px 1px 1px -1px", "-1px -1px 1px -1px"), $extra-shadow-dark: glassy-shadow("255, 255, 255", 0.6, "0 0 0 1px", "1px 1px 1px -1px", "-1px -1px 1px -1px"));
   @include theme-variant-border($border: false);
 
   &__item {
