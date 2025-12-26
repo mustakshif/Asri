@@ -7,6 +7,7 @@
 .protyle-action,
 .av__gallery-actions {
   border-radius: 99px;
+  -electron-corner-smoothing: 60%;
   // transition: none;
 
   // &:hover {
