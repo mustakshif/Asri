@@ -4,13 +4,12 @@
  * 全宽显示
  */
 .protyle-wysiwyg {
+  --protyle-spacing: calc((var(--b3-width-protyle-content) - var(--b3-width-protyle-wysiwyg)) * 0.5);
   --protyle-spacing-compatible: var(--protyle-spacing, 24px);
 }
 
+// #region 图片
 :is(.body-asri--mobile, .layout__center) .protyle-wysiwyg {
-  /*
-   * 图片
-   */
   &[custom-afwd="all"] > .p:not([custom-afwd="off"]),
   &[custom-afwd~="p"] > .p:not([custom-afwd="off"]),
   > .p[custom-afwd="on"] {
@@ -105,10 +104,7 @@
     }
   }
 
-  /* 
-   * iframe
-   */
-
+  // region // iframe
   &[custom-afwd="all"] > .iframe:not([custom-afwd="off"]),
   &[custom-afwd~="iframe"] > .iframe:not([custom-afwd="off"]),
   > .iframe[custom-afwd="on"] {
@@ -172,10 +168,9 @@
       transform: translateY(-12px);
     }
   }
+  // #endregion
 
-  /* 
-   * 数据库
-   */
+  // #region // 数据库
 
   &[custom-afwd="all"] > .av:not([custom-afwd="off"]),
   &[custom-afwd~="db"] > .av:not([custom-afwd="off"]),
@@ -243,7 +238,7 @@
         width: calc(100% - 48px);
       }
 
-      .av__kanban-group > .av__body >.av__gallery{
+      .av__kanban-group > .av__body > .av__gallery {
         padding: unset;
         width: 100%;
       }
@@ -269,11 +264,9 @@
       }
     }
   }
+  // #endregion
 
-  /* 
-   * 超级块
-   */
-
+  // #region // 超级块
   &[custom-afwd="all"] > .sb[data-sb-layout="col"]:not([custom-afwd="off"]),
   &[custom-afwd~="sb"] > .sb[data-sb-layout="col"]:not([custom-afwd="off"]),
   > .sb[data-sb-layout="col"][custom-afwd="on"] {
@@ -312,10 +305,9 @@
     //     margin-right: calc(var(--protyle-spacing-compatible)*-1);
     // }
   }
+  // #endregion
 
-  /* 
-   * 表格
-   */
+  // #region // 表格
 
   &[custom-afwd="all"] > .table:not([custom-afwd="off"]),
   &[custom-afwd~="t"] > .table:not([custom-afwd="off"]),
@@ -385,6 +377,8 @@
     }
   }
 }
+
+// #endregion
 
 // 数据库添加、拖移按钮
 // .protyle-gutters {

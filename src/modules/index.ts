@@ -3,7 +3,7 @@ import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/
 import { debounce, querySelectorAsync } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
-import { addAfwdMenuItems, calcProtyleSpacings, debouncedCalcProtyleSpacings, removeProtyleSpacings } from "./afwd";
+import { addAfwdMenuItems, removeProtyleSpacings } from "./afwd";
 import { asriConfigs, createBarModeMenuItems, curMode, followSysAccentColor, getI18n, getSystemAccentColor, loadThemePalette, paletteMenuItemClickEventListener, tfpMenuItemCallbackEventListener, unloadThemePalette } from "./asriConfigs";
 import { updateCoverImgColor } from "./asriConfigs/coverImgColor";
 import { removeHdrSupportImage } from "./asriConfigs/util";
@@ -30,8 +30,7 @@ const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
 const winRo = new AsriResizeObserver(winRoCallback);
 const themeUpdateListener = new AsriEventListener(appearanceModeUpdateCallback);
 
-let isWinResizing = false,
-  fromFullscreen: boolean;
+let isWinResizing = false;
 let protyleWidthChange = 0;
 
 export async function loadAsriJSModules() {
@@ -45,7 +44,6 @@ export async function loadAsriJSModules() {
 
   loadThemePalette(); // https://github.com/mustakshif/Asri/issues/85
   setVibrancy();
-  console.log("加载主题");
 
   if (!env.isMobile) {
     await updateWndEls();
@@ -154,7 +152,6 @@ async function updateStyles(e?: Event | KeyboardEvent) {
       // debouncedStatusPosition();
       // setStatusHeightVar();
       await updateWndEls();
-      calcProtyleSpacings();
       addDockbClassName();
       // avoidOverlappingWithStatus();
       !env.isIOSApp && followSysAccentColor && env.supportOklch && getSystemAccentColor();
@@ -204,7 +201,6 @@ async function globalClassNameMoCallback(mutationList: MutationRecord[], observe
 function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
   // debouncedHandleWinResizeEnd();
   calcTopbarSpacings(0, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
-  debouncedCalcProtyleSpacings();
   // debouncedStatusPosition();
   // console.log('lytCenterRoCallback', isWinResizing)
 }

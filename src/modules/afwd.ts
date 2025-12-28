@@ -1,33 +1,36 @@
 import { getBlockAttrs, setBlockAttrs } from "../util/api";
-import { debounce, querySelectorAsync } from "../util/misc";
+import { querySelectorAsync } from "../util/misc";
 import { wndElements } from "../util/interfaceState";
 import { i18n as _i18n, loadI18n } from "./asriConfigs";
 
-export const debouncedCalcProtyleSpacings = debounce(calcProtyleSpacings, 200);
+// export const debouncedCalcProtyleSpacings = debounce(calcProtyleSpacings, 200);
 const afwdBlockTypes = ["NodeParagraph", "NodeTable", "NodeAttributeView", "NodeSuperBlock", "NodeVideo", "NodeWidget", "NodeIFrame"];
 
 let commonMenuEl: Element | undefined;
 let i18n = _i18n;
 
-export function calcProtyleSpacings() {
-  wndElements?.forEach((wnd) => {
-    let protyles = wnd.querySelector(".file-tree") ? [] : (wnd.querySelectorAll(".protyle-wysiwyg") as unknown as HTMLElement[]);
+/**
+ * Deprecated due to siyuan's original support: https://github.com/siyuan-note/siyuan/pull/15043
+ */
+// export function calcProtyleSpacings() {
+//   wndElements?.forEach((wnd) => {
+//     let protyles = wnd.querySelector(".file-tree") ? [] : (wnd.querySelectorAll(".protyle-wysiwyg") as unknown as HTMLElement[]);
 
-    setTimeout(() => {
-      protyles.forEach((protyle) => {
-        let protylePadding: string;
-        // let protylePadding = Math.round(parseFloat(window.getComputedStyle(protyle).paddingLeft)) + 'px';
+//     setTimeout(() => {
+//       protyles.forEach((protyle) => {
+//         let protylePadding: string;
+//         // let protylePadding = Math.round(parseFloat(window.getComputedStyle(protyle).paddingLeft)) + 'px';
 
-        protylePadding = protyle.style.paddingLeft;
-        if (protylePadding !== protyle.dataset.prevpadding) {
-          protyle.style.setProperty("--protyle-spacing", protylePadding);
-          protyle.dataset.prevpadding = protylePadding;
-          // console.log(protylePadding);
-        }
-      });
-    }, 300); // protyle transition time
-  });
-}
+//         protylePadding = protyle.style.paddingLeft;
+//         if (protylePadding !== protyle.dataset.prevpadding) {
+//           protyle.style.setProperty("--protyle-spacing", protylePadding);
+//           protyle.dataset.prevpadding = protylePadding;
+//           // console.log(protylePadding);
+//         }
+//       });
+//     }, 300); // protyle transition time
+//   });
+// }
 
 export async function addAfwdMenuItems(e: Event) {
   if (e.type !== "mouseup") return;
@@ -47,7 +50,7 @@ export async function addAfwdMenuItems(e: Event) {
   const blockId = type === "doc" ? targetLabel.parentElement!.dataset["nodeId"] ?? (targetLabel.closest(".protyle")?.querySelector(".protyle-title") as HTMLElement)?.dataset["nodeId"] : targetLabel.dataset["nodeId"];
   // console.log(blockId, type);
   commonMenuEl = await querySelectorAsync("#commonMenu:not(.fn__none)");
-  await new Promise(resolve => setTimeout(resolve, 0));
+  await new Promise((resolve) => setTimeout(resolve, 0));
   initializeCurBlocksAttrs(type, blockId as string);
 }
 

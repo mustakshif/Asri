@@ -77,16 +77,16 @@ export const asriPrstPalettes: Record<string, PresetPalette> = {
     },
   },
 
-  // "prst-palette-haven": {
+  // "prst-palette-muse": {
   //   "dark": {
-  //     "primary": "#28626C",
-  //     "chroma": "1.6",
-  //     "followSysAccentColor": false,
-  //   },
-  //   "light": {
-  //     "primary": "#28626C",
+  //     "primary": "#31302B",
   //     "chroma": "2.5",
   //     "followSysAccentColor": false,
   //   },
+  //   "light": {
+  //     "primary": "#FFFCF3",
+  //     "chroma": "1.2",
+  //     "followSysAccentColor": false,
+  //   },
   // },
-}; 
+};
