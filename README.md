@@ -82,6 +82,7 @@ Theme release
 - 💬 Supports right-to-left layout, accommodating languages written from right to left, such as Arabic[^5]
 - 🚏 Document-level typography direction settings cater to different language layout needs
 - 🌐 Multi-language support, specially adapted for Chinese, English and Arabic
+- 📐 Automatically add a quarter-width space between CJK and Western characters
 
 ### Clear and Convenient Navigation
 

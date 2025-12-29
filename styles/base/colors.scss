@@ -288,3 +288,7 @@ $theme-dark: (
 @function pickThemeColor($theme-map, $color-key, $opacity: 1) {
   @return color.change(map.get($theme-map, $color-key), $alpha: $opacity);
 }
+
+@function toRGB($color, $method: local-minde) {
+  @return color.to-gamut($color, $method: $method);
+}
