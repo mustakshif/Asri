@@ -17,7 +17,7 @@ $vael-color-3: #bfedd9;
     --vael-base-accent: #{color.change($vael-color-1, $space: oklch)};
     --asri-theme-accent-customized: var(--vael-base-accent);
     --b3-theme-primary: #{color.change($vael-color-1, $space: oklch, $lightness: 0.63, $chroma: 0.08)};
-    --b3-theme-accent: #{toRGB(color.change($vael-color-1, $space: oklch, $lightness: 0.65, $chroma: 0.1))};
+    --b3-theme-accent: #{toRGB(color.change($vael-color-1, $space: oklch, $lightness: 0.69 , $chroma: 0.13))};
 
     --b3-theme-background: #{$vael-color-2};
     --b3-theme-surface: #{$theme-surface};
@@ -29,6 +29,7 @@ $vael-color-3: #bfedd9;
     --vael-base-accent: #{color.change($vael-color-3, $space: oklch, $lightness: 0.76, $chroma: 0.08)};
     --asri-theme-accent-customized: var(--vael-base-accent);
     --b3-theme-primary: var(--vael-base-accent);
+    --b3-theme-accent: #{toRGB(color.change($vael-color-3, $space: oklch, $lightness: 0.65, $chroma: 0.12))};
 
     $theme-background: color.change($vael-color-1, $space: oklch, $lightness: 0.25, $chroma: 0.015);
     --b3-theme-background: #{$theme-background};

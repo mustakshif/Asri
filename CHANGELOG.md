@@ -1,3 +1,23 @@
+### v3.6.3
+
+- 新增预设配色「远岫」
+- 浮动状态栏改为纯CSS实现
+- 部分组件采用平滑圆角（仅支持桌面app端）
+- 优化底部停靠栏的窗口透明效果
+- [全宽显示采用原生边距计算，优化响应](https://github.com/mustakshif/Asri/issues/201)
+- [修复Safari浏览器中文档属性显示错位的问题](https://github.com/mustakshif/Asri/issues/215)
+
+<br/>
+
+- Added preset color scheme "Vael"
+- Implemented floating status bar using pure CSS
+- Applied smooth rounded corners to certain components (desktop app only)
+- Optimized window transparency effect for the bottom dock
+- [Utilized native margin calculation for full-width display to enhance responsiveness](https://github.com/mustakshif/Asri/issues/201)
+- [Fixed misaligned document property display in Safari browser](https://github.com/mustakshif/Asri/issues/215)
+
+---
+
 ### v3.6.2
 
 - 修复移动端菜单圆角缺失的问题

@@ -10,7 +10,7 @@ let commonMenuEl: Element | undefined;
 let i18n = _i18n;
 
 /**
- * Deprecated due to siyuan's original support: https://github.com/siyuan-note/siyuan/pull/15043
+ * Deprecated due to siyuan's native support: https://github.com/siyuan-note/siyuan/pull/15043
  */
 // export function calcProtyleSpacings() {
 //   wndElements?.forEach((wnd) => {
