@@ -723,9 +723,13 @@
   }
 
   // 适配插件、挂件
-  iframe[src="/widgets/Whiteboard/"],
-  .layout__center .kmind-plugin-doc-editor-overflow-hidden {
+  iframe[src="/widgets/Whiteboard/"] {
     margin-top: 48px;
+  }
+
+  // .layout__center .layout-tab-container>[class|="kmind"],
+  .layout__center .kmind-plugin-doc-editor-overflow-hidden {
+    margin-top: 42px;
   }
 
   .enhanceProtyleBottomContainer .protyle-content {
