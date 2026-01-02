@@ -447,7 +447,7 @@
           --pgbb: 1px; // progressive blur base
           --blur-block-height-progressive: calc(var(--blur-block-height) + 8px);
 
-          &.fullscreen{
+          &.fullscreen {
             --pgbb: 0.4px;
           }
         }
@@ -723,7 +723,8 @@
   }
 
   // 适配插件、挂件
-  iframe[src="/widgets/Whiteboard/"] {
+  iframe[src="/widgets/Whiteboard/"],
+  .layout__center .kmind-plugin-doc-editor-overflow-hidden {
     margin-top: 48px;
   }
 
