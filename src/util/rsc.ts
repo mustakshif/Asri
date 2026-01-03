@@ -1,79 +1,46 @@
 const ua = navigator.userAgent;
 
-let _layouts: AsriDomsExtended = null;
-let _layoutCenter: AsriDomsExtended = null;
-let _toolbar: AsriDomsExtended = null;
-let _dockL: AsriDomsExtended = null;
-let _dockR: AsriDomsExtended = null;
-let _dockB: AsriDomsExtended = null;
-let _status: AsriDomsExtended = null;
-let _layoutDockL: AsriDomsExtended = null;
-let _layoutDockR: AsriDomsExtended = null;
-let _layoutDockB: AsriDomsExtended = null;
-let _barSync: AsriDomsExtended = null;
-let _barForward: AsriDomsExtended = null;
-let _toolbarVIP: AsriDomsExtended = null;
-let _drag: AsriDomsExtended = null;
-let _barPlugins: AsriDomsExtended = null;
-let _barSearch: AsriDomsExtended = null;
-let _barMode: AsriDomsExtended = null;
-let _barMore: AsriDomsExtended = null;
+// DOM cache using Map for better performance
+const domCache = new Map<string, HTMLElement>();
+
+/**
+ * Factory function to get DOM elements with caching
+ * @param selector - CSS selector or element ID
+ * @param useQuerySelector - Whether to use querySelector instead of getElementById
+ * @returns Cached DOM element
+ */
+function getDom(selector: string, useQuerySelector = false): HTMLElement {
+  if (!domCache.has(selector)) {
+    const element = useQuerySelector
+      ? document.querySelector(selector) as HTMLElement
+      : document.getElementById(selector);
+    if (!element) {
+      throw new Error(`DOM element not found: ${selector}`);
+    }
+    domCache.set(selector, element);
+  }
+  return domCache.get(selector)!;
+}
 
 export const asriDoms = {
-  get layouts() {
-    return (_layouts ??= document.getElementById("layouts"));
-  },
-  get layoutCenter() {
-    return (_layoutCenter ??= document.querySelector(".layout__center") as HTMLElement);
-  },
-  get toolbar() {
-    return (_toolbar ??= document.getElementById("toolbar"));
-  },
-  get dockL() {
-    return (_dockL ??= document.getElementById("dockLeft"));
-  },
-  get dockR() {
-    return (_dockR ??= document.getElementById("dockRight"));
-  },
-  get dockB() {
-    return (_dockB ??= document.getElementById("dockBottom"));
-  },
-  get status() {
-    return (_status ??= document.getElementById("status"));
-  },
-  get layoutDockL() {
-    return (_layoutDockL ??= document.querySelector(".layout__dockl") as HTMLElement);
-  },
-  get layoutDockR() {
-    return (_layoutDockR ??= document.querySelector(".layout__dockr") as HTMLElement);
-  },
-  get layoutDockB() {
-    return (_layoutDockB ??= document.querySelector(".layout__dockb") as HTMLElement);
-  },
-  get barSync() {
-    return (_barSync ??= document.getElementById("barSync"));
-  },
-  get barForward() {
-    return (_barForward ??= document.getElementById("barForward"));
-  },
-  get toolbarVIP() {
-    return (_toolbarVIP ??= document.getElementById("toolbarVIP"));
-  },
-  get drag() {
-    return (_drag ??= document.getElementById("drag"));
-  },
-  get barPlugins() {
-    return (_barPlugins ??= document.getElementById("barPlugins"));
-  },
-  get barSearch() {
-    return (_barSearch ??= document.getElementById("barSearch"));
-  },
-  get barMode() {
-    return (_barMode ??= document.getElementById("barMode"));
-  },
-  get barMore() {
-    return (_barMore ??= document.getElementById("barMore"));
-  },
+  get layouts() { return getDom("layouts"); },
+  get layoutCenter() { return getDom(".layout__center", true); },
+  get toolbar() { return getDom("toolbar"); },
+  get dockL() { return getDom("dockLeft"); },
+  get dockR() { return getDom("dockRight"); },
+  get dockB() { return getDom("dockBottom"); },
+  get status() { return getDom("status"); },
+  get layoutDockL() { return getDom(".layout__dockl", true); },
+  get layoutDockR() { return getDom(".layout__dockr", true); },
+  get layoutDockB() { return getDom(".layout__dockb", true); },
+  get barSync() { return getDom("barSync"); },
+  get barForward() { return getDom("barForward"); },
+  get toolbarVIP() { return getDom("toolbarVIP"); },
+  get drag() { return getDom("drag"); },
+  get barPlugins() { return getDom("barPlugins"); },
+  get barSearch() { return getDom("barSearch"); },
+  get barMode() { return getDom("barMode"); },
+  get barMore() { return getDom("barMore"); },
 };
 
 export const environment = {

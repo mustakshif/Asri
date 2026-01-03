@@ -22,8 +22,10 @@ export { createBarModeMenuItems, initMenuItems } from "./menuItems";
 // Event handlers
 export {
   initAsriConfigMenuItemClick,
-  tfpMenuItemCallbackEventListener,
-  paletteMenuItemClickEventListener,
+  setupTfpMenuItemCallback,
+  setupPaletteMenuItemClick,
+  removeTfpMenuItemCallback,
+  removePaletteMenuItemClick,
 } from "./eventHandlers";
 
 // I18n

@@ -1,4 +1,3 @@
-import { AsriEventListener } from "../../util/eventListeners";
 import { debounce, getFocusedProtyleInfo, throttle } from "../../util/misc";
 import { environment as env } from "../../util/rsc";
 import { startFadeInFadeOutTranstition } from "../modeTransition";
@@ -143,7 +142,13 @@ function resetPresetPalette(alterFollowSysAccentColor: boolean = true) {
   // reverseOnPrimaryLightness(!followSysAccentColor ? asriConfigs[curMode].userCustomColor : sysAccentColor);
 }
 
-export const tfpMenuItemCallbackEventListener = new AsriEventListener(tfpMenuItemCallback);
+export function setupTfpMenuItemCallback() {
+  document.addEventListener("mouseup", tfpMenuItemCallback);
+}
+
+export function removeTfpMenuItemCallback() {
+  document.removeEventListener("mouseup", tfpMenuItemCallback);
+}
 
 function tfpMenuItemCallback(e: Event) {
   const target = (e.target as HTMLElement).closest('[id^="tfp-"]');
@@ -175,7 +180,13 @@ function tfpMenuItemCallback(e: Event) {
   updateAsriConfigs();
 }
 
-export const paletteMenuItemClickEventListener = new AsriEventListener(paletteMenuItemCallback);
+export function setupPaletteMenuItemClick() {
+  document.addEventListener("mouseup", paletteMenuItemCallback);
+}
+
+export function removePaletteMenuItemClick() {
+  document.removeEventListener("mouseup", paletteMenuItemCallback);
+}
 
 async function paletteMenuItemCallback(e: Event) {
   const target = (e.target as HTMLElement).closest('[id^="prst-palette-"]');

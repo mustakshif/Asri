@@ -3,7 +3,6 @@ import { querySelectorAsync } from "../util/misc";
 import { wndElements } from "../util/interfaceState";
 import { i18n as _i18n, loadI18n } from "./asriConfigs";
 
-// export const debouncedCalcProtyleSpacings = debounce(calcProtyleSpacings, 200);
 const afwdBlockTypes = ["NodeParagraph", "NodeTable", "NodeAttributeView", "NodeSuperBlock", "NodeVideo", "NodeWidget", "NodeIFrame"];
 
 let commonMenuEl: Element | undefined;
@@ -46,9 +45,7 @@ export async function addAfwdMenuItems(e: Event) {
     : undefined;
   const type = afwdBlockTypes.includes(gutterType!) ? gutterType : nonGutterType;
   if (!type) return;
-  // console.log(type);
   const blockId = type === "doc" ? targetLabel.parentElement!.dataset["nodeId"] ?? (targetLabel.closest(".protyle")?.querySelector(".protyle-title") as HTMLElement)?.dataset["nodeId"] : targetLabel.dataset["nodeId"];
-  // console.log(blockId, type);
   commonMenuEl = await querySelectorAsync("#commonMenu:not(.fn__none)");
   await new Promise((resolve) => setTimeout(resolve, 0));
   initializeCurBlocksAttrs(type, blockId as string);

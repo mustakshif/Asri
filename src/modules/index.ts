@@ -1,10 +1,28 @@
-import { AsriEventListener } from "../util/eventListeners";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/interfaceState";
 import { debounce, querySelectorAsync } from "../util/misc";
-import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
+
+const MOConfigForClassNames: MutationObserverInit = {
+  attributes: true,
+  subtree: true,
+  attributeFilter: ["class"],
+  attributeOldValue: true,
+};
 import { addAfwdMenuItems, removeProtyleSpacings } from "./afwd";
-import { asriConfigs, createBarModeMenuItems, curMode, followSysAccentColor, getI18n, getSystemAccentColor, loadThemePalette, paletteMenuItemClickEventListener, tfpMenuItemCallbackEventListener, unloadThemePalette } from "./asriConfigs";
+import {
+  asriConfigs,
+  createBarModeMenuItems,
+  curMode,
+  followSysAccentColor,
+  getI18n,
+  getSystemAccentColor,
+  loadThemePalette,
+  setupPaletteMenuItemClick,
+  setupTfpMenuItemCallback,
+  removePaletteMenuItemClick,
+  removeTfpMenuItemCallback,
+  unloadThemePalette
+} from "./asriConfigs";
 import { updateCoverImgColor } from "./asriConfigs/coverImgColor";
 import { removeHdrSupportImage } from "./asriConfigs/util";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
@@ -14,21 +32,13 @@ import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstitio
 import { removeProtyleStatusClassName, toggleProtyleStatus } from "./protyleStatus";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
 import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatClassName } from "./sidepanels";
-// import { debouncedStatusPosition, removeStatusStyles, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
 import { calcTabbarSpacings, calcTopbarSpacings, createTopbarFusionElements, handleMacFullScreen, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
 import { setVibrancy, removeVibrancy, setThemeSource } from "./vibrancy";
 
-const globalMouseupEventListener = new AsriEventListener(lowFreqEventsCallback);
-const globalDragEventListener = new AsriEventListener(lowFreqEventsCallback);
-const globalKeyupEventListener = new AsriEventListener(lowFreqEventsCallback);
-const winFocusChangeEventListener = new AsriEventListener(winFocusChangeCallback);
-const selectionChangeEventListener = new AsriEventListener(selectionChangeCallback);
-// const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback));
-const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
-const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
-const winRo = new AsriResizeObserver(winRoCallback);
-const themeUpdateListener = new AsriEventListener(appearanceModeUpdateCallback);
+const globalClassNameMo = new MutationObserver(globalClassNameMoCallback);
+const lytCenterRo = new ResizeObserver(lytCenterRoCallback);
+const winRo = new ResizeObserver(winRoCallback);
 
 let isWinResizing = false;
 let protyleWidthChange = 0;
@@ -37,9 +47,7 @@ export async function loadAsriJSModules() {
   addEnvClassNames();
   useMacSysScrollbar();
   applyTrafficLightPosition();
-  // setStatusHeightVar();
   toggleProtyleStatus();
-  // startDefaultTranstition(loadThemePalette);
   await getI18n();
 
   loadThemePalette(); // https://github.com/mustakshif/Asri/issues/85
@@ -52,18 +60,15 @@ export async function loadAsriJSModules() {
   }
   updateStyles();
   addDockbClassName();
-  // avoidOverlappingWithStatus();
-  globalMouseupEventListener.start(document, "mouseup");
-  globalDragEventListener.start(document, "dragend");
-  globalKeyupEventListener.start(document, "keyup", true);
-  winFocusChangeEventListener.start(window, "focus");
-  winFocusChangeEventListener.start(window, "blur");
-  selectionChangeEventListener.start(document, "selectionchange");
+  document.addEventListener("mouseup", lowFreqEventsCallback);
+  document.addEventListener("dragend", lowFreqEventsCallback);
+  document.addEventListener("keyup", lowFreqEventsCallback, true);
+  window.addEventListener("focus", winFocusChangeCallback);
+  window.addEventListener("blur", winFocusChangeCallback);
+  document.addEventListener("selectionchange", selectionChangeCallback);
   globalClassNameMo.observe(document.body, MOConfigForClassNames);
-  // watchImgExportMo.observe(document.body, { childList: true });
-  // themeUpdateListener.start(darkModeMediaQuery, "change");
-  paletteMenuItemClickEventListener.start(document, "mouseup");
-  tfpMenuItemCallbackEventListener.start(document, "mouseup");
+  setupPaletteMenuItemClick();
+  setupTfpMenuItemCallback();
   asriDoms.layoutCenter || (await querySelectorAsync(".layout__center"));
   if (!env.isMobile) {
     lytCenterRo.observe(asriDoms.layoutCenter);
@@ -80,8 +85,6 @@ export async function unloadAsriJSModules(completeUnload = true) {
     removeDockbClassName();
     removeProtyleStatusClassName();
     removeFocusedBlockClassName();
-    // unloadAvoidOverlappingWithStatus();
-    // removeStatusStyles();
     removeEnvClassNames();
     restoreDefaultSiyuanScrollbar();
     restoreTrafficLightPosition();
@@ -92,19 +95,15 @@ export async function unloadAsriJSModules(completeUnload = true) {
   }
 
   setThemeSource();
-  globalMouseupEventListener.remove(document, "mouseup");
-  globalDragEventListener.remove(document, "dragend");
-  globalKeyupEventListener.remove(document, "keyup", true);
-  winFocusChangeEventListener.remove(window, "focus");
-  winFocusChangeEventListener.remove(window, "blur");
-  selectionChangeEventListener.remove(document, "selectionchange");
+  document.removeEventListener("mouseup", lowFreqEventsCallback);
+  document.removeEventListener("dragend", lowFreqEventsCallback);
+  document.removeEventListener("keyup", lowFreqEventsCallback, true);
+  window.removeEventListener("focus", winFocusChangeCallback);
+  window.removeEventListener("blur", winFocusChangeCallback);
+  document.removeEventListener("selectionchange", selectionChangeCallback);
   globalClassNameMo.disconnect();
-  // themeUpdateListener.remove(darkModeMediaQuery, "change");
-  paletteMenuItemClickEventListener.remove(document, "mouseup");
-  tfpMenuItemCallbackEventListener.remove(document, "mouseup");
-  // watchImgExportMo.disconnect(() => {
-  //     document.body.classList.remove("has-exportimg")
-  // });
+  removePaletteMenuItemClick();
+  removeTfpMenuItemCallback();
 
   if (!env.isMobile) {
     lytCenterRo.disconnect();
@@ -112,11 +111,9 @@ export async function unloadAsriJSModules(completeUnload = true) {
   }
 }
 function lowFreqEventsCallback(e: Event) {
-  // console.log(e);
   createBarModeMenuItems(e);
   addAfwdMenuItems(e);
   updateStyles(e);
-  // if (!env.isIOSApp)
   modeTransitionOnClick(e);
 }
 
@@ -148,12 +145,8 @@ async function updateStyles(e?: Event | KeyboardEvent) {
   function lowFreqStyleUpdates() {
     setTimeout(async () => {
       updateDockLBgAndBorder();
-      // debouncedFormatProtyleWithBgImageOnly();
-      // debouncedStatusPosition();
-      // setStatusHeightVar();
       await updateWndEls();
       addDockbClassName();
-      // avoidOverlappingWithStatus();
       !env.isIOSApp && followSysAccentColor && env.supportOklch && getSystemAccentColor();
     }, 0);
   }
@@ -164,33 +157,26 @@ async function globalClassNameMoCallback(mutationList: MutationRecord[], observe
     const target = mutation.target as HTMLElement;
 
     if (target.classList.contains("body--blur")) return; // ⚠️ ignore constant classname change when app window blurs which cause unnecessary re-render and high cpu usage.
-    // console.log(mutation.target, mutation.type, mutation.attributeName, mutation.oldValue);
 
     // filetree list item switch
     if (target.classList.contains("b3-list-item--focus")) {
       debouncedFormatIndentGuidesForFocusedItems();
-      // debouncedFormatProtyleWithBgImageOnly();
-      // console.log('focus');
     }
 
     // tab switch
     if (target.classList.contains("item--focus")) {
       const docId = target.getAttribute("data-id") ?? undefined;
-      // if (!docId) return;
       toggleProtyleStatus(docId);
 
       docId && asriConfigs[curMode].followCoverImgColor && updateCoverImgColor(docId);
     }
 
     if (target.classList.contains("layout__wnd--active")) {
-      // console.log(target, mutation.type, mutation.attributeName, mutation.oldValue)
       const targetDoc = target.querySelector(".layout__center .layout-tab-container>[data-id]:not(.fn__none)");
-      // console.log(targetDoc)
 
       if (!targetDoc) return;
 
       const docId = targetDoc.getAttribute("data-id") ?? undefined;
-      // if (!docId) return;
       toggleProtyleStatus(docId);
 
       docId && asriConfigs[curMode].followCoverImgColor && updateCoverImgColor(docId);
@@ -199,10 +185,7 @@ async function globalClassNameMoCallback(mutationList: MutationRecord[], observe
 }
 
 function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
-  // debouncedHandleWinResizeEnd();
   calcTopbarSpacings(0, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
-  // debouncedStatusPosition();
-  // console.log('lytCenterRoCallback', isWinResizing)
 }
 
 function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
@@ -223,8 +206,7 @@ function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver)
       const widthChange = inlineSize - prevWidth;
       entry.target.dataset.prevWidth = inlineSize + "";
       protyleWidthChange = widthChange;
-    } // make sure to capture width change after the size change is completely done
-    // console.log('winRoCallback', isWinResizing)
+    }
   }
 }
 
@@ -236,10 +218,8 @@ const debouncedHandleWinResizeEnd = debounce(() => {
   if (!doesTopBarOverflow) recalcDragInitials();
   calcTopbarSpacings(protyleWidthChange, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
   protyleWidthChange = 0;
-  // console.log('debouncedwinRoCallback', isWinResizing);
 }, 200);
 
-function appearanceModeUpdateCallback(e: MediaQueryListEvent) {
-  // console.log('系统主题变化:', e.matches ? '暗色' : '亮色')
+function appearanceModeUpdateCallback(_e: MediaQueryListEvent) {
   startFadeInFadeOutTranstition(600, () => {}, 200);
 }

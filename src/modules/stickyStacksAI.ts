@@ -1,4 +1,3 @@
-import { AsriMutationObserver } from "../util/observers";
 import { debounce, querySelectorAllAsync } from "../util/misc";
 
 // 定义标题层级映射，便于后续扩展
@@ -27,15 +26,15 @@ let stickyHeadings: Map<string, HTMLElement> = new Map();
 let headingObservers: IntersectionObserver[] = [];
 
 // 监视DOM变化的观察器
-let protyleMutationObserver: AsriMutationObserver;
+let protyleMutationObserver: MutationObserver;
 
 /**
  * 初始化标题吸顶功能
  */
 export function initStickyStacks() {
     // 初始化DOM变化观察器
-    protyleMutationObserver = new AsriMutationObserver(debouncedHandleProtyleChanges);
-    
+    protyleMutationObserver = new MutationObserver(debouncedHandleProtyleChanges);
+
     // 监听编辑区变化
     observeProtyleChanges();
     
