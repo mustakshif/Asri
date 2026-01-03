@@ -1,5 +1,5 @@
-import { environment as env } from "../util/rsc";
-import { remote } from "../util/electron";
+import { environment as env } from "../utils/rsc";
+import { remote } from "../utils/electron";
 
 const { nativeTheme } = remote ?? {};
 // const isSysDark = nativeTheme.shouldUseDarkColors;

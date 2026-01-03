@@ -1,4 +1,4 @@
-import { debounce, querySelectorAllAsync } from "../util/misc";
+import { debounce, querySelectorAllAsync } from "../utils/misc";
 
 export const debouncedFormatProtyleWithBgImageOnly = debounce(formatProtyleWithBgImageOnly);
 async function formatProtyleWithBgImageOnly() {

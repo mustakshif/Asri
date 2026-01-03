@@ -1,12 +1,12 @@
-import { getBlockAttrs, setBlockAttrs } from "../util/api";
-import { querySelectorAsync } from "../util/misc";
-import { wndElements } from "../util/interfaceState";
-import { i18n as _i18n, loadI18n } from "./asriConfigs";
+import { getBlockAttrs, setBlockAttrs } from "../utils/api";
+import { querySelectorAsync } from "../utils/misc";
+import { wndElements } from "../utils/interfaceState";
+import { runtime, loadI18n, getI18nText } from "../core/config";
 
 const afwdBlockTypes = ["NodeParagraph", "NodeTable", "NodeAttributeView", "NodeSuperBlock", "NodeVideo", "NodeWidget", "NodeIFrame"];
 
 let commonMenuEl: Element | undefined;
-let i18n = _i18n;
+let i18n: Record<string, string> | undefined;
 
 /**
  * Deprecated due to siyuan's native support: https://github.com/siyuan-note/siyuan/pull/15043
@@ -33,7 +33,10 @@ let i18n = _i18n;
 
 export async function addAfwdMenuItems(e: Event) {
   if (e.type !== "mouseup") return;
-  if (!i18n) i18n = await loadI18n();
+  // 确保 i18n 已加载
+  if (!i18n || Object.keys(i18n).length === 0) {
+    i18n = await loadI18n();
+  }
   const target = e.target as HTMLElement;
   const targetLabel = target.closest(".ariaLabel") as HTMLElement;
   if (!targetLabel) return;
@@ -48,13 +51,13 @@ export async function addAfwdMenuItems(e: Event) {
   const blockId = type === "doc" ? targetLabel.parentElement!.dataset["nodeId"] ?? (targetLabel.closest(".protyle")?.querySelector(".protyle-title") as HTMLElement)?.dataset["nodeId"] : targetLabel.dataset["nodeId"];
   commonMenuEl = await querySelectorAsync("#commonMenu:not(.fn__none)");
   await new Promise((resolve) => setTimeout(resolve, 0));
-  initializeCurBlocksAttrs(type, blockId as string);
+  initializeCurBlocksAttrs(type, blockId as string, i18n!);
 }
 
-async function initializeCurBlocksAttrs(curBlockType: string, curBlockId: string) {
+async function initializeCurBlocksAttrs(curBlockType: string, curBlockId: string, i18nData: Record<string, string>) {
   const isDoc = curBlockType === "doc";
 
-  makeItems(curBlockType);
+  makeItems(curBlockType, i18nData);
 
   const attrs = await getBlockAttrs(curBlockId);
   let afwdAttrs = attrs["custom-afwd"];
@@ -103,7 +106,7 @@ async function initializeCurBlocksAttrs(curBlockType: string, curBlockId: string
   menuItemsFunctionalities(isDoc, curBlockId, afwdAttrs, tdirAttr);
 }
 
-async function makeItems(blockType: string) {
+async function makeItems(blockType: string, i18nData: Record<string, string>) {
   if (!commonMenuEl || document.getElementById("afwdMenuItem-clear")) return;
 
   const commonMenuBtnList = commonMenuEl.lastChild as HTMLDivElement;
@@ -118,13 +121,13 @@ async function makeItems(blockType: string) {
             <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
             <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12l2 2l4-4"/></g>
             </svg>
-            <span class="b3-menu__label">${i18n["afwdMenuItem-on"]}</span>
+            <span class="b3-menu__label">${i18nData["afwdMenuItem-on"]}</span>
         </button>
         <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-off">
             <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
             <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9l-6 6m0-6l6 6"/></g>
             </svg>
-            <span class="b3-menu__label">${i18n["afwdMenuItem-off"]}</span>
+            <span class="b3-menu__label">${i18nData["afwdMenuItem-off"]}</span>
         </button>
     `;
   const docMenuItems = `
@@ -132,7 +135,7 @@ async function makeItems(blockType: string) {
             <span class="b3-menu__label">
                 <div class="fn__flex">
                     <svg class="b3-menu__icon" style=""></svg>
-                    <span>${i18n["afwdMenuItem-all"]}</span>
+                    <span>${i18nData["afwdMenuItem-all"]}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
                 </div>
@@ -142,7 +145,7 @@ async function makeItems(blockType: string) {
             <span class="b3-menu__label">
                 <div class="fn__flex">
                     <svg class="b3-menu__icon" style=""><use xlink:href="#iconDatabase"></use></svg>
-                    <span>${i18n["afwdMenuItem-db"]}</span>
+                    <span>${i18nData["afwdMenuItem-db"]}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
                 </div>
@@ -152,7 +155,7 @@ async function makeItems(blockType: string) {
             <span class="b3-menu__label">
                 <div class="fn__flex">
                     <svg class="b3-menu__icon" style=""><use xlink:href="#iconTable"></use></svg>
-                    <span>${i18n["afwdMenuItem-t"]}</span>
+                    <span>${i18nData["afwdMenuItem-t"]}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
                 </div>
@@ -162,7 +165,7 @@ async function makeItems(blockType: string) {
             <span class="b3-menu__label">
                 <div class="fn__flex">
                     <svg class="b3-menu__icon"><use xlink:href="#iconImage"></use></svg>
-                    <span>${i18n["afwdMenuItem-p"]}</span>
+                    <span>${i18nData["afwdMenuItem-p"]}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
                 </div>
@@ -172,7 +175,7 @@ async function makeItems(blockType: string) {
             <span class="b3-menu__label">
                 <div class="fn__flex">
                     <svg class="b3-menu__icon"><use xlink:href="#iconHTML5"></use></svg>
-                    <span>${i18n["afwdMenuItem-iframe"]}</span>
+                    <span>${i18nData["afwdMenuItem-iframe"]}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
                 </div>
@@ -182,7 +185,7 @@ async function makeItems(blockType: string) {
             <span class="b3-menu__label">
                 <div class="fn__flex">
                     <svg class="b3-menu__icon"><use xlink:href="#iconSuper"></use></svg>
-                    <span>${i18n["afwdMenuItem-sb"]}</span>
+                    <span>${i18nData["afwdMenuItem-sb"]}</span>
                     <span class="fn__space fn__flex-1"></span>
                     <input type="checkbox" class="b3-switch fn__flex-center">
                 </div>
@@ -194,7 +197,7 @@ async function makeItems(blockType: string) {
         <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 18 18">
             <path fill="currentColor" d="m15.503 15.003l-.735.71a.75.75 0 1 0 1.042 1.078l1.886-1.82a1 1 0 0 0 0-1.44l-1.886-1.82a.75.75 0 0 0-1.042 1.079l.739.713H12.75a.75.75 0 0 0 0 1.5zM15 3a2 2 0 0 1 2 2v4.25a.75.75 0 0 1-1.5 0V5a.5.5 0 0 0-.5-.5H5a.5.5 0 0 0-.5.5v4.25a.75.75 0 0 1-1.5 0V5a2 2 0 0 1 2-2zM5.234 15.712l-.735-.71h2.752a.75.75 0 1 0 0-1.5H4.495l.739-.713a.75.75 0 0 0-1.042-1.078l-1.886 1.82a1 1 0 0 0 0 1.44l1.886 1.82a.75.75 0 0 0 1.042-1.079"/>
         </svg>
-        <span class="b3-menu__label">${i18n["afwdDocMenuLabel"]}</span>
+        <span class="b3-menu__label">${i18nData["afwdDocMenuLabel"]}</span>
         <svg class="b3-menu__icon b3-menu__icon--small">
             <use xlink:href="#iconRight"></use>
         </svg>
@@ -204,7 +207,7 @@ async function makeItems(blockType: string) {
                 <button class="b3-menu__separator"></button>
                 <button class="b3-menu__item" id="afwdMenuItem-clear">
                     <svg class="b3-menu__icon " style=""><use xlink:href="#iconTrashcan"></use></svg>
-                    <span class="b3-menu__label">${i18n["afwdMenuItem-clear"]}
+                    <span class="b3-menu__label">${i18nData["afwdMenuItem-clear"]}
                     </span>
                 </button>
             </div>
@@ -224,7 +227,7 @@ async function makeItems(blockType: string) {
         <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 22 22">
             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 5h-3m-5 0h5m-5 0v10m0-10h-1c-1.667 0-5 1-5 5s3.333 5 5 5h1m0 4v-4m5 4V5"/>
         </svg>
-        <span class="b3-menu__label">${i18n["tdirDocMenuLabel"]}</span>
+        <span class="b3-menu__label">${i18nData["tdirDocMenuLabel"]}</span>
         <svg class="b3-menu__icon b3-menu__icon--small">
             <use xlink:href="#iconRight"></use>
         </svg>
@@ -232,16 +235,16 @@ async function makeItems(blockType: string) {
             <div class="b3-menu__items">
                 <button class="b3-menu__item b3-menu__item--custom" id="tdirMenuItem-ltr">
                     <svg class="b3-menu__icon " style=""><use xlink:href="#iconLtr"></use></svg>
-                    <span class="b3-menu__label">${i18n["tdirMenuItem-ltr"]}</span>
+                    <span class="b3-menu__label">${i18nData["tdirMenuItem-ltr"]}</span>
                 </button>
                 <button class="b3-menu__item b3-menu__item--custom" id="tdirMenuItem-rtl">
                     <svg class="b3-menu__icon " style=""><use xlink:href="#iconRtl"></use></svg>
-                    <span class="b3-menu__label">${i18n["tdirMenuItem-rtl"]}</span>
+                    <span class="b3-menu__label">${i18nData["tdirMenuItem-rtl"]}</span>
                 </button>                
                 <button class="b3-menu__separator"></button>
                 <button class="b3-menu__item" id="tdirMenuItem-clear">
                     <svg class="b3-menu__icon " style=""><use xlink:href="#iconTrashcan"></use></svg>
-                    <span class="b3-menu__label">${i18n["afwdMenuItem-clear"]}
+                    <span class="b3-menu__label">${i18nData["afwdMenuItem-clear"]}
                     </span>
                 </button>
             </div>
@@ -369,15 +372,4 @@ function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, afwdAttrs:
       el.classList.remove("b3-menu__item--selected");
     });
   };
-}
-
-export function removeProtyleSpacings() {
-  wndElements?.forEach((wnd) => {
-    let protyles = wnd.querySelector(".file-tree") ? [] : (wnd.querySelectorAll(".protyle-wysiwyg") as unknown as HTMLElement[]);
-
-    protyles.forEach((protyle) => {
-      protyle.style.removeProperty("--protyle-spacing");
-      protyle.dataset.prevpadding = undefined;
-    });
-  });
 }

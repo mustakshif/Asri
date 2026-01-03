@@ -1,4 +1,4 @@
-import { environment as env } from "../util/rsc";
+import { environment as env } from "../utils/rsc";
 
 type EnvClassifier = {
   condition: boolean | undefined;

@@ -2,7 +2,7 @@
  * @description This module is used to support Safari.
  */
 
-import { environment as env } from "../util/rsc";
+import { environment as env } from "../utils/rsc";
 
 const { isMacOS, isMobile } = env;
 const asriDeletedRules: { styleSheet: CSSStyleSheet; rule: string }[] = [];

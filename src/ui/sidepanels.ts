@@ -1,5 +1,5 @@
-import { debounce, querySelectorAsync } from "../util/misc";
-import { asriDoms as doms, environment } from "../util/rsc";
+import { debounce, querySelectorAsync } from "../utils/misc";
+import { asriDoms as doms, environment } from "../utils/rsc";
 
 const { isMobile } = environment;
 

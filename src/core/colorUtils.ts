@@ -1,8 +1,12 @@
-import { hexToOklch } from "../../util/colorTools";
-import { environment as env } from "../../util/rsc";
-import { asriConfigs } from "./configs";
-import { cssVarManager } from "./cssVarManager";
-import { curMode, followSysAccentColor, isCoverImgColorGray, isSysAccentGray, isUserAccentGray } from "./state";
+/**
+ * 颜色工具函数
+ * 处理灰度、亮度反转等颜色相关操作
+ */
+
+import { hexToOklch } from "../utils/colorTools";
+import { environment as env } from "../utils/rsc";
+import { asriConfigs, runtime } from "./config";
+import { cssVarManager } from "./cssVar";
 
 export const reverseThreshold = env.appSchemeMode === "light" ? 0.74 : 0.79;
 
@@ -15,13 +19,13 @@ export const reverseThreshold = env.appSchemeMode === "light" ? 0.74 : 0.79;
 export function handleGrayScale(chroma: string | number) {
   const chromaValue = String(chroma);
 
-  // console.log('chroma', chroma, 'followSysAccentColor', followSysAccentColor, 'isSysAccentGray', isSysAccentGray, 'isUserAccentGray', isUserAccentGray, 'isCoverImgColorGray', isCoverImgColorGray, "addCfactor0", chromaValue === "0" || (followSysAccentColor && isSysAccentGray) || isUserAccentGray || (isCoverImgColorGray && asriConfigs[curMode].followCoverImgColor));
+  // console.log('chroma', chroma, 'followSysAccentColor', runtime.followSysAccentColor, 'isSysAccentGray', runtime.isSysAccentGray, 'isUserAccentGray', runtime.isUserAccentGray, 'isCoverImgColorGray', runtime.isCoverImgColorGray, "addCfactor0", chromaValue === "0" || (runtime.followSysAccentColor && runtime.isSysAccentGray) || runtime.isUserAccentGray || (runtime.isCoverImgColorGray && asriConfigs[runtime.mode].followCoverImgColor));
 
   if (
     chromaValue === "0" ||
-    (followSysAccentColor && isSysAccentGray) ||
-    isUserAccentGray ||
-    (isCoverImgColorGray && asriConfigs[curMode].followCoverImgColor)
+    (runtime.followSysAccentColor && runtime.isSysAccentGray) ||
+    runtime.isUserAccentGray ||
+    (runtime.isCoverImgColorGray && asriConfigs[runtime.mode].followCoverImgColor)
   ) {
     console.log("addCfactor0");
     requestAnimationFrame(() => {

@@ -1,5 +1,5 @@
-import { remote } from "../util/electron";
-import { environment as env } from "../util/rsc";
+import { remote } from "../utils/electron";
+import { environment as env } from "../utils/rsc";
 
 function setTrafficLightPosition(x: number, y = x) {
   if (remote) {

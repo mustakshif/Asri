@@ -1,5 +1,5 @@
-import { getFocusedProtyleInfo, querySelectorAsync } from "../util/misc";
-import { asriDoms } from "../util/rsc";
+import { getFocusedProtyleInfo, querySelectorAsync } from "../utils/misc";
+import { asriDoms } from "../utils/rsc";
 
 export async function toggleProtyleStatus(docID?: string) {
   let isprotyle = (await getFocusedProtyleInfo(docID)).isProtyle;

@@ -1,21 +1,12 @@
-import { environment as env } from "../../util/rsc";
-import { loadI18n } from "./i18n";
-import { getLocalConfigs, asriConfigs } from "./configs";
-import { asriPrstPalettes } from "./palettes";
-import {
-  setCurMode,
-  setI18n,
-  setFollowSysAccentColor,
-  setIsUserAccentGray,
-  followSysAccentColor,
-  curMode,
-} from "./state";
-import { cssVarManager } from "./cssVarManager";
-import { getSystemAccentColor } from "./systemColor";
-import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
-import { coverImgColorManager, updateCoverImgColor } from "./coverImgColor";
-import { hexToOklch } from "../../util/colorTools";
-import { getFocusedProtyleInfo } from "../../util/misc";
+import { environment as env } from "../utils/rsc";
+import { asriConfigs, setCurMode, setI18n, setFollowSysAccentColor, setIsUserAccentGray, runtime, loadI18n, getLocalConfigs } from "./config";
+import { asriPrstPalettes } from "./palette";
+import { cssVarManager } from "./cssVar";
+import { getSystemAccentColor } from "./palette";
+import { handleGrayScale, reverseOnPrimaryLightness } from "./colorUtils";
+import { coverImgColorManager, updateCoverImgColor } from "./palette";
+import { hexToOklch } from "../utils/colorTools";
+import { getFocusedProtyleInfo } from "../utils/misc";
 
 export async function loadThemePalette() {
   // if (env.isIOSApp) return; // fix app crash
@@ -30,20 +21,20 @@ export async function loadThemePalette() {
     env.isInBrowser ||
     env.isMobile ||
     env.isLinux ||
-    (!followSysAccentColor && !asriConfigs[curMode].followCoverImgColor);
+    (!runtime.followSysAccentColor && !asriConfigs[runtime.mode].followCoverImgColor);
 
   if (shouldUseCustomColor) {
-    cssVarManager.setProperty("--asri-user-custom-accent", asriConfigs[curMode].userCustomColor);
+    cssVarManager.setProperty("--asri-user-custom-accent", asriConfigs[runtime.mode].userCustomColor);
     cssVarManager.removeProperty("--asri-cover-dominant");
-    reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
+    reverseOnPrimaryLightness(asriConfigs[runtime.mode].userCustomColor);
   } else {
     cssVarManager.removeProperty("--asri-user-custom-accent");
-    if (asriConfigs[curMode].followCoverImgColor) cssVarManager.removeProperty("--asri-cover-dominant");
+    if (asriConfigs[runtime.mode].followCoverImgColor) cssVarManager.removeProperty("--asri-cover-dominant");
   }
 
-  if (asriConfigs[curMode].presetPalette) {
-    const paletteID = asriConfigs[curMode].presetPalette as keyof typeof asriPrstPalettes;
-    const curPalette = asriPrstPalettes[paletteID][curMode];
+  if (asriConfigs[runtime.mode].presetPalette) {
+    const paletteID = asriConfigs[runtime.mode].presetPalette as keyof typeof asriPrstPalettes;
+    const curPalette = asriPrstPalettes[paletteID][runtime.mode];
 
     document.documentElement.setAttribute("data-asri-palette", paletteID.split("-")[2]);
     setFollowSysAccentColor(false);
@@ -53,15 +44,15 @@ export async function loadThemePalette() {
     setIsUserAccentGray(curPalette.chroma === "0" ? true : false);
     handleGrayScale(curPalette.chroma);
     reverseOnPrimaryLightness(curPalette.primary);
-  } else if (asriConfigs[curMode].followCoverImgColor) {
-    cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
+  } else if (asriConfigs[runtime.mode].followCoverImgColor) {
+    cssVarManager.setProperty("--asri-c-factor", asriConfigs[runtime.mode].chroma);
     document.documentElement.removeAttribute("data-asri-palette");
     updateCoverImgColor();
   } else {
-    cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
+    cssVarManager.setProperty("--asri-c-factor", asriConfigs[runtime.mode].chroma);
     document.documentElement.removeAttribute("data-asri-palette");
-    setIsUserAccentGray(asriConfigs[curMode].chroma === "0" ? true : false);
-    handleGrayScale(asriConfigs[curMode].chroma);
+    setIsUserAccentGray(asriConfigs[runtime.mode].chroma === "0" ? true : false);
+    handleGrayScale(asriConfigs[runtime.mode].chroma);
   }
   getSystemAccentColor();
 

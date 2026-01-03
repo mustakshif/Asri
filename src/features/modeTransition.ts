@@ -1,4 +1,4 @@
-import { setThemeSource } from "./vibrancy";
+import { setThemeSource } from "../platform/vibrancy";
 
 export async function modeTransitionOnClick(e: Event) {
   if (e.type !== "mouseup") return;

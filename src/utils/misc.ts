@@ -1,4 +1,4 @@
-import { cssVarManager } from "../modules/asriConfigs";
+import { cssVarManager } from "../core/cssVar";
 
 /**
  * Pushes an item to the array if it is not already present.
