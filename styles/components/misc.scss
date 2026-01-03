@@ -637,6 +637,7 @@ input[type="radio" i] {
   height: 1.25em;
   margin-inline-end: 4px;
   align-self: center;
+  flex-shrink: 0;
 
   background-color: var(--b3-theme-on-background);
   mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/></g></svg>');
