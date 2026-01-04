@@ -192,7 +192,7 @@ export async function unloadTopbarFusion() {
     tabbarContainer.style.removeProperty("padding-left");
     tabbarContainer.style.removeProperty("padding-right");
   });
-  doms.layoutCenter.dataset.prevWidth = undefined;
+  doms.layoutCenter!.dataset.prevWidth = undefined;
   document.body.dataset.prevWidth = undefined;
 
   doms.dockR?.style.removeProperty("--avoid-topbar");

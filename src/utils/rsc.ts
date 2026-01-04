@@ -9,13 +9,14 @@ const domCache = new Map<string, HTMLElement>();
  * @param useQuerySelector - Whether to use querySelector instead of getElementById
  * @returns Cached DOM element
  */
-function getDom(selector: string, useQuerySelector = false): HTMLElement {
+function getDom(selector: string, useQuerySelector = false): HTMLElement | null {
   if (!domCache.has(selector)) {
     const element = useQuerySelector
       ? document.querySelector(selector) as HTMLElement
       : document.getElementById(selector);
     if (!element) {
-      throw new Error(`DOM element not found: ${selector}`);
+      // throw new Error(`DOM element not found: ${selector}`);
+      return null;
     }
     domCache.set(selector, element);
   }

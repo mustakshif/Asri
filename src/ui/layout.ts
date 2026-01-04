@@ -40,7 +40,7 @@ export function observeLayout(globalClassNameMo: MutationObserver, lytCenterRo: 
   });
 
   if (!env.isMobile) {
-    lytCenterRo.observe(asriDoms.layoutCenter);
+    lytCenterRo.observe(asriDoms.layoutCenter!);
     winRo.observe(document.body);
   }
 }
