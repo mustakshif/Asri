@@ -243,6 +243,8 @@ $theme-dark: (
   /* 父块颜色 */
   // --b3-parent-background: ;
 
+  --b3-toolbar-blur-background: var(--b3-theme-surface);
+
   @each $type in (note, tip, important, warning, caution) {
     --b3-callout-#{$type}: #{map.get($theme-map, callout-#{$type})};
     // --b3-callout-#{$type}-text: #{color.change(map.get($theme-map, callout-#{$type}), $chroma: 0.1, $space: oklch)};

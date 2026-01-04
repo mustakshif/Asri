@@ -81,16 +81,25 @@
       // transform: translateX(1px);
 
       // 小圆点
-      &.fn__hidden::before {
-        visibility: visible;
-        content: "";
-        // margin: 0 -11px 0 8px;
-        position: absolute;
-        left: 12px;
-        clip-path: circle(45% at center);
-        width: 3px;
-        height: 3px;
-        background-color: rgb(from var(--b3-theme-on-surface) r g b / 0.6);
+      &.fn__hidden {
+        position: relative;
+
+        &::before {
+          left: auto !important;
+          inset-inline-end: 7px;
+        }
+
+        &::before {
+          visibility: visible;
+          content: "";
+          // margin: 0 -11px 0 8px;
+          position: absolute;
+          left: 12px;
+          clip-path: circle(45% at center);
+          width: 3px;
+          height: 3px;
+          background-color: rgb(from var(--b3-theme-on-surface) r g b / 0.6);
+        }
       }
 
       &--hl:hover {
@@ -315,6 +324,12 @@
         opacity: 1;
       }
     }
+  }
+
+  // 大纲数字层级标识
+  .b3-list-item[data-type="NodeHeading"] .b3-list-item__text::before {
+    transform: translateX(negateForRTL(-18px));
+    left: auto;
   }
 }
 

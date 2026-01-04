@@ -1,30 +1,34 @@
-@use "colorful-asri";
-@use "rtl";
-@use "high-readability-variants";
-// @use "tree-branch-indents.scss";
-// @use 'panda-scheme';
-// @use 'mode-transition';
-// @use 'hide-toolbar';
-// @use 'cover-image-fading';
-@use "topbar-fusion";
-@use "blur";
-@use "cover-image-parallax-scrolling";
-@use "doc-attr-reposition";
-@use "filetree-indents-indicator";
-@use "custom-attributes";
-// @use 'heading-indicators';
-// @use 'gradient-headings';
-@use "overflow-indicator";
-@use "list-counter-style";
-// @use 'reading-mode';
-@use "topbar-fusion-plus";
-@use "selected-block-indicator";
-@use "hide-side-panel-block-icons";
-// @use "performance-improvements";
-// @use "sticky-stacks";
-// @use 'floating-docks';
-// @use 'layout-bento';
-// @use "layout-paper";
-@use "vibrancy.scss";
-// @use "floating-tabbar";
-@use "hdr";
+// @use "colorful-asri"; // -> Asrify
+@use "rtl"; // no change needed
+@use "high-readability-variants"; // -> Asrify configureable
+
+// @use "tree-branch-indents.scss"; // -> deprecated
+// @use 'panda-scheme'; // -> deprecated
+// @use 'mode-transition'; // -> deprecated
+// @use 'hide-toolbar'; // -> deprecated
+// @use 'cover-image-fading'; // -> deprecated
+
+// @use "topbar-fusion"; // -> Asrify
+@use "blur"; // -> Asrify configureable
+@use "cover-image-parallax-scrolling"; // -> Asrify configureable, need fintuning for CSS only case
+@use "doc-attr-reposition"; // -> Asrify configureable
+// @use "filetree-indents-indicator"; // -> Asrify
+@use "custom-attributes"; // no change needed
+
+// @use 'heading-indicators'; // -> deprecated
+// @use 'gradient-headings'; // -> deprecated
+
+@use "overflow-indicator"; // -> pruning needed
+@use "list-counter-style"; // -> Asrify configureable
+// @use 'reading-mode'; // -> deprecated
+// @use "topbar-fusion-plus"; // -> Asrify
+@use "selected-block-indicator"; // -> Asrify
+@use "hide-side-panel-block-icons"; // -> Asrify configureable
+// @use "performance-improvements"; // -> deprecated
+// @use "sticky-stacks"; // -> deprecated
+// @use 'floating-docks'; // -> deprecated
+// @use 'layout-bento'; // -> deprecated
+// @use "layout-paper"; // -> deprecated
+// @use "vibrancy.scss"; // -> Asrify
+// @use "floating-tabbar"; // -> deprecated
+// @use "hdr"; // -> Asrify

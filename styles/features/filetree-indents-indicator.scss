@@ -2,22 +2,6 @@
 
 @use "sass:string";
 
-// 文档树项目小圆点位置
-.layout-tab-container .b3-list-item .b3-list-item__toggle.fn__hidden {
-  position: relative;
-
-  &::before {
-    left: auto !important;
-    inset-inline-end: 7px;
-  }
-}
-
-// 大纲数字层级标识
-.sy__outline .b3-list-item[data-type="NodeHeading"] .b3-list-item__text::before {
-  transform: translateX(negateForRTL(-18px));
-  left: auto;
-}
-
 // 文档树缩进参考线 indent guides（方案一）
 .file-tree > .fn__flex-1 {
   $uls: ">ul";
