@@ -8,28 +8,24 @@
 
 import { fetchSyncPost, IWebSocketData } from "siyuan";
 
-async function request(url: string, data: any) {
-  let response: IWebSocketData = await fetchSyncPost(url, data);
-  let res = response.code === 0 ? response.data : null;
-  return res;
+async function request<T>(url: string, data: FormData | Record<string, unknown>): Promise<T | null> {
+  const response: IWebSocketData = await fetchSyncPost(url, data);
+  return response.code === 0 ? response.data : null;
 }
 
 // **************************************** File ****************************************
 
-export async function getFile(path: string): Promise<any> {
-  let data = {
-    path: path,
-  };
-  let url = "/api/file/getFile";
+export async function getFile(path: string): Promise<IWebSocketData | null> {
+  const data = { path };
+  const url = "/api/file/getFile";
   try {
-    let file = await fetchSyncPost(url, data);
-    return file;
-  } catch (error_msg) {
+    return await fetchSyncPost(url, data);
+  } catch {
     return null;
   }
 }
 
-export async function putFile(path: string, isDir = false, file: any) {
+export async function putFile(path: string, isDir = false, file: Blob | File) {
   let form = new FormData();
   form.append("path", path);
   form.append("isDir", isDir.toString());

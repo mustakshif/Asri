@@ -8,367 +8,355 @@ const afwdBlockTypes = ["NodeParagraph", "NodeTable", "NodeAttributeView", "Node
 let commonMenuEl: Element | undefined;
 let i18n: Record<string, string> | undefined;
 
-/**
- * Deprecated due to siyuan's native support: https://github.com/siyuan-note/siyuan/pull/15043
- */
-// export function calcProtyleSpacings() {
-//   wndElements?.forEach((wnd) => {
-//     let protyles = wnd.querySelector(".file-tree") ? [] : (wnd.querySelectorAll(".protyle-wysiwyg") as unknown as HTMLElement[]);
+// ============================================================================
+// HTML Template Functions
+// ============================================================================
 
-//     setTimeout(() => {
-//       protyles.forEach((protyle) => {
-//         let protylePadding: string;
-//         // let protylePadding = Math.round(parseFloat(window.getComputedStyle(protyle).paddingLeft)) + 'px';
+function getInDocBlockMenuItems(i18nData: Record<string, string>): string {
+  return `
+    <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-on">
+      <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12l2 2l4-4"/></g>
+      </svg>
+      <span class="b3-menu__label">${i18nData["afwdMenuItem-on"]}</span>
+    </button>
+    <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-off">
+      <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9l-6 6m0-6l6 6"/></g>
+      </svg>
+      <span class="b3-menu__label">${i18nData["afwdMenuItem-off"]}</span>
+    </button>
+  `;
+}
 
-//         protylePadding = protyle.style.paddingLeft;
-//         if (protylePadding !== protyle.dataset.prevpadding) {
-//           protyle.style.setProperty("--protyle-spacing", protylePadding);
-//           protyle.dataset.prevpadding = protylePadding;
-//           // console.log(protylePadding);
-//         }
-//       });
-//     }, 300); // protyle transition time
-//   });
-// }
+function getDocAfwdMenuItem(id: string, iconId: string, label: string): string {
+  return `
+    <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-${id}">
+      <span class="b3-menu__label">
+        <div class="fn__flex">
+          <svg class="b3-menu__icon" style=""><use xlink:href="#${iconId}"></use></svg>
+          <span>${label}</span>
+          <span class="fn__space fn__flex-1"></span>
+          <input type="checkbox" class="b3-switch fn__flex-center">
+        </div>
+      </span>
+    </button>
+  `;
+}
+
+function getDocMenuItems(i18nData: Record<string, string>): string {
+  const items = [
+    { id: "all", icon: "", label: i18nData["afwdMenuItem-all"] },
+    { id: "db", icon: "iconDatabase", label: i18nData["afwdMenuItem-db"] },
+    { id: "t", icon: "iconTable", label: i18nData["afwdMenuItem-t"] },
+    { id: "p", icon: "iconImage", label: i18nData["afwdMenuItem-p"] },
+    { id: "iframe", icon: "iconHTML5", label: i18nData["afwdMenuItem-iframe"] },
+    { id: "sb", icon: "iconSuper", label: i18nData["afwdMenuItem-sb"] },
+  ];
+  return items.map(item => getDocAfwdMenuItem(item.id, item.icon, item.label)).join("");
+}
+
+function getTdirMenuItems(i18nData: Record<string, string>): string {
+  return `
+    <button class="b3-menu__item b3-menu__item--custom" id="tdirMenuItem-ltr">
+      <svg class="b3-menu__icon" style=""><use xlink:href="#iconLtr"></use></svg>
+      <span class="b3-menu__label">${i18nData["tdirMenuItem-ltr"]}</span>
+    </button>
+    <button class="b3-menu__item b3-menu__item--custom" id="tdirMenuItem-rtl">
+      <svg class="b3-menu__icon" style=""><use xlink:href="#iconRtl"></use></svg>
+      <span class="b3-menu__label">${i18nData["tdirMenuItem-rtl"]}</span>
+    </button>
+  `;
+}
+
+function getAfwdMenuButtonHtml(blockType: string, i18nData: Record<string, string>): string {
+  const submenuItems = blockType === "doc" ? getDocMenuItems(i18nData) : getInDocBlockMenuItems(i18nData);
+  return `
+    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 18 18">
+      <path fill="currentColor" d="m15.503 15.003l-.735.71a.75.75 0 1 0 1.042 1.078l1.886-1.82a1 1 0 0 0 0-1.44l-1.886-1.82a.75.75 0 0 0-1.042 1.079l.739.713H12.75a.75.75 0 0 0 0 1.5zM15 3a2 2 0 0 1 2 2v4.25a.75.75 0 0 1-1.5 0V5a.5.5 0 0 0-.5-.5H5a.5.5 0 0 0-.5.5v4.25a.75.75 0 0 1-1.5 0V5a2 2 0 0 1 2-2zM5.234 15.712l-.735-.71h2.752a.75.75 0 1 0 0-1.5H4.495l.739-.713a.75.75 0 0 0-1.042-1.078l-1.886 1.82a1 1 0 0 0 0 1.44l1.886 1.82a.75.75 0 0 0 1.042-1.079"/>
+    </svg>
+    <span class="b3-menu__label">${i18nData["afwdDocMenuLabel"]}</span>
+    <svg class="b3-menu__icon b3-menu__icon--small"><use xlink:href="#iconRight"></use></svg>
+    <div class="b3-menu__submenu">
+      <div class="b3-menu__items">
+        ${submenuItems}
+        <button class="b3-menu__separator"></button>
+        <button class="b3-menu__item" id="afwdMenuItem-clear">
+          <svg class="b3-menu__icon" style=""><use xlink:href="#iconTrashcan"></use></svg>
+          <span class="b3-menu__label">${i18nData["afwdMenuItem-clear"]}</span>
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function getTdirMenuButtonHtml(i18nData: Record<string, string>): string {
+  return `
+    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 22 22">
+      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 5h-3m-5 0h5m-5 0v10m0-10h-1c-1.667 0-5 1-5 5s3.333 5 5 5h1m0 4v-4m5 4V5"/>
+    </svg>
+    <span class="b3-menu__label">${i18nData["tdirDocMenuLabel"]}</span>
+    <svg class="b3-menu__icon b3-menu__icon--small"><use xlink:href="#iconRight"></use></svg>
+    <div class="b3-menu__submenu">
+      <div class="b3-menu__items">
+        ${getTdirMenuItems(i18nData)}
+        <button class="b3-menu__separator"></button>
+        <button class="b3-menu__item" id="tdirMenuItem-clear">
+          <svg class="b3-menu__icon" style=""><use xlink:href="#iconTrashcan"></use></svg>
+          <span class="b3-menu__label">${i18nData["afwdMenuItem-clear"]}</span>
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function createMenuButton(htmlContent: string): HTMLButtonElement {
+  const btn = document.createElement("button");
+  btn.className = "b3-menu__item";
+  btn.innerHTML = htmlContent;
+  return btn;
+}
+
+function insertMenuItem(menuList: HTMLDivElement, btn: HTMLButtonElement, separator?: HTMLButtonElement): void {
+  menuList.insertBefore(separator || btn, menuList.lastChild?.previousSibling!);
+  if (separator) menuList.insertBefore(btn, separator);
+}
+
+// ============================================================================
+// Main Entry Point
+// ============================================================================
 
 export async function addAfwdMenuItems(e: Event) {
   if (e.type !== "mouseup") return;
-  // 确保 i18n 已加载
   if (!i18n || Object.keys(i18n).length === 0) {
     i18n = await loadI18n();
   }
   const target = e.target as HTMLElement;
   const targetLabel = target.closest(".ariaLabel") as HTMLElement;
   if (!targetLabel) return;
-  const gutterType = targetLabel.dataset.type; // block types, 'NodeSuperBlock', 'NodeParagraph'...
+  const gutterType = targetLabel.dataset.type;
   const nonGutterType = target.closest(".protyle-title__icon")
     ? "doc"
-    : targetLabel.dataset.type === "doc" // 'doc' | 'more' | ... | undefined
-    ? "doc"
-    : undefined;
+    : targetLabel.dataset.type === "doc" ? "doc" : undefined;
   const type = afwdBlockTypes.includes(gutterType!) ? gutterType : nonGutterType;
   if (!type) return;
-  const blockId = type === "doc" ? targetLabel.parentElement!.dataset["nodeId"] ?? (targetLabel.closest(".protyle")?.querySelector(".protyle-title") as HTMLElement)?.dataset["nodeId"] : targetLabel.dataset["nodeId"];
+  const blockId = type === "doc"
+    ? targetLabel.parentElement!.dataset["nodeId"] ?? (targetLabel.closest(".protyle")?.querySelector(".protyle-title") as HTMLElement)?.dataset["nodeId"]
+    : targetLabel.dataset["nodeId"];
   commonMenuEl = await querySelectorAsync("#commonMenu:not(.fn__none)");
   await new Promise((resolve) => setTimeout(resolve, 0));
   initializeCurBlocksAttrs(type, blockId as string, i18n!);
 }
 
+// ============================================================================
+// Menu Initialization
+// ============================================================================
+
 async function initializeCurBlocksAttrs(curBlockType: string, curBlockId: string, i18nData: Record<string, string>) {
   const isDoc = curBlockType === "doc";
+  createMenuItems(curBlockType, i18nData);
+  await applyInitialStates(isDoc, curBlockId);
+  setupMenuFunctionalities(isDoc, curBlockId);
+}
 
-  makeItems(curBlockType, i18nData);
+function createMenuItems(blockType: string, i18nData: Record<string, string>): void {
+  if (!commonMenuEl || document.getElementById("afwdMenuItem-clear")) return;
+  const commonMenuBtnList = commonMenuEl.lastChild as HTMLDivElement;
 
+  const afwdEntryBtn = createMenuButton(getAfwdMenuButtonHtml(blockType, i18nData));
+  const separator = document.createElement("button");
+  separator.className = "b3-menu__separator";
+  insertMenuItem(commonMenuBtnList, afwdEntryBtn, separator);
+
+  if (blockType === "doc") {
+    const tdirEntryBtn = createMenuButton(getTdirMenuButtonHtml(i18nData));
+    insertMenuItem(commonMenuBtnList, tdirEntryBtn);
+  }
+}
+
+async function applyInitialStates(isDoc: boolean, curBlockId: string): Promise<void> {
   const attrs = await getBlockAttrs(curBlockId);
-  let afwdAttrs = attrs["custom-afwd"];
-  let tdirAttr = attrs["custom-tdir"]; // 'ltr' or 'rtl'
+  if (!attrs) return;
 
-  if (!afwdAttrs) afwdAttrs = "";
-  if (!tdirAttr) tdirAttr = "";
-  afwdAttrs = afwdAttrs.split(" ");
+  let afwdAttrs = attrs["custom-afwd"] || "";
+  let tdirAttr = attrs["custom-tdir"] || "";
+  const afwdAttrsArray = afwdAttrs.split(" ").filter(Boolean);
 
-  // read & set initial states
-  if (afwdAttrs.length > 0) {
-    // for doc blocks
-    if (isDoc) {
-      afwdAttrs.forEach((attr: string) => {
-        const menuItemEl = document.getElementById(`afwdMenuItem-${attr}`);
-        if (menuItemEl) {
-          menuItemEl.querySelector("input")!.checked = true;
-        }
-      });
+  if (isDoc) {
+    applyDocInitialState(afwdAttrsArray, tdirAttr);
+  } else {
+    applyInDocInitialState(afwdAttrsArray);
+  }
+}
 
-      if (afwdAttrs.includes("all")) {
-        const menuItemEls = commonMenuEl?.querySelectorAll("button[id^=afwdMenuItem]:not(#afwdMenuItem-all, #afwdMenuItem-clear)");
-        menuItemEls?.forEach((el) => {
-          el.classList.add("b3-menu__item--disabled");
-          el.querySelector("input")!.disabled = true;
-        });
-      }
+function applyDocInitialState(afwdAttrs: string[], tdirAttr: string): void {
+  afwdAttrs.forEach((attr: string) => {
+    const menuItemEl = document.getElementById(`afwdMenuItem-${attr}`);
+    if (menuItemEl) {
+      menuItemEl.querySelector("input")!.checked = true;
     }
+  });
 
-    // for indoc content blocks
-    else {
-      const menuItemEl = document.getElementById(`afwdMenuItem-${afwdAttrs[0]}`);
-      if (menuItemEl) {
-        menuItemEl.classList.add("b3-menu__item--selected");
-      }
-    }
+  if (afwdAttrs.includes("all")) {
+    const menuItemEls = commonMenuEl?.querySelectorAll("button[id^=afwdMenuItem]:not(#afwdMenuItem-all, #afwdMenuItem-clear)");
+    menuItemEls?.forEach((el) => {
+      el.classList.add("b3-menu__item--disabled");
+      el.querySelector("input")!.disabled = true;
+    });
   }
 
-  if (tdirAttr.length && isDoc) {
+  if (tdirAttr) {
     const menuItemEl = document.getElementById(`tdirMenuItem-${tdirAttr}`);
     if (menuItemEl) {
       menuItemEl.classList.add("b3-menu__item--selected");
     }
   }
-
-  menuItemsFunctionalities(isDoc, curBlockId, afwdAttrs, tdirAttr);
 }
 
-async function makeItems(blockType: string, i18nData: Record<string, string>) {
-  if (!commonMenuEl || document.getElementById("afwdMenuItem-clear")) return;
-
-  const commonMenuBtnList = commonMenuEl.lastChild as HTMLDivElement;
-
-  const afwdEntryBtn = document.createElement("button");
-  afwdEntryBtn.className = "b3-menu__item";
-  const separator = document.createElement("button");
-  separator.className = "b3-menu__separator";
-
-  const inDocBlockMenuItems = `
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-on">
-            <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12l2 2l4-4"/></g>
-            </svg>
-            <span class="b3-menu__label">${i18nData["afwdMenuItem-on"]}</span>
-        </button>
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-off">
-            <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9l-6 6m0-6l6 6"/></g>
-            </svg>
-            <span class="b3-menu__label">${i18nData["afwdMenuItem-off"]}</span>
-        </button>
-    `;
-  const docMenuItems = `
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-all">
-            <span class="b3-menu__label">
-                <div class="fn__flex">
-                    <svg class="b3-menu__icon" style=""></svg>
-                    <span>${i18nData["afwdMenuItem-all"]}</span>
-                    <span class="fn__space fn__flex-1"></span>
-                    <input type="checkbox" class="b3-switch fn__flex-center">
-                </div>
-            </span>
-        </button>
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-db">
-            <span class="b3-menu__label">
-                <div class="fn__flex">
-                    <svg class="b3-menu__icon" style=""><use xlink:href="#iconDatabase"></use></svg>
-                    <span>${i18nData["afwdMenuItem-db"]}</span>
-                    <span class="fn__space fn__flex-1"></span>
-                    <input type="checkbox" class="b3-switch fn__flex-center">
-                </div>
-            </span>
-        </button>
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-t">
-            <span class="b3-menu__label">
-                <div class="fn__flex">
-                    <svg class="b3-menu__icon" style=""><use xlink:href="#iconTable"></use></svg>
-                    <span>${i18nData["afwdMenuItem-t"]}</span>
-                    <span class="fn__space fn__flex-1"></span>
-                    <input type="checkbox" class="b3-switch fn__flex-center">
-                </div>
-            </span>
-        </button>
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-p">
-            <span class="b3-menu__label">
-                <div class="fn__flex">
-                    <svg class="b3-menu__icon"><use xlink:href="#iconImage"></use></svg>
-                    <span>${i18nData["afwdMenuItem-p"]}</span>
-                    <span class="fn__space fn__flex-1"></span>
-                    <input type="checkbox" class="b3-switch fn__flex-center">
-                </div>
-            </span>
-        </button>
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-iframe">
-            <span class="b3-menu__label">
-                <div class="fn__flex">
-                    <svg class="b3-menu__icon"><use xlink:href="#iconHTML5"></use></svg>
-                    <span>${i18nData["afwdMenuItem-iframe"]}</span>
-                    <span class="fn__space fn__flex-1"></span>
-                    <input type="checkbox" class="b3-switch fn__flex-center">
-                </div>
-            </span>
-        </button>
-        <button class="b3-menu__item b3-menu__item--custom" id="afwdMenuItem-sb">
-            <span class="b3-menu__label">
-                <div class="fn__flex">
-                    <svg class="b3-menu__icon"><use xlink:href="#iconSuper"></use></svg>
-                    <span>${i18nData["afwdMenuItem-sb"]}</span>
-                    <span class="fn__space fn__flex-1"></span>
-                    <input type="checkbox" class="b3-switch fn__flex-center">
-                </div>
-            </span>
-        </button>
-    `;
-
-  const afwdMenuBtnHtml = `
-        <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 18 18">
-            <path fill="currentColor" d="m15.503 15.003l-.735.71a.75.75 0 1 0 1.042 1.078l1.886-1.82a1 1 0 0 0 0-1.44l-1.886-1.82a.75.75 0 0 0-1.042 1.079l.739.713H12.75a.75.75 0 0 0 0 1.5zM15 3a2 2 0 0 1 2 2v4.25a.75.75 0 0 1-1.5 0V5a.5.5 0 0 0-.5-.5H5a.5.5 0 0 0-.5.5v4.25a.75.75 0 0 1-1.5 0V5a2 2 0 0 1 2-2zM5.234 15.712l-.735-.71h2.752a.75.75 0 1 0 0-1.5H4.495l.739-.713a.75.75 0 0 0-1.042-1.078l-1.886 1.82a1 1 0 0 0 0 1.44l1.886 1.82a.75.75 0 0 0 1.042-1.079"/>
-        </svg>
-        <span class="b3-menu__label">${i18nData["afwdDocMenuLabel"]}</span>
-        <svg class="b3-menu__icon b3-menu__icon--small">
-            <use xlink:href="#iconRight"></use>
-        </svg>
-        <div class="b3-menu__submenu">
-            <div class="b3-menu__items">
-                ${blockType === "doc" ? docMenuItems : inDocBlockMenuItems}
-                <button class="b3-menu__separator"></button>
-                <button class="b3-menu__item" id="afwdMenuItem-clear">
-                    <svg class="b3-menu__icon " style=""><use xlink:href="#iconTrashcan"></use></svg>
-                    <span class="b3-menu__label">${i18nData["afwdMenuItem-clear"]}
-                    </span>
-                </button>
-            </div>
-        </div>
-    `;
-
-  afwdEntryBtn.innerHTML = afwdMenuBtnHtml;
-  commonMenuBtnList.insertBefore(afwdEntryBtn, commonMenuBtnList.lastChild?.previousSibling!);
-  commonMenuBtnList.insertBefore(separator, afwdEntryBtn);
-
-  // tdir menu
-  if (blockType !== "doc") return;
-  const tdirEntryBtn = document.createElement("button");
-  tdirEntryBtn.className = "b3-menu__item";
-
-  const tdirMenuBtnHtml = `
-        <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 22 22">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 5h-3m-5 0h5m-5 0v10m0-10h-1c-1.667 0-5 1-5 5s3.333 5 5 5h1m0 4v-4m5 4V5"/>
-        </svg>
-        <span class="b3-menu__label">${i18nData["tdirDocMenuLabel"]}</span>
-        <svg class="b3-menu__icon b3-menu__icon--small">
-            <use xlink:href="#iconRight"></use>
-        </svg>
-        <div class="b3-menu__submenu">
-            <div class="b3-menu__items">
-                <button class="b3-menu__item b3-menu__item--custom" id="tdirMenuItem-ltr">
-                    <svg class="b3-menu__icon " style=""><use xlink:href="#iconLtr"></use></svg>
-                    <span class="b3-menu__label">${i18nData["tdirMenuItem-ltr"]}</span>
-                </button>
-                <button class="b3-menu__item b3-menu__item--custom" id="tdirMenuItem-rtl">
-                    <svg class="b3-menu__icon " style=""><use xlink:href="#iconRtl"></use></svg>
-                    <span class="b3-menu__label">${i18nData["tdirMenuItem-rtl"]}</span>
-                </button>                
-                <button class="b3-menu__separator"></button>
-                <button class="b3-menu__item" id="tdirMenuItem-clear">
-                    <svg class="b3-menu__icon " style=""><use xlink:href="#iconTrashcan"></use></svg>
-                    <span class="b3-menu__label">${i18nData["afwdMenuItem-clear"]}
-                    </span>
-                </button>
-            </div>
-        </div>
-    `;
-  tdirEntryBtn.innerHTML = tdirMenuBtnHtml;
-  commonMenuBtnList.insertBefore(tdirEntryBtn, commonMenuBtnList.lastChild?.previousSibling!);
+function applyInDocInitialState(afwdAttrs: string[]): void {
+  if (afwdAttrs.length > 0) {
+    const menuItemEl = document.getElementById(`afwdMenuItem-${afwdAttrs[0]}`);
+    if (menuItemEl) {
+      menuItemEl.classList.add("b3-menu__item--selected");
+    }
+  }
 }
 
-function menuItemsFunctionalities(isDoc: boolean, curBlockId: string, afwdAttrs: string[], tdirAttrs: string[]) {
-  const afwdMenuItemEls = commonMenuEl?.querySelectorAll("button[id^=afwdMenuItem]:not(#afwdMenuItem-clear)") as unknown as HTMLButtonElement[];
-  const tdirMenuItemEls = commonMenuEl?.querySelectorAll("button[id^=tdirMenuItem]:not(#tdirMenuItem-clear)") as unknown as HTMLButtonElement[];
+// ============================================================================
+// Menu Functionalities
+// ============================================================================
 
-  let groupedAttrsReserved: string[] = []; // save all attrs except 'all', 'on', 'off'
-
-  const afwdMenuItemElsExceptAll = [...afwdMenuItemEls].filter((el) => el.id !== "afwdMenuItem-all");
+function setupMenuFunctionalities(isDoc: boolean, curBlockId: string): void {
+  const afwdMenuItemEls = commonMenuEl?.querySelectorAll("button[id^=afwdMenuItem]:not(#afwdMenuItem-clear)") as NodeListOf<HTMLButtonElement>;
+  const tdirMenuItemEls = commonMenuEl?.querySelectorAll("button[id^=tdirMenuItem]:not(#tdirMenuItem-clear)") as NodeListOf<HTMLButtonElement>;
 
   if (isDoc) {
-    // set doc blocks afwd menu funcs
-    afwdMenuItemEls?.forEach((el) => {
-      el.onclick = (ev) => {
-        if (el.classList.contains("b3-menu__item--disabled")) return;
-        const input = el.querySelector("input")!;
-        const curAttrItem = el["id"].split("-")[1]; // 'all' | 'db' | ...
-        let isOn = input.checked; // check initial state
-
-        // clicking on input itself will toggle the checkbox automatically,
-        // but when clicking on label, we need to toggle it manually
-        if (ev.target === input) isOn = !isOn; // when clicking on input, restore to the state where the checkbox was not clicked
-        else input.checked = !isOn; // this is only used to change the state of the checkbox's appearance when clicking on label
-
-        // when menu item is actived
-        if (isOn) {
-          if (curAttrItem === "all") {
-            afwdMenuItemElsExceptAll.forEach((el) => {
-              el.classList.remove("b3-menu__item--disabled");
-              el.querySelector("input")!.disabled = false;
-            });
-
-            afwdAttrs = groupedAttrsReserved.length > 0 ? groupedAttrsReserved : [];
-          } else afwdAttrs = afwdAttrs.filter((a) => a !== curAttrItem);
-        }
-        // when menu item is deactived
-        else {
-          if (curAttrItem === "all") {
-            if (!afwdAttrs.includes("all")) groupedAttrsReserved = afwdAttrs;
-            afwdAttrs = ["all"];
-            afwdMenuItemElsExceptAll.forEach((el) => {
-              el.classList.add("b3-menu__item--disabled");
-              el.querySelector("input")!.disabled = true;
-            });
-          } else afwdAttrs.push(curAttrItem);
-        }
-
-        setBlockAttrs(curBlockId, { "custom-afwd": afwdAttrs.join(" ") || "" });
-      };
-    });
-
-    // set doc blocks tdir menu funcs
-    tdirMenuItemEls?.forEach((el, index, arr) => {
-      el.onclick = () => {
-        const attr = el["id"].split("-")[1]; // 'ltr' or 'rtl'
-        const isSelected = el.classList.contains("b3-menu__item--selected");
-
-        if (isSelected) {
-          el.classList.remove("b3-menu__item--selected");
-          tdirAttrs = [];
-        } else {
-          tdirAttrs = [attr];
-          el.classList.add("b3-menu__item--selected");
-          arr[1 - index].classList.remove("b3-menu__item--selected");
-        }
-
-        setBlockAttrs(curBlockId, { "custom-tdir": `${tdirAttrs.join("")}` });
-      };
-    });
-  }
-  // set indoc blocks afwd menu funcs
-  else {
-    afwdMenuItemEls?.forEach((el, index, arr) => {
-      el.onclick = () => {
-        const attr = el["id"].split("-")[1]; // 'on' | 'off'
-        const isSelected = el.classList.contains("b3-menu__item--selected");
-
-        if (isSelected) {
-          afwdAttrs = [];
-          el.classList.remove("b3-menu__item--selected");
-        } else {
-          afwdAttrs = [attr];
-          el.classList.add("b3-menu__item--selected");
-          arr[1 - index].classList.remove("b3-menu__item--selected");
-        }
-
-        setBlockAttrs(curBlockId, { "custom-afwd": afwdAttrs?.join(" ") || "" });
-      };
-    });
+    setupDocAfwdHandlers(afwdMenuItemEls, curBlockId);
+    setupTdirHandlers(tdirMenuItemEls, curBlockId);
+  } else {
+    setupInDocAfwdHandlers(afwdMenuItemEls, curBlockId);
   }
 
-  // functionality of afwd clear button
+  setupClearButtons(isDoc, afwdMenuItemEls, tdirMenuItemEls, curBlockId);
+}
+
+function setupDocAfwdHandlers(menuItems: NodeListOf<HTMLButtonElement>, curBlockId: string): void {
+  const menuItemsExceptAll = [...menuItems].filter((el) => el.id !== "afwdMenuItem-all");
+  let groupedAttrsReserved: string[] = [];
+  let currentAttrs: string[] = [];
+
+  menuItems.forEach((el) => {
+    el.onclick = (ev) => {
+      if (el.classList.contains("b3-menu__item--disabled")) return;
+      const input = el.querySelector("input")!;
+      const curAttrItem = el.id.split("-")[1];
+      let isOn = input.checked;
+
+      if (ev.target === input) isOn = !isOn;
+      else input.checked = !isOn;
+
+      if (isOn) {
+        if (curAttrItem === "all") {
+          menuItemsExceptAll.forEach((item) => {
+            item.classList.remove("b3-menu__item--disabled");
+            item.querySelector("input")!.disabled = false;
+          });
+          currentAttrs = groupedAttrsReserved.length > 0 ? groupedAttrsReserved : [];
+        } else {
+          currentAttrs = currentAttrs.filter((a) => a !== curAttrItem);
+        }
+      } else {
+        if (curAttrItem === "all") {
+          if (!currentAttrs.includes("all")) groupedAttrsReserved = currentAttrs;
+          currentAttrs = ["all"];
+          menuItemsExceptAll.forEach((item) => {
+            item.classList.add("b3-menu__item--disabled");
+            item.querySelector("input")!.disabled = true;
+          });
+        } else {
+          currentAttrs.push(curAttrItem);
+        }
+      }
+
+      setBlockAttrs(curBlockId, { "custom-afwd": currentAttrs.join(" ") || "" });
+    };
+  });
+}
+
+function setupTdirHandlers(menuItems: NodeListOf<HTMLButtonElement>, curBlockId: string): void {
+  let currentAttrs: string[] = [];
+
+  menuItems.forEach((el, index, arr) => {
+    el.onclick = () => {
+      const attr = el.id.split("-")[1];
+      const isSelected = el.classList.contains("b3-menu__item--selected");
+
+      if (isSelected) {
+        currentAttrs = [];
+        el.classList.remove("b3-menu__item--selected");
+      } else {
+        currentAttrs = [attr];
+        el.classList.add("b3-menu__item--selected");
+        arr[1 - index].classList.remove("b3-menu__item--selected");
+      }
+
+      setBlockAttrs(curBlockId, { "custom-tdir": currentAttrs.join("") });
+    };
+  });
+}
+
+function setupInDocAfwdHandlers(menuItems: NodeListOf<HTMLButtonElement>, curBlockId: string): void {
+  let currentAttrs: string[] = [];
+
+  menuItems.forEach((el, index, arr) => {
+    el.onclick = () => {
+      const attr = el.id.split("-")[1];
+      const isSelected = el.classList.contains("b3-menu__item--selected");
+
+      if (isSelected) {
+        currentAttrs = [];
+        el.classList.remove("b3-menu__item--selected");
+      } else {
+        currentAttrs = [attr];
+        el.classList.add("b3-menu__item--selected");
+        arr[1 - index].classList.remove("b3-menu__item--selected");
+      }
+
+      setBlockAttrs(curBlockId, { "custom-afwd": currentAttrs.join(" ") || "" });
+    };
+  });
+}
+
+function setupClearButtons(
+  isDoc: boolean,
+  afwdMenuItems: NodeListOf<HTMLButtonElement>,
+  tdirMenuItems: NodeListOf<HTMLButtonElement>,
+  curBlockId: string
+): void {
   const afwdClearBtn = document.getElementById("afwdMenuItem-clear");
   if (!afwdClearBtn) return;
+
   afwdClearBtn.onclick = () => {
-    afwdAttrs = [];
-    groupedAttrsReserved = [];
     setBlockAttrs(curBlockId, { "custom-afwd": "" });
-    afwdMenuItemEls.forEach((el) => {
-      el.classList.remove("b3-menu__item--disabled");
-      el.classList.remove("b3-menu__item--selected");
+    afwdMenuItems.forEach((el) => {
+      el.classList.remove("b3-menu__item--disabled", "b3-menu__item--selected");
       if (isDoc) {
         const inputEl = el.querySelector("input");
-        inputEl!.disabled = false;
-        inputEl!.checked = false;
+        if (inputEl) {
+          inputEl.disabled = false;
+          inputEl.checked = false;
+        }
       }
     });
   };
 
-  // functionality of tdir clear button
   if (!isDoc) return;
   const tdirClearBtn = document.getElementById("tdirMenuItem-clear");
   if (!tdirClearBtn) return;
+
   tdirClearBtn.onclick = () => {
-    tdirAttrs = [];
     setBlockAttrs(curBlockId, { "custom-tdir": "" });
-    tdirMenuItemEls.forEach((el) => {
+    tdirMenuItems.forEach((el) => {
       el.classList.remove("b3-menu__item--selected");
     });
   };

@@ -3,7 +3,7 @@ import { environment as env } from "../utils/rsc";
 import { startFadeInFadeOutTranstition } from "../features/modeTransition";
 import { cssVarManager } from "../core/cssVar";
 import { asriConfigs, getLocalConfigs, updateAsriConfigs, runtime, getI18nText, followSysAccentBtn, followCoverImgColorBtn, pickColorBtn, asriChromaSlider, colorPicker, setFollowSysAccentColor, setIsUserAccentGray, setFollowCoverImgColorBtn } from "../core/config";
-import { asriPrstPalettes, getSystemAccentColor, coverImgColorManager, updateCoverImgColor } from "../core/palette";
+import { asriPrstPalettes, getSystemAccentColor, updateCoverImgColor } from "../core/palette";
 import { handleGrayScale, reverseOnPrimaryLightness } from "../core/colorUtils";
 
 export function initAsriConfigMenuItemClick() {
@@ -106,7 +106,7 @@ function handleColorPickerChange() {
   updateAsriConfigs();
 }
 
-function handleChromaSliderInput(this: any) {
+function handleChromaSliderInput(this: HTMLInputElement) {
   // if (asriChromaSlider?.classList.contains('b3-menu__item--disabled')) {
   //     this.value = asriConfigs[runtime.mode].chroma;
   //     return;
