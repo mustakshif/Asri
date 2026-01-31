@@ -322,7 +322,8 @@
 
     > div:first-child {
       margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 4px);
-      padding: 0 calc(var(--protyle-spacing-compatible));
+      padding-left: 0;
+      padding-right: 0;
 
       scrollbar-width: none;
 
@@ -332,7 +333,10 @@
     }
 
     table {
-      width: max-content;
+      width: 100%;
+      display: table;
+      border-left: none;
+      border-right: none;
     }
 
     table[contenteditable="true"] + .protyle-action__table .table__resize,
@@ -346,36 +350,36 @@
   }
 
   // plan B. for test only. can't handle small-width tables; can't make tables centered without maintaining normal positioning of table resizing and selecting controls.
-  > .table[custom-afwd="fit"] {
-    // content-visibility: visible;
+  // > .table[custom-afwd="fit"] {
+  //   // content-visibility: visible;
 
-    margin: calc(-12em / 17) 0;
+  //   margin: calc(-12em / 17) 0;
 
-    .protyle-attr {
-      top: 8px;
-    }
+  //   .protyle-attr {
+  //     top: 8px;
+  //   }
 
-    > div:first-child {
-      margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 4px);
-      padding: 0 !important;
-    }
+  //   > div:first-child {
+  //     margin: calc(20em / 17) calc(var(--protyle-spacing-compatible) * -1 - 4px);
+  //     padding: 0 !important;
+  //   }
 
-    table {
-      width: auto !important;
-      border-left: none;
-      border-right: none;
-      border-radius: 0;
-    }
+  //   table {
+  //     width: auto !important;
+  //     border-left: none;
+  //     border-right: none;
+  //     border-radius: 0;
+  //   }
 
-    table[contenteditable="true"] + .protyle-action__table .table__resize,
-    table[contenteditable="true"] + .protyle-action__table .table__select {
-      transform: translateY(calc(20em / 17 + 1px));
-    }
+  //   table[contenteditable="true"] + .protyle-action__table .table__resize,
+  //   table[contenteditable="true"] + .protyle-action__table .table__select {
+  //     transform: translateY(calc(20em / 17 + 1px));
+  //   }
 
-    .protyle-attr--refcount {
-      transform: translateY(-12px);
-    }
-  }
+  //   .protyle-attr--refcount {
+  //     transform: translateY(-12px);
+  //   }
+  // }
 }
 
 // #endregion

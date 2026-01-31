@@ -88,7 +88,7 @@
   .config__panel .config__tab-wrap .config__tab-container[data-name="account"] .config-account button#login,
   .protyle-breadcrumb__icon:hover,
   .protyle-breadcrumb__item--active:not(:first-child) svg,
-  .b3-button--text,
+  .b3-button--text[id],
   input[type="radio" i]:checked {
     @include goldfoil-background;
     // -webkit-font-smoothing: auto;

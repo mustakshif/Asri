@@ -38,7 +38,7 @@ export function selectionChangeCallback(e: Event) {
 
     removeFocusedBlockClass();
 
-    if (!curBlockType || ["NodeAttributeView", "NodeCodeBlock", "NodeList", "NodeHTMLBlock", "NodeCallout"].includes(curBlockType)) return;
+    if (!curBlockType || ["NodeAttributeView", "NodeCodeBlock", "NodeList", "NodeHTMLBlock", "NodeCallout", "NodeTable"].includes(curBlockType)) return;
 
     curBlock.classList.add("asri-selected-block");
     // console.log(selection, range, curNode, curBlock, curBlockType);
