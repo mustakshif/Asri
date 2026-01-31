@@ -1,3 +1,19 @@
+### v3.6.4
+
+- [提高编辑区非思源protyle时页签栏边距的兼容性](https://github.com/mustakshif/Asri/issues/217)
+- 调整表格块全宽显示样式，现改为始终撑满编辑区宽度（会使固定表头失效）
+- 编辑焦点在表格块中时不再显示块聚焦标识
+- 提高「鎏金」配色兼容性
+
+<br />
+
+- [Improved compatibility of tab bar margins in non-SiYuan Protyle editing areas](https://github.com/mustakshif/Asri/issues/217)
+- Adjusted the full-width display style of table blocks, now set to always expand to fill the width of the editing area (this will disable fixed headers).
+- Removed the block focus indicator when editing focus is within a table block
+- Enhanced compatibility for the "Auriflow" color scheme
+
+---
+
 ### v3.6.3
 
 - 新增预设配色「远岫」
