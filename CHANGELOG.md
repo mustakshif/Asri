@@ -1,3 +1,13 @@
+### v3.6.5
+
+- 修复文档树拖拽指示残留的问题
+
+<br />
+
+- Fixed the issue of residual drag indicators in the document tree.
+
+---
+
 ### v3.6.4
 
 - [提高编辑区非思源protyle时页签栏边距的兼容性](https://github.com/mustakshif/Asri/issues/217)
