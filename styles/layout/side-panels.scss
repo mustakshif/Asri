@@ -65,8 +65,8 @@
   }
 
   .b3-list-item {
-    margin-top: 4px;
-    margin-bottom: 4px;
+    // margin-top: 4px;
+    // margin-bottom: 4px; // 拖拽时会有问题 siyuan v3.5.4
     margin-inline-start: 6px;
     margin-inline-end: 6px;
 
