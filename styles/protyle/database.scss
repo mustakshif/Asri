@@ -844,6 +844,15 @@
         @include superellipse(calc(var(--gibr) + 8px), true);
       }
     }
+        
+    // 修复看板分组标题中标签描边被裁剪的问题
+    .av__kanban-group {
+      .av__group-title {
+        .av__group-name.fn__ellipsis {
+          overflow: visible !important;
+        }
+      }
+    }
   }
   .av__gallery-item::before {
     corner-shape: inherit;
