@@ -840,8 +840,20 @@
         display: none;
       }
 
-      .av__kanban-group::before {
-        @include superellipse(calc(var(--gibr) + 8px), true);
+      .av__kanban-group {
+        &::before {
+          @include superellipse(calc(var(--gibr) + 8px), true);
+        }
+
+        .av__group-title {
+          > .av__group-name.fn__ellipsis {
+            > .b3-chip {
+              @include line-clamp();
+              width: 100%;
+              text-wrap: auto;
+            }
+          }
+        }
       }
     }
   }
