@@ -2,6 +2,8 @@
 @use "../components/utils" as *;
 @use "../protyle/utils" as *;
 
+$chip-border-radius: 5px;
+
 // 嵌入块和引用块中的数据库表头等处的背景色
 [data-type="NodeBlockQueryEmbed"],
 [data-type="NodeBlockquote"] {
@@ -26,7 +28,7 @@
   // }
 
   .b3-chip {
-    border-radius: 4px;
+    border-radius: $chip-border-radius;
     // @include superellipse(4px);
   }
 
@@ -453,7 +455,7 @@
 
       .b3-menu__item {
         .b3-chip {
-          border-radius: 4px;
+          border-radius: $chip-border-radius;
 
           // 筛选菜单 属性图标
           .icon {
@@ -500,7 +502,7 @@
 
         .b3-chip--middle,
         & ~ div [data-type="addColOptionOrCell"] .b3-chip {
-          border-radius: 4px;
+          border-radius: $chip-border-radius;
         }
 
         input {
@@ -863,7 +865,7 @@
 }
 
 img.av__cellassetimg {
-  border-radius: 4px;
+  border-radius: $chip-border-radius;
 }
 
 // .b3-chip[style*="background-color:var(--b3-font-background1);color:var(--b3-font-color1)"] {
@@ -885,8 +887,7 @@ img.av__cellassetimg {
 // }
 
 .b3-chip {
-  outline: 0.5px solid var(--b3-border-color-trans);
-  outline-offset: -0.5px;
+  box-shadow: 0 0 0 1px var(--b3-border-color-trans) inset;
 }
 
 .b3-menu {
@@ -944,10 +945,10 @@ img.av__cellassetimg {
 
   .b3-menu__label {
     .b3-chip {
-      border-radius: 4px;
+      border-radius: $chip-border-radius;
 
       &[data-color] {
-        border-radius: 4px;
+        border-radius: $chip-border-radius;
       }
 
       // 筛选菜单中的数据库标签
@@ -984,7 +985,7 @@ img.av__cellassetimg {
   }
 
   .b3-chip {
-    border-radius: 4px;
+    border-radius: $chip-border-radius;
 
     // &[style*="background-color"] {
     //     padding: 4px 8px;
