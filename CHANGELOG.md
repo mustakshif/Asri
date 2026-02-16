@@ -1,3 +1,15 @@
+### v3.6.6
+
+- [看板视图标签采用省略号截断](https://github.com/mustakshif/Asri/pull/227)
+- [修复数据库标签在某些缩放比例下的边框显示问题](https://github.com/mustakshif/Asri/pull/227)
+
+<br />
+
+- [Truncated Kanban View Tags with Ellipsis](https://github.com/mustakshif/Asri/pull/227)
+- [Fixed Border Display Issue for Database Tags at Certain Zoom Levels](https://github.com/mustakshif/Asri/pull/227)
+
+---
+
 ### v3.6.5
 
 - 修复文档树拖拽指示残留的问题
