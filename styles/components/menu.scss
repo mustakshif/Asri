@@ -240,36 +240,36 @@
       height: 20px;
     }
 
-    @media (min-width: 1200px) {
-      width: 75vw;
-      max-width: calc(12em * 6);
-      max-height: 65vh;
+    // @media (min-width: 1200px) {
+    //   width: 75vw;
+    //   max-width: calc(12em * 6);
+    //   max-height: 65vh;
 
-      & > div {
-        // column-count: 5;
-        column-width: 12em;
-        column-gap: 4px;
-        column-rule: 1px solid var(--b3-border-color-trans);
+    //   & > div {
+    //     // column-count: 5;
+    //     column-width: 12em;
+    //     column-gap: 4px;
+    //     column-rule: 1px solid var(--b3-border-color-trans);
 
-        .b3-list-item {
-          .b3-list-item__text {
-            width: max-content;
-            margin-right: 4px;
-          }
-        }
+    //     .b3-list-item {
+    //       .b3-list-item__text {
+    //         width: max-content;
+    //         margin-right: 4px;
+    //       }
+    //     }
 
-        button:nth-child(-n + 3 of .b3-menu__separator),
-        button:nth-child(5 of .b3-menu__separator) {
-          break-before: column;
-          margin-bottom: -5px;
-          background-color: transparent;
-        }
-      }
+    //     button:nth-child(-n + 3 of .b3-menu__separator),
+    //     button:nth-child(5 of .b3-menu__separator) {
+    //       break-before: column;
+    //       margin-bottom: -5px;
+    //       background-color: transparent;
+    //     }
+    //   }
 
-      & > .emojis {
-        min-width: 100%; // https://github.com/mustakshif/Asri/issues/30
-      }
-    }
+    //   & > .emojis {
+    //     min-width: 100%; // https://github.com/mustakshif/Asri/issues/30
+    //   }
+    // }
 
     // @container protyle (min-width: 1048px) {
     //   width: 75vw;

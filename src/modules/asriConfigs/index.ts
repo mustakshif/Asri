@@ -6,6 +6,8 @@ export { cssVarManager, CSSVarManager } from "./cssVarManager";
 
 // Configuration management
 export { asriConfigs, getLocalConfigs as getAsriConfigs, updateAsriConfigs } from "./configs";
+export { loadAsriConfig, saveAsriConfig } from "./repository";
+export { ASRI_CONFIG_PATH, ASRI_CONFIG_LEGACY_BACKUP_PATH, ASRI_CONFIG_VERSION } from "./schema";
 
 // Palette data
 export { asriPrstPalettes } from "./palettes";

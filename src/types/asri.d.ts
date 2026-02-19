@@ -6,14 +6,20 @@ type Modes = "light" | "dark";
 // Asri 配置相关类型 - 全局可用
 interface AsriModeConfig {
   followSysAccentColor: boolean;
-  followCoverImgColor?: boolean;
+  followCoverImgColor: boolean;
   chroma: string;
   userCustomColor: string;
   presetPalette: string;
 }
 
+interface AsriCSSLoaderConfig {
+  enabled: boolean;
+  enabledSnippets: string[];
+}
+
 interface AsriFeatures {
   tfp: string;
+  cssLoader: AsriCSSLoaderConfig;
   [key: string]: any;
 }
 
