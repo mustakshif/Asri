@@ -1,3 +1,15 @@
+### v3.6.7
+
+- 文档emoji新增贴纸效果
+- [移除斜杠菜单宽度扩展视图](https://github.com/mustakshif/Asri/issues/228)
+
+<br />
+
+- Added sticker effects to document emojis
+- [Removed the slash menu width expansion view](https://github.com/mustakshif/Asri/issues/228)
+
+---
+
 ### v3.6.6
 
 - [看板视图标签采用省略号截断](https://github.com/mustakshif/Asri/pull/227)

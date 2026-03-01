@@ -9,6 +9,7 @@ import { updateCoverImgColor } from "./asriConfigs/coverImgColor";
 import { removeHdrSupportImage } from "./asriConfigs/util";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
+import { injectStickerFilter, removeStickerFilter } from "./filters";
 import { removeFocusedBlockClass as removeFocusedBlockClassName, selectionChangeCallback } from "./focusedBlock";
 import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstition } from "./modeTransition";
 import { removeProtyleStatusClassName, toggleProtyleStatus } from "./protyleStatus";
@@ -39,6 +40,7 @@ export async function loadAsriJSModules() {
   applyTrafficLightPosition();
   // setStatusHeightVar();
   toggleProtyleStatus();
+  injectStickerFilter();
   // startDefaultTranstition(loadThemePalette);
   await getI18n();
 
@@ -75,6 +77,7 @@ export async function unloadAsriJSModules(completeUnload = true) {
   if (completeUnload) {
     if (!env.isMobile) await unloadTopbarFusion();
     destroyDockBg();
+    removeStickerFilter();
     removeIndentGuidesFormatClassName();
     removeProtyleSpacings();
     removeDockbClassName();
