@@ -209,6 +209,7 @@
 }
 
 .layout__center .protyle {
+  
   container: protyle-width / inline-size;
   &-wysiwyg {
     counter-reset: katexEqnNo mmlEqnNo; // https://github.com/mustakshif/Asri/issues/188
@@ -218,8 +219,6 @@
 .file-tree .protyle {
   container: unset;
 }
-
-
 
 .layout-tab-container {
   background-color: var(--b3-theme-background);
@@ -344,7 +343,7 @@
   // font-variant-emoji: emoji; // 不受支持
 
   // @extend .protyle-wysiwyg;
-  &:not(#searchUnRefPreview) > *:not(blockquote) { 
+  &:not(#searchUnRefPreview) > *:not(blockquote) {
     border-radius: 8px;
   }
 
