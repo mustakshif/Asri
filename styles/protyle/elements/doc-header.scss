@@ -2,11 +2,19 @@
 @use "sass:math";
 
 .layout__center .layout-tab-container > .protyle {
-  --protyle-index: sibling-index();
+  --protyle-i: sibling-index();
+  --protyle-c: sibling-count();
+  --protyle-random-base: calc((sin(var(--protyle-i) * 1.5 + var(--protyle-c) * 0.7) + cos(var(--protyle-i) * 2.8 + var(--protyle-c) * 1.3) + sin(var(--protyle-i) * 4.2 + var(--protyle-c) * 2.1)) / 3); // [-1, 1]
 }
 
 // 确保该变量被即时计算，子元素可以直接获取数值，而不是惰性求值
-@property --protyle-index {
+@property --protyle-i {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --protyle-c {
   syntax: "<integer>";
   inherits: true;
   initial-value: 0;
@@ -131,15 +139,15 @@
         filter: url(#asri-sticker-dark) drop-shadow(-0.5px -1px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 1px 0px rgba(0, 0, 0, 0.2)) drop-shadow(0.5px 1px 2px rgba(0, 0, 0, 0.1));
       }
 
-      transition: transform 0.4s var(--asri-ease-spring-3) 0.125s;
+      transition: transform 0.5s var(--asri-ease-spring-3) 0.125s;
 
-      // transform: none;
-      // pseudo-random number [-20deg, 20deg]
-      transform: rotate(calc((mod(var(--protyle-index) * math.$e, 1) * 40deg) - 20deg));
+      // transform: translateX(10%)
+      // pseudo-random number [-15deg, 15deg]
+      transform: rotate(calc(var(--protyle-random-base) * 15deg)) translateX(10%);
 
       &:hover {
-        transform: rotate(0) scale(1.05);
-        // transform: rotate(calc((mod(var(--protyle-index) * math.$e, 1) * 24deg) - 12deg)) scale(1.05);
+        transform: rotate(0) scale(1.05) translateX(10%);
+        // transform: rotate(calc(var(--protyle-random-base) * 15deg)) scale(1.05) translateX(10%);
       }
 
       &:not(.fn__none) ~ .protyle-background__action {
