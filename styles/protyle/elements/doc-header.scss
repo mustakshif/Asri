@@ -109,7 +109,7 @@
 
         .protyle-background__icon:not(.fn__none) ~ .protyle-background__action {
           --y: 108px;
-          --x: 96px;
+          --x: 108px;
         }
       }
 
@@ -151,7 +151,7 @@
       }
 
       &:not(.fn__none) ~ .protyle-background__action {
-        --x: 96px;
+        --x: 108px;
       }
     }
     // 文档标签

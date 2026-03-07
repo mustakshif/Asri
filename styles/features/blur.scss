@@ -86,6 +86,7 @@ body:not(.asri-disable-backdrop-blur) {
           // backdrop-filter: invert(1) blur(50px) saturate(0) contrast(0.5) brightness(1.15);
           // filter: contrast(10) invert(0.1) opacity(0.9);
           backdrop-filter: blur(10px) saturate(0) contrast(0.5);
+          // backdrop-filter: saturate(0);
           mix-blend-mode: difference;
           background-color: #fff;
           box-shadow: none;
@@ -97,29 +98,15 @@ body:not(.asri-disable-backdrop-blur) {
       mix-blend-mode: luminosity;
 
       // 工具条
-      // &:hover {
-      backdrop-filter: blur($medium-blur-rd);
-      // }
+      // v3.6.7，只能hover或取消这个样式，否则导致多图protyle页面闪烁
+      &:hover { 
+        backdrop-filter: blur($medium-blur-rd);
+      }
 
       .protyle-icon {
         &--only {
           &:hover {
             backdrop-filter: blur($medium-blur-rd);
-          }
-        }
-      }
-    }
-
-    &-action {
-      // 代码块
-      // &:hover {
-      //     backdrop-filter: blur(20px);
-      // } // fix https://github.com/mustakshif/Asri/issues/52
-
-      .protyle-icon {
-        &--only {
-          &:hover {
-            // backdrop-filter: blur(20px);
           }
         }
       }
