@@ -1,3 +1,15 @@
+### v3.6.8
+
+- 优化文档emoji贴纸效果
+- 修复了一个可能导致多图文档闪烁的错误
+
+<br />
+
+- Optimized the emoji sticker effect in the documentation
+- Fixed an issue that could cause flickering in multi-image documents
+
+---
+
 ### v3.6.7
 
 - 文档emoji新增贴纸效果
