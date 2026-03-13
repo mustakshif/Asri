@@ -7450,134 +7450,136 @@ input[type=radio i]:checked {
     background-color: oklch(from var(--b3-theme-on-background) 0.6 clamp(0, 0.01 * var(--asri-c-factor, 1), 0.03) h/0.4);
   }
 }
-:where(:lang(ar_SA), :lang(he_IL)) {
+:root.is-rtl-lang {
   --gnf: -1;
 }
-:where(:lang(ar_SA), :lang(he_IL)) :is(.file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink),
-.b3-menu,
-.protyle-breadcrumb,
-.tooltip,
-.b3-button,
-.protyle-util .block__icons--menu,
-.protyle-hint.hint--menu > div),
-:where(:lang(ar_SA), :lang(he_IL)) :where([data-key=dialog-setting],
-[data-key=dialog-confirm],
-[data-key=dialog-snippets],
-[data-key=dialog-emojis],
-[data-key=dialog-recentdocs],
-[data-key=dialog-searchtype],
-[data-key=dialog-wechatreminder],
-[data-key=dialog-setpassword],
-[data-key=dialog-saveworkspace],
-[data-key=dialog-createnotebook],
-[data-key=dialog-rename],
-[data-key=dialog-commandpanel],
-[data-key=dialog-aiupdatecustomaction],
-[data-key=dialog-backgroundlink],
-[data-key=dialog-aicustomaction]) .b3-dialog__container {
+:root.is-rtl-lang .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink),
+:root.is-rtl-lang .b3-menu,
+:root.is-rtl-lang .protyle-breadcrumb,
+:root.is-rtl-lang .tooltip,
+:root.is-rtl-lang .b3-button,
+:root.is-rtl-lang .protyle-util .block__icons--menu,
+:root.is-rtl-lang .protyle-hint.hint--menu > div {
   direction: rtl;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .item__main,
-:where(:lang(ar_SA), :lang(he_IL)) .b3-card .b3-card__info,
-:where(:lang(ar_SA), :lang(he_IL)) .protyle-hint .b3-list-item--two .b3-list-item__meta {
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-setting] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-confirm] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-snippets] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-emojis] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-recentdocs] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-searchtype] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-wechatreminder] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-setpassword] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-saveworkspace] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-createnotebook] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-rename] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-commandpanel] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-aiupdatecustomaction] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-backgroundlink] .b3-dialog__container,
+:root.is-rtl-lang .b3-dialog--open[data-key=dialog-aicustomaction] .b3-dialog__container {
+  direction: rtl;
+}
+:root.is-rtl-lang .item__main,
+:root.is-rtl-lang .b3-card .b3-card__info,
+:root.is-rtl-lang .protyle-hint .b3-list-item--two .b3-list-item__meta {
   direction: ltr;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .sy__tag .b3-list-item__toggle,
-:where(:lang(ar_SA), :lang(he_IL)) .sy__outline .b3-list-item__toggle {
+:root.is-rtl-lang .sy__tag .b3-list-item__toggle,
+:root.is-rtl-lang .sy__outline .b3-list-item__toggle {
   margin-right: unset !important;
   margin-inline-end: 2px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .sy__outline .b3-list-item[data-type=NodeHeading] .b3-list-item__text::before {
+:root.is-rtl-lang .sy__outline .b3-list-item[data-type=NodeHeading] .b3-list-item__text::before {
   transform: translateX(18px);
 }
-:where(:lang(ar_SA), :lang(he_IL)) .block__logo {
+:root.is-rtl-lang .block__logo {
   margin-right: unset;
   margin-inline-end: 8px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .sy__bookmark .b3-list-item__toggle {
+:root.is-rtl-lang .sy__bookmark .b3-list-item__toggle {
   margin-right: unset !important;
   margin-inline-end: 2px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .search__label {
+:root.is-rtl-lang .search__label {
   right: unset;
   inset-inline-end: 8px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .protyle-breadcrumb__icon {
+:root.is-rtl-lang .protyle-breadcrumb__icon {
   margin-right: unset;
   margin-inline-end: 8px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .b3-menu__icon {
+:root.is-rtl-lang .b3-menu__icon {
   margin-right: unset;
   margin-inline-end: 8px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .b3-menu__icon--small {
+:root.is-rtl-lang .b3-menu__icon--small {
   margin-left: unset;
   margin-inline-start: 8px;
   transform: scaleX(-1);
 }
-:where(:lang(ar_SA), :lang(he_IL)) .b3-menu .b3-menu__action {
+:root.is-rtl-lang .b3-menu .b3-menu__action {
   margin-left: unset;
   margin-inline-start: 8px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .b3-menu__item {
+:root.is-rtl-lang .b3-menu__item {
   text-align: start;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .b3-menu__accelerator:not([style="margin-left: 0"]) {
+:root.is-rtl-lang .b3-menu__accelerator:not([style="margin-left: 0"]) {
   margin-left: unset;
   margin-inline-start: 16px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .b3-button svg {
+:root.is-rtl-lang .b3-button svg {
   margin-right: unset;
   margin-inline-end: 4px;
   transform: scaleX(-1);
 }
-:where(:lang(ar_SA), :lang(he_IL)) .b3-list-item__graphic {
+:root.is-rtl-lang .b3-list-item__graphic {
   margin-right: unset;
   margin-inline-end: 4px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .b3-list-item__text {
+:root.is-rtl-lang .b3-list-item__text {
   text-align: start;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .color__square--list {
+:root.is-rtl-lang .color__square--list {
   margin-right: unset;
   margin-inline-end: 8px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .config__panel > .b3-tab-bar .b3-list-item__graphic {
+:root.is-rtl-lang .config__panel > .b3-tab-bar .b3-list-item__graphic {
   padding-left: unset;
   padding-right: unset;
   padding-inline-start: 5px;
   padding-inline-end: 10px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .b3-chip svg:not(.b3-chip__close) {
+:root.is-rtl-lang .b3-chip svg:not(.b3-chip__close) {
   margin-right: unset;
   margin-inline-end: 6px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .config-bazaar__panel .config-bazaar__title .b3-switch {
+:root.is-rtl-lang .config-bazaar__panel .config-bazaar__title .b3-switch {
   transform: scaleX(-1) translateX(11px);
 }
-:where(:lang(ar_SA), :lang(he_IL)) .b3-card__actions--right .block__icon {
+:root.is-rtl-lang .b3-card__actions--right .block__icon {
   margin-left: unset;
   margin-inline-start: 8px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) [data-type=goBack] svg,
-:where(:lang(ar_SA), :lang(he_IL)) .av__panel .b3-menu .block__icon svg,
-:where(:lang(ar_SA), :lang(he_IL)) .config-keymap .b3-list-item__arrow:not(.b3-list-item__arrow--open),
-:where(:lang(ar_SA), :lang(he_IL)) .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink) .b3-list-item__arrow:not(.b3-list-item__arrow--open) {
+:root.is-rtl-lang [data-type=goBack] svg,
+:root.is-rtl-lang .av__panel .b3-menu .block__icon svg,
+:root.is-rtl-lang .config-keymap .b3-list-item__arrow:not(.b3-list-item__arrow--open),
+:root.is-rtl-lang .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink) .b3-list-item__arrow:not(.b3-list-item__arrow--open) {
   transform: rotate(180deg);
 }
-:where(:lang(ar_SA), :lang(he_IL)) .b3-list--border .b3-list__panel {
+:root.is-rtl-lang .b3-list--border .b3-list__panel {
   margin-left: unset;
   margin-inline-start: 34px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .b3-menu__avemoji {
+:root.is-rtl-lang .b3-menu__avemoji {
   margin-left: unset;
   margin-right: unset;
   margin-inline: -4px 4px;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .av__panel .b3-menu__item .b3-chip {
+:root.is-rtl-lang .av__panel .b3-menu__item .b3-chip {
   float: unset;
 }
-:where(:lang(ar_SA), :lang(he_IL)) .b3-snackbar--error .b3-snackbar__content {
+:root.is-rtl-lang .b3-snackbar--error .b3-snackbar__content {
   padding-left: unset;
   padding-inline-start: 47px;
   padding-right: unset;
@@ -8731,12 +8733,12 @@ body:not(.body-asri--mobile) .protyle-title::after {
 .file-tree:not(.sy__backlink) .block__icons ~ .fn__flex-1,
 .sy__file > .b3-list > .fn__flex-1 {
   mask-image: linear-gradient(to bottom, transparent, black var(--mask-stop-start), black calc(100% - var(--mask-stop-end)), transparent);
-  animation-name: maskAppear-mask-start-umtc1o6;
+  animation-name: maskAppear-mask-start-uj6fhyc;
   animation-range: 1px 100%;
   animation-direction: alternate;
   animation-timeline: scroll(self y);
 }
-@keyframes maskAppear-mask-start-umtc1o6 {
+@keyframes maskAppear-mask-start-uj6fhyc {
   0% {
     --mask-stop-start: 0px;
   }
@@ -8747,7 +8749,7 @@ body:not(.body-asri--mobile) .protyle-title::after {
     --mask-stop-start: 32px;
   }
 }
-@keyframes maskAppear-mask-end-umtc1o6 {
+@keyframes maskAppear-mask-end-uj6fhyc {
   0% {
     --mask-stop-end: 0px;
   }
@@ -8761,12 +8763,12 @@ body:not(.body-asri--mobile) .protyle-title::after {
 
 .file-tree.sy__file .block__icons ~ .fn__flex-1 {
   mask-image: linear-gradient(to bottom, transparent, black var(--mask-stop-start), black calc(100% - var(--mask-stop-end)), transparent);
-  animation-name: maskAppear-mask-start-umtc1ot, maskAppear-mask-end-umtc1ot;
+  animation-name: maskAppear-mask-start-uj6fhyv, maskAppear-mask-end-uj6fhyv;
   animation-range: 1px 100%, 0% calc(100% - 1px);
   animation-direction: alternate, alternate-reverse;
   animation-timeline: scroll(self y);
 }
-@keyframes maskAppear-mask-start-umtc1ot {
+@keyframes maskAppear-mask-start-uj6fhyv {
   0% {
     --mask-stop-start: 0px;
   }
@@ -8777,7 +8779,7 @@ body:not(.body-asri--mobile) .protyle-title::after {
     --mask-stop-start: 32px;
   }
 }
-@keyframes maskAppear-mask-end-umtc1ot {
+@keyframes maskAppear-mask-end-uj6fhyv {
   0% {
     --mask-stop-end: 0px;
   }
@@ -8791,12 +8793,12 @@ body:not(.body-asri--mobile) .protyle-title::after {
 
 .layout__dockb.layout--float .file-tree:not(.sy__backlink) .block__icons ~ .fn__flex-1 {
   mask-image: linear-gradient(to bottom, transparent, black var(--mask-stop-start), black calc(100% - var(--mask-stop-end)), transparent);
-  animation-name: maskAppear-mask-start-umtc1p2, maskAppear-mask-end-umtc1p2;
+  animation-name: maskAppear-mask-start-uj6fhzc, maskAppear-mask-end-uj6fhzc;
   animation-range: 1px 100%, 0% calc(100% - 1px);
   animation-direction: alternate, alternate-reverse;
   animation-timeline: scroll(self y);
 }
-@keyframes maskAppear-mask-start-umtc1p2 {
+@keyframes maskAppear-mask-start-uj6fhzc {
   0% {
     --mask-stop-start: 0px;
   }
@@ -8807,7 +8809,7 @@ body:not(.body-asri--mobile) .protyle-title::after {
     --mask-stop-start: 18px;
   }
 }
-@keyframes maskAppear-mask-end-umtc1p2 {
+@keyframes maskAppear-mask-end-uj6fhzc {
   0% {
     --mask-stop-end: 0px;
   }
@@ -8821,12 +8823,12 @@ body:not(.body-asri--mobile) .protyle-title::after {
 
 .layout__dockb .file-tree:not(.sy__backlink) .block__icons ~ .fn__flex-1 {
   mask-image: linear-gradient(to bottom, transparent, black var(--mask-stop-start), black calc(100% - var(--mask-stop-end)), transparent);
-  animation-name: maskAppear-mask-start-umtc1q1;
+  animation-name: maskAppear-mask-start-uj6fhzu;
   animation-range: 1px 100%;
   animation-direction: alternate;
   animation-timeline: scroll(self y);
 }
-@keyframes maskAppear-mask-start-umtc1q1 {
+@keyframes maskAppear-mask-start-uj6fhzu {
   0% {
     --mask-stop-start: 0px;
   }
@@ -8837,7 +8839,7 @@ body:not(.body-asri--mobile) .protyle-title::after {
     --mask-stop-start: 18px;
   }
 }
-@keyframes maskAppear-mask-end-umtc1q1 {
+@keyframes maskAppear-mask-end-uj6fhzu {
   0% {
     --mask-stop-end: 0px;
   }
@@ -9043,12 +9045,12 @@ body:not(.body-asri--mobile) .protyle-title::after {
 
 .b3-dialog .emojis__panel {
   mask-image: linear-gradient(to bottom, transparent, black var(--mask-stop-start), black calc(100% - var(--mask-stop-end)), transparent);
-  animation-name: maskAppear-mask-start-umtc1q3;
+  animation-name: maskAppear-mask-start-uj6fhzz;
   animation-range: 1px 100%;
   animation-direction: alternate;
   animation-timeline: scroll(self y);
 }
-@keyframes maskAppear-mask-start-umtc1q3 {
+@keyframes maskAppear-mask-start-uj6fhzz {
   0% {
     --mask-stop-start: 0px;
   }
@@ -9059,7 +9061,7 @@ body:not(.body-asri--mobile) .protyle-title::after {
     --mask-stop-start: 40px;
   }
 }
-@keyframes maskAppear-mask-end-umtc1q3 {
+@keyframes maskAppear-mask-end-uj6fhzz {
   0% {
     --mask-stop-end: 0px;
   }
@@ -9078,16 +9080,16 @@ body:not(.body-asri--mobile) .protyle-title::after {
 
 body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
   mask-image: linear-gradient(to right, transparent, black var(--mask-stop-start), black calc(100% - var(--mask-stop-end)), transparent);
-  animation-name: maskAppear-mask-start-umtc1qc, maskAppear-mask-end-umtc1qc;
+  animation-name: maskAppear-mask-start-uj6fi0f, maskAppear-mask-end-uj6fi0f;
   animation-range: 1px 100%, 0% calc(100% - 1px);
   animation-direction: alternate, alternate-reverse;
   animation-timeline: scroll(self x);
 }
-:where(:lang(ar_SA), :lang(he_IL)) body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
+:root.is-rtl-lang body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
   animation-range: reverse-list("1px 100%", "0% calc(100% - 1px)");
   animation-direction: reverse-list("alternate", "alternate-reverse");
 }
-@keyframes maskAppear-mask-start-umtc1qc {
+@keyframes maskAppear-mask-start-uj6fi0f {
   0% {
     --mask-stop-start: 0px;
   }
@@ -9098,7 +9100,7 @@ body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
     --mask-stop-start: 18px;
   }
 }
-@keyframes maskAppear-mask-end-umtc1qc {
+@keyframes maskAppear-mask-end-uj6fi0f {
   0% {
     --mask-stop-end: 0px;
   }
@@ -9123,12 +9125,12 @@ body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
 [data-key=dialog-searchtype] .b3-dialog__content,
 [data-key=dialog-replacetype] .b3-dialog__content {
   mask-image: linear-gradient(to bottom, transparent, black var(--mask-stop-start), black calc(100% - var(--mask-stop-end)), transparent);
-  animation-name: maskAppear-mask-start-umtc1ra;
+  animation-name: maskAppear-mask-start-uj6fi0j;
   animation-range: 1px 100%;
   animation-direction: alternate;
   animation-timeline: scroll(self y);
 }
-@keyframes maskAppear-mask-start-umtc1ra {
+@keyframes maskAppear-mask-start-uj6fi0j {
   0% {
     --mask-stop-start: 0px;
   }
@@ -9139,7 +9141,7 @@ body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
     --mask-stop-start: 32px;
   }
 }
-@keyframes maskAppear-mask-end-umtc1ra {
+@keyframes maskAppear-mask-end-uj6fi0j {
   0% {
     --mask-stop-end: 0px;
   }
@@ -9418,8 +9420,8 @@ body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
 .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-acrylic [data-type=wnd] .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
   background-color: rgb(from var(--b3-theme-background) r g b/0.8);
 }
-[data-asri-palette=polar]:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-acrylic .layout__wnd--active .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]),
-[data-asri-palette=polar]:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-acrylic [data-type=wnd] .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
+.asri-palette-polar:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-acrylic .layout__wnd--active .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]),
+.asri-palette-polar:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-acrylic [data-type=wnd] .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
   background-color: rgb(from var(--b3-theme-background) r g b/0.7);
 }
 [data-theme-mode=dark] .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-acrylic .layout__wnd--active .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]),
@@ -9455,8 +9457,8 @@ body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
 .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-luminous [data-type=wnd] .layout-tab-container > .protyle[data-loading=finished]::after {
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #000 calc(var(--blur-block-height)), rgba(0, 0, 0, 0.4666666667) calc(var(--blur-block-height) + 2px), var(--glow-strength) calc(var(--blur-block-height) + 2px), rgba(0, 0, 0, 0) calc(var(--blur-block-height) + 40px));
 }
-[data-asri-palette=polar]:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-luminous .layout__wnd--active .layout-tab-container > .protyle[data-loading=finished]::after,
-[data-asri-palette=polar]:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-luminous [data-type=wnd] .layout-tab-container > .protyle[data-loading=finished]::after {
+.asri-palette-polar:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-luminous .layout__wnd--active .layout-tab-container > .protyle[data-loading=finished]::after,
+.asri-palette-polar:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-luminous [data-type=wnd] .layout-tab-container > .protyle[data-loading=finished]::after {
   --glow-strength: #0006;
 }
 [data-theme-mode=dark] .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-luminous .layout__wnd--active .layout-tab-container > .protyle[data-loading=finished]::after,
@@ -9475,8 +9477,8 @@ body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
   background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b/0.6), rgb(from var(--b3-theme-background) r g b/0.45));
   background-color: rgba(0, 0, 0, 0);
 }
-[data-asri-palette=polar]:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-luminous .layout__wnd--active .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]),
-[data-asri-palette=polar]:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-luminous [data-type=wnd] .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
+.asri-palette-polar:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-luminous .layout__wnd--active .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]),
+.asri-palette-polar:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-luminous [data-type=wnd] .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
   background-color: rgba(0, 0, 0, 0);
   background-image: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b/0.6), rgb(from var(--b3-theme-background) r g b/0.3));
 }
@@ -9506,16 +9508,16 @@ body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
 .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-progressive :where(.layout__wnd--active, [data-type=wnd]) :not(.av__views) > .layout-tab-bar {
   border-radius: 0;
   mask-image: linear-gradient(to right, transparent, black var(--mask-stop-start), black calc(100% - var(--mask-stop-end)), transparent);
-  animation-name: maskAppear-mask-start-umtc1rp, maskAppear-mask-end-umtc1rp;
+  animation-name: maskAppear-mask-start-uj6fi0n, maskAppear-mask-end-uj6fi0n;
   animation-range: 1px 100%, 0% calc(100% - 1px);
   animation-direction: alternate, alternate-reverse;
   animation-timeline: scroll(self x);
 }
-:where(:lang(ar_SA), :lang(he_IL)) .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-progressive :where(.layout__wnd--active, [data-type=wnd]) :not(.av__views) > .layout-tab-bar {
+:root.is-rtl-lang .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-progressive :where(.layout__wnd--active, [data-type=wnd]) :not(.av__views) > .layout-tab-bar {
   animation-range: reverse-list("1px 100%", "0% calc(100% - 1px)");
   animation-direction: reverse-list("alternate", "alternate-reverse");
 }
-@keyframes maskAppear-mask-start-umtc1rp {
+@keyframes maskAppear-mask-start-uj6fi0n {
   0% {
     --mask-stop-start: 0px;
   }
@@ -9526,7 +9528,7 @@ body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
     --mask-stop-start: 24px;
   }
 }
-@keyframes maskAppear-mask-end-umtc1rp {
+@keyframes maskAppear-mask-end-uj6fi0n {
   0% {
     --mask-stop-end: 0px;
   }
@@ -9617,10 +9619,10 @@ body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
 [data-theme-mode=dark] .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-progressive :where(.layout__wnd--active, [data-type=wnd]) .layout-tab-container > .protyle[data-loading=finished] .protyle-breadcrumb + .protyle-content::before {
   background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b/calc(1 * var(--mask-opacity-factor-dark))) 0%, rgb(from var(--b3-theme-background) r g b/calc(0.738 * var(--mask-opacity-factor-dark))) 19%, rgb(from var(--b3-theme-background) r g b/calc(0.541 * var(--mask-opacity-factor-dark))) 34%, rgb(from var(--b3-theme-background) r g b/calc(0.382 * var(--mask-opacity-factor-dark))) 47%, rgb(from var(--b3-theme-background) r g b/calc(0.278 * var(--mask-opacity-factor-dark))) 56.5%, rgb(from var(--b3-theme-background) r g b/calc(0.194 * var(--mask-opacity-factor-dark))) 65%, rgb(from var(--b3-theme-background) r g b/calc(0.126 * var(--mask-opacity-factor-dark))) 73%, rgb(from var(--b3-theme-background) r g b/calc(0.075 * var(--mask-opacity-factor-dark))) 80.2%, rgb(from var(--b3-theme-background) r g b/calc(0.042 * var(--mask-opacity-factor-dark))) 86.1%, rgb(from var(--b3-theme-background) r g b/calc(0.021 * var(--mask-opacity-factor-dark))) 91%, rgb(from var(--b3-theme-background) r g b/calc(0.008 * var(--mask-opacity-factor-dark))) 95.2%, rgb(from var(--b3-theme-background) r g b/calc(0.002 * var(--mask-opacity-factor-dark))) 98.2%, rgb(from var(--b3-theme-background) r g b/calc(0 * var(--mask-opacity-factor-dark))) 100%);
 }
-[data-asri-palette=polar]:root.asri-mode-light .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-progressive :where(.layout__wnd--active, [data-type=wnd]) .layout-tab-container > .protyle[data-loading=finished] .protyle-breadcrumb + .protyle-content::before {
+.asri-palette-polar:root.asri-mode-light .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-progressive :where(.layout__wnd--active, [data-type=wnd]) .layout-tab-container > .protyle[data-loading=finished] .protyle-breadcrumb + .protyle-content::before {
   --mask-opacity-factor-light: 0.8;
 }
-[data-asri-palette=polar]:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-progressive :where(.layout__wnd--active, [data-type=wnd]) .layout-tab-container > .protyle[data-loading=finished] .protyle-breadcrumb + .protyle-content::before {
+.asri-palette-polar:root.asri-mode-dark .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-progressive :where(.layout__wnd--active, [data-type=wnd]) .layout-tab-container > .protyle[data-loading=finished] .protyle-breadcrumb + .protyle-content::before {
   --mask-opacity-factor-dark: 0.7;
 }
 @supports (animation-timeline: view()) {
@@ -9660,16 +9662,16 @@ body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
 }
 .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-progressive :where(.layout__wnd--active, [data-type=wnd]) .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) .protyle-breadcrumb__item:not(:first-child) {
   mask-image: linear-gradient(to right, transparent, black var(--mask-stop-start), black calc(100% - var(--mask-stop-end)), transparent);
-  animation-name: maskAppear-mask-start-umtc1rx, maskAppear-mask-end-umtc1rx;
+  animation-name: maskAppear-mask-start-uj6fi0o, maskAppear-mask-end-uj6fi0o;
   animation-range: 1px 100%, 0% calc(100% - 1px);
   animation-direction: alternate, alternate-reverse;
   animation-timeline: scroll(self x);
 }
-:where(:lang(ar_SA), :lang(he_IL)) .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-progressive :where(.layout__wnd--active, [data-type=wnd]) .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) .protyle-breadcrumb__item:not(:first-child) {
+:root.is-rtl-lang .asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile).asri-tfp-progressive :where(.layout__wnd--active, [data-type=wnd]) .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) .protyle-breadcrumb__item:not(:first-child) {
   animation-range: reverse-list("1px 100%", "0% calc(100% - 1px)");
   animation-direction: reverse-list("alternate", "alternate-reverse");
 }
-@keyframes maskAppear-mask-start-umtc1rx {
+@keyframes maskAppear-mask-start-uj6fi0o {
   0% {
     --mask-stop-start: 0px;
   }
@@ -9680,7 +9682,7 @@ body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
     --mask-stop-start: 12px;
   }
 }
-@keyframes maskAppear-mask-end-umtc1rx {
+@keyframes maskAppear-mask-end-uj6fi0o {
   0% {
     --mask-stop-end: 0px;
   }
@@ -10215,7 +10217,7 @@ body.asri-tfp-progressive .og-fake-doc-breadcrumb-container.og-breadcrumb-onelin
   --color96: transparent;
 }
 
-[data-asri-palette=auriflow] {
+.asri-palette-auriflow {
   --foil-local-clr: rgb(231, 205, 164);
   --foil-base-clr: rgb(252, 243, 148);
   --foil-highlight-opacity: 0.5;
@@ -10223,13 +10225,13 @@ body.asri-tfp-progressive .og-fake-doc-breadcrumb-container.og-breadcrumb-onelin
   --texture-goldfoil: repeating-radial-gradient(rgba(180, 135, 30, var(--foil-shadow-opacity)) 0 0.0001%, rgba(0, 0, 0, 0) 0 0.0002%) 30% 50%/2500px 2500px, repeating-conic-gradient(var(--foil-local-clr) 0 0.0001%, rgba(0, 0, 0, 0) 0 0.0002%) 60% 60%/2500px 2500px, repeating-conic-gradient(rgba(245, 227, 199, var(--foil-highlight-opacity)) 0 0.0001%, rgba(0, 0, 0, 0) 0 0.0002%) 50% 50%/2500px 2500px, var(--foil-base-clr);
   --texture-goldfoil-blend-mode: multiply, normal, hard-light, normal;
 }
-[data-asri-palette=auriflow]:root.asri-mode-light :is(.protyle, .b3-typography),
-[data-asri-palette=auriflow]:root.asri-mode-light .b3-dialog__header {
+.asri-palette-auriflow:root.asri-mode-light :is(.protyle, .b3-typography),
+.asri-palette-auriflow:root.asri-mode-light .b3-dialog__header {
   --foil-local-clr: rgb(207 155 72);
   --foil-base-clr: rgb(196 182 33);
   --texture-goldfoil: repeating-radial-gradient(rgba(180, 135, 30, var(--foil-shadow-opacity)) 0 0.0001%, rgba(0, 0, 0, 0) 0 0.0002%) 30% 50%/2500px 2500px, repeating-conic-gradient(var(--foil-local-clr) 0 0.0001%, rgba(0, 0, 0, 0) 0 0.0002%) 60% 60%/2500px 2500px, repeating-conic-gradient(rgba(245, 227, 199, var(--foil-highlight-opacity)) 0 0.0001%, rgba(0, 0, 0, 0) 0 0.0002%) 50% 50%/2500px 2500px, var(--foil-base-clr);
 }
-[data-asri-palette=auriflow][data-theme-mode=dark] {
+.asri-palette-auriflow[data-theme-mode=dark] {
   --b3-theme-on-background: #e8d9be;
   --b3-theme-on-surface: #e8d9bead;
   --foil-local-clr: rgb(190, 165, 100);
@@ -10237,16 +10239,16 @@ body.asri-tfp-progressive .og-fake-doc-breadcrumb-container.og-breadcrumb-onelin
   --foil-highlight-opacity: 0.4;
   --foil-shadow-opacity: 0.5;
 }
-[data-asri-palette=auriflow][data-theme-mode=dark] .b3-switch:checked {
+.asri-palette-auriflow[data-theme-mode=dark] .b3-switch:checked {
   --foil-base-clr: rgb(178, 132, 6);
   background: repeating-radial-gradient(rgba(180, 135, 30, var(--foil-shadow-opacity)) 0 0.0001%, rgba(0, 0, 0, 0) 0 0.0002%) 30% 50%/2500px 2500px, repeating-conic-gradient(var(--foil-local-clr) 0 0.0001%, rgba(0, 0, 0, 0) 0 0.0002%) 60% 60%/2500px 2500px, repeating-conic-gradient(rgba(245, 227, 199, var(--foil-highlight-opacity)) 0 0.0001%, rgba(0, 0, 0, 0) 0 0.0002%) 50% 50%/2500px 2500px, var(--foil-base-clr);
 }
-[data-asri-palette=auriflow] .config-bazaar__panel .b3-card:hover {
+.asri-palette-auriflow .config-bazaar__panel .b3-card:hover {
   background: var(--texture-goldfoil);
   background-blend-mode: var(--texture-goldfoil-blend-mode);
   position: relative;
 }
-[data-asri-palette=auriflow] .config-bazaar__panel .b3-card:hover::after {
+.asri-palette-auriflow .config-bazaar__panel .b3-card:hover::after {
   content: "";
   background: var(--b3-theme-background);
   position: absolute;
@@ -10255,97 +10257,97 @@ body.asri-tfp-progressive .og-fake-doc-breadcrumb-container.og-breadcrumb-onelin
   border-radius: 18.5px;
 }
 @supports (corner-shape: superellipse(1)) {
-  [data-asri-palette=auriflow] .config-bazaar__panel .b3-card:hover::after {
+  .asri-palette-auriflow .config-bazaar__panel .b3-card:hover::after {
     corner-shape: superellipse(1.4);
     border-radius: 25.9px;
   }
 }
-[data-asri-palette=auriflow] .config-bazaar__panel .b3-card:hover {
+.asri-palette-auriflow .config-bazaar__panel .b3-card:hover {
   outline: none !important;
 }
-[data-asri-palette=auriflow] .b3-switch:checked,
-[data-asri-palette=auriflow] .b3-button--outline:hover,
-[data-asri-palette=auriflow] .b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not([data-type=nobg]),
-[data-asri-palette=auriflow] .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly, .b3-menu__item--disabled):not([disabled]):not([data-type=nobg]),
-[data-asri-palette=auriflow] .b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not([data-type=nobg]),
-[data-asri-palette=auriflow] .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly, .b3-menu__item--disabled):not([disabled]):not([data-type=nobg]),
-[data-asri-palette=auriflow] .protyle-wysiwyg .li.protyle-task--done > .protyle-action--task::before,
-[data-asri-palette=auriflow] .protyle-wysiwyg .li[data-subtype=t] .protyle-action--task::before,
-[data-asri-palette=auriflow] .protyle-wysiwyg[data-readonly=false] [data-node-id].asri-selected-block::before,
-[data-asri-palette=auriflow] .toolbar #barWorkspace:hover,
-[data-asri-palette=auriflow] .config__panel .config__tab-wrap .config__tab-container[data-name=account] .config-account .b3-button--text:not(#activationCode),
-[data-asri-palette=auriflow] .config__panel .config__tab-wrap .config__tab-container[data-name=account] .config-account button#login,
-[data-asri-palette=auriflow] .protyle-breadcrumb__icon:hover,
-[data-asri-palette=auriflow] .protyle-breadcrumb__item--active:not(:first-child) svg,
-[data-asri-palette=auriflow] .b3-button--text[id],
-[data-asri-palette=auriflow] input[type=radio i]:checked {
+.asri-palette-auriflow .b3-switch:checked,
+.asri-palette-auriflow .b3-button--outline:hover,
+.asri-palette-auriflow .b3-menu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not([data-type=nobg]),
+.asri-palette-auriflow .b3-menu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly, .b3-menu__item--disabled):not([disabled]):not([data-type=nobg]),
+.asri-palette-auriflow .b3-menu__submenu .b3-menu__items .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not([data-type=nobg]),
+.asri-palette-auriflow .b3-menu__submenu .b3-menu__items .b3-menu__item--current:not(.b3-menu__item--readonly, .b3-menu__item--disabled):not([disabled]):not([data-type=nobg]),
+.asri-palette-auriflow .protyle-wysiwyg .li.protyle-task--done > .protyle-action--task::before,
+.asri-palette-auriflow .protyle-wysiwyg .li[data-subtype=t] .protyle-action--task::before,
+.asri-palette-auriflow .protyle-wysiwyg[data-readonly=false] [data-node-id].asri-selected-block::before,
+.asri-palette-auriflow .toolbar #barWorkspace:hover,
+.asri-palette-auriflow .config__panel .config__tab-wrap .config__tab-container[data-name=account] .config-account .b3-button--text:not(#activationCode),
+.asri-palette-auriflow .config__panel .config__tab-wrap .config__tab-container[data-name=account] .config-account button#login,
+.asri-palette-auriflow .protyle-breadcrumb__icon:hover,
+.asri-palette-auriflow .protyle-breadcrumb__item--active:not(:first-child) svg,
+.asri-palette-auriflow .b3-button--text[id],
+.asri-palette-auriflow input[type=radio i]:checked {
   background: var(--texture-goldfoil);
   background-blend-mode: var(--texture-goldfoil-blend-mode);
 }
-[data-asri-palette=auriflow] .protyle-title__input,
-[data-asri-palette=auriflow] :is(h1, h2, h3, h4, h5, h6),
-[data-asri-palette=auriflow] [data-type=NodeHeading]:not([style*=background-color]),
-[data-asri-palette=auriflow] .b3-dialog__header {
+.asri-palette-auriflow .protyle-title__input,
+.asri-palette-auriflow :is(h1, h2, h3, h4, h5, h6),
+.asri-palette-auriflow [data-type=NodeHeading]:not([style*=background-color]),
+.asri-palette-auriflow .b3-dialog__header {
   background: var(--texture-goldfoil);
   background-blend-mode: var(--texture-goldfoil-blend-mode);
   background-clip: text;
   color: transparent;
   caret-color: var(--foil-local-clr, auto);
 }
-[data-asri-palette=auriflow] [data-type=NodeHeading]:not([style*=background-color]) [data-type=kbd] {
+.asri-palette-auriflow [data-type=NodeHeading]:not([style*=background-color]) [data-type=kbd] {
   color: var(--b3-theme-on-surface);
 }
-[data-asri-palette=auriflow] .protyle-wysiwyg [data-node-id].hr > div:after {
+.asri-palette-auriflow .protyle-wysiwyg [data-node-id].hr > div:after {
   background: var(--texture-goldfoil);
   background-blend-mode: var(--texture-goldfoil-blend-mode);
   border-radius: 0;
   opacity: 0.7;
 }
-[data-asri-palette=auriflow] .b3-button--outline:hover {
+.asri-palette-auriflow .b3-button--outline:hover {
   box-shadow: none;
 }
-[data-asri-palette=auriflow] .protyle-wysiwyg[data-readonly=false] [data-node-id].asri-selected-block::before {
+.asri-palette-auriflow .protyle-wysiwyg[data-readonly=false] [data-node-id].asri-selected-block::before {
   border-radius: 0;
   width: 2px;
 }
-[data-asri-palette=auriflow] .toolbar #barWorkspace {
+.asri-palette-auriflow .toolbar #barWorkspace {
   transition-property: color;
 }
-[data-asri-palette=auriflow] .config-bazaar__title .b3-button--outline:hover {
+.asri-palette-auriflow .config-bazaar__title .b3-button--outline:hover {
   background: none;
 }
 
-[data-asri-palette=everbliss]:root.asri-mode-light {
+:root.asri-palette-everbliss.asri-mode-light {
   --everbliss-base-accent: #f06255;
   --asri-theme-accent-customized: var(--everbliss-base-accent);
   --b3-theme-primary: var(--everbliss-base-accent);
   --b3-theme-on-background: #4d3d5f;
   --b3-theme-on-surface: #4d3d5fa2;
 }
-[data-asri-palette=everbliss]:root.asri-mode-dark {
+:root.asri-palette-everbliss.asri-mode-dark {
   --everbliss-base-accent: #d55f4f;
   --asri-theme-accent-customized: var(--everbliss-base-accent);
   --b3-theme-primary: var(--everbliss-base-accent);
   --b3-theme-on-background: #e3c9b0;
   --b3-theme-on-surface: #e3c9b0a2;
 }
-[data-asri-palette=everbliss] .protyle-title__input,
-[data-asri-palette=everbliss] [data-type=NodeHeading],
-[data-asri-palette=everbliss] .b3-dialog__header {
+:root.asri-palette-everbliss .protyle-title__input,
+:root.asri-palette-everbliss [data-type=NodeHeading],
+:root.asri-palette-everbliss .b3-dialog__header {
   color: var(--b3-theme-primary);
 }
 
-[data-asri-palette=everbliss]:root.asri-mode-light #barWorkspace, [data-asri-palette=everbliss]:root.asri-mode-light #message, [data-asri-palette=everbliss]:root.asri-mode-light .b3-button--outline:hover, [data-asri-palette=everbliss]:root.asri-mode-light .b3-dialog__action .b3-button--text, [data-asri-palette=everbliss]:root.asri-mode-light #transactionError + .b3-dialog__action button:last-child, [data-asri-palette=everbliss]:root.asri-mode-light #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, [data-asri-palette=everbliss]:root.asri-mode-light .protyle-breadcrumb__icon:hover, [data-asri-palette=everbliss]:root.asri-mode-light .protyle-breadcrumb__item, [data-asri-palette=everbliss]:root.asri-mode-light :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), [data-asri-palette=everbliss]:root.asri-mode-light .b3-menu, [data-asri-palette=everbliss]:root.asri-mode-light .b3-switch, [data-asri-palette=everbliss]:root.asri-mode-light .b3-chip--primary, [data-asri-palette=everbliss]:root.asri-mode-light .b3-chip--current, [data-asri-palette=everbliss]:root.asri-mode-light .b3-button--outline {
+.asri-palette-everbliss:root.asri-mode-light #barWorkspace, .asri-palette-everbliss:root.asri-mode-light #message, .asri-palette-everbliss:root.asri-mode-light .b3-button--outline:hover, .asri-palette-everbliss:root.asri-mode-light .b3-dialog__action .b3-button--text, .asri-palette-everbliss:root.asri-mode-light #transactionError + .b3-dialog__action button:last-child, .asri-palette-everbliss:root.asri-mode-light #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, .asri-palette-everbliss:root.asri-mode-light .protyle-breadcrumb__icon:hover, .asri-palette-everbliss:root.asri-mode-light .protyle-breadcrumb__item, .asri-palette-everbliss:root.asri-mode-light :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), .asri-palette-everbliss:root.asri-mode-light .b3-menu, .asri-palette-everbliss:root.asri-mode-light .b3-switch, .asri-palette-everbliss:root.asri-mode-light .b3-chip--primary, .asri-palette-everbliss:root.asri-mode-light .b3-chip--current, .asri-palette-everbliss:root.asri-mode-light .b3-button--outline {
   --b3-theme-primary: var(--everbliss-base-accent);
   --b3-theme-on-primary: #fefaef;
   --b3-menu-item-background-hover: #de6257;
 }
-[data-asri-palette=everbliss]:root.asri-mode-dark #barWorkspace, [data-asri-palette=everbliss]:root.asri-mode-dark #message, [data-asri-palette=everbliss]:root.asri-mode-dark .b3-button--outline:hover, [data-asri-palette=everbliss]:root.asri-mode-dark .b3-dialog__action .b3-button--text, [data-asri-palette=everbliss]:root.asri-mode-dark #transactionError + .b3-dialog__action button:last-child, [data-asri-palette=everbliss]:root.asri-mode-dark #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, [data-asri-palette=everbliss]:root.asri-mode-dark .protyle-breadcrumb__icon:hover, [data-asri-palette=everbliss]:root.asri-mode-dark .protyle-breadcrumb__item, [data-asri-palette=everbliss]:root.asri-mode-dark :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), [data-asri-palette=everbliss]:root.asri-mode-dark .b3-menu, [data-asri-palette=everbliss]:root.asri-mode-dark .b3-switch, [data-asri-palette=everbliss]:root.asri-mode-dark .b3-chip--primary, [data-asri-palette=everbliss]:root.asri-mode-dark .b3-chip--current, [data-asri-palette=everbliss]:root.asri-mode-dark .b3-button--outline {
+.asri-palette-everbliss:root.asri-mode-dark #barWorkspace, .asri-palette-everbliss:root.asri-mode-dark #message, .asri-palette-everbliss:root.asri-mode-dark .b3-button--outline:hover, .asri-palette-everbliss:root.asri-mode-dark .b3-dialog__action .b3-button--text, .asri-palette-everbliss:root.asri-mode-dark #transactionError + .b3-dialog__action button:last-child, .asri-palette-everbliss:root.asri-mode-dark #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, .asri-palette-everbliss:root.asri-mode-dark .protyle-breadcrumb__icon:hover, .asri-palette-everbliss:root.asri-mode-dark .protyle-breadcrumb__item, .asri-palette-everbliss:root.asri-mode-dark :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), .asri-palette-everbliss:root.asri-mode-dark .b3-menu, .asri-palette-everbliss:root.asri-mode-dark .b3-switch, .asri-palette-everbliss:root.asri-mode-dark .b3-chip--primary, .asri-palette-everbliss:root.asri-mode-dark .b3-chip--current, .asri-palette-everbliss:root.asri-mode-dark .b3-button--outline {
   --b3-theme-primary: var(--everbliss-base-accent);
   --b3-theme-on-primary: #f8f0e9;
 }
 
-[data-asri-palette=aerisland]:root.asri-mode-light {
+:root.asri-palette-aerisland.asri-mode-light {
   --aerisland-base-accent: #93dcd4;
   --asri-theme-accent-customized: var(--aerisland-base-accent);
   --b3-theme-primary: #4fbdb0;
@@ -10353,33 +10355,33 @@ body.asri-tfp-progressive .og-fake-doc-breadcrumb-container.og-breadcrumb-onelin
   --b3-theme-on-background: #0c544c;
   --b3-theme-on-surface: #09423ba2;
 }
-[data-asri-palette=aerisland]:root.asri-mode-dark {
+:root.asri-palette-aerisland.asri-mode-dark {
   --aerisland-base-accent: #44a197;
   --asri-theme-accent-customized: var(--aerisland-base-accent);
   --b3-theme-primary: var(--aerisland-base-accent);
   --b3-theme-on-background: #c6c9b3;
   --b3-theme-on-surface: #c6c9b3a2;
 }
-[data-asri-palette=aerisland] .protyle-title__input,
-[data-asri-palette=aerisland] [data-type=NodeHeading],
-[data-asri-palette=aerisland] .b3-dialog__header {
+:root.asri-palette-aerisland .protyle-title__input,
+:root.asri-palette-aerisland [data-type=NodeHeading],
+:root.asri-palette-aerisland .b3-dialog__header {
   color: var(--b3-theme-primary);
 }
 
-[data-asri-palette=aerisland]:root.asri-mode-light #barWorkspace, [data-asri-palette=aerisland]:root.asri-mode-light #message, [data-asri-palette=aerisland]:root.asri-mode-light .b3-button--outline:hover, [data-asri-palette=aerisland]:root.asri-mode-light .b3-dialog__action .b3-button--text, [data-asri-palette=aerisland]:root.asri-mode-light #transactionError + .b3-dialog__action button:last-child, [data-asri-palette=aerisland]:root.asri-mode-light #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, [data-asri-palette=aerisland]:root.asri-mode-light .protyle-breadcrumb__icon:hover, [data-asri-palette=aerisland]:root.asri-mode-light .protyle-breadcrumb__item, [data-asri-palette=aerisland]:root.asri-mode-light :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), [data-asri-palette=aerisland]:root.asri-mode-light .b3-menu, [data-asri-palette=aerisland]:root.asri-mode-light .b3-switch, [data-asri-palette=aerisland]:root.asri-mode-light .b3-chip--primary, [data-asri-palette=aerisland]:root.asri-mode-light .b3-chip--current, [data-asri-palette=aerisland]:root.asri-mode-light .b3-button--outline {
+.asri-palette-aerisland:root.asri-mode-light #barWorkspace, .asri-palette-aerisland:root.asri-mode-light #message, .asri-palette-aerisland:root.asri-mode-light .b3-button--outline:hover, .asri-palette-aerisland:root.asri-mode-light .b3-dialog__action .b3-button--text, .asri-palette-aerisland:root.asri-mode-light #transactionError + .b3-dialog__action button:last-child, .asri-palette-aerisland:root.asri-mode-light #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, .asri-palette-aerisland:root.asri-mode-light .protyle-breadcrumb__icon:hover, .asri-palette-aerisland:root.asri-mode-light .protyle-breadcrumb__item, .asri-palette-aerisland:root.asri-mode-light :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), .asri-palette-aerisland:root.asri-mode-light .b3-menu, .asri-palette-aerisland:root.asri-mode-light .b3-switch, .asri-palette-aerisland:root.asri-mode-light .b3-chip--primary, .asri-palette-aerisland:root.asri-mode-light .b3-chip--current, .asri-palette-aerisland:root.asri-mode-light .b3-button--outline {
   --b3-theme-primary: var(--aerisland-base-accent);
   --b3-theme-on-primary: #07443d;
 }
-[data-asri-palette=aerisland]:root.asri-mode-dark #barWorkspace, [data-asri-palette=aerisland]:root.asri-mode-dark #message, [data-asri-palette=aerisland]:root.asri-mode-dark .b3-button--outline:hover, [data-asri-palette=aerisland]:root.asri-mode-dark .b3-dialog__action .b3-button--text, [data-asri-palette=aerisland]:root.asri-mode-dark #transactionError + .b3-dialog__action button:last-child, [data-asri-palette=aerisland]:root.asri-mode-dark #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, [data-asri-palette=aerisland]:root.asri-mode-dark .protyle-breadcrumb__icon:hover, [data-asri-palette=aerisland]:root.asri-mode-dark .protyle-breadcrumb__item, [data-asri-palette=aerisland]:root.asri-mode-dark :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), [data-asri-palette=aerisland]:root.asri-mode-dark .b3-menu, [data-asri-palette=aerisland]:root.asri-mode-dark .b3-switch, [data-asri-palette=aerisland]:root.asri-mode-dark .b3-chip--primary, [data-asri-palette=aerisland]:root.asri-mode-dark .b3-chip--current, [data-asri-palette=aerisland]:root.asri-mode-dark .b3-button--outline {
+.asri-palette-aerisland:root.asri-mode-dark #barWorkspace, .asri-palette-aerisland:root.asri-mode-dark #message, .asri-palette-aerisland:root.asri-mode-dark .b3-button--outline:hover, .asri-palette-aerisland:root.asri-mode-dark .b3-dialog__action .b3-button--text, .asri-palette-aerisland:root.asri-mode-dark #transactionError + .b3-dialog__action button:last-child, .asri-palette-aerisland:root.asri-mode-dark #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, .asri-palette-aerisland:root.asri-mode-dark .protyle-breadcrumb__icon:hover, .asri-palette-aerisland:root.asri-mode-dark .protyle-breadcrumb__item, .asri-palette-aerisland:root.asri-mode-dark :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), .asri-palette-aerisland:root.asri-mode-dark .b3-menu, .asri-palette-aerisland:root.asri-mode-dark .b3-switch, .asri-palette-aerisland:root.asri-mode-dark .b3-chip--primary, .asri-palette-aerisland:root.asri-mode-dark .b3-chip--current, .asri-palette-aerisland:root.asri-mode-dark .b3-button--outline {
   --b3-theme-primary: var(--aerisland-base-accent);
 }
 
-[data-asri-palette=aerisland]:root.asri-mode-light .b3-button--outline,
-[data-asri-palette=aerisland]:root.asri-mode-light .protyle-breadcrumb__icon {
+.asri-palette-aerisland:root.asri-mode-light .b3-button--outline,
+.asri-palette-aerisland:root.asri-mode-light .protyle-breadcrumb__icon {
   --b3-theme-primary: var(--b3-theme-accent);
 }
 
-[data-asri-palette=zerith]:root.asri-mode-light {
+:root.asri-palette-zerith.asri-mode-light {
   --zerith-base-accent: #cfea00;
   --asri-theme-accent-customized: var(--zerith-base-accent);
   --b3-theme-primary: #8bc600;
@@ -10387,41 +10389,41 @@ body.asri-tfp-progressive .og-fake-doc-breadcrumb-container.og-breadcrumb-onelin
   --b3-theme-on-background: #265970;
   --b3-theme-on-surface: #265970a2;
 }
-[data-asri-palette=zerith]:root.asri-mode-light .layout__center :not(.av__views) > .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
-[data-asri-palette=zerith]:root.asri-mode-light .layout__center :not(.av__views) > .layout-tab-bar .item--focus {
+:root.asri-palette-zerith.asri-mode-light .layout__center :not(.av__views) > .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
+:root.asri-palette-zerith.asri-mode-light .layout__center :not(.av__views) > .layout-tab-bar .item--focus {
   background-color: rgba(199, 234, 0, 0.5568627451);
 }
-[data-asri-palette=zerith]:root.asri-mode-light [data-type=wnd]:not(.layout__wnd--active) :not(.av__views) > .layout-tab-bar .item--focus {
+:root.asri-palette-zerith.asri-mode-light [data-type=wnd]:not(.layout__wnd--active) :not(.av__views) > .layout-tab-bar .item--focus {
   background-color: rgba(199, 234, 0, 0.3215686275) !important;
 }
-[data-asri-palette=zerith]:root.asri-mode-dark {
+:root.asri-palette-zerith.asri-mode-dark {
   --zerith-base-accent: #dbf611;
   --asri-theme-accent-customized: var(--zerith-base-accent);
   --b3-theme-primary: var(--zerith-base-accent);
   --b3-theme-on-background: #bfd1cc;
   --b3-theme-on-surface: #bfd1cca2;
 }
-[data-asri-palette=zerith]:root.asri-mode-dark .protyle-title__input,
-[data-asri-palette=zerith]:root.asri-mode-dark [data-type=NodeHeading],
-[data-asri-palette=zerith]:root.asri-mode-dark .b3-dialog__header,
-[data-asri-palette=zerith]:root.asri-mode-dark :where(h1, h2, h3, h4, h5, h6) {
+:root.asri-palette-zerith.asri-mode-dark .protyle-title__input,
+:root.asri-palette-zerith.asri-mode-dark [data-type=NodeHeading],
+:root.asri-palette-zerith.asri-mode-dark .b3-dialog__header,
+:root.asri-palette-zerith.asri-mode-dark :where(h1, h2, h3, h4, h5, h6) {
   color: var(--b3-theme-primary);
 }
 
-[data-asri-palette=zerith]:root.asri-mode-light #barWorkspace, [data-asri-palette=zerith]:root.asri-mode-light #message, [data-asri-palette=zerith]:root.asri-mode-light .b3-button--outline:hover, [data-asri-palette=zerith]:root.asri-mode-light .b3-dialog__action .b3-button--text, [data-asri-palette=zerith]:root.asri-mode-light #transactionError + .b3-dialog__action button:last-child, [data-asri-palette=zerith]:root.asri-mode-light #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, [data-asri-palette=zerith]:root.asri-mode-light .protyle-breadcrumb__icon:hover, [data-asri-palette=zerith]:root.asri-mode-light .protyle-breadcrumb__item, [data-asri-palette=zerith]:root.asri-mode-light :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), [data-asri-palette=zerith]:root.asri-mode-light .b3-menu, [data-asri-palette=zerith]:root.asri-mode-light .b3-switch, [data-asri-palette=zerith]:root.asri-mode-light .b3-chip--primary, [data-asri-palette=zerith]:root.asri-mode-light .b3-chip--current, [data-asri-palette=zerith]:root.asri-mode-light .b3-button--outline {
+.asri-palette-zerith:root.asri-mode-light #barWorkspace, .asri-palette-zerith:root.asri-mode-light #message, .asri-palette-zerith:root.asri-mode-light .b3-button--outline:hover, .asri-palette-zerith:root.asri-mode-light .b3-dialog__action .b3-button--text, .asri-palette-zerith:root.asri-mode-light #transactionError + .b3-dialog__action button:last-child, .asri-palette-zerith:root.asri-mode-light #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, .asri-palette-zerith:root.asri-mode-light .protyle-breadcrumb__icon:hover, .asri-palette-zerith:root.asri-mode-light .protyle-breadcrumb__item, .asri-palette-zerith:root.asri-mode-light :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), .asri-palette-zerith:root.asri-mode-light .b3-menu, .asri-palette-zerith:root.asri-mode-light .b3-switch, .asri-palette-zerith:root.asri-mode-light .b3-chip--primary, .asri-palette-zerith:root.asri-mode-light .b3-chip--current, .asri-palette-zerith:root.asri-mode-light .b3-button--outline {
   --b3-theme-primary: var(--zerith-base-accent);
   --b3-theme-on-primary: var(--b3-theme-on-background);
 }
-[data-asri-palette=zerith]:root.asri-mode-dark #barWorkspace, [data-asri-palette=zerith]:root.asri-mode-dark #message, [data-asri-palette=zerith]:root.asri-mode-dark .b3-button--outline:hover, [data-asri-palette=zerith]:root.asri-mode-dark .b3-dialog__action .b3-button--text, [data-asri-palette=zerith]:root.asri-mode-dark #transactionError + .b3-dialog__action button:last-child, [data-asri-palette=zerith]:root.asri-mode-dark #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, [data-asri-palette=zerith]:root.asri-mode-dark .protyle-breadcrumb__icon:hover, [data-asri-palette=zerith]:root.asri-mode-dark .protyle-breadcrumb__item, [data-asri-palette=zerith]:root.asri-mode-dark :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), [data-asri-palette=zerith]:root.asri-mode-dark .b3-menu, [data-asri-palette=zerith]:root.asri-mode-dark .b3-switch, [data-asri-palette=zerith]:root.asri-mode-dark .b3-chip--primary, [data-asri-palette=zerith]:root.asri-mode-dark .b3-chip--current, [data-asri-palette=zerith]:root.asri-mode-dark .b3-button--outline {
+.asri-palette-zerith:root.asri-mode-dark #barWorkspace, .asri-palette-zerith:root.asri-mode-dark #message, .asri-palette-zerith:root.asri-mode-dark .b3-button--outline:hover, .asri-palette-zerith:root.asri-mode-dark .b3-dialog__action .b3-button--text, .asri-palette-zerith:root.asri-mode-dark #transactionError + .b3-dialog__action button:last-child, .asri-palette-zerith:root.asri-mode-dark #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, .asri-palette-zerith:root.asri-mode-dark .protyle-breadcrumb__icon:hover, .asri-palette-zerith:root.asri-mode-dark .protyle-breadcrumb__item, .asri-palette-zerith:root.asri-mode-dark :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), .asri-palette-zerith:root.asri-mode-dark .b3-menu, .asri-palette-zerith:root.asri-mode-dark .b3-switch, .asri-palette-zerith:root.asri-mode-dark .b3-chip--primary, .asri-palette-zerith:root.asri-mode-dark .b3-chip--current, .asri-palette-zerith:root.asri-mode-dark .b3-button--outline {
   --b3-theme-primary: var(--zerith-base-accent);
 }
 
-[data-asri-palette=zerith]:root.asri-mode-light .b3-button--outline,
-[data-asri-palette=zerith]:root.asri-mode-light .protyle-breadcrumb__icon {
+.asri-palette-zerith:root.asri-mode-light .b3-button--outline,
+.asri-palette-zerith:root.asri-mode-light .protyle-breadcrumb__icon {
   --b3-theme-primary: var(--b3-theme-accent);
 }
 
-[data-asri-palette=polar]:root.asri-mode-light {
+:root.asri-palette-polar.asri-mode-light {
   --polar-base-accent: #000;
   --asri-theme-accent-customized: var(--polar-base-accent);
   --b3-theme-primary: var(--polar-base-accent);
@@ -10430,10 +10432,10 @@ body.asri-tfp-progressive .og-fake-doc-breadcrumb-container.og-breadcrumb-onelin
   --b3-theme-on-background: #1d1d1f;
   --b3-theme-on-surface: #1d1d1f87;
 }
-[data-asri-palette=polar]:root.asri-mode-light :where(.b3-typography, .protyle-wysiwyg) :where([data-type=a], a) {
+:root.asri-palette-polar.asri-mode-light :where(.b3-typography, .protyle-wysiwyg) :where([data-type=a], a) {
   --b3-theme-primary: var(--b3-theme-accent);
 }
-[data-asri-palette=polar]:root.asri-mode-dark {
+:root.asri-palette-polar.asri-mode-dark {
   --polar-base-accent: #fff;
   --asri-theme-accent-customized: #50f555;
   --b3-theme-primary: var(--polar-base-accent);
@@ -10442,56 +10444,56 @@ body.asri-tfp-progressive .og-fake-doc-breadcrumb-container.og-breadcrumb-onelin
   --b3-theme-on-background: #dddddd;
   --b3-theme-on-surface: #dddddda2;
 }
-[data-asri-palette=polar]:root.asri-mode-dark .code-block,
-[data-asri-palette=polar]:root.asri-mode-dark code,
-[data-asri-palette=polar]:root.asri-mode-dark .config-account__center:not(.config-account__center--text) {
+:root.asri-palette-polar.asri-mode-dark .code-block,
+:root.asri-palette-polar.asri-mode-dark code,
+:root.asri-palette-polar.asri-mode-dark .config-account__center:not(.config-account__center--text) {
   box-shadow: 0 0 0 1px var(--b3-border-color-trans);
 }
-[data-asri-palette=polar]:root.asri-mode-dark :is(.layout, .b3-typography) {
+:root.asri-palette-polar.asri-mode-dark :is(.layout, .b3-typography) {
   --b3-theme-primary: var(--b3-theme-accent);
 }
-[data-asri-palette=polar] :is(.layout, .b3-typography) {
+:root.asri-palette-polar :is(.layout, .b3-typography) {
   --b3-theme-primary-light: oklch(from var(--b3-theme-accent) l c h / 0.56);
   --b3-theme-primary-lighter: oklch(from var(--b3-theme-accent) l c h / 0.38);
   --b3-theme-primary-lightest: oklch(from var(--b3-theme-accent) l c h / 0.2);
 }
-[data-asri-palette=polar] .protyle-title__input,
-[data-asri-palette=polar] [data-type=NodeHeading],
-[data-asri-palette=polar] :where(h1, h2, h3, h4, h5, h6) {
+:root.asri-palette-polar .protyle-title__input,
+:root.asri-palette-polar [data-type=NodeHeading],
+:root.asri-palette-polar :where(h1, h2, h3, h4, h5, h6) {
   color: var(--b3-theme-primary);
 }
-[data-asri-palette=polar] .layout__dockl + .layout__resize--lr::after {
+:root.asri-palette-polar .layout__dockl + .layout__resize--lr::after {
   background-color: var(--b3-border-color-trans);
 }
-[data-asri-palette=polar] .config__panel .b3-tab-bar,
-[data-asri-palette=polar] .config__panel .item__side {
+:root.asri-palette-polar .config__panel .b3-tab-bar,
+:root.asri-palette-polar .config__panel .item__side {
   border-right: 1px solid var(--b3-border-color-trans);
 }
-[data-asri-palette=polar]:where(:lang(ar_SA), :lang(he_IL)) .config__panel .b3-tab-bar,
-[data-asri-palette=polar]:where(:lang(ar_SA), :lang(he_IL)) .config__panel .item__side {
+:root.asri-palette-polar.is-rtl-lang .config__panel .b3-tab-bar,
+:root.asri-palette-polar.is-rtl-lang .config__panel .item__side {
   border-right: unset;
   border-left: 1px solid var(--b3-border-color-trans);
 }
-[data-asri-palette=polar] .layout__dockl,
-[data-asri-palette=polar] .dock,
-[data-asri-palette=polar] .config__panel :is(.b3-tab-bar, .item__side),
-[data-asri-palette=polar] .config-account {
+:root.asri-palette-polar .layout__dockl,
+:root.asri-palette-polar .dock,
+:root.asri-palette-polar .config__panel :is(.b3-tab-bar, .item__side),
+:root.asri-palette-polar .config-account {
   --b3-theme-surface: var(--b3-theme-background);
 }
-[data-asri-palette=polar] body:not(.asri-tfp) .protyle .protyle-breadcrumb {
+:root.asri-palette-polar body:not(.asri-tfp) .protyle .protyle-breadcrumb {
   box-shadow: 0 -1px 0 0 var(--b3-border-color-trans) inset;
 }
 @supports (color: oklch(from blue l c h)) {
-  [data-asri-palette=polar] body.asri-vibrancy:not(.body-asri--browser, .body--fullscreen) :is(.layout__dockl, .layout__dockb):not(.layout--float) .layout-tab-container, [data-asri-palette=polar] body.asri-vibrancy:not(.body-asri--browser, .body--fullscreen) .dock.dock-layout-expanded, [data-asri-palette=polar] body.asri-vibrancy:not(.body-asri--browser, .body--fullscreen) .dock#dockBottom, [data-asri-palette=polar] body.asri-vibrancy:not(.body-asri--browser, .body--fullscreen) #dockBottom.fn__none.has-layout-dockb-float ~ .status, [data-asri-palette=polar] body.asri-vibrancy:not(.body-asri--browser, .body--fullscreen) #dockBottom:not(.fn__none) ~ .status {
+  :root.asri-palette-polar body.asri-vibrancy:not(.body-asri--browser, .body--fullscreen) :is(.layout__dockl, .layout__dockb):not(.layout--float) .layout-tab-container, :root.asri-palette-polar body.asri-vibrancy:not(.body-asri--browser, .body--fullscreen) .dock.dock-layout-expanded, :root.asri-palette-polar body.asri-vibrancy:not(.body-asri--browser, .body--fullscreen) .dock#dockBottom, :root.asri-palette-polar body.asri-vibrancy:not(.body-asri--browser, .body--fullscreen) #dockBottom.fn__none.has-layout-dockb-float ~ .status, :root.asri-palette-polar body.asri-vibrancy:not(.body-asri--browser, .body--fullscreen) #dockBottom:not(.fn__none) ~ .status {
     background-color: oklch(from var(--b3-theme-background) l c h/0.5);
   }
 }
 
-[data-asri-palette=stellula] body {
+:root.asri-palette-stellula body {
   --b3-scroll-color-hover: var(--b3-theme-primary-lighter);
   --b3-scroll-color-track: var(--b3-theme-background-light);
 }
-[data-asri-palette=stellula]:root.asri-mode-light {
+:root.asri-palette-stellula.asri-mode-light {
   --stellula-base-accent: #7ed5db;
   --asri-theme-accent-customized: var(--stellula-base-accent);
   --b3-theme-primary: #48b2ba;
@@ -10500,14 +10502,14 @@ body.asri-tfp-progressive .og-fake-doc-breadcrumb-container.og-breadcrumb-onelin
   --b3-theme-on-background: #424074;
   --b3-theme-on-surface: #373379a2;
 }
-[data-asri-palette=stellula]:root.asri-mode-light .layout__center :not(.av__views) > .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
-[data-asri-palette=stellula]:root.asri-mode-light .layout__center :not(.av__views) > .layout-tab-bar .item--focus {
+:root.asri-palette-stellula.asri-mode-light .layout__center :not(.av__views) > .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
+:root.asri-palette-stellula.asri-mode-light .layout__center :not(.av__views) > .layout-tab-bar .item--focus {
   background-color: rgba(126, 213, 219, 0.5568627451);
 }
-[data-asri-palette=stellula]:root.asri-mode-light [data-type=wnd]:not(.layout__wnd--active) :not(.av__views) > .layout-tab-bar .item--focus {
+:root.asri-palette-stellula.asri-mode-light [data-type=wnd]:not(.layout__wnd--active) :not(.av__views) > .layout-tab-bar .item--focus {
   background-color: rgba(126, 213, 219, 0.3215686275) !important;
 }
-[data-asri-palette=stellula]:root.asri-mode-dark {
+:root.asri-palette-stellula.asri-mode-dark {
   --stellula-base-accent: #fc8b60;
   --asri-theme-accent-customized: var(--stellula-base-accent);
   --b3-theme-primary: var(--stellula-base-accent);
@@ -10516,26 +10518,26 @@ body.asri-tfp-progressive .og-fake-doc-breadcrumb-container.og-breadcrumb-onelin
   --b3-theme-on-background: #e6cfbc;
   --b3-theme-on-surface: #e6cfbca2;
 }
-[data-asri-palette=stellula] .protyle-title__input,
-[data-asri-palette=stellula] [data-type=NodeHeading],
-[data-asri-palette=stellula] :where(h1, h2, h3, h4, h5, h6) {
+:root.asri-palette-stellula .protyle-title__input,
+:root.asri-palette-stellula [data-type=NodeHeading],
+:root.asri-palette-stellula h1, :root.asri-palette-stellula h2, :root.asri-palette-stellula h3, :root.asri-palette-stellula h4, :root.asri-palette-stellula h5, :root.asri-palette-stellula h6 {
   color: var(--b3-theme-primary);
 }
 
-[data-asri-palette=stellula]:root.asri-mode-light #barWorkspace, [data-asri-palette=stellula]:root.asri-mode-light #message, [data-asri-palette=stellula]:root.asri-mode-light .b3-button--outline:hover, [data-asri-palette=stellula]:root.asri-mode-light .b3-dialog__action .b3-button--text, [data-asri-palette=stellula]:root.asri-mode-light #transactionError + .b3-dialog__action button:last-child, [data-asri-palette=stellula]:root.asri-mode-light #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, [data-asri-palette=stellula]:root.asri-mode-light .protyle-breadcrumb__icon:hover, [data-asri-palette=stellula]:root.asri-mode-light .protyle-breadcrumb__item, [data-asri-palette=stellula]:root.asri-mode-light :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), [data-asri-palette=stellula]:root.asri-mode-light .b3-menu, [data-asri-palette=stellula]:root.asri-mode-light .b3-switch, [data-asri-palette=stellula]:root.asri-mode-light .b3-chip--primary, [data-asri-palette=stellula]:root.asri-mode-light .b3-chip--current, [data-asri-palette=stellula]:root.asri-mode-light .b3-button--outline {
+.asri-palette-stellula:root.asri-mode-light #barWorkspace, .asri-palette-stellula:root.asri-mode-light #message, .asri-palette-stellula:root.asri-mode-light .b3-button--outline:hover, .asri-palette-stellula:root.asri-mode-light .b3-dialog__action .b3-button--text, .asri-palette-stellula:root.asri-mode-light #transactionError + .b3-dialog__action button:last-child, .asri-palette-stellula:root.asri-mode-light #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, .asri-palette-stellula:root.asri-mode-light .protyle-breadcrumb__icon:hover, .asri-palette-stellula:root.asri-mode-light .protyle-breadcrumb__item, .asri-palette-stellula:root.asri-mode-light :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), .asri-palette-stellula:root.asri-mode-light .b3-menu, .asri-palette-stellula:root.asri-mode-light .b3-switch, .asri-palette-stellula:root.asri-mode-light .b3-chip--primary, .asri-palette-stellula:root.asri-mode-light .b3-chip--current, .asri-palette-stellula:root.asri-mode-light .b3-button--outline {
   --b3-theme-primary: var(--stellula-base-accent);
   --b3-theme-on-primary: var(--b3-theme-on-background);
 }
-[data-asri-palette=stellula]:root.asri-mode-dark #barWorkspace, [data-asri-palette=stellula]:root.asri-mode-dark #message, [data-asri-palette=stellula]:root.asri-mode-dark .b3-button--outline:hover, [data-asri-palette=stellula]:root.asri-mode-dark .b3-dialog__action .b3-button--text, [data-asri-palette=stellula]:root.asri-mode-dark #transactionError + .b3-dialog__action button:last-child, [data-asri-palette=stellula]:root.asri-mode-dark #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, [data-asri-palette=stellula]:root.asri-mode-dark .protyle-breadcrumb__icon:hover, [data-asri-palette=stellula]:root.asri-mode-dark .protyle-breadcrumb__item, [data-asri-palette=stellula]:root.asri-mode-dark :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), [data-asri-palette=stellula]:root.asri-mode-dark .b3-menu, [data-asri-palette=stellula]:root.asri-mode-dark .b3-switch, [data-asri-palette=stellula]:root.asri-mode-dark .b3-chip--primary, [data-asri-palette=stellula]:root.asri-mode-dark .b3-chip--current, [data-asri-palette=stellula]:root.asri-mode-dark .b3-button--outline {
+.asri-palette-stellula:root.asri-mode-dark #barWorkspace, .asri-palette-stellula:root.asri-mode-dark #message, .asri-palette-stellula:root.asri-mode-dark .b3-button--outline:hover, .asri-palette-stellula:root.asri-mode-dark .b3-dialog__action .b3-button--text, .asri-palette-stellula:root.asri-mode-dark #transactionError + .b3-dialog__action button:last-child, .asri-palette-stellula:root.asri-mode-dark #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, .asri-palette-stellula:root.asri-mode-dark .protyle-breadcrumb__icon:hover, .asri-palette-stellula:root.asri-mode-dark .protyle-breadcrumb__item, .asri-palette-stellula:root.asri-mode-dark :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), .asri-palette-stellula:root.asri-mode-dark .b3-menu, .asri-palette-stellula:root.asri-mode-dark .b3-switch, .asri-palette-stellula:root.asri-mode-dark .b3-chip--primary, .asri-palette-stellula:root.asri-mode-dark .b3-chip--current, .asri-palette-stellula:root.asri-mode-dark .b3-button--outline {
   --b3-theme-primary: #41959b;
 }
 
-[data-asri-palette=stellula]:root.asri-mode-light .b3-button--outline,
-[data-asri-palette=stellula]:root.asri-mode-light .protyle-breadcrumb__icon {
+.asri-palette-stellula:root.asri-mode-light .b3-button--outline,
+.asri-palette-stellula:root.asri-mode-light .protyle-breadcrumb__icon {
   --b3-theme-primary: var(--b3-theme-accent);
 }
 
-[data-asri-palette=vael]:root.asri-mode-light {
+:root.asri-palette-vael.asri-mode-light {
   --vael-base-accent: #96c4df;
   --asri-theme-accent-customized: var(--vael-base-accent);
   --b3-theme-primary: rgb(85.3995577624, 145.2531997697, 178.4722638787);
@@ -10545,7 +10547,7 @@ body.asri-tfp-progressive .og-fake-doc-breadcrumb-container.og-breadcrumb-onelin
   --b3-theme-on-background: rgb(41.8635892964, 85.279408943, 108.7040099547);
   --b3-theme-on-surface: rgba(41.8635892964, 85.279408943, 108.7040099547, 0.7);
 }
-[data-asri-palette=vael]:root.asri-mode-dark {
+:root.asri-palette-vael.asri-mode-dark {
   --vael-base-accent: rgb(125.8132209462, 193.7503424992, 166.2480425264);
   --asri-theme-accent-customized: var(--vael-base-accent);
   --b3-theme-primary: var(--vael-base-accent);
@@ -10555,21 +10557,21 @@ body.asri-tfp-progressive .og-fake-doc-breadcrumb-container.og-breadcrumb-onelin
   --b3-theme-on-background: rgb(191.1677902952, 211.2814226307, 202.181499109);
   --b3-theme-on-surface: rgba(191.1677902952, 211.2814226307, 202.181499109, 0.7);
 }
-[data-asri-palette=vael] .protyle-title__input,
-[data-asri-palette=vael] [data-type=NodeHeading],
-[data-asri-palette=vael] .b3-dialog__header {
+:root.asri-palette-vael .protyle-title__input,
+:root.asri-palette-vael [data-type=NodeHeading],
+:root.asri-palette-vael .b3-dialog__header {
   color: var(--b3-theme-primary);
 }
 
-[data-asri-palette=vael]:root.asri-mode-light #barWorkspace, [data-asri-palette=vael]:root.asri-mode-light #message, [data-asri-palette=vael]:root.asri-mode-light .b3-button--outline:hover, [data-asri-palette=vael]:root.asri-mode-light .b3-dialog__action .b3-button--text, [data-asri-palette=vael]:root.asri-mode-light #transactionError + .b3-dialog__action button:last-child, [data-asri-palette=vael]:root.asri-mode-light #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, [data-asri-palette=vael]:root.asri-mode-light .protyle-breadcrumb__icon:hover, [data-asri-palette=vael]:root.asri-mode-light .protyle-breadcrumb__item, [data-asri-palette=vael]:root.asri-mode-light :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), [data-asri-palette=vael]:root.asri-mode-light .b3-menu, [data-asri-palette=vael]:root.asri-mode-light .b3-switch, [data-asri-palette=vael]:root.asri-mode-light .b3-chip--primary, [data-asri-palette=vael]:root.asri-mode-light .b3-chip--current, [data-asri-palette=vael]:root.asri-mode-light .b3-button--outline {
+.asri-palette-vael:root.asri-mode-light #barWorkspace, .asri-palette-vael:root.asri-mode-light #message, .asri-palette-vael:root.asri-mode-light .b3-button--outline:hover, .asri-palette-vael:root.asri-mode-light .b3-dialog__action .b3-button--text, .asri-palette-vael:root.asri-mode-light #transactionError + .b3-dialog__action button:last-child, .asri-palette-vael:root.asri-mode-light #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, .asri-palette-vael:root.asri-mode-light .protyle-breadcrumb__icon:hover, .asri-palette-vael:root.asri-mode-light .protyle-breadcrumb__item, .asri-palette-vael:root.asri-mode-light :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), .asri-palette-vael:root.asri-mode-light .b3-menu, .asri-palette-vael:root.asri-mode-light .b3-switch, .asri-palette-vael:root.asri-mode-light .b3-chip--primary, .asri-palette-vael:root.asri-mode-light .b3-chip--current, .asri-palette-vael:root.asri-mode-light .b3-button--outline {
   --b3-theme-primary: var(--vael-base-accent);
   --b3-theme-on-primary: rgb(0, 25.1204245248, 45.3764292404);
 }
-[data-asri-palette=vael]:root.asri-mode-dark #barWorkspace, [data-asri-palette=vael]:root.asri-mode-dark #message, [data-asri-palette=vael]:root.asri-mode-dark .b3-button--outline:hover, [data-asri-palette=vael]:root.asri-mode-dark .b3-dialog__action .b3-button--text, [data-asri-palette=vael]:root.asri-mode-dark #transactionError + .b3-dialog__action button:last-child, [data-asri-palette=vael]:root.asri-mode-dark #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, [data-asri-palette=vael]:root.asri-mode-dark .protyle-breadcrumb__icon:hover, [data-asri-palette=vael]:root.asri-mode-dark .protyle-breadcrumb__item, [data-asri-palette=vael]:root.asri-mode-dark :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), [data-asri-palette=vael]:root.asri-mode-dark .b3-menu, [data-asri-palette=vael]:root.asri-mode-dark .b3-switch, [data-asri-palette=vael]:root.asri-mode-dark .b3-chip--primary, [data-asri-palette=vael]:root.asri-mode-dark .b3-chip--current, [data-asri-palette=vael]:root.asri-mode-dark .b3-button--outline {
+.asri-palette-vael:root.asri-mode-dark #barWorkspace, .asri-palette-vael:root.asri-mode-dark #message, .asri-palette-vael:root.asri-mode-dark .b3-button--outline:hover, .asri-palette-vael:root.asri-mode-dark .b3-dialog__action .b3-button--text, .asri-palette-vael:root.asri-mode-dark #transactionError + .b3-dialog__action button:last-child, .asri-palette-vael:root.asri-mode-dark #configBazaarReadme .item__side .b3-button:not(.b3-button--progress):hover, .asri-palette-vael:root.asri-mode-dark .protyle-breadcrumb__icon:hover, .asri-palette-vael:root.asri-mode-dark .protyle-breadcrumb__item, .asri-palette-vael:root.asri-mode-dark :not(.config-bazaar__title) > .b3-button:not(.b3-button--outline, .b3-button--big), .asri-palette-vael:root.asri-mode-dark .b3-menu, .asri-palette-vael:root.asri-mode-dark .b3-switch, .asri-palette-vael:root.asri-mode-dark .b3-chip--primary, .asri-palette-vael:root.asri-mode-dark .b3-chip--current, .asri-palette-vael:root.asri-mode-dark .b3-button--outline {
   --b3-theme-primary: var(--vael-base-accent);
 }
 
-[data-asri-palette=vael]:root.asri-mode-light .b3-button--outline,
-[data-asri-palette=vael]:root.asri-mode-light .protyle-breadcrumb__icon {
+.asri-palette-vael:root.asri-mode-light .b3-button--outline,
+.asri-palette-vael:root.asri-mode-light .protyle-breadcrumb__icon {
   --b3-theme-primary: var(--b3-theme-accent);
 }

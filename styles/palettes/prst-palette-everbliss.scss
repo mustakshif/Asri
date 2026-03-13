@@ -1,7 +1,7 @@
 @use "../features/_utils.scss" as *;
 
-[data-asri-palette="everbliss"] {
-  &:root.asri-mode-light {
+:root.asri-palette-everbliss {
+  &.asri-mode-light {
     --everbliss-base-accent: #f06255;
     --asri-theme-accent-customized: var(--everbliss-base-accent);
     --b3-theme-primary: var(--everbliss-base-accent);
@@ -10,7 +10,7 @@
     --b3-theme-on-surface: #4d3d5fa2;
   }
 
-  &:root.asri-mode-dark {
+  &.asri-mode-dark {
     --everbliss-base-accent: #d55f4f;
     --asri-theme-accent-customized: var(--everbliss-base-accent);
     --b3-theme-primary: var(--everbliss-base-accent);
@@ -27,13 +27,13 @@
 }
 
 #{$primary-color-reverse-selectors, ".b3-button--outline"} {
-  [data-asri-palette="everbliss"]:root.asri-mode-light & {
+  .asri-palette-everbliss:root.asri-mode-light & {
     --b3-theme-primary: var(--everbliss-base-accent);
     --b3-theme-on-primary: #fefaef;
     --b3-menu-item-background-hover: #de6257;
   }
 
-  [data-asri-palette="everbliss"]:root.asri-mode-dark & {
+  .asri-palette-everbliss:root.asri-mode-dark & {
     --b3-theme-primary: var(--everbliss-base-accent);
     --b3-theme-on-primary: #f8f0e9;
   }

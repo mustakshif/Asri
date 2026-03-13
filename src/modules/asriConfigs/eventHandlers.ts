@@ -129,14 +129,23 @@ function handleChromaSliderInput(this: any) {
 }
 
 function resetPresetPalette(alterFollowSysAccentColor: boolean = true) {
-  const curPresetPalette = document.documentElement.classList.toString().split(" ").find(cls => cls.startsWith("asri-palette-"))?.split("-")[2] || null;
+  const curPresetPalette =
+    document.documentElement.classList
+      .toString()
+      .split(" ")
+      .find((cls) => cls.startsWith("asri-palette-"))
+      ?.split("-")[2] || null;
 
   if (curPresetPalette === null) return;
 
+  document.documentElement.classList.forEach((cls) => {
+    if (cls.startsWith("asri-palette-")) {
+      document.documentElement.classList.remove(cls);
+    }
+  });
   asriConfigs[curMode].presetPalette = "";
   document.getElementById(`prst-palette-${curPresetPalette}`)?.classList.remove("b3-menu__item--selected");
   document.getElementById("asriChroma")?.classList.remove("b3-menu__item--disabled");
-  document.documentElement.classList.remove(`asri-palette-${curPresetPalette}`);
   cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
   setIsUserAccentGray(asriConfigs[curMode].chroma === "0" ? true : false);
   // handleGrayScale(asriConfigs[curMode].chroma);
@@ -193,6 +202,11 @@ async function paletteMenuItemCallback(e: Event) {
     asriChromaBtn?.classList.add("b3-menu__item--disabled");
 
     target.classList.add("b3-menu__item--selected");
+    document.documentElement.classList.forEach((cls) => {
+      if (cls.startsWith("asri-palette-")) {
+        document.documentElement.classList.remove(cls);
+      }
+    });
     document.documentElement.classList.add(`asri-palette-${paletteID.split("-")[2]}`);
 
     // pickColorBtn?.classList.add("b3-menu__item--disabled");

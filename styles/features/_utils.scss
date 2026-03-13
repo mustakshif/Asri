@@ -272,7 +272,7 @@ https://css-tricks.com/easing-linear-gradients/
   } @else {
     animation-timeline: scroll(self x);
 
-    :where(:lang(ar_SA), :lang(he_IL)) & {
+    :root.is-rtl-lang & {
       animation-range: #{reverse-list($anim-range)};
       animation-direction: #{reverse-list($anim-dir)};
     }

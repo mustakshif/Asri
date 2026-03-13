@@ -2,14 +2,7 @@ import { environment as env } from "../../util/rsc";
 import { loadI18n } from "./i18n";
 import { getLocalConfigs, asriConfigs } from "./configs";
 import { asriPrstPalettes } from "./palettes";
-import {
-  setCurMode,
-  setI18n,
-  setFollowSysAccentColor,
-  setIsUserAccentGray,
-  followSysAccentColor,
-  curMode,
-} from "./state";
+import { setCurMode, setI18n, setFollowSysAccentColor, setIsUserAccentGray, followSysAccentColor, curMode } from "./state";
 import { cssVarManager } from "./cssVarManager";
 import { getSystemAccentColor } from "./systemColor";
 import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
@@ -26,11 +19,7 @@ export async function loadThemePalette() {
   if (!env.supportOklch) return;
 
   // check local configs to set initial theme color
-  const shouldUseCustomColor =
-    env.isInBrowser ||
-    env.isMobile ||
-    env.isLinux ||
-    (!followSysAccentColor && !asriConfigs[curMode].followCoverImgColor);
+  const shouldUseCustomColor = env.isInBrowser || env.isMobile || env.isLinux || (!followSysAccentColor && !asriConfigs[curMode].followCoverImgColor && !asriConfigs[curMode].presetPalette);
 
   if (shouldUseCustomColor) {
     cssVarManager.setProperty("--asri-user-custom-accent", asriConfigs[curMode].userCustomColor);
@@ -44,7 +33,11 @@ export async function loadThemePalette() {
   if (asriConfigs[curMode].presetPalette) {
     const paletteID = asriConfigs[curMode].presetPalette as keyof typeof asriPrstPalettes;
     const curPalette = asriPrstPalettes[paletteID][curMode];
-
+    document.documentElement.classList.forEach((cls) => {
+      if (cls.startsWith("asri-palette-")) {
+        document.documentElement.classList.remove(cls);
+      }
+    });
     document.documentElement.classList.add(`asri-palette-${paletteID.split("-")[2]}`);
     setFollowSysAccentColor(false);
     cssVarManager.setProperty("--asri-user-custom-accent", curPalette.primary);
@@ -55,19 +48,17 @@ export async function loadThemePalette() {
     reverseOnPrimaryLightness(curPalette.primary);
   } else if (asriConfigs[curMode].followCoverImgColor) {
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
-    // Remove any classes that match asri-palette-*
-    document.documentElement.classList.forEach(cls => {
+    document.documentElement.classList.forEach((cls) => {
       if (cls.startsWith("asri-palette-")) {
-      document.documentElement.classList.remove(cls);
+        document.documentElement.classList.remove(cls);
       }
     });
     updateCoverImgColor();
   } else {
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
-    // Remove any classes that match asri-palette-*
-    document.documentElement.classList.forEach(cls => {
+    document.documentElement.classList.forEach((cls) => {
       if (cls.startsWith("asri-palette-")) {
-      document.documentElement.classList.remove(cls);
+        document.documentElement.classList.remove(cls);
       }
     });
     setIsUserAccentGray(asriConfigs[curMode].chroma === "0" ? true : false);

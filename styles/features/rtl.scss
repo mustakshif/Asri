@@ -1,35 +1,36 @@
-:where(:lang(ar_SA), :lang(he_IL)) {
+:root.is-rtl-lang {
   --gnf: -1; // global negate factor
 
   // 所有 rtl 元素
-  :is(
-      .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink),
-      .b3-menu,
-      .protyle-breadcrumb,
-      .tooltip,
-      .b3-button,
-      .protyle-util .block__icons--menu,
-      .protyle-hint.hint--menu > div
-    ),
-  :where(
-      [data-key="dialog-setting"],
-      [data-key="dialog-confirm"],
-      [data-key="dialog-snippets"],
-      [data-key="dialog-emojis"],
-      [data-key="dialog-recentdocs"],
-      [data-key="dialog-searchtype"],
-      [data-key="dialog-wechatreminder"],
-      [data-key="dialog-setpassword"],
-      [data-key="dialog-saveworkspace"],
-      [data-key="dialog-createnotebook"],
-      [data-key="dialog-rename"],
-      [data-key="dialog-commandpanel"],
-      [data-key="dialog-aiupdatecustomaction"],
-      [data-key="dialog-backgroundlink"],
-      [data-key="dialog-aicustomaction"]
-    )
-    .b3-dialog__container {
+
+  .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink),
+  .b3-menu,
+  .protyle-breadcrumb,
+  .tooltip,
+  .b3-button,
+  .protyle-util .block__icons--menu,
+  .protyle-hint.hint--menu > div {
     direction: rtl;
+  }
+
+  .b3-dialog--open[data-key="dialog-setting"],
+  .b3-dialog--open[data-key="dialog-confirm"],
+  .b3-dialog--open[data-key="dialog-snippets"],
+  .b3-dialog--open[data-key="dialog-emojis"],
+  .b3-dialog--open[data-key="dialog-recentdocs"],
+  .b3-dialog--open[data-key="dialog-searchtype"],
+  .b3-dialog--open[data-key="dialog-wechatreminder"],
+  .b3-dialog--open[data-key="dialog-setpassword"],
+  .b3-dialog--open[data-key="dialog-saveworkspace"],
+  .b3-dialog--open[data-key="dialog-createnotebook"],
+  .b3-dialog--open[data-key="dialog-rename"],
+  .b3-dialog--open[data-key="dialog-commandpanel"],
+  .b3-dialog--open[data-key="dialog-aiupdatecustomaction"],
+  .b3-dialog--open[data-key="dialog-backgroundlink"],
+  .b3-dialog--open[data-key="dialog-aicustomaction"] {
+    .b3-dialog__container {
+      direction: rtl;
+    }
   }
 
   // 所有 ltr 元素

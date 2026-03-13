@@ -22,9 +22,13 @@ export function addEnvClassNames() {
       document.body.classList.add(className);
     }
   });
-  
-  document.documentElement.classList.remove(`asri-mode-dark`, `asri-mode-light`);
+
+  document.documentElement.classList.remove(`asri-mode-dark`, `asri-mode-light`, 'is-rtl-lang');
   document.documentElement.classList.add(`asri-mode-${env.appSchemeMode}`);
+
+  if (env.lang === "ar_SA" || env.lang === "he_IL") {
+    document.documentElement.classList.add("is-rtl-lang");
+  }
 }
 
 export function removeEnvClassNames() {
@@ -32,5 +36,5 @@ export function removeEnvClassNames() {
     document.body.classList.remove(className);
   });
 
-  document.documentElement.classList.remove(`asri-mode-dark`, `asri-mode-light`);
+  document.documentElement.classList.remove(`asri-mode-dark`, `asri-mode-light`, 'is-rtl-lang');
 }
