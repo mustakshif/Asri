@@ -3,28 +3,27 @@
 
 body:not(.asri-disable-backdrop-blur) {
   // .layout__wnd--active,
-  [data-type="wnd"] {
-    // pdf
-    #outerContainer {
-      #findbar:not(.fn__hidden),
-      .pdf__util {
-        background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
-        @include bg-blur;
+
+  // pdf
+  #outerContainer {
+    #findbar:not(.fn__hidden),
+    .pdf__util {
+      background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+      @include bg-blur;
+
+      @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
+        @include theme-variant-color(background-color, menu-background, $medium-transparency);
+      }
+    }
+
+    #dialogContainer {
+      .dialog {
+        background-color: oklch(from var(--b3-menu-background) l c h / $thick-transparency);
+
+        @include bg-blur($brightness-dark: 0.95);
 
         @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-          @include theme-variant-color(background-color, menu-background, $medium-transparency);
-        }
-      }
-
-      #dialogContainer {
-        .dialog {
-          background-color: oklch(from var(--b3-menu-background) l c h / $thick-transparency);
-
-          @include bg-blur($brightness-dark: 0.95);
-
-          @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
-            @include theme-variant-color(background-color, menu-background, $thick-transparency);
-          }
+          @include theme-variant-color(background-color, menu-background, $thick-transparency);
         }
       }
     }

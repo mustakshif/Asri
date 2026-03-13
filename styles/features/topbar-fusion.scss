@@ -317,8 +317,7 @@ body:not(.body--window) {
 // 兼容非protyle界面 https://github.com/mustakshif/Asri/issues/217
 .layout__center .layout-tab-container {
   > .kmind-plugin-doc-editor-overflow-hidden,
-  > :not(.protyle, .fn__none, .file-tree),
-  > :not([data-loading="finished"]) {
+  > :not(.protyle, .fn__none, .file-tree):not([data-loading="finished"]) {
     padding-top: 6px;
   }
 }

@@ -1,7 +1,7 @@
 @use "../base" as *;
 @use "./utils" as *;
 
-.asri-tfp:not(.asri-disable-backdrop-blur):not(.body-asri--mobile) {
+.asri-tfp:not(.body-asri--mobile) {
   &.asri-dragging-gutter {
     // fix the issue when dragging a block up, the auto-scroll is not triggered
 
