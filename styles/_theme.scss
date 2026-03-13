@@ -56,10 +56,8 @@
     @include theme-root-light;
   }
 
-  body {
-    ::selection {
-      background-color: var(--b3-theme-primary-lightest);
-    }
+  [contenteditable="true"]::selection { 
+    background-color: var(--b3-theme-primary-lightest);
   }
 
   // use hex to fix https://github.com/mustakshif/Asri/issues/39

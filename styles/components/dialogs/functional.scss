@@ -97,10 +97,10 @@
 }
 
 [data-key="dialog-snippets"] {
-  // textarea {
-  //     height: fit-content;
-  //     max-height: 8em;
-  // }
+  textarea {
+    field-sizing: content;
+    max-height: 20em; // 无法手动调至更高高度
+  }
 
   .b3-switch--side {
     margin-right: unset;

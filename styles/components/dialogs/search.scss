@@ -65,7 +65,13 @@
   color: var(--b3-theme-on-surface);
 
   kbd {
-    font-family: SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
+    font-family:
+      SF Pro,
+      Consolas,
+      "Liberation Mono",
+      Menlo,
+      Courier,
+      var(--b3-font-family);
   }
 }
 
@@ -111,7 +117,9 @@
   }
 }
 
-:is(#replaceBtn, #replaceAllBtn, #criteria .b3-button) {
+#replaceBtn,
+#replaceAllBtn,
+#criteria .b3-button {
   @include button-action("primary") {
     color: var(--b3-theme-accent, var(--b3-theme-primary));
     background-color: transparent;

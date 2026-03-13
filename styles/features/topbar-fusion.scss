@@ -173,7 +173,7 @@ body:not(.body-asri--mobile, .body--window) {
     }
   }
 
-  &.body-asri--mac:not(.body-asri--browser, .body-asri--fullscreen) {
+  &.body-asri--mac:not(.body-asri--browser, .body--fullscreen) {
     .layout__dockl.layout--float {
       > .fn__flex:not(.fn__none):first-child,
       > .fn__flex.fn__none ~ .fn__flex {

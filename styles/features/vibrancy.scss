@@ -1,6 +1,6 @@
 @use "./utils";
 
-body.asri-vibrancy:not(.body-asri--browser, .body-asri--fullscreen) {
+body.asri-vibrancy:not(.body-asri--browser, .body--fullscreen) {
   background-color: transparent;
 
   #{utils.$vibrancy-applicable-elements} {

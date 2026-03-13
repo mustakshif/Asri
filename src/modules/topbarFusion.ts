@@ -38,14 +38,11 @@ export async function updateDragRect(mode: "rect" | "initials" = "rect", ...dir:
 
 export async function handleMacFullScreen() {
   if (!env.isMacOS) return;
-
   if (isFullScreen()) {
-    document.body.classList.add("body-asri--fullscreen");
     dragRectInitialLeft -= fromFullscreen ? 0 : 80 + 8;
     // dragRectInitialRight += protyleWidthChange;
     fromFullscreen = true;
   } else {
-    document.body.classList.remove("body-asri--fullscreen");
     leftSpacing?.style.setProperty("width", "0px");
     dragRectInitialLeft = (await updateDragRect("initials", "L")) as number;
     // dragRectInitialRight -= protyleWidthChange;
