@@ -28,7 +28,8 @@ $primary-color-reverse-selectors: (
 );
 
 $vibrancy-applicable-elements: (
-  ":is(.layout__dockl, .layout__dockb):not(.layout--float) .layout-tab-container",
+  ".layout__dockl:not(.layout--float) .layout-tab-container",
+  ".layout__dockb:not(.layout--float) .layout-tab-container",
   // ".layout__dockr .layout-tab-container",
   // "#dockRight",
   ".dock.dock-layout-expanded",

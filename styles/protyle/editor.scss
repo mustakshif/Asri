@@ -190,7 +190,8 @@
   }
 }
 
-:is(.b3-typography, .protyle-wysiwyg) {
+.b3-typography,
+.protyle-wysiwyg {
   @include headings;
   @include superlink;
   @include bold;
@@ -209,7 +210,6 @@
 }
 
 .layout__center .protyle {
-  
   container: protyle-width / inline-size;
   &-wysiwyg {
     counter-reset: katexEqnNo mmlEqnNo; // https://github.com/mustakshif/Asri/issues/188

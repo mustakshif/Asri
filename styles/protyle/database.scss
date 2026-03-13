@@ -657,7 +657,7 @@ $chip-border-radius: 5px;
         font-size: 85%;
       }
 
-      .av__gallery-content ~ ::after,
+      .av__gallery-content ~ div::after,
       &:empty::after {
         content: "";
         display: block;

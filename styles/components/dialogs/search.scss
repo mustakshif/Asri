@@ -76,7 +76,7 @@
 }
 
 // 搜索通用
-:is(#searchInput, #searchAssetInput, #replaceInput) {
+#searchInput, #searchAssetInput, #replaceInput {
   background-color: transparent;
 }
 
@@ -134,7 +134,7 @@
   }
 }
 
-:is(#searchList, #searchAssetList) {
+#searchList, #searchAssetList {
   mark {
     background-color: transparent;
   }

@@ -131,16 +131,20 @@
         transform: translateX(12px);
       }
 
-      :is(.item__icon, .item__graphic),
-      :is(.item__icon, .item__graphic) + .item__text {
+      .item__icon,
+      .item__graphic,
+      .item__icon + .item__text,
+      .item__graphic + .item__text {
         transform: translateX(10px);
       }
     }
 
     &:hover {
       .item__text,
-      :is(.item__icon, .item__graphic),
-      :is(.item__icon, .item__graphic) + .item__text {
+      .item__icon,
+      .item__graphic,
+      .item__icon + .item__text,
+      .item__graphic + .item__text {
         transform: none;
       }
     }

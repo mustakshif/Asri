@@ -9,7 +9,7 @@
 }
 
 // #region 图片
-:is(.body-asri--mobile, .layout__center) .protyle-wysiwyg {
+.body-asri--mobile .protyle-wysiwyg, .layout__center .protyle-wysiwyg {
   &[custom-afwd="all"] > .p:not([custom-afwd="off"]),
   &[custom-afwd~="p"] > .p:not([custom-afwd="off"]),
   > .p[custom-afwd="on"] {

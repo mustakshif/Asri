@@ -42,7 +42,7 @@
         }
 
         &--pin {
-          :is(.item__icon, .item__graphic) {
+          .item__icon, .item__graphic {
             padding: 2px 0 0 8px;
           }
           .item__text {
@@ -56,7 +56,7 @@
       }
 
       // reset transform
-      :is(.item__text, .item__icon, .item__graphic) {
+      .item__text, .item__icon, .item__graphic {
         transform: none;
       }
 

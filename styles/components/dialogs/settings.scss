@@ -98,7 +98,8 @@
 
     // padding: 8px min(5em, 8%);
     &,
-    &:where([data-name="AI"], [data-name="image"]) .layout-tab-bar + .fn__flex-1 {
+    &[data-name="AI"] .layout-tab-bar + .fn__flex-1,
+    &[data-name="image"] .layout-tab-bar + .fn__flex-1 {
       padding-left: calc(48% - 25em);
       padding-right: calc(48% - 25em);
     }
@@ -116,14 +117,19 @@
     //     }
     // }
 
-    .b3-label :where(.fn__flex-1, .fn__block, .fn__flex-center):not(.ft__on-surface, .b3-button, .b3-form__icon, .fn__size200, ul, input):first-child,
-    :where(.b3-label, .config__ite)::first-line {
+    .b3-label .fn__flex-1:not(.ft__on-surface):not(.b3-button):not(.b3-form__icon):not(.fn__size200):not(ul):not(input):first-child,
+    .b3-label .fn__block:not(.ft__on-surface):not(.b3-button):not(.b3-form__icon):not(.fn__size200):not(ul):not(input):first-child,
+    .b3-label .fn__flex-center:not(.ft__on-surface):not(.b3-button):not(.b3-form__icon):not(.fn__size200):not(ul):not(input):first-child,
+    .b3-label::first-line,
+    .config__ite::first-line {
       font-weight: 600;
     }
 
     .config-query .fn__flex-1,
     .b3-label__text,
-    .b3-label :where(a, code, .ft__on-surface):not(.b3-button--outline) {
+    .b3-label a:not(.b3-button--outline),
+    .b3-label code:not(.b3-button--outline),
+    .b3-label .ft__on-surface:not(.b3-button--outline) {
       font-weight: 400 !important;
     }
 
@@ -163,19 +169,31 @@
 }
 
 .config-keymap__key {
-  font-family: SF Pro, Consolas, "Liberation Mono", Menlo, Courier, monospace, var(--b3-font-family);
+  font-family:
+    SF Pro,
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    Courier,
+    monospace,
+    var(--b3-font-family);
   padding: 0.15em 0.5em;
   border-radius: 1em;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   vertical-align: baseline;
-  box-shadow: inset 0 -1px 0 var(--b3-theme-surface-light), inset 0 1px 0 #fffa;
+  box-shadow:
+    inset 0 -1px 0 var(--b3-theme-surface-light),
+    inset 0 1px 0 #fffa;
   background-image: linear-gradient(to bottom, #0000, #0001);
   margin: auto 0.25em;
   text-shadow: 0 1px #fffa;
 
   @include darkmode-counterpart {
-    box-shadow: inset 0 1px 0 #fff3, 0 1px 0 #0004, inset 0 0 0 1px var(--b3-theme-surface-lighter);
+    box-shadow:
+      inset 0 1px 0 #fff3,
+      0 1px 0 #0004,
+      inset 0 0 0 1px var(--b3-theme-surface-lighter);
     background-image: linear-gradient(to bottom, #0000, #0003);
     border: none;
     text-shadow: 0 -1px #000a;
@@ -240,7 +258,9 @@
     // }
 
     mask-image: linear-gradient(to top, transparent 2%, rgba(0, 0, 0, 0.03) 10%, rgba(0, 0, 0, 0.1) 18%, rgba(0, 0, 0, 0.25) 33%, rgba(0, 0, 0, 0.95) 92%, black 99%), linear-gradient(to top, black, black);
-    mask-size: auto 90%, auto 11%;
+    mask-size:
+      auto 90%,
+      auto 11%;
     mask-position: bottom, top;
     mask-repeat: no-repeat;
 

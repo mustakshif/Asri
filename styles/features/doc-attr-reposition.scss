@@ -49,7 +49,8 @@ body:not(.body-asri--mobile) {
       }
 
       // 属性分隔符
-      > :not(:nth-last-child(1), .protyle-attr--memo, .protyle-attr--refcount) {
+      > :not(:nth-last-child(1)),
+      > :not(.protyle-attr--memo, .protyle-attr--refcount) {
         &::after {
           content: "·";
           display: inline-block;

@@ -73,7 +73,7 @@
     width: fit-content;
     @include theme-variant-border;
 
-    & > :is(input, button, label.b3-button) {
+    & > input, button, label.b3-button {
       margin-top: 4px;
       margin-bottom: 4px;
     }

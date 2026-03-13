@@ -3,7 +3,18 @@
 
   // 所有 rtl 元素
 
-  .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink),
+  .file-tree {
+    &.sy__file,
+    &.sy__outline,
+    &.sy__tag,
+    &.sy__bookmark,
+    &.sy__globalGraph,
+    &.sy__graph,
+    &.sy__backlink {
+      direction: rtl;
+    }
+  }
+
   .b3-menu,
   .protyle-breadcrumb,
   .tooltip,
@@ -153,16 +164,23 @@
   }
 
   [data-type="goBack"] svg,
-    .av__panel .b3-menu .block__icon svg,
-    .config-keymap .b3-list-item__arrow:not(.b3-list-item__arrow--open),
-    .file-tree:where(.sy__file, .sy__outline, .sy__tag, .sy__bookmark, .sy__globalGraph, .sy__graph, .sy__backlink) .b3-list-item__arrow:not(.b3-list-item__arrow--open) // .b3-list-item__toggle,
-
-    // [data-type="docnext"] svg,
-    // [data-type="docprevious"] svg, 
-    // .block__icon[data-type="next"] svg,
-    // .block__icon[data-type="previous"] svg
-  {
+  .av__panel .b3-menu .block__icon svg,
+  .config-keymap .b3-list-item__arrow:not(.b3-list-item__arrow--open) {
     transform: rotate(180deg);
+  }
+
+  .file-tree {
+    .sy__file,
+    .sy__outline,
+    .sy__tag,
+    .sy__bookmark,
+    .sy__globalGraph,
+    .sy__graph,
+    .sy__backlink {
+      .b3-list-item__arrow:not(.b3-list-item__arrow--open) {
+        transform: rotate(180deg);
+      }
+    }
   }
 
   // 设置-快捷键

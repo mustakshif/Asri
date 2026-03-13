@@ -1,12 +1,13 @@
 @use "../base" as *;
 @use "./utils" as *;
 
-.asri-tfp:not(.asri-disable-backdrop-blur, .body-asri--mobile) {
+.asri-tfp:not(.asri-disable-backdrop-blur):not(.body-asri--mobile) {
   &.asri-dragging-gutter {
     // fix the issue when dragging a block up, the auto-scroll is not triggered
 
     .protyle-breadcrumb,
-    :where(.layout__wnd--active, [data-type="wnd"]) > .fn__flex:first-child {
+    .layout__wnd--active > .fn__flex:first-child,
+    [data-type="wnd"] > .fn__flex:first-child {
       pointer-events: none;
     }
   }
@@ -68,12 +69,15 @@
         // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
       }
 
-      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
-        padding-top: 42px;
-        margin-bottom: calc(var(--blur-block-height) * -1);
-        height: var(--blur-block-height);
-        // @include theme-variant-color(background-color, background, $thick-transparency);
-        z-index: 3;
+      .protyle:not(#searchPreview),
+      .protyle:not(.card__block, .plugin-panel, .docs-flow__protyle) {
+        > .protyle-breadcrumb:not([slot]) {
+          padding-top: 42px;
+          margin-bottom: calc(var(--blur-block-height) * -1);
+          height: var(--blur-block-height);
+          // @include theme-variant-color(background-color, background, $thick-transparency);
+          z-index: 3;
+        }
       }
 
       .protyle[data-loading="finished"].fullscreen {
@@ -88,8 +92,11 @@
         padding-top: 0 !important;
       }
 
-      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb + .protyle-content {
-        padding-top: var(--blur-block-height);
+      .protyle:not(#searchPreview),
+      .protyle:not(.card__block, .plugin-panel, .docs-flow__protyle) {
+        > .protyle-breadcrumb + .protyle-content {
+          padding-top: var(--blur-block-height);
+        }
       }
 
       & > .file-tree .protyle-content {
@@ -168,15 +175,18 @@
         }
       }
 
-      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
-        background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
-
-        .asri-palette-polar:root.asri-mode-dark & {
-          background-color: rgb(from var(--b3-theme-background) r g b / 0.7);
-        }
-
-        @include darkmode-counterpart {
+      .protyle:not(#searchPreview),
+      .protyle:not(.card__block, .plugin-panel, .docs-flow__protyle) {
+        > .protyle-breadcrumb:not([slot]) {
           background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
+
+          .asri-palette-polar:root.asri-mode-dark & {
+            background-color: rgb(from var(--b3-theme-background) r g b / 0.7);
+          }
+
+          @include darkmode-counterpart {
+            background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
+          }
         }
       }
     }
@@ -257,30 +267,38 @@
         }
       }
 
-      .protyle:not(#searchPreview, .card__block, .plugin-panel, .docs-flow__protyle) > .protyle-breadcrumb:not([slot]) {
-        box-shadow: 0 1px 0 0 #fff, 0 0px 20px 0px rgb(from var(--b3-theme-on-background) r g b / 0.06);
-        background-color: rgb(from var(--b3-theme-background) r g b / 0.8);
+      .protyle:not(#searchPreview),
+      .protyle:not(.card__block, .plugin-panel, .docs-flow__protyle) {
+        > .protyle-breadcrumb:not([slot]) {
+          box-shadow:
+            0 1px 0 0 #fff,
+            0 0px 20px 0px rgb(from var(--b3-theme-on-background) r g b / 0.06);
+          background-color: rgb(from var(--b3-theme-background) r g b / 0.8);
 
-        // .asri-palette-polar:root.asri-mode-dark & {
-        //   background-color: rgb(from var(--b3-theme-background) r g b / 0.6);
-        // }
+          // .asri-palette-polar:root.asri-mode-dark & {
+          //   background-color: rgb(from var(--b3-theme-background) r g b / 0.6);
+          // }
 
-        @include darkmode-counterpart {
-          // mix-blend-mode: hard-light;
-          box-shadow: 0 0.5px 0 0 #fff2, 0 -8px 5px -5px rgb(from var(--b3-theme-background) r g b / 0.25) inset;
-          // background-color: rgb(from var(--b3-theme-background) r g b / 0.5);
-          background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / 0.6), rgb(from var(--b3-theme-background) r g b / 0.45));
-          background-color: #0000;
-        }
+          @include darkmode-counterpart {
+            // mix-blend-mode: hard-light;
+            box-shadow:
+              0 0.5px 0 0 #fff2,
+              0 -8px 5px -5px rgb(from var(--b3-theme-background) r g b / 0.25) inset;
+            // background-color: rgb(from var(--b3-theme-background) r g b / 0.5);
+            background: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / 0.6), rgb(from var(--b3-theme-background) r g b / 0.45));
+            background-color: #0000;
+          }
 
-        .asri-palette-polar:root.asri-mode-dark & {
-          background-color: #0000;
-          background-image: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / 0.6), rgb(from var(--b3-theme-background) r g b / 0.3));
+          .asri-palette-polar:root.asri-mode-dark & {
+            background-color: #0000;
+            background-image: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / 0.6), rgb(from var(--b3-theme-background) r g b / 0.3));
+          }
         }
       }
     }
 
-    :where(.layout__wnd--active, [data-type="wnd"]) > .fn__flex:first-child,
+    .layout__wnd--active > .fn__flex:first-child,
+    [data-type="wnd"] > .fn__flex:first-child,
     .toolbar {
       mix-blend-mode: multiply;
 
@@ -340,7 +358,8 @@
     //   filter: drop-shadow(0px -8px 10px rgb(from var(--b3-theme-background) r g b / 0.5));
     // }
 
-    :where(.layout__wnd--active, [data-type="wnd"]) {
+    .layout__wnd--active,
+    [data-type="wnd"] {
       // tabbar overlay blend mode
       > .fn__flex:first-child {
         mix-blend-mode: multiply;
@@ -652,8 +671,12 @@
     z-index: 4;
   }
 
-  > :not(.block__popover, .b3-dialog--open) :is(.av__row--header, .av__colsticky, .av__row--footer) {
-    z-index: 1;
+  > :not(.block__popover, .b3-dialog--open) {
+    .av__row--header,
+    .av__colsticky,
+    .av__row--footer {
+      z-index: 1;
+    }
   }
 
   // .av__row--header {

@@ -7,7 +7,8 @@
 
 @media (color-gamut: p3) {
   :root.asri-mode-light {
-    :is(.b3-menu, .b3-menu__submenu) {
+    .b3-menu,
+    .b3-menu__submenu {
       @include menu-shadow(
         $opacity-light: 0.15,
         $extra-shadow-light: (
@@ -15,10 +16,13 @@
         )
       );
     }
-    :is(.b3-menu, .b3-menu__submenu):not(.b3-menu--fullscreen)::before {
-      box-shadow: base.hdr-shadow("0 0 0 1px", 1.5, 0.05), base.hdr-shadow("1px 2px 1px -1px", 2, 0.15), base.hdr-shadow("-1px -2px 1px -1px", 2, 0.1);
+    .b3-menu,
+    .b3-menu__submenu {
+      &:not(.b3-menu--fullscreen)::before {
+        box-shadow: base.hdr-shadow("0 0 0 1px", 1.5, 0.05), base.hdr-shadow("1px 2px 1px -1px", 2, 0.15), base.hdr-shadow("-1px -2px 1px -1px", 2, 0.1);
 
-      // box-shadow: 0 0 0 1px color(srgb 1 1 1 / 0.5) inset, 0 2px 1px -1px color(srgb 1 1 1 / 1) inset;
+        // box-shadow: 0 0 0 1px color(srgb 1 1 1 / 0.5) inset, 0 2px 1px -1px color(srgb 1 1 1 / 1) inset;
+      }
     }
 
     // .av__gallery-fields:first-child {

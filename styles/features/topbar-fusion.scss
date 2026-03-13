@@ -1,6 +1,7 @@
 @use "../base" as *;
 
-body:not(.body-asri--mobile, .body--window) {
+body:not(.body-asri--mobile),
+body:not(.body--window) {
   // --toolbar-height: 48px;
   --topbar-z-index: 2;
   --avoid-topbar: calc(var(--toolbar-height));
@@ -143,7 +144,8 @@ body:not(.body-asri--mobile, .body--window) {
     }
   }
 
-  &:where(.body-asri--mac, .body-asri--browser) {
+  &.body-asri--mac,
+  &.body-asri--browser {
     #dockRight::before {
       display: none;
     }
@@ -226,8 +228,8 @@ body:not(.body-asri--mobile, .body--window) {
    * 禁用拖动的区域
    */
   // 页签栏
-  :is(
-    .layout-tab-bar--readonly .block__icon,
+
+  .layout-tab-bar--readonly .block__icon,
     .layout-tab-bar:not(.layout-tab-bar--readonly),
 
     //菜单
@@ -260,8 +262,7 @@ body:not(.body-asri--mobile, .body--window) {
 
     .protyle-util,
 
-    .dock__item
-  ) {
+    .dock__item {
     app-region: no-drag;
   }
 }
@@ -302,7 +303,9 @@ body:not(.body-asri--mobile, .body--window) {
   }
 }
 
-:is(#AsriTopbarLeftSpacing, #AsriTopbarRightSpacing, #AsriPluginsIconsDivider) {
+#AsriTopbarLeftSpacing,
+#AsriTopbarRightSpacing,
+#AsriPluginsIconsDivider {
   svg,
   use {
     // width: 0;
@@ -313,8 +316,9 @@ body:not(.body-asri--mobile, .body--window) {
 
 // 兼容非protyle界面 https://github.com/mustakshif/Asri/issues/217
 .layout__center .layout-tab-container {
-  > .kmind-plugin-doc-editor-overflow-hidden, 
-  > :not(.protyle, .fn__none, .file-tree, [data-loading="finished"]) {
+  > .kmind-plugin-doc-editor-overflow-hidden,
+  > :not(.protyle, .fn__none, .file-tree),
+  > :not([data-loading="finished"]) {
     padding-top: 6px;
   }
 }

@@ -1,7 +1,8 @@
 @use "../../base" as *;
 
 @mixin block-ref {
-  :is([data-node-id] span[data-type~="block-ref"]:not(.av__celltext), [data-node-id] span[data-type~="file-annotation-ref"]) {
+  [data-node-id] span[data-type~="block-ref"]:not(.av__celltext),
+  [data-node-id] span[data-type~="file-annotation-ref"] {
     --bg-clr: var(--b3-theme-primary-lightest);
     color: inherit;
     text-decoration-line: underline;
@@ -72,7 +73,8 @@
   // $selector: matchSelector($protyle, '[data-node-id] span[data-type~=a],a', $typography, 'a');
 
   // #{$selector}
-  :is([data-node-id] span[data-type~="a"], a) {
+  [data-node-id] span[data-type~="a"],
+  a {
     color: inherit;
     text-decoration-line: underline;
     text-decoration-thickness: $text-underline-thickness;
@@ -117,29 +119,35 @@
 }
 
 @mixin superscript-subscript {
-  :where(span[data-type~="sup"], span[data-type~="sub"], sub, sup) {
+  span[data-type~="sup"],
+  span[data-type~="sub"],
+  sub,
+  sup {
     font-weight: 500;
-  }
 
-  span[data-type~="strong"]:where(span[data-type~="sup"], span[data-type~="sub"], sub, sup) {
-    font-weight: 900;
+    &[data-type~="strong"] {
+      font-weight: 900;
+    }
   }
 }
 
 @mixin bold {
-  :is(span[data-type~="strong"], strong) {
+  span[data-type~="strong"],
+  strong {
     color: inherit;
   }
 }
 
 @mixin italic {
-  :is(span[data-type~="em"], em) {
+  span[data-type~="em"],
+  em {
     color: inherit;
   }
 }
 
 @mixin underline {
-  :is(span[data-type~="u"], u) {
+  span[data-type~="u"],
+  u {
     text-decoration: underline;
     text-decoration-thickness: $text-underline-thickness;
     border-bottom: none;
@@ -157,36 +165,52 @@
 }
 
 @mixin linethrough {
-  :is(span[data-type~="s"], s) {
+  span[data-type~="s"],
+  s {
     color: inherit;
     opacity: 0.5;
   }
 }
 
 @mixin highlight {
-  :is(span[data-type~="mark"], mark) {
+  span[data-type~="mark"],
+  mark {
     background: transparent;
-    box-shadow: 0 -0.5em 0 0 inset var(--b3-protyle-inline-mark-background), 0 0.1em 0 0 var(--b3-protyle-inline-mark-background);
+    box-shadow:
+      0 -0.5em 0 0 inset var(--b3-protyle-inline-mark-background),
+      0 0.1em 0 0 var(--b3-protyle-inline-mark-background);
     color: inherit;
   }
 }
 
 @mixin kbd {
-  :is(span[data-type~="kbd"], kbd) {
-    font: 80% SF Pro, Consolas, "Liberation Mono", Menlo, Courier, var(--b3-font-family);
+  span[data-type~="kbd"],
+  kbd {
+    font:
+      80% SF Pro,
+      Consolas,
+      "Liberation Mono",
+      Menlo,
+      Courier,
+      var(--b3-font-family);
     color: inherit;
     padding: 0.15em 0.5em;
     border-radius: 1em;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
     vertical-align: baseline;
-    box-shadow: inset 0 -1px 0 var(--b3-theme-surface-light), inset 0 1px 0 #fffa;
+    box-shadow:
+      inset 0 -1px 0 var(--b3-theme-surface-light),
+      inset 0 1px 0 #fffa;
     background-image: linear-gradient(to bottom, #0000, #0001);
     margin: auto 0.25em;
     text-shadow: 0 1px #fffa;
 
     @include darkmode-counterpart {
-      box-shadow: inset 0 1px 0 #fff3, 0 1px 0 #0004, inset 0 0 0 1px var(--b3-theme-surface-lighter);
+      box-shadow:
+        inset 0 1px 0 #fff3,
+        0 1px 0 #0004,
+        inset 0 0 0 1px var(--b3-theme-surface-lighter);
       background-image: linear-gradient(to bottom, #0000, #0003);
       border: none;
       text-shadow: 0 -1px #000a;

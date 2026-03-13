@@ -58,8 +58,11 @@ $fadeout-size-xl: 50px;
 }
 
 // 部分插件配置窗口，移动文档窗口
-.b3-dialog__header:not(.fn__none) + .b3-dialog__body :where(.config__tab-container, .layout-tab-bar + .fn__flex-1) {
-  @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: "top");
+.b3-dialog__header:not(.fn__none) + .b3-dialog__body {
+  .config__tab-container,
+  .layout-tab-bar + .fn__flex-1 {
+    @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: "top");
+  }
 }
 
 #foldTree {

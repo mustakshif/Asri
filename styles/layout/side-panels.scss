@@ -2,7 +2,9 @@
 @use "../components/utils" as *;
 @use "sass:list";
 
-:is(.layout__dockl, .layout__dockr, .layout__dockb) {
+.layout__dockl,
+.layout__dockr,
+.layout__dockb {
   // animation fold/unfold
   > .fn__flex {
     transition-property: display;
@@ -284,7 +286,9 @@
       // top: 0;
       opacity: 0.5;
       z-index: 0;
-      transition: color 0.2s, opacity 0.2s;
+      transition:
+        color 0.2s,
+        opacity 0.2s;
       font-family: SF Pro;
       font-size: calc(16em / 14);
 

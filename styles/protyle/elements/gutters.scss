@@ -20,12 +20,18 @@
     }
   }
 
-  > button:where([data-type="NodeAttributeViewRow"], [data-type="NodeAttributeViewRowMenu"], :only-child) {
-    animation: gutters-appear-simple 0.5s var(--asri-ease-spring-3);
+  > button {
+    &[data-type="NodeAttributeViewRow"],
+    &[data-type="NodeAttributeViewRowMenu"],
+    &:only-child {
+      animation: gutters-appear-simple 0.5s var(--asri-ease-spring-3);
+    }
   }
 
   button[data-type="fold"] svg {
-    transition: transform, 0.8s var(--asri-ease-spring-5);
+    transition:
+      transform,
+      0.8s var(--asri-ease-spring-5);
   }
 
   @keyframes gutters-appear {
