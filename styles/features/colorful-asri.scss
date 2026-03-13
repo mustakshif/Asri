@@ -19,7 +19,7 @@ $cvc: 10; // color variant count
     --b3-protyle-inline-blockref-color: var(--b3-theme-accent);
     --asri-cover-accent: oklch(from var(--asri-cover-dominant) clamp(0.2, l, 0.95) clamp(0.1, c, 0.25) h);
 
-    &[data-theme-mode="light"] {
+    &:root.asri-mode-light {
       --asri-base-color: var(--asri-cover-accent, var(--asri-user-custom-accent, var(--asri-sys-accent)));
       // --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) 0.67 0.18 h);
 
@@ -88,7 +88,7 @@ $cvc: 10; // color variant count
       }
     }
 
-    &[data-theme-mode="dark"] {
+    &:root.asri-mode-dark {
       --asri-base-color: var(--asri-cover-accent, var(--asri-user-custom-accent, var(--asri-sys-accent)));
       // --asri-theme-accent-customized: oklch(from var(--asri-user-custom-accent) 0.7 0.17 h);
 

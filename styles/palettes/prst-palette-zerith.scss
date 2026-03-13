@@ -1,7 +1,7 @@
 @use "../features/_utils.scss" as *;
 
 [data-asri-palette="zerith"] {
-  &[data-theme-mode="light"] {
+  &:root.asri-mode-light {
     --zerith-base-accent: #cfea00;
     --asri-theme-accent-customized: var(--zerith-base-accent);
     --b3-theme-primary: #8bc600;
@@ -27,7 +27,7 @@
     // }
   }
 
-  &[data-theme-mode="dark"] {
+  &:root.asri-mode-dark {
     --zerith-base-accent: #dbf611;
     --asri-theme-accent-customized: var(--zerith-base-accent);
     --b3-theme-primary: var(--zerith-base-accent);
@@ -45,12 +45,12 @@
 }
 
 #{$primary-color-reverse-selectors, ".b3-button--outline"} {
-  [data-asri-palette="zerith"][data-theme-mode="light"] & {
+  [data-asri-palette="zerith"]:root.asri-mode-light & {
     --b3-theme-primary: var(--zerith-base-accent);
     --b3-theme-on-primary: var(--b3-theme-on-background);
   }
 
-  [data-asri-palette="zerith"][data-theme-mode="dark"] & {
+  [data-asri-palette="zerith"]:root.asri-mode-dark & {
     --b3-theme-primary: var(--zerith-base-accent);
     // --b3-theme-on-primary: #fffaf1;
   }
@@ -58,7 +58,7 @@
 
 .b3-button--outline,
 .protyle-breadcrumb__icon {
-  [data-asri-palette="zerith"][data-theme-mode="light"] & {
+  [data-asri-palette="zerith"]:root.asri-mode-light & {
     --b3-theme-primary: var(--b3-theme-accent);
   }
 }

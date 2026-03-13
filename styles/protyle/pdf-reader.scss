@@ -18,11 +18,11 @@
     }
   }
 
-  :root[data-theme-mode="light"] &:not(.pdf__outer--dark) .pdfViewer .textLayer {
+  :root:root.asri-mode-light &:not(.pdf__outer--dark) .pdfViewer .textLayer {
     background-color: var(--b3-theme-background);
   }
 
-  :root[data-theme-mode="dark"] &.pdf__outer--dark .pdfViewer .textLayer {
+  :root:root.asri-mode-dark &.pdf__outer--dark .pdfViewer .textLayer {
     background-color: var(--b3-theme-background);
   }
 

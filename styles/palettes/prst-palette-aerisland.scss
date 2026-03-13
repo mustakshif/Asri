@@ -1,7 +1,7 @@
 @use "../features/_utils.scss" as *;
 
 [data-asri-palette="aerisland"] {
-  &[data-theme-mode="light"] {
+  &:root.asri-mode-light {
     --aerisland-base-accent: #93dcd4;
     --asri-theme-accent-customized: var(--aerisland-base-accent);
     --b3-theme-primary: #4fbdb0;
@@ -11,7 +11,7 @@
     --b3-theme-on-surface: #09423ba2;
   }
 
-  &[data-theme-mode="dark"] {
+  &:root.asri-mode-dark {
     --aerisland-base-accent: #44a197;
     --asri-theme-accent-customized: var(--aerisland-base-accent);
     --b3-theme-primary: var(--aerisland-base-accent);
@@ -28,12 +28,12 @@
 }
 
 #{$primary-color-reverse-selectors, ".b3-button--outline"} {
-  [data-asri-palette="aerisland"][data-theme-mode="light"] & {
+  [data-asri-palette="aerisland"]:root.asri-mode-light & {
     --b3-theme-primary: var(--aerisland-base-accent);
     --b3-theme-on-primary: #07443d;
   }
 
-  [data-asri-palette="aerisland"][data-theme-mode="dark"] & {
+  [data-asri-palette="aerisland"]:root.asri-mode-dark & {
     --b3-theme-primary: var(--aerisland-base-accent);
     // --b3-theme-on-primary: #fffaf1;
   }
@@ -41,7 +41,7 @@
 
 .b3-button--outline,
 .protyle-breadcrumb__icon {
-  [data-asri-palette="aerisland"][data-theme-mode="light"] & {
+  [data-asri-palette="aerisland"]:root.asri-mode-light & {
     --b3-theme-primary: var(--b3-theme-accent);
   }
 }

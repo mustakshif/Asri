@@ -6,7 +6,7 @@
 @use "../base";
 
 @media (color-gamut: p3) {
-  [data-theme-mode="light"] {
+  :root.asri-mode-light {
     :is(.b3-menu, .b3-menu__submenu) {
       @include menu-shadow(
         $opacity-light: 0.15,
@@ -66,7 +66,7 @@
     );
   }
 
-  // [data-theme-mode="dark"] {
+  // :root.asri-mode-dark {
   //   .item__preview {
   //     dynamic-range-limit: standard;
   //   }

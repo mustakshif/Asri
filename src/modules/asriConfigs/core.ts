@@ -45,7 +45,7 @@ export async function loadThemePalette() {
     const paletteID = asriConfigs[curMode].presetPalette as keyof typeof asriPrstPalettes;
     const curPalette = asriPrstPalettes[paletteID][curMode];
 
-    document.documentElement.setAttribute("data-asri-palette", paletteID.split("-")[2]);
+    document.documentElement.classList.add(`asri-palette-${paletteID.split("-")[2]}`);
     setFollowSysAccentColor(false);
     cssVarManager.setProperty("--asri-user-custom-accent", curPalette.primary);
     cssVarManager.setProperty("--asri-c-factor", curPalette.chroma);
@@ -55,11 +55,21 @@ export async function loadThemePalette() {
     reverseOnPrimaryLightness(curPalette.primary);
   } else if (asriConfigs[curMode].followCoverImgColor) {
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
-    document.documentElement.removeAttribute("data-asri-palette");
+    // Remove any classes that match asri-palette-*
+    document.documentElement.classList.forEach(cls => {
+      if (cls.startsWith("asri-palette-")) {
+      document.documentElement.classList.remove(cls);
+      }
+    });
     updateCoverImgColor();
   } else {
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
-    document.documentElement.removeAttribute("data-asri-palette");
+    // Remove any classes that match asri-palette-*
+    document.documentElement.classList.forEach(cls => {
+      if (cls.startsWith("asri-palette-")) {
+      document.documentElement.classList.remove(cls);
+      }
+    });
     setIsUserAccentGray(asriConfigs[curMode].chroma === "0" ? true : false);
     handleGrayScale(asriConfigs[curMode].chroma);
   }
