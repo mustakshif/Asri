@@ -6,7 +6,7 @@
 .pdf__outer#outerContainer {
   &:not(.pdf__outer--dark) {
     @for $i from 1 through 7 {
-      $pdf-highlight-background:map.get($theme-light, pdf-background#{$i});
+      $pdf-highlight-background: map.get($theme-light, pdf-background#{$i});
       --b3-pdf-background#{$i}: #{$pdf-highlight-background};
     }
   }
@@ -73,7 +73,9 @@
     width: fit-content;
     @include theme-variant-border;
 
-    & > input, button, label.b3-button {
+    > input,
+    > button,
+    > label.b3-button {
       margin-top: 4px;
       margin-bottom: 4px;
     }

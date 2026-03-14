@@ -1,7 +1,6 @@
 @use "../base" as *;
 
-body:not(.body-asri--mobile),
-body:not(.body--window) {
+body:not(.body-asri--mobile):not(.body--window) {
   // --toolbar-height: 48px;
   --topbar-z-index: 2;
   --avoid-topbar: calc(var(--toolbar-height));

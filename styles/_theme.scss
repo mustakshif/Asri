@@ -29,16 +29,11 @@
 
 // dark first to fix font color and background color abnormality in pdf export
 :root.asri-mode-dark {
-  &:root {
-    color-scheme: dark;
-    // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
-  }
+  color-scheme: dark;
+  // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
 
-  &:root // body.has-exportimg
-  {
-    @include theme-root($theme-dark);
-    @include theme-root-dark;
-  }
+  @include theme-root($theme-dark);
+  @include theme-root-dark;
 
   // use hex to fix ios top bar color
   .body-asri--iosApp {
@@ -48,15 +43,10 @@
 }
 
 :root.asri-mode-light {
-  &:root // fix being overridden by other themes
+  @include theme-root($theme-light);
+  @include theme-root-light;
 
-    // body.has-exportimg
-  {
-    @include theme-root($theme-light);
-    @include theme-root-light;
-  }
-
-  [contenteditable="true"]::selection { 
+  [contenteditable="true"]::selection {
     background-color: var(--b3-theme-primary-lightest);
   }
 
@@ -82,15 +72,6 @@ body {
     -webkit-font-smoothing: auto;
   }
 
-  // fix being overridden by other themes
   --b3-toolbar-left-mac: 88px;
   --toolbar-height: 48px;
-
-  // @include darkmode-counterpart {
-  //     -webkit-font-smoothing: antialiased;
-  // }
-
-  &[arco-theme] {
-    font-family: var(--b3-font-family);
-  }
 }

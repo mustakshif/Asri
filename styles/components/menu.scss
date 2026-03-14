@@ -9,8 +9,7 @@
     // outline-offset: -1px;
   }
 
-  &:not(#searchHistoryListm, #findbar)::before,
-  &:not(.pdf__util)::before {
+  &:not(#searchHistoryListm, #findbar):not(.pdf__util)::before {
     content: "";
     position: absolute;
     inset: 0;

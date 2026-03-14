@@ -28,10 +28,8 @@
     //   background-color: #c7ea0052 !important;
     // }
 
-    .b3-typography [data-type="a"],
     .b3-typography a,
-    .protyle-wysiwyg [data-type="a"],
-    .protyle-wysiwyg a {
+    .protyle-wysiwyg [data-type="a"] {
       --b3-theme-primary: var(--b3-theme-accent);
     }
   }

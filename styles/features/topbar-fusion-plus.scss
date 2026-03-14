@@ -69,8 +69,7 @@
         // mask-image: linear-gradient(to bottom,black 0, black var(--blur-block-height),transparent var(--blur-block-height));
       }
 
-      .protyle:not(#searchPreview),
-      .protyle:not(.card__block, .plugin-panel, .docs-flow__protyle) {
+      .protyle:not(#searchPreview):not(.card__block, .plugin-panel, .docs-flow__protyle) {
         > .protyle-breadcrumb:not([slot]) {
           padding-top: 42px;
           margin-bottom: calc(var(--blur-block-height) * -1);
@@ -92,8 +91,7 @@
         padding-top: 0 !important;
       }
 
-      .protyle:not(#searchPreview),
-      .protyle:not(.card__block, .plugin-panel, .docs-flow__protyle) {
+      .protyle:not(#searchPreview):not(.card__block, .plugin-panel, .docs-flow__protyle) {
         > .protyle-breadcrumb + .protyle-content {
           padding-top: var(--blur-block-height);
         }
@@ -175,8 +173,7 @@
         }
       }
 
-      .protyle:not(#searchPreview),
-      .protyle:not(.card__block, .plugin-panel, .docs-flow__protyle) {
+      .protyle:not(#searchPreview):not(.card__block, .plugin-panel, .docs-flow__protyle) {
         > .protyle-breadcrumb:not([slot]) {
           background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
 
@@ -267,8 +264,7 @@
         }
       }
 
-      .protyle:not(#searchPreview),
-      .protyle:not(.card__block, .plugin-panel, .docs-flow__protyle) {
+      .protyle:not(#searchPreview):not(.card__block, .plugin-panel, .docs-flow__protyle) {
         > .protyle-breadcrumb:not([slot]) {
           box-shadow:
             0 1px 0 0 #fff,

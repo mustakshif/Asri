@@ -214,9 +214,7 @@ body:not(.asri-disable-backdrop-blur) {
     background-color: transparent;
     overflow: hidden;
 
-    &:not(#searchHistoryListm),
-    &:not(#findbar),
-    &:not(.pdf__util) {
+    &:not(#searchHistoryListm):not(#findbar):not(.pdf__util) {
       &::before {
         @include bg-blur();
       }

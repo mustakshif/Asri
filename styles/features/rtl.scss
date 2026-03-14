@@ -170,13 +170,13 @@
   }
 
   .file-tree {
-    .sy__file,
-    .sy__outline,
-    .sy__tag,
-    .sy__bookmark,
-    .sy__globalGraph,
-    .sy__graph,
-    .sy__backlink {
+    &.sy__file,
+    &.sy__outline,
+    &.sy__tag,
+    &.sy__bookmark,
+    &.sy__globalGraph,
+    &.sy__graph,
+    &.sy__backlink {
       .b3-list-item__arrow:not(.b3-list-item__arrow--open) {
         transform: rotate(180deg);
       }
