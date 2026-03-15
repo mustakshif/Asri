@@ -1,3 +1,15 @@
+### v3.6.9
+
+- [改进主题性能](https://github.com/mustakshif/Asri/issues/231)
+- 代码片段文本框支持自适应高度
+
+<br />
+
+- [Improved Theme Performance](https://github.com/mustakshif/Asri/issues/231)
+- Enhanced the code snippet text box to support adaptive height
+
+---
+
 ### v3.6.8
 
 - 优化文档emoji贴纸效果
