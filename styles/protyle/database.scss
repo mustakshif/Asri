@@ -548,9 +548,9 @@ $chip-border-radius: 5px;
       }
 
       &::before {
-        top: 0;
-        bottom: 0;
-        margin: auto;
+        top: 5px;
+        bottom: auto;
+        margin: 0;
       }
     }
 
