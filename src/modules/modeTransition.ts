@@ -1,3 +1,5 @@
+import { environment } from "../util/rsc";
+import { addEnvClassNames } from "./env";
 import { setThemeSource } from "./vibrancy";
 
 export async function modeTransitionOnClick(e: Event) {
@@ -10,6 +12,7 @@ export async function modeTransitionOnClick(e: Event) {
     // e.stopPropagation();
     // e.preventDefault();
     startFadeInFadeOutTranstition();
+    environment.isWindows && await(new Promise<void>(resolve=>setTimeout(resolve, 200))) && addEnvClassNames();
     if (target.parentElement?.dataset.id === "themeOS") setThemeSource();
   }
 }
@@ -44,7 +47,7 @@ export async function startFadeInFadeOutTranstition(animDuration = 600, func?: (
         {
           duration: animDuration,
           // easing: 'ease-in-out',
-        }
+        },
       );
     });
   } else {

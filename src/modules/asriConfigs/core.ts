@@ -9,6 +9,7 @@ import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
 import { coverImgColorManager, updateCoverImgColor } from "./coverImgColor";
 import { hexToOklch } from "../../util/colorTools";
 import { getFocusedProtyleInfo } from "../../util/misc";
+import { addEnvClassNames } from "../env";
 
 export async function loadThemePalette() {
   // if (env.isIOSApp) return; // fix app crash
@@ -87,6 +88,11 @@ export function unloadThemePalette() {
   // asriDoms.barMode?.removeEventListener("click", customizeThemeColor);
   document.body.classList.remove("asri-c-0");
   document.querySelectorAll(".asri-config").forEach((el) => el.remove());
+  document.documentElement.classList.forEach((cls) => {
+    if (cls.startsWith("asri-palette-")) {
+      document.documentElement.classList.remove(cls);
+    }
+  });
 }
 
 export async function initI18n() {

@@ -24,7 +24,7 @@ export function addEnvClassNames() {
   });
 
   document.documentElement.classList.remove(`asri-mode-dark`, `asri-mode-light`, 'is-rtl-lang');
-  document.documentElement.classList.add(`asri-mode-${env.appSchemeMode}`);
+  document.documentElement.classList.add(`asri-mode-${window.siyuan.config.appearance.mode > 0 ? "dark" : "light" as "dark" | "light"}`);
 
   if (env.lang === "ar_SA" || env.lang === "he_IL") {
     document.documentElement.classList.add("is-rtl-lang");
@@ -36,5 +36,5 @@ export function removeEnvClassNames() {
     document.body.classList.remove(className);
   });
 
-  document.documentElement.classList.remove(`asri-mode-dark`, `asri-mode-light`, 'is-rtl-lang');
+  document.documentElement.classList.remove(`asri-mode-dark`, `asri-mode-light`, "is-rtl-lang");
 }
