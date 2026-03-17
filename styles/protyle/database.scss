@@ -548,20 +548,18 @@ $chip-border-radius: 5px;
       }
 
       &::before {
-        top: 0;
-        bottom: 0;
-        margin: auto;
+        top: calc(4/7 * 1em);
       }
     }
 
     &-uncheck {
-      @include bouncy-check-box(false, 1.15em) {
+      @include bouncy-check-box(false, 1.25em) {
         animation: none;
       }
     }
 
     &-check {
-      @include bouncy-check-box(true, 1.1em) {
+      @include bouncy-check-box(true, 1.2em) {
         animation: none;
       }
     }
