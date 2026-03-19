@@ -4,7 +4,7 @@
 
 @mixin darkmode-counterpart($root: false) {
   $selector: if(
-    sass($root): "&[data-theme-mode=dark]" ; else: "[data-theme-mode=dark] &",
+    sass($root): "&.asri-mode-dark" ; else: ":root.asri-mode-dark &",
   );
 
   #{$selector} {

@@ -52,7 +52,9 @@
 * 数据库资源列样式
 */
 @mixin database-assets-style($level: "non-chip") {
-  $selector: if(sass($level == "non-chip"): ".av__celltext--url"; else: ".b3-chip.av__celltext--url");
+  $selector: if(
+    sass($level == "non-chip"): ".av__celltext--url" ; else: ".b3-chip.av__celltext--url",
+  );
 
   #{$selector} {
     // 资源列超链接或资源链接
@@ -93,5 +95,13 @@
     }
 
     @content;
+  }
+}
+
+@mixin filter-sticker {
+  filter: url(#asri-sticker-white) drop-shadow(0.5px 1px 0px rgba(0, 0, 0, 0.1)) drop-shadow(0.5px 1px 2px rgba(0, 0, 0, 0.05));
+
+  :root.asri-mode-dark & {
+    filter: url(#asri-sticker-dark) drop-shadow(-0.5px -1px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 1px 0px rgba(0, 0, 0, 0.2)) drop-shadow(0.5px 1px 2px rgba(0, 0, 0, 0.1));
   }
 }
