@@ -1,7 +1,7 @@
 @use "../base" as *;
 @use "./utils" as *;
 
-body:not(.asri-disable-backdrop-blur) {
+body.asri-global-backdrop-blur {
   // .layout__wnd--active,
 
   // pdf

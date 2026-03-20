@@ -30,7 +30,7 @@
   }
 
   border-radius: $border-rd-menu;
-  padding: 0;
+  padding: 0; // https://ld246.com/article/1773544708273 // may cause issue due to hardcoding.
   @include superellipse($border-rd-menu);
   // animation: menu-pop-up .5s var(--asri-ease-spring-3);
 
@@ -43,113 +43,115 @@
   //         transform: scale(1.02);
   //     }
   // }
+}
 
-  .b3-menu__items {
-    padding: 5px;
+.b3-menu__items {
+  padding: 0;
+  margin: -8px 0;
 
-    > .b3-menu__items {
-      padding: 0;
+  > .b3-menu__items {
+    padding: 0;
+  }
+
+  .b3-menu__item {
+    // padding: 0 8px; //用默认主题样式
+    background-color: transparent;
+    padding: 0.5px 12px;
+    line-height: 24px;
+    // @include superellipse($border-rd-menu - 4px);
+    border-radius: $border-rd-menu - 4px;
+    -electron-corner-smoothing: 60%;
+    align-items: center;
+
+    // @include superellipse($border-rd-menu - 5px);
+    // transition: background-color 0.07s linear, color 0.07s linear;
+
+    // &:hover {
+    //   transition: background-color 0.05s linear, color 0.05s linear;
+    // }
+
+    &:first-child {
+      margin-top: 0.5px;
     }
 
-    .b3-menu__item {
-      // padding: 0 8px; //用默认主题样式
-      background-color: transparent;
-      padding: 0.5px 12px;
-      line-height: 24px;
-      // @include superellipse($border-rd-menu - 4px);
-      border-radius: $border-rd-menu - 4px;
-      -electron-corner-smoothing: 60%;
-      align-items: center;
+    &:last-child {
+      margin-bottom: 0.5px;
+    }
 
-      // @include superellipse($border-rd-menu - 5px);
-      // transition: background-color 0.07s linear, color 0.07s linear;
+    &:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not([data-type="nobg"]),
+    &--current:not(.b3-menu__item--readonly, .b3-menu__item--disabled):not([disabled]):not([data-type="nobg"]) {
+      background-color: var(--b3-menu-item-background-hover);
+      color: var(--b3-menu-item-background-hover-text);
 
-      // &:hover {
-      //   transition: background-color 0.05s linear, color 0.05s linear;
-      // }
-
-      &:first-child {
-        margin-top: 0.5px;
+      > .b3-menu__icon,
+      > .b3-menu__label > .b3-menu__icon {
+        color: var(--b3-menu-item-background-hover-text) !important;
       }
 
-      &:last-child {
-        margin-bottom: 0.5px;
-      }
-
-      &:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not([data-type="nobg"]),
-      &--current:not(.b3-menu__item--readonly, .b3-menu__item--disabled):not([disabled]):not([data-type="nobg"]) {
-        background-color: var(--b3-menu-item-background-hover);
+      > .b3-menu__accelerator,
+      > .b3-menu__label > .ft__on-surface {
         color: var(--b3-menu-item-background-hover-text);
+        opacity: 0.8;
+      }
 
-        > .b3-menu__icon,
-        > .b3-menu__label > .b3-menu__icon {
-          color: var(--b3-menu-item-background-hover-text) !important;
-        }
-
-        > .b3-menu__accelerator,
-        > .b3-menu__label > .ft__on-surface {
-          color: var(--b3-menu-item-background-hover-text);
-          opacity: 0.8;
-        }
-
-        > .b3-menu__label > .b3-tooltips .b3-slider {
-          &::-webkit-slider-runnable-track {
-            background-color: #fff4;
-          }
-        }
-
-        >.b3-menu__action, >.b3-menu__checked {
-          color: var(--b3-theme-on-primary);
-          opacity: 0.8;
-
-          &:hover {
-            opacity: 1;
-            color: inherit;
-            background-color: transparent;
-          }
-        }
-
-        .b3-text-field {
-          background-color: var(--b3-menu-background);
+      > .b3-menu__label > .b3-tooltips .b3-slider {
+        &::-webkit-slider-runnable-track {
+          background-color: #fff4;
         }
       }
 
-      &.b3-menu__item--custom.b3-menu__item--current:not(.b3-menu__item--disabled) {
-        > .b3-menu__label > div > .b3-menu__icon {
-          color: var(--b3-menu-item-background-hover-text);
+      > .b3-menu__action,
+      > .b3-menu__checked {
+        color: var(--b3-theme-on-primary);
+        opacity: 0.8;
+
+        &:hover {
+          opacity: 1;
+          color: inherit;
+          background-color: transparent;
         }
       }
 
-      > .b3-menu__label > .fn__flex {
-        margin: 2px 0 !important;
+      .b3-text-field {
+        background-color: var(--b3-menu-background);
       }
-
-      // &--show:not(.b3-menu__item--readonly):not([disabled]):not(.b3-menu__item--current) {
-      //     background-color:
-      //         grayscale(pickThemeColor($theme-light, menu-item-hv-background));
-
-      //     @include darkmode-counterpart {
-      //         background-color:
-      //             grayscale(pickThemeColor($theme-dark, menu-item-hv-background, 0.5));
-      //     }
-      // }
-      // 会闪烁
     }
 
-    .b3-menu__icon {
-      color: var(--b3-theme-on-surface);
-      font-family: var(--b3-font-family-emoji);
-      font-size: 15px;
+    &.b3-menu__item--custom.b3-menu__item--current:not(.b3-menu__item--disabled) {
+      > .b3-menu__label > div > .b3-menu__icon {
+        color: var(--b3-menu-item-background-hover-text);
+      }
     }
 
-    .b3-menu__item--selected {
-      // &.b3-menu__item--current > .b3-menu__label {
-      //     text-decoration: underline;
-      // }
+    > .b3-menu__label > .fn__flex {
+      margin: 2px 0 !important;
+    }
 
-      svg {
-        color: inherit;
-      }
+    // &--show:not(.b3-menu__item--readonly):not([disabled]):not(.b3-menu__item--current) {
+    //     background-color:
+    //         grayscale(pickThemeColor($theme-light, menu-item-hv-background));
+
+    //     @include darkmode-counterpart {
+    //         background-color:
+    //             grayscale(pickThemeColor($theme-dark, menu-item-hv-background, 0.5));
+    //     }
+    // }
+    // 会闪烁
+  }
+
+  .b3-menu__icon {
+    color: var(--b3-theme-on-surface);
+    font-family: var(--b3-font-family-emoji);
+    font-size: 15px;
+  }
+
+  .b3-menu__item--selected {
+    // &.b3-menu__item--current > .b3-menu__label {
+    //     text-decoration: underline;
+    // }
+
+    svg {
+      color: inherit;
     }
   }
 }

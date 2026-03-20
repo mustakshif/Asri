@@ -23,8 +23,9 @@ export function addEnvClassNames() {
     }
   });
 
-  document.documentElement.classList.remove(`asri-mode-dark`, `asri-mode-light`, 'is-rtl-lang');
-  document.documentElement.classList.add(`asri-mode-${window.siyuan.config.appearance.mode > 0 ? "dark" : "light" as "dark" | "light"}`);
+  document.body.classList.add("asri-global-backdrop-blur");
+  document.documentElement.classList.remove(`asri-mode-dark`, `asri-mode-light`, "is-rtl-lang");
+  document.documentElement.classList.add(`asri-mode-${window.siyuan.config.appearance.mode > 0 ? "dark" : ("light" as "dark" | "light")}`);
 
   if (env.lang === "ar_SA" || env.lang === "he_IL") {
     document.documentElement.classList.add("is-rtl-lang");
@@ -35,6 +36,6 @@ export function removeEnvClassNames() {
   envClassifiers.forEach(({ className }) => {
     document.body.classList.remove(className);
   });
-
+  document.body.classList.remove("asri-global-backdrop-blur");
   document.documentElement.classList.remove(`asri-mode-dark`, `asri-mode-light`, "is-rtl-lang");
 }
