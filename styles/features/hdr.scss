@@ -6,7 +6,7 @@
 @use "../base";
 
 @media (color-gamut: p3) {
-  :root.asri-mode-light {
+  .asri-mode-light {
     .b3-menu,
     .b3-menu__submenu {
       @include menu-shadow(
@@ -70,7 +70,7 @@
     );
   }
 
-  // :root.asri-mode-dark {
+  // .asri-mode-dark {
   //   .item__preview {
   //     dynamic-range-limit: standard;
   //   }

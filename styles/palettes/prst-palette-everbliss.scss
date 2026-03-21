@@ -27,13 +27,13 @@
 }
 
 #{$primary-color-reverse-selectors, ".b3-button--outline"} {
-  .asri-palette-everbliss:root.asri-mode-light & {
+  .asri-palette-everbliss.asri-mode-light & {
     --b3-theme-primary: var(--everbliss-base-accent);
     --b3-theme-on-primary: #fefaef;
     --b3-menu-item-background-hover: #de6257;
   }
 
-  .asri-palette-everbliss:root.asri-mode-dark & {
+  .asri-palette-everbliss.asri-mode-dark & {
     --b3-theme-primary: var(--everbliss-base-accent);
     --b3-theme-on-primary: #f8f0e9;
   }

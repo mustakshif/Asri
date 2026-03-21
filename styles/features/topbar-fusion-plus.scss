@@ -177,7 +177,7 @@
         > .protyle-breadcrumb:not([slot]) {
           background-color: rgb(from var(--b3-theme-background) r g b / $medium-transparency);
 
-          .asri-palette-polar:root.asri-mode-dark & {
+          .asri-palette-polar.asri-mode-dark & {
             background-color: rgb(from var(--b3-theme-background) r g b / 0.7);
           }
 
@@ -241,7 +241,7 @@
               #0000 calc(var(--blur-block-height) + 40px)
             );
 
-            .asri-palette-polar:root.asri-mode-dark & {
+            .asri-palette-polar.asri-mode-dark & {
               --glow-strength: #0006;
             }
 
@@ -271,7 +271,7 @@
             0 0px 20px 0px rgb(from var(--b3-theme-on-background) r g b / 0.06);
           background-color: rgb(from var(--b3-theme-background) r g b / 0.8);
 
-          // .asri-palette-polar:root.asri-mode-dark & {
+          // .asri-palette-polar.asri-mode-dark & {
           //   background-color: rgb(from var(--b3-theme-background) r g b / 0.6);
           // }
 
@@ -285,7 +285,7 @@
             background-color: #0000;
           }
 
-          .asri-palette-polar:root.asri-mode-dark & {
+          .asri-palette-polar.asri-mode-dark & {
             background-color: #0000;
             background-image: linear-gradient(to bottom, rgb(from var(--b3-theme-background) r g b / 0.6), rgb(from var(--b3-theme-background) r g b / 0.3));
           }
@@ -518,11 +518,11 @@
 
               @include smoothGradientVar(var(--b3-theme-background), var(--mask-opacity-factor-light), var(--mask-opacity-factor-dark));
 
-              .asri-palette-polar:root.asri-mode-light & {
+              .asri-palette-polar.asri-mode-light & {
                 --mask-opacity-factor-light: 0.8;
               }
 
-              .asri-palette-polar:root.asri-mode-dark & {
+              .asri-palette-polar.asri-mode-dark & {
                 --mask-opacity-factor-dark: 0.7;
               }
 

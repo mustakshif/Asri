@@ -161,12 +161,12 @@
 // .b3-switch,
 // .b3-button--outline,
 // .protyle-breadcrumb__icon {
-//   // .asri-palette-polar:root.asri-mode-light & {
+//   // .asri-palette-polar.asri-mode-light & {
 //   //   --b3-theme-primary: var(--polar-base-accent);
 //   //   --b3-theme-on-primary: var(--b3-theme-on-background);
 //   // }
 
-//   .asri-palette-polar:root.asri-mode-dark & {
+//   .asri-palette-polar.asri-mode-dark & {
 //     --b3-theme-primary: var(--polar-base-accent);
 //     --b3-theme-on-primary: #000;
 //   }
@@ -174,7 +174,7 @@
 
 // .b3-button--outline,
 // .protyle-breadcrumb__icon {
-//   .asri-palette-polar:root.asri-mode-light & {
+//   .asri-palette-polar.asri-mode-light & {
 //     --b3-theme-primary: var(--b3-theme-accent);
 //   }
 // }

@@ -28,7 +28,7 @@
 }
 
 // dark first to fix font color and background color abnormality in pdf export
-:root.asri-mode-dark {
+.asri-mode-dark {
   color-scheme: dark;
   // https://stackoverflow.com/questions/21157231/mac-os-x-scrollbar-is-sometimes-white-transparent-and-sometimes-black-transpare
 
@@ -42,7 +42,7 @@
   }
 }
 
-:root.asri-mode-light {
+.asri-mode-light {
   @include theme-root($theme-light);
   @include theme-root-light;
 
@@ -68,7 +68,7 @@ body {
     scrollbar-color: var(--b3-scroll-color-hover) var(--b3-theme-background-light, #0000);
   }
 
-  :root.asri-mode-light & {
+  .asri-mode-light & {
     -webkit-font-smoothing: auto;
   }
 

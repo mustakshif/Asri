@@ -28,12 +28,12 @@
 }
 
 #{$primary-color-reverse-selectors, ".b3-button--outline"} {
-  .asri-palette-aerisland:root.asri-mode-light & {
+  .asri-palette-aerisland.asri-mode-light & {
     --b3-theme-primary: var(--aerisland-base-accent);
     --b3-theme-on-primary: #07443d;
   }
 
-  .asri-palette-aerisland:root.asri-mode-dark & {
+  .asri-palette-aerisland.asri-mode-dark & {
     --b3-theme-primary: var(--aerisland-base-accent);
     // --b3-theme-on-primary: #fffaf1;
   }
@@ -41,7 +41,7 @@
 
 .b3-button--outline,
 .protyle-breadcrumb__icon {
-  .asri-palette-aerisland:root.asri-mode-light & {
+  .asri-palette-aerisland.asri-mode-light & {
     --b3-theme-primary: var(--b3-theme-accent);
   }
 }

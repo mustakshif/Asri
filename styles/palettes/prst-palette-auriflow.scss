@@ -35,7 +35,7 @@
   --texture-goldfoil: #{$texture-goldfoil};
   --texture-goldfoil-blend-mode: multiply, normal, hard-light, normal;
 
-  &:root.asri-mode-light {
+  &.asri-mode-light {
     .protyle, .b3-typography,
     .b3-dialog__header {
       --foil-local-clr: rgb(207 155 72); // 本色

@@ -1,5 +1,5 @@
 @supports (color: oklch(from red calc(l * 0.5) 0 h)) {
-  :root:root.asri-mode-light {
+  .asri-mode-light {
     body // body.asri-enable-panda-scheme
 
         //[]左停靠栏收起的情况

@@ -51,7 +51,7 @@ $thin-blur-rd: 5px;
 @mixin bg-blur($blur-radius: $thick-blur-rd, $saturate-value: 1.5, $brightness-light: 1.1, $brightness-dark: calc(2 - $brightness-light)) {
   backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness-light);
 
-  :root.asri-mode-dark & {
+  .asri-mode-dark & {
     backdrop-filter: blur($blur-radius) saturate($saturate-value) brightness($brightness-dark);
   }
 }

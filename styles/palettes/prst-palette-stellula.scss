@@ -51,12 +51,12 @@
 
 #{$primary-color-reverse-selectors,
 ".b3-button--outline"} {
-  .asri-palette-stellula:root.asri-mode-light & {
+  .asri-palette-stellula.asri-mode-light & {
     --b3-theme-primary: var(--stellula-base-accent);
     --b3-theme-on-primary: var(--b3-theme-on-background);
   }
 
-  .asri-palette-stellula:root.asri-mode-dark & {
+  .asri-palette-stellula.asri-mode-dark & {
     --b3-theme-primary: #41959b;
     // --b3-theme-on-primary: #fff;
   }
@@ -64,11 +64,11 @@
 
 .b3-button--outline,
 .protyle-breadcrumb__icon {
-  .asri-palette-stellula:root.asri-mode-light & {
+  .asri-palette-stellula.asri-mode-light & {
     --b3-theme-primary: var(--b3-theme-accent);
   }
 }
 
-// .asri-palette-stellula:root.asri-mode-dark :is(.b3-button--outline, .protyle-breadcrumb__icon):hover {
+// .asri-palette-stellula.asri-mode-dark :is(.b3-button--outline, .protyle-breadcrumb__icon):hover {
 //   --b3-theme-primary: #35898f;
 // }

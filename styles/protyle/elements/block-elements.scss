@@ -172,11 +172,11 @@
   .code-block,
   code.hljs {
     // background-color: var(--b3-theme-surface-light);
-    :root.asri-mode-light & {
+    .asri-mode-light & {
       background-color: var(--b3-theme-surface-light);
     }
 
-    :root.asri-mode-dark & {
+    .asri-mode-dark & {
       background-color: #0004;
     }
 

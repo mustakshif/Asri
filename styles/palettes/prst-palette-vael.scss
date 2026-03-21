@@ -49,12 +49,12 @@ $vael-color-3: #bfedd9;
 
 #{$primary-color-reverse-selectors,
 ".b3-button--outline"} {
-  .asri-palette-vael:root.asri-mode-light & {
+  .asri-palette-vael.asri-mode-light & {
     --b3-theme-primary: var(--vael-base-accent);
     --b3-theme-on-primary: #{toRGB(color.change($vael-color-1, $space: oklch, $lightness: 0.2))};
   }
 
-  .asri-palette-vael:root.asri-mode-dark & {
+  .asri-palette-vael.asri-mode-dark & {
     --b3-theme-primary: var(--vael-base-accent);
     // --b3-theme-on-primary: #fffaf1;
   }
@@ -62,7 +62,7 @@ $vael-color-3: #bfedd9;
 
 .b3-button--outline,
 .protyle-breadcrumb__icon {
-  .asri-palette-vael:root.asri-mode-light & {
+  .asri-palette-vael.asri-mode-light & {
     --b3-theme-primary: var(--b3-theme-accent);
   }
 }
