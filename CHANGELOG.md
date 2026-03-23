@@ -1,3 +1,17 @@
+### v3.6.10
+
+- [调整数据库复选框列复选框的对齐方式](https://github.com/mustakshif/Asri/pull/234)
+- 调整「极地」配色强调色
+- 修复Windows端亮暗色模式切换失败的问题
+
+<br />
+
+- [Adjusted the alignment of checkboxes in the database checkbox column](https://github.com/mustakshif/Asri/pull/234)
+- Adjusted the accent color for the "Polar" color scheme
+- Fixed the issue where light/dark mode switching failed on the Windows
+
+---
+
 ### v3.6.9
 
 - [改进主题性能](https://github.com/mustakshif/Asri/issues/231)
