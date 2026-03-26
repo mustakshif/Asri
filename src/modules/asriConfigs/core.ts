@@ -67,7 +67,7 @@ export async function loadThemePalette() {
   }
   getSystemAccentColor();
 
-  if (asriConfigs.features.tfp) {
+  if (asriConfigs.features.tfp && !env.isMobile) {
     document.body.classList.add("asri-tfp", "asri-tfp-" + asriConfigs.features.tfp);
   }
 

@@ -65,7 +65,7 @@ export async function loadAsriJSModules() {
   // watchImgExportMo.observe(document.body, { childList: true });
   // themeUpdateListener.start(darkModeMediaQuery, "change");
   paletteMenuItemClickEventListener.start(document, "mouseup");
-  tfpMenuItemCallbackEventListener.start(document, "mouseup");
+  !env.isMobile && tfpMenuItemCallbackEventListener.start(document, "mouseup");
   asriDoms.layoutCenter || (await querySelectorAsync(".layout__center"));
   if (!env.isMobile) {
     lytCenterRo.observe(asriDoms.layoutCenter);

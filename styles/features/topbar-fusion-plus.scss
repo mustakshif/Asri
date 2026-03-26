@@ -1,7 +1,10 @@
 @use "../base" as *;
 @use "./utils" as *;
 
-.asri-tfp:not(.body-asri--mobile) {
+.asri-tfp {
+  .layout__center {
+    background-color: var(--b3-theme-background); // https://github.com/mustakshif/Asri/issues/235
+  }
   &.asri-dragging-gutter {
     // fix the issue when dragging a block up, the auto-scroll is not triggered
 
