@@ -1,38 +1,71 @@
 {
-  "fill" : "automatic",
+  "fill" : {
+    "linear-gradient" : [
+      "display-p3:0.40940,0.67448,1.00000,1.00000",
+      "srgb:0.18707,0.27680,1.00000,1.00000"
+    ],
+    "orientation" : {
+      "start" : {
+        "x" : 0.5,
+        "y" : 0
+      },
+      "stop" : {
+        "x" : 0.5,
+        "y" : 0.7
+      }
+    }
+  },
   "groups" : [
     {
       "blend-mode" : "normal",
-      "blur-material" : null,
+      "blur-material-specializations" : [
+        {
+          "value" : null
+        },
+        {
+          "appearance" : "dark",
+          "value" : null
+        },
+        {
+          "appearance" : "tinted",
+          "value" : null
+        }
+      ],
+      "hidden" : false,
       "layers" : [
         {
-          "blend-mode-specializations" : [
+          "blend-mode" : "normal",
+          "fill-specializations" : [
             {
-              "value" : "normal"
+              "value" : {
+                "solid" : "extended-gray:1.00000,1.00000"
+              }
             },
             {
               "appearance" : "dark",
-              "value" : "normal"
-            }
-          ],
-          "fill-specializations" : [
-            {
-              "appearance" : "dark",
               "value" : {
-                "automatic-gradient" : "display-p3:0.14783,0.36351,0.93859,1.00000"
+                "solid" : "display-p3:0.29822,0.44598,1.00000,1.00000"
               }
             }
           ],
-          "glass" : true,
+          "glass-specializations" : [
+            {
+              "value" : true
+            },
+            {
+              "appearance" : "dark",
+              "value" : true
+            }
+          ],
           "hidden" : false,
-          "image-name" : "Intersect.svg",
-          "name" : "Intersect",
+          "image-name" : "Subtract.svg",
+          "name" : "Subtract",
           "opacity" : 1,
           "position" : {
-            "scale" : 6.19,
+            "scale" : 2.35,
             "translation-in-points" : [
               0,
-              -10
+              -16
             ]
           }
         },
@@ -54,15 +87,53 @@
         }
       ],
       "lighting" : "combined",
-      "shadow" : {
-        "kind" : "neutral",
-        "opacity" : 0.5
-      },
-      "specular" : true,
-      "translucency" : {
-        "enabled" : true,
-        "value" : 0.62
-      }
+      "name" : "Group",
+      "shadow-specializations" : [
+        {
+          "value" : {
+            "kind" : "layer-color",
+            "opacity" : 0.29
+          }
+        },
+        {
+          "appearance" : "dark",
+          "value" : {
+            "kind" : "layer-color",
+            "opacity" : 0.05
+          }
+        }
+      ],
+      "specular-specializations" : [
+        {
+          "value" : true
+        },
+        {
+          "appearance" : "dark",
+          "value" : true
+        }
+      ],
+      "translucency-specializations" : [
+        {
+          "value" : {
+            "enabled" : true,
+            "value" : 0.55
+          }
+        },
+        {
+          "appearance" : "dark",
+          "value" : {
+            "enabled" : true,
+            "value" : 0.54
+          }
+        },
+        {
+          "appearance" : "tinted",
+          "value" : {
+            "enabled" : true,
+            "value" : 0.5
+          }
+        }
+      ]
     },
     {
       "hidden" : false,
@@ -71,9 +142,7 @@
           "blend-mode" : "normal",
           "fill-specializations" : [
             {
-              "value" : {
-                "automatic-gradient" : "display-p3:0.12815,0.31724,0.96376,1.00000"
-              }
+              "value" : "automatic"
             },
             {
               "appearance" : "dark",
@@ -83,7 +152,7 @@
             }
           ],
           "glass" : false,
-          "hidden" : false,
+          "hidden" : true,
           "image-name" : "Frame 7.png",
           "name" : "Frame 7",
           "opacity" : 1,
@@ -100,8 +169,9 @@
         "kind" : "neutral",
         "opacity" : 0.5
       },
+      "specular" : false,
       "translucency" : {
-        "enabled" : true,
+        "enabled" : false,
         "value" : 0.5
       }
     }
