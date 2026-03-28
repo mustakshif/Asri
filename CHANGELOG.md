@@ -1,12 +1,12 @@
 ### v3.6.11
 
 - [提高「顶栏融合+」兼容性](https://github.com/mustakshif/Asri/issues/235)
-- [调整文字工具条动画](https://github.com/mustakshif/Asri/issues/236)
+- 调整文字工具条动画 [[#236](https://github.com/mustakshif/Asri/issues/236)] [[#237](https://github.com/mustakshif/Asri/issues/237)]
 
-<br/>
+<br />
 
 - [Improved compatibility for "Top Bar Fusion+"](https://github.com/mustakshif/Asri/issues/235)
-- [Adjusted the animation of the text toolbar](https://github.com/mustakshif/Asri/issues/236)
+- Adjusted the animation of the text toolbar [[#236](https://github.com/mustakshif/Asri/issues/236)] [[#237](https://github.com/mustakshif/Asri/issues/237)]
 
 ---
 

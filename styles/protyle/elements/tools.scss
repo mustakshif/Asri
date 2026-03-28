@@ -141,7 +141,8 @@
 
 //文字格式工具条
 .protyle-toolbar {
-  animation: protyle-toolbar-appear 0.3s $figma-ease-out;
+  will-change: transform; // 解决低缩放比例下次像素对齐的问题，见 https://github.com/mustakshif/Asri/issues/236
+  animation: protyle-toolbar-appear 0.45s var(--asri-ease-spring-2);
   border: none;
   border-radius: 40px;
   -electron-corner-smoothing: 60%;
@@ -149,7 +150,7 @@
   padding: 4px;
   // transform: translateY(-12px);
   background-color: var(--b3-theme-surface);
-  // transform-origin: 50% 150%;
+  transform-origin: 50% 150%;
   transition: none;
   @include menu-shadow($extra-shadow-light: glassy-shadow("255, 255, 255", 1, "0 0 0 1px", "1px 1px 1px -1px", "-1px -1px 1px -1px"), $extra-shadow-dark: glassy-shadow("255, 255, 255", 0.6, "0 0 0 1px", "1px 1px 1px -1px", "-1px -1px 1px -1px"));
   @include theme-variant-border($border: false);
@@ -192,8 +193,7 @@
     }
 
     10% {
-      // transform: scale(0.92); // 低缩放比例下易出现元素轻微漂移 https://github.com/mustakshif/Asri/issues/236
-      transform: translateY(5px);
+      transform: scale(0.92);
     }
 
     90%,
