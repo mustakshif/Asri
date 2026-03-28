@@ -1,3 +1,15 @@
+### v3.6.11
+
+- [提高「顶栏融合+」兼容性](https://github.com/mustakshif/Asri/issues/235)
+- [调整文字工具条动画](https://github.com/mustakshif/Asri/issues/236)
+
+<br/>
+
+- [Improved compatibility for "Top Bar Fusion+"](https://github.com/mustakshif/Asri/issues/235)
+- [Adjusted the animation of the text toolbar](https://github.com/mustakshif/Asri/issues/236)
+
+---
+
 ### v3.6.10
 
 - [调整数据库复选框列复选框的对齐方式](https://github.com/mustakshif/Asri/pull/234)
