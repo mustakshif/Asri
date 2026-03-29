@@ -84,18 +84,24 @@
       transition: background-color 0.2s;
 
       // 选中样式
-      @include button-action("primary") {
-        margin: 0;
-        background-color: transparent;
+      &--small {
+        @include button-action("primary") {
+          margin: 0;
 
-        &:hover {
-          box-shadow: none;
+          &:hover {
+            box-shadow: none;
+          }
         }
       }
 
       // 默认样式
-      &--outline {
+      &--outline.b3-button--small {
         @include button-action("normal");
+      }
+
+      &--outline,
+      &--cancel {
+        background-color: transparent;
       }
     }
 
