@@ -3,6 +3,10 @@
 :root {
   --b3-border-radius-b: 16px; // SiYuan 定义的对话框圆角
 
+  // https://github.com/mustakshif/Asri/issues/240
+  @include theme-root($theme-light);
+  @include theme-root-light;
+
   &,
   &:lang(zh_CN) {
     --b3-font-family: system-ui, ui-sans-serif, -apple-system, "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
