@@ -1,3 +1,15 @@
+### v3.6.12
+
+- [修复PDF阅读器搜索工具按钮样式问题](https://github.com/mustakshif/Asri/issues/238)
+- [修复PDF导出窗口颜色继承失效的问题](https://github.com/mustakshif/Asri/issues/240)
+
+<br />
+
+- [Fixed styling issue with PDF reader search tool button](https://github.com/mustakshif/Asri/issues/238)
+- [Fixed ineffective color inheritance in PDF export window](https://github.com/mustakshif/Asri/issues/240)
+
+---
+
 ### v3.6.11
 
 - [提高「顶栏融合+」兼容性](https://github.com/mustakshif/Asri/issues/235)
