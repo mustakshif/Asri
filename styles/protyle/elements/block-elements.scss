@@ -30,6 +30,16 @@
     word-break: auto-phrase; // 允许自动断字，目前仅支持日文
     // text-wrap-style: pretty; // 平衡断字
   }
+  
+  [data-type="NodeHeading"],
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--b3-theme-primary);
+  }
 
   .h1,
   h1 {

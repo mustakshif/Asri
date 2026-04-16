@@ -40,13 +40,6 @@
     --b3-theme-on-background: #e6cfbc;
     --b3-theme-on-surface: #e6cfbca2;
   }
-
-  // .protyle-title__input,
-  [data-type="NodeHeading"],
-  // .b3-dialog__header,
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--b3-theme-primary);
-  }
 }
 
 #{$primary-color-reverse-selectors,

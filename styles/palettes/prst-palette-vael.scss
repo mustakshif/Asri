@@ -40,8 +40,6 @@ $vael-color-3: #bfedd9;
     --b3-theme-on-surface: #{color.change($theme-on-background, $alpha: 0.7)};
   }
 
-  // .protyle-title__input,
-  [data-type="NodeHeading"],
   .b3-dialog__header {
     color: var(--b3-theme-primary);
   }

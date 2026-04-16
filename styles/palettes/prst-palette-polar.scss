@@ -66,17 +66,6 @@
     --b3-theme-primary-lightest: oklch(from var(--b3-theme-accent) l c h / 0.2);
   }
 
-  // .protyle-title__input,
-  [data-type="NodeHeading"],
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--b3-theme-primary);
-  }
-
   .layout__dockl + .layout__resize--lr::after {
     background-color: var(--b3-border-color-trans);
   }
