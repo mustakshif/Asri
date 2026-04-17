@@ -9,6 +9,7 @@
 }
 
 // 确保该变量被即时计算，子元素可以直接获取数值，而不是惰性求值
+// @property 必须写在最外层
 @property --protyle-i {
   syntax: "<integer>";
   inherits: false;
