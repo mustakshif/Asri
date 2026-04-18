@@ -225,6 +225,10 @@
     }
     // #endregion overflow hidden support
   }
+
+  span[data-type~="kbd"] {
+    @extend %inline-kbd;
+  }
 }
 
 .b3-typography,
@@ -236,7 +240,6 @@
   @include underline;
   @include linethrough;
   @include highlight;
-  @include kbd;
   @include inline-code;
   @include blockquote;
   @include superscript-subscript;
@@ -407,6 +410,11 @@
   iframe {
     border-radius: 4px;
     border-color: transparent;
+  }
+
+  kbd,
+  span[data-type~="kbd"] {
+    @extend %inline-kbd;
   }
 }
 

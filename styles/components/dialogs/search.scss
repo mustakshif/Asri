@@ -1,5 +1,6 @@
 @use "../../base" as *;
 @use "../utils" as *;
+@use "../../protyle/elements/inline-elements.scss";
 
 @use "sass:color";
 
@@ -65,14 +66,20 @@
   color: var(--b3-theme-on-surface);
 
   kbd {
-    font-family:
-      SF Pro,
-      Consolas,
-      "Liberation Mono",
-      Menlo,
-      Courier,
-      var(--b3-font-family);
-  }
+    // font-family:
+    //   SF Pro,
+    //   Consolas,
+    //   "Liberation Mono",
+    //   Menlo,
+    //   Courier,
+    //   var(--b3-font-family);
+      @extend %inline-kbd;
+      font-size: 90%;
+
+      &:not(:first-child) {
+        margin-inline-start: 1em;
+      }
+  }  
 }
 
 // 搜索通用
