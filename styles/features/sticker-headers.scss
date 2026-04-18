@@ -1,0 +1,45 @@
+@use "../base" as *;
+@use "utils" as *;
+
+.layout__center .layout-tab-container > .protyle {
+  --protyle-i: sibling-index();
+  --protyle-c: sibling-count();
+  --protyle-random-base: calc((sin(var(--protyle-i) * 1.5 + var(--protyle-c) * 0.7) + cos(var(--protyle-i) * 2.8 + var(--protyle-c) * 1.3) + sin(var(--protyle-i) * 4.2 + var(--protyle-c) * 2.1)) / 3); // [-1, 1]
+}
+
+// 确保该变量被即时计算，子元素可以直接获取数值，而不是惰性求值
+// @property 必须写在最外层
+@property --protyle-i {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --protyle-c {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+
+.protyle-background {
+//   &__ia {
+//     position: relative;
+//   }
+
+  &__icon {
+    // position: absolute;
+    // inset-inline-end: 0;
+    // margin-inline-start: auto;
+    // z-index: 1 !important;
+
+    @include filter-sticker;
+    transition: transform 0.5s var(--asri-ease-spring-3) 0.125s;
+
+    // pseudo-random number [-15deg, 15deg]
+    transform: rotate(calc(var(--protyle-random-base) * 15deg)) translateX(10%);
+
+    &:hover {
+      transform: rotate(0) scale(1.05) translateX(10%);
+    }
+  }
+}

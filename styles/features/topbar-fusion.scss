@@ -13,6 +13,10 @@ body:not(.body-asri--mobile):not(.body--window) {
     pointer-events: none;
     app-region: drag;
 
+    #drag {
+      min-width: 4px; //https://github.com/mustakshif/Asri/issues/250
+    }
+
     > .fn__ellipsis // #drag
     {
       min-width: unset;

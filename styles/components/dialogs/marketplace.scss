@@ -161,6 +161,10 @@
             display: block;
           }
         }
+
+        &:hover {
+          transform: scale(1.01);
+        }
       }
     }
     // #endregion
