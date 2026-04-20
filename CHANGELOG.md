@@ -1,3 +1,23 @@
+### v3.6.15
+
+- 优化数据库中、大卡片开启显示字段名称时的内容展示样式
+- 适配思源v3.6.4样式修改
+- 正文标题采用强调色
+- 微调集市卡片悬停样式
+- [统一全局行内键盘样式](https://github.com/mustakshif/Asri/issues/251)
+- [为底部状态栏添加回退样式](https://github.com/mustakshif/Asri/issues/248)
+
+<br />
+
+- Optimized the content display style when enabling field names in medium and large cards in the database
+- Adapted to the style modifications in SiYuan v3.6.4
+- Applied accent color to headings
+- Fine-tuned the hover style of marketplace cards
+- [Unified global inline keyboard styles](https://github.com/mustakshif/Asri/issues/251)
+- [Added fallback styles for the bottom status bar](https://github.com/mustakshif/Asri/issues/248)
+
+---
+
 ### v3.6.14
 
 - 优化提示块、引述块样式在RTL排版中的展示

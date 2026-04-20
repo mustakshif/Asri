@@ -1,6 +1,6 @@
 import { AsriEventListener } from "../util/eventListeners";
 import { doesTopBarOverflow, updateTopbarOverflow, updateWndEls } from "../util/interfaceState";
-import { debounce, querySelectorAsync } from "../util/misc";
+import { debounce, querySelectorAsync, throttle } from "../util/misc";
 import { AsriMutationObserver, AsriResizeObserver, MOConfigForClassNames } from "../util/observers";
 import { asriDoms, environment as env } from "../util/rsc";
 import { addAfwdMenuItems, removeProtyleSpacings } from "./afwd";
@@ -142,7 +142,7 @@ async function updateStyles(e?: Event | KeyboardEvent) {
     lowFreqStyleUpdates();
     Promise.resolve()
       .then(() => {
-        recalcDragInitials();
+        throttle(recalcDragInitials);
         return calcTopbarSpacings(0, false, doesTopBarOverflow);
       })
       .then(calcTabbarSpacings);
