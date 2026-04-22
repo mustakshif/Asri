@@ -10,9 +10,9 @@ body.asri-vibrancy:not(.body-asri--browser, .body--fullscreen) {
     // }
   }
 
-  #dockBottom:not(.fn__none, .has-layout-dockb-float) + .status {
-    background-color: transparent !important;
-  }
+  // #dockBottom:not(.fn__none, .has-layout-dockb-float) + .status {
+  //   background-color: transparent !important;
+  // }
 
   &.body--win32 {
     #{utils.$vibrancy-applicable-elements} {

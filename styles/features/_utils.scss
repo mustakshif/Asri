@@ -35,7 +35,8 @@ $vibrancy-applicable-elements: (
   ".dock.dock-layout-expanded",
   ".dock#dockBottom",
   "#dockBottom.fn__none.has-layout-dockb-float ~ .status",
-  "#dockBottom:not(.fn__none) ~ .status"
+  "#dockBottom.has-layout-dockb-float ~ .status",
+  ".toolbar",
 );
 
 /* 

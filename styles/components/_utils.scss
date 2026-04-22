@@ -93,6 +93,8 @@
   padding: 2px;
   height: auto;
   box-shadow: 0 0 0 0.5px var(--b3-border-color-trans);
+  mask-image: none;
+  animation: none;
   // box-shadow: 0 0 0 0.5px currentColorVariant(20%), 0 2px 8px -6px currentColorVariant(40%) inset, 0 1.5px 0 0 #fff8;
 
   // @include darkmode-counterpart {
@@ -113,6 +115,8 @@
     background-color: transparent;
     transition: none !important;
     padding: 2px 12px;
+    padding-bottom: 2px !important;
+    margin-bottom: unset !important;
 
     @include superellipse(6px);
 

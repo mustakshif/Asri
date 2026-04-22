@@ -1,0 +1,107 @@
+@supports (top: anchor(top)) {
+  // #region 分割线绘制
+  body > .toolbar {
+    border-bottom: 1px solid var(--b3-border-color-trans);
+  }
+  .layout__center {
+    --tab-radius: 0px;
+    .fn__flex-column[data-type="wnd"] > .fn__flex:first-child {
+      max-width: unset;
+      height: calc(var(--toolbar-height) - 1px); // 预留1px给分割线
+      background-color: transparent;
+      border-left: 1px solid var(--b3-border-color-trans);
+      border-right: 1px solid var(--b3-border-color-trans);
+    }
+
+    // #region 页签栏分割线伪元素方案
+    // .layout__center .fn__flex-column[data-type="wnd"] > .fn__flex:first-child {
+    //   &::after,
+    //   &::before {
+    //     content: "";
+    //     position: absolute;
+    //     top: -3px;
+    //     display: none;
+    //     width: 1px;
+    //     height: var(--toolbar-height);
+    //     background-color: var(--b3-border-color-trans);
+    //     pointer-events: none;
+    //   }
+
+    //   &::before {
+    //     left: 0px;
+    //   }
+    //   &::after {
+    //     right: -1px;
+    //   }
+    // }
+
+    // .layout__resize--lr ~ .fn__flex > .fn__flex-column[data-type="wnd"] > .fn__flex:first-child::before,
+    // .layout__resize--lr ~ .fn__flex:last-child > .fn__flex-column[data-type="wnd"] > .fn__flex:first-child::after,
+    // .fn__flex:only-child > .fn__flex-column[data-type="wnd"] > .fn__flex:first-child::before,
+    // .fn__flex:first-child > .fn__flex-column[data-type="wnd"] > .fn__flex:first-child::before,
+    // .fn__flex:only-child > .fn__flex-column[data-type="wnd"] > .fn__flex:first-child::after {
+    //   display: block;
+    // }
+
+    // #endregion
+  }
+
+  .layout__resize::after {
+    transform: none;
+  }
+
+  .dock.dock-layout-expanded#dockLeft,
+  .dock.dock-layout-expanded#dockRight {
+    --border-clr: var(--b3-border-color-trans);
+  }
+  // #endregion
+
+  // #region 背景颜色调整
+  .layout__dockl + .layout__resize--lr::after,
+  .layout__center + .layout__resize--lr::after {
+    background-color: var(--b3-border-color-trans);
+  }
+
+  .layout__dockr {
+    .layout-tab-container {
+      background-color: var(--b3-theme-background);
+    }
+  }
+  #dockLeft:not(.dock-layout-expanded) {
+    background-color: var(--b3-theme-background);
+  }
+  #dockRight {
+    background-color: var(--b3-theme-background);
+  }
+
+  // #endregion
+
+  // #region 页签样式调整
+  .layout-tab-bar {
+    --tab-radius: 6px; 
+    // &:not(.layout-tab-bar--readonly) {
+    //   .item {
+    //     // margin-bottom: -11px;
+    //     // padding-bottom: 11px;
+    //     // border-radius: 8px 8px 0 0;
+
+    //     &--focus,
+    //     &:hover {
+    //       background-color: var(--b3-theme-background);
+    //       box-shadow: 0 0 0 1px var(--b3-border-color-trans);
+
+    //       // &::after {
+    //       //   // content: "";
+    //       //   display: block;
+    //       //   position: absolute;
+    //       //   bottom: 0;
+    //       //   height: 4px;
+    //       //   background-color: red;
+    //       // }
+    //     }
+    //   }
+    // }
+  }
+
+  // #endregion
+}

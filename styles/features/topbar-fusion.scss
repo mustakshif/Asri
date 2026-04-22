@@ -6,7 +6,7 @@ body:not(.body-asri--mobile):not(.body--window) {
   --avoid-topbar: calc(var(--toolbar-height));
 
   > .toolbar {
-    background-color: transparent;
+    background-color: transparent !important;
     border-bottom-color: transparent;
     margin-bottom: calc(var(--toolbar-height) * -1);
     z-index: var(--topbar-z-index);
@@ -14,7 +14,7 @@ body:not(.body-asri--mobile):not(.body--window) {
     app-region: drag;
 
     #drag {
-      min-width: 4px; //https://github.com/mustakshif/Asri/issues/250
+      // min-width: 4px; //https://github.com/mustakshif/Asri/issues/250
     }
 
     > .fn__ellipsis // #drag

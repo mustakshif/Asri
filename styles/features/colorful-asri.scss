@@ -348,7 +348,7 @@ $cvc: 10; // color variant count
     color: var(--b3-theme-accent);
   }
 
-  .b3-menu__icon[style="color:var(--b3-theme-primary)"],
+  // .b3-menu__icon[style="color:var(--b3-theme-primary)"],
   .dock .dock__item--activefocus,
   .dock .dock__item--active {
     color: var(--b3-theme-accent) !important;
@@ -374,7 +374,7 @@ $cvc: 10; // color variant count
     }
   }
 
-  .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
+  // .layout-tab-bar .item:not(.item--readonly, .item--full.item--focus):hover,
   .layout-tab-bar .item--focus {
     background-color: oklch(from var(--b3-theme-primary) 0.5 clamp(0, calc(0.08 * var(--asri-c-factor, 1) * var(--asri-c-0, 1)), 0.25) h / 0.2);
 

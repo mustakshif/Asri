@@ -5,6 +5,8 @@
   /* 
    * 所有内容块
    */
+  @include inline-universal;
+
   [data-node-id] {
     border-radius: 10px;
     @include superellipse(10px);

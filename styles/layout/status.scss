@@ -58,32 +58,6 @@
     flex: 0;
   }
 
-  #barDock {
-    position: absolute;
-    right: 0px;
-    z-index: 8;
-    color: var(--b3-theme-on-background);
-
-    &::before {
-      right: unset !important;
-      left: 0px;
-      transform: rotateY(180deg);
-    }
-
-    &::after {
-      left: unset !important;
-      right: 100%;
-    }
-
-    svg {
-      color: var(--b3-theme-on-surface);
-
-      &:hover {
-        color: var(--b3-theme-on-background);
-      }
-    }
-  }
-
   .status__msg:not(:empty) {
     // animation: statusmsg 5s ease-in-out;
     max-width: 140px;
@@ -484,12 +458,40 @@
   // position: absolute; // "fixed" won't work in safari
 }
 
+#barDock {
+  position: absolute;
+  right: 0px;
+  z-index: 8;
+  color: var(--b3-theme-on-background);
+
+  &::before {
+    right: unset !important;
+    left: 0px;
+    transform: rotateY(180deg);
+  }
+
+  &::after {
+    left: unset !important;
+    right: 100%;
+  }
+
+  svg {
+    color: var(--b3-theme-on-surface);
+
+    &:hover {
+      color: var(--b3-theme-on-background);
+    }
+  }
+}
+
 // .has-dockb~.status {
 //     position: fixed;
 // }
 
 body:not(.body-asri--mobile) #dockBottom.fn__none:not(.has-layout-dockb-float) ~ .status,
-body.body--window .status {
+body.body--window .status,
+#dockBottom:not(.fn__none, .has-layout-dockb-float) ~ .status
+{
   // @include floating-status();
   @supports (top: anchor(bottom)) {
     @include floating-status-anchor();
@@ -503,47 +505,47 @@ body.body--window .status {
   }
 }
 
-#dockBottom:not(.fn__none) ~ .status,
-#dockBottom.fn__none.has-layout-dockb-float ~ .status {
-  background-color: transparent;
-  border-top-color: transparent;
-  padding: 0 32px 0 6px;
-  bottom: 5px;
-  right: 2px;
+// #dockBottom:not(.fn__none) ~ .status,
+// #dockBottom.fn__none.has-layout-dockb-float ~ .status {
+//   background-color: transparent;
+//   border-top-color: transparent;
+//   padding: 0 32px 0 6px;
+//   bottom: 5px;
+//   right: 2px;
 
-  #barDock {
-    position: absolute;
-    right: 6px;
-    z-index: 8;
-    color: var(--b3-theme-on-background);
-    transition: none;
+//   #barDock {
+//     position: absolute;
+//     right: 6px;
+//     z-index: 8;
+//     color: var(--b3-theme-on-background);
+//     transition: none;
 
-    &::before {
-      right: unset !important;
-      left: 0px;
-      transform: rotateY(180deg);
-    }
+//     &::before {
+//       right: unset !important;
+//       left: 0px;
+//       transform: rotateY(180deg);
+//     }
 
-    &::after {
-      left: unset !important;
-      right: 100%;
-    }
+//     &::after {
+//       left: unset !important;
+//       right: 100%;
+//     }
 
-    svg {
-      color: var(--b3-theme-on-surface);
+//     svg {
+//       color: var(--b3-theme-on-surface);
 
-      &:hover {
-        color: var(--b3-theme-on-background);
-      }
-    }
-  }
+//       &:hover {
+//         color: var(--b3-theme-on-background);
+//       }
+//     }
+//   }
 
-  .status__counter,
-  .status__msg,
-  .status__backgroundtask {
-    align-self: center;
-  }
-}
+//   .status__counter,
+//   .status__msg,
+//   .status__backgroundtask {
+//     align-self: center;
+//   }
+// }
 
 #dockBottom.has-layout-dockb-float ~ .status {
   // background-color: var(--b3-theme-background);
@@ -551,6 +553,8 @@ body.body--window .status {
   padding-right: 34px;
   max-width: unset !important;
   transform: none !important;
+  border-radius: 0;
+  border-top: 1px solid var(--b3-border-color-trans);
 
   #barDock {
     right: 8px;
@@ -559,7 +563,7 @@ body.body--window .status {
 }
 
 #dockBottom.has-layout-dockb-float.fn__none ~ .status {
-  border-top-color: var(--b3-border-color);
+  border-top-color: var(--b3-border-color-trans);
   border-top-width: 1px;
 }
 

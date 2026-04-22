@@ -74,6 +74,13 @@ const filters: { id: string; enabled: boolean; markup: string }[] = [
   </defs>
 </svg>`,
   },
+  {
+    id: "asri-filter-gooey-text",
+    enabled: false,
+    markup: `
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position: absolute; width: 0px; height: 0px; overflow: hidden;"><defs><filter><feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="4"></feGaussianBlur><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 60 -12" result="goo"></feColorMatrix><feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite></filter></defs></svg>
+    `
+  }
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────

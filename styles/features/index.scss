@@ -7,6 +7,7 @@
 // @use 'hide-toolbar';
 // @use 'cover-image-fading';
 @use "topbar-fusion";
+@use "topbar-fusion-plus";
 @use "blur";
 @use "cover-image-parallax-scrolling";
 @use "doc-attr-reposition";
@@ -17,7 +18,6 @@
 @use "overflow-indicator";
 @use "list-counter-style";
 // @use 'reading-mode';
-@use "topbar-fusion-plus";
 @use "selected-block-indicator";
 @use "hide-side-panel-block-icons";
 // @use "performance-improvements";
@@ -29,4 +29,6 @@
 // @use "floating-tabbar";
 @use "hdr";
 @use "sticker-headers";
-// @use "topbar-fusion-cssonly";
+// @use "topbar-fusion-v2"; // css only
+// @use "topbar-fusion-plus-v2";
+// @use "topbar-fusion-brutalism";

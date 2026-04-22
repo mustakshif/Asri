@@ -1,5 +1,11 @@
 @use "../../base" as *;
 
+@mixin inline-universal {
+  span[data-type] {
+    box-decoration-break: clone;
+  }
+}
+
 @mixin block-ref {
   [data-node-id] span[data-type~="block-ref"]:not(.av__celltext),
   [data-node-id] span[data-type~="file-annotation-ref"] {
