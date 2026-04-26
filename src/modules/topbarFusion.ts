@@ -1,4 +1,4 @@
-import { isOverlapping, querySelectorAsync } from "../util/misc";
+import { debounce, isOverlapping, querySelectorAsync, throttle } from "../util/misc";
 import { asriDoms as doms, environment as env } from "../util/rsc";
 import { isFullScreen, updateWndEls, wndElements } from "../util/interfaceState";
 
@@ -11,6 +11,12 @@ let topbarRect: DOMRect, dragRect: DOMRect, layoutsCenterRect: DOMRect, leftSpac
 let dragRectInitialLeft: number, dragRectInitialRight: number;
 
 let fromFullscreen = false;
+
+// const throttledUpdateDragRect = throttle(updateDragRectMain, 100);
+
+// export async function updateDragRect(mode: "rect" | "initials" = "rect", ...dir: ElDir[]) {
+//  return await throttledUpdateDragRect(mode, ...dir);
+// }
 
 export async function updateDragRect(mode: "rect" | "initials" = "rect", ...dir: ElDir[]): Promise<number | DOMRect> {
   const drag = doms.drag || (await querySelectorAsync("#drag"));
@@ -58,70 +64,9 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
       centerRectRight: 0,
     };
   }
-  let layoutsCenter = doms.layoutCenter || (await querySelectorAsync(".layout__center"));
-
-  // calcAndApply();
-
-  // if (!isWinResizing) calcAndApply(); // otherwise would cause dragRightInitial to be at unexpected position
-  // else dragRectRightInitial = dragRectRightInitial + widthChange;
 
   return new Promise<{ execute: boolean; centerRectRight: number }>(async (resolve) => {
-    if (isWinResizing) dragRectInitialRight += widthChange;
-    if (!dragRectInitialLeft || !dragRectInitialRight) await updateDragRect("initials");
-
-    layoutsCenterRect = layoutsCenter!.getBoundingClientRect();
-    barSyncRect = doms.barSync!.getBoundingClientRect();
-    barForwardRect = doms.barForward!.getBoundingClientRect();
-
-    let centerRectLeft = layoutsCenterRect.left,
-      centerRectRight = layoutsCenterRect.right,
-      barSearchRectLeft = doms.barSearch!.getBoundingClientRect().left;
-
-    // console.log('measure: topbar spacings')
-
-    if (!isWinResizing) {
-      // left side
-      if (centerRectLeft > dragRectInitialLeft + 8) {
-        topbar?.style.setProperty("--topbar-left-spacing", "0");
-        // dragRectInitialLeft = fromFullscreen ? dragRectLeftInitial : asriDoms.drag.getBoundingClientRect().left;
-        if (!(env.isMacOS && fromFullscreen)) {
-          await updateDragRect("initials", "L");
-        }
-        // recalc initial everytime
-        leftSpacing?.classList.remove("asri-expanded");
-      } else if (env.isMacOS && !env.isInBrowser) {
-        topbar.style.setProperty("--topbar-left-spacing", centerRectLeft - barSyncRect.right + 4 + "px");
-        leftSpacing?.classList.add("asri-expanded");
-      } else {
-        topbar.style.setProperty("--topbar-left-spacing", centerRectLeft - barForwardRect.right + 4 + "px");
-        leftSpacing?.classList.add("asri-expanded");
-      }
-
-      // right side
-      if (centerRectRight < dragRectInitialRight - 8 && !doesTopBarOverflow) {
-        topbar.style.setProperty("--topbar-right-spacing", "0");
-
-        await updateDragRect("initials", "R");
-
-        // css related
-        doms.dockR?.style.removeProperty("--avoid-topbar");
-        doms.layoutDockR?.style.removeProperty("--avoid-topbar");
-      } else {
-        if (env.isMacOS || env.isInBrowser) {
-          topbar.style.setProperty("--topbar-right-spacing", window.innerWidth - centerRectRight + 1 + "px");
-          // windowControls element takes up 2px
-
-          doms.dockR?.style.setProperty("--avoid-topbar", "4px");
-          doms.layoutDockR?.style.setProperty("--avoid-topbar", "4px");
-        } else {
-          topbar.style.setProperty("--topbar-right-spacing", barSearchRectLeft - centerRectRight + 6 + "px");
-
-          doms.dockR?.style.setProperty("--avoid-topbar", "calc(var(--toolbar-height) - 6px)");
-          doms.layoutDockR?.style.setProperty("--avoid-topbar", "calc(var(--toolbar-height) - 6px)");
-        }
-      }
-    }
-
+    const centerRectRight = await calcAndApply(widthChange, isWinResizing, doesTopBarOverflow);
     resolve({
       execute: true,
       centerRectRight: centerRectRight,
@@ -129,11 +74,86 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
   });
 }
 
+// const debouncedCalcAndApply = throttle(calcAndApply, 100);
+async function calcAndApply(widthChange = 0, isWinResizing = false, doesTopBarOverflow = false) {
+  if (isWinResizing) dragRectInitialRight += widthChange;
+  if (!dragRectInitialLeft || !dragRectInitialRight) await updateDragRect("initials");
+
+  window.dispatchEvent(new Event("resize")); // https://github.com/mustakshif/Asri/issues/250
+
+  let layoutsCenter = doms.layoutCenter || (await querySelectorAsync(".layout__center"));
+  layoutsCenterRect = layoutsCenter!.getBoundingClientRect();
+  barSyncRect = doms.barSync!.getBoundingClientRect();
+  barForwardRect = doms.barForward!.getBoundingClientRect();
+
+  let centerRectLeft = layoutsCenterRect.left,
+    centerRectRight = layoutsCenterRect.right,
+    barSearchRectLeft = doms.barSearch!.getBoundingClientRect().left;
+
+  // console.log('measure: topbar spacings')
+
+  if (!isWinResizing) {
+    // left side
+    if (centerRectLeft > dragRectInitialLeft + 8) {
+      topbar?.style.setProperty("--topbar-left-spacing", "0");
+      // dragRectInitialLeft = fromFullscreen ? dragRectLeftInitial : asriDoms.drag.getBoundingClientRect().left;
+      if (!(env.isMacOS && fromFullscreen)) {
+        await updateDragRect("initials", "L");
+      }
+      // recalc initial everytime
+      leftSpacing?.classList.remove("asri-expanded");
+    } else if (env.isMacOS && !env.isInBrowser) {
+      topbar.style.setProperty("--topbar-left-spacing", centerRectLeft - barSyncRect.right + 4 + "px");
+      leftSpacing?.classList.add("asri-expanded");
+    } else {
+      topbar.style.setProperty("--topbar-left-spacing", centerRectLeft - barForwardRect.right + 4 + "px");
+      leftSpacing?.classList.add("asri-expanded");
+    }
+
+    // right side
+    if (centerRectRight < dragRectInitialRight - 8 && !doesTopBarOverflow) {
+      topbar.style.setProperty("--topbar-right-spacing", "0");
+
+      await updateDragRect("initials", "R");
+
+      // css related
+      doms.dockR?.style.removeProperty("--avoid-topbar");
+      doms.layoutDockR?.style.removeProperty("--avoid-topbar");
+    } else {
+      if (env.isMacOS || env.isInBrowser) {
+        topbar.style.setProperty("--topbar-right-spacing", window.innerWidth - centerRectRight + 1 + "px");
+        // windowControls element takes up 2px
+
+        doms.dockR?.style.setProperty("--avoid-topbar", "4px");
+        doms.layoutDockR?.style.setProperty("--avoid-topbar", "4px");
+      } else {
+        topbar.style.setProperty("--topbar-right-spacing", barSearchRectLeft - centerRectRight + 6 + "px");
+
+        doms.dockR?.style.setProperty("--avoid-topbar", "calc(var(--toolbar-height) - 6px)");
+        doms.layoutDockR?.style.setProperty("--avoid-topbar", "calc(var(--toolbar-height) - 6px)");
+      }
+    }
+  }
+  return centerRectRight;
+}
+
+/**
+ * Shared throttled version of calcTabbarSpacingsMain
+ * Ensures all calls share the same timer to prevent multiple executions
+ */
+// const debouncedCalcTabbarSpacings = debounce((params: { execute: boolean; centerRectRight: number }) => {
+//   calcTabbarSpacingsMain(params);
+// }, 0);
+
+// export async function calcTabbarSpacings({ execute, centerRectRight } = { execute: false, centerRectRight: 0 }) {
+//   debouncedCalcTabbarSpacings({ execute, centerRectRight });
+// }
+
 /**
  * calculates tabbar spacings & positions, always comes after topbar spacings calculation
  */
 export async function calcTabbarSpacings({ execute, centerRectRight } = { execute: false, centerRectRight: 0 }) {
-  // console.log('tabbar spacings')
+  // console.log("tabbar spacings");
   if (!execute) return;
   topbarRect = doms.toolbar?.getBoundingClientRect() as DOMRect;
   (await updateDragRect("rect")) as DOMRect;
@@ -141,9 +161,8 @@ export async function calcTabbarSpacings({ execute, centerRectRight } = { execut
 
   // set divider style
   (() => {
-    // console.log('pluginsDivider', pluginsDivider)
     if (!pluginsDivider && !(pluginsDivider = document.getElementById("AsriPluginsIconsDivider"))) return;
-
+    // console.log("pluginsDivider", pluginsDivider);
     if (centerRectRight < dragRectInitialRight - 8) {
       // horisontal divider
       pluginsDivider.style.setProperty("--container-bg", "var(--b3-border-color-trans))");

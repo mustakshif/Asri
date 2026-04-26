@@ -1,3 +1,15 @@
+### v3.6.16
+
+- [顶栏空间不足时自动收纳顶栏图标](https://github.com/mustakshif/Asri/issues/250)
+- 修复「鎏金」配色大纲列表文字颜色异常的问题
+
+<br/>
+
+- [Automatically collapsed top bar icons when the top bar space was insufficient](https://github.com/mustakshif/Asri/issues/250)
+- Fixed abnormal text color in outline list for the "Auriflow" color scheme
+
+---
+
 ### v3.6.15
 
 - 优化数据库中、大卡片开启显示字段名称时的内容展示样式
