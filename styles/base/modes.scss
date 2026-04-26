@@ -2,13 +2,15 @@
 @use "sass:map";
 @use "sass:color";
 
-@mixin darkmode-counterpart($root: false) {
+@mixin darkmode-counterpart($should-unify-root: false) {
   $selector: if(
-    sass($root): "&.asri-mode-dark" ; else: ".asri-mode-dark &",
+    sass($should-unify-root): "&.asri-mode-dark" ; else: ".asri-mode-dark &",
   );
 
-  #{$selector} {
-    @content;
+  @at-root {
+    #{$selector} {
+      @content;
+    }
   }
 }
 

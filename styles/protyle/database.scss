@@ -12,7 +12,7 @@ $chip-border-radius: 5px;
 
 @mixin flex-gallery-card {
   .av__gallery-fields:not(.av__gallery-fields--edit) {
-    >[data-empty=true] {
+    > [data-empty="true"] {
       display: none;
     }
   }
@@ -78,20 +78,26 @@ $chip-border-radius: 5px;
       // background-color: var(--b3-theme-surface);
       height: auto;
       margin: 8px 0 !important;
-      padding: 2px;
-      border-radius: calc(1em / 0.875 * 8 / 17);
+      padding: 2px !important;
+      border-radius: calc(1em / 0.875 * 8 / 17) !important;
       // box-shadow: none;
       // border: 2.5px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
 
-      @include superellipse(calc(1em / 0.875 * 8 / 17));
+      @supports (corner-shape: superellipse(1.5)) {
+        corner-shape: superellipse($superellipse-k);
+        border-radius: calc(1em / 0.875 * 8 / 17 * $superellipse-k) !important;
+      }
 
       .item {
-        padding: 2px 4px;
+        padding: 2px 4px !important;
         height: auto;
-        border-radius: calc(1em / 0.875 * 8 / 17 - 2px);
+        border-radius: calc(1em / 0.875 * 8 / 17 - 2px) !important;
         width: auto !important; // 修复v3.2.1拖动后宽度递增的问题
 
-        @include superellipse(calc(1em / 0.875 * 8 / 17 - 2px));
+        @supports (corner-shape: superellipse(1.5)) {
+          corner-shape: superellipse($superellipse-k);
+          border-radius: calc((1em / 0.875 * 8 / 17 - 2px) * $superellipse-k) !important;
+        }
 
         &__graphic {
           padding: 0.42em 4px 0.42em 8px;

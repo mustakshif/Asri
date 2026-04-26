@@ -81,8 +81,8 @@
   }
 
   // 应用全屏时
-  .body--fullscreen & {
-    padding-inline-start: 8px !important;
+  body.body--fullscreen:not(.body--win32):not(.body--window) & {
+    padding-inline-start: 8px;
   }
 }
 

@@ -106,7 +106,7 @@
   h4,
   h5,
   h6,
-  [data-type="NodeHeading"]:not([style*="background-color"]),
+  [data-type="NodeHeading"]:not([style*="background-color"]):not(.b3-list-item),
   .b3-dialog__header {
     @include goldfoil-background;
     background-clip: text;

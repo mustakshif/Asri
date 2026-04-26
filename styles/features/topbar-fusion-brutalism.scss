@@ -1,7 +1,47 @@
+@use "utils" as *;
+@use "../base/" as *;
+
+%brutal-border-color {
+  @supports (color: color-mix(in srgb, red, blue)) {
+    // $border-color-to-mix: var(--b3-theme-background);
+    $border-color-to-mix: transparent;
+    $border-color: color-mix(in srgb, var(--b3-theme-on-background) var(--brutal-border-opacity), $border-color-to-mix);
+    --b3-border-color-trans: #{$border-color};
+    --b3-border-color: #{$border-color};
+  }
+}
+
 @supports (top: anchor(top)) {
   // #region 分割线绘制
-  body > .toolbar {
-    border-bottom: 1px solid var(--b3-border-color-trans);
+  body {
+    --toolbar-height: 42px;
+    --brutal-border-opacity: 30%;
+    @include darkmode-counterpart {
+      --brutal-border-opacity: 30%;
+    }
+    &:not(.asri-vibrancy),
+    &.body-asri--browser,
+    &.body--fullscreen {
+      .toolbar {
+        background-color: var(--b3-theme-surface);
+      }
+    }
+    > .toolbar {
+      border-bottom: 1px solid var(--b3-border-color-trans);
+      @extend %brutal-border-color;
+
+      #barWorkspace {
+        border-radius: 0;
+        padding: 6px;
+        height: var(--toolbar-height);
+        margin: 0 4px 0 0;
+        outline: none;
+        // box-shadow: 0 -1px 0 1px var(--b3-border-color-trans);
+      }
+    }
+  }
+  .dock {
+    @extend %brutal-border-color;
   }
   .layout__center {
     --tab-radius: 0px;
@@ -11,6 +51,14 @@
       background-color: transparent;
       border-left: 1px solid var(--b3-border-color-trans);
       border-right: 1px solid var(--b3-border-color-trans);
+      @extend %brutal-border-color;
+    }
+
+    .layout__resize {
+      ~ div .fn__flex-column[data-type="wnd"] > .fn__flex:first-child {
+        border-left-color: transparent;
+        // border-right-color: transparent;
+      }
     }
 
     // #region 页签栏分割线伪元素方案
@@ -48,10 +96,12 @@
 
   .layout__resize::after {
     transform: none;
+    @extend %brutal-border-color;
   }
 
   .dock.dock-layout-expanded#dockLeft,
   .dock.dock-layout-expanded#dockRight {
+    @extend %brutal-border-color;
     --border-clr: var(--b3-border-color-trans);
   }
   // #endregion
@@ -59,6 +109,7 @@
   // #region 背景颜色调整
   .layout__dockl + .layout__resize--lr::after,
   .layout__center + .layout__resize--lr::after {
+    @extend %brutal-border-color;
     background-color: var(--b3-border-color-trans);
   }
 
@@ -77,31 +128,88 @@
   // #endregion
 
   // #region 页签样式调整
+  .layout__center {
+    .layout__resize:not(.layout__resize--lr) {
+      ~ div .fn__flex-column[data-type="wnd"] > .fn__flex:first-child {
+        position: static;
+        border-right-color: transparent;
+        border-bottom: 1px solid var(--b3-border-color-trans);
+        background-color: var(--b3-theme-background);
+
+        // .layout-tab-bar:not(.layout-tab-bar--readonly) .item:not(.item--focus) {
+        //   background-color: transparent;
+        // }
+
+        // .layout-tab-bar--readonly,
+        // .layout-tab-bar:not(.layout-tab-bar--readonly) .item:not(.item--focus) {
+        //   border-bottom: 1px solid var(--b3-border-color-trans);
+        // }
+      }
+    }
+  }
   .layout-tab-bar {
-    --tab-radius: 6px; 
-    // &:not(.layout-tab-bar--readonly) {
-    //   .item {
-    //     // margin-bottom: -11px;
-    //     // padding-bottom: 11px;
-    //     // border-radius: 8px 8px 0 0;
+    --tab-radius: 6px;
+    border-radius: 0;
+    padding: 7px 1px 7px 0;
 
-    //     &--focus,
-    //     &:hover {
-    //       background-color: var(--b3-theme-background);
-    //       box-shadow: 0 0 0 1px var(--b3-border-color-trans);
+    &:not(.layout-tab-bar--readonly) {
+      // @include overflow-indicator-fadein-mask(20px, $range: "left right");
+      .item {
+        padding: 7px 4px;
+        margin: -7px 0;
+        background-color: transparent;
+        border-radius: 0;
 
-    //       // &::after {
-    //       //   // content: "";
-    //       //   display: block;
-    //       //   position: absolute;
-    //       //   bottom: 0;
-    //       //   height: 4px;
-    //       //   background-color: red;
-    //       // }
-    //     }
-    //   }
-    // }
+        &--focus {
+          background-color: var(--b3-theme-background);
+          animation: none;
+
+          // color: var(--b3-theme-background);
+          box-shadow: 0 0 0 1px var(--b3-border-color-trans);
+          // border: 1px solid var(--b3-border-color-trans);
+          // border-bottom: none;
+
+          // &::after {
+          //   // content: "";
+          //   display: block;
+          //   position: absolute;
+          //   bottom: 0;
+          //   height: 4px;
+          //   background-color: red;
+          // }
+        }
+
+        &:hover {
+          // background-color: var(--b3-theme-on-surface);
+          // color: var(--b3-theme-background) !important;
+        }
+
+        &--pin {
+          height: 28px;
+          padding-left: 8px;
+          padding-right: 8px;
+        }
+      }
+    }
+
+    &--readonly {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+
+  .asri-mode-dark [data-type="wnd"]:not(.layout__wnd--active) .item--focus {
+    background-color: var(--b3-theme-background);
   }
 
   // #endregion
+
+  // #region 其他调整
+  body.body--fullscreen:not(.body--win32):not(.body--window) .toolbar {
+    padding-left: 0;
+    padding-inline-start: 0;
+  }
+  .toolbar.toolbar--browser, body.body--win32 .toolbar {
+    padding-left: 0;
+  }
 }

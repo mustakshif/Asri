@@ -1,6 +1,6 @@
 @use "utils" as *;
 
-$toolbar-min-width: 300px;
+$toolbar-min-width: 280px;
 
 @supports (top: anchor(top)) {
   body {
@@ -41,9 +41,9 @@ $toolbar-min-width: 300px;
     $extended-left: min($drag-left, $wnd-left);
     $extended-right: min($drag-right, $wnd-right);
 
-    $spacing-unit: 6;
-    $gap-for-divider-left: calc(calc($spacing-unit * 1px) - calc(clamp(0px, ($wnd-left - $drag-left) * 0.3, 1px) * $spacing-unit));
-    $gap-for-divider-right: calc(calc($spacing-unit * 1px) - calc(clamp(0px, ($wnd-right - $drag-right) * 0.3, 1px) * $spacing-unit)); // 0.3 用于细腻化分割线吸附移动速度 避免抖动
+    $spacing-unit: 12;
+    $gap-for-divider-left: calc(calc($spacing-unit * 1px) - calc(clamp(0px, ($wnd-left - $drag-left) * 0.085, 1px) * $spacing-unit));
+    $gap-for-divider-right: calc(calc($spacing-unit * 1px) - calc(clamp(0px, ($wnd-right - $drag-right) * 0.085, 1px) * $spacing-unit)); // 0.085 配合12的spacing unit， 用于「减震」避免抖动
 
     $left-in-fusion: calc($safe-left + $gap-for-divider-left);
     $right-in-fusion: calc($safe-right + $gap-for-divider-right);
@@ -59,8 +59,8 @@ $toolbar-min-width: 300px;
 
     $composed-top: calc($top-in-fusion * (1 - $should-detach-vertical-from-split-binary) + calc($should-detach-vertical-from-split-binary * $top-when-detached));
 
-    $left-when-detached: $wnd-left;
-    $right-when-detached: $wnd-right;
+    $left-when-detached: $extended-left;
+    $right-when-detached: $extended-right;
 
     // #endregion
 
@@ -90,6 +90,7 @@ $toolbar-min-width: 300px;
         background-color: var(--b3-theme-background);
         z-index: 2;
         max-width: fit-content;
+        box-sizing: content-box;
       }
     }
 
@@ -118,7 +119,7 @@ $toolbar-min-width: 300px;
     }
     .layout-tab-container {
       border-radius: var(--tab-radius) var(--tab-radius) 0 0;
-      box-shadow: 0 0px 0 1px var(--b3-border-color-trans);
+      // box-shadow: 0 0px 0 1px var(--b3-border-color-trans);
     }
   }
 
@@ -127,10 +128,6 @@ $toolbar-min-width: 300px;
     padding: 10px 8px 10px;
     margin: 0 0 0 0;
     // background-color: #f003;
-
-    &:not(.layout-tab-bar--readonly) {
-      @include overflow-indicator-fadein-mask(20px, $range: "left right");
-    }
 
     // &--readonly {
     //   width: auto;
@@ -146,6 +143,10 @@ $toolbar-min-width: 300px;
     // .item {
     //   background-color: transparent;
     // }
+
+    .item--pin + .item:not(.item--pin, .item--readonly)::before {
+      
+    }
   }
   // #endregion
 
