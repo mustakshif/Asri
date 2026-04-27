@@ -77,7 +77,6 @@ Theme release
 - 🔢 Tabular and database-friendly monospaced numerals improve reading efficiency
 - 👁️ High readability glyph variants tailored for note-taking scenarios[^4] `#macOS` `#iOS` `#iPadOS`
 - 🦋 Support for full-width display of images, videos, widgets, databases, superblocks and more, enhancing information display
-- 🧩 Streamlined superblock margins for simplified creation of grid and masonry layouts
 - 📝 Enhanced the layout details in database and attribute view for improved clarity and organization
 - 💬 Supports right-to-left layout, accommodating languages written from right to left, such as Arabic[^5]
 - 🚏 Document-level typography direction settings cater to different language layout needs
@@ -86,21 +85,19 @@ Theme release
 
 ### Clear and Convenient Navigation
 
-- 🗂️ Well-structured document tree and indentation guide lines to help you quickly grasp content hierarchy
-- 🔍 Hierarchically organized search and backlink panels for intuitive contextual tracing and associative thinking
-- 🎯 Focus block indicators guide attention flow and enhance coherent output of thought sequences
-- ↕️ Native system scrollbars with auto-hide for a cleaner and more natural interface[^6] `#macOS`
+- 🗂️ Well-structured document tree and indentation guide lines
+- 🔍 Hierarchically organized search and backlink panels
+- ↕️ Native system scrollbars[^6] `#macOS`
 
 ### Fluid and Lively Interactions
 
 - 💫 Carefully tuned lively animations add warmth and rhythm to interactions
 - ⏱️ Refined animation triggers and frequency enhance interface response rhythm and minimize attention drift
-- 🚀 High-performance global animations ensure uninterrupted immersive experience
 
 ### Meticulous Visual Details
 
 - 🌁 Global gradient fades soften element edges and reduce visual fragmentation
-- 🌄 Parallax scrolling for header images, creating a layered and minimalist spatial atmosphere
+- 🌄 Parallax scrolling for header images
 - 🛋️ Optimized font rendering strategies per light/dark mode to maintain consistent perceived weight `#macOS` `#iOS` `#iPadOS`
 - 🚥 Subtle repositioning of window control buttons for enhanced native system alignment `#macOS`
 

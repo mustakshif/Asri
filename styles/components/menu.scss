@@ -17,7 +17,6 @@
     // background-position: center top;
     // background-size: cover;
     // background-attachment: fixed;
-    border-radius: $border-rd-menu;
     @include superellipse($border-rd-menu);
   }
 
@@ -29,7 +28,6 @@
     }
   }
 
-  border-radius: $border-rd-menu;
   padding: 0; // https://ld246.com/article/1773544708273 // may cause issue due to hardcoding.
   @include superellipse($border-rd-menu);
   // animation: menu-pop-up .5s var(--asri-ease-spring-3);
@@ -57,12 +55,10 @@
     background-color: transparent;
     padding: 0.5px 12px;
     line-height: 24px;
-    // @include superellipse($border-rd-menu - 4px);
-    border-radius: $border-rd-menu - 4px;
-    -electron-corner-smoothing: 60%;
     align-items: center;
 
-    // @include superellipse($border-rd-menu - 5px);
+    @include superellipse($border-rd-menu - 5px);
+
     // transition: background-color 0.07s linear, color 0.07s linear;
 
     // &:hover {
@@ -361,7 +357,6 @@
 .protyle-util {
   background-color: var(--b3-menu-background);
   padding: 0;
-  border-radius: 12px;
   animation: scaleBounce 0.5s var(--asri-ease-spring-3);
 
   @include superellipse(12px);

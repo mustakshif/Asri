@@ -79,24 +79,32 @@ $chip-border-radius: 5px;
       height: auto;
       margin: 8px 0 !important;
       padding: 2px !important;
-      border-radius: calc(1em / 0.875 * 8 / 17) !important;
+      border-radius: calc(1em / 0.875 * 10 / 17) !important;
       // box-shadow: none;
       // border: 2.5px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
 
-      @supports (corner-shape: superellipse(1.5)) {
+      @supports (corner-shape: superellipse(1.5)) and (not (-electron-corner-smoothing: 60%)) {
         corner-shape: superellipse($superellipse-k);
-        border-radius: calc(1em / 0.875 * 8 / 17 * $superellipse-k) !important;
+        border-radius: calc(1em / 0.875 * 10 / 17 * $superellipse-k) !important;
+      }
+
+      @supports (-electron-corner-smoothing: 60%) {
+        -electron-corner-smoothing: 60%;
       }
 
       .item {
         padding: 2px 4px !important;
         height: auto;
-        border-radius: calc(1em / 0.875 * 8 / 17 - 2px) !important;
+        border-radius: calc(1em / 0.875 * 10 / 17 - 3px) !important;
         width: auto !important; // 修复v3.2.1拖动后宽度递增的问题
 
-        @supports (corner-shape: superellipse(1.5)) {
+        @supports (corner-shape: superellipse(1.5)) and (not (-electron-corner-smoothing: 60%)) {
           corner-shape: superellipse($superellipse-k);
-          border-radius: calc((1em / 0.875 * 8 / 17 - 2px) * $superellipse-k) !important;
+          border-radius: calc((1em / 0.875 * 10 / 17 - 3px) * $superellipse-k) !important;
+        }
+
+        @supports (-electron-corner-smoothing: 60%) {
+          -electron-corner-smoothing: 60%;
         }
 
         &__graphic {
@@ -649,7 +657,6 @@ $chip-border-radius: 5px;
     }
 
     &-item {
-      border-radius: var(--gallery-item-border-radius);
       @include superellipse(var(--gallery-item-border-radius));
       box-shadow: 0 0 0 1px var(--b3-border-color-trans);
       // box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.06), 0px 1px 2px -1px rgba(0, 0, 0, 0.06), 0px 2px 4px 0px rgba(0, 0, 0, 0.04);
@@ -678,7 +685,6 @@ $chip-border-radius: 5px;
 
     &-cover {
       border-bottom: none;
-      border-radius: var(--gallery-item-border-radius) var(--gallery-item-border-radius) 0 0;
       @include superellipse(var(--gallery-item-border-radius) var(--gallery-item-border-radius) 0 0);
       background-color: var(--b3-theme-surface);
       // background-color: #0000;
@@ -719,7 +725,6 @@ $chip-border-radius: 5px;
 
     &-fields {
       padding: var(--gallery-item-border-radius);
-      border-radius: 0 0 var(--gallery-item-border-radius) var(--gallery-item-border-radius);
       @include superellipse(0 0 var(--gallery-item-border-radius) var(--gallery-item-border-radius));
 
       @include darkmode-counterpart {
@@ -796,7 +801,6 @@ $chip-border-radius: 5px;
     &-add {
       @include button-action("normal") {
         box-shadow: none;
-        border-radius: var(--gallery-item-border-radius);
         @include superellipse(var(--gallery-item-border-radius));
       }
     }

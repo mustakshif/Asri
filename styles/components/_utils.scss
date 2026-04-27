@@ -101,9 +101,13 @@
   //   box-shadow: 0 4px 8px -6px #0008 inset, 0 0 0 0.5px #0006 inset, 0 0.5px 0 0 currentColorVariant(20%);
   // }
 
-  @supports (corner-shape: superellipse(1.5)) {
+  @supports (corner-shape: superellipse(1.5)) and (not (-electron-corner-smoothing: 60%)) {
     corner-shape: superellipse($superellipse-k);
     border-radius: 8px * $superellipse-k !important;
+  }
+
+  @supports (-electron-corner-smoothing: 60%) {
+    -electron-corner-smoothing: 60%;
   }
 
   // @include darkmode-counterpart {
@@ -111,15 +115,19 @@
   // }
 
   .item {
-    border-radius: 6px;
+    border-radius: 6px !important;
     background-color: transparent;
     transition: none !important;
     padding: 2px 12px !important;
     margin: unset !important;
 
-    @supports (corner-shape: superellipse(1.5)) {
+    @supports (corner-shape: superellipse(1.5)) and (not(-electron-corner-smoothing: 60%)) {
       corner-shape: superellipse($superellipse-k);
       border-radius: 6px * $superellipse-k !important;
+    }
+
+    @supports (-electron-corner-smoothing: 60%) {
+      -electron-corner-smoothing: 60%;
     }
 
     &:hover:not(.item--focus) {
@@ -191,7 +199,6 @@
 @mixin button-primary {
   // background-color: var(--b3-list-hover);
   background-color: #0000;
-  border-radius: 7px;
   @include superellipse(7px);
   color: var(--b3-theme-primary);
   // color: var(--b3-theme-on-background);
@@ -221,7 +228,6 @@
 
 // 普通按钮
 @mixin button-action($type) {
-  border-radius: 7px;
   @include superellipse(7px);
   padding: 4px 16px;
   transition-property: color, background-color, outline, transform;

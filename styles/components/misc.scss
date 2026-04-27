@@ -83,13 +83,11 @@
   transition-property: background-color, filter, transform;
   transition-duration: 0.4s, 0.2s, 0.2s;
   border: none;
-  border-radius: calc(var(--sbrc) + 2px);
-  // -electron-corner-smoothing: 60%;
   box-sizing: border-box !important; // fix conflict with enhance plugin's arco css styles
   box-shadow: 0 4px 7px -4px inset #0002;
   transform: scale(1) scaleX(var(--gnf, 1));
 
-  // @include superellipse(calc(var(--sbrc) + 2px), $k: 1.1);
+  @include superellipse(calc(var(--sbrc) + 2px), $k: 1.1);
 
   @include darkmode-counterpart {
     box-shadow: 0 4px 7px -4px inset #0005;
@@ -130,7 +128,7 @@
     transition-timing-function: var(--asri-ease-spring-3);
     // box-shadow: 0px 6px 10px -3px rgba(0,0,0,0.1),0px 15px 16px -3px rgba(0,0,0,0.1);
 
-    // @include superellipse(var(--sbrc), $k: 1.1);
+    @include superellipse(var(--sbrc), $k: 1.1);
   }
 
   &::after,
@@ -199,7 +197,9 @@ select.b3-select {
   box-shadow: none;
   background-color: var(--b3-list-hover);
   min-height: 28px;
-  transition: outline 0.2s, background-color 0.2s;
+  transition:
+    outline 0.2s,
+    background-color 0.2s;
   outline: 0px solid transparent;
   // color-scheme: inherit; // 无效
 
@@ -264,7 +264,10 @@ textarea {
     width: 24px;
     margin-top: -5px;
     transition: all 0.1s ease-out;
-    box-shadow: 0 1px 4px -1px #0003, 0 0.3px 0 0 #0002, 0 0 0 1px #0001;
+    box-shadow:
+      0 1px 4px -1px #0003,
+      0 0.3px 0 0 #0002,
+      0 0 0 1px #0001;
     appearance: none;
     border-radius: 99px;
   }
@@ -302,7 +305,10 @@ textarea {
 
 .protyle-scroll__bar .b3-slider {
   &::-webkit-slider-thumb {
-    box-shadow: 1px 0 4px -1px #0003, 0.3px 0px 0 0 #0002, 0 0 0 1px #0001;
+    box-shadow:
+      1px 0 4px -1px #0003,
+      0.3px 0px 0 0 #0002,
+      0 0 0 1px #0001;
   }
 }
 
@@ -316,7 +322,6 @@ textarea {
   // hyphens: auto; // 长单词换行连字符
   // word-break: keep-all; // 保持CJK字符不换行
   padding: 6px 10px;
-  border-radius: 8px;
   @include superellipse(8px);
   // transition: display 0.1s allow-discrete;
   // text-wrap-style: pretty;
@@ -456,7 +461,6 @@ textarea {
     }
 
     &__content {
-      border-radius: 20px;
       color: var(--b3-theme-on-background);
       padding-top: 16px;
       padding-bottom: 16px;
@@ -649,7 +653,6 @@ input[type="radio" i] {
 .b3-form__icona {
   overflow: visible;
 }
-
 
 /* 
 * 图片预览 

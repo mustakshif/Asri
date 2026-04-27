@@ -7,7 +7,7 @@
 .block__popover {
   @include dialog-shadow($extra-shadow-light: "0 0 0 1px rgba(0, 0, 0, 0.05)");
   @include theme-variant-border($border: false);
-  @include superellipse(16px);
+  @include superellipse(16px, $fallback: true);
 
   @include darkmode-counterpart {
     // outline-color: transparent;
@@ -21,9 +21,8 @@
   }
 
   .block__icons {
+    @include superellipse(16px 16px 0 0, $fallback: true);
 
-    @include superellipse(16px 16px 0 0);
-    
     .block__icon {
       &:hover:not([disabled]):not(.ft__primary) {
         background-color: transparent;
@@ -41,7 +40,7 @@
   }
 
   .block__content {
-    @include superellipse(0 0 16px 16px);
+    @include superellipse(0 0 16px 16px, $fallback: true);
   }
 
   &--open {

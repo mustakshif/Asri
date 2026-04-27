@@ -3,6 +3,6 @@
 #progress {
   .b3-dialog__loading {
     padding: 16px 20px;
-    @include base.superellipse(20px);
+    @include base.superellipse(20px, $fallback: true);
   }
 }

@@ -15,9 +15,9 @@
   // #region 分割线绘制
   body {
     --toolbar-height: 42px;
-    --brutal-border-opacity: 30%;
+    --brutal-border-opacity: 25%;
     @include darkmode-counterpart {
-      --brutal-border-opacity: 30%;
+      --brutal-border-opacity: 25%;
     }
     &:not(.asri-vibrancy),
     &.body-asri--browser,

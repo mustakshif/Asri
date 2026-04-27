@@ -19,7 +19,6 @@
   height: 28px;
   border-bottom: 0;
   overflow-y: hidden;
-  border-radius: var(--tab-radius);
   margin: 8px 8px 6px;
   transition: margin 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   scrollbar-width: none;
@@ -32,7 +31,6 @@
     min-height: unset;
     line-height: 24px;
     margin-inline-end: 8px;
-    border-radius: var(--tab-radius);
     overflow: visible;
     background-color: var(--b3-list-hover);
     @include superellipse(var(--tab-radius));

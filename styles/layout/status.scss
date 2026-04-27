@@ -12,9 +12,7 @@
   bottom: calc(anchor(--anchor-layout-center bottom) + 8px);
   right: calc(anchor(--anchor-layout-center right) + 8px);
 
-  border-radius: 20px;
   @include superellipse(20px, $k: 1.1);
-  -electron-corner-smoothing: 60%;
   height: 26px;
   border: 0;
   padding: 0 26px 0 0;
@@ -223,7 +221,6 @@
   background-color: var(--b3-theme-surface);
   right: 8px !important; // 否则dock和面板隐藏时会被内联样式覆盖
   bottom: -4px;
-  border-radius: 20px;
   @include superellipse(20px, $k: 1.1);
   height: 26px;
   border: 0;

@@ -12,11 +12,15 @@ $border-rd-tab: 8px;
 $border-rd-default: 6px;
 $superellipse-k: 1.4;
 
-@mixin superellipse($border-radius: (), $fallback: false, $k: $superellipse-k) {
+@mixin superellipse($border-radius: (), $fallback: true, $k: $superellipse-k) {
   $final-border-radius: ();
-  $balance-factor: if(sass($k >= 20): math.div(14, 15); else: 1);
+  $balance-factor: if(
+    sass($k >= 20): math.div(14, 15) ; else: 1
+  );
   @for $i from 1 through list.length($border-radius) {
-    $radius: if(sass(meta.type-of($border-radius) == "list"): list.nth($border-radius, $i); else: $border-radius);
+    $radius: if(
+      sass(meta.type-of($border-radius) == "list"): list.nth($border-radius, $i) ; else: $border-radius
+    );
 
     @if $i == 1 {
       $final-border-radius: calc($radius * $k * $balance-factor);
@@ -25,11 +29,13 @@ $superellipse-k: 1.4;
     }
   }
 
-
   @if $fallback {
     border-radius: $border-radius;
   }
-  @supports (corner-shape: superellipse(1)) {
+  @supports (-electron-corner-smoothing: 60%) {
+    -electron-corner-smoothing: 60%;
+  }
+  @supports (corner-shape: superellipse(1)) and (not (-electron-corner-smoothing: 60%)) {
     corner-shape: superellipse($k);
     border-radius: $final-border-radius;
   }
@@ -109,7 +115,7 @@ $text-underline-thickness: 0.08em;
   --asri-ease-bounce-5: linear(0, 0.004, 0.016 2.5%, 0.063, 0.141, 0.25 10.1%, 0.562, 1 20.2%, 0.783, 0.627, 0.534 30.9%, 0.511, 0.503, 0.511, 0.534 38%, 0.627, 0.782, 1 48.7%, 0.892, 0.815, 0.769 56.3%, 0.757, 0.753, 0.757, 0.769 61.3%, 0.815, 0.892, 1 68.8%, 0.908 72.4%, 0.885, 0.878, 0.885, 0.908 79.4%, 1 83%, 0.954 85.5%, 0.943, 0.939, 0.943, 0.954 90.5%, 1 93%, 0.977, 0.97, 0.977, 1);
 }
 
-$figma-ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+$figma-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 $figma-ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
 
 @mixin line-clamp($line-clamp: 1, $orientation: vertical) {

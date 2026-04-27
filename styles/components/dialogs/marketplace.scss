@@ -191,7 +191,6 @@
     }
 
     .b3-card {
-      border-radius: $border-rd-card;
       background-color: var(--b3-theme-background);
       border: none;
       box-shadow: none;
@@ -288,7 +287,7 @@
   }
 
   .b3-card__img img {
-    @include superellipse(9px);
+    @include superellipse(9px, $fallback: true);
   }
 }
 
@@ -329,7 +328,7 @@
       margin-bottom: 32px;
       margin-top: auto;
 
-      @include superellipse(20px);
+      @include superellipse(20px, $fallback: true);
 
       + div {
         // repo name

@@ -439,7 +439,6 @@
 
         &:not(.layout-tab-bar--readonly) .item {
           // font-weight: 500;
-          border-radius: 7px;
           // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
           // backdrop-filter: saturate(2);
           // outline: 1px solid rgb(from var(--b3-theme-background) r g b / .2);
@@ -450,7 +449,6 @@
           &--focus {
             // @include bg-blur(8px, $saturate-value: 2, $brightness-light: 1);
             // backdrop-filter: saturate(2.5);
-            border-radius: 6px;
             box-shadow: none;
             backdrop-filter: none;
             @include superellipse(6px);

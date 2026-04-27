@@ -8,7 +8,6 @@
   @include inline-universal;
 
   [data-node-id] {
-    border-radius: 10px;
     @include superellipse(10px);
   }
 
@@ -187,7 +186,6 @@
   // 块高亮
   &--select::after,
   &--hl::after {
-    border-radius: 10px;
     @include superellipse(10px);
   }
 
