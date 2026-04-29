@@ -107,6 +107,14 @@
         background-color: oklch(from var(--b3-theme-background) l c h / 0.5);
       }
     }
+
+    &.body--win32 {
+      #{$vibrancy-applicable-elements} {
+        @supports (color: oklch(from blue l c h)) {
+          background-color: oklch(from var(--b3-theme-background) l c h / 0.7);
+        }
+      }
+    }
   }
 
   // @supports (color: oklch(from #00f l clamp(0, c, 0.2) calc(h + 0))) {

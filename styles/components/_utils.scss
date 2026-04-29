@@ -88,7 +88,7 @@
 */
 @mixin dialog-tabbar {
   margin: 8px auto 8px !important;
-  border-radius: 8px !important;
+  border-radius: 10px !important;
   background-color: var(--b3-list-hover);
   padding: 2px !important;
   height: auto;
@@ -103,7 +103,7 @@
 
   @supports (corner-shape: superellipse(1.5)) and (not (-electron-corner-smoothing: 60%)) {
     corner-shape: superellipse($superellipse-k);
-    border-radius: 8px * $superellipse-k !important;
+    border-radius: 10px * $superellipse-k !important;
   }
 
   @supports (-electron-corner-smoothing: 60%) {
@@ -115,7 +115,7 @@
   // }
 
   .item {
-    border-radius: 6px !important;
+    border-radius: 8px !important;
     background-color: transparent;
     transition: none !important;
     padding: 2px 12px !important;
@@ -123,7 +123,7 @@
 
     @supports (corner-shape: superellipse(1.5)) and (not(-electron-corner-smoothing: 60%)) {
       corner-shape: superellipse($superellipse-k);
-      border-radius: 6px * $superellipse-k !important;
+      border-radius: 8px * $superellipse-k !important;
     }
 
     @supports (-electron-corner-smoothing: 60%) {

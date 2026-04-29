@@ -18,7 +18,7 @@ body.asri-vibrancy:not(.body-asri--browser, .body--fullscreen) {
     #{utils.$vibrancy-applicable-elements} {
       background-color: var(--b3-theme-surface-light);
       @supports (color: oklch(from blue l c h)) {
-        background-color: oklch(from var(--b3-theme-background) l c h / 0.68);
+        background-color: oklch(from var(--b3-theme-background) l c h / 0.75);
       }
     }
   }

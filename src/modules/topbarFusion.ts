@@ -61,7 +61,7 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
   if (env.isMiniWindow || env.isMobile) {
     return {
       execute: false,
-      centerRectRight: 0,
+      centerRectRight: 0
     };
   }
 
@@ -69,7 +69,7 @@ export async function calcTopbarSpacings(widthChange = 0, isWinResizing = false,
     const centerRectRight = await calcAndApply(widthChange, isWinResizing, doesTopBarOverflow);
     resolve({
       execute: true,
-      centerRectRight: centerRectRight,
+      centerRectRight: centerRectRight
     });
   });
 }
@@ -79,7 +79,9 @@ async function calcAndApply(widthChange = 0, isWinResizing = false, doesTopBarOv
   if (isWinResizing) dragRectInitialRight += widthChange;
   if (!dragRectInitialLeft || !dragRectInitialRight) await updateDragRect("initials");
 
-  window.dispatchEvent(new Event("resize")); // https://github.com/mustakshif/Asri/issues/250
+  setTimeout(() => {
+    window.dispatchEvent(new Event("resize")); // https://github.com/mustakshif/Asri/issues/250
+  }, 100); // https://ld246.com/article/1777362968025 不延时会导致这个问题
 
   let layoutsCenter = doms.layoutCenter || (await querySelectorAsync(".layout__center"));
   layoutsCenterRect = layoutsCenter!.getBoundingClientRect();
