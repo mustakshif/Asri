@@ -1,3 +1,17 @@
+### v3.6.17
+
+- 区分应用端和网页端平滑圆角机制
+- 提高Windows窗体透明效果可读性
+- [修复大纲跳转失败的问题](https://ld246.com/article/1777362968025)
+
+<br />
+
+- Differentiated the smooth rounded corner mechanism for the client and web versions
+- Improved the readability of Windows window transparency effects
+- [Fixed the issue of failed outline navigation](https://ld246.com/article/1777362968025)
+
+---
+
 ### v3.6.16
 
 - [顶栏空间不足时自动收纳顶栏图标](https://github.com/mustakshif/Asri/issues/250)
