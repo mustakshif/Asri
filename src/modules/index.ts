@@ -201,11 +201,13 @@ async function globalClassNameMoCallback(mutationList: MutationRecord[], observe
   }
 }
 
+const dispatchResizeEventDebounced = debounce(() => {
+  console.log("lytCenterRoCallback");
+  window.dispatchEvent(new Event("resize"));
+}, 100);
 function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
-  // debouncedHandleWinResizeEnd();
   calcTopbarSpacings(0, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
-  // debouncedStatusPosition();
-  // console.log('lytCenterRoCallback', isWinResizing)
+  dispatchResizeEventDebounced();
 }
 
 function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {

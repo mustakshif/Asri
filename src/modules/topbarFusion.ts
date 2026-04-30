@@ -79,9 +79,10 @@ async function calcAndApply(widthChange = 0, isWinResizing = false, doesTopBarOv
   if (isWinResizing) dragRectInitialRight += widthChange;
   if (!dragRectInitialLeft || !dragRectInitialRight) await updateDragRect("initials");
 
-  setTimeout(() => {
-    window.dispatchEvent(new Event("resize")); // https://github.com/mustakshif/Asri/issues/250
-  }, 100); // https://ld246.com/article/1777362968025 不延时会导致这个问题
+  // 移到resize触发
+  // setTimeout(() => {
+  //   window.dispatchEvent(new Event("resize")); // https://github.com/mustakshif/Asri/issues/250
+  // }, 100); // https://ld246.com/article/1777362968025 不延时会导致这个问题
 
   let layoutsCenter = doms.layoutCenter || (await querySelectorAsync(".layout__center"));
   layoutsCenterRect = layoutsCenter!.getBoundingClientRect();
