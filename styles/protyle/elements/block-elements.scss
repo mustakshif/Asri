@@ -52,7 +52,7 @@
   .bq,
   blockquote {
     $corner-radius: 10px;
-    $corner-size: 16px;
+    $corner-size: 18px;
 
     padding: 16px 20px;
 
@@ -79,6 +79,8 @@
         right: unset;
         border-radius: 0 0 calc($corner-radius / $superellipse-k) 0;
         background-color: var(--b3-border-color-trans);
+        box-shadow: 0 0 0 0.5px var(--b3-border-color-trans) inset;
+        mix-blend-mode: saturation;
         // background: linear-gradient(-45deg, var(--b3-border-color-trans) 50%, transparent 50%);
       }
     }
