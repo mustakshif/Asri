@@ -78,7 +78,7 @@ export async function unloadAsriJSModules(completeUnload = true) {
     if (!env.isMobile) await unloadTopbarFusion();
     destroyDockBg();
     removeStickerFilter();
-    removeIndentGuidesFormatClassName();
+    // removeIndentGuidesFormatClassName();
     removeProtyleSpacings();
     removeDockbClassName();
     removeProtyleStatusClassName();
@@ -170,11 +170,11 @@ async function globalClassNameMoCallback(mutationList: MutationRecord[], observe
     // console.log(mutation.target, mutation.type, mutation.attributeName, mutation.oldValue);
 
     // filetree list item switch
-    if (target.classList.contains("b3-list-item--focus")) {
-      debouncedFormatIndentGuidesForFocusedItems();
-      // debouncedFormatProtyleWithBgImageOnly();
-      // console.log('focus');
-    }
+    // if (target.classList.contains("b3-list-item--focus")) {
+    //   debouncedFormatIndentGuidesForFocusedItems();
+    //   // debouncedFormatProtyleWithBgImageOnly();
+    //   // console.log('focus');
+    // }
 
     // tab switch
     if (target.classList.contains("item--focus")) {

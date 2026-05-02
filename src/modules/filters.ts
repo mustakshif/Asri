@@ -11,7 +11,7 @@ const filters: { id: string; enabled: boolean; markup: string }[] = [
     <filter x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
       <feGaussianBlur in="SourceAlpha" stdDeviation="2.5" result="blur"/>
       <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 200 -1" result="mask"/>
-      <feFlood flood-color="#ffffff" flood-opacity="1" result="paint"/>
+      <feFlood flood-color="#fff" flood-opacity="1" result="paint"/>
       <feComposite in="paint" in2="mask" operator="in" result="outline"/>
       <feMerge>
         <feMergeNode in="outline"/>
@@ -19,7 +19,7 @@ const filters: { id: string; enabled: boolean; markup: string }[] = [
       </feMerge>
     </filter>
   </defs>
-</svg>`,
+</svg>`
   },
   {
     id: "asri-filter-sticker-light",
@@ -47,7 +47,7 @@ const filters: { id: string; enabled: boolean; markup: string }[] = [
       </feMerge>
     </filter>
   </defs>
-</svg>`,
+</svg>`
   },
   {
     id: "asri-filter-sticker-dark",
@@ -72,7 +72,7 @@ const filters: { id: string; enabled: boolean; markup: string }[] = [
       </feMerge>
     </filter>
   </defs>
-</svg>`,
+</svg>`
   },
   {
     id: "asri-filter-gooey-text",
@@ -85,14 +85,34 @@ const filters: { id: string; enabled: boolean; markup: string }[] = [
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
+const FILTERS_CONTAINER_ID = "asri-injected-filters";
+
+function getOrCreateFiltersContainer(): HTMLElement {
+  let container = document.getElementById(FILTERS_CONTAINER_ID);
+  if (!container) {
+    container = document.createElement("div");
+    container.id = FILTERS_CONTAINER_ID;
+    container.classList.add("asri-injected-filters");
+    container.style.position = "absolute";
+    container.style.width = "0";
+    container.style.height = "0";
+    container.style.overflow = "hidden";
+    // container.style.display = "none"; // 会导致白色滤镜失效 --- IGNORE ---
+    document.body.appendChild(container);
+  }
+  return container;
+}
+
 function injectFilter(id: string, markup: string) {
   if (document.getElementById(id)) return;
+  
+  const container = getOrCreateFiltersContainer();
   const temp = document.createElement("div");
   temp.innerHTML = markup;
   const el = temp.firstElementChild!;
   el.id = id;
   el.querySelector("filter")!.id = id.replace("filter-", "");
-  document.body.insertBefore(el, document.body.firstChild);
+  container.appendChild(el);
 }
 
 function removeFilter(id: string) {
@@ -106,11 +126,12 @@ export function injectStickerFilter() {
     for (const { id, enabled, markup } of filters) {
       if (enabled) injectFilter(id, markup);
     }
-  }, 300);
+  }, 0);
 }
 
 export function removeStickerFilter() {
-  for (const { id } of filters) {
-    removeFilter(id);
+  const container = document.getElementById(FILTERS_CONTAINER_ID);
+  if (container) {
+    container.remove();
   }
 }

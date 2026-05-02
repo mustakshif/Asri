@@ -83,12 +83,13 @@
       // transform: translateX(1px);
 
       // 小圆点
-      &.fn__hidden::before {
+      &.fn__hidden::after {
         visibility: visible;
         content: "";
         // margin: 0 -11px 0 8px;
         position: absolute;
-        left: 12px;
+        // left: 12px;
+        inset-inline-end: 6px;
         clip-path: circle(45% at center);
         width: 3px;
         height: 3px;
@@ -504,3 +505,10 @@
 .block__icons .search__label:not(.fn__none) ~ .block__icon {
   opacity: 0 !important;
 }
+
+
+// misc
+.b3-list-item__icon, .b3-menu__avemoji, .b3-list-item__switch {
+  margin-right: unset;
+  margin-inline-end: 4px;
+} 

@@ -11,14 +11,15 @@
 @use "blur";
 @use "cover-image-parallax-scrolling";
 @use "doc-attr-reposition";
-@use "filetree-indents-indicator";
+// @use "filetree-indents-indicator";
+@use "filetree-tree-branch-indents";
 @use "custom-attributes";
 // @use 'heading-indicators';
 // @use 'gradient-headings';
 @use "overflow-indicator";
 @use "list-counter-style";
 // @use 'reading-mode';
-// @use "selected-block-indicator";
+@use "selected-block-indicator";
 @use "hide-side-panel-block-icons";
 // @use "performance-improvements";
 // @use "sticky-stacks";
