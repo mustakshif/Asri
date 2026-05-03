@@ -1,3 +1,19 @@
+### v3.6.18
+
+- 文档树指示线改为树形指示线
+- 微调引述块样式
+- 减少顶栏图标自动收纳触发频率
+- 修复文档题头emoji贴纸效果在切换外观图标后失效的问题
+
+<br />
+
+- Changed document tree guideline to tree branch style guideline
+- Fine-tuned blockquote block style
+- Reduced the triggering frequency of top bar icon auto-collapse
+- Fixed the issue where the document header emoji sticker effect became invalid after switching appearance icons
+
+---
+
 ### v3.6.17
 
 - 区分应用端和网页端平滑圆角机制
