@@ -1,6 +1,3 @@
-// .file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag) .b3-list-item .b3-list-item__toggle.fn__hidden::before {
-//   display: none;
-// }
 @use "../base" as *;
 @use "sass:string";
 
@@ -29,15 +26,21 @@
     transition: 0.2s background-color;
 
     @at-root {
-        :root.is-rtl-lang & {
-            transform: scaleX(-1) translate(4px, 0px);
-        }
+      :root.is-rtl-lang & {
+        transform: scaleX(-1) translate(4px, 0px);
+      }
     }
   }
 
   @at-root {
-    .file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag) .b3-list-item + ul {
-      margin-top: -0.5px;
+    .file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag) {
+      .b3-list-item + ul {
+        margin-top: -0.5px;
+      }
+
+      ul + .b3-list-item {
+        margin-top: -0.5px;
+      }
     }
     .file-tree:where(.sy__file, .sy__outline, .sy__bookmark, .sy__tag) li.b3-list-item:last-of-type > .b3-list-item__toggle::before {
       mask-image: url('data:image/svg+xml,<svg width="100" height="100" viewBox="-25 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.5 0C0.5 16.75 0.5 50.5 40.5 50.5" stroke-width="4" stroke="black"/></svg>');

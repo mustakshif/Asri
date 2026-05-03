@@ -89,7 +89,7 @@
         // margin: 0 -11px 0 8px;
         position: absolute;
         // left: 12px;
-        inset-inline-end: 6px;
+        inset-inline-end: calc(negateForRTL(2) * 1px + 5px + var(--dot-offset-x, 0px));
         clip-path: circle(45% at center);
         width: 3px;
         height: 3px;
@@ -260,6 +260,9 @@
  * 其他模块 
  */
 .sy__outline {
+  > .fn__flex-1 > ul > .b3-list-item {
+    --dot-offset-x: calc(#{negateForRTL(1.5)} * -1px + 2.5px);
+  }
   .b3-list-item[title] {
     display: none;
   }
@@ -506,9 +509,10 @@
   opacity: 0 !important;
 }
 
-
 // misc
-.b3-list-item__icon, .b3-menu__avemoji, .b3-list-item__switch {
+.b3-list-item__icon,
+.b3-menu__avemoji,
+.b3-list-item__switch {
   margin-right: unset;
   margin-inline-end: 4px;
-} 
+}
