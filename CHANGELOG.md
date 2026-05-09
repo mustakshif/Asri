@@ -1,3 +1,13 @@
+### v3.6.19
+
+- [修复Windows端主题配置菜单项卸载失败的问题](https://github.com/mustakshif/Asri/issues/214)
+
+<br />
+
+- [Fixed the issue where theme configuration menu items failed to uninstall on Windows](https://github.com/mustakshif/Asri/issues/214)
+
+---
+
 ### v3.6.18
 
 - 文档树指示线改为树形指示线
