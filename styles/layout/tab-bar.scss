@@ -1,11 +1,10 @@
 @use "../base" as *;
-@use "../features/utils" as *;
 
 // tab-bar 容器
 .fn__flex-column[data-type="wnd"] {
   > .fn__flex:first-child {
     height: 42px;
-    // background-color: var(--b3-theme-background); // 适配 `替换图片背景` 插件
+    background-color: var(--b3-theme-background); // 适配 `替换图片背景` 插件
 
     // transition: padding, .2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
@@ -17,14 +16,13 @@
 
 .layout-tab-bar {
   background-color: transparent;
-  // height: 28px;
+  height: 28px;
   border-bottom: 0;
   overflow-y: hidden;
-  // margin: 8px 8px 6px;
+  margin: 8px 8px 6px;
   transition: margin 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   scrollbar-width: none;
-  // @include superellipse(var(--tab-radius));
-  @include overflow-indicator-fadein-mask(16px, "left right");
+  @include superellipse(var(--tab-radius));
 
   .item {
     // transition: none;
@@ -100,11 +98,7 @@
       }
 
       & + .item:not(.item--pin, .item--readonly) {
-        @at-root {
-          .layout__wnd--center & {
-            margin-inline-start: 18px;
-          }
-        }
+        margin-inline-start: 14px;
 
         &::before {
           content: "";
@@ -181,7 +175,7 @@
 
 .layout-tab-bar--readonly {
   margin-left: 0;
-  min-width: 60px !important;
+  min-width: 59px;
 
   .item {
     background-color: transparent;
@@ -194,12 +188,12 @@
     }
 
     .block__icon {
-      // padding: 8px;
+      padding: 8px;
 
-      // svg {
-      //   width: 12px;
-      //   height: 12px;
-      // }
+      svg {
+        width: 12px;
+        height: 12px;
+      }
     }
 
     // span:nth-child(2) {

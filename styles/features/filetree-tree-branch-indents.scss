@@ -110,10 +110,6 @@
   }
 }
 
-.file-tree:where(.sy__file, .sy__outline) > .fn__flex-1 {
-  --indent-offset: -2px;
-}
-
 // 大纲数字层级标识
 .sy__outline .b3-list-item[data-type="NodeHeading"] .b3-list-item__text::before {
   transform: translateX(negateForRTL(-18px));

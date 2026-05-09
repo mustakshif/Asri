@@ -112,8 +112,10 @@ body.asri-global-backdrop-blur {
     }
   }
 
-  &:not(.body-asri--mobile) .status,
-  &.body--window .status,
+  #dockBottom.fn__none:not(.has-layout-dockb-float) ~ .status,
+  body:not(.body-asri--mobile) #dockBottom.fn__none:not(.has-layout-dockb-float) ~ .status,
+  body.body--window .status,
+  #dockBottom:not(.fn__none, .has-layout-dockb-float) ~ .status,
   &.body-asri--mobile .status {
     background-color: oklch(from var(--b3-theme-surface) l c h / $thin-transparency);
     @include bg-blur;

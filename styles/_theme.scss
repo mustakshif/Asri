@@ -6,7 +6,6 @@
   // https://github.com/mustakshif/Asri/issues/240
   @include theme-root($theme-light);
   @include theme-root-light;
-  --b3-body-background: var(--b3-theme-surface);
 
   &,
   &:lang(zh_CN) {
@@ -63,18 +62,17 @@ body {
   text-decoration-skip-ink: all; // not supported yet
   text-spacing-trim: trim-start;
   text-autospace: normal;
-  background-image: unset;
 
   &:not(.body--win32, .body-asri--linux) {
     scrollbar-width: thin;
     scrollbar-color: var(--b3-scroll-color-hover) var(--b3-theme-background-light, #0000);
   }
 
-  // .asri-mode-light & {
-  //   -webkit-font-smoothing: auto;
-  // }
+  .asri-mode-light & {
+    -webkit-font-smoothing: auto;
+  }
 
-  --b3-toolbar-left-mac: 80px;
+  --b3-toolbar-left-mac: 88px;
   --toolbar-height: 48px;
 }
 

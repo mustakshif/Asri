@@ -6,16 +6,11 @@
  * 设置面板
  */
 .config__panel {
-  .config__side {
+  .b3-tab-bar {
     // 侧栏导航
     background-color: var(--b3-theme-surface);
-    padding: 16px 8px 0;
-    border-right-color: transparent;
+    padding: 16px 8px;
     // border-radius: 12px 0 0 12px;
-
-    >.b3-list {
-      padding-bottom: 16px;
-    }
 
     .config__tab-hr {
       // background-color: var(--b3-border-color-trans);
@@ -150,8 +145,7 @@
     }
 
     .b3-label {
-      // box-shadow: none;
-      border-bottom: none;
+      box-shadow: none;
 
       &__text {
         margin-top: 8px;

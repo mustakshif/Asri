@@ -38,10 +38,6 @@
       --bgimg-top-space: 48px;
     }
 
-    @at-root body.body--toolbar-hide & {
-      --bgimg-top-space: 98px;
-    }
-
     &-background__img {
       overflow: hidden;
       view-timeline-name: --protyle-background;

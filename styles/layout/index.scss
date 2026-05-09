@@ -3,11 +3,3 @@
 @use "topbar";
 @use "tab-bar";
 @use "side-panels";
-
-.layout > .fn__flex:first-child {
-  margin-bottom: var(--b3-layout-space);
-}
-
-.layout__center {
-    corner-shape: superellipse(1.4);
-}

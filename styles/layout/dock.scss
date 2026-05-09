@@ -57,7 +57,7 @@
     padding: 0 0 0 34px;
     border-top-width: 1px;
     border-top-color: var(--b3-border-color-trans);
-    // background-color: var(--b3-theme-background); // fix https://github.com/mustakshif/Asri/issues/37
+    background-color: var(--b3-theme-background); // fix https://github.com/mustakshif/Asri/issues/37
 
     // .fn__flex:first-child,
     // .fn__flex:last-child {
@@ -103,16 +103,16 @@
   }
 
   // animation
-  // transition: background-color 0.15s ease-in-out 0.15s, display 0.2s allow-discrete, width 0.2s, height 0.2s, border-color .1s .2s;
+  transition: background-color 0.15s ease-in-out 0.15s, display 0.2s allow-discrete, width 0.2s, height 0.2s, border-color .1s .2s;
 
-  // &#dockLeft,
-  // &#dockRight {
-  //   animation: vertical-docks-appear 0.2s;
-  // }
+  &#dockLeft,
+  &#dockRight {
+    animation: vertical-docks-appear 0.2s;
+  }
 
-  // &#dockBottom {
-  //   animation: horizontal-docks-appear 0.2s;
-  // }
+  &#dockBottom {
+    animation: horizontal-docks-appear 0.2s;
+  }
 
   @keyframes vertical-docks-appear {
     from {
@@ -146,7 +146,7 @@
 
   &.dock-layout-expanded {
     // -> js
-    // background-color: var(--b3-theme-surface);
+    background-color: var(--b3-theme-surface);
     transition: background-color 0s, display 0.2s allow-discrete, width 0.2s, height 0.2s;
 
     &#dockLeft,
@@ -165,7 +165,3 @@
 //         @include layout__dock-bg($theme-dark);
 //     }
 // }
-
-.dock__split::after {
-  background-color: var(--b3-border-color-trans);
-}

@@ -37,7 +37,7 @@ let protyleWidthChange = 0;
 export async function loadAsriJSModules() {
   addEnvClassNames();
   useMacSysScrollbar();
-  // applyTrafficLightPosition();
+  applyTrafficLightPosition();
   // setStatusHeightVar();
   toggleProtyleStatus();
   injectStickerFilter();
@@ -45,13 +45,13 @@ export async function loadAsriJSModules() {
   await getI18n();
 
   loadThemePalette(); // https://github.com/mustakshif/Asri/issues/85
-  // setVibrancy();
+  setVibrancy();
 
-  // if (!env.isMobile) {
-  //   await updateWndEls();
-  //   await updateDragRect("initials");
-  //   createTopbarFusionElements();
-  // }
+  if (!env.isMobile) {
+    await updateWndEls();
+    await updateDragRect("initials");
+    createTopbarFusionElements();
+  }
   updateStyles();
   addDockbClassName();
   // avoidOverlappingWithStatus();
@@ -87,7 +87,7 @@ export async function unloadAsriJSModules(completeUnload = true) {
     // removeStatusStyles();
     removeEnvClassNames();
     restoreDefaultSiyuanScrollbar();
-    // restoreTrafficLightPosition();
+    restoreTrafficLightPosition();
     document.body.classList.remove("body-asri--fullscreen", "asri-tfp", "asri-tfp-acrylic", "asri-tfp-progressive", "asri-c-0");
     unloadThemePalette();
     removeHdrSupportImage();
@@ -134,18 +134,18 @@ async function updateStyles(e?: Event | KeyboardEvent) {
   // run on first load
   if (!e) {
     lowFreqStyleUpdates();
-    // calcTopbarSpacings().then(calcTabbarSpacings);
+    calcTopbarSpacings().then(calcTabbarSpacings);
   }
 
   // run on mouse events
   else if (e.type.startsWith("mouseup") || e.type.startsWith("drag") || (e instanceof KeyboardEvent && (e.key === "Control" || e.key === "Alt" || e.key === "Shift" || e.key === "Meta"))) {
     lowFreqStyleUpdates();
-    // Promise.resolve()
-    //   .then(() => {
-    //     throttle(recalcDragInitials);
-    //     return calcTopbarSpacings(0, false, doesTopBarOverflow);
-    //   })
-    //   .then(calcTabbarSpacings);
+    Promise.resolve()
+      .then(() => {
+        throttle(recalcDragInitials);
+        return calcTopbarSpacings(0, false, doesTopBarOverflow);
+      })
+      .then(calcTabbarSpacings);
   }
 
   function lowFreqStyleUpdates() {
@@ -206,31 +206,31 @@ const dispatchResizeEventDebounced = debounce(() => {
   window.dispatchEvent(new Event("resize"));
 }, 100);
 function lytCenterRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
-  // calcTopbarSpacings(0, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
-  // dispatchResizeEventDebounced();
+  calcTopbarSpacings(0, isWinResizing, doesTopBarOverflow).then(calcTabbarSpacings);
+  dispatchResizeEventDebounced();
 }
 
 function winRoCallback(entries: ResizeObserverEntry[], observer: ResizeObserver) {
-  // for (let entry of entries) {
-  //   isWinResizing = true;
-  //   debouncedHandleWinResizeEnd();
+  for (let entry of entries) {
+    isWinResizing = true;
+    debouncedHandleWinResizeEnd();
 
-  //   const { inlineSize } = entry.contentBoxSize[0];
+    const { inlineSize } = entry.contentBoxSize[0];
 
-  //   if (entry.target instanceof HTMLElement) {
-  //     // check if it's the first time to trigger resize event, if so, skip the calculation
-  //     if (!entry.target.dataset.prevWidth) {
-  //       entry.target.dataset.prevWidth = inlineSize + "";
-  //       continue;
-  //     }
-  //     // get previous width
-  //     const prevWidth = parseFloat(entry.target.dataset.prevWidth);
-  //     const widthChange = inlineSize - prevWidth;
-  //     entry.target.dataset.prevWidth = inlineSize + "";
-  //     protyleWidthChange = widthChange;
-  //   } // make sure to capture width change after the size change is completely done
-  //   // console.log('winRoCallback', isWinResizing)
-  // }
+    if (entry.target instanceof HTMLElement) {
+      // check if it's the first time to trigger resize event, if so, skip the calculation
+      if (!entry.target.dataset.prevWidth) {
+        entry.target.dataset.prevWidth = inlineSize + "";
+        continue;
+      }
+      // get previous width
+      const prevWidth = parseFloat(entry.target.dataset.prevWidth);
+      const widthChange = inlineSize - prevWidth;
+      entry.target.dataset.prevWidth = inlineSize + "";
+      protyleWidthChange = widthChange;
+    } // make sure to capture width change after the size change is completely done
+    // console.log('winRoCallback', isWinResizing)
+  }
 }
 
 const debouncedHandleWinResizeEnd = debounce(() => {

@@ -1,9 +1,9 @@
 @use "../base" as *;
 
 .toolbar {
-  // height: var(--toolbar-height);
-  // background-color: var(--b3-theme-background);
-  // border-bottom: 1px solid var(--b3-border-color-trans);
+  height: var(--toolbar-height);
+  background-color: var(--b3-theme-background);
+  border-bottom: 1px solid var(--b3-border-color-trans);
   overflow: visible;
 
   #barWorkspace {
