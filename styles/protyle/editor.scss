@@ -260,8 +260,10 @@
 }
 
 .layout-tab-container {
-  background-color: var(--b3-theme-background);
-  transition: padding 0.2s;
+  // background-color: var(--b3-theme-background);
+  // transition: padding 0.2s;
+
+  corner-shape: superellipse(1.4);
 }
 
 .layout__center[style="margin: 0px 10px;"] {

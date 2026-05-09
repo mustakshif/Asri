@@ -9,8 +9,8 @@
   --asri-status-transform-y: 0px;
   --status-position-transform: translate(var(--asri-status-transform-x), var(--asri-status-transform-y));
   position: absolute;
-  bottom: calc(anchor(--anchor-layout-center bottom) + 8px);
-  right: calc(anchor(--anchor-layout-center right) + 8px);
+  bottom: calc(anchor(--anchor-layout-center bottom) + var(--b3-layout-space));
+  right: calc(anchor(--anchor-layout-center right) + var(--b3-layout-space));
 
   @include superellipse(20px, $k: 1.1);
   height: 26px;
@@ -485,10 +485,8 @@
 //     position: fixed;
 // }
 
-body:not(.body-asri--mobile) #dockBottom.fn__none:not(.has-layout-dockb-float) ~ .status,
-body.body--window .status,
-#dockBottom:not(.fn__none, .has-layout-dockb-float) ~ .status
-{
+body:not(.body-asri--mobile) .status,
+body.body--window .status {
   // @include floating-status();
   @supports (top: anchor(bottom)) {
     @include floating-status-anchor();
