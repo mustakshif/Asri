@@ -30,8 +30,9 @@
   &__container {
     overflow: hidden; // 窗口中有元素如果混合使用mix-blend-mode 和 backdrop-filter，会导致窗口布局跳动、窗口闪烁
     background-color: var(--b3-theme-background);
-    @include superellipse(20px);
-    @include theme-variant-border; 
+    border-radius: 20px;
+    // @include superellipse(20px); // corner smoothing may cause flickering when displaying multiple layers at once: https://github.com/mustakshif/Asri/issues/254
+    @include theme-variant-border;
     @include dialog-shadow($extra-shadow-light: "0 0 0 1px rgba(0, 0, 0, 0.05)");
     // box-shadow: none !important;
 
@@ -109,7 +110,9 @@
   // 弹出动画
   &__container {
     transform: translateY(-30px);
-    transition: opacity 0.1s linear 0s, transform 0.4s var(--asri-ease-spring-1);
+    transition:
+      opacity 0.1s linear 0s,
+      transform 0.4s var(--asri-ease-spring-1);
   }
 
   // [data-id]{
@@ -124,7 +127,9 @@
   &__scrim {
     background-color: #80808080;
     backdrop-filter: saturate(0.5);
-    transition: opacity 250ms 0s, backdrop-filter 300ms 0s;
+    transition:
+      opacity 250ms 0s,
+      backdrop-filter 300ms 0s;
 
     @include darkmode-counterpart {
       background-color: #00000080;
