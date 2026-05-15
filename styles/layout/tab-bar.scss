@@ -16,15 +16,19 @@
 }
 
 .layout-tab-bar {
-  background-color: transparent;
+  // background-color: transparent;
   // height: 28px;
   border-bottom: 0;
   overflow-y: hidden;
   // margin: 8px 8px 6px;
   transition: margin 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   scrollbar-width: none;
+  padding: 0 2px;
   // @include superellipse(var(--tab-radius));
-  @include overflow-indicator-fadein-mask(16px, "left right");
+
+  @at-root body.body--toolbar-hide & {
+    @include overflow-indicator-fadein-mask(16px, "left right");
+  }
 
   .item {
     // transition: none;
@@ -32,13 +36,14 @@
     min-width: unset;
     min-height: unset;
     line-height: 24px;
-    margin-inline-end: 8px;
+    margin-inline-end: 4px;
     overflow: visible;
     background-color: var(--b3-list-hover);
+    padding: 0 2px;
     @include superellipse(var(--tab-radius));
     // transition-property: max-width, width, backdrop-filter, background-color, color;
 
-    &:last-child {
+    &:not(.item--readonly):last-child {
       margin-inline-end: unset;
     }
 
@@ -53,7 +58,6 @@
       align-items: center;
       line-height: 28px;
       font-size: 14px;
-      // vertical-align: -1px; // 无用声明
 
       .body--win32 & {
         padding-top: 0;
@@ -100,10 +104,9 @@
       }
 
       & + .item:not(.item--pin, .item--readonly) {
-        @at-root {
-          .layout__wnd--center & {
-            margin-inline-start: 18px;
-          }
+        margin-inline-start: 18px;
+        @at-root body.body--toolbar-hide .layout__wnd--center & {
+          margin-inline-start: 18px;
         }
 
         &::before {

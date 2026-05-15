@@ -29,7 +29,7 @@ export function removeVibrancy() {
   if (env.isMacOS) {
     remote.getCurrentWindow().setVibrancy(null);
   } else if (env.isWindows && isWin11) {
-    remote.getCurrentWindow().setBackgroundMaterial(null);
+    remote.getCurrentWindow().setBackgroundMaterial('auto');
   }
   document.body.classList.remove("asri-vibrancy");
 }

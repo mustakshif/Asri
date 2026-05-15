@@ -52,7 +52,7 @@
         // view-timeline-name: --protyle-background;
         animation-timeline: --protyle-background;
         // view-timeline-axis: y;
-        animation-range: calc(100vh - var(--bgimg-top-space, 84px)) normal;
+        animation-range: calc(100vh - var(--bgimg-top-space, 130px)) normal;
         animation-fill-mode: both;
         animation-name: parallax-cover-img, cover-img-fade-out;
         animation-timing-function: linear;
