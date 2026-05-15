@@ -47,6 +47,10 @@ $fadeout-size-xl: 50px;
   @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: "top");
 }
 
+.history__repo[data-type="repo"] .b3-list--background::before {
+  top: -8px;
+}
+
 // pdf 侧边导航
 #thumbnailView,
 #outlineView {

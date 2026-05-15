@@ -1,3 +1,23 @@
+### v3.6.20
+
+- [修复部分情况下对话窗口闪烁的问题](https://github.com/mustakshif/Asri/issues/254)
+
+<br />
+
+- [Fixed the issue of the conversation window flickering in some cases](https://github.com/mustakshif/Asri/issues/254)
+
+---
+
+### v3.6.19
+
+- [修复Windows端主题配置菜单项卸载失败的问题](https://github.com/mustakshif/Asri/issues/214)
+
+<br />
+
+- [Fixed the issue where theme configuration menu items failed to uninstall on Windows](https://github.com/mustakshif/Asri/issues/214)
+
+---
+
 ### v3.6.18
 
 - 文档树指示线改为树形指示线
