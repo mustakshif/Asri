@@ -7,6 +7,8 @@
   @include theme-root($theme-light);
   @include theme-root-light;
 
+  --b3-body-background: var(--b3-theme-surface);
+
   &,
   &:lang(zh_CN) {
     --b3-font-family: system-ui, ui-sans-serif, -apple-system, "Emojis Additional", "Emojis Reset", BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "PingFang SC", "Segoe UI", "Microsoft Yahei", "Hiragino Sans GB", sans-serif, "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
@@ -69,11 +71,7 @@ body {
     scrollbar-color: var(--b3-scroll-color-hover) var(--b3-theme-background-light, #0000);
   }
 
-  .asri-mode-light & {
-    -webkit-font-smoothing: auto;
-  }
-
-  --b3-toolbar-left-mac: 88px;
+  --b3-toolbar-left-mac: 80px;
   --toolbar-height: 48px;
 }
 
