@@ -125,3 +125,24 @@ $figma-ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
     -webkit-box-orient: $orientation;
   }
 }
+
+@mixin cjk-rounded-quotes(
+  $font-list: (
+    ("PingFangSC-Ultralight", 100),
+    ("PingFangSC-Thin", 100 200),
+    // ("PingFangSC-Light", 300), // somehow can;t be mapped using font-weight
+    ("PingFangSC-Regular", 200 400),
+    ("PingFangSC-Medium", 400 600),
+    ("PingFangSC-Semibold", 600 990)
+  )
+) {
+  @each $font in $font-list {
+    @font-face {
+      font-family: "CJKRoundedQuotes";
+      src: local(list.nth($font, 1));
+      font-weight: list.nth($font, 2);
+      unicode-range: U+201C, U+201D, U+2018, U+2019;
+    }
+  }
+}
+
