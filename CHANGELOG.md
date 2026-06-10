@@ -1,3 +1,15 @@
+### v3.6.21
+
+- 适配选单样式
+- 全角引号采用逗点样式`macOS`
+
+<br />
+
+- Adapted selection element styles
+- Used comma style for full-width quotation marks `macOS`
+
+---
+
 ### v3.6.20
 
 - [修复部分情况下对话窗口闪烁的问题](https://github.com/mustakshif/Asri/issues/254)
