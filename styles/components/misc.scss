@@ -233,6 +233,44 @@ select.b3-select {
   }
 
   //focus 修复暗色模式下 Windows 端选单背景颜色异常
+
+  appearance: base-select;
+  font-weight: normal;
+  text-wrap-mode: nowrap;
+  
+  &::picker-icon {
+    display: none; 
+  }
+
+  &::picker(select) {
+    appearance: base-select;
+    color: var(--b3-theme-on-background);
+    background-color: var(--b3-menu-background);
+    border: none;
+    padding: 5px;
+    
+    @include menu-shadow($opacity-light: 0.15, $extra-shadow-light: "0 0 0 1px color(display-p3 1.5 1.5 1.5 / 0.05) inset, 1px 2px 1px -1px color(display-p3 2 2 2 / 0.15) inset, -1px -2px 1px -1px color(display-p3 2 2 2 / 0.1) inset", $extra-shadow-dark: "0 0 0 1px rgba(255,255,255, 0.06) inset, 1px 2px 1px -1px rgba(255,255,255, 0.3) inset, -1px -2px 1px -1px rgba(255,255,255, 0.15) inset");
+    @include theme-variant-border($border: false);
+    @include superellipse($border-rd-menu);    
+  }
+
+  option {
+    padding-block: 1px;
+    @include superellipse(calc($border-rd-menu - 0.25em));
+
+    /* &::checkmark {
+      order: 1;
+      margin-left: auto;
+    }
+    
+    &:checked {
+      font-weight: 500;
+    } */
+
+    &:hover {
+      background-color: var(--b3-theme-primary-lightest);
+    }
+  }
 }
 
 textarea {
