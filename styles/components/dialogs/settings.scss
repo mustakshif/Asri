@@ -13,7 +13,7 @@
     border-right-color: transparent;
     // border-radius: 12px 0 0 12px;
 
-    >.b3-list {
+    > .b3-list {
       padding-bottom: 16px;
     }
 
@@ -98,17 +98,14 @@
 
   .config__tab-container {
     &,
-    &[data-name="search"] {
+    &[data-name="bazaar"] {
       padding: 8px 12px;
     }
 
     // padding: 8px min(5em, 8%);
-    &,
-    &[data-name="AI"] .layout-tab-bar + .fn__flex-1,
-    &[data-name="image"] .layout-tab-bar + .fn__flex-1 {
-      padding-left: calc(48% - 25em);
-      padding-right: calc(48% - 25em);
-    }
+
+    padding-left: calc(48% - 25em);
+    padding-right: calc(48% - 25em);
 
     background-color: var(--b3-theme-background);
 
@@ -123,12 +120,12 @@
     //     }
     // }
 
-    .b3-label .fn__flex-1:not(.ft__on-surface):not(.b3-button):not(.b3-form__icon):not(.fn__size200):not(ul):not(input):first-child,
-    .b3-label .fn__block:not(.ft__on-surface):not(.b3-button):not(.b3-form__icon):not(.fn__size200):not(ul):not(input):first-child,
-    .b3-label .fn__flex-center:not(.ft__on-surface):not(.b3-button):not(.b3-form__icon):not(.fn__size200):not(ul):not(input):first-child,
-    .b3-label::first-line,
-    .config__ite::first-line {
+    .config-name {
       font-weight: 600;
+    }
+
+    .config-group {
+      margin-inline: 0;
     }
 
     .config-query .fn__flex-1,
@@ -200,280 +197,280 @@
 }
 
 // 账号页面内容
-.config-account {
-  background-color: var(--b3-theme-surface);
+// .config-account {
+//   background-color: var(--b3-theme-surface);
 
-  backdrop-filter: opacity(1); // fix .b3-dialog__scrim's backdrop-filter loss caused by child element &__name's mix-blend-mode. See https://stackoverflow.com/questions/66204563/backdrop-filter-not-working-when-mix-blend-mode-of-another-element-on-the-page-i
+//   backdrop-filter: opacity(1); // fix .b3-dialog__scrim's backdrop-filter loss caused by child element &__name's mix-blend-mode. See https://stackoverflow.com/questions/66204563/backdrop-filter-not-working-when-mix-blend-mode-of-another-element-on-the-page-i
 
-  &__center:not(.config-account__center--text) {
-    height: min(100% - 80px, 650px);
-    max-width: min(100%, 400px);
-    margin: auto 20px;
-    @include superellipse(20px);
-    overflow: hidden;
-    background-color: var(--b3-theme-background);
+//   &__center:not(.config-account__center--text) {
+//     height: min(100% - 80px, 650px);
+//     max-width: min(100%, 400px);
+//     margin: auto 20px;
+//     @include superellipse(20px);
+//     overflow: hidden;
+//     background-color: var(--b3-theme-background);
 
-    @include menu-shadow($opacity-light: 0.05, $opacity-dark: 0.15, $border-light: 0.5px, $border-dark: 0px, $extra-shadow-light: inset 0 1px 0 0 #fff, $extra-shadow-dark: inset 0 1px 0 0 var(--b3-border-color-trans));
+//     @include menu-shadow($opacity-light: 0.05, $opacity-dark: 0.15, $border-light: 0.5px, $border-dark: 0px, $extra-shadow-light: inset 0 1px 0 0 #fff, $extra-shadow-dark: inset 0 1px 0 0 var(--b3-border-color-trans));
 
-    @media (max-width: 750px) {
-      margin: 40px;
-      max-width: unset;
-    }
-  }
+//     @media (max-width: 750px) {
+//       margin: 40px;
+//       max-width: unset;
+//     }
+//   }
 
-  &__cover {
-    // &::before {
-    //     content: "";
-    //     display: inline-block;
-    //     width: -webkit-fill-available;
-    //     height: 90%;
-    //     position: absolute;
-    //     bottom: 0;
-    //     right: 0;
-    //     background: linear-gradient(to top, pickThemeColor($theme-light, background) 2%, pickThemeColor($theme-light, background, 0.97) 10%, pickThemeColor($theme-light, background, 0.9) 18%, pickThemeColor($theme-light, background, 0.75) 33%, pickThemeColor($theme-light, background, 0.05) 92%, transparent 99%);
-    //     pointer-events: none;
+//   &__cover {
+//     // &::before {
+//     //     content: "";
+//     //     display: inline-block;
+//     //     width: -webkit-fill-available;
+//     //     height: 90%;
+//     //     position: absolute;
+//     //     bottom: 0;
+//     //     right: 0;
+//     //     background: linear-gradient(to top, pickThemeColor($theme-light, background) 2%, pickThemeColor($theme-light, background, 0.97) 10%, pickThemeColor($theme-light, background, 0.9) 18%, pickThemeColor($theme-light, background, 0.75) 33%, pickThemeColor($theme-light, background, 0.05) 92%, transparent 99%);
+//     //     pointer-events: none;
 
-    //     @include darkmode-counterpart {
-    //         background: linear-gradient(to top, pickThemeColor($theme-dark, background) 2%, pickThemeColor($theme-dark, background, 0.97) 10%, pickThemeColor($theme-dark, background, 0.9) 18%, pickThemeColor($theme-dark, background, 0.75) 33%, pickThemeColor($theme-dark, background, 0.05) 92%, transparent 99%);
-    //     }
-    // }
+//     //     @include darkmode-counterpart {
+//     //         background: linear-gradient(to top, pickThemeColor($theme-dark, background) 2%, pickThemeColor($theme-dark, background, 0.97) 10%, pickThemeColor($theme-dark, background, 0.9) 18%, pickThemeColor($theme-dark, background, 0.75) 33%, pickThemeColor($theme-dark, background, 0.05) 92%, transparent 99%);
+//     //     }
+//     // }
 
-    mask-image: linear-gradient(to top, transparent 2%, rgba(0, 0, 0, 0.03) 10%, rgba(0, 0, 0, 0.1) 18%, rgba(0, 0, 0, 0.25) 33%, rgba(0, 0, 0, 0.95) 92%, black 99%), linear-gradient(to top, black, black);
-    mask-size:
-      auto 90%,
-      auto 11%;
-    mask-position: bottom, top;
-    mask-repeat: no-repeat;
+//     mask-image: linear-gradient(to top, transparent 2%, rgba(0, 0, 0, 0.03) 10%, rgba(0, 0, 0, 0.1) 18%, rgba(0, 0, 0, 0.25) 33%, rgba(0, 0, 0, 0.95) 92%, black 99%), linear-gradient(to top, black, black);
+//     mask-size:
+//       auto 90%,
+//       auto 11%;
+//     mask-position: bottom, top;
+//     mask-repeat: no-repeat;
 
-    &[style="background-image: url()"] {
-      background-color: var(--b3-theme-primary-light);
-    }
-  }
+//     &[style="background-image: url()"] {
+//       background-color: var(--b3-theme-primary-light);
+//     }
+//   }
 
-  &__bg {
-    margin-bottom: 0;
+//   &__bg {
+//     margin-bottom: 0;
 
-    .b3-chips {
-      mix-blend-mode: luminosity;
+//     .b3-chips {
+//       mix-blend-mode: luminosity;
 
-      .b3-chip {
-        border-radius: 99px;
-        background-color: var(--b3-theme-surface);
-        padding: 4px 8px;
-        opacity: 0.9;
-        color: var(--b3-theme-on-surface);
+//       .b3-chip {
+//         border-radius: 99px;
+//         background-color: var(--b3-theme-surface);
+//         padding: 4px 8px;
+//         opacity: 0.9;
+//         color: var(--b3-theme-on-surface);
 
-        &::before {
-          display: none;
-        }
-      }
-    }
-  }
+//         &::before {
+//           display: none;
+//         }
+//       }
+//     }
+//   }
 
-  &__avatar {
-    // top: 20%;
-    bottom: 108px;
-    box-shadow: none;
-    border: none;
-    transition: box-shadow 0.2s;
+//   &__avatar {
+//     // top: 20%;
+//     bottom: 108px;
+//     box-shadow: none;
+//     border: none;
+//     transition: box-shadow 0.2s;
 
-    &:hover {
-      box-shadow: 0 0 0 2px #fffa;
-    }
+//     &:hover {
+//       box-shadow: 0 0 0 2px #fffa;
+//     }
 
-    @media (max-width: 750px) {
-      top: 20%;
-      bottom: unset;
-    }
-  }
+//     @media (max-width: 750px) {
+//       top: 20%;
+//       bottom: unset;
+//     }
+//   }
 
-  &__name {
-    // top: calc(20% + 200px);
-    bottom: 12px;
-    mix-blend-mode: luminosity;
+//   &__name {
+//     // top: calc(20% + 200px);
+//     bottom: 12px;
+//     mix-blend-mode: luminosity;
 
-    @media (max-width: 750px) {
-      display: none;
-    }
+//     @media (max-width: 750px) {
+//       display: none;
+//     }
 
-    & > .fn__a {
-      display: block;
-      transition: color 0.2s;
-    }
-  }
+//     & > .fn__a {
+//       display: block;
+//       transition: color 0.2s;
+//     }
+//   }
 
-  &__info {
-    margin-top: 0;
-    background-color: var(--b3-theme-background);
-    z-index: 1;
+//   &__info {
+//     margin-top: 0;
+//     background-color: var(--b3-theme-background);
+//     z-index: 1;
 
-    @media (min-width: 750px) {
-      > .fn__flex {
-        margin: 0 24px 24px;
-        flex-direction: column;
+//     @media (min-width: 750px) {
+//       > .fn__flex {
+//         margin: 0 24px 24px;
+//         flex-direction: column;
 
-        // #logout,
-        // #refresh {
-        //     box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
-        // }
+//         // #logout,
+//         // #refresh {
+//         //     box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
+//         // }
 
-        #refresh {
-          height: 28px;
+//         #refresh {
+//           height: 28px;
 
-          > svg {
-            display: none;
-          }
+//           > svg {
+//             display: none;
+//           }
 
-          &::after {
-            opacity: 1;
-            transform: none;
-            right: unset;
-            bottom: unset;
-            margin-bottom: 0;
-            background-color: transparent;
-            box-shadow: none;
-            font-size: 14px;
-            // color: var(--b3-theme-on-surface);
-            transition: color 0.1s;
-            -webkit-font-smoothing: auto;
+//           &::after {
+//             opacity: 1;
+//             transform: none;
+//             right: unset;
+//             bottom: unset;
+//             margin-bottom: 0;
+//             background-color: transparent;
+//             box-shadow: none;
+//             font-size: 14px;
+//             // color: var(--b3-theme-on-surface);
+//             transition: color 0.1s;
+//             -webkit-font-smoothing: auto;
 
-            @include darkmode-counterpart {
-              outline: none;
-              -webkit-font-smoothing: antialiased;
-            }
-          }
+//             @include darkmode-counterpart {
+//               outline: none;
+//               -webkit-font-smoothing: antialiased;
+//             }
+//           }
 
-          &:hover::after {
-            color: var(--b3-theme-on-background);
-            border: none;
-          }
-        }
+//           &:hover::after {
+//             color: var(--b3-theme-on-background);
+//             border: none;
+//           }
+//         }
 
-        &:last-child {
-          label {
-            display: flex;
+//         &:last-child {
+//           label {
+//             display: flex;
 
-            > input {
-              margin-inline-start: auto;
-            }
-          }
+//             > input {
+//               margin-inline-start: auto;
+//             }
+//           }
 
-          .fn__flex-1 {
-            min-height: 8px;
-          }
-        }
+//           .fn__flex-1 {
+//             min-height: 8px;
+//           }
+//         }
 
-        .fn__space {
-          height: 8px;
-        }
-      }
-    }
-  }
+//         .fn__space {
+//           height: 8px;
+//         }
+//       }
+//     }
+//   }
 
-  .b3-button--text:not(#activationCode),
-  button#login {
-    // @include button-action('primary');
-    @include button-primary {
-      background-color: var(--b3-theme-primary);
-      color: var(--b3-theme-on-primary);
-      outline: none;
+//   .b3-button--text:not(#activationCode),
+//   button#login {
+//     // @include button-action('primary');
+//     @include button-primary {
+//       background-color: var(--b3-theme-primary);
+//       color: var(--b3-theme-on-primary);
+//       outline: none;
 
-      &:hover {
-        background-color: rgb(from var(--b3-theme-primary) r g b / 0.8);
-      }
-    }
+//       &:hover {
+//         background-color: rgb(from var(--b3-theme-primary) r g b / 0.8);
+//       }
+//     }
 
-    @include darkmode-counterpart {
-      background-color: var(--b3-theme-primary);
-    }
+//     @include darkmode-counterpart {
+//       background-color: var(--b3-theme-primary);
+//     }
 
-    @media (max-width: 750px) {
-      @include button-action("primary");
-      color: var(--b3-theme-on-primary);
+//     @media (max-width: 750px) {
+//       @include button-action("primary");
+//       color: var(--b3-theme-on-primary);
 
-      &:hover {
-        background-color: var(--b3-theme-primary);
-      }
-    }
-  }
+//       &:hover {
+//         background-color: var(--b3-theme-primary);
+//       }
+//     }
+//   }
 
-  .b3-button--cancel {
-    @include button-action("normal");
-  }
+//   .b3-button--cancel {
+//     @include button-action("normal");
+//   }
 
-  // 订阅按钮
-  .b3-button--big {
-    color: var(--b3-theme-primary);
-    font-weight: 600;
-    padding: 24px 16px;
-    background-color: transparent;
-    outline: 2px solid var(--b3-theme-primary);
-    transition: 0.2s;
-    @include superellipse(99px, $k: 1.2);
+//   // 订阅按钮
+//   .b3-button--big {
+//     color: var(--b3-theme-primary);
+//     font-weight: 600;
+//     padding: 24px 16px;
+//     background-color: transparent;
+//     outline: 2px solid var(--b3-theme-primary);
+//     transition: 0.2s;
+//     @include superellipse(99px, $k: 1.2);
 
-    &:hover {
-      background-color: var(--b3-theme-primary-lightest);
-      box-shadow: none;
-      transform: scale(1.05);
-    }
+//     &:hover {
+//       background-color: var(--b3-theme-primary-lightest);
+//       box-shadow: none;
+//       transform: scale(1.05);
+//     }
 
-    &:active {
-      transform: scale(0.95);
-      opacity: 0.8;
-      box-shadow: none;
-      transition: 0.1s;
-    }
+//     &:active {
+//       transform: scale(0.95);
+//       opacity: 0.8;
+//       box-shadow: none;
+//       transition: 0.1s;
+//     }
 
-    &:active,
-    &:focus {
-      background-color: var(--b3-theme-primary);
-      color: var(--b3-theme-on-primary);
-      transition: 0.1s;
-      outline-color: transparent;
-      box-shadow: none;
-    }
-  }
+//     &:active,
+//     &:focus {
+//       background-color: var(--b3-theme-primary);
+//       color: var(--b3-theme-on-primary);
+//       transition: 0.1s;
+//       outline-color: transparent;
+//       box-shadow: none;
+//     }
+//   }
 
-  // 捐赠按钮
-  .b3-chip--hover:hover {
-    box-shadow: none;
-    transform: scale(1.05);
-  }
+//   // 捐赠按钮
+//   .b3-chip--hover:hover {
+//     box-shadow: none;
+//     transform: scale(1.05);
+//   }
 
-  // 右侧内容
-  &__center--text {
-    padding: 24px;
-    line-height: 1.5;
-    color: var(--b3-theme-on-surface);
+//   // 右侧内容
+//   &__center--text {
+//     padding: 24px;
+//     line-height: 1.5;
+//     color: var(--b3-theme-on-surface);
 
-    .b3-form__icon-icon {
-      margin: 8px 0;
-    }
+//     .b3-form__icon-icon {
+//       margin: 8px 0;
+//     }
 
-    .b3-form__icon-input {
-      margin: 8px 0 16px;
+//     .b3-form__icon-input {
+//       margin: 8px 0 16px;
 
-      &:placeholder-shown + #activationCode {
-        display: none;
-      }
-    }
-  }
+//       &:placeholder-shown + #activationCode {
+//         display: none;
+//       }
+//     }
+//   }
 
-  #activationCode {
-    margin: 8px 0;
-    transition: 0.1s;
-    font-weight: 600;
+//   #activationCode {
+//     margin: 8px 0;
+//     transition: 0.1s;
+//     font-weight: 600;
 
-    &:hover {
-      background-color: transparent;
-      transform: scale(1.05);
-    }
+//     &:hover {
+//       background-color: transparent;
+//       transform: scale(1.05);
+//     }
 
-    &:active,
-    &:focus {
-      background-color: transparent;
-      transform: scale(0.95);
-      color: var(--b3-theme-primary);
-    }
-  }
-}
+//     &:active,
+//     &:focus {
+//       background-color: transparent;
+//       transform: scale(0.95);
+//       color: var(--b3-theme-primary);
+//     }
+//   }
+// }
