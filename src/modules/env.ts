@@ -27,7 +27,7 @@ export function addEnvClassNames() {
   document.documentElement.classList.remove(`asri-mode-dark`, `asri-mode-light`, "is-rtl-lang");
   document.documentElement.classList.add(`asri-mode-${window.siyuan.config.appearance.mode > 0 ? "dark" : ("light" as "dark" | "light")}`);
 
-  if (env.lang === "ar_SA" || env.lang === "he_IL") {
+  if (env.lang === "ar" || env.lang === "he") {
     document.documentElement.classList.add("is-rtl-lang");
   }
 }

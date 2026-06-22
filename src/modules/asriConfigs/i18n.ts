@@ -1,11 +1,18 @@
 import { environment as env } from "../../util/rsc";
 
+const langMap: Record<string, string> = {
+  "zh-CN": "zh_CN",
+  "zh-TW": "zh_CHT",
+  "en": "en_US",
+  "ar": "ar_SA",
+};
+
 export async function loadI18n() {
   let res: Response;
   try {
     console.log("loading i18n for lang:", env.lang, typeof env.lang);
-    if (["zh-CN", "zh-CHT", "en-US", "ar-SA"].includes(env.lang)) {
-      res = await fetch(`/appearance/themes/Asri/i18n/${env.lang.replace("-", "_")}.json`);
+    if (["zh-CN", "zh-TW", "en", "ar"].includes(env.lang)) {
+      res = await fetch(`/appearance/themes/Asri/i18n/${langMap[env.lang]}.json`);
     } else {
       res = await fetch("/appearance/themes/Asri/i18n/en_US.json");
     }
