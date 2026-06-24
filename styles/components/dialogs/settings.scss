@@ -8,7 +8,6 @@
 .config__panel {
   .config__side {
     // 侧栏导航
-    background-color: var(--b3-theme-surface);
     padding: 16px 8px 0;
     border-right-color: transparent;
     // border-radius: 12px 0 0 12px;
@@ -17,10 +16,8 @@
       padding-bottom: 16px;
     }
 
-    .config__tab-hr {
-      // background-color: var(--b3-border-color-trans);
-      background-color: transparent;
-      margin: 8px 0;
+    .config__tab-scroll {
+      padding-block-end: 12px;
     }
 
     .b3-list-item {
@@ -97,15 +94,15 @@
   }
 
   .config__tab-container {
-    &,
-    &[data-name="bazaar"] {
-      padding: 8px 12px;
+    &[data-name="bazaar"],
+    &[data-name="assets"] {
+      padding-top: 8px;
     }
 
-    // padding: 8px min(5em, 8%);
+    // // padding: 8px min(5em, 8%);
 
-    padding-left: calc(48% - 25em);
-    padding-right: calc(48% - 25em);
+    // padding-left: calc(48% - 25em);
+    // padding-right: calc(48% - 25em);
 
     background-color: var(--b3-theme-background);
 
@@ -122,10 +119,6 @@
 
     .config-name {
       font-weight: 600;
-    }
-
-    .config-group {
-      margin-inline: 0;
     }
 
     .config-query .fn__flex-1,

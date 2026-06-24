@@ -8,28 +8,15 @@
 
   #barWorkspace {
     // background-color: var(--b3-theme-primary-lighter);
-    background-color: #0000;
-    color: var(--b3-theme-on-surface);
+    // background-color: #0000;
+    // color: var(--b3-theme-on-surface);
     font-weight: 500;
-    height: 28px;
-    position: relative;
-    // box-shadow: 0 0 0 1px var(--b3-border-color-trans) inset;
-    transition-property: background-color, color, outline;
-    outline: 1px solid var(--b3-border-color-trans);
-    outline-offset: -1px;
-    @include superellipse(6px);
-
-    &:hover {
-      background-color: var(--b3-theme-primary);
-      outline-color: transparent;
-      color: var(--b3-theme-on-primary);
-      // box-shadow: 0 0 0 1px transparent inset;
-    }
+    // height: 28px;
+    // position: relative;
 
     .toolbar__text {
       font-size: 14px;
       align-self: center;
-      z-index: 1;
       line-height: normal;
     }
 
@@ -38,13 +25,13 @@
     }
   }
 
-  .toolbar__item {
-    height: var(--toolbar-height);
-    color: var(--b3-theme-on-surface);
+  .toolbar__item:not(.toolbar__item--disabled):not(.toolbar__item--close):hover, .toolbar__item--active {
+    background-color: transparent;
+  }
 
-    &:hover {
-      background-color: transparent;
-    }
+  .toolbar__item {
+    // height: var(--toolbar-height);
+    color: var(--b3-theme-on-surface);
 
     svg {
       align-self: center;

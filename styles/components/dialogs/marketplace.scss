@@ -206,8 +206,22 @@
 
       --mkt-card-i: sibling-index();
       --mkt-card-c: sibling-count();
-      --mkt-card-random-base-1: calc((sin(var(--mkt-card-i) * 1.5 + var(--mkt-card-c) * 0.7) + cos(var(--mkt-card-i) * 2.8 + var(--mkt-card-c) * 1.3) + sin(var(--mkt-card-i) * 4.2 + var(--mkt-card-c) * 2.1)) / 3); // [-1, 1]
-      --mkt-card-random-base-2: calc((sin(var(--mkt-card-i) * 1.9 + var(--mkt-card-c) * 0.4) + cos(var(--mkt-card-i) * 3.2 + var(--mkt-card-c) * 1.7) + sin(var(--mkt-card-i) * 4.7 + var(--mkt-card-c) * 2.9)) / 3); // [-1, 1]
+      --mkt-card-random-base-1: calc(
+        (
+            sin(var(--mkt-card-i) * 1.5 + var(--mkt-card-c) * 0.7) +
+              cos(var(--mkt-card-i) * 2.8 + var(--mkt-card-c) * 1.3) +
+              sin(var(--mkt-card-i) * 4.2 + var(--mkt-card-c) * 2.1)
+          ) /
+          3
+      ); // [-1, 1]
+      --mkt-card-random-base-2: calc(
+        (
+            sin(var(--mkt-card-i) * 1.9 + var(--mkt-card-c) * 0.4) +
+              cos(var(--mkt-card-i) * 3.2 + var(--mkt-card-c) * 1.7) +
+              sin(var(--mkt-card-i) * 4.7 + var(--mkt-card-c) * 2.9)
+          ) /
+          3
+      ); // [-1, 1]
 
       &--current {
         background-color: rgb(from var(--b3-theme-primary) r g b / 0.1);
@@ -237,7 +251,8 @@
       }
 
       &:hover {
-        transform: scale(1.01) rotate(calc(var(--mkt-card-random-base-1) * 0.8deg));
+        transform: scale(1.01)
+          rotate(calc(var(--mkt-card-random-base-1) * 0.8deg));
         z-index: 1;
 
         box-shadow:
@@ -291,12 +306,13 @@
   }
 }
 
-#configBazaarReadme {
+.config-bazaar__readme {
   transition: transform var(--asri-ease-in-2) 0.2s;
   opacity: 1;
   z-index: 2;
   padding: 0;
-
+  flex-direction: row-reverse;
+  
   will-change: transform; // fix https://github.com/mustakshif/Asri/issues/55
 
   // transform: scale(1.08);
@@ -314,7 +330,9 @@
     gap: 8px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows:
-      30% minmax(max-content, 32px) 1.5em calc(2.4em + 28px) 3em calc(3em + 28px) 28px 56px repeat(auto-fill, minmax(28px, auto))
+      30% minmax(max-content, 32px) 1.5em calc(2.4em + 28px) 3em calc(
+        3em + 28px
+      ) 28px 56px repeat(auto-fill, minmax(28px, auto))
       3em;
 
     .fn__hr--b,
@@ -363,6 +381,14 @@
     > div:first-child {
       position: absolute;
       top: 16px;
+      inset-inline-start: 16px;
+      padding: 2px 4px;
+      background-color: var(--b3-theme-surface);
+      border-radius: 99px;
+      box-shadow: 0 0 0 1px var(--b3-border-color-trans);
+      // mix-blend-mode: luminosity;
+      // backdrop-filter: blur(4px);
+      z-index: 1;
     }
 
     > div:last-child {
@@ -607,7 +633,8 @@
     transition-duration: 0.22s, 0.25s, 0.1s, 0.25s;
     transition-delay: 0s, 0s, 0s, 0s;
     opacity: 0;
-    transition-timing-function: linear, var(--asri-ease-in-out-5), linear, var(--asri-ease-in-out-3);
+    transition-timing-function:
+      linear, var(--asri-ease-in-out-5), linear, var(--asri-ease-in-out-3);
     transform-origin: calc(-100% * var(--gnf, 0)) 0%;
     transform: translateY(-1em) scale(0.8);
   }
@@ -617,7 +644,8 @@
     transition-duration: 0s, 0.3s, 0.05s, 0.3s;
     transition-delay: 0.05s, 0s, 0.13s, 0s;
     transform: none;
-    transition-timing-function: linear, var(--asri-ease-in-out-5), linear, var(--asri-ease-in-out-5);
+    transition-timing-function:
+      linear, var(--asri-ease-in-out-5), linear, var(--asri-ease-in-out-5);
   }
   details {
     summary {

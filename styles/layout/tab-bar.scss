@@ -30,6 +30,10 @@
     @include overflow-indicator-fadein-mask(16px, "left right");
   }
 
+  .item:hover:not(.item--focus):not(.item--readonly) {
+    background-color: var(--b3-theme-primary-lightest);
+  }
+
   .item {
     // transition: none;
     height: 28px;
