@@ -10,7 +10,7 @@ import { removeHdrSupportImage } from "./asriConfigs/util";
 import { addDockbClassName, destroyDockBg, removeDockbClassName, updateDockLBgAndBorder } from "./docks";
 import { addEnvClassNames, removeEnvClassNames } from "./env";
 import { injectStickerFilter, removeStickerFilter } from "./filters";
-import { removeFocusedBlockClass as removeFocusedBlockClassName, selectionChangeCallback } from "./focusedBlock";
+// import { removeFocusedBlockClass as removeFocusedBlockClassName, selectionChangeCallback } from "./focusedBlock";
 import { darkModeMediaQuery, modeTransitionOnClick, startFadeInFadeOutTranstition } from "./modeTransition";
 import { removeProtyleStatusClassName, toggleProtyleStatus } from "./protyleStatus";
 import { restoreDefaultSiyuanScrollbar, useMacSysScrollbar } from "./scrollbar";
@@ -18,13 +18,13 @@ import { debouncedFormatIndentGuidesForFocusedItems, removeIndentGuidesFormatCla
 // import { debouncedStatusPosition, removeStatusStyles, setStatusHeightVar, unloadAvoidOverlappingWithStatus } from "./status";
 import { calcTabbarSpacings, calcTopbarSpacings, createTopbarFusionElements, handleMacFullScreen, recalcDragInitials, unloadTopbarFusion, updateDragRect } from "./topbarFusion";
 import { applyTrafficLightPosition, restoreTrafficLightPosition } from "./trafficLights";
-import { setVibrancy, removeVibrancy, setThemeSource } from "./vibrancy";
+// import { setVibrancy, removeVibrancy, setThemeSource } from "./vibrancy";
 
 const globalMouseupEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalDragEventListener = new AsriEventListener(lowFreqEventsCallback);
 const globalKeyupEventListener = new AsriEventListener(lowFreqEventsCallback);
 const winFocusChangeEventListener = new AsriEventListener(winFocusChangeCallback);
-const selectionChangeEventListener = new AsriEventListener(selectionChangeCallback);
+// const selectionChangeEventListener = new AsriEventListener(selectionChangeCallback);
 // const watchImgExportMo = new AsriMutationObserver(debounce(docBodyMoCallback));
 const globalClassNameMo = new AsriMutationObserver(globalClassNameMoCallback);
 const lytCenterRo = new AsriResizeObserver(lytCenterRoCallback);
@@ -60,7 +60,7 @@ export async function loadAsriJSModules() {
   globalKeyupEventListener.start(document, "keyup", true);
   winFocusChangeEventListener.start(window, "focus");
   winFocusChangeEventListener.start(window, "blur");
-  selectionChangeEventListener.start(document, "selectionchange");
+  // selectionChangeEventListener.start(document, "selectionchange");
   globalClassNameMo.observe(document.body, MOConfigForClassNames);
   // watchImgExportMo.observe(document.body, { childList: true });
   // themeUpdateListener.start(darkModeMediaQuery, "change");
@@ -82,7 +82,7 @@ export async function unloadAsriJSModules(completeUnload = true) {
     removeProtyleSpacings();
     removeDockbClassName();
     removeProtyleStatusClassName();
-    removeFocusedBlockClassName();
+    // removeFocusedBlockClassName();
     // unloadAvoidOverlappingWithStatus();
     // removeStatusStyles();
     removeEnvClassNames();
@@ -91,16 +91,16 @@ export async function unloadAsriJSModules(completeUnload = true) {
     document.body.classList.remove("body-asri--fullscreen", "asri-tfp", "asri-tfp-acrylic", "asri-tfp-progressive", "asri-c-0");
     unloadThemePalette();
     removeHdrSupportImage();
-    removeVibrancy();
+    // removeVibrancy();
   }
 
-  setThemeSource();
+  // setThemeSource();
   globalMouseupEventListener.remove(document, "mouseup");
   globalDragEventListener.remove(document, "dragend");
   globalKeyupEventListener.remove(document, "keyup", true);
   winFocusChangeEventListener.remove(window, "focus");
   winFocusChangeEventListener.remove(window, "blur");
-  selectionChangeEventListener.remove(document, "selectionchange");
+  // selectionChangeEventListener.remove(document, "selectionchange");
   globalClassNameMo.disconnect();
   // themeUpdateListener.remove(darkModeMediaQuery, "change");
   paletteMenuItemClickEventListener.remove(document, "mouseup");

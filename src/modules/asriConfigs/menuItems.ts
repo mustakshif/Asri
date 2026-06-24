@@ -71,8 +71,8 @@ export async function createBarModeMenuItems(e: Event) {
                 <input style="box-sizing: border-box" type="range" id="asriChromaSlider" class="b3-slider fn__block" min="0" max="5" step="0.1" value="1">
             </div>
         </button>
-        <button class="b3-menu__separator asri-config"></button>
-        <button class="b3-menu__item asri-config" id="topbarFusionPlus"></button>
+        <!-- <button class="b3-menu__separator asri-config"></button>
+        <button class="b3-menu__item asri-config" id="topbarFusionPlus"></button> -->
 `;
   const asriConfigFrag = document.createRange().createContextualFragment(asriConfigMenuHTML);
 
@@ -84,45 +84,45 @@ export async function createBarModeMenuItems(e: Event) {
   setPickColorBtn(document.getElementById("pickColor"));
   setAsriChromaSlider(document.getElementById("asriChromaSlider") as HTMLInputElement | null);
   setColorPicker(pickColorBtn!.querySelector("input") as HTMLInputElement | null);
-  setTopbarFusionPlusBtn(document.getElementById("topbarFusionPlus"));
+  // setTopbarFusionPlusBtn(document.getElementById("topbarFusionPlus"));
 
-  const topbarFusionPlusBtn = document.getElementById("topbarFusionPlus");
-  if (topbarFusionPlusBtn) {
-    topbarFusionPlusBtn.innerHTML = `
-        <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
-        <span class="b3-menu__label" style="display: flex">${
-          i18n["topbarFusionPlus"]
-        }<svg data-position="north" class="b3-menu__icon ariaLabel asri-experimental" aria-label=${
-      '"' + i18n["tfp-experimental"] + '"'
-    } style="vertical-align: -.1em; height: .8em; width: .8em; opacity: .5; padding-inline-start: .1em; margin-right: unset;margin-inline-start: auto; margin-inline-end: 0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg></span>
-        <svg class="b3-menu__icon b3-menu__icon--small">
-            <use xlink:href="#iconRight"></use>
-        </svg>
-        <div class="b3-menu__submenu">
-            <div class="b3-menu__items">
-                <button class="b3-menu__item" id="tfp-luminous">
-                    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
-                    <span class="b3-menu__label">${i18n["tfp-luminous"]}</span>
-                </button>
-                <button class="b3-menu__item" id="tfp-progressive">
-                    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
-                    <span class="b3-menu__label">${i18n["tfp-progressive"]}</span>
-                </button>                                
-                <button class="b3-menu__item" id="tfp-acrylic">
-                    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
-                    <span class="b3-menu__label">${i18n["tfp-acrylic"]}</span>
-                </button>                
-                <button class="b3-menu__separator"></button>
-                <button class="b3-menu__item" id="tfp-disable">
-                    <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9l-6 6m0-6l6 6"/></g>
-                    </svg>
-                    <span class="b3-menu__label">${i18n["tfp-disable"]}</span>
-                </button>
-            </div>
-        </div>
-    `;
-  }
+  // const topbarFusionPlusBtn = document.getElementById("topbarFusionPlus");
+  // if (topbarFusionPlusBtn) {
+  //   topbarFusionPlusBtn.innerHTML = `
+  //       <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
+  //       <span class="b3-menu__label" style="display: flex">${
+  //         i18n["topbarFusionPlus"]
+  //       }<svg data-position="north" class="b3-menu__icon ariaLabel asri-experimental" aria-label=${
+  //     '"' + i18n["tfp-experimental"] + '"'
+  //   } style="vertical-align: -.1em; height: .8em; width: .8em; opacity: .5; padding-inline-start: .1em; margin-right: unset;margin-inline-start: auto; margin-inline-end: 0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg></span>
+  //       <svg class="b3-menu__icon b3-menu__icon--small">
+  //           <use xlink:href="#iconRight"></use>
+  //       </svg>
+  //       <div class="b3-menu__submenu">
+  //           <div class="b3-menu__items">
+  //               <button class="b3-menu__item" id="tfp-luminous">
+  //                   <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
+  //                   <span class="b3-menu__label">${i18n["tfp-luminous"]}</span>
+  //               </button>
+  //               <button class="b3-menu__item" id="tfp-progressive">
+  //                   <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
+  //                   <span class="b3-menu__label">${i18n["tfp-progressive"]}</span>
+  //               </button>                                
+  //               <button class="b3-menu__item" id="tfp-acrylic">
+  //                   <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m8 10.5l6.492-6.492M13.496 16L20 9.496zm-4.91-.586L19.413 4.587M8 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M16 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2"/></g></svg>
+  //                   <span class="b3-menu__label">${i18n["tfp-acrylic"]}</span>
+  //               </button>                
+  //               <button class="b3-menu__separator"></button>
+  //               <button class="b3-menu__item" id="tfp-disable">
+  //                   <svg class="b3-menu__icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+  //                       <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9l-6 6m0-6l6 6"/></g>
+  //                   </svg>
+  //                   <span class="b3-menu__label">${i18n["tfp-disable"]}</span>
+  //               </button>
+  //           </div>
+  //       </div>
+  //   `;
+  // }
 
   if (!followSysAccentBtn || !pickColorBtn || !asriChromaSlider || !colorPicker) return;
   initMenuItems();

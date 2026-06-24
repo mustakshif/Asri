@@ -312,7 +312,7 @@
   z-index: 2;
   padding: 0;
   flex-direction: row-reverse;
-  
+
   will-change: transform; // fix https://github.com/mustakshif/Asri/issues/55
 
   // transform: scale(1.08);
@@ -332,7 +332,8 @@
     grid-template-rows:
       30% minmax(max-content, 32px) 1.5em calc(2.4em + 28px) 3em calc(
         3em + 28px
-      ) 28px 56px repeat(auto-fill, minmax(28px, auto))
+      )
+      28px 56px repeat(auto-fill, minmax(28px, auto))
       3em;
 
     .fn__hr--b,
@@ -384,11 +385,21 @@
       inset-inline-start: 16px;
       padding: 2px 4px;
       background-color: var(--b3-theme-surface);
+      --b3-theme-on-surface: var(--b3-theme-on-background);
       border-radius: 99px;
       box-shadow: 0 0 0 1px var(--b3-border-color-trans);
+      
       // mix-blend-mode: luminosity;
       // backdrop-filter: blur(4px);
       z-index: 1;
+      transition: transform 0.8s var(--asri-ease-spring-4), box-shadow 0.15s;
+
+      &:hover {
+        transform: scale(1.1);
+        @include menu-shadow(
+          $extra-shadow-dark: "0 0 0 1px var(--b3-border-color-trans) inset"
+        );
+      }
     }
 
     > div:last-child {

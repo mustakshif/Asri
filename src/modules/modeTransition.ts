@@ -13,7 +13,7 @@ export async function modeTransitionOnClick(e: Event) {
     // e.preventDefault();
     startFadeInFadeOutTranstition();
     environment.isWindows && await(new Promise<void>(resolve=>setTimeout(resolve, 200))) && addEnvClassNames();
-    if (target.parentElement?.dataset.id === "themeOS") setThemeSource();
+    // if (target.parentElement?.dataset.id === "themeOS") setThemeSource();
   }
 }
 

@@ -6,6 +6,7 @@
 .layout__dockr,
 .layout__dockb {
   // animation fold/unfold
+  background-color: transparent;
   > .fn__flex {
     transition-property: display;
     // transition-duration: 0.3s;
