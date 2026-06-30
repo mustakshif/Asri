@@ -97,7 +97,12 @@ function injectFilter(id: string, markup: string) {
 }
 
 function removeFilter(id: string) {
-  document.getElementById(id)?.remove();
+  const el = document.getElementById(id);
+  const wrapper = el?.closest(".asri-injected-filters");
+  el?.remove();
+  if (wrapper && !wrapper.firstElementChild) {
+    wrapper.remove();
+  }
 }
 
 // ─── Public API ───────────────────────────────────────────────────────────────
