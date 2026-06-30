@@ -1,3 +1,19 @@
+### v3.7.0
+
+- 适配思源v3.7.0
+- 移除思源新版本不再支持的特性：窗体透明
+- 移除需要后续重新适配的特性：顶栏融合+、聚焦块提示
+- 调整集市包详情页布局
+
+<br />
+
+- Adapted to SiYuan v3.7.0
+- Removed feature no longer supported in new SiYuan version: window transparency
+- Removed features requiring future re-adaptation: topbar fusion+ and focus block indicator
+- Adjusted the layout of the marketplace package details page
+
+---
+
 ### v3.6.21
 
 - 适配选单样式

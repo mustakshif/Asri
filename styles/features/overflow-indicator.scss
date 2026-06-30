@@ -157,6 +157,10 @@ body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
   @include overflow-indicator-fadein-mask($fadeout-size-m, $range: "top");
 }
 
+.agent-chat__messages-wrap .agent-chat__messages {
+  @include overflow-indicator-fadein-mask($fadeout-size-m, $range: "top bottom");
+}
+
 @keyframes maskAppear-bgClr {
   0% {
     opacity: 0;

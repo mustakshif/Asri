@@ -519,3 +519,7 @@
   margin-right: unset;
   margin-inline-end: 4px;
 }
+
+.agent-chat__msg--user .agent-chat__body {
+  background-color: var(--b3-theme-background);
+}

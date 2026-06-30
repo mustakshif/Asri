@@ -237,9 +237,9 @@ select.b3-select {
   appearance: base-select;
   font-weight: normal;
   text-wrap-mode: nowrap;
-  
+
   &::picker-icon {
-    display: none; 
+    display: none;
   }
 
   &::picker(select) {
@@ -248,10 +248,16 @@ select.b3-select {
     background-color: var(--b3-menu-background);
     border: none;
     padding: 5px;
-    
-    @include menu-shadow($opacity-light: 0.15, $extra-shadow-light: "0 0 0 1px color(display-p3 1.5 1.5 1.5 / 0.05) inset, 1px 2px 1px -1px color(display-p3 2 2 2 / 0.15) inset, -1px -2px 1px -1px color(display-p3 2 2 2 / 0.1) inset", $extra-shadow-dark: "0 0 0 1px rgba(255,255,255, 0.06) inset, 1px 2px 1px -1px rgba(255,255,255, 0.3) inset, -1px -2px 1px -1px rgba(255,255,255, 0.15) inset");
+
+    @include menu-shadow(
+      $opacity-light: 0.15,
+      $extra-shadow-light:
+        "0 0 0 1px color(display-p3 1.5 1.5 1.5 / 0.05) inset, 1px 2px 1px -1px color(display-p3 2 2 2 / 0.15) inset, -1px -2px 1px -1px color(display-p3 2 2 2 / 0.1) inset",
+      $extra-shadow-dark:
+        "0 0 0 1px rgba(255,255,255, 0.06) inset, 1px 2px 1px -1px rgba(255,255,255, 0.3) inset, -1px -2px 1px -1px rgba(255,255,255, 0.15) inset"
+    );
     @include theme-variant-border($border: false);
-    @include superellipse($border-rd-menu);    
+    @include superellipse($border-rd-menu);
   }
 
   option {
@@ -262,7 +268,7 @@ select.b3-select {
       order: 1;
       margin-left: auto;
     }
-    
+
     &:checked {
       font-weight: 500;
     } */
@@ -297,7 +303,12 @@ textarea {
   &::-webkit-slider-thumb {
     @include theme-variant-color(background-color, light-components);
     // @include tooltip-shadow;
-    outline: 0px solid color-mix(in srgb, var(--b3-theme-on-background) 12%, var(--b3-theme-background));
+    outline: 0px solid
+      color-mix(
+        in srgb,
+        var(--b3-theme-on-background) 12%,
+        var(--b3-theme-background)
+      );
     height: 16px;
     width: 24px;
     margin-top: -5px;
@@ -587,7 +598,7 @@ textarea {
   }
 }
 
-/* 
+/*
 * 图标
 */
 .block__icon:hover:not([disabled]):not(.ft__primary):not(.block__icon--warning),
@@ -692,8 +703,8 @@ input[type="radio" i] {
   overflow: visible;
 }
 
-/* 
-* 图片预览 
+/*
+* 图片预览
 */
 .viewer-backdrop {
   animation: fadeIn 0.3s;
@@ -752,6 +763,39 @@ input[type="radio" i] {
           color: var(--b3-menu-background);
         }
       }
+    }
+  }
+}
+
+.agent-chat__nav-rail {
+  padding-left: 5px;
+  
+  &-marker {
+    transition-timing-function: var(--asri-ease-spring-1);
+    transition-duration: 0.3s;
+    transition-behavior: allow-discrete;
+  }
+
+  &--expanded {
+    color: var(--b3-theme-on-background);
+    background-color: var(--b3-menu-background);
+    padding: 5px;
+
+    @include menu-shadow(
+      $opacity-light: 0.15,
+      $extra-shadow-light:
+        "0 0 0 1px color(display-p3 1.5 1.5 1.5 / 0.05) inset, 1px 2px 1px -1px color(display-p3 2 2 2 / 0.15) inset, -1px -2px 1px -1px color(display-p3 2 2 2 / 0.1) inset",
+      $extra-shadow-dark:
+        "0 0 0 1px rgba(255,255,255, 0.06) inset, 1px 2px 1px -1px rgba(255,255,255, 0.3) inset, -1px -2px 1px -1px rgba(255,255,255, 0.15) inset"
+    );
+    @include theme-variant-border($border: false);
+    @include superellipse($border-rd-menu);
+    border: 0px solid rgba(0, 0, 0, 0);
+
+    .agent-chat__nav-rail-marker {
+      transition-property: width, height, padding;
+      transition-duration: 0.3s;
+      transition-timing-function: var(--asri-ease-spring-1);
     }
   }
 }

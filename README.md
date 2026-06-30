@@ -15,12 +15,6 @@ For the complete update history, refer to the [CHANGELOG.md](https://github.com/
 
 ### Major Updates Overview
 
-#### `Dec 21, 2025 - v3.6.0`
-
-![vibrancy effect](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/vibrancy.webp)
-
-The main interface now supports window transparency effects, compatible with macOS and Windows (11 22H2 and up, with Energy Saver off) desktop environments.
-
 #### `Jul 1, 2025 - v3.5.0`
 
 Theme colors now support "Follow cover image color", automatically extracting colors from document cover images or videos and switching theme colors in real-time.
@@ -29,15 +23,21 @@ Theme colors now support "Follow cover image color", automatically extracting co
 
 `v3.5.4` introduces HDR UI components, presenting a more futuristic and tech-inspired design in HDR-supported screens and browser environments (automatically enabled when the theme chroma is 0).
 
-#### `May 12, 2025 - v3.4.0: Vision Unbound`
+<p style="font-size: .5em"></p>
+<details>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">More Content</summary>
+
+#### `Dec 21, 2025 - v3.6.0` (no longer supported in v3.7.0)
+
+![vibrancy effect](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/vibrancy.webp)
+
+The main interface now supports window transparency effects, compatible with macOS and Windows (11 22H2 and up, with Energy Saver off) desktop environments.
+
+#### `May 12, 2025 - v3.4.0: Vision Unbound` (temporarily removed)
 
 ![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp_v3.png)
 
 "Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>": Introduced advanced material effects (luminous glass, progressive blur, acrylic), breaking the boundary between the top bar and the editor for an immersive reading and editing experience (experimental feature; enable with caution - see Footnote 3 for details).
-
-<p style="font-size: .5em"></p>
-<details>
-<summary style="opacity: .6; font-weight: 600; font-size: .8em">More Content</summary>
 
 #### `Apr 3, 2024 - v3.0.0`
 

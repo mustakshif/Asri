@@ -15,12 +15,6 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### 主要更新一览
 
-#### `25/12/21 - v3.6.0`
-
-![vibrancy effect](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/vibrancy.webp)
-
-主界面支持窗体透明效果，适配 macOS 和 Windows (11 22H2 及以上，关闭节能模式) 桌面端
-
 #### `25/07/01 - v3.5.0`
 
 主题色支持「跟随题头图颜色」，自动提取文档题头图片或视频的颜色，并实时切换主题配色
@@ -29,15 +23,21 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 `v3.5.4` 引入 HDR UI 组件，在支持 HDR 的屏幕和浏览器环境中呈现更具未来感和科技感的设计（主题色度为 0 时自动启用）
 
-#### `25/05/12 - v3.4.0：视界无界`
+<p style="font-size: .5em"></p>
+<details>
+<summary style="opacity: .6; font-weight: 600; font-size: .8em">更多内容</summary>
+
+#### `25/12/21 - v3.6.0` (v3.7.0不再支持)
+
+![vibrancy effect](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/vibrancy.webp)
+
+主界面支持窗体透明效果，适配 macOS 和 Windows (11 22H2 及以上，关闭节能模式) 桌面端
+
+#### `25/05/12 - v3.4.0：视界无界` (暂时移除)
 
 ![tfp](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/tfp_v3.png)
 
 「顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>」：引入高级材质效果（光感玻璃、渐进模糊、亚克力），突破顶栏与编辑区界限，打造沉浸式的阅读与编辑体验（*实验性功能，请谨慎启用；详请见脚注 3*）
-
-<p style="font-size: .5em"></p>
-<details>
-<summary style="opacity: .6; font-weight: 600; font-size: .8em">更多内容</summary>
 
 #### `24/04/03 - v3.0.0`
 
@@ -67,7 +67,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 * 👨‍🎨 主题色支持无极调节，为你打造高度个性化的笔记空间[^1]
 * 🎨 采用基于人眼感知亮度的色彩模型，科学设计整体配色系统，呈现协调柔和的视觉效果
 * ⚖️ 顶栏融合<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span>，实现顶栏与页签栏和编辑器的无缝整合[^2]<svg style="vertical-align: super; height: .5em; width: .5em; padding-inline-start: .1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg>[^3]
-* 🧊 引入透明窗体和毛玻璃材质，带来富有层次感的视觉体验
+* 🧊 引入毛玻璃材质，带来富有层次感的视觉体验
 * 🌓 支持亮色模式和暗色模式、模式切换平滑过渡
 * ➖ 精简分割线，打造一体化的界面风格
 
@@ -84,7 +84,7 @@ Asri 是一款极富现代感的[思源笔记](https://github.com/siyuan-note/si
 
 ### 便捷清晰的导航
 
-* 🗂️ 结构清晰的文档树与大纲缩进参考线
+* 🗂️ 结构清晰的文档树与大纲参考线
 * 🔍 搜索与反链列表层级分明
 * ↕️ 采用系统原生滚动条 `#macOS`
 
