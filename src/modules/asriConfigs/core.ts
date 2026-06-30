@@ -5,7 +5,7 @@ import { asriPrstPalettes } from "./palettes";
 import { setCurMode, setI18n, setFollowSysAccentColor, setIsUserAccentGray, followSysAccentColor, curMode } from "./state";
 import { cssVarManager } from "./cssVarManager";
 import { getSystemAccentColor } from "./systemColor";
-import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
+import { handleGrayScale, isNeutralAccentColor, reverseOnPrimaryLightness } from "./util";
 import { coverImgColorManager, updateCoverImgColor } from "./coverImgColor";
 import { hexToOklch } from "../../util/colorTools";
 import { getFocusedProtyleInfo } from "../../util/misc";
@@ -25,9 +25,15 @@ export async function loadThemePalette() {
   if (shouldUseCustomColor) {
     cssVarManager.setProperty("--asri-user-custom-accent", asriConfigs[curMode].userCustomColor);
     cssVarManager.removeProperty("--asri-cover-dominant");
+    setIsUserAccentGray(
+      !asriConfigs[curMode].followCoverImgColor &&
+        !asriConfigs[curMode].presetPalette &&
+        isNeutralAccentColor(asriConfigs[curMode].userCustomColor)
+    );
     reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
   } else {
     cssVarManager.removeProperty("--asri-user-custom-accent");
+    setIsUserAccentGray(false);
     if (asriConfigs[curMode].followCoverImgColor) cssVarManager.removeProperty("--asri-cover-dominant");
   }
 
@@ -49,6 +55,7 @@ export async function loadThemePalette() {
     reverseOnPrimaryLightness(curPalette.primary);
   } else if (asriConfigs[curMode].followCoverImgColor) {
     cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
+    setIsUserAccentGray(false);
     document.documentElement.classList.forEach((cls) => {
       if (cls.startsWith("asri-palette-")) {
         document.documentElement.classList.remove(cls);
@@ -62,7 +69,7 @@ export async function loadThemePalette() {
         document.documentElement.classList.remove(cls);
       }
     });
-    setIsUserAccentGray(asriConfigs[curMode].chroma === "0" ? true : false);
+    setIsUserAccentGray(isNeutralAccentColor(asriConfigs[curMode].userCustomColor));
     handleGrayScale(asriConfigs[curMode].chroma);
   }
   getSystemAccentColor();

@@ -1,10 +1,14 @@
-import { hexToOklch } from "../../util/colorTools";
+import { hexToHSL, hexToOklch } from "../../util/colorTools";
 import { environment as env } from "../../util/rsc";
 import { asriConfigs } from "./configs";
 import { cssVarManager } from "./cssVarManager";
 import { curMode, followSysAccentColor, isCoverImgColorGray, isSysAccentGray, isUserAccentGray } from "./state";
 
 export const reverseThreshold = env.appSchemeMode === "light" ? 0.74 : 0.79;
+
+export function isNeutralAccentColor(hex: string) {
+  return hexToHSL(hex)?.s === 0;
+}
 
 /**
  * decide if use grayscale or not, if so return true, otherwise return false

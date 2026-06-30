@@ -7,8 +7,16 @@ import { asriConfigs, getLocalConfigs, updateAsriConfigs } from "./configs";
 import { asriPrstPalettes } from "./palettes";
 import { curMode, i18n, followSysAccentBtn, followCoverImgColorBtn, pickColorBtn, asriChromaSlider, colorPicker, followSysAccentColor, setFollowSysAccentColor, setIsUserAccentGray, sysAccentColor, isUserAccentGray, setFollowCoverImgColorBtn } from "./state";
 import { getSystemAccentColor } from "./systemColor";
-import { handleGrayScale, reverseOnPrimaryLightness } from "./util";
+import { handleGrayScale, isNeutralAccentColor, reverseOnPrimaryLightness } from "./util";
 import { coverImgColorManager, updateCoverImgColor } from "./coverImgColor";
+
+function isUsingCustomAccentColor() {
+  return !followSysAccentColor && !asriConfigs[curMode].followCoverImgColor && !asriConfigs[curMode].presetPalette;
+}
+
+function syncUserAccentGrayState(hexColor = asriConfigs[curMode].userCustomColor) {
+  setIsUserAccentGray(isUsingCustomAccentColor() && isNeutralAccentColor(hexColor));
+}
 
 export function initAsriConfigMenuItemClick() {
   if (!followSysAccentBtn || !pickColorBtn || !asriChromaSlider || !colorPicker || !followCoverImgColorBtn) return;
@@ -41,6 +49,7 @@ function handleFollowSystemAccentBtnClick() {
     // pickColorBtn!.classList.remove('b3-menu__item--selected');
     cssVarManager.removeProperty("--asri-user-custom-accent");
     cssVarManager.removeProperty("--asri-cover-dominant");
+    setIsUserAccentGray(false);
 
     asriConfigs[curMode].followSysAccentColor = true;
     asriConfigs[curMode].followCoverImgColor = false;
@@ -58,6 +67,7 @@ function handleFollowCoverImgColorBtnClick() {
     followCoverImgColorBtn!.classList.add("b3-menu__item--selected");
     asriConfigs[curMode].followCoverImgColor = true;
     asriConfigs[curMode].followSysAccentColor = false;
+    setIsUserAccentGray(false);
 
     updateCoverImgColor();
     updateAsriConfigs();
@@ -79,6 +89,7 @@ function handlePickColorBtnClick(event: Event) {
     asriConfigs[curMode].userCustomColor = asriConfigs[curMode].userCustomColor;
     asriConfigs[curMode].followSysAccentColor = false;
     asriConfigs[curMode].followCoverImgColor = false;
+    syncUserAccentGrayState();
     handleGrayScale(asriConfigs[curMode].chroma);
     reverseOnPrimaryLightness(asriConfigs[curMode].userCustomColor);
     updateAsriConfigs();
@@ -88,6 +99,8 @@ function handlePickColorBtnClick(event: Event) {
 const throttledColorUpdate = throttle((hexColor: string) => {
   requestAnimationFrame(() => {
     cssVarManager.setProperty("--asri-user-custom-accent", hexColor);
+    syncUserAccentGrayState(hexColor);
+    handleGrayScale(asriConfigs[curMode].chroma);
     reverseOnPrimaryLightness(hexColor);
   });
 }, 400);
@@ -107,6 +120,8 @@ function handleColorPickerChange() {
   setFollowSysAccentColor(false);
   asriConfigs[curMode].followSysAccentColor = false;
   asriConfigs[curMode].followCoverImgColor = false;
+  syncUserAccentGrayState(colorPicker!.value);
+  handleGrayScale(asriConfigs[curMode].chroma);
   updateAsriConfigs();
 }
 
@@ -122,7 +137,7 @@ function handleChromaSliderInput(this: any) {
     this.parentElement!.ariaLabel = i18n["asriChroma"] + chromaValue;
     asriConfigs[curMode].chroma = chromaValue;
 
-    setIsUserAccentGray(chromaValue === "0" ? true : false);
+    syncUserAccentGrayState();
     handleGrayScale(chromaValue);
   });
   debounce(updateAsriConfigs, 200)();
@@ -147,7 +162,7 @@ function resetPresetPalette(alterFollowSysAccentColor: boolean = true) {
   document.getElementById(`prst-palette-${curPresetPalette}`)?.classList.remove("b3-menu__item--selected");
   document.getElementById("asriChroma")?.classList.remove("b3-menu__item--disabled");
   cssVarManager.setProperty("--asri-c-factor", asriConfigs[curMode].chroma);
-  setIsUserAccentGray(asriConfigs[curMode].chroma === "0" ? true : false);
+  syncUserAccentGrayState();
   // handleGrayScale(asriConfigs[curMode].chroma);
   // reverseOnPrimaryLightness(!followSysAccentColor ? asriConfigs[curMode].userCustomColor : sysAccentColor);
 }
