@@ -34,10 +34,9 @@ export async function useMacSysScrollbar() {
 }
 
 export async function restoreDefaultSiyuanScrollbar() {
-  if (asriDeletedRules) {
-    for (let i = 0; i < asriDeletedRules.length; i++) {
-      let rule = asriDeletedRules[i];
-      rule.styleSheet.insertRule(rule.rule, rule.styleSheet.cssRules.length);
-    }
+  for (let i = 0; i < asriDeletedRules.length; i++) {
+    let rule = asriDeletedRules[i];
+    rule.styleSheet.insertRule(rule.rule, rule.styleSheet.cssRules.length);
   }
+  asriDeletedRules.length = 0;
 }
