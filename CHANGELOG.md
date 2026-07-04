@@ -1,3 +1,15 @@
+### v3.7.1
+
+- [优化自定义主题色中性色支持](https://github.com/mustakshif/Asri/pull/260)
+- 优化主题卸载逻辑[[#261](https://github.com/mustakshif/Asri/pull/261)][[#262](https://github.com/mustakshif/Asri/pull/262)]
+
+<br />
+
+- [Optimized neutral color support for custom theme colors](https://github.com/mustakshif/Asri/pull/260)
+- Optimized theme uninstallation logic [[#261](https://github.com/mustakshif/Asri/pull/261)][[#262](https://github.com/mustakshif/Asri/pull/262)]
+
+---
+
 ### v3.7.0
 
 - 适配思源v3.7.0
