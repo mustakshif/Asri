@@ -25,7 +25,7 @@
 
   // alt+Y 全屏视图
   .fullscreen > & {
-    height: var(--toolbar-height);
+    height: var(--toolbar-height, 0px);
     padding-right: 10px;
 
     > .protyle-breadcrumb__space:hover {

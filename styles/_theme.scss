@@ -79,8 +79,9 @@ body {
   }
 
   --b3-toolbar-left-mac: 80px;
+  --toolbar-height: 32px;
   &.body--toolbar-hide {
-    --toolbar-height: 48px;
+    --toolbar-height: 42px;
   }
 }
 
