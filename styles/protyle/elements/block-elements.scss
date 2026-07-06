@@ -64,7 +64,8 @@
     // outline-offset: -1px; //https://github.com/mustakshif/Asri/issues/208
 
     &:not([custom-callout]):not([custom-b]):not([custom-cssclasses]) {
-      @include superellipse($corner-radius);
+      // @include superellipse($corner-radius);
+      border-radius: $corner-radius;
 
       clip-path: polygon($corner-size 0%, $corner-size -2em, calc(100% + 2em) -2em, calc(100% + 2em) calc(100% + 1px), 0 calc(100% + 1px), 0 $corner-size);
 
@@ -116,7 +117,8 @@
   table {
     font-variant-numeric: tabular-nums;
     border: 1px solid var(--b3-border-color-trans);
-    @include superellipse(8px);
+    // @include superellipse(8px);
+    border-radius: 8px;
 
     td,
     th {

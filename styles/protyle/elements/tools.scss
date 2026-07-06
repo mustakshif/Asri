@@ -99,7 +99,8 @@
   // width: 20px;
   // height: 20px;
   box-shadow: 0 0 0 1px inset var(--b3-border-color-trans);
-  @include superellipse(8px, $k: 1.2);
+  // @include superellipse(8px, $k: 1.2);
+  border-radius: 8px;
   // line-height: 20px;
   // font-size: 14px;
 

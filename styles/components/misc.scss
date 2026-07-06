@@ -87,7 +87,8 @@
   box-shadow: 0 4px 7px -4px inset #0002;
   transform: scale(1) scaleX(var(--gnf, 1));
 
-  @include superellipse(calc(var(--sbrc) + 2px), $k: 1.1);
+  // @include superellipse(calc(var(--sbrc) + 2px), $k: 1.1);
+  border-radius: calc(var(--sbrc) + 2px);
 
   @include darkmode-counterpart {
     box-shadow: 0 4px 7px -4px inset #0005;
@@ -128,7 +129,8 @@
     transition-timing-function: var(--asri-ease-spring-3);
     // box-shadow: 0px 6px 10px -3px rgba(0,0,0,0.1),0px 15px 16px -3px rgba(0,0,0,0.1);
 
-    @include superellipse(var(--sbrc), $k: 1.1);
+    // @include superellipse(var(--sbrc), $k: 1.1);
+    border-radius: var(--sbrc);
   }
 
   &::after,
