@@ -66,7 +66,7 @@
 }
 
 body {
-  text-underline-position: from-font;
+  text-underline-position: under; //https://github.com/mustakshif/Asri/issues/265
   text-decoration-skip-ink: all; // not supported yet
   text-spacing-trim: trim-start;
   text-autospace: normal;
