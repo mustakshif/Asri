@@ -159,8 +159,8 @@
     }
 
     box-shadow: none;
-    height: calc(100% - var(--toolbar-height, 0px));
-    bottom: 0;
+    height: calc(100% - var(--toolbar-height, 0px) - 4px);
+    bottom: 4px;
     top: unset;
     border-radius: 0;
     border-top: none;
@@ -231,12 +231,14 @@
 .layout__dockl {
   &.layout--float {
     border-right: 1px solid var(--b3-border-color);
+    border-radius: var(--b3-border-radius-b) 0 0 var(--b3-border-radius-b);
   }
 }
 
 .layout__dockr {
   &.layout--float {
     border-left: 1px solid var(--b3-border-color-trans);
+    border-radius: 0 var(--b3-border-radius-b) var(--b3-border-radius-b) 0;
   }
 }
 

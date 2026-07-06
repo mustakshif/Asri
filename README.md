@@ -67,7 +67,6 @@ Theme release
 
 - 👨‍🎨 continuously adjustable theme color customization, crafting a highly personalized note space for you[^1]
 - 🎨 Color scheme based on human brightness perception for harmonious, non-intrusive visuals
-- ⚖️ Topbar Fusion<span style="background-clip: text !important; background: radial-gradient(circle at left, #6FA1F9 27%, #6746CB 63%); color: #0000">**+**</span> seamlessly integrates the top bar, the tab bar and the editor[^2]<svg style="vertical-align: super; height: .5em; width: .5em; padding-inline-start: .1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2M6.453 15h11.094M8.5 2h7"/></svg>[^3]
 - 🧊 Glassmorphism enhances the visual hierarchy
 - 🌓 Support for light and dark modes and smooth transition between them
 - ➖ Minimized dividers create an integrated, cohesive interface style
@@ -75,10 +74,10 @@ Theme release
 ### Elegant and Efficient Layout
 
 - 🔢 Tabular and database-friendly monospaced numerals improve reading efficiency
-- 👁️ High readability glyph variants tailored for note-taking scenarios[^4] `#macOS` `#iOS` `#iPadOS`
+- 👁️ High readability glyph variants tailored for note-taking scenarios[^2] `#macOS` `#iOS` `#iPadOS`
 - 🦋 Support for full-width display of images, videos, widgets, databases, superblocks and more, enhancing information display
 - 📝 Enhanced the layout details in database and attribute view for improved clarity and organization
-- 💬 Supports right-to-left layout, accommodating languages written from right to left, such as Arabic[^5]
+- 💬 Supports right-to-left layout, accommodating languages written from right to left, such as Arabic[^3]
 - 🚏 Document-level typography direction settings cater to different language layout needs
 - 🌐 Multi-language support, specially adapted for Chinese, English and Arabic
 - 📐 Automatically add a quarter-width space between CJK and Western characters
@@ -87,7 +86,7 @@ Theme release
 
 - 🗂️ Well-structured document tree and indentation guide lines
 - 🔍 Hierarchically organized search and backlink panels
-- ↕️ Native system scrollbars[^6] `#macOS`
+- ↕️ Native system scrollbars[^4] `#macOS`
 
 ### Fluid and Lively Interactions
 
@@ -102,22 +101,7 @@ Theme release
 - 🚥 Subtle repositioning of window control buttons for enhanced native system alignment `#macOS`
 
 [^1]: This new feature is only available on platforms that support `oklch()` and its relative color syntax. Some devices will still use color schemes in previous versions due to lower browser kernel versions.
-[^2]: The blank area of the top bar can be used to drag the window (except for the gap between tabs).
-[^3]: Topbar Fusion+ introduced significant adjustments to the native styling of SiYuan Notes. Despite undergoing extensive stability testing, full stability cannot be guaranteed, and it may remain an experimental feature for an extended period. Currently known issues include:
-
-    1. The dynamic scrollbar on the right side of the editor failed to display document progress in real time (jump functionality remained normal)
-    2. Automatic scrolling could not be triggered when dragging blocks toward the top of the page
-
-    Additionally, it might cause other issues such as:
-
-    1. Conflicts with custom styling code
-    2. Compatibility problems with certain plugins
-    3. Reduced readability of top bar texts/icons
-    4. Decreased page performance
-
-    If any issues are encountered during use, please disable this feature promptly.
-
-[^4]: To disable this feature or address glyph errors when using custom fonts, you can use the following CSS code snippet to restore to standard glyphs:
+[^2]: To disable this feature or address glyph errors when using custom fonts, you can use the following CSS code snippet to restore to standard glyphs:
 
     ```CSS
     .layout-tab-container, .protyle-content, .b3-typography {
@@ -125,8 +109,8 @@ Theme release
     }
     ```
 
-[^5]: Due to the limited theming functionality, the UI layout direction of some interfaces cannot be fully modified.
-[^6]: To automatically hide the scrollbars, go to macOS "System Settings - Appearance" and set "Show scroll bars" to "When scrolling".
+[^3]: Due to the limited theming functionality, the UI layout direction of some interfaces cannot be fully modified.
+[^4]: To automatically hide the scrollbars, go to macOS "System Settings - Appearance" and set "Show scroll bars" to "When scrolling".
 
 ## Getting Started
 

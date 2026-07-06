@@ -1,3 +1,15 @@
+### v3.7.2
+
+- [修复浮动面板高度问题](https://github.com/mustakshif/Asri/issues/263)
+- 优化浮动面板样式
+
+<br />
+
+- [Fixed floating panel height issue](https://github.com/mustakshif/Asri/issues/263)
+- Optimized floating panel styles
+
+---
+
 ### v3.7.1
 
 - [优化自定义主题色中性色支持](https://github.com/mustakshif/Asri/pull/260)
