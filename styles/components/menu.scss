@@ -45,6 +45,7 @@
 
 .b3-menu__items {
   padding: 5px;
+  max-height: min(90vh, 100vh - 60px) !important;
 
   > .b3-menu__items {
     padding: 0;
