@@ -1,3 +1,17 @@
+### v3.7.3
+
+- [减少使用可能造成页面闪烁的样式](https://github.com/mustakshif/Asri/issues/266)
+- [修复某些字体的下划线被字形笔画大量隔断的问题](https://github.com/mustakshif/Asri/issues/265)
+- 修复长菜单抖动的问题
+
+<br />
+
+- [Reduced use of styles that might cause page flickering](https://github.com/mustakshif/Asri/issues/266)
+- [Fixed the issue where underlines in certain fonts were heavily interrupted by glyph strokes](https://github.com/mustakshif/Asri/issues/265)
+- Fixed the problem of long menu jittering
+
+---
+
 ### v3.7.2
 
 - [修复浮动面板高度问题](https://github.com/mustakshif/Asri/issues/263)
