@@ -1,6 +1,6 @@
 ### v3.7.4
 
-![luminous frost glass](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/luminous-frost-glass.jpg)
+![luminous frost glass](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/luminous-frost-glass_v2.jpg)
 
 - HDR相关材质更新为「雾光玻璃」
 
