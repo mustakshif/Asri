@@ -328,3 +328,63 @@ https://css-tricks.com/easing-linear-gradients/
     filter: url(#asri-sticker-dark) drop-shadow(-0.5px -1px 0px rgba(255, 255, 255, 0.9)) drop-shadow(0.5px 1px 0px rgba(0, 0, 0, 0.2)) drop-shadow(0.5px 1px 2px rgba(0, 0, 0, 0.1)) #{$extra-filter-dark};
   }
 }
+
+@mixin luminous-frost-glass($oomph: 1) {
+  @if $oomph > 1 {
+    @error "oomph should not be greater than 1";
+  }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  &::before {
+    box-shadow: 0 0 0 3px oklch(from var(--b3-theme-background) 0.25 0.03 h / max(0.4 * $oomph, 0.2)) inset;
+    filter: blur(max(7px * $oomph, 5px));
+    // filter: blur(0px);
+    transform: translate(0px, max(16px * $oomph, 10px));
+    @include darkmode-counterpart {
+      box-shadow: 0 0 0 3px rgb(0, 0, 0 , max(0.8 * $oomph, 0.4))
+        inset;
+    }
+  }
+
+  &::after {
+    backdrop-filter: blur(max(1.5px, 3px * $oomph)) saturate(1.25);
+    box-shadow:
+      // hdr highlights
+      0 1px 2px -1.5px inset color(display-p3 1.8247962953 1.8247962953 1.8247962953),
+      0 -1px 1.5px -1.5px inset
+        color(display-p3 1.8247962953 1.8247962953 1.8247962953 / 0.8),
+      // highlight glow
+      0 4px 8px -4px color(display-p3 1.1941765347 1.1941765347 1.1941765347 / 0.2),
+      // hard edges
+      1px 0 0 0 oklch(from var(--b3-theme-background) 0.25 c h / 0.15),
+      -1px 0 0 0 oklch(from var(--b3-theme-background) 0.25 c h / 0.15),
+      0 0 0 1px oklch(from var(--b3-theme-background) 0.25 c h / 0.1),
+      // intrinsic color
+      8px 0 16px 0px oklch(from var(--b3-theme-background) l c h / 0.5) inset,
+      -8px 0 16px 0px oklch(from var(--b3-theme-background) l c h / 0.5) inset;
+    @include darkmode-counterpart {
+      box-shadow:
+        0 1px 1px -0.5px inset oklch(from var(--b3-theme-background) 0.96 c h / 0.6),
+        0 -1px 1px -0.5px inset oklch(from var(--b3-theme-background) 0.96 c h / 0.4),
+        // hard edges
+        1px 0 0 0 rgb(0 0 0 / 0.2),
+        -1px 0 0 0 rgb(0 0 0 / 0.2),
+        0 0 0 1px oklch(from var(--b3-theme-on-background) l 0.1 h / 0.05) inset,
+        // intrinsic color
+        8px 0 16px 0px oklch(from var(--b3-menu-background) calc(l + 0.1) c h / 0.3) inset,
+        -8px 0 16px 0px oklch(from var(--b3-menu-background) calc(l + 0.1) c h / 0.3) inset;
+    }
+  }
+
+  @content;
+}

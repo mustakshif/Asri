@@ -3,11 +3,11 @@
 
 .b3-menu,
 .b3-menu__submenu {
-  @include menu-shadow($opacity-light: 0.15);
-  @include theme-variant-border($border: false) {
-    // outline: #fff4 solid 1px;
-    // outline-offset: -1px;
-  }
+  // @include menu-shadow($opacity-light: 0.15);
+  // @include theme-variant-border($border: false) {
+  //   // outline: #fff4 solid 1px;
+  //   // outline-offset: -1px;
+  // }
 
   &:not(#searchHistoryListm, #findbar):not(.pdf__util)::before {
     content: "";
@@ -20,15 +20,15 @@
     @include superellipse($border-rd-menu);
   }
 
-  &:not(.b3-menu--fullscreen)::before {
-    box-shadow: glassy-shadow($opacity: 0.9);
+  // &:not(.b3-menu--fullscreen)::before {
+  //   box-shadow: glassy-shadow($opacity: 0.9);
 
-    @include darkmode-counterpart {
-      box-shadow: glassy-shadow($opacity: 0.3);
-    }
-  }
+  //   @include darkmode-counterpart {
+  //     box-shadow: glassy-shadow($opacity: 0.3);
+  //   }
+  // }
 
-  padding: 0; // https://ld246.com/article/1773544708273 // may cause issue due to hardcoding.
+  padding: 0; // [x] https://ld246.com/article/1773544708273 // may cause issue due to hardcoding. -> fixed using `max-height: min(90vh, 100vh - 60px) !important` for `.b3-menu__items`.
   @include superellipse($border-rd-menu);
   // animation: menu-pop-up .5s var(--asri-ease-spring-3);
 
@@ -46,6 +46,7 @@
 .b3-menu__items {
   padding: 5px;
   max-height: min(90vh, 100vh - 60px) !important;
+  scrollbar-width: thin;
 
   > .b3-menu__items {
     padding: 0;

@@ -73,7 +73,6 @@ body {
   background-image: unset;
 
   &:not(.body--win32, .body-asri--linux) {
-    scrollbar-width: thin;
     scrollbar-color: var(--b3-scroll-color-hover)
       var(--b3-theme-background-light, #0000);
   }
