@@ -346,7 +346,7 @@ https://css-tricks.com/easing-linear-gradients/
   }
 
   &::before {
-    box-shadow: 0 0 0 3px oklch(from var(--b3-theme-background) 0.25 0.03 h / max(0.4 * $oomph, 0.2)) inset;
+    box-shadow: 0 0 0 3px oklch(from var(--b3-theme-background) 0.25 0.03 h / max(0.3 * $oomph, 0.2)) inset;
     filter: blur(max(7px * $oomph, 5px));
     // filter: blur(0px);
     transform: translate(0px, max(16px * $oomph, 10px));

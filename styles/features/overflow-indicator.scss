@@ -103,15 +103,15 @@ $fadeout-size-xl: 50px;
   @include overflow-indicator-fadein-bgClr($fadeout-size-m, $range: "top");
 }
 
-[data-key="dialog-backgroundrandom"] .b3-dialog__body > .b3-cards {
-  @include overflow-indicator-fadein-bgClr($fadeout-size-xl, $range: "top");
+// [data-key="dialog-backgroundrandom"] .b3-dialog__body {
+//   @include overflow-indicator-fadein-bgClr($fadeout-size-xl, $range: "top");
 
-  padding-top: 0;
+//   padding-top: 0;
 
-  &::before {
-    grid-column: 1/-1;
-  }
-}
+//   &::before {
+//     grid-column: 1/-1;
+//   }
+// }
 
 // #message>.fn__flex-1 {
 //     @include overflow-indicator-fadein-mask($fadeout-size-m, $range: 'top bottom');

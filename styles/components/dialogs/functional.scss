@@ -125,32 +125,25 @@
     z-index: 0;
 
     & > .b3-cards {
-      grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
-      margin: 0;
-      padding: 32px;
-      gap: 32px;
       display: grid;
 
       .b3-card {
-        width: auto !important;
-        min-width: unset;
-        margin: 0;
         border-radius: $border-rd-card;
-        padding: 0;
-        box-shadow: none;
-        top: 0;
-        // transform: scale(0.9);
-
-        &:hover {
-          transform: scale(1.05);
-          // box-shadow: 0 4px 18px -8px #0000001b;
-          @include menu-shadow;
-
-          @include darkmode-counterpart {
-            box-shadow: 0 8px 28px -8px #00000062;
-          }
-        }
       }
+    }
+
+    .b3-cover__tabs {
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      background-color: var(--b3-theme-background);
+      z-index: 1;
+      box-shadow: 0 12px 0 0 var(--b3-theme-background);
+    }
+
+    .b3-chip {
+      border-radius: 99px;
+      padding: 6px 10px;
     }
   }
 }
