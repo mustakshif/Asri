@@ -76,20 +76,20 @@
 
 .custom-attr__avvalue {
   &[data-type="relation"] {
-    flex-direction: column;
+    // flex-direction: column;
 
-    .av__cell--relation {
-      margin: 2px 4px;
-      display: flex;
+    // .av__cell--relation {
+    //   margin: 2px 4px;
+    //   display: flex;
 
-      &:first-child {
-        margin-top: 0;
-      }
+    //   &:first-child {
+    //     margin-top: 0;
+    //   }
 
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
+    //   &:last-child {
+    //     margin-bottom: 0;
+    //   }
+    // }
 
     .b3-menu__avemoji {
       display: inline;
