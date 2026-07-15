@@ -36,7 +36,7 @@ $vibrancy-applicable-elements: (
   ".dock#dockBottom",
   "#dockBottom.fn__none.has-layout-dockb-float ~ .status",
   "#dockBottom.has-layout-dockb-float ~ .status",
-  ".toolbar",
+  ".toolbar"
 );
 
 /* 
@@ -82,7 +82,7 @@ https://css-tricks.com/easing-linear-gradients/
     91: 0.021,
     95.2: 0.008,
     98.2: 0.002,
-    100: 0,
+    100: 0
   );
 
   $hue: color.channel($startColor, "hue", $space: hsl);
@@ -112,7 +112,7 @@ https://css-tricks.com/easing-linear-gradients/
     91: 0.021,
     95.2: 0.008,
     98.2: 0.002,
-    100: 0,
+    100: 0
   );
 
   $stops-light: ();
@@ -162,7 +162,7 @@ https://css-tricks.com/easing-linear-gradients/
     "top": "to bottom",
     "bottom": "to top",
     "left": "to right",
-    "right": "to left",
+    "right": "to left"
   );
 
   @if string.index($range, "top") or string.index($range, "left") {
@@ -341,6 +341,7 @@ https://css-tricks.com/easing-linear-gradients/
     width: 100%;
     height: 100%;
     border-radius: inherit;
+    corner-shape: inherit;
     z-index: -1;
     pointer-events: none;
   }
@@ -351,8 +352,7 @@ https://css-tricks.com/easing-linear-gradients/
     // filter: blur(0px);
     transform: translate(0px, max(16px * $oomph, 10px));
     @include darkmode-counterpart {
-      box-shadow: 0 0 0 3px rgb(0, 0, 0 , max(0.8 * $oomph, 0.4))
-        inset;
+      box-shadow: 0 0 0 3px rgb(0, 0, 0, max(0.8 * $oomph, 0.4)) inset;
     }
   }
 
@@ -361,8 +361,7 @@ https://css-tricks.com/easing-linear-gradients/
     box-shadow:
       // hdr highlights
       0 1px 2px -1.5px inset color(display-p3 1.8247962953 1.8247962953 1.8247962953),
-      0 -1px 1.5px -1.5px inset
-        color(display-p3 1.8247962953 1.8247962953 1.8247962953 / 0.8),
+      0 -1px 1.5px -1.5px inset color(display-p3 1.8247962953 1.8247962953 1.8247962953 / 0.8),
       // highlight glow
       0 4px 8px -4px color(display-p3 1.1941765347 1.1941765347 1.1941765347 / 0.2),
       // hard edges
