@@ -60,7 +60,7 @@ body.asri-global-backdrop-blur {
 
     //文字格式工具条
     &-toolbar {
-      background-color: oklch(from var(--b3-theme-surface) l c h / $thick-transparency);
+      background-color: oklch(from var(--b3-theme-background) l c h / $thick-transparency);
       // @include bg-blur;
       // // z-index: 1;
 
@@ -72,7 +72,7 @@ body.asri-global-backdrop-blur {
       //   @include theme-variant-color(background-color, surface, $medium-transparency);
       // }
 
-      @include luminous-frost-glass(0.5); 
+      @include luminous-frost-glass(0.5);
     }
 
     // 图片控件
@@ -234,11 +234,14 @@ body.asri-global-backdrop-blur {
     //     @include theme-variant-color(background-color, menu-background, $medium-transparency);
     //   }
     // }
-    background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+    background-color: oklch(from var(--b3-theme-background) l c h / $medium-transparency);
     border: none;
     box-shadow: none;
     overflow: visible;
     @include luminous-frost-glass;
+    @include darkmode-counterpart {
+      background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+    }
 
     // 数据库菜单
     .protyle-icons {
@@ -249,10 +252,14 @@ body.asri-global-backdrop-blur {
   // '/'菜单
   .protyle-hint {
     background-color: transparent;
-    @include bg-blur;
+    overflow: visible;
+    box-shadow: none;
+    @include luminous-frost-glass;
 
     > div:not(.emojis) {
-      background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+      border-radius: inherit;
+      corner-shape: inherit;
+      background-color: oklch(from var(--b3-theme-background) l c h / $medium-transparency);
 
       @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
         @include theme-variant-color(background-color, menu-background, $medium-transparency);
@@ -260,7 +267,7 @@ body.asri-global-backdrop-blur {
     }
 
     > .emojis > .emojis__panel {
-      background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+      background-color: oklch(from var(--b3-theme-background) l c h / $medium-transparency);
 
       @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
         @include theme-variant-color(background-color, menu-background, $medium-transparency);
@@ -269,8 +276,9 @@ body.asri-global-backdrop-blur {
   }
 
   .protyle-util {
-    background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
-    @include bg-blur($saturate-value: 1.5);
+    background-color: oklch(from var(--b3-theme-background) l c h / $medium-transparency);
+    // @include bg-blur($saturate-value: 1.5);
+    @include luminous-frost-glass;
 
     @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
       @include theme-variant-color(background-color, menu-background, $medium-transparency);
@@ -369,9 +377,11 @@ body.asri-global-backdrop-blur {
 
   [data-key="dialog-emojis"] {
     .b3-dialog__container {
-      @include bg-blur();
+      // @include bg-blur();
+      @include luminous-frost-glass;
+      overflow: visible;
 
-      background-color: oklch(from var(--b3-menu-background) l c h / $medium-transparency);
+      background-color: oklch(from var(--b3-theme-background) l c h / $thick-transparency);
 
       @supports not (color: oklch(from red calc(l * 0.5) 0 h)) {
         @include theme-variant-color(background-color, menu-background, $medium-transparency);

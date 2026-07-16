@@ -19,7 +19,7 @@ For the complete update history, refer to the [CHANGELOG.md](https://github.com/
 
 Theme colors now support "Follow cover image color", automatically extracting colors from document cover images or videos and switching theme colors in real-time.
 
-![luminous frost glass](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/luminous-frost-glass_v3.jpg)
+![luminous frost glass](https://cdn.jsdelivr.net/gh/mustakshif/Asri-for-SiYuan@main/doc/luminous-frost-glass_v4.jpg)
 
 `v3.5.4` introduces HDR UI components, presenting a more futuristic and tech-inspired design in HDR-supported screens and browser environments (automatically enabled when the theme chroma is 0).
 

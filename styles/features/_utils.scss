@@ -357,7 +357,7 @@ https://css-tricks.com/easing-linear-gradients/
   }
 
   &::after {
-    backdrop-filter: blur(max(1.5px, 3px * $oomph)) saturate(1.25);
+    backdrop-filter: blur(max(2px, 4px * $oomph)) saturate(1.25);
     box-shadow:
       // hdr highlights
       0 1px 2px -1.5px inset color(display-p3 1.8247962953 1.8247962953 1.8247962953),
@@ -369,8 +369,8 @@ https://css-tricks.com/easing-linear-gradients/
       -1px 0 0 0 oklch(from var(--b3-theme-background) 0.25 c h / 0.15),
       0 0 0 1px oklch(from var(--b3-theme-background) 0.25 c h / 0.1),
       // intrinsic color
-      8px 0 16px 0px oklch(from var(--b3-theme-background) l c h / 0.5) inset,
-      -8px 0 16px 0px oklch(from var(--b3-theme-background) l c h / 0.5) inset;
+      8px 0 16px 0px oklch(from var(--b3-theme-background) l c h / 0.6) inset,
+      -8px 0 16px 0px oklch(from var(--b3-theme-background) l c h / 0.6) inset;
     @include darkmode-counterpart {
       box-shadow:
         0 1px 1px -0.5px inset oklch(from var(--b3-theme-background) 0.96 c h / 0.6),
@@ -380,8 +380,8 @@ https://css-tricks.com/easing-linear-gradients/
         -1px 0 0 0 rgb(0 0 0 / 0.2),
         0 0 0 1px oklch(from var(--b3-theme-on-background) l 0.1 h / 0.05) inset,
         // intrinsic color
-        8px 0 16px 0px oklch(from var(--b3-menu-background) calc(l + 0.1) c h / 0.3) inset,
-        -8px 0 16px 0px oklch(from var(--b3-menu-background) calc(l + 0.1) c h / 0.3) inset;
+        8px 0 16px 0px oklch(from var(--b3-menu-background) calc(l + 0.05) c h / 0.3) inset,
+        -8px 0 16px 0px oklch(from var(--b3-menu-background) calc(l + 0.05) c h / 0.3) inset;
     }
   }
 
