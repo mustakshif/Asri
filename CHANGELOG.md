@@ -1,3 +1,15 @@
+### v3.7.6
+
+- [数据库信息换行方式采用原生样式](https://github.com/mustakshif/Asri/issues/270)
+- 微调「雾光玻璃」，并适配更多组件
+
+<br />
+
+- [Enabled native styling for database info line breaks](https://github.com/mustakshif/Asri/issues/270)
+- Fine-tuned "Luminous Frost Glass" and adapted it to more components
+
+---
+
 ### v3.7.5
 
 - 适配思源v3.7.2
