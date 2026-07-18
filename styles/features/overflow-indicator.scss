@@ -10,28 +10,26 @@ $fadeout-size-xl: 50px;
 //     @include overflow-indicator-fadein-mask($fadeout-size-s, $range: 'left right');
 // }
 
-.file-tree:not(.sy__backlink) .block__icons ~ .fn__flex-1,
-.sy__file > .b3-list > .fn__flex-1 {
-  @include overflow-indicator-fadein-mask($fadeout-size-m, "top");
-}
+// Do not apply scroll-linked fade masks to .file-tree scroll sources.
+// Chromium crashes when a hidden SiYuan side panel first becomes visible while
+// its scroll container drives its own animation with scroll(self).
 
-.file-tree.sy__file .block__icons ~ .fn__flex-1 {
-  @include overflow-indicator-fadein-mask($fadeout-size-m, "top bottom");
-}
+// .file-tree:not(.sy__backlink) .block__icons ~ .fn__flex-1,
+// .sy__file > .b3-list > .fn__flex-1 {
+//   @include overflow-indicator-fadein-mask($fadeout-size-m, "top");
+// }
 
-.layout__dockb.layout--float .file-tree:not(.sy__backlink) .block__icons ~ .fn__flex-1 {
-  @include overflow-indicator-fadein-mask($fadeout-size-s, "top bottom");
-}
+// .file-tree.sy__file .block__icons ~ .fn__flex-1 {
+//   @include overflow-indicator-fadein-mask($fadeout-size-m, "top bottom");
+// }
+
+// .layout__dockb.layout--float .file-tree:not(.sy__backlink) .block__icons ~ .fn__flex-1 {
+//   @include overflow-indicator-fadein-mask($fadeout-size-s, "top bottom");
+// }
 
 // .file-tree.sy__backlink .backlinkList {
 //     @include overflow-indicator-fadein-mask($fadeout-size-s, 'bottom');
 // } //文字编辑工具条会被裁切
-
-.layout__dockb {
-  .file-tree:not(.sy__backlink) .block__icons ~ .fn__flex-1 {
-    @include overflow-indicator-fadein-mask($fadeout-size-s, "top");
-  }
-}
 
 [data-name="bazaar"] .config-bazaar__panel {
   @include overflow-indicator-fadein-bgClr($fadeout-size-l, $range: "top");
