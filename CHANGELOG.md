@@ -1,3 +1,13 @@
+### v3.7.7
+
+- [移除侧栏溢出渐隐动画，修复可能引发闪退的问题](https://github.com/mustakshif/Asri/issues/266)
+
+<br />
+
+- [Removed side panel overflow fading animation, fixed potential crash issue](https://github.com/mustakshif/Asri/issues/266)
+
+---
+
 ### v3.7.6
 
 - [数据库信息换行方式采用原生样式](https://github.com/mustakshif/Asri/issues/270)
