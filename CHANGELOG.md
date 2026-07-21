@@ -1,3 +1,15 @@
+### v3.7.8
+
+- 适配思源v3.7.3
+- [适配更多菜单场景](https://github.com/mustakshif/Asri/issues/271)
+
+<br />
+
+- Adapted for SiYuan v3.7.3
+- [Adapted for more menu scenarios](https://github.com/mustakshif/Asri/issues/271)
+
+---
+
 ### v3.7.7
 
 - [移除侧栏溢出渐隐动画，修复可能引发闪退的问题](https://github.com/mustakshif/Asri/issues/266)
