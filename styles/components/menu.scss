@@ -75,8 +75,13 @@
       margin-bottom: 0.5px;
     }
 
-    &:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom, .b3-menu__item--disabled):not([disabled]):not([data-type="nobg"]),
-    &--current:not(.b3-menu__item--readonly, .b3-menu__item--disabled):not([disabled]):not([data-type="nobg"]) {
+    &:hover:not(.b3-menu__item--readonly):not(
+        .b3-menu__item--custom,
+        .b3-menu__item--disabled
+      ):not([disabled]):not([data-type="nobg"]),
+    &--current:not(.b3-menu__item--readonly, .b3-menu__item--disabled):not(
+        [disabled]
+      ):not([data-type="nobg"]) {
       background-color: var(--b3-menu-item-background-hover);
       color: var(--b3-menu-item-background-hover-text);
 
@@ -114,7 +119,9 @@
       }
     }
 
-    &.b3-menu__item--custom.b3-menu__item--current:not(.b3-menu__item--disabled) {
+    &.b3-menu__item--custom.b3-menu__item--current:not(
+        .b3-menu__item--disabled
+      ) {
       > .b3-menu__label > div > .b3-menu__icon {
         color: var(--b3-menu-item-background-hover-text);
       }
@@ -328,7 +335,8 @@
     }
   }
 
-  .b3-list-item--two .b3-list-item__meta.b3-list-item__showall:not(:first-child) {
+  .b3-list-item--two
+    .b3-list-item__meta.b3-list-item__showall:not(:first-child) {
     padding: 4px 4px 4px 22px;
     width: fit-content;
     border-radius: 4px;
@@ -393,8 +401,11 @@
 
   // 代码块语言选择、模版挂件等选择面板
   > .fn__flex-column {
-    padding-top: 8px;
+    // padding-top: 8px;
 
+    > .b3-text-field {
+      margin-top: 8px !important;
+    }
     > .b3-list {
       padding-bottom: 8px;
     }
@@ -451,4 +462,8 @@
     //   }
     // }
   }
+}
+
+.agent-session-popup {
+  padding-block: 8px 6px;
 }
