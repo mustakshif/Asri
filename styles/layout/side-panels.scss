@@ -525,3 +525,7 @@
 .agent-chat__msg--user .agent-chat__body {
   background-color: var(--b3-theme-background);
 }
+
+.file-tree__item--icon-expand>.b3-list-item__toggle:hover~.b3-list-item__icon::before, .file-tree__item--icon-expand>.b3-list-item__icon:hover::before {
+  background-color: transparent;
+}

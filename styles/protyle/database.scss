@@ -7,7 +7,11 @@ $chip-border-radius: 5px;
 // 嵌入块和引用块中的数据库表头等处的背景色
 [data-type="NodeBlockQueryEmbed"],
 [data-type="NodeBlockquote"] {
-  --b3-parent-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background));
+  --b3-parent-background: color-mix(
+    in srgb,
+    var(--b3-theme-surface),
+    var(--b3-theme-background)
+  );
 }
 
 @mixin flex-gallery-card {
@@ -83,7 +87,8 @@ $chip-border-radius: 5px;
       // box-shadow: none;
       // border: 2.5px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
 
-      @supports (corner-shape: superellipse(1.5)) and (not (-electron-corner-smoothing: 60%)) {
+      @supports (corner-shape: superellipse(1.5)) and
+        (not (-electron-corner-smoothing: 60%)) {
         corner-shape: superellipse($superellipse-k);
         border-radius: calc(1em / 0.875 * 10 / 17 * $superellipse-k) !important;
       }
@@ -98,9 +103,12 @@ $chip-border-radius: 5px;
         border-radius: calc(1em / 0.875 * 10 / 17 - 3px) !important;
         width: auto !important; // 修复v3.2.1拖动后宽度递增的问题
 
-        @supports (corner-shape: superellipse(1.5)) and (not (-electron-corner-smoothing: 60%)) {
+        @supports (corner-shape: superellipse(1.5)) and
+          (not (-electron-corner-smoothing: 60%)) {
           corner-shape: superellipse($superellipse-k);
-          border-radius: calc((1em / 0.875 * 10 / 17 - 3px) * $superellipse-k) !important;
+          border-radius: calc(
+            (1em / 0.875 * 10 / 17 - 3px) * $superellipse-k
+          ) !important;
         }
 
         @supports (-electron-corner-smoothing: 60%) {
@@ -397,7 +405,8 @@ $chip-border-radius: 5px;
 
   .av__celltext--ref {
     border-bottom: none;
-    text-decoration: underline rgb(from var(--b3-theme-on-background) r g b / 0.3);
+    text-decoration: underline
+      rgb(from var(--b3-theme-on-background) r g b / 0.3);
     transition-property: color, text-decoration-color;
     transition-duration: 0.2s;
 
@@ -685,7 +694,9 @@ $chip-border-radius: 5px;
 
     &-cover {
       border-bottom: none;
-      @include superellipse(var(--gallery-item-border-radius) var(--gallery-item-border-radius) 0 0);
+      @include superellipse(
+        var(--gallery-item-border-radius) var(--gallery-item-border-radius) 0 0
+      );
       background-color: var(--b3-theme-surface);
       // background-color: #0000;
       // background: linear-gradient(to bottom, var(--b3-theme-surface), #0000);
@@ -693,11 +704,13 @@ $chip-border-radius: 5px;
       container-type: size;
 
       @include darkmode-counterpart {
-        box-shadow: 0 0.5px 0 0 inset rgb(from var(--b3-theme-on-background) r g b / 0.3);
+        box-shadow: 0 0.5px 0 0 inset
+          rgb(from var(--b3-theme-on-background) r g b / 0.3);
       }
 
       .av__gallery-content {
-        margin: calc(var(--gallery-item-border-radius) - 4px) var(--gallery-item-border-radius) 0;
+        margin: calc(var(--gallery-item-border-radius) - 4px)
+          var(--gallery-item-border-radius) 0;
         // mask-image: linear-gradient(to bottom, #000 0%, #0000 100cqh);
         // width: calc(100% / 0.85 - var(--gallery-item-border-radius) * 2);
         width: auto;
@@ -713,7 +726,11 @@ $chip-border-radius: 5px;
         top: 0;
         width: 100cqw;
         height: 100cqh;
-        background-image: linear-gradient(to top, var(--b3-theme-background), #0000);
+        background-image: linear-gradient(
+          to top,
+          var(--b3-theme-background),
+          #0000
+        );
         z-index: 1;
         pointer-events: none;
 
@@ -725,7 +742,9 @@ $chip-border-radius: 5px;
 
     &-fields {
       padding: var(--gallery-item-border-radius);
-      @include superellipse(0 0 var(--gallery-item-border-radius) var(--gallery-item-border-radius));
+      @include superellipse(
+        0 0 var(--gallery-item-border-radius) var(--gallery-item-border-radius)
+      );
 
       @include darkmode-counterpart {
         // background-color: var(--b3-theme-surface);
@@ -924,7 +943,10 @@ $chip-border-radius: 5px;
 
       .av__kanban-group {
         &::before {
-          @include superellipse(calc(var(--gallery-item-border-radius) + 8px), true);
+          @include superellipse(
+            calc(var(--gallery-item-border-radius) + 8px),
+            true
+          );
         }
 
         .av__group-title {
@@ -945,6 +967,15 @@ $chip-border-radius: 5px;
   }
   .av__gallery-item::before {
     corner-shape: inherit;
+  }
+
+  &__new {
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  &:hover .av__new {
+    opacity: 1;
   }
 }
 
@@ -1104,11 +1135,19 @@ img.av__cellassetimg {
     padding: 8px;
     box-sizing: content-box;
     border-bottom: 1px solid var(--b3-border-color-trans);
-    border-radius: 0;
+    border-radius: inherit;
+    border-end-end-radius: 0;
+    border-end-start-radius: 0;
+    corner-shape: inherit;
 
     &:focus {
       background-color: var(--b3-menu-background);
       outline: none;
+    }
+
+    + div {
+      border-start-start-radius: 0 !important;
+      border-start-end-radius: 0 !important;
     }
   }
 }
