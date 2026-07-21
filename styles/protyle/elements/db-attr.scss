@@ -1,0 +1,44 @@
+.protyle-db-attr {
+  .block__logo {
+    margin: 0;
+  }
+
+  &__body .custom-attr {
+    &__avbacklinks {
+      padding: 0;
+      border-bottom: none;
+
+      &-toggle {
+        padding-inline: 37px;
+      }
+
+      &-body {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fill, minmax(25ch, 1fr));
+      }
+    }
+
+    &__avbacklink {
+      color: var(--b3-theme-on-background);
+      padding: 1em 1.25em;
+      border-radius: 12px;
+      box-shadow: 0 0 0 1px var(--b3-border-color-trans);
+      align-items: baseline;
+
+      > .fn__flex-1 {
+        height: 100%;
+        justify-content: space-between;
+        gap: 0.5em;
+      }
+
+      &path {
+        text-align: end;
+      }
+
+      &open {
+        display: none;
+      }
+    }
+  }
+}
