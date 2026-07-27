@@ -1,3 +1,13 @@
+### v3.7.9
+
+- 调整文档数据库展示样式
+
+<br />
+
+- Adjusted the display style of the document database
+
+---
+
 ### v3.7.8
 
 - 适配思源v3.7.3

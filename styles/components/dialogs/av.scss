@@ -16,8 +16,13 @@
 .custom-attr {
   padding-bottom: 16px;
 
+  .block__logo:not(.popover__block) {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
   .custom-attr__avheader {
-    padding-left: 40px;
+    padding-left: 32px;
     padding-right: 16px;
     font-weight: 500;
   }
@@ -25,7 +30,7 @@
   .block__icons {
     height: auto;
     min-height: unset;
-    padding: 4px 16px;
+    padding: 2px 8px;
   }
 
   .av__row {

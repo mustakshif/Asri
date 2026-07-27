@@ -83,6 +83,7 @@ $chip-border-radius: 5px;
       height: auto;
       margin: 8px 0 !important;
       padding: 2px !important;
+      gap: 0.5em;
       border-radius: calc(1em / 0.875 * 10 / 17) !important;
       // box-shadow: none;
       // border: 2.5px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
@@ -98,10 +99,11 @@ $chip-border-radius: 5px;
       }
 
       .item {
-        padding: 2px 4px !important;
+        padding: 0.3em 0.5em !important;
         height: auto;
         border-radius: calc(1em / 0.875 * 10 / 17 - 3px) !important;
         width: auto !important; // 修复v3.2.1拖动后宽度递增的问题
+        gap: 0.6em;
 
         @supports (corner-shape: superellipse(1.5)) and
           (not (-electron-corner-smoothing: 60%)) {
@@ -114,9 +116,13 @@ $chip-border-radius: 5px;
         @supports (-electron-corner-smoothing: 60%) {
           -electron-corner-smoothing: 60%;
         }
+        
 
         &__graphic {
-          padding: 0.42em 4px 0.42em 8px;
+          padding: 0;
+          width: 1em;
+          height: 1em;
+          line-height: 1;
 
           .body-asri--mac & {
             font-size: calc(1em / 0.875 * 15 / 17);
@@ -124,7 +130,8 @@ $chip-border-radius: 5px;
         }
 
         &__text {
-          padding-right: 8px;
+          padding: 0;
+          mask-image: none;
         }
       }
 

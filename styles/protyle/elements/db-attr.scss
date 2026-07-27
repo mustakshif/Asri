@@ -16,6 +16,7 @@
         display: grid;
         gap: 12px;
         grid-template-columns: repeat(auto-fill, minmax(25ch, 1fr));
+        padding-block: 4px;
       }
     }
 

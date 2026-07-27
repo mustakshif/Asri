@@ -134,9 +134,11 @@
           padding: 0 16px 14px;
           align-self: flex-end;
 
-          > [data-type="setting"],
-          > [data-type="setting"].fn__none ~ [data-type="uninstall"],
-          > [data-type="open"]:first-child {
+          &--right {
+            justify-content: end;
+          }
+
+          > [href].block__icon + .block__icon {
             margin-left: auto;
             // justify-content: end;
             // flex-grow: 1; // 鼠标移至空白区域时也会激活图标
@@ -388,11 +390,13 @@
       --b3-theme-on-surface: var(--b3-theme-on-background);
       border-radius: 99px;
       box-shadow: 0 0 0 1px var(--b3-border-color-trans);
-      
+
       // mix-blend-mode: luminosity;
       // backdrop-filter: blur(4px);
       z-index: 1;
-      transition: transform 0.8s var(--asri-ease-spring-4), box-shadow 0.15s;
+      transition:
+        transform 0.8s var(--asri-ease-spring-4),
+        box-shadow 0.15s;
 
       &:hover {
         transform: scale(1.1);
@@ -526,9 +530,9 @@
         position: absolute;
         position-anchor: --preview;
         left: anchor(left);
+        right: anchor(right);
         bottom: anchor(bottom);
         padding: 0;
-        width: calc(100% - 292px);
         pointer-events: none;
         height: auto;
         mix-blend-mode: luminosity;
