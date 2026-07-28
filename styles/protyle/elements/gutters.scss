@@ -14,8 +14,8 @@
     opacity: 0;
 
     @for $i from 1 through 7 {
-      &:nth-last-child(#{$i + 1}) {
-        animation-delay: calc($i * 1s / (2 + $i) / 8);
+      &:nth-last-child(#{$i + 4}) {
+        animation-delay: calc($i * 1s / (2 + $i) / 6);
       }
     }
   }
@@ -32,6 +32,10 @@
     transition:
       transform,
       0.8s var(--asri-ease-spring-5);
+  }
+
+  &__line {
+    animation: none !important;
   }
 
   @keyframes gutters-appear {
