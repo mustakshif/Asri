@@ -1,3 +1,13 @@
+### v3.7.10
+
+- [修复AI编写对话框文本框宽度异常的问题](https://github.com/mustakshif/Asri/issues/272)
+
+<br />
+
+- [Fixed the issue of abnormal text box width in the AI writing dialog](https://github.com/mustakshif/Asri/issues/272)
+
+---
+
 ### v3.7.9
 
 - 调整文档数据库展示样式
