@@ -38,6 +38,10 @@ $fadeout-size-xl: 50px;
     top: 44px;
     z-index: 2;
   }
+
+  &[data-type="downloaded"]::before {
+    top: 80px;
+  }
 }
 
 [data-name="AI"] .layout-tab-bar + .fn__flex-1,

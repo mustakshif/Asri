@@ -1,3 +1,13 @@
+### v3.7.11
+
+- 适配思源v3.8.0
+
+<br />
+
+- Adapted for SiYuan v3.8.0
+
+---
+
 ### v3.7.10
 
 - [修复AI编写对话框文本框宽度异常的问题](https://github.com/mustakshif/Asri/issues/272)

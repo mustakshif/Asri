@@ -272,63 +272,63 @@
     display: none;
   }
 
-  .b3-list-item[data-type="NodeHeading"] {
-    // $titleIcons: 'h1' '❶', 'h2' '❷', 'h3' '❸', 'h4' '❹', 'h5' '❺', 'h6' '❻';
-    // @each $title, $icon in $titleIcons {
-    //     &[data-subtype=#{$title}] .b3-list-item__text::before {
-    //         content: $icon;
-    //     }
-    // }
+  // .b3-list-item[data-type="NodeHeading"] {
+  //   // $titleIcons: 'h1' '❶', 'h2' '❷', 'h3' '❸', 'h4' '❹', 'h5' '❺', 'h6' '❻';
+  //   // @each $title, $icon in $titleIcons {
+  //   //     &[data-subtype=#{$title}] .b3-list-item__text::before {
+  //   //         content: $icon;
+  //   //     }
+  //   // }
 
-    $titleIcons: "❶", "❷", "❸", "❹", "❺", "❻";
+  //   $titleIcons: "❶", "❷", "❸", "❹", "❺", "❻";
 
-    @for $i from 1 through list.length($titleIcons) {
-      &[data-subtype="h#{$i}"] .b3-list-item__text::before {
-        content: list.nth($titleIcons, $i);
-      }
-    }
+  //   @for $i from 1 through list.length($titleIcons) {
+  //     &[data-subtype="h#{$i}"] .b3-list-item__text::before {
+  //       content: list.nth($titleIcons, $i);
+  //     }
+  //   }
 
-    .b3-list-item__text::before {
-      position: absolute;
-      background-color: transparent;
-      left: 24px;
-      // top: 0;
-      opacity: 0.5;
-      z-index: 0;
-      transition:
-        color 0.2s,
-        opacity 0.2s;
-      font-family: SF Pro;
-      font-size: calc(16em / 14);
+  //   .b3-list-item__text::before {
+  //     position: absolute;
+  //     background-color: transparent;
+  //     left: 24px;
+  //     // top: 0;
+  //     opacity: 0.5;
+  //     z-index: 0;
+  //     transition:
+  //       color 0.2s,
+  //       opacity 0.2s;
+  //     font-family: SF Pro;
+  //     font-size: calc(16em / 14);
 
-      body.body--win32 & {
-        font-family: "Segoe UI";
-        font-size: calc(12em / 16);
-      }
+  //     body.body--win32 & {
+  //       font-family: "Segoe UI";
+  //       font-size: calc(12em / 16);
+  //     }
 
-      body.body-asri--linux & {
-        font-family: Dejavu Sans;
-      }
-    }
+  //     body.body-asri--linux & {
+  //       font-family: Dejavu Sans;
+  //     }
+  //   }
 
-    .b3-list-item__text:empty {
-      &::after {
-        content: "　";
-      }
-    }
+  //   .b3-list-item__text:empty {
+  //     &::after {
+  //       content: "　";
+  //     }
+  //   }
 
-    // 兼顾 https://github.com/mustakshif/Asri/issues/69 和 https://github.com/mustakshif/Asri/issues/65
+  //   // 兼顾 https://github.com/mustakshif/Asri/issues/69 和 https://github.com/mustakshif/Asri/issues/65
 
-    & > svg {
-      color: transparent !important;
-      z-index: 1;
+  //   & > svg {
+  //     color: transparent !important;
+  //     z-index: 1;
 
-      &:hover ~ .b3-list-item__text::before {
-        color: var(--b3-theme-primary);
-        opacity: 1;
-      }
-    }
-  }
+  //     &:hover ~ .b3-list-item__text::before {
+  //       color: var(--b3-theme-primary);
+  //       opacity: 1;
+  //     }
+  //   }
+  // }
 }
 
 .sy__tag {
