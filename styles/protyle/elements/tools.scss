@@ -18,7 +18,8 @@
     @include theme-variant-color(background-color, surface, 0.8);
     // background-color: var(--b3-theme-surface);
     @include theme-variant-color(color, on-background, 0.6);
-    padding: 5px 6px;
+    padding: 5px 4px;
+    height: auto;
 
     &:not(.protyle-icon--text, .protyle-icon--only):hover {
       color: var(--b3-theme-on-background);

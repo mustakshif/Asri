@@ -52,6 +52,10 @@
     --b3-theme-background: #161616;
     --b3-parent-background: var(--b3-theme-background);
   }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
 .asri-mode-light {
@@ -79,6 +83,7 @@ body {
 
   --b3-toolbar-left-mac: 80px;
   --toolbar-height: 32px;
+
   &.body--toolbar-hide {
     --toolbar-height: 42px;
   }

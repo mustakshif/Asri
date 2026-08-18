@@ -7,11 +7,7 @@ $chip-border-radius: 5px;
 // 嵌入块和引用块中的数据库表头等处的背景色
 [data-type="NodeBlockQueryEmbed"],
 [data-type="NodeBlockquote"] {
-  --b3-parent-background: color-mix(
-    in srgb,
-    var(--b3-theme-surface),
-    var(--b3-theme-background)
-  );
+  --b3-parent-background: color-mix(in srgb, var(--b3-theme-surface), var(--b3-theme-background));
 }
 
 @mixin flex-gallery-card {
@@ -88,8 +84,7 @@ $chip-border-radius: 5px;
       // box-shadow: none;
       // border: 2.5px solid #0000; // 修复第一个页签被裁切的问题：https://github.com/mustakshif/Asri/issues/22
 
-      @supports (corner-shape: superellipse(1.5)) and
-        (not (-electron-corner-smoothing: 60%)) {
+      @supports (corner-shape: superellipse(1.5)) and (not (-electron-corner-smoothing: 60%)) {
         corner-shape: superellipse($superellipse-k);
         border-radius: calc(1em / 0.875 * 10 / 17 * $superellipse-k) !important;
       }
@@ -105,18 +100,14 @@ $chip-border-radius: 5px;
         width: auto !important; // 修复v3.2.1拖动后宽度递增的问题
         gap: 0.6em;
 
-        @supports (corner-shape: superellipse(1.5)) and
-          (not (-electron-corner-smoothing: 60%)) {
+        @supports (corner-shape: superellipse(1.5)) and (not (-electron-corner-smoothing: 60%)) {
           corner-shape: superellipse($superellipse-k);
-          border-radius: calc(
-            (1em / 0.875 * 10 / 17 - 3px) * $superellipse-k
-          ) !important;
+          border-radius: calc((1em / 0.875 * 10 / 17 - 3px) * $superellipse-k) !important;
         }
 
         @supports (-electron-corner-smoothing: 60%) {
           -electron-corner-smoothing: 60%;
         }
-        
 
         &__graphic {
           padding: 0;
@@ -304,6 +295,10 @@ $chip-border-radius: 5px;
     .av__colsticky {
       // transition: opacity .2s;
       cursor: pointer;
+
+      &--freeze {
+        box-shadow: none;
+      }
     }
 
     &:not(.av__row--header) > .av__colsticky {
@@ -413,8 +408,7 @@ $chip-border-radius: 5px;
 
   .av__celltext--ref {
     border-bottom: none;
-    text-decoration: underline
-      rgb(from var(--b3-theme-on-background) r g b / 0.3);
+    text-decoration: underline rgb(from var(--b3-theme-on-background) r g b / 0.3);
     transition-property: color, text-decoration-color;
     transition-duration: 0.2s;
 
@@ -681,7 +675,7 @@ $chip-border-radius: 5px;
       //   box-shadow: none;
       // }
 
-      &:hover:not(.av__gallery-item--select)::before {
+      &:hover:not(.av__gallery-item--select):not(.av__gallery-item--locate)::before {
         background-color: inherit;
       }
 
@@ -702,9 +696,7 @@ $chip-border-radius: 5px;
 
     &-cover {
       border-bottom: none;
-      @include superellipse(
-        var(--gallery-item-border-radius) var(--gallery-item-border-radius) 0 0
-      );
+      @include superellipse(var(--gallery-item-border-radius) var(--gallery-item-border-radius) 0 0);
       background-color: var(--b3-theme-surface);
       // background-color: #0000;
       // background: linear-gradient(to bottom, var(--b3-theme-surface), #0000);
@@ -712,13 +704,11 @@ $chip-border-radius: 5px;
       container-type: size;
 
       @include darkmode-counterpart {
-        box-shadow: 0 0.5px 0 0 inset
-          rgb(from var(--b3-theme-on-background) r g b / 0.3);
+        box-shadow: 0 0.5px 0 0 inset rgb(from var(--b3-theme-on-background) r g b / 0.3);
       }
 
       .av__gallery-content {
-        margin: calc(var(--gallery-item-border-radius) - 4px)
-          var(--gallery-item-border-radius) 0;
+        margin: calc(var(--gallery-item-border-radius) - 4px) var(--gallery-item-border-radius) 0;
         // mask-image: linear-gradient(to bottom, #000 0%, #0000 100cqh);
         // width: calc(100% / 0.85 - var(--gallery-item-border-radius) * 2);
         width: auto;
@@ -734,11 +724,7 @@ $chip-border-radius: 5px;
         top: 0;
         width: 100cqw;
         height: 100cqh;
-        background-image: linear-gradient(
-          to top,
-          var(--b3-theme-background),
-          #0000
-        );
+        background-image: linear-gradient(to top, var(--b3-theme-background), #0000);
         z-index: 1;
         pointer-events: none;
 
@@ -750,9 +736,7 @@ $chip-border-radius: 5px;
 
     &-fields {
       padding: var(--gallery-item-border-radius);
-      @include superellipse(
-        0 0 var(--gallery-item-border-radius) var(--gallery-item-border-radius)
-      );
+      @include superellipse(0 0 var(--gallery-item-border-radius) var(--gallery-item-border-radius));
 
       @include darkmode-counterpart {
         // background-color: var(--b3-theme-surface);
@@ -951,10 +935,7 @@ $chip-border-radius: 5px;
 
       .av__kanban-group {
         &::before {
-          @include superellipse(
-            calc(var(--gallery-item-border-radius) + 8px),
-            true
-          );
+          @include superellipse(calc(var(--gallery-item-border-radius) + 8px), true);
         }
 
         .av__group-title {

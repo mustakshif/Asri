@@ -138,36 +138,41 @@
             justify-content: end;
           }
 
-          > [href].block__icon + .block__icon {
-            margin-left: auto;
-            // justify-content: end;
-            // flex-grow: 1; // 鼠标移至空白区域时也会激活图标
-
-            // tooltip
-            &::after {
-              right: 0;
-              margin-right: 0;
-            }
+          &:not(.b3-card__actions--right) .block__icon svg {
+            width: 14px;
+            height: 14px;
           }
 
-          .block__icon {
-            &:first-child {
-              margin-inline-start: 0;
-            }
+          // > [href].block__icon + .block__icon {
+          //   margin-left: auto;
+          //   // justify-content: end;
+          //   // flex-grow: 1; // 鼠标移至空白区域时也会激活图标
 
-            &.fn__hidden {
-              display: none;
+          //   // tooltip
+          //   &::after {
+          //     right: 0;
+          //     margin-right: 0;
+          //   }
+          // }
 
-              ~ a {
-                padding-inline-start: 0;
-              }
-            }
-          }
+          // .block__icon {
+          //   &:first-child {
+          //     margin-inline-start: 0;
+          //   }
 
-          // 赞助图标
-          &--right a {
-            margin-left: 0;
-          }
+          //   &.fn__hidden {
+          //     display: none;
+
+          //     ~ a {
+          //       padding-inline-start: 0;
+          //     }
+          //   }
+          // }
+
+          // // 赞助图标
+          // &--right a {
+          //   margin-left: 0;
+          // }
         }
 
         .b3-card__info--left {
