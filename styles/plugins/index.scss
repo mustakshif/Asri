@@ -1,12 +1,12 @@
 @use "custom-block";
-@use "siyuan-plugin-enhance";
+// @use "siyuan-plugin-enhance";
 @use "webview";
 // @use 'bookmark-plus';
 @use "fake-breadcrumb";
 @use "database-properties";
 @use "backlink-panel";
 @use "media-player";
-@use "docs-flow";
-@use "fold-list-preview";
+// @use "docs-flow";
+// @use "fold-list-preview";
 // @use 'typewriter';  // Typewriter plugin uses :has() selector, which affects performance
 @use "colorful-icon-packs";

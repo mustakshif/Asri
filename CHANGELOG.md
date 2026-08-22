@@ -2,13 +2,13 @@
 
 - 数据库样式微调
 - 调整暗色模式字体渲染
-- 适配思源v3.8.0
+- 适配思源v3.8.1
 
 <br />
 
 - Fine-tuned database styles
 - Adjusted font rendering in dark mode
-- Adapted for SiYuan v3.8.0
+- Adapted for SiYuan v3.8.1
 
 ---
 

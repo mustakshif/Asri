@@ -162,11 +162,11 @@
       text-decoration-line: underline line-through;
     }
 
-    .katex .base > span {
-      text-decoration: underline;
-      text-decoration-thickness: $text-underline-thickness;
-      text-underline-offset: -0.05em;
-    }
+    // .katex .base > span {
+    //   text-decoration: underline;
+    //   text-decoration-thickness: $text-underline-thickness;
+    //   text-underline-offset: -0.05em;
+    // }
   }
 }
 
