@@ -1,3 +1,17 @@
+### v3.7.13
+
+- 重新映射本地苹方字体字重以匹配西文UI多字重
+- 平衡苹方字体字面大小以适应中西混排
+- 微调标题样式
+
+<br />
+
+- Remapped local PingFang font weights to align with the multi-weight Western UI
+- Balanced PingFang font face sizes to suit mixed Chinese-Western typesetting
+- Fine-tuned heading styles
+
+---
+
 ### v3.7.12
 
 - 数据库样式微调
