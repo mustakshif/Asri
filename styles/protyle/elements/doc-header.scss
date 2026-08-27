@@ -117,7 +117,7 @@
     &__icon:not(.fn__none) ~ .protyle-background__action {
       --x: 108px;
     }
-    
+
     // 文档标签
     .b3-chips {
       // margin: 0 -4px;
@@ -188,7 +188,7 @@
   //文档标题
   &-title {
     &__input {
-      font-weight: 400;
+      font-weight: 250;
       font-size: 2.75em;
       color: var(--b3-theme-primary);
       line-height: 1.2;
@@ -197,6 +197,7 @@
       word-break: auto-phrase;
       text-wrap-style: pretty;
       white-space: normal;
+      letter-spacing: -2%;
 
       &:empty:after {
         opacity: 0.6;

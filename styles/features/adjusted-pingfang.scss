@@ -1,0 +1,102 @@
+@use "sass:list";
+
+@mixin _adjusted-pingfang {
+  @include _chinese-rounded-quotes;
+  @include _chinese-adjusted(96%);
+
+  :root:lang(zh-CN) {
+    --b3-font-family:
+      chinese-rounded-quotes, chinese-adjusted-sc, system-ui, sans-serif;
+  }
+
+  :root:lang(zh-TW) {
+    --b3-font-family:
+      chinese-rounded-quotes, chinese-adjusted-tc, system-ui, sans-serif;
+  }
+}
+
+@mixin _chinese-rounded-quotes(
+  $face-list: (
+    ("PingFang SC Ultralight", "PingFangSC-Ultralight", 10 50),
+    ("PingFang SC Thin", "PingFangSC-Thin", 60 100),
+    ("PingFang SC Light", "PingFangSC-Light", 150 250),
+    ("PingFang SC Regular", "PingFangSC-Regular", 350 400),
+    ("PingFang SC Medium", "PingFangSC-Medium", 500),
+    ("PingFang SC Semibold", "PingFangSC-Semibold", 600),
+  )
+) {
+  @each $face in $face-list {
+    @font-face {
+      font-family: "chinese-rounded-quotes";
+      src: local(#{list.nth($face, 1)}), local(#{list.nth($face, 2)});
+      font-weight: list.nth($face, 3);
+      unicode-range: U+2018-2019, U+201C-201D;
+    }
+  }
+}
+
+@mixin _chinese-adjusted(
+  $size-adjust-sc: 100%,
+  $size-adjust-tc: $size-adjust-sc
+) {
+  $weights: (
+    ("Ultralight", 10 50),
+    ("Thin", 60 100),
+    ("Light", 150 250),
+    ("Regular", 350 400),
+    ("Medium", 500),
+    ("Semibold", 600)
+  );
+  $unicode-range:
+  // 汉字
+    U+3400-4DBF,
+    U+4E00-9FFF,
+    U+F900-FAFF,
+    // 通用中文标点
+    U+00B7,
+    U+2010-2027,
+    U+2030-203B,
+    // CJK标点
+    U+3000-301F,
+    // 全角ASCII符号，排除数字和拉丁字母
+    U+FF01-FF0F,
+    U+FF1A-FF20,
+    U+FF3B-FF40,
+    U+FF5B-FF60,
+    // 半角CJK标点
+    U+FF61-FF65,
+    // 全角货币及其他符号
+    U+FFE0-FFE6;
+
+  // 简体中文：PingFang SC
+  @each $item in $weights {
+    $face: list.nth($item, 1);
+    $weight: list.nth($item, 2);
+
+    @font-face {
+      font-family: "chinese-adjusted-sc";
+      src: local("PingFangSC-#{$face}");
+      font-style: normal;
+      font-weight: $weight;
+      size-adjust: $size-adjust-sc;
+      unicode-range: $unicode-range;
+    }
+  }
+
+  // 台湾繁体：PingFang TC
+  @each $item in $weights {
+    $face: list.nth($item, 1);
+    $weight: list.nth($item, 2);
+
+    @font-face {
+      font-family: "chinese-adjusted-tc";
+      src: local("PingFangTC-#{$face}");
+      font-style: normal;
+      font-weight: $weight;
+      size-adjust: $size-adjust-tc;
+      unicode-range: $unicode-range;
+    }
+  }
+}
+
+@include _adjusted-pingfang;

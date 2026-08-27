@@ -6,7 +6,6 @@
   // https://github.com/mustakshif/Asri/issues/240
   @include theme-root($theme-light);
   @include theme-root-light;
-  @include cjk-rounded-quotes;
 
   --b3-body-background: var(--b3-theme-surface);
 

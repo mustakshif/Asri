@@ -8,6 +8,7 @@
     h#{$i} {
       margin-top: 1.2em;
       line-height: 1.5;
+      font-weight: 500;
     }
 
     @for $j from 2 through 6 {
@@ -30,7 +31,7 @@
     word-break: auto-phrase; // 允许自动断字，目前仅支持日文
     // text-wrap-style: pretty; // 平衡断字
   }
-  
+
   [data-type="NodeHeading"],
   h1,
   h2,
