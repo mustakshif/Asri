@@ -111,16 +111,16 @@ $fadeout-size-xl: 50px;
 //     @include overflow-indicator-fadein-mask($fadeout-size-m, $range: 'top bottom');
 // }
 
-.b3-dialog .emojis__panel {
-  // @include overflow-indicator-line;
-  @include overflow-indicator-fadein-mask($fadeout-size-l, $range: "top");
+// .b3-dialog .emojis__panel {
+//   // @include overflow-indicator-line;
+//   @include overflow-indicator-fadein-mask($fadeout-size-l, $range: "top");
 
-  &::before {
-    width: calc(100% + 16px);
-    margin-left: -8px;
-    margin-right: -8px;
-  }
-}
+//   &::before {
+//     width: calc(100% + 16px);
+//     margin-left: -8px;
+//     margin-right: -8px;
+//   }
+// }
 
 body:not(.asri-tfp-progressive) .protyle-breadcrumb__bar {
   @include overflow-indicator-fadein-mask($fadeout-size-s, $range: "left right");

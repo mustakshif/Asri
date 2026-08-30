@@ -2,8 +2,11 @@
   "name": "Asri",
   "author": "mustakshif",
   "url": "https://github.com/mustakshif/Asri",
-  "version": "3.7.13",
+  "version": "3.7.14",
   "minAppVersion": "3.7.0",
+  "frontends": [
+    "all"
+  ],
   "displayName": {
     "default": "Asri",
     "zh_CN": "Asri",

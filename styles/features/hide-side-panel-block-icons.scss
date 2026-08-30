@@ -4,7 +4,7 @@
 
 @use "../base" as *;
 
-body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
+@scope (.layout__dockl, .layout__dockr, .layout__dockb) {
   .file-tree .block__icons {
     app-region: no-drag;
   }
@@ -61,7 +61,8 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
           transition: var(--icons2dots-dur) var(--icons2dots-timing-func) var(--icons2dots-delay);
         }
 
-        > div, > span {
+        > div,
+        > span {
           transform: scale(0.6);
           transition: var(--icons2dots-dur) var(--icons2dots-timing-func) var(--icons2dots-delay);
           opacity: 0 !important;
@@ -104,7 +105,8 @@ body:not(.body-asri--mobile, .body-asri--android, .body-asri--iosApp) {
             transition-delay: var(--dots2icons-delay);
           }
 
-          > div, > span {
+          > div,
+          > span {
             transform: none;
             opacity: 1 !important;
             transition-timing-function: var(--dots2icons-timing-func);
