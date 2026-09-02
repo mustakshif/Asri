@@ -299,6 +299,35 @@
       background-color: currentColor;
     }
   }
+
+  // 有序列表
+  [data-subtype="o"].li {
+    display: grid;
+    // column-gap: 0.25em;
+    grid-template-columns: minmax(calc(1.625em + 8px), min-content) auto;
+
+    > .protyle-action {
+      position: relative;
+      grid-row: 1 / 2;
+      width: auto;
+
+      &::after {
+        left: unset;
+        top: unset;
+        width: 100%;
+        background-color: unset !important;
+        line-height: 1.625;
+      }
+
+      ~ div {
+        grid-column: 2 / -1;
+      }
+    }
+
+    @at-root .protyle-wysiwyg [data-subtype="o"].li > [data-node-id] {
+      margin-inline-start: 0;
+    }
+  }
 }
 
 @mixin image {
