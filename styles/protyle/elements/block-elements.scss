@@ -314,8 +314,10 @@
       &::after {
         left: unset;
         top: unset;
-        width: 100%;
-        background-color: unset !important;
+        width: 1lh;
+        height: 1lh;
+        margin: 0;
+        // background-color: unset !important;
         line-height: 1.625;
       }
 
