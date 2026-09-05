@@ -668,7 +668,8 @@ $chip-border-radius: 5px;
     }
 
     &-item {
-      @include superellipse(var(--gallery-item-border-radius));
+      // @include superellipse(var(--gallery-item-border-radius));
+      border-radius: var(--gallery-item-border-radius);
       box-shadow: 0 0 0 1px var(--b3-border-color-trans);
       // box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.06), 0px 1px 2px -1px rgba(0, 0, 0, 0.06), 0px 2px 4px 0px rgba(0, 0, 0, 0.04);
       // @include darkmode-counterpart {
@@ -696,12 +697,13 @@ $chip-border-radius: 5px;
 
     &-cover {
       border-bottom: none;
-      @include superellipse(var(--gallery-item-border-radius) var(--gallery-item-border-radius) 0 0);
+      // @include superellipse(var(--gallery-item-border-radius) var(--gallery-item-border-radius) 0 0);
+      border-radius: var(--gallery-item-border-radius) var(--gallery-item-border-radius) 0 0;
       background-color: var(--b3-theme-surface);
       // background-color: #0000;
       // background: linear-gradient(to bottom, var(--b3-theme-surface), #0000);
       // contain: content;
-      container-type: size;
+      // container-type: size;
 
       @include darkmode-counterpart {
         box-shadow: 0 0.5px 0 0 inset rgb(from var(--b3-theme-on-background) r g b / 0.3);
@@ -722,8 +724,8 @@ $chip-border-radius: 5px;
         display: block;
         position: absolute;
         top: 0;
-        width: 100cqw;
-        height: 100cqh;
+        width: 100%;
+        height: 100%;
         background-image: linear-gradient(to top, var(--b3-theme-background), #0000);
         z-index: 1;
         pointer-events: none;
@@ -736,7 +738,8 @@ $chip-border-radius: 5px;
 
     &-fields {
       padding: var(--gallery-item-border-radius);
-      @include superellipse(0 0 var(--gallery-item-border-radius) var(--gallery-item-border-radius));
+      // @include superellipse(0 0 var(--gallery-item-border-radius) var(--gallery-item-border-radius));
+      border-radius: 0 0 var(--gallery-item-border-radius) var(--gallery-item-border-radius);
 
       @include darkmode-counterpart {
         // background-color: var(--b3-theme-surface);

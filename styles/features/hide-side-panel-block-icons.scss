@@ -9,23 +9,23 @@
     app-region: no-drag;
   }
 
-  .sy__backlink {
-    --exgf: 1.5; // exaggerate factor
-    --icons2dots-dur: 0.5s;
-    --dots2icons-dur: 0.4s;
+  // .sy__backlink {
+  //   --exgf: 1.5; // exaggerate factor
+  //   --icons2dots-dur: 0.5s;
+  //   --dots2icons-dur: 0.4s;
 
-    > :nth-child(2 of .block__icons) {
-      position: relative;
-    }
-  }
+  //   > :nth-child(2 of .block__icons) {
+  //     position: relative;
+  //   }
+  // }
 
   // .sy__globalGraph, .sy__graph // cause graph to flicker
   .file-tree {
+    // &.sy__backlink,
     &.sy__file,
     &.sy__outline,
     &.sy__bookmark,
-    &.sy__tag,
-    &.sy__backlink {
+    &.sy__tag {
       position: relative;
 
       --dots-clr: var(--b3-border-color-trans);
