@@ -1,3 +1,17 @@
+### v3.7.15
+
+- 适配思源v3.8.3
+- 优化有序列表布局
+- 修复移动端集市条目显示异常
+
+<br />
+
+- Adapted to SiYuan v3.8.3
+- Improved ordered list layout
+- Fixed abnormal display of marketplace items on mobile
+
+---
+
 ### v3.7.14
 
 - 适配思源v3.8.2
