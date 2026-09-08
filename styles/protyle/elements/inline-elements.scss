@@ -290,6 +290,10 @@
       text-decoration-thickness: calc($text-underline-thickness * 1.2);
       text-underline-offset: 0.1em;
     }
+
+    &[data-type~="mark"] {
+      background-image: linear-gradient(180deg, #0000 50%, var(--b3-protyle-inline-mark-background) 50%);
+    }
   }
 }
 
